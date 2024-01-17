@@ -1,0 +1,20 @@
+name: Sync
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'  # This sets the action to run every day at midnight
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Pull from upstream
+      run: |
+        git config --global user.name 'Hongyi Zhao'
+        git config --global user.email 'hongyi.zhao@gmail.com'
+        git remote add upstream git://git.lyx.org/lyx.git
+        git pull upstream master
+        git push origin master

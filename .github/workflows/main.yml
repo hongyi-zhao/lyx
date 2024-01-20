@@ -1,0 +1,37 @@
+name: Sync with upstream repository
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # 每6小时同步一次，可以根据需求修改
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup git
+        run: |
+          git config user.name "Your Name"
+          git config user.email "your-email@example.com"
+
+      - name: Add remote upstream
+        run: git remote add upstream git://git.lyx.org/lyx
+
+      - name: Fetch changes from upstream
+        run: git fetch upstream
+
+      - name: Checkout main branch
+        run: git checkout master # 确保分支名称与你要同步的分支相同
+
+      - name: Merge changes from upstream
+        run: git merge upstream/master # 确保要合并的上游分支正确
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master # 确保分支名称与你要同步的分支相同

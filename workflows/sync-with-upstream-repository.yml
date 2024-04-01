@@ -15,9 +15,8 @@ jobs:
 
       - name: Setup git
         run: |
-          git config user.name "Your Name"
-          git config user.email "your-email@example.com"
-          git config --local --add safe.directory "*"
+          git config user.name "Hongyi Zhao"
+          git config user.email "hongyi.zhao@gmail.com"
 
       - name: Add remote upstream
         run: git remote add upstream git://git.lyx.org/lyx

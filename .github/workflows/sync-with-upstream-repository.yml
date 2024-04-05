@@ -24,11 +24,8 @@ jobs:
       - name: Fetch changes from upstream
         run: git fetch upstream --verbose
 
-      - name: Checkout main branch
-        run: git checkout master # Ensure branch name matches the branch you want to sync with
-
       - name: Merge changes from upstream
-        run: git merge upstream/master --verbose # Ensure the upstream branch is correct
+        run: git merge upstream/master --allow-unrelated-histories --verbose # Ensure the upstream branch is correct
 
       - name: Push changes
         uses: ad-m/github-push-action@master

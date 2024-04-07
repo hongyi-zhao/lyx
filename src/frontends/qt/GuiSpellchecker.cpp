@@ -72,8 +72,6 @@ struct SpellcheckerWidget::Private
 	void check();
 	/// close the spell checker dialog
 	void hide() const;
-	/// make/restore a selection between from and to
-	void setSelection(DocIterator const & from, DocIterator const & to) const;
 	/// if no selection was checked:
 	/// ask the user if the check should start over
 	bool continueFromBeginning();
@@ -339,7 +337,7 @@ void SpellcheckerWidget::Private::hide() const
 	if (isCurrentBuffer(bvcur)) {
 		if (!begin_.empty() && !end_.empty()) {
 			// restore previous selection
-			setSelection(begin_, end_);
+			bv->setSelection(begin_, end_);
 		} else {
 			// restore cursor position
 			bvcur.setCursor(start_);
@@ -347,29 +345,6 @@ void SpellcheckerWidget::Private::hide() const
 			bv->processUpdateFlags(Update::Force | Update::FitCursor);
 		}
 	}
-}
-
-void SpellcheckerWidget::Private::setSelection(
-	DocIterator const & from, DocIterator const & to) const
-{
-	BufferView * bv = gv_->documentBufferView();
-	DocIterator end = to;
-
-	if (from.pit() != end.pit()) {
-		// there are multiple paragraphs in selection
-		Cursor & bvcur = bv->cursor();
-		bvcur.setCursor(from);
-		bvcur.clearSelection();
-		bvcur.selection(true);
-		bvcur.setCursor(end);
-		bvcur.selection(true);
-	} else {
-		// FIXME LFUN
-		// If we used a LFUN, dispatch would do all of this for us
-		int const size = end.pos() - from.pos();
-		bv->putSelectionAt(from, size, false);
-	}
-	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 void SpellcheckerWidget::Private::forward()
@@ -632,7 +607,7 @@ void SpellcheckerWidget::Private::check()
 		return;
 	setLanguage(word_lang.lang());
 	// mark misspelled word
-	setSelection(from, to);
+	bv->setSelection(from, to);
 	// enable relevant widgets
 	updateView();
 }

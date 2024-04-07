@@ -28,6 +28,8 @@ public:
 	void set(QFont const & font, QString const & text);
 
 	QSize sizeHint() const override;
+	
+	int minWidth() const;
 
 protected:
 	void paintEvent(QPaintEvent * p) override;
@@ -35,6 +37,9 @@ protected:
 private:
 	QFont font_;
 	QString text_;
+	int string_ascent_ = 0;
+	int string_descent_ = 0;
+	int string_width_ = 0;
 };
 
 

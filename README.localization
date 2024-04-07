@@ -64,6 +64,16 @@ These chars should be somehow used in your translations, however you'll have to
 invent your own working shortcuts for dialog and menu entries and resolve
 possible conflicts of the same shortcut chars in one menu...
 
+You will be informed about conflicts in the terminal if you try to access the
+menu.
+
+Note that, in the case of '|', if more than one character follows, this means
+that LyX will try each of them in turn and use the first one that is not yet
+used by another entry in the menu. That way, you can define alternative shortcuts
+in the case one works in one context only, and another one only in another. You
+can use this possibility also in translations, but please use it only if no
+single shortcut that fits could be found.
+
 Note also that there are already used global shortcuts (such as p k x c m s a)
 and you should avoid using these characters for first-level menu shortcuts.
 

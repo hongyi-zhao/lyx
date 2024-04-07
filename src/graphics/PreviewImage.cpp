@@ -32,7 +32,7 @@ class PreviewImage::Impl {
 public:
 	///
 	Impl(PreviewImage & p, PreviewLoader & l,
-	     string const & s, FileName const & f, double af);
+	     docstring const & s, FileName const & f, double af);
 	///
 	~Impl();
 	///
@@ -47,14 +47,14 @@ public:
 	///
 	Loader iloader_;
 	///
-	string const snippet_;
+	docstring const snippet_;
 	///
 	double const ascent_frac_;
 };
 
 
 PreviewImage::PreviewImage(PreviewLoader & l,
-			   string const & s,
+			   docstring const & s,
 			   FileName const & f,
 			   double af)
 	: pimpl_(new Impl(*this, l, s, f, af))
@@ -67,7 +67,7 @@ PreviewImage::~PreviewImage()
 }
 
 
-string const & PreviewImage::snippet() const
+docstring const & PreviewImage::snippet() const
 {
 	return pimpl_->snippet_;
 }
@@ -105,7 +105,7 @@ PreviewLoader & PreviewImage::previewLoader() const
 }
 
 
-PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l, string const & s,
+PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l, docstring const & s,
                          FileName const & bf, double af)
 	: parent_(p), ploader_(l), iloader_(l.buffer().fileName(), bf),
 	  snippet_(s), ascent_frac_(af)

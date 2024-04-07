@@ -46,6 +46,8 @@ public:
 	///
 	bool contains(pit_type pit) const;
 	///
+	void forget(pit_type pit);
+	///
 	std::pair<pit_type, ParagraphMetrics const *> first() const;
 	///
 	std::pair<pit_type, ParagraphMetrics const *> last() const;
@@ -70,6 +72,10 @@ public:
 	void newParMetricsDown();
 	///
 	void newParMetricsUp();
+
+	/// Update metrics up to \c bv_height. Only usable for main text (for now).
+	void updateMetrics(pit_type const anchor_pit, int const anchor_ypos,
+                       int const bv_height);
 
 	/// compute text metrics.
 	bool metrics(MetricsInfo const & mi, Dimension & dim, int min_width = 0);

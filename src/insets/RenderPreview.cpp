@@ -88,7 +88,7 @@ RenderBase * RenderPreview::clone(Inset const * inset) const
 
 namespace {
 
-docstring const statusMessage(BufferView const * bv, string const & snippet)
+docstring const statusMessage(BufferView const * bv, docstring const & snippet)
 {
 	LASSERT(bv, return docstring());
 
@@ -221,7 +221,7 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
 
 	// FIXME UNICODE
 	// We have to make sure that we call latex with the right encoding
-	snippet_ = support::trim(to_utf8(latex_snippet));
+	snippet_ = support::trim(latex_snippet);
 	if (snippet_.empty())
 		return;
 

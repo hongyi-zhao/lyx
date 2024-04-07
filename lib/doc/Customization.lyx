@@ -129,7 +129,7 @@ logicalmkup
 \papersides 2
 \paperpagestyle headings
 \tablestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -138,6 +138,7 @@ logicalmkup
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -12644,6 +12645,48 @@ string
 status collapsed
 
 \begin_layout Plain Layout
+DependsOn
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<name>
+\end_layout
+
+\end_inset
+
+] The name of a style whose preamble should be output 
+\emph on
+before
+\emph default
+ this one.
+ This allows to ensure some ordering of the preamble snippets when macros definitions depend on one another.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that,
+ besides that functionality,
+ there is no way to ensure any ordering of preambles.
+ The ordering that you see in a given version of \SpecialChar LyX
+ may change without warning in later versions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 DocBookGenerateTitle
 \end_layout
 
@@ -12659,7 +12702,7 @@ bool=false
 
 \end_inset
 
-] Generates a
+] Generates a 
 \begin_inset Flex Code
 status collapsed
 
@@ -12701,48 +12744,6 @@ figure
 ,
  which requires a title although there is none in LaTeX.
  This feature is heavily used for theorem-like environments.
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-DependsOn
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<name>
-\end_layout
-
-\end_inset
-
-] The name of a style whose preamble should be output 
-\emph on
-before
-\emph default
- this one.
- This allows to ensure some ordering of the preamble snippets when macros definitions depend on one another.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Note that,
- besides that functionality,
- there is no way to ensure any ordering of preambles.
- The ordering that you see in a given version of \SpecialChar LyX
- may change without warning in later versions.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -31214,7 +31215,14 @@ $$AbsPath
 
 \end_inset
 
- The absolute file path.
+ The absolute file path
+\change_inserted -712698321 1712390130
+.
+ If compiling with \SpecialChar LyX
+,
+ this is the path to the file in the temporary directory
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Description
@@ -31345,6 +31353,27 @@ $$FName
 
  (absolute name or relative to the \SpecialChar LyX
  document).
+\change_inserted -712698321 1712389740
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1712390181
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1712389749
+$$OrigAbsName
+\end_layout
+
+\end_inset
+
+ The file name with absolute path to the original directory (not the temporary directory).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

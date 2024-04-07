@@ -31,14 +31,14 @@ public:
 	 *  descent = height * (1 - ascent_frac)
 	 */
 	PreviewImage(PreviewLoader & parent,
-		     std::string const & latex_snippet,
+		     docstring const & latex_snippet,
 		     support::FileName const & bitmap_file,
 		     double ascent_frac);
 	///
 	~PreviewImage();
 
 	///
-	std::string const & snippet() const;
+	docstring const & snippet() const;
 	///
 	Dimension dim() const;
 

@@ -179,7 +179,11 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 
 double GuiWorkArea::pixelRatio() const
 {
-	return qt_scale_factor * devicePixelRatio();
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+	return devicePixelRatioF();
+#else
+	return devicePixelRatio();
+#endif
 }
 
 
@@ -195,9 +199,6 @@ void GuiWorkArea::init()
 		});
 
 	d->resetScreen();
-	// A mouse event will happen before the first paint event,
-	// so make sure that the buffer view has an up to date metrics.
-	d->buffer_view_->resize(viewport()->width(), viewport()->height());
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
@@ -341,7 +342,7 @@ void GuiWorkArea::toggleCaret()
 
 void GuiWorkArea::scheduleRedraw(bool update_metrics)
 {
-	if (!isVisible())
+	if (!isVisible() || view().busy())
 		// No need to redraw in this case.
 		return;
 
@@ -967,7 +968,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 	// Find the row at which we set the cursor.
 	RowList::const_iterator rit = pm.rows().begin();
 	RowList::const_iterator rlast = pm.rows().end();
-	int yy = pm.position() - pm.ascent();
+	int yy = pm.top();
 	for (--rlast; rit != rlast; ++rit) {
 		int h = rit->height();
 		if ((up && yy + h > 0)
@@ -1264,9 +1265,9 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 void GuiWorkArea::Private::resetScreen()
 {
 	if (use_backingstore_) {
-		int const pr = p->pixelRatio();
-		screen_ = QImage(pr * p->viewport()->width(),
-		                 pr * p->viewport()->height(),
+		double const pr = p->pixelRatio();
+		screen_ = QImage(int(pr * p->viewport()->width()),
+		                 int(pr * p->viewport()->height()),
 		                 QImage::Format_ARGB32_Premultiplied);
 		screen_.setDevicePixelRatio(pr);
 	}
@@ -1418,10 +1419,12 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 		return QVariant(d->im_cursor_rect_);
 		break;
 	}
+#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
 	case Qt::ImAnchorRectangle: {
 		return QVariant(d->im_anchor_rect_);
 		break;
 	}
+#endif
 	default:
 		return QWidget::inputMethodQuery(query);
 	}
@@ -1787,6 +1790,7 @@ bool TabWorkArea::setCurrentWorkArea(GuiWorkArea * work_area)
 
 GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 {
+	view.setBusy(true);
 	GuiWorkArea * wa = new GuiWorkArea(buffer, view);
 	GuiWorkAreaContainer * wac = new GuiWorkAreaContainer(wa);
 	wa->setUpdatesEnabled(false);
@@ -1804,6 +1808,8 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 		showBar(count() > 1);
 
 	updateTabTexts();
+
+	view.setBusy(false);
 
 	return wa;
 }

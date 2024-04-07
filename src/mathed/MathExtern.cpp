@@ -292,10 +292,23 @@ bool testString(MathAtom const & at, char const * const str)
 	return testString(at, from_ascii(str));
 }
 
+
+bool testSymbol(MathAtom const & at, docstring const & name)
+{
+	return at->asSymbolInset() && at->asSymbolInset()->name() == name;
+}
+
+
+bool testSymbol(MathAtom const & at, char const * const name)
+{
+	return testSymbol(at, from_ascii(name));
+}
+
+
 // search end of nested sequence
 MathData::iterator endNestSearch(
 	MathData::iterator it,
-	MathData::iterator last,
+	const MathData::iterator& last,
 	TestItemFunc testOpen,
 	TestItemFunc testClose
 )
@@ -500,7 +513,7 @@ bool testCloseParen(MathAtom const & at)
 MathAtom replaceParenDelims(const MathData & ar)
 {
 	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(ar.buffer()),
-		from_ascii("("), from_ascii(")"), ar));
+		from_ascii("("), from_ascii(")"), ar, true));
 }
 
 
@@ -519,16 +532,56 @@ bool testCloseBracket(MathAtom const & at)
 MathAtom replaceBracketDelims(const MathData & ar)
 {
 	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(ar.buffer()),
-		from_ascii("["), from_ascii("]"), ar));
+		from_ascii("["), from_ascii("]"), ar, true));
 }
 
 
-// replace '('...')' and '['...']' sequences by a real InsetMathDelim
+bool testOpenVert(MathAtom const & at)
+{
+	return testSymbol(at, "lvert");
+}
+
+
+bool testCloseVert(MathAtom const & at)
+{
+	return testSymbol(at, "rvert");
+}
+
+
+MathAtom replaceVertDelims(const MathData & ar)
+{
+	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(ar.buffer()),
+		from_ascii("lvert"), from_ascii("rvert"), ar, true));
+}
+
+
+bool testOpenAngled(MathAtom const & at)
+{
+	return testSymbol(at, "langle");
+}
+
+
+bool testCloseAngled(MathAtom const & at)
+{
+	return testSymbol(at, "rangle");
+}
+
+
+MathAtom replaceAngledDelims(const MathData & ar)
+{
+	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(ar.buffer()),
+		from_ascii("langle"), from_ascii("rangle"), ar, true));
+}
+
+
+// replace '('...')', '['...']', '|'...'|', and '<'...'>' sequences by a real InsetMathDelim
 void extractDelims(MathData & ar)
 {
 	//lyxerr << "\nDelims from: " << ar << endl;
 	replaceNested(ar, testOpenParen, testCloseParen, replaceParenDelims);
 	replaceNested(ar, testOpenBracket, testCloseBracket, replaceBracketDelims);
+	replaceNested(ar, testOpenVert, testCloseVert, replaceVertDelims);
+	replaceNested(ar, testOpenAngled, testCloseAngled, replaceAngledDelims);
 	//lyxerr << "\nDelims to: " << ar << endl;
 }
 
@@ -621,18 +674,6 @@ void extractFunctions(MathData & ar, ExternalMath kind)
 //
 // search integrals
 //
-
-bool testSymbol(MathAtom const & at, docstring const & name)
-{
-	return at->asSymbolInset() && at->asSymbolInset()->name() == name;
-}
-
-
-bool testSymbol(MathAtom const & at, char const * const name)
-{
-	return at->asSymbolInset() && at->asSymbolInset()->name() == from_ascii(name);
-}
-
 
 bool testIntSymbol(MathAtom const & at)
 {
@@ -1422,18 +1463,23 @@ void write(MathData const & dat, TeXMathStream & wi)
 void writeString(docstring const & s, TeXMathStream & os)
 {
 	if (!os.latex()) {
-		os << (os.asciiOnly() ? escape(s) : s);
+		os << s;
 		return;
 	}
-	else if (os.output() == TeXMathStream::wsSearchAdv) {
-		os << s;
+
+	docstring str = s;
+	if (os.asciiOnly())
+		str = escape(s);
+
+	if (os.output() == TeXMathStream::wsSearchAdv) {
+		os << str;
 		return;
 	}
 
 	if (os.lockedMode()) {
 		bool space;
 		docstring cmd;
-		for (char_type c : s) {
+		for (char_type c : str) {
 			try {
 				Encodings::latexMathChar(c, true, os.encoding(), cmd, space);
 				os << cmd;
@@ -1471,7 +1517,7 @@ void writeString(docstring const & s, TeXMathStream & os)
 	// We will take care of matching braces.
 	os.pendingBrace(false);
 
-	for (char_type const c : s) {
+	for (char_type const c : str) {
 		bool mathmode = in_forced_mode ? os.textMode() : !os.textMode();
 		docstring command(1, c);
 		try {

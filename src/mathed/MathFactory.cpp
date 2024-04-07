@@ -703,7 +703,7 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 		InsetCommand::string2params(to_utf8(str), icp);
 		Encoding const * const utf8 = encodings.fromLyXName("utf8");
 		OutputParams op(utf8);
-		mathed_parse_cell(ar, icp.getCommand(op));
+		mathed_parse_cell(ar, icp.getCommand(op, false, true));
 	} else if (name == "mathspace") {
 		InsetSpaceParams isp(true);
 		InsetSpace::string2params(to_utf8(str), isp);

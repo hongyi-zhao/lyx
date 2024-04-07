@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 599
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -57,6 +57,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index
@@ -87,6 +88,7 @@
 \html_css_as_file 0
 \html_be_strict false
 \docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -147,7 +149,8 @@ I am a quote
 \end_layout
 
 \begin_layout Standard
-Now, we're outside quotes.
+Now,
+ we're outside quotes.
 \end_layout
 
 \begin_layout Standard
@@ -177,6 +180,7 @@ reference "sec:Sec-2kqgsdiflhqsdlifgjuzer=povtuizmvnuer=t vmsrmfli  uh =a'\"rtpf
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -184,8 +188,9 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-Also, a formula with an user-defined macro that outputs well in LaTeX but
- cannot in MathML: 
+Also,
+ a formula with an user-defined macro that outputs well in LaTeX but cannot in MathML:
+ 
 \begin_inset Formula $\testmacro$
 \end_inset
 
@@ -268,6 +273,7 @@ reference "sec:Sec-1"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -284,7 +290,8 @@ First item.
 \begin_inset Newline newline
 \end_inset
 
-Second line of the first item, after a line break.
+Second line of the first item,
+ after a line break.
  
 \end_layout
 
@@ -365,7 +372,8 @@ I repeat that in a footnote.
 \end_layout
 
 \begin_layout Standard
-On the other hand, 
+On the other hand,
+ 
 \begin_inset Foot
 status open
 
@@ -392,7 +400,9 @@ I am the fifth section and I deal with floats
 \end_layout
 
 \begin_layout Standard
-Now, three tables: 
+Now,
+ three tables:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -463,7 +473,8 @@ Row 1
 \begin_inset Text
 
 \begin_layout Plain Layout
-Col 3, row 1
+Col 3,
+ row 1
 \end_layout
 
 \end_inset
@@ -492,7 +503,8 @@ Row 2
 \begin_inset Text
 
 \begin_layout Plain Layout
-Col 3, row 2
+Col 3,
+ row 2
 \end_layout
 
 \end_inset
@@ -602,7 +614,8 @@ Row 1
 \begin_inset Text
 
 \begin_layout Plain Layout
-Col 3, row 1
+Col 3,
+ row 1
 \end_layout
 
 \end_inset
@@ -631,7 +644,8 @@ Row 2
 \begin_inset Text
 
 \begin_layout Plain Layout
-Col 3, row 2
+Col 3,
+ row 2
 \end_layout
 
 \end_inset
@@ -717,7 +731,8 @@ Row 1
 \begin_inset Text
 
 \begin_layout Plain Layout
-Col 3, row 1
+Col 3,
+ row 1
 \end_layout
 
 \end_inset
@@ -746,7 +761,8 @@ Row 2
 \begin_inset Text
 
 \begin_layout Plain Layout
-Col 3, row 2
+Col 3,
+ row 2
 \end_layout
 
 \end_inset
@@ -765,7 +781,9 @@ Col 3, row 2
 \end_layout
 
 \begin_layout Standard
-Then, one figure: 
+Then,
+ one figure:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -809,7 +827,8 @@ I am the sixth section and I really like bibliographies
 
 \begin_layout Standard
 This text has references.
- First reference: 
+ First reference:
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "big"
@@ -818,7 +837,8 @@ literal "false"
 \end_inset
 
 .
- Second reference: 
+ Second reference:
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "small"
@@ -827,7 +847,8 @@ literal "false"
 \end_inset
 
 .
- Both at the same time: 
+ Both at the same time:
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "big,small"
@@ -836,7 +857,8 @@ literal "false"
 \end_inset
 
 .
- A book: 
+ A book:
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Gro60"
@@ -849,10 +871,12 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Many things, just testing for completeness: 
+Many things,
+ just testing for completeness:
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "article,book,booklet,conference,inbook,incollection"
+key "article,book,booklet,conference,inbook,incollection,Foucault:Kritik-EN92"
 literal "false"
 
 \end_inset
@@ -866,8 +890,12 @@ I am the seventh section and I deal with indices
 \end_layout
 
 \begin_layout Standard
-First, a term to index: 
+First,
+ a term to index:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -877,8 +905,11 @@ Term to index
 \end_inset
 
 .
- Then a term to add to the second index: 
+ Then a term to add to the second index:
+ 
 \begin_inset Index oth
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -892,8 +923,11 @@ Term to add to the second index
 \end_layout
 
 \begin_layout Standard
-Then several terms for the first index: 
+Then several terms for the first index:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -907,8 +941,11 @@ Term!to!index
 \end_layout
 
 \begin_layout Standard
-With a see: 
+With a see:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -918,8 +955,11 @@ Term|see{index}
 \end_inset
 
 .
- With a see also: 
+ With a see also:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -933,8 +973,11 @@ Term|seealso{index}
 \end_layout
 
 \begin_layout Standard
-Several terms with a see: 
+Several terms with a see:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -944,8 +987,11 @@ Term!to!index|see{index}
 \end_inset
 
 .
- Several terms with a see also: 
+ Several terms with a see also:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -959,8 +1005,11 @@ Term!to!index|seealso{index}
 \end_layout
 
 \begin_layout Standard
-A start of range: 
+A start of range:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -970,8 +1019,11 @@ Term to index|(
 \end_inset
 
 .
- The corresponding end of range: 
+ The corresponding end of range:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -984,8 +1036,11 @@ Term to index|)
 \end_layout
 
 \begin_layout Standard
-Several terms with a start of range: 
+Several terms with a start of range:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -995,8 +1050,11 @@ Term!to!index|(
 \end_inset
 
 .
- The corresponding end of range: 
+ The corresponding end of range:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -1009,8 +1067,12 @@ Term!to!index|)
 \end_layout
 
 \begin_layout Standard
-These terms already appeared before! Start of range: 
+These terms already appeared before!
+ Start of range:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout
@@ -1020,8 +1082,11 @@ Term!to!index|(
 \end_inset
 
 .
- The corresponding end of range: 
+ The corresponding end of range:
+ 
 \begin_inset Index idx
+range none
+pageformat default
 status open
 
 \begin_layout Plain Layout

@@ -5559,19 +5559,26 @@ Buffer::ReadStatus Buffer::reload()
 	docstring const disp_fn = makeDisplayPath(d->filename.absFileName());
 
 	// clear parent. this will get reset if need be.
+	Buffer const * oldparent = d->parent();
 	d->setParent(nullptr);
 	ReadStatus const status = loadLyXFile();
+	setBusy(false);
 	if (status == ReadSuccess) {
 		updateBuffer();
 		changed(true);
 		updateTitles();
+		// reset parent if this hasn't been done yet
+		// but only if this is still its child (e.g.,
+		// not after the former child has been saved as...) 
+		if (!d->parent() && oldparent && oldparent->isFullyLoaded()
+		    && oldparent->isChild(this))
+			d->setParent(oldparent);
 		markClean();
 		message(bformat(_("Document %1$s reloaded."), disp_fn));
 		d->undo_.clear();
 	} else {
 		message(bformat(_("Could not reload document %1$s."), disp_fn));
 	}
-	setBusy(false);
 	removePreviews();
 	updatePreviews();
 	errors("Parse");

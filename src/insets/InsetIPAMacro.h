@@ -154,7 +154,7 @@ public:
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	bool hasToString() const override { return true; }
+	bool findUsesToString() const override { return true; }
 	///
 	void toString(odocstream &) const override;
 	///

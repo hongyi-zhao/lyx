@@ -630,6 +630,9 @@ void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 		copy_params(*bv, find_work_area_->bufferView());
 		copy_params(*bv, replace_work_area_->bufferView());
 	}
+	// no paragraph indentation for more space
+	find_work_area_->bufferView().buffer().params().setParIndent(Length(0, Length::IN));
+	replace_work_area_->bufferView().buffer().params().setParIndent(Length(0, Length::IN));
 
 	find_work_area_->installEventFilter(this);
 	replace_work_area_->installEventFilter(this);
@@ -665,7 +668,7 @@ FindAndReplace::FindAndReplace(GuiView & parent,
 	setWidget(widget_);
 	setFocusProxy(widget_);
 	// FIXME: Allow all areas once the dialog re-orientation is fixed
-	setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea | Qt::NoDockWidgetArea);
+	setAllowedAreas(Qt::DockWidgetAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea));
 #ifdef Q_OS_MAC
 	// On Mac show and floating
 	setFloating(true);

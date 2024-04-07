@@ -141,12 +141,13 @@ public:
 	void forOutliner(docstring & os, size_t maxlen, pit_type start, pit_type end,
 	                 bool shorten = true) const;
 
-	/// insert a character at cursor position
+	/// FIXME: investigate why those two function behave differently wrt cursor.
+	/// insert a character at cursor position and move cursor forward
 	/// FIXME: replace Cursor with DocIterator.
 	void insertChar(Cursor & cur, char_type c);
-	/// insert an inset at cursor position
+	/// insert an inset at cursor position; do not move cursor
 	/// FIXME: replace Cursor with DocIterator.
-	void insertInset(Cursor & cur, Inset * inset);
+	bool insertInset(Cursor & cur, Inset * inset);
 
 	/// try to handle that request
 	/// FIXME: replace Cursor with DocIterator.

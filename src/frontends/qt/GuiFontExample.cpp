@@ -4,11 +4,14 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>
+
+#include "support/qstring_helpers.h"
 
 #include "GuiFontExample.h"
 #include "GuiFontMetrics.h"
@@ -23,27 +26,40 @@ void GuiFontExample::set(QFont const & font, QString const & text)
 {
 	font_ = font;
 	text_ = text;
+	lyx::frontend::GuiFontMetrics m(font_);
+	// store width, ascent and descent of the font name
+	string_width_ = m.width(text_);
+	for (auto const c : lyx::fromqstr(text)) {
+		string_ascent_ = std::max(string_ascent_, m.ascent(c));
+		string_descent_ = std::max(string_ascent_, m.descent(c));
+	}
 	update();
 }
 
 
 QSize GuiFontExample::sizeHint() const
 {
-	lyx::frontend::GuiFontMetrics m(font_);
-	return QSize(m.width(text_) + 10, m.maxHeight() + 6);
+	return QSize(string_width_ + 10,
+		     string_ascent_ + string_descent_ + 6);
 }
 
 
 void GuiFontExample::paintEvent(QPaintEvent *)
 {
 	QPainter p;
-	lyx::frontend::GuiFontMetrics m(font_);
 
 	p.begin(this);
 	p.setFont(font_);
-	p.drawRect(0, 0, width() - 1, height() - 1);
-	p.drawText(5, 3 + m.maxAscent(), text_);
+	int const h = height() - 1;
+	p.drawRect(0, 0, width() - 1, h);
+	p.drawText(5, (h / 2) + (string_descent_ / 2), text_);
 	p.end();
+}
+
+
+int GuiFontExample::minWidth() const
+{
+	return string_width_;
 }
 
 

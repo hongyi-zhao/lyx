@@ -235,6 +235,7 @@ private Q_SLOTS:
 	void selectRoman(const QString&);
 	void selectSans(const QString&);
 	void selectTypewriter(const QString&);
+	void screenFontsChanged();
 
 public Q_SLOTS:
 	void updateScreenFontSizes(LyXRC const & rc);

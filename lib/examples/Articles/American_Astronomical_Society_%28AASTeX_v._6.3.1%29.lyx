@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/Articles/
-\textclass aastex62
+\textclass aastex63
 \begin_preamble
 \newcommand{\myemail}{skywalker@galaxy.far.far.away}
 %\slugcomment{Not to appear in Nonlearned J., 45.}
@@ -62,6 +62,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index

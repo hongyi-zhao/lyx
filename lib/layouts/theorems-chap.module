@@ -19,7 +19,7 @@ Counter theorem
 	RefFormat thm "Theorem \thechapter.\arabic{theorem}"
 	RefFormat cor "Corollary \thechapter.\arabic{theorem}"
 	RefFormat lem "Lemma \thechapter.\arabic{theorem}"
-	RefFormat prop "Lemma \thechapter.\arabic{theorem}"
+	RefFormat prop "Proposition \thechapter.\arabic{theorem}"
 	RefFormat conj "Conjecture \thechapter.\arabic{theorem}"
 	RefFormat def "Definition \thechapter.\arabic{theorem}"
 	RefFormat exa "Example \thechapter.\arabic{theorem}"

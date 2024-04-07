@@ -19,6 +19,7 @@
 #define PREVIEWLOADER_H
 
 #include "ColorCode.h"
+#include "support/docstring.h"
 #include "support/signals.h"
 
 #include <QObject>
@@ -44,7 +45,7 @@ public:
 	/** Is there an image already associated with this snippet of LaTeX?
 	 *  If so, returns a pointer to it, else returns 0.
 	 */
-	PreviewImage const * preview(std::string const & latex_snippet) const;
+	PreviewImage const * preview(docstring const & latex_snippet) const;
 
 	///
 	enum Status {
@@ -59,13 +60,13 @@ public:
 	};
 
 	/// How far have we got in loading the image?
-	Status status(std::string const & latex_snippet) const;
+	Status status(docstring const & latex_snippet) const;
 
 	/// Add a snippet of LaTeX to the queue for processing.
-	void add(std::string const & latex_snippet) const;
+	void add(docstring const & latex_snippet) const;
 
 	/// Remove this snippet of LaTeX from the PreviewLoader.
-	void remove(std::string const & latex_snippet) const;
+	void remove(docstring const & latex_snippet) const;
 
 	/** We have accumulated several latex snippets with status "InQueue".
 	 *  Initiate their transformation into bitmap images.

@@ -1247,7 +1247,7 @@ GuiApplication * theGuiApp()
 
 double GuiApplication::pixelRatio() const
 {
-	return qt_scale_factor * devicePixelRatio();
+	return devicePixelRatio();
 }
 
 
@@ -2669,7 +2669,7 @@ QPixmap GuiApplication::getScaledPixmap(QString imagedir, QString name) const
 	qreal dpr = 1.0;
 	// Consider device/pixel ratio (HiDPI)
 	if (currentView())
-		dpr = currentView()->devicePixelRatio();
+		dpr = currentView()->pixelRatio();
 	// We render SVG directly for HiDPI scalability
 	QPixmap pm = getPixmap(imagedir, name, "svgz,png");
 	FileName fname = imageLibFileSearch(imagedir, name, "svgz,png");

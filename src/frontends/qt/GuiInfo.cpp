@@ -31,6 +31,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include <QDate>
 
 using namespace std;
 using namespace lyx::support;

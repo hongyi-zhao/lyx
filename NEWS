@@ -13,6 +13,7 @@ https://wiki.lyx.org/LyX/NewInLyX24
 * Global float settings
 * Insets external editing
 * Dark theme
+* Qt 5 default, Qt 6 supported, Qt 4 dropped
 
 
 

@@ -148,7 +148,7 @@ logicalmkup
 \papersides 2
 \paperpagestyle default
 \tablestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -157,6 +157,7 @@ logicalmkup
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author -584632292 "Richard Kimberly Heck"
 \end_header
 
 \begin_body
@@ -9642,12 +9643,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9660,6 +9663,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9683,6 +9687,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -33300,10 +33305,10 @@ literal "false"
  In this document we used the Bib\SpecialChar TeX
  style 
 \family sans
-alphadin.bst
+alpha.bst
 \family default
 ,
- which provides an alpha-numeric style in accordance with the German Standards Institute (DIN).
+ which provides an alpha-numeric style.
 \end_layout
 
 \begin_layout Standard
@@ -44599,11 +44604,35 @@ nolink "false"
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -584632292 1712109674
+Plain
+\begin_inset space ~
+\end_inset
+
+Double
+\begin_inset space ~
+\end_inset
+
+
+\change_deleted -584632292 1712109675
 Ordinary
 \begin_inset space ~
 \end_inset
 
-Quote Inserts this quote:
+
+\change_unchanged
+Quot
+\change_inserted -584632292 1712109680
+ation
+\begin_inset space ~
+\end_inset
+
+Mark
+\change_deleted -584632292 1712109681
+e
+\change_unchanged
+ Inserts this quote:
  ",
  no matter what quote style you selected in the 
 \family sans
@@ -44615,11 +44644,63 @@ Language
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -584632292 1712109701
+Plain
+\begin_inset space ~
+\end_inset
+
 Single
 \begin_inset space ~
 \end_inset
 
-Quote Inserts a single quote in the quotation marks style selected in the 
+Quotation
+\begin_inset space ~
+\end_inset
+
+Mark Inserts this quote:
+ 
+\begin_inset Quotes qls
+\end_inset
+
+,
+ no matter what quote style you have selected.
+\end_layout
+
+\begin_layout Description
+
+\change_deleted -584632292 1712109722
+Single
+\change_inserted -584632292 1712109720
+Inner
+\change_unchanged
+
+\begin_inset space ~
+\end_inset
+
+Quot
+\change_inserted -584632292 1712109726
+ation
+\begin_inset space ~
+\end_inset
+
+Mark
+\change_deleted -584632292 1712109727
+e
+\change_unchanged
+ Inserts a
+\change_inserted -584632292 1712109731
+n inner
+\change_unchanged
+ 
+\change_deleted -584632292 1712109733
+single 
+\change_unchanged
+quote 
+\change_inserted -584632292 1712109738
+(usually a single quote) 
+\change_unchanged
+in the quotation marks style selected in the 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -58139,8 +58220,10 @@ bibname
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
+btprint "btPrintCited"
 bibfiles "biblio/LyXDocs"
-options "biblio/alphadin"
+options "alpha"
+encoding "default"
 
 \end_inset
 

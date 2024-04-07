@@ -8873,7 +8873,6 @@ Return
 \end_layout
 
 \begin_layout Verbatim
-
 Это текст в окружении 
 \begin_inset Quotes rld
 \end_inset
@@ -8888,7 +8887,6 @@ Return
 \begin_layout Verbatim
 \noindent
 \align block
-
 Следующие две строки - пустые:
 \end_layout
 
@@ -8901,7 +8899,6 @@ Return
 \end_layout
 
 \begin_layout Verbatim
-
 В окружении 
 \begin_inset Quotes rld
 \end_inset
@@ -8938,7 +8935,6 @@ Return
 \end_layout
 
 \begin_layout Verbatim*
-
 Это текст в окружении 
 \begin_inset Quotes rld
 \end_inset
@@ -30725,10 +30721,10 @@ literal "false"
  В данном документе мы используем Bib\SpecialChar TeX
 -стиль 
 \family sans
-alphadin.bst
+alpha.bst
 \family default
 ,
- который обеспечивает буквенно-цифровой стиль в соответствии с Немецким институтом стандартов (DIN).
+ который обеспечивает буквенно-цифровой стиль.
 \end_layout
 
 \begin_layout Standard
@@ -52973,7 +52969,7 @@ bibname
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "../biblio/LyXDocs"
-options "../biblio/alphadin"
+options "alpha"
 encoding "default"
 
 \end_inset

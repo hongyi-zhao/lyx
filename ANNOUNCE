@@ -1,4 +1,4 @@
-Public release of LyX version 2.4.0 RC1
+Public release of LyX version 2.4.0 RC4
 =========================================
 
 We are proud to announce the first public release candidate of the new LyX 2.4
@@ -13,10 +13,11 @@ series. An overview of the new features can be found here:
 
   https://wiki.lyx.org/LyX/NewInLyX24
 
-Especially we would like to receive feedback for the newly introduced Docbook
-export before we release it as a stable feature.
+As this release ships with new features, we strongly recommend that packagers
+of LyX on various platforms and distributions read RELEASE-NOTES in order to
+get the new dependencies right.
 
-You can download LyX 2.4.0 RC1 from http://ftp.lyx.org/pub/lyx/devel/ or
+You can download LyX 2.4.0 RC4 from http://ftp.lyx.org/pub/lyx/devel/ or
 from a mirror listed at https://www.lyx.org/Download#toc11.
 
 We appreciate your help in testing this pre-release!
@@ -32,12 +33,11 @@ where NUM is the LyX format number of the original file. In the case of
 2.3.x file, this will be 544, but in the case of older files it will be
 different.
 
-The file lib/RELEASE-NOTES lists some known issues and problems compared
-to the current stable releases (LyX 2.3.x). We strongly recommend that
-packagers of LyX on various platforms and distributions read this file.
+The file RELEASE-NOTES also lists some known issues and problems compared
+to the current stable releases (LyX 2.3.x).
 
 As with any major release, this one comes with a lot of new features but
-also some bugs. If you think you have found a bug in LyX 2.4.0 RC1, either
+also some bugs. If you think you have found a bug in LyX 2.4.0 RC4, either
 email the LyX developers' mailing list (lyx-devel at lists.lyx.org),
 or open a bug report at https://www.lyx.org/trac/wiki/BugTrackerHome.
 Please specify if the behavior you are reporting is different from behavior

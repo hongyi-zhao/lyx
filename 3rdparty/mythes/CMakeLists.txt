@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.5.0)
 
 set(LYX_IPO_SUPPORTED FALSE)
 if (POLICY CMP0069)

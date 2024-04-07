@@ -96,7 +96,7 @@ private:
 	void imageReady(graphics::PreviewImage const &);
 
 	/// The thing that we're trying to generate a preview of.
-	std::string snippet_;
+	docstring snippet_;
 
 	/** Store the connection to the preview loader so that we connect
 	 *  only once.

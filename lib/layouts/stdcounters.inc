@@ -79,6 +79,7 @@ End
 
 Counter listing
 	GuiName Listing
+	PrettyFormat "Listing ##"
 End
 
 Counter equation

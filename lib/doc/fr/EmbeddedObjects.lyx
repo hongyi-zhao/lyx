@@ -223,6 +223,7 @@ varwidth
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \notefontcolor #0000ff
@@ -291,7 +292,7 @@ literal "false"
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -370,6 +371,13 @@ graphique
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+
+\size normal
+Revue finale avant 2.4.0,
+ 24 février 2024 (JPC)
 \end_layout
 
 \end_inset
@@ -2930,8 +2938,7 @@ type  "icon"
 arg   "tabular-feature toggle-line-top"
 \end_inset
 
- ajoute une ligne en haut de la cellule,
- de la ligne ou de la sélection courante
+ (dés)active une ligne en haut de chaque cellule pour les cellules sélectionnées
 \end_layout
 
 \begin_layout Labeling
@@ -2941,8 +2948,7 @@ type  "icon"
 arg   "tabular-feature toggle-line-bottom"
 \end_inset
 
- ajoute une ligne en bas de la cellule,
- de la ligne ou de la sélection courante
+ (dés)active une ligne en bas de chaque cellule pour les cellules sélectionnées
 \end_layout
 
 \begin_layout Labeling
@@ -2952,18 +2958,7 @@ type  "icon"
 arg   "tabular-feature toggle-line-left"
 \end_inset
 
- ajoute une ligne sur le côté gauche de la cellule,
- de la ligne 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-ou colonne ?
-\end_layout
-
-\end_inset
-
- ou de la sélection courante
+ (dés)active une ligne sur le côté gauche de la cellule pour les cellules sélectionnées
 \end_layout
 
 \begin_layout Labeling
@@ -2973,18 +2968,7 @@ type  "icon"
 arg   "tabular-feature toggle-line-right"
 \end_inset
 
- ajoute une ligne sur le côté droit de la cellule,
- de la ligne 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-ou colonne ?
-\end_layout
-
-\end_inset
-
- ou de la sélection courante
+ (dés)active une ligne sur le côté droit de la cellule pour les cellules sélectionnées
 \end_layout
 
 \begin_layout Labeling
@@ -2994,7 +2978,17 @@ type  "icon"
 arg   "tabular-feature set-border-lines"
 \end_inset
 
- ajoute une bordure autour des cellules sélectionnées
+ (dés)active une bordure autour des cellules sélectionnées
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature toggle-inner-lines"
+\end_inset
+
+ (dés)active des lignes intérieures pour les cellules sélectionnées
 \end_layout
 
 \begin_layout Labeling
@@ -28797,7 +28791,7 @@ Réglage
 \end_layout
 
 \begin_layout Standard
-Les réglages pour les folttants peuvent être définis en deux endroits avec \SpecialChar LyX
+Les réglages pour les flottants peuvent être définis en deux endroits avec \SpecialChar LyX
 :
  dans 
 \family sans
@@ -28812,15 +28806,12 @@ Paramètres de flottant
 \end_layout
 
 \begin_layout Standard
-Ceci peut être fait via un clic droit sur la boîte d'un flottant et un clic sur
-\lang english
- 
+Ceci peut être fait via un clic droit sur la boîte d'un flottant et un clic sur 
 \family sans
 Paramètres\SpecialChar ldots
 :
 
 \family default
-\lang french
  une fenêtre de dialogue s'ouvre dans laquelle vous pouvez,
  maintenant seulement pour le flottant concerné,
  modifier le placement global et les options d'aligenement,
@@ -28833,19 +28824,16 @@ Paramètres\SpecialChar ldots
 \SpecialChar menuseparator
 Paramètres de flottant
 \family default
- ou loacelemnt pour
-\lang english
- 
+ ou localement pour 
 \family sans
 Paramètres\SpecialChar ldots
 
 \family default
-\lang french
- sont céctites ci-après.
+ sont décrites ci-après.
 \end_layout
 
 \begin_layout Subsection
-Float Placement
+Placement des flottants
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Float-Placement"
@@ -28887,14 +28875,11 @@ Paramètres\SpecialChar ldots
 \SpecialChar menuseparator
 Paramètres de flottant
 \family default
- que dans
-\lang english
- 
+ que dans 
 \family sans
 Paramètres\SpecialChar ldots
 
 \family default
-\lang french
  pour un flottant particulier,
  vous pouvez modifier les paramètres de placement que \SpecialChar LaTeX
  utilise pour déterminer où placer le flottant dans la page,
@@ -29557,7 +29542,7 @@ Paramètres de flottant
 \end_layout
 
 \begin_layout Subsection
-Alignement du contenu des flottants
+Autres options de flottants
 \end_layout
 
 \begin_layout Standard
@@ -40714,7 +40699,7 @@ name "fig:Figure-enrobée"
 
 \end_inset
 
-Ceci est une figure habillée.
+Ceci est une figure enrobée.
 \end_layout
 
 \end_inset

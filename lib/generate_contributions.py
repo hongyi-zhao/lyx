@@ -162,26 +162,30 @@ function credits_contrib($name, $email, $msg) {
 $email = str_replace(' () ', '@', $email);
 $email = str_replace(' ! ', '.', $email);
 
+if(!isset($output)){ $output = ''; }
+
 if (isset($email) && $email != "") {
         if (strncasecmp($email,"https",4) == 0)
-            $output =$output. "<dt><b>[[${email} | ${name}]]</b>";
+            $output =$output. "<dt><b>[[{$email} | {$name}]]</b>";
          else
-            $output=$output. "<dt><b>[[mailto:${email} | ${name}]]</b>";
+            $output=$output. "<dt><b>[[mailto:{$email} | {$name}]]</b>";
 } else
-        $output=$output. "<dt><b>${name}</b>";
+        $output=$output. "<dt><b>{$name}</b>";
 
 $msg = preg_replace("/\\n */", "\\n  ", ltrim($msg));
 
 $output=$output. "
  </dt>
  <dd>
-  ${msg}
+  {$msg}
  </dd>";
  
 return $output;
 }
 
 function credits_output() {
+
+if(!isset($output)){ $output = ''; }
 
 $output=$output."<p>
      If your name doesn't appear here although you've done
@@ -223,10 +227,12 @@ function blanket_contrib($name, $email, $msg_title, $msg_ref, $date) {
 $email = str_replace(' () ', '@', $email);
 $email = str_replace(' ! ', '.', $email);
 
+if(!isset($output)){ $output = ''; }
+
 $output=$output. "
 
  <dt>
-  <b>[[mailto:${email} | ${name}]]</b>
+  <b>[[mailto:{$email} | {$name}]]</b>
  </dt>
  <dd>
   See the lyx-devel mailing list message
@@ -235,12 +241,12 @@ $output=$output. "
 if (isset($msg_ref) && $msg_ref != "") {
         $msg_ref = htmlspecialchars("$msg_ref");
         if (substr($msg_ref, 0, 2) == "m=") {
-                $output=$output. "[[https://marc.info/?l=lyx-devel&amp;" . ${msg_ref} . "|" . ${msg_title} . "]]";
+                $output=$output. "[[https://marc.info/?l=lyx-devel&amp;" . $msg_ref . "|" . $msg_title . "]]";
         } else {
-                $output=$output. "[[https://www.mail-archive.com/lyx-devel@lists.lyx.org/" . ${msg_ref} . ".html |" . ${msg_title} . "]]";
+                $output=$output. "[[https://www.mail-archive.com/lyx-devel@lists.lyx.org/" . $msg_ref . ".html |" . $msg_title . "]]";
         }
 } else {
-        $output=$output. "${msg_title}";
+        $output=$output. "{$msg_title}";
 }
 
 $output=$output. "&quot;
@@ -251,6 +257,8 @@ return $output;
 }
 
 function blanket_output() {
+
+if(!isset($output)){ $output = ''; }
 
 $output=$output."<p>
      The following people hereby grant permission to license their
@@ -1555,6 +1563,14 @@ contributors = [
                  "m=147941540519608",
                  "17 November 2016",
                  u"Module updates"),
+
+     contributor(u'Idan Pazi',
+                 "idan.kp () gmail ! com",
+                 "GPL",
+                 "Re: windows preview bug fix",
+                 "m=171024249203393",
+                 "12 March 2024",
+                 u"Windows-specific fixes"),
 
      contributor(u'Bo Peng',
                  "ben.bob () gmail ! com",

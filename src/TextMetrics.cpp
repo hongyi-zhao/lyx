@@ -118,6 +118,12 @@ bool TextMetrics::contains(pit_type pit) const
 }
 
 
+void TextMetrics::forget(pit_type pit)
+{
+	par_metrics_.erase(pit);
+}
+
+
 pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
 {
 	ParMetricsCache::const_iterator it = par_metrics_.begin();
@@ -191,8 +197,7 @@ void TextMetrics::newParMetricsDown()
 
 	// do it and update its position.
 	redoParagraph(pit);
-	par_metrics_[pit].setPosition(last.second.position()
-		+ last.second.descent() + par_metrics_[pit].ascent());
+	par_metrics_[pit].setPosition(last.second.bottom() + par_metrics_[pit].ascent());
 	updatePosCache(pit);
 }
 
@@ -206,9 +211,58 @@ void TextMetrics::newParMetricsUp()
 	pit_type const pit = first.first - 1;
 	// do it and update its position.
 	redoParagraph(pit);
-	par_metrics_[pit].setPosition(first.second.position()
-		- first.second.ascent() - par_metrics_[pit].descent());
+	par_metrics_[pit].setPosition(first.second.top() - par_metrics_[pit].descent());
 	updatePosCache(pit);
+}
+
+
+void TextMetrics::updateMetrics(pit_type const anchor_pit, int const anchor_ypos,
+                                int const bv_height)
+{
+	LASSERT(text_->isMainText(), return);
+	pit_type const npit = pit_type(text_->paragraphs().size());
+
+	if (!contains(anchor_pit))
+		// Rebreak anchor paragraph.
+		redoParagraph(anchor_pit);
+	ParagraphMetrics & anchor_pm = parMetrics(anchor_pit);
+	anchor_pm.setPosition(anchor_ypos);
+
+	// Redo paragraphs above anchor if necessary.
+	int y1 = anchor_ypos - anchor_pm.ascent();
+	// We are now just above the anchor paragraph.
+	pit_type pit1 = anchor_pit - 1;
+	for (; pit1 >= 0 && y1 > 0; --pit1) {
+		if (!contains(pit1))
+			redoParagraph(pit1);
+		ParagraphMetrics & pm = parMetrics(pit1);
+		y1 -= pm.descent();
+		// Save the paragraph position in the cache.
+		pm.setPosition(y1);
+		y1 -= pm.ascent();
+	}
+
+	// Redo paragraphs below the anchor if necessary.
+	int y2 = anchor_ypos + anchor_pm.descent();
+	// We are now just below the anchor paragraph.
+	pit_type pit2 = anchor_pit + 1;
+	for (; pit2 < npit && y2 < bv_height; ++pit2) {
+		if (!contains(pit2))
+			redoParagraph(pit2);
+		ParagraphMetrics & pm = parMetrics(pit2);
+		y2 += pm.ascent();
+		// Save the paragraph position in the cache.
+		pm.setPosition(y2);
+		y2 += pm.descent();
+	}
+
+	LYXERR(Debug::PAINTING, "TextMetrics::updateMetrics "
+		<< " anchor pit = " << anchor_pit
+		<< " anchor ypos = " << anchor_ypos
+		<< " y1 = " << y1
+		<< " y2 = " << y2
+		<< " pit1 = " << pit1
+		<< " pit2 = " << pit2);
 }
 
 
@@ -522,17 +576,20 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc, e.pos == 0, tight_);
 		mi.base.outer_font = displayFont(pit, e.pos).fontInfo();
 		e.inset->metrics(mi, dim);
-		/* FIXME: This is a kind of hack. This allows InsetMathHull to
-		 * state that it needs some elbow room beyond its width, in
-		 * order to fit the numbering and/or the left margin (with
-		 * left alignment), which are outside of the inset itself.
+		/* FIXME: This is a hack. This allows InsetMathHull to state
+		 * that it needs some elbow room beyond its width, in order to
+		 * fit the numbering and/or the left margin (with left
+		 * alignment), which are outside of the inset itself.
 		 *
 		 * To this end, InsetMathHull::metrics() sets a value in
-		 * MetricsInfo::extrawidth and this value is recorded later in
-		 * the corresponding row element's `extra' field. See ticket
-		 * #12320 for details.
+		 * MetricsInfo::extrawidth and this value is added later to
+		 * the width of the row that contains the inset (when this row
+		 * is tight or shorter than the max allowed width).
+		 *
+		 * See ticket #12320 for details.
 		*/
 		extrawidths[e.inset] = mi.extrawidth;
+
 		if (!insetCache.has(e.inset) || insetCache.dim(e.inset) != dim) {
 			insetCache.add(e.inset, dim);
 			changed = true;
@@ -540,13 +597,15 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	}
 
 	// Transform the paragraph into a single row containing all the elements.
-	Row bigrow = tokenizeParagraph(pit);
-	// Add the needed extra width to the row elements of the insets
-	for (auto & e : bigrow)
-		if (e.type == Row::INSET)
-			e.extra = extrawidths[e.inset];
+	Row const bigrow = tokenizeParagraph(pit);
 	// Split the row in several rows fitting in available width
 	pm.rows() = breakParagraph(bigrow);
+
+	// Add the needed extra width to the rows that contain the insets that request it
+	for (Row & row : pm.rows())
+		for (Row::Element & e : row)
+			if (e.type == Row::INSET && (row.width() < max_width_ || tight_))
+				row.dim().wid += extrawidths[e.inset];
 
 	/* If there is more than one row, expand the text to the full
 	 * allowable width. This setting here is needed for the
@@ -1461,9 +1520,7 @@ pit_type TextMetrics::getPitNearY(int y)
 	ParMetricsCache::const_iterator last = et;
 	--last;
 
-	ParagraphMetrics const & pm = it->second;
-
-	if (y < it->second.position() - pm.ascent()) {
+	if (y < it->second.top()) {
 		// We are looking for a position that is before the first paragraph in
 		// the cache (which is in priciple off-screen, that is before the
 		// visible part.
@@ -1476,9 +1533,7 @@ pit_type TextMetrics::getPitNearY(int y)
 		return pit;
 	}
 
-	ParagraphMetrics const & pm_last = par_metrics_[last->first];
-
-	if (y >= last->second.position() + pm_last.descent()) {
+	if (y >= par_metrics_[last->first].bottom()) {
 		// We are looking for a position that is after the last paragraph in
 		// the cache (which is in priciple off-screen), that is before the
 		// visible part.
@@ -1495,9 +1550,7 @@ pit_type TextMetrics::getPitNearY(int y)
 		LYXERR(Debug::PAINTING, "examining: pit: " << it->first
 			<< " y: " << it->second.position());
 
-		ParagraphMetrics const & pm2 = par_metrics_[it->first];
-
-		if (it->first >= pit && it->second.position() - pm2.ascent() <= y) {
+		if (it->first >= pit && it->second.top() <= y) {
 			pit = it->first;
 			yy = it->second.position();
 		}
@@ -1514,7 +1567,7 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
-	int yy = pm.position() - pm.ascent();
+	int yy = pm.top();
 	LBUFERR(!pm.rows().empty());
 	RowList::const_iterator rit = pm.rows().begin();
 	RowList::const_iterator rlast = pm.rows().end();
@@ -1995,6 +2048,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 	if (pm.rows().empty())
 		return;
 	size_t const nrows = pm.rows().size();
+	int const wh = bv_->workHeight();
 	// Remember left and right margin for drawing math numbers
 	Changer changeleft = changeVar(pi.leftx, x + leftMargin(pit));
 	Changer changeright = changeVar(pi.rightx, x + width() - rightMargin(pit));
@@ -2009,15 +2063,17 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			if (i)
 				y += row.ascent();
 
-			RowPainter rp(pi, *text_, row, row_x, y);
-
-			rp.paintOnlyInsets();
+			// It is not needed to draw on screen if we are not inside
+			bool const inside = (y + row.descent() >= 0 && y - row.ascent() < wh);
+			if (inside) {
+				RowPainter rp(pi, *text_, row, row_x, y);
+				rp.paintOnlyInsets();
+			}
 			y += row.descent();
 		}
 		return;
 	}
 
-	int const ww = bv_->workHeight();
 	Cursor const & cur = bv_->cursor();
 	DocIterator sel_beg = cur.selectionBegin();
 	DocIterator sel_end = cur.selectionEnd();
@@ -2060,7 +2116,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 
 		// It is not needed to draw on screen if we are not inside.
 		bool const inside = (y + row.descent() >= 0
-			&& y - row.ascent() < ww);
+			&& y - row.ascent() < wh);
 		if (!inside) {
 			// Inset positions have already been set in nodraw stage.
 			y += row.descent();

@@ -7834,7 +7834,7 @@ Notes:
 \family sans
 enumitem
 \family default
- provides many possibilities to tweak the appaerance of lists (enumerate,
+ provides many possibilities to tweak the appearance of lists (enumerate,
  itemize,
  description).
  It is used by the Linguistics module to fine tune the appearance of numbered subexamples.

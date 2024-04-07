@@ -230,6 +230,8 @@ void InsetMathChar::octave(OctaveStream & os) const
 // mathalpha, then we'll treat it as an identifier, otherwise as an
 // operator.
 // Worst case: We get bad spacing, or bad italics.
+// In any case, never let MathML stretch a single character when it
+// is recognised as an operator, to match TeX' behaviour.
 void InsetMathChar::mathmlize(MathMLStream & ms) const
 {
 	std::string entity;
@@ -253,7 +255,7 @@ void InsetMathChar::mathmlize(MathMLStream & ms) const
 	}
 
 	if (!entity.empty()) {
-		ms << MTagInline("mo")
+		ms << MTagInline("mo", "stretchy='false'")
 		   << from_ascii(entity)
 		   << ETagInline("mo");
 		return;
@@ -262,7 +264,7 @@ void InsetMathChar::mathmlize(MathMLStream & ms) const
 	char const * type =
 		(isAlphaASCII(char_) || Encodings::isMathAlpha(char_))
 			? "mi" : "mo";
-	ms << MTagInline(type)
+	ms << MTagInline(type, std::string(type) == "mo" ? "stretchy='false'" : "")
 	   << char_type(char_)
 	   << ETagInline(type);
 }

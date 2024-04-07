@@ -387,7 +387,7 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 		// restore original selection
 		if (had_selection) {
 			bv->cursor().resetAnchor();
-			bv->setCursorSelectionTo(endcur);
+			bv->setSelection(startcur, endcur);
 		}
 		return false;
 	}
@@ -464,7 +464,7 @@ int replaceAll(BufferView * bv,
 	if (had_selection) {
 		endcur.fixIfBroken();
 		bv->cursor().resetAnchor();
-		bv->setCursorSelectionTo(endcur);
+		bv->setSelection(startcur, endcur);
 	}
 
 	return num;

@@ -94,6 +94,7 @@ linguistics
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index
@@ -139,7 +140,8 @@ status collapsed
 Traduction française Jean-Pierre Chrétien,
  <jeanpierre.chretien@free.fr>,
  novembre 2009,
- mises à jour février 2016 et juin 2021.
+ mises à jour février 2016,
+ juin 2021 et février 2024 (avant la publication de lyx-2.4)
 \end_layout
 
 \end_inset
@@ -443,6 +445,40 @@ arg   "pict2e"
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+
+\emph on
+varwidth.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "varwidth"
+literal "true"
+
+\end_inset
+
+:
+ nécessaire pour covington (à partir de la version version 2.11) pour les commentaires de glose.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+installé sur votre système?
+
+\lang english
+ 
+\lang french
+
+\begin_inset Info
+type  "package"
+arg   "pict2e"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Exemples numérotés
 \end_layout
@@ -539,20 +575,20 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-Si vous souhaitez modifier la numérotation d'un exemple particulier,
- vous pouvez utiliser 
+Les différents exemples peuvent être adaptés dans les détails grâces à des arguments facultatifs.
+ Ceux-ci peuvent être introduits par le menu contextuel via 
 \family sans
 Insertion\SpecialChar menuseparator
-Numérotation spécifique
+Options d'exemple
 \family default
-.
- Pour les réglages globaux,
- 
-\emph on
-covington
-\emph default
- propose des options de personnalisation.
- Veuillez vous référer au manuel de 
+ ou 
+\family sans
+Insertion\SpecialChar menuseparator
+Options de sous-exempl
+\family default
+e,
+ respectivement.
+ Voyez le manuel de 
 \emph on
 covington
 \emph default
@@ -568,19 +604,80 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-À compter de la version 2.3,
- les sous-exemples de 
+Pour les ajustements globaux,
+ ces options peuvent être transmises à la macro-commande 
+\family typewriter
+
+\backslash
+setexampleoptions
+\family default
+ macro (veuillez utiliser le mode \SpecialChar TeX
+ dans ce but).
+ De nouveau,
+ voyez le manuel de 
 \emph on
 covington
 \emph default
- sont dotés d'arguments facultatifs (insérer du texte entre le numéro principal et le premier sous-exemple).
- Ces arguments peuvent être définis via 
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "covington"
+literal "false"
+
+\end_inset
+
+ pour les détails.
+\end_layout
+
+\begin_layout Standard
+Lors d'exemples ou de sous-exemples consécutifs,
+ quelques inserts supplémentaires sont disponibles:
+\end_layout
+
+\begin_layout Itemize
+pour modifier la numérotation d'un exemple isolé,
+ vous pouvez utiliser
+\family sans
+ Insertion\SpecialChar menuseparator
+Numérotation spécifique;
+\end_layout
+
+\begin_layout Itemize
+pour ajouter des indicateurs de jugement (comme * ou ?) aux exemples de phrase,
+ utiliser 
 \family sans
 Insertion\SpecialChar menuseparator
-Options des sous-exemples
+Jugement;
+\end_layout
+
+\begin_layout Itemize
+pour ajouter du texte avant une phrase d'exemple (qui ne fait pas partie des données proposées),
+ utiliser 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts personnalisables\SpecialChar menuseparator
+Préambule d'exemple
 \family default
-.
- Veuillez de nouveau vous référer au manuel de 
+ ou 
+\family sans
+Préambule de sous-exemple;
+\end_layout
+
+\begin_layout Itemize
+pour ajouter du texte après une phrase d'exemple (qui ne fait pas partie des données proposées),
+ utiliser 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts personnalisables\SpecialChar menuseparator
+Postambule d'exemple
+\family default
+ or 
+\family sans
+Postambule de sous-exemple.
+\end_layout
+
+\begin_layout Standard
+Veuillez vous référer au manuel de 
 \emph on
 covington
 \emph default
@@ -656,7 +753,28 @@ Glose interlinéaire.
 \family default
  Quel que soit l'endroit où vous les insérez,
  ils sont toujours imprimés dans le bon ordre.
- Enfin,
+\end_layout
+
+\begin_layout Standard
+En outre,
+ vous pouvez aussi insérer des commentaires pour une phrase d'exemple ou pour chacune des lignes d'une glose via
+\family sans
+ Insertion\SpecialChar menuseparator
+Commentaire de phrase
+\family default
+ (pour la phrase d'exemple) ou 
+\family sans
+Insertion\SpecialChar menuseparator
+Commentaire de glose
+\family default
+ (pour la ligne de glose concernée).
+ Ces commentaires seront insérés à la droite de la ligne,
+ de nouveau indépendamment de là où l'insertion a été faite dans la fenêtre \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Standard
+Enfin,
  vous pouvez saisir des options de glose via 
 \family sans
 Insertion\SpecialChar menuseparator
@@ -664,7 +782,7 @@ Options de glose
 \family default
 .
  Ces options vous permettent de personnaliser l’aspect de la ligne,
- d'ajuter nes numéros d'exemple ou du texte préliminaire.
+ d'ajouter des numéros d'exemple ou du texte préliminaire.
  Veuillez vous référer au manuel de 
 \emph on
 covington
@@ -679,7 +797,7 @@ literal "false"
 
  pour les détails.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Notez que les fonctionnalités de glose ont été entièrement réécrites pour \SpecialChar LyX
@@ -688,7 +806,7 @@ Notez que les fonctionnalités de glose ont été entièrement réécrites pour 
 \emph on
 covington
 \emph default
- (2.0) .
+ (2.0).
  Du fait de ces modifications majeures,
  les anciennes gloses ne peuvent pas être converties dans le nouveau format.
  À la place,
@@ -1842,6 +1960,231 @@ literal "false"
 \end_layout
 
 \begin_layout Section
+Structures arborescentes linguistiques
+\end_layout
+
+\begin_layout Standard
+De nombreux paquetages \SpecialChar LaTeX
+ sont disponibles pour créer des arborescences.
+ \SpecialChar LyX
+ reconnaît en particulier le paquetage 
+\family sans
+forest
+\family default
+,
+ qui comporte à la fois une grande flexibilité et une syntaxe de saisie agréable.
+ Le module Linguistique fournit un insert de Structure arborescente,
+ via 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts personnalisables
+\family default
+.
+ Dans cet insert,
+ vous pouvez utiliser la notation entre crochets définie par
+\family sans
+ forest
+\family default
+ (et également par d'autres paquetages similaires comme 
+\family sans
+qtree
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+Voici un exemple simple:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[D[a]][NP[letter]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Si vous affichez le PDF résultant,
+ vous verrez que la saisie
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+\size small
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[D[a]][NP[letter]]]]]
+\end_layout
+
+\begin_layout Standard
+se développe comme une structure arborescente.
+ Pour afficher ce résultat dans la fenêtre de travail de \SpecialChar LyX
+,
+ il vous suffit d'inclure la structure arborescente dans in insert d'aperçu (
+\family sans
+Insertion\SpecialChar menuseparator
+Aperçu
+\family default
+).
+ Si l'aperçu sur le vif est correctement installé et activé,
+ vous devez voir l'arborescence s'afficher (cliquer sur l'image pour la modifier):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[Mary]] [V' [V[sent]] [DP[John]] [DP[D[a]][NP[response]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Les toits peuvent être facilement engendrés via l'option 
+\begin_inset Quotes cld
+\end_inset
+
+roof
+\begin_inset Quotes crd
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Notez que l'option 
+\begin_inset Quotes cld
+\end_inset
+
+roof
+\begin_inset Quotes crd
+\end_inset
+
+ n'existe qu'à partir de la version 2.0 de 
+\family sans
+forest
+\family default
+.
+ Nous avons ajouté du code au préambule de ce manuel pour pouvoir accepter les versions antérieures.
+ Si vous utilisez une version de 
+\family sans
+forest
+\family default
+ inférieure à 2.0,
+ vous devez soit copier le code dans le préambule de votre document,
+ soit utiliser l'ancienne option 
+\begin_inset Quotes cld
+\end_inset
+
+triangle
+\begin_inset Quotes crd
+\end_inset
+
+ à la place de 
+\begin_inset Quotes cld
+\end_inset
+
+roof
+\begin_inset Quotes crd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ (notez que la virgule a une signification spéciale,
+ puisqu’elle marque une option):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[another letter,
+ roof]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pour aligner les nœuds de l'arbre de manière agréable,
+ utiliser l'option 
+\begin_inset Quotes cld
+\end_inset
+
+tier
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Tous les nœuds qui utilisent le même 
+\begin_inset Quotes cld
+\end_inset
+
+tier
+\begin_inset Quotes crd
+\end_inset
+
+ sont alignés.
+ Voici un exemple:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[John,tier=toto]] [V' [V[sent,tier=toto]] [DP[Mary,tier=toto]] [DP[D[a,tier=toto]][NP[letter,tier=toto]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Le paquetage inclut de nombreuses  fonctionnalités,
+ comme les flèches et les décorations,
+ qui ne seront pas documentées ici (voir la documentation détaillée du paquetage 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "forest"
+literal "true"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
 Représentation structurée du discours
 \end_layout
 
@@ -2403,231 +2746,6 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-Structures arborescentes linguistiques
-\end_layout
-
-\begin_layout Standard
-De nombreux paquetages \SpecialChar LaTeX
- sont disponibles pour créer des arborescences.
- \SpecialChar LyX
- reconnaît en particulier le paquetage 
-\family sans
-forest
-\family default
-,
- qui comporte à la fois une grande flexibilité et une syntaxe de saisie agréable.
- Le module Linguistique fournit un insert de Structure arborescente,
- via 
-\family sans
-Insertion\SpecialChar menuseparator
-Inserts personnalisables
-\family default
-.
- Dans cet insert,
- vous pouvez utiliser la notation entre crochets définie par
-\family sans
- forest
-\family default
- (et également par d'autres paquetages similaires comme 
-\family sans
-qtree
-\family default
-).
-\end_layout
-
-\begin_layout Standard
-Voici un exemple simple:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Structure Tree
-status open
-
-\begin_layout Plain Layout
-[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[D[a]][NP[letter]]] ] ]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Si vous affichez le PDF résultant,
- vous verrez que la saisie
-\end_layout
-
-\begin_layout Quote
-
-\family typewriter
-\size small
-[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[D[a]][NP[letter]]]]]
-\end_layout
-
-\begin_layout Standard
-se développe comme une structure arborescente.
- Pour afficher ce résultat dans la fenêtre de travail de \SpecialChar LyX
-,
- il vous suffit d'inclure la structure arborescente dans in insert d'aperçu (
-\family sans
-Insertion\SpecialChar menuseparator
-Aperçu
-\family default
-).
- Si l'aperçu sur le vif est correctement installé et activé,
- vous devez voir l'arborescence s'afficher (cliquer sur l'image pour la modifier):
-\end_layout
-
-\begin_layout Standard
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset Flex Structure Tree
-status open
-
-\begin_layout Plain Layout
-[VP [DP[Mary]] [V' [V[sent]] [DP[John]] [DP[D[a]][NP[response]]] ] ]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Les toits peuvent être facilement engendrés via l'option 
-\begin_inset Quotes cld
-\end_inset
-
-roof
-\begin_inset Quotes crd
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-Notez que l'option 
-\begin_inset Quotes cld
-\end_inset
-
-roof
-\begin_inset Quotes crd
-\end_inset
-
- n'existe qu'à partir de la version 2.0 de 
-\family sans
-forest
-\family default
-.
- Nous avons ajouté du code au préambule de ce manuel pour pouvoir accepter les versions antérieures.
- Si vous utilisez une version de 
-\family sans
-forest
-\family default
- inférieure à 2.0,
- vous devez soit copier le code dans le préambule de votre document,
- soit utiliser l'ancienne option 
-\begin_inset Quotes cld
-\end_inset
-
-triangle
-\begin_inset Quotes crd
-\end_inset
-
- à la place de 
-\begin_inset Quotes cld
-\end_inset
-
-roof
-\begin_inset Quotes crd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- (notez que la virgule a une signification spéciale,
- puisqu’elle marque une option):
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Structure Tree
-status open
-
-\begin_layout Plain Layout
-[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[another letter,
- roof]] ] ]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Pour aligner les nœuds de l'arbre de manière agréable,
- utiliser l'option 
-\begin_inset Quotes cld
-\end_inset
-
-tier
-\begin_inset Quotes crd
-\end_inset
-
-.
- Tous les nœuds qui utilisent le même 
-\begin_inset Quotes cld
-\end_inset
-
-tier
-\begin_inset Quotes crd
-\end_inset
-
- sont alignés.
- Voici un exemple:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Structure Tree
-status open
-
-\begin_layout Plain Layout
-[VP [DP[John,tier=toto]] [V' [V[sent,tier=toto]] [DP[Mary,tier=toto]] [DP[D[a,tier=toto]][NP[letter,tier=toto]]] ] ]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Le paquetage inclut de nombreuses  fonctionnalités,
- comme les flèches et les décorations,
- qui ne seront pas documentées ici (voir la documentation détaillée du paquetage 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "forest"
-literal "true"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Section
 Symboles phonétiques (API)
 \end_layout
 
@@ -3135,6 +3253,8 @@ literal "true"
 
  Le paquetage drs:
  
+\lang english
+
 \begin_inset Flex URL
 status collapsed
 
@@ -3145,7 +3265,32 @@ https://ctan.org/tex-archive/macros/latex/contrib/drs
 
 \end_inset
 
+.
+\end_layout
 
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "enumitem"
+literal "true"
+
+\end_inset
+
+
+\lang english
+The enumitem package:
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Bibliography
@@ -3286,6 +3431,29 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/fonts/tipa/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "varwidth"
+literal "false"
+
+\end_inset
+
+The varwidth package:
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ctan.org/tex-archive/macros/latex/contrib/varwidth
 \end_layout
 
 \end_inset

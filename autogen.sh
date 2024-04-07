@@ -15,16 +15,6 @@ else
     exit 1
 fi
 
-case $automake_version in
-    *' '1.1[456]*)
-	;;
-    *)
-	echo "This automake version is not supported by LyX."
-	echo "LyX only supports automake 1.14 through 1.16."
-	exit 1
-	;;
-esac
-
 # Discover what version of autoconf we are using.
 autoversion=$($AUTOCONF --version 2>/dev/null | head -n 1)
 
@@ -34,18 +24,6 @@ else
     echo "LyX requires autoconf >= 2.65"
     exit 1
 fi
-
-case $autoversion in
-    *' '2.6[5-9])
-	;;
-    *' '2.71)
-	;;
-    *)
-	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.65-2.69, 2.71."
-	exit 1
-	;;
-esac
 
 # Delete old cache directories.
 # automake will stop if their contents was created by an earlier version.

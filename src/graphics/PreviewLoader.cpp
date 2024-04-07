@@ -47,16 +47,17 @@
 #include <QTimer>
 
 using namespace std;
+using namespace lyx;
 using namespace lyx::support;
 
 
 
 namespace {
 
-typedef pair<string, FileName> SnippetPair;
+typedef pair<docstring, FileName> SnippetPair;
 
 // A list of all snippets to be converted to previews
-typedef list<string> PendingSnippets;
+typedef list<docstring> PendingSnippets;
 
 // Each item in the vector is a pair<snippet, image file name>.
 typedef vector<SnippetPair> BitmapFile;
@@ -121,7 +122,7 @@ void setAscentFractions(vector<double> & ascent_fractions,
 }
 
 
-std::function <bool (SnippetPair const &)> FindFirst(string const & comp)
+std::function <bool (SnippetPair const &)> FindFirst(docstring const & comp)
 {
 	return [&comp](SnippetPair const & sp) { return sp.first == comp; };
 }
@@ -166,13 +167,13 @@ public:
 	/// Stop any InProgress items still executing.
 	~Impl();
 	///
-	PreviewImage const * preview(string const & latex_snippet) const;
+	PreviewImage const * preview(docstring const & latex_snippet) const;
 	///
-	PreviewLoader::Status status(string const & latex_snippet) const;
+	PreviewLoader::Status status(docstring const & latex_snippet) const;
 	///
-	void add(string const & latex_snippet);
+	void add(docstring const & latex_snippet);
 	///
-	void remove(string const & latex_snippet);
+	void remove(docstring const & latex_snippet);
 	/// \p wait whether to wait for the process to complete or, instead,
 	/// to do it in the background.
 	void startLoading(bool wait = false);
@@ -199,7 +200,7 @@ private:
 	 */
 	typedef std::shared_ptr<PreviewImage> PreviewImagePtr;
 	///
-	typedef map<string, PreviewImagePtr> Cache;
+	typedef map<docstring, PreviewImagePtr> Cache;
 	///
 	Cache cache_;
 
@@ -246,25 +247,25 @@ PreviewLoader::PreviewLoader(Buffer const & b)
 {}
 
 
-PreviewImage const * PreviewLoader::preview(string const & latex_snippet) const
+PreviewImage const * PreviewLoader::preview(docstring const & latex_snippet) const
 {
 	return pimpl_->preview(latex_snippet);
 }
 
 
-PreviewLoader::Status PreviewLoader::status(string const & latex_snippet) const
+PreviewLoader::Status PreviewLoader::status(docstring const & latex_snippet) const
 {
 	return pimpl_->status(latex_snippet);
 }
 
 
-void PreviewLoader::add(string const & latex_snippet) const
+void PreviewLoader::add(docstring const & latex_snippet) const
 {
 	pimpl_->add(latex_snippet);
 }
 
 
-void PreviewLoader::remove(string const & latex_snippet) const
+void PreviewLoader::remove(docstring const & latex_snippet) const
 {
 	pimpl_->remove(latex_snippet);
 }
@@ -315,7 +316,7 @@ public:
 		: to_format_(to_format), base_(filename_base), counter_(1)
 	{}
 
-	SnippetPair const operator()(string const & snippet)
+	SnippetPair const operator()(docstring const & snippet)
 	{
 		ostringstream os;
 		os << base_ << counter_++ << '.' << to_format_;
@@ -430,7 +431,7 @@ PreviewLoader::Impl::~Impl()
 
 
 PreviewImage const *
-PreviewLoader::Impl::preview(string const & latex_snippet) const
+PreviewLoader::Impl::preview(docstring const & latex_snippet) const
 {
 	int fs = int(buffer_.fontScalingFactor());
 	int fg = 0x0;
@@ -475,7 +476,7 @@ void PreviewLoader::Impl::refreshPreviews()
 
 namespace {
 
-std::function<bool (InProgressProcess const &)> FindSnippet(string const & s)
+std::function<bool (InProgressProcess const &)> FindSnippet(docstring const & s)
 {
 	return [&s](InProgressProcess const & process) {
 		BitmapFile const & snippets = process.second.snippets;
@@ -488,7 +489,7 @@ std::function<bool (InProgressProcess const &)> FindSnippet(string const & s)
 } // namespace
 
 PreviewLoader::Status
-PreviewLoader::Impl::status(string const & latex_snippet) const
+PreviewLoader::Impl::status(docstring const & latex_snippet) const
 {
 	Cache::const_iterator cit = cache_.find(latex_snippet);
 	if (cit != cache_.end())
@@ -512,12 +513,12 @@ PreviewLoader::Impl::status(string const & latex_snippet) const
 }
 
 
-void PreviewLoader::Impl::add(string const & latex_snippet)
+void PreviewLoader::Impl::add(docstring const & latex_snippet)
 {
 	if (!pconverter_ || status(latex_snippet) != NotFound)
 		return;
 
-	string const snippet = trim(latex_snippet);
+	docstring const snippet = trim(latex_snippet);
 	if (snippet.empty())
 		return;
 
@@ -529,7 +530,7 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 
 namespace {
 
-std::function<void (InProgressProcess &)> EraseSnippet(string const & s)
+std::function<void (InProgressProcess &)> EraseSnippet(docstring const & s)
 {
 	return [&s](InProgressProcess & process) {
 		BitmapFile & snippets = process.second.snippets;
@@ -545,7 +546,7 @@ std::function<void (InProgressProcess &)> EraseSnippet(string const & s)
 } // namespace
 
 
-void PreviewLoader::Impl::remove(string const & latex_snippet)
+void PreviewLoader::Impl::remove(docstring const & latex_snippet)
 {
 	Cache::iterator cit = cache_.find(latex_snippet);
 	if (cit != cache_.end())
@@ -768,7 +769,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 
 	size_t metrics_counter = 0;
 	for (; it != end; ++it, ++metrics_counter) {
-		string const & snip = it->first;
+		docstring const & snip = it->first;
 		FileName const & file = it->second;
 		double af = ascent_fractions[metrics_counter];
 
@@ -786,6 +787,16 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	// Remove the item from the list of still-executing processes.
 	in_progress_.erase(git);
 
+#if 0
+	/* FIXME : there is no need for all these calls, which recompute
+	 * all metrics for each and every preview. The single call at the
+	 * end of this method is sufficient.
+
+	 * It seems that this whole imageReady mechanism is actually not
+	 * needed. If it is the case, the whole updateFrontend/updateInset
+	 * bloat can go too.
+	 */
+
 	// Tell the outside world
 	list<PreviewImagePtr>::const_reverse_iterator
 		nit  = newimages.rbegin();
@@ -794,6 +805,8 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	for (; nit != nend; ++nit) {
 		imageReady(*nit->get());
 	}
+#endif
+
 	finished_generating_ = true;
 	buffer_.scheduleRedrawWorkAreas();
 }
@@ -849,11 +862,28 @@ void PreviewLoader::Impl::dumpData(odocstream & os,
 	BitmapFile::const_iterator it  = vec.begin();
 	BitmapFile::const_iterator end = vec.end();
 
+	Encoding const & enc = buffer_.params().encoding();
+
 	for (; it != end; ++it) {
-		// FIXME UNICODE
-		os << "\\begin{preview}\n"
-		   << from_utf8(it->first)
-		   << "\n\\end{preview}\n\n";
+		bool uncodable_content = false;
+		// check whether the content is encodable
+		// FIXME: the preview loader should be able
+		//        to handle multiple encodings
+		//        or we should generally use utf8
+		for (char_type n : it->first) {
+			if (!enc.encodable(n)) {
+				LYXERR0("Uncodable character '"
+					<< docstring(1, n)
+					<< "' in preview snippet!");
+				uncodable_content = true;
+				break;
+			}
+		}
+		os << "\\begin{preview}\n";
+		// do not show incomplete preview
+		if (!uncodable_content)
+			os << it->first;
+		os << "\n\\end{preview}\n\n";
 	}
 }
 

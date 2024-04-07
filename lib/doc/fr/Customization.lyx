@@ -278,6 +278,12 @@ graphique
 
 \end_layout
 
+\begin_layout Plain Layout
+Mise à jour pour 2.4.0,
+ 11 février 2024 (JPC) ,
+ dernière révision avant publication
+\end_layout
+
 \end_inset
 
 
@@ -463,13 +469,13 @@ Rép\SpecialChar LyX
 \end_layout
 
 \begin_layout Subsection
-Les fichiers générés automatiquement
+Les fichiers engendrés automatiquement
 \end_layout
 
 \begin_layout Standard
-Ces fichiers sont générés au moment de la configuration de \SpecialChar LyX
+Ces fichiers sont créés au moment de la configuration de \SpecialChar LyX
 .
- Ils définissent différentes valeurs par défaut qui sont détectées automatiquement par l'inspection de votre système.
+ Ils définissent différentes valeurs implicites qui sont détectées automatiquement par l'inspection de votre système.
  Comme ils peuvent être réécrits à tout moment,
  il n'est pas conseillé de les modifier.
 \end_layout
@@ -690,7 +696,21 @@ traduite
 status collapsed
 
 \begin_layout Plain Layout
-$LANG_xxx.bind
+bind/xx
+\family roman
+ où 
+\family default
+
+\begin_inset Quotes cld
+\end_inset
+
+xx
+\family roman
+
+\begin_inset Quotes crd
+\end_inset
+
+ est le code de langue ISO
 \end_layout
 
 \end_inset
@@ -1342,7 +1362,7 @@ Paramètres
 \end_layout
 
 \begin_layout Itemize
-Si vous récupérez sur le site ftp de \SpecialChar LyX
+si vous récupérez sur le site ftp de \SpecialChar LyX
  des fichiers de documentation mis à jour et que vous n'êtes pas administrateur sur votre système,
  vous pouvez placer ces fichiers dans 
 \begin_inset Flex Code
@@ -1398,8 +1418,8 @@ Si vous lancez \SpecialChar LyX
 \emph default
 ,
  le programme va lire la configuration qui se trouve dans ce répertoire,
- et non dans le répertoire par défaut (en lançant \SpecialChar LyX
- sans cette option vous pouvez déterminer le répertoire par défaut).
+ et non dans le répertoire implicite (en lançant \SpecialChar LyX
+ sans cette option vous pouvez déterminer le répertoire implicite).
  Si ce répertoire n'existe pas,
  \SpecialChar LyX
  vous propose de le créer,
@@ -4325,14 +4345,14 @@ Il devrait aussi chercher dans
 \family typewriter
 lyxrc
 \family default
- les valeurs par défaut (par exemple,
+ les valeurs implicites (par exemple,
  une option 
 \family typewriter
 
 \backslash
 kinclude
 \family default
- pour inclure le clavier par défaut).
+ pour inclure le clavier implicite).
 \end_layout
 
 \end_inset
@@ -12258,6 +12278,8 @@ status collapsed
 \end_inset
 
  sert à copier toutes les caractéristiques d'un style déjà existant dans un nouveau style.
+ Notez bien que ceci copie le style tel qu'il est défini à l'instant de la copie.
+ Des modifications ultérieures ne seront pas reportées là où il a été copié.
 \end_layout
 
 \begin_layout Description
@@ -13098,19 +13120,6 @@ ItemSep
 multiplicateur
 \emph default
 .
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ItemTag
-\end_layout
-
-\end_inset
-
- [[FIXME]] (Utilisable uniquement avec les formats XML).
 \end_layout
 
 \begin_layout Description
@@ -15828,7 +15837,7 @@ other
 
 \end_inset
 
-] définit l'interligne par défaut dans ce style.
+] définit l'interligne implicite dans ce style.
  Les paramètres 
 \begin_inset Flex Code
 status collapsed
@@ -17421,6 +17430,99 @@ tbp
 \end_layout
 
 \begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PrettyFormat
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] 
+\lang french
+définit le format utilisé pour les références mises en forme à ce compteur.
+ Par exemple,
+ on peut vouloir les références aux tableaux apparaître sous la forme 
+\begin_inset Quotes cld
+\end_inset
+
+Tableau 2
+\begin_inset Quotes crd
+\end_inset
+
+.
+ La chaîne de caractères peut contenir 
+\begin_inset Quotes cld
+\end_inset
+
+##
+\begin_inset Quotes crd
+\end_inset
+
+ ou une spécification de compteur (voir la documentation de 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Compteurs"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.) La première forme sera remplacée par le numéro du compteur lui-même.
+ Ainsi,
+ pour les sections,
+ ce serait 
+\shape italic
+Section ##
+\shape default
+,
+ ou peut-être 
+\shape italic
+section 
+\backslash
+arabic{section}
+\shape default
+ (qui apparaîtra par exemple comme section 2.7).
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -18376,6 +18478,232 @@ IsTocCaption
 \end_layout
 
 \begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AllowedInInsets
+\end_layout
+
+\end_inset
+
+
+\lang french
+ inclut une liste d'inserts (séparés par des virgules) au sein desquels cet insert peut être ajouté.
+ Doit se clore par 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndAllowedInInsets
+\end_layout
+
+\end_inset
+
+.
+ Si vous souhaitez également que l'insertion soit possible dans des arguments spécifiques des inserts ciblés,
+ ajouter le nom de l'argument après une @ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Mon_Insert@post:1
+\end_layout
+
+\end_inset
+
+).
+ Notez que ceci ne s'applique qu'au premier niveau d'insertion.
+ Voir aussi 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AllowedInLayouts
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AllowedInLayouts
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+inclut une liste d'inserts (séparés par des virgules) au sein desquels cet insert peut être ajouté.
+ Doit se clore par 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndAllowedInLayouts
+\end_layout
+
+\end_inset
+
+.
+ Notez que ceci ne s'applique qu'au premier niveau d'insertion.
+ Voir aussi 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AllowedInInsets
+\end_layout
+
+\end_inset
+
+
+\lang english
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AllowedOccurrences
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+int
+\end_layout
+
+\end_inset
+
+]
+\lang french
+ si 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AllowedInInsets
+\end_layout
+
+\end_inset
+
+ ou 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AllowedInLayouts
+\end_layout
+
+\end_inset
+
+ est défini,
+ ceci peut être utilisé pour déterminer combien de fois au maximum l'insert peut être ajouté à un insert donné ou au paragraphe (groupe).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AllowedOccurrencesPerItem
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+]
+\lang french
+ si cette valeur est vraie,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AllowedOccurrences
+\end_layout
+
+\end_inset
+
+ s'applique aux paragraphes isolés dans un environnement de type liste (avec 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+s).
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -19306,6 +19634,59 @@ nolink "false"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+InheritFont
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+1
+\end_layout
+
+\end_inset
+
+]:
+
+\lang french
+ la police dans l'insert est héritée du parent de l'export \SpecialChar LaTeX
+ si ce paramètre vaut 1,
+ et à l'écran également.
+ Sinon,
+ c'est la police implicite du document qui est utilisée.
 \end_layout
 
 \begin_layout Description
@@ -21471,7 +21852,25 @@ Argument 2
 
 \end_inset
 
-;
+.
+ Si plusiuers argumenst sont requis,
+ séparez-les par des virgules,
+ e.g.
+ 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Requires 1,2
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -22759,12 +23158,156 @@ Section
 \begin_inset Quotes crd
 \end_inset
 
+ ou une spécifcation de compteur comme dans 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
 .
  Ceci sera remplacé par la valeur courante du compteur.
  Ainsi,
  pour les sections,
  ce sera:
- Section ##.
+ Section ##,
+ ou peut-être,
+ 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+S
+\backslash
+arabic{section}
+\end_layout
+
+\end_inset
+
+ (qui pourrait être affiché comme §2.7).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+RefFormat
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+] 
+\lang french
+est à utiliser avec les références mises en forme,
+ en particulier quand un seul compteur est utilisé avec plusiurs styles.
+ Par exemple le compteur 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+theorem
+\end_layout
+
+\end_inset
+
+ est souvent utilisé pour tous les environnements de type théorème:
+ 
+\family sans
+Théorème
+\family default
+,
+ 
+\family sans
+Lemme
+\family default
+,
+ etc.
+ Le premier argument donne un préfixe utilisé dans les étiquettes (e.g.
+ 
+\begin_inset Quotes cld
+\end_inset
+
+thm
+\begin_inset Quotes crd
+\end_inset
+
+ ou 
+\begin_inset Quotes cld
+\end_inset
+
+lem
+\begin_inset Quotes crd
+\end_inset
+
+),
+ et le second un chaîne de mise en forme comme pour 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+ ou 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PrettyFormat
+\end_layout
+
+\end_inset
+
+.
+ S'il n'est pas spécifié,
+ alors c'est 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PrettyFormat
+\end_layout
+
+\end_inset
+
+ qui est utilisé.
 \end_layout
 
 \begin_layout Description

@@ -1655,7 +1655,7 @@ void LyXAction::init()
  * \li Notion: See also #LFUN_FINISHED_FORWARD.
  * \endvar
  */
-		{ LFUN_FINISHED_BACKWARD, "", ReadOnly, Hidden },
+		{ LFUN_FINISHED_BACKWARD, "", ReadOnly | NoUpdate, Hidden },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_FINISHED_FORWARD
@@ -1668,7 +1668,7 @@ void LyXAction::init()
                back into the surrounding text.
  * \endvar
  */
-		{ LFUN_FINISHED_FORWARD, "", ReadOnly, Hidden },
+		{ LFUN_FINISHED_FORWARD, "", ReadOnly | NoUpdate, Hidden },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_FINISHED_LEFT
@@ -1676,7 +1676,7 @@ void LyXAction::init()
  * \li Notion: See also #LFUN_FINISHED_FORWARD.
  * \endvar
  */
-		{ LFUN_FINISHED_LEFT, "", ReadOnly, Hidden },
+		{ LFUN_FINISHED_LEFT, "", ReadOnly | NoUpdate, Hidden },
 
 
 /*!
@@ -1685,7 +1685,7 @@ void LyXAction::init()
  * \li Notion: See also #LFUN_FINISHED_FORWARD
  * \endvar
  */
-		{ LFUN_FINISHED_RIGHT, "", ReadOnly, Hidden },
+		{ LFUN_FINISHED_RIGHT, "", ReadOnly | NoUpdate, Hidden },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_FLEX_INSERT
@@ -3121,7 +3121,7 @@ void LyXAction::init()
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
-		{ LFUN_MOUSE_DOUBLE, "", ReadOnly, Hidden },
+		{ LFUN_MOUSE_DOUBLE, "", ReadOnly | NoUpdate, Hidden },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_MOUSE_MOTION
@@ -3131,7 +3131,7 @@ void LyXAction::init()
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
-		{ LFUN_MOUSE_MOTION, "", ReadOnly | SingleParUpdate, Hidden },
+		{ LFUN_MOUSE_MOTION, "", ReadOnly | NoUpdate, Hidden },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_MOUSE_PRESS
@@ -3141,7 +3141,7 @@ void LyXAction::init()
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
-		{ LFUN_MOUSE_PRESS, "", ReadOnly, Hidden },
+		{ LFUN_MOUSE_PRESS, "", ReadOnly | NoUpdate, Hidden },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_MOUSE_RELEASE
@@ -3151,7 +3151,7 @@ void LyXAction::init()
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
-		{ LFUN_MOUSE_RELEASE, "", ReadOnly, Hidden },
+		{ LFUN_MOUSE_RELEASE, "", ReadOnly | NoUpdate, Hidden },
 
 
 /*!
@@ -3162,7 +3162,7 @@ void LyXAction::init()
  * \li Origin: Andre, 9 Aug 2002
  * \endvar
  */
-		{ LFUN_MOUSE_TRIPLE, "", ReadOnly, Hidden },
+		{ LFUN_MOUSE_TRIPLE, "", ReadOnly | NoUpdate, Hidden },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
@@ -3466,11 +3466,13 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_QUOTE_INSERT
  * \li Action: Inserts quotes according to the type and quote-language preference.
  * \li Notion: Currently 15 different quote styles are distinguished (see params).
- * \li Syntax: quote-insert [<LEVEL>] [<SIDE>] [<STYLE>]
+ * \li Syntax: quote-insert [<LEVEL>] [<SIDE> <STYLE>]
  * \li Params: <LEVEL>: 'inner' for (i.e., secondary, usually single) quotes, otherwise
  *                       outer (i.e., primary, usually double) quotes will be used.\n
  *             <SIDE>:  'opening' for opening quotes, 'closing' for closing quotes,
- *                       otherwise the side will be guessed from the context.\n
+ *                       otherwise the side will be guessed from the context. Use 'auto'
+ *                       to force this default. (You will need to give this argument if
+ *                       you also want to give <STYLE>.)\n
  *             <STYLE>: 'british' for `British' quote style (with ``inner quotation'')\n
  *                      'cjk' for Chinese/Japanese/Korean corner bracket quotation marks\n
  *                      'cjk-angle' for Chinese/Japanese/Korean angle bracket quotation marks\n
@@ -3923,6 +3925,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_STATISTICS, "statistics", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_STATISTICS_REFERENCE_CLAMP
+ * \li Action: Count statistics relative to the current value.
+               In other words all future values will be subtracted by this value.
+ * \li Syntax: statistics-reference-clamp [reset]
+ * \li Params: reset: remove the clamp, i.e. count in the absolute numbers again
+ * \li Origin: sanda, Mar 28 2024
+ * \endvar
+ */
+		{ LFUN_STATISTICS_REFERENCE_CLAMP, "statistics-reference-clamp", ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_TABULAR_FEATURE

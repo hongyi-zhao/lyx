@@ -302,11 +302,15 @@ public:
 	 */
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
+	/// set a selection between \p from and \p to
+	void setSelection(DocIterator const & from,
+			 DocIterator const & to);
 
 	/// selects the item at cursor if its paragraph is empty.
 	bool selectIfEmpty(DocIterator & cur);
 
-	/// update the internal \c ViewMetricsInfo.
+	/// Ditch all metrics information and rebuild it. Set the update
+	/// flags and the draw strategy flags accordingly.
 	void updateMetrics();
 
 	// this is the "nodraw" drawing stage: only set the positions of the
@@ -344,6 +348,8 @@ public:
 	/// the shape of the caret
 	frontend::CaretGeometry const & caretGeometry() const;
 
+	/// Returns true when metrics have been computed at least once
+	bool ready() const { return width_ > 0 && height_ > 0; }
 	/// Returns true when the BufferView is not ready for drawing
 	bool busy() const;
 	///
@@ -395,6 +401,14 @@ public:
 	/// Are we currently performing a selection with the mouse?
 	bool mouseSelecting() const;
 
+	/// Reference value for statistics (essentially subtract this from the actual value to see relative counts)
+	/// (words/chars/chars no blanks)
+	int stats_ref_value_w() const;
+	int stats_ref_value_c() const;
+	int stats_ref_value_nb() const;
+	//signals need for update in gui
+	bool stats_update_trigger();
+
 private:
 	/// noncopyable
 	BufferView(BufferView const &);
@@ -405,8 +419,15 @@ private:
 	/// Update current paragraph metrics.
 	/// \return true if no further update is needed.
 	bool singleParUpdate();
-	/// do the work for the public updateMetrics()
-	void updateMetrics(Update::flags & update_flags);
+	/** Helper for the public updateMetrics() and for processUpdateFlags()
+	 * * When \c force is true, get rid of all paragraph metrics and
+         rebuild them anew.
+	 * * When it is false, keep the paragraphs that are still visible in
+	 *   WorkArea and rebuild the missing ones.
+	 *
+	 * This does also set the anchor paragraph and its position correctly
+	*/
+	void updateMetrics(bool force);
 
 	// Set the row on which the cursor lives.
 	void setCurrentRowSlice(CursorSlice const & rowSlice);

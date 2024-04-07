@@ -271,4 +271,6 @@ ADD_CUSTOM_TARGET(update-gmo DEPENDS ${LYX_UPDATED_GMO_FILES})
 ADD_CUSTOM_TARGET(update-po DEPENDS ${LYX_UPDATED_PO_FILES} ${LYX_UPDATED_GMO_FILES})
 set_target_properties(update-po update-gmo PROPERTIES FOLDER "i18n")
 add_dependencies(update-po translations)
+add_dependencies(update-gmo translations)
+add_dependencies(update-gmo update-po)
 

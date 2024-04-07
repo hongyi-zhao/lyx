@@ -773,7 +773,12 @@ int InsetSpace::plaintext(odocstringstream & os,
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:
 	case InsetSpaceParams::NEGTHICK:
-		return 0;
+		if (rp.find_effective()) {
+			os << ' ';
+			return 1;
+		}
+		else
+			return 0;
 	default:
 		os << ' ';
 		return 1;

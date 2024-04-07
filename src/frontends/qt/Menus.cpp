@@ -233,10 +233,19 @@ public:
 	}
 
 	/// The keyboard shortcut (usually underlined in the entry)
-	QString shortcut() const
+	/// If \p first is true, return only the first character
+	/// if a multi-character string has been defined.
+	QString shortcut(bool first = false) const
 	{
 		int const index = label_.lastIndexOf('|');
-		return index == -1 ? QString() : label_.mid(index + 1);
+		if (index == -1)
+			return QString();
+		QString accelerators = label_.mid(index + 1);
+		if (accelerators.size() == 1)
+			return accelerators;
+		if (first)
+			return accelerators.left(1);
+		return accelerators;
 	}
 	/// The complete label, with label and shortcut separated by a '|'
 	QString fulllabel() const { return label_; }
@@ -342,13 +351,19 @@ public:
 		const;
 	///
 	bool hasFunc(FuncRequest const &) const;
+	/// The real size of the menu considering hidden entries
+	int realSize() const;
 	/// Add the menu item unconditionally
 	void add(MenuItem const & item) { items_.push_back(item); }
 	/// Checks the associated FuncRequest status before adding the
 	/// menu item.
 	void addWithStatusCheck(MenuItem const &);
-	// Check whether the menu shortcuts are unique
-	void checkShortcuts() const;
+	/// Check whether the shortcut of \p mi are unique and valid, and report if not
+	void checkShortcutUnique(MenuItem const & mi) const;
+	/// Return true if a \p sc is a unique shortcut
+	bool checkShortcut(QString const sc) const;
+	/// Try to find a unique shortcut from a string of alternatives
+	QString getBestShortcut(MenuItem const & mi) const;
 	///
 	void expandLastfiles();
 	void expandDocuments();
@@ -727,6 +742,23 @@ bool MenuDefinition::hasFunc(FuncRequest const & func) const
 }
 
 
+int MenuDefinition::realSize() const
+{
+	int res = 0;
+	for (auto const & it : *this) {
+		if (it.kind() == MenuItem::Submenu)
+			++res;
+		else if (it.kind() == MenuItem::Command) {
+			FuncStatus status = lyx::getStatus(*it.func());
+			// count only items that are actually displayed
+			if (!status.unknown() && (status.enabled() || !it.optional()))
+				++res;
+		}
+	}
+	return res;
+}
+
+
 void MenuDefinition::catSub(docstring const & name)
 {
 	add(MenuItem(MenuItem::Submenu,
@@ -741,28 +773,84 @@ void MenuDefinition::cat(MenuDefinition const & other)
 }
 
 
-void MenuDefinition::checkShortcuts() const
+QString MenuDefinition::getBestShortcut(MenuItem const & mi) const
 {
-	// This is a quadratic algorithm, but we do not care because
-	// menus are short enough
-	for (const_iterator it1 = begin(); it1 != end(); ++it1) {
-		QString shortcut = it1->shortcut();
-		if (shortcut.isEmpty())
-			continue;
-		if (!it1->label().contains(shortcut))
+	// This might be a string of accelerators, a single accelerator
+	// or empty
+	QString accelerators = mi.shortcut();
+	QString const label = mi.label();
+	if (accelerators.size() == 0)
+		return QString();
+	if (accelerators.size() == 1) {
+		// check and report clashes
+		checkShortcutUnique(mi);
+		return accelerators;
+	}
+	for (int i = 0; i < accelerators.length(); i++)
+	{
+		// check each character in the string
+		// and use the first that does not conflict
+		QString const sc = accelerators.at(i);
+		if (!label.contains(sc)) {
+			// invalid shortcut. Report.
 			LYXERR0("Menu warning: menu entry \""
-			       << it1->label()
+			       << label
 			       << "\" does not contain shortcut `"
-			       << shortcut << "'.");
-		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
-			if (!it2->shortcut().compare(shortcut, Qt::CaseInsensitive)) {
-				LYXERR0("Menu warning: menu entries "
-				       << '"' << it1->fulllabel()
-				       << "\" and \"" << it2->fulllabel()
-				       << "\" share the same shortcut.");
-			}
+			       << sc << "'.");
+			continue;
+		}
+		if (checkShortcut(sc))
+			return sc;
+	}
+	// At this point, we found no non-conflicting one
+	// issue a warning and omit the accelerator
+	LYXERR0("Menu warning: All accelerators of menu entry "
+	       << '"' << mi.fulllabel()
+	       << "\" are already taken. Omitting shortcut.");
+	return QString();
+}
+
+
+void MenuDefinition::checkShortcutUnique(MenuItem const & mi) const
+{
+	// We know this might only be a single character or nothing
+	QString const shortcut = mi.shortcut();
+	QString const label = mi.label();
+	if (shortcut.isEmpty())
+		return;
+	if (!label.contains(shortcut))
+		// invalid shortcut
+		LYXERR0("Menu warning: menu entry \""
+		       << label
+		       << "\" does not contain shortcut `"
+		       << shortcut << "'.");
+	for (const_iterator it = begin(); it != end() ; ++it) {
+		if (mi.fulllabel() == it->fulllabel())
+			// do not compare with itself
+			continue;
+		if (!it->shortcut().compare(shortcut, Qt::CaseInsensitive)) {
+			// conflict
+			LYXERR0("Menu warning: menu entries "
+			       << '"' << it->fulllabel()
+			       << "\" and \"" << mi.fulllabel()
+			       << "\" share the same shortcut.");
 		}
 	}
+}
+
+
+bool MenuDefinition::checkShortcut(QString const shortcut) const
+{
+	if (shortcut.isEmpty())
+		return true;
+	for (const_iterator it = begin(); it != end(); ++it) {
+		if (it->shortcut(true).compare(shortcut, Qt::CaseInsensitive) == 0) {
+			// conflict
+			return false;
+		}
+	}
+	// no conflict
+	return true;
 }
 
 
@@ -867,13 +955,13 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 				if (i > 0)
 					add(MenuItem(MenuItem::Separator));
 				docstring const arg = wl.word() + " " + from_ascii(wl.lang()->lang());
-				add(MenuItem(MenuItem::Command, qt_("Add to personal dictionary|n"),
+				add(MenuItem(MenuItem::Command, qt_("Add to personal dictionary|r"),
 						FuncRequest(LFUN_SPELLING_ADD, arg)));
-				add(MenuItem(MenuItem::Command, qt_("Ignore this occurrence|g"),
+				add(MenuItem(MenuItem::Command, qt_("Ignore this occurrence|o"),
 						FuncRequest(LFUN_FONT_NO_SPELLCHECK, arg)));
-				add(MenuItem(MenuItem::Command, qt_("Ignore all for this session|I"),
+				add(MenuItem(MenuItem::Command, qt_("Ignore all for this session|t"),
 						FuncRequest(LFUN_SPELLING_IGNORE, arg)));
-				add(MenuItem(MenuItem::Command, qt_("Ignore all in this document|d"),
+				add(MenuItem(MenuItem::Command, qt_("Ignore all in this document|u"),
 						FuncRequest(LFUN_SPELLING_ADD_LOCAL, arg)));
 			}
 		}
@@ -918,7 +1006,7 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 		buf->masterBuffer()->getLanguages();
 
 	if (languages_buffer.size() < 2) {
-		add(MenuItem(MenuItem::Command, qt_("Switch Language...|L"),
+		add(MenuItem(MenuItem::Command, qt_("Switch Language...|w"),
 			     FuncRequest(LFUN_DIALOG_SHOW, "character")));
 		return;
 	}
@@ -2097,12 +2185,12 @@ struct Menu::Impl
 
 
 /// Get a MenuDefinition item label from the menu backend
-static QString label(MenuItem const & mi)
+static QString label(MenuItem const & mi, MenuDefinition const & menu)
 {
 	QString label = mi.label();
 	label.replace("&", "&&");
 
-	QString shortcut = mi.shortcut();
+	QString shortcut = menu.getBestShortcut(mi);
 	if (!shortcut.isEmpty()) {
 		int pos = label.indexOf(shortcut);
 		if (pos != -1)
@@ -2139,7 +2227,7 @@ void Menu::Impl::populate(QMenu * qMenu, MenuDefinition const & menu)
 			qMenu->addSeparator();
 			break;
 		case MenuItem::Submenu: {
-			QMenu * subMenu = qMenu->addMenu(label(m));
+			QMenu * subMenu = qMenu->addMenu(label(m, menu));
 			populate(subMenu, m.submenu());
 			subMenu->setEnabled(!subMenu->isEmpty());
 			break;
@@ -2149,7 +2237,7 @@ void Menu::Impl::populate(QMenu * qMenu, MenuDefinition const & menu)
 			// FIXME: A previous comment assured that MenuItem::Command was the
 			// only possible case in practice, but this is wrong.  It would be
 			// good to document which cases are actually treated here.
-			qMenu->addAction(new Action(m.func(), QIcon(), label(m),
+			qMenu->addAction(new Action(m.func(), QIcon(), label(m, menu),
 			                            m.tooltip(), qMenu));
 			break;
 		}
@@ -2510,9 +2598,6 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 	// we do not want the menu to end with a separator
 	if (!tomenu.empty() && tomenu.items_.back().kind() == MenuItem::Separator)
 		tomenu.items_.pop_back();
-
-	// Check whether the shortcuts are unique
-	tomenu.checkShortcuts();
 }
 
 
@@ -2681,7 +2766,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		}
 
 		Menu * menuptr = new Menu(view, m.submenuname(), true);
-		menuptr->setTitle(label(m));
+		menuptr->setTitle(label(m, menu));
 
 #if defined(Q_OS_MAC)
 		// On Mac OS with Qt/Cocoa, the menu is not displayed if there is no action
@@ -2707,6 +2792,9 @@ void Menus::updateMenu(Menu * qmenu)
 
 	docstring identifier = qstring_to_ucs4(qmenu->d->name);
 	MenuDefinition fromLyxMenu(qmenu->d->name);
+	BufferView * bv = 0;
+	if (qmenu->d->view)
+		bv = qmenu->d->view->currentBufferView();
 	while (!identifier.empty()) {
 		docstring menu_name;
 		identifier = split(identifier, menu_name, ';');
@@ -2718,10 +2806,14 @@ void Menus::updateMenu(Menu * qmenu)
 		}
 
 		MenuDefinition cat_menu = d->getMenu(toqstr(menu_name));
-		//FIXME: 50 is a wild guess. We should take into account here
-		//the expansion of menu items, disabled optional items etc.
+		// We take into account here the expansion of menu items,
+		// disabled optional items etc.
+		MenuDefinition to_menu;
+		d->expand(fromLyxMenu, to_menu, bv);
+		MenuDefinition to_cat_menu;
+		d->expand(cat_menu, to_cat_menu, bv);
 		bool const in_sub_menu = !fromLyxMenu.empty()
-			&& fromLyxMenu.size() + cat_menu.size() > 50 ;
+			&& to_menu.realSize() + to_cat_menu.realSize() > 50;
 		if (in_sub_menu)
 			fromLyxMenu.catSub(menu_name);
 		else
@@ -2734,9 +2826,6 @@ void Menus::updateMenu(Menu * qmenu)
 		return;
 	}
 
-	BufferView * bv = 0;
-	if (qmenu->d->view)
-		bv = qmenu->d->view->currentBufferView();
 	d->expand(fromLyxMenu, *qmenu->d->top_level_menu, bv);
 	qmenu->d->populate(qmenu, *qmenu->d->top_level_menu);
 }

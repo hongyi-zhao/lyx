@@ -1137,16 +1137,10 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 	}
 
 	docstring ret = operator[](key);
-	if (ret.empty() && !xrefs.empty()) {
-		// xr is a (reference to a) BibTeXInfo const *
-		for (auto const & xr : xrefs) {
-			if (xr && !(*xr)[key].empty()) {
-				ret = (*xr)[key];
-				break;
-			}
-		}
-	}
 	if (ret.empty()) {
+		docstring subtype;
+		if (contains(key, ':'))
+			subtype = from_ascii(token(key, ':', 1));
 		// some special keys
 		// FIXME: dialog, textbefore and textafter have nothing to do with this
 		if (key == "dialog" && ci.context == CiteItem::Dialog)
@@ -1172,7 +1166,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = cite_number_;
 		else if (prefixIs(key, "ifmultiple:")) {
 			// Return whether we have multiple authors
-			docstring const kind = operator[](from_ascii(key.substr(11)));
+			docstring const kind = operator[](subtype);
 			if (multipleAuthors(kind))
 				ret = from_ascii("x"); // any non-empty string will do
 		}
@@ -1180,14 +1174,14 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// Special key to provide abbreviated name list,
 			// with respect to maxcitenames. Suitable for Bibliography
 			// beginnings.
-			docstring const kind = operator[](from_ascii(key.substr(11)));
+			docstring const kind = operator[](subtype);
 			ret = getAuthorList(&buf, kind, false, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "fullnames:")) {
 			// Return a full name list. Suitable for Bibliography
 			// beginnings.
-			docstring const kind = operator[](from_ascii(key.substr(10)));
+			docstring const kind = operator[](subtype);
 			ret = getAuthorList(&buf, kind, true, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
@@ -1195,7 +1189,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// Special key to provide abbreviated name lists,
 			// irrespective of maxcitenames. Suitable for Bibliography
 			// beginnings.
-			docstring const kind = operator[](from_ascii(key.substr(15)));
+			docstring const kind = operator[](subtype);
 			ret = getAuthorList(&buf, kind, false, true, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
@@ -1203,14 +1197,14 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// Special key to provide abbreviated name list,
 			// with respect to maxcitenames. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
-			docstring const kind = operator[](from_ascii(key.substr(11)));
+			docstring const kind = operator[](subtype);
 			ret = getAuthorList(&buf, kind, false, false, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "fullbynames:")) {
 			// Return a full name list. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
-			docstring const kind = operator[](from_ascii(key.substr(10)));
+			docstring const kind = operator[](subtype);
 			ret = getAuthorList(&buf, kind, true, false, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
@@ -1218,7 +1212,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// Special key to provide abbreviated name lists,
 			// irrespective of maxcitenames. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
-			docstring const kind = operator[](from_ascii(key.substr(15)));
+			docstring const kind = operator[](subtype);
 			ret = getAuthorList(&buf, kind, false, true, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
@@ -1281,6 +1275,34 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			}
 		} else if (key == "year")
 			ret = getYear();
+	}
+
+	// If we have no result, check in the cross-ref'ed entries
+	if (ret.empty() && !xrefs.empty()) {
+		bool const biblatex =
+			buf.params().documentClass().citeFramework() == "biblatex";
+		// xr is a (reference to a) BibTeXInfo const *
+		for (auto const & xr : xrefs) {
+			if (!xr)
+				continue;
+			// use empty BibTeXInfoList to avoid loops
+			BibTeXInfoList xr_dummy;
+			ret = xr->getValueForKey(oldkey, buf, ci, xr_dummy, maxsize);
+			if (!ret.empty())
+				// success!
+				break;
+			// in biblatex, cross-ref'ed titles are mapped
+			// to booktitle. Same for subtitle etc.
+			if (biblatex && prefixIs(key, "book"))
+				ret = (*xr)[key.substr(4)];
+			// likewise, author is maped onto bookauthor
+			else if (biblatex && contains(key, ":bookauthor"))
+				ret = xr->getValueForKey(subst(key, "bookauthor", "author"),
+							 buf, ci, xr_dummy, maxsize);
+			if (!ret.empty())
+				// success!
+				break;
+		}
 	}
 
 	if (cleanit)
@@ -1726,15 +1748,21 @@ string citationStyleToString(const CitationStyle & cs, bool const latex)
 }
 
 
-docstring authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream & xs, Buffer const & buf)
+void authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream & xs, Buffer const & buf,
+                                 const std::string type)
 {
 	// This function closely mimics getAuthorList, but produces DocBook instead of text.
 	// It has been greatly simplified, as the complete list of authors is always produced. No separators are required,
 	// as the output has a database-like shape.
 	// constructName has also been merged within, as it becomes really simple and leads to no copy-paste.
 
+	if (! type.empty() && (type != "author" && type != "book")) {
+		LYXERR0("ERROR! Unexpected author contribution `" << type <<"'.");
+		return;
+	}
+
 	if (authorsString.empty()) {
-		return docstring();
+		return;
 	}
 
 	// Split the input list of authors into individual authors.
@@ -1750,13 +1778,17 @@ docstring authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream
 	auto it = authors.cbegin();
 	auto en = authors.cend();
 	for (size_t i = 0; it != en; ++it, ++i) {
-		xs << xml::StartTag("author");
+		const std::string tag = (type.empty() || type == "author") ? "author" : "othercredit";
+		const std::string attr = (type == "book") ? R"(class="other" otherclass="bookauthor")" : "";
+
+		xs << xml::StartTag(tag, attr);
 		xs << xml::CR();
 		xs << xml::StartTag("personname");
 		xs << xml::CR();
-		docstring name = *it;
+		const docstring name = *it;
 
-		// All authors go in a <personname>. If more structure is known, use it; otherwise (just "et al."), print it as such.
+		// All authors go in a <personname>. If more structure is known, use it; otherwise (just "et al."),
+		// print it as such.
 		if (name == "others") {
 			xs << buf.B_(etal);
 		} else {
@@ -1789,15 +1821,13 @@ docstring authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream
 
 		xs << xml::EndTag("personname");
 		xs << xml::CR();
-		xs << xml::EndTag("author");
+		xs << xml::EndTag(tag);
 		xs << xml::CR();
 
 		// Could add an affiliation after <personname>, but not stored in BibTeX.
 	}
 	xs << xml::EndTag("authorgroup");
 	xs << xml::CR();
-
-	return docstring();
 }
 
 } // namespace lyx

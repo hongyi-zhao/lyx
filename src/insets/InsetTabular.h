@@ -77,6 +77,8 @@ public:
 	///
 	void toggleMultiRow(bool m) { isMultiRow = m; }
 	///
+	void toggleCaptionRow(bool m) { isCaptionRow = m; }
+	///
 	void setContentAlignment(LyXAlignment al) { contentAlign = al; }
 	/// writes the contents of the cell as a string, optionally
 	/// descending into insets
@@ -133,7 +135,9 @@ private:
 	bool isMultiColumn;
 	///
 	bool isMultiRow;
-	// FIXME: Here the thoughts from the comment above also apply.
+	// FIXME: For the next two items the thoughts from the comment above also apply.
+	///
+	bool isCaptionRow;
 	///
 	LyXAlignment contentAlign;
 	/// should paragraph indentation be omitted in any case?
@@ -148,6 +152,8 @@ private:
 	bool forceLocalFontSwitch() const override;
 	/// Is the width forced to some value?
 	bool hasFixedWidth() const override { return isFixedWidth; }
+	///
+	bool insetAllowed(InsetCode code) const override;
 };
 
 

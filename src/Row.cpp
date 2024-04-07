@@ -510,15 +510,14 @@ void Row::addMarginSpace(pos_type const pos, int const width,
 
 void Row::push_back(Row::Element const & e)
 {
-	dim_.wid += e.dim.wid + ((e.type == INSET) ? e.extra : 0);
+	dim_.wid += e.dim.wid;
 	elements_.push_back(e);
 }
 
 
 void Row::pop_back()
 {
-	Element const & e = elements_.back();
-	dim_.wid -= e.dim.wid + ((e.type == INSET) ? e.extra : 0);
+	dim_.wid -= elements_.back().dim.wid;
 	elements_.pop_back();
 }
 
@@ -605,14 +604,6 @@ Row::Elements Row::shortenIfNeeded(int const max_width, int const next_width)
 		 */
 		int const split_width =  min(max_width - wid_brk, brk.dim.wid - 2);
 		if (brk.splitAt(split_width, next_width, BEST_EFFORT, tail)) {
-			// if we did not manage to fit a part of the element into
-			// the split_width limit, at least remember that we can
-			// shorten the row if needed.
-			if (brk.dim.wid > split_width) {
-				min_row_wid = wid_brk + brk.dim.wid;
-				tail.clear();
-				continue;
-			}
 			/* if this element originally did not cause a row overflow
 			 * in itself, and the remainder of the row would still be
 			 * too large after breaking, then we will have issues in
@@ -622,6 +613,15 @@ Row::Elements Row::shortenIfNeeded(int const max_width, int const next_width)
 			    && min_row_wid - (wid_brk + brk.dim.wid) >= next_width) {
 				tail.clear();
 				break;
+			}
+			/* if we did not manage to fit a part of the element into
+			 * the split_width limit, at least remember that we can
+			 * shorten the row if needed.
+			 */
+			if (brk.dim.wid > split_width) {
+				min_row_wid = wid_brk + brk.dim.wid;
+				tail.clear();
+				continue;
 			}
 			// We have found a proper place where to break this string element.
 			end_ = brk.endpos;

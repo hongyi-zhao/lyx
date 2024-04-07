@@ -382,7 +382,7 @@ void makeParagraph(
 			TABULAR_CODE,
 			FLOAT_CODE,
 			BIBTEX_CODE, // Bibliographies cannot be in paragraphs. Bibitems should still be handled as paragraphs,
-			// though (see makeParagraphBibliography).
+			// though (see makeBibliography).
 			ERT_CODE, // ERTs are in comments, not paragraphs.
 			LISTINGS_CODE,
 			BOX_CODE,

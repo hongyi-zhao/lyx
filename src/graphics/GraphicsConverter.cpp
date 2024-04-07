@@ -136,9 +136,17 @@ Converter::Impl::Impl(Converter const & parent, FileName const & doc_fname,
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
-	build_script(doc_fname_.absFileName(), from_file.toFilesystemEncoding(),
-		     to_file_.toFilesystemEncoding(),
-		     from_format, to_format, script);
+	if (os::python_info()[0] == '2') {
+		build_script(doc_fname_.absFileName(),
+			     from_file.toFilesystemEncoding(),
+			     to_file_.toFilesystemEncoding(),
+			     from_format, to_format, script);
+	} else {
+		build_script(doc_fname_.absFileName(),
+			     from_file.absFileName(),
+			     to_file_.absFileName(),
+			     from_format, to_format, script);
+	}
 	LYXERR(Debug::GRAPHICS, "\tConversion script:"
 		   "\n--------------------------------------\n"
 		<< script.str()

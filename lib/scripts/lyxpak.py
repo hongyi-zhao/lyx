@@ -17,7 +17,6 @@
 
 from __future__ import print_function
 import gzip, os, re, sys
-from getopt import getopt
 from io import BytesIO
 import subprocess
 
@@ -35,6 +34,9 @@ running_on_windows = (os.name == 'nt')
 if running_on_windows:
     from shutil import copyfile
     from tempfile import NamedTemporaryFile
+    from lyxwin_getopt import getopt
+else:
+    from getopt import getopt
 
 # Pre-compiled regular expressions.
 re_lyxfile = re.compile(br"\.lyx$")
@@ -128,7 +130,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
         elif running_on_windows:
             # For some unknown reason, there can be a spurious '\r' in the line
             # separators, causing spurious empty lines when calling splitlines.
-            l2l_stdout = l2l_stdout.replace('\r\r\n', '\r\n')
+            l2l_stdout = l2l_stdout.replace(b'\r\r\n', b'\r\n')
         lines = l2l_stdout.splitlines()
     else:
         input = gzopen(curfile)
@@ -224,7 +226,10 @@ def find_lyx2lyx(progloc, path):
     # for $SOMEDIR/lyx2lyx/lyx2lyx.
     ourpath = os.path.dirname(abspath(progloc))
     (upone, discard) = os.path.split(ourpath)
-    tryit = os.path.join(upone, "lyx2lyx", "lyx2lyx")
+    if running_on_windows:
+        tryit = os.path.join(upone, b"lyx2lyx", b"lyx2lyx")
+    else:
+        tryit = os.path.join(upone, "lyx2lyx", "lyx2lyx")
     if os.access(tryit, os.X_OK):
         return tryit
 
@@ -265,7 +270,10 @@ def main(args):
     ourprog = args[0]
 
     try:
-        (options, argv) = getopt(args[1:], "htzl:o:")
+        if running_on_windows:
+            (options, argv) = getopt(args[1:], b"htzl:o:")
+        else:
+            (options, argv) = getopt(args[1:], "htzl:o:")
     except:
         error(usage(ourprog))
 
@@ -393,7 +401,7 @@ if __name__ == "__main__":
         argv = [argv_unicode[i].encode('utf-8') for i in range(1, argc.value)]
         # Also skip option arguments to the Python interpreter.
         while len(argv) > 0:
-            if not argv[0].startswith("-"):
+            if not argv[0].startswith(b"-"):
                 break
             argv = argv[1:]
         sys.argv = argv

@@ -202,6 +202,7 @@ subequations
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \notefontcolor #0000ff
@@ -271,16 +272,20 @@ literal "false"
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 auteur:
- Uwe Stöhr
+ Uwe 
+\nospellcheck on
+Stöhr
 \end_layout
 
 \begin_layout Plain Layout
 traducteur:
- Siegfried Meunier-Guttin-Cluzel
+ Siegfried 
+\nospellcheck on
+Meunier-Guttin-Cluzel
 \end_layout
 
 \begin_layout Plain Layout
@@ -297,29 +302,49 @@ Avril 2014 :
 
 \begin_layout Plain Layout
 Juin 2014 :
- relecture complète du document pour 2.1 par J.-P.
+ relecture complète du document pour 2.1 par J.
+\nospellcheck on
+-P
+\nospellcheck default
+.
  Chrétien
 \end_layout
 
 \begin_layout Plain Layout
 Décembre 2015 :
- mise à jour pour LyX 2.2 (JPC)
+ mise à jour pour LyX 2.2 (
+\nospellcheck on
+JPC
+\nospellcheck default
+)
 \end_layout
 
 \begin_layout Plain Layout
 Juillet 2016 :
  nouvelle mise à jour pour 2.2,
- une note ajoutée (JPC)
+ une note ajoutée (
+\nospellcheck on
+JPC
+\nospellcheck default
+)
 \end_layout
 
 \begin_layout Plain Layout
 Août 2017 :
- revue pour 2.3 (JPC)
+ revue pour 2.3 (
+\nospellcheck on
+JPC
+\nospellcheck default
+)
 \end_layout
 
 \begin_layout Plain Layout
 Avril 2018 :
- revue pour 2.4 (JPC)
+ revue pour 2.4 (
+\nospellcheck on
+JPC
+\nospellcheck default
+)
 \end_layout
 
 \end_inset
@@ -353,29 +378,63 @@ status open
 \begin_layout Plain Layout
 Pour pouvoir exporter ce document en PDF,
  PS,
- ou DVI les paquetages \SpecialChar LaTeX
+ ou 
+\nospellcheck on
+DVI
+\nospellcheck default
+ les paquetages 
+\nospellcheck on
+\SpecialChar LaTeX
+
+\nospellcheck default
  
 \series bold
-braket,
+\nospellcheck on
+braket
+\nospellcheck default
+,
  cancel,
- eurosym,
- mathdots,
- mathtools,
- mhchem,
- undertilde
+ 
+\nospellcheck on
+eurosym
+\nospellcheck default
+,
+ 
+\nospellcheck on
+mathdots
+\nospellcheck default
+,
+ 
+\nospellcheck on
+mathtools
+\nospellcheck default
+,
+ 
+\nospellcheck on
+mhchem
+\nospellcheck default
+,
+ 
+\nospellcheck on
+undertilde
 \series default
+\nospellcheck default
  et 
 \series bold
+\nospellcheck on
 was
 \series default
+\nospellcheck default
  et le paquetage de langue allemande devraient être installés.
  S'ils ne sont pas installés,
  vous pouvez quand même exporter votre document,
  mais les sections où ces paquetages sont nécessaires ne seront pas visibles sur la sortie finale.
  
 \series bold
+\nospellcheck on
 mhchem
 \series default
+\nospellcheck default
  fait exception:
  s'il n'est pas installé,
  on ne peut pas exporter ce fichier.
@@ -388,7 +447,15 @@ On peut trouver la dernière version de ce document ici:
 
 
 \series bold
-https://wiki.lyx.org/LyX/Manuals#Math
+https://wiki.
+\nospellcheck on
+lyx
+\nospellcheck default
+.org/LyX/
+\nospellcheck on
+Manuals
+\nospellcheck default
+#Math
 \end_layout
 
 \end_inset
@@ -465,7 +532,11 @@ Utiliser automatiquement le paquetage math AMS
 
 
 \family default
- n'utilise les maths-
+ n'utilise les 
+\nospellcheck on
+maths-
+\nospellcheck default
+
 \begin_inset ERT
 status collapsed
 
@@ -492,7 +563,11 @@ que si on utilise des constructions mathématiques qui sont reconnues par \Speci
 \end_layout
 
 \begin_layout Standard
-Ce document ne liste pas la totalité des commandes math-
+Ce document ne liste pas la totalité des commandes 
+\nospellcheck on
+math-
+\nospellcheck default
+
 \begin_inset ERT
 status collapsed
 
@@ -514,7 +589,11 @@ pour des raisons de bon sens
 status collapsed
 
 \begin_layout Plain Layout
-On trouve une liste de toutes les commandes math-
+On trouve une liste de toutes les commandes 
+\nospellcheck on
+math-
+\nospellcheck default
+
 \begin_inset ERT
 status collapsed
 
@@ -623,7 +702,11 @@ hors ligne
  c'est-à-dire qui apparaîtra plus grosse et qui aura son propre paragraphe,
  appuyez sur 
 \family sans
-Ctrl+Shift+M
+Ctrl+
+\nospellcheck on
+Shift
+\nospellcheck default
++M
 \family default
  ou 
 \family sans
@@ -661,8 +744,11 @@ Pour afficher des parties d'une formule en ligne avec la même taille qu'une for
 \series bold
 
 \backslash
+
+\nospellcheck on
 displaystyle
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -898,7 +984,11 @@ Pour les formules multi-lignes,
 \series bold
 
 \backslash
-intertext,
+
+\nospellcheck on
+intertext
+\nospellcheck default
+,
 
 \series default
  voir 
@@ -963,8 +1053,11 @@ Mathématique,
 \series bold
 
 \backslash
+
+\nospellcheck on
 text
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -1022,7 +1115,11 @@ La plupart des commandes \SpecialChar LaTeX
 \series bold
 
 \backslash
-nomdelacommande[argument optionnel]{argument obligatoire}
+
+\nospellcheck on
+nomdelacommande
+\nospellcheck default
+[argument optionnel]{argument obligatoire}
 \end_layout
 
 \begin_layout Standard
@@ -1111,9 +1208,7 @@ Si une espace doit apparaître dans la sortie finale,
 \begin_layout Standard
 On insère une espace insécable avec 
 \family sans
-Ctrl+Espace ou via le menu 
-\lang english
-Insérer\SpecialChar menuseparator
+Ctrl+Espace ou via le menu Insérer\SpecialChar menuseparator
 Typographie spéciale\SpecialChar menuseparator
 Espace insécable.
 \end_layout
@@ -1138,8 +1233,11 @@ Une flèche comme celle-ci
  indique que l'on doit appuyer sur la flèche correspondante du clavier.
  La touche
 \family sans
- Tab
+ 
+\nospellcheck on
+Tab
 \family default
+\nospellcheck default
  peut être fréquemment utilisée à la place de
 \begin_inset Formula $\to$
 \end_inset
@@ -1151,8 +1249,14 @@ Une flèche comme celle-ci
 ,
  et 
 \family sans
-Shift+Tab
+\nospellcheck on
+Shift
+\nospellcheck default
++
+\nospellcheck on
+Tab
 \family default
+\nospellcheck default
  à la place de 
 \begin_inset Formula $\leftarrow$
 \end_inset
@@ -1352,6 +1456,8 @@ pt)
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\nospellcheck on
 sp
 \end_layout
 
@@ -1363,13 +1469,19 @@ sp
 \begin_layout Plain Layout
 
 \emph on
+\nospellcheck on
 scaled
 \emph default
+\nospellcheck default
  point (65536
 \begin_inset space \thinspace{}
 \end_inset
 
-sp = 1
+
+\nospellcheck on
+sp
+\nospellcheck default
+ = 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1384,6 +1496,8 @@ pt)
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\nospellcheck on
 bp
 \end_layout
 
@@ -1401,7 +1515,11 @@ big
 \begin_inset space \thinspace{}
 \end_inset
 
-bp = 1
+
+\nospellcheck on
+bp
+\nospellcheck default
+ = 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1416,6 +1534,8 @@ in)
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\nospellcheck on
 dd
 \end_layout
 
@@ -1429,7 +1549,11 @@ Didot (1
 \begin_inset space \thinspace{}
 \end_inset
 
-dd 
+
+\nospellcheck on
+dd
+\nospellcheck default
+ 
 \begin_inset Formula $\approx$
 \end_inset
 
@@ -1448,6 +1572,8 @@ mm)
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\nospellcheck on
 cc
 \end_layout
 
@@ -1457,15 +1583,27 @@ cc
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cicero (1
+
+\nospellcheck on
+Cicero
+\nospellcheck default
+ (1
 \begin_inset space \thinspace{}
 \end_inset
 
-cc = 12
+
+\nospellcheck on
+cc
+\nospellcheck default
+ = 12
 \begin_inset space \thinspace{}
 \end_inset
 
-dd)
+
+\nospellcheck on
+dd
+\nospellcheck default
+)
 \end_layout
 
 \end_inset
@@ -1508,6 +1646,8 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\nospellcheck on
 em
 \end_layout
 
@@ -1561,7 +1701,11 @@ mu =
 \begin_inset space \thinspace{}
 \end_inset
 
-em)
+
+\nospellcheck on
+em
+\nospellcheck default
+)
 \end_layout
 
 \end_inset
@@ -1854,8 +1998,11 @@ Avec la commande
 \series bold
 
 \backslash
+
+\nospellcheck on
 dfrac
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -1896,8 +2043,11 @@ dfrac
 \series bold
 
 \backslash
+
+\nospellcheck on
 tfrac
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -1960,8 +2110,11 @@ Une ligne avec la fraction
 \series bold
 
 \backslash
+
+\nospellcheck on
 dfrac
 \series default
+\nospellcheck default
 .
 \end_layout
 
@@ -2032,7 +2185,11 @@ B
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 dfrac
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -2065,7 +2222,11 @@ B
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 dfrac
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -2121,8 +2282,11 @@ Pour des fractions emboîtées,
 \series bold
 
 \backslash
+
+\nospellcheck on
 cfrac
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -2186,7 +2350,11 @@ La commande pour l'exemple précédent est:
 \series bold
 
 \backslash
+
+\nospellcheck on
 cfrac
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -2196,13 +2364,21 @@ A
 
 B+
 \backslash
+
+\nospellcheck on
 cfrac
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 C+
 \backslash
+
+\nospellcheck on
 cfrac
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -2229,8 +2405,11 @@ D
 \series bold
 
 \backslash
+
+\nospellcheck on
 cfrac
 \series default
+\nospellcheck default
  met toujours la fraction dans la taille d'une formule hors ligne,
  même si elle est une partie d'une autre fraction.
 \end_layout
@@ -2241,21 +2420,30 @@ On peut préciser l'alignement du numérateur.
 \series bold
 
 \backslash
+
+\nospellcheck on
 cfracleft
 \series default
+\nospellcheck default
  pour l'aligner à gauche,
  la commande 
 \series bold
 
 \backslash
+
+\nospellcheck on
 cfracright
 \series default
+\nospellcheck default
  pour l'aligner à droite et 
 \series bold
 
 \backslash
+
+\nospellcheck on
 cfrac
 \series default
+\nospellcheck default
  pour le centrer.
  Les fractions qui suivent illustrent les différents alignements:
 \end_layout
@@ -2287,19 +2475,28 @@ Nota:
 \series bold
 
 \backslash
+
+\nospellcheck on
 cfracleft
 \series default
+\nospellcheck default
  et 
 \series bold
+\nospellcheck on
 cfracright
 \series default
+\nospellcheck default
  ne sont pas des commandes \SpecialChar LaTeX
  réelles,
  mais représentent la commande 
 \series bold
 
 \backslash
-cfrac[alignement]{numérateur}{dénominateur}
+
+\nospellcheck on
+cfrac
+\nospellcheck default
+[alignement]{numérateur}{dénominateur}
 \series default
  .
 
@@ -2323,8 +2520,11 @@ Il est souvent intéressant de combiner
 \series bold
 
 \backslash
+
+\nospellcheck on
 cfrac
 \series default
+\nospellcheck default
  et 
 \series bold
 
@@ -2348,7 +2548,11 @@ Pour des fractions en ligne avec une barre de fraction en diagonale,
 \series bold
 
 \backslash
+
+\nospellcheck on
 nicefrac
+\nospellcheck default
+
 \begin_inset Index idx
 range none
 pageformat default
@@ -2393,8 +2597,11 @@ nicefrac
 \series bold
 
 \backslash
+
+\nospellcheck on
 unitfrac
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -2439,8 +2646,11 @@ unitfrac
 \series bold
 
 \backslash
+
+\nospellcheck on
 unitfracthree
 \series default
+\nospellcheck default
  qui permet d'écrire une fraction en combinaison avec un nombre:
  
 \begin_inset Formula $\unitfrac[2]{1}{3}$
@@ -2463,15 +2673,22 @@ Nota:
 \series bold
 
 \backslash
+
+\nospellcheck on
 unitfracthree
 \series default
+\nospellcheck default
  n'est pas une commande \SpecialChar LaTeX
  réelle,
  mais c'est la commande 
 \series bold
 
 \backslash
-unitfrac[nombre]{numérateur}{dénominateur}
+
+\nospellcheck on
+unitfrac
+\nospellcheck default
+[nombre]{numérateur}{dénominateur}
 \series default
  .
 
@@ -2536,8 +2753,11 @@ On obtient les racines carrées avec la commande
 \series bold
 
 \backslash
+
+\nospellcheck on
 sqrt
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -2583,8 +2803,11 @@ arg   "math-insert \\sqrt"
 \series bold
 
 \backslash
+
+\nospellcheck on
 root
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -2662,7 +2885,11 @@ Résultat
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 sqrt
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -2691,7 +2918,11 @@ A-B
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 root
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -2729,8 +2960,11 @@ On peut aussi obtenir une racine carrée avec
 \series bold
 
 \backslash
+
+\nospellcheck on
 root
 \series default
+\nospellcheck default
  en laissant le champ réservé au degré de la racine vide.
 \end_layout
 
@@ -2754,8 +2988,11 @@ Le
 \series bold
 
 \backslash
+
+\nospellcheck on
 leftroot
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -2794,8 +3031,11 @@ leftroot
 \series bold
 
 \backslash
+
+\nospellcheck on
 uproot
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -2838,13 +3078,21 @@ uproot
 \series bold
 
 \backslash
-leftroot{distance}
+
+\nospellcheck on
+leftroot
+\nospellcheck default
+{distance}
 \series default
  et 
 \series bold
 
 \backslash
-uproot{distance}
+
+\nospellcheck on
+uproot
+\nospellcheck default
+{distance}
 \end_layout
 
 \begin_layout Standard
@@ -2859,7 +3107,11 @@ distance
 \emph on
 Big
 \emph default
- Points (unité bp;
+ Points (unité 
+\nospellcheck on
+bp
+\nospellcheck default
+;
  
 \begin_inset Formula $\mathrm{72\,bp=1\,pouce}$
 \end_inset
@@ -2877,21 +3129,37 @@ Big
 \series bold
 
 \backslash
+
+\nospellcheck on
 root
+\nospellcheck default
+
 \backslash
-leftroot{-1
+
+\nospellcheck on
+leftroot
+\nospellcheck default
+{-1
 \begin_inset Formula $\to$
 \end_inset
 
 
 \backslash
-uproot{2
+
+\nospellcheck on
+uproot
+\nospellcheck default
+{2
 \begin_inset Formula $\to$
 \end_inset
 
 
 \backslash
+
+\nospellcheck on
 beta
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -2935,8 +3203,11 @@ Les coefficients binomiaux sont insérés avec la commande
 \series bold
 
 \backslash
+
+\nospellcheck on
 binom
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -2988,14 +3259,20 @@ frac
 \series bold
 
 \backslash
+
+\nospellcheck on
 binom
 \series default
+\nospellcheck default
  les commandes 
 \series bold
 
 \backslash
+
+\nospellcheck on
 dbinom
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -3034,8 +3311,11 @@ dbinom
 \series bold
 
 \backslash
+
+\nospellcheck on
 tbinom
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -3076,8 +3356,11 @@ tbinom
 \series bold
 
 \backslash
+
+\nospellcheck on
 brace
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -3116,8 +3399,11 @@ brace
 \series bold
 
 \backslash
+
+\nospellcheck on
 brack
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -3189,7 +3475,11 @@ Résultat
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 binom
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -3222,7 +3512,11 @@ B
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 dbinom
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -3255,7 +3549,11 @@ B
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 tbinom
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -3288,7 +3586,11 @@ B
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 brack
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -3321,7 +3623,11 @@ B
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 brace
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -3603,8 +3909,11 @@ En insérant la commande
 \series bold
 
 \backslash
+
+\nospellcheck on
 not
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -3677,7 +3986,11 @@ Résultat
 \begin_layout Plain Layout
 
 \backslash
-not=
+
+\nospellcheck on
+not
+\nospellcheck default
+=
 \end_layout
 
 \end_inset
@@ -3702,7 +4015,11 @@ not=
 \begin_layout Plain Layout
 
 \backslash
-not 
+
+\nospellcheck on
+not
+\nospellcheck default
+ 
 \backslash
 le
 \end_layout
@@ -3729,8 +4046,14 @@ le
 \begin_layout Plain Layout
 
 \backslash
-not 
+
+\nospellcheck on
+not
+\nospellcheck default
+ 
 \backslash
+
+\nospellcheck on
 parallel
 \end_layout
 
@@ -3941,8 +4264,11 @@ L'indice le plus petit est placé implicitement au dessus ou en dessous du premi
 \series bold
 
 \backslash
+
+\nospellcheck on
 phantom
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -4008,15 +4334,22 @@ arg   "math/phantom"
 \series bold
 
 \backslash
+
+\nospellcheck on
 phantom
 \series default
+\nospellcheck default
  une petite boîte avec deux flèches rouges apparaît.
  Les flèches indiquent que la garniture
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Traduction de placeholder,
+Traduction de 
+\nospellcheck on
+placeholder
+\nospellcheck default
+,
  c'est un terme de typographie (NdT).
 \end_layout
 
@@ -4065,7 +4398,11 @@ Résultat
 
 _
 \backslash
+
+\nospellcheck on
 phantom
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -4079,7 +4416,11 @@ phantom
 
 
 \backslash
+
+\nospellcheck on
 mathrm
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -4112,7 +4453,11 @@ F
 
 _
 \backslash
+
+\nospellcheck on
 phantom
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -4126,7 +4471,11 @@ phantom
 
 
 \backslash
+
+\nospellcheck on
 mathrm
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -4161,11 +4510,19 @@ Lambda^
 
 
 \backslash
+
+\nospellcheck on
 phantom
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
+
+\nospellcheck on
 ii
+\nospellcheck default
+
 \begin_inset Formula $\to$
 \end_inset
 
@@ -4173,7 +4530,9 @@ t
 \begin_inset space \textvisiblespace{}
 \end_inset
 
-_MMt
+_
+\nospellcheck on
+MMt
 \end_layout
 
 \end_inset
@@ -4204,8 +4563,11 @@ En plus,
 \series bold
 
 \backslash
+
+\nospellcheck on
 vphantom
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -4250,8 +4612,11 @@ arg   "math/vphantom"
 \series bold
 
 \backslash
+
+\nospellcheck on
 hphantom
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -4297,16 +4662,22 @@ arg   "math/hphantom"
 \series bold
 
 \backslash
+
+\nospellcheck on
 hphantom
 \series default
+\nospellcheck default
  crée seulement de l'espace pour la hauteur maximale des caractères de la boîte,
  mais pas pour leur largeur.
  
 \series bold
 
 \backslash
+
+\nospellcheck on
 vphantom
 \series default
+\nospellcheck default
  crée de l'espace seulement pour la largeur du contenu de la boîte.
  C'est pour cela que les boîtes qui se trouvent sur les boutons des deux commandes n'ont qu'une seule flèche rouge.
 \end_layout
@@ -4316,8 +4687,11 @@ Par exemple
 \series bold
 
 \backslash
+
+\nospellcheck on
 vphantom
 \series default
+\nospellcheck default
 
 \begin_inset space \textvisiblespace{}
 \end_inset
@@ -4326,8 +4700,11 @@ vphantom
 \series bold
 a
 \backslash
+
+\nospellcheck on
 int
 \series default
+\nospellcheck default
  crée de l'espace pour la hauteur du signe intégrale
 \begin_inset Foot
 status collapsed
@@ -4337,8 +4714,11 @@ La commande
 \series bold
 
 \backslash
+
+\nospellcheck on
 int
 \series default
+\nospellcheck default
  insère le signe de l'intégrale,
  voir 
 \begin_inset CommandInset ref
@@ -4474,7 +4854,11 @@ Résultat
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 overline
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -4537,7 +4921,11 @@ overline
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 underline
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -4600,13 +4988,21 @@ underline
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 overline
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
+
+\nospellcheck on
 underline
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -4641,14 +5037,20 @@ Dans le dernier exemple,
 \series bold
 
 \backslash
+
+\nospellcheck on
 overline
 \series default
+\nospellcheck default
  ou 
 \series bold
 
 \backslash
+
+\nospellcheck on
 underline
 \series default
+\nospellcheck default
  soit inséré en premier.
 \end_layout
 
@@ -4659,8 +5061,11 @@ Pour souligner deux fois,
 \series bold
 
 \backslash
+
+\nospellcheck on
 underline
 \series default
+\nospellcheck default
  deux fois (ou autant de fois que nécessaire).
 \end_layout
 
@@ -4676,8 +5081,11 @@ On peut créer des lignes personnalisées en utilisant la commande
 \series bold
 
 \backslash
+
+\nospellcheck on
 rule
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -4720,7 +5128,11 @@ rule
 \series bold
 
 \backslash
-rule[décalage vertical]{longueur}{épaisseur}
+
+\nospellcheck on
+rule
+\nospellcheck default
+[décalage vertical]{longueur}{épaisseur}
 \end_layout
 
 \begin_layout Standard
@@ -4743,13 +5155,21 @@ nolink "false"
 \series bold
 
 \backslash
-rule[-2ex]{3cm}{2pt}
+
+\nospellcheck on
+rule
+\nospellcheck default
+[-2ex]{3cm}{2pt}
 \series default
  et 
 \series bold
 
 \backslash
-rule{2cm}{1pt}
+
+\nospellcheck on
+rule
+\nospellcheck default
+{2cm}{1pt}
 \series default
 :
 \end_layout
@@ -4767,8 +5187,11 @@ Voici une phrase
 \series bold
 
 \backslash
+
+\nospellcheck on
 rule
 \series default
+\nospellcheck default
  peut aussi être utilisé avec du texte si la ligne est insérée via le menu 
 \family sans
 Insertion\SpecialChar menuseparator
@@ -4850,8 +5273,11 @@ arg   "math-insert \\ldots"
 \series bold
 
 \backslash
+
+\nospellcheck on
 ldots
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -4893,8 +5319,11 @@ ldots
 \series bold
 
 \backslash
+
+\nospellcheck on
 cdots
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -5086,7 +5515,11 @@ A_1
 
 ,
 \backslash
+
+\nospellcheck on
 ldots
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -5119,7 +5552,11 @@ A_1
 
 +
 \backslash
+
+\nospellcheck on
 cdots
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -5148,6 +5585,8 @@ cdots
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 vdots
 \end_layout
 
@@ -5173,6 +5612,8 @@ vdots
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 ddots
 \end_layout
 
@@ -5198,6 +5639,8 @@ ddots
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 iddots
 \end_layout
 
@@ -5268,8 +5711,11 @@ spécial
 \series bold
 
 \backslash
+
+\nospellcheck on
 ldots
 \series default
+\nospellcheck default
 .
 \end_layout
 
@@ -5285,8 +5731,11 @@ Pour utiliser
 \series bold
 
 \backslash
+
+\nospellcheck on
 iddots
 \series default
+\nospellcheck default
 ,
  on doit utiliser une des options 
 \family sans
@@ -5294,7 +5743,11 @@ Utiliser
 \begin_inset space ~
 \end_inset
 
-(automatiquement) le paquetage mathdots 
+(automatiquement) le paquetage 
+\nospellcheck on
+mathdots
+\nospellcheck default
+ 
 \family default
 dans les paramètres du document,
  rubrique 
@@ -5307,8 +5760,11 @@ Options du mode math
 
 L'utilisation de l'option 
 \family sans
-Utiliser le paquetage mathdots
+Utiliser le paquetage 
+\nospellcheck on
+mathdots
 \family default
+\nospellcheck default
  améliorera l'apparence de tous les points du document si leur police ou leur taille de caractère n'est pas le choix implicite.
 \end_layout
 
@@ -5322,8 +5778,11 @@ En ce qui concerne spécifiquement les matrices,
 \series bold
 
 \backslash
+
+\nospellcheck on
 hdotsfor
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -5359,7 +5818,13 @@ hdotsfor
 \end_inset
 
 ,
- qui a la syntaxe suivante (mathtools doit toujours être chargé via 
+ qui a la syntaxe suivante (
+\family sans
+\nospellcheck on
+mathtools
+\family default
+\nospellcheck default
+ doit toujours être chargé via 
 \family sans
 Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
@@ -5373,7 +5838,11 @@ Options mode math
 \series bold
 
 \backslash
-hdotsfor[distance]{nombre de colonnes}
+
+\nospellcheck on
+hdotsfor
+\nospellcheck default
+[distance]{nombre de colonnes}
 \end_layout
 
 \begin_layout Standard
@@ -5403,7 +5872,11 @@ Dans la matrice suivante,
 \series bold
 
 \backslash
-hdotsfor[2]{4}
+
+\nospellcheck on
+hdotsfor
+\nospellcheck default
+[2]{4}
 \series default
  dans la première colonne de le deuxième ligne,
  pour avoir une ligne de points de suspension avec une distance entre points double de celle obtenue avec la commande 
@@ -5438,8 +5911,11 @@ Pour aller plus loin,
 \series bold
 
 \backslash
+
+\nospellcheck on
 dotfill
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -5479,8 +5955,11 @@ dotfill
 \series bold
 
 \backslash
+
+\nospellcheck on
 hfill
 \series default
+\nospellcheck default
 ,
  voir
 \begin_inset space ~
@@ -5503,7 +5982,11 @@ Par exemple,
 \series bold
 A
 \backslash
+
+\nospellcheck on
 dotfill
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -5524,15 +6007,21 @@ Comme
 \series bold
  
 \backslash
+
+\nospellcheck on
 dotfill
 \series default
+\nospellcheck default
  avec des points,
  il existe la commande 
 \series bold
 
 \backslash
+
+\nospellcheck on
 hrulefill
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -5665,8 +6154,10 @@ l
 \emph default
  pour un alignement à gauche (
 \emph on
+\nospellcheck on
 left
 \emph default
+\nospellcheck default
 ) ,
  
 \emph on
@@ -5679,8 +6170,10 @@ c
 \emph default
  à droite (
 \emph on
+\nospellcheck on
 right
 \emph default
+\nospellcheck default
 ).
  Par exemple,
  pour créer une matrice
@@ -5695,8 +6188,10 @@ right
  la deuxième et la troisième sont centrées et la dernière est alignée à droite,
  on va entrer 
 \series bold
+\nospellcheck on
 lccr
 \series default
+\nospellcheck default
  pour l'alignement horizontal.
  En principe,
  toutes les colonnes d'une matrice sont centrées,
@@ -5714,8 +6209,10 @@ Alignement horizontal:
 \begin_layout Standard
 
 \series bold
+\nospellcheck on
 lll
 \series default
+\nospellcheck default
  :
  
 \begin_inset Formula $\begin{array}{lll}
@@ -5728,8 +6225,10 @@ C & F & 10000
  ,
  
 \series bold
+\nospellcheck on
 ccc
 \series default
+\nospellcheck default
  :
  
 \begin_inset Formula $\begin{array}{ccc}
@@ -5742,8 +6241,10 @@ C & F & 10000
  ,
  
 \series bold
+\nospellcheck on
 rrr
 \series default
+\nospellcheck default
  :
  
 \begin_inset Formula $\begin{array}{rrr}
@@ -5807,7 +6308,7 @@ L
 'Apparence
 \family default
  permet d'ajouter des parenthèses du type choisi autour de la matrice,
- ou pour sélecttionner le style 
+ ou pour sélectionner le style 
 \begin_inset Quotes cld
 \end_inset
 
@@ -5823,17 +6324,25 @@ petit
 \end_inset
 
 .
- Ici le parenthèses ont été ajputées manuellement via les commandes
+ Ici le parenthèses ont été ajoutées manuellement via les commandes
 \series bold
  
 \backslash
-bigl(
+
+\nospellcheck on
+bigl
+\nospellcheck default
+(
 \series default
  et 
 \series bold
 
 \backslash
-bigr).
+
+\nospellcheck on
+bigr
+\nospellcheck default
+).
 \end_layout
 
 \begin_layout Standard
@@ -5842,8 +6351,11 @@ Une autre façon d'ajouter des parenthèses autour d'une matrice,
 \series bold
 
 \backslash
+
+\nospellcheck on
 left
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -5882,8 +6394,11 @@ left
 \series bold
 
 \backslash
+
+\nospellcheck on
 right
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -5984,7 +6499,11 @@ Résultat
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 bmatrix
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -6020,7 +6539,11 @@ matrice
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 Bmatrix
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -6056,7 +6579,11 @@ matrice
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 pmatrix
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -6126,7 +6653,11 @@ Résultat
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 vmatrix
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -6162,7 +6693,11 @@ matrice
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 Vmatrix
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -6198,7 +6733,11 @@ matrice
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 matrix
+\nospellcheck default
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -6246,7 +6785,11 @@ Quand on insère par exemple
 \series bold
 
 \backslash
-vmatrix,
+
+\nospellcheck on
+vmatrix
+\nospellcheck default
+,
 
 \series default
  une boîte bleue apparaît entre deux lignes verticales où la matrice est insérée.
@@ -6265,8 +6808,11 @@ Comme toutes les formules multi-lignes sont en fait des matrices,
 \series bold
 
 \backslash
+
+\nospellcheck on
 arraycolsep
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -6322,8 +6868,11 @@ Pour changer l'espacement des lignes,
 \series bold
 
 \backslash
+
+\nospellcheck on
 arraystretch
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -6366,9 +6915,17 @@ arraystretch
 \series bold
 
 \backslash
-renewcommand{
+
+\nospellcheck on
+renewcommand
+\nospellcheck default
+{
 \backslash
-arraystretch}{facteur d'étirement}
+
+\nospellcheck on
+arraystretch
+\nospellcheck default
+}{facteur d'étirement}
 \begin_inset Index idx
 range none
 pageformat default
@@ -6410,14 +6967,20 @@ La commande
 \series bold
 
 \backslash
+
+\nospellcheck on
 renewcommand
 \series default
+\nospellcheck default
  affecte le facteur d'étirement à la commande prédéfinie 
 \series bold
 
 \backslash
+
+\nospellcheck on
 arraystretch
 \series default
+\nospellcheck default
 .
  Par exemple,
  pour doubler l'espacement des lignes,
@@ -6428,8 +6991,11 @@ arraystretch
 \series bold
 
 \backslash
+
+\nospellcheck on
 arraystretch
 \series default
+\nospellcheck default
 .
 \end_layout
 
@@ -6439,8 +7005,11 @@ Pour insérer une petite matrice dans une ligne de texte,
 \series bold
 
 \backslash
+
+\nospellcheck on
 smallmatrix
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -6690,6 +7259,8 @@ Résultat
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 langle
 \end_layout
 
@@ -6715,6 +7286,8 @@ langle
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 lceil
 \end_layout
 
@@ -6740,6 +7313,8 @@ lceil
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 lfloor
 \end_layout
 
@@ -6914,6 +7489,8 @@ Résultat
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 rangle
 \end_layout
 
@@ -6939,6 +7516,8 @@ rangle
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 rceil
 \end_layout
 
@@ -6964,6 +7543,8 @@ rceil
 \begin_layout Plain Layout
 
 \backslash
+
+\nospellcheck on
 rfloor
 \end_layout
 
@@ -7061,8 +7642,11 @@ Nota:
 \series bold
 
 \backslash
+
+\nospellcheck on
 textbackslash
 \series default
+\nospellcheck default
 
 \begin_inset Index idx
 range none
@@ -7097,7 +7681,11 @@ textbackslash
 
 \end_inset
 
- pour la barre de fraction inverse (backslash),
+ pour la barre de fraction inverse (
+\nospellcheck on
+backslash
+\nospellcheck default
+),
  puisque la commande 
 \backslash
 
@@ -7118,14 +7706,20 @@ On peut ajuster la taille de tous les caractères listés ci-dessus avec les com
 \series bold
 
 \backslash
+
+\nospellcheck on
 langle
 \series default
+\nospellcheck default
  et 
 \series bold
 
 \backslash
+
+\nospellcheck on
 rangle
 \series default
+\nospellcheck default
 .
 \end_layout
 
@@ -7216,15 +7810,21 @@ Big
 \series bold
 
 \backslash
+
+\nospellcheck on
 bigg
 \series default
+\nospellcheck default
 ,
  et 
 \series bold
 
 \backslash
+
+\nospellcheck on
 Bigg
 \series default
+\nospellcheck default
 .
  
 \series bold
@@ -7236,8 +7836,11 @@ big
 \series bold
 
 \backslash
+
+\nospellcheck on
 Bigg
 \series default
+\nospellcheck default
  la plus grande.
 \end_layout
 
@@ -10097,7 +10700,7 @@ Commande
 \begin_inset Text
 
 \begin_layout Plain Layout
-Example
+Exemple
 \end_layout
 
 \end_inset
@@ -10281,7 +10884,7 @@ Commande
 \begin_inset Text
 
 \begin_layout Plain Layout
-Example
+Exemple
 \end_layout
 
 \end_inset
@@ -15674,11 +16277,7 @@ de
 \end_inset
 
 texte\SpecialChar menuseparator
-P
-\begin_inset Formula $\leftarrow\leftarrow$
-\end_inset
-
-ersonnalisé
+Personnalisé
 \family default
 \SpecialChar ldots
 .
@@ -22130,7 +22729,7 @@ A=\frac{B}{c}\cdot\maltese
 
 \begin_inset Formula 
 \[
-\maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}
+\maltese A\textrm{{\Large \maltese\textit{A}}}\textrm{{\tiny \maltese\textit{A}}}
 \]
 
 \end_inset
@@ -28893,15 +29492,174 @@ La fonction modulo est un peu spéciale,
 \end_layout
 
 \begin_layout Standard
-Les variantes pour une formule hors ligne:
-\begin_inset Formula 
-\begin{align*}
-\underline{\textrm{Commande}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Résultat}}\\
-\mathrm{a\backslash mod\textrm{␣}b} &  & a\mod b\\
-\mathrm{a\backslash pmod\textrm{␣}b} &  & a\pmod b\\
-\mathrm{a\backslash bmod\textrm{␣}b} &  & a\bmod b\\
-\mathrm{a\backslash pod\textrm{␣}b} &  & a\pod b
-\end{align*}
+Les variantes pour une formule hors ligne
+\begin_inset space ~
+\end_inset
+
+sont:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="block" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Commande
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Résultat
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\backslash
+mod
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\mod b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\backslash
+pmod
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+b
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\pmod b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\backslash
+bmod
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+b
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\bmod b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\backslash
+pod
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+b
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\pod b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -28909,24 +29667,23 @@ Les variantes pour une formule hors ligne:
 \end_layout
 
 \begin_layout Standard
-Dans une formule en ligne,
- il y a moins d'espace inséré avant le nom de la fonction,
- quelque soit la variante.
- De façon implicite,
- les fonctions modulo ne prennent en compte que le premier caractère qui suit.
- Pour en utiliser plus,
- on doit les mettre entre accolades \SpecialChar TeX
- :
-\begin_inset Formula 
-\begin{align*}
-\underline{\textrm{Commande}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Résultat}}\\
-\mathrm{a\backslash pod\textrm{␣}bcd} &  & a\pod bcd\\
-\mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
-\end{align*}
-
+\begin_inset VSpace defskip
 \end_inset
 
+Dans une formule en ligne,
+ il y a plus d'espace inséré avant les noms de fonction,
+ sauf 
+\series bold
 
+\backslash
+mod
+\series default
+.
+ Cette dernière version est également la seule qui ne prenne pas le 
+\series bold
+b
+\series default
+ comme argument mais agit comme un opérateur binaire.
 \end_layout
 
 \begin_layout Section
@@ -36974,7 +37731,11 @@ xymatrix
 \series default
  dans une formule.
  Ensuite vous pouvez ajouter de nouvelles lignes et de nouvelles colonnes comme pour une matrice normale,
- voi 
+ voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matrices"
@@ -36988,7 +37749,7 @@ nolink "false"
 \begin_layout Standard
 Contrairement aux diagrammes amscd,
  les xymatrices acceptent les flèches diagonales ou courbes et plus encore.
- Toutes les possibilités pour créer des diagrammes commutatifs et leurs décorations sont expliquées en détail dans ce 
+ Toutes les possibilités pour créer des diagrammes commutatifs et leurs décorations sont expliquées en détail dans le 
 \emph on
 Manuel pour XY-pic 
 \emph default
@@ -37764,6 +38525,22 @@ A=B
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Visiblement,
+ les commandes définies dans le préambule ne s'affichent pas harmonieusement en \SpecialChar LyX
+.
+ La plupart ce ces commandes peuvent cependant être définies avec des 
+\begin_inset Quotes cld
+\end_inset
+
+macros mathématiques
+\begin_inset Quotes crd
+\end_inset
+
+,
+ comme nous allons l'expliquer ci-après et elles s'affichent correctement.
 \end_layout
 
 \begin_layout Subsection
@@ -38939,6 +39716,68 @@ droite
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Macros mathématiques pour les commandes externes
+\end_layout
+
+\begin_layout Standard
+Parfois,
+ vous pouvez utiliser un paquetage \SpecialChar LaTeX
+ définissant une commande qui n'est pas reconnue par \SpecialChar LyX
+.
+ C'est assez simple en fait:
+ incluez le paquetage dans le préambule et saisissez la commande en mode mathématique.
+ Comme pour les commandes définies dans le préambule,
+ l'affichage dans la fenêtre \SpecialChar LyX
+ ne sera pas 
+\begin_inset Quotes cld
+\end_inset
+
+agréable
+\begin_inset Quotes crd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+À partir de lyx-2.4,
+ ce problème est résolu.
+ Il suffit de définir une macro mathématique avec un case vide \SpecialChar LaTeX
+!
+ La partie \SpecialChar LyX
+ sera utilisée pour l'affichage,
+ sans qu'une sortie \SpecialChar LaTeX
+ soit produite.
+ Par exemple,
+ la paquetage 
+\family typewriter
+godelnum.sty
+\family default
+ définit une macro 
+\series bold
+Godelnum
+\series default
+ qui met un argument unique entre guillemets simples.
+ Pour obtenir un affichage agréable de cette macro,
+ il suffit de saisir:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\Godelnum}[1]{}
+{\ulcorner#1\urcorner}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La même astuce peut bien sûr être utilisée pour les commandes définies dans le préambule.
 \end_layout
 
 \begin_layout Section
@@ -41167,7 +42006,7 @@ où
 \end_inset
 
 -rf,
- la magnétisation commence à se défocaliser,
+ la magnétisation commence à se délocaliser,
  ce qui provoque en outre l'atténuation du signal.
  Cette atténuation dépend exponentiellement de ladite durée 
 \begin_inset Formula $T_{2}$
@@ -41401,11 +42240,11 @@ nolink "false"
  vide.
 \begin_inset Formula 
 \begin{flalign}
-\hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
+\hspace{30pt}F_{A} & =\rho·V·g & {\footnotesize \begin{array}{ll}
 \rho & \textrm{density}\\
 V & \textrm{volume}\\
 g & \textrm{gravitational acceleration}
-\end{array} &  & {}\label{eq:within}
+\end{array}} &  & {}\label{eq:within}
 \end{flalign}
 
 \end_inset
@@ -42842,7 +43681,16 @@ F.
 :
  
 \shape italic
-The \SpecialChar LaTeX
+The
+\begin_inset CommandInset href
+LatexCommand href
+name "Description"
+target "https://www.tug.org/~hvoss/PDF/mathmode.pdf"
+literal "false"
+
+\end_inset
+
+ \SpecialChar LaTeX
  Companion
 \shape default
 .
@@ -42917,7 +43765,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Liste"
-target "http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
+target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
 literal "false"
 
 \end_inset
@@ -43014,6 +43862,15 @@ hyperref
 
 
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Description"
+target "https://www.tug.org/~hvoss/PDF/mathmode.pdf"
+literal "false"
 
 \end_inset
 

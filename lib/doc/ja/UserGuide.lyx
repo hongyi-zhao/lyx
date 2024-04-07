@@ -35443,10 +35443,21 @@ literal "false"
 Bib\SpecialChar TeX
 スタイルとして
 \family sans
-alphadin.bst
+alpha.bst
 \family default
 をしています．これは，
-German Standards Institute (DIN)と整合的なアルファベット-数字様式を提供します．
+German Standards Institute (DIN)
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Not true anymore,
+ please adjust
+\end_layout
+
+\end_inset
+
+と整合的なアルファベット-数字様式を提供します．
 \end_layout
 
 \begin_layout Standard
@@ -61034,7 +61045,8 @@ bibname
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "../biblio/LyXDocs"
-options "../biblio/alphadin"
+options "alpha"
+encoding "default"
 
 \end_inset
 

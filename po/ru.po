@@ -6,13 +6,13 @@
 # Nick A. Gusev <guusev@yandex.ru>, 2009.
 # Valeriy Kruchko <lerkru@gmail.com>, 2009.
 # Sergey Tereschenko <serg.partizan@gmail.com>, 2010.
-# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2023.
+# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-01-11 11:07-0500\n"
-"PO-Revision-Date: 2023-11-12 19:37+0100\n"
+"POT-Creation-Date: 2024-02-12 11:10-0500\n"
+"PO-Revision-Date: 2024-02-12 18:54+0100\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -682,7 +682,7 @@ msgid "Remove the selected branch"
 msgstr "Удалить выбранную ветку"
 
 #: src/frontends/qt/ui/BranchesUi.ui:74 src/frontends/qt/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4818 src/Buffer.cpp:4831
+#: src/Buffer.cpp:4821 src/Buffer.cpp:4834
 msgid "&Remove"
 msgstr "&Удалить"
 
@@ -756,18 +756,18 @@ msgid "Add A&ll"
 msgstr "Добавить всё"
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1483
-#: src/Buffer.cpp:4792 src/Buffer.cpp:4902 src/LyXVC.cpp:114 src/LyXVC.cpp:310
+#: src/Buffer.cpp:4795 src/Buffer.cpp:4905 src/LyXVC.cpp:114 src/LyXVC.cpp:310
 #: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:226
 #: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:3026
 #: src/frontends/qt/GuiParagraph.cpp:177 src/frontends/qt/GuiPrefs.cpp:3332
-#: src/frontends/qt/GuiPrefs.cpp:3355 src/frontends/qt/GuiView.cpp:2904
-#: src/frontends/qt/GuiView.cpp:3067 src/frontends/qt/GuiView.cpp:3297
-#: src/frontends/qt/GuiView.cpp:3321 src/frontends/qt/GuiView.cpp:3335
-#: src/frontends/qt/GuiView.cpp:3439 src/frontends/qt/GuiView.cpp:3484
-#: src/frontends/qt/GuiView.cpp:3539 src/frontends/qt/GuiView.cpp:3773
-#: src/frontends/qt/GuiView.cpp:3787 src/frontends/qt/GuiView.cpp:3906
-#: src/frontends/qt/GuiView.cpp:3931 src/frontends/qt/GuiView.cpp:4637
-#: src/frontends/qt/GuiView.cpp:4644 src/insets/InsetBibtex.cpp:153
+#: src/frontends/qt/GuiPrefs.cpp:3355 src/frontends/qt/GuiView.cpp:2908
+#: src/frontends/qt/GuiView.cpp:3071 src/frontends/qt/GuiView.cpp:3301
+#: src/frontends/qt/GuiView.cpp:3325 src/frontends/qt/GuiView.cpp:3339
+#: src/frontends/qt/GuiView.cpp:3443 src/frontends/qt/GuiView.cpp:3488
+#: src/frontends/qt/GuiView.cpp:3543 src/frontends/qt/GuiView.cpp:3777
+#: src/frontends/qt/GuiView.cpp:3791 src/frontends/qt/GuiView.cpp:3910
+#: src/frontends/qt/GuiView.cpp:3935 src/frontends/qt/GuiView.cpp:4641
+#: src/frontends/qt/GuiView.cpp:4648 src/insets/InsetBibtex.cpp:153
 msgid "&Cancel"
 msgstr "&Отмена"
 
@@ -942,7 +942,7 @@ msgid "Font Properties"
 msgstr "Свойства шрифта"
 
 #: src/frontends/qt/ui/CharacterUi.ui:36 src/frontends/qt/ui/CharacterUi.ui:55
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:488
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:481
 msgid "Font family"
 msgstr "Гарнитура шрифта"
 
@@ -959,7 +959,7 @@ msgid "&Series:"
 msgstr "&Насыщенность:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:88 src/frontends/qt/ui/CharacterUi.ui:107
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:523
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:495
 msgid "Font shape"
 msgstr "Начертание шрифта"
 
@@ -969,13 +969,13 @@ msgstr "На&чертание:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:114
 #: src/frontends/qt/ui/CharacterUi.ui:133
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:537
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:530
 msgid "Font size"
 msgstr "Размер шрифта"
 
 #: src/frontends/qt/ui/CharacterUi.ui:159
 #: src/frontends/qt/ui/CharacterUi.ui:178
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:467
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:488
 msgid "Font color"
 msgstr "Цвет текста"
 
@@ -1010,7 +1010,7 @@ msgid "&Language:"
 msgstr "&Язык:"
 
 #: src/frontends/qt/ui/CharacterUi.ui:281
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:495 lib/layouts/bicaption.module:16
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:509 lib/layouts/bicaption.module:16
 #: lib/layouts/europasscv.layout:441 lib/layouts/europasscv.layout:476
 #: lib/layouts/europasscv.layout:483 lib/layouts/europecv.layout:322
 #: lib/layouts/europecv.layout:328 lib/layouts/moderncv.layout:581
@@ -1612,7 +1612,7 @@ msgid "Restrict search to whole words only"
 msgstr "Искать только целые слова"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:153
-#: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:101
+#: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:98
 msgid "Wh&ole words"
 msgstr "Только &целые слова"
 
@@ -1625,22 +1625,22 @@ msgid "Case &sensitive"
 msgstr "Учитывать &регистр"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:205
-#: src/frontends/qt/FindAndReplace.cpp:713
+#: src/frontends/qt/FindAndReplace.cpp:716
 msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
 msgstr "Найти следующее совпадение (Enter, предыдущее: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
-#: src/frontends/qt/ui/SearchUi.ui:190 src/frontends/qt/FindAndReplace.cpp:712
+#: src/frontends/qt/ui/SearchUi.ui:190 src/frontends/qt/FindAndReplace.cpp:715
 msgid "Find &>"
 msgstr "Найти &>"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:221
-#: src/frontends/qt/FindAndReplace.cpp:715
+#: src/frontends/qt/FindAndReplace.cpp:718
 msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
 msgstr "Заменить и найти следующее совпадение (Enter, предыдущее: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:224
-#: src/frontends/qt/FindAndReplace.cpp:714
+#: src/frontends/qt/FindAndReplace.cpp:717
 msgid "Rep&lace >"
 msgstr "Заменить >"
 
@@ -1738,10 +1738,14 @@ msgid "Adhe&re to search string formatting of"
 msgstr "Соблюдать форматирование поисковой строки"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:453
-msgid "Strike-through"
-msgstr "Зачёркивание"
+msgid "Sectioning markup"
+msgstr "Разметка разделов"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:460
+msgid "Deletion (change)"
+msgstr "Удаление (изменение)"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:467
 msgid "Font series[[FindReplaceAdv]]"
 msgstr "Насыщенность шрифта"
 
@@ -1749,23 +1753,19 @@ msgstr "Насыщенность шрифта"
 msgid "Emph/noun"
 msgstr "Выделение/имя"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:481
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:502
+msgid "Strike-through"
+msgstr "Зачёркивание"
+
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:516
 msgid "Dese&lect all"
 msgstr "Снять всё выделение"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:502
-msgid "Sectioning markup"
-msgstr "Разметка разделов"
-
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:509
-msgid "Deletion (change)"
-msgstr "Удаление (изменение)"
-
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:516
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:523
 msgid "Underlining"
 msgstr "Подчёркивание"
 
-#: src/frontends/qt/ui/FindAndReplaceUi.ui:530
+#: src/frontends/qt/ui/FindAndReplaceUi.ui:537
 msgid "&Select all"
 msgstr "Выделить всё"
 
@@ -2354,21 +2354,21 @@ msgstr "&Другое"
 msgid "I&nclude Type:"
 msgstr "&Тип включения:"
 
-#: src/frontends/qt/ui/IncludeUi.ui:46 src/insets/InsetInclude.cpp:418
+#: src/frontends/qt/ui/IncludeUi.ui:46 src/insets/InsetInclude.cpp:428
 msgid "Include"
 msgstr "Включить (include)"
 
-#: src/frontends/qt/ui/IncludeUi.ui:51 src/insets/InsetInclude.cpp:408
+#: src/frontends/qt/ui/IncludeUi.ui:51 src/insets/InsetInclude.cpp:418
 msgid "Input"
 msgstr "Ввести (input)"
 
 #: src/frontends/qt/ui/IncludeUi.ui:56 lib/layouts/stdlayouts.inc:69
-#: src/insets/InsetInclude.cpp:411
+#: src/insets/InsetInclude.cpp:421
 msgid "Verbatim"
 msgstr "Буквально"
 
-#: src/frontends/qt/ui/IncludeUi.ui:61 src/insets/InsetInclude.cpp:1440
-#: src/insets/InsetInclude.cpp:1446
+#: src/frontends/qt/ui/IncludeUi.ui:61 src/insets/InsetInclude.cpp:1448
+#: src/insets/InsetInclude.cpp:1466
 msgid "Program Listing"
 msgstr "Листинг программы"
 
@@ -5400,7 +5400,7 @@ msgstr "Нет гиперссылки"
 msgid "Find previous occurrence (Shift+Enter)"
 msgstr "Найти предыдущее совпадение (Shift+Enter)"
 
-#: src/frontends/qt/ui/SearchUi.ui:55 src/frontends/qt/FindAndReplace.cpp:707
+#: src/frontends/qt/ui/SearchUi.ui:55 src/frontends/qt/FindAndReplace.cpp:710
 msgid "&< Find"
 msgstr "&< Найти"
 
@@ -5448,7 +5448,7 @@ msgstr "Найти следующее совпадение (Enter)"
 msgid "Treat uppercase/lowercase writing as distinct"
 msgstr "Различать прописные и строчные буквы"
 
-#: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:99
+#: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:96
 msgid "&Case sensitive[[search]]"
 msgstr "&Учитывать регистр"
 
@@ -5460,7 +5460,7 @@ msgstr "Только целые слова"
 msgid "Limit search and replace to selection"
 msgstr "Вести поиск и замену только в выделенном тексте"
 
-#: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:103
+#: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:100
 msgid "Selection onl&y"
 msgstr "Только в в&ыделении"
 
@@ -5468,7 +5468,7 @@ msgstr "Только в в&ыделении"
 msgid "If this is checked, LyX will search forward immediately"
 msgstr "Начинать поиск следующего совпадения сразу при вводе искомого текста"
 
-#: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:105
+#: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:102
 msgid "Search as yo&u type"
 msgstr "Искать п&ри вводе текста"
 
@@ -5476,7 +5476,7 @@ msgstr "Искать п&ри вводе текста"
 msgid "If the end/start of the document is reached, automatically wrap around"
 msgstr "При достижении конца документа, продолжать поиск/замену с его начала"
 
-#: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:107
+#: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:104
 msgid "&Wrap"
 msgstr "Продол&жать с начала"
 
@@ -6293,8 +6293,8 @@ msgstr "Только текст документа"
 msgid "Select the output format"
 msgstr "Выберите формат вывода"
 
-#: src/frontends/qt/ui/WorkAreaUi.ui:82 src/frontends/qt/GuiView.cpp:3931
-#: src/frontends/qt/GuiView.cpp:4637
+#: src/frontends/qt/ui/WorkAreaUi.ui:82 src/frontends/qt/GuiView.cpp:3935
+#: src/frontends/qt/GuiView.cpp:4641
 msgid "&Reload"
 msgstr "&Перезагрузить"
 
@@ -6418,7 +6418,7 @@ msgstr ""
 
 #: lib/citeengines/biblatex-natbib.citeengine:143
 #: lib/citeengines/biblatex.citeengine:133 lib/layouts/numreport.inc:44
-#: lib/layouts/stdcounters.inc:90
+#: lib/layouts/stdcounters.inc:91
 msgid "Footnote"
 msgstr "Сноска"
 
@@ -11910,7 +11910,7 @@ msgstr "Того же автора (bib)"
 msgid "bysame"
 msgstr "того же"
 
-#: lib/layouts/ectaart.layout:252 lib/layouts/stdcounters.inc:95
+#: lib/layouts/ectaart.layout:252 lib/layouts/stdcounters.inc:96
 msgid "Footnote (Title)"
 msgstr "Сноска (титульный лист)"
 
@@ -12311,7 +12311,7 @@ msgstr ""
 "формулы, например '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17 lib/layouts/scrbook.layout:30
-#: lib/layouts/stdcounters.inc:85 src/insets/InsetRef.cpp:643
+#: lib/layouts/stdcounters.inc:86 src/insets/InsetRef.cpp:643
 #: src/mathed/InsetMathRef.cpp:372
 msgid "Equation"
 msgstr "Формула"
@@ -17469,15 +17469,19 @@ msgstr "\\Alph{enumiv}."
 msgid "(\\Alph{enumiv})"
 msgstr "(\\Alph{enumiv})"
 
-#: lib/layouts/stdcounters.inc:86
+#: lib/layouts/stdcounters.inc:82
+msgid "Listing ##"
+msgstr "Листинг ##"
+
+#: lib/layouts/stdcounters.inc:87
 msgid "Equation ##"
 msgstr "Формула ##"
 
-#: lib/layouts/stdcounters.inc:91 lib/layouts/stdcounters.inc:96
+#: lib/layouts/stdcounters.inc:92 lib/layouts/stdcounters.inc:97
 msgid "Footnote \\arabic{footnote}"
 msgstr "Сноска \\arabic{footnote}"
 
-#: lib/layouts/stdcounters.inc:97
+#: lib/layouts/stdcounters.inc:98
 msgid "\\fnsymbol{thanks}"
 msgstr "\\fnsymbol{thanks}"
 
@@ -17596,7 +17600,7 @@ msgstr "стр."
 msgid "Nomenclature[[output]]"
 msgstr "Список обозначений"
 
-#: lib/layouts/stdlayouts.inc:94 src/insets/InsetInclude.cpp:414
+#: lib/layouts/stdlayouts.inc:94 src/insets/InsetInclude.cpp:424
 msgid "Verbatim*"
 msgstr "Буквально*"
 
@@ -27505,7 +27509,7 @@ msgstr "MS Word Office Open XML|O"
 msgid "Table (CSV)"
 msgstr "Таблица (CSV)"
 
-#: lib/configure.py:872 src/frontends/qt/GuiView.cpp:1801
+#: lib/configure.py:872 src/frontends/qt/GuiView.cpp:1805
 #: src/mathed/InsetMathMacroTemplate.cpp:538
 msgid "LyX"
 msgstr "LyX"
@@ -27590,19 +27594,19 @@ msgstr "Улучшенный метафайл (EMF)"
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:1285
+#: lib/configure.py:1291
 msgid "gnuplot"
 msgstr "gnuplot"
 
-#: lib/configure.py:1285
+#: lib/configure.py:1291
 msgid "gnuplot|Gnuplot"
 msgstr "gnuplot|Gnuplot"
 
-#: lib/configure.py:1385
+#: lib/configure.py:1398
 msgid "LyX Archive (zip)"
 msgstr "Архив LyX (zip)"
 
-#: lib/configure.py:1388
+#: lib/configure.py:1401
 msgid "LyX Archive (tar.gz)"
 msgstr "Архив LyX (tar.gz)"
 
@@ -27632,14 +27636,6 @@ msgid "External Material"
 msgstr "Внешний материал"
 
 #: lib/examples/Articles:0
-msgid "Feynman Diagrams"
-msgstr "Диаграммы Фейнмана"
-
-#: lib/examples/Articles:0
-msgid "Instant Preview"
-msgstr "Мгновенный предпросмотр"
-
-#: lib/examples/Articles:0
 msgid "Itemize Bullets"
 msgstr "Маркеры в списках"
 
@@ -27648,16 +27644,24 @@ msgid "Minted File Listing"
 msgstr "Листинг Minted из файла"
 
 #: lib/examples/Articles:0
-msgid "Minted Listings"
-msgstr "Листинги Minted"
+msgid "XY-Pic"
+msgstr "Диаграмма XY-Pic"
+
+#: lib/examples/Articles:0
+msgid "Feynman Diagrams"
+msgstr "Диаграммы Фейнмана"
 
 #: lib/examples/Articles:0
 msgid "XY-Figure"
 msgstr "Диаграмма XY-Figure"
 
 #: lib/examples/Articles:0
-msgid "XY-Pic"
-msgstr "Диаграмма XY-Pic"
+msgid "Minted Listings"
+msgstr "Листинги Minted"
+
+#: lib/examples/Articles:0
+msgid "Instant Preview"
+msgstr "Мгновенный предпросмотр"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
@@ -27672,12 +27676,12 @@ msgid "Mixing Japanese with other Languages (with CJKutf8)"
 msgstr "Многоязычная вёрстка японского с другими языками (с CJKutf8)"
 
 #: lib/examples/Articles:0
-msgid "Mixing Japanese with other Languages (with platex)"
-msgstr "Многоязычная вёрстка японского с другими языками (с platex)"
-
-#: lib/examples/Articles:0
 msgid "Writing Armenian"
 msgstr "Армянская письменность"
+
+#: lib/examples/Articles:0
+msgid "Mixing Japanese with other Languages (with platex)"
+msgstr "Многоязычная вёрстка японского с другими языками (с platex)"
 
 #: lib/examples/Articles:0
 msgid "Language Support"
@@ -27696,10 +27700,6 @@ msgid "Serial Letter 3"
 msgstr "Serial Letter 3"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "Опасности и меры предосторожности"
-
-#: lib/examples/Articles:0
 msgid "LilyPond Book"
 msgstr "Книга LilyPond"
 
@@ -27708,28 +27708,32 @@ msgid "Multilingual Captions"
 msgstr "Многоязычные подписи"
 
 #: lib/examples/Articles:0
-msgid "Noweb2LyX"
-msgstr "Noweb2LyX"
+msgid "Hazard and Precautionary Statements"
+msgstr "Опасности и меры предосторожности"
 
 #: lib/examples/Articles:0
 msgid "Noweb Listerrors"
 msgstr "Noweb Listerrors"
+
+#: lib/examples/Articles:0
+msgid "Noweb2LyX"
+msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1825
 msgid "Modules"
 msgstr "Модули"
 
 #: lib/examples/Articles:0
-msgid "Beamer (Complex)"
-msgstr "Beamer (сложная)"
+msgid "Foils Landslide"
+msgstr "Foils Landslide"
 
 #: lib/examples/Articles:0
 msgid "Foils"
 msgstr "Foils"
 
 #: lib/examples/Articles:0
-msgid "Foils Landslide"
-msgstr "Foils Landslide"
+msgid "Beamer (Complex)"
+msgstr "Beamer (сложная)"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
@@ -27740,56 +27744,44 @@ msgid "Writing Korean with CJK-ko"
 msgstr "Корейская письменность с CJK-ko"
 
 #: lib/examples/Articles:0
-msgid "Hebrew Article (KOMA-Script)"
-msgstr "Hebrew Article (KOMA-Script)"
-
-#: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
 msgid "IEEE Transactions Journal"
 msgstr "IEEE Transactions Journal"
 
 #: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
 msgstr "Springers Global Journal Template (V. 3)"
 
 #: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Основной файл"
-
-#: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Посвящение"
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "Hebrew Article (KOMA-Script)"
 
 #: lib/examples/Articles:0
 msgid "02 Foreword"
 msgstr "02 Предисловие"
 
 #: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Введение"
+msgid "07 Part"
+msgstr "07 Часть"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Словарь терминов"
 
 #: lib/examples/Articles:0
 msgid "04 Acknowledgements"
 msgstr "04 Благодарности"
 
 #: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Список участников"
-
-#: lib/examples/Articles:0
 msgid "06 Acronym"
 msgstr "06 Список сокращений"
-
-#: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Часть"
 
 #: lib/examples/Articles:0
 msgid "08 Author"
@@ -27800,16 +27792,28 @@ msgid "09 Appendix"
 msgstr "09 Приложения"
 
 #: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Словарь терминов"
-
-#: lib/examples/Articles:0
 msgid "11 References"
 msgstr "11 Список литературы"
 
 #: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Список сокращений"
+msgid "05 Contributor List"
+msgstr "05 Список участников"
+
+#: lib/examples/Articles:0
+msgid "01 Dedication"
+msgstr "01 Посвящение"
+
+#: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Основной файл"
+
+#: lib/examples/Articles:0
+msgid "03 Preface"
+msgstr "03 Введение"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Решения"
 
 #: lib/examples/Articles:0
 msgid "06 Part"
@@ -27824,20 +27828,20 @@ msgid "08 Appendix"
 msgstr "08 Приложения"
 
 #: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Список сокращений"
+
+#: lib/examples/Articles:0
 msgid "09 Glossary"
 msgstr "09 Словарь терминов"
 
 #: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Решения"
+msgid "Simple"
+msgstr "Простой"
 
 #: lib/examples/Articles:0
 msgid "Colored"
 msgstr "Цветной"
-
-#: lib/examples/Articles:0
-msgid "Simple"
-msgstr "Простой"
 
 #: lib/examples/Articles:0
 msgid "Chapter 1"
@@ -27860,16 +27864,16 @@ msgid "Theses"
 msgstr "Диссертации"
 
 #: lib/examples/Articles:0
-msgid "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
-msgstr "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
+msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/examples/Articles:0
 msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
 msgstr "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/examples/Articles:0
-msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
-msgstr "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
+msgid "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
+msgstr "Japanese Article (Standard Class for LuaTeX%2C vertical Writing)"
 
 #: lib/tabletemplates/Formal_with_Footline.lyx:0
 msgid "Formal with Footline"
@@ -27956,11 +27960,11 @@ msgstr "\\begin_header отсутствует"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document отсутствует"
 
-#: src/Buffer.cpp:1050 src/Buffer.cpp:3103
+#: src/Buffer.cpp:1050 src/Buffer.cpp:3104
 msgid "Changes not shown in LaTeX output"
 msgstr "Изменения не показаны в выводе LaTeX"
 
-#: src/Buffer.cpp:1051 src/Buffer.cpp:3104
+#: src/Buffer.cpp:1051 src/Buffer.cpp:3105
 msgid ""
 "Changes will not be highlighted in LaTeX output, because xcolor and ulem are "
 "not installed.\n"
@@ -28048,7 +28052,7 @@ msgstr ""
 "Файл %1$s создан в более новой версии LyX. Сценарий lyx2lyx не смог "
 "преобразовать его."
 
-#: src/Buffer.cpp:1470 src/Buffer.cpp:4802 src/Buffer.cpp:4911
+#: src/Buffer.cpp:1470 src/Buffer.cpp:4805 src/Buffer.cpp:4914
 msgid "File is read-only"
 msgstr "Документ доступен только для чтения"
 
@@ -28072,8 +28076,8 @@ msgid "Overwrite modified file?"
 msgstr "Перезаписать изменённый файл?"
 
 #: src/Buffer.cpp:1483 src/Exporter.cpp:50
-#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiView.cpp:3067
-#: src/frontends/qt/GuiView.cpp:3334 src/frontends/qt/GuiView.cpp:3439
+#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiView.cpp:3071
+#: src/frontends/qt/GuiView.cpp:3338 src/frontends/qt/GuiView.cpp:3443
 msgid "&Overwrite"
 msgstr "&Перезаписать"
 
@@ -28281,16 +28285,16 @@ msgstr "ошибка chktex"
 msgid "Could not run chktex successfully."
 msgstr "Невозможно успешно запустить chktex."
 
-#: src/Buffer.cpp:2781
+#: src/Buffer.cpp:2782
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Нет информации для экспортирования формата %1$s"
 
-#: src/Buffer.cpp:2860
+#: src/Buffer.cpp:2861
 msgid "Branch state changes in master document"
 msgstr "Состояние ветки меняется в главном документе"
 
-#: src/Buffer.cpp:2861
+#: src/Buffer.cpp:2862
 #, c-format
 msgid ""
 "The state of the branch '%1$s' was changed in the master file. Please make "
@@ -28299,32 +28303,32 @@ msgstr ""
 "Состояние ветки '%1$s' было изменено в главном документе. Пожалуйста, "
 "сохраните его."
 
-#: src/Buffer.cpp:2930
+#: src/Buffer.cpp:2931
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Ошибка при экспортировании в формат %1$s."
 
-#: src/Buffer.cpp:2939
+#: src/Buffer.cpp:2940
 msgid "Error generating literate programming code."
 msgstr "Ошибка при генерации кода грамотного программирования."
 
-#: src/Buffer.cpp:3028
+#: src/Buffer.cpp:3029
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Ветка \"%1$s\" уже существует."
 
-#: src/Buffer.cpp:3085
+#: src/Buffer.cpp:3086
 msgid "Error viewing the output file."
 msgstr "Ошибка при просмотре выходного файла."
 
-#: src/Buffer.cpp:3447 src/frontends/qt/GuiView.cpp:2884
+#: src/Buffer.cpp:3448 src/frontends/qt/GuiView.cpp:2888
 #: src/frontends/qt/Validator.cpp:247 src/insets/ExternalSupport.cpp:394
-#: src/insets/InsetGraphics.cpp:697 src/insets/InsetInclude.cpp:606
+#: src/insets/InsetGraphics.cpp:697 src/insets/InsetInclude.cpp:616
 msgid "Invalid filename"
 msgstr "Неправильное имя файла"
 
-#: src/Buffer.cpp:3448 src/insets/ExternalSupport.cpp:395
-#: src/insets/InsetGraphics.cpp:698 src/insets/InsetInclude.cpp:607
+#: src/Buffer.cpp:3449 src/insets/ExternalSupport.cpp:395
+#: src/insets/InsetGraphics.cpp:698 src/insets/InsetInclude.cpp:617
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -28332,13 +28336,13 @@ msgstr ""
 "Следующее имя файла вызовет проблемы при запуске экспортированного файла в "
 "LaTeX: "
 
-#: src/Buffer.cpp:3453 src/insets/ExternalSupport.cpp:400
-#: src/insets/InsetGraphics.cpp:705 src/insets/InsetInclude.cpp:611
+#: src/Buffer.cpp:3454 src/insets/ExternalSupport.cpp:400
+#: src/insets/InsetGraphics.cpp:705 src/insets/InsetInclude.cpp:621
 msgid "Problematic filename for DVI"
 msgstr "Проблемное имя файла для DVI"
 
-#: src/Buffer.cpp:3454 src/insets/ExternalSupport.cpp:401
-#: src/insets/InsetGraphics.cpp:706 src/insets/InsetInclude.cpp:612
+#: src/Buffer.cpp:3455 src/insets/ExternalSupport.cpp:401
+#: src/insets/InsetGraphics.cpp:706 src/insets/InsetInclude.cpp:622
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -28346,11 +28350,11 @@ msgstr ""
 "Следующее имя файла может вызвать проблемы при запуске экспортированного "
 "файла в LaTeX: "
 
-#: src/Buffer.cpp:3493 src/insets/InsetBibtex.cpp:353
+#: src/Buffer.cpp:3494 src/insets/InsetBibtex.cpp:353
 msgid "Export Warning!"
 msgstr "Предупреждение экспорта!"
 
-#: src/Buffer.cpp:3494
+#: src/Buffer.cpp:3495
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -28358,57 +28362,57 @@ msgstr ""
 "В пути к базам данных BibTeX есть пробелы.\n"
 "BibTeX не сможет найти их."
 
-#: src/Buffer.cpp:4165
+#: src/Buffer.cpp:4166
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Просмотр исходного кода для абзаца %1$d"
 
-#: src/Buffer.cpp:4170
+#: src/Buffer.cpp:4171
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Просмотр исходного кода абзацев %1$s-%2$s"
 
-#: src/Buffer.cpp:4226
+#: src/Buffer.cpp:4227
 msgid "Preview source code"
 msgstr "Просмотр исходного кода"
 
-#: src/Buffer.cpp:4228
+#: src/Buffer.cpp:4229
 msgid "Preview preamble"
 msgstr "Просмотр преамбулы"
 
-#: src/Buffer.cpp:4230
+#: src/Buffer.cpp:4231
 msgid "Preview body"
 msgstr "Просмотр текста документа"
 
-#: src/Buffer.cpp:4246
+#: src/Buffer.cpp:4247
 msgid "Plain text does not have a preamble."
 msgstr "Простой текст не имеет преамбулы."
 
-#: src/Buffer.cpp:4390
+#: src/Buffer.cpp:4391
 msgid "Autosaving current document..."
 msgstr "Автосохранение текущего документа..."
 
-#: src/Buffer.cpp:4515
+#: src/Buffer.cpp:4518
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Нет информации для экспортирования формата %1$s."
 
-#: src/Buffer.cpp:4519
+#: src/Buffer.cpp:4522
 #, c-format
 msgid "Hint: use non-TeX fonts or set input encoding to '%1$s'"
 msgstr ""
 "Подсказка: используйте системные шрифты или установите входную кодировку "
 "'%1$s'"
 
-#: src/Buffer.cpp:4521
+#: src/Buffer.cpp:4524
 msgid "Couldn't export file"
 msgstr "Невозможно экспортировать файл"
 
-#: src/Buffer.cpp:4589 src/frontends/qt/GuiView.cpp:3040
+#: src/Buffer.cpp:4592 src/frontends/qt/GuiView.cpp:3044
 msgid "File name error"
 msgstr "Ошибка в названии файла"
 
-#: src/Buffer.cpp:4590
+#: src/Buffer.cpp:4593
 #, c-format
 msgid ""
 "The directory path to the document\n"
@@ -28421,21 +28425,21 @@ msgstr ""
 "содержит пробелы, но ваш установленный TeX не разрешает их. Сохраните файл в "
 "каталог с именем без пробелов."
 
-#: src/Buffer.cpp:4679 src/Buffer.cpp:4709 src/frontends/qt/GuiView.cpp:921
+#: src/Buffer.cpp:4682 src/Buffer.cpp:4712 src/frontends/qt/GuiView.cpp:922
 msgid "Document export cancelled."
 msgstr "Экспорт документа отменён."
 
-#: src/Buffer.cpp:4712
+#: src/Buffer.cpp:4715
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Документ экспортирован из %1$s в файл `%2$s'"
 
-#: src/Buffer.cpp:4719
+#: src/Buffer.cpp:4722
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Документ экспортирован как %1$s"
 
-#: src/Buffer.cpp:4788
+#: src/Buffer.cpp:4791
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -28446,23 +28450,23 @@ msgstr ""
 "\n"
 "Восстановить аварийную копию?"
 
-#: src/Buffer.cpp:4791
+#: src/Buffer.cpp:4794
 msgid "Load emergency save?"
 msgstr "Загрузить аварийную копию?"
 
-#: src/Buffer.cpp:4792
+#: src/Buffer.cpp:4795
 msgid "&Recover"
 msgstr "&Восстановить"
 
-#: src/Buffer.cpp:4792
+#: src/Buffer.cpp:4795
 msgid "&Load Original"
 msgstr "Загрузить &исходный"
 
-#: src/Buffer.cpp:4792
+#: src/Buffer.cpp:4795
 msgid "&Only show difference"
 msgstr "Показывать только различия"
 
-#: src/Buffer.cpp:4803
+#: src/Buffer.cpp:4806
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -28471,15 +28475,15 @@ msgstr ""
 "Аварийный файл успешно загружен, но исходный файл %1$s помечен только для "
 "чтения. Пожалуйста, не забудьте сохранить документ в другой файл."
 
-#: src/Buffer.cpp:4810
+#: src/Buffer.cpp:4813
 msgid "Document was successfully recovered."
 msgstr "Документ был успешно восстановлен."
 
-#: src/Buffer.cpp:4812
+#: src/Buffer.cpp:4815
 msgid "Document was NOT successfully recovered."
 msgstr "Документ НЕ был успешно восстановлен."
 
-#: src/Buffer.cpp:4813
+#: src/Buffer.cpp:4816
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -28488,31 +28492,31 @@ msgstr ""
 "Удалить аварийный файл?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4817 src/Buffer.cpp:4829
+#: src/Buffer.cpp:4820 src/Buffer.cpp:4832
 msgid "Delete emergency file?"
 msgstr "Удалить аварийный файл?"
 
-#: src/Buffer.cpp:4818 src/Buffer.cpp:4831
+#: src/Buffer.cpp:4821 src/Buffer.cpp:4834
 msgid "&Keep"
 msgstr "Хранить"
 
-#: src/Buffer.cpp:4822
+#: src/Buffer.cpp:4825
 msgid "Emergency file deleted"
 msgstr "Аварийный файл удалён"
 
-#: src/Buffer.cpp:4823
+#: src/Buffer.cpp:4826
 msgid "Do not forget to save your file now!"
 msgstr "Не забудьте сохранить ваш файл прямо сейчас!"
 
-#: src/Buffer.cpp:4830
+#: src/Buffer.cpp:4833
 msgid "Remove emergency file now?"
 msgstr "Удалить аварийный файл?"
 
-#: src/Buffer.cpp:4853
+#: src/Buffer.cpp:4856
 msgid "Can't rename emergency file!"
 msgstr "Невозможно переименовать аварийный файл!"
 
-#: src/Buffer.cpp:4854
+#: src/Buffer.cpp:4857
 msgid ""
 "LyX was unable to rename the emergency file. You should do so manually. "
 "Otherwise, you will be asked about it again the next time you try to load "
@@ -28522,11 +28526,11 @@ msgstr ""
 "Иначе вас снова спросят об этом при следующей попытке загрузить этот файл и "
 "это может перезаписать вашу собственную работу."
 
-#: src/Buffer.cpp:4859
+#: src/Buffer.cpp:4862
 msgid "Emergency File Renamed"
 msgstr "Аварийный файл переименован"
 
-#: src/Buffer.cpp:4860
+#: src/Buffer.cpp:4863
 #, c-format
 msgid ""
 "Emergency file renamed as:\n"
@@ -28535,7 +28539,7 @@ msgstr ""
 "Аварийный файл переименован в:\n"
 " %1$s"
 
-#: src/Buffer.cpp:4899
+#: src/Buffer.cpp:4902
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -28546,19 +28550,19 @@ msgstr ""
 "\n"
 "Загрузить резервную копию вместо текущей?"
 
-#: src/Buffer.cpp:4901
+#: src/Buffer.cpp:4904
 msgid "Load backup?"
 msgstr "Загрузить резервную копию?"
 
-#: src/Buffer.cpp:4902
+#: src/Buffer.cpp:4905
 msgid "&Load backup"
 msgstr "Загрузить &резервную копию"
 
-#: src/Buffer.cpp:4902
+#: src/Buffer.cpp:4905
 msgid "Load &original"
 msgstr "Загрузить &первоначальную"
 
-#: src/Buffer.cpp:4912
+#: src/Buffer.cpp:4915
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -28567,25 +28571,25 @@ msgstr ""
 "Резервная копия успешно загружена, но первоначальный файл %1$s доступен "
 "только для чтения. Пожалуйста сохраните документ в другой файл."
 
-#: src/Buffer.cpp:5298
+#: src/Buffer.cpp:5301
 msgid "Senseless!!! "
 msgstr "Бессмысленно!!! "
 
-#: src/Buffer.cpp:5566
+#: src/Buffer.cpp:5576
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Документ %1$s перезагружен."
 
-#: src/Buffer.cpp:5569
+#: src/Buffer.cpp:5579
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Не удалось перезагрузить документ %1$s."
 
-#: src/Buffer.cpp:5730
+#: src/Buffer.cpp:5740
 msgid "File deleted from disk"
 msgstr "Файл удалён с диска"
 
-#: src/Buffer.cpp:5731
+#: src/Buffer.cpp:5741
 #, c-format
 msgid ""
 "The file\n"
@@ -28708,7 +28712,7 @@ msgid "greyedout inset text"
 msgstr "текст серой вставки"
 
 #: src/BufferParams.cpp:1726 src/BufferParams.cpp:1880
-#: src/BufferParams.cpp:2355 src/Encoding.cpp:264 src/Paragraph.cpp:3173
+#: src/BufferParams.cpp:2355 src/Encoding.cpp:264 src/Paragraph.cpp:3174
 #: src/frontends/qt/LaTeXHighlighter.cpp:176
 #: src/insets/InsetCommandParams.cpp:508 src/insets/InsetCommandParams.cpp:516
 #: src/insets/InsetGraphics.cpp:904 src/insets/InsetGraphics.cpp:912
@@ -28719,7 +28723,7 @@ msgid "LyX Warning: "
 msgstr "Предупреждение LyX: "
 
 #: src/BufferParams.cpp:1727 src/BufferParams.cpp:1881
-#: src/BufferParams.cpp:2356 src/Encoding.cpp:265 src/Paragraph.cpp:3174
+#: src/BufferParams.cpp:2356 src/Encoding.cpp:265 src/Paragraph.cpp:3175
 #: src/insets/InsetCommandParams.cpp:509 src/insets/InsetCommandParams.cpp:517
 #: src/insets/InsetGraphics.cpp:905 src/insets/InsetGraphics.cpp:913
 #: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
@@ -28893,7 +28897,7 @@ msgid "This portion of the document is deleted."
 msgstr "Эта часть документа удалена."
 
 #: src/BufferView.cpp:1212 src/BufferView.cpp:2396
-#: src/frontends/qt/GuiView.cpp:4498 src/frontends/qt/GuiView.cpp:4595
+#: src/frontends/qt/GuiView.cpp:4502 src/frontends/qt/GuiView.cpp:4599
 msgid "Absolute filename expected."
 msgstr "Ожидается абсолютное имя файла."
 
@@ -29910,7 +29914,7 @@ msgstr "&Оставить файл"
 msgid "Overwrite &all"
 msgstr "Перезаписать все"
 
-#: src/Exporter.cpp:51 src/frontends/qt/GuiView.cpp:822
+#: src/Exporter.cpp:51 src/frontends/qt/GuiView.cpp:823
 msgid "&Cancel export"
 msgstr "Отменить &экспорт"
 
@@ -30029,7 +30033,7 @@ msgstr "Имя %1$s, "
 msgid "Cannot view file"
 msgstr "Просмотр файла невозможен"
 
-#: src/Format.cpp:633 src/frontends/qt/GuiView.cpp:4195
+#: src/Format.cpp:633 src/frontends/qt/GuiView.cpp:4199
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Файл не существует: %1$s"
@@ -31072,7 +31076,7 @@ msgstr "LyX VC: Сообщение журнала"
 msgid "(no log message)"
 msgstr "(нет сообщения)"
 
-#: src/LyXVC.cpp:252 src/frontends/qt/GuiView.cpp:4058
+#: src/LyXVC.cpp:252 src/frontends/qt/GuiView.cpp:4062
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Сообщение для журнала сообщений"
 
@@ -31093,7 +31097,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Откат к версии из репозитория"
 
-#: src/LyXVC.cpp:310 src/frontends/qt/GuiView.cpp:4644
+#: src/LyXVC.cpp:310 src/frontends/qt/GuiView.cpp:4648
 msgid "&Revert"
 msgstr "Откатить"
 
@@ -31424,7 +31428,7 @@ msgstr ""
 msgid "Error reading cite engine %1$s\n"
 msgstr "Ошибка чтения модуля цитирования %1$s\n"
 
-#: src/TocBackend.cpp:69 src/insets/InsetInclude.cpp:1373
+#: src/TocBackend.cpp:69 src/insets/InsetInclude.cpp:1385
 msgid "MISSING: "
 msgstr "ОТСУТСТВУЕТ: "
 
@@ -31486,7 +31490,7 @@ msgstr "Проверьте, установлен ли пакет GNU RCS в ва
 #: src/VCBackend.cpp:934 src/VCBackend.cpp:993 src/VCBackend.cpp:1052
 #: src/VCBackend.cpp:1060 src/VCBackend.cpp:1348 src/VCBackend.cpp:1450
 #: src/VCBackend.cpp:1456 src/VCBackend.cpp:1479 src/VCBackend.cpp:1964
-#: src/frontends/qt/GuiView.cpp:3974 src/frontends/qt/GuiView.cpp:4017
+#: src/frontends/qt/GuiView.cpp:3978 src/frontends/qt/GuiView.cpp:4021
 msgid "Revision control error."
 msgstr "Ошибка системы контроля версий."
 
@@ -31721,7 +31725,7 @@ msgstr ""
 "Документ %1$s уже загружен и содержит несохранённые изменения.\n"
 "Хотите ли вы отбросить эти изменения и загрузить версию документа с диска?"
 
-#: src/buffer_funcs.cpp:55 src/frontends/qt/GuiView.cpp:4635
+#: src/buffer_funcs.cpp:55 src/frontends/qt/GuiView.cpp:4639
 msgid "Reload saved document?"
 msgstr "Вернуться к сохранённому документу?"
 
@@ -31894,15 +31898,15 @@ msgstr "Нет открытых документов для поиска"
 msgid "Advanced Find and Replace"
 msgstr "Расширенный поиск и замена"
 
-#: src/frontends/qt/FindAndReplace.cpp:708
+#: src/frontends/qt/FindAndReplace.cpp:711
 msgid "Find previous occurrence (Shift+Enter, forwards: Enter)"
 msgstr "Найти предыдущее совпадение (Shift+Enter, следующее: Enter)"
 
-#: src/frontends/qt/FindAndReplace.cpp:709
+#: src/frontends/qt/FindAndReplace.cpp:712
 msgid "< Rep&lace"
 msgstr "< Заменить"
 
-#: src/frontends/qt/FindAndReplace.cpp:710
+#: src/frontends/qt/FindAndReplace.cpp:713
 msgid "Replace and find previous occurrence (Shift+Enter, forwards: Enter)"
 msgstr "Заменить и найти предыдущее совпадение (Shift+Enter, следующее: Enter)"
 
@@ -32093,7 +32097,7 @@ msgstr "Команда отключена"
 msgid "Bad debug value `%1$s'."
 msgstr "Недопустимое отладочное значение `%1$s'."
 
-#: src/frontends/qt/GuiApplication.cpp:1479 src/frontends/qt/GuiView.cpp:2368
+#: src/frontends/qt/GuiApplication.cpp:1479 src/frontends/qt/GuiView.cpp:2372
 msgid "Command not allowed without a buffer open"
 msgstr "Команда недопустима без открытых документов"
 
@@ -32358,9 +32362,9 @@ msgstr "все ссылки"
 #: src/frontends/qt/GuiDocument.cpp:3077 src/frontends/qt/GuiExternal.cpp:691
 #: src/frontends/qt/GuiGraphics.cpp:841 src/frontends/qt/GuiInclude.cpp:382
 #: src/frontends/qt/GuiLyXFiles.cpp:365 src/frontends/qt/GuiLyXFiles.cpp:371
-#: src/frontends/qt/GuiView.cpp:2789 src/frontends/qt/GuiView.cpp:2848
-#: src/frontends/qt/GuiView.cpp:3006 src/frontends/qt/GuiView.cpp:3140
-#: src/frontends/qt/GuiView.cpp:3260 src/frontends/qt/GuiView.cpp:3380
+#: src/frontends/qt/GuiView.cpp:2793 src/frontends/qt/GuiView.cpp:2852
+#: src/frontends/qt/GuiView.cpp:3010 src/frontends/qt/GuiView.cpp:3144
+#: src/frontends/qt/GuiView.cpp:3264 src/frontends/qt/GuiView.cpp:3384
 msgid "D&ocuments"
 msgstr "Документы"
 
@@ -32723,10 +32727,10 @@ msgstr "Файлы %1$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Выберите имя файла, для сохранения вставленной графики"
 
-#: src/frontends/qt/GuiClipboard.cpp:220 src/frontends/qt/GuiView.cpp:2866
-#: src/frontends/qt/GuiView.cpp:3025 src/frontends/qt/GuiView.cpp:3041
-#: src/frontends/qt/GuiView.cpp:3053 src/frontends/qt/GuiView.cpp:3070
-#: src/frontends/qt/GuiView.cpp:3155 src/frontends/qt/GuiView.cpp:4607
+#: src/frontends/qt/GuiClipboard.cpp:220 src/frontends/qt/GuiView.cpp:2870
+#: src/frontends/qt/GuiView.cpp:3029 src/frontends/qt/GuiView.cpp:3045
+#: src/frontends/qt/GuiView.cpp:3057 src/frontends/qt/GuiView.cpp:3074
+#: src/frontends/qt/GuiView.cpp:3159 src/frontends/qt/GuiView.cpp:4611
 msgid "Canceled."
 msgstr "Отменено."
 
@@ -32756,8 +32760,8 @@ msgid "Select document"
 msgstr "Выберите документ"
 
 #: src/frontends/qt/GuiCompare.cpp:160 src/frontends/qt/GuiLyXFiles.cpp:364
-#: src/frontends/qt/GuiView.cpp:2793 src/frontends/qt/GuiView.cpp:2852
-#: src/frontends/qt/GuiView.cpp:3144 src/frontends/qt/GuiView.cpp:3270
+#: src/frontends/qt/GuiView.cpp:2797 src/frontends/qt/GuiView.cpp:2856
+#: src/frontends/qt/GuiView.cpp:3148 src/frontends/qt/GuiView.cpp:3274
 msgid "LyX Documents (*.lyx)"
 msgstr "Документы LyX (*.lyx)"
 
@@ -34093,7 +34097,7 @@ msgstr ""
 "Введите ключ настроек LyX, например, 'bind_file'. См. предлагаемый список "
 "доступных вариантов. Выводом является текущее значение этого параметра."
 
-#: src/frontends/qt/GuiInfo.cpp:256 src/insets/InsetInclude.cpp:426
+#: src/frontends/qt/GuiInfo.cpp:256 src/insets/InsetInclude.cpp:436
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -34237,17 +34241,17 @@ msgstr ""
 msgid "Select example file"
 msgstr "Выберите файл примера"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:366 src/frontends/qt/GuiView.cpp:2849
-#: src/frontends/qt/GuiView.cpp:3007 src/frontends/qt/GuiView.cpp:3141
+#: src/frontends/qt/GuiLyXFiles.cpp:366 src/frontends/qt/GuiView.cpp:2853
+#: src/frontends/qt/GuiView.cpp:3011 src/frontends/qt/GuiView.cpp:3145
 msgid "&Examples"
 msgstr "&Примеры"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:370 src/frontends/qt/GuiView.cpp:2788
+#: src/frontends/qt/GuiLyXFiles.cpp:370 src/frontends/qt/GuiView.cpp:2792
 msgid "Select template file"
 msgstr "Выберите файл шаблона"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:372 src/frontends/qt/GuiView.cpp:2790
-#: src/frontends/qt/GuiView.cpp:3261
+#: src/frontends/qt/GuiLyXFiles.cpp:372 src/frontends/qt/GuiView.cpp:2794
+#: src/frontends/qt/GuiView.cpp:3265
 msgid "&Templates"
 msgstr "&Шаблоны"
 
@@ -34372,7 +34376,7 @@ msgstr ""
 " Обычно, вам не нужно устанавливать это, поскольку ширина наибольшей метки "
 "используется для всех элементов."
 
-#: src/frontends/qt/GuiParagraph.cpp:175 src/frontends/qt/GuiView.cpp:3539
+#: src/frontends/qt/GuiParagraph.cpp:175 src/frontends/qt/GuiView.cpp:3543
 msgid "&Close"
 msgstr "&Закрыть"
 
@@ -34782,7 +34786,7 @@ msgstr "Продолжать с начала"
 msgid "Click here to change search options"
 msgstr "Нажмите, чтобы изменить настройки поиска"
 
-#: src/frontends/qt/GuiSearch.cpp:572
+#: src/frontends/qt/GuiSearch.cpp:591
 msgid "Search and Replace"
 msgstr "Поиск и замена"
 
@@ -35231,25 +35235,25 @@ msgstr " "
 msgid "unknown version"
 msgstr "неизвестная версия"
 
-#: src/frontends/qt/GuiView.cpp:635
+#: src/frontends/qt/GuiView.cpp:636
 msgid "Click here to stop export/output process"
 msgstr "Нажмите здесь, чтобы остановить процесс экспорта/вывода"
 
-#: src/frontends/qt/GuiView.cpp:675
+#: src/frontends/qt/GuiView.cpp:676
 msgid "Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."
 msgstr ""
 "Уровень масштабирования рабочей области. Перетащите, используйте Ctrl-+/- "
 "или Shift-колёсико мыши для настройки."
 
-#: src/frontends/qt/GuiView.cpp:728 src/frontends/qt/GuiView.cpp:839
-#: src/frontends/qt/GuiView.cpp:1026 src/frontends/qt/Menus.cpp:1843
+#: src/frontends/qt/GuiView.cpp:729 src/frontends/qt/GuiView.cpp:840
+#: src/frontends/qt/GuiView.cpp:1027 src/frontends/qt/Menus.cpp:1843
 #: src/frontends/qt/Menus.cpp:1847 src/frontends/qt/Menus.cpp:1851
 #: src/frontends/qt/Menus.cpp:1855 src/frontends/qt/Menus.cpp:1859
 #: src/frontends/qt/Menus.cpp:1863
 msgid "[[ZOOM]]%1$d%"
 msgstr "[[ZOOM]]%1$d%"
 
-#: src/frontends/qt/GuiView.cpp:744
+#: src/frontends/qt/GuiView.cpp:745
 msgid ""
 "WARNING: LaTeX is allowed to execute external commands for this document. "
 "Right click to change."
@@ -35257,151 +35261,151 @@ msgstr ""
 "Предупреждение: LaTeX разрешено выполнять внешние команды для этого "
 "документа. Щёлкните правой кнопкой мыши, чтобы изменить это."
 
-#: src/frontends/qt/GuiView.cpp:818
+#: src/frontends/qt/GuiView.cpp:819
 msgid "Cancel Export?"
 msgstr "Отменить экспорт?"
 
-#: src/frontends/qt/GuiView.cpp:819
+#: src/frontends/qt/GuiView.cpp:820
 msgid "Do you want to cancel the background export process?"
 msgstr "Отменить фоновый процесс экспорта?"
 
-#: src/frontends/qt/GuiView.cpp:822
+#: src/frontends/qt/GuiView.cpp:823
 msgid "Co&ntinue"
 msgstr "Продолжить"
 
-#: src/frontends/qt/GuiView.cpp:918
+#: src/frontends/qt/GuiView.cpp:919
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Успешный экспорт в формат: %1$s"
 
-#: src/frontends/qt/GuiView.cpp:927
+#: src/frontends/qt/GuiView.cpp:928
 #, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Ошибка при экспорте формата: %1$s"
 
-#: src/frontends/qt/GuiView.cpp:930
+#: src/frontends/qt/GuiView.cpp:931
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Успешный просмотр формата: %1$s"
 
-#: src/frontends/qt/GuiView.cpp:933
+#: src/frontends/qt/GuiView.cpp:934
 #, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "Ошибка при просмотре формата %1$s"
 
-#: src/frontends/qt/GuiView.cpp:936
+#: src/frontends/qt/GuiView.cpp:937
 #, c-format
 msgid "Conversion cancelled while previewing format: %1$s"
 msgstr "Преобразование отменено при просмотре формата: %1$s"
 
-#: src/frontends/qt/GuiView.cpp:1297
+#: src/frontends/qt/GuiView.cpp:1298
 msgid "Exit LyX"
 msgstr "Выйти из LyX"
 
-#: src/frontends/qt/GuiView.cpp:1298
+#: src/frontends/qt/GuiView.cpp:1299
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "LyX не может быть закрыт, так как идёт обработка документов."
 
-#: src/frontends/qt/GuiView.cpp:1478
+#: src/frontends/qt/GuiView.cpp:1482
 #, c-format
 msgid "%1$d Word"
 msgstr "Слов: %1$d"
 
-#: src/frontends/qt/GuiView.cpp:1480
+#: src/frontends/qt/GuiView.cpp:1484
 #, c-format
 msgid "%1$d Words"
 msgstr "Слов: %1$d"
 
-#: src/frontends/qt/GuiView.cpp:1485
+#: src/frontends/qt/GuiView.cpp:1489
 #, c-format
 msgid "%1$d Character"
 msgstr "Знаков: %1$d"
 
-#: src/frontends/qt/GuiView.cpp:1487
+#: src/frontends/qt/GuiView.cpp:1491
 #, c-format
 msgid "%1$d Characters"
 msgstr "Знаков: %1$d"
 
-#: src/frontends/qt/GuiView.cpp:1492
+#: src/frontends/qt/GuiView.cpp:1496
 #, c-format
 msgid "%1$d Character (no Blanks)"
 msgstr "Знаков (без пробелов): %1$d"
 
-#: src/frontends/qt/GuiView.cpp:1494
+#: src/frontends/qt/GuiView.cpp:1498
 #, c-format
 msgid "%1$d Characters (no Blanks)"
 msgstr "Знаков (без пробелов): %1$d"
 
-#: src/frontends/qt/GuiView.cpp:1496
+#: src/frontends/qt/GuiView.cpp:1500
 msgid ", [[stats separator]]"
 msgstr ", [[stats separator]]"
 
-#: src/frontends/qt/GuiView.cpp:1515
+#: src/frontends/qt/GuiView.cpp:1519
 #, c-format
 msgid "%1$s (modified externally)"
 msgstr "%1$s (изменён внешней программой)"
 
-#: src/frontends/qt/GuiView.cpp:1638
+#: src/frontends/qt/GuiView.cpp:1642
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
-#: src/frontends/qt/GuiView.cpp:2224
+#: src/frontends/qt/GuiView.cpp:2228
 msgid "Automatic save done."
 msgstr "Автосохранение выполнено."
 
-#: src/frontends/qt/GuiView.cpp:2225
+#: src/frontends/qt/GuiView.cpp:2229
 msgid "Automatic save failed!"
 msgstr "Автосохранение не удалось!"
 
-#: src/frontends/qt/GuiView.cpp:2305
+#: src/frontends/qt/GuiView.cpp:2309
 msgid "Command not allowed without any document open"
 msgstr "Команда недопустима без открытых документов"
 
-#: src/frontends/qt/GuiView.cpp:2374
+#: src/frontends/qt/GuiView.cpp:2378
 msgid "Invalid argument of master-buffer-forall"
 msgstr "Недопустимый аргумент для master-buffer-forall"
 
-#: src/frontends/qt/GuiView.cpp:2505
+#: src/frontends/qt/GuiView.cpp:2509
 msgid "Function toolbar-set requires two arguments!"
 msgstr "Для функции toolbar-set нужно задать 2 аргумента!"
 
-#: src/frontends/qt/GuiView.cpp:2512
+#: src/frontends/qt/GuiView.cpp:2516
 #, c-format
 msgid "Invalid argument \"%1$s\" to function toolbar-set!"
 msgstr "Неверный аргумент \"%1$s\" для функции toolbar-set!"
 
-#: src/frontends/qt/GuiView.cpp:2528 src/frontends/qt/GuiView.cpp:2541
-#: src/frontends/qt/GuiView.cpp:2558
+#: src/frontends/qt/GuiView.cpp:2532 src/frontends/qt/GuiView.cpp:2545
+#: src/frontends/qt/GuiView.cpp:2562
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Неизвестная панель инструментов \"%1$s\""
 
-#: src/frontends/qt/GuiView.cpp:2682
+#: src/frontends/qt/GuiView.cpp:2686
 msgid "Zoom level cannot be less than %1$d%."
 msgstr "Масштаб не может быть меньше %1$d%."
 
-#: src/frontends/qt/GuiView.cpp:2687
+#: src/frontends/qt/GuiView.cpp:2691
 msgid "Zoom level cannot be more than %1$d%."
 msgstr "Масштаб не может быть больше %1$d%."
 
-#: src/frontends/qt/GuiView.cpp:2817
+#: src/frontends/qt/GuiView.cpp:2821
 msgid "Document not loaded."
 msgstr "Документ невозможно загрузить."
 
-#: src/frontends/qt/GuiView.cpp:2847
+#: src/frontends/qt/GuiView.cpp:2851
 msgid "Select documents to open"
 msgstr "Выберите документы для открытия"
 
-#: src/frontends/qt/GuiView.cpp:2853
+#: src/frontends/qt/GuiView.cpp:2857
 msgid "LyX Document Backups (*.lyx~)"
 msgstr "Резервные копии документов LyX (*.lyx~)"
 
-#: src/frontends/qt/GuiView.cpp:2854 src/frontends/qt/GuiView.cpp:4604
+#: src/frontends/qt/GuiView.cpp:2858 src/frontends/qt/GuiView.cpp:4608
 #: src/frontends/qt/qt_helpers.cpp:677
 msgid "All Files"
 msgstr "Все файлы"
 
-#: src/frontends/qt/GuiView.cpp:2885
+#: src/frontends/qt/GuiView.cpp:2889
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -35412,7 +35416,7 @@ msgstr ""
 "%1$s\n"
 "не существует."
 
-#: src/frontends/qt/GuiView.cpp:2897
+#: src/frontends/qt/GuiView.cpp:2901
 #, c-format
 msgid ""
 "File\n"
@@ -35423,48 +35427,48 @@ msgstr ""
 "%1$s\n"
 "не существует. Создать пустой файл?"
 
-#: src/frontends/qt/GuiView.cpp:2901
+#: src/frontends/qt/GuiView.cpp:2905
 msgid "File does not exist"
 msgstr "Файл не существует"
 
-#: src/frontends/qt/GuiView.cpp:2903
+#: src/frontends/qt/GuiView.cpp:2907
 msgid "Create &File"
 msgstr "Создать файл"
 
-#: src/frontends/qt/GuiView.cpp:2915
+#: src/frontends/qt/GuiView.cpp:2919
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Открывается документ %1$s..."
 
-#: src/frontends/qt/GuiView.cpp:2920
+#: src/frontends/qt/GuiView.cpp:2924
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Документ %1$s открыт."
 
-#: src/frontends/qt/GuiView.cpp:2923
+#: src/frontends/qt/GuiView.cpp:2927
 msgid "Version control detected."
 msgstr "Обнаружено управление версиями."
 
-#: src/frontends/qt/GuiView.cpp:2925
+#: src/frontends/qt/GuiView.cpp:2929
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Невозможно открыть документ %1$s"
 
-#: src/frontends/qt/GuiView.cpp:2954
+#: src/frontends/qt/GuiView.cpp:2958
 msgid "Couldn't import file"
 msgstr "Невозможно импортировать файл"
 
-#: src/frontends/qt/GuiView.cpp:2955
+#: src/frontends/qt/GuiView.cpp:2959
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Нет информации для импортирования из формата %1$s."
 
-#: src/frontends/qt/GuiView.cpp:3002
+#: src/frontends/qt/GuiView.cpp:3006
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Выберите файл \"%1$s\" для импорта"
 
-#: src/frontends/qt/GuiView.cpp:3037
+#: src/frontends/qt/GuiView.cpp:3041
 #, c-format
 msgid ""
 "The file name '%1$s' is invalid!\n"
@@ -35473,8 +35477,8 @@ msgstr ""
 "Имя файла '%1$s' неверно!\n"
 "Прерывание импорта."
 
-#: src/frontends/qt/GuiView.cpp:3064 src/frontends/qt/GuiView.cpp:3329
-#: src/frontends/qt/GuiView.cpp:3434
+#: src/frontends/qt/GuiView.cpp:3068 src/frontends/qt/GuiView.cpp:3333
+#: src/frontends/qt/GuiView.cpp:3438
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -35485,33 +35489,33 @@ msgstr ""
 "\n"
 "Хотите перезаписать его?"
 
-#: src/frontends/qt/GuiView.cpp:3066 src/frontends/qt/GuiView.cpp:3333
-#: src/frontends/qt/GuiView.cpp:3438
+#: src/frontends/qt/GuiView.cpp:3070 src/frontends/qt/GuiView.cpp:3337
+#: src/frontends/qt/GuiView.cpp:3442
 msgid "Overwrite document?"
 msgstr "Перезаписать документ?"
 
-#: src/frontends/qt/GuiView.cpp:3075
+#: src/frontends/qt/GuiView.cpp:3079
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Импортирование %1$s..."
 
-#: src/frontends/qt/GuiView.cpp:3078
+#: src/frontends/qt/GuiView.cpp:3082
 msgid "imported."
 msgstr "импортирован."
 
-#: src/frontends/qt/GuiView.cpp:3080
+#: src/frontends/qt/GuiView.cpp:3084
 msgid "file not imported!"
 msgstr "файл не импортирован!"
 
-#: src/frontends/qt/GuiView.cpp:3106
+#: src/frontends/qt/GuiView.cpp:3110
 msgid "newfile"
 msgstr "Новый документ "
 
-#: src/frontends/qt/GuiView.cpp:3139
+#: src/frontends/qt/GuiView.cpp:3143
 msgid "Select LyX document to insert"
 msgstr "Выберите документ LyX для вставки"
 
-#: src/frontends/qt/GuiView.cpp:3186
+#: src/frontends/qt/GuiView.cpp:3190
 #, c-format
 msgid ""
 "It is suggested to save the template in a subdirectory\n"
@@ -35524,23 +35528,23 @@ msgstr ""
 "Этот подкаталог ещё не существует.\n"
 "Вы хотите создать его?"
 
-#: src/frontends/qt/GuiView.cpp:3191
+#: src/frontends/qt/GuiView.cpp:3195
 msgid "Create Language Directory?"
 msgstr "Создать каталог языка?"
 
-#: src/frontends/qt/GuiView.cpp:3192 src/frontends/qt/GuiView.cpp:3223
+#: src/frontends/qt/GuiView.cpp:3196 src/frontends/qt/GuiView.cpp:3227
 msgid "&Yes, Create"
 msgstr "Да, создать"
 
-#: src/frontends/qt/GuiView.cpp:3192 src/frontends/qt/GuiView.cpp:3223
+#: src/frontends/qt/GuiView.cpp:3196 src/frontends/qt/GuiView.cpp:3227
 msgid "&No, Save Template in Parent Directory"
 msgstr "&Нет, сохранить шаблон в родительском каталоге"
 
-#: src/frontends/qt/GuiView.cpp:3195 src/frontends/qt/GuiView.cpp:3226
+#: src/frontends/qt/GuiView.cpp:3199 src/frontends/qt/GuiView.cpp:3230
 msgid "Subdirectory creation failed!"
 msgstr "Сбой создания подкаталога!"
 
-#: src/frontends/qt/GuiView.cpp:3196 src/frontends/qt/GuiView.cpp:3227
+#: src/frontends/qt/GuiView.cpp:3200 src/frontends/qt/GuiView.cpp:3231
 msgid ""
 "Could not create subdirectory.\n"
 "The template will be saved in the parent directory."
@@ -35548,7 +35552,7 @@ msgstr ""
 "Не удалось создать подкаталог.\n"
 "Шаблон будет сохранён в родительский каталог."
 
-#: src/frontends/qt/GuiView.cpp:3217
+#: src/frontends/qt/GuiView.cpp:3221
 #, c-format
 msgid ""
 "It is suggested to save the template in a subdirectory\n"
@@ -35561,19 +35565,19 @@ msgstr ""
 "Этот подкаталог ещё не существует.\n"
 "Вы хотите создать его?"
 
-#: src/frontends/qt/GuiView.cpp:3222
+#: src/frontends/qt/GuiView.cpp:3226
 msgid "Create Category Directory?"
 msgstr "Создать каталог категории?"
 
-#: src/frontends/qt/GuiView.cpp:3257
+#: src/frontends/qt/GuiView.cpp:3261
 msgid "Choose a filename to save template as"
 msgstr "Введите имя файла для сохраняемого шаблона"
 
-#: src/frontends/qt/GuiView.cpp:3258
+#: src/frontends/qt/GuiView.cpp:3262
 msgid "Choose a filename to save document as"
 msgstr "Введите имя файла для сохраняемого документа"
 
-#: src/frontends/qt/GuiView.cpp:3292
+#: src/frontends/qt/GuiView.cpp:3296
 #, c-format
 msgid ""
 "The file\n"
@@ -35588,17 +35592,17 @@ msgstr ""
 "Пожалуйста, закройте его, прежде чем пытаться перезаписать его.\n"
 "Вы хотите выбрать новое имя?"
 
-#: src/frontends/qt/GuiView.cpp:3296
+#: src/frontends/qt/GuiView.cpp:3300
 msgid "Chosen File Already Open"
 msgstr "Выбранный файл уже открыт"
 
-#: src/frontends/qt/GuiView.cpp:3297 src/frontends/qt/GuiView.cpp:3319
-#: src/frontends/qt/GuiView.cpp:3335 src/frontends/qt/GuiView.cpp:3439
-#: src/frontends/qt/GuiView.cpp:3484
+#: src/frontends/qt/GuiView.cpp:3301 src/frontends/qt/GuiView.cpp:3323
+#: src/frontends/qt/GuiView.cpp:3339 src/frontends/qt/GuiView.cpp:3443
+#: src/frontends/qt/GuiView.cpp:3488
 msgid "&Rename"
 msgstr "Пе&реименовать"
 
-#: src/frontends/qt/GuiView.cpp:3312
+#: src/frontends/qt/GuiView.cpp:3316
 #, c-format
 msgid ""
 "The document %1$s is already registered.\n"
@@ -35609,27 +35613,27 @@ msgstr ""
 "\n"
 "Хотите выбрать новое имя?"
 
-#: src/frontends/qt/GuiView.cpp:3317
+#: src/frontends/qt/GuiView.cpp:3321
 msgid "Rename document?"
 msgstr "Переименовать документ?"
 
-#: src/frontends/qt/GuiView.cpp:3317
+#: src/frontends/qt/GuiView.cpp:3321
 msgid "Copy document?"
 msgstr "Скопировать документ?"
 
-#: src/frontends/qt/GuiView.cpp:3319
+#: src/frontends/qt/GuiView.cpp:3323
 msgid "&Copy"
 msgstr "Копировать"
 
-#: src/frontends/qt/GuiView.cpp:3379
+#: src/frontends/qt/GuiView.cpp:3383
 msgid "Choose a filename to export the document as"
 msgstr "Введите имя файла для экспортируемого документа"
 
-#: src/frontends/qt/GuiView.cpp:3383
+#: src/frontends/qt/GuiView.cpp:3387
 msgid "Guess from extension (*.*)"
 msgstr "Угадать по расширению (*.*)"
 
-#: src/frontends/qt/GuiView.cpp:3480
+#: src/frontends/qt/GuiView.cpp:3484
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -35640,15 +35644,15 @@ msgstr ""
 "\n"
 "Хотите ли вы переименовать его и попытаться ещё раз?"
 
-#: src/frontends/qt/GuiView.cpp:3483
+#: src/frontends/qt/GuiView.cpp:3487
 msgid "Rename and save?"
 msgstr "Переименовать и сохранить?"
 
-#: src/frontends/qt/GuiView.cpp:3484
+#: src/frontends/qt/GuiView.cpp:3488
 msgid "&Retry"
 msgstr "&Повторить"
 
-#: src/frontends/qt/GuiView.cpp:3529
+#: src/frontends/qt/GuiView.cpp:3533
 #, c-format
 msgid ""
 "Last view on document %1$s is being closed.\n"
@@ -35669,23 +35673,23 @@ msgstr ""
 "Чтобы убрать этот вопрос, задайте ваше предпочтение в:\n"
 "  Инструменты->Настройки->Вид и поведение->Интерфейс пользователя\n"
 
-#: src/frontends/qt/GuiView.cpp:3538
+#: src/frontends/qt/GuiView.cpp:3542
 msgid "Close or hide document?"
 msgstr "Закрыть или спрятать документ?"
 
-#: src/frontends/qt/GuiView.cpp:3539
+#: src/frontends/qt/GuiView.cpp:3543
 msgid "&Hide"
 msgstr "Скрыть"
 
-#: src/frontends/qt/GuiView.cpp:3636
+#: src/frontends/qt/GuiView.cpp:3640
 msgid "Close document"
 msgstr "Закрыть документ"
 
-#: src/frontends/qt/GuiView.cpp:3637
+#: src/frontends/qt/GuiView.cpp:3641
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Документ нельзя закрыть, он обрабатывается LyX."
 
-#: src/frontends/qt/GuiView.cpp:3769 src/frontends/qt/GuiView.cpp:3901
+#: src/frontends/qt/GuiView.cpp:3773 src/frontends/qt/GuiView.cpp:3905
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -35696,16 +35700,16 @@ msgstr ""
 "\n"
 "Хотите сохранить документ?"
 
-#: src/frontends/qt/GuiView.cpp:3772 src/frontends/qt/GuiView.cpp:3904
+#: src/frontends/qt/GuiView.cpp:3776 src/frontends/qt/GuiView.cpp:3908
 msgid "Save new document?"
 msgstr "Сохранить новый документ?"
 
-#: src/frontends/qt/GuiView.cpp:3773 src/frontends/qt/GuiView.cpp:3787
-#: src/frontends/qt/GuiView.cpp:3906
+#: src/frontends/qt/GuiView.cpp:3777 src/frontends/qt/GuiView.cpp:3791
+#: src/frontends/qt/GuiView.cpp:3910
 msgid "&Save"
 msgstr "&Сохранить"
 
-#: src/frontends/qt/GuiView.cpp:3778
+#: src/frontends/qt/GuiView.cpp:3782
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -35716,7 +35720,7 @@ msgstr ""
 "\n"
 "Хотите ли вы сохранить документ или отклонить изменения?"
 
-#: src/frontends/qt/GuiView.cpp:3781
+#: src/frontends/qt/GuiView.cpp:3785
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -35727,19 +35731,19 @@ msgstr ""
 "\n"
 "Хотите сохранить документ?"
 
-#: src/frontends/qt/GuiView.cpp:3785 src/frontends/qt/GuiView.cpp:3898
+#: src/frontends/qt/GuiView.cpp:3789 src/frontends/qt/GuiView.cpp:3902
 msgid "Save changed document?"
 msgstr "Сохранить изменённый документ?"
 
-#: src/frontends/qt/GuiView.cpp:3785
+#: src/frontends/qt/GuiView.cpp:3789
 msgid "Save document?"
 msgstr "Сохранить документ?"
 
-#: src/frontends/qt/GuiView.cpp:3787
+#: src/frontends/qt/GuiView.cpp:3791
 msgid "&Discard"
 msgstr "&Не сохранять"
 
-#: src/frontends/qt/GuiView.cpp:3895
+#: src/frontends/qt/GuiView.cpp:3899
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -35750,7 +35754,7 @@ msgstr ""
 "\n"
 "Сохранить документ?"
 
-#: src/frontends/qt/GuiView.cpp:3927
+#: src/frontends/qt/GuiView.cpp:3931
 #, c-format
 msgid ""
 "Document \n"
@@ -35761,37 +35765,37 @@ msgstr ""
 "%1$s\n"
 " был изменён извне. Перезагрузить? Все локальные изменения будут утрачены."
 
-#: src/frontends/qt/GuiView.cpp:3930
+#: src/frontends/qt/GuiView.cpp:3934
 msgid "Reload externally changed document?"
 msgstr "Перезагрузить изменённый внешней программой документ?"
 
-#: src/frontends/qt/GuiView.cpp:3975
+#: src/frontends/qt/GuiView.cpp:3979
 msgid "Document could not be checked in."
 msgstr "Документ невозможно прочесть."
 
-#: src/frontends/qt/GuiView.cpp:4018
+#: src/frontends/qt/GuiView.cpp:4022
 msgid "Error when setting the locking property."
 msgstr "Ошибка при попытке установить блокировку."
 
-#: src/frontends/qt/GuiView.cpp:4067
+#: src/frontends/qt/GuiView.cpp:4071
 msgid "Directory is not accessible."
 msgstr "Каталог недоступен."
 
-#: src/frontends/qt/GuiView.cpp:4144
+#: src/frontends/qt/GuiView.cpp:4148
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Открывается дочерний документ %1$s..."
 
-#: src/frontends/qt/GuiView.cpp:4202
+#: src/frontends/qt/GuiView.cpp:4206
 #, c-format
 msgid "No buffer for file: %1$s."
 msgstr "Нет буфера для файла: %1$s."
 
-#: src/frontends/qt/GuiView.cpp:4212
+#: src/frontends/qt/GuiView.cpp:4216
 msgid "Inverse Search Failed"
 msgstr "Обратный поиск не удался"
 
-#: src/frontends/qt/GuiView.cpp:4213
+#: src/frontends/qt/GuiView.cpp:4217
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You may need to update the viewed document."
@@ -35799,31 +35803,31 @@ msgstr ""
 "Обратный поиск запросил неверное положение.\n"
 "Обновите просматриваемый документ."
 
-#: src/frontends/qt/GuiView.cpp:4286
+#: src/frontends/qt/GuiView.cpp:4290
 msgid "Export Error"
 msgstr "Ошибка экспорта"
 
-#: src/frontends/qt/GuiView.cpp:4287
+#: src/frontends/qt/GuiView.cpp:4291
 msgid "Error cloning the Buffer."
 msgstr "Ошибка клонирования буфера."
 
-#: src/frontends/qt/GuiView.cpp:4438 src/frontends/qt/GuiView.cpp:4458
+#: src/frontends/qt/GuiView.cpp:4442 src/frontends/qt/GuiView.cpp:4462
 msgid "Exporting ..."
 msgstr "Экспорт ..."
 
-#: src/frontends/qt/GuiView.cpp:4467
+#: src/frontends/qt/GuiView.cpp:4471
 msgid "Previewing ..."
 msgstr "Предварительный просмотр..."
 
-#: src/frontends/qt/GuiView.cpp:4505
+#: src/frontends/qt/GuiView.cpp:4509
 msgid "Document not loaded"
 msgstr "Документ не загружен"
 
-#: src/frontends/qt/GuiView.cpp:4601
+#: src/frontends/qt/GuiView.cpp:4605
 msgid "Select file to insert"
 msgstr "Выберите файл для вставки"
 
-#: src/frontends/qt/GuiView.cpp:4632
+#: src/frontends/qt/GuiView.cpp:4636
 #, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
@@ -35832,7 +35836,7 @@ msgstr ""
 "Все изменения будут потеряны. Вы уверены, что хотите откатиться к "
 "сохранённой версии документа %1$s?"
 
-#: src/frontends/qt/GuiView.cpp:4639
+#: src/frontends/qt/GuiView.cpp:4643
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -35841,61 +35845,61 @@ msgstr ""
 "Все изменения будут потеряны. Вы уверены, что хотите откатиться к "
 "сохранённой версии документа %1$s?"
 
-#: src/frontends/qt/GuiView.cpp:4642
+#: src/frontends/qt/GuiView.cpp:4646
 msgid "Revert to saved document?"
 msgstr "Вернуться к сохранённому документу?"
 
-#: src/frontends/qt/GuiView.cpp:4659
+#: src/frontends/qt/GuiView.cpp:4663
 msgid "Buffer export reset."
 msgstr "Сброс экспорта буфера."
 
-#: src/frontends/qt/GuiView.cpp:4682
+#: src/frontends/qt/GuiView.cpp:4686
 msgid "Saving all documents..."
 msgstr "Сохраняются все документы..."
 
-#: src/frontends/qt/GuiView.cpp:4692
+#: src/frontends/qt/GuiView.cpp:4696
 msgid "All documents saved."
 msgstr "Все документы сохранены."
 
-#: src/frontends/qt/GuiView.cpp:4731
+#: src/frontends/qt/GuiView.cpp:4735
 msgid "Developer mode is now enabled."
 msgstr "Режим разработчика включён."
 
-#: src/frontends/qt/GuiView.cpp:4733
+#: src/frontends/qt/GuiView.cpp:4737
 msgid "Developer mode is now disabled."
 msgstr "Режим разработчика отключен."
 
-#: src/frontends/qt/GuiView.cpp:4765
+#: src/frontends/qt/GuiView.cpp:4769
 msgid "Toolbars unlocked."
 msgstr "Панели инструментов разблокированы."
 
-#: src/frontends/qt/GuiView.cpp:4767
+#: src/frontends/qt/GuiView.cpp:4771
 msgid "Toolbars locked."
 msgstr "Панели инструментов заблокированы."
 
-#: src/frontends/qt/GuiView.cpp:4779
+#: src/frontends/qt/GuiView.cpp:4783
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
 msgstr "Размер значков установлен на %1$dx%2$d."
 
-#: src/frontends/qt/GuiView.cpp:4868
+#: src/frontends/qt/GuiView.cpp:4872
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s неизвестная команда!"
 
-#: src/frontends/qt/GuiView.cpp:4969
+#: src/frontends/qt/GuiView.cpp:4973
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
 msgstr "Текущий масштаб %1$d% (по умолчанию: %2$d%)"
 
-#: src/frontends/qt/GuiView.cpp:5032
+#: src/frontends/qt/GuiView.cpp:5036
 msgid "Please, preview the document first."
 msgstr "Пожалуйста, сначала просмотрите документ."
 
-#: src/frontends/qt/GuiView.cpp:5050
+#: src/frontends/qt/GuiView.cpp:5054
 msgid "Couldn't proceed."
 msgstr "Невозможно продолжить."
 
-#: src/frontends/qt/GuiView.cpp:5433
+#: src/frontends/qt/GuiView.cpp:5437
 msgid "Disable Shell Escape"
 msgstr "Отключить выход из shell"
 
@@ -36779,7 +36783,7 @@ msgstr "LyX не может создать список %1$s"
 msgid "footnote"
 msgstr "Сноска"
 
-#: src/insets/InsetGraphics.cpp:567 src/insets/InsetInclude.cpp:787
+#: src/insets/InsetGraphics.cpp:567 src/insets/InsetInclude.cpp:799
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -36849,15 +36853,15 @@ msgstr "другое"
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Гиперссылка (%1$s) на %2$s"
 
-#: src/insets/InsetInclude.cpp:402
+#: src/insets/InsetInclude.cpp:412
 msgid "MISSING:"
 msgstr "ОТСУТСТВУЕТ:"
 
-#: src/insets/InsetInclude.cpp:420
+#: src/insets/InsetInclude.cpp:430
 msgid "Include (excluded)"
 msgstr "Включить (исключено)"
 
-#: src/insets/InsetInclude.cpp:529
+#: src/insets/InsetInclude.cpp:539
 #, c-format
 msgid ""
 "The file\n"
@@ -36870,25 +36874,25 @@ msgstr ""
 " попытался включить себя.\n"
 "Документ не будет работать правильно, пока это не будет исправлено!"
 
-#: src/insets/InsetInclude.cpp:531
+#: src/insets/InsetInclude.cpp:541
 msgid "Recursive Include"
 msgstr "Рекурсивный ввод"
 
-#: src/insets/InsetInclude.cpp:545
+#: src/insets/InsetInclude.cpp:555
 msgid "No file name specified"
 msgstr "Не указано имя файла"
 
-#: src/insets/InsetInclude.cpp:546
+#: src/insets/InsetInclude.cpp:556
 msgid ""
 "An included file name is empty.\n"
 "Ignoring Inclusion"
 msgstr "Пустое имя включаемого файла. Включение проигнорировано."
 
-#: src/insets/InsetInclude.cpp:553
+#: src/insets/InsetInclude.cpp:563
 msgid "Included file not found"
 msgstr "Включённый файл не найден"
 
-#: src/insets/InsetInclude.cpp:554
+#: src/insets/InsetInclude.cpp:564
 #, c-format
 msgid ""
 "The included file\n"
@@ -36899,12 +36903,12 @@ msgstr ""
 "'%1$s'\n"
 "не найден. LyX игнорирует включение."
 
-#: src/insets/InsetInclude.cpp:569
+#: src/insets/InsetInclude.cpp:579
 #, c-format
 msgid "[INCLUDED FILE %1$s DELETED!]"
 msgstr "[ВКЛЮЧЁННЫЙ ФАЙЛ %1$s УДАЛЁН!]"
 
-#: src/insets/InsetInclude.cpp:801
+#: src/insets/InsetInclude.cpp:813
 #, c-format
 msgid ""
 "Could not load included file\n"
@@ -36914,12 +36918,12 @@ msgstr ""
 "Не удаётся загрузить включённый файл `%1$s'.\n"
 "Пожалуйста проверьте существует ли он."
 
-#: src/insets/InsetInclude.cpp:805 src/insets/InsetInclude.cpp:912
-#: src/insets/InsetInclude.cpp:938
+#: src/insets/InsetInclude.cpp:817 src/insets/InsetInclude.cpp:924
+#: src/insets/InsetInclude.cpp:950
 msgid "Error: "
 msgstr "Ошибка: "
 
-#: src/insets/InsetInclude.cpp:817
+#: src/insets/InsetInclude.cpp:829
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -36930,11 +36934,11 @@ msgstr ""
 "имеет класс `%2$s',\n"
 "тогда как родительский файл использует класс `%3$s'."
 
-#: src/insets/InsetInclude.cpp:823
+#: src/insets/InsetInclude.cpp:835
 msgid "Different textclasses"
 msgstr "Различные классы документа"
 
-#: src/insets/InsetInclude.cpp:829
+#: src/insets/InsetInclude.cpp:841
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -36945,11 +36949,11 @@ msgstr ""
 "параметр 'Использование системных шрифтов' имеет значение `%2$s',\n"
 "тогда как родительский файл использует `%3$s'."
 
-#: src/insets/InsetInclude.cpp:835
+#: src/insets/InsetInclude.cpp:847
 msgid "Different use-non-TeX-fonts settings"
 msgstr "Другие настройки использования системных шрифтов"
 
-#: src/insets/InsetInclude.cpp:838
+#: src/insets/InsetInclude.cpp:850
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -36960,11 +36964,11 @@ msgstr ""
 "использует кодировку \"%2$s\" [%3$s],\n"
 "тогда как родительский файл использует кодировку \"%4$s\" [%5$s]."
 
-#: src/insets/InsetInclude.cpp:846
+#: src/insets/InsetInclude.cpp:858
 msgid "Different LaTeX input encodings"
 msgstr "Разные кодировки LaTeX"
 
-#: src/insets/InsetInclude.cpp:861
+#: src/insets/InsetInclude.cpp:873
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -36975,11 +36979,11 @@ msgstr ""
 "использует модуль `%2$s',\n"
 "который не используется в родительском файле."
 
-#: src/insets/InsetInclude.cpp:865
+#: src/insets/InsetInclude.cpp:877
 msgid "Module not found"
 msgstr "Модуль не найден"
 
-#: src/insets/InsetInclude.cpp:904 src/insets/InsetInclude.cpp:931
+#: src/insets/InsetInclude.cpp:916 src/insets/InsetInclude.cpp:943
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -36988,11 +36992,11 @@ msgstr ""
 "Включённый файл `%1$s' не был корректно экспортирован.\n"
 " Результат экспорта в LaTeX вероятно не полон."
 
-#: src/insets/InsetInclude.cpp:968 src/insets/InsetInclude.cpp:1072
+#: src/insets/InsetInclude.cpp:980 src/insets/InsetInclude.cpp:1084
 msgid "Unsupported Inclusion"
 msgstr "Неподдерживаемое включение"
 
-#: src/insets/InsetInclude.cpp:969
+#: src/insets/InsetInclude.cpp:981
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -37003,7 +37007,7 @@ msgstr ""
 "нарушитель:\n"
 "%1$s"
 
-#: src/insets/InsetInclude.cpp:1073
+#: src/insets/InsetInclude.cpp:1085
 #, c-format
 msgid ""
 "LyX does not know how to process included non-LyX files when generating "
@@ -37936,15 +37940,15 @@ msgstr ""
 "Информация об отслеживании изменений для табличной строки/столбца является "
 "неполной. Это будет проигнорировано."
 
-#: src/insets/InsetTabular.cpp:5719
+#: src/insets/InsetTabular.cpp:5741
 msgid "Column movement not supported with multi-columns."
 msgstr "Перемещение столбцов недоступно для объединённых столбцов."
 
-#: src/insets/InsetTabular.cpp:5737
+#: src/insets/InsetTabular.cpp:5759
 msgid "Row movement not supported with multi-rows."
 msgstr "Перемещение строк недоступно для объединённых строк."
 
-#: src/insets/InsetTabular.cpp:6258
+#: src/insets/InsetTabular.cpp:6280
 msgid "Selection size should match clipboard content."
 msgstr "Размер выделения должен совпадать с размером буфера обмена."
 
@@ -38322,11 +38326,11 @@ msgstr ""
 "Невозможно открыть указанный документ\n"
 "%1$s."
 
-#: src/output_latex.cpp:1676
+#: src/output_latex.cpp:1681
 msgid "Error in latexParagraphs"
 msgstr "Ошибка в latexParagraphs"
 
-#: src/output_latex.cpp:1677
+#: src/output_latex.cpp:1682
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "

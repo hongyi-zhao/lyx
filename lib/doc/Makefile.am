@@ -21,7 +21,6 @@ dist_doc_DATA = \
 
 bibliodocdir = $(docdir)/biblio
 dist_bibliodoc_DATA = \
-	biblio/alphadin.bst \
 	biblio/LyXDocs.bib
 
 clipartdocdir = $(docdir)/clipart

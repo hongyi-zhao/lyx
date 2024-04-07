@@ -136,7 +136,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const override;
 	///
-	bool hasToString() const override { return true; }
+	bool findUsesToString() const override { return false; }
 	///
 	void toString(odocstream &) const override;
 	///

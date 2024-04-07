@@ -370,7 +370,7 @@ dist_examples_DATA = \
 articleexamplesdir = $(pkgdatadir)/examples/Articles
 dist_articleexamples_DATA = \
 	examples/Articles/Astronomy_%26_Astrophysics.lyx \
-	examples/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29.lyx \
+	examples/Articles/American_Astronomical_Society_%28AASTeX_v._6.3.1%29.lyx \
 	examples/Articles/American_Chemical_Society_%28ACS%29.lyx \
 	examples/Articles/American_Mathematical_Society_%28AMS%29.lyx
 
@@ -2466,6 +2466,7 @@ dist_layouts_DATA =\
 	layouts/aastex.layout \
 	layouts/aastex6.layout \
 	layouts/aastex62.layout \
+	layouts/aastex63.layout \
 	layouts/achemso.layout \
 	layouts/acm-sigs.layout \
 	layouts/acm-sigs-alt.layout \
@@ -2746,6 +2747,7 @@ dist_scripts_DATA += \
 	scripts/lyxpaperview.py \
 	scripts/lyxpreview2bitmap.py \
 	scripts/lyxpreview_tools.py \
+	scripts/lyxwin_getopt.py \
 	scripts/lyx_batch.pl.in \
 	scripts/prefs2prefs.py \
 	scripts/prefs2prefs_lfuns.py \
@@ -2763,7 +2765,7 @@ dist_templates_DATA = \
 
 articletemplatesdir = $(pkgdatadir)/templates/Articles
 dist_articletemplates_DATA = \
-	templates/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29.lyx \
+	templates/Articles/American_Astronomical_Society_%28AASTeX_v._6.3.1%29.lyx \
 	templates/Articles/American_Economic_Association_%28AEA%29.lyx \
 	templates/Articles/American_Psychological_Association_%28APA%29.lyx \
 	templates/Articles/American_Psychological_Association_%28APA%29,_v._7.lyx \
@@ -2853,6 +2855,7 @@ dist_obsoletetemplates_DATA = \
 	templates/Obsolete/ACM_SIGPLAN_%28Obsolete%29.lyx \
 	templates/Obsolete/ACM_SIG_Proceedings_%28SP,_Obsolete%29.lyx \
 	templates/Obsolete/American_Astronomical_Society_%28AASTeX_v._6%29.lyx \
+	templates/Obsolete/American_Astronomical_Society_%28AASTeX_v._6.2%29.lyx \
 	templates/Obsolete/American_Geophysical_Union_%28AGUTeX%29.lyx \
 	templates/Obsolete/American_Psychological_Association_%28APA%29,_v._6.lyx \
 	templates/Obsolete/Latex8_Article_%28Obsolete%29.lyx

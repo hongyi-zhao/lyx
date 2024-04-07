@@ -9,13 +9,15 @@ Building LyX with CMake
 3rd party libraries
 --------------------
 
-    Install Qt 4 or Qt 5 and make sure qmake is found.
+    Install Qt 5 or Qt 6 and make sure qmake is found.
         Add the folder with qmake to the environment variable PATH.
         If you've compiled Qt by yourself or qmake is not found after
         installing Qt fix PATH,
         Linux/Unix: export PATH=<your path to qt>/bin:$PATH
         Windows   : set PATH=<your path to qt>\bin;%PATH%
-        If you use Qt 5, use -DLYX_USE_QT=QT5, otherwise Qt 4 will be searched.
+        if you use -DLYX_USE_QT=AUTO, or do not use LYX_USE_QT, Qt 6 will be searched first
+        and if not found Qt 5 will be used.
+        If you want to use Qt 5, use -DLYX_USE_QT=QT5.
 
     When you want to run LyX without installing from an out-of-source
     build directory you have to set the environment variable LYX_DIR_24x

@@ -380,6 +380,8 @@ void InsetLabel::docbook(XMLStream & xs, OutputParams const & runparams) const
 
 docstring InsetLabel::xhtml(XMLStream & xs, OutputParams const &) const
 {
+	// Print the label as an HTML anchor, so that an external link can point to this equation.
+	// (URL: FILE.html#EQ-ID.)
 	// FIXME XHTML
 	// Unfortunately, the name attribute has been deprecated, so we have to use
 	// id here to get the document to validate as XHTML 1.1. This will cause a

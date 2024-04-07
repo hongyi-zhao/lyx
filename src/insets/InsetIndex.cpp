@@ -386,7 +386,10 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	}
 
 	// Handle ranges. Happily, in the raw LaTeX mode, (| and |) can only be at the end of the string!
-	const bool hasInsetRange = params_.range != InsetIndexParams::PageRange::None;
+	// Handle both modern ranges (params_.range) and legacy ones (with a suffix |( or |) as in pure LaTeX).
+	const bool hasInsetRange = params_.range != InsetIndexParams::PageRange::None ||
+			latexString.find(from_ascii("|(")) != lyx::docstring::npos ||
+			latexString.find(from_ascii("|)")) != lyx::docstring::npos;
 	const bool hasStartRange = params_.range == InsetIndexParams::PageRange::Start ||
 			latexString.find(from_ascii("|(")) != lyx::docstring::npos;
 	const bool hasEndRange = params_.range == InsetIndexParams::PageRange::End ||
@@ -450,7 +453,7 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 	// TODO: Could handle formatting as significance="preferred"?
 	if (!command.empty()) {
 		docstring error = from_utf8("Unsupported feature: an index entry contains a | with an unsupported command, ")
-				          + command + from_utf8(". ") + from_utf8("Complete entry: \"") + latexString + from_utf8("\"");
+				          + command + from_utf8(". Complete entry: \"") + latexString + from_utf8("\"");
 		LYXERR0(error);
 		xs << XMLStream::ESCAPE_NONE << (from_utf8("<!-- Output Error: ") + error + from_utf8(" -->\n"));
 	}
@@ -502,9 +505,9 @@ void InsetIndex::docbook(XMLStream & xs, OutputParams const & runparams) const
 			// Generate the attributes.
 			docstring id = xml::cleanID(newIndexTerms);
 			if (hasStartRange) {
-				attrs = indexType + " class=\"startofrange\" xml:id=\"" + id + "\"";
+				attrs = indexType + R"( class="startofrange" xml:id=")" + id + "\"";
 			} else {
-				attrs = " class=\"endofrange\" startref=\"" + id + "\"";
+				attrs = R"( class="endofrange" startref=")" + id + "\"";
 			}
 		}
 
@@ -1631,8 +1634,8 @@ private:
 	std::vector<docstring> terms_; // Up to three entries, in general.
 	docstring sort_as_;
 	docstring command_;
-	bool has_start_range_;
-	bool has_end_range_;
+	bool has_start_range_ = false;
+	bool has_end_range_ = false;
 	docstring see_;
 	vector<docstring> see_alsoes_;
 

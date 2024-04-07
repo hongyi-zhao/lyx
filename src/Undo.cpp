@@ -312,12 +312,29 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 
 	if (first_pit > last_pit)
 		swap(first_pit, last_pit);
+	pit_type const from = first_pit;
+	pit_type const end = cell.lastpit() - last_pit;
+
+	/* Undo coalescing: if the undo element we want to add only
+	 * changes stuff that was already modified by the previous one on
+	 * undo stack (in the same group), then skip it. There is nothing
+	 * to gain in adding it to the stack. The code below works for
+	 * both texted and mathed.
+	*/
+	if (!stack.empty()
+	    && stack.top().group_id == group_id_
+	    && !stack.top().bparams
+	    && samePar(stack.top().cell, cell)
+	    //&& stack.top().kind == kind // needed?
+	    && stack.top().from <= from
+	    && stack.top().end >= end) {
+		LYXERR(Debug::UNDO, "Undo coalescing: skip entry");
+		return;
+	}
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 	// As nobody wants all removed character appear one by one when undoing,
 	// we want combine 'similar' non-ATOMIC undo recordings to one.
-	pit_type from = first_pit;
-	pit_type end = cell.lastpit() - last_pit;
 	if (!undo_finished_
 	    && kind != ATOMIC_UNDO
 	    && !stack.empty()

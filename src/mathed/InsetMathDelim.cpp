@@ -45,13 +45,21 @@ static docstring convertDelimToLatexName(docstring const & name)
 
 InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l,
 		docstring const & r)
-	: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0)
+	: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0), is_extracted_(false)
 {}
 
 
 InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l, docstring const & r,
 	MathData const & ar)
-	: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0)
+	: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0), is_extracted_(false)
+{
+	cell(0) = ar;
+}
+
+
+InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l, docstring const & r,
+                               MathData const & ar, bool const is_extracted)
+		: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0), is_extracted_(is_extracted)
 {
 	cell(0) = ar;
 }
@@ -181,15 +189,21 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 
 void InsetMathDelim::mathmlize(MathMLStream & ms) const
 {
-	ms << MTag("mrow")
-	   << MTagInline("mo", "form='prefix' fence='true' stretchy='true' symmetric='true'")
-	   << convertDelimToXMLEscape(left_)
-	   << ETagInline("mo")
-	   << cell(0)
-	   << MTagInline("mo", "form='postfix' fence='true' stretchy='true' symmetric='true'")
-	   << convertDelimToXMLEscape(right_)
-	   << ETagInline("mo")
-	   << ETag("mrow");
+	// Ignore the delimiter if: it is empty or only a space (one character).
+	const std::string attr = is_extracted_ ? "stretchy='false'" : "";
+	if (!left_.empty() && ((left_.size() == 1 && left_[0] != ' ') || left_.size() > 1)) {
+	    ms << MTag("mrow")
+	       << MTagInline("mo", attr)
+	       << convertDelimToXMLEscape(left_)
+	       << ETagInline("mo");
+	}
+	ms << cell(0);
+	if (!right_.empty() && ((right_.size() == 1 && right_[0] != ' ') || right_.size() > 1)) {
+	    ms << MTagInline("mo", attr)
+	       << convertDelimToXMLEscape(right_)
+	       << ETagInline("mo")
+	       << ETag("mrow");
+	}
 }
 
 

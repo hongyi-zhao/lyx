@@ -260,7 +260,11 @@ private:
 
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const {
-		return qt_scale_factor * devicePixelRatio();
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+		return devicePixelRatioF();
+#else
+		return devicePixelRatio();
+#endif
 	}
 
 	qreal fontSize() const {
@@ -551,6 +555,8 @@ public:
 	bool already_in_selection_ = false;
 	/// Maximum size of "short" selection for which we can update with faster timer_rate
 	int const max_sel_chars = 5000;
+	/// equivalent time_to_update = 0; but better to see it the code
+	bool stats_update_trigger_ = false;
 
 };
 
@@ -1450,6 +1456,12 @@ void GuiView::showStats()
 		return;
 	}
 
+	// UI toggle, buffer change, etc
+	if (bv->stats_update_trigger() || d.stats_update_trigger_) {
+		d.stats_update_trigger_ = false;
+		d.time_to_update = 0;
+	}
+
 	Cursor const & cur = bv->cursor();
 
 	// we start new selection and need faster update
@@ -1477,7 +1489,7 @@ void GuiView::showStats()
 
 	QStringList stats;
 	if (word_count_enabled_) {
-		int const words = buf->wordCount();
+		int const words = buf->wordCount() - bv->stats_ref_value_w();
 		if (words == 1)
 			stats << toqstr(bformat(_("%1$d Word"), words));
 		else
@@ -1485,13 +1497,14 @@ void GuiView::showStats()
 	}
 	int const chars_with_blanks = buf->charCount(true);
 	if (char_count_enabled_) {
+		int const chars_with_blanks_disp = chars_with_blanks - bv->stats_ref_value_c();
 		if (chars_with_blanks == 1)
-			stats << toqstr(bformat(_("%1$d Character"), chars_with_blanks));
+			stats << toqstr(bformat(_("%1$d Character"), chars_with_blanks_disp));
 		else
-			stats << toqstr(bformat(_("%1$d Characters"), chars_with_blanks));
+			stats << toqstr(bformat(_("%1$d Characters"), chars_with_blanks_disp));
 	}
 	if (char_nb_count_enabled_) {
-		int const chars = buf->charCount(false);
+		int const chars = buf->charCount(false) - bv->stats_ref_value_nb();
 		if (chars == 1)
 			stats << toqstr(bformat(_("%1$d Character (no Blanks)"), chars));
 		else
@@ -1582,6 +1595,7 @@ void GuiView::onBufferViewChanged()
 			     && zoom_slider_->value() < zoom_slider_->maximum());
 	zoom_out_->setEnabled(currentBufferView()
 			      && zoom_slider_->value() > zoom_slider_->minimum());
+	d.stats_update_trigger_ = true;
 }
 
 
@@ -1844,7 +1858,11 @@ void GuiView::resetCommandExecute()
 
 double GuiView::pixelRatio() const
 {
-	return qt_scale_factor * devicePixelRatio();
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+	return devicePixelRatioF();
+#else
+	return devicePixelRatio();
+#endif
 }
 
 
@@ -5153,6 +5171,7 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 	} else
 		return false;
 	stat_counts_->setVisible(statsEnabled());
+	d.stats_update_trigger_ = true;
 	return true;
 }
 

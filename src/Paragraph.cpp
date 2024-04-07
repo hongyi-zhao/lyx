@@ -3150,7 +3150,8 @@ void Paragraph::latex(BufferParams const & bparams,
 				}
 			}
 		} else if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
-			if (!bparams.useNonTeXFonts && !runparams.pass_thru)
+			if (!bparams.useNonTeXFonts && !runparams.pass_thru
+			    && !contains(runparams.pass_thru_chars, c))
 				script = Encodings::isKnownScriptChar(c);
 			if (script != alien_script) {
 				if (!alien_script.empty()) {
@@ -4283,9 +4284,10 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 bool Paragraph::needsCProtection(bool const fragile) const
 {
 	// first check the layout of the paragraph, but only in insets
+	// and not in tables
 	InsetText const * textinset = inInset().asInsetText();
 	bool const maintext = textinset
-		? textinset->text().isMainText()
+		? textinset->text().isMainText() || inInset().lyxCode() == CELL_CODE
 		: false;
 
 	if (!maintext && layout().needcprotect) {
@@ -4423,7 +4425,7 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options, const Out
 		else if (c == META_INSET && (options & AS_STR_INSETS)) {
 			if (c == META_INSET && (options & AS_STR_PLAINTEXT)) {
 				LASSERT(runparams != nullptr, return docstring());
-				if (runparams->find_effective() && getInset(i)->hasToString())
+				if (runparams->find_effective() && getInset(i)->findUsesToString())
 					getInset(i)->toString(os);
 				else
 					getInset(i)->plaintext(os, *runparams);

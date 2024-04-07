@@ -150,6 +150,11 @@ graphique
 
 \end_layout
 
+\begin_layout Plain Layout
+Mise a jour avant la publication de 2.4.0,
+ 11 janvier 2024 (JPC)
+\end_layout
+
 \end_inset
 
 
@@ -283,7 +288,7 @@ Qu'est-ce que \SpecialChar LyX
  des articles dans des publications scientifiques,
  des scripts pour des pièces de théâtre ou des films,
  des propositions de contrats,
- des )présentations\SpecialChar ldots
+ des présentations\SpecialChar ldots
 
 \end_layout
 
@@ -2892,14 +2897,33 @@ avant tout
 
 \begin_layout Enumerate
 Récupérez le code source de \SpecialChar LyX
- le plus récent
+ le plus récent,
+ soit via 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "trac"
+target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master "
+literal "false"
+
+\end_inset
+
+
+\series default
+,
+ soit via 
 \begin_inset Newline newline
 \end_inset
 
 
+\series bold
+
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
+name "git.lyx.org"
+target "https://git.lyx.org/gitweb/?p=lyx.git;a=tree;f=lib/doc;hb=HEAD"
+literal "false"
 
 \end_inset
 
@@ -3026,10 +3050,11 @@ literal "false"
 
 \begin_layout Standard
 D'autre part il faut prendre garde à ne modifier que la dernière version de la traduction.
- C'est toujours celle qui est sur le serveur Trac 
+ C'est toujours celle qui est sur le serveur git 
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.lyx.org/trac/browser/lyxgit/lib/doc/fr?rev=master"
+target "https://git.lyx.org/gitweb/?p=lyx.git;a=tree;f=lib/doc/fr;hb=HEAD"
+literal "false"
 
 \end_inset
 

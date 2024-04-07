@@ -902,7 +902,7 @@ bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	if (RenderPreview::previewMath()) {
 		reloadPreview(old);
-		cur.screenUpdateFlags(Update::Force);
+		cur.screenUpdateFlags(Update::SinglePar);
 	}
 	return false;
 }
@@ -2273,14 +2273,17 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 
 void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
+	bool const has_preview = previewState(&cur.bv());
 	cur.push(*this);
 	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_LEFT ||
 		(entry_from == Inset::ENTRY_DIRECTION_IGNORE && front));
 	enter_front ? idxFirst(cur) : idxLast(cur);
-	// The inset formula dimension is not necessarily the same as the
-	// one of the instant preview image, so we have to indicate to the
-	// BufferView that a metrics update is needed.
-	cur.screenUpdateFlags(Update::Force);
+	if (has_preview) {
+		// The inset formula dimension is in general different from the
+		// one of the instant preview image, so we have to indicate to the
+		// BufferView that a metrics update is needed.
+		cur.screenUpdateFlags(Update::SinglePar);
+	}
 }
 
 
@@ -2574,35 +2577,56 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 }
 
 
-void InsetMathHull::mathAsLatex(TeXMathStream & os) const
+docstring InsetMathHull::mathAsLatex() const
 {
-	MathEnsurer ensurer(os, false);
 	bool const havenumbers = haveNumbers();
 	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
 
 	if (!havetable) {
+		odocstringstream ls;
+		otexrowstream ots(ls);
+		TeXMathStream os(ots, false, true, TeXMathStream::wsPreview);
+		ModeSpecifier specifier(os, MATH_MODE);
+		MathEnsurer ensurer(os, false);
+
 		os << cell(index(0, 0));
-		return;
+		return ls.str();
 	}
 
-	os << "<table class='mathtable'>";
+	odocstringstream ods;
+	XMLStream xs(ods);
+
+	xs << xml::StartTag("table", "class='mathtable'");
 	for (row_type row = 0; row < nrows(); ++row) {
-		os << "<tr>";
+		xs << xml::StartTag("tr");
 		for (col_type col = 0; col < ncols(); ++col) {
-			os << "<td class='math'>";
-			os << cell(index(row, col));
-			os << "</td>";
+			xs << xml::StartTag("td", "class='math'");
+
+			odocstringstream ls;
+			otexrowstream ots(ls);
+			TeXMathStream os(ots, false, true, TeXMathStream::wsPreview);
+			ModeSpecifier specifier(os, MATH_MODE);
+			MathEnsurer ensurer(os, false);
+
+			os << cell(index(0, 0));
+			// ls.str() contains a raw LaTeX string, which might require some encoding before being valid XML.
+			xs << ls.str();
+
+			xs << xml::EndTag("td");
 		}
 		if (havenumbers) {
-			os << "<td>";
+			xs << xml::StartTag("td");
 			docstring const & num = numbers_[row];
-			if (!num.empty())
-				os << '(' << num << ')';
-		    os << "</td>";
+			if (!num.empty()) {
+				xs << '(' << num << ')';
+			}
+			xs << xml::EndTag("td");
 		}
-		os << "</tr>";
+		xs << xml::EndTag("tr");
 	}
-	os << "</table>";
+	xs << xml::EndTag("table");
+
+	return ods.str();
 }
 
 
@@ -2703,7 +2727,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 			string const tag = (getType() == hullSimple) ? "span" : "div";
 			xs << xml::CR()
 			   << xml::StartTag(tag, "style = \"text-align: center;\"")
-			   << xml::CompTag("img", "src=\"" + filename + "\" alt=\"Mathematical Equation\"")
+			   << xml::CompTag("img", "src=\"" + filename + R"(" alt="Mathematical Equation")")
 			   << xml::EndTag(tag)
 			   << xml::CR();
 			success = true;
@@ -2716,12 +2740,8 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 	if (!success /* || mathtype != BufferParams::LaTeX */) {
 		// Unfortunately, we cannot use latexString() because we do not want
 		// $...$ or whatever.
-		odocstringstream ls;
-		otexrowstream ots(ls);
-		TeXMathStream wi(ots, false, true, TeXMathStream::wsPreview);
-		ModeSpecifier specifier(wi, MATH_MODE);
-		mathAsLatex(wi);
-		docstring const latex = ls.str();
+		// The returned value already has the correct escaping for HTML.
+		docstring const latex = mathAsLatex();
 
 		// class='math' allows for use of jsMath
 		// http://www.math.union.edu/~dpvc/jsMath/
@@ -2729,7 +2749,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 		// probably should allow for some kind of customization here
 		string const tag = (getType() == hullSimple) ? "span" : "div";
 		xs << xml::StartTag(tag, "class='math'")
-		   << latex
+		   << XMLStream::ESCAPE_NONE << latex // Don't escape anything: latex might contain XML.
 		   << xml::EndTag(tag)
 		   << xml::CR();
 	}

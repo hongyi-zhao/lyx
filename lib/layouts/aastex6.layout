@@ -44,7 +44,14 @@
 #
 # TODO: - support for new commands (see below)
 #       - aastex6.cls loads hyperref (with pre-set options) and url
-#         -> option clash if "Use Hyerref" is selected in Document>Settings
+#         -> option clash if "Use Hyperref" is selected in Document>Settings
+#       - in DocBook, the appendix is not output (not a standard LyX appendix
+#         separator (needs a layout update)
+#       - in DocBook, the "Software" part should really be a section on its own,
+#         but that would require a way to provide the section title within the
+#         layout (needs a layout update)
+#       - in DocBook, the table notes are not supported at all (move the remarks
+#         into the table cells instead of outputting tablenotemark in the cells?)
 
 Format 104
 

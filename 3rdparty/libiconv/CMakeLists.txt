@@ -5,7 +5,7 @@
 # Please note that the package source code is licensed under its own license.
 
 project ( libiconv C )
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.5.0)
 
 set(LYX_IPO_SUPPORTED FALSE)
 if (POLICY CMP0069)

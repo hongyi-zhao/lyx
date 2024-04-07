@@ -100,7 +100,6 @@ void RowPainter::paintInset(Row::Element const & e) const
 	bool const pi_full_repaint = pi_.full_repaint;
 	bool const pi_do_spellcheck = pi_.do_spellcheck;
 	Change const pi_change = pi_.change;
-	int const pi_textwidth = pi_.base.textwidth;
 
 	pi_.base.font = e.inset->inheritFont() ? e.font.fontInfo() :
 		pi_.base.bv->buffer().params().getFont().fontInfo();
@@ -108,7 +107,6 @@ void RowPainter::paintInset(Row::Element const & e) const
 	pi_.ltr_pos = !e.font.isVisibleRightToLeft();
 	pi_.change = pi_.change.changed() ? pi_.change : e.change;
 	pi_.do_spellcheck &= e.inset->allowSpellCheck();
-	pi_.base.textwidth += e.extra;
 
 	int const x1 = int(x_);
 	pi_.base.bv->coordCache().insets().add(e.inset, x1, yo_);
@@ -125,7 +123,6 @@ void RowPainter::paintInset(Row::Element const & e) const
 	pi_.change = pi_change;
 	pi_.do_spellcheck = pi_do_spellcheck;
 	pi_.selected = pi_selected;
-	pi_.base.textwidth = pi_textwidth;
 
 #ifdef DEBUG_METRICS
 	Dimension const & dim = pi_.base.bv->coordCache().insets().dim(e.inset);
@@ -559,8 +556,7 @@ void RowPainter::paintOnlyInsets()
 				paintChange(e);
 		}
 
-		// extra is the extrawidth band-aid described in redoParagraphs
-		x_ +=  e.full_width() + ((e.type == Row::INSET) ? e.extra : 0);
+		x_ += e.full_width();
 	}
 }
 
@@ -595,8 +591,7 @@ void RowPainter::paintText()
 		if (e.type != Row::INSET || ! e.inset->canPaintChange(*pi_.base.bv))
 			paintChange(e);
 
-		// extra is the extrawidth band-aid described in redoParagraphs
-		x_ +=  e.full_width() + ((e.type == Row::INSET) ? e.extra : 0);
+		x_ += e.full_width();
 	}
 }
 

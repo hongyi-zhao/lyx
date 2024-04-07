@@ -661,7 +661,7 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	// Also, the image must be generated before the DocBook output is finished,
 	// unlike a preview that is not immediately required for display.
 	docstring const latex_snippet = insetToLaTeXSnippet(&buffer(), this);
-	std::string const snippet = support::trim(to_utf8(latex_snippet));
+	docstring const snippet = support::trim(latex_snippet);
 	// TODO: no real support for Unicode. This code is very similar to RenderPreview::addPreview, the same gotcha applies.
 
 	graphics::PreviewLoader* loader = buffer().loader();
@@ -681,7 +681,7 @@ void InsetText::docbookRenderAsImage(XMLStream & xs, OutputParams const & rp, XH
 	// same hash (by design of cryptographic hash functions). Computing a hash
 	// is typically slow, but extremely fast compared to compilation of the
 	// preview and image rendering.
-	std::string newFileName = "lyx_" + sanitizeFileName(toHexHash(snippet)) + "." + filename.extension();
+	std::string newFileName = "lyx_" + sanitizeFileName(toHexHash(to_utf8(snippet))) + "." + filename.extension();
 
 	// Copy the image into the right folder.
 	rp.exportdata->addExternalFile("docbook5", filename, newFileName);

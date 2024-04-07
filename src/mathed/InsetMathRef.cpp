@@ -76,7 +76,7 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY: {
 		string const arg0 = cmd.getArg(0);
-		string const arg1   = cmd.getArg(1);
+		string const arg1 = cmd.getArg(1);
 		if (arg0 == "ref") {
 			if (arg1 == "changetarget") {
 				string const oldtarget = cmd.getArg(2);
@@ -164,6 +164,10 @@ bool InsetMathRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action()) {
 	// we handle these
 	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "changetype")
+			status.setOnOff(from_ascii(cmd.getArg(1)) == commandname());
+		status.setEnabled(true);
+		return true;
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_INSET_SETTINGS:
 	case LFUN_MOUSE_RELEASE:
@@ -291,25 +295,27 @@ void InsetMathRef::write(TeXMathStream & os) const
 		LYXERR0("Unassigned buffer_ in InsetMathRef::write!");
 		LYXERR0("LaTeX output may be wrong!");
 	}
+	// are we writing to the LyX file?
+	if (!os.latex()) {
+		// if so, then this is easy
+		InsetMathCommand::write(os);
+		return;
+	}
 	bool const use_refstyle =
 		buffer_ && buffer().params().use_refstyle;
 	bool special_case =  cmd == "formatted" ||
 			cmd == "labelonly" ||
 			(cmd == "eqref" && use_refstyle);
-	// are we writing to the LyX file or not in a special case?
-	if (!os.latex() || !special_case) {
-		// if so, then this is easy
-		InsetMathCommand::write(os);
-		return;
-	}
 	// we need to translate 'formatted' to prettyref or refstyle-type
 	// commands and just output the label with labelonly
 	// most of this is borrowed from InsetRef and should be kept in 
 	// sync with that.
 	ModeSpecifier specifier(os, currentMode(), lockedMode(), asciiOnly());
 	MathEnsurer ensurer(os, false);
-
-	if (use_refstyle && cmd == "eqref") {
+	if (!special_case) {
+		os << from_ascii("\\") << cmd << "{" << cell(0) << from_ascii("}");
+	}
+	else if (use_refstyle && cmd == "eqref") {
 		// we advertise this as printing "(n)", so we'll do that, at least
 		// for refstyle, since refstlye's own \eqref prints, by default,
 		// "equation n". if one wants \eqref, one can get it by using a
@@ -320,7 +326,7 @@ void InsetMathRef::write(TeXMathStream & os) const
 		if (!use_refstyle)
 			os << "\\prettyref{" << cell(0) << "}";
 		else {
-			 odocstringstream ods;
+			odocstringstream ods;
 			// get the label we are referencing
 			for (auto const & d : cell(0)) {
 				ods << d;

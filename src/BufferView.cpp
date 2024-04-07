@@ -298,6 +298,13 @@ struct BufferView::Private
 	frontend::CaretGeometry caret_geometry_;
 	///
 	bool mouse_selecting_ = false;
+	/// Reference value for statistics (essentially subtract this from the actual value to see relative counts)
+	/// (words/chars/chars no blanks)
+	int stats_ref_value_w_ = 0;
+	int stats_ref_value_c_ = 0;
+	int stats_ref_value_nb_ = 0;
+	bool stats_update_trigger_ = false;
+
 };
 
 
@@ -532,7 +539,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		   << flagsAsString(flags) << ")  buffer: " << &buffer_);
 
 	// Case when no explicit update is requested.
-	if (flags == Update::None)
+	if (flags == Update::None || !ready())
 		return;
 
 	/* FIXME We would like to avoid doing this here, since it is very
@@ -545,10 +552,13 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	// First check whether the metrics and inset positions should be updated
 	if (flags & Update::Force) {
-		// This will update the CoordCache items and replace Force
-		// with ForceDraw in flags.
-		updateMetrics(flags);
-	}
+		// This will compute all metrics and positions.
+		updateMetrics(true);
+		// metrics is done, full drawing is necessary now
+		flags = (flags & ~Update::Force) | Update::ForceDraw;
+	} else if (flags & Update::ForceDraw)
+		// This will compute only the needed metrics and update positions.
+		updateMetrics(false);
 
 	// Detect whether we can only repaint a single paragraph (if we
 	// are not already redrawing all).
@@ -557,7 +567,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	if (!(flags & Update::ForceDraw)
 			&& (flags & Update::SinglePar)
 			&& !singleParUpdate())
-		updateMetrics(flags);
+		updateMetrics(true);
 
 	// Then make sure that the screen contains the cursor if needed
 	if (flags & Update::FitCursor) {
@@ -566,13 +576,13 @@ void BufferView::processUpdateFlags(Update::flags flags)
 			// (which is just the cursor when there is no selection)
 			scrollToCursor(d->cursor_.selectionBegin(), SCROLL_VISIBLE);
 			// Metrics have to be recomputed (maybe again)
-			updateMetrics();
+			updateMetrics(true);
 			// Is the cursor visible? (only useful if cursor is at end of selection)
 			if (needsFitCursor()) {
 				// then try to make cursor visible instead
 				scrollToCursor(d->cursor_, SCROLL_VISIBLE);
 				// Metrics have to be recomputed (maybe again)
-				updateMetrics(flags);
+				updateMetrics(true);
 			}
 		}
 		flags = flags & ~Update::FitCursor;
@@ -608,7 +618,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 void BufferView::updateScrollbarParameters()
 {
-	if (height_ == 0 && width_ == 0)
+	if (!ready())
 		return;
 
 	// We prefer fixed size line scrolling.
@@ -641,8 +651,8 @@ void BufferView::updateScrollbarParameters()
 			<< d->par_height_[pit]);
 	}
 
-	int top_pos = first.second->position() - first.second->ascent();
-	int bottom_pos = last.second->position() + last.second->descent();
+	int top_pos = first.second->top();
+	int bottom_pos = last.second->bottom();
 	bool first_visible = first.first == 0 && top_pos >= 0;
 	bool last_visible = last.first + 1 == int(parsize) && bottom_pos <= height_;
 	if (first_visible && last_visible) {
@@ -754,10 +764,14 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	if (pixels == 0)
 		return;
 
-	// If the offset is less than 2 screen height, prefer to scroll instead.
-	if (abs(pixels) <= 2 * height_) {
+	// If part of the existing paragraphs will remain visible, prefer to
+	// scroll
+	TextMetrics const & tm = textMetrics(&buffer_.text());
+	if (tm.first().second->top() - pixels <= height_
+	     &&  tm.last().second->bottom() - pixels >= 0) {
+		LYXERR(Debug::SCROLLING, "small skip");
 		d->anchor_ypos_ -= pixels;
-		processUpdateFlags(Update::Force);
+		processUpdateFlags(Update::ForceDraw);
 		return;
 	}
 
@@ -778,6 +792,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 		return;
 	}
 
+	LYXERR(Debug::SCROLLING, "search paragraph");
 	// find paragraph at target position
 	int par_pos = d->scrollbarParameters_.min;
 	pit_type i = 0;
@@ -1091,8 +1106,6 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 	d->anchor_ypos_ = - offset + row_dim.ascent();
 	if (how == SCROLL_CENTER)
 		d->anchor_ypos_ += height_/2 - row_dim.height() / 2;
-	else if (!lyxrc.scroll_below_document && d->anchor_pit_ == max_pit)
-		d->anchor_ypos_ = height_ - offset - row_dim.descent();
 	else if (offset > height_)
 		d->anchor_ypos_ = height_ - offset - defaultRowHeight();
 	else
@@ -1336,6 +1349,17 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_COPY:
 		flag.setEnabled(cur.selection());
 		break;
+
+	case LFUN_STATISTICS_REFERENCE_CLAMP: {
+		// disable optitem reset if clamp not used
+		if  (cmd.argument() == "reset" && d->stats_ref_value_c_ == 0) {
+				flag.setEnabled(false);
+				break;
+		}
+		flag.setEnabled(true);
+		break;
+
+	}
 
 	default:
 		return false;
@@ -2008,6 +2032,25 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 		break;
 
+	case LFUN_STATISTICS_REFERENCE_CLAMP: {
+		d->stats_update_trigger_ = true;
+		if  (cmd.argument() == "reset") {
+			d->stats_ref_value_w_ = d->stats_ref_value_c_ = d->stats_ref_value_nb_ = 0;
+			break;
+		}
+
+		DocIterator from, to;
+		from = doc_iterator_begin(&buffer_);
+		to = doc_iterator_end(&buffer_);
+		buffer_.updateStatistics(from, to);
+
+		d->stats_ref_value_w_ = buffer_.wordCount();
+		d->stats_ref_value_c_ = buffer_.charCount(true);
+		d->stats_ref_value_nb_ = buffer_.charCount(false);
+		break;
+	}
+
+
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN: {
 		Point p = getPos(cur);
@@ -2478,14 +2521,16 @@ void BufferView::clearSelection()
 
 void BufferView::resize(int width, int height)
 {
-	// Update from work area
-	width_ = width;
 	height_ = height;
+	// Update metrics only if width has changed
+	if (width != width_) {
+		width_ = width;
 
-	// Clear the paragraph height cache.
-	d->par_height_.clear();
-	// Redo the metrics.
-	updateMetrics();
+		// Clear the paragraph height cache.
+		d->par_height_.clear();
+		// Redo the metrics.
+		updateMetrics();
+	}
 }
 
 
@@ -2615,9 +2660,30 @@ bool BufferView::mouseSelecting() const
 }
 
 
+int BufferView::stats_ref_value_w() const
+{
+	return d->stats_ref_value_w_;
+}
+
+
+int BufferView::stats_ref_value_c() const
+{
+	return d->stats_ref_value_c_;
+}
+
+
+int BufferView::stats_ref_value_nb() const
+{
+	return d->stats_ref_value_nb_;
+}
+
+
 void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << "[ cmd0 " << cmd0 << "]" << endl;
+
+	if (!ready())
+		return;
 
 	// This is only called for mouse related events including
 	// LFUN_FILE_OPEN generated by drag-and-drop.
@@ -2726,7 +2792,7 @@ int BufferView::scrollDown(int pixels)
 	int const ymax = height_ + pixels;
 	while (true) {
 		pair<pit_type, ParagraphMetrics const *> last = tm.last();
-		int bottom_pos = last.second->position() + last.second->descent();
+		int bottom_pos = last.second->bottom();
 		if (lyxrc.scroll_below_document)
 			bottom_pos += height_ - minVisiblePart();
 		if (last.first + 1 == int(text->paragraphs().size())) {
@@ -2751,7 +2817,7 @@ int BufferView::scrollUp(int pixels)
 	int ymin = - pixels;
 	while (true) {
 		pair<pit_type, ParagraphMetrics const *> first = tm.first();
-		int top_pos = first.second->position() - first.second->ascent();
+		int top_pos = first.second->top();
 		if (first.first == 0) {
 			if (top_pos >= 0)
 				return 0;
@@ -2993,6 +3059,25 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 }
 
 
+void BufferView::setSelection(DocIterator const & from,
+			      DocIterator const & to)
+{
+	if (from.pit() != to.pit()) {
+		// there are multiple paragraphs in selection
+		cursor().setCursor(from);
+		cursor().clearSelection();
+		cursor().selection(true);
+		cursor().setCursor(to);
+		cursor().selection(true);
+	} else {
+		// only single paragraph
+		int const size = to.pos() - from.pos();
+		putSelectionAt(from, size, false);
+	}
+	processUpdateFlags(Update::Force | Update::FitCursor);
+}
+
+
 bool BufferView::selectIfEmpty(DocIterator & cur)
 {
 	if ((cur.inTexted() && !cur.paragraph().empty())
@@ -3044,24 +3129,36 @@ Cursor const & BufferView::cursor() const
 
 bool BufferView::singleParUpdate()
 {
-	Text & buftext = buffer_.text();
-	pit_type const bottom_pit = d->cursor_.bottom().pit();
-	TextMetrics & tm = textMetrics(&buftext);
-	Dimension const old_dim = tm.parMetrics(bottom_pit).dim();
+	CursorSlice const & its = d->cursor_.innerTextSlice();
+	pit_type const pit = its.pit();
+	TextMetrics & tm = textMetrics(its.text());
+	Dimension const old_dim = tm.parMetrics(pit).dim();
 
 	// make sure inline completion pointer is ok
 	if (d->inlineCompletionPos_.fixIfBroken())
 		d->inlineCompletionPos_ = DocIterator();
 
-	// In Single Paragraph mode, rebreak only
-	// the (main text, not inset!) paragraph containing the cursor.
-	// (if this paragraph contains insets etc., rebreaking will
-	// recursively descend)
-	tm.redoParagraph(bottom_pit);
-	ParagraphMetrics & pm = tm.parMetrics(bottom_pit);
-	if (pm.height() != old_dim.height()) {
-		// Paragraph height has changed so we cannot proceed to
-		// the singlePar optimisation.
+	/* Try to rebreak only the paragraph containing the cursor (if
+	 * this paragraph contains insets etc., rebreaking will
+	 * recursively descend). We need a full redraw if either
+	 * 1/ the height has changed
+	 * or
+	 * 2/ the width has changed and it was equal to the textmetrics
+	 *    width; the goal is to catch the case of a one-row inset that
+	 *    grows with its contents, but optimize the case of typing at
+	 *    the end of a mmultiple-row paragraph.
+	 *
+	 * NOTE: if only the height has changed, then it should be
+	 *   possible to update all metrics at minimal cost. However,
+	 *   since this is risky, we do not try that right now.
+	 */
+	tm.redoParagraph(pit);
+	ParagraphMetrics & pm = tm.parMetrics(pit);
+	if (pm.height() != old_dim.height()
+		|| (pm.width() != old_dim.width() && old_dim.width() == tm.width())) {
+		// Paragraph height or width has changed so we cannot proceed
+		// to the singlePar optimisation.
+		LYXERR(Debug::PAINTING, "SinglePar optimization failed.");
 		return false;
 	}
 	// Since position() points to the baseline of the first row, we
@@ -3069,39 +3166,43 @@ bool BufferView::singleParUpdate()
 	// the height does not change but the ascent does.
 	pm.setPosition(pm.position() - old_dim.ascent() + pm.ascent());
 
-	tm.updatePosCache(bottom_pit);
+	tm.updatePosCache(pit);
 
-	LYXERR(Debug::PAINTING, "\ny1: " << pm.position() - pm.ascent()
-		<< " y2: " << pm.position() + pm.descent()
-		<< " pit: " << bottom_pit
-		<< " singlepar: 1");
+	LYXERR(Debug::PAINTING, "\ny1: " << pm.top() << " y2: " << pm.bottom()
+		<< " pit: " << pit << " singlepar: 1");
 	return true;
 }
 
 
 void BufferView::updateMetrics()
 {
-	updateMetrics(d->update_flags_);
+	updateMetrics(true);
+	// metrics is done, full drawing is necessary now
+	d->update_flags_ = (d->update_flags_ & ~Update::Force) | Update::ForceDraw;
 	d->update_strategy_ = FullScreenUpdate;
 }
 
 
-void BufferView::updateMetrics(Update::flags & update_flags)
+void BufferView::updateMetrics(bool force)
 {
-	if (height_ == 0 || width_ == 0)
+	if (!ready())
 		return;
 
+	//LYXERR0("updateMetrics " << _v_(force));
+
 	Text & buftext = buffer_.text();
-	pit_type const npit = int(buftext.paragraphs().size());
+	pit_type const lastpit = int(buftext.paragraphs().size()) - 1;
 
-	// Clear out the position cache in case of full screen redraw,
-	d->coord_cache_.clear();
-	d->math_rows_.clear();
+	if (force) {
+		// Clear out the position cache in case of full screen redraw,
+		d->coord_cache_.clear();
+		d->math_rows_.clear();
 
-	// Clear out paragraph metrics to avoid having invalid metrics
-	// in the cache from paragraphs not relayouted below
-	// The complete text metrics will be redone.
-	d->text_metrics_.clear();
+		// Clear out paragraph metrics to avoid having invalid metrics
+		// in the cache from paragraphs not relayouted below. The
+		// complete text metrics will be redone.
+		d->text_metrics_.clear();
+	}
 
 	TextMetrics & tm = textMetrics(&buftext);
 
@@ -3109,71 +3210,55 @@ void BufferView::updateMetrics(Update::flags & update_flags)
 	if (d->inlineCompletionPos_.fixIfBroken())
 		d->inlineCompletionPos_ = DocIterator();
 
-	if (d->anchor_pit_ >= npit)
+	if (d->anchor_pit_ > lastpit)
 		// The anchor pit must have been deleted...
-		d->anchor_pit_ = npit - 1;
+		d->anchor_pit_ = lastpit;
 
-	// Rebreak anchor paragraph.
-	tm.redoParagraph(d->anchor_pit_);
-	ParagraphMetrics & anchor_pm = tm.parMetrics(d->anchor_pit_);
+	// Update metrics around the anchor
+	tm.updateMetrics(d->anchor_pit_, d->anchor_ypos_, height_);
 
-	// position anchor
-	if (d->anchor_pit_ == 0) {
-		int scrollRange = d->scrollbarParameters_.max - d->scrollbarParameters_.min;
-
-		// Complete buffer visible? Then it's easy.
-		if (scrollRange == 0)
-			d->anchor_ypos_ = anchor_pm.ascent();
-		else {
-			// avoid empty space above the first row
-			d->anchor_ypos_ = min(d->anchor_ypos_, anchor_pm.ascent());
-		}
-	}
-	anchor_pm.setPosition(d->anchor_ypos_);
-	tm.updatePosCache(d->anchor_pit_);
-
-	LYXERR(Debug::PAINTING, "metrics: "
-		<< " anchor pit = " << d->anchor_pit_
-		<< " anchor ypos = " << d->anchor_ypos_);
-
-	// Redo paragraphs above anchor if necessary.
-	int y1 = d->anchor_ypos_ - anchor_pm.ascent();
-	// We are now just above the anchor paragraph.
-	pit_type pit1 = d->anchor_pit_ - 1;
-	for (; pit1 >= 0 && y1 >= 0; --pit1) {
-		tm.redoParagraph(pit1);
-		ParagraphMetrics & pm = tm.parMetrics(pit1);
-		y1 -= pm.descent();
-		// Save the paragraph position in the cache.
-		pm.setPosition(y1);
-		tm.updatePosCache(pit1);
-		y1 -= pm.ascent();
+	// Check that the end of the document is not too high
+	int const min_visible = lyxrc.scroll_below_document ? minVisiblePart() : height_;
+	if (tm.last().first == lastpit && tm.last().second->bottom() < min_visible) {
+		d->anchor_ypos_ += min_visible - tm.last().second->bottom();
+		LYXERR(Debug::SCROLLING, "Too high, adjusting anchor ypos to " << d->anchor_ypos_);
+		tm.updateMetrics(d->anchor_pit_, d->anchor_ypos_, height_);
 	}
 
-	// Redo paragraphs below the anchor if necessary.
-	int y2 = d->anchor_ypos_ + anchor_pm.descent();
-	// We are now just below the anchor paragraph.
-	pit_type pit2 = d->anchor_pit_ + 1;
-	for (; pit2 < npit && y2 <= height_; ++pit2) {
-		tm.redoParagraph(pit2);
-		ParagraphMetrics & pm = tm.parMetrics(pit2);
-		y2 += pm.ascent();
-		// Save the paragraph position in the cache.
-		pm.setPosition(y2);
-		tm.updatePosCache(pit2);
-		y2 += pm.descent();
+	// Check that the start of the document is not too low
+	if (tm.first().first == 0 && tm.first().second->top() > 0) {
+		d->anchor_ypos_ -= tm.first().second->top();
+		LYXERR(Debug::SCROLLING, "Too low, adjusting anchor ypos to " << d->anchor_ypos_);
+		tm.updateMetrics(d->anchor_pit_, d->anchor_ypos_, height_);
 	}
 
-	LYXERR(Debug::PAINTING, "Metrics: "
-		<< " anchor pit = " << d->anchor_pit_
-		<< " anchor ypos = " << d->anchor_ypos_
-		<< " y1 = " << y1
-		<< " y2 = " << y2
-		<< " pit1 = " << pit1
-		<< " pit2 = " << pit2);
+	/* FIXME: do we want that? It avoids potential issues with old
+	 * paragraphs that should have been recomputed but have not, at
+	 * the price of potential extra metrics computaiton. I do not
+	 * think that the performance gain is high, so that for now the
+	 * extra paragraphs are removed
+	 */
+	// Remove paragraphs that are outside of screen
+	while(tm.first().second->bottom() <= 0) {
+		//LYXERR0("Forget pit: " << tm.first().first);
+		tm.forget(tm.first().first);
+	}
+	while(tm.last().second->top() > height_) {
+		//LYXERR0("Forget pit: " << tm.first().first);
+		tm.forget(tm.last().first);
+	}
 
-	// metrics is done, full drawing is necessary now
-	update_flags = (update_flags & ~Update::Force) | Update::ForceDraw;
+	/* FIXME: if paragraphs outside of the screen are not removed
+	 * above, one has to search for the first visible one here */
+	// Normalize anchor for next time
+	if (d->anchor_pit_ != tm.first().first
+	    || d->anchor_ypos_ != tm.first().second->position()) {
+		LYXERR(Debug::PAINTING, __func__ << ": Found new anchor pit = " << tm.first().first
+				<< "  anchor ypos = " << tm.first().second->position()
+				<< " (was " << d->anchor_pit_ << ", " << d->anchor_ypos_ << ")");
+		d->anchor_pit_ = tm.first().first;
+		d->anchor_ypos_ = tm.first().second->position();
+	}
 
 	// Now update the positions of insets in the cache.
 	updatePosCache();
@@ -3563,7 +3648,7 @@ bool BufferView::busy() const
 
 void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 {
-	if (height_ == 0 || width_ == 0)
+	if (!ready())
 		return;
 	LYXERR(Debug::PAINTING, (pain.isNull() ? "\t\t--- START NODRAW ---"
 	                         : "\t\t*** START DRAWING ***"));
@@ -3625,7 +3710,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 
 		// and possibly grey out below
 		pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
-		int const y2 = lastpm.second->position() + lastpm.second->descent();
+		int const y2 = lastpm.second->bottom();
 
 		if (y2 < height_) {
 			Color color = buffer().isInternal()
@@ -3641,21 +3726,25 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	// FIXME: does it always? see ticket #11947.
 	updateScrollbarParameters();
 
-	// Normalize anchor for next time
+	// Normalize anchor for next time (in case updateMetrics did not do it yet)
+	// FIXME: is this useful?
 	pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
 	pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
 	for (pit_type pit = firstpm.first; pit <= lastpm.first; ++pit) {
 		ParagraphMetrics const & pm = tm.parMetrics(pit);
-		if (pm.position() + pm.descent() > 0) {
+		if (pm.bottom() > 0) {
 			if (d->anchor_pit_ != pit
 			    || d->anchor_ypos_ != pm.position())
-				LYXERR(Debug::PAINTING, "Found new anchor pit = " << d->anchor_pit_
-				       << "  anchor ypos = " << d->anchor_ypos_);
+				LYXERR0(__func__ << ": Found new anchor pit = " << pit
+						<< "  anchor ypos = " << pm.position()
+						<< " (was " << d->anchor_pit_ << ", " << d->anchor_ypos_ << ")"
+						   "\nIf you see this message, please report.");
 			d->anchor_pit_ = pit;
 			d->anchor_ypos_ = pm.position();
 			break;
 		}
 	}
+
 	if (!pain.isNull()) {
 		// reset the update flags, everything has been done
 		d->update_flags_ = Update::None;
@@ -3847,6 +3936,16 @@ void BufferView::setInlineCompletion(Cursor const & cur, DocIterator const & pos
 bool BufferView::clickableInset() const
 {
 	return d->clickable_inset_;
+}
+
+
+bool BufferView::stats_update_trigger()
+{
+	if (d->stats_update_trigger_) {
+		d->stats_update_trigger_ = false;
+		return true;
+	}
+	return false;
 }
 
 } // namespace lyx

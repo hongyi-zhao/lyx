@@ -103,5 +103,5 @@ add_custom_command(
   DEPENDS Tex2lyxFilesUpdated
 )
 
-add_custom_target(cleanupdatetex2lyxtests DEPENDS UpdateFilesRemoved)
+add_custom_target(cleanupdatetex2lyxtests DEPENDS UpdateFilesRemoved updatetex2lyxtests)
 set_target_properties(cleanupdatetex2lyxtests PROPERTIES FOLDER "tests/tex2lyx")

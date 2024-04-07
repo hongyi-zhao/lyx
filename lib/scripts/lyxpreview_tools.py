@@ -165,7 +165,7 @@ def run_command_win32(cmd):
         try:
             hr, buffer = win32file.ReadFile(stdout_r, 4096)
             if hr != winerror.ERROR_IO_PENDING:
-                data = data + buffer
+                data = data + str(buffer)
 
         except pywintypes.error as e:
             if e.args[0] != winerror.ERROR_BROKEN_PIPE:

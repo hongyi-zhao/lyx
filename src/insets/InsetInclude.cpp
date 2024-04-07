@@ -176,6 +176,16 @@ char_type replaceCommaInBraces(docstring & params)
 	return private_char;
 }
 
+docstring stripOuterBraces(docstring & str)
+{
+	// trim only first and last occurrence of { and }
+	if (prefixIs(str, from_ascii("{")))
+		str = str.substr(1, docstring::npos);
+	if (suffixIs(str, from_ascii("}")))
+		str = str.substr(0, str.size() - 1);
+	return str;
+}
+
 } // namespace
 
 
@@ -699,13 +709,15 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				language = opts[i].substr(9);
 				opts.erase(opts.begin() + i--);
 			} else if (prefixIs(opts[i], from_ascii("caption="))) {
-				caption = params().prepareCommand(runparams, trim(opts[i].substr(8), "{}"),
+				caption = opts[i].substr(8);
+				caption = params().prepareCommand(runparams, stripOuterBraces(caption),
 								  ParamInfo::HANDLING_LATEXIFY);
 				opts.erase(opts.begin() + i--);
 				if (!use_minted)
 					latexed_opts.push_back(from_ascii("caption={") + caption + "}");
 			} else if (prefixIs(opts[i], from_ascii("label="))) {
-				label = params().prepareCommand(runparams, trim(opts[i].substr(6), "{}"),
+				label = opts[i].substr(6);
+				label = params().prepareCommand(runparams, stripOuterBraces(label),
 								ParamInfo::HANDLING_ESCAPE);
 				opts.erase(opts.begin() + i--);
 				if (!use_minted)
@@ -713,7 +725,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 			}
 			if (use_minted && !label.empty()) {
 				if (isfloat || !caption.empty())
-					label = trim(label, "{}");
+					label = stripOuterBraces(label);
 				else
 					opts.push_back(from_ascii("label=") + label);
 			}
@@ -1432,21 +1444,27 @@ void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 	if (!isListings(params()))
 		return;
 
+	Buffer const & master = *buffer().masterBuffer();
+	listings_label_ = master.B_("Program Listing");
+	Counters & counters = master.params().documentClass().counters();
+	docstring const cnt = from_ascii("listing");
+	bool const hasCounter = counters.hasCounter(cnt);
+	if (hasCounter) {
+		counters.saveLastCounter();
+		counters.step(cnt, utype);
+		listings_label_ += " " + convert<docstring>(counters.value(cnt));
+	}
+
 	if (label_)
 		label_->updateBuffer(it, utype, deleted);
+
+	if (hasCounter)
+		counters.restoreLastCounter();
 
 	InsetListingsParams const par(to_utf8(params()["lstparams"]));
 	if (par.getParamValue("caption").empty()) {
 		listings_label_ = buffer().B_("Program Listing");
 		return;
-	}
-	Buffer const & master = *buffer().masterBuffer();
-	Counters & counters = master.params().documentClass().counters();
-	docstring const cnt = from_ascii("listing");
-	listings_label_ = master.B_("Program Listing");
-	if (counters.hasCounter(cnt)) {
-		counters.step(cnt, utype);
-		listings_label_ += " " + convert<docstring>(counters.value(cnt));
 	}
 }
 

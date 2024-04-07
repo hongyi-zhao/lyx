@@ -315,6 +315,10 @@ export/examples/(|es/)Curricula_Vitae/Europe_CV_(pdf.*|dvi|lyx22|lyx23)
 # Armenian currently only works with XeTeX and LuaTeX and system fonts
 export/examples/Language_Support/Writing_Armenian_(dvi|dvi3_texF|pdf|pdf2|pdf3|pdf5_texF)
 
+# utf8x is not really supported (or needed) anymore:
+# https://github.com/latex3/hyperref/issues/248#issuecomment-1961868947
+export/export/latex/unicodesymbols/008-greek-and-coptic_utf8x_pdf2
+
 
 # ================================================
 Sublabel: externalissues
@@ -407,7 +411,7 @@ export/doc(|/de|/es|/fr|/ja|/ru)/Additional_docbook5
 #   The resulting documents should still be easy to fully convert into DocBook.
 #   - AASTeX.
 export/export/docbook/bibliography_precooked_aastex_docbook5
-export/(examples|templates)/Articles/American_Astronomical_Society_%28AASTeX_v._6.2%29_docbook5
+export/(examples|templates)/Articles/American_Astronomical_Society_%28AASTeX_v._6.(2|3|3.1)%29_docbook5
 #   - Springer. (The svmono_light should still pass.)
 export/templates/Books/Springer.*/.*_docbook5
 !export/export/docbook/svmono_light_docbook5

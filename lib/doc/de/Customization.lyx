@@ -28612,6 +28612,9 @@ $$AbsPath
 \end_inset
 
  Der absolute Dateipfad.
+ Wenn Sie das Dokument mit \SpecialChar LyX
+ ausgeben,
+ ist dies der Pfad zum temporären Verzeichnis.
 \end_layout
 
 \begin_layout Description
@@ -28749,6 +28752,19 @@ $$FName
 
  (absoluter Dateipfad oder ein zum \SpecialChar LyX
 -Dokument relativer).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$OrigAbsName
+\end_layout
+
+\end_inset
+
+ Der Dateiname mit absolutem Dateipfad zum ursprünglichen Verzeichnis (nicht dem temporären).
 \end_layout
 
 \begin_layout Description

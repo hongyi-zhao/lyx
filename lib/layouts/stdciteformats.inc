@@ -49,18 +49,23 @@ CiteFormat default
 	!makeed {%ifmultiple:editor%[[%B_edstext%]][[%B_edtext%]]}
 	# author or editor, as fullnames, following the schemes above
 	!authoredit {%fullnames:author%[[%fullnames:author%, ]][[{%fullnames:editor%[[%fullnames:editor%, %!makeed%, ]]}]]}
+	# by author or editor, as fullnames, following the schemes above
+	!byauthoredit {%fullbynames:bookauthor%[[%fullbynames:bookauthor%, ]][[{%fullbynames:editor%[[%fullbynames:editor%, %!makeed%, ]]}]]}
 	# "vol. 1, no.
 	!volnum {%volume%[[ %B_voltext% %volume%, {%number%[[%B_numtext% %number%]]}]]}
-	!quotetitle "%title%"
-	!emphtitle {!<i>!}%title%{!</i>!}
-	!emphjournal {!<i>!}{%journal%[[%journal%]][[{%journaltitle%[[%journaltitle%]]}]]}{!</i>!}
+	!fulltitle %title%{%subtitle%[[: %subtitle%]]}
+	!fullbooktitle %booktitle%{%booksubtitle%[[: %booksubtitle%]]}
+	!fulljournaltitle %journaltitle%{%journalsubtitle%[[: %journalsubtitle%]]}
+	!quotetitle "%!fulltitle%"
+	!emphtitle {!<i>!}%!fulltitle%{!</i>!}
+	!emphjournal {!<i>!}{%journal%[[%journal%]][[{%journaltitle%[[%!fulljournaltitle%]]}]]}{!</i>!}
 	!locpub {%publisher%[[{%address%[[%address%: ]][[{%location%[[%location%: ]]}]]}%publisher%, ]][[{%address%[[%address%, ]][[{%location%[[%location%, ]]}]]}]]}
 	!locinst {%school%[[{%address%[[%address%: ]][[{%location%[[%location%: ]]}]]}%school%, ]][[{%institution%[[{%address%[[%address%: ]][[{%location%[[%location%: ]]}]]}%institution%, ]][[{%address%[[%address%, ]][[{%location%[[%location%, ]]}]]}]]}]]}
 
 	#
 	# Entry types. Note that final punctuation will be added later, if needed.
 	#
-	!insomething %fullnames:author%, %!quotetitle%, %B_in%{%fullbynames:editor%[[ %fullbynames:editor%, %!makeed%,]]} {!<i>!}%booktitle%{!</i>!}%!volnum%{%edition%[[ %edition%]]} (%!locpub%%year%)%!pages%{%note%[[. %note%]]}
+	!insomething %fullnames:author%, %!quotetitle%, %B_in% %!byauthoredit% {!<i>!}%!fullbooktitle%{!</i>!}%!volnum%{%edition%[[ %edition%]]} (%!locpub%%year%)%!pages%{%note%[[. %note%]]}
 
 	article %fullnames:author%, %!quotetitle%, %!emphjournal% {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%)%!pages%{%note%[[. %note%]]}
 
@@ -69,10 +74,11 @@ CiteFormat default
 	collection %!booklike%
 	proceedings %!booklike%
 
+	inbook %!insomething%
 	incollection %!insomething%
 	inproceedings %!insomething%
 
-	!theses %fullnames:author%, %title% (%!locinst%%year%){%note%[[. %note%]]}
+	!theses %fullnames:author%, %!fulltitle% (%!locinst%%year%){%note%[[. %note%]]}
 	thesis %!theses%
 	phdthesis %!theses%
 	mastersthesis %!theses%

@@ -56,7 +56,6 @@ extern bool verbose;
 extern bool ignore_missing_glyphs;
 extern RunMode run_mode;
 extern OverwriteFiles force_overwrite;
-extern double qt_scale_factor;
 
 namespace frontend {
 class Application;

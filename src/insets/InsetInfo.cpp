@@ -180,10 +180,9 @@ bool translateString(docstring const & in, docstring & out, string const & lcode
 	out = translateIfPossible(in, lcode);
 	return in != out;
 }
-} // namespace anon
 
 
-docstring InsetInfoParams::getDate(string const & iname, QDate const date) const
+docstring getDate(string const & iname, QDate const date, Language const * lang)
 {
 	QLocale loc;
 	if (lang)
@@ -208,7 +207,7 @@ docstring InsetInfoParams::getDate(string const & iname, QDate const date) const
 }
 
 
-docstring InsetInfoParams::getTime(string const & iname, QTime const time) const
+docstring getTime(string const & iname, QTime const time, Language const * lang)
 {
 	QLocale loc;
 	if (lang)
@@ -222,6 +221,7 @@ docstring InsetInfoParams::getTime(string const & iname, QTime const time) const
 	else
 		return qstring_to_ucs4(loc.toString(time, toqstr(iname)));
 }
+} // namespace anon
 
 
 vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
@@ -313,17 +313,17 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 			date = (gdate.isValid()) ? gdate : QDate::currentDate();
 		} else
 			date = QDate::currentDate();
-		result.push_back(make_pair("long",getDate("long", date)));
-		result.push_back(make_pair("short", getDate("short", date)));
-		result.push_back(make_pair("loclong", getDate("loclong", date)));
-		result.push_back(make_pair("locmedium", getDate("locmedium", date)));
-		result.push_back(make_pair("locshort", getDate("locshort", date)));
-		result.push_back(make_pair("ISO", getDate("ISO", date)));
-		result.push_back(make_pair("yyyy", getDate("yyyy", date)));
-		result.push_back(make_pair("MMMM", getDate("MMMM", date)));
-		result.push_back(make_pair("MMM", getDate("MMM", date)));
-		result.push_back(make_pair("dddd", getDate("dddd", date)));
-		result.push_back(make_pair("ddd", getDate("ddd", date)));
+		result.push_back(make_pair("long",getDate("long", date, lang)));
+		result.push_back(make_pair("short", getDate("short", date, lang)));
+		result.push_back(make_pair("loclong", getDate("loclong", date, lang)));
+		result.push_back(make_pair("locmedium", getDate("locmedium", date, lang)));
+		result.push_back(make_pair("locshort", getDate("locshort", date, lang)));
+		result.push_back(make_pair("ISO", getDate("ISO", date, lang)));
+		result.push_back(make_pair("yyyy", getDate("yyyy", date, lang)));
+		result.push_back(make_pair("MMMM", getDate("MMMM", date, lang)));
+		result.push_back(make_pair("MMM", getDate("MMM", date, lang)));
+		result.push_back(make_pair("dddd", getDate("dddd", date, lang)));
+		result.push_back(make_pair("ddd", getDate("ddd", date, lang)));
 		result.push_back(make_pair("custom", _("Custom")));
 		break;
 	}
@@ -344,9 +344,9 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 			time = (gtime.isValid()) ? gtime : QTime::currentTime();
 		} else
 			time = QTime::currentTime();
-		result.push_back(make_pair("long",getTime("long", time)));
-		result.push_back(make_pair("short", getTime("short", time)));
-		result.push_back(make_pair("ISO", getTime("ISO", time)));
+		result.push_back(make_pair("long",getTime("long", time, lang)));
+		result.push_back(make_pair("short", getTime("short", time, lang)));
+		result.push_back(make_pair("ISO", getTime("ISO", time, lang)));
 		result.push_back(make_pair("custom", _("Custom")));
 		break;
 	}
@@ -1239,7 +1239,7 @@ void InsetInfo::build()
 			date = QDate::fromString(toqstr(date_specifier), Qt::ISODate);
 		else
 			date = QDate::currentDate();
-		setText(params_.getDate(date_format, date), params_.lang);
+		setText(getDate(date_format, date, params_.lang), params_.lang);
 		break;
 	}
 	case InsetInfoParams::TIME_INFO:
@@ -1261,7 +1261,7 @@ void InsetInfo::build()
 			time = QTime::fromString(toqstr(time_specifier), Qt::ISODate);
 		else
 			time = QTime::currentTime();
-		setText(params_.getTime(time_format, time), params_.lang);
+		setText(getTime(time_format, time, params_.lang), params_.lang);
 		break;
 	}
 	}
@@ -2057,7 +2057,7 @@ docstring InsetInfo::xhtml(XMLStream & xs, OutputParams const & rp) const
 		std::tie(date, date_format) = parseDate(buffer(), params_);
 
 		xml::openTag(xs, "span", std::string("class=\"infodate-") + cssClass + "\"", "inline");
-		xs << params_.getDate(date_format, date);
+		xs << getDate(date_format, date, params_.lang);
 		xml::closeTag(xs, "span", "inline");
 		break;
 	}
@@ -2086,7 +2086,7 @@ docstring InsetInfo::xhtml(XMLStream & xs, OutputParams const & rp) const
 		std::tie(time, time_format) = parseTime(buffer(), params_);
 
 		xml::openTag(xs, "span", std::string("class=\"infotime-") + cssClass + "\"", "inline");
-		xs << params_.getTime(time_format, time);
+		xs << getTime(time_format, time, params_.lang);
 		xml::closeTag(xs, "span", "inline");
 		break;
 	}

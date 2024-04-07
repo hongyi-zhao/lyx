@@ -1,5 +1,5 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 618
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -79,6 +79,7 @@ enumitem
 \suppress_date false
 \justification false
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \branch only-as-document-language
@@ -867,6 +868,8 @@ inverted 0
 status open
 
 \begin_layout Quote
+
+\lang bengali
 বাংলা ভাষা একটি ইন্দো-আর্য ভাষা,
  যা দক্ষিণ এশিয়ার বাঙালি জাতির প্রধান কথ্য ও লেখ্য ভাষা। মাতৃভাষীর সংখ্যায় বাংলা ইন্দো-আর্য ভাষা পরিবারের দ্বিতীয়,
  ইন্দো-ইউরোপীয় ভাষা পরিবারের চতুর্থ ও বিশ্বের ষষ্ঠ বৃহত্তম ভাষা।

@@ -455,7 +455,21 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 	// LATEXIFY, ESCAPE and NONE are mutually exclusive
 	if (handling & ParamInfo::HANDLING_LATEXIFY) {
 		// First handle backslash
-		result = subst(command, from_ascii("\\"), from_ascii("\\textbackslash{}"));
+		// we cannot replace yet with \textbackslash{}
+		// as the braces would be erroneously escaped
+		// in the following routines ("\textbackslash\{\}").
+		// So create a unique placeholder which is replaced
+		// in the end.
+		docstring bs = from_ascii("@LyXBackslash@");
+		// We are super-careful and assure the placeholder
+		// does not exist in the string
+		for (int i = 0; ; ++i) {
+			if (!contains(command, bs)) {
+				result = subst(command, from_ascii("\\"), bs);
+				break;
+			}
+			bs = from_ascii("@LyXBackslash") + i + '@';
+		}
 		// Then get LaTeX macros
 		pair<docstring, docstring> command_latexed =
 			runparams.encoding->latexString(result, runparams.dryrun);
@@ -493,6 +507,8 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 							result.replace(pos, 1, backslash + chars_escape[k] + term);
 				}
 		}
+		// set in real backslash now
+		result = subst(result, bs, from_ascii("\\textbackslash{}"));
 	}
 	else if (handling & ParamInfo::HANDLING_ESCAPE)
 		result = escape(command);
@@ -553,7 +569,7 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 }
 
 
-docstring InsetCommandParams::getCommand(OutputParams const & runparams, bool starred) const
+docstring InsetCommandParams::getCommand(OutputParams const & runparams, bool starred, bool unhandled) const
 {
 	docstring s = '\\' + from_ascii(cmdName_);
 	if (starred)
@@ -563,20 +579,23 @@ docstring InsetCommandParams::getCommand(OutputParams const & runparams, bool st
 	ParamInfo::const_iterator end = info_.end();
 	for (; it != end; ++it) {
 		std::string const & name = it->name();
+		ParamInfo::ParamHandling handling = unhandled ?
+					ParamInfo::HANDLING_NONE
+				      : it->handling();
 		switch (it->type()) {
 		case ParamInfo::LYX_INTERNAL:
 			break;
 
 		case ParamInfo::LATEX_REQUIRED: {
 			docstring const data =
-				prepareCommand(runparams, (*this)[name], it->handling());
+				prepareCommand(runparams, (*this)[name], handling);
 			s += '{' + data + '}';
 			noparam = false;
 			break;
 		}
 		case ParamInfo::LATEX_OPTIONAL: {
 			docstring data =
-				prepareCommand(runparams, (*this)[name], it->handling());
+				prepareCommand(runparams, (*this)[name], handling);
 			if (!data.empty()) {
 				s += '[' + protectArgument(data) + ']';
 				noparam = false;

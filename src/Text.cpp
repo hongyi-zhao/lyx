@@ -2965,12 +2965,12 @@ void Text::setParagraphs(Cursor const & cur, ParagraphParameters const & p)
 }
 
 
-// this really should just insert the inset and not move the cursor.
-void Text::insertInset(Cursor & cur, Inset * inset)
+// just insert the inset and not move the cursor.
+bool Text::insertInset(Cursor & cur, Inset * inset)
 {
 	LBUFERR(this == cur.text());
 	LBUFERR(inset);
-	cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
+	return cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
 		Change(cur.buffer()->params().track_changes
 		? Change::INSERTED : Change::UNCHANGED));
 }
@@ -5720,11 +5720,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_NOMENCL_PRINT:
-	case LFUN_NEWPAGE_INSERT:
 		// do nothing fancy
 		doInsertInset(cur, this, cmd, false, false);
 		cur.posForward();
 		break;
+
+	case LFUN_NEWPAGE_INSERT: {
+		// When we are in a heading, put the page break in a standard
+		// paragraph before the heading (if cur.pos() == 0) or after
+		// (if cur.pos() == cur.lastpos())
+		if (cur.text()->getTocLevel(cur.pit()) != Layout::NOT_IN_TOC) {
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+			DocumentClass const & tc = bv->buffer().params().documentClass();
+			lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
+						  + from_ascii("\" ignoreautonests")));
+		}
+		// do nothing fancy
+		doInsertInset(cur, this, cmd, false, false);
+		cur.posForward();
+		break;
+	}
 
 	case LFUN_SEPARATOR_INSERT: {
 		doInsertInset(cur, this, cmd, false, false);
@@ -5792,14 +5807,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			InsetMathMacroTemplate * inset = new InsetMathMacroTemplate(cur.buffer(),
 				from_utf8(token(s, ' ', 0)), nargs, false, type);
 			inset->setBuffer(bv->buffer());
-			insertInset(cur, inset);
-
-			// enter macro inset and select the name
-			cur.push(*inset);
-			cur.top().pos() = cur.top().lastpos();
-			cur.resetAnchor();
-			cur.selection(true);
-			cur.top().pos() = 0;
+			if (insertInset(cur, inset)) {
+				// If insertion is successful, enter macro inset and select the name
+				cur.push(*inset);
+				cur.top().pos() = cur.top().lastpos();
+				cur.resetAnchor();
+				cur.selection(true);
+				cur.top().pos() = 0;
+			} else
+				delete inset;
 		}
 		break;
 
@@ -6370,30 +6386,31 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	// FIXME: the following code should go in favor of fine grained
 	// update flag treatment.
-	if (singleParUpdate) {
+	if (singleParUpdate || cur.result().screenUpdate() & Update::SinglePar) {
 		// Inserting characters does not change par height in general. So, try
 		// to update _only_ this paragraph. BufferView will detect if a full
 		// metrics update is needed anyway.
 		cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 		return;
 	}
-	if (!needsUpdate
-	    && &oldTopSlice.inset() == &cur.inset()
-	    && oldTopSlice.idx() == cur.idx()
-	    && !oldSelection // oldSelection is a backup of cur.selection() at the beginning of the function.
-	    && !cur.selection())
-		// FIXME: it would be better if we could just do this
-		//
-		//if (cur.result().update() != Update::FitCursor)
-		//	cur.noScreenUpdate();
-		//
-		// But some LFUNs do not set Update::FitCursor when needed, so we
-		// do it for all. This is not very harmfull as FitCursor will provoke
-		// a full redraw only if needed but still, a proper review of all LFUN
-		// should be done and this needsUpdate boolean can then be removed.
-		cur.screenUpdateFlags(Update::FitCursor);
-	else
+	if (needsUpdate)
 		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
+	else {
+		// oldSelection is a backup of cur.selection() at the beginning of the function.
+	    if (!oldSelection && !cur.selection())
+			// FIXME: it would be better if we could just do this
+			//
+			//if (cur.result().update() != Update::FitCursor)
+			//	cur.noScreenUpdate();
+			//
+			// But some LFUNs do not set Update::FitCursor when needed, so we
+			// do it for all. This is not very harmfull as FitCursor will provoke
+			// a full redraw only if needed but still, a proper review of all LFUN
+			// should be done and this needsUpdate boolean can then be removed.
+			cur.screenUpdateFlags(Update::FitCursor);
+		else
+			cur.screenUpdateFlags(Update::ForceDraw | Update::FitCursor);
+	}
 }
 
 
@@ -6734,10 +6751,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_BIGDELIM:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_MODE:
-	case LFUN_MATH_MACRO:
 	case LFUN_MATH_SUBSCRIPT:
 	case LFUN_MATH_SUPERSCRIPT:
 		code = MATH_HULL_CODE;
+		break;
+
+	case LFUN_MATH_MACRO:
+		code = MATHMACRO_CODE;
 		break;
 
 	case LFUN_REGEXP_MODE:
@@ -6952,9 +6972,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_NEWPAGE_INSERT:
-		// not allowed in description items
+		// not allowed in description items and in the midst of sections
 		code = NEWPAGE_CODE;
-		enable = !inDescriptionItem(cur);
+		enable = !inDescriptionItem(cur)
+			&& (cur.text()->getTocLevel(cur.pit()) == Layout::NOT_IN_TOC
+			    || cur.pos() == 0 || cur.pos() == cur.lastpos());
 		break;
 
 	case LFUN_LANGUAGE:

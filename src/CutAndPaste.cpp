@@ -292,26 +292,6 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 				if (!target_inset->insetAllowed(inset->lyxCode()))
 					tmpbuf->eraseChar(i--, false);
 		}
-
-		if (lyxrc.ct_markup_copied) {
-			// Only remove deleted text and change
-			// the rest to inserted if ct is active,
-			// otherwise leave markup as is
-			if (buffer.params().track_changes) {
-				if (tmpbuf->size() > 0) {
-				    if (!isFullyDeleted(insertion))
-					    tmpbuf->acceptChanges(0, tmpbuf->size());
-				    else
-					    tmpbuf->rejectChanges(0, tmpbuf->size());
-				}
-				tmpbuf->setChange(Change(Change::INSERTED));
-			}
-		} else
-			// Resolve all markup to inserted or unchanged
-			// Deleted text has already been removed on copy
-			// (copySelectionHelper)
-			tmpbuf->setChange(Change(buffer.params().track_changes ?
-						 Change::INSERTED : Change::UNCHANGED));
 	}
 
 	bool const target_empty = pars[pit].empty();
@@ -494,6 +474,29 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 		}
 	}
 	insertion.swap(in.paragraphs());
+
+	tmpbuf = insertion.begin();
+	for (; tmpbuf != insertion.end(); ++tmpbuf) {
+		if (lyxrc.ct_markup_copied) {
+			// Only remove deleted text and change
+			// the rest to inserted if ct is active,
+			// otherwise leave markup as is
+			if (buffer.params().track_changes) {
+				if (tmpbuf->size() > 0) {
+					if (!isFullyDeleted(insertion))
+						tmpbuf->acceptChanges(0, tmpbuf->size());
+					else
+						tmpbuf->rejectChanges(0, tmpbuf->size());
+				}
+				tmpbuf->setChange(Change(Change::INSERTED));
+			}
+		} else
+			// Resolve all markup to inserted or unchanged
+			// Deleted text has already been removed on copy
+			// (copySelectionHelper)
+			tmpbuf->setChange(Change(buffer.params().track_changes ?
+						 Change::INSERTED : Change::UNCHANGED));
+	}
 
 	// Split the paragraph for inserting the buf if necessary.
 	if (!target_empty)

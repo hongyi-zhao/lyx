@@ -94,6 +94,7 @@ linguistics
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index
@@ -121,7 +122,6 @@ linguistics
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
-\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -156,30 +156,16 @@ literal "false"
 This paper describes some features that \SpecialChar LyX
  provides to linguists.
  It demonstrates how to use some native support in order to produce numbered examples,
- 
-\change_inserted -712698321 1559649291
-interlinear 
-\change_unchanged
-glosses,
+ interlinear glosses,
  OT tableaux,
  semantic markup,
  structure trees,
- 
-\change_inserted -712698321 1561275938
-Discourse Representation Structures,
- 
-\change_unchanged
-and phonetic symbols (IPA).
+ Discourse Representation Structures,
+ and phonetic symbols (IPA).
 \end_layout
 
 \begin_layout Section
-Aims and 
-\change_deleted -712698321 1559649283
-p
-\change_inserted -712698321 1559649283
-P
-\change_unchanged
-rerequisites
+Aims and Prerequisites
 \end_layout
 
 \begin_layout Standard
@@ -251,25 +237,9 @@ literal "true"
 \end_inset
 
 :
- This is the base package used for numbered examples
-\change_inserted -712698321 1561270568
-,
-
-\change_unchanged
- 
-\change_deleted -712698321 1561270570
-and 
-\change_unchanged
-glosses
-\change_inserted -712698321 1561270580
- and semantic markup
-\change_unchanged
-.
-
-\change_inserted -712698321 1689860042
+ This is the base package used for numbered examples,
+ glosses and semantic markup.
  Note that at least version 2.11 of the covington package is required to use all features.
-\change_unchanged
-
 \end_layout
 
 \begin_deeper
@@ -282,59 +252,6 @@ arg   "covington"
 \end_inset
 
 .
-\change_inserted -712698321 1561275950
-
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\change_deleted -712698321 1559635693
-
-\emph on
-enumitem.sty
-\emph default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "enumitem"
-literal "true"
-
-\end_inset
-
-:
- This package is used for the Subexamples style.
- It is generally useful to alter the appearance of lists (such as 
-\emph on
-enumerate
-\emph default
-,
- 
-\emph on
-itemize
-\emph default
-,
- 
-\emph on
-description
-\emph default
-).
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\change_deleted -712698321 1559635693
-Installed on your system:
- 
-\begin_inset Info
-type  "package"
-arg   "enumitem"
-\end_inset
-
-.
-\change_unchanged
-
 \end_layout
 
 \end_deeper
@@ -356,11 +273,7 @@ literal "true"
 \emph on
 Meaning
 \emph default
- character style
-\change_inserted -712698321 1559635744
- and for glosses
-\change_unchanged
-.
+ character style and for glosses.
  The package provides context sensitive quotation marks,
  depending on the language in use.
 \end_layout
@@ -375,14 +288,10 @@ arg   "csquotes"
 \end_inset
 
 .
-\change_inserted -712698321 1561276155
-
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\change_inserted -712698321 1561276156
 
 \emph on
 drs.sty
@@ -406,8 +315,6 @@ Discourse Representation Structures
 
 \begin_deeper
 \begin_layout Itemize
-
-\change_inserted -712698321 1561276156
 Installed on your system:
  
 \begin_inset Info
@@ -416,8 +323,6 @@ arg   "drs"
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \end_deeper
@@ -480,14 +385,10 @@ arg   "forest"
 \end_inset
 
 .
-\change_inserted -712698321 1561276162
-
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\change_inserted -712698321 1561276195
 
 \emph on
 pict2e.sty
@@ -510,8 +411,6 @@ es.
 
 \begin_deeper
 \begin_layout Itemize
-
-\change_inserted -712698321 1689942218
 Installed on your system:
  
 \begin_inset Info
@@ -524,8 +423,6 @@ arg   "pict2e"
 
 \end_deeper
 \begin_layout Enumerate
-
-\change_inserted -712698321 1689942481
 
 \emph on
 varwidth.sty
@@ -544,8 +441,6 @@ literal "true"
 
 \begin_deeper
 \begin_layout Itemize
-
-\change_inserted -712698321 1689942218
 Installed on your system:
  
 \begin_inset Info
@@ -554,19 +449,11 @@ arg   "varwidth"
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \end_deeper
 \begin_layout Section
-Numbered 
-\change_deleted -712698321 1559649278
-e
-\change_inserted -712698321 1559649278
-E
-\change_unchanged
-xamples
+Numbered Examples
 \end_layout
 
 \begin_layout Standard
@@ -654,22 +541,6 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -712698321 1689862356
-If you want to modify the numbering of an individual example,
- you can use 
-\family sans
-Insert\SpecialChar menuseparator
-Custom Numbering
-\family default
-.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted -712698321 1689861656
 All example variants can be customized in many details via optional arguments.
  These can be inserted via 
 \family sans
@@ -699,8 +570,6 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1689862358
 For global adjustments,
  these options can be passed to the 
 \family typewriter
@@ -727,15 +596,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1689862465
 In the case of consecutive examples and subexamples,
  there are some more extra insets available:
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted -712698321 1689862485
 To modify the numbering of an individual example,
  you can use 
 \family sans
@@ -746,8 +611,6 @@ Custom Numbering
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted -712698321 1689862558
 To add judgment markers (such as * or ?) to example sentences,
  use 
 \family sans
@@ -758,8 +621,6 @@ Judgment
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted -712698321 1689863425
 To add text that precedes an example sentence (but is not part of the presented data),
  use 
 \family sans
@@ -773,8 +634,6 @@ Subexample Preamble.
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted -712698321 1689863466
 To add text that follows an example sentence (but is not part of the presented data),
  use 
 \family sans
@@ -788,8 +647,6 @@ Subexample Postamble.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1689862769
 Please consult the 
 \emph on
 covington
@@ -803,16 +660,10 @@ literal "false"
 \end_inset
 
  for details on all these features.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
-
-\change_inserted -712698321 1559649210
-Interlinear 
-\change_unchanged
-Glosses
+Interlinear Glosses
 \end_layout
 
 \begin_layout Standard
@@ -821,74 +672,32 @@ The Linguistics module provides two kinds of glosses,
 \family sans
 Insert\SpecialChar menuseparator
 Custom Inset
-\change_deleted -712698321 1559635796
-s
-\change_unchanged
-
 \family default
 :
  
-\change_deleted -712698321 1559635812
-The standard 
 \emph on
-Glosse
-\change_inserted -712698321 1559635861
 Interlinear Gloss (2
 \begin_inset space ~
 \end_inset
 
 Lines)
-\change_unchanged
-
 \emph default
- provides a gloss that consists of two lines (a gloss pair
-\change_inserted -712698321 1559635998
- consisting of the original language representation and and interlinear,
+ provides a gloss that consists of two lines (a gloss pair consisting of the original language representation and and interlinear,
  i.
 \begin_inset space \thinspace{}
 \end_inset
 
 e.
- word-to-word translation
-\change_unchanged
-) 
-\change_deleted -712698321 1559636571
-and a
-\change_inserted -712698321 1559636571
-plus
-\change_unchanged
- 
-\change_inserted -712698321 1559635981
-free 
-\change_unchanged
-translation,
+ word-to-word translation) plus free translation,
  the 
-\change_deleted -712698321 1559635825
-
 \emph on
-Tri-Glosse
-\change_inserted -712698321 1559635858
 Interlinear Gloss (3
 \begin_inset space ~
 \end_inset
 
 Lines)
-\change_unchanged
-
 \emph default
- 
-\change_deleted -712698321 1559648850
-insets consists of three lines and a translation
-\change_inserted -712698321 1559648856
-provides an additional gloss line
-\change_unchanged
- (th
-\change_deleted -712698321 1559648859
-e
-\change_inserted -712698321 1559648859
-is
-\change_unchanged
- third line is usually needed to give morphological or phonological information next to the gloss pair).
+ provides an additional gloss line (this third line is usually needed to give morphological or phonological information next to the gloss pair).
  Each translation line might span multiple lines in the output,
  i.
 \begin_inset space \thinspace{}
@@ -896,9 +705,7 @@ is
 
 e.,
  the paragraphs are automatically broken if they exceed the text width.
- 
-\change_inserted -712698321 1559636240
-The original language representation (first line in the gloss) is input in the Gloss inset directly,
+ The original language representation (first line in the gloss) is input in the Gloss inset directly,
  the other information in specific sub-insets (
 \family sans
 Interlinear Gloss
@@ -920,69 +727,22 @@ Gloss Translation
 ).
  \SpecialChar LyX
  automatically inserts these sub-insets if you insert a new gloss.
- 
-\change_unchanged
-The
-\change_inserted -712698321 1559636247
-y
-\change_unchanged
- 
-\change_inserted -712698321 1559636252
-can also be 
-\change_deleted -712698321 1559636256
-translation line is 
-\change_unchanged
-inserted 
-\change_inserted -712698321 1559636649
-manually 
-\change_unchanged
-by means of 
+ They can also be inserted manually by means of 
 \family sans
 Insert\SpecialChar menuseparator
-Gloss
-\change_deleted -712698321 1559635897
-e
-\change_unchanged
- Translation
-\change_inserted -712698321 1559636277
-
+Gloss Translation
 \family default
  and 
 \family sans
 Insert\SpecialChar menuseparator
 Interlinear Gloss
-\change_unchanged
-
 \family default
 .
- It does not matter where you insert the
-\change_inserted -712698321 1559636292
-se sub-insets
-\change_deleted -712698321 1559636298
- translation
-\change_unchanged
-,
- 
-\change_deleted -712698321 1559636300
-it is
-\change_inserted -712698321 1559636302
-they are
-\change_unchanged
- always printed 
-\change_deleted -712698321 1559636305
-as the last line
-\change_inserted -712698321 1559636308
-in the right order
-\change_unchanged
-.
-
-\change_inserted -712698321 1689863632
- 
+ It does not matter where you insert these sub-insets,
+ they are always printed in the right order.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1689863920
 Optionally,
  you can also insert comments to the example sentence or each of the gloss lines via 
 \family sans
@@ -998,13 +758,9 @@ Gloss Comment
  These comments will be printed to the right of the respective line,
  again independently to where you have inserted them in the \SpecialChar LyX
  window.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1689863687
 Finally you can also insert gloss options via 
 \family sans
 Insert\SpecialChar menuseparator
@@ -1030,8 +786,6 @@ literal "false"
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559636976
 Note that the gloss support has been completely rewritten for \SpecialChar LyX
  2.4.
  It now uses the new and enhanced 
@@ -1051,72 +805,44 @@ Local Layout
  new gloss insets are converted to \SpecialChar TeX
  code if you export to a previous \SpecialChar LyX
  version.
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
 \begin_layout Standard
 Here is a simple example for a 
-\change_inserted -712698321 1559636502
-
 \emph on
-two-line 
-\change_unchanged
-Gloss
-\change_deleted -712698321 1559636506
-e
-\change_unchanged
-
+two-line Gloss
 \emph default
 :
-\change_inserted -712698321 1559637042
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1559637046
 \begin_inset Flex Interlinear Gloss (2 Lines)
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637057
 C'est     un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637046
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637065
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637065
 This is
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  an example simple
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1125,69 +851,11 @@ This is
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637046
 \begin_inset Argument post:4
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637069
 This is a simple example
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1559637072
-\begin_inset Flex Glosse
-status open
-
-\begin_layout Plain Layout
-C'est     un exemple simple
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-This is
-\end_layout
-
-\end_inset
-
- an example simple
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-\begin_inset Quotes els
-\end_inset
-
-This is a simple example
-\begin_inset Quotes ers
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1197,8 +865,6 @@ This is a simple example
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -1239,48 +905,24 @@ status open
 \end_layout
 
 \begin_layout Standard
-Here is a three-line gloss
-\change_deleted -712698321 1559637102
- (
-\emph on
-Tri-Glosse
-\emph default
-)
-\change_unchanged
-;
- the procedure is 
-\change_inserted -712698321 1559649192
-basically 
-\change_unchanged
-the same:
-\change_inserted -712698321 1559637107
-
+Here is a three-line gloss;
+ the procedure is basically the same:
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1559637110
 \begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559648912
 Hoc est aliud exemplum
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637110
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559648946
 n.sg.nom 3sg n.sg.nom n.sg.nom
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1289,17 +931,11 @@ n.sg.nom 3sg n.sg.nom n.sg.nom
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637111
 \begin_inset Argument post:4
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559648933
 This is another  example
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1308,17 +944,11 @@ This is another  example
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559649011
 \begin_inset Argument post:6
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559648952
 This is another example
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1328,91 +958,18 @@ This is another example
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559649033
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559649033
 
 fsii={
 \backslash
 normalfont
 \backslash
 scshape}
-\change_unchanged
-
 \end_layout
 
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1559637137
-\begin_inset Flex Tri-Glosse
-status open
-
-\begin_layout Plain Layout
-C'est      un exemple simple
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-Das ist
-\end_layout
-
-\end_inset
-
- ein Beispiel einfach
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-This is
-\end_layout
-
-\end_inset
-
- an  example simple
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-\begin_inset Quotes els
-\end_inset
-
-This is a simple example
-\begin_inset Quotes ers
 \end_inset
 
 
@@ -1425,55 +982,35 @@ This is a simple example
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
 \begin_layout Standard
 \noindent
-
-\change_inserted -712698321 1559649169
 Note how we have used the gloss options here to make the second line be typeset in small caps.
 \end_layout
 
 \begin_layout Standard
 \noindent
 If you want to have numbered glosses,
- 
-\change_inserted -712698321 1559649116
-either
-\change_deleted -712698321 1559637165
-simply
-\change_unchanged
- insert the gloss inset to a numbered examples paragraph,
+ either insert the gloss inset to a numbered examples paragraph,
  as follows:
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
-
-\change_inserted -712698321 1559637185
 \begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637191
 Mein Luftkissenfahrzeug ist voller  Aale
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637185
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637197
 My    skeertuig                   is  vol       palings
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1482,31 +1019,21 @@ My    skeertuig                   is  vol       palings
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637185
 \begin_inset Argument post:4
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637201
 My    hovercraft                 is 
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637201
 full of
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  eels
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1515,69 +1042,11 @@ full of
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637185
 \begin_inset Argument post:6
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637206
 Do you have matches?
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_deleted -712698321 1559637208
-
-\begin_inset Flex Tri-Glosse
-status open
-
-\begin_layout Plain Layout
-Mein Luftkissenfahrzeug ist voller  Aale
-\end_layout
-
-\begin_layout Plain Layout
-My    skeertuig                   is  vol       palings
-\end_layout
-
-\begin_layout Plain Layout
-My    hovercraft                 is 
-\begin_inset Flex GroupGlossedWords
-status open
-
-\begin_layout Plain Layout
-full of
-\end_layout
-
-\end_inset
-
- eels
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-\begin_inset Quotes els
-\end_inset
-
-Do you have matches?
-\begin_inset Quotes ers
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1587,14 +1056,10 @@ Do you have matches?
 
 \end_inset
 
-
-\change_inserted -712698321 1559637228
 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1559637243
 or use the 
 \emph on
 ex
@@ -1603,23 +1068,15 @@ ex
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1559637243
 \begin_inset Flex Interlinear Gloss (3 Lines)
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637251
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637252
 ex
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1628,23 +1085,15 @@ ex
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637243
 Mein Luftkissenfahrzeug ist voller  Aale
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637243
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637243
 My    skeertuig                   is  vol       palings
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1653,31 +1102,21 @@ My    skeertuig                   is  vol       palings
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637243
 \begin_inset Argument post:4
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637243
 My    hovercraft                 is 
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637243
 full of
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  eels
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1686,17 +1125,11 @@ full of
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637243
 \begin_inset Argument post:6
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1559637243
 Do you have matches?
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1706,8 +1139,6 @@ Do you have matches?
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -1720,20 +1151,10 @@ Avoiding Page Breaks within Glosses
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1559637546
 By default,
- 
-\change_deleted -712698321 1559637546
-P
-\change_inserted -712698321 1559637547
-p
-\change_unchanged
-age breaks might occur within glosses,
+ page breaks might occur within glosses,
  which is not desirable.
- 
-\change_inserted -712698321 1559637701
-You can avoid most of them by entering 
+ You can avoid most of them by entering 
 \emph on
 noglossbreaks
 \emph default
@@ -1748,197 +1169,13 @@ Custom
 \family default
 .
  If page breaks still occur,
- you can
-\change_deleted -712698321 1559637705
-A workaround is to
-\change_unchanged
- wrap
-\change_inserted -712698321 1559637709
- the whole
-\change_unchanged
- gloss
-\change_deleted -712698321 1559637710
-es
-\change_unchanged
- into 
-\change_inserted -712698321 1559637714
-a 
-\change_unchanged
-box
-\change_deleted -712698321 1559637716
-es
-\change_unchanged
- (via 
+ you can wrap the whole gloss into a box (via 
 \family sans
 Insert\SpecialChar menuseparator
 Box\SpecialChar menuseparator
 Frameless
 \family default
 ).
-
-\change_deleted -712698321 1559637727
- If you want to automate this for all glosses,
- you can copy the following code to 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-LaTeX Preamble
-\family default
-:
-\end_layout
-
-\begin_layout Quote
-
-\change_deleted -712698321 1559637727
-\begin_inset listings
-lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-% Do not break pages at two-line glosses
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-AtBeginDocument{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewenvironment{linggloss}[2][]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-glosstr{
-\backslash
-glt #1}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.7
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-gll #2}{
-\backslash
-glosstr
-\backslash
-glend
-\backslash
-end{minipage}}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Quote
-
-\change_deleted -712698321 1559637727
-\begin_inset listings
-lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-% Do not break pages at three-line glosses
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-AtBeginDocument{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewenvironment{lingglosss}[2][]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-glosstr{
-\backslash
-glt #1}%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{minipage}{.7
-\backslash
-textwidth}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-glll #2}{
-\backslash
-glosstr
-\backslash
-glend
-\backslash
-end{minipage}}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1559637727
-You might have to adapt the minipage width (
-\family typewriter
-.7
-\backslash
-textwidth
-\family default
- in the example code) to fit the glosses to your actual page width.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1971,10 +1208,6 @@ footnotetext{Actual footnote ...}
  right behind the 
 \emph on
 Gloss
-\change_deleted -712698321 1559637777
-e
-\change_unchanged
-
 \emph default
  inset.
  If you need several footnotes,
@@ -2009,7 +1242,6 @@ fragile
 \end_inset
 
  frame.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -2196,7 +1428,6 @@ covington
 \emph default
 ,
  this problem is solved.
- 
 \end_layout
 
 \end_deeper
@@ -2224,7 +1455,6 @@ List of Tableaux
 List of Tables
 \emph default
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -2641,7 +1871,7 @@ concept
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Enumerate
@@ -2700,15 +1930,7 @@ status open
 \backslash
 renewcommand
 \backslash
-l
-\change_deleted -712698321 1561270831
-ing
-\change_unchanged
-exp
-\change_deleted -712698321 1561270833
-r
-\change_unchanged
-[1]{
+lexp[1]{
 \backslash
 textbf{#1}}
 \end_layout
@@ -2724,33 +1946,15 @@ Similarly,
 \family typewriter
 
 \backslash
-l
-\change_deleted -712698321 1561270840
-ing
-\change_unchanged
-con
-\change_deleted -712698321 1561270844
-cept
-\change_unchanged
-
+lcon
 \family default
 ) and meaning (
 \family typewriter
 
 \backslash
-l
-\change_deleted -712698321 1561270846
-ing
-\change_unchanged
-mean
-\change_deleted -712698321 1561270848
-ing
-\change_unchanged
-
+lmean
 \family default
 ) can be modified.
-
-\change_inserted -712698321 1561270898
  Please refer to the 
 \emph on
 covington
@@ -2764,8 +1968,6 @@ literal "false"
 \end_inset
 
  for details.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -2994,14 +2196,10 @@ literal "true"
 \end_layout
 
 \begin_layout Section
-
-\change_inserted -712698321 1561276366
 Discourse Representation Structures
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1561276535
 The linguistics module provides some insets to draw 
 \emph on
 Discourse Representation Structures
@@ -3024,8 +2222,6 @@ Custom Inset
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1561300882
 A simple DRS is produced by 
 \family sans
 Discourse Representation Structure
@@ -3055,8 +2251,6 @@ Referents
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561276845
 If it is not inserted,
  you can also insert it via 
 \family sans
@@ -3064,8 +2258,6 @@ Insert\SpecialChar menuseparator
 DRS Referents
 \family default
 .
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3081,8 +2273,6 @@ arg   "newline-insert newline"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1561277426
 \begin_inset VSpace defskip
 \end_inset
 
@@ -3091,17 +2281,11 @@ arg   "newline-insert newline"
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561276618
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561276576
 x
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3110,15 +2294,11 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561277217
 donkey(x)
 \begin_inset Newline newline
 \end_inset
 
 green(x)
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3127,8 +2307,6 @@ green(x)
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1561278779
 \begin_inset VSpace defskip
 \end_inset
 
@@ -3141,15 +2319,11 @@ unspaced
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1561282534
 In addition to this simple DRS,
  the following conditional DRSes are provided (mainly for nesting into simple DRSes):
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted -712698321 1561282617
 The 
 \family sans
 If-Then DRS
@@ -3161,12 +2335,8 @@ if S
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1561279387
-
 \emph off
 1
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3177,11 +2347,7 @@ if S
 \begin_inset script subscript
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561279395
 2
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3191,27 +2357,19 @@ if S
 
 \begin_deeper
 \begin_layout Standard
-
-\change_inserted -712698321 1561279897
 \begin_inset Flex IfThen-DRS
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561279544
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280450
 x
 \begin_inset space ~
 \end_inset
 
 y
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3220,8 +2378,6 @@ y
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280496
 John(x)
 \begin_inset Newline newline
 \end_inset
@@ -3234,21 +2390,15 @@ own(x,y)
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561279603
 \begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561279599
 z
 \begin_inset space ~
 \end_inset
 
 w
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3257,14 +2407,10 @@ w
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561279579
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280579
 z = x
 \begin_inset Newline newline
 \end_inset
@@ -3274,14 +2420,10 @@ w = y
 \end_inset
 
 feed(z,w)
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -3292,8 +2434,6 @@ feed(z,w)
 
 \end_deeper
 \begin_layout Enumerate
-
-\change_inserted -712698321 1561282668
 The 
 \family sans
 Conditional DRS
@@ -3304,27 +2444,19 @@ Conditional DRS
 
 \begin_deeper
 \begin_layout Standard
-
-\change_inserted -712698321 1561281161
 \begin_inset Flex Cond-DRS
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280361
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280351
 x
 \begin_inset space ~
 \end_inset
 
 y
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3333,8 +2465,6 @@ y
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280787
 John(x)
 \begin_inset Newline newline
 \end_inset
@@ -3344,25 +2474,17 @@ donkey(y)
 \end_inset
 
 own(x,y)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561279982
 \begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280653
 \begin_inset Formula $\wedge\!\,$
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3371,21 +2493,15 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561279982
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280702
 z
 \begin_inset space ~
 \end_inset
 
 w
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3394,14 +2510,10 @@ w
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561279982
 \begin_inset Argument post:3
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561280703
 z = x
 \begin_inset Newline newline
 \end_inset
@@ -3411,14 +2523,10 @@ w = y
 \end_inset
 
 love(w,z)
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -3429,8 +2537,6 @@ love(w,z)
 
 \end_deeper
 \begin_layout Enumerate
-
-\change_inserted -712698321 1561281199
 The 
 \family sans
 Duplex Condition DRS
@@ -3440,23 +2546,15 @@ Duplex Condition DRS
 
 \begin_deeper
 \begin_layout Standard
-
-\change_inserted -712698321 1561281613
 \begin_inset Flex QDRS
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281297
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281237
 x
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3465,8 +2563,6 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281305
 x 
 \begin_inset Formula $\in$
 \end_inset
@@ -3475,17 +2571,11 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281209
 \begin_inset Argument post:1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281317
 every
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3494,17 +2584,11 @@ every
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281209
 \begin_inset Argument post:2
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281320
 x
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3513,17 +2597,11 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281209
 \begin_inset Argument post:3
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281327
 y
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3532,27 +2610,19 @@ y
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281209
 \begin_inset Argument post:4
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561282714
 secretary(y)
 \begin_inset Newline newline
 \end_inset
 
 hire(x,y)
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -3563,8 +2633,6 @@ hire(x,y)
 
 \end_deeper
 \begin_layout Enumerate
-
-\change_inserted -712698321 1561281636
 The 
 \family sans
 Negated DRS
@@ -3574,23 +2642,15 @@ Negated DRS
 
 \begin_deeper
 \begin_layout Standard
-
-\change_inserted -712698321 1561281719
 \begin_inset Flex NegDRS
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281667
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281667
 x
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3599,15 +2659,11 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281697
 donkey(x)
 \begin_inset Newline newline
 \end_inset
 
 green(x)
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3617,8 +2673,6 @@ green(x)
 
 \end_deeper
 \begin_layout Standard
-
-\change_inserted -712698321 1561281800
 Finally,
  
 \family sans
@@ -3629,8 +2683,6 @@ DRS with Sentence above
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1561282183
 \begin_inset VSpace defskip
 \end_inset
 
@@ -3639,17 +2691,11 @@ DRS with Sentence above
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281911
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281859
 A donkey is green
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3658,17 +2704,11 @@ A donkey is green
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281886
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281888
 x
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3677,15 +2717,11 @@ x
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1561281854
 donkey(x)
 \begin_inset Newline newline
 \end_inset
 
 green(x)
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3698,8 +2734,6 @@ green(x)
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1561282246
 The 
 \emph on
 drs
@@ -3714,8 +2748,6 @@ literal "false"
 \end_inset
 
  for details.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -3982,7 +3014,7 @@ after
 \begin_inset IPA
 
 \begin_layout Standard
- ̼
+̼
 \end_layout
 
 \end_inset
@@ -4161,13 +3193,9 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 \end_inset
 
 .
-\change_inserted -712698321 1561276082
-
 \end_layout
 
 \begin_layout Bibliography
-
-\change_inserted -712698321 1561276305
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "drs"
@@ -4186,18 +3214,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1561282286
-
 https://ctan.org/tex-archive/macros/latex/contrib/drs
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Bibliography
@@ -4293,13 +3315,9 @@ https://wiki.lyx.org/LyX/LinguistLyX
 \end_inset
 
 .
-\change_inserted -712698321 1561276282
-
 \end_layout
 
 \begin_layout Bibliography
-
-\change_inserted -712698321 1561276302
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pict2e"
@@ -4314,17 +3332,11 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1561276288
-
 https://ctan.org/tex-archive/macros/latex/contrib/pict2e
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -4372,13 +3384,9 @@ http://www.ctan.org/tex-archive/fonts/tipa/
 \end_inset
 
 .
-\change_inserted -712698321 1689942343
-
 \end_layout
 
 \begin_layout Bibliography
-
-\change_inserted -712698321 1689942407
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "varwidth"
@@ -4393,18 +3401,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1689942372
-
 https://ctan.org/tex-archive/macros/latex/contrib/varwidth
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \end_body

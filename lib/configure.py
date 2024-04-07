@@ -1087,16 +1087,6 @@ def checkConverterEntries():
     # Only define a converter from pdf6 for graphics
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
         rc_entry = [ r'\converter pdf6        eps        "%%"	""' ])
-    # sips:Define a converter from pdf6 to png for Macs where pdftops is missing.
-    # The converter utility sips allows to force the dimensions of the resulting
-    # png image. The value of 800 pixel for the width is arbitrary and not
-    # related to the current screen resolution or width.
-    # There is no converter parameter for this information.
-    #
-    #pdftoppm: Some systems ban IM eps->png conversion. We will offer eps->pdf->png route instead.
-    checkProg('a PDF to PNG converter',
-        ['sips --resampleWidth 800 --setProperty format png $$i --out $$o' , 'pdftoppm -r 72 -png -singlefile $$i >  $$o'],
-        rc_entry = [ r'\converter pdf6        png        "%%" ""' ])
     # Create one converter for a PDF produced using TeX fonts and one for a
     # PDF produced using non-TeX fonts. This does not produce non-unique
     # conversion paths, since a given document either uses TeX fonts or not.
@@ -1192,6 +1182,9 @@ def checkConverterEntries():
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""'])
     #
+    #prepare for pdf -> png, 2nd part depends on IM ban below
+    pdftopng = ['sips --resampleWidth 800 --setProperty format png $$i --out $$o' ]
+    #
     # Due to more restrictive policies, it is possible that (image)magick
     # does not allow conversions from eps to png.
     # So before setting the converter test it it on a mock file
@@ -1211,6 +1204,19 @@ def checkConverterEntries():
 \converter jpg        tiff        "convert $$i $$o"	""
 \converter png        tiff        "convert $$i $$o"	""''')
             logger.info('ImageMagick seems to ban conversions from EPS. Disabling direct EPS->PNG.')
+            pdftopng.append('pdftoppm -r 72 -png -singlefile $$i >  $$o')
+    #
+    # PDF -> PNG: sips (mac), IM convert (windows, linux), pdftoppm (linux with IM ban)
+    # sips:Define a converter from pdf6 to png for Macs where pdftops is missing.
+    # The converter utility sips allows to force the dimensions of the resulting
+    # png image. The value of 800 pixel for the width is arbitrary and not
+    # related to the current screen resolution or width.
+    # There is no converter parameter for this information.
+    #
+    #pdftoppm: Some systems ban IM eps->png conversion. We will offer eps->pdf->png route instead.
+    checkProg('a PDF to PNG converter', pdftopng,
+        rc_entry = [ r'\converter pdf6        png        "%%" ""' ])
+
     #
     # no agr -> pdf6 converter, since the pdf library used by gracebat is not
     # free software and therefore not compiled in in many installations.
@@ -1371,6 +1377,13 @@ def checkConverterEntries():
                     break
                 else:
                     logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
+            else:
+                logger.info('+  found LilyPond book, but version string does not match: %s' % version_string)
+
+            # If not on Windows, skip the check as argument to python.
+            if os.name != 'nt':
+                break
+
         if not found_lilypond_book:
             logger.info('+  found LilyPond-book, but could not extract version number.')
     #

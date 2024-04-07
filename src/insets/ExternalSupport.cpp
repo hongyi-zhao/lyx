@@ -106,8 +106,10 @@ string const doSubstitution(InsetExternalParams const & params,
 		params.filename.mangledFileName() :
 		params.filename.outputFileName(parentpath);
 	string const basename = changeExtension(
-			onlyFileName(filename), string());
+		    onlyFileName(filename), string());
 	string const absname = makeAbsPath(filename, parentpath).absFileName();
+	string const origabsname = makeAbsPath(params.filename.outputFileName(parentpath),
+					       parentpath).absFileName();
 
 	if (what != ALL_BUT_PATHS) {
 		string const filepath = onlyPath(filename);
@@ -133,6 +135,10 @@ string const doSubstitution(InsetExternalParams const & params,
 				    PROTECT_EXTENSION,
 				    ESCAPE_DOTS);
 		result = subst_path(result, "$$AbsPath", abspath,
+				    use_latex_path,
+				    PROTECT_EXTENSION,
+				    ESCAPE_DOTS);
+		result = subst_path(result, "$$OrigAbsName", origabsname,
 				    use_latex_path,
 				    PROTECT_EXTENSION,
 				    ESCAPE_DOTS);

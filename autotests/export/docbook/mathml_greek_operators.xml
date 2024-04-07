@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DocBook file was created by LyX 2.4.0~devel
+  See https://www.lyx.org/ for more information -->
+<article xml:lang="en-US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.2">
+<title>MathML: all Greek letters are symbols, none of them is an operator</title>
+<para>Issue: https://www.lyx.org/trac/ticket/12948</para>
+<informalequation>
+<alt role='tex'>1\alpha2\Xi3</alt>
+<m:math display="block">
+ 
+<m:mrow>
+ <m:mn>1</m:mn>
+ <m:mi>&#x3B1;</m:mi>
+ <m:mn>2</m:mn>
+ <m:mi>&#x39E;</m:mi>
+ <m:mn>3</m:mn>
+</m:mrow>
+</m:math>
+</informalequation>
+</article>

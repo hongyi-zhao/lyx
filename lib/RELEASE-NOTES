@@ -359,9 +359,6 @@
   delivering the fonts as a separated package dependent from core LyX
   in order to display correctly math symbols like \oint.
 
-  Also note, that while it is still possible to compile LyX against Qt 4
-  these math symbols will not be displayed correctly anymore on Qt 4.
-  
 * Parentheses inside custom insets (defined in the local layout or in a  
   custom module) which has the "PassThru" tag set to true, in a hebrew text  
   will be reversed after conversion of existing documents.  

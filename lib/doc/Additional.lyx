@@ -2372,11 +2372,19 @@ AMS-\SpecialChar LaTeX
 The \SpecialChar LyX
  supported document classes 
 \family sans
-article (AMS)
+American Mathematical Society (AMS) 
+\family default
+in category 
+\family sans
+Articles
 \family default
  and 
 \family sans
-book (AMS)
+American Mathematical Society (AMS)
+\family default
+ in category 
+\family sans
+Books
 \family default
  are maintained by the Society;
  use of their features is described in the Math manual and on their website 
@@ -3041,24 +3049,23 @@ Fonts
 
 \begin_layout Subsection
 Hebrew
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Hebrew"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 The document classes 
 \family sans
-article
-\begin_inset space \thinspace{}
-\end_inset
-
-(Hebrew)
+Hebrew Article
 \family default
  and 
 \family sans
-letter
-\begin_inset space \thinspace{}
-\end_inset
-
-(Hebrew)
+Hebrew Letter
 \family default
  use the 
 \family typewriter
@@ -5517,8 +5524,8 @@ Email
 
 \begin_layout Standard
 In addition to these topics,
- the macros use three additional \SpecialChar LaTeX
- commands that have no counterpart in \SpecialChar LyX
+ the macros use one additional \SpecialChar LaTeX
+ commands that has no counterpart in \SpecialChar LyX
 :
 \end_layout
 
@@ -6980,7 +6987,7 @@ sample.tex
 \begin_layout Enumerate
 Make certain that 
 \family typewriter
-aastex.layout
+aastex63.layout
 \family default
  appears in \SpecialChar LyX
 's 
@@ -7011,7 +7018,7 @@ American Astronomical Society (AASTeX V.
 \begin_inset space \thinspace{}
 \end_inset
 
-6)
+6.3.1)
 \family default
  appear in the class list in 
 \family sans
@@ -8510,7 +8517,8 @@ nolink "false"
 
 \end_inset
 
-) and 
+),
+ the 
 \family sans
 Letter (Standard Class with Extra Font Sizes)
 \family default
@@ -8522,6 +8530,25 @@ Letter (Standard Class with Extra Font Sizes)
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Extra-font-sizes"
+nolink "false"
+
+\end_inset
+
+) and the 
+\family sans
+Hebrew Letter
+\family default
+ (section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Hebrew"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
@@ -10874,7 +10901,7 @@ name "sec:slideQuirk"
 \end_layout
 
 \begin_layout Standard
-All five of the new paragraph environments are somewhat quirky due to inherent limitiations in the current version of \SpecialChar LyX
+All five of the new paragraph environments are somewhat quirky due to inherent limitations in the current version of \SpecialChar LyX
 .
  As I just mentioned,
  \SpecialChar LyX
@@ -11672,7 +11699,7 @@ slides
  you'll need to use some inlined \SpecialChar LaTeX
  codes.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The commands of interest are:
@@ -23117,9 +23144,14 @@ Math Images Scaling
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-Formats
+
 \family default
-.
+Output
+\family sans
+\SpecialChar menuseparator
+
+\family default
+HTML.
 \begin_inset Foot
 status collapsed
 
@@ -23790,7 +23822,8 @@ lyxpipe.out
  The stem of the pipe names can be defined in the 
 \family sans
 Tools\SpecialChar menuseparator
-Preferences
+Preferences\SpecialChar menuseparator
+Paths
 \family default
  dialog,
  for example 
@@ -24414,7 +24447,8 @@ Synchronize with Output
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-Formats
+Output\SpecialChar menuseparator
+LaTeX
 \family default
 .
  In such a case \SpecialChar LyX
@@ -25910,7 +25944,11 @@ Forward search works both with DVI and PDF output.
 \end_inset
 
 e.,
- which format is already there in the temporary directory) and chooses the appropriate configuration for the respective format.\SpecialChar LyX
+ which format is already there in the temporary directory) and chooses the appropriate configuration for the respective format.
+\end_layout
+
+\begin_layout Chapter
+\SpecialChar LyX
  Features needing Extra Software
 \end_layout
 
@@ -27197,7 +27235,7 @@ Compressed
  Uncompressed LyX documents are text files and therefore for merging two different versions by version control systems.
  Compressed LyX documents are binary files,
  which cannot be merged by version control systems.
- Also to avoid unnecessary merge conflicts we advise to disable document 
+ Also to avoid unnecessary merge conflicts we advise to disable 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -31124,7 +31162,7 @@ listerrors
 
 \emph default
  Interestingly,
- these files show off the language-indepence of the \SpecialChar LyX
+ these files show off the language independency of the \SpecialChar LyX
  literate programming support since they are written in Python and Perl respectively.
 \end_layout
 

@@ -30,11 +30,11 @@ from parser_tools import (count_pars_in_inset, del_complete_lines, del_token,
      find_end_of, find_end_of_inset, find_end_of_layout, find_token,
      find_token_backwards, find_token_exact, find_re, get_bool_value,
      get_containing_inset, get_containing_layout, get_option_value, get_value,
-     get_quoted_value)
+     get_quoted_value, is_in_inset)
 #    del_value, 
 #    find_complete_lines,
 #    find_re, find_substring,
-#    is_in_inset, set_bool_value
+#    set_bool_value
 #    find_tokens, check_token
 
 from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, insert_to_preamble, lyx2latex,
@@ -1649,8 +1649,8 @@ def convert_hebrew_parentheses(document):
                 continue
         elif line.startswith('\\end_inset'):
             if inset_is_arg:
-                inset_is_arg = False
-            else:     
+                inset_is_arg = is_in_inset(document.body, i, "\\begin_inset Argument")[0] != -1
+            else:
                 current_insets.pop()
         elif current_languages[-1] == 'hebrew' and not line.startswith('\\'):
             document.body[i] = line.replace('(','\x00').replace(')','(').replace('\x00',')')
@@ -1915,13 +1915,14 @@ def convert_lineno(document):
     use_lineno = 0
     options = ""
     i = find_token(document.preamble, "\\linenumbers", 1)
-    if i > -1:
+    if i > 0:
         usepkg = re.match(r"\\usepackage(.*){lineno}", document.preamble[i-1])
         if usepkg:
             use_lineno = 1
             options = usepkg.group(1).strip("[]")
             del(document.preamble[i-1:i+1])
-            del_token(document.preamble, "% Added by lyx2lyx", i-2, i-1)
+            if i > 1:
+                del_token(document.preamble, "% Added by lyx2lyx", i-2, i-1)
 
     k = find_token(document.header, "\\index ")
     if options == "":

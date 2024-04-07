@@ -152,6 +152,7 @@
 \use_default_options false
 \begin_modules
 subequations
+logicalmkup
 \end_modules
 \maintain_unincluded_children no
 \language ngerman
@@ -177,6 +178,8 @@ subequations
 \output_sync 0
 \bibtex_command default
 \index_command makeindex
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -215,6 +218,7 @@ subequations
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \notefontcolor #0000ff
@@ -21922,7 +21926,7 @@ A=\frac{B}{c}\cdot\maltese
 
 \begin_inset Formula 
 \[
-\maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}
+\maltese A\textrm{{\Large \maltese\textit{A}}}\textrm{{\tiny \maltese\textit{A}}}
 \]
 
 \end_inset
@@ -38370,6 +38374,69 @@ hinzufügen
 
 \end_layout
 
+\begin_layout Subsection
+Mathe-Makros für externe Befehle
+\end_layout
+
+\begin_layout Standard
+Zuweilen braucht man ein \SpecialChar LaTeX
+-Paket,
+ das einen Mathebefehl definiert,
+ welcher nicht von Haus aus in \SpecialChar LyX
+ unterstützt wird.
+ Die Lösung ist einfach:
+ Binden Sie einfach das Paket in den Vorspann ein und tippen Sie den Befehl im Mathe-Modus.
+ Wie immer bei Dingen,
+ die im Vorspann definiert werden,
+ ist die Darstellung im \SpecialChar LyX
+-Arbeitsbereich nicht ideal.
+\end_layout
+
+\begin_layout Standard
+Ab LyX 2.4 gibt es hierfür folgende Lösung:
+ Definieren Sie einfach ein Mathe-Makro mit leerem \SpecialChar TeX
+-Kästchen!
+ Der \SpecialChar LyX
+-Teil wird für die Drastellung verwendet,
+ es wird aber kein \SpecialChar LaTeX
+-Code ausgegeben.
+ Beispielsweise definiert das Paket 
+\series bold
+godelnum
+\series default
+ ein Makro 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+Godelnum
+\end_layout
+
+\end_inset
+
+,
+ welches ein eizlenes Argument in eckige Anführungszeichen setzt.
+ Um hierfür eine elegante Darstellung in \SpecialChar LyX
+ zu bekommen,
+ definieren Sie einfach:
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Godelnum}[1]{}
+{\ulcorner#1\urcorner}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der gleiche Trick funktioniert natürlich auch für Befehle,
+ die Sie im Vorspann selbst definiert haben.
+\end_layout
+
 \begin_layout Section
 Computeralgebrasysteme
 \end_layout
@@ -40773,11 +40840,11 @@ nolink "false"
 -Klammer steht.
 \begin_inset Formula 
 \begin{flalign}
-\hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
+\hspace{30pt}F_{A} & =\rho·V·g & {\footnotesize \begin{array}{ll}
 \rho & \textrm{Dichte}\\
 V & \textrm{Volumen}\\
 g & \textrm{Fallbeschleunigung}
-\end{array} &  & {}\label{eq:innerhalb}
+\end{array}} &  & {}\label{eq:innerhalb}
 \end{flalign}
 
 \end_inset

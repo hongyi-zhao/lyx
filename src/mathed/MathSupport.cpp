@@ -1070,10 +1070,10 @@ bool isAlphaSymbol(MathAtom const & at)
 
 	if (at->asFontInset()) {
 		MathData const & ar = at->asFontInset()->cell(0);
-		for (size_t i = 0; i < ar.size(); ++i) {
-			if (!(ar[i]->asCharInset() ||
-			      (ar[i]->asSymbolInset() &&
-			       ar[i]->asSymbolInset()->isOrdAlpha())))
+		for (const auto & i : ar) {
+			if (!(i->asCharInset() ||
+			      (i->asSymbolInset() &&
+			       i->asSymbolInset()->isOrdAlpha())))
 				return false;
 		}
 		return true;

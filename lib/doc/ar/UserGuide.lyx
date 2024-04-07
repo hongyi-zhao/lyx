@@ -121,6 +121,7 @@ enumitem
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \notefontcolor #0000ff
@@ -31595,10 +31596,10 @@ literal "false"
  In this document we used the Bib\SpecialChar TeX
  style 
 \family sans
-alphadin.bst
+alpha.bst
 \family default
 ,
- which provides an alpha-numeric style in accordance with the German Standards Institute (DIN).
+ which provides an alpha-numeric style.
 \end_layout
 
 \begin_layout Standard
@@ -55360,7 +55361,8 @@ bibname
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "../biblio/LyXDocs"
-options "../biblio/alphadin"
+options "alpha"
+encoding "default"
 
 \end_inset
 

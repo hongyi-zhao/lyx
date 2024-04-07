@@ -768,15 +768,20 @@ void InsetMathBinom::mathmlize(MathMLStream & ms) const
 		rdelim = ']';
 		break;
 	}
-	ms << MTagInline("mo", "fence='true' stretchy='true' form='prefix'")
-	   << ldelim
-	   << ETagInline("mo")
-	   << MTagInline("mfrac", "linethickness='0'")
+
+	if (ldelim != ' ') {
+	    ms << MTagInline("mo", "fence='true' stretchy='true' form='prefix'")
+	       << ldelim
+	       << ETagInline("mo");
+	}
+	ms << MTagInline("mfrac", "linethickness='0'")
 	   << cell(0) << cell(1)
-       << ETagInline("mfrac")
-	   << MTagInline("mo", "fence='true' stretchy='true' form='postfix'")
-	   << rdelim
-	   << ETagInline("mo");
+	   << ETagInline("mfrac");
+	if (rdelim != ' ') {
+	    ms << MTagInline("mo", "fence='true' stretchy='true' form='postfix'")
+	       << rdelim
+	       << ETagInline("mo");
+	}
 }
 
 

@@ -508,6 +508,7 @@ enum FuncCode
 	LFUN_TAB_GROUP_NEXT,            // daniel 20220130
 	LFUN_TAB_GROUP_PREVIOUS,        // daniel 20220130
 	LFUN_BIBTEX_DATABASE_LIST,      // bpiwowar, 20221218
+	LFUN_STATISTICS_REFERENCE_CLAMP,// sanda, 20240324
 	LFUN_LASTACTION                 // end of the table
 };
 

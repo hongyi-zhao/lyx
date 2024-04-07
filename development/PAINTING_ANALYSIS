@@ -3,7 +3,7 @@ Understanding the painting process
 
 This file tries to describe the state of the metrics/painting
 mechanism, and identify the improvements that could be made. The first
-section can be read alone, although the context for them is really
+sections can be read alone, although the context for them is really
 given in the following ones.
 
 Please keep this file up to date as the code evolves!!!
@@ -20,9 +20,10 @@ following section. Some actions are proposed.
 
 ** SinglePar update
 
-This flag only has an effect in the current BufferView and at
-top-level, but I think it is useful in other views too. Doing this
-will require some work on the update pipeline, though.
+This flag only has an effect in the current BufferView, but I think it
+is useful in other views too. Doing this will require some work on the
+update pipeline, though.
+
 
 ** Buffer::change issues
 
@@ -53,17 +54,16 @@ The global idea would be to extend FitCursor to cover also horizontal
 cursor.
 
 
-* Clean-up of drawing code
+* TODO Clean-up of drawing code
 
 ** Set Row::changed() in a finer way
 
 *** singleParUpdate
 
 When the height of the current paragraph changes, there is no need for
-a full screen update. Only the rows after the current one need to have
-their position recomputed.
+a full screen update (at top level, at least). Only the rows after the
+current one need to have their position recomputed.
 
-This is also true when scrolling (how to do that?)
 
 *** redoParagraph
 
@@ -71,12 +71,15 @@ It should be possible to check whether the new row is the same as the
 old one and keep its changed() status in this case. This would reduce
 a lot the amount of stuff to redraw.
 
+
 ** Put labels and friends in the Row as elements
 
 It should not be necessary to access the Paragraph object to draw.
 Adding the static elements to Row is a lot of work, but worth it IMO.
 
+
 ** When a paragraph ends with a newline, compute correctly the height of the extra row.
+
 
 ** Merging bv::updateMetrics and tm::metrics
 
@@ -89,6 +92,12 @@ insets. We should re-use the bv::updateMetrics logic:
 
 The difficulty for a tall table cell for example, is that it may be
 necessary to break the whole contents to know the width of the cell.
+Also, the anchor is relative to the outer paragraph, which means that
+for a very long inset it is necessary to rebreak until the contents
+that needs to be shown (to compute the heights).
+
+All in all, this is difficult to get right. This is less important now
+that SinglePar updates work in nested insets.
 
 
 * Description of current drawing mechanism
@@ -99,10 +108,12 @@ There are three parts to drawing the work area:
 
  + the metrics phase computes the size of insets and breaks the
    paragraphs into rows. It stores the dimension of insets (both
-   normal and math) in bv::coordCache.
+   normal and math) in bv::coordCache and the vertical position of the
+   top-level paragraphs.
 
  + the nodraw drawing phase paints the screen (see below) with a null
-   painter. The only useful effect is to store the inset positions.
+   painter. The only useful effect is to store the positions of
+   visible insets.
 
  + an update() signal is sent. This in turn will trigger a paint
    event, and the actual screen painting will happen then.
@@ -115,18 +126,18 @@ whether this is correct.
 
 Depending on the Update::flags passed to the method, it sets an update
 strategy in (NoScreenUpdate, SingleParUpdate, FullScreenUpdate,
-DecorationUpdate). It triggers a recomputation of the metrics when either:
+DecorationUpdate). It triggers a call to updateMetrics when either:
 
  + Update::Force has been specified
  + Update::FitCursor has been specified and there is a need to scroll
    the display.
  + Update::SinglePar has been specified and the current paragraph has
-   not changed height.
+   changed height.
 
 If a computation of metrics has taken place, Force is removed from the
 flags and ForceDraw is added instead.
 
-It is OK to call processUpateFlags several times before an update. In
+It is OK to call processUpdateFlags several times before an update. In
 this case, the effects are cumulative. processUpdateFlags executes the
 metrics-related actions, but defers the actual drawing to the next
 paint event.
@@ -137,20 +148,31 @@ update flag is Update::None.
 
 ** Metrics computation (and nodraw drawing phase)
 
-This is triggered by bv::updateMetrics, which calls tm::redoParagraph for
-all visible paragraphs. Some Paragraphs above or below the screen (needed
-for page up/down) and computed as needed.
+This is done bv::updateMetrics. When the parameter 'force' of this
+method is true, that first thing that is done is to clear the metrics
+caches to start from a clean slate.
+
+Then, starting upwards then downwards from the anchor paragraph
+(anchor_pit_) and its vertical position (anchor_ypos_),
+tm::updateMetrics every visible paragraph whose metrics is not know
+(all of them when force==true) is recomputed using tm::redoParagraph.
 
 tm::redoParagraph will call Inset::metrics for each inset. In the case
 of text insets, this will invoke recursively tm::metrics, which redoes
-all the paragraphs of the inset.
+all the paragraphs of the inset. Then, a single big row is created in
+tm::tokenizeParagraph, which is later broken in multiple rows by
+tm::breakParagraph.
 
-Then, a single big row is created in tm::tokenizeParagraph, which is
-later broken in multiple rows by tm::breakParagraph.
+If it turns out that the top or bottom margin are incorrect (paragraphs
+are too high/low), tm::updateMetrics will be called again with fixed
+values of anchor_ypos_ (this does not incur much extra work).
 
-At the end of the function, bv::updatePosCache is called. It triggers
+At the end of bv::updateMetrics, bv::updatePosCache is called. It triggers
 a repaint of the document with a NullPainter (a painter that does
 nothing). This has the effect of caching all insets positions.
+
+This way of working means that scrolling can be achieved by just
+updating anchor_ypos_ and calling bv::processUpdateFlags(Update::ForceDraw).
 
 ** Drawing the work area.
 

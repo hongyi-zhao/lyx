@@ -37,7 +37,10 @@ CitationStyle citationStyleFromString(std::string const & latex_str,
 std::string citationStyleToString(CitationStyle const &, bool const latex = false);
 
 /// Transforms the information about authors into a <authorgroup> (directly written to a XMLStream).
-docstring authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream & xs, Buffer const & buf);
+/// Type: "author" or empty means author of the entry (article, book, etc.); "book" means author of the book
+/// (but not necessarily of this entry in particular).
+void authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream & xs, Buffer const & buf,
+								 std::string type);
 
 
 /// Class to represent information about a BibTeX or

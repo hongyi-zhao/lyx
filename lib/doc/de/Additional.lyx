@@ -110,6 +110,7 @@ initials
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \notefontcolor #0000ff
@@ -2391,19 +2392,13 @@ American Mathematical Society
 
 \begin_layout Standard
 Die von \SpecialChar LyX
- unterstützten Klassen 
+ unterstützten Klassen der 
 \family sans
 \lang english
-article (AMS)
+American Mathematical Society (AMS)
 \family default
 \lang ngerman
- und 
-\family sans
-\lang english
-book (AMS)
-\family default
-\lang ngerman
- werden von der 
+ (Aufsatz und Buch) werden von der 
 \emph on
 \lang english
 American Mathematical Society
@@ -7115,17 +7110,11 @@ Stellen Sie sicher,
 sample.tex
 \family default
  (und eventuell 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
+\family typewriter
 table.tex
-\end_layout
-
-\end_inset
-
-) in ein eigenes Verzeichnis und versuchen Sie,
+\family default
+) aus der AAS\SpecialChar TeX
+-Distribution in ein eigenes Verzeichnis und versuchen Sie,
  es mit 
 \family typewriter
 latex
@@ -7137,7 +7126,7 @@ latex
 Überzeugen Sie sich,
  dass die Datei 
 \family typewriter
-aastex.layout
+aastex63.layout
 \family default
  im Ordner 
 \begin_inset Flex Code
@@ -7176,7 +7165,7 @@ American Astronomical Society (AASTeX V.
 \begin_inset space \thinspace{}
 \end_inset
 
-6)
+6.3.1^)
 \family default
 \lang ngerman
  als Auswahloption in 

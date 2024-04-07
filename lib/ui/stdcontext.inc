@@ -234,7 +234,7 @@ Menuset
 	Menu "context-note"
 		Item "LyX Note|N" "inset-modify note Note Note"
 		Item "Comment|m" "inset-modify note Note Comment"
-		Item "Greyed Out|G" "inset-modify note Note Greyedout"
+		Item "Greyed Out|y" "inset-modify note Note Greyedout"
 		Separator
 		Item "Open All Notes|A" "inset-forall Note inset-toggle open"
 		Item "Close All Notes|l" "inset-forall Note inset-toggle close"
@@ -378,12 +378,12 @@ Menuset
 		Item "Paste" "paste"
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Separator
-		OptItem "Split Inset|t" "inset-split"
+		OptItem "Split Inset|i" "inset-split"
 		Separator
 		Item "Jump Back to Saved Bookmark|B" "bookmark-goto 0"
 		OptItem "Forward Search|F" "forward-search"
 		Separator
-		Item "Move Paragraph Up|o" "paragraph-move-up"
+		Item "Move Paragraph Up|h" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"
 		Separator
 		EnvironmentSeparatorsContext
@@ -399,7 +399,7 @@ Menuset
 		OptItem "Reject Change|j" "change-reject"
 		Separator
 		Submenu "Text Properties|x" "edit_textprops"
-		OptSubmenu "Custom Text Styles|S" "edit_textstyles"
+		OptSubmenu "Custom Text Styles|y" "edit_textstyles"
 		Item "Paragraph Settings...|P" "layout-paragraph"
 		OptItem "Unify Graphics Groups|U" "graphics-unify"
 		LanguageSelector
@@ -648,9 +648,9 @@ Menuset
 	End
 	
 	Menu "context-edit-index"
-		OptItem "Insert Subentry|b" "indexmacro-insert subentry"
+		OptItem "Insert Subentry|n" "indexmacro-insert subentry"
 		OptItem "Insert Sortkey|k" "indexmacro-insert sortkey"
-		OptItem "Insert See Reference|e" "indexmacro-insert see"
+		OptItem "Insert See Reference|cf" "indexmacro-insert see"
 		OptItem "Insert See also Reference|a" "indexmacro-insert seealso"
 	End
 
@@ -774,6 +774,8 @@ Menuset
 		Item "Word Count|W" "ui-toggle statistics-w"
 		Item "Character Count|C" "ui-toggle statistics-cb"
 		Item "Character Count (No Blanks)|h" "ui-toggle statistics-c"
+		Item "Start Statistics Relative to Current Count|R" "statistics-reference-clamp"
+		OptItem "Reset to Absolute Statistics Count|A" "statistics-reference-clamp reset"
 	End
 
 End

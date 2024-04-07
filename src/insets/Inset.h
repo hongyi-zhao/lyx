@@ -350,7 +350,7 @@ public:
 	virtual docstring xhtml(XMLStream &, OutputParams const &) const;
 
 	/// 
-	virtual bool hasToString() const { return false; }
+	virtual bool findUsesToString() const { return false; }
 	/// Writes a string representation of the inset to the odocstream.
 	/// This one should be called when you want the whole contents of
 	/// the inset.

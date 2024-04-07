@@ -145,6 +145,9 @@ string fboxrule = "";
 string fboxsep = "";
 string shadow_size = "";
 
+char const * const known_babel_shorthands[] = { "\"", "|", "-", "~", "=", "/",
+ "~", "*", ":", "_", "x", "'", "`", "<", ">", 0 };
+
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "prettyref", "nameref", "eqref", 0 };
 
@@ -3345,20 +3348,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// verbatim).
 		if (t.asInput() == "\"") {
 			string s = "\"";
-			// These are known pairs. We put them together in
+			// We put the known shorthand pairs together in
 			// one ERT inset. In other cases (such as "a), only
 			// the quotation mark is ERTed.
-			if (p.next_token().asInput() == "\""
-			    || p.next_token().asInput() == "|"
-			    || p.next_token().asInput() == "-"
-			    || p.next_token().asInput() == "~"
-			    || p.next_token().asInput() == "="
-			    || p.next_token().asInput() == "/"
-			    || p.next_token().asInput() == "~"
-			    || p.next_token().asInput() == "'"
-			    || p.next_token().asInput() == "`"
-			    || p.next_token().asInput() == "<"
-			    || p.next_token().asInput() == ">") {
+			if (is_known(p.next_token().asInput(), known_babel_shorthands)) {
 				s += p.next_token().asInput();
 				p.get_token();
 			}
@@ -5573,6 +5566,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					"\\addcontentsline{" + one + "}{" + two + "}{"+ three + '}',
 					context);
 			}
+			continue;
+		}
+
+		if (t.cs() == "tikzset") {
+			context.check_layout(os);
+			// we catch the argument and output it verbatim in an ERT
+			string const arg = p.getArg('{', '}');
+			output_ert_inset(os,
+				"\\tikzset{" + arg + "}",
+				context);
 			continue;
 		}
 

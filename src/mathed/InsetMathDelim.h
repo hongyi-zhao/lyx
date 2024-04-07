@@ -27,6 +27,9 @@ public:
 	InsetMathDelim(Buffer * buf, docstring const & left, docstring const & right,
 		MathData const &);
 	///
+	InsetMathDelim(Buffer * buf, docstring const & left, docstring const & right,
+	               MathData const &, bool const is_extracted);
+	///
 	InsetMathDelim * asDelimInset() override { return this; }
 	///
 	InsetMathDelim const * asDelimInset() const override { return this; }
@@ -73,6 +76,9 @@ private:
 	Inset * clone() const override;
 	///
 	mutable int dw_;
+	/// Is it extracted by MathExtern routines? They try to extract as much
+	/// semantics from a raw LaTeX formula in terms of LyX insets.
+	bool const is_extracted_;
 };
 
 } // namespace lyx

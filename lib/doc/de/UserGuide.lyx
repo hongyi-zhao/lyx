@@ -1,4 +1,4 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
 \lyxformat 620
 \begin_document
 \begin_header
@@ -9302,10 +9302,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9318,6 +9320,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9343,6 +9346,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -32639,10 +32643,10 @@ literal "false"
  In diesem Dokument wird die Bib\SpecialChar TeX
 -Stildatei 
 \family sans
-alphadin.bst
+alpha.bst
 \family default
  verwendet,
- die einen alphanumerischen Stil nach DIN-Norm bietet.
+ die einen alphanumerischen Stil bietet.
 \end_layout
 
 \begin_layout Standard
@@ -43818,6 +43822,10 @@ Nicht-typographisches
 \begin_inset space ~
 \end_inset
 
+doppeltes
+\begin_inset space ~
+\end_inset
+
 Anführungszeichen Fügt dieses Anführungszeichen ein:
  ",
  unabhängig vom Anführungszeichen-Stil der im Dialog 
@@ -43830,11 +43838,35 @@ Sprache
 \end_layout
 
 \begin_layout Description
-Einfaches
+Nicht-typographisches
 \begin_inset space ~
 \end_inset
 
-Anführungszeichen Fügt ein einfaches Anführungszeichen im Anführungszeichenstil ein,
+einfaches
+\begin_inset space ~
+\end_inset
+
+Anführungszeichen Fügt dieses Anführungszeichen ein:
+ 
+\begin_inset Quotes qls
+\end_inset
+
+,
+ unabhängig vom Anführungszeichen-Stil der im Dialog 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Sprache
+\family default
+ eingestellt ist.
+\end_layout
+
+\begin_layout Description
+Inneres
+\begin_inset space ~
+\end_inset
+
+Anführungszeichen Fügt ein inneres Anführungszeichen im Anführungszeichenstil ein,
  der im Dialog 
 \family sans
 Dokument\SpecialChar menuseparator
@@ -43842,6 +43874,15 @@ Einstellungen\SpecialChar menuseparator
 Sprache
 \family default
  eingestellt ist.
+ Meist sind dies 
+\begin_inset Quotes gls
+\end_inset
+
+einfache
+\begin_inset Quotes grs
+\end_inset
+
+ Anführungszeichen.
 \end_layout
 
 \begin_layout Description
@@ -56861,8 +56902,10 @@ bibname
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
+btprint "btPrintCited"
 bibfiles "../biblio/LyXDocs"
-options "../biblio/alphadin"
+options "alpha"
+encoding "default"
 
 \end_inset
 

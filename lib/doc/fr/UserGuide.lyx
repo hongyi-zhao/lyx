@@ -135,6 +135,7 @@ logicalmkup
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \notefontcolor #0000ff
@@ -346,6 +347,11 @@ graphique
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour finale pour 2.4.0,
+ 21 février 2024 (JPC)
 \end_layout
 
 \end_inset
@@ -979,8 +985,8 @@ avec
 modèle
 \family default
  vous demande un modèle à utiliser.
- Choisir un modèle fixera automatiquement certaines options de mise en forme du document,
- options que vous auriez dû autrement modifier à la main.
+ Choisir un modèle fixera automatiquement certaines options de mise en forme du document et peut-être des fragments de texte pour le document,
+ options et texte que vous auriez dû autrement modifier ou saisir à la main.
  Elles peuvent servir pour certaines classes,
  spécialement celles utilisées pour l'écriture de lettres (voir Section
 \begin_inset space ~
@@ -995,6 +1001,11 @@ nolink "false"
 \end_inset
 
 ).
+ Vous pouvez également ajouter vos propres modèles à cette liste en engesgistrant un fichier \SpecialChar LyX
+ via 
+\family sans
+Fichier\SpecialChar menuseparator
+Enregistrer comme modèle.
 \end_layout
 
 \begin_layout Standard
@@ -1078,7 +1089,7 @@ Version
 \family default
  sont utiles si plusieurs personnes travaillent sur le même document en même temps
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Si vous prévoyez de faire cela,
@@ -2344,6 +2355,7 @@ Copier
 \family default
  pour créer une copie du texte dans le presse-papiers de \SpecialChar LyX
 .
+ Vous pouvez également utiliser le menu contextuel ouvert par un clic droit sur le texte sélectionné.
 \end_layout
 
 \begin_layout Itemize
@@ -10277,14 +10289,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -10297,7 +10307,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -10330,7 +10339,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -13350,7 +13358,7 @@ Espace
 \begin_inset space ~
 \end_inset
 
-en
+demi-cadratin
 \begin_inset space ~
 \end_inset
 
@@ -13757,7 +13765,7 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-Espace en
+Demi-cadratin 
 \end_layout
 
 \end_inset
@@ -13781,11 +13789,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cadratin (1
-\begin_inset space \thinspace{}
-\end_inset
-
-em)
+Cadratin
 \end_layout
 
 \end_inset
@@ -13809,11 +13813,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-Double cadratin (2
-\begin_inset space \thinspace{}
-\end_inset
-
-em)
+Double cadratin
 \end_layout
 
 \end_inset
@@ -14249,7 +14249,7 @@ Petit
 \family sans
 Moyen
 \family default
- and 
+ et 
 \family sans
 Grand
 \family default
@@ -19793,7 +19793,7 @@ Maj-Opt+
 \family sans
 Opt
 \family default
- is the Mac label for the est la touche 
+ est la gravure Mac de la touche 
 \family sans
 Alt
 \family default
@@ -20572,11 +20572,270 @@ de
 césure
 \family default
 .
+ Notez bien que l'ajout de points de césure désactive les césures implicites :
+ le mot ne sera plus coupé aux endroits où il l'aurait été normalement.
  Ces points de césure supplémentaires ne sont que des indications pour \SpecialChar LaTeX
 .
- Si aucune coupure n'est nécessaire,
+ Si aucune coupure n'est nécessaire ou si la césure automatique est désactivée,
  \SpecialChar LaTeX
  les ignorera complètement.
+\end_layout
+
+\begin_layout Standard
+Si un mot utilisé fréquemment n'est pas césuré correctement par \SpecialChar LaTeX
+,
+ vous pouvez lui apprendre comment faire en ajoutant la commande 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hyphenation{<motifs>}
+\end_layout
+
+\end_inset
+
+ au préambule.
+ Cette commande prend comme arguments un ou plusieurs mots avec leurs points de césure indiqués par des tirets,
+ par exemple.:
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hyphenation{té-lé-pho-ne té-lé-pho-nes}
+\end_layout
+
+\end_inset
+
+ Vous pouvez également l'utiliser pour empêcher la césure,
+ e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hyphenation{unbroken}
+\end_layout
+
+\end_inset
+
+.
+ S'il y a beaucoup d'exceptions de césure,
+ vous pouvez les regrouper dans un fichier (par exemple 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+mescesuress.sty
+\end_layout
+
+\end_inset
+
+) et importer ce fichier via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+usepackage{mescesures}
+\end_layout
+
+\end_inset
+
+.
+ assurez-vous de mettre ce fichier là où \SpecialChar LaTeX
+ peut le trouver (voir la section
+\emph on
+ Installer de nouveaux fichiers \SpecialChar LaTeX
+ 
+\emph default
+dans le manuel de
+\emph on
+ Personnalisation
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+Notez bien que la commande 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hyphenation{<motifs>}
+\end_layout
+
+\end_inset
+
+ est appliquée à la langue courante lors de son appel (dans le préambule,
+ il s'agit habituellement de la langue principale du document).
+ Si vous désirez définir des motifs pour des langues particulières sans savoir quelle langue est active,
+ les paquetages de langue 
+\family sans
+babel
+\family default
+ et 
+\family sans
+polyglossia
+\family default
+ fournissent des variantes particulières à la commande:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+babel
+\family default
+:
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+babelhyphenation[<langue 1>,
+ <langue 2>,
+ \SpecialChar ldots
+]{<motifs>}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+polyglossia
+\family default
+:
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pghyphenation[<options de langue>]{<langue>}{<motifs>}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vous pouvez donc saisir,
+ en fonction de votre paquetage de langue:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+babelhyphenation[german,ngerman,austrian,naustrian,swissgerman,
+\begin_inset Newline newline
+\end_inset
+
+nswissgerman]{Ma-de}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pghyphenation{german}{Ma-de}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+pour définir les points de césure pour toutes les variantes de la langue allemande:,
+ ou simplement:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+babelhyphenation[naustrian]{Ma-de}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+pghyphenation[variant=austrian]{german}{Ma-de}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+pour les définir uniquement pour la variante autrichienne de l'allemand.
+\end_layout
+
+\begin_layout Standard
+Ces commandes ne sont fonctionnelles qu'après le chargement du paquetage de langue,
+ qui se produit habituellement après le préambule utilisateur.
+ Il est donc approprié de les enclore dans une commande 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+AtBeginDocument{\SpecialChar ldots
+}
+\end_layout
+
+\end_inset
+
+,
+ qui les insère après la fin du préambule \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -21805,7 +22064,7 @@ intérieurs
 \begin_inset Quotes pld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes prd
 \end_inset
 
@@ -21813,7 +22072,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -21821,7 +22080,7 @@ and
 \begin_inset Quotes ald
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes ard
 \end_inset
 
@@ -22009,6 +22268,62 @@ name "fn:guillemets-cjk"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\begin_inset Quotes dld
+\end_inset
+
+Extérieur
+\begin_inset Quotes drd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes dls
+\end_inset
+
+intérieur
+\begin_inset Quotes drs
+\end_inset
+
+
+\family default
+ produit les guillemets 
+\begin_inset Quotes dld
+\end_inset
+
+
+\family sans
+ces extérieurs
+\begin_inset Quotes drd
+\end_inset
+
+
+\family default
+ et 
+\begin_inset Quotes dls
+\end_inset
+
+
+\family sans
+ces intérieurs
+\begin_inset Quotes drs
+\end_inset
+
+
+\family default
+ (usuels en Israel)
 \end_layout
 
 \begin_layout Standard
@@ -23846,7 +24161,7 @@ Tableau
 .
  Une fenêtre apparaît dans ce dernier cas,
  vous demandant le nombre de lignes et de colonnes,
- et vous pouvez sélectionner un style particulier pour les limites.
+ et vous pouvez sélectionner un style particulier pour les bordures.
  Le tableau a implicitement une bordure au dessus et à gauche de chaque case,
  une à droite de la colonne la plus à droite et une en bas de la rangée du bas,
  qui forment une boîte autour du tableau.
@@ -31536,7 +31851,7 @@ Maths,
  
 \family default
 on inclut les paquetages AMS et on rend disponibles toutes leurs fonctionnalités.
- AMS est nécessaire pour plusieurs constructions mathématiques,
+ AMS est nécessaire pour de nombreuses constructions mathématiques,
  ce qui fait que quand vous avez des erreurs \SpecialChar LaTeX
  dans des formules,
  vérifiez d'abord que vous avez activé l'AMS.
@@ -31691,7 +32006,7 @@ D'abord nous ajoutons une étiquette dans le second élément,
  soit avec le menu 
 \family sans
 Insertion\SpecialChar menuseparator
-Etiquette
+Étiquette
 \family default
  ,
  soit en utilisant le bouton 
@@ -32281,6 +32596,33 @@ refstyle
 \begin_inset Newline newline
 \end_inset
 
+Si vous activez l'option
+\family sans
+ Paramètres\SpecialChar menuseparator
+Classe de document\SpecialChar menuseparator
+Mettre en forme les références croisées dans la zone de travail
+\family default
+,
+ \SpecialChar LyX
+ essaiera de présenter les références comme elle apparaîtront dans le document imprimable,
+ e.g.
+ 
+\begin_inset Quotes cld
+\end_inset
+
+Théorème 1
+\begin_inset Quotes crd
+\end_inset
+
+,
+ plutôt que d'afficher simplement l'étiquette.
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang french
 Voici un exemple de référence mise en forme utilisant 
 \begin_inset Flex Strong
 status collapsed
@@ -32776,8 +33118,107 @@ chasse fixe
 \end_inset
 
 .
- Pour pouvoir typographier le texte du lien,
- il faut utiliser des hyperliens comme c'est expliqué dans la section qui suit.
+ 
+\end_layout
+
+\begin_layout Standard
+Vous pouvez modifier globalement la mise en forme en insérant dans 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+PréambuleLaTeX
+\family default
+:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+urlstyle{<xx>}
+\end_layout
+
+\begin_layout Standard
+où 
+\family typewriter
+<xx>
+\family default
+ est soit 
+\family typewriter
+rm
+\family default
+ (Romain),
+ 
+\family typewriter
+sf
+\family default
+ (Sans empattemenst),
+ 
+\family typewriter
+tt
+\family default
+ (chasse fixe),
+ ou 
+\family typewriter
+same
+\family default
+ (utiliser la police courante).
+ Pour afficher les URL en italique,
+ utiliser plutôt ceci:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+def
+\backslash
+UrlFont{
+\backslash
+rmfamily
+\backslash
+itshape}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Les URL seront césurées sur certains caractères,
+ à savoir::
+\end_layout
+
+\begin_layout LyX-Code
+.
+ @ 
+\backslash
+ / !
+ _ | ;
+ > ] % ) ,
+ ?
+ & ' + = #
+\end_layout
+
+\begin_layout Standard
+Elels ne seront pas coupées implicitement sur un tiret,
+ mais vous pouvez changer ce comportement en ajoutant les tirets à 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Classe de document\SpecialChar menuseparator
+Options de classe\SpecialChar menuseparator
+
+\family default
+Réglable.
+ Si ceci ne coupe pas les URL correctement pour vous,
+ une dernière solution est d'ajouter
+\family typewriter
+ 
+\backslash
+usepackage{xurl}
+\family default
+ au préambule \SpecialChar LaTeX
+:
+ ceci provoquera des points de césure sur chaque caractère.
 \end_layout
 
 \begin_layout Standard
@@ -32857,7 +33298,7 @@ literal "false"
 \end_inset
 
 ,
- ou encore un lien vers un fichier.
+ ou encore un lien vers un fichier ou n'importe quel URL valide (comme tel:<numéro de téléphone>).
  L'option 
 \family sans
 Littéral
@@ -32883,7 +33324,8 @@ run:
 \begin_inset Quotes erd
 \end_inset
 
- à la cible du lien.
+ à la cible du lien,
+ mais notez que la plupart des lecteurs PDF désactivent de tels liens pour des raisons de sécurité.
 \end_layout
 
 \begin_layout Standard
@@ -33908,10 +34350,10 @@ literal "false"
  nous utilisons le style Bib\SpecialChar TeX
  
 \family sans
-alphadin.bst
+alpha.bst
 \family default
 ,
- qui fournit un style alphanumérique conforme à l'Institut Allemand de Standardisation (DIN).
+ qui fournit un style alphanumérique.
 \end_layout
 
 \begin_layout Standard
@@ -35034,7 +35476,55 @@ localfile
 \begin_layout Standard
 De plus,
  \SpecialChar LyX
- parcourt aussi votre disque pour les fichiers correspondant à une recherche si vous autorisez 
+ parcourt aussi votre disque
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Implicitement,
+ c'est le script 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxpaperview.py
+\end_layout
+
+\end_inset
+
+ qui est utilisé pour la recherche,
+ mais vous pouvez utiliser un script modifié en positionnant 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+citation_search_view
+\end_layout
+
+\end_inset
+
+ dans le fichier 
+\family typewriter
+preferences
+\family default
+ de votre répertoire de configuration locale (voyez la section appropriée dans le manuel de 
+\family sans
+Aide\SpecialChar menuseparator
+Personnalisation
+\family default
+).
+ Le réglage implicite se trouve dans le fichier 
+\family typewriter
+lyxrc.defaults
+\family default
+ du même répertoire et peut être copié et modifié dans ce but.
+\end_layout
+
+\end_inset
+
+ pour les fichiers correspondant à une recherche si vous autorisez 
 \family sans
 Parcourir le disque pour les fichiers cités
 \family default
@@ -35052,7 +35542,47 @@ Contr
 Filtre
 \family default
  (implicitement:
- année et auteurs).
+ année et auteurs
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+fourni par le séquence de clés 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%year% %abbrvciteauthor%
+\end_layout
+
+\end_inset
+
+.
+ Notez que certains constituants (
+\begin_inset Quotes cld
+\end_inset
+
+et
+\begin_inset Quotes crd
+\end_inset
+
+,
+ 
+\begin_inset Quotes cld
+\end_inset
+
+et al.
+\begin_inset Quotes crd
+\end_inset
+
+,
+ virgules) sont retirés automatiquement du résultat.
+ 
+\end_layout
+
+\end_inset
+
+).
  N'importe quel élément du motif doit apparaître dans le nom du fichier à une position quelconque.
  \SpecialChar LyX
  ouvre le premier fichier qui s'accorde avec le motif.
@@ -35084,6 +35614,30 @@ Manuel de personnalisation
  
 \emph on
 Description des formats de citation.
+\end_layout
+
+\begin_layout Subsubsection
+Conséquences sur la sécurité
+\end_layout
+
+\begin_layout Standard
+Notez que n'importe quel document (principalment le fichier 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.bib
+\end_layout
+
+\end_inset
+
+ dans ce cas) provenant d'un tiers peut contenir des liens mal intentionnés ou des URL mal formés et nous vous suggérons de ne pas utiliser cette fonctionnalité pour d'autres documents que ceux que vosu avez créés vous-même.
+\end_layout
+
+\begin_layout Standard
+Pour ce motif,
+ le recherche sur disque est implicitement désactivée et on vous demandera une confirmation de visite pour tous les liens (les deux peuvent être court-circuités,
+ mais attention à ce que vous faites).
 \end_layout
 
 \begin_layout Section
@@ -35158,7 +35712,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-L'index lui même est inséré dans le document avec le menu 
+L'index lui même (qui imprime l'index dans le document) est inséré dans le document avec le menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Listes
@@ -38469,6 +39023,18 @@ Inserts flexibles et InsetLayout
 .
 \end_layout
 
+\begin_layout Standard
+Dans le cas où vous devez souvent conserver la synchronisation entre les branches pour ce qui concerne l'état ouverte/fermée,
+ vous pouvez utiliser la fonction \SpecialChar LyX
+ 
+\family typewriter
+branch-sync-all
+\family default
+ qui fixe cet état pour toutes les branches du même nom,
+ depuis la branche sur laquelle se trouve le curseur.
+ Vous pouvez lier cette fonction à un raccourci clavier ou l'ajouter au menu contextuel personnalisé pour les inserts de branche.
+\end_layout
+
 \begin_layout Section
 Propriétés du PDF
 \begin_inset CommandInset label
@@ -38505,16 +39071,19 @@ Propriétés
 \begin_layout Standard
 La fenêtre de dialogue 
 \family sans
-Paramètres du document
+\lang english
+Document\SpecialChar menuseparator
+
+\lang french
+Paramètres
+\lang english
+\SpecialChar menuseparator
+
+\lang french
+Propriétés du PDF 
 \family default
- permet,
- dans la rubrique 
-\family sans
-Propriétés du PDF
-\family default
-,
- d'activer des options spéciales pour la sortie PDF de votre document.
- Toutes les options qui sont proposées viennent du paquetage \SpecialChar LaTeX
+permet d'activer des options spéciales pour la sortie PDF de votre document.
+ La plupart des options proposées viennent du paquetage \SpecialChar LaTeX
  
 \series bold
 hyperref
@@ -38542,8 +39111,27 @@ hyperref
 
 \end_inset
 
+ que vous devez activer an cliquant sur 
+\family sans
+Utiliser le support pour hyperref
+\lang english
+ Support
+\family default
+\lang french
+ (si le paquetage est déjà chragé par la classe de votre document,
+ ou par un autre paquetage,
+ la case à cocher est remplacée par
+\family sans
+\lang english
+ 
+\lang french
+Personnaliser les options hyperref
+\family default
+).
+ Parmi d'autes choses,
  toutes les références croisées seront transformées en liens dans les sorties DVI et PDF.
  Cela signifie que le lecteur de votre document pourra cliquer sur un élément de la table de matières ou sur une référence pour voir la partie du document référencée.
+ De plus vous pourrez saisir le smétadonnées PDF (comme l'e titre et l'auteur) du document) ou fixer comment le ,lecteur PDF doit ouvrir le document.
 \end_layout
 
 \begin_layout Standard
@@ -38576,6 +39164,12 @@ Dans l'onglet
 hyperlien
 \family default
  vous pouvez préciser l'aspect que devront avoir les liens et si des renvois bibliographiques doivent être créés.
+ Les
+\family sans
+ Renvois
+\family default
+ sont des liens inséré à la fin des entrées bibliographiques renvoyant aux sections,
+ pages ou transparents dans lesquelles ces entrées sont citées.
 \end_layout
 
 \begin_layout Standard
@@ -38648,17 +39242,6 @@ linkcolor=black,
 \end_layout
 
 \begin_layout Standard
-Si l'option 
-\family sans
-Renvois
-\family default
- et active,
- les hyperliens apparaîtront dans la bibliographie après chaque entrée,
- indiquant le numéro de la section,
- de la diapositive ou de la page du document où cette entrée est citée.
-\end_layout
-
-\begin_layout Standard
 Dans l'onglet 
 \family sans
 Signets
@@ -38685,14 +39268,11 @@ Ouverture des signets
 \end_layout
 
 \begin_layout Standard
-Les propriétés du PDF sont aussi utilisées dans ce document.
- Si vous regardez dans les paramètres du présent document,
- vous verrez que quelques options supplémentaires de 
-\series bold
-hyperref
-\series default
- sont utilisées.
- Pour avoir une explication sur ces dernières nous vous référons au manuel du paquetage hyperref 
+Dans l'onglet 
+\family sans
+Autres Options
+\family default
+ vous pouvez insérer des options hyperref qui ne sont pas celles décrites ci-dessus par des listes séparées par des virgules (voyez la manuel hyperref 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -38700,7 +39280,66 @@ literal "true"
 
 \end_inset
 
-.
+ pour trouver une liste exhaustive et une documentation des options possibles).
+ Notez que ces options seront transmises à hyperref via 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hypersetup
+\end_layout
+
+\end_inset
+
+,
+ et non pas par les options de paquetage.
+ Ceci exclura certaines options que ne peuvent être transmise que par cette dernière méthode.
+ Si vous devez utiliser une de ces options,
+ vous pouvez le faire en ajoutant
+\end_layout
+
+\begin_layout Quote
+
+\series bold
+PackageOptions hyperref option1,option2
+\end_layout
+
+\begin_layout Standard
+dans 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Format Local
+\family default
+ (mais uniquement si hyperref n'est pas chargé par votre classe de document).
+\end_layout
+
+\begin_layout Standard
+Le widget 
+\family sans
+Métadonnées du document vous permet d'insérer des propriétés du document indépendantes ,du paquetage hyperref et reposent sur des fonctionnalités de base de
+\family default
+ \SpecialChar LaTeX
+ (plutôt récentes).
+ Ceci requiert une version de \SpecialChar LaTeX
+ postérieure à juin 2022 (avec des versions antérieures,
+ les données sont simplement ignorée).
+ Le widget attend une liste de clés=valeurs séparées par des virgules (comme 
+\series bold
+pdfversion=1.7,
+ lang=de-DE
+\series default
+).
+ À l'heure ou ceci est rédigé,
+ la lise d'options est plutôt courte et assez mal documentée (chercher un fichier
+\emph on
+ dénommé documentmetadata-support.pdf
+\emph default
+),
+ mais dans l'avenir,
+ des propriétés assez fondamentales du fichier PDF (comme le balisage structurel et des standards PDF différents comme PDF/A) pourront être fixées par ce biais.
 \end_layout
 
 \begin_layout Section
@@ -41210,7 +41849,7 @@ R
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Utilisation élaborée
 \end_layout
 
@@ -41273,7 +41912,7 @@ Sous la contrainte que toute (sous-)expression doive s'accorder à un segment de
  Les exemples d'utilisation de cette fonctionnalité peuvent être:
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 rechercher toutes les fractions avec un dénominateur donné:
  par exemple,
  saisir la fraction 
@@ -41302,15 +41941,15 @@ Rechercher
 \begin_layout Enumerate
 rechercher tout texte dans un style donné:
  par exemple,
- après avoir décoché 
+ après avoir coché 
 \family sans
-Ignorer le format
+Appliquer la mise forme de la chaîne recherchée et cliqué sur le bouton
 \family default
- dans l'onglet 
+ 
 \family sans
-Paramètres
+Tout sélectionner
 \family default
-,
+ dans cette section,
  saisir une expression régulière 
 \begin_inset Quotes cld
 \end_inset
@@ -41347,8 +41986,131 @@ Paramètres
  dans une liste à puce,
  une énumération ou un titre de section permet de trouver toutes les listes à puces,
  les énumérations ou les titres de section.
+ dans cette section.
+ La signification des options de style particulières (si cochées) est la suivante.
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+Langue permet de trouver du texte dans une langue spécifiée (la définition de la chaîne de recherche est concernée ici,
+ comme pour les autres options);
+\end_layout
+
+\begin_layout Description
+Couleur
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+police texte coloré comme cyan,
+ jaune,
+ etc.;
+\end_layout
+
+\begin_layout Description
+Famille
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+police romain,
+ sans empattement,
+ à chasse fixe;
+\end_layout
+
+\begin_layout Description
+Série
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+police e.g.
+ grasse;
+\end_layout
+
+\begin_layout Description
+Forme
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+police e.g.
+ droite,
+ italique,
+ ...;
+\end_layout
+
+\begin_layout Description
+Taille
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+police e.g.
+ grande,
+ petite,
+ ...;
+\end_layout
+
+\begin_layout Description
+Marquage
+\begin_inset space ~
+\end_inset
+
+sémantique en évidence,
+ nom propre;
+\end_layout
+
+\begin_layout Description
+Souligné e.g.
+ simple,
+ double;
+ vague;
+\end_layout
+
+\begin_layout Description
+Rayé rayé,
+ raturé;
+\end_layout
+
+\begin_layout Description
+Supprimé recherche également dans les parties supprimées (si le suivi des modifications est activé);
+\end_layout
+
+\begin_layout Description
+Marquage
+\begin_inset space ~
+\end_inset
+
+du
+\begin_inset space ~
+\end_inset
+
+sectionnement e.g.
+ titre,
+ partie,
+ chapitre,
+ section,
+ ...
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 Enfin,
  le référencement de (sous-)expressions dans les expressions régulières peut être utilisé comme d'habitude,
@@ -41378,9 +42140,21 @@ Enfin,
 \begin_inset Newline newline
 \end_inset
 
-[[:space:]]([[:alpha:]]+)[[:space:]]
+
+\lang english
+
 \backslash
-1[[:space:]]
+b(
+\backslash
+w+)
+\backslash
+s
+\backslash
+1
+\backslash
+b
+\lang french
+
 \begin_inset Newline newline
 \end_inset
 
@@ -41911,7 +42685,7 @@ Dictionnaire des synonymes
 \lang english
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Avec Linux,
@@ -41983,7 +42757,7 @@ Si vous souhaitez installer de nouveaux dictionnaires des synonymes (ou les mett
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -44298,7 +45072,7 @@ Propriétés du texte
 \end_layout
 
 \begin_layout Standard
-CE sous-menu propose pluisieurs façons de personnaliser l'apparence des passages de texte.
+Ce sous-menu propose pluisieurs façons de personnaliser l'apparence des passages de texte.
  Vous pouvez
 \end_layout
 
@@ -44346,7 +45120,6 @@ e
  initiale
 \family default
 ,
- initile,
  
 \family sans
 Capitales
@@ -52874,6 +53647,39 @@ Format
 \begin_inset space ~
 \end_inset
 
+LyX:
+ l'option
+\family sans
+ Enregistrer les propriétés temporaires
+\family default
+ contrôle si les réglages du document commutés fréquemment ou ceux spécifiques à l'utilisateur sont enregistrés avec le document.
+ Les propriétés affectées par cette case sont actuellement:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+l'activation du suivi des modifications;
+\end_layout
+
+\begin_layout Itemize
+l'impression des modifications suivies;
+\end_layout
+
+\begin_layout Itemize
+l'enregistrement du chemin d'accès au document.
+\end_layout
+
+\begin_layout Standard
+Désactiver l'option peut éviter des problèmes dans le cas d'un travail collaboratif ou lors de l'utilisation d'un contrôle de version (par exemple,
+ pour éviter des conflits de fusion inutiles).
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Format
+\begin_inset space ~
+\end_inset
+
 implicite
 \begin_inset space ~
 \end_inset
@@ -52946,35 +53752,6 @@ nolink "false"
 \end_inset
 
 ;
-\end_layout
-
-\begin_layout Description
-Permettre
-\begin_inset space ~
-\end_inset
-
-l'exécution
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-programmes
-\begin_inset space ~
-\end_inset
-
-externes si le case est cochée,
- \SpecialChar LaTeX
- est exécuté avec l'ioption 
-\family typewriter
--shell-escape
-\family default
-,
- nécessaire pour certains paquetages.
- Notez que ceci implique un risque de sécurité,
- ne l'utilisez donc que lorsque c'est vraiment nécessaire et si vous savez ce que vous faites;
 \end_layout
 
 \begin_layout Description
@@ -53106,7 +53883,35 @@ Options avancées
 \end_layout
 
 \begin_layout Description
-Enregistrement
+Options
+\begin_inset space ~
+\end_inset
+
+d'exportation
+\begin_inset space ~
+\end_inset
+
+DocBook propose les réglages pour le formay d'exportation DocBook.
+ Les détails sont décrits dans le chapitre
+\family sans
+ 
+\emph on
+Exportation DocBook 
+\emph default
+du manuel des 
+\emph on
+Options avancées.
+
+\emph default
+ 
+\end_layout
+
+\begin_layout Description
+Permettre
+\begin_inset space ~
+\end_inset
+
+l'exécution
 \begin_inset space ~
 \end_inset
 
@@ -53114,34 +53919,20 @@ de
 \begin_inset space ~
 \end_inset
 
-LyX
+programmes
 \begin_inset space ~
 \end_inset
 
- L'option 
-\family sans
-Enregistrer les réglages temporaires
+externes si le case est cochée,
+ \SpecialChar LaTeX
+ est exécuté avec l'option 
+\family typewriter
+-shell-escape
 \family default
- autorise la sauvegarde des réglages du document qui sont souvent (dés)activés ou qui sont propres à l'utilisateur.
- Les réglages affectés par l'option sont actuellement:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-l'activation du suivi des modifications;
-\end_layout
-
-\begin_layout Itemize
-l'affichage des modifications dans le résultat imprimable;
-\end_layout
-
-\begin_layout Itemize
-l’enregistrement du chemin d'accès au répertoire du document.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Désactiver l'option peut éviter des problèmes lors de la gestion collaborative du document ou quand le document est sous contrôle de version (par exemple en évitant des conflits de fusion inutiles).
+,
+ nécessaire pour certains paquetages.
+ Notez que ceci implique un risque de sécurité,
+ ne l'utilisez donc que lorsque c'est vraiment nécessaire et si vous savez ce que vous faites.
 \end_layout
 
 \begin_layout Section
@@ -53522,6 +54313,21 @@ literal "false"
 .
 \end_layout
 
+\begin_layout Standard
+
+\family sans
+Style d'interface utilisateur
+\family default
+ vous permet de changer l'apparence des éléments de contrôle de l'interface utilisateur de \SpecialChar LyX
+.
+ De nombreux choix sont disponibles sur différents systèmes d'exploitation.
+ Sur certains d'entre eux,
+ certains style acceptent le mode sombre,
+ mais pas sur d'autres.
+ Pour obtenir le mode sombre avec \SpecialChar LyX
+ vous devrez peut-être l'activer sur votre système.
+\end_layout
+
 \begin_layout Subsubsection
 Aide contextuelle
 \end_layout
@@ -53558,6 +54364,21 @@ Documents
 récents
 \family default
 .
+\end_layout
+
+\begin_layout Subsubsection
+Plein écran
+\end_layout
+
+\begin_layout Standard
+Vous pouvez spécifier ici ce qui est caché dans le mode plein écran.
+ Avec l'option 
+\family sans
+Limitation de la largeur du texte
+\family default
+ vous pouvez préciser la largeur maximale du texte :
+ de cette façon vous pouvez afficher le texte plus petit que la fenêtre,
+ il sera centré.
 \end_layout
 
 \begin_layout Subsection
@@ -53678,17 +54499,59 @@ n'est spécifié.
 \begin_inset Quotes crd
 \end_inset
 
-.
+ et le même nom que le fichier original.
+ Si un 
+\family sans
+Répertoire de sauvegarde est défini,
+ le fichier contient le chemin complet dans son nom avec le séparateur 
+\begin_inset Quotes cld
+\end_inset
+
+!
+\begin_inset Quotes crd
+\end_inset
+
+,
+ e.g.
+
+\family typewriter
+ !MonRep!MonSousRep!MonFichier.lyx~
 \end_layout
 
 \begin_layout Standard
-Quand l'option 
+Si l'option
 \family sans
-Sauvegarde automatique,
- toutes les x minutes
+ Effectuer une copie temporaire de sauvegarde toutes les XX minutes
 \family default
- est activée,
- vous pouvez préciser le temps entre deux sauvegardes.
+ est cochée,
+ \SpecialChar LyX
+ enregistre automatiquement des instantanés du document courant (incluant les modifications non enregistrées) dans l'intervalle spécifié si le fichier a été modifié.
+ Ces fichiers ont enregistrés comme 
+\family typewriter
+#<nomfichier>.lyx#
+\family default
+ dans le répertoire du document et sont écrasés à chaque cycle de sauvegarde automatique;
+ ils sont effacés quand le document est enregistré normalement.
+ Si \SpecialChar LyX
+ se plante avec des modifications non enregistrées,
+ et si la récupération depuis le fichier d'urgence échoue,
+ ce fichier peut être utilisé en dernier ressort.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez lire la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Safety-Nets"
+
+\end_inset
+
+ pour les détails concernant les mécanismes de sauvegarde et de sécurité de \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -53711,6 +54574,17 @@ nolink "false"
 ).
  Ceci ne s'applique qu'aux nouveaux documents,
  l'état de compression des documents existants n'est pas modifié lors de l'enregistrement.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Sauvegarder le chemin du répertoire du document
+\family default
+ enregistre le chemin d'accès au document dans le le fichier \SpecialChar LyX
+.
+ Ceci est particulièrement pratique si vous avez des fichiers inclus (comme les graphiques et les sous-documents) qui sont référencés via des chemins relatifs.
+ Cette option permet de déplacer le document ailleurs et de trouver ces fichiers inclus s'ils sont restés à la même place.
 \end_layout
 
 \begin_layout Subsubsection
@@ -54326,22 +55200,6 @@ nolink "false"
  pour les détails.
 \end_layout
 
-\begin_layout Subsubsection
-Plein écran
-\end_layout
-
-\begin_layout Standard
-Ici vous pouvez préciser ce qui doit être caché en mode plein écran.
- L'option 
-\family sans
-Limitation de la largeur du texte
-\family default
- précise la largeur du texte en mode plein écran.
- De cette façon,
- vous pouvez afficher un texte moins large que l'écran,
- il apparaît alors centré.
-\end_layout
-
 \begin_layout Subsection
 Raccourcis
 \begin_inset Index idx
@@ -54366,10 +55224,6 @@ Raccourcis
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection
-Le fichier Bind
 \end_layout
 
 \begin_layout Standard
@@ -54409,7 +55263,7 @@ OS.
 \end_layout
 
 \begin_layout Standard
-Il y a aussi des fichier .bind qui ont été créés pour des classes de documents particulières comme par exemple 
+Il y a aussi des fichiers .bind qui ont été créés pour des classes de documents particulières comme par exemple 
 \shape italic
 broadway.bind
 \shape default
@@ -54565,9 +55419,11 @@ Modifier un raccourci existant se fait de la même manière.
 \end_inset
 
 
-\family sans
+\family typewriter
+\lang english
 command alternatives
 \family default
+\lang french
 
 \begin_inset Quotes crd
 \end_inset
@@ -55762,47 +56618,6 @@ langues
 \end_inset
 
 additionnelles active le soulignement en bleu du texte dans une autre langue que celle du document;
-\end_layout
-
-\begin_layout Description
-Se
-\begin_inset space ~
-\end_inset
-
-conformer
-\begin_inset space ~
-\end_inset
-
-à
-\begin_inset space ~
-\end_inset
-
-la
-\begin_inset space ~
-\end_inset
-
-langue
-\begin_inset space ~
-\end_inset
-
-du
-\begin_inset space ~
-\end_inset
-
-clavier
-\begin_inset space ~
-\end_inset
-
-système:
- si la case est cochée,
- \SpecialChar LyX
- basculera la langue de saisie si la correspondance clavier est basculée par le système d'exploitation.
- Ceci est très utile si vous effectuez des basculements entre langues avec des écritures différentes (e.g.,
- français et hébreu:
- dans ce cas,
- basculer le clavier en hébreu basculera automatiquement la langue de saisie en hébreu,
- et vice-versa);
- 
 \end_layout
 
 \begin_layout Description
@@ -58796,8 +59611,10 @@ bibname
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
+btprint "btPrintCited"
 bibfiles "../biblio/LyXDocs"
-options "../biblio/alphadin"
+options "alpha"
+encoding "default"
 
 \end_inset
 

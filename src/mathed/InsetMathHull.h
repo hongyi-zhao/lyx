@@ -151,8 +151,8 @@ public:
 	void mathmlize(MathMLStream &) const override;
 	///
 	void htmlize(HtmlStream &) const override;
-	///
-	void mathAsLatex(TeXMathStream &) const;
+	/// Returns the hull as a LaTeX string for embedding in HTML or XML.
+	docstring mathAsLatex() const;
 	///
 	void toString(odocstream &) const override;
 	///

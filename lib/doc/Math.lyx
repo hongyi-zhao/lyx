@@ -38454,33 +38454,55 @@ Math Macros for External Commands
 
 \begin_layout Standard
 Sometimes,
- you may need to use a LaTeX package which defines a math command that is not natively supported in LyX.
+ you may need to use a \SpecialChar LaTeX
+ package which defines a math command that is not natively supported in \SpecialChar LyX
+.
  This is easy enough to do:
  Just include the package in the preamble and type out the command in math.
  As with commands defined in the preamble,
  however,
- the display in LyX will not be `nice'.
+ the display in \SpecialChar LyX
+ will not be 
+\begin_inset Quotes els
+\end_inset
+
+nice
+\begin_inset Quotes ers
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-As of LyX 2.4,
+As of \SpecialChar LyX
+ 2.4,
  this problem has been solved.
- Just define a math macro with empty LaTeX slot!
- The LyX part will be used for display,
- but no corresponding LaTeX will be output.
+ Just define a math macro with empty \SpecialChar TeX
+ slot!
+ The \SpecialChar LyX
+ part will be used for display,
+ but no corresponding \SpecialChar LaTeX
+ will be output.
  For example,
  the 
+\series bold
+godelnum
+\series default
+ package defines a 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-godelnum.sty
+
+\backslash
+Godelnum
 \end_layout
 
 \end_inset
 
- package defines a Godelnum macro that puts a single argument into corner quotes.
- To get a nice LyX display of this macro,
+ macro that puts a single argument into corner quotes.
+ To get a nice \SpecialChar LyX
+ display of this macro,
  just do:
 \end_layout
 

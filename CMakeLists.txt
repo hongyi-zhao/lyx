@@ -2,9 +2,9 @@
 # Licence details can be found in the file COPYING.
 #
 # Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
-# Copyright (c) 2008-2020 Kornel Benko, <Kornel.Benko@berlin.de>
+# Copyright (c) 2008-2024 Kornel Benko, <Kornel.Benko@berlin.de>
 
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.5.0)
 
 set(LYX_PROJECT LyX)
 # Instruct cmake to not use gnu extensions,
@@ -663,10 +663,19 @@ endif()
 set(min_qt5_version "5.6")
 if(LYX_USE_QT MATCHES "AUTO")
 	# try qt6 first
-	find_package(Qt6Core CONFIG QUIET)
-	if (Qt6Core_Found)
+	foreach(_mod Core Gui Widgets Concurrent Svg)
+		find_package(Qt6${_mod} CONFIG QUIET)
+		if (NOT Qt6${_mod}_FOUND)
+			message(STATUS "Not found Qt6${_mod}, aborting use of QT6")
+			set(Qt6Core_FOUND OFF)
+			break()
+		else()
+			message(STATUS "Found Qt6${_mod}")
+		endif()
+	endforeach()
+	if (Qt6Core_FOUND)
 		set(LYX_USE_QT "QT6" CACHE STRING "Valid qt version" FORCE)
-		message(STATUS "Qt5Core_VERSION = ${Qt5Core_VERSION}")
+		message(STATUS "Qt6Core_VERSION = ${Qt6Core_VERSION}")
 	else()
 		find_package(Qt5Core CONFIG QUIET)
 		if(Qt5Core_FOUND)

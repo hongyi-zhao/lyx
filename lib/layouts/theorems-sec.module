@@ -18,7 +18,7 @@ Counter theorem
 	RefFormat thm "Theorem \thesection.\arabic{theorem}"
 	RefFormat cor "Corollary \thesection.\arabic{theorem}"
 	RefFormat lem "Lemma \thesection.\arabic{theorem}"
-	RefFormat prop "Lemma \thesection.\arabic{theorem}"
+	RefFormat prop "Proposition \thesection.\arabic{theorem}"
 	RefFormat conj "Conjecture \thesection.\arabic{theorem}"
 	RefFormat def "Definition \thesection.\arabic{theorem}"
 	RefFormat exa "Example \thesection.\arabic{theorem}"

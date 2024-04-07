@@ -1,3 +1,4 @@
+# See https://github.com/ad-m/github-push-action/issues/193#issuecomment-2041278988 for the related discussion.
 name: Sync with upstream repository
 
 on:

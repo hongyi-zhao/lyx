@@ -4,6 +4,7 @@
 name: Sync with upstream repository
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 */6 * * *' # Every 6 hours, can be adjusted as needed
 
@@ -25,14 +26,10 @@ jobs:
         run: git remote add upstream git://git.lyx.org/lyx
 
       - name: Fetch changes from upstream
-        run: git fetch upstream --verbose
+        run: git fetch upstream
 
       - name: Merge changes from upstream
-        run: |
-          git merge upstream/master --allow-unrelated-histories -Xtheirs --verbose || true
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -am "Resolve conflicts by preferring upstream's changes"
-          fi
+        run: git merge upstream/master --allow-unrelated-histories -Xtheirs --no-edit --verbose # Ensure the upstream branch is correct
 
       - name: Push changes
         uses: ad-m/github-push-action@master

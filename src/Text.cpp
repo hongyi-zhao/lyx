@@ -5958,7 +5958,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Argument?
 		if (!arg.empty()) {
 			if (isStrUnsignedInt(arg)) {
-				num = convert<uint>(arg);
+				num = convert<unsigned int>(arg);
 				if (num >= freeFonts.size()) {
 					cur.message(_("Invalid argument (number exceeds stack size)!"));
 					break;

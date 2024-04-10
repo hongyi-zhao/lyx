@@ -1547,8 +1547,8 @@ pit_type TextMetrics::getPitNearY(int y)
 	}
 
 	for (; it != et; ++it) {
-		LYXERR(Debug::PAINTING, "examining: pit: " << it->first
-			<< " y: " << it->second.position());
+		// LYXERR(Debug::PAINTING, "examining: pit: " << it->first
+		// 	<< " y: " << it->second.position());
 
 		if (it->first >= pit && it->second.top() <= y) {
 			pit = it->first;

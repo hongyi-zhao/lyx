@@ -2,6 +2,8 @@
 #这段代码在git merge命令中使用了-Xtheirs选项，这会在冲突发生时优先使用上游的更改。
 #请根据你的具体需求调整这一解决方案。如果你想要保留自己仓库的更改，可以使用-Xours选项，但这可能会导致你失去上游的某些更新。
 #在自动化脚本处理这种情况时，务必明确你希望优先保留哪边的更改。
+#https://github.com/ZPascal/lyx/blob/53a327ecb5fb7cc1d5b396e8399eaa4114ab262d/.github/workflows/sync-with-upstream-repository.yml
+#https://github.com/ad-m/github-push-action/issues/193#issuecomment-2046070139
 name: Sync with upstream repository
 
 on:
@@ -30,10 +32,20 @@ jobs:
         run: git fetch upstream
 
       - name: Merge changes from upstream
-        run: git merge upstream/master --allow-unrelated-histories -Xtheirs --no-edit --verbose # Ensure the upstream branch is correct
+        run: git merge upstream/master --allow-unrelated-histories -Xtheirs --no-edit # Ensure the upstream branch is correct
 
+      - name: Check if push is necessary
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --untracked-files=no --porcelain)" ]; then
+            echo "files_changed=true" >> "$GITHUB_OUTPUT";
+          else
+            echo "files_changed=false" >> "$GITHUB_OUTPUT";
+          fi
+      
       - name: Push changes
         uses: ad-m/github-push-action@master
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: master # Ensure branch name matches the branch you want to sync with          

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-04-03 12:00+0200\n"
-"PO-Revision-Date: 2024-04-03 10:21+0000\n"
+"POT-Creation-Date: 2024-04-10 15:53+0200\n"
+"PO-Revision-Date: 2024-04-10 14:02+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -20950,7 +20950,7 @@ msgid "Insert Sortkey|k"
 msgstr "Vložiť triediaci kľúč|k"
 
 #: lib/ui/stdcontext.inc:653
-msgid "Insert See Reference|c"
+msgid "Insert See Reference|cf"
 msgstr "Vložiť \"Viď\" referenciu|V"
 
 #: lib/ui/stdcontext.inc:654
@@ -21044,6 +21044,14 @@ msgstr "Počet znakov|z"
 #: lib/ui/stdcontext.inc:776
 msgid "Character Count (No Blanks)|h"
 msgstr "Počet znakov (bez medzier)|m"
+
+#: lib/ui/stdcontext.inc:777
+msgid "Start Statistics Relative to Current Count|R"
+msgstr "Spustiť štatistiku vzhľadom na aktuálny počet|a"
+
+#: lib/ui/stdcontext.inc:778
+msgid "Reset to Absolute Statistics Count|A"
+msgstr "Obnoviť na počet absolútnej štatistiky|O"
 
 #: lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -44230,3 +44238,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Switch Language...|L"
 #~ msgstr "Prepnúť jazyk…|ť"
+
+#~ msgid "Insert See Reference|c"
+#~ msgstr "Vložiť \"Viď\" referenciu|V"

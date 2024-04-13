@@ -220,8 +220,14 @@ void GuiWorkArea::init()
 	// Enables input methods for asian languages.
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
-	// obtain transformation information to reset it when LyX gets refocus
-	d->im_item_trans_ = d->im_->inputItemTransform();
+
+	// Initialize d->im_cursor_rect_
+	Point point;
+	Dimension dim;
+	d->buffer_view_->caretPosAndDim(point, dim);
+	int cur_x = point.x_ - dim.width();
+	int cur_y = point.y_ + dim.height();
+	d->im_cursor_rect_ = QRectF(cur_x, (cur_y - dim.height()) , 1, dim.height() );
 }
 
 
@@ -280,6 +286,9 @@ void GuiWorkArea::close()
 void GuiWorkArea::setFullScreen(bool full_screen)
 {
 	d->buffer_view_->setFullScreen(full_screen);
+
+	queryInputItemTransform();
+
 	if (full_screen && lyxrc.full_screen_scrollbar)
 		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	else
@@ -684,10 +693,20 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 
 void GuiWorkArea::focusInEvent(QFocusEvent * e)
 {
-	LYXERR(Debug::DEBUG, "GuiWorkArea::focusInEvent(): " << this << endl);
+	LYXERR(Debug::DEBUG, "GuiWorkArea::focusInEvent(): " << this << " reason() = " << e->reason() << endl);
 	if (d->lyx_view_->currentWorkArea() != this) {
 		d->lyx_view_->setCurrentWorkArea(this);
 		d->lyx_view_->currentWorkArea()->bufferView().buffer().updateBuffer();
+	}
+
+	// needs to reset IM item coordinates when focus in from dialogs or other apps
+	if ((e->reason() == Qt::PopupFocusReason || e->reason() == Qt::ActiveWindowFocusReason) &&
+		!(this->inDialogMode())) {
+		// Switched from most of dialogs or other apps, and not on a dialog (e.g. findreplaceadv)
+		d->item_trans_needs_reset_ = true;
+	} else {
+		// Switched from advanced search dialog or else (e.g. mouse event)
+		d->item_trans_needs_reset_ = false;
 	}
 
 	startBlinkingCaret();
@@ -1119,28 +1138,85 @@ void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 }
 
 
+void GuiWorkArea::queryInputItemTransform()
+{
+	LYXERR(
+		   Debug::DEBUG,
+		   "item_trans_ is aquired: dx() = " << d->item_trans_.dx() <<
+		   " -> " << d->im_->inputItemTransform().dx() <<
+		   ", dy() = " << d->item_trans_.dy() <<
+		   " -> " << d->im_->inputItemTransform().dy()
+		   );
+
+	d->item_trans_ = d->im_->inputItemTransform();
+}
+
+
+void GuiWorkArea::Private::resetInputItemTransform()
+{
+	if (item_trans_needs_reset_) {
+		LYXERR(
+			   Debug::DEBUG,
+			   "(" << this <<
+			   ") item_trans_ is reset: dx() = " << im_->inputItemTransform().dx() <<
+			   " -> " << item_trans_.dx() <<
+			   ", dy() = " << im_->inputItemTransform().dy() <<
+			   " -> " << item_trans_.dy()
+			   );
+		im_->setInputItemTransform(item_trans_);
+		item_trans_needs_reset_ = false;
+	}
+}
+
+
+//#define DEBUG_PREEDIT
+
 void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 {
-	if (preedit_string_.empty())
+#ifdef DEBUG_PREEDIT
+	// check the language that current input method uses
+	QLocale::Language lang = im_->locale().language();
+	if (lang != im_lang_) {
+		LYXERR0("QLocale = " << QLocale::languageToString(lang));
+		im_lang_ = lang;
+	}
+#endif
+		
+	// Chinese IM may want cursor position even when preedit string is empty
+	// such a case is handled below
+	if (preedit_string_.empty() && im_->locale().language() != QLocale::Chinese)
 		return;
 
-	// FIXME: shall we use real_current_font here? (see #10478)
-	FontInfo const font = buffer_view_->cursor().getFont().fontInfo();
-	FontMetrics const & fm = theFontMetrics(font);
+	// lower margin of the preedit area to separate the candidate window
+	// report to IM the height of preedit rectangle larger than the actual by
+	// preedit_lower_margin so that the conversion suggestion window does not
+	// hide the underline of the preedit text
+	int preedit_lower_margin = 1;
+
 	Point point;
 	Dimension dim;
 	buffer_view_->caretPosAndDim(point, dim);
 	int cur_x = point.x_ - dim.width();
 	int cur_y = point.y_ + dim.height();
-	// lower margin of the preedit area to separate the candidate window
-	// report to IM the height of preedit rectangle larger than the actual by
-	// preedit_lower_margin so that the conversion suggestion window does not
-	// hide the underline of the preedit text
-	int preedit_lower_margin = 3;
-	// reset item transformation since it gets wrong after the item get
-	// lost and regain focus.
-	im_->setInputItemTransform(im_item_trans_);
+
+	if (preedit_string_.empty()) {
+		// Chinese input methods may exit here just obtaining im_cursor_rect
+		im_cursor_rect_ =
+			QRectF(cur_x, cur_y - dim.height(), 1, dim.height() + preedit_lower_margin);
+		im_->update(Qt::ImCursorRectangle);
+		return;
+	}
+
+	// reset item transformation since it can go wrong after the item gets
+	// lost and regains focus or after a new tab (dis)appears etc.
+	resetInputItemTransform();
+
+	// FIXME: shall we use real_current_font here? (see #10478)
+	FontInfo const font = buffer_view_->cursor().getFont().fontInfo();
+	FontMetrics const & fm = theFontMetrics(font);
+
 	// force fulldraw to remove previous paint remaining on screen
+    // FIXME: This is costly to do
 	buffer_view_->processUpdateFlags(Update::ForceDraw);
 
 	// get attributes of input method cursor.
@@ -1782,7 +1858,7 @@ bool TabWorkArea::setCurrentWorkArea(GuiWorkArea * work_area)
 	else
 		// Switch to the work area.
 		setCurrentIndex(index);
-	work_area->setFocus();
+	work_area->setFocus(Qt::OtherFocusReason);
 
 	return true;
 }
@@ -1808,6 +1884,11 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 		showBar(count() > 1);
 
 	updateTabTexts();
+
+	// obtain new input item coordinates in the new and old work areas
+	wa->queryInputItemTransform();
+	if (currentWorkArea())
+		currentWorkArea()->queryInputItemTransform();
 
 	view.setBusy(false);
 
@@ -1835,6 +1916,7 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 		else
 			// Show tabbar only if there's more than one tab.
 			showBar(count() > 1);
+		currentWorkArea()->queryInputItemTransform();
 	} else
 		lastWorkAreaRemoved();
 

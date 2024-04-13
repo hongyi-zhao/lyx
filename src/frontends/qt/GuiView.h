@@ -131,6 +131,7 @@ public:
 
 	///
 	void setFocus();
+	void setFocus(Qt::FocusReason reason);
 	bool hasFocus() const;
 
 	///

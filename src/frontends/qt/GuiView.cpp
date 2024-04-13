@@ -1217,6 +1217,13 @@ void GuiView::setFocus()
 }
 
 
+void GuiView::setFocus(Qt::FocusReason reason)
+{
+    LYXERR(Debug::DEBUG, "GuiView::setFocus()" << this << " reason = " << reason);
+    QMainWindow::setFocus(reason);
+}
+
+
 bool GuiView::hasFocus() const
 {
 	if (currentWorkArea())
@@ -1234,11 +1241,11 @@ void GuiView::focusInEvent(QFocusEvent * e)
 	// Make sure guiApp points to the correct view.
 	guiApp->setCurrentView(this);
 	if (currentWorkArea())
-		currentWorkArea()->setFocus();
+		currentWorkArea()->setFocus(e->reason());
 	else if (currentMainWorkArea())
-		currentMainWorkArea()->setFocus();
+		currentMainWorkArea()->setFocus(e->reason());
 	else
-		d.bg_widget_->setFocus();
+		d.bg_widget_->setFocus(e->reason());
 }
 
 
@@ -1571,6 +1578,9 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	connectBufferView(wa->bufferView());
 	connectBuffer(wa->bufferView().buffer());
 	d.current_work_area_ = wa;
+    // The below specifies that the input method item transformation will
+    // not reset
+    wa->setFocus(Qt::OtherFocusReason);
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
 	                 this, SLOT(updateWindowTitle(GuiWorkArea *)));
 	QObject::connect(wa, SIGNAL(busy(bool)),
@@ -1736,7 +1746,7 @@ bool GuiView::event(QEvent * e)
 	case QEvent::WindowActivate: {
 		GuiView * old_view = guiApp->currentView();
 		if (this == old_view) {
-			setFocus();
+			setFocus(Qt::ActiveWindowFocusReason);
 			return QMainWindow::event(e);
 		}
 		if (old_view && old_view->currentBufferView()) {
@@ -1749,7 +1759,7 @@ bool GuiView::event(QEvent * e)
 			on_currentWorkAreaChanged(d.current_work_area_);
 		else
 			resetWindowTitle();
-		setFocus();
+		setFocus(Qt::ActiveWindowFocusReason);
 		return QMainWindow::event(e);
 	}
 
@@ -4836,6 +4846,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_DIALOG_HIDE: {
 			guiApp->hideDialogs(to_utf8(cmd.argument()), nullptr);
+            setFocus(Qt::PopupFocusReason);
 			break;
 		}
 
@@ -5361,7 +5372,10 @@ void GuiView::doShowDialog(QString const & qname, QString const & qdata,
 		Dialog * dialog = findOrBuild(name, false);
 		if (dialog) {
 			bool const visible = dialog->isVisibleView();
-			dialog->showData(sdata);
+			if (name == "findreplaceadv")
+				dialog->showData(sdata, Qt::OtherFocusReason);
+			else
+				dialog->showData(sdata);
 			if (currentBufferView())
 				currentBufferView()->editInset(name, inset);
 			// We only set the focus to the new dialog if it was not yet

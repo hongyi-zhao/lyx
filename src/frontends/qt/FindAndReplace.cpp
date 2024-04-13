@@ -122,7 +122,7 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 			FuncRequest func = theTopLevelKeymap().getBinding(seq);
 			if (!getStatus(func).enabled()) {
 				LYXERR(Debug::FINDVERBOSE, "Focusing replace WA");
-				replace_work_area_->setFocus();
+				replace_work_area_->setFocus(Qt::TabFocusReason);
 				LYXERR(Debug::FINDVERBOSE, "Selecting entire replace buffer");
 				dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
 				dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
@@ -138,7 +138,7 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 			FuncRequest func = theTopLevelKeymap().getBinding(seq);
 			if (!getStatus(func).enabled()) {
 				LYXERR(Debug::FINDVERBOSE, "Focusing find WA");
-				find_work_area_->setFocus();
+				find_work_area_->setFocus(Qt::BacktabFocusReason);
 				LYXERR(Debug::FINDVERBOSE, "Selecting entire find buffer");
 				dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
 				dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));

@@ -327,8 +327,10 @@
 
 !!Known issues in version 2.4.0
 
-* Compiling LyX 2.4 on MacOS with Qt6 makes currently LyX unresponsive to 
-  Control-Command keyboard shortcuts (bug #12641).
+* Various versions Qt6 have a problem with key events handling (QTBUG-123848).
+  This issue is documented in bug #12641 (e.g. LyX is unresponsive to
+  Control-Command keyboard shortcuts).
+  The fix for the Qt bug is announced for Qt 6.7, 6.5 and 6.2.
 
 * Gnome environments defaulting to Wayland + mutter compositor might be missing
   proper window decorations. This is a generic problem which can be for Qt-based

@@ -100,6 +100,9 @@ struct GuiWorkArea::Private
 	/// Change the cursor when the mouse hovers over a clickable inset
 	void updateCursorShape();
 
+	/// Restore coordinate transformation information
+	void resetInputItemTransform();
+	/// Paint preedit text provided by the platform input method
 	void paintPreeditText(GuiPainter & pain);
 
 	/// Prepare screen for next painting
@@ -136,6 +139,7 @@ struct GuiWorkArea::Private
 	///
 	bool need_resize_ = false;
 
+	/// provides access to the platform input method
 	QInputMethod * im_ = QGuiApplication::inputMethod();
 	/// the current preedit text of the input method
 	docstring preedit_string_;
@@ -145,7 +149,10 @@ struct GuiWorkArea::Private
 	QList<QInputMethodEvent::Attribute> preedit_attr_;
 	QRectF im_cursor_rect_;
 	QRectF im_anchor_rect_;
-	QTransform im_item_trans_;
+	QTransform item_trans_;
+	bool item_trans_needs_reset_ = false;
+	/// for debug
+	QLocale::Language im_lang_;
 
 	/// Ratio between physical pixels and device-independent pixels
 	/// We save the last used value to detect changes of the

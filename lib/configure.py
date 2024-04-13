@@ -157,8 +157,8 @@ def copy_tree(src, dst, preserve_symlinks=False, level=0):
             link_dest = os.readlink(src_name)
             os.symlink(link_dest, dst_name)
             outputs.append(dst_name)
-        elif level == 0 and name == 'cache':
-            logger.info("Skip cache %s", src_name)
+        elif level == 0 and name in [ 'cache', 'configure.log', 'chkconfig.ltx' ]:
+            logger.info("Skip copy of %s", src_name)
         elif os.path.isdir(src_name):
             outputs.extend(
                 copy_tree(src_name, dst_name, preserve_symlinks, level=(level + 1)))
@@ -180,7 +180,7 @@ def checkUpgrade():
         logger.info('Checking for upgrade from previous version.')
         parent = os.path.dirname(cwd)
         appname = basename[:(-len(version_suffix))]
-        for version in ['-2.3', '-2.2', '-2.1', '-2.0', '-1.6' ]:
+        for version in ['-2.4', '-2.3', '-2.2', '-2.1', '-2.0', '-1.6' ]:
             logger.debug('Checking for upgrade from previous version ' + version)
             previous = os.path.join(parent, appname + version)
             logger.debug('previous = ' + previous)

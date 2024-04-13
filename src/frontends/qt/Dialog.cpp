@@ -120,7 +120,7 @@ Buffer const & Dialog::documentBuffer() const
 }
 
 
-void Dialog::showData(string const & data)
+void Dialog::showData(string const & data, Qt::FocusReason reason)
 {
 	if (isBufferDependent() && !isBufferAvailable())
 		return;
@@ -131,7 +131,7 @@ void Dialog::showData(string const & data)
 		return;
 	}
 
-	showView();
+	showView(reason);
 }
 
 
@@ -169,24 +169,25 @@ void Dialog::prepareView()
 }
 
 
-void Dialog::showView()
+void Dialog::showView(Qt::FocusReason reason)
 {
 	prepareView();
 
 	QWidget * w = asQWidget();
-	if (!w->isVisible())
-		w->show();
+    if (!w->isVisible()) {
+        w->setFocus(reason);
+        w->show();
+    }
 	w->raise();
 	w->activateWindow();
 	if (wantInitialFocus())
-		w->setFocus();
+		w->setFocus(reason);
 	else {
 		lyxview_.raise();
 		lyxview_.activateWindow();
-		lyxview_.setFocus();
+		lyxview_.setFocus(reason);
 	}
 }
-
 
 void Dialog::hideView()
 {

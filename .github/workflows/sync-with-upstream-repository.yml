@@ -37,10 +37,13 @@ jobs:
       - name: Check if push is necessary
         id: verify-changed-files
         run: |
+          cat log.txt
           if [ $(wc -l <<< log.txt) = "2" ]; then
             echo "files_changed=true" >> "$GITHUB_OUTPUT";
+            echo "CHANGED";
           else
             echo "files_changed=false" >> "$GITHUB_OUTPUT";
+            echo "NOT CHANGED";
           fi
           rm -rf log.txt
 

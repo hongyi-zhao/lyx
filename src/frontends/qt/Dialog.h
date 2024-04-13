@@ -88,7 +88,18 @@ public:
 	//@{
 	/// \param data is a string encoding of the data to be displayed.
 	/// It is passed to the Controller to be translated into a usable form.
-	virtual void showData(std::string const & data);
+    virtual void showData(std::string const & data)
+    {
+        return showData(data, Qt::PopupFocusReason);
+    }
+
+    /// \param data is a string encoding of the data to be displayed.
+    /// It is passed to the Controller to be translated into a usable form.
+    /// \param reason provides the focus reason of the dialog.
+    /// E.g. dialog "findreplaceadv" requires special treatment after
+    /// obtaining focus in terms of the input method item transformation,
+    /// so should be marked as reason = Qt::OtherFocusReason.
+    virtual void showData(std::string const & data, Qt::FocusReason reason);
 	//@}
 
 	/// \return inset at current cursor location.
@@ -121,7 +132,14 @@ public:
 	void hideView();
 
 	/// Prepare dialog and display it.
-	void showView();
+    void showView() { return showView(Qt::PopupFocusReason); }
+
+    /// Prepare dialog and display it.
+    /// \param reason provides the focus reason of the dialog.
+    /// E.g. dialog "findreplaceadv" requires special treatment after
+    /// obtaining focus in terms of the input method item transformation,
+    /// so should be marked as reason = Qt::OtherFocusReason.
+    void showView(Qt::FocusReason reason);
 
 	/// Prepare dialog before view.
 	void prepareView();

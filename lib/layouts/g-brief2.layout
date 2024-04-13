@@ -17,6 +17,9 @@ Sides			1
 PageStyle		Empty
 DefaultStyle		Standard
 
+# Babel is loaded internally
+Provides babel 1
+
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
 DefaultFont

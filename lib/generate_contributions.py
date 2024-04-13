@@ -2354,7 +2354,16 @@ contributors = [
                  "",
                  "",
                  "",
-                 u"bug reports and small fixes") ]
+                 u"bug reports and small fixes"),
+
+     contributor(u"Jiaxu Zi",
+                 "3119932298 () qq ! com",
+                 "GPL",
+                 "Re: Update zh_CN Translation",
+                 "m=171281941029208",
+                 "10 April 2024",
+                 u"Chinese translation") ]
+
 
 
 if __name__ == "__main__":

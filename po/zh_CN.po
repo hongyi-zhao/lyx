@@ -6,6 +6,7 @@
 # Bo Peng <ben.bob@gmail.com>, 2007.
 # Min Ding <u5032331@uds.anu.edu.au>, 2014.
 # Winfred Huang <tone90999@hotmail.com>, 2018.
+# Jiaxu Zi <3119932298@qq.com>, 2024.
 # Note from Winfred Huang:
 # 本翻译文件依照俄文版处理了一部分无需翻译照抄原文的条目，
 # 依照日文版处理了一部分需要翻译的条目。少部分条目之翻译为
@@ -23,8 +24,8 @@ msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2024-02-12 11:10-0500\n"
-"PO-Revision-Date: 2020-07-22 10:09+0800\n"
-"Last-Translator: Winfred Huang <tone90999@hotmail.com>\n"
+"PO-Revision-Date: 2024-04-10 10:09+0800\n"
+"Last-Translator: Jiaxu Zi <3119932298@qq.com>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +86,7 @@ msgstr "发行说明"
 
 #: src/frontends/qt/ui/AboutUi.ui:361
 msgid "Copy version information to clipboard"
-msgstr ""
+msgstr "复制版本信息到剪切板"
 
 #: src/frontends/qt/ui/AboutUi.ui:364
 #, fuzzy
@@ -131,6 +132,8 @@ msgid ""
 "full list for author-year citation, you can put the full list here and the "
 "abbreviated list above."
 msgstr ""
+"如果您希望同时使用包含“et al.”的作者缩写列表以及作者-年份引用的完整列表，"
+"您可以在此处放置完整列表，而在上方放置缩写列表。"
 
 #: src/frontends/qt/ui/BibitemUi.ui:122 src/frontends/qt/GuiBibitem.cpp:93
 msgid ""
@@ -392,6 +395,8 @@ msgid ""
 "If your bibliography databases use a different encoding than the LyX "
 "document, specify it here"
 msgstr ""
+"若您的参考文献数据库所采用的编码与 LyX 文档的编码不一致，"
+"请在此处指定该编码。"
 
 #: src/frontends/qt/ui/BibtexUi.ui:270
 msgid "The BibTeX style"
@@ -759,7 +764,7 @@ msgstr "新分支(&N):"
 
 #: src/frontends/qt/ui/BranchesUi.ui:169
 msgid "Reset branch color to default (standard background)"
-msgstr ""
+msgstr "重置分支颜色至默认（标准背景）"
 
 #: src/frontends/qt/ui/BranchesUi.ui:172
 #, fuzzy
@@ -915,7 +920,7 @@ msgstr "跟踪修订"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:30
 msgid "If checked, changes will be shown in the PDF/DVI/PS output"
-msgstr ""
+msgstr "如果勾选，更改将在PDF/DVI/PS输出中显示"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:33
 #, fuzzy
@@ -924,7 +929,7 @@ msgstr "在输出中显示修订文字"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:40
 msgid "Use change bars in addition to change tracking markup"
-msgstr ""
+msgstr "除了使用更改跟踪标记外，还使用更改线"
 
 #: src/frontends/qt/ui/ChangeTrackingUi.ui:43
 #, fuzzy
@@ -1312,7 +1317,7 @@ msgstr "旧文档(&O):"
 
 #: src/frontends/qt/ui/CompareUi.ui:145
 msgid "Specify the original version of the document here (comparison source)"
-msgstr ""
+msgstr "在此处指定文档的原始版本（比较源）"
 
 #: src/frontends/qt/ui/CompareUi.ui:155 src/frontends/qt/ui/PrefUi.ui:51
 msgid "Bro&wse..."
@@ -1325,7 +1330,7 @@ msgstr "新文档(&N):"
 
 #: src/frontends/qt/ui/CompareUi.ui:181
 msgid "Specify the modified version of the document here (comparison target)"
-msgstr ""
+msgstr "在此处指定文档的修改版本（比较目标）"
 
 #: src/frontends/qt/ui/CompareUi.ui:191 src/frontends/qt/ui/ExternalUi.ui:89
 #: src/frontends/qt/ui/GraphicsUi.ui:75 src/frontends/qt/ui/IncludeUi.ui:28
@@ -1337,7 +1342,7 @@ msgstr "浏览(&B)..."
 #: src/frontends/qt/ui/CompareUi.ui:227 src/frontends/qt/ui/CompareUi.ui:240
 msgid ""
 "Changes in the workarea are allocated to the selected author or category"
-msgstr ""
+msgstr "工作区中的更改被分配给所选作者或类别"
 
 #: src/frontends/qt/ui/CompareUi.ui:230
 #, fuzzy
@@ -1361,13 +1366,14 @@ msgstr "动作"
 
 #: src/frontends/qt/ui/CounterUi.ui:63
 msgid "Select the action to perform on selected counter"
-msgstr ""
+msgstr "选择对所选计数器执行的操作"
 
 #: src/frontends/qt/ui/CounterUi.ui:79
 msgid ""
 "If checked, modification affects the counter only in the LyX workarea, not "
 "in the output"
-msgstr ""
+msgstr "如果已勾选，修改仅影响 LyX 工作区中的计数器，而不影响输出"
+
 
 #: src/frontends/qt/ui/CounterUi.ui:85
 #, fuzzy
@@ -1761,7 +1767,7 @@ msgstr "替换是保留首字大小写(&P)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:413
 msgid "Do not search in content that is not output (e.g., notes)"
-msgstr ""
+msgstr "不要在未输出的内容（如注释）中进行搜索"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:416
 msgid "Ignore &non-output content"
@@ -1771,7 +1777,7 @@ msgstr ""
 msgid ""
 "If the search string is formatted in a non-default way, only find strings "
 "formatted like the search string in the checked respects"
-msgstr ""
+msgstr "如果搜索字符串以非默认方式格式化，则仅查找在所选方面格式类似于搜索字符串的字符串"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:441
 msgid "Adhe&re to search string formatting of"
@@ -1866,7 +1872,7 @@ msgstr "居中"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:124
 msgid "Right-align float contents"
-msgstr ""
+msgstr "右对齐浮动内容"
 
 #: src/frontends/qt/ui/FloatPlacementUi.ui:127
 #, fuzzy
@@ -1963,7 +1969,7 @@ msgstr "衬线字体(&R):"
 msgid ""
 "Select the roman (serif) typeface. To filter the list of fonts, just start "
 "typing while the list is expanded."
-msgstr ""
+msgstr "选择罗马（衬线）字体。要在字体列表中进行筛选，只需在列表展开时开始输入即可。"
 
 #: src/frontends/qt/ui/FontUi.ui:142
 msgid "Use a real small caps shape, if the font provides one"
@@ -2002,7 +2008,7 @@ msgstr "无衬线字体(&S):"
 msgid ""
 "Select the Sans Serif (grotesque) typeface. To filter the list of fonts, "
 "just start typing while the list is expanded."
-msgstr ""
+msgstr "选择无衬线（哥特式）字体。要在字体列表中进行筛选，只需在列表展开时开始输入即可。"
 
 #: src/frontends/qt/ui/FontUi.ui:237
 msgid "S&cale (%):"
@@ -2025,7 +2031,7 @@ msgstr "等宽字体(&T)"
 msgid ""
 "Select the typewriter (monospaced) typeface. To filter the list of fonts, "
 "just start typing while the list is expanded."
-msgstr ""
+msgstr "选择等宽字体。要在字体列表中进行筛选，只需在列表展开时开始输入即可。"
 
 #: src/frontends/qt/ui/FontUi.ui:345
 msgid "Sc&ale (%):"
@@ -2200,7 +2206,7 @@ msgstr "屏幕缩放比例(%)(&L):"
 #: src/frontends/qt/ui/GraphicsUi.ui:589
 msgid ""
 "If LyX uses a dark theme, revert the colors of this graphics in the workarea"
-msgstr ""
+msgstr "如果 LyX 使用深色主题，则反转工作区中此图形的颜色"
 
 #: src/frontends/qt/ui/GraphicsUi.ui:592
 msgid "Re&vert colors in dark mode"
@@ -2300,7 +2306,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/HSpaceUi.ui:128
 msgid "Prevent automatic line break at the space"
-msgstr ""
+msgstr "防止在空格处自动换行"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:24 src/frontends/qt/ui/HyperlinkUi.ui:61
 #: lib/layouts/acmart.layout:725 lib/layouts/acmart.layout:743
@@ -2369,7 +2375,7 @@ msgstr "文件(&L)"
 msgid ""
 "Link to an arbitrary URI scheme not matched by the other three types (to be "
 "fully spelled out in the Target field above)"
-msgstr ""
+msgstr "链接到未被其他三种类型匹配的任意 URI 方案（需在上面的目标字段中完整拼写）"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:169
 msgid "&Other[[Link Type]]"
@@ -2410,7 +2416,7 @@ msgstr "编辑(&E)"
 msgid ""
 "File name to include. (You can create a new file by entering the name of one "
 "that does not yet exist.)"
-msgstr ""
+msgstr "要包含的文件名。（您可以通过输入一个尚不存在的文件名来创建新文件。）"
 
 #: src/frontends/qt/ui/IncludeUi.ui:124
 msgid "Underline spaces in generated output"
@@ -2483,7 +2489,7 @@ msgstr "页范围(&G)"
 
 #: src/frontends/qt/ui/IndexUi.ui:68
 msgid "If the entry spans multiple pages, you can start or end the range here"
-msgstr ""
+msgstr "如果条目跨越多页，您可在此处开始或结束范围"
 
 #: src/frontends/qt/ui/IndexUi.ui:88 src/frontends/qt/ui/PageLayoutUi.ui:29
 #: src/frontends/qt/ui/PrefFileformatsUi.ui:20
@@ -2498,7 +2504,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/IndexUi.ui:105
 msgid "Enter custom command here (without leading backslash)."
-msgstr ""
+msgstr "在此处输入自定义命令（无需前置反斜杠）。"
 
 #: src/frontends/qt/ui/IndicesUi.ui:19
 msgid ""
@@ -2573,7 +2579,7 @@ msgstr "信息类型:"
 msgid ""
 "Select the type of information to be output. Then specify the requested "
 "information below."
-msgstr ""
+msgstr "选择要输出的信息类型。然后在下方指定所需信息。"
 
 #: src/frontends/qt/ui/InfoUi.ui:49 src/frontends/qt/GuiInfo.cpp:362
 #, fuzzy
@@ -2582,7 +2588,7 @@ msgstr "日期:"
 
 #: src/frontends/qt/ui/InfoUi.ui:59 src/frontends/qt/GuiInfo.cpp:361
 msgid "Here you can enter a fixed date (in ISO format: YYYY-MM-DD)"
-msgstr ""
+msgstr "在此处您可以输入一个固定日期（ISO 格式：YYYY-MM-DD）"
 
 #: src/frontends/qt/ui/InfoUi.ui:70
 #, fuzzy
@@ -2717,15 +2723,15 @@ msgstr "类型(&T):"
 
 #: src/frontends/qt/ui/LanguageUi.ui:108
 msgid "Select encoding of the generated LaTeX source (LaTeX input encoding)."
-msgstr ""
+msgstr "选择生成的 LaTeX 源代码的编码（LaTeX 输入编码）。"
 
 #: src/frontends/qt/ui/LanguageUi.ui:121
 msgid "Select Unicode encoding variant."
-msgstr ""
+msgstr "选择Unicode编码变体。"
 
 #: src/frontends/qt/ui/LanguageUi.ui:131
 msgid "Specify whether to load the 'inputenc' package."
-msgstr ""
+msgstr "指定是否加载 'inputenc' 包。"
 
 #: src/frontends/qt/ui/LanguageUi.ui:141
 #, fuzzy
@@ -2980,7 +2986,7 @@ msgstr "错误已在终端中报告。"
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:74 src/frontends/qt/ui/PreambleUi.ui:49
 msgid "Editor for LaTeX (plain) format will be used"
-msgstr ""
+msgstr "将使用 LaTeX（纯文本）格式的编辑器"
 
 #: src/frontends/qt/ui/LocalLayoutUi.ui:77 src/frontends/qt/ui/PreambleUi.ui:52
 #: src/frontends/qt/GuiDocument.cpp:606 src/frontends/qt/GuiDocument.cpp:786
@@ -3018,7 +3024,7 @@ msgstr "查找(&F):"
 
 #: src/frontends/qt/ui/LogUi.ui:111
 msgid "Hit Enter or click 'Find Next' to search"
-msgstr ""
+msgstr "按“Enter”键或单击“查找下一个”开始搜索"
 
 #: src/frontends/qt/ui/LogUi.ui:118
 msgid "Find &Next"
@@ -3046,7 +3052,7 @@ msgstr "过滤器:"
 msgid ""
 "Determines whether only personal user files, system files or all files are "
 "displayed"
-msgstr ""
+msgstr "决定仅显示个人用户文件、系统文件还是所有文件"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:72 src/frontends/qt/ui/RefUi.ui:82
 msgid "Filter case-sensitively"
@@ -3063,7 +3069,7 @@ msgstr "语言(&L):"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:110
 msgid "The available language(s) of the selected file will be displayed here"
-msgstr ""
+msgstr "所选文件可用的语言将在此处显示"
 
 #: src/frontends/qt/ui/MarginsUi.ui:38
 #, fuzzy
@@ -3132,7 +3138,7 @@ msgstr "包括所有子文件(&I)"
 msgid ""
 "Here you can set up the handling of counters and references with regard to "
 "the excluded child documents."
-msgstr ""
+msgstr "在此处您可以针对排除的子文档设置计数器和引用的处理方式"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:58
 #, fuzzy
@@ -3146,6 +3152,8 @@ msgid ""
 "document.<br>This is the fastest method. Use this if you do not need correct "
 "counter values and references."
 msgstr ""
+"将忽略排除的子文档的所有计数器和引用，因此输出中的计数器将与完整文档的输出不同。"
+"<br>这是最快的方法。如果您不需要正确的计数器值和引用，请使用此方法。"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:67
 msgid "Do &not maintain (fast)"
@@ -3160,6 +3168,9 @@ msgid ""
 "is significantly faster than \"Strictly maintain\". Use this if you need "
 "correct counters and more or less correct references."
 msgstr ""
+"将为排除的子文档设置一次计数器和引用，并在排除的文档被修改时进行调整。"
+"这在大多数情况下可以正确设置计数器和引用，但不会调整由于包含文件更改而导致的未包含子项的页面引用。"
+"<br>这比“严格维护”快得多。如果您需要正确的计数器和或多或少正确的引用，请使用此方法。"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:77
 msgid "Maintain mostl&y (medium)"
@@ -3171,6 +3182,8 @@ msgid ""
 "document. This can be much slower than the first two methods.<br>Use this if "
 "you absolutely need correct counters."
 msgstr ""
+"确保所有计数器和引用与完整文档完全相同。这可能比前两种方法慢得多。"
+"<br>如果您绝对需要正确的计数器，请使用此方法。"
 
 #: src/frontends/qt/ui/MasterChildUi.ui:87
 msgid "Strictly &maintain (slow)"
@@ -3397,6 +3410,8 @@ msgid ""
 "out of moving arguments such as sections and captions. This prevents LaTeX "
 "errors that can happen in such cases. It is recommended to keep this on."
 msgstr ""
+"如果选中此选项，将移动标签和索引条目等易碎项目，使其脱离章节和标题等移动参数。"
+"这样可以防止在这种情况下可能出现的LaTeX错误。建议保持此选项开启。"
 
 #: src/frontends/qt/ui/OutputUi.ui:125
 msgid "Put fra&gile content out of moving arguments"
@@ -3476,7 +3491,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/OutputUi.ui:327
 msgid "No prefix (namespace defined inline for each tag)"
-msgstr ""
+msgstr "无前缀（每个标签内联定义命名空间）"
 
 #: src/frontends/qt/ui/OutputUi.ui:332
 #, fuzzy
@@ -3651,7 +3666,7 @@ msgstr ""
 #: src/frontends/qt/ui/PDFSupportUi.ui:487
 msgid ""
 "Document metadata and PDF settings (as specified in LaTeX 06/2022 and later)"
-msgstr ""
+msgstr "文档元数据和PDF设置（如LaTeX 2022年06月及以后版本中所指定）"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:490
 #, fuzzy
@@ -4064,7 +4079,7 @@ msgstr "预览大小(&Z):"
 msgid ""
 "If this is checked, additions in change tracking are underlined in the "
 "workarea"
-msgstr ""
+msgstr "如果勾选此项，在工作区中会以下划线形式显示更改跟踪中的添加内容"
 
 #: src/frontends/qt/ui/PrefDisplayUi.ui:157
 msgid "&Underline change tracking additions"
@@ -4111,6 +4126,9 @@ msgid ""
 "emergency file (named filename.lyx.emergency) fails, this snapshot can be at "
 "rescue."
 msgstr ""
+"如果选中此选项，LyX将在给定间隔内保存已更改文档的临时副本（作为#filename.lyx#存储在"
+"指定目录中）。与上述备份不同，当保存更改时，此快照将被删除。如果应用程序崩溃且未保存更改，"
+"并且从应急文件（名为filename.lyx.emergency）恢复失败，此快照可以用于救援。"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:106
 msgid "Make a&uto-save snapshots every[[ N minutes]]"
@@ -4217,6 +4235,8 @@ msgid ""
 "paste operations and when moving content from/to insets if change tracking "
 "is deactivated."
 msgstr ""
+"如果勾选此项，当更改跟踪处于非激活状态时，复制/粘贴操作以及在嵌入内容之间移动内容时，"
+"将不会解析更改跟踪标记。"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:93
 msgid "&Keep change tracking markup on copy and paste"
@@ -4236,6 +4256,8 @@ msgid ""
 "clicking on \"Try to Open Citation Content...\" in the citation context "
 "menu. Note the security implications described in User Guide, 6.6.4."
 msgstr ""
+"如果启用此功能，当在引用上下文菜单中单击“尝试打开引用内容…”时，"
+"LyX将搜索磁盘上的匹配文件。请注意《用户指南》6.6.4中描述的安全影响。"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:122
 #, fuzzy
@@ -4249,7 +4271,7 @@ msgstr "填充模式(&F):"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:157
 msgid "Define search pattern (see UserGuide for syntax)"
-msgstr ""
+msgstr "定义搜索模式（参见用户指南以了解语法）"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:170
 msgid "Cursor width (&pixels):"
@@ -4282,7 +4304,7 @@ msgstr "按环境类别分组(&G)"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:223 src/frontends/qt/ui/PrefEditUi.ui:249
 msgid "Limit the width of the text in the work area to the specified length"
-msgstr ""
+msgstr "将工作区中文本的宽度限制为指定长度"
 
 #: src/frontends/qt/ui/PrefEditUi.ui:226
 msgid "&Limit text width"
@@ -4597,7 +4619,7 @@ msgstr "标记外国语言(&F)"
 msgid ""
 "Select to use the current keyboard language, as set from the operating "
 "system, as default input language."
-msgstr ""
+msgstr "选择使用当前从操作系统设置的键盘语言作为默认输入语言。"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:202
 #, fuzzy
@@ -4608,7 +4630,7 @@ msgstr "使用键盘映像(&K)"
 msgid ""
 "Specify here how the arrow keys behave within scripts with right-to-left "
 "direction"
-msgstr ""
+msgstr "在此处指定在具有从右至左方向的脚本中箭头键的行为"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:229
 #, fuzzy
@@ -4621,6 +4643,8 @@ msgid ""
 "to-left text in a left-to-right paragraph, the cursor starts at the right "
 "when coming from the left)"
 msgstr ""
+"光标遵循文本方向的逻辑（例如，在左至右段落中嵌入的从右至左文本中，"
+"光标从左侧进入时从右侧开始）"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:242
 msgid "&Logical"
@@ -4632,6 +4656,7 @@ msgid ""
 "text in a left-to-right paragraph, the cursor starts at the left when coming "
 "from the left)"
 msgstr ""
+"光标遵循视觉方向（例如，在左至右段落中嵌入的从右至左文本中，光标从左侧进入时从左侧开始）"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:255
 msgid "&Visual"
@@ -4649,6 +4674,8 @@ msgid ""
 "dialog by default. \"Language default\" selects the appropriate separator "
 "for the current language."
 msgstr ""
+"在此处您可以指定表格对话框中默认使用的十进制分隔符。“语言默认”选项"
+"会选择与当前语言相应的分隔符。"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:289
 msgid "Default decimal &separator:"
@@ -4874,6 +4901,8 @@ msgid ""
 "This requires 'Backup original documents when saving' in Look & Feel > "
 "Document Handling to be checked."
 msgstr ""
+"如果此处指定了路径，所有 LyX 文件的备份都将存储在那里。如果没有给出路径，"
+"则备份将与原始文档一起存储。这需要在“外观和感觉”>“文档处理”中选中“保存时备份原始文档”。"
 
 #: src/frontends/qt/ui/PrefPathsUi.ui:156
 msgid "&Backup directory:"
@@ -5045,6 +5074,8 @@ msgid ""
 "You can set a custom style here. Note that only certain styles may support "
 "dark mode, e.g. fusion on Windows."
 msgstr ""
+"您可以在此处设置自定义样式。请注意，只有某些样式可能支持深色模式，"
+"例如Windows上的Fusion风格。"
 
 #: src/frontends/qt/ui/PrefUi.ui:126
 msgid "Context Help"
@@ -5353,7 +5384,7 @@ msgstr "全部替换所有的匹配项"
 
 #: src/frontends/qt/ui/SearchUi.ui:100 src/frontends/qt/GuiSearch.cpp:217
 msgid "Hide replace and option widgets"
-msgstr ""
+msgstr "隐藏替换和选项小部件"
 
 #: src/frontends/qt/ui/SearchUi.ui:103 src/frontends/qt/GuiSearch.cpp:216
 #, fuzzy
@@ -5397,7 +5428,7 @@ msgstr "查找下一项［回车］"
 
 #: src/frontends/qt/ui/SearchUi.ui:228
 msgid "Treat uppercase/lowercase writing as distinct"
-msgstr ""
+msgstr "区分大小写书写"
 
 #: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:96
 #, fuzzy
@@ -5411,7 +5442,7 @@ msgstr "匹配完整词语"
 
 #: src/frontends/qt/ui/SearchUi.ui:248
 msgid "Limit search and replace to selection"
-msgstr ""
+msgstr "将搜索和替换限制在所选范围内"
 
 #: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:100
 #, fuzzy
@@ -5420,7 +5451,7 @@ msgstr "选中文本(S)|S"
 
 #: src/frontends/qt/ui/SearchUi.ui:258
 msgid "If this is checked, LyX will search forward immediately"
-msgstr ""
+msgstr "如果选中此选项，LyX将立即向前搜索"
 
 #: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:102
 #, fuzzy
@@ -5429,7 +5460,7 @@ msgstr "输入时搜索(&T)"
 
 #: src/frontends/qt/ui/SearchUi.ui:268
 msgid "If the end/start of the document is reached, automatically wrap around"
-msgstr ""
+msgstr "若到达文档结尾/起始处，自动循环滚动"
 
 #: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:104
 #, fuzzy
@@ -5513,11 +5544,11 @@ msgstr "当前词"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:77
 msgid "Skip this match and go to next misspelling"
-msgstr ""
+msgstr "跳过此匹配项并转到下一个拼写错误"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:80
 msgid "S&kip"
-msgstr ""
+msgstr "跳过"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:87
 #, fuzzy
@@ -5526,11 +5557,11 @@ msgstr "替换(&P):"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:97
 msgid "Skips all occurrences of this word within the current session."
-msgstr ""
+msgstr "在当前会话中跳过此单词的所有出现情况。"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:100
 msgid "Skip A&ll"
-msgstr ""
+msgstr "跳过全部"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:110
 msgid "Replace with selected word"
@@ -5562,17 +5593,17 @@ msgstr "全部替换(&A)"
 #: src/frontends/qt/ui/SpellcheckerUi.ui:165
 msgid ""
 "Ignore this occurrence of the word permanently (saved as a text property)."
-msgstr ""
+msgstr "永久忽略此词出现（作为文本属性保存）。"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:168
 msgid "Ign&ore"
-msgstr ""
+msgstr "忽略"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:175
 msgid ""
 "Ignore all occurrences of this word within this document. This persists "
 "beyond the current session."
-msgstr ""
+msgstr "在此文档中忽略此词的所有出现情况。这会持续到当前会话之外。"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:178
 msgid "I&gnore All"
@@ -5799,7 +5830,7 @@ msgstr "默认(&F)"
 msgid ""
 "If this is checked, the table will be reset to the formal default style "
 "(only top and bottom row have horizontal lines)"
-msgstr ""
+msgstr "如果勾选，表格将重置为正式的默认样式（仅顶部和底部行有水平线）"
 
 #: src/frontends/qt/ui/TabularUi.ui:1138
 #, fuzzy
@@ -6149,7 +6180,7 @@ msgstr "保持"
 msgid ""
 "Filter items that are not output (in notes, inactive branches, deleted in "
 "change tracking, etc.)"
-msgstr ""
+msgstr "过滤不在输出中（如注释中、非活动分支内、更改跟踪中已删除等）的项目"
 
 #: src/frontends/qt/ui/TocUi.ui:317 src/frontends/qt/TocWidget.cpp:99
 #, fuzzy
@@ -7775,7 +7806,7 @@ msgstr "参考书目样式"
 #: lib/layouts/simplecv.layout:213 lib/layouts/stdstruct.inc:94
 #: lib/layouts/svcommon.inc:684
 msgid "LaTeX code to be inserted before the first bibliography item"
-msgstr ""
+msgstr "要插入在首个参考文献条目之前的LaTeX代码"
 
 #: lib/layouts/IEEEtran.layout:425
 msgid "Biography"
@@ -8398,7 +8429,7 @@ msgstr ""
 
 #: lib/layouts/aastex.layout:668
 msgid "Separate the recognized name of an object from text"
-msgstr ""
+msgstr "将识别出的对象名称与文本分开"
 
 #: lib/layouts/aastex.layout:683
 msgid "Dataset"
@@ -17443,6 +17474,8 @@ msgid ""
 "markup provided by the Text Properties dialog, words marked-up with soul are "
 "hyphenated."
 msgstr ""
+"通过soul包定义用于高亮、加宽间距、划掉、下划线和大写/小写字母的文字样式。"
+"与“文本属性”对话框提供的标记相比，使用soul标记的单词可以进行连字符断行。"
 
 #: lib/layouts/soul.module:17
 #, fuzzy
@@ -28819,6 +28852,8 @@ msgid ""
 "Otherwise, you will be asked about it again the next time you try to load "
 "this file, and may over-write your own work."
 msgstr ""
+"LyX未能重命名应急文件。您应手动进行重命名。否则，您下次尝试加载此文件时将再次被询问，"
+"并可能会覆盖您自己的工作。"
 
 #: src/Buffer.cpp:4862
 #, fuzzy
@@ -34187,13 +34222,16 @@ msgid ""
 "Enter a LaTeX package name such as 'hyperref' (extension is optional). The "
 "output will be 'Yes' (package available) or 'No' (package unavailable)."
 msgstr ""
+"输入一个LaTeX包名，如“hyperref”（扩展名可选）。"
+"输出将为“Yes”（包可用）或“No”（包不可用）。"
 
 #: src/frontends/qt/GuiInfo.cpp:194
 msgid ""
 "Enter a LaTeX class name such as 'article' (extension is optional). The "
 "output will be 'Yes' (class available) or 'No' (class unavailable)."
 msgstr ""
-
+"输入一个LaTeX类名，如“article”（扩展名可选）。"
+"输出将为“Yes”（类可用）或“No”（类不可用）。"
 #: src/frontends/qt/GuiInfo.cpp:196
 msgid ""
 "Enter a function name such as 'math-insert \\alpha'. Please refer to Help > "
@@ -34222,6 +34260,8 @@ msgid ""
 "localized string (using the current localization); trailing colons and "
 "accelerator markup are stripped."
 msgstr ""
+"输入LyX用户界面中的一个可本地化英文字符串，包括加速器标记（“&”或“|”）和尾部冒号。"
+"输出为使用当前本地化的本地化字符串；尾部冒号和加速器标记会被去除。"
 
 #: src/frontends/qt/GuiInfo.cpp:204
 msgid ""
@@ -34368,17 +34408,17 @@ msgstr "系统文件|#S#s"
 msgid ""
 "All available languages of the selected file are displayed here.\n"
 "The selected language version will be opened."
-msgstr ""
+msgstr "此处显示所选文件的所有可用语言。\n所选语言版本将被打开。"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:331
 msgid "No alternative language versions available for the selected file."
-msgstr ""
+msgstr "所选文件无可用的其他语言版本。"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:333
 msgid ""
 "If alternative languages are available for a given file,\n"
 "they can be chosen here if a file is selected."
-msgstr ""
+msgstr "如果有给定文件的其他语言版本可用，\n在选定文件时可在此处选择。"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:363
 #, fuzzy
@@ -34700,7 +34740,7 @@ msgstr ""
 #: src/frontends/qt/GuiPrefs.cpp:2545
 msgid ""
 "Resetting the user interface style to 'Default' requires a restart of LyX."
-msgstr ""
+msgstr "将用户界面风格重置为“默认”需重启LyX。"
 
 #: src/frontends/qt/GuiPrefs.cpp:2600
 msgid "Document Handling"
@@ -34713,6 +34753,8 @@ msgid ""
 "Note that these files are hidden by default by some file managers. A "
 "dedicated backup directory can be set in the 'Paths' section."
 msgstr ""
+"如果勾选，会在当前工作目录创建文档备份。备份文件具有相同的文件名但后缀为“.lyx~”。"
+"请注意，某些文件管理器默认情况下会隐藏这些文件。您可以在“路径”部分设置专用备份目录。"
 
 #: src/frontends/qt/GuiPrefs.cpp:2697
 #, c-format
@@ -38228,7 +38270,7 @@ msgstr "接受选区内修订"
 msgid ""
 "The search string was not found within the selection.\n"
 "Continue search outside?"
-msgstr ""
+msgstr "搜索字符串在选定范围内未找到。\n是否继续在范围外搜索？"
 
 #: src/lyxfind.cpp:357 src/lyxfind.cpp:709
 msgid ""

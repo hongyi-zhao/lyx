@@ -54,7 +54,7 @@ Function DownloadHunspell
   Push $9
 
   ${IfNot} ${FileExists} "$INSTDIR\Resources\dicts\$R9"
-    inetc::get /TIMEOUT=5000 "https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/dicts/$R9" "$INSTDIR\Resources\dicts\$R9" /END
+    inetc::get /TIMEOUT=5000 "https://www.lyx.org/trac/export/HEAD/dictionaries/dicts/$R9" "$INSTDIR\Resources\dicts\$R9" /END
     Pop $9
     ${If} $9 != "OK"
       MessageBox MB_OK|MB_ICONEXCLAMATION "$(HunspellFailed)" # $(HunspellFailed) uses $R9
@@ -70,7 +70,7 @@ Function DownloadThesaurus
   Push $9
 
   ${IfNot} ${FileExists} "$INSTDIR\Resources\thes\$R9"
-    inetc::get /TIMEOUT=5000 "https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/thes/$R9" "$INSTDIR\Resources\thes\$R9" /END
+    inetc::get /TIMEOUT=5000 "https://www.lyx.org/trac/export/HEAD/dictionaries/thes/$R9" "$INSTDIR\Resources\thes\$R9" /END
     Pop $9
     ${If} $9 != "OK"
       MessageBox MB_OK|MB_ICONEXCLAMATION "$(ThesaurusFailed)" # $(ThesaurusFailed) uses $R9

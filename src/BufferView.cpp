@@ -2529,8 +2529,11 @@ void BufferView::resize(int width, int height)
 		// Clear the paragraph height cache.
 		d->par_height_.clear();
 		// Redo the metrics.
-		updateMetrics();
+		updateMetrics(true);
 	}
+	// metrics is OK, full drawing is necessary now
+	d->update_flags_ = (d->update_flags_ & ~Update::Force) | Update::ForceDraw;
+	d->update_strategy_ = FullScreenUpdate;
 }
 
 

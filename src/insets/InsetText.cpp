@@ -334,6 +334,12 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// attributes.
 		// FIXME: Change only the pasted paragraphs
 		fixParagraphsFont();
+		// This might be needed in general, but we currently
+		// only have evidence for PassThru (latex_font),
+		// see #12592
+		if (isPassThru())
+			// assure current cursor font is latex
+			cur.setCurrentFont();
 		break;
 
 	case LFUN_INSET_SPLIT:

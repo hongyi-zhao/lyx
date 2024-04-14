@@ -362,6 +362,7 @@ static void build_script(string const & doc_fname,
 	string const token_base  = "$$b";
 	string const token_to    = "$$o";
 	string const token_todir = "$$d";
+	string const token_python = "$${python}";
 
 	EdgePath::const_iterator it  = edgepath.begin();
 	EdgePath::const_iterator end = edgepath.end();
@@ -405,6 +406,7 @@ static void build_script(string const & doc_fname,
 		command = subst(command, token_base,  "' + '\"' + infile_base + '\"' + '");
 		command = subst(command, token_to,    "' + '\"' + outfile + '\"' + '");
 		command = subst(command, token_todir, "' + '\"' + outdir + '\"' + '");
+		command = subst(command, token_python, os::python());
 
 		build_conversion_command(command, script);
 	}

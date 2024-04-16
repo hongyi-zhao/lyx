@@ -18,6 +18,9 @@ Sides                   1
 PageStyle               Empty
 DefaultStyle            Letter
 
+# Babel is loaded internally
+Provides babel 1
+
 
 Style Letter
 	Margin                Static

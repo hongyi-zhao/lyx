@@ -13,6 +13,9 @@
 
 #include "WorkAreaManager.h"
 
+#include "BufferView.h"
+#include "Cursor.h"
+
 #include "Application.h"
 #include "WorkArea.h"
 
@@ -66,6 +69,15 @@ void WorkAreaManager::scheduleRedraw()
 {
 	for (WorkArea * wa : work_areas_)
 		wa->scheduleRedraw(true);
+}
+
+
+void WorkAreaManager::sanitizeCursors()
+{
+	for (WorkArea * wa : work_areas_) {
+		wa->bufferView().cursor().sanitize();
+		wa->bufferView().resetInlineCompletionPos();
+	}
 }
 
 

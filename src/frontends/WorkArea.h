@@ -18,6 +18,8 @@
 
 namespace lyx {
 
+class BufferView;
+
 namespace frontend {
 
 /**
@@ -40,6 +42,11 @@ public:
 
 	/// Update window titles of all users.
 	virtual void updateWindowTitle() = 0;
+
+	///
+	virtual BufferView & bufferView() = 0;
+	///
+	virtual BufferView const & bufferView() const = 0;
 };
 
 } // namespace frontend

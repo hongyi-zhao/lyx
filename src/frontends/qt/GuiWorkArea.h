@@ -59,9 +59,9 @@ public:
 	/// is GuiView in fullscreen mode?
 	bool isFullScreen() const;
 	///
-	BufferView & bufferView();
+	BufferView & bufferView() override;
 	///
-	BufferView const & bufferView() const;
+	BufferView const & bufferView() const override;
 	///
 	void scheduleRedraw(bool update_metrics) override;
 

@@ -3711,7 +3711,11 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 		// Draw everything.
 		tm.draw(pi, 0, y);
 
-		// and possibly grey out below
+		break;
+	}
+
+	// Possibly grey out below
+	if (d->update_strategy_ != NoScreenUpdate) {
 		pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
 		int const y2 = lastpm.second->bottom();
 
@@ -3720,8 +3724,8 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 				? Color_background : Color_bottomarea;
 			pain.fillRectangle(0, y2, width_, height_ - y2, color);
 		}
-		break;
 	}
+
 	LYXERR(Debug::PAINTING, (pain.isNull() ? "\t\t --- END NODRAW ---"
 	                        : "\t\t *** END DRAWING ***"));
 

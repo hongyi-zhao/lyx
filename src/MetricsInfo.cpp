@@ -193,9 +193,11 @@ ColorCode PainterInfo::backgroundColor(Inset const * inset, bool sel) const
 
 	// special handling for inset background
 	if (inset != nullptr) {
-		if (pain.develMode() && !inset->isBufferValid())
+		if (pain.develMode() && !inset->isBufferValid()) {
+			LYXERR0("Invalid or no buffer set in " << insetName(inset->lyxCode()));
 			// This inset is in error
 			return Color_error;
+		}
 
 		ColorCode const color_bg = inset->backgroundColor(*this);
 		if (color_bg != Color_none)

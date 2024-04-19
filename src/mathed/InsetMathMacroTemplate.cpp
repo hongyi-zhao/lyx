@@ -506,7 +506,7 @@ void InsetMathMacroTemplate::createLook(int args) const
 
 	// {#3}{#4}
 	for (; i < numargs_; ++i) {
-		MathData arg;
+		MathData arg(buffer_);
 		arg.push_back(MathAtom(new InsetMathMacroArgument(i + 1)));
 		if (i >= argsInLook_) {
 			look_.push_back(MathAtom(new InsetColoredCell(buffer_,

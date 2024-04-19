@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2024-02-12 11:10-0500\n"
-"PO-Revision-Date: 2024-04-10 10:09+0800\n"
+"PO-Revision-Date: 2024-04-13 13:30+0800\n"
 "Last-Translator: Jiaxu Zi <3119932298@qq.com>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
 "Language: zh_CN\n"
@@ -51,7 +51,7 @@ msgstr "无系统目录"
 
 #: src/frontends/qt/ui/AboutUi.ui:156
 msgid "[[do]]&Open"
-msgstr ""
+msgstr "打开(&O)"
 
 #: src/frontends/qt/ui/AboutUi.ui:191
 #, fuzzy
@@ -60,7 +60,7 @@ msgstr "用户目录: "
 
 #: src/frontends/qt/ui/AboutUi.ui:222
 msgid "Open user directory in file browser"
-msgstr ""
+msgstr "在文件浏览器中打开用户目录"
 
 #: src/frontends/qt/ui/AboutUi.ui:225
 #, fuzzy
@@ -91,7 +91,7 @@ msgstr "复制版本信息到剪切板"
 #: src/frontends/qt/ui/AboutUi.ui:364
 #, fuzzy
 msgid "Copy &Version Info"
-msgstr "插入版本信息"
+msgstr "插入版本信息(&V)"
 
 #: src/frontends/qt/ui/BibitemUi.ui:26 src/frontends/qt/ui/BibitemUi.ui:45
 msgid "The bibliography key"
@@ -119,7 +119,7 @@ msgstr "年: "
 
 #: src/frontends/qt/ui/BibitemUi.ui:96
 msgid "The year with \"Author (Year)\" citations (without parentheses)."
-msgstr ""
+msgstr "采用“作者 (年份)”格式引用的年份（不带括号）。"
 
 #: src/frontends/qt/ui/BibitemUi.ui:105 src/frontends/qt/GuiBibitem.cpp:64
 #, fuzzy
@@ -334,7 +334,7 @@ msgstr "添加文献引用到目录"
 
 #: src/frontends/qt/ui/BibtexUi.ui:94
 msgid "&Inherit from Master"
-msgstr ""
+msgstr "继承自 Master (&I)"
 
 #: src/frontends/qt/ui/BibtexUi.ui:101
 msgid "Remove the selected database"
@@ -2349,7 +2349,7 @@ msgstr "链接类型"
 msgid ""
 "Link to the web or any other target with an \"authority\" component (i."
 "e., :// in the URI)"
-msgstr ""
+msgstr "使用包含“权威”组件（即URI中的://）的链接指向网络或其他目标。"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:136
 msgid "&Web"
@@ -2500,7 +2500,7 @@ msgstr "格式(&F):"
 msgid ""
 "Customize the format of the page number here. Note that the format is not "
 "used with \"See\" and \"See also\" references."
-msgstr ""
+msgstr "在此处自定义页码格式。请注意，该格式不用于“参见”和“参阅”类引用。"
 
 #: src/frontends/qt/ui/IndexUi.ui:105
 msgid "Enter custom command here (without leading backslash)."
@@ -2684,6 +2684,8 @@ msgid ""
 "Attempt to display formatted cross-references as they would appear in the "
 "output, e.g., as \"Theorem 1\" rather than just as the label."
 msgstr ""
+"尝试按照其在输出中显示的样子来展示格式化交叉引用，例如，显示为“Theorem 1”，"
+"而非仅显示标签。"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:214
 msgid "Format cross-references in the &work area"
@@ -3369,6 +3371,8 @@ msgid ""
 "Line numbering (lineno package) options (e.g. right, modulo, switch(*), "
 "pagewise). Please refer to the lineno package manual for details."
 msgstr ""
+"行号标注（lineno包）选项（例如：right，modulo，switch(*)，pagewise）。"
+"详细信息请参阅lineno包手册。"
 
 #: src/frontends/qt/ui/NumberingUi.ui:82
 msgid "&List in Table of Contents"
@@ -3488,6 +3492,8 @@ msgid ""
 "Namespace prefix to use for MathML formulae. For instance, with the <code>m</"
 "code> prefix, the MathML tags will be output like <code>m:math</code>."
 msgstr ""
+"用于MathML公式所使用的命名空间前缀。例如，使用<code>m</code>前缀时，MathML标签将输出为<code>m:math</"
+"code>的形式。"
 
 #: src/frontends/qt/ui/OutputUi.ui:327
 msgid "No prefix (namespace defined inline for each tag)"
@@ -3657,7 +3663,7 @@ msgstr "附加选项(&P)"
 #: src/frontends/qt/ui/PDFSupportUi.ui:461
 msgid ""
 "Additional hyperref options (comma-separated) to be passed via \\hypersetup."
-msgstr ""
+msgstr "通过 \\hypersetup 传递的其他超链接选项（以逗号分隔）。"
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:464
 msgid "Hyperse&tup"
@@ -4411,7 +4417,7 @@ msgstr "首字放大"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:63
 msgid "Initials of your name"
-msgstr ""
+msgstr "您名字的首字母"
 
 #: src/frontends/qt/ui/PrefIdentityUi.ui:72
 msgid "&E-mail:"
@@ -6194,7 +6200,7 @@ msgstr "输出大小"
 
 #: src/frontends/qt/ui/TocUi.ui:327
 msgid "Only non-output items"
-msgstr ""
+msgstr "仅非输出项"
 
 #: src/frontends/qt/ui/TocUi.ui:335
 msgid "Sho&w:"
@@ -8493,7 +8499,7 @@ msgstr "ORCID"
 
 #: lib/layouts/aastex62.layout:162
 msgid "Enter the 16 digit ORCID as xxxx-xxxx-xxxx-xxxx"
-msgstr ""
+msgstr "输入16位ORCID，格式为xxxx-xxxx-xxxx-xxxx"
 
 #: lib/layouts/aastex62.layout:177 lib/layouts/apa.layout:197
 #: lib/layouts/apax.inc:177 lib/layouts/copernicus.layout:90
@@ -9654,7 +9660,7 @@ msgstr "导言区"
 #: lib/layouts/stdlists.inc:81 lib/layouts/stdlists.inc:128
 #: lib/layouts/stdlyxlist.inc:24 lib/layouts/theorems-case.inc:63
 msgid "LaTeX code to be inserted before the first item"
-msgstr ""
+msgstr "插入首项之前的 LaTeX 代码"
 
 #: lib/layouts/amsdefs.inc:42
 msgid "Short title which appears in the running headers"
@@ -10300,7 +10306,7 @@ msgstr "暂停序数"
 
 #: lib/layouts/beamer.layout:772 lib/layouts/powerdot.layout:533
 msgid "Number of slide where the context below the pause gets visible"
-msgstr ""
+msgstr "暂停后下方内容幻灯片编号可见"
 
 #: lib/layouts/beamer.layout:783 lib/layouts/powerdot.layout:544
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -11015,6 +11021,8 @@ msgid ""
 "Support for the chessboard package to print chess games See File > Open "
 "Example > Articles > Chess where you will find Game 1 and Game 2."
 msgstr ""
+"支持使用chessboard包打印国际象棋对局。请参见“文件”>“打开示例”>“文章”>"
+"“国际象棋”，在那里您可以找到“Game 1”和“Game 2”。"
 
 #: lib/layouts/chessboard.module:16
 msgid "NewChessGame"
@@ -11031,7 +11039,7 @@ msgstr "帧选项"
 
 #: lib/layouts/chessboard.module:33
 msgid "See xskak manual for a comprehensive list of keys and values"
-msgstr ""
+msgstr "参见xskak手册获取完整的关键字与值列表"
 
 #: lib/layouts/chessboard.module:62
 #, fuzzy
@@ -11081,7 +11089,7 @@ msgstr ""
 msgid ""
 "Here you can store chessboard settings under a style name for later reuse. "
 "See chessboard manual for details."
-msgstr ""
+msgstr "此处您可以将棋盘设置存储于某一样式名下，以便后续复用。详情参见棋盘手册。"
 
 #: lib/layouts/chessboard.module:137 lib/examples/Articles:0
 #, fuzzy
@@ -11095,7 +11103,7 @@ msgstr "文档类选项"
 
 #: lib/layouts/chessboard.module:141
 msgid "See chessboard manual for a comprehensive list of keys and values"
-msgstr ""
+msgstr "参见棋盘手册获取完整的关键字与值列表"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer Contributed Books (cl2emult, Obsolete!)"
@@ -11136,7 +11144,7 @@ msgstr "Affil"
 msgid ""
 "identify the author with the corresponding affiliation. 1, 2, 3, etc. should "
 "be inserted."
-msgstr ""
+msgstr "用相应的隶属关系识别作者。应插入数字1、2、3等。"
 
 #: lib/layouts/copernicus.layout:102 lib/layouts/svcommon.inc:438
 msgid "Running Title"
@@ -13122,10 +13130,12 @@ msgid ""
 "need to add an endnotes list (Insert > List/Contents/References > Endnotes) "
 "where you want the endnotes to appear."
 msgstr ""
+"将所有脚注设为尾注。这会使用endnotes包，尽管存在一些局限性，但也适用于较早版本的"
+"LaTeX发行版。您需要在希望尾注出现的位置添加尾注列表（插入>列表/目录/参考文献>尾注）。"
 
 #: lib/layouts/foottoenotez.module:2
 msgid "Footnotes as Endnotes (Extended)"
-msgstr ""
+msgstr "脚注作为尾注（扩展）"
 
 #: lib/layouts/foottoenotez.module:11
 msgid ""
@@ -13135,6 +13145,9 @@ msgid ""
 "LaTeX3).You will need to add an endnotes list (Insert > List/Contents/"
 "References > Endnotes) where you want the endnotes to appear."
 msgstr ""
+"将所有脚注设为尾注。这将使用enotez包，它比endnotes包（模块“脚注作为尾注（基础版）”）"
+"更为强大且可定制，但要求使用相当现代的LaTeX发行版（需支持LaTeX3）。您需要在希望"
+"尾注出现的位置添加尾注列表（插入>列表/目录/参考文献>尾注）。"
 
 #: lib/layouts/frletter.layout:3 lib/examples/Articles:0
 msgid "French Letter (frletter)"
@@ -13711,7 +13724,7 @@ msgstr "危害与预警警示语"
 #: lib/layouts/hpstatement.module:3 lib/layouts/linguistics.module:3
 #: lib/layouts/rsphrase.module:3
 msgid "Academic Field Specifics"
-msgstr ""
+msgstr "学术领域细节"
 
 #: lib/layouts/hpstatement.module:8
 #, fuzzy
@@ -13930,7 +13943,7 @@ msgstr "命题 #."
 
 #: lib/layouts/initials.module:2
 msgid "Initials (Drop Caps)"
-msgstr ""
+msgstr "首字母（下沉式大写字母）"
 
 #: lib/layouts/initials.module:7
 #, fuzzy
@@ -14164,7 +14177,7 @@ msgstr "余弦 cos"
 
 #: lib/layouts/japanese-vertical.inc:20
 msgid "Insert 'c' for centering, 'r' for flushright and 'l' for flushleft"
-msgstr ""
+msgstr "插入‘c’表示居中对齐，‘r’表示右对齐，‘l’表示左对齐"
 
 #: lib/layouts/japanese-vertical.inc:25
 msgid "Rensuji*"
@@ -14742,7 +14755,7 @@ msgstr "文档(D)|D"
 
 #: lib/layouts/linguistics.module:125
 msgid "Grammaticality judgment marker"
-msgstr ""
+msgstr "语法判断标记"
 
 #: lib/layouts/linguistics.module:130
 msgid "Custom Numbering|s"
@@ -14847,7 +14860,7 @@ msgstr "国际语 (Interlingua)"
 
 #: lib/layouts/linguistics.module:233
 msgid "Add the inter-linear gloss here"
-msgstr ""
+msgstr "在此处添加逐词注释"
 
 #: lib/layouts/linguistics.module:240 lib/layouts/linguistics.module:241
 #, fuzzy
@@ -14898,7 +14911,7 @@ msgstr ""
 
 #: lib/layouts/linguistics.module:289
 msgid "Add the first inter-linear gloss line here"
-msgstr ""
+msgstr "在此处添加第一条逐词注释行"
 
 #: lib/layouts/linguistics.module:296
 #, fuzzy
@@ -14954,11 +14967,11 @@ msgstr "树"
 
 #: lib/layouts/linguistics.module:377 lib/layouts/linguistics.module:379
 msgid "DRS"
-msgstr ""
+msgstr "话语表述结构（DRS）"
 
 #: lib/layouts/linguistics.module:380
 msgid "Discourse Representation Structure|D"
-msgstr ""
+msgstr "话语表述结构"
 
 #: lib/layouts/linguistics.module:392 lib/layouts/linguistics.module:539
 #, fuzzy
@@ -15666,7 +15679,7 @@ msgstr "年"
 
 #: lib/layouts/moderncv.layout:437
 msgid "Degree or job title"
-msgstr ""
+msgstr "学位或职务头衔"
 
 #: lib/layouts/moderncv.layout:447
 #, fuzzy
@@ -15690,7 +15703,7 @@ msgstr "可选"
 
 #: lib/layouts/moderncv.layout:464
 msgid "Grade or other info"
-msgstr ""
+msgstr "等级或其他信息"
 
 #: lib/layouts/moderncv.layout:472
 msgid "Entry:"
@@ -16402,11 +16415,11 @@ msgstr "默认下拉框样式"
 
 #: lib/layouts/pdfform.module:178
 msgid "Popdown Box Style"
-msgstr ""
+msgstr "下拉框样式"
 
 #: lib/layouts/pdfform.module:181
 msgid "Default popdown box style"
-msgstr ""
+msgstr "默认下拉框样式"
 
 #: lib/layouts/pdfform.module:184
 msgid "Radio Box Style"
@@ -16554,7 +16567,7 @@ msgstr "参考书目样式"
 
 #: lib/layouts/powerdot.layout:656
 msgid "Onslide"
-msgstr ""
+msgstr "Onslide"
 
 #: lib/layouts/powerdot.layout:662
 msgid "On Slides"
@@ -16566,7 +16579,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:664
 msgid "Specify the overlay settings (see powerdot manual)"
-msgstr ""
+msgstr "指定覆盖层设置（参见powerdot手册）"
 
 #: lib/layouts/powerdot.layout:671
 msgid "Onslide+"
@@ -16803,6 +16816,8 @@ msgid ""
 "characters. Uses the 'okumakro', 'luatexja-ruby', or 'ruby' package "
 "(depending on the TeX engine) or a fallback definition."
 msgstr ""
+"定义用于排版中文字符阅读辅助（如注音、平假名）的嵌入内容。根据所使用的TeX引擎，"
+"该定义会采用“okumakro”、“luatexja-ruby”或“ruby”包，或者使用备用定义。"
 
 #: lib/layouts/ruby.module:26 lib/layouts/ruby.module:35
 msgid "Ruby"
@@ -22568,7 +22583,7 @@ msgstr "切换名词样式"
 
 #: lib/ui/stdtoolbars.inc:98
 msgid "Apply recent text properties"
-msgstr ""
+msgstr "应用最近的文本属性"
 
 #: lib/ui/stdtoolbars.inc:99
 #, fuzzy

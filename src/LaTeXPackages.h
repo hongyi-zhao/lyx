@@ -25,7 +25,7 @@ namespace lyx {
 class LaTeXPackages {
 public:
 	/// Which of the required packages are installed?
-	static void getAvailable();
+	static void getAvailable(bool retry = false);
 	/// Is the (required) package available?
 	static bool isAvailable(std::string const & name);
 	/// Is the (required) package available at least as of

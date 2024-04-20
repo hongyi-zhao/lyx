@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-04-10 15:53+0200\n"
-"PO-Revision-Date: 2024-04-10 14:02+0000\n"
+"POT-Creation-Date: 2024-04-20 18:47+0200\n"
+"PO-Revision-Date: 2024-04-20 18:04+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -30156,6 +30156,42 @@ msgid ""
 msgstr ""
 "Balík LaTeX-a `%1$s' ktorý font `%2$s potrebuje\n"
 "nie je dostupný na vašom systéme. LyX sa stiahne na štandardný font."
+
+#: src/LaTeXPackages.cpp:89
+msgid "Invalid package list format!"
+msgstr "Neplatný formát zoznamu balíkov!"
+
+#: src/LaTeXPackages.cpp:90
+msgid ""
+"The format of your LaTeX packages list is wrong. Please file a bug report."
+msgstr ""
+"Formát vášho zoznamu balíkov LaTeX je nesprávny. Chybu nám prosím nahláste."
+
+#: src/LaTeXPackages.cpp:98 src/LaTeXPackages.cpp:104
+msgid "Outdated configuration script detected!"
+msgstr "Zistil sa zastaraný konfiguračný skript!"
+
+#: src/LaTeXPackages.cpp:99
+msgid ""
+"We have detected an outdated script 'chkconfig.ltx' in your user directory.\n"
+"The script has been renamed to 'chkconfig.ltx.bak'.\n"
+"If you did not copy the script there by purpose, you can safely delete it."
+msgstr ""
+"Vo vašom používateľskom adresári sme zistili zastaraný skript 'chkconfig."
+"ltx'.\n"
+"Skript bol premenovaný na 'chkconfig.ltx.bak'.\n"
+"Ak ste tam skript neskopírovali účelovo, môžete ho pokojne odstrániť."
+
+#: src/LaTeXPackages.cpp:105
+#, c-format
+msgid ""
+"We have detected an outdated script 'chkconfig.ltx' in your user directory\n"
+"(%1$s).\n"
+"Please delete or update this file!"
+msgstr ""
+"Vo vašom používateľskom adresári (%1$s) sme zistili zastaraný skript "
+"'chkconfig.ltx'\n"
+"Odstráňte alebo aktualizujte tento súbor!"
 
 #: src/LyX.cpp:145
 msgid "Could not read configuration file"

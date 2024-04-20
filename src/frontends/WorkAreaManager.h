@@ -49,6 +49,8 @@ public:
 	/// If there is no work area, create a new one in the current view using the
 	/// buffer buf. Returns false if not possible.
 	bool unhide(Buffer * buf) const;
+	/// Fix cursors in all buffer views held by work areas.
+	void sanitizeCursors();
 
 private:
 	typedef std::list<WorkArea *>::iterator iterator;

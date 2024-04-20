@@ -337,9 +337,11 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			// while it is drawing, because it relies on this value.
 			Geometry & g = coords.insets().geometry(e.inset);
 			g.dim.wid -= e.before + e.after;
-			if (pi.pain.develMode() && !e.inset->isBufferValid())
+			if (pi.pain.develMode() && !e.inset->isBufferValid()) {
 				pi.pain.fillRectangle(x + e.before, y - g.dim.ascent(),
 				                      g.dim.width(), g.dim.height(), Color_error);
+				LYXERR0("Unset Buffer memeber in " << insetName(e.inset->lyxCode()));
+			}
 			e.inset->draw(pi, x + e.before, y);
 			g.pos = {x, y};
 			g.dim.wid += e.before + e.after;

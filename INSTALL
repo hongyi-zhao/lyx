@@ -55,9 +55,9 @@ Requirements
 First of all, you will need a C++11 standard conforming compiler, like g++ (at
 least 4.9, to have proper srd::regex) or clang++.
 
-LyX makes great use of the C++ Standard Template Library (STL).
-This means that gcc users will have to install the relevant libstdc++
-library to be able to compile this version of LyX.
+LyX makes great use of the C++ Standard Library. This means that gcc
+users will have to install the relevant libstdc++ library to be able
+to compile this version of LyX.
 
 For full LyX usability we suggest to use Qt 5.6 and higher, or at the
 very least Qt 5.4. It is also possible to compile against Qt 6. The

@@ -137,7 +137,7 @@ lyx_install("data" ${TOP_SRC_DIR}/lib        scripts              *.R          .
 lyx_install("data" ${TOP_SRC_DIR}/lib        scripts              saxon*.*     .)
 lyx_install("data" ${TOP_SRC_DIR}/lib        docbook              *            . epub3 xhtml5 xhtml lib common)
 lyx_install("data" ${TOP_SRC_DIR}/lib        xtemplates           *.xtemplate  .)
-lyx_install("data" ${TOP_SRC_DIR}/lib	     tabletemplates	  *.lyx        .)
+lyx_install("data" ${TOP_SRC_DIR}/lib        tabletemplates       *.lyx        .)
 lyx_install("data" ${TOP_SRC_DIR}/3rdparty   scripts/evince_sync  *            .)
 lyx_install("font" ${TOP_SRC_DIR}/lib/fonts  .                    *            .)
 lyx_install("tex"  ${TOP_SRC_DIR}/lib/tex    .                    *            .)

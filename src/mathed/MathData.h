@@ -59,7 +59,6 @@ public:
 	using base_type::clear;
 	using base_type::begin;
 	using base_type::end;
-	using base_type::push_back;
 	using base_type::pop_back;
 	using base_type::back;
 	using base_type::front;
@@ -85,6 +84,8 @@ public:
 	void insert(size_type pos, MathAtom const & at);
 	/// inserts multiple atoms at position pos
 	void insert(size_type pos, MathData const & ar);
+	/// inserts single atom at end
+	void push_back(MathAtom const & at);
 
 	/// erase range from pos1 to pos2
 	void erase(iterator pos1, iterator pos2);
@@ -187,8 +188,10 @@ public:
 	void updateMacros(Cursor * cur, MacroContext const & mc, UpdateType, int nesting);
 	///
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false);
-	///
+	/// Change associated buffer for this object and its contents
 	void setBuffer(Buffer & b);
+	/// Update assiociated buffer for the contents of the object
+	void setContentsBuffer();
 
 protected:
 	/// cached values for super/subscript placement

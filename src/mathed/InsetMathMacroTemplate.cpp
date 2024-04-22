@@ -394,7 +394,7 @@ void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const
 
 
 InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf)
-	: InsetMathNest(buf, 3), numargs_(0), argsInLook_(0), optionals_(0),
+	: InsetMathNest(buf, 3), look_(buf), numargs_(0), argsInLook_(0), optionals_(0),
 	  type_(MacroTypeNewcommand), redefinition_(false), lookOutdated_(true),
 	  premetrics_(false), labelBoxAscent_(0), labelBoxDescent_(0)
 {
@@ -405,8 +405,8 @@ InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf)
 InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf, docstring const & name, int numargs,
 	int optionals, MacroType type, vector<MathData> const & optionalValues,
 	MathData const & def, MathData const & display)
-	: InsetMathNest(buf, optionals + 3), numargs_(numargs), argsInLook_(numargs),
-	  optionals_(optionals), optionalValues_(optionalValues),
+	: InsetMathNest(buf, optionals + 3), look_(buf), numargs_(numargs),
+	  argsInLook_(numargs), optionals_(optionals), optionalValues_(optionalValues),
 	  type_(type), redefinition_(false), lookOutdated_(true),
 	  premetrics_(false), labelBoxAscent_(0), labelBoxDescent_(0)
 {
@@ -536,6 +536,8 @@ void InsetMathMacroTemplate::createLook(int args) const
 	look_.push_back(MathAtom(
 		new InsetDisplayLabelBox(buffer_, MathAtom(
 			new InsetMathWrapper(&cell(displayIdx()))), _("LyX"), *this)));
+
+	look_.setContentsBuffer();
 }
 
 

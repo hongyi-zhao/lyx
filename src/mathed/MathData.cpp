@@ -52,11 +52,18 @@ MathData::MathData(Buffer * buf, const_iterator from, const_iterator to)
 {}
 
 
+void MathData::setContentsBuffer()
+{
+	if (buffer_)
+		for (MathAtom & at : *this)
+			at.nucleus()->setBuffer(*buffer_);
+}
+
+
 void MathData::setBuffer(Buffer & b)
 {
 	buffer_ = &b;
-	for (MathAtom & at : *this)
-		at.nucleus()->setBuffer(b);
+	setContentsBuffer();
 }
 
 
@@ -78,6 +85,8 @@ void MathData::insert(size_type pos, MathAtom const & t)
 {
 	LBUFERR(pos <= size());
 	base_type::insert(begin() + pos, t);
+	if (buffer_)
+		operator[](pos)->setBuffer(*buffer_);
 }
 
 
@@ -85,6 +94,17 @@ void MathData::insert(size_type pos, MathData const & ar)
 {
 	LBUFERR(pos <= size());
 	base_type::insert(begin() + pos, ar.begin(), ar.end());
+	if (buffer_)
+		for (size_type i = 0 ; i < ar.size() ; ++i)
+			operator[](pos + i)->setBuffer(*buffer_);
+}
+
+
+void MathData::push_back(MathAtom const & t)
+{
+	base_type::push_back(t);
+	if (buffer_)
+		back()->setBuffer(*buffer_);
 }
 
 

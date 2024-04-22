@@ -1102,6 +1102,9 @@ void asArray(docstring const & str, MathData & ar, Parse::flags pf)
 	bool macro = pf & Parse::MACRODEF;
 	if ((str.size() == 1 && quiet) || (!mathed_parse_cell(ar, str, pf) && quiet && !macro))
 		mathed_parse_cell(ar, str, pf | Parse::VERBATIM);
+
+	// set the buffer of the MathData contents
+	ar.setContentsBuffer();
 }
 
 

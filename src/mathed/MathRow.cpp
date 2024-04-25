@@ -340,7 +340,7 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			if (pi.pain.develMode() && !e.inset->isBufferValid()) {
 				pi.pain.fillRectangle(x + e.before, y - g.dim.ascent(),
 				                      g.dim.width(), g.dim.height(), Color_error);
-				LYXERR0("Unset Buffer memeber in " << insetName(e.inset->lyxCode()));
+				LYXERR0("Unset Buffer member in " << insetName(e.inset->lyxCode()));
 			}
 			e.inset->draw(pi, x + e.before, y);
 			g.pos = {x, y};

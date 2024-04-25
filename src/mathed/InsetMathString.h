@@ -26,7 +26,7 @@ namespace lyx {
 class InsetMathString : public InsetMath {
 public:
 	///
-	explicit InsetMathString(docstring const & s);
+	explicit InsetMathString(Buffer * buf, docstring const & s);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

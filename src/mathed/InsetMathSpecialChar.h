@@ -23,7 +23,7 @@ class InsetMathSpecialChar : public InsetMath
 {
 public:
 	///
-	explicit InsetMathSpecialChar(docstring const & name);
+	explicit InsetMathSpecialChar(Buffer * buf, docstring const & name);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

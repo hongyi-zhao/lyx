@@ -28,8 +28,8 @@
 namespace lyx {
 
 
-InsetMathBig::InsetMathBig(docstring const & name, docstring const & delim)
-	: name_(name), delim_(delim)
+InsetMathBig::InsetMathBig(Buffer * buf, docstring const & name, docstring const & delim)
+	: InsetMath(buf), name_(name), delim_(delim)
 {}
 
 

@@ -129,7 +129,7 @@ void InsetMathExInt::mathmlize(MathMLStream & ms) const
 	// If we should decide to do so later, then we'll need to re-merge
 	// r32566 and r32568.
 	// So right now this only handles integrals.
-	InsetMathSymbol sym(symbol_);
+	InsetMathSymbol sym(buffer_, symbol_);
 	bool const lower = !cell(2).empty();
 	bool const upper = !cell(3).empty();
 	if (lower && upper)
@@ -164,7 +164,7 @@ void InsetMathExInt::htmlize(HtmlStream & os) const
 {
 	// At the moment, we are not extracting sums and the like for HTML.
 	// So right now this only handles integrals.
-	InsetMathSymbol sym(symbol_);
+	InsetMathSymbol sym(buffer_, symbol_);
 	bool const lower = !cell(2).empty();
 	bool const upper = !cell(3).empty();
 

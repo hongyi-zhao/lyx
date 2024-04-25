@@ -38,7 +38,7 @@ class Correction {
 public:
 	///
 	/// \brief Correction
-	Correction() : from2_(0) {}
+	Correction() : from1_(nullptr), from2_(0), to_(nullptr) {}
 	///
 	bool correct(Cursor & cur, char_type c) const;
 	///
@@ -63,7 +63,7 @@ bool Correction::read(idocstream & is)
 		return false;
 	if (s2.size() != 1)
 		return false;
-	MathData ar1, ar3;
+	MathData ar1(nullptr), ar3(nullptr);
 	mathed_parse_cell(ar1, s1);
 	mathed_parse_cell(ar3, s3);
 	from1_ = ar1;

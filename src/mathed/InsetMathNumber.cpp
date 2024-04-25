@@ -21,8 +21,8 @@ using namespace std;
 
 namespace lyx {
 
-InsetMathNumber::InsetMathNumber(docstring const & s)
-	: str_(s)
+InsetMathNumber::InsetMathNumber(Buffer * buf, docstring const & s)
+	: InsetMath(buf), str_(s)
 {}
 
 

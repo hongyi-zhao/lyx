@@ -30,18 +30,18 @@ using namespace std;
 
 namespace lyx {
 
-InsetMathSymbol::InsetMathSymbol(latexkeys const * l)
-	: sym_(l)
+InsetMathSymbol::InsetMathSymbol(Buffer * buf, latexkeys const * l)
+	: InsetMath(buf), sym_(l)
 {}
 
 
-InsetMathSymbol::InsetMathSymbol(char const * name)
-	: sym_(in_word_set(from_ascii(name)))
+InsetMathSymbol::InsetMathSymbol(Buffer * buf, char const * name)
+	: InsetMath(buf), sym_(in_word_set(from_ascii(name)))
 {}
 
 
-InsetMathSymbol::InsetMathSymbol(docstring const & name)
-	: sym_(in_word_set(name))
+InsetMathSymbol::InsetMathSymbol(Buffer * buf, docstring const & name)
+	: InsetMath(buf), sym_(in_word_set(name))
 {}
 
 

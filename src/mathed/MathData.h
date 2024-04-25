@@ -68,7 +68,7 @@ public:
 
 public:
 	///
-	MathData() = default;
+	MathData() = delete;
 	///
 	explicit MathData(Buffer * buf) : buffer_(buf) {}
 	///

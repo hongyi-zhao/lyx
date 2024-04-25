@@ -23,11 +23,11 @@ class latexkeys;
 class InsetMathSymbol : public InsetMath {
 public:
 	///
-	explicit InsetMathSymbol(latexkeys const * l);
+	explicit InsetMathSymbol(Buffer * buf, latexkeys const * l);
 	///
-	explicit InsetMathSymbol(char const * name);
+	explicit InsetMathSymbol(Buffer * buf, char const * name);
 	///
-	explicit InsetMathSymbol(docstring const & name);
+	explicit InsetMathSymbol(Buffer * buf, docstring const & name);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

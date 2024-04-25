@@ -249,7 +249,8 @@ void InsetDisplayLabelBox::draw(PainterInfo & pi, int x, int y) const
 class InsetMathWrapper : public InsetMath {
 public:
 	///
-	explicit InsetMathWrapper(MathData const * value) : value_(value) {}
+	explicit InsetMathWrapper(Buffer * buf, MathData const * value)
+		: InsetMath(buf), value_(value) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
@@ -339,7 +340,7 @@ void InsetColoredCell::draw(PainterInfo & pi, int x, int y) const
 class InsetNameWrapper : public InsetMathWrapper {
 public:
 	///
-	InsetNameWrapper(MathData const * value, InsetMathMacroTemplate const & parent);
+	InsetNameWrapper(Buffer * buf, MathData const * value, InsetMathMacroTemplate const & parent);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
@@ -353,9 +354,9 @@ private:
 };
 
 
-InsetNameWrapper::InsetNameWrapper(MathData const * value,
+InsetNameWrapper::InsetNameWrapper(Buffer * buf, MathData const * value,
 				   InsetMathMacroTemplate const & parent)
-	: InsetMathWrapper(value), parent_(parent)
+	: InsetMathWrapper(buf, value), parent_(parent)
 {
 }
 
@@ -403,6 +404,14 @@ InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf)
 
 
 InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf, docstring const & name, int numargs,
+	int optionals, MacroType type)
+	: InsetMathMacroTemplate(buf, name, numargs, optionals, type,
+		vector<MathData>(), MathData(buf), MathData(buf))
+{
+}
+
+
+InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf, docstring const & name, int numargs,
 	int optionals, MacroType type, vector<MathData> const & optionalValues,
 	MathData const & def, MathData const & display)
 	: InsetMathNest(buf, optionals + 3), look_(buf), numargs_(numargs),
@@ -417,7 +426,7 @@ InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf, docstring const & n
 			<< numargs_ << endl;
 
 	asArray(name, cell(0));
-	optionalValues_.resize(9);
+	optionalValues_.resize(9, MathData(buffer_));
 	for (int i = 0; i < optionals_; ++i)
 		cell(optIdx(i)) = optionalValues_[i];
 	cell(defIdx()) = def;
@@ -481,7 +490,7 @@ void InsetMathMacroTemplate::createLook(int args) const
 	look_.push_back(MathAtom(
 		new InsetLabelBox(buffer_, _("Name"), *this, false)));
 	MathData & nameData = look_[look_.size() - 1].nucleus()->cell(0);
-	nameData.push_back(MathAtom(new InsetNameWrapper(&cell(0), *this)));
+	nameData.push_back(MathAtom(new InsetNameWrapper(buffer_, &cell(0), *this)));
 
 	// [#1][#2]
 	int i = 0;
@@ -498,44 +507,44 @@ void InsetMathMacroTemplate::createLook(int args) const
 				optData = &(*optData)[optData->size() - 1].nucleus()->cell(0);
 			}
 
-			optData->push_back(MathAtom(new InsetMathChar('[')));
-			optData->push_back(MathAtom(new InsetMathWrapper(&cell(1 + i))));
-			optData->push_back(MathAtom(new InsetMathChar(']')));
+			optData->push_back(MathAtom(new InsetMathChar(buffer_, '[')));
+			optData->push_back(MathAtom(new InsetMathWrapper(buffer_, &cell(1 + i))));
+			optData->push_back(MathAtom(new InsetMathChar(buffer_, ']')));
 		}
 	}
 
 	// {#3}{#4}
 	for (; i < numargs_; ++i) {
 		MathData arg(buffer_);
-		arg.push_back(MathAtom(new InsetMathMacroArgument(i + 1)));
+		arg.push_back(MathAtom(new InsetMathMacroArgument(buffer_, i + 1)));
 		if (i >= argsInLook_) {
 			look_.push_back(MathAtom(new InsetColoredCell(buffer_,
 				Color_mathmacrooldarg,
-				MathAtom(new InsetMathBrace(arg)))));
+				MathAtom(new InsetMathBrace(buffer_, arg)))));
 		} else
-			look_.push_back(MathAtom(new InsetMathBrace(arg)));
+			look_.push_back(MathAtom(new InsetMathBrace(buffer_, arg)));
 	}
 	for (; i < argsInLook_; ++i) {
-		MathData arg;
-		arg.push_back(MathAtom(new InsetMathMacroArgument(i + 1)));
+		MathData arg(buffer_);
+		arg.push_back(MathAtom(new InsetMathMacroArgument(buffer_, i + 1)));
 		look_.push_back(MathAtom(new InsetColoredCell(buffer_,
 			Color_mathmacronewarg,
-			MathAtom(new InsetMathBrace(arg)))));
+			MathAtom(new InsetMathBrace(buffer_, arg)))));
 	}
 
 	// :=
-	look_.push_back(MathAtom(new InsetMathChar(':')));
-	look_.push_back(MathAtom(new InsetMathChar('=')));
+	look_.push_back(MathAtom(new InsetMathChar(buffer_, ':')));
+	look_.push_back(MathAtom(new InsetMathChar(buffer_, '=')));
 
 	// definition
 	look_.push_back(MathAtom(
 		new InsetLabelBox(buffer_, MathAtom(
-			new InsetMathWrapper(&cell(defIdx()))), _("TeX"), *this,	true)));
+			new InsetMathWrapper(buffer_, &cell(defIdx()))), _("TeX"), *this,	true)));
 
 	// display
 	look_.push_back(MathAtom(
 		new InsetDisplayLabelBox(buffer_, MathAtom(
-			new InsetMathWrapper(&cell(displayIdx()))), _("LyX"), *this)));
+			new InsetMathWrapper(buffer_, &cell(displayIdx()))), _("LyX"), *this)));
 
 	look_.setContentsBuffer();
 }
@@ -708,7 +717,7 @@ void InsetMathMacroTemplate::insertMissingArguments(int maxArg)
 		if (found[i])
 			continue;
 
-		cell(idx).push_back(MathAtom(new InsetMathMacroArgument(i + 1)));
+		cell(idx).push_back(MathAtom(new InsetMathMacroArgument(buffer_, i + 1)));
 	}
 }
 
@@ -878,9 +887,9 @@ void InsetMathMacroTemplate::insertParameter(Cursor & cur,
 		if (addarg) {
 			shiftArguments(pos, 1);
 
-			cell(defIdx()).push_back(MathAtom(new InsetMathMacroArgument(pos + 1)));
+			cell(defIdx()).push_back(MathAtom(new InsetMathMacroArgument(buffer_, pos + 1)));
 			if (!cell(displayIdx()).empty())
-				cell(displayIdx()).push_back(MathAtom(new InsetMathMacroArgument(pos + 1)));
+				cell(displayIdx()).push_back(MathAtom(new InsetMathMacroArgument(buffer_, pos + 1)));
 		}
 
 		if (!greedy) {

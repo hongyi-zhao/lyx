@@ -29,8 +29,8 @@
 namespace lyx {
 
 
-InsetMathSpecialChar::InsetMathSpecialChar(docstring const & name)
-	: name_(name), kerning_(0)
+InsetMathSpecialChar::InsetMathSpecialChar(Buffer * buf, docstring const & name)
+	: InsetMath(buf), name_(name), kerning_(0)
 {
 	if (name.size() != 1) {
 		if (name == "textasciicircum" || name == "mathcircumflex")

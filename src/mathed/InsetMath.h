@@ -120,7 +120,7 @@ class ReplaceData;
 class InsetMath : public Inset {
 public:
 	///
-	explicit InsetMath(Buffer * buf = 0) : Inset(buf) {}
+	explicit InsetMath(Buffer * buf) : Inset(buf) {}
 	/// identification as math inset
 	InsetMath * asInsetMath() override { return this; }
 	/// identification as math inset

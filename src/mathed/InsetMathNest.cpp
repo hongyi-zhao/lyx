@@ -84,7 +84,7 @@ using cap::selClearOrDel;
 
 
 InsetMathNest::InsetMathNest(Buffer * buf, idx_type nargs)
-	: InsetMath(buf), cells_(nargs), lock_(false)
+	: InsetMath(buf), cells_(nargs, MathData(buffer_)), lock_(false)
 {
 	// FIXME This should not really be necessary, but when we are
 	// initializing the table of global macros, we create macros
@@ -321,7 +321,7 @@ bool InsetMathNest::isActive() const
 
 MathData InsetMathNest::glue() const
 {
-	MathData ar;
+	MathData ar(buffer_);
 	for (size_t i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
 	return ar;
@@ -715,7 +715,7 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 		cur.mathForward(false);
 		cur.setSelection();
 		cutSelection(cur, false);
-		MathData ar;
+		MathData ar(buffer_);
 		if (!sel1.empty()) {
 			mathed_parse_cell(ar, beg + sel1 + end);
 			cur.insert(ar);
@@ -1433,13 +1433,11 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring const selection = grabAndEraseSelection(cur);
 			selClearOrDel(cur);
 			if (have_l)
-				cur.insert(MathAtom(new InsetMathBig(lname,
-								ldelim)));
+				cur.insert(MathAtom(new InsetMathBig(buffer_, lname, ldelim)));
 			// first insert the right delimiter and then go back
 			// and re-insert the selection (bug 7088)
 			if (have_r) {
-				cur.insert(MathAtom(new InsetMathBig(rname,
-								rdelim)));
+				cur.insert(MathAtom(new InsetMathBig(buffer_, rname, rdelim)));
 				cur.posBackward();
 			}
 			cur.niceInsert(selection);
@@ -1453,18 +1451,18 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.recordUndoSelection();
 		string const name = cmd.getArg(0);
 		if (name == "normal")
-			cur.insert(MathAtom(new InsetMathSpace(" ", "")));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_, " ", "")));
 		else if (name == "protected")
-			cur.insert(MathAtom(new InsetMathSpace("~", "")));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_, "~", "")));
 		else if (name == "thin" || name == "med" || name == "thick")
-			cur.insert(MathAtom(new InsetMathSpace(name + "space", "")));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_, name + "space", "")));
 		else if (name == "hfill*")
-			cur.insert(MathAtom(new InsetMathSpace("hspace*{\\fill}", "")));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_, "hspace*{\\fill}", "")));
 		else if (name == "quad" || name == "qquad" ||
 		         name == "enspace" || name == "enskip" ||
 		         name == "negthinspace" || name == "negmedspace" ||
 		         name == "negthickspace" || name == "hfill")
-			cur.insert(MathAtom(new InsetMathSpace(name, "")));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_, name, "")));
 		else if (name == "hspace" || name == "hspace*") {
 			string const len = cmd.getArg(1);
 			if (len.empty() || !isValidLength(len)) {
@@ -1472,20 +1470,20 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 				          "needs a valid length argument." << endl;
 				break;
 			}
-			cur.insert(MathAtom(new InsetMathSpace(name, len)));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_, name, len)));
 		} else
-			cur.insert(MathAtom(new InsetMathSpace));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_)));
 		break;
 	}
 
 	case LFUN_MATH_SPACE:
 		cur.recordUndoSelection();
 		if (cmd.argument().empty())
-			cur.insert(MathAtom(new InsetMathSpace));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_)));
 		else {
 			string const name = cmd.getArg(0);
 			string const len = cmd.getArg(1);
-			cur.insert(MathAtom(new InsetMathSpace(name, len)));
+			cur.insert(MathAtom(new InsetMathSpace(buffer_, name, len)));
 		}
 		break;
 
@@ -1565,7 +1563,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_INSERT: {
-		MathData ar;
+		MathData ar(buffer_);
 		if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 			cur.recordUndoSelection();
 			cur.insert(ar);
@@ -1942,7 +1940,7 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 			cmd = FuncRequest(LFUN_PASTE, "0");
 			doDispatch(bv.cursor(), cmd);
 		} else {
-			MathData ar;
+			MathData ar(buffer_);
 			asArray(theSelection().get(), ar);
 			bv.cursor().insert(ar);
 		}
@@ -2024,7 +2022,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			cur.backspace();
 			int n = c - '0';
 			if (n >= 1 && n <= 9)
-				cur.insert(new InsetMathMacroArgument(n));
+				cur.insert(new InsetMathMacroArgument(buffer_, n));
 			return true;
 		}
 
@@ -2057,7 +2055,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 				asArray(p->selection(), sel);
 				cur.backspace();
 				if (c == '{')
-					cur.niceInsert(MathAtom(new InsetMathBrace(sel)));
+					cur.niceInsert(MathAtom(new InsetMathBrace(buffer_, sel)));
 				else
 					cur.niceInsert(MathAtom(new InsetMathComment(sel)));
 			} else if (c == '#') {
@@ -2095,7 +2093,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 				--cur.pos();
 				cur.cell().erase(cur.pos());
 				cur.plainInsert(MathAtom(
-					new InsetMathBig(name.substr(1), delim)));
+					new InsetMathBig(buffer_, name.substr(1), delim)));
 				return true;
 			}
 		} else if (name == "\\smash" && c == '[') {
@@ -2142,7 +2140,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			cur.recordUndoInset();
 			docstring const safe = cap::grabAndEraseSelection(cur);
 			if (!cur.inRegexped() && !in_macro_name)
-				cur.insert(MathAtom(new InsetMathUnknown(from_ascii("\\"), safe, false)));
+				cur.insert(MathAtom(new InsetMathUnknown(buffer_, from_ascii("\\"), safe, false)));
 			else
 				cur.niceInsert(createInsetMath("backslash", buf));
 		}
@@ -2238,7 +2236,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			return true;
 		}
 		if (currentMode() == InsetMath::MATH_MODE && Encodings::isUnicodeTextOnly(c)) {
-			MathAtom const atom(new InsetMathChar(c));
+			MathAtom const atom(new InsetMathChar(buffer_, c));
 			if (cur.prevInset() && cur.prevInset()->asInsetMath()->name() == "text") {
 				// reuse existing \text inset
 				cur.prevInset()->asInsetMath()->cell(0).push_back(atom);
@@ -2296,7 +2294,7 @@ bool InsetMathNest::interpretString(Cursor & cur, docstring const & str)
 				if (l && l->inset == "big") {
 					cur.recordUndoSelection();
 					cur.cell()[cur.pos() - 1] =
-						MathAtom(new InsetMathBig(prev, str));
+						MathAtom(new InsetMathBig(buffer_, prev, str));
 					return true;
 				}
 			}

@@ -104,14 +104,14 @@ void InsetMathScript::ensure(bool up)
 {
 	if (nargs() == 1) {
 		// just nucleus so far
-		cells_.push_back(MathData());
+		cells_.push_back(MathData(buffer_));
 		cell_1_is_up_ = up;
 	} else if (nargs() == 2 && !has(up)) {
 		if (up) {
 			cells_.push_back(cell(1));
 			cell(1).clear();
 		} else {
-			cells_.push_back(MathData());
+			cells_.push_back(MathData(buffer_));
 		}
 	}
 }

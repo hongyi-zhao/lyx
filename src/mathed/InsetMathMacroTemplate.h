@@ -30,10 +30,12 @@ public:
 	explicit InsetMathMacroTemplate(Buffer * buf);
 	///
 	InsetMathMacroTemplate(Buffer * buf, docstring const & name, int numargs,
+						   int optionals, MacroType type);
+	///
+	InsetMathMacroTemplate(Buffer * buf, docstring const & name, int numargs,
 		int optionals, MacroType type,
-		std::vector<MathData> const & optionalValues = std::vector<MathData>(),
-		MathData const & def = MathData(),
-		MathData const & display = MathData());
+		std::vector<MathData> const & optionalValues,
+		MathData const & def, MathData const & display);
 	/// parses from string, returns false if failed
 	bool fromString (const docstring & str);
 	///

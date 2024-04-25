@@ -1405,7 +1405,7 @@ docstring InsetMathHull::nicelabel(row_type row) const
 
 void InsetMathHull::glueall(HullType type)
 {
-	MathData ar;
+	MathData ar(buffer_);
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
 	InsetLabel * label = nullptr;
@@ -1771,7 +1771,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 
 	// replace selection with result of computation
 	if (reduceSelectionToOneCell(cur)) {
-		MathData ar;
+		MathData ar(buffer_);
 		asArray(grabAndEraseSelection(cur), ar);
 		lyxerr << "use selection: " << ar << endl;
 		cur.insert(pipeThroughExtern(lang, extra, ar));
@@ -1792,8 +1792,8 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		return;
 	}
 
-	MathData eq;
-	eq.push_back(MathAtom(new InsetMathChar('=')));
+	MathData eq(buffer_);
+	eq.push_back(MathAtom(new InsetMathChar(buffer_, '=')));
 
 	// go to first item in line
 	cur.idx() -= cur.idx() % ncols();
@@ -1801,7 +1801,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 
 	if (getType() == hullSimple) {
 		size_type pos = cur.cell().find_last(eq);
-		MathData ar;
+		MathData ar(buffer_);
 		if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;

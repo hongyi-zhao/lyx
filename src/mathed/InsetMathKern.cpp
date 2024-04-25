@@ -22,19 +22,20 @@
 
 namespace lyx {
 
-InsetMathKern::InsetMathKern()
+InsetMathKern::InsetMathKern(Buffer * buf)
+	: InsetMath(buf)
 {
 }
 
 
-InsetMathKern::InsetMathKern(Length const & w)
-	: wid_(w)
+InsetMathKern::InsetMathKern(Buffer * buf, Length const & w)
+	: InsetMath(buf), wid_(w)
 {
 }
 
 
-InsetMathKern::InsetMathKern(docstring const & s)
-	: wid_(to_utf8(s))
+InsetMathKern::InsetMathKern(Buffer * buf, docstring const & s)
+	: InsetMath(buf), wid_(to_utf8(s))
 {
 }
 

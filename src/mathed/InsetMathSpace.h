@@ -25,11 +25,11 @@ struct InsetSpaceParams;
 class InsetMathSpace : public InsetMath {
 public:
 	///
-	explicit InsetMathSpace();
+	explicit InsetMathSpace(Buffer * buf);
 	///
-	explicit InsetMathSpace(std::string const & name, std::string const & length);
+	explicit InsetMathSpace(Buffer * buf, std::string const & name, std::string const & length);
 	///
-	explicit InsetMathSpace(Length const & length, bool const prot = false);
+	explicit InsetMathSpace(Buffer * buf, Length const & length, bool const prot = false);
 	///
 	InsetMathSpace const * asSpaceInset() const override { return this; }
 	///

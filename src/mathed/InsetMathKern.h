@@ -26,11 +26,11 @@ namespace lyx {
 class InsetMathKern : public InsetMath {
 public:
 	///
-	InsetMathKern();
+	InsetMathKern(Buffer * buf);
 	///
-	explicit InsetMathKern(Length const & wid);
+	explicit InsetMathKern(Buffer * buf, Length const & wid);
 	///
-	explicit InsetMathKern(docstring const & wid);
+	explicit InsetMathKern(Buffer * buf, docstring const & wid);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

@@ -22,7 +22,7 @@ class latexkeys;
 class InsetMathChar : public InsetMath {
 public:
 	///
-	explicit InsetMathChar(char_type c);
+	explicit InsetMathChar(Buffer * buf, char_type c);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

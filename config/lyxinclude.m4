@@ -326,8 +326,8 @@ AC_ARG_ENABLE(optimization,
     enable_optimization=yes;)
 case $enable_optimization in
     yes)
-        if test $lyx_devel_version = yes ; then
-            lyx_optim=-O
+        if test $enable_debug = yes ; then
+            lyx_optim=-Og
         else
             lyx_optim=-O2
         fi;;

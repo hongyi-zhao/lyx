@@ -474,11 +474,11 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		if (inset == "decoration")
 			return MathAtom(new InsetMathDecoration(buf, l));
 		if (inset == "space")
-			return MathAtom(new InsetMathSpace(to_ascii(l->name), ""));
+			return MathAtom(new InsetMathSpace(buf, to_ascii(l->name), ""));
 		if (inset == "class")
 			return MathAtom(new InsetMathClass(buf, string_to_class(s)));
 		if (inset == "dots")
-			return MathAtom(new InsetMathDots(l));
+			return MathAtom(new InsetMathDots(buf, l));
 		if (inset == "mbox")
 			return MathAtom(new InsetMathBox(buf, l->name));
 //		if (inset == "fbox")
@@ -498,15 +498,15 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		if (inset == "big")
 			// we can't create a InsetMathBig, since the argument
 			// is missing.
-			return MathAtom(new InsetMathUnknown(s));
-		return MathAtom(new InsetMathSymbol(l));
+			return MathAtom(new InsetMathUnknown(buf, s));
+		return MathAtom(new InsetMathSymbol(buf, l));
 	}
 
 	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
-		return MathAtom(new InsetMathMacroArgument(s[1] - '0'));
+		return MathAtom(new InsetMathMacroArgument(buf, s[1] - '0'));
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
 			&& s[2] >= '1' && s[2] <= '9')
-		return MathAtom(new InsetMathMacroArgument(s[2] - '0'));
+		return MathAtom(new InsetMathMacroArgument(buf, s[2] - '0'));
 	if (s == "boxed")
 		return MathAtom(new InsetMathBoxed(buf));
 	if (s == "fbox")
@@ -680,9 +680,9 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 	if (s == "sidesetn")
 		return MathAtom(new InsetMathSideset(buf, false, false));
 	if (isSpecialChar(s))
-		return MathAtom(new InsetMathSpecialChar(s));
+		return MathAtom(new InsetMathSpecialChar(buf, s));
 	if (s == " ")
-		return MathAtom(new InsetMathSpace(" ", ""));
+		return MathAtom(new InsetMathSpace(buf, " ", ""));
 	if (s == "regexp")
 		return MathAtom(new InsetMathHull(buf, hullRegexp));
 

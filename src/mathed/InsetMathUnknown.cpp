@@ -23,9 +23,9 @@
 
 namespace lyx {
 
-InsetMathUnknown::InsetMathUnknown(docstring const & name,
+InsetMathUnknown::InsetMathUnknown(Buffer * buf, docstring const & name,
 	docstring const & selection, bool final, bool black)
-	: name_(name), final_(final), black_(black), kerning_(0),
+	: InsetMath(buf), name_(name), final_(final), black_(black), kerning_(0),
 	  selection_(selection)
 {}
 

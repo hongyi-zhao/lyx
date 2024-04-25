@@ -32,8 +32,8 @@ InsetMathBrace::InsetMathBrace(Buffer * buf)
 {}
 
 
-InsetMathBrace::InsetMathBrace(MathData const & ar)
-	: InsetMathNest(const_cast<Buffer *>(ar.buffer()), 1),
+InsetMathBrace::InsetMathBrace(Buffer * buf, MathData const & ar)
+	: InsetMathNest(buf, 1),
 	  current_mode_(UNDECIDED_MODE)
 {
 	cell(0) = ar;

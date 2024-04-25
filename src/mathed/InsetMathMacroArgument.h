@@ -24,7 +24,8 @@ namespace lyx {
 // A # that failed to parse
 class InsetMathHash : public InsetMath {
 public:
-	explicit InsetMathHash(docstring const & str = docstring()) : str_('#' + str) {}
+	explicit InsetMathHash(Buffer * buf, docstring const & str = docstring())
+		: InsetMath(buf), str_('#' + str) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///
@@ -47,7 +48,7 @@ protected:
 class InsetMathMacroArgument : public InsetMathHash {
 public:
 	/// Assumes 0 < number <= 9
-	explicit InsetMathMacroArgument(int number);
+	explicit InsetMathMacroArgument(Buffer * buf, int number);
 	///
 	int number() const { return number_; }
 	/// Assumes 0 < n <= 9

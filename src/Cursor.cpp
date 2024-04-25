@@ -1492,7 +1492,7 @@ void Cursor::insert(char_type c)
 	LASSERT(!empty(), return);
 	if (inMathed()) {
 		cap::selClearOrDel(*this);
-		insert(new InsetMathChar(c));
+		insert(new InsetMathChar(buffer(), c));
 	} else {
 		text()->insertChar(*this, c);
 	}
@@ -1576,7 +1576,7 @@ void Cursor::niceInsert(MathAtom const & t)
 		docstring const name = t->asMacro()->name();
 		MacroData const * data = buffer()->getMacro(name);
 		if (data && data->numargs() - data->optionals() > 0) {
-			plainInsert(MathAtom(new InsetMathBrace(ar)));
+			plainInsert(MathAtom(new InsetMathBrace(buffer(), ar)));
 			posBackward();
 		}
 	}
@@ -1836,7 +1836,7 @@ bool Cursor::macroModeClose(bool cancel)
 	// finally put the macro argument behind, if needed
 	if (macroArg) {
 		if (selection.size() > 1 || selection[0]->asScriptInset())
-			plainInsert(MathAtom(new InsetMathBrace(selection)));
+			plainInsert(MathAtom(new InsetMathBrace(buffer(), selection)));
 		else
 			insert(selection);
 	}

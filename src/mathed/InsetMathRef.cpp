@@ -87,7 +87,7 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.forceBufferUpdate();
 				break;
 			}
-			MathData ar;
+			MathData ar(buffer_);
 			if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 				cur.recordUndo();
 				Buffer & buf = buffer();
@@ -97,7 +97,7 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		} else if (arg0 == "changetype") {
 			docstring const data = from_ascii(createDialogStr(arg1));
-			MathData ar;
+			MathData ar(buffer_);
 			if (createInsetMath_fromDialogStr(data, ar)) {
 				cur.recordUndo();
 				Buffer & buf = buffer();
@@ -276,7 +276,7 @@ void InsetMathRef::changeTarget(docstring const & target)
 	icp["reference"] = target;
 	if (!cell(1).empty())
 		icp["name"] = asString(cell(1));
-	MathData ar;
+	MathData ar(buffer_);
 	Buffer & buf = buffer();
 	if (createInsetMath_fromDialogStr(
 	    from_utf8(InsetCommand::params2string(icp)), ar)) {

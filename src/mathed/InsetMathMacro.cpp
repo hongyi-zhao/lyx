@@ -1080,6 +1080,8 @@ void InsetMathMacro::attachArguments(vector<MathData> const & args, size_t arity
 {
 	LASSERT(d->displayMode_ == DISPLAY_NORMAL, return);
 	cells_ = args;
+	for (auto & cell : cells_)
+		cell.setBuffer(*buffer_);
 	d->attachedArgsNum_ = args.size();
 	cells_.resize(arity, MathData(buffer_));
 	d->expanded_ = MathData(buffer_);

@@ -49,7 +49,9 @@ namespace lyx {
 
 MathData::MathData(Buffer * buf, const_iterator from, const_iterator to)
 	: base_type(from, to), buffer_(buf)
-{}
+{
+	setContentsBuffer();
+}
 
 
 void MathData::setContentsBuffer()

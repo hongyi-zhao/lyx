@@ -13,7 +13,7 @@ set(LINKED_headers)
 foreach(_src graphics/GraphicsParams insets/ExternalTemplate
 	insets/ExternalTransforms insets/InsetLayout Author CiteEnginesList Color Counters
 	Encoding FloatList Floating FontInfo LaTeXPackages Layout
-	LayoutFile LayoutModuleList Lexer ModuleList TextClass
+	LayoutFile LayoutModuleList support/Lexer ModuleList TextClass
 	Spacing version)
 	list(APPEND LINKED_sources ${TOP_SRC_DIR}/src/${_src}.cpp)
 	list(APPEND LINKED_headers ${TOP_SRC_DIR}/src/${_src}.h)

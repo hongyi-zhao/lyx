@@ -6,7 +6,7 @@
 
 set(check_layout_SOURCES)
 foreach(_f insets/InsetLayout.cpp CiteEnginesList.cpp Color.cpp Counters.cpp Floating.cpp
-       FloatList.cpp FontInfo.cpp Layout.cpp LayoutFile.cpp Lexer.cpp
+       FloatList.cpp FontInfo.cpp Layout.cpp LayoutFile.cpp support/Lexer.cpp
        ModuleList.cpp Spacing.cpp TextClass.cpp tests/check_layout.cpp
        tests/boost.cpp tests/dummy_functions.cpp)
   list(APPEND check_layout_SOURCES "${TOP_SRC_DIR}/src/${_f}")

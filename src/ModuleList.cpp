@@ -14,12 +14,12 @@
 #include "ModuleList.h"
 
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/filetools.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <algorithm>

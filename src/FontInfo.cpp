@@ -17,13 +17,13 @@
 #include "FontInfo.h"
 
 #include "ColorSet.h"
-#include "Lexer.h"
 #include "LyXRC.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <algorithm>

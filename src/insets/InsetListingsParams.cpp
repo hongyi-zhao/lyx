@@ -13,11 +13,10 @@
 
 #include "InsetListingsParams.h"
 
-#include "support/Length.h"
-#include "Lexer.h"
-
 #include "support/convert.h"
 #include "support/gettext.h"
+#include "support/Length.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 

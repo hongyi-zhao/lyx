@@ -38,7 +38,6 @@
 #include "InsetList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -64,6 +63,7 @@
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/unique_ptr.h"
 

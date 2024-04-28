@@ -19,9 +19,10 @@
 
 namespace lyx {
 
-namespace support { class FileName; }
-
+namespace support {
+class FileName;
 class Lexer;
+}
 
 enum PreviewMode {
 	PREVIEW_OFF = 0,
@@ -36,7 +37,7 @@ public:
 	/// We have to have default commands for safety reasons!
 	Template();
 	///
-	void readTemplate(Lexer &);
+	void readTemplate(support::Lexer &);
 	///
 	void dumpFormats(std::ostream &) const;
 
@@ -72,7 +73,7 @@ public:
 	public:
 		Format();
 		///
-		void readFormat(Lexer &);
+		void readFormat(support::Lexer &);
 
 		/// The text that should be inserted into the exported file
 		std::string product;

@@ -22,7 +22,6 @@
 #include "FuncStatus.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "texstream.h"
 #include "xml.h"
@@ -37,12 +36,14 @@
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
+#include "support/Lexer.h"
 #include "frontends/Painter.h"
 
 using namespace std;
 
 namespace lyx {
 
+using support::Lexer;
 
 InsetSpace::InsetSpace(InsetSpaceParams const & params)
 	: Inset(nullptr), params_(params)

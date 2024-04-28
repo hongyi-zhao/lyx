@@ -21,7 +21,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetIterator.h"
-#include "Lexer.h"
 #include "LyX.h"
 #include "MetricsInfo.h"
 #include "texstream.h"
@@ -41,6 +40,7 @@
 #include "insets/InsetWrap.h"
 
 #include "support/debug.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include "frontends/Application.h"

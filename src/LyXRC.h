@@ -31,9 +31,10 @@
 
 namespace lyx {
 
-namespace support { class FileName; }
-
+namespace support {
+class FileName;
 class Lexer;
+}
 
 /// This contains the runtime configuration of LyX
 class LyXRC
@@ -212,7 +213,7 @@ private:
 		FormatMismatch
 	};
 	///
-	ReturnValues read(Lexer &, bool check_format);
+	ReturnValues read(support::Lexer &, bool check_format);
 public:
 	///
 	typedef std::set<std::string> CommandSet;

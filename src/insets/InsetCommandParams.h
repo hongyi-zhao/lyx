@@ -26,8 +26,9 @@
 namespace lyx {
 
 class Buffer;
-class Lexer;
 class OutputParams;
+
+namespace support { class Lexer; }
 
 class ParamInfo {
 public:
@@ -128,9 +129,9 @@ public:
 	///
 	InsetCode code() const { return insetCode_; }
 	/// Parse the command
-	void read(Lexer &);
+	void read(support::Lexer &);
 	///
-	void Read(Lexer &, Buffer const *);
+	void Read(support::Lexer &, Buffer const *);
 	///
 	void write(std::ostream &) const;
 	///

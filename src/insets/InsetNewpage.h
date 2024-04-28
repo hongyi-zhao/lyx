@@ -38,7 +38,7 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	void read(Lexer & lex);
+	void read(support::Lexer & lex);
 	///
 	Kind kind;
 };
@@ -72,7 +72,7 @@ private:
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	void write(std::ostream & os) const override;
 	///

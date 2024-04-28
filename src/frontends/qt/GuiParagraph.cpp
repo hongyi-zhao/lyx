@@ -24,13 +24,12 @@
 #include "FuncRequest.h"
 #include "GuiView.h"
 #include "Layout.h"
-#include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "Spacing.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
+#include "support/Lexer.h"
 
 #include <QCheckBox>
 #include <QDialogButtonBox>

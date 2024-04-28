@@ -147,7 +147,6 @@ SOURCEFILESCORE = \
 	LaTeXPackages.cpp \
 	LayoutFile.cpp \
 	LayoutModuleList.cpp \
-	Lexer.cpp \
 	LyX.cpp \
 	LyXAction.cpp \
 	lyxfind.cpp \
@@ -247,7 +246,6 @@ HEADERFILESCORE = \
 	LayoutEnums.h \
 	LayoutFile.h \
 	LayoutModuleList.h \
-	Lexer.h \
 	LyXAction.h \
 	lyxfind.h \
 	LyX.h \

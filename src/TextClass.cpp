@@ -22,7 +22,6 @@
 #include "FloatList.h"
 #include "Layout.h"
 #include "LayoutFile.h"
-#include "Lexer.h"
 #include "ModuleList.h"
 
 #include "frontends/alert.h"
@@ -32,6 +31,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/TempFile.h"

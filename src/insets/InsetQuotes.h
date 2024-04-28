@@ -143,7 +143,7 @@ public:
 	///
 	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const override;
 	///

@@ -20,12 +20,12 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Language.h"
-#include "Lexer.h"
 #include "ParIterator.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <ostream>

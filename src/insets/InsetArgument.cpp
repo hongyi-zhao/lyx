@@ -22,7 +22,6 @@
 #include "InsetList.h"
 #include "Language.h"
 #include "Layout.h"
-#include "Lexer.h"
 #include "ParIterator.h"
 #include "TexRow.h"
 #include "texstream.h"
@@ -33,12 +32,14 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 using namespace std;
 
 namespace lyx {
 
+using support::Lexer;
 
 InsetArgument::InsetArgument(Buffer * buf, string const & name)
     : InsetCollapsible(buf), name_(name), labelstring_(docstring()),

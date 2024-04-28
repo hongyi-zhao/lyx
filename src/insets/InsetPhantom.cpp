@@ -22,7 +22,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "texstream.h"
 #include "TextClass.h"
@@ -34,6 +33,7 @@
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
+#include "support/Lexer.h"
 #include "frontends/Painter.h"
 
 #include <algorithm>
@@ -42,6 +42,8 @@
 using namespace std;
 
 namespace lyx {
+
+using support::Lexer;
 
 namespace {
 

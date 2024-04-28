@@ -26,7 +26,8 @@
 
 namespace lyx {
 
-class Lexer;
+namespace support { class Lexer; }
+
 class TextClass;
 
 /* Fixed labels are printed flushright, manual labels flushleft.
@@ -58,23 +59,23 @@ public:
 	void setUnknown(bool unknown) { unknown_ = unknown; }
 	/// Reads a layout definition from file
 	/// \return true on success.
-	bool read(Lexer &, TextClass const &, bool validating = false);
+	bool read(support::Lexer &, TextClass const &, bool validating = false);
 	///
-	void readAlign(Lexer &);
+	void readAlign(support::Lexer &);
 	///
-	void readAlignPossible(Lexer &);
+	void readAlignPossible(support::Lexer &);
 	///
-	void readLabelType(Lexer &);
+	void readLabelType(support::Lexer &);
 	///
-	void readEndLabelType(Lexer &);
+	void readEndLabelType(support::Lexer &);
 	///
-	void readMargin(Lexer &);
+	void readMargin(support::Lexer &);
 	///
-	void readLatexType(Lexer &);
+	void readLatexType(support::Lexer &);
 	///
-	void readSpacing(Lexer &);
+	void readSpacing(support::Lexer &);
 	///
-	void readArgument(Lexer &, bool);
+	void readArgument(support::Lexer &, bool);
 	/// Write a layout definition in utf8 encoding
 	void write(std::ostream &) const;
 	///
@@ -439,7 +440,7 @@ public:
 private:
 	/// Reads a layout definition from file
 	/// \return true on success.
-	bool readIgnoreForcelocal(Lexer &, TextClass const &, bool validating);
+	bool readIgnoreForcelocal(support::Lexer &, TextClass const &, bool validating);
 	/// generates the default CSS for this layout
 	void makeDefaultCSS() const;
 	///

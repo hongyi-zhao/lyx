@@ -51,7 +51,7 @@ public:
 	///
 	bool isLabeled() const override { return true; }
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	int plaintext(odocstringstream &, OutputParams const &,
 	              size_t max_length = INT_MAX) const override;

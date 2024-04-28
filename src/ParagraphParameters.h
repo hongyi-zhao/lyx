@@ -25,8 +25,9 @@
 namespace lyx {
 
 class Layout;
-class Lexer;
 class Paragraph;
+
+namespace support { class Lexer; }
 
 
 ///
@@ -79,7 +80,7 @@ public:
 	void read (std::string const & str, bool merge = true);
 
 	/// read the parameters from a lex
-	void read(Lexer & lex, bool merge = true);
+	void read(support::Lexer & lex, bool merge = true);
 
 	///
 	void apply(ParagraphParameters const & params, Layout const & layout);

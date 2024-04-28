@@ -13,7 +13,6 @@
 #include "LaTeXFonts.h"
 
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 
 #include "frontends/alert.h"
 
@@ -23,6 +22,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 

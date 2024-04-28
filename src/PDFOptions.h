@@ -16,9 +16,10 @@
 
 namespace lyx {
 
-class Lexer;
 class OutputParams;
 class otexstream;
+
+namespace support { class Lexer; }
 
 // FIXME UNICODE
 // Write functions need to use odostream instead of ostream before
@@ -37,7 +38,7 @@ public:
 	void writeLaTeX(OutputParams &, otexstream &,
 			bool hyperref_already_provided) const;
 	/// read tokens from lyx header
-	std::string readToken(Lexer &lex, std::string const & token);
+	std::string readToken(support::Lexer &lex, std::string const & token);
 	/// set implicit settings for hyperref
 	void clear();
 

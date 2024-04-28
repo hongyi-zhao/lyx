@@ -16,7 +16,6 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "xml.h"
 #include "texstream.h"
@@ -30,13 +29,15 @@
 #include "support/docstring.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 
 using namespace std;
 
-
 namespace lyx {
 
-	InsetNewpage::InsetNewpage() : Inset(nullptr)
+using support::Lexer;
+
+InsetNewpage::InsetNewpage() : Inset(nullptr)
 {}
 
 

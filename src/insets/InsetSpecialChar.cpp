@@ -19,7 +19,6 @@
 #include "Font.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_xhtml.h"
 #include "xml.h"
@@ -31,10 +30,13 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/Lexer.h"
 
 using namespace std;
 
 namespace lyx {
+
+using support::Lexer;
 
 
 InsetSpecialChar::InsetSpecialChar(Kind k)

@@ -51,7 +51,7 @@ public:
 	/// empty inset to empty par
 	void clear();
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	void write(std::ostream & os) const override;
 	/// Let the inset compute and store its reference font from \c outer.

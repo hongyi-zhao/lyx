@@ -56,7 +56,6 @@ class InsetTabular;
 class InsetText;
 class Language;
 class LaTeXFeatures;
-class Lexer;
 class MathAtom;
 class MetricsInfo;
 class PainterInfo;
@@ -68,7 +67,10 @@ class otexstream;
 
 namespace graphics { class PreviewLoader; }
 
-namespace support {class FileNameList; }
+namespace support {
+class FileNameList;
+class Lexer;
+}
 
 /// returns the InsetCode corresponding to the \c name.
 /// Eg, insetCode("branch") == BRANCH_CODE
@@ -501,7 +503,7 @@ public:
 	/// write inset in .lyx format
 	virtual void write(std::ostream &) const {}
 	/// read inset in .lyx format
-	virtual void read(Lexer &) {}
+	virtual void read(support::Lexer &) {}
 	/** Export the inset to LaTeX.
 	 *  Don't use a temporary stringstream if the final output is
 	 *  supposed to go to a file.

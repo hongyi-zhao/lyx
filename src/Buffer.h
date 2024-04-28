@@ -39,7 +39,6 @@ class FuncRequest;
 class FuncStatus;
 class Inset;
 class InsetLabel;
-class Lexer;
 class Text;
 class LyXVC;
 class LaTeXFeatures;
@@ -67,6 +66,7 @@ namespace support {
 class DocFileName;
 class FileName;
 class FileNameList;
+class Lexer;
 } // namespace support
 
 namespace graphics {
@@ -226,7 +226,7 @@ public:
 //FIXME: The following function should be private
 //private:
 	/// read the header, returns number of unknown tokens
-	int readHeader(Lexer & lex);
+	int readHeader(support::Lexer & lex);
 
 	double fontScalingFactor() const;
 	/// check for active synctex support:
@@ -247,14 +247,14 @@ private:
 	/// Reads a file without header.
 	/// \param par if != 0 insert the file.
 	/// \return \c true if file is not completely read.
-	bool readDocument(Lexer &);
+	bool readDocument(support::Lexer &);
 	/// Try to extract the file from a version control container
 	/// before reading if the file cannot be found.
 	/// \sa LyXVC::file_not_found_hook
 	ReadStatus extractFromVC();
 	/// Reads the first tag of a LyX File and
 	/// returns the file format number.
-	ReadStatus parseLyXFormat(Lexer & lex, support::FileName const & fn,
+	ReadStatus parseLyXFormat(support::Lexer & lex, support::FileName const & fn,
 		int & file_format) const;
 	/// Convert the LyX file to the LYX_FORMAT using
 	/// the lyx2lyx script and returns the filename

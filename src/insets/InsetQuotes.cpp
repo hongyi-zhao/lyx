@@ -24,7 +24,6 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
@@ -39,6 +38,7 @@
 #include "support/docstring.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 

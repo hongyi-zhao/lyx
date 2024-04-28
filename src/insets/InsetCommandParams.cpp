@@ -30,7 +30,6 @@
 
 #include "Buffer.h"
 #include "Encoding.h"
-#include "Lexer.h"
 
 #include "frontends/alert.h"
 
@@ -38,9 +37,9 @@
 #include "support/docstream.h"
 #include "support/ExceptionMessage.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
-
 #include "support/lassert.h"
+#include "support/Lexer.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 #include <functional>

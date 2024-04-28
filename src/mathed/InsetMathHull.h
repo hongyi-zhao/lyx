@@ -137,9 +137,9 @@ public:
 	///
 	void footer_write(TeXMathStream &) const;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
-	bool readQuiet(Lexer & lex);
+	bool readQuiet(support::Lexer & lex);
 	///
 	int plaintext(odocstringstream &, OutputParams const &,
 	              size_t max_length = INT_MAX) const override;

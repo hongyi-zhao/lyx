@@ -30,7 +30,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "xml.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
@@ -43,6 +42,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include "frontends/Application.h"

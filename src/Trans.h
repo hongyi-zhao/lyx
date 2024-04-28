@@ -26,8 +26,9 @@ namespace lyx {
 
 class Cursor;
 class Text;
-class Lexer;
 class TransManager;
+
+namespace support { class Lexer; }
 
 ///
 enum tex_accent {
@@ -149,7 +150,7 @@ private:
 	///
 	void freeKeymap();
 	///
-	int load(Lexer &);
+	int load(support::Lexer &);
 	///
 	docstring const & match(char_type c);
 	///

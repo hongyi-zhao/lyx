@@ -20,7 +20,6 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "xml.h"
 #include "texstream.h"
@@ -29,6 +28,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lassert.h"
 
 #include "frontends/Application.h"
@@ -40,6 +40,8 @@
 using namespace std;
 
 namespace lyx {
+
+using support::Lexer;
 
 namespace {
 

@@ -25,7 +25,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "xml.h"
 #include "texstream.h"
 #include "TextClass.h"
@@ -33,6 +32,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 
 #include "frontends/Application.h"
 
@@ -42,6 +42,8 @@ using namespace std;
 
 
 namespace lyx {
+
+using support::Lexer;
 
 InsetWrap::InsetWrap(Buffer * buf, string const & type)
 	: InsetCaptionable(buf)

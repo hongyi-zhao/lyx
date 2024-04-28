@@ -17,11 +17,11 @@
 #include "ParagraphParameters.h"
 
 #include "Layout.h"
-#include "Lexer.h"
 #include "Paragraph.h"
 
 #include "support/debug.h"
 #include "support/docstring.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <sstream>

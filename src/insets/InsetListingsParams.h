@@ -31,7 +31,7 @@ public:
 	void write(std::ostream &) const;
 
 	/// read parameters from an ostream
-	void read(Lexer &);
+	void read(support::Lexer &);
 
 	/// valid parameter string
 	std::string params(std::string const & sep=",") const;

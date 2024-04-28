@@ -21,7 +21,6 @@
 #include "FuncStatus.h"
 #include "InsetLayout.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "xml.h"
 #include "texstream.h"
@@ -32,11 +31,14 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/Translator.h"
 
 using namespace std;
 
 namespace lyx {
+
+using support::Lexer;
 
 namespace {
 

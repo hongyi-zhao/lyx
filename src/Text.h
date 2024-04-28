@@ -33,9 +33,10 @@ class FuncRequest;
 class FuncStatus;
 class Inset;
 class InsetText;
-class Lexer;
 class Paragraph;
 class ParagraphParameters;
+
+namespace support { class Lexer; }
 
 /// This class encapsulates the main text data and operations in LyX.
 /// This is more or less the private implementation of InsetText.
@@ -299,7 +300,7 @@ public:
 	void write(std::ostream & os) const;
 	/// returns true if \end_document has not been read
 	/// insetPtr is the containing Inset
-	bool read(Lexer & lex, ErrorList & errorList,
+	bool read(support::Lexer & lex, ErrorList & errorList,
 	          InsetText * insetPtr);
 
 	/// delete double spaces, leading spaces, and empty paragraphs around old cursor.
@@ -381,10 +382,10 @@ private:
 	void pasteString(Cursor & cur, docstring const & str,
 			bool asParagraphs);
 	///
-	void readParToken(Paragraph & par, Lexer & lex, std::string const & token,
+	void readParToken(Paragraph & par, support::Lexer & lex, std::string const & token,
 		Font & font, Change & change, ErrorList & errorList);
 	///
-	void readParagraph(Paragraph & par, Lexer & lex, ErrorList & errorList);
+	void readParagraph(Paragraph & par, support::Lexer & lex, ErrorList & errorList);
 	/// Set Label Width string to all paragraphs of the same layout
 	/// and depth in a sequence.
 	void setLabelWidthStringToSequence(Cursor const & cur, docstring const & s);

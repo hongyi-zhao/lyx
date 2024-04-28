@@ -35,12 +35,14 @@
 
 namespace lyx {
 
-namespace support { class FileName; }
+namespace support {
+class FileName;
+class Lexer;
+}
 
 class FloatList;
 class Layout;
 class LayoutFile;
-class Lexer;
 
 /// Based upon ideas in boost::noncopyable, inheriting from this
 /// class effectively makes the copy constructor protected but the
@@ -167,7 +169,7 @@ public:
 	///
 	ReturnValues read(std::string const & str, ReadType rt = MODULE);
 	///
-	ReturnValues read(Lexer & lex, ReadType rt = BASECLASS);
+	ReturnValues read(support::Lexer & lex, ReadType rt = BASECLASS);
 	/// validates the layout information passed in str
 	static ReturnValues validate(std::string const & str);
 	/// \return the conversion of \param str to the latest layout format
@@ -387,29 +389,29 @@ private:
 	/// Reads the layout file without running layout2layout.
 	ReturnValues readWithoutConv(support::FileName const & filename, ReadType rt);
 	/// \return true for success.
-	bool readStyle(Lexer &, Layout &, ReadType) const;
+	bool readStyle(support::Lexer &, Layout &, ReadType) const;
 	///
-	void readOutputType(Lexer &);
+	void readOutputType(support::Lexer &);
 	///
-	void readTitleType(Lexer &);
+	void readTitleType(support::Lexer &);
 	///
-	void readMaxCounter(Lexer &);
+	void readMaxCounter(support::Lexer &);
 	///
-	void readClassOptions(Lexer &);
+	void readClassOptions(support::Lexer &);
 	///
-	void readCharStyle(Lexer &, std::string const &);
+	void readCharStyle(support::Lexer &, std::string const &);
 	///
-	bool readFloat(Lexer &);
+	bool readFloat(support::Lexer &);
 	///
 	std::vector<CitationStyle> const & getCiteStyles(CiteEngineType const &) const;
 	///
-	bool readCiteEngine(Lexer &, ReadType, bool const add = false);
+	bool readCiteEngine(support::Lexer &, ReadType, bool const add = false);
 	///
-	int readCiteEngineType(Lexer &) const;
+	int readCiteEngineType(support::Lexer &) const;
 	///
-	bool readCiteFormat(Lexer &, ReadType);
+	bool readCiteFormat(support::Lexer &, ReadType);
 	///
-	bool readOutlinerName(Lexer &);
+	bool readOutlinerName(support::Lexer &);
 };
 
 

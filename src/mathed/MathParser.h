@@ -24,8 +24,8 @@ class Buffer;
 class MathAtom;
 class MathData;
 class InsetMathGrid;
-class Lexer;
 
+namespace support { class Lexer; }
 
 ///
 class latexkeys {
@@ -75,7 +75,7 @@ bool mathed_parse_normal(Buffer * buf, MathAtom &, docstring const &,
 		Parse::flags f = Parse::NORMAL);
 
 /// parse formula from the LyX lexxer
-bool mathed_parse_normal(Buffer * buf, MathAtom &, Lexer &,
+bool mathed_parse_normal(Buffer * buf, MathAtom &, support::Lexer &,
 		Parse::flags f = Parse::NORMAL);
 
 /// parse formula from a string into a grid

@@ -72,7 +72,7 @@ public:
 	///
 	void write(std::ostream & os) const override { p_.write(os); }
 	///
-	void read(Lexer & lex) override { p_.Read(lex, &buffer()); }
+	void read(support::Lexer & lex) override { p_.Read(lex, &buffer()); }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd) override;
 	///

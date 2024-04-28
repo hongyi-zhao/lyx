@@ -24,9 +24,9 @@
 
 namespace lyx {
 
-class Lexer;
 class TextClass;
 
+namespace support { class Lexer; }
 
 enum class InsetDecoration : int {
 	CLASSIC,
@@ -57,7 +57,7 @@ public:
 	///
 	InsetLayout() { labelfont_.setColor(Color_insetlabel); }
 	///
-	bool read(Lexer & lexrc, TextClass const & tclass,
+	bool read(support::Lexer & lexrc, TextClass const & tclass,
 			bool validating = false);
 	///
 	docstring name() const { return name_; }
@@ -266,7 +266,7 @@ private:
 	///
 	std::string defaultCSSClass() const;
 	///
-	void readArgument(Lexer &);
+	void readArgument(support::Lexer &);
 	///
 	docstring name_ = from_ascii("undefined");
 	/**

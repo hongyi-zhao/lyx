@@ -22,8 +22,9 @@ namespace lyx {
 
 class BufferView;
 class docstring_list;
-class Lexer;
 class FuncRequest;
+
+namespace support { class Lexer; }
 
 namespace frontend {
 
@@ -79,7 +80,7 @@ public:
 	Menu * menu(QString const & name, GuiView & view, bool keyboard = false);
 
 	///
-	void read(Lexer &);
+	void read(support::Lexer &);
 
 	///
 	void updateMenu(Menu * qmenu);

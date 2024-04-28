@@ -68,7 +68,7 @@ public:
 	///
 	void write(std::ostream & os) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	bool neverIndent() const override { return true; }
 	///

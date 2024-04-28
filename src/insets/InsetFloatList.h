@@ -36,7 +36,7 @@ public:
 	///
 	void write(std::ostream &) const override;
 	///
-	void read(Lexer &) override;
+	void read(support::Lexer &) override;
 	///
 	void latex(otexstream &, OutputParams const &) const override;
 	///

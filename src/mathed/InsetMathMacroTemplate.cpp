@@ -32,7 +32,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "TocBackend.h"
 
@@ -45,6 +44,7 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/docstream.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <set>
@@ -55,6 +55,7 @@ using namespace std;
 namespace lyx {
 
 using support::bformat;
+using support::Lexer;
 
 //////////////////////////////////////////////////////////////////////
 

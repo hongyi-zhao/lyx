@@ -15,12 +15,12 @@
 #include "Converter.h"
 #include "Format.h"
 #include "FuncRequest.h"
-#include "Lexer.h"
 #include "LyXAction.h"
 #include "qt_helpers.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <algorithm>

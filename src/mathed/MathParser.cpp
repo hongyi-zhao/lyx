@@ -72,11 +72,11 @@ following hack as starting point to write some macros:
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Encoding.h"
-#include "Lexer.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/Lexer.h"
 
 #include <sstream>
 
@@ -85,6 +85,8 @@ following hack as starting point to write some macros:
 using namespace std;
 
 namespace lyx {
+
+using support::Lexer;
 
 namespace {
 

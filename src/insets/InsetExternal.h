@@ -51,7 +51,7 @@ public:
 	InsetExternalParams();
 
 	void write(Buffer const &, std::ostream &) const;
-	bool read(Buffer const &, Lexer &);
+	bool read(Buffer const &, support::Lexer &);
 
 	/// The name of the tempfile used for manipulations.
 	support::FileName tempname() const { return tempname_(); }
@@ -141,7 +141,7 @@ public:
 	///
 	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const override;

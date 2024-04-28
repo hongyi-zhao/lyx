@@ -45,7 +45,7 @@ public:
 	///
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	void write(std::ostream & os) const override;
 	///

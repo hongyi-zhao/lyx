@@ -23,7 +23,6 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "Paragraph.h"
 #include "output_xhtml.h"
 #include "texstream.h"
@@ -32,6 +31,7 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <ostream>

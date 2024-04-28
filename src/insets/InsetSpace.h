@@ -79,7 +79,7 @@ struct InsetSpaceParams {
 	///
 	void write(std::ostream & os) const;
 	///
-	void read(Lexer & lex);
+	void read(support::Lexer & lex);
 	///
 	Kind kind;
 	///
@@ -123,7 +123,7 @@ public:
 	///
 	void write(std::ostream &) const override;
 	/// Will not be used when lyxf3
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	void latex(otexstream &, OutputParams const &) const override;
 	///

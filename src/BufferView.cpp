@@ -214,7 +214,7 @@ struct BufferView::Private
 	Private(BufferView & bv) :
 		update_strategy_(FullScreenUpdate),
 		update_flags_(Update::Force),
-		cursor_(bv), anchor_pit_(0), anchor_ypos_(0),
+		cursor_(bv), anchor_pit_(0), anchor_ypos_(10000),
 		wh_(0), inlineCompletionUniqueChars_(0),
 		last_inset_(nullptr), mouse_position_cache_(),
 		gui_(nullptr), bookmark_edit_position_(-1),

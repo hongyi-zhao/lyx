@@ -78,9 +78,6 @@ struct GuiWorkArea::Private
 	~Private();
 
 	///
-	void resizeBufferView();
-
-	///
 	void dispatch(FuncRequest const & cmd0);
 	/// Make caret visible and signal that its geometry needs to be updated
 	void resetCaret();

@@ -556,18 +556,22 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		updateMetrics(true);
 		// metrics is done, full drawing is necessary now
 		flags = (flags & ~Update::Force) | Update::ForceDraw;
-	} else if (flags & Update::ForceDraw)
+	}
+	/* If a single paragraph update has been requested and we are not
+	 * already repainting all, check whether this update changes the
+	 * paragraph metrics. If it does, then compute all metrics (in
+	 * case the paragraph is in an inset)
+	 *
+	 * We handle this before FitCursor because the later will require
+	 * correct metrics at cursor position.
+	 */
+	else if ((flags & Update::SinglePar) && !(flags & Update::ForceDraw)) {
+		if (!singleParUpdate())
+			updateMetrics(true);
+	}
+	else if (flags & Update::ForceDraw)
 		// This will compute only the needed metrics and update positions.
 		updateMetrics(false);
-
-	// Detect whether we can only repaint a single paragraph (if we
-	// are not already redrawing all).
-	// We handle this before FitCursor because the later will require
-	// correct metrics at cursor position.
-	if (!(flags & Update::ForceDraw)
-			&& (flags & Update::SinglePar)
-			&& !singleParUpdate())
-		updateMetrics(true);
 
 	// Then make sure that the screen contains the cursor if needed
 	if (flags & Update::FitCursor) {
@@ -575,17 +579,17 @@ void BufferView::processUpdateFlags(Update::flags flags)
 			// First try to make the selection start visible
 			// (which is just the cursor when there is no selection)
 			scrollToCursor(d->cursor_.selectionBegin(), SCROLL_VISIBLE);
-			// Metrics have to be recomputed (maybe again)
-			updateMetrics(true);
+			// Metrics have to be updated
+			updateMetrics(false);
 			// Is the cursor visible? (only useful if cursor is at end of selection)
 			if (needsFitCursor()) {
 				// then try to make cursor visible instead
 				scrollToCursor(d->cursor_, SCROLL_VISIBLE);
 				// Metrics have to be recomputed (maybe again)
-				updateMetrics(true);
+				updateMetrics(false);
 			}
 		}
-		flags = flags & ~Update::FitCursor;
+		flags = (flags & ~Update::FitCursor) | Update::ForceDraw;
 	}
 
 	// Add flags to the the update flags. These will be reset to None

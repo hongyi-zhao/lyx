@@ -455,33 +455,33 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 }
 
 
-void GuiWorkArea::Private::resizeBufferView()
+void GuiWorkArea::resizeBufferView()
 {
 	// WARNING: Please don't put any code that will trigger a repaint here!
 	// We are already inside a paint event.
-	p->stopBlinkingCaret();
+	stopBlinkingCaret();
 	// Warn our container (GuiView).
-	p->busy(true);
+	busy(true);
 
-	bool const caret_in_view = buffer_view_->caretInView();
-	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
+	bool const caret_in_view = d->buffer_view_->caretInView();
+	d->buffer_view_->resize(viewport()->width(), viewport()->height());
 	if (caret_in_view)
-		buffer_view_->showCursor();
-	resetCaret();
+		d->buffer_view_->showCursor();
+	d->resetCaret();
 
 	// Update scrollbars which might have changed due different
 	// BufferView dimension. This is especially important when the
 	// BufferView goes from zero-size to the real-size for the first time,
 	// as the scrollbar parameters are then set for the first time.
-	updateScrollbar();
+	d->updateScrollbar();
 
-	need_resize_ = false;
-	p->busy(false);
+	d->need_resize_ = false;
+	busy(false);
 	// Eventually, restart the caret after the resize event.
 	// We might be resizing even if the focus is on another widget so we only
 	// restart the caret if we have the focus.
-	if (p->hasFocus())
-		QTimer::singleShot(50, p, SLOT(startBlinkingCaret()));
+	if (hasFocus())
+		QTimer::singleShot(50, this, SLOT(startBlinkingCaret()));
 }
 
 
@@ -1393,7 +1393,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 	if (d->need_resize_ || pixelRatio() != d->last_pixel_ratio_) {
 		d->resetScreen();
-		d->resizeBufferView();
+		resizeBufferView();
 	}
 
 	d->last_pixel_ratio_ = pixelRatio();

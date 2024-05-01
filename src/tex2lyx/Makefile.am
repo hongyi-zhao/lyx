@@ -86,6 +86,11 @@ updatetests: tex2lyx
 	$(PYTHON) "$(srcdir)/test/runtests.py" ./tex2lyx "$(top_srcdir)/lib/scripts" "$(srcdir)/test"
 
 LYX_OBJS = \
+	../graphics/GraphicsParams.o \
+	../insets/ExternalTemplate.o \
+	../insets/ExternalTransforms.o \
+	../insets/InsetLayout.o \
+	../support/Lexer.o \
 	../Author.o \
 	../CiteEnginesList.o \
 	../Color.o \
@@ -94,15 +99,10 @@ LYX_OBJS = \
 	../FloatList.o \
 	../Floating.o \
 	../FontInfo.o \
-	../graphics/GraphicsParams.o \
-	../insets/ExternalTemplate.o \
-	../insets/ExternalTransforms.o \
-	../insets/InsetLayout.o \
 	../LaTeXPackages.o \
 	../Layout.o \
 	../LayoutFile.o \
 	../LayoutModuleList.o \
-	../Lexer.o \
 	../ModuleList.o \
 	../Spacing.o \
 	../TextClass.o \

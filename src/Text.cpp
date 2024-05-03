@@ -4333,7 +4333,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		if (!atFirstOrLastRow) {
 			needsUpdate |= cur.selHandle(select);
-			cur.upDownInText(up, needsUpdate);
+			needsUpdate |= cur.upDownInText(up);
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
 		} else {
 			pos_type newpos = up ? 0 : cur.lastpos();
@@ -4341,10 +4341,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				needsUpdate |= cur.selHandle(select);
 				// we do not reset the targetx of the cursor
 				cur.pos() = newpos;
-				needsUpdate |= bv->checkDepm(cur, bv->cursor());
-				cur.updateTextTargetOffset();
-				if (needsUpdate)
+				if (bv->checkDepm(cur, bv->cursor())) {
+					needsUpdate = true;
 					cur.forceBufferUpdate();
+				}
+				cur.updateTextTargetOffset();
 				break;
 			}
 
@@ -4352,7 +4353,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// the selection right now, but wait for the next dispatch.
 			if (select)
 				needsUpdate |= cur.selHandle(select);
-			cur.upDownInText(up, needsUpdate);
+			needsUpdate |= cur.upDownInText(up);
 			cur.undispatched();
 		}
 

@@ -464,6 +464,9 @@ void GuiWorkArea::resizeBufferView()
 	busy(true);
 
 	bool const caret_in_view = d->buffer_view_->caretInView();
+	// Change backing store size if needed
+	d->resetScreen();
+	// Do the actual work: recompute metrics
 	d->buffer_view_->resize(viewport()->width(), viewport()->height());
 	if (caret_in_view)
 		d->buffer_view_->showCursor();
@@ -1391,10 +1394,8 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
-	if (d->need_resize_ || pixelRatio() != d->last_pixel_ratio_) {
-		d->resetScreen();
+	if (d->need_resize_ || pixelRatio() != d->last_pixel_ratio_)
 		resizeBufferView();
-	}
 
 	d->last_pixel_ratio_ = pixelRatio();
 

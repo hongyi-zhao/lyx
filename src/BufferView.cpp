@@ -1017,7 +1017,7 @@ void BufferView::showCursor(DocIterator const & dit, ScrollType how,
 	bool update)
 {
 	if (scrollToCursor(dit, how) && update)
-		processUpdateFlags(Update::Force);
+		processUpdateFlags(Update::ForceDraw);
 }
 
 
@@ -3241,7 +3241,7 @@ void BufferView::updateMetrics(bool force)
 
 	/* FIXME: do we want that? It avoids potential issues with old
 	 * paragraphs that should have been recomputed but have not, at
-	 * the price of potential extra metrics computaiton. I do not
+	 * the price of potential extra metrics computation. I do not
 	 * think that the performance gain is high, so that for now the
 	 * extra paragraphs are removed
 	 */

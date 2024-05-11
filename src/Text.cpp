@@ -1127,12 +1127,15 @@ void Text::insertChar(Cursor & cur, char_type c)
 	if (!cur.paragraph().isPassThru() && owner_->lyxCode() != IPA_CODE &&
 	    cur.real_current_font.fontInfo().family() != TYPEWRITER_FAMILY &&
 	    c == '-' && pos > 0) {
-		if (par.getChar(pos - 1) == '-') {
+		pos_type prev_pos = pos - 1;
+		while (prev_pos > 0 && par.isDeleted(prev_pos))
+			--prev_pos;
+		if (!par.isDeleted(prev_pos) && par.getChar(prev_pos) == '-') {
 			// convert "--" to endash
-			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
+			par.eraseChar(prev_pos, cur.buffer()->params().track_changes);
 			c = 0x2013;
 			pos--;
-		} else if (par.getChar(pos - 1) == 0x2013) {
+		} else if (!par.isDeleted(prev_pos) && par.getChar(prev_pos) == 0x2013) {
 			// convert "---" to emdash
 			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
 			c = 0x2014;

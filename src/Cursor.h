@@ -506,9 +506,8 @@ public:
 	/// return true if fullscreen update is needed
 	bool down();
 	/// move up/down in a text inset, called for LFUN_UP/DOWN,
-	/// return true if successful, updateNeeded set to true if fullscreen
-	/// update is needed, otherwise it's not touched
-	bool upDownInText(bool up, bool & updateNeeded);
+	/// return true if fullscreen update is needed
+	bool upDownInText(bool up);
 	/// move up/down in math or any non text inset, call for LFUN_UP/DOWN
 	/// return true if successful
 	bool upDownInMath(bool up);

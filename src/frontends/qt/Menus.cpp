@@ -42,7 +42,6 @@
 #include "KeyMap.h"
 #include "Language.h"
 #include "Layout.h"
-#include "Lexer.h"
 #include "LyXAction.h"
 #include "LyX.h"
 #include "LyXRC.h"
@@ -64,12 +63,13 @@
 #include "insets/InsetInfo.h"
 #include "insets/InsetQuotes.h"
 
-#include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring_list.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <QCursor>

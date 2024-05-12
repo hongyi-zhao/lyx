@@ -26,7 +26,8 @@
 namespace lyx {
 
 class Layout;
-class Lexer;
+
+namespace support { class Lexer; }
 
 /// This represents a single counter.
 class Counter {
@@ -38,7 +39,7 @@ public:
 		docstring const & lsa, docstring const & prettyformat,
 		docstring const & guiname);
 	/// \return true on success
-	bool read(Lexer & lex);
+	bool read(support::Lexer & lex);
 	///
 	void set(int v);
 	///
@@ -142,7 +143,7 @@ public:
 	/// \param makeNew whether to make a new counter if one
 	///        doesn't already exist
 	/// \return true on success
-	bool read(Lexer & lex, docstring const & name, bool makenew);
+	bool read(support::Lexer & lex, docstring const & name, bool makenew);
 	///
 	void set(docstring const & ctr, int val);
 	///

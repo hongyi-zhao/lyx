@@ -52,8 +52,8 @@ void InsetMathHash::normalize(NormalStream & os) const
 }
 
 
-InsetMathMacroArgument::InsetMathMacroArgument(int n)
-	: number_(n)
+InsetMathMacroArgument::InsetMathMacroArgument(Buffer * buf, int n)
+	: InsetMathHash(buf), number_(n)
 {
 	if (n < 1 || n > 9) {
 		LYXERR0("InsetMathMacroArgument::InsetMathMacroArgument: wrong Argument id: "

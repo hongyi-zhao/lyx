@@ -30,7 +30,7 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	void read(Lexer & lex);
+	void read(support::Lexer & lex);
 	///
 	int shift(FontInfo const & font) const;
 	///
@@ -87,7 +87,7 @@ public:
 	///
 	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	bool forcePlainLayout(idx_type = 0) const override { return true; }
 	///

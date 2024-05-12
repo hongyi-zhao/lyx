@@ -15,10 +15,10 @@
 #include "InsetLayout.h"
 
 #include "ColorSet.h"
-#include "Lexer.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 

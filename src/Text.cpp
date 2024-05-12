@@ -45,7 +45,6 @@
 #include "Intl.h"
 #include "Language.h"
 #include "Layout.h"
-#include "Lexer.h"
 #include "LyX.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
@@ -95,6 +94,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
 #include "support/lyxtime.h"
@@ -1127,12 +1127,15 @@ void Text::insertChar(Cursor & cur, char_type c)
 	if (!cur.paragraph().isPassThru() && owner_->lyxCode() != IPA_CODE &&
 	    cur.real_current_font.fontInfo().family() != TYPEWRITER_FAMILY &&
 	    c == '-' && pos > 0) {
-		if (par.getChar(pos - 1) == '-') {
+		pos_type prev_pos = pos - 1;
+		while (prev_pos > 0 && par.isDeleted(prev_pos))
+			--prev_pos;
+		if (!par.isDeleted(prev_pos) && par.getChar(prev_pos) == '-') {
 			// convert "--" to endash
-			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
+			par.eraseChar(prev_pos, cur.buffer()->params().track_changes);
 			c = 0x2013;
 			pos--;
-		} else if (par.getChar(pos - 1) == 0x2013) {
+		} else if (!par.isDeleted(prev_pos) && par.getChar(prev_pos) == 0x2013) {
 			// convert "---" to emdash
 			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
 			c = 0x2014;
@@ -4333,7 +4336,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		if (!atFirstOrLastRow) {
 			needsUpdate |= cur.selHandle(select);
-			cur.upDownInText(up, needsUpdate);
+			needsUpdate |= cur.upDownInText(up);
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
 		} else {
 			pos_type newpos = up ? 0 : cur.lastpos();
@@ -4341,10 +4344,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				needsUpdate |= cur.selHandle(select);
 				// we do not reset the targetx of the cursor
 				cur.pos() = newpos;
-				needsUpdate |= bv->checkDepm(cur, bv->cursor());
-				cur.updateTextTargetOffset();
-				if (needsUpdate)
+				if (bv->checkDepm(cur, bv->cursor())) {
+					needsUpdate = true;
 					cur.forceBufferUpdate();
+				}
+				cur.updateTextTargetOffset();
 				break;
 			}
 
@@ -4352,7 +4356,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// the selection right now, but wait for the next dispatch.
 			if (select)
 				needsUpdate |= cur.selHandle(select);
-			cur.upDownInText(up, needsUpdate);
+			needsUpdate |= cur.upDownInText(up);
 			cur.undispatched();
 		}
 

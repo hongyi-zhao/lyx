@@ -31,8 +31,8 @@ using lyx::support::escape;
 
 namespace lyx {
 
-InsetMathString::InsetMathString(docstring const & s)
-	: str_(s)
+InsetMathString::InsetMathString(Buffer * buf, docstring const & s)
+	: InsetMath(buf), str_(s)
 {}
 
 

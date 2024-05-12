@@ -4131,7 +4131,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 				(( len == -1 || cs.pos() + len > int(md.size()))
 				 ? md.end()
 				 : md.begin() + cs.pos() + len );
-		MathData md2;
+		MathData md2(cur.buffer());
 		for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
 			md2.push_back(*it);
 		docstring res = from_utf8(latexNamesToUtf8(asString(md2), false));
@@ -4197,7 +4197,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 				((len == -1 || cs.pos() + len > int(md.size()))
 				 ? md.end()
 				 : md.begin() + cs.pos() + len);
-		MathData md2;
+		MathData md2(cur.buffer());
 		for (MathData::const_iterator it = md.begin() + cs.pos();
 		     it != it_end; ++it)
 			md2.push_back(*it);
@@ -4861,7 +4861,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 						MathData md = cs.cell();
 						int len = -1;
 						MathData::const_iterator it_end = md.end();
-						MathData md2;
+						MathData md2(cur.buffer());
 						// Start the check with one character before actual cursor position
 						for (MathData::const_iterator it = md.begin() + cs.pos() - 1;
 						    it != it_end; ++it)

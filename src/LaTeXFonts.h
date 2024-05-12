@@ -20,7 +20,7 @@
 
 namespace lyx {
 
-class Lexer;
+namespace support { class Lexer; }
 
 /// LaTeX Font definition
 class LaTeXFont {
@@ -96,9 +96,9 @@ public:
 	/// Return the actually used package
 	docstring const getUsedPackage(bool ot1, bool complete, bool nomath) const;
 	///
-	bool read(Lexer & lex);
+	bool read(support::Lexer & lex);
 	///
-	bool readFont(Lexer & lex);
+	bool readFont(support::Lexer & lex);
 private:
 	/// Return the preferred available package
 	std::string const getAvailablePackage(bool dryrun) const;

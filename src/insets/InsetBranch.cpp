@@ -23,7 +23,6 @@
 #include "FuncStatus.h"
 #include "Inset.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "LyX.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
@@ -33,6 +32,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include "frontends/alert.h"
@@ -44,6 +44,8 @@ using namespace std;
 
 
 namespace lyx {
+
+using support::Lexer;
 
 InsetBranch::InsetBranch(Buffer * buf, InsetBranchParams const & params)
 	: InsetCollapsible(buf, InsetText::DefaultLayout), params_(params)

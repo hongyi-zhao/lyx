@@ -21,7 +21,6 @@
 #include "Encoding.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "LyXRC.h"
 #include "output_latex.h"
 #include "OutputParams.h"
@@ -31,6 +30,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <cstring>

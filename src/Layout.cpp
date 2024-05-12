@@ -13,13 +13,13 @@
 #include <config.h>
 
 #include "Layout.h"
-#include "Lexer.h"
 #include "output_xhtml.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 

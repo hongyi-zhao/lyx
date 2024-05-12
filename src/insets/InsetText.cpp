@@ -39,7 +39,7 @@
 #include "Language.h"
 #include "Layout.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
+#include "support/Lexer.h"
 #include "lyxfind.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"

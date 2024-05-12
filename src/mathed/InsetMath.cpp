@@ -88,7 +88,7 @@ MathData & InsetMath::cell(idx_type)
 
 MathData const & InsetMath::cell(idx_type) const
 {
-	static MathData dummyCell;
+	static MathData dummyCell(const_cast<Buffer *>(&buffer()));
 	LYXERR0("I don't have any cell");
 	return dummyCell;
 }

@@ -178,7 +178,7 @@ public:
 	///
 	bool hasSettings() const override { return true; }
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	void write(std::ostream & os) const override;
 	///

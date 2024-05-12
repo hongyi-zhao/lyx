@@ -59,10 +59,12 @@ class InsetArgumentProxy : public InsetMath {
 public:
 	///
 	InsetArgumentProxy(InsetMathMacro * mathMacro, size_t idx)
-		: mathMacro_(mathMacro), idx_(idx) {}
+		: InsetMath(&mathMacro->buffer()), mathMacro_(mathMacro), idx_(idx),
+		  def_(&mathMacro->buffer()) {}
 	///
 	InsetArgumentProxy(InsetMathMacro * mathMacro, size_t idx, docstring const & def)
-		: mathMacro_(mathMacro), idx_(idx)
+		: InsetMath(&mathMacro->buffer()), mathMacro_(mathMacro), idx_(idx),
+		  def_(&mathMacro->buffer())
 	{
 			asArray(def, def_);
 	}
@@ -714,7 +716,7 @@ void InsetMathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	vector<docstring> const & defaults = d->macro_->defaults();
 
 	// create MathMacroArgumentValue objects pointing to the cells of the macro
-	vector<MathData> values(nargs());
+	vector<MathData> values(nargs(), MathData(buffer_));
 	for (size_t i = 0; i < nargs(); ++i) {
 		InsetArgumentProxy * proxy;
 		if (i < defaults.size())
@@ -826,11 +828,11 @@ void InsetMathMacro::setDisplayMode(InsetMathMacro::DisplayMode mode, int appeti
 	if (d->displayMode_ != mode) {
 		// transfer name if changing from or to DISPLAY_UNFOLDED
 		if (mode == DISPLAY_UNFOLDED) {
-			cells_.resize(1);
+			cells_.resize(1, MathData(buffer_));
 			asArray(d->name_, cell(0));
 		} else if (d->displayMode_ == DISPLAY_UNFOLDED) {
 			d->name_ = asString(cell(0));
-			cells_.resize(0);
+			cells_.clear();
 		}
 
 		d->displayMode_ = mode;
@@ -1042,7 +1044,7 @@ void InsetMathMacro::removeArgument(pos_type pos) {
 void InsetMathMacro::insertArgument(pos_type pos) {
 	if (d->displayMode_ == DISPLAY_NORMAL) {
 		LASSERT(size_t(pos) <= cells_.size(), return);
-		cells_.insert(cells_.begin() + pos, MathData());
+		cells_.insert(cells_.begin() + pos, MathData(buffer_));
 		if (size_t(pos) < d->attachedArgsNum_)
 			++d->attachedArgsNum_;
 		if (size_t(pos) < d->optionals_)
@@ -1063,12 +1065,12 @@ void InsetMathMacro::detachArguments(vector<MathData> & args, bool strip)
 		size_t i;
 		for (i = cells_.size(); i > d->attachedArgsNum_; --i)
 			if (!cell(i - 1).empty()) break;
-		args.resize(i);
+		args.erase(args.begin() + i, args.end());
 	}
 
 	d->attachedArgsNum_ = 0;
-	d->expanded_ = MathData();
-	cells_.resize(0);
+	d->expanded_ = MathData(buffer_);
+	cells_.clear();
 
 	d->needsUpdate_ = true;
 }
@@ -1078,9 +1080,11 @@ void InsetMathMacro::attachArguments(vector<MathData> const & args, size_t arity
 {
 	LASSERT(d->displayMode_ == DISPLAY_NORMAL, return);
 	cells_ = args;
+	for (auto & cell : cells_)
+		cell.setBuffer(*buffer_);
 	d->attachedArgsNum_ = args.size();
-	cells_.resize(arity);
-	d->expanded_ = MathData();
+	cells_.resize(arity, MathData(buffer_));
+	d->expanded_ = MathData(buffer_);
 	d->optionals_ = optionals;
 
 	d->needsUpdate_ = true;

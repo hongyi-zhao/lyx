@@ -30,7 +30,6 @@
 #include "Paragraph.h"
 #include "LaTeX.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "LyX.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
@@ -43,6 +42,7 @@
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/Translator.h"
 

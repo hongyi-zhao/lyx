@@ -1492,7 +1492,7 @@ void Cursor::insert(char_type c)
 	LASSERT(!empty(), return);
 	if (inMathed()) {
 		cap::selClearOrDel(*this);
-		insert(new InsetMathChar(c));
+		insert(new InsetMathChar(buffer(), c));
 	} else {
 		text()->insertChar(*this, c);
 	}
@@ -1576,7 +1576,7 @@ void Cursor::niceInsert(MathAtom const & t)
 		docstring const name = t->asMacro()->name();
 		MacroData const * data = buffer()->getMacro(name);
 		if (data && data->numargs() - data->optionals() > 0) {
-			plainInsert(MathAtom(new InsetMathBrace(ar)));
+			plainInsert(MathAtom(new InsetMathBrace(buffer(), ar)));
 			posBackward();
 		}
 	}
@@ -1836,7 +1836,7 @@ bool Cursor::macroModeClose(bool cancel)
 	// finally put the macro argument behind, if needed
 	if (macroArg) {
 		if (selection.size() > 1 || selection[0]->asScriptInset())
-			plainInsert(MathAtom(new InsetMathBrace(selection)));
+			plainInsert(MathAtom(new InsetMathBrace(buffer(), selection)));
 		else
 			insert(selection);
 	}
@@ -2143,7 +2143,7 @@ bool Cursor::mathBackward(bool word)
 }
 
 
-bool Cursor::upDownInText(bool up, bool & updateNeeded)
+bool Cursor::upDownInText(bool up)
 {
 	LASSERT(text(), return false);
 
@@ -2152,6 +2152,9 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 	int yo = 0;
 	getPos(xo, yo);
 	xo = beforeDispatchPosX_;
+
+	// Is a full repaint necessary?
+	bool updateNeeded = false;
 
 	// update the targetX - this is here before the "return false"
 	// to set a new target which can be used by InsetTexts above
@@ -2221,12 +2224,13 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			dummy.pos() = dummy.pos() == 0 ? dummy.lastpos() : 0;
 			dummy.pit() = dummy.pit() == 0 ? dummy.lastpit() : 0;
 
-			updateNeeded |= bv().checkDepm(dummy, *this);
-			updateTextTargetOffset();
-			if (updateNeeded)
+			if (bv().checkDepm(dummy, *this)) {
+				updateNeeded = true;
 				forceBufferUpdate();
+			}
+			updateTextTargetOffset();
 		}
-		return false;
+		return updateNeeded;
 	}
 
 	// with and without selection are handled differently
@@ -2252,6 +2256,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			++dummy.pos();
 		if (bv().checkDepm(dummy, old)) {
 			updateNeeded = true;
+			forceBufferUpdate();
 			// Make sure that cur gets back whatever happened to dummy (Lgb)
 			operator=(dummy);
 		}
@@ -2292,13 +2297,14 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		// When selection==false, this is done by TextMetrics::editXY
 		setCurrentFont();
 
-		updateNeeded |= bv().checkDepm(*this, old);
+		if (bv().checkDepm(*this, old)) {
+			updateNeeded = true;
+			forceBufferUpdate();
+		}
 	}
 
-	if (updateNeeded)
-		forceBufferUpdate();
 	updateTextTargetOffset();
-	return true;
+	return updateNeeded;
 }
 
 

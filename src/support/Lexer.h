@@ -22,7 +22,9 @@
 
 namespace lyx {
 
-namespace support { class FileName; }
+namespace support {
+
+class FileName;
 
 /** A helper structure to describe a keyword for the Lexer.
 	Usually used bundled in C style arrays and passed to the
@@ -37,7 +39,7 @@ struct LexerKeyword
 };
 
 
-/** Generalized simple lexical analizer.
+/** Generalized simple lexical analyzer.
 	Use the method isOK() to check if there is still data available
 	for lexing. Use one of the the operators void* or ! to test if
 	the last reading operation was successful.
@@ -255,6 +257,7 @@ public:
 #define PushPopHelper(x, y, z) unnamed_PushPopHelper;
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
+} // namespace support
 
 } // namespace lyx
 

@@ -25,7 +25,7 @@
 
 namespace lyx {
 
-class Lexer;
+namespace support { class Lexer; }
 
 ///
 class FontInfo
@@ -257,7 +257,7 @@ void setLyXColor(std::string const &, FontInfo &);
 FontState setLyXMisc(std::string const &);
 
 /// Read a font specification from Lexer. Used for layout files.
-FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
+FontInfo lyxRead(support::Lexer &, FontInfo const & fi = sane_font);
 
 /// Write a font specification. Used for layout files.
 void lyxWrite(std::ostream &, FontInfo const &, std::string const &, int);

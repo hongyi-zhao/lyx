@@ -21,7 +21,7 @@ namespace lyx {
 class InsetMathUnknown : public InsetMath {
 public:
 	///
-	explicit InsetMathUnknown(docstring const & name,
+	explicit InsetMathUnknown(Buffer * buf, docstring const & name,
 		docstring const & selection = empty_docstring(),
 		bool final = true, bool black = false);
 	///

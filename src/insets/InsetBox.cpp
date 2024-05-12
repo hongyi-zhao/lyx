@@ -24,7 +24,6 @@
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
@@ -36,6 +35,7 @@
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/Translator.h"
 

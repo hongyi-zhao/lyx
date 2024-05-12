@@ -30,7 +30,7 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	void read(Lexer & lex);
+	void read(support::Lexer & lex);
 	///
 	std::string type;
 	///
@@ -88,7 +88,7 @@ private:
 	///
 	void write(std::ostream & os) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	void validate(LaTeXFeatures & features) const override;
 	///

@@ -16,7 +16,6 @@
 #include "Dimension.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
@@ -29,11 +28,14 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/docstring.h"
+#include "support/Lexer.h"
 
 using namespace std;
 using namespace lyx::frontend;
 
 namespace lyx {
+
+using support::Lexer;
 
 InsetSeparator::InsetSeparator() : Inset(nullptr)
 {}

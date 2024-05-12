@@ -53,7 +53,7 @@ public:
 	///
 	docstring layoutName() const override { return from_ascii("Collapsible"); }
 	///
-	void read(Lexer &) override;
+	void read(support::Lexer &) override;
 	///
 	void write(std::ostream &) const override;
 

@@ -23,7 +23,6 @@
 
 #include "support/filetools.h"
 
-#include "LyX.h"
 #include "LyXRC.h"
 
 #include "support/convert.h"

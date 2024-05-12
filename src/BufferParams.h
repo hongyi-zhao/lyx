@@ -31,7 +31,10 @@
 
 namespace lyx {
 
-namespace support { class FileName; }
+namespace support {
+class FileName;
+class Lexer;
+}
 
 class Author;
 class AuthorList;
@@ -48,7 +51,6 @@ class LaTeXFeatures;
 class LayoutFile;
 class LayoutFileIndex;
 class Length;
-class Lexer;
 class OutputParams;
 class otexstream;
 class PDFOptions;
@@ -79,7 +81,7 @@ public:
 	docstring B_(std::string const & l10n) const;
 
 	/// read a header token, if unrecognised, return it or an unknown class name
-	std::string readToken(Lexer & lex,
+	std::string readToken(support::Lexer & lex,
 		std::string const & token, ///< token to read.
 		support::FileName const & filename);
 
@@ -629,25 +631,25 @@ public:
 
 private:
 	///
-	void readPreamble(Lexer &);
+	void readPreamble(support::Lexer &);
 	///
-	void readDocumentMetadata(Lexer &);
+	void readDocumentMetadata(support::Lexer &);
 	///
-	void readLocalLayout(Lexer &, bool);
+	void readLocalLayout(support::Lexer &, bool);
 	///
-	void readLanguage(Lexer &);
+	void readLanguage(support::Lexer &);
 	///
-	void readGraphicsDriver(Lexer &);
+	void readGraphicsDriver(support::Lexer &);
 	///
-	void readBullets(Lexer &);
+	void readBullets(support::Lexer &);
 	///
-	void readBulletsLaTeX(Lexer &);
+	void readBulletsLaTeX(support::Lexer &);
 	///
-	void readModules(Lexer &);
+	void readModules(support::Lexer &);
 	///
-	void readRemovedModules(Lexer &);
+	void readRemovedModules(support::Lexer &);
 	///
-	void readIncludeonly(Lexer &);
+	void readIncludeonly(support::Lexer &);
 	/// A cache for the default flavors
 	typedef std::map<std::string, Flavor> DefaultFlavorCache;
 	///

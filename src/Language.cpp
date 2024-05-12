@@ -18,7 +18,6 @@
 #include "BufferParams.h"
 #include "Encoding.h"
 #include "LaTeXFonts.h"
-#include "Lexer.h"
 #include "LyXRC.h"
 
 #include "support/debug.h"
@@ -26,6 +25,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/Messages.h"

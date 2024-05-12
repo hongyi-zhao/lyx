@@ -19,13 +19,13 @@
 #include "Encoding.h"
 #include "LaTeXPackages.h"
 #include "LayoutFile.h"
-#include "Lexer.h"
 #include "TextClass.h"
 #include "version.h"
 
 #include "support/convert.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <algorithm>

@@ -15,13 +15,13 @@
 #include "ConverterCache.h"
 
 #include "Format.h"
-#include "Lexer.h"
 #include "LyXRC.h"
 #include "Mover.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/Lexer.h"
 #include "support/lyxtime.h"
 #include "support/Package.h"
 

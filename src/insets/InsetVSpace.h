@@ -58,7 +58,7 @@ private:
 	/// in fact, appear at all.
 	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	void write(std::ostream & os) const override;
 	///

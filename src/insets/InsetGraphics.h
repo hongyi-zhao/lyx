@@ -68,7 +68,7 @@ public:
 	///
 	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	/** returns the number of rows (\n's) of generated tex code.
 	 #fragile == true# means, that the inset should take care about
 	 fragile commands by adding a #\protect# before.

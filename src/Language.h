@@ -25,11 +25,13 @@
 
 namespace lyx {
 
-namespace support { class FileName; }
+namespace support {
+class FileName;
+class Lexer;
+}
 
 class BufferParams;
 class Encoding;
-class Lexer;
 
 ///
 class Language {
@@ -99,9 +101,9 @@ public:
 	/// This language corresponds to a translation of the GUI
 	bool hasGuiSupport() const { return has_gui_support_; }
 	///
-	bool read(Lexer & lex);
+	bool read(support::Lexer & lex);
 	///
-	bool readLanguage(Lexer & lex);
+	bool readLanguage(support::Lexer & lex);
 	///
 	typedef std::map<trivstring, trivdocstring> TranslationMap;
 	///

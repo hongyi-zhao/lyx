@@ -12,13 +12,13 @@
 #include <config.h>
 
 #include "LayoutFile.h"
-#include "Lexer.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/TempFile.h"
 
 #include <fstream>

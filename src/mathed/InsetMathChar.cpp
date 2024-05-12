@@ -92,8 +92,8 @@ static bool slanted(char_type c)
 }
 
 
-InsetMathChar::InsetMathChar(char_type c)
-	: char_(c), kerning_(0), subst_(makeSubstitute(c))
+InsetMathChar::InsetMathChar(Buffer * buf, char_type c)
+	: InsetMath(buf), char_(c), kerning_(0), subst_(makeSubstitute(c))
 {}
 
 

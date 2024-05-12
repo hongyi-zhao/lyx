@@ -23,7 +23,8 @@
 namespace lyx {
 
 class FuncRequest;
-class Lexer;
+
+namespace support { class Lexer; }
 
 namespace frontend {
 
@@ -92,7 +93,7 @@ public:
 	Items items;
 
 	/// read a toolbar from the file
-	ToolbarInfo & read(Lexer &);
+	ToolbarInfo & read(support::Lexer &);
 
 private:
 	/// add toolbar item
@@ -140,10 +141,10 @@ public:
 	Infos::iterator end() { return toolbar_info_.end(); }
 
 	/// read toolbars from the file
-	void readToolbars(Lexer &);
+	void readToolbars(support::Lexer &);
 
 	/// read ui toolbar settings
-	void readToolbarSettings(Lexer &);
+	void readToolbarSettings(support::Lexer &);
 
 	///
 	ToolbarInfo const * info(std::string const & name) const;

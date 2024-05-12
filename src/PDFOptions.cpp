@@ -15,7 +15,6 @@
 
 #include "Encoding.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
 #include "OutputParams.h"
 #include "texstream.h"
 
@@ -23,6 +22,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/docstring.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <sstream>

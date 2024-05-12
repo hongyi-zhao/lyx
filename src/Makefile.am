@@ -147,7 +147,6 @@ SOURCEFILESCORE = \
 	LaTeXPackages.cpp \
 	LayoutFile.cpp \
 	LayoutModuleList.cpp \
-	Lexer.cpp \
 	LyX.cpp \
 	LyXAction.cpp \
 	lyxfind.cpp \
@@ -247,7 +246,6 @@ HEADERFILESCORE = \
 	LayoutEnums.h \
 	LayoutFile.h \
 	LayoutModuleList.h \
-	Lexer.h \
 	LyXAction.h \
 	lyxfind.h \
 	LyX.h \
@@ -711,6 +709,7 @@ check_layout_SOURCES = \
 	tests/boost.cpp
 check_layout_LYX_OBJS = \
 	insets/InsetLayout.o \
+	support/Lexer.o \
 	CiteEnginesList.o \
 	Color.o \
 	Counters.o \
@@ -719,7 +718,6 @@ check_layout_LYX_OBJS = \
 	FontInfo.o \
 	Layout.o \
 	LayoutFile.o \
-	Lexer.o \
 	ModuleList.o \
 	Spacing.o \
 	TextClass.o

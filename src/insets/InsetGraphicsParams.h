@@ -23,8 +23,8 @@
 namespace lyx {
 
 namespace graphics { class Params; }
+namespace support { class Lexer; }
 
-class Lexer;
 class Buffer;
 
 
@@ -77,7 +77,7 @@ public:
 	/// Buffer is needed to figure out if a figure is embedded.
 	void Write(std::ostream & os, Buffer const & buf) const;
 	/// If the token belongs to our parameters, read it.
-	bool Read(Lexer & lex, std::string const & token, Buffer const & buf,
+	bool Read(support::Lexer & lex, std::string const & token, Buffer const & buf,
 	          bool allowOrigin);
 	/// convert
 	// Only a subset of InsetGraphicsParams is needed for display purposes.

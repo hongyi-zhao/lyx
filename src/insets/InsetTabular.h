@@ -45,10 +45,10 @@ class CompletionList;
 class Cursor;
 class CursorSlice;
 class FuncStatus;
-class Lexer;
 class OutputParams;
 class XMLStream;
 
+namespace support { class Lexer; }
 
 ///
 class InsetTableCell : public InsetText
@@ -603,7 +603,7 @@ public:
 	///
 	void write(std::ostream &) const;
 	///
-	void read(Lexer &);
+	void read(support::Lexer &);
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	/// serialise the table in DocBook, according to buffer parameters
@@ -1021,7 +1021,7 @@ public:
 	///
 	static std::string params2string(InsetTabular const &);
 	///
-	void read(Lexer &) override;
+	void read(support::Lexer &) override;
 	///
 	void write(std::ostream &) const override;
 	///

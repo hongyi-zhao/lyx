@@ -14,11 +14,11 @@
 
 #include "FuncRequest.h"
 #include "LyXAction.h"
-#include "Lexer.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <string>

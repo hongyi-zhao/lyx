@@ -17,14 +17,14 @@ namespace lyx {
 class Buffer;
 class FuncRequest;
 class Inset;
-class Lexer;
 
+namespace support { class Lexer; }
 
 /// creates inset according to 'cmd'
 Inset * createInset(Buffer * buf, FuncRequest const & cmd);
 
 /// read inset from a file
-Inset * readInset(Lexer & lex, Buffer * buf);
+Inset * readInset(support::Lexer & lex, Buffer * buf);
 
 
 } // namespace lyx

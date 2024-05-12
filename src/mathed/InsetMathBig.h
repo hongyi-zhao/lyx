@@ -21,7 +21,7 @@ namespace lyx {
 class InsetMathBig : public InsetMath {
 public:
 	///
-	InsetMathBig(docstring const & name, docstring const & delim);
+	InsetMathBig(Buffer * buf, docstring const & name, docstring const & delim);
 	///
 	docstring name() const override;
 	/// class is different for l(eft), r(ight) and m(iddle)

@@ -13,10 +13,10 @@
 
 #include "ExternalTemplate.h"
 
-#include "Lexer.h"
 
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/Package.h"
 #include "support/PathChanger.h"

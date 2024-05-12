@@ -13,7 +13,7 @@
 
 #include <config.h>
 
-#include "Lexer.h"
+#include "support/Lexer.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -32,9 +32,10 @@
 #include <vector>
 
 using namespace std;
-using namespace lyx::support;
 
 namespace lyx {
+
+namespace support {
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -923,5 +924,6 @@ void Lexer::setContext(std::string const & functionName)
 	pimpl_->context = functionName;
 }
 
+} // namespace support
 
 } // namespace lyx

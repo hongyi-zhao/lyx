@@ -25,8 +25,8 @@
 
 namespace lyx {
 
-InsetMathDots::InsetMathDots(latexkeys const * key)
-	: dh_(0), key_(key)
+InsetMathDots::InsetMathDots(Buffer * buf, latexkeys const * key)
+	: InsetMath(buf), dh_(0), key_(key)
 {}
 
 

@@ -25,8 +25,6 @@
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
-#include "Lexer.h"
-#include "LyX.h" // use_gui
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
@@ -46,6 +44,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/TempFile.h"

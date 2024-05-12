@@ -46,7 +46,6 @@
 #include "KeyMap.h"
 #include "Language.h"
 #include "LaTeXPackages.h"
-#include "Lexer.h"
 #include "LyX.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
@@ -69,6 +68,7 @@
 #include "support/ForkedCalls.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
 #include "support/mute_warning.h"

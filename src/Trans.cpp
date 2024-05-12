@@ -13,13 +13,13 @@
 
 #include "Trans.h"
 
-#include "Lexer.h"
 #include "Text.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 using namespace std;

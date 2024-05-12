@@ -63,6 +63,8 @@ public:
 	///
 	BufferView const & bufferView() const override;
 	///
+	void resizeBufferView();
+	///
 	void scheduleRedraw(bool update_metrics) override;
 
 	/// return true if the key is part of a shortcut

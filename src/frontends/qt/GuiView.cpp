@@ -34,7 +34,6 @@
 #include "TocModel.h"
 
 #include "qt_helpers.h"
-#include "support/filetools.h"
 
 #include "frontends/alert.h"
 #include "frontends/KeySymbol.h"
@@ -56,7 +55,6 @@
 #include "KeySymbol.h"
 #include "Language.h"
 #include "LayoutFile.h"
-#include "Lexer.h"
 #include "LyXAction.h"
 #include "LyX.h"
 #include "LyXRC.h"
@@ -75,9 +73,11 @@
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
-#include "support/gettext.h"
+#include "support/filetools.h"
 #include "support/ForkedCalls.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -2119,6 +2119,7 @@ void GuiView::setBuffer(Buffer * newBuffer, bool switch_to)
 		newBuffer->masterBuffer()->updateBuffer();
 		setBusy(false);
 		wa = addWorkArea(*newBuffer);
+		wa->resizeBufferView();
 		// scroll to the position when the BufferView was last closed
 		if (lyxrc.use_lastfilepos) {
 			LastFilePosSection::FilePos filepos =

@@ -29,7 +29,7 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
-	void read(Lexer & lex);
+	void read(support::Lexer & lex);
 
 	///
 	std::string type;
@@ -108,7 +108,7 @@ public:
 	///
 	void write(std::ostream &) const override;
 	///
-	void read(Lexer & lex) override;
+	void read(support::Lexer & lex) override;
 	///
 	void metrics(MetricsInfo &, Dimension &) const override;
 	///

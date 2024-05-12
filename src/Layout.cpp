@@ -162,6 +162,7 @@ Layout::Layout()
 	inpreamble = false;
 	needprotect = false;
 	needcprotect = false;
+	nocprotect = false;
 	needmboxprotect = false;
 	keepempty = false;
 	font = inherit_font;
@@ -465,9 +466,17 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 			lex >> needprotect;
 			break;
 
-		case LT_NEED_CPROTECT:
-			lex >> needcprotect;
+		case LT_NEED_CPROTECT: {
+			int i;
+			lex >> i;
+			nocprotect = false;
+			needcprotect = false;
+			if (i == -1)
+				nocprotect = true;
+			else if (i == 1)
+				needcprotect = true;
 			break;
+		}
 
 		case LT_NEED_MBOXPROTECT:
 			lex >> needmboxprotect;

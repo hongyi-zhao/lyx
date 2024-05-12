@@ -404,7 +404,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 
 
 void TeXEnvironment(Buffer const & buf, Text const & text,
-		    OutputParams const & runparams,
+		    OutputParams const & runparams_in,
 		    pit_type & pit, otexstream & os)
 {
 	ParagraphList const & paragraphs = text.paragraphs();
@@ -414,6 +414,9 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 	Layout const & current_layout = ipar->layout();
 	depth_type const current_depth = ipar->params().depth();
 	Length const & current_left_indent = ipar->params().leftIndent();
+
+	OutputParams runparams = runparams_in;
+	runparams.no_cprotect = current_layout.nocprotect;
 
 	// This is for debugging purpose at the end.
 	pit_type const par_begin = pit;
@@ -736,7 +739,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 {
 	switch (style.latextype) {
 	case LATEX_COMMAND:
-		if (par.needsCProtection(runparams.moving_arg)) {
+		if (!runparams.no_cprotect && par.needsCProtection(runparams.moving_arg)) {
 			if (contains(runparams.active_chars, '^'))
 				// cprotect relies on ^ being on catcode 7
 				os << "\\begingroup\\catcode`\\^=7";
@@ -871,7 +874,7 @@ void TeXOnePar(Buffer const & buf,
 		// the code is different (JMarc)
 		if (style.isCommand()) {
 			os << "}";
-			if (par.needsCProtection(runparams.moving_arg)
+			if (!runparams.no_cprotect && par.needsCProtection(runparams.moving_arg)
 			    && contains(runparams.active_chars, '^'))
 				os << "\\endgroup";
 			if (merged_par)
@@ -1234,7 +1237,7 @@ void TeXOnePar(Buffer const & buf,
 				os << runparams.post_macro;
 				runparams.post_macro.clear();
 			}
-			if (par.needsCProtection(runparams.moving_arg)
+			if (!runparams.no_cprotect && par.needsCProtection(runparams.moving_arg)
 			    && contains(runparams.active_chars, '^'))
 				os << "\\endgroup";
 			if (runparams.encoding != prev_encoding) {
@@ -1405,7 +1408,7 @@ void TeXOnePar(Buffer const & buf,
 			os << runparams.post_macro;
 			runparams.post_macro.clear();
 		}
-		if (par.needsCProtection(runparams.moving_arg)
+		if (!runparams.no_cprotect && par.needsCProtection(runparams.moving_arg)
 		    && contains(runparams.active_chars, '^'))
 			os << "\\endgroup";
 		if (runparams.encoding != prev_encoding) {

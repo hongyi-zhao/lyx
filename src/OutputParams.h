@@ -108,6 +108,11 @@ public:
 	*/
 	bool moving_arg = false;
 
+	/** no_cprotect == true means that the layout in which this is
+	 *  does not allow \cprotect'ing.
+	*/
+	bool no_cprotect = false;
+
 	/** intitle == true means that the environment in which the
 	    inset is typeset is part of a title (before a \\maketitle).
 	    Footnotes in such environments have moving arguments.

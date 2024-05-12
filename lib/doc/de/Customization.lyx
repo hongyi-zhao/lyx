@@ -13744,6 +13744,20 @@ NeedCProtect
 status collapsed
 
 \begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \emph on
 0
@@ -13765,7 +13779,17 @@ status collapsed
 
 \end_inset
 
-] bewirkt,
+] Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ bewirkt,
  dass Makros,
  die dieses Layout enthalten,
  mittels 
@@ -13787,6 +13811,54 @@ cprotect
 ) gechützt werden,
  falls nötig.
  Damit wird die Verwendung (mancher) Verbatim-Dinge in Makros ermöglicht.
+ In der Voreinstellung (Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+) wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ verwendet,
+ sobald ein eingebettetes Element dies verlangt.
+ Der Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+ unterbindet die Verwendung von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ selbst dann,
+ wenn eingebettete Elemente dies verlangen.
 \end_layout
 
 \begin_layout Description

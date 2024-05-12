@@ -15110,6 +15110,26 @@ NeedCProtect
 \end_inset
 
  [
+\change_inserted -712698321 1715492667
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715492433
+-1
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\change_unchanged
+
 \begin_inset Flex Code
 status collapsed
 
@@ -15135,7 +15155,25 @@ status collapsed
 
 \end_inset
 
-] This causes macros that contain this layout to be protected with 
+] 
+\change_inserted -712698321 1715492466
+Value 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715492466
+1
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1715492468
+This
+\change_unchanged
+ causes macros that contain this layout to be protected with 
 \begin_inset Flex Code
 status collapsed
 
@@ -15153,6 +15191,66 @@ cprotect
 cprotect
 \family default
 ) if necessary and thus allows (some) verbatim stuff in macros.
+
+\change_inserted -712698321 1715492595
+ With the default setting (value 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715492536
+0
+\end_layout
+
+\end_inset
+
+),
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715492551
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ is used if a nested element requires it.
+ Value 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715492585
+-1
+\end_layout
+
+\end_inset
+
+ prevents any use of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715492585
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ within this layout,
+ even if required by a nested element.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -31367,6 +31465,8 @@ status collapsed
 
 \change_inserted -712698321 1712389749
 $$OrigAbsName
+\change_unchanged
+
 \end_layout
 
 \end_inset

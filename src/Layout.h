@@ -400,6 +400,9 @@ public:
 	/** true when the verbatim stuff of this layout needs to be
 	    \cprotect'ed. */
 	bool needcprotect;
+  	/** true when the verbatim stuff of this layout never should be
+	    \cprotect'ed. */
+	bool nocprotect;
 	/** true when specific commands in this paragraph need to be
 	    protected in an \mbox. */
 	bool needmboxprotect;

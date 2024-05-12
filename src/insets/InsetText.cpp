@@ -500,7 +500,7 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			// FIXME UNICODE
 			// FIXME \protect should only be used for fragile
 			//    commands, but we do not provide this information yet.
-			if (hasCProtectContent(runparams.moving_arg)) {
+			if (!runparams.no_cprotect && hasCProtectContent(runparams.moving_arg)) {
 				if (contains(runparams.active_chars, '^')) {
 					// cprotect relies on ^ being on catcode 7
 					os << "\\begingroup\\catcode`\\^=7";

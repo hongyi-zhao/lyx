@@ -576,6 +576,7 @@ Style FragileFrame
     Tooltip         "Frame options (see beamer manual)"
     PresetArg       "fragile"
   EndArgument
+  NeedCProtect      0
 End
 
 Style AgainFrame

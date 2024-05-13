@@ -354,6 +354,7 @@ public:
 				   Font const & running_font,
 				   string & alien_script,
 				   Layout const & style,
+				   InsetLayout const & il,
 				   pos_type & i,
 				   pos_type end_pos,
 				   unsigned int & column) const;
@@ -1234,11 +1235,20 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 					  Font const & running_font,
 					  string & alien_script,
 					  Layout const & style,
+					  InsetLayout const & il,
 					  pos_type & i,
 					  pos_type end_pos,
 					  unsigned int & column) const
 {
 	char_type const c = owner_->getUChar(bparams, runparams, i);
+
+	// Special case: URLs with hyperref need to escape backslash (#13012).
+	// Both a layout tag and a dedicated inset seem too much effort for this.
+	if (c == '\\' && runparams.use_hyperref && il.latexname() == "url"
+	    && il.required().find("url") != il.required().end()) {
+		os << "\\\\";
+		return;
+	}
 
 	if ((style.pass_thru || runparams.pass_thru || runparams.find_effective()
 	    || contains(style.pass_thru_chars, c)
@@ -3170,8 +3180,8 @@ void Paragraph::latex(BufferParams const & bparams,
 				}
 			}
 			try {
-				d->latexSpecialChar(os, bparams, rp, running_font,
-									alien_script, style, i, end_pos, column);
+				d->latexSpecialChar(os, bparams, rp, running_font, alien_script,
+						    style, inInset().getLayout(), i, end_pos, column);
 			} catch (EncodingException & e) {
 				if (runparams.dryrun) {
 					os << "<" << _("LyX Warning: ")

@@ -118,17 +118,66 @@ def revert_url_escapes(document):
                 document.body[surl : surl + 1] = [m.group(1), "\\backslash", m.group(2)]
             k = surl
 
+def convert_url_escapes2(document):
+    """Unescape backslashes in URLs with hyperref."""
+
+    i = find_token(document.header, "\\use_hyperref true", 0)
+   
+    if i != -1 and document.textclass not in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']:
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex URL", i + 1)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of URL inset.")
+            continue
+        while True:
+            bs = find_token(document.body, "\\backslash", i, j)
+            if bs == -1:
+                break
+            if document.body[bs + 2] == "\\backslash":
+                del document.body[bs + 2]
+            i = bs + 1
+
+def revert_url_escapes2(document):
+    """Escape backslashes in URLs with hyperref."""
+
+    i = find_token(document.header, "\\use_hyperref true", 0)
+   
+    if i != -1 and document.textclass not in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']:
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex URL", i + 1)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Could not find end of URL inset.")
+            continue
+        while True:
+            bs = find_token(document.body, "\\backslash", i, j)
+            if bs == -1:
+                break
+            document.body[bs] = "\\backslash\\backslash"
+            i = bs + 1
+
 ##
 # Conversion hub
 #
 
 supported_versions = ["2.5.0", "2.5"]
 convert = [
-           [621, [convert_url_escapes]]
+           [621, [convert_url_escapes, convert_url_escapes2]]
           ]
 
 
-revert =  [[620, [revert_url_escapes]]
+revert =  [[620, [revert_url_escapes2, revert_url_escapes]]
           ]
 
 

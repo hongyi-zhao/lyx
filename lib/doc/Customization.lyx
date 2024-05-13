@@ -15119,6 +15119,8 @@ status collapsed
 
 \change_inserted -712698321 1715492433
 -1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15165,6 +15167,8 @@ status collapsed
 
 \change_inserted -712698321 1715492466
 1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15201,6 +15205,8 @@ status collapsed
 
 \change_inserted -712698321 1715492536
 0
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15216,6 +15222,8 @@ status collapsed
 
 \backslash
 cprotect
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15229,6 +15237,8 @@ status collapsed
 
 \change_inserted -712698321 1715492585
 -1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15243,6 +15253,8 @@ status collapsed
 
 \backslash
 cprotect
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15454,6 +15466,58 @@ Standard
 ) paragraphs are being indented,
  then the indentation of such a paragraph following one of this type will be suppressed.
  (So this will not affect the display of non-default paragraphs.)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1715509676
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715509206
+NoPassThruChars
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715509203
+string
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters that should 
+\emph on
+not
+\emph default
+ be output in raw form (without special translations that \SpecialChar LaTeX
+ would require),
+ even if such handling is requested by an element in this layout.
+ This tag can be used to overwrite 
+\begin_inset Quotes els
+\end_inset
+
+PassThru
+\begin_inset Quotes ers
+\end_inset
+
+ conditions if they are unsuitable in a given context.
 \end_layout
 
 \begin_layout Description
@@ -21026,6 +21090,58 @@ InsetLayout
 \end_inset
 
 .
+\change_inserted -712698321 1715512954
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1715512954
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715512954
+NoPassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715512954
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters that should 
+\emph on
+not
+\emph default
+ be output in raw form (without special translations that \SpecialChar LaTeX
+ would require),
+ even if such handling is requested by an element in this layout.
+ This tag can be used to overwrite 
+\begin_inset Quotes els
+\end_inset
+
+PassThru
+\begin_inset Quotes ers
+\end_inset
+
+ conditions if they are unsuitable in a given context.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

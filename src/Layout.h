@@ -387,6 +387,9 @@ public:
 	bool pass_thru;
 	/// Individual chars to be passed verbatim
 	docstring pass_thru_chars;
+	/// Individual characters that must not be
+	/// passed verbatim even if normally requested
+	docstring no_pass_thru_chars;
 	///
 	bool parbreak_is_newline;
 	/// show this in toc

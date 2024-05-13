@@ -212,6 +212,8 @@ public:
 	///
 	docstring passThruChars() const { return passthru_chars_; }
 	///
+	docstring noPassThruChars() const { return no_passthru_chars_; }
+	///
 	std::string newlineCmd() const { return newline_cmd_; }
 	///
 	bool parbreakIsNewline() const { return parbreakisnewline_; }
@@ -396,6 +398,10 @@ private:
 	bool passthru_ = false;
 	///
 	docstring passthru_chars_;
+	///
+	docstring no_passthru_chars_;
+	///
+	docstring no_hr_passthru_chars_;
 	///
 	std::string newline_cmd_;
 	///

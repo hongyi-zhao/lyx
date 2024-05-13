@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2002-2018 The LyX Team
+# Copyright (C) 2002-2024 The LyX Team
 # Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2002-2006 José Matos <jamatos@lyx.org>
 #
@@ -36,7 +36,7 @@ try:
     version__ = lyx2lyx_version.version
     stable_version = True
 except: # we are running from build directory so assume the last version
-    version__ = '2.4'
+    version__ = '2.5'
     stable_version = False
 
 default_debug__ = 2
@@ -95,8 +95,9 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("2_0", list(range(346,414)), minor_versions("2.0" , 8)),
                    ("2_1", list(range(414,475)), minor_versions("2.1" , 5)),
                    ("2_2", list(range(475,509)), minor_versions("2.2" , 4)),
-                   ("2_3", list(range(509,545)), minor_versions("2.3" , 0)),
-                   ("2_4", (), minor_versions("2.4" , 0))
+                   ("2_3", list(range(509,545)), minor_versions("2.3" , 7)),
+                   ("2_4", list(range(545,621)), minor_versions("2.4" , 0)),
+                   ("2_5", (), minor_versions("2.5" , 0))
                   ]
 
 ####################################################################

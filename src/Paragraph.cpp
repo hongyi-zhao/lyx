@@ -1240,9 +1240,10 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 {
 	char_type const c = owner_->getUChar(bparams, runparams, i);
 
-	if (style.pass_thru || runparams.pass_thru || runparams.find_effective()
+	if ((style.pass_thru || runparams.pass_thru || runparams.find_effective()
 	    || contains(style.pass_thru_chars, c)
-	    || contains(runparams.pass_thru_chars, c)) {
+	    || contains(runparams.pass_thru_chars, c))
+	    && !contains(runparams.no_pass_thru_chars, c)) {
 		if (runparams.find_effective()) {
 			switch (c) {
 			case '\\':

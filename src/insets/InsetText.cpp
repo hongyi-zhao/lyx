@@ -549,6 +549,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 		++rp.inulemcmd;
 	if (!il.passThruChars().empty())
 		rp.pass_thru_chars += il.passThruChars();
+	if (!il.noPassThruChars().empty())
+		rp.no_pass_thru_chars += il.noPassThruChars();
 	if (!il.newlineCmd().empty())
 		rp.newlinecmd = il.newlineCmd();
 	rp.par_begin = 0;

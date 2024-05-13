@@ -136,6 +136,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_NEEDMBOXPROTECT,
 		IL_NEEDPROTECT,
 		IL_NEWLINE_CMD,
+		IL_NO_PASSTHRU_CHARS,
 		IL_PASSTHRU,
 		IL_PASSTHRU_CHARS,
 		IL_PARBREAKIGNORED,
@@ -225,6 +226,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "needmboxprotect", IL_NEEDMBOXPROTECT },
 		{ "needprotect", IL_NEEDPROTECT },
 		{ "newlinecmd", IL_NEWLINE_CMD },
+		{ "nopassthruchars", IL_NO_PASSTHRU_CHARS },
 		{ "obsoletedby", IL_OBSOLETEDBY },
 		{ "parbreakignored", IL_PARBREAKIGNORED },
 		{ "parbreakisnewline", IL_PARBREAKISNEWLINE },
@@ -381,6 +383,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 			break;
 		case IL_PASSTHRU_CHARS:
 			lex >> passthru_chars_;
+			break;
+		case IL_NO_PASSTHRU_CHARS:
+			lex >> no_passthru_chars_;
 			break;
 		case IL_NEWLINE_CMD:
 			lex >> newline_cmd_;

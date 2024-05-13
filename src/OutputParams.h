@@ -377,6 +377,10 @@ public:
 	/// Should we output verbatim specific chars?
 	docstring pass_thru_chars;
 
+	/// Do not output verbatim specific chars even
+	/// if normally requested
+	docstring no_pass_thru_chars;
+
 	/// A specific newline macro
 	std::string newlinecmd;
 

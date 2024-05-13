@@ -52,6 +52,7 @@ enum LayoutTags {
 	LT_FREE_SPACING,
 	LT_PASS_THRU,
 	LT_PASS_THRU_CHARS,
+	LT_NO_PASS_THRU_CHARS,
 	LT_PARBREAK_IS_NEWLINE,
 	LT_ITEMCOMMAND,
 	LT_ITEMSEP,
@@ -317,6 +318,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "needprotect",    LT_NEED_PROTECT },
 		{ "newline",        LT_NEWLINE },
 		{ "nextnoindent",   LT_NEXTNOINDENT },
+		{ "nopassthruchars", LT_NO_PASS_THRU_CHARS },
 		{ "obsoletedby",    LT_OBSOLETEDBY },
 		{ "paragraphgroup", LT_PAR_GROUP },
 		{ "parbreakisnewline", LT_PARBREAK_IS_NEWLINE },
@@ -667,6 +669,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
 		case LT_PASS_THRU_CHARS:
 			lex >> pass_thru_chars;
+			break;
+
+		case LT_NO_PASS_THRU_CHARS:
+			lex >> no_pass_thru_chars;
 			break;
 
 		case LT_PARBREAK_IS_NEWLINE:

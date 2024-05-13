@@ -417,6 +417,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 
 	OutputParams runparams = runparams_in;
 	runparams.no_cprotect = current_layout.nocprotect;
+	runparams.no_pass_thru_chars = current_layout.no_pass_thru_chars;
 
 	// This is for debugging purpose at the end.
 	pit_type const par_begin = pit;

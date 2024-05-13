@@ -13808,7 +13808,7 @@ cprotect
 \family sans
 cprotect
 \family default
-) gechützt werden,
+) geschützt werden,
  falls nötig.
  Damit wird die Verwendung (mancher) Verbatim-Dinge in Makros ermöglicht.
  In der Voreinstellung (Wert 
@@ -14115,6 +14115,56 @@ Standard
 \end_inset
 
 -Paragraphen.)
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NoPassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Definiert Zeichen,
+ die 
+\emph on
+nicht
+\emph default
+ in jedem Fall unverändert ausgegeben werden sollen (d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h.,
+ die ggf.
+ in einen \SpecialChar LaTeX
+-Befehl übersetzt werden),
+ auch wenn ein eingebettetes Element in diesem Layout eine unveränderte Ausgabe verlangt.
+ Damit lassen sich 
+\begin_inset Quotes gls
+\end_inset
+
+PassThru
+\begin_inset Quotes grs
+\end_inset
+
+-Bedingungen überschreiben,
+ wenn diese in einem bestimmten Umfeld unerwünscht sind.
 \end_layout
 
 \begin_layout Description
@@ -19752,6 +19802,56 @@ InsetLayout
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NoPassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Definiert Zeichen,
+ die 
+\emph on
+nicht
+\emph default
+ in jedem Fall unverändert ausgegeben werden sollen (d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h.,
+ die ggf.
+ in einen \SpecialChar LaTeX
+-Befehl übersetzt werden),
+ auch wenn ein eingebettetes Element in diesem Layout eine unveränderte Ausgabe verlangt.
+ Damit lassen sich 
+\begin_inset Quotes gls
+\end_inset
+
+PassThru
+\begin_inset Quotes grs
+\end_inset
+
+-Bedingungen überschreiben,
+ wenn diese in einem bestimmten Umfeld unerwünscht sind.
 \end_layout
 
 \begin_layout Description

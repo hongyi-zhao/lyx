@@ -223,6 +223,8 @@ public:
 	bool isNeedProtect() const { return needprotect_; }
 	///
 	bool needsCProtect() const { return needcprotect_; }
+	///
+	bool noCProtect() const { return nocprotect_; }
 	/// Protection of some elements such as \ref and \cite
 	/// in \mbox (needed by commands building on soul or ulem)
 	bool isNeedMBoxProtect() const { return needmboxprotect_; }
@@ -401,8 +403,6 @@ private:
 	///
 	docstring no_passthru_chars_;
 	///
-	docstring no_hr_passthru_chars_;
-	///
 	std::string newline_cmd_;
 	///
 	bool parbreakisnewline_ = false;
@@ -420,6 +420,8 @@ private:
 	bool needprotect_ = false;
 	///
 	bool needcprotect_ = false;
+	///
+	bool nocprotect_ = false;
 	///
 	bool needmboxprotect_ = false;
 	/// should the contents be written to TOC strings?

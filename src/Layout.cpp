@@ -885,13 +885,13 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 			lex >> docbookiteminnertagtype_;
 			break;
 
-        case LT_DOCBOOKNOFONTINSIDE:
-            lex >> docbooknofontinside_;
-            break;
+		case LT_DOCBOOKNOFONTINSIDE:
+			lex >> docbooknofontinside_;
+			break;
 
-        case LT_DOCBOOKGENERATETITLE:
-            lex >> docbookgeneratetitle_;
-            break;
+		case LT_DOCBOOKGENERATETITLE:
+			lex >> docbookgeneratetitle_;
+			break;
 
 		case LT_SPELLCHECK:
 			lex >> spellcheck;

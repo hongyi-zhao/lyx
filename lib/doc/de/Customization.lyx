@@ -13946,7 +13946,7 @@ ulem
 soul
 \family default
  aufbauen,
- welche ihren Inhalt in kompexer Art und Weise auslesen.
+ welche ihren Inhalt in komplexer Art und Weise auslesen.
 \end_layout
 
 \begin_layout Description
@@ -19717,6 +19717,226 @@ nicht
 \emph default
  an,
  ob der Befehl selber geschützt werden soll.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedCProtect
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ bewirkt,
+ dass Makros,
+ die diese Einfügung enthalten,
+ mittels 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ (Paket 
+\family sans
+cprotect
+\family default
+) geschützt werden,
+ falls nötig.
+ Damit wird die Verwendung (mancher) Verbatim-Dinge in Makros ermöglicht.
+ In der Voreinstellung (Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+) wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ verwendet,
+ sobald ein eingebettetes Element dies verlangt.
+ Der Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+ unterbindet die Verwendung von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ selbst dann,
+ wenn eingebettete Elemente dies verlangen.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedMBoxProtect
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] legt fest,
+ ob bestimmte Befehle in dieser Einfügung (bspw.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cite
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ref
+\end_layout
+
+\end_inset
+
+) in einer 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mbox
+\end_layout
+
+\end_inset
+
+ geschützt werden sollen.
+ Das ist vor allem für Einfügungen nötig,
+ die auf Befehle der Pakete 
+\family sans
+ulem
+\family default
+ oder 
+\family sans
+soul
+\family default
+ aufbauen,
+ welche ihren Inhalt in komplexer Art und Weise auslesen.
 \end_layout
 
 \begin_layout Description

@@ -1578,6 +1578,7 @@ InsetLayout Flex:Only
   EndArgument
   ResetsFont       true
   CustomPars       false
+  NeedCProtect     -1
 End
 
 InsetLayout Flex:Uncover
@@ -1599,6 +1600,7 @@ InsetLayout Flex:Uncover
   EndArgument
   ResetsFont       true
   CustomPars       false
+  NeedCProtect     -1
 End
 
 InsetLayout Flex:Visible
@@ -1620,6 +1622,7 @@ InsetLayout Flex:Visible
   EndArgument
   ResetsFont       true
   CustomPars       false
+  NeedCProtect     -1
 End
 
 InsetLayout Flex:Invisible
@@ -1641,6 +1644,7 @@ InsetLayout Flex:Invisible
   EndArgument
   ResetsFont       true
   CustomPars       false
+  NeedCProtect     -1
 End
 
 InsetLayout Flex:Alternative
@@ -1668,6 +1672,7 @@ InsetLayout Flex:Alternative
   EndArgument
   ResetsFont       true
   CustomPars       false
+  NeedCProtect     -1
 End
 
 InsetLayout Flex:Beamer_Note
@@ -1703,6 +1708,7 @@ InsetLayout Flex:ArticleMode
    LabelString     Article
    MultiPar        true
    ResetsFont      true
+   NeedCProtect    -1
 End
 
 InsetLayout Flex:PresentationMode
@@ -1714,6 +1720,7 @@ InsetLayout Flex:PresentationMode
    LabelString     Presentation
    MultiPar        true
    ResetsFont      true
+   NeedCProtect    -1
 End
 
 

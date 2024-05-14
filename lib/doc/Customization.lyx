@@ -20890,6 +20890,23 @@ NeedCProtect
 \end_inset
 
  [
+\change_inserted -712698321 1715685021
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715685023
+-1
+\end_layout
+
+\end_inset
+
+,
+ 
+\change_unchanged
+
 \begin_inset Flex Code
 status collapsed
 
@@ -20915,7 +20932,25 @@ status collapsed
 
 \end_inset
 
-] This causes macros that contain this inset to be protected with 
+] 
+\change_deleted -712698321 1715685030
+This
+\change_inserted -712698321 1715685031
+Value 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715685031
+1
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ causes macros that contain this inset to be protected with 
 \begin_inset Flex Code
 status collapsed
 
@@ -20934,6 +20969,66 @@ cprotect
 \family default
 ) if necessary and thus allows (some) verbatim stuff in macros.
  Default is false.
+
+\change_inserted -712698321 1715685049
+ With the default setting (value 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715685008
+0
+\end_layout
+
+\end_inset
+
+),
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715685008
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ is used if a nested element requires it.
+ Value 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715685008
+-1
+\end_layout
+
+\end_inset
+
+ prevents any use of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1715685008
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ within this inset,
+ even if required by a nested element.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -21104,6 +21199,8 @@ status collapsed
 
 \change_inserted -712698321 1715512954
 NoPassThruChars
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -21116,6 +21213,8 @@ status collapsed
 
 \change_inserted -712698321 1715512954
 string
+\change_unchanged
+
 \end_layout
 
 \end_inset

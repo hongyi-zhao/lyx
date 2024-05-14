@@ -405,9 +405,17 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_NEEDPROTECT:
 			lex >> needprotect_;
 			break;
-		case IL_NEEDCPROTECT:
-			lex >> needcprotect_;
+		case IL_NEEDCPROTECT: {
+			string val;
+			lex >> val;
+			nocprotect_ = false;
+			needcprotect_ = false;
+			if (val == "-1")
+				nocprotect_ = true;
+			else if (val == "1" || val == "true")
+				needcprotect_ = true;
 			break;
+		}
 		case IL_NEEDMBOXPROTECT:
 			lex >> needmboxprotect_;
 			break;

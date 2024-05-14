@@ -1174,6 +1174,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			  && !textinset->text().isMainText()
 			  && inset->lyxCode() != BRANCH_CODE
 			  && !runparams.no_cprotect
+			  && !inset->getLayout().noCProtect()
 			: false;
 		unsigned int count2 = basefont.latexWriteStartChanges(os, bparams,
 						      rp, running_font,

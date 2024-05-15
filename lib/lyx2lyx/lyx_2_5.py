@@ -98,7 +98,7 @@ def revert_url_escapes(document):
     while True:
         i = find_token(document.body, "\\begin_inset Flex URL", i)
         if i == -1:
-            continue
+            return
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of URL inset.")

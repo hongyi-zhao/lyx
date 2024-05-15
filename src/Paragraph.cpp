@@ -1243,11 +1243,13 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 {
 	char_type const c = owner_->getUChar(bparams, runparams, i);
 
-	// Special case: URLs with hyperref need to escape backslash (#13012).
+	// Special case: URLs with hyperref need to escape backslash, # and % (#13012).
 	// Both a layout tag and a dedicated inset seem too much effort for this.
-	if (c == '\\' && runparams.use_hyperref && il.latexname() == "url"
+	string const hr_url_escape_chars = "\\#%";
+	if (contains(hr_url_escape_chars, c) && runparams.use_hyperref && il.latexname() == "url"
 	    && il.required().find("url") != il.required().end()) {
-		os << "\\\\";
+		os << "\\";
+		os.put(c);
 		return;
 	}
 

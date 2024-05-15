@@ -55,75 +55,73 @@ from parser_tools import (find_end_of_inset, find_end_of_layout, find_token, fin
 ###############################################################################
 
 def convert_url_escapes(document):
-    """Unescape # and % in URLs in frames."""
-    if document.textclass not in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']:
+    """Unescape # and % in URLs with hyperref."""
+
+    hyperref = find_token(document.header, "\\use_hyperref true", 0) != -1
+    beamer = document.textclass in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']
+
+    if not hyperref and not beamer:
         return
 
     rurl = re.compile(r'^[%#].*')
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_layout Frame", i + 1)
+        i = find_token(document.body, "\\begin_inset Flex URL", i)
         if i == -1:
             return
-        j = find_end_of_layout(document.body, i)
+        j = find_end_of_inset(document.body, i)
         if j == -1:
-            document.warning("Malformed LyX document: Could not find end of Frame layout.")
-            continue
-        k = find_token(document.body, "\\begin_inset Flex URL", i, j)
-        if k == -1:
-            continue
-        l = find_end_of_inset(document.body, k)
-        if l == -1:
             document.warning("Malformed LyX document: Could not find end of URL inset.")
+            i += 1
             continue
         while True:
-            surl = find_re(document.body, rurl, k, l)
+            surl = find_re(document.body, rurl, i, j)
             if surl == -1:
+                i = j
                 break
             if document.body[surl - 1] == "\\backslash":
                 del document.body[surl - 1]
-            k = surl
+            i = surl
         
 
 def revert_url_escapes(document):
-    """Unescape # and % in URLs in frames."""
-    if document.textclass not in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']:
+    """Unescape # and % in URLs with hyperref."""
+
+    hyperref = find_token(document.header, "\\use_hyperref true", 0) != -1
+    beamer = document.textclass in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']
+
+    if not hyperref and not beamer:
         return
 
     rurl = re.compile(r'^(.*)([%#].*)')
     i = 0
     while True:
-        i = find_token(document.body, "\\begin_layout Frame", i + 1)
+        i = find_token(document.body, "\\begin_inset Flex URL", i)
         if i == -1:
-            return
-        j = find_end_of_layout(document.body, i)
+            continue
+        j = find_end_of_inset(document.body, i)
         if j == -1:
-            document.warning("Malformed LyX document: Could not find end of Frame layout.")
-            continue
-        k = find_token(document.body, "\\begin_inset Flex URL", i, j)
-        if k == -1:
-            continue
-        l = find_end_of_inset(document.body, k)
-        if l == -1:
             document.warning("Malformed LyX document: Could not find end of URL inset.")
+            i += 1
             continue
         while True:
-            surl = find_re(document.body, rurl, k, l)
+            surl = find_re(document.body, rurl, i, j)
             if surl == -1:
+                i = j
                 break
             m = rurl.match(document.body[surl])
             if m:
                 if m.group(1) == "" and document.body[surl - 1] == "\\backslash":
                     break
                 document.body[surl : surl + 1] = [m.group(1), "\\backslash", m.group(2)]
-            k = surl
+            i = surl
 
 def convert_url_escapes2(document):
     """Unescape backslashes in URLs with hyperref."""
 
     i = find_token(document.header, "\\use_hyperref true", 0)
    
-    if i != -1 and document.textclass not in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']:
+    if i == -1 and document.textclass not in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']:
         return
 
     i = 0
@@ -134,6 +132,7 @@ def convert_url_escapes2(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of URL inset.")
+            i += 1
             continue
         while True:
             bs = find_token(document.body, "\\backslash", i, j)
@@ -148,7 +147,7 @@ def revert_url_escapes2(document):
 
     i = find_token(document.header, "\\use_hyperref true", 0)
    
-    if i != -1 and document.textclass not in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']:
+    if i == -1 and document.textclass not in ['beamer', 'scrarticle-beamer', 'beamerposter', 'article-beamer']:
         return
 
     i = 0
@@ -159,6 +158,7 @@ def revert_url_escapes2(document):
         j = find_end_of_inset(document.body, i)
         if j == -1:
             document.warning("Malformed LyX document: Could not find end of URL inset.")
+            i += 1
             continue
         while True:
             bs = find_token(document.body, "\\backslash", i, j)

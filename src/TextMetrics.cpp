@@ -2050,8 +2050,14 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 	size_t const nrows = pm.rows().size();
 	int const wh = bv_->workHeight();
 	// Remember left and right margin for drawing math numbers
-	Changer changeleft = changeVar(pi.leftx, x + leftMargin(pit));
-	Changer changeright = changeVar(pi.rightx, x + width() - rightMargin(pit));
+	Changer changeleft, changeright;
+	if (text_->isRTL(pit)) {
+		changeleft = changeVar(pi.leftx, x + rightMargin(pit));
+		changeright = changeVar(pi.rightx, x + width() - leftMargin(pit));
+	} else {
+		changeleft = changeVar(pi.leftx, x + leftMargin(pit));
+		changeright = changeVar(pi.rightx, x + width() - rightMargin(pit));
+	}
 
 	// Use fast lane in nodraw stage.
 	if (pi.pain.isNull()) {
@@ -2099,9 +2105,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			sel_end_par.pos() = sel_end_par.lastpos();
 		}
 	}
-
-	if (text_->isRTL(pit))
-		swap(pi.leftx, pi.rightx);
 
 	BookmarksSection::BookmarkPosList bpl =
 		theSession().bookmarks().bookmarksInPar(bv_->buffer().fileName(), pm.id());

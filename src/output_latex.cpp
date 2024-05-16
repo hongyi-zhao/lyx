@@ -495,6 +495,9 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 
 	if (pit != runparams.par_end)
 		LYXERR(Debug::OUTFILE, "TeXEnvironment for paragraph " << par_begin << " done.");
+
+	// set upstream encoding
+	runparams_in.encoding = runparams.encoding;
 }
 
 

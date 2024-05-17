@@ -131,6 +131,17 @@ pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
 }
 
 
+pair<pit_type, ParagraphMetrics const *> TextMetrics::firstVisible() const
+{
+	// This only works in the main text, I think (bottom > 0)
+	LASSERT(text_->isMainText(), return first());
+	auto it = find_if(par_metrics_.begin(), par_metrics_.end(),
+	                  [] (ParMetricsCache::value_type const & p) {
+	                      return p.second.hasPosition() && p.second.bottom() > 0;
+	                  });
+	return make_pair(it->first, &it->second);
+}
+
 pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
 {
 	LBUFERR(!par_metrics_.empty());
@@ -220,7 +231,10 @@ void TextMetrics::updateMetrics(pit_type const anchor_pit, int const anchor_ypos
                                 int const bv_height)
 {
 	LASSERT(text_->isMainText(), return);
-	pit_type const npit = pit_type(text_->paragraphs().size());
+
+	// Forget existing positions
+	for (auto & pm_pair : par_metrics_)
+		pm_pair.second.resetPosition();
 
 	if (!contains(anchor_pit))
 		// Rebreak anchor paragraph.
@@ -246,6 +260,7 @@ void TextMetrics::updateMetrics(pit_type const anchor_pit, int const anchor_ypos
 	int y2 = anchor_ypos + anchor_pm.descent();
 	// We are now just below the anchor paragraph.
 	pit_type pit2 = anchor_pit + 1;
+	pit_type const npit = pit_type(text_->paragraphs().size());
 	for (; pit2 < npit && y2 < bv_height; ++pit2) {
 		if (!contains(pit2))
 			redoParagraph(pit2);

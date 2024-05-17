@@ -70,8 +70,12 @@ public:
 	bool hfillExpansion(Row const & row, pos_type pos) const;
 
 	/// The vertical position of the baseline of the first line of the paragraph
-	int position() const { return position_; }
+	int position() const;
 	void setPosition(int position);
+	/// Set position to unknown
+	void resetPosition();
+	/// Return true when the position of the paragraph is known
+	bool hasPosition() const;
 	/// The vertical position of the top of the paragraph
 	int top() const { return position_ - dim_.ascent(); }
 	/// The vertical position of the bottom of the paragraph

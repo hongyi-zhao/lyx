@@ -50,6 +50,8 @@ public:
 	///
 	std::pair<pit_type, ParagraphMetrics const *> first() const;
 	///
+	std::pair<pit_type, ParagraphMetrics const *> firstVisible() const;
+	///
 	std::pair<pit_type, ParagraphMetrics const *> last() const;
 	/// is this row the last in the text?
 	bool isLastRow(Row const & row) const;

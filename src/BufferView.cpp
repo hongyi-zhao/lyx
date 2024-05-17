@@ -3211,6 +3211,7 @@ void BufferView::updateMetrics(bool force)
 		d->text_metrics_.clear();
 	}
 
+	// This should not be moved earlier
 	TextMetrics & tm = textMetrics(&buftext);
 
 	// make sure inline completion pointer is ok
@@ -3226,14 +3227,16 @@ void BufferView::updateMetrics(bool force)
 
 	// Check that the end of the document is not too high
 	int const min_visible = lyxrc.scroll_below_document ? minVisiblePart() : height_;
-	if (tm.last().first == lastpit && tm.last().second->bottom() < min_visible) {
+	if (tm.last().first == lastpit && tm.last().second->hasPosition()
+	     && tm.last().second->bottom() < min_visible) {
 		d->anchor_ypos_ += min_visible - tm.last().second->bottom();
 		LYXERR(Debug::SCROLLING, "Too high, adjusting anchor ypos to " << d->anchor_ypos_);
 		tm.updateMetrics(d->anchor_pit_, d->anchor_ypos_, height_);
 	}
 
 	// Check that the start of the document is not too low
-	if (tm.first().first == 0 && tm.first().second->top() > 0) {
+	if (tm.first().first == 0 && tm.first().second->hasPosition()
+	     && tm.first().second->top() > 0) {
 		d->anchor_ypos_ -= tm.first().second->top();
 		LYXERR(Debug::SCROLLING, "Too low, adjusting anchor ypos to " << d->anchor_ypos_);
 		tm.updateMetrics(d->anchor_pit_, d->anchor_ypos_, height_);
@@ -3246,11 +3249,11 @@ void BufferView::updateMetrics(bool force)
 	 * extra paragraphs are removed
 	 */
 	// Remove paragraphs that are outside of screen
-	while(tm.first().second->bottom() <= 0) {
+	while(!tm.first().second->hasPosition() || tm.first().second->bottom() <= 0) {
 		//LYXERR0("Forget pit: " << tm.first().first);
 		tm.forget(tm.first().first);
 	}
-	while(tm.last().second->top() > height_) {
+	while(!tm.last().second->hasPosition() || tm.last().second->top() > height_) {
 		//LYXERR0("Forget pit: " << tm.first().first);
 		tm.forget(tm.last().first);
 	}

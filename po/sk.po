@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-04-20 18:47+0200\n"
-"PO-Revision-Date: 2024-04-20 18:04+0000\n"
+"POT-Creation-Date: 2024-05-17 11:50+0200\n"
+"PO-Revision-Date: 2024-05-17 10:08+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -27534,6 +27534,10 @@ msgid "LyX 2.3.x"
 msgstr "LyX 2.3.x"
 
 #: lib/configure.py:881
+msgid "LyX 2.4.x"
+msgstr "LyX 2.4.x"
+
+#: lib/configure.py:881
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
@@ -30190,7 +30194,7 @@ msgid ""
 "Please delete or update this file!"
 msgstr ""
 "Vo vašom používateľskom adresári (%1$s) sme zistili zastaraný skript "
-"'chkconfig.ltx'\n"
+"'chkconfig.ltx'.\n"
 "Odstráňte alebo aktualizujte tento súbor!"
 
 #: src/LyX.cpp:145

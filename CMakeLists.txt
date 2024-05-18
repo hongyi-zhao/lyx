@@ -580,12 +580,10 @@ endif()
 
 
 
-if(NOT LYX_DATA_SUBDIR)
-	if (WIN32)
-		set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
-	else()
-		set(LYX_DATA_SUBDIR "share/${_lyx}/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
-	endif()
+if (WIN32)
+	set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+else()
+	set(LYX_DATA_SUBDIR "share/${_lyx}/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
 endif()
 
 set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}/${LYX_DATA_SUBDIR}")

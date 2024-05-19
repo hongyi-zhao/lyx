@@ -90,13 +90,18 @@ export/export/latex/languages/nested-inputenc_auto-legacy_pdf2
 
 # ================================================
 Sublabel: lyxbugs
-# LyX bugs with a Trac number or 'wontfix' ML thread.
+# LyX bugs with a Trac number, git short hash, or 'wontfix' ML thread.
 # ================================================
 
-# Dedicated tests in export/latex/lyxbugs start with the ticket number
+# Dedicated tests in export/latex/lyxbugs start with the ticket number or git short hash.
 # (move to export/latex/lyxbugs-resolved when the problem is fixed).
-# catchall:
+#
+# catchall for ticket number:
 export/export/latex/lyxbugs/[0-9].*
+#
+# catchall for git short hash
+# a git short hash of length 7 or 8, followed by a dash.
+export/export/latex/lyxbugs/[a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9]?-.*
 
 #8035 work around a Polyglossia bug:
 # An error is reported if the document font does not announce support for a

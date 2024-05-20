@@ -1882,7 +1882,8 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 	// This is only set once per document (in master)
 	if (!runparams.is_child) {
 		runparams.use_polyglossia = features.usePolyglossia();
-		runparams.use_hyperref = features.isRequired("hyperref");
+		runparams.use_hyperref = features.isRequired("hyperref")
+				|| features.isProvided("hyperref");
 		runparams.use_CJK = features.mustProvide("CJK");
 	}
 	LYXERR(Debug::OUTFILE, "  Buffer validation done.");
@@ -4208,7 +4209,8 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			validate(features);
 			runparams.use_polyglossia = features.usePolyglossia();
 			runparams.use_babel = features.useBabel();
-			runparams.use_hyperref = features.isRequired("hyperref");
+			runparams.use_hyperref = features.isRequired("hyperref")
+				|| features.isProvided("hyperref");
 			// latex or literate
 			otexstream ots(os);
 			// output above

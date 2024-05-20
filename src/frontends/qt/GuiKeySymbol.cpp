@@ -267,7 +267,12 @@ static int string_to_qkey(std::string const & str)
 	if (str == "twosuperior") return Qt::Key_twosuperior;
 	if (str == "threesuperior") return Qt::Key_threesuperior;
 	if (str == "acute") return Qt::Key_acute;
-	if (str == "mu") return Qt::Key_mu;
+	if (str == "mu")
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+		return Qt::Key_micro;
+#else
+		return Qt::Key_mu;
+#endif
 	if (str == "paragraph") return Qt::Key_paragraph;
 	if (str == "periodcentered") return Qt::Key_periodcentered;
 	if (str == "cedilla") return Qt::Key_cedilla;
@@ -590,7 +595,14 @@ static std::string const qkey_to_string(int lkey)
 	case Qt::Key_twosuperior: return "twosuperior";
 	case Qt::Key_threesuperior: return "threesuperior";
 	case Qt::Key_acute: return "acute";
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+	// FIXME: Qt::Key_mu has been deprecated in Qt 6.7
+	// since it is a misnomer. Change our return string, too?
+	// If so, don't forget string_to_qkey()
+	case Qt::Key_micro: return "mu";
+#else
 	case Qt::Key_mu: return "mu";
+#endif
 	case Qt::Key_paragraph: return "paragraph";
 	case Qt::Key_periodcentered: return "periodcentered";
 	case Qt::Key_cedilla: return "cedilla";

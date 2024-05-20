@@ -783,8 +783,8 @@ void Tabular::init(Buffer * buf, row_type rows_arg,
 	row_info.reserve(10);
 	column_info.reserve(10);
 	cell_info.reserve(100);
-	updateIndexes();
 	is_long_tabular = false;
+	updateIndexes();
 	tabular_valignment = LYX_VALIGN_MIDDLE;
 	tabular_width = Length();
 	longtabular_alignment = LYX_LONGTABULAR_ALIGN_CENTER;

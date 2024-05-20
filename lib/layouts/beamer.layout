@@ -554,7 +554,6 @@ Style Frame
 	Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
   EndAutoNests
   NeedCProtect    -1
-  NoPassThruChars  "%#"
 End
 
 Style PlainFrame
@@ -578,7 +577,6 @@ Style FragileFrame
     PresetArg       "fragile"
   EndArgument
   NeedCProtect      0
-  NoPassThruChars   ""
 End
 
 Style AgainFrame

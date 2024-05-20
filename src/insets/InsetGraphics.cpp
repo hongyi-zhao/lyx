@@ -1086,17 +1086,24 @@ docstring InsetGraphics::xhtml(XMLStream & xs, OutputParams const & op) const
 	bool const haveheight = !params().height.zero();
 	if (havewidth || haveheight) {
 		if (havewidth)
-			imgstyle += "width: " + params().width.asHTMLString() + ";";
+			imgstyle = "width: " + params().width.asHTMLString() + ";";
 		if (haveheight)
 			imgstyle += " height: " + params().height.asHTMLString() + ";";
 	} else if (params().scale != "100") {
-		// The `scale` CSS property is supposed to be used for responsive
-		// designs, but it behaves mostly as LyX. The only problem is that
-		// the image's bounding box is not scaled. (As opposed to a width,
-		// which is a percentage of the HTML container: the meaning of the
-		// percentage is completely different, but the bounding box has the
-		// right size.)
-		imgstyle = "scale: " + params().scale + "%;";
+		// Use the scale on the bounding box.
+		char* endPtr;
+		double const scale = strtod(params().scale.c_str(), &endPtr);
+		if (*endPtr == '\0') { // Parsing was possible.
+			Length width = params().width;
+			width.value(scale * width.value());
+			Length height = params().height;
+			height.value(scale * height.value());
+
+			imgstyle = "width: " + width.asHTMLString() + "; ";
+			imgstyle += "height: " + height.asHTMLString() + ";";
+		}
+		// Otherwise, failure to parse the scale: no information to pass on
+		// to the HTML output.
 	}
 	if (!imgstyle.empty())
 		imgstyle = "style='" + imgstyle + "' ";

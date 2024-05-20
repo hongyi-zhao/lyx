@@ -49,6 +49,8 @@
 # Version 6.3   04/03/24 - Stub for AASTeX 6.31:
 #                          new layout file aastex631.layout, because
 #                          aastex62.cls was renamed to aastex631.cls (2021/09/16)
+#                        - Change Acknowledgments style to environment. See
+#                          https://journals.aas.org/aastexguide/#acknowledgments
 ##
 # TODO: - support for new commands (see below)
 #       - aastex6.cls loads hyperref (with pre-set options) and url
@@ -236,6 +238,7 @@ Style Altaffilation
 End
 
 Style Acknowledgments
+	LatexType        Environment
 	Font
 		Shape           Up
 	EndFont

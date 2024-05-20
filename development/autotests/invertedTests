@@ -532,6 +532,7 @@ Sublabel: docbook beamer
 !export/templates/Presentations/Slides_docbook5
 export/(examples|templates)/(ar|de|es|fr|ja|ru)/Presentations/.*_docbook5
 export/(examples|templates)/Presentations/.*_docbook5
+export/export/latex/lyxbugs-resolved/ed62816e-knitr-comment-beamer_docbook5
 
 # ======================================================================
 Sublabel: expected

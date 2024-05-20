@@ -210,25 +210,32 @@ inline void closeLabelTag(XMLStream & xs, Layout const & lay)
 }
 
 
-inline void openItemTag(XMLStream & xs, Layout const & lay)
+inline void openItemTag(XMLStream & xs, Layout const & lay,
+                        std::string const & parlabel)
 {
 	if (lay.htmlitemtag() != "NONE") {
-		xs << xml::StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
+		string attrs = lay.htmlitemattr();
+		if (!parlabel.empty())
+			attrs += " id='" + parlabel + "'";
+		xs << xml::StartTag(lay.htmlitemtag(), attrs, true);
 	}
 }
 
 
 void openItemTag(XMLStream & xs, Layout const & lay,
-             ParagraphParameters const & params)
+                 ParagraphParameters const & params,
+                 std::string const & parlabel)
 {
 	if (lay.htmlitemtag() != "NONE") {
 		// FIXME Are there other things we should handle here?
 		string const align = alignmentToCSS(params.align());
 		if (align.empty()) {
-			openItemTag(xs, lay);
+			openItemTag(xs, lay, parlabel);
 			return;
 		}
 		string attrs = lay.htmlGetAttrString() + " style='text-align: " + align + ";'";
+		if (!parlabel.empty())
+			attrs += " id='" + parlabel + "'";
 		xs << xml::StartTag(lay.htmlitemtag(), attrs);
 	}
 }
@@ -411,7 +418,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	ParagraphList::const_iterator par = pbegin;
 	Layout const & bstyle = par->layout();
-	depth_type const origdepth = pbegin->params().depth();
+	depth_type const origdepth = par->params().depth();
+	string const parId = bstyle.htmlitemtag().empty() ? par->magicLabel() : "";
 
 	// open tag for this environment
 	if ((bstyle.labeltype == LABEL_ENUMERATE || bstyle.labeltype == LABEL_ITEMIZE)
@@ -422,7 +430,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		// (We also do not deal with 'resume' counters, though I'm not sure that can
 		// be done at all in HTML.)
 
-		// Code adapated from Buffer::Impl::setLabel
+		// Code adapted from Buffer::Impl::setLabel
 		bool const isenum = bstyle.labeltype == LABEL_ENUMERATE;
 		docstring enumcounter = bstyle.counter.empty() ?
 					( isenum ? from_ascii("enum") : from_ascii("lyxitem") ) :
@@ -444,12 +452,12 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			// not a valid enumdepth...
 			break;
 		}
-		openParTag(xs, bstyle,
-				   string( isenum ? "lyxenum" : "lyxitem" ) + " "
-					+ to_utf8(enumcounter), pbegin->magicLabel());
+		const string cssClass = string(isenum ? "lyxenum" : "lyxitem") + " "
+		                      + to_utf8(enumcounter);
+		openParTag(xs, bstyle, cssClass, parId);
 	}
 	else
-		openParTag(xs, bstyle, pbegin->magicLabel());
+		openParTag(xs, bstyle, parId);
 	xs << xml::CR();
 
 	// we will on occasion need to remember a layout from before.
@@ -491,7 +499,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				pos_type sep = 0;
 				bool const labelfirst = style.htmllabelfirst();
 				if (!labelfirst)
-					openItemTag(xs, style, par->params());
+					openItemTag(xs, style, par->params(), par->magicLabel());
 
 				// label output
 				if (style.labeltype != LABEL_NO_LABEL &&
@@ -529,7 +537,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				} // end label output
 
 				if (labelfirst)
-					openItemTag(xs, style, par->params());
+					openItemTag(xs, style, par->params(), par->magicLabel());
 
 				docstring deferred = par->simpleLyXHTMLOnePar(buf, xs, runparams,
 					text.outerFont(distance(begin, par)), true, true, sep);
@@ -594,8 +602,7 @@ void makeCommand(Buffer const & buf,
 		buf.masterBuffer()->params().
 		    documentClass().counters().step(style.counter, OutputUpdate);
 
-	bool const make_parid = !runparams.for_toc && runparams.html_make_pars;
-
+	bool const make_parid = !runparams.for_toc && runparams.html_make_pars && style.itemtag().empty();
 	openParTag(xs, style, pbegin->params(),
 	           make_parid ? pbegin->magicLabel() : "");
 

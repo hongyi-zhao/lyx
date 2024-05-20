@@ -200,7 +200,7 @@ public:
 	///
 	bool docbookrenderasimage() const { return docbookrenderasimage_; }
 	///
-	std::set<std::string> required() const { return required_; }
+	std::set<std::string> required() const & { return required_; }
 	///
 	bool isMultiPar() const { return multipar_; }
 	///

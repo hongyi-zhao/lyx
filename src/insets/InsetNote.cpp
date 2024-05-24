@@ -143,6 +143,11 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
+		if (cmd.getArg(0) != "note") {
+			// not for us; might be handled higher up
+			cur.undispatched();
+			return;
+		}
 		// Do not do anything if converting to the same type of Note.
 		// A quick break here is done instead of disabling the LFUN
 		// because disabling the LFUN would lead to a greyed out
@@ -152,7 +157,7 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetNoteParams params;
 		string2params(to_utf8(cmd.argument()), params);
 		if (params_.type == params.type)
-		  break;
+			break;
 
 		cur.recordUndoInset(this);
 		string2params(to_utf8(cmd.argument()), params_);

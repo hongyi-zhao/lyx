@@ -526,8 +526,19 @@ endif()
 if(LYX_INSTALL_PREFIX)
 	set(CMAKE_INSTALL_PREFIX ${LYX_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
 	set(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+        set(LYX_INSTALL_PREFIX ${LYX_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
 endif()
-set(LYX_INSTALL_PREFIX ${LYX_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+         # see http://www.cmake.org/pipermail/cmake/2006-October/011559.html
+         if (UNIX)
+                 # use the default "/usr/local"
+                 # but respect the user-choice on the command-line
+                 set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "LyX default install prefix" FORCE)
+         endif()
+         if(WIN32)
+                 set(CMAKE_INSTALL_PREFIX LYX_INSTALLED CACHE PATH "LyX default install prefix" FORCE)
+         endif()
+ endif()
 
 if(UNIX)
   set(SYSTEM_DATADIR "${CMAKE_INSTALL_PREFIX}/share")
@@ -561,17 +572,6 @@ else()
 	set(PACKAGE ${PACKAGE_BASE})
 endif()
 
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-	# see http://www.cmake.org/pipermail/cmake/2006-October/011559.html
-	if (UNIX)
-		# use the default "/usr/local"
-		# but respect the user-choice on the command-line
-		set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "LyX default install prefix" FORCE)
-	endif()
-endif()
-if(WIN32)
-	set(CMAKE_INSTALL_PREFIX LYX_INSTALLED CACHE PATH "LyX default install prefix" FORCE)
-endif()
 if(IS_ABSOLUTE)
 	set(CMAKE_INSTALL_PREFIX_ABSOLUTE ${CMAKE_INSTALL_PREFIX})
 else()

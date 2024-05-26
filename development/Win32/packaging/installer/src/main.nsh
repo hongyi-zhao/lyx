@@ -629,7 +629,8 @@ Section -ProgramFiles
   File "${FILES_QT}\bin\platforms\qwindows.dll"
 
   SetOutPath "$INSTDIR\bin\styles"
-  File "${FILES_QT}\bin\styles\qwindowsvistastyle.dll"
+  File /nonfatal "${FILES_QT}\bin\styles\qwindowsvistastyle.dll"
+  File /nonfatal "${FILES_QT}\bin\styles\qmodernwindowsstyle.dll"
 
   # Resources
   SetOutPath "$INSTDIR\Resources"

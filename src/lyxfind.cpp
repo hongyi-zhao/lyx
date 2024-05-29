@@ -1309,7 +1309,12 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		}
 		// Even in ignore-format we have to remove "\text{}, \lyxmathsym{}" parts
 		while (regex_replace(t, t, "\\\\(text|lyxmathsym|ensuremath)\\{([^\\}]*)\\}", "$2"));
-		str = from_utf8(t);
+		// remove trailing space, it may have  been added by plaintext() in InsetMathHull.cpp
+		size_t t_size = t.size();
+		if (opt.ignoreformat && (t_size > 1) && (t[t_size-1] == ' '))
+			str =  from_utf8(t.substr(0, t_size-1));
+		else
+			str = from_utf8(t);
 	}
 	return str;
 }

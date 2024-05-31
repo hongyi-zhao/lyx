@@ -1276,6 +1276,16 @@ static string latexNamesToUtf8(docstring strIn, bool withformat)
 	return add;
 }
 
+static bool isPartOfMath(Paragraph const & par)
+{
+	if (par.size() < 1)
+		return false;
+	const Inset * isInset = par.getInset(par.size()-1);
+	if (isInset == nullptr)
+		return false;
+	return isInset->inMathed();
+}
+
 static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions const & opt)
 {
 	docstring str;
@@ -1298,6 +1308,8 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 			runparams.find_add_feature(OutputParams::SearchNonOutput);
 		}
 		string t("");
+		// Only check if the very last entry is inside math to remove trailing space
+		bool isMathInset = false;
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
 			Paragraph const & par = buffer.paragraphs().at(pit);
 			string add = latexNamesToUtf8(par.asString(pos_type(0), par.size(),
@@ -1306,12 +1318,13 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 			LYXERR(Debug::FINDVERBOSE, "Adding to search string: '"
 				<< add << "'");
 			t += add;
+			isMathInset = isPartOfMath(par);
 		}
 		// Even in ignore-format we have to remove "\text{}, \lyxmathsym{}" parts
 		while (regex_replace(t, t, "\\\\(text|lyxmathsym|ensuremath)\\{([^\\}]*)\\}", "$2"));
 		// remove trailing space, it may have  been added by plaintext() in InsetMathHull.cpp
 		size_t t_size = t.size();
-		if (opt.ignoreformat && (t_size > 1) && (t[t_size-1] == ' '))
+		if (opt.ignoreformat && (t_size > 1) && (t[t_size-1] == ' ') && isMathInset)
 			str =  from_utf8(t.substr(0, t_size-1));
 		else
 			str = from_utf8(t);
@@ -4098,9 +4111,16 @@ string MatchStringAdv::convertLF2Space(docstring const &s, bool ignore_format) c
 	return(t.str());
 }
 
+static string showPos(DocIterator const & cur)
+{
+	stringstream a;
+	a << "[idx(" << cur.idx() << "),pit(" << cur.pit() << "),pos(" << cur.pos() << "),depth(" << cur.depth() << ")]";
+	return(a.str());
+}
+
 docstring stringifyFromCursor(DocIterator const & cur, int len)
 {
-	LYXERR(Debug::FINDVERBOSE, "Stringifying with len=" << len << " from cursor at pos: " << cur);
+	LYXERR(Debug::FINDVERBOSE, "Stringifying with len=" << len << " from cursor at " << showPos(cur));
 	if (cur.inTexted()) {
 		Paragraph const & par = cur.paragraph();
 		// TODO what about searching beyond/across paragraph breaks ?
@@ -4122,8 +4142,8 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		if (ignoreFormats.getNonContent()) {
 			runparams.find_add_feature(OutputParams::SearchNonOutput);
 		}
-		LYXERR(Debug::FINDVERBOSE, "Stringifying with cur: "
-		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
+		LYXERR(Debug::FINDVERBOSE, "Stringifying with cur = "
+		       << showPos(cur) << ", to end: " << end);
 		docstring res = from_utf8(latexNamesToUtf8(par.asString(cur.pos(), end,
 								        option,
 								        &runparams), false));
@@ -4143,7 +4163,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Stringified math from pos(" << cur.pos() << ") len(" << len << "): " << res);
 		return res;
 	}
-	LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Don't know how to stringify from here: " << cur);
+	LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Don't know how to stringify from here: " << showPos(cur));
 	return docstring();
 }
 
@@ -4154,7 +4174,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 docstring latexifyFromCursor(DocIterator const & cur, int len)
 {
 	/*
-	LYXERR(Debug::FINDVERBOSE, "Latexifying with len=" << len << " from cursor at pos: " << cur);
+	LYXERR(Debug::FINDVERBOSE, "Latexifying with len=" << len << " from cursor at " << showPos(cur));
 	LYXERR(Debug::FINDVERBOSE, "  with cur.lastpost=" << cur.lastpos() << ", cur.lastrow="
 	       << cur.lastrow() << ", cur.lastcol=" << cur.lastcol());
 	*/
@@ -4221,7 +4241,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 		}
 		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Latexified math from pos(" << cur.pos() << ") len(" << len << "): " << ods.str());
 	} else {
-		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Don't know how to stringify from here: " << cur);
+		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Don't know how to stringify from here: " << showPos(cur));
 	}
 	return ods.str();
 }
@@ -4425,7 +4445,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 	cur = orig_cur;
 	while (!theApp()->longOperationCancelled() && cur) {
 		//(void) findAdvForwardInnermost(cur);
-		LYXERR(Debug::FINDVERBOSE, "findForwardAdv() cur: " << cur);
+		LYXERR(Debug::FINDVERBOSE, "findForwardAdv() cur: " << showPos(cur));
 		MatchResult mres = match(cur, -1, MatchStringAdv::MatchAnyPlace);
 		string msg = "Starting";
 		if (repeat > 0)
@@ -4444,7 +4464,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 				// This should exit nested insets, if any, or otherwise undefine the currsor.
 				cur.pos() = cur.lastpos();
 			}
-			LYXERR(Debug::FINDVERBOSE, "Advancing pos: cur=" << cur);
+			LYXERR(Debug::FINDVERBOSE, "Advancing pos: cur=" << showPos(cur));
 			cur.forwardPos();
 		}
 		else {	// match_len > 0
@@ -4542,7 +4562,7 @@ MatchResult findMostBackwards(DocIterator & cur, MatchStringAdv const & match, M
 	MatchResult mr = findAdvFinalize(tmp_cur, match, expected);
 	Inset & inset = cur.inset();
 	for (; cur != cur_begin; cur.backwardPos()) {
-		LYXERR(Debug::FINDVERBOSE, "findMostBackwards(): cur=" << cur);
+		LYXERR(Debug::FINDVERBOSE, "findMostBackwards(): cur=" << showPos(cur));
 		DocIterator new_cur = cur;
 		new_cur.backwardPos();
 		if (new_cur == cur || &new_cur.inset() != &inset
@@ -4553,7 +4573,7 @@ MatchResult findMostBackwards(DocIterator & cur, MatchStringAdv const & match, M
 			break;
 		mr = new_mr;
 	}
-	LYXERR(Debug::FINDVERBOSE, "findMostBackwards(): exiting with cur=" << cur);
+	LYXERR(Debug::FINDVERBOSE, "findMostBackwards(): exiting with cur=" << showPos(cur));
 	return mr;
 }
 
@@ -4579,12 +4599,12 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 				cur.pos() = cur.lastpos();
 			else
 				cur.pos() = cur_orig.pos();
-			LYXERR(Debug::FINDVERBOSE, "findBackAdv2: cur: " << cur);
+			LYXERR(Debug::FINDVERBOSE, "findBackAdv2: cur: " << showPos(cur));
 			DocIterator cur_prev_iter;
 			do {
 				found_match = match(cur, -1, MatchStringAdv::MatchFromStart);
 				LYXERR(Debug::FINDVERBOSE, "findBackAdv3: found_match="
-				       << (found_match.match_len > 0) << ", cur: " << cur);
+				       << (found_match.match_len > 0) << ", cur: " << showPos(cur));
 				if (found_match.match_len > 0) {
 					MatchResult found_mr = findMostBackwards(cur, match, found_match);
 					if (found_mr.pos_len > 0) {
@@ -4665,7 +4685,7 @@ static bool firstUppercase(Cursor const & cur)
 	char_type ch1, ch2;
 	pos_type pos = cur.selectionBegin().pos();
 	if (pos >= cur.lastpos() - 1) {
-		LYXERR(Debug::FINDVERBOSE, "No upper-case at cur: " << cur);
+		LYXERR(Debug::FINDVERBOSE, "No upper-case at cur: " << showPos(cur));
 		return false;
 	}
 	ch1 = cur.paragraph().getChar(pos);
@@ -4773,12 +4793,12 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 					repl_buffer.language(),
 					cur.getFont().language());
 		LYXERR(Debug::FINDVERBOSE, "Replacing by pasteParagraphList()ing repl_buffer");
-		LYXERR(Debug::FINDVERBOSE, "Before pasteParagraphList() cur=" << cur << endl);
+		LYXERR(Debug::FINDVERBOSE, "Before pasteParagraphList() cur=" << showPos(cur) << endl);
 		cap::pasteParagraphList(cur, repl_buffer.paragraphs(),
 					repl_buffer.params().documentClassPtr(),
 					repl_buffer.params().authors(),
 					bv->buffer().errorList("Paste"));
-		LYXERR(Debug::FINDVERBOSE, "After pasteParagraphList() cur=" << cur << endl);
+		LYXERR(Debug::FINDVERBOSE, "After pasteParagraphList() cur=" << showPos(cur) << endl);
 		sel_len = repl_buffer.paragraphs().begin()->size();
 	} else if (cur.inMathed()) {
 		odocstringstream ods;
@@ -4795,18 +4815,18 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		(void)regex_replace(to_utf8(repl_latex), s, "\\$(.*)\\$", "$1");
 		(void)regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
 		repl_latex = from_utf8(s);
-		LYXERR(Debug::FINDVERBOSE, "Replacing by insert()ing latex: '" << repl_latex << "' cur=" << cur << " with depth=" << cur.depth());
+		LYXERR(Debug::FINDVERBOSE, "Replacing by insert()ing latex: '" << repl_latex << "' cur=" << showPos(cur) );
 		MathData ar(cur.buffer());
 		asArray(repl_latex, ar, Parse::NORMAL);
 		cur.insert(ar);
 		sel_len = ar.size();
-		LYXERR(Debug::FINDVERBOSE, "After insert() cur=" << cur << " with depth: " << cur.depth() << " and len: " << sel_len);
+		LYXERR(Debug::FINDVERBOSE, "After insert() cur=" << showPos(cur) << " and len: " << sel_len);
 	}
 	if (cur.pos() >= sel_len)
 		cur.pos() -= sel_len;
 	else
 		cur.pos() = 0;
-	LYXERR(Debug::FINDVERBOSE, "After pos adj cur=" << cur << " with depth: " << cur.depth() << " and len: " << sel_len);
+	LYXERR(Debug::FINDVERBOSE, "After pos adj cur=" << showPos(cur) << " and len: " << sel_len);
 	bv->putSelectionAt(DocIterator(cur), sel_len, !opt.forward);
 	bv->processUpdateFlags(Update::Force);
 	return 1;
@@ -4926,7 +4946,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions & opt)
 		// Should never happen, maybe LASSERT() here?
 		pos_len = cur.lastpos() - cur.pos();
 	}
-	LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Putting selection at cur=" << cur << " with len: " << pos_len);
+	LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Putting selection at cur=" << showPos(cur) << " with len: " << pos_len);
 	bv->putSelectionAt(cur, pos_len, !opt.forward);
 
 	return true;

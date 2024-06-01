@@ -892,8 +892,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		textLayoutModule->lspacingLE));
 	textLayoutModule->indentLE->setValidator(new LengthValidator(
 		textLayoutModule->indentLE, false));
-	textLayoutModule->skipLE->setValidator(new LengthValidator(
-		textLayoutModule->skipLE, false));
+	// parskip accepts glue length
+	LengthValidator * skipLEValidator = new LengthValidator(textLayoutModule->skipLE, false);
+	skipLEValidator->setBottom(GlueLength());
+	textLayoutModule->skipLE->setValidator(skipLEValidator);
 
 	textLayoutModule->indentCO->addItem(qt_("Default"), toqstr("default"));
 	textLayoutModule->indentCO->addItem(qt_("Custom"), toqstr("custom"));

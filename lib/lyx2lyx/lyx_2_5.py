@@ -26,10 +26,10 @@ from datetime import (datetime, date, time)
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import (find_end_of_inset, find_end_of_layout, find_token, find_re)
+from parser_tools import (find_end_of_inset, find_end_of_layout, find_token, find_re, get_value)
 #    count_pars_in_inset, del_complete_lines, del_token, find_end_of,
 #    find_token_backwards, find_token_exact, get_bool_value,
-#    get_containing_inset, get_containing_layout, get_option_value, get_value,
+#    get_containing_inset, get_containing_layout, get_option_value,
 #    get_quoted_value, is_in_inset,
 #    del_value, 
 #    find_complete_lines,
@@ -37,9 +37,10 @@ from parser_tools import (find_end_of_inset, find_end_of_layout, find_token, fin
 #    set_bool_value
 #    find_tokens, check_token
 
-#from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble, insert_to_preamble, lyx2latex,
-#                           revert_language, revert_flex_inset, str2bool)
-#  revert_font_attrs, latex_length
+from lyx2lyx_tools import (add_to_preamble, latex_length)
+#  put_cmd_in_ert, insert_to_preamble, lyx2latex,
+#  revert_language, revert_flex_inset, str2bool,
+#  revert_font_attrs,
 #  get_ert, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio
 
@@ -167,17 +168,44 @@ def revert_url_escapes2(document):
             document.body[bs] = "\\backslash\\backslash"
             i = bs + 1
 
+
+def revert_glue_parskip(document):
+    """Revert parskip with glue length to user preamble."""
+
+    i = find_token(document.header, "\\paragraph_separation skip", 0)
+    if i == -1:
+        return
+
+    j = find_token(document.header, "\\defskip", 0)
+    if j == -1:
+        document.warning("Malformed LyX document! Missing \\defskip.")
+        return
+
+    val = get_value(document.header, "\\defskip", j)
+
+    if val.find("+") == -1 and val.find("-", 1) == -1:
+        # not a glue length
+        return
+
+    add_to_preamble(document, ["\\usepackage[skip={" + latex_length(val)[1] + "}]{parskip}"])
+
+    document.header[i] = "\\paragraph_separation indent"
+    document.header[j] = "\\paragraph_indentation default"
+
+
 ##
 # Conversion hub
 #
 
 supported_versions = ["2.5.0", "2.5"]
 convert = [
-           [621, [convert_url_escapes, convert_url_escapes2]]
+           [621, [convert_url_escapes, convert_url_escapes2]],
+           [622, []]
           ]
 
 
-revert =  [[620, [revert_url_escapes2, revert_url_escapes]]
+revert =  [[621, [revert_glue_parskip]],
+           [620, [revert_url_escapes2, revert_url_escapes]]
           ]
 
 

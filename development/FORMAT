@@ -7,6 +7,14 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2024-06-01 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 622: Allow glue length (skip) in parskip setting.
+
+2024-05-13 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 621: Escape some special chars (#, %, \) in URL
+	  with hyperref. Previous to this change, the user had to escape this
+	  themselves.
+
 2023-09-29 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 620: Add InsetBox "default" framecolor ("foreground"
 	  rather than "black" in GUI). This aligns better with dark mode.

@@ -46,6 +46,7 @@ extern std::string rgbcolor2code(std::string const & name);
 
 /// in text.cpp
 std::string translate_len(std::string const &);
+bool is_glue_length(std::string & length);
 
 void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
 		Context & context, std::string const & rdelim = "",

@@ -2189,8 +2189,13 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		} else {
 			// load parskip package with required options
 			string psopts;
-			if (!psopt.empty())
-				psopts = "skip=" + psopt;
+			if (!psopt.empty()) {
+				if (contains(psopt, ' '))
+					// glue length has spaces: embrace
+					psopts = "skip={" + psopt + "}";
+				else
+					psopts = "skip=" + psopt;
+			}
 			string const xpsopts = getPackageOptions("parskip");
 			if (!xpsopts.empty()) {
 				if (!psopts.empty())

@@ -608,6 +608,32 @@ string translate_len(string const & length)
 	return length;
 }
 
+bool is_glue_length(string & length)
+{
+	// check for glue lengths
+	bool is_gluelength = false;
+	string gluelength = length;
+	string::size_type i = length.find(" minus");
+	if (i == string::npos) {
+		i = length.find(" plus");
+		if (i != string::npos)
+			is_gluelength = true;
+	} else
+		is_gluelength = true;
+	// if yes transform "9xx minus 8yy plus 7zz"
+	// to "9xx-8yy+7zz"
+	if (is_gluelength) {
+		i = gluelength.find(" minus");
+		if (i != string::npos)
+			gluelength.replace(i, 7, "-");
+		i = gluelength.find(" plus");
+		if (i != string::npos)
+			gluelength.replace(i, 6, "+");
+		length = gluelength;
+	}
+	return is_gluelength;
+}
+
 
 namespace {
 
@@ -6039,25 +6065,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 
 			// check for glue lengths
-			bool is_gluelength = false;
 			string gluelength = length;
-			string::size_type i = length.find(" minus");
-			if (i == string::npos) {
-				i = length.find(" plus");
-				if (i != string::npos)
-					is_gluelength = true;
-			} else
-				is_gluelength = true;
-			// if yes transform "9xx minus 8yy plus 7zz"
-			// to "9xx-8yy+7zz"
-			if (is_gluelength) {
-				i = gluelength.find(" minus");
-				if (i != string::npos)
-					gluelength.replace(i, 7, "-");
-				i = gluelength.find(" plus");
-				if (i != string::npos)
-					gluelength.replace(i, 6, "+");
-			}
+			bool is_gluelength = is_glue_length(gluelength);
 
 			if (t.cs()[0] == 'h' && (known_unit || known_hspace || is_gluelength)) {
 				// Literal horizontal length or known variable

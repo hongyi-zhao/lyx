@@ -1745,8 +1745,13 @@ void Preamble::handle_package(Parser &p, string const & name,
 				h_defskip = "bigskip";
 			else if (opts == "skip=\\baselineskip")
 				h_defskip = "fullline";
-			else
-				h_defskip = "opts";
+			else {
+				// get value, unbraced
+				string length = rtrim(ltrim(token(opts, '=', 1), "{"), "}");
+				// transform glue length if we have one
+				is_glue_length(length);
+				h_defskip = length;
+			}
 			h_paragraph_separation = "skip";
 		}
 	}

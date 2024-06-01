@@ -567,7 +567,7 @@ GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
 	  command_execute_(false), minibuffer_focus_(false), word_count_enabled_(true),
 	  char_count_enabled_(true),  char_nb_count_enabled_(false),
-	  toolbarsMovable_(true), devel_mode_(false)
+	  toolbarsMovable_(false), devel_mode_(false)
 {
 	connect(this, SIGNAL(bufferViewChanged()),
 	        this, SLOT(onBufferViewChanged()));
@@ -1200,7 +1200,7 @@ void GuiView::initToolbar(string const & name)
 	if (visibility & Toolbars::ON)
 		tb->setVisible(true);
 
-	tb->setMovable(true);
+	tb->setMovable(false);
 }
 
 

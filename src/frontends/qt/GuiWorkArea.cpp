@@ -1958,6 +1958,75 @@ void TabWorkArea::closeCurrentBuffer()
 }
 
 
+bool TabWorkArea::closeTabsToRight()
+{
+	if (clicked_tab_ == -1)
+		return false;
+
+	int const initialCurrentIndex = currentIndex();
+
+	while (count() - 1 > clicked_tab_) {
+		GuiWorkArea * wa = workArea(count() - 1);
+		LASSERT(wa, return false);
+		if (!wa->view().closeWorkArea(wa)) {
+			// closing cancelled, if possible, reset initial current tab index
+			if (initialCurrentIndex < count())
+				setCurrentIndex(initialCurrentIndex);
+			else
+				setCurrentIndex(clicked_tab_);
+			return false;
+		}
+	}
+	return true;
+}
+
+
+bool TabWorkArea::openEnclosingFolder()
+{
+
+	if (clicked_tab_ == -1)
+		return false;
+
+	Buffer const & buf = workArea(clicked_tab_)->bufferView().buffer();
+	showDirectory(buf.fileName().onlyPath());
+	return true;
+}
+
+
+bool TabWorkArea::closeTabsToLeft()
+{
+	if (clicked_tab_ == -1)
+		return false;
+
+	int const initialCurrentIndex = currentIndex();
+
+	int n = clicked_tab_;
+
+	for (int i = 0; i < n; ++i) {
+		GuiWorkArea * wa = workArea(0);
+		LASSERT(wa, return false);
+		if (!wa->view().closeWorkArea(wa)) {
+			// closing cancelled, if possible, reset initial current tab index
+			if (initialCurrentIndex - i >= 0)
+				setCurrentIndex(initialCurrentIndex - i);
+			else
+				setCurrentIndex(clicked_tab_ - i);
+			return false;
+		}
+	}
+	return true;
+}
+
+
+void TabWorkArea::closeOtherTabs()
+{
+	if (clicked_tab_ == -1)
+		return;
+
+	closeTabsToRight() && closeTabsToLeft();
+}
+
+
 void TabWorkArea::hideCurrentTab()
 {
 	GuiWorkArea * wa;
@@ -1982,6 +2051,22 @@ void TabWorkArea::closeTab(int index)
 		LASSERT(wa, return);
 	}
 	wa->view().closeWorkArea(wa);
+}
+
+
+void TabWorkArea::moveToStartCurrentTab()
+{
+	if (clicked_tab_ == -1)
+		return;
+	tabBar()->moveTab(clicked_tab_, 0);
+}
+
+
+void TabWorkArea::moveToEndCurrentTab()
+{
+	if (clicked_tab_ == -1)
+		return;
+	tabBar()->moveTab(clicked_tab_, count() - 1);
 }
 
 
@@ -2232,17 +2317,40 @@ void TabWorkArea::showContextMenu(const QPoint & pos)
 
 	// show tab popup
 	QMenu popup;
-	popup.addAction(QIcon(getPixmap("images/", "hidetab", "svgz,png")),
-		qt_("&Hide Tab"), this, SLOT(hideCurrentTab()));
+	popup.addAction(qt_("&Hide Tab"), this, SLOT(hideCurrentTab()));
 
 	// we want to show the 'close' option only if this is not a child buffer.
 	Buffer const & buf = wa->bufferView().buffer();
 	if (!buf.parent())
-		popup.addAction(QIcon(getPixmap("images/", "closetab", "svgz,png")),
-			qt_("&Close Tab"), this, SLOT(closeCurrentBuffer()));
+		popup.addAction(qt_("&Close Tab"), this, SLOT(closeCurrentBuffer()));
+
+	popup.addSeparator();
+
+	QAction * closeOther = popup.addAction(qt_("Close &Other Tabs"), this, SLOT(closeOtherTabs()));
+	closeOther->setEnabled(clicked_tab_ != 0 || hasTabsToRight(clicked_tab_));
+	QAction * closeRight = popup.addAction(qt_("Close Tabs to the &Right"), this, SLOT(closeTabsToRight()));
+	closeRight->setEnabled(hasTabsToRight(clicked_tab_));
+	QAction * closeLeft = popup.addAction(qt_("Close Tabs to the &Left"), this, SLOT(closeTabsToLeft()));
+	closeLeft->setEnabled(clicked_tab_ != 0);
+
+	popup.addSeparator();
+
+	QAction * moveStart = popup.addAction(qt_("Move Tab to &Start"), this, SLOT(moveToStartCurrentTab()));
+	moveStart->setEnabled(closeLeft->isEnabled());
+	QAction * moveEnd = popup.addAction(qt_("Move Tab to &End"), this, SLOT(moveToEndCurrentTab()));
+	moveEnd->setEnabled(closeRight->isEnabled());
+
+	popup.addSeparator();
+
+	popup.addAction(qt_("Open Enclosing &Folder"), this, SLOT(openEnclosingFolder()));
+
 	popup.exec(tabBar()->mapToGlobal(pos));
 
 	clicked_tab_ = -1;
+}
+
+bool TabWorkArea::hasTabsToRight(int index) {
+	return count() - 1 > index;
 }
 
 

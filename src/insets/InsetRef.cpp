@@ -534,8 +534,10 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 	if (use_formatted_ref || label.size() > maxLabelChars) {
 		tooltip_ = label;
 		support::truncateWithEllipsis(label, maxLabelChars);
-	} else
-		tooltip_ = from_ascii("");
+	} else {
+		// put cross-reference value into tooltip
+		tooltip_ = displayString(ref, cmd);
+	}
 
 	screen_label_ = label;
 	// If use_formatted_ref is active, this will be overwritten in addToToc.

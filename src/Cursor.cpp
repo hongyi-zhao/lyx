@@ -903,7 +903,8 @@ void Cursor::pop()
 void Cursor::push(Inset & inset)
 {
 	push_back(CursorSlice(inset));
-	inset.setBuffer(*buffer());
+	// See bug #13050
+	// inset.setBuffer(*buffer());
 }
 
 

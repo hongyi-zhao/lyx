@@ -5240,8 +5240,7 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 	par.itemdepth = getItemDepth(it);
 
 	if (layout.margintype == MARGIN_MANUAL) {
-		if (par.params().labelWidthString().empty())
-			par.params().labelWidthString(par.expandLabel(layout, bp));
+		// nothing to do: empty label width string is fine.
 	} else if (layout.latextype == LATEX_BIB_ENVIRONMENT) {
 		// we do not need to do anything here, since the empty case is
 		// handled during export.

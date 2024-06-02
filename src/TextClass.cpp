@@ -59,7 +59,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 104; // rkh: RefFormat for counters
+int const LAYOUT_FORMAT = 105; // spitz: ParskipHalf and ParskipFull class options
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -135,8 +135,8 @@ TextClass::TextClass()
 	  opt_enginetype_("authoryear|numerical"), opt_fontsize_("10|11|12"),
 	  opt_pagesize_("default|a4|a5|b5|letter|legal|executive"),
 	  opt_pagestyle_("empty|plain|headings|fancy"), fontsize_format_("$$spt"), pagesize_("default"),
-	  pagesize_format_("$$spaper"), pagestyle_("default"), tablestyle_("default"),
-	  docbookroot_("article"), docbookforceabstract_(false),
+	  pagesize_format_("$$spaper"), pagestyle_("default"), parskip_full_(""), parskip_half_(""),
+	  tablestyle_("default"), docbookroot_("article"), docbookforceabstract_(false),
 	  columns_(1), sides_(OneSide), secnumdepth_(3), tocdepth_(3), outputType_(LATEX),
 	  outputFormat_("latex"), has_output_format_(false), defaultfont_(sane_font), 
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
@@ -1027,6 +1027,8 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		CO_PAGESIZE,
 		CO_PAGESIZE_FORMAT,
 		CO_PAGESTYLE,
+		CO_PARSKIP_FULL,
+		CO_PARSKIP_HALF,
 		CO_OTHER,
 		CO_END
 	};
@@ -1038,7 +1040,9 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		{"other",     CO_OTHER },
 		{"pagesize",  CO_PAGESIZE },
 		{"pagesizeformat", CO_PAGESIZE_FORMAT },
-		{"pagestyle", CO_PAGESTYLE }
+		{"pagestyle", CO_PAGESTYLE },
+		{"parskipfull", CO_PARSKIP_FULL },
+		{"parskiphalf", CO_PARSKIP_HALF }
 	};
 
 	lexrc.pushTable(classOptionsTags);
@@ -1072,6 +1076,14 @@ void TextClass::readClassOptions(Lexer & lexrc)
 		case CO_PAGESTYLE:
 			lexrc.next();
 			opt_pagestyle_ = rtrim(lexrc.getString());
+			break;
+		case CO_PARSKIP_FULL:
+			lexrc.next();
+			parskip_full_ = rtrim(lexrc.getString());
+			break;
+		case CO_PARSKIP_HALF:
+			lexrc.next();
+			parskip_half_ = rtrim(lexrc.getString());
 			break;
 		case CO_OTHER:
 			lexrc.next();

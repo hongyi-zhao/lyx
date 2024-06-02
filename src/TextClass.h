@@ -288,6 +288,10 @@ protected:
 	std::string pagesize_format_;
 	///
 	std::string pagestyle_;
+	/// Option for full parskip
+	std::string parskip_full_;
+	/// Option for half parskip
+	std::string parskip_half_;
 	///
 	std::string tablestyle_;
 	///
@@ -479,6 +483,10 @@ public:
 	std::string const & pagesize() const { return pagesize_; }
 	///
 	std::string const & pagesizeformat() const { return pagesize_format_; }
+	///
+	std::string const & fullparskip() const { return parskip_full_; }
+	///
+	std::string const & halfparskip() const { return parskip_half_; }
 	///
 	std::string const & pagestyle() const { return pagestyle_; }
 	///

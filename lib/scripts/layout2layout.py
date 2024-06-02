@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 104
+currentFormat = 105
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -351,6 +351,9 @@ currentFormat = 104
 # Incremented to format 104, 28 July 2023 by rikiheck
 # RefFormat for counters and PrettyFormat for floats
 
+# Incremented to format 105, 2 June 2024 by spitz
+# ParskipFull and ParskipHalf class options
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -598,7 +601,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 101 <= format <= 103:
+        if 101 <= format <= 104:
             # nothing to do.
             i += 1
             continue

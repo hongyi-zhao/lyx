@@ -10755,6 +10755,86 @@ status collapsed
  getrennt.
 \end_layout
 
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ParskipFull
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Falls die Dokumentklasse eine Option zum Setzen eines ganzzeiligen Absatzabstandes bietet (bspw.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+parskip=full
+\end_layout
+
+\end_inset
+
+),
+ geben Sie diese hier an.
+ Dann wird statt des Pakets 
+\emph on
+parskip
+\emph default
+ diese Option verwendet.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ParskipHalf
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Falls die Dokumentklasse eine Option zum Setzen eines halbzeiligen Absatzabstandes bietet (bspw.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+parskip=half
+\end_layout
+
+\end_inset
+
+),
+ geben Sie diese hier an.
+ Dann wird statt des Pakets 
+\emph on
+parskip
+\emph default
+ diese Option verwendet.
+\end_layout
+
 \begin_layout Standard
 Der Abschnitt 
 \begin_inset Flex Code

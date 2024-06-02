@@ -8,7 +8,8 @@
 # Labeling is now used also in non-KOMA classes
 
 
-Format 104
+Format 105
+
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
@@ -20,6 +21,8 @@ ClassOptions
 	FontSizeFormat       fontsize=$$s
 	PageSize             a0|a1|a2|a3|a4|a5|a6|b0|b1|b2|b3|b4|b5|b6|c0|c1|c2|c3|c4|c5|c6|executive|legal|letter
 	PageSizeFormat       paper=$$s
+	ParskipHalf          parskip=half
+	ParskipFull          parskip=full
 End
 
 Style Standard

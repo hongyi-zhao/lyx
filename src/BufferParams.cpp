@@ -1831,6 +1831,13 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	case DEFAULT:
 		break;
 	}
+	
+	if (paragraph_separation) {
+		if (!tclass.halfparskip().empty() && getDefSkip().kind() == VSpace::HALFLINE)
+			clsoptions << tclass.halfparskip() << ",";
+		if (!tclass.fullparskip().empty() && getDefSkip().kind() == VSpace::FULLLINE)
+			clsoptions << tclass.fullparskip() << ",";
+	}
 
 	// language should be a parameter to \documentclass
 	if (language->babel() == "hebrew"
@@ -2154,6 +2161,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		// when skip separation
 		string psopt;
 		bool default_skip = false;
+		bool by_class_option = false;
 		switch (getDefSkip().kind()) {
 		case VSpace::SMALLSKIP:
 			psopt = "\\smallskipamount";
@@ -2167,9 +2175,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		case VSpace::HALFLINE:
 			// default (no option)
 			default_skip = true;
+			by_class_option = !tclass.halfparskip().empty();
 			break;
 		case VSpace::FULLLINE:
 			psopt = "\\baselineskip";
+			by_class_option = !tclass.fullparskip().empty();
 			break;
 		case VSpace::LENGTH:
 			psopt = getDefSkip().length().asLatexString();
@@ -2186,7 +2196,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 				// explicitly reset default (might have been changed
 				// in a class or package)
 				os << "\\parskip=.5\\baselineskip plus 2pt\\relax\n";
-		} else {
+		} else if (!by_class_option) {
 			// load parskip package with required options
 			string psopts;
 			if (!psopt.empty()) {

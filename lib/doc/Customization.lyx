@@ -12201,6 +12201,108 @@ status collapsed
 \end_inset
 
 .
+\change_inserted -712698321 1717320820
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1717321090
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1717320831
+ParskipFull
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1717320820
+string
+\end_layout
+
+\end_inset
+
+] If the class has an option to set a full line paragraph skip,
+ specify it here (e.g.,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1717320884
+parskip=full
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+ This then outputs the option rather than using the 
+\emph on
+parskip
+\emph default
+ package.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1717321094
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1717320913
+ParskipHalf
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1717320909
+string
+\end_layout
+
+\end_inset
+
+] If the class has an option to set a half line paragraph skip,
+ specify it here (e.g.,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1717320920
+parskip=half
+\end_layout
+
+\end_inset
+
+).
+ This then outputs the option rather than using the 
+\emph on
+parskip
+\emph default
+ package.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -20899,6 +21001,8 @@ status collapsed
 
 \change_inserted -712698321 1715685023
 -1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20944,6 +21048,8 @@ status collapsed
 
 \change_inserted -712698321 1715685031
 1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20979,6 +21085,8 @@ status collapsed
 
 \change_inserted -712698321 1715685008
 0
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20994,6 +21102,8 @@ status collapsed
 
 \backslash
 cprotect
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -21007,6 +21117,8 @@ status collapsed
 
 \change_inserted -712698321 1715685008
 -1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -21021,6 +21133,8 @@ status collapsed
 
 \backslash
 cprotect
+\change_unchanged
+
 \end_layout
 
 \end_inset

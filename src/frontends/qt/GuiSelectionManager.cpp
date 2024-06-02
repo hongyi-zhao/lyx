@@ -285,16 +285,25 @@ void GuiSelectionManager::addPB_clicked()
 		return;
 
 	QModelIndex const idxToAdd = selIdx.first();
-	int const srows = selectedModel->rowCount();
+	// Add item after selected item
+	int const currentRow = selectedLV->currentIndex().row();
+	int const srows = currentRow == -1 ? selectedModel->rowCount() :
+	                                     currentRow + 1;
 
 	QMap<int, QVariant> qm = availableModel->itemData(idxToAdd);
-	insertRowToSelected(srows, qm);
+	bool const isAdded = insertRowToSelected(srows, qm);
 
 	selectionChanged(); //signal
-	
+
 	QModelIndex const idx = selectedLV->currentIndex();
 	if (idx.isValid())
 		selectedLV->setCurrentIndex(idx);
+
+	// select and show last added item
+	if (isAdded) {
+		QModelIndex idx = selectedModel->index(srows, 0);
+		selectedLV->setCurrentIndex(idx);
+	}
 
 	updateHook();
 }

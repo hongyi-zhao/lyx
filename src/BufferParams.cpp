@@ -1594,7 +1594,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	features.require(documentClass().required());
 
 	if (columns > 1 && language->rightToLeft()
-	    && !features.runparams().isFullUnicode())
+	    && !features.runparams().isFullUnicode()
+	    && language->babel() != "hebrew")
 		features.require("rtloutputdblcol");
 
 	if (output_changes) {

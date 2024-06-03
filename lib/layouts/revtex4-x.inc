@@ -13,7 +13,7 @@
 #     - add support for \onlinecite{}
 
 
-Format 105
+Format 104
 
 Input stdclass.inc
 Input numrevtex.inc

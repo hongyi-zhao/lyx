@@ -12,7 +12,7 @@
 #Copyright Peter R. Wilson.
 #Released under the LaTeX Project Public License.
 
-Format 105
+Format 104
 
 Style Hanging
   LatexType Environment

@@ -6,7 +6,7 @@
 
 # Author: Joel A. Kulesza (jkulesza@gmail.com)
 
-Format 105
+Format 104
 
 InsetLayout Flex:Subequations
   LyxType               custom

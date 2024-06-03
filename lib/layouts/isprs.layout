@@ -9,7 +9,7 @@
 # Heavily modifed and enhanced by serveral developers.
 
 # Input general definitions
-Format 105
+Format 104
 Input stdclass.inc
 Sides			2
 Columns			2

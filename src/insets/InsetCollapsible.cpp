@@ -762,7 +762,7 @@ string InsetCollapsible::contextMenu(BufferView const & bv, int x,
 	if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)
 		return context_menu;
 
-	return it_context_menu;
+	return context_menu + ";" + it_context_menu;
 }
 
 

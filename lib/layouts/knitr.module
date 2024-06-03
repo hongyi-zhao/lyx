@@ -6,7 +6,7 @@
 #DescriptionEnd
 #Excludes: lilypond | sweave
 
-Format 105
+Format 104
 
 Input litinsets.inc
 

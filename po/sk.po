@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-05-17 11:50+0200\n"
-"PO-Revision-Date: 2024-05-17 10:08+0000\n"
+"POT-Creation-Date: 2024-06-03 08:10+0200\n"
+"PO-Revision-Date: 2024-06-03 06:54+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -31857,20 +31857,20 @@ msgstr "Manuály"
 #: src/frontends/qt/FindAndReplace.cpp:301
 #, c-format
 msgid ""
-"%1$s: the end was reached while searching forward.\n"
-"Continue searching from the beginning?"
+"The end was reached while searching forward.\n"
+"Continue searching from the beginning? (Scope:%1$s)"
 msgstr ""
-"%1$s: dosiahol som koniec hľadajúc dopredu.\n"
-"Pokračovať hľadaním od začiatku?"
+"Dosiahol som koniec hľadajúc dopredu.\n"
+"Pokračovať hľadaním od začiatku? (Rozsah:%1$s)"
 
 #: src/frontends/qt/FindAndReplace.cpp:304
 #, c-format
 msgid ""
-"%1$s: the beginning was reached while searching backward.\n"
-"Continue searching from the end?"
+"The beginning was reached while searching backward.\n"
+"Continue searching from the end? (Scope:%1$s)"
 msgstr ""
-"%1$s: Dosiahol som začiatok hľadajúc spätne.\n"
-"Pokračovať hľadaním od konca?"
+"Dosiahol som začiatok hľadajúc spätne.\n"
+"Pokračovať hľadaním od konca? (Rozsah:%1$s)"
 
 #: src/frontends/qt/FindAndReplace.cpp:327
 msgid "Advanced search in progress (press ESC to cancel) . . ."
@@ -35913,6 +35913,30 @@ msgstr "Kartu &skryť"
 #: src/frontends/qt/GuiWorkArea.cpp:2153
 msgid "&Close Tab"
 msgstr "Kartu &zavrieť"
+
+#: src/frontends/qt/GuiWorkArea.cpp:2329
+msgid "Close &Other Tabs"
+msgstr "Zatvoriť všetky &iné karty"
+
+#: src/frontends/qt/GuiWorkArea.cpp:2331
+msgid "Close Tabs to the &Right"
+msgstr "Zatvoriť karty v&pravo"
+
+#: src/frontends/qt/GuiWorkArea.cpp:2333
+msgid "Close Tabs to the &Left"
+msgstr "Zatvoriť karty v&ľavo"
+
+#: src/frontends/qt/GuiWorkArea.cpp:2338
+msgid "Move Tab to &Start"
+msgstr "Presunúť kartu na z&ačiatok"
+
+#: src/frontends/qt/GuiWorkArea.cpp:2340
+msgid "Move Tab to &End"
+msgstr "Presunúť kartu na &koniec"
+
+#: src/frontends/qt/GuiWorkArea.cpp:2345
+msgid "Open Enclosing &Folder"
+msgstr "&Otvoriť uzatvárajúci adresár"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2193
 msgid "<b>The file %1 changed on disk.</b>"

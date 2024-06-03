@@ -53,7 +53,7 @@
 #       - in DocBook, the table notes are not supported at all (move the remarks
 #         into the table cells instead of outputting tablenotemark in the cells?)
 
-Format 104
+Format 105
 
 Input aastex.layout
 

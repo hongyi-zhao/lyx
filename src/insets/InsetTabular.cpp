@@ -808,6 +808,8 @@ void Tabular::deleteRow(row_type const row, bool const force)
 	if (nrows() == 1)
 		return;
 
+	LASSERT(row < nrows(), return);
+
 	// If we are in change tracking mode, and the row is not marked
 	// as inserted by the same author, we do not delete it, but mark
 	// it deleted.
@@ -975,6 +977,8 @@ void Tabular::deleteColumn(col_type const col, bool const force)
 	// Not allowed to delete last column
 	if (ncols() == 1)
 		return;
+
+	LASSERT(col < ncols(), return);
 
 	// If we are in change tracking mode, and the column is not marked
 	// as inserted by the same author, we do not delete it, but mark
@@ -6779,8 +6783,11 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			}
 		}
 
-		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+		for (row_type r = sel_row_end; r >= sel_row_start; --r) {
 			tabular.deleteRow(r);
+			if (r == 0)
+				break;
+		}
 		if (sel_row_start >= tabular.nrows())
 			--sel_row_start;
 		cur.idx() = tabular.cellIndex(sel_row_start, column);
@@ -6802,8 +6809,11 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 					tabular.leftLine(tabular.cellIndex(r, 0)));
 		}
 
-		for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+		for (col_type c = sel_col_end; c >= sel_col_start; --c) {
 			tabular.deleteColumn(c);
+			if (c == 0)
+				break;
+		}
 		if (sel_col_start >= tabular.ncols())
 			--sel_col_start;
 		cur.idx() = tabular.cellIndex(row, sel_col_start);

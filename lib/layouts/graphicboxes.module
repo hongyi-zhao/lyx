@@ -7,7 +7,7 @@
 #Author: Jürgen Spitzmüller <spitz@lyx.org>
 #        Uwe Stöhr <uwestoehr@lyx.org>
 
-Format 104
+Format 105
 
 InsetLayout Flex:Reflectbox
 	LyXType		custom

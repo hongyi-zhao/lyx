@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 104
+Format 105
 
 Provides stdinsets 1
 
@@ -375,20 +375,7 @@ InsetLayout Listings
 	NeedCProtect          true
 	RefPrefix             lst
 	EditExternal          true
-	HTMLTag               pre
-	HTMLStyle
-		div.float-listings {
-			border: 2px solid black;
-			padding: 1ex;
-			margin: 1ex;
-		}
-		div.listings-caption {
-			text-align: center;
-			border: 2px solid black;
-			padding: 1ex;
-			margin: 1ex;
-	}
-	EndHTMLStyle
+	HTMLTag               code
 	DocBookTag            programlisting
 End
 

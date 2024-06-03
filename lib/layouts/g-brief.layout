@@ -4,7 +4,7 @@
 # Letter textclass definition file.
 # Author : Thomas Hartkens <thomas@hartkens.de>
 
-Format 104
+Format 105
 Input stdinsets.inc
 Input stdfloats.inc
 Input stdcounters.inc

@@ -1831,7 +1831,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	case DEFAULT:
 		break;
 	}
-	
+
 	if (paragraph_separation) {
 		if (!tclass.halfparskip().empty() && getDefSkip().kind() == VSpace::HALFLINE)
 			clsoptions << tclass.halfparskip() << ",";

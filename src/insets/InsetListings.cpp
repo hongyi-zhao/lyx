@@ -440,9 +440,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 docstring InsetListings::xhtml(XMLStream & os, OutputParams const & rp) const
 {
 	bool const isInline = params().isInline();
-	if (isInline)
-		os << xml::CompTag("br");
-	else {
+	if (!isInline) {
 		os << xml::StartTag("div", "class='float-listings'");
 		docstring caption = getCaptionHTML(rp);
 		if (!caption.empty())
@@ -466,9 +464,7 @@ docstring InsetListings::xhtml(XMLStream & os, OutputParams const & rp) const
 	docstring def = InsetText::insetAsXHTML(os, newrp, InsetText::JustText);
 	os << xml::EndTag(tag);
 
-	if (isInline) {
-		os << xml::CompTag("br");
-	} else {
+	if (!isInline) {
 		if (!def.empty()) {
 			os << '\n' << def;
 		}

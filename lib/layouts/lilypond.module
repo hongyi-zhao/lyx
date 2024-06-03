@@ -9,7 +9,7 @@
 
 # Author: Julien Rioux <jrioux@lyx.org>
 
-Format 104
+Format 105
 OutputFormat           lilypond-book
 
 InsetLayout "Flex:LilyPond"

@@ -298,11 +298,11 @@ docstring getQuestionString(FindAndReplaceOptions const & opt)
 		break;
 	}
 	docstring message = opt.forward ?
-		bformat(_("%1$s: the end was reached while searching forward.\n"
-			  "Continue searching from the beginning?"),
+		bformat(_("The end was reached while searching forward.\n"
+			  "Continue searching from the beginning? (Scope:%1$s)"),
 			scope) :
-		bformat(_("%1$s: the beginning was reached while searching backward.\n"
-			  "Continue searching from the end?"),
+		bformat(_("The beginning was reached while searching backward.\n"
+			  "Continue searching from the end? (Scope:%1$s)"),
 			scope);
 
 	return message;

@@ -12,7 +12,7 @@
 
 # Author: Paul Rubin <rubin@msu.edu> (hacked from Richard Kimberly Heck's various modules)
 
-Format 104
+Format 105
 
 Input theorems-counters-bytype.inc
 

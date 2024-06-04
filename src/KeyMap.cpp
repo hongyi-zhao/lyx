@@ -108,29 +108,28 @@ void KeyMap::bind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 	// check if key is already there
 	// FIXME perf: Profiling shows that this is responsible of 99% of the
 	// cost of GuiPrefs::applyView()
-	Table::iterator end = table.end();
-	for (Table::iterator it = table.begin(); it != end; ++it) {
-		if (code == it->code
-		    && mod1 == it->mod.first
-		    && mod2 == it->mod.second) {
+	for (auto & key : table) {
+		if (code == key.code
+		    && mod1 == key.mod.first
+		    && mod2 == key.mod.second) {
 			// overwrite binding
 			if (r + 1 == seq->length()) {
 				LYXERR(Debug::KBMAP, "Warning: New binding for '"
 					<< to_utf8(seq->print(KeySequence::Portable))
 					<< "' is overriding old binding...");
-				if (it->prefixes)
-					it->prefixes.reset();
-				it->func = func;
-				it->func.setOrigin(FuncRequest::KEYBOARD);
+				if (key.prefixes)
+					key.prefixes.reset();
+				key.func = func;
+				key.func.setOrigin(FuncRequest::KEYBOARD);
 				return;
-			} else if (!it->prefixes) {
+			} else if (!key.prefixes) {
 				lyxerr << "Error: New binding for '"
 				       << to_utf8(seq->print(KeySequence::Portable))
 				       << "' is overriding old binding..."
 				       << endl;
 				return;
 			} else {
-				it->prefixes->bind(seq, func, r + 1);
+				key.prefixes->bind(seq, func, r + 1);
 				return;
 			}
 		}
@@ -197,15 +196,14 @@ FuncRequest KeyMap::getBinding(KeySequence const & seq, unsigned int r)
 	KeyModifier const mod2 = seq.modifiers[r].second;
 
 	// check if key is already there
-	Table::iterator end = table.end();
-	for (Table::iterator it = table.begin(); it != end; ++it) {
-		if (code == it->code
-		    && mod1 == it->mod.first
-		    && mod2 == it->mod.second) {
+	for (auto const & key : table) {
+		if (code == key.code
+		    && mod1 == key.mod.first
+		    && mod2 == key.mod.second) {
 			if (r + 1 == seq.length())
-				return (it->prefixes) ? FuncRequest::prefix : it->func;
-			else if (it->prefixes)
-				return it->prefixes->getBinding(seq, r + 1);
+				return (key.prefixes) ? FuncRequest::prefix : key.func;
+			else if (key.prefixes)
+				return key.prefixes->getBinding(seq, r + 1);
 		}
 	}
 	return FuncRequest::unknown;
@@ -439,7 +437,7 @@ void KeyMap::write(string const & bind_file, bool append, bool unbind) const
 }
 
 
-FuncRequest const & KeyMap::lookup(KeySymbol const &key,
+FuncRequest const & KeyMap::lookup(KeySymbol const & keysym,
 		  KeyModifier mod, KeySequence * seq) const
 {
 	if (table.empty()) {
@@ -447,21 +445,20 @@ FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 		return FuncRequest::unknown;
 	}
 
-	Table::const_iterator end = table.end();
-	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
-		KeyModifier mask = cit->mod.second;
+	for (auto const & key : table) {
+		KeyModifier mask = key.mod.second;
 		KeyModifier check = static_cast<KeyModifier>(mod & ~mask);
 
-		if (cit->code == key && cit->mod.first == check) {
+		if (key.code == keysym && key.mod.first == check) {
 			// match found
-			if (cit->prefixes) {
+			if (key.prefixes) {
 				// this is a prefix key - set new map
-				seq->curmap = cit->prefixes.get();
+				seq->curmap = key.prefixes.get();
 				return FuncRequest::prefix;
 			} else {
 				// final key - reset map
 				seq->reset();
-				return cit->func;
+				return key.func;
 			}
 		}
 	}
@@ -476,9 +473,8 @@ FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 docstring const KeyMap::print(bool forgui) const
 {
 	docstring buf;
-	Table::const_iterator end = table.end();
-	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
-		buf += cit->code.print(cit->mod.first, forgui);
+	for (auto const & key : table) {
+		buf += key.code.print(key.mod.first, forgui);
 		buf += ' ';
 	}
 	return buf;
@@ -494,13 +490,13 @@ docstring KeyMap::printBindings(FuncRequest const & func,
 		return docstring();
 
 	odocstringstream res;
-	Bindings::const_iterator cit = bindings.begin();
-	Bindings::const_iterator cit_end = bindings.end();
-	// print the first item
-	res << cit->print(format, untranslated);
-	// more than one shortcuts?
-	for (++cit; cit != cit_end; ++cit)
-		res << ", " << cit->print(format, untranslated);
+	bool firstone = true;
+	for (auto const & key : bindings) {
+		if (!firstone)
+			res << ", ";
+		res << key.print(format, untranslated);
+		firstone = true;
+	}
 	return res.str();
 }
 
@@ -518,16 +514,15 @@ KeyMap::Bindings KeyMap::findBindings(FuncRequest const & func,
 	if (table.empty())
 		return res;
 
-	Table::const_iterator end = table.end();
-	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
-		if (cit->prefixes) {
+	for (auto const & key : table) {
+		if (key.prefixes) {
 			KeySequence seq = prefix;
-			seq.addkey(cit->code, cit->mod.first);
-			Bindings res2 = cit->prefixes->findBindings(func, seq);
+			seq.addkey(key.code, key.mod.first);
+			Bindings res2 = key.prefixes->findBindings(func, seq);
 			res.insert(res.end(), res2.begin(), res2.end());
-		} else if (cit->func == func) {
+		} else if (key.func == func) {
 			KeySequence seq = prefix;
-			seq.addkey(cit->code, cit->mod.first);
+			seq.addkey(key.code, key.mod.first);
 			res.push_back(seq);
 		}
 	}
@@ -544,10 +539,8 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) con
 		for (auto const & name_code : lyxaction) {
 			FuncCode action = name_code.second;
 			bool has_action = false;
-			BindingList::const_iterator bit = list.begin();
-			BindingList::const_iterator const ben = list.end();
-			for (; bit != ben; ++bit)
-				if (bit->request.action() == action) {
+			for (auto const & item : list)
+				if (item.request.action() == action) {
 					has_action = true;
 					break;
 				}
@@ -562,18 +555,16 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) con
 void KeyMap::listBindings(BindingList & list,
 	KeySequence const & prefix, KeyMap::ItemType tag) const
 {
-	Table::const_iterator it = table.begin();
-	Table::const_iterator it_end = table.end();
-	for (; it != it_end; ++it) {
+	for (auto const & key : table) {
 		// a LFUN_COMMAND_PREFIX
-		if (it->prefixes) {
+		if (key.prefixes) {
 			KeySequence seq = prefix;
-			seq.addkey(it->code, it->mod.first);
-			it->prefixes->listBindings(list, seq, tag);
+			seq.addkey(key.code, key.mod.first);
+			key.prefixes->listBindings(list, seq, tag);
 		} else {
 			KeySequence seq = prefix;
-			seq.addkey(it->code, it->mod.first);
-			list.push_back(Binding(it->func, seq, tag));
+			seq.addkey(key.code, key.mod.first);
+			list.push_back(Binding(key.func, seq, tag));
 		}
 	}
 }

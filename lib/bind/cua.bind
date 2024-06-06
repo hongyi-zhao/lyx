@@ -26,6 +26,12 @@
 #
 # Happy tuning!
 
+# Note: modifiers on PC keyboards:
+# C - Ctrl
+# M - Alt
+# S - Shift
+#~S - Ignore shift (useful for numbers on localized keyboards)
+
 # Free bindings:
 
 #\bind "C-h"

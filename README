@@ -30,8 +30,8 @@ What do I need to run LyX?
     * Windows 7 or newer
     * Mac OS 10.13 or newer
 
-    A decent LaTeX2e installation (e.g. TeX Live for Linux, MikTeX for
-    Windows).
+    A decent LaTeX2e installation (e.g. TeX Live for Linux/Windows,
+    MacTeX for Mac OS).
 
     Python (2.7 or 3.5 and newer) to convert old LyX files and for
     helper scripts.

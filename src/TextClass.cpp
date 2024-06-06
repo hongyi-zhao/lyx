@@ -693,7 +693,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			string const pkg = lexrc.getString();
 			lexrc.eatLine();
 			string const options = lexrc.getString();
-			package_options_[pkg] = options;
+			package_options_[pkg] = trim(options, "\"");
 			break;
 		}
 

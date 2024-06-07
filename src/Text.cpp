@@ -6378,27 +6378,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 	}
 
-	// FIXME: The cursor flag is reset two lines below
-	// so we need to check here if some of the LFUN did touch that.
-	// for now only Text::erase() and Text::backspace() do that.
-	// The plan is to verify all the LFUNs and then to remove this
-	// singleParUpdate boolean altogether.
-	if (cur.result().screenUpdate() & Update::Force) {
-		singleParUpdate = false;
-		needsUpdate = true;
-	}
-
 	// FIXME: the following code should go in favor of fine grained
 	// update flag treatment.
-	if (singleParUpdate || cur.result().screenUpdate() & Update::SinglePar) {
+	if (needsUpdate || cur.result().screenUpdate() & Update::Force)
+		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
+	else if (singleParUpdate || cur.result().screenUpdate() & Update::SinglePar) {
 		// Inserting characters does not change par height in general. So, try
 		// to update _only_ this paragraph. BufferView will detect if a full
 		// metrics update is needed anyway.
 		cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 		return;
 	}
-	if (needsUpdate)
-		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 	else {
 		// oldSelection is a backup of cur.selection() at the beginning of the function.
 	    if (!oldSelection && !cur.selection())

@@ -1247,7 +1247,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	// Both a layout tag and a dedicated inset seem too much effort for this.
 	string const hr_url_escape_chars = "\\#%";
 	if (contains(hr_url_escape_chars, c) && runparams.use_hyperref && il.latexname() == "url"
-	    && il.required().find("url") != il.required().end()) {
+	    && il.requiresPackage("url")) {
 		os << "\\";
 		os.put(c);
 		return;

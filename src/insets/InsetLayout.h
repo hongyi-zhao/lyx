@@ -202,6 +202,8 @@ public:
 	///
 	std::set<std::string> const & required() const { return required_; }
 	///
+	bool requiresPackage(std::string const pkg) const;
+	///
 	bool isMultiPar() const { return multipar_; }
 	///
 	bool forcePlainLayout() const { return forceplain_; }

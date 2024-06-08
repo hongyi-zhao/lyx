@@ -998,4 +998,10 @@ int InsetLayout::requiredArgs() const
 }
 
 
+bool InsetLayout::requiresPackage(string const pkg) const
+{
+	return required_.find(pkg) != required_.end();
+}
+
+
 } //namespace lyx

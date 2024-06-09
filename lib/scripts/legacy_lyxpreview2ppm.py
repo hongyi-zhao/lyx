@@ -251,21 +251,27 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 \\definecolor{lyxfg}{rgb}{%s}
 \\definecolor{lyxbg}{rgb}{%s}
 \\pagecolor{lyxbg}
-\\usepackage[%s,tightpage]{preview}
-\\usepackage{ifthen}
 \\makeatletter
-\\ifthenelse{\\equal{\\f@family}{cmr}}{
-\\IfFileExists{lmodern.sty}{\\usepackage{lmodern}}{\\usepackage{ae,aecompl}}}{}
-\\g@addto@macro\\preview{\\begingroup\\color{lyxbg}\\special{ps::clippath fill}\\color{lyxfg}}
-\\g@addto@macro\\endpreview{\\endgroup}
-\\makeatother
-""" % (fg_color_gr, bg_color_gr, previewopts))
-        else:
-            tmp.write(b"""
+\\def\\@tempa{cmr}
+\\ifx\\f@family\\@tempa
+  \\IfFileExists{lmodern.sty}{\\usepackage{lmodern}}{\\usepackage{ae,aecompl}}
+\\fi
+""" % (fg_color_gr, bg_color_gr))
+        tmp.write(b"""
 \\usepackage[%s,tightpage]{preview}
 \\makeatletter
-\\g@addto@macro\\preview{\\begingroup\\color{lyxbg}\\special{ps::clippath fill}\\color{lyxfg}}
+\\g@addto@macro\\preview{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}\\color{lyxfg}}
 \\g@addto@macro\\endpreview{\\endgroup}
+\\let\\pr@set@pagerightoffset\\@empty
+\\ifx\\pagerightoffset\\@undefined\\else
+  \\def\\pr@set@pagerightoffset{\\ifnum\\pagedirection=1
+      \\pagerightoffset=-1in
+      \\advance\\pagerightoffset-\\pr@bb@i
+      \\advance\\pagerightoffset\\pr@bb@iii
+    \\fi
+  }
+\\fi
+\\g@addto@macro\\pr@ship@end{\\pr@set@pagerightoffset}
 \\makeatother
 """ % previewopts)
     if success:

@@ -5989,7 +5989,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			toggleAndShow(cur, this, font, toggleall);
 			cur.message(bformat(_("Text properties applied: %1$s"), props));
 		} else
-			LYXERR0("Invalid argument of textstyle-update");
+			cur.message(_("Invalid argument of textstyle-update"));
 		break;
 	}
 

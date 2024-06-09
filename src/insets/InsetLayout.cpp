@@ -998,9 +998,9 @@ int InsetLayout::requiredArgs() const
 }
 
 
-bool InsetLayout::requiresPackage(string const pkg) const
+bool InsetLayout::requiresFeature(string const f) const
 {
-	return required_.find(pkg) != required_.end();
+	return required_.find(f) != required_.end();
 }
 
 

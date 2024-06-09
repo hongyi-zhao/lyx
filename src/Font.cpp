@@ -695,18 +695,26 @@ bool Font::fromString(string const & data, bool & toggle)
 
 		if (token == "family") {
 			int const next = lex.getInteger();
+			if (next == -1)
+				return false;
 			bits_.setFamily(FontFamily(next));
 
 		} else if (token == "series") {
 			int const next = lex.getInteger();
+			if (next == -1)
+				return false;
 			bits_.setSeries(FontSeries(next));
 
 		} else if (token == "shape") {
 			int const next = lex.getInteger();
+			if (next == -1)
+				return false;
 			bits_.setShape(FontShape(next));
 
 		} else if (token == "size") {
 			int const next = lex.getInteger();
+			if (next == -1)
+				return false;
 			bits_.setSize(FontSize(next));
 		// FIXME: shall style be handled there? Probably not.
 		} else if (token == "emph" || token == "underbar"
@@ -716,6 +724,8 @@ bool Font::fromString(string const & data, bool & toggle)
 			|| token == "nospellcheck") {
 
 			int const next = lex.getInteger();
+			if (next == -1)
+				return false;
 			FontState const misc = FontState(next);
 
 			if (token == "emph")
@@ -739,6 +749,8 @@ bool Font::fromString(string const & data, bool & toggle)
 
 		} else if (token == "color") {
 			int const next = lex.getInteger();
+			if (next == -1)
+				return false;
 			bits_.setColor(ColorCode(next));
 
 		/**

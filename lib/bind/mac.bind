@@ -186,6 +186,8 @@ Format 5
 #  +: "Command-V"                    # Paste the Clipboard contents at the insertion point
 \bind "C-v"                          "paste"
 \bind "C-S-v"                        "clipboard-paste"
+# "join lines"
+\bind "C-S-A-v"                      "clipboard-paste paragraph"
 #  -: "Option-Command-V"             # Apply the style of one object to the selected object (Paste Style)
 #  -: "Option-Shift-Command-V"       # Apply the style of the surrounding text to the inserted object (Paste and Match Style)
 #  -: "Control-Command-V"            # Apply formatting settings to the selected object (Paste Ruler Command)

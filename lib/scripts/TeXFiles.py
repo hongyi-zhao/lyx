@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file TeXFiles.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -35,7 +33,6 @@
 # relies on python and kpsewhich (no shell command is used).
 # 
 
-from __future__ import print_function
 import os, sys, re
 
 cls_stylefile = 'clsFiles.lst'

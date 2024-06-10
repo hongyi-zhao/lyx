@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2007-2008 The LyX Team <lyx-devel@lists.lyx.org>
 #
 # This program is free software; you can redistribute it and/or

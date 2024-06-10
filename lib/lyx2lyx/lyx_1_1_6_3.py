@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
@@ -73,7 +72,7 @@ def table_update(lines):
     res = features_re.match( lines[1] )
     if res:
         val = res.groups()
-        lines[1] = '<features rotate="%s" islongtable="%s" endhead="%s" endfirsthead="%s" endfoot="%s" endlastfoot="%s">' % (bool_table(val[0]), bool_table(val[1]), val[2], val[3], val[4], val[5])
+        lines[1] = f'<features rotate="{bool_table(val[0])}" islongtable="{bool_table(val[1])}" endhead="{val[2]}" endfirsthead="{val[3]}" endfoot="{val[4]}" endlastfoot="{val[5]}">'
 
     if lines[2]=="":
         del lines[2]
@@ -100,12 +99,12 @@ def table_update(lines):
         res = cell_re.match(lines[i])
         if res:
             val = res.groups()
-            lines[i] = '<cell multicolumn="%s" alignment="%s" valignment="%s" topline="%s" bottomline="%s" leftline="%s" rightline="%s" rotate="%s" usebox="%s" width="%s" special="%s">' % ( val[0], align_table[val[1]], align_vertical[val[2]], bool_table(val[3]), bool_table(val[4]), bool_table(val[5]), bool_table(val[6]), bool_table(val[7]), use_table[val[8]], val[9], val[10])
+            lines[i] = f'<cell multicolumn="{val[0]}" alignment="{align_table[val[1]]}" valignment="{align_vertical[val[2]]}" topline="{bool_table(val[3])}" bottomline="{bool_table(val[4])}" leftline="{bool_table(val[5])}" rightline="{bool_table(val[6])}" rotate="{bool_table(val[7])}" usebox="{use_table[val[8]]}" width="{val[9]}" special="{val[10]}">'
 
         res = row_re.match(lines[i])
         if res:
             val = res.groups()
-            lines[i] = '<row topline="%s" bottomline="%s" newpage="%s">' % (bool_table(val[0]), bool_table(val[1]), bool_table(val[2]))
+            lines[i] = f'<row topline="{bool_table(val[0])}" bottomline="{bool_table(val[1])}" newpage="{bool_table(val[2])}">'
 
         i = i + 1
 

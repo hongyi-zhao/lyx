@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 
 # file svg2pstex.py
 # This file is part of LyX, the document processor.
@@ -31,7 +30,6 @@
 # This script converts an SVG image to something that latex can process
 # into high quality PostScript.
 
-from __future__ import print_function
 
 import os, sys, re, subprocess
 

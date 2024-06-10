@@ -1,5 +1,4 @@
 #! /usr/bin/python3
-# -*- coding: utf-8 -*-
 
 # file lyxpaperview.py
 # This file is part of LyX, the document processor.

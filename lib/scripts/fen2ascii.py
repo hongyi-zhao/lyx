@@ -9,12 +9,11 @@
 # This script will convert a chess position in the FEN
 # format to an ascii representation of the position.
 
-from __future__ import print_function
 import sys,string,os
 
 os.close(0)
 os.close(1)
-sys.stdin = open(sys.argv[1],"r")
+sys.stdin = open(sys.argv[1])
 sys.stdout = open(sys.argv[2],"w")
 
 line = sys.stdin.readline()

@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2002-2024 The LyX Team
 # Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2002-2006 José Matos <jamatos@lyx.org>
@@ -41,9 +40,6 @@ except: # we are running from build directory so assume the last version
 
 default_debug__ = 2
 
-# Provide support for both python 2 and 3
-PY2 = sys.version_info[0] == 2
-# End of code to support for both python 2 and 3
 
 ####################################################################
 # Private helper functions
@@ -140,9 +136,9 @@ def format_info():
         elif not stable_version and major == version__:
             stable_format = "-- not yet --"
             versions = "-- not yet --"
-            formats = "%s - %s" % (version[1][0], version[1][-1])
+            formats = f"{version[1][0]} - {version[1][-1]}"
         else:
-            formats = "%s - %s" % (version[1][0], version[1][-2])
+            formats = f"{version[1][0]} - {version[1][-2]}"
             stable_format = str(version[1][-1])
 
         out += template % (major, stable_format, versions, formats)
@@ -219,10 +215,10 @@ def get_encoding(language, inputencoding, format, cjk_encoding):
 class LyX_base:
     """This class carries all the information of the LyX file."""
 
-    def __init__(self, end_format = 0, input = u'', output = u'', error = u'',
-                 debug = default_debug__, try_hard = 0, cjk_encoding = u'',
-                 final_version = u'', systemlyxdir = u'', language = u'english',
-                 encoding = u'auto'):
+    def __init__(self, end_format = 0, input = '', output = '', error = '',
+                 debug = default_debug__, try_hard = 0, cjk_encoding = '',
+                 final_version = '', systemlyxdir = '', language = 'english',
+                 encoding = 'auto'):
 
         """Arguments:
         end_format: final format that the file should be converted. (integer)
@@ -333,12 +329,8 @@ class LyX_base:
 
                 first_line = False
 
-            if PY2:
-                line = trim_eol(line)
-                decoded = line
-            else:
-                line = trim_eol_binary(line)
-                decoded = line.decode('latin1')
+            line = trim_eol_binary(line)
+            decoded = line.decode('latin1')
             if check_token(decoded, '\\begin_preamble'):
                 while True:
                     line = self.input.readline()
@@ -346,12 +338,8 @@ class LyX_base:
                         # eof found before end of header
                         self.error("Invalid LyX file: Missing body.")
 
-                    if PY2:
-                        line = trim_eol(line)
-                        decoded = line
-                    else:
-                        line = trim_eol_binary(line)
-                        decoded = line.decode('latin1')
+                    line = trim_eol_binary(line)
+                    decoded = line.decode('latin1')
                     if check_token(decoded, '\\end_preamble'):
                         break
 
@@ -379,33 +367,18 @@ class LyX_base:
 
             self.header.append(line)
 
-        if PY2:
-            i = find_token(self.header, '\\textclass', 0)
-        else:
-            i = find_token(self.header, b'\\textclass', 0)
+        i = find_token(self.header, b'\\textclass', 0)
         if i == -1:
             self.warning("Malformed LyX file: Missing '\\textclass'.")
-            if PY2:
-                i = find_token(self.header, '\\lyxformat', 0) + 1
-                self.header[i:i] = ['\\textclass article']
-            else:
-                i = find_token(self.header, b'\\lyxformat', 0) + 1
-                self.header[i:i] = [b'\\textclass article']
+            i = find_token(self.header, b'\\lyxformat', 0) + 1
+            self.header[i:i] = [b'\\textclass article']
 
-        if PY2:
-            self.textclass = get_value(self.header, "\\textclass", 0,
-                                       default = "")
-            self.language = get_value(self.header, "\\language", 0,
-                                      default = "english")
-            self.inputencoding = get_value(self.header, "\\inputencoding", 0,
-                                           default = "auto")
-        else:
-            self.textclass = get_value(self.header, b"\\textclass", 0,
-                                       default = b"")
-            self.language = get_value(self.header, b"\\language", 0,
-                                      default = b"english").decode('ascii')
-            self.inputencoding = get_value(self.header, b"\\inputencoding", 0,
-                                           default = b"auto").decode('ascii')
+        self.textclass = get_value(self.header, b"\\textclass", 0,
+                                   default = b"")
+        self.language = get_value(self.header, b"\\language", 0,
+                                  default = b"english").decode('ascii')
+        self.inputencoding = get_value(self.header, b"\\inputencoding", 0,
+                                       default = b"auto").decode('ascii')
         self.format = self.read_format()
         self.initial_format = self.format
         self.encoding = get_encoding(self.language,
@@ -448,8 +421,8 @@ class LyX_base:
         else:
             header = self.header
 
-        for line in header + [u''] + self.body:
-            self.output.write(line+u'\n')
+        for line in header + [''] + self.body:
+            self.output.write(line+'\n')
 
 
     def choose_output(self, output):
@@ -472,9 +445,9 @@ class LyX_base:
             self.output = io.TextIOWrapper(zipbuffer, encoding=self.encoding, newline='\n')
         else:
             if output:
-                self.output = io.open(output, 'w', encoding=self.encoding)
+                self.output = open(output, 'w', encoding=self.encoding)
             else:
-                self.output = io.open(sys.stdout.fileno(), 'w', encoding=self.encoding)
+                self.output = open(sys.stdout.fileno(), 'w', encoding=self.encoding)
 
 
     def choose_input(self, input):
@@ -483,7 +456,7 @@ class LyX_base:
 
         # Since we do not know the encoding yet we need to read the input as
         # bytes in binary mode, and convert later to unicode.
-        if input and input != u'-':
+        if input and input != '-':
             self.dir = os.path.dirname(os.path.abspath(input))
             try:
                 gzip.open(input).readline()
@@ -493,7 +466,7 @@ class LyX_base:
                 self.input = open(input, 'rb')
                 self.compressed = False
         else:
-            self.dir = u''
+            self.dir = ''
             self.input = os.fdopen(sys.stdin.fileno(), 'rb')
             self.compressed = False
 
@@ -538,7 +511,7 @@ class LyX_base:
                 if not res:
                     self.warning(line)
                 #self.warning("Version %s" % result.group(1))
-                return res.decode('ascii') if not PY2 else res
+                return res.decode('ascii')
         self.warning(str(self.header[:2]))
         return None
 
@@ -568,10 +541,7 @@ class LyX_base:
     def read_format(self):
         " Read from the header the fileformat of the present LyX file."
         for line in self.header:
-            if PY2:
-                result = fileformat.match(line)
-            else:
-                result = fileformat.match(line.decode('ascii'))
+            result = fileformat.match(line.decode('ascii'))
             if result:
                 return self.lyxformat(result.group(1))
         else:
@@ -660,7 +630,7 @@ class LyX_base:
         if i == -1:
             self.warning('Parameter not found in the header: %s' % param, 3)
             return
-        self.header[i] = '\\%s %s' % (param, str(value))
+        self.header[i] = f'\\{param} {str(value)}'
 
 
     def is_default_layout(self, layout):
@@ -684,7 +654,7 @@ class LyX_base:
         for step in conversion_chain:
             steps = getattr(__import__("lyx_" + step), mode)
 
-            self.warning("Convertion step: %s - %s" % (step, mode),
+            self.warning(f"Convertion step: {step} - {mode}",
                          default_debug__ + 1)
             if not steps:
                 self.error("The conversion to an older "
@@ -897,9 +867,9 @@ class LyX_base:
 class File(LyX_base):
     " This class reads existing LyX files."
 
-    def __init__(self, end_format = 0, input = u'', output = u'', error = u'',
-                 debug = default_debug__, try_hard = 0, cjk_encoding = u'',
-                 final_version = u'', systemlyxdir = u''):
+    def __init__(self, end_format = 0, input = '', output = '', error = '',
+                 debug = default_debug__, try_hard = 0, cjk_encoding = '',
+                 final_version = '', systemlyxdir = ''):
         LyX_base.__init__(self, end_format, input, output, error,
                           debug, try_hard, cjk_encoding, final_version,
                           systemlyxdir)

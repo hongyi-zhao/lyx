@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file html2latexwrapper.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -27,7 +25,7 @@ def usage(prog_name):
 def get_encoding(from_file_name):
     '''Read the encoding from a HTML or XHTML file'''
     try:
-        from_file = open(from_file_name, 'rt')
+        from_file = open(from_file_name)
         regexpxml = re.compile(r'^\s?<\?xml\s+.*?encoding\s*=\s*"([^"]+)"', re.IGNORECASE)
         regexptype = re.compile(r'^\s?<meta\s+.*?charset\s*=\s*"([^"]+)"', re.IGNORECASE)
         for line in from_file.readlines():
@@ -53,7 +51,7 @@ def main(argv):
     to_file_name = argv[3]
 
     # Run gnuhtml2latex
-    cmd = '%s -s %s' % (converter, from_file_name)
+    cmd = f'{converter} -s {from_file_name}'
     (ret, output) = run_command(cmd, False)
 
     # Determine encoding of HTML file
@@ -112,7 +110,7 @@ def main(argv):
                 break
 
     # Write output file and insert inputenc call if needed
-    to_file = open(to_file_name, 'wt')
+    to_file = open(to_file_name, 'w')
     for line in lines:
         to_file.write(line + '\n')
         if add_inputenc and line.find('\\documentclass') == 0:

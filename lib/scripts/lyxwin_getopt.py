@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """Parser for command line options.
 
 This module helps scripts to parse the command line arguments in
@@ -83,7 +81,7 @@ def getopt(args, shortopts, longopts = []):
     """
 
     opts = []
-    if type(longopts) == type(""):
+    if type(longopts) == str:
         longopts = [longopts]
     else:
         longopts = list(longopts)

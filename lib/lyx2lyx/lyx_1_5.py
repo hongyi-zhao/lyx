@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2006 José Matos <jamatos@lyx.org>
 # Copyright (C) 2004-2006 Georg Baum <Georg.Baum@post.rwth-aachen.de>
 #
@@ -26,15 +25,6 @@ import sys, os
 from parser_tools import find_re, find_token, find_token_backwards, find_token_exact, find_tokens, find_end_of, get_value, find_beginning_of, find_nonempty_line
 from lyx2lyx_tools import insert_document_option
 from LyX import get_encoding
-
-# Provide support for both python 2 and 3
-PY2 = sys.version_info[0] == 2
-if not PY2:
-    text_type = str
-    unichr = chr
-else:
-    text_type = unicode
-# End of code to support for both python 2 and 3
 
 ####################################################################
 # Private helper functions
@@ -272,11 +262,11 @@ necessary parsing in modern formats than in ancient ones.
             if result:
                 language = result.group(1)
                 if language == "default":
-                    document.warning("Resetting encoding from %s to %s." % (encoding_stack[-1], document.encoding), 3)
+                    document.warning(f"Resetting encoding from {encoding_stack[-1]} to {document.encoding}.", 3)
                     encoding_stack[-1] = document.encoding
                 else:
                     from lyx2lyx_lang import lang
-                    document.warning("Setting encoding from %s to %s." % (encoding_stack[-1], lang[language][3]), 3)
+                    document.warning(f"Setting encoding from {encoding_stack[-1]} to {lang[language][3]}.", 3)
                     encoding_stack[-1] = lang[language][3]
             elif find_token(document.body, "\\begin_layout", i, i + 1) == i:
                 document.warning("Adding nested encoding %s." % encoding_stack[-1], 3)
@@ -357,7 +347,7 @@ def read_unicodesymbols():
             try:
                 # flag1 and flag2 are preamble and other flags
                 [ucs4,command,flag1,flag2] =line.split(None,3)
-                spec_chars[unichr(eval(ucs4))] = [command, flag1, flag2]
+                spec_chars[chr(eval(ucs4))] = [command, flag1, flag2]
             except:
                 pass
     fp.close()
@@ -371,7 +361,7 @@ def revert_unicode_line(document, i, insets, spec_chars, replacement_character =
     math_intro='\n\\begin_inset Formula $'
     math_outro='$\n\\end_inset'
 
-    mod_line = u''
+    mod_line = ''
     if i and not is_inset_line(document, i-1):
         last_char = document.body[i - 1][-1:]
     else:
@@ -661,19 +651,19 @@ def convert_commandparams(document):
         lines = ["\\begin_inset LatexCommand %s" % name]
         if option1 != "":
             if commandparams_info[name][0] == "":
-                document.warning("Ignoring invalid option `%s' of command `%s'." % (option1, name))
+                document.warning(f"Ignoring invalid option `{option1}' of command `{name}'.")
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][0], option1.replace('\\', '\\\\').replace('"', '\\"')))
+                lines.append('{} "{}"'.format(commandparams_info[name][0], option1.replace('\\', '\\\\').replace('"', '\\"')))
         if option2 != "":
             if commandparams_info[name][1] == "":
-                document.warning("Ignoring invalid second option `%s' of command `%s'." % (option2, name))
+                document.warning(f"Ignoring invalid second option `{option2}' of command `{name}'.")
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][1], option2.replace('\\', '\\\\').replace('"', '\\"')))
+                lines.append('{} "{}"'.format(commandparams_info[name][1], option2.replace('\\', '\\\\').replace('"', '\\"')))
         if argument != "":
             if commandparams_info[name][2] == "":
-                document.warning("Ignoring invalid argument `%s' of command `%s'." % (argument, name))
+                document.warning(f"Ignoring invalid argument `{argument}' of command `{name}'.")
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][2], argument.replace('\\', '\\\\').replace('"', '\\"')))
+                lines.append('{} "{}"'.format(commandparams_info[name][2], argument.replace('\\', '\\\\').replace('"', '\\"')))
         document.body[i:i+1] = lines
         i = i + 1
 
@@ -708,23 +698,23 @@ def revert_commandparams(document):
                       pname == commandparams_info[name][2]):
                     argument = pvalue.strip('"').replace('\\"', '"').replace('\\\\', '\\')
             elif document.body[k].strip() != "":
-                document.warning("Ignoring unknown contents `%s' in command inset %s." % (document.body[k], name))
+                document.warning(f"Ignoring unknown contents `{document.body[k]}' in command inset {name}.")
         if name == "bibitem":
             if option1 == "":
                 lines = ["\\bibitem {%s}" % argument]
             else:
-                lines = ["\\bibitem [%s]{%s}" % (option1, argument)]
+                lines = [f"\\bibitem [{option1}]{{{argument}}}"]
         else:
             if option1 == "":
                 if option2 == "":
-                    lines = ["\\begin_inset LatexCommand \\%s{%s}" % (name, argument)]
+                    lines = [f"\\begin_inset LatexCommand \\{name}{{{argument}}}"]
                 else:
-                    lines = ["\\begin_inset LatexCommand \\%s[][%s]{%s}" % (name, option2, argument)]
+                    lines = [f"\\begin_inset LatexCommand \\{name}[][{option2}]{{{argument}}}"]
             else:
                 if option2 == "":
-                    lines = ["\\begin_inset LatexCommand \\%s[%s]{%s}" % (name, option1, argument)]
+                    lines = [f"\\begin_inset LatexCommand \\{name}[{option1}]{{{argument}}}"]
                 else:
-                    lines = ["\\begin_inset LatexCommand \\%s[%s][%s]{%s}" % (name, option1, option2, argument)]
+                    lines = [f"\\begin_inset LatexCommand \\{name}[{option1}][{option2}]{{{argument}}}"]
         if name != "bibitem":
             if preview_line != "":
                 lines.append(preview_line)
@@ -765,9 +755,9 @@ def revert_nomenclature(document):
             elif document.body[k].strip() != "":
                 document.warning("Ignoring unknown contents `%s' in nomenclature inset." % document.body[k])
         if prefix == "":
-            command = 'nomenclature{%s}{%s}' % (symbol, description)
+            command = f'nomenclature{{{symbol}}}{{{description}}}'
         else:
-            command = 'nomenclature[%s]{%s}{%s}' % (prefix, symbol, description)
+            command = f'nomenclature[{prefix}]{{{symbol}}}{{{description}}}'
         document.body[i:j+1] = ['\\begin_inset ERT',
                                 'status collapsed',
                                 '',
@@ -1027,22 +1017,22 @@ def revert_caption(document):
 
 # Accents of InsetLaTeXAccent
 accent_map = {
-    "`" : u'\u0300', # grave
-    "'" : u'\u0301', # acute
-    "^" : u'\u0302', # circumflex
-    "~" : u'\u0303', # tilde
-    "=" : u'\u0304', # macron
-    "u" : u'\u0306', # breve
-    "." : u'\u0307', # dot above
-    "\"": u'\u0308', # diaeresis
-    "r" : u'\u030a', # ring above
-    "H" : u'\u030b', # double acute
-    "v" : u'\u030c', # caron
-    "b" : u'\u0320', # minus sign below
-    "d" : u'\u0323', # dot below
-    "c" : u'\u0327', # cedilla
-    "k" : u'\u0328', # ogonek
-    "t" : u'\u0361'  # tie. This is special: It spans two characters, but
+    "`" : '\u0300', # grave
+    "'" : '\u0301', # acute
+    "^" : '\u0302', # circumflex
+    "~" : '\u0303', # tilde
+    "=" : '\u0304', # macron
+    "u" : '\u0306', # breve
+    "." : '\u0307', # dot above
+    "\"": '\u0308', # diaeresis
+    "r" : '\u030a', # ring above
+    "H" : '\u030b', # double acute
+    "v" : '\u030c', # caron
+    "b" : '\u0320', # minus sign below
+    "d" : '\u0323', # dot below
+    "c" : '\u0327', # cedilla
+    "k" : '\u0328', # ogonek
+    "t" : '\u0361'  # tie. This is special: It spans two characters, but
                      # only one is given as argument, so we don't need to
                      # treat it differently.
 }
@@ -1050,17 +1040,17 @@ accent_map = {
 
 # special accents of InsetLaTeXAccent without argument
 special_accent_map = {
-    'i' : u'\u0131', # dotless i
-    'j' : u'\u0237', # dotless j
-    'l' : u'\u0142', # l with stroke
-    'L' : u'\u0141'  # L with stroke
+    'i' : '\u0131', # dotless i
+    'j' : '\u0237', # dotless j
+    'l' : '\u0142', # l with stroke
+    'L' : '\u0141'  # L with stroke
 }
 
 
 # special accent arguments of InsetLaTeXAccent
 accented_map = {
-    '\\i' : u'\u0131', # dotless i
-    '\\j' : u'\u0237'  # dotless j
+    '\\i' : '\u0131', # dotless i
+    '\\j' : '\u0237'  # dotless j
 }
 
 
@@ -1087,7 +1077,7 @@ def _convert_accent(accent, accented_char):
         return ''
     a = accent_map.get(type)
     if a:
-        return unicodedata.normalize("NFC", "%s%s" % (char, a))
+        return unicodedata.normalize("NFC", f"{char}{a}")
     return ''
 
 
@@ -1137,9 +1127,9 @@ def convert_accent(document):
             converted = _convert_accent(accent, accented_char)
             if converted == '':
                 # Normalize contents
-                contents = '%s{%s}' % (accent, accented_char),
+                contents = f'{accent}{{{accented_char}}}',
             else:
-                document.body[i] = '%s%s' % (prefix, converted)
+                document.body[i] = f'{prefix}{converted}'
                 i += 1
                 continue
         document.warning("Converting unknown InsetLaTeXAccent `\\i %s' to ERT." % contents)
@@ -1221,7 +1211,7 @@ def revert_accent(document):
         try:
             document.body[i] = normalize("NFD", document.body[i])
         except TypeError:
-            document.body[i] = normalize("NFD", text_type(document.body[i], 'utf-8'))
+            document.body[i] = normalize("NFD", str(document.body[i], 'utf-8'))
 
     # Replace accented characters with InsetLaTeXAccent
     # Do not convert characters that can be represented in the chosen
@@ -1284,7 +1274,7 @@ def revert_accent(document):
                     # Delete the accented characters
                     document.body[i] = document.body[i][:j-1]
                     # Finally add the InsetLaTeXAccent
-                    document.body[i] += "\\i \\%s{%s}" % (inverse_accent_map[accent], accented_char)
+                    document.body[i] += f"\\i \\{inverse_accent_map[accent]}{{{accented_char}}}"
                     break
         i = i + 1
 
@@ -1385,17 +1375,17 @@ def normalize_font_whitespace(document, char_properties):
                 for k in list(changes.keys()):
                     # exclude property k because that is already in lines[i]
                     if k != words[0]:
-                        added_lines[1:1] = ["%s %s" % (k, changes[k])]
+                        added_lines[1:1] = [f"{k} {changes[k]}"]
                 for k in list(changes.keys()):
                     # exclude property k because that must be added below anyway
                     if k != words[0]:
-                        added_lines[0:0] = ["%s %s" % (k, char_properties[k])]
+                        added_lines[0:0] = [f"{k} {char_properties[k]}"]
                 if defaultproperty:
                     # Property is reset in lines[i], so add the new stuff afterwards
                     lines[i+1:i+1] = added_lines
                 else:
                     # Reset property for the space
-                    added_lines[0:0] = ["%s %s" % (words[0], char_properties[words[0]])]
+                    added_lines[0:0] = [f"{words[0]} {char_properties[words[0]]}"]
                     lines[i:i] = added_lines
                 i = i + len(added_lines)
 
@@ -1413,13 +1403,13 @@ def normalize_font_whitespace(document, char_properties):
                 for k in list(changes.keys()):
                     # exclude property k because that is already in lines[i]
                     if k != words[0]:
-                        added_lines[1:1] = ["%s %s" % (k, changes[k])]
+                        added_lines[1:1] = [f"{k} {changes[k]}"]
                 for k in list(changes.keys()):
                     # exclude property k because that must be added below anyway
                     if k != words[0]:
-                        added_lines[0:0] = ["%s %s" % (k, char_properties[k])]
+                        added_lines[0:0] = [f"{k} {char_properties[k]}"]
                 # Reset property for the space
-                added_lines[0:0] = ["%s %s" % (words[0], char_properties[words[0]])]
+                added_lines[0:0] = [f"{words[0]} {char_properties[words[0]]}"]
                 lines[i:i] = added_lines
                 i = i + len(added_lines)
 
@@ -1598,7 +1588,7 @@ def revert_graphics_rotation(document):
                     document.body.insert(j-1, '\tspecial angle=%s' % rotateAngle)
                 else:
                     l = find_token(document.body, "\tspecial", i + 1, j)
-                    document.body[l] = document.body[l].replace(special, 'angle=%s,%s' % (rotateAngle, special))
+                    document.body[l] = document.body[l].replace(special, f'angle={rotateAngle},{special}')
                 k = find_token(document.body, "\trotateAngle", i + 1, j)
                 if k != -1:
                     del document.body[k]
@@ -1819,7 +1809,7 @@ after label
                                       '',
                                       '',
                                       r'\backslash',
-                                      'lstinline%s{%s}' % (params, inlinecode),
+                                      f'lstinline{params}{{{inlinecode}}}',
                                       r'\end_layout',
                                       '',
                                       r'\end_inset']
@@ -1892,7 +1882,7 @@ lstinputlisting{file}[opt]
                                     '',
                                     '',
                                     r'\backslash',
-                                    '%s%s{%s}' % (cmd, option, file),
+                                    f'{cmd}{option}{{{file}}}',
                                     r'\end_layout',
                                     '',
                                     r'\end_inset']

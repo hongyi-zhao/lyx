@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2006 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
@@ -19,7 +18,6 @@
 """ This module parses lib/languages and prints it as a python
 dictionary, ready to use by other python modules"""
 
-from __future__ import print_function
 import pprint
 
 def parse_line(line):

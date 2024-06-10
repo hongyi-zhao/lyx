@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file convert_pdf.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.

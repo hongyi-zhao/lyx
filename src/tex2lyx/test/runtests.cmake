@@ -51,8 +51,8 @@ if(_configure_needed)
   # Get binary directory of tex2lyx
   string(REGEX REPLACE "(.*)tex2lyx${_suffix}.*" "\\1" _bindir "${TEX2LYX_EXE}")
 
-  message(STATUS "executing ${LYX_PYTHON_EXECUTABLE} -tt \"${SCRIPT_DIR}/../configure.py\" ${_with_ver} \"--binary-dir=${_bindir}\"")
-  execute_process(COMMAND ${LYX_PYTHON_EXECUTABLE} -tt "${SCRIPT_DIR}/../configure.py"
+  message(STATUS "executing ${LYX_PYTHON_EXECUTABLE} \"${SCRIPT_DIR}/../configure.py\" ${_with_ver} \"--binary-dir=${_bindir}\"")
+  execute_process(COMMAND ${LYX_PYTHON_EXECUTABLE} "${SCRIPT_DIR}/../configure.py"
     ${_with_ver} "--binary-dir=${_bindir}"
     WORKING_DIRECTORY "${LYX_TESTS_USERDIR}"
   )
@@ -70,5 +70,3 @@ string(COMPARE NOTEQUAL  ${_err} 0 _erg)
 if(_erg)
   message(FATAL_ERROR "${PY_SCRIPT} failed")
 endif()
-
-

@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 
 # file svg2pdftex.py
 # This file is part of LyX, the document processor.
@@ -28,7 +27,6 @@
 #   the real PDF file would be overwritten by a TeX file named outputfile.pdf.
 #
 
-from __future__ import print_function
 
 import os, sys, re, subprocess
 

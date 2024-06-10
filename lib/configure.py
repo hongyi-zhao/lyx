@@ -1,5 +1,4 @@
 #! /usr/bin/python3
-# -*- coding: utf-8 -*-
 #
 # file configure.py
 # This file is part of LyX, the document processor.
@@ -8,13 +7,7 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
-from __future__ import print_function
 import glob, logging, os, errno, re, shutil, subprocess, sys, stat
-
-if sys.version_info[0] < 3:
-    import codecs
-    open = codecs.open
-
 
 # set up logging
 logging.basicConfig(level = logging.DEBUG,
@@ -83,10 +76,7 @@ def cmdOutput(cmd, asynchronous = False):
     '''
     if os.name == 'nt':
         b = False
-        if sys.version_info[0] < 3:
-            cmd = 'cmd /d /c pushd ' + shortPath(os.getcwdu()) + '&' + cmd
-        else:
-            cmd = 'cmd /d /c pushd ' + shortPath(os.getcwd()) + '&' + cmd
+        cmd = 'cmd /d /c pushd ' + shortPath(os.getcwd()) + '&' + cmd
     else:
         b = True
     pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE,
@@ -143,7 +133,7 @@ def copy_tree(src, dst, preserve_symlinks=False, level=0):
         names = os.listdir(src)
     except os.error as oserror:
         (errno, errstr) = oserror.args
-        raise FileError("error listing files in '%s': %s" % (src, errstr))
+        raise FileError(f"error listing files in '{src}': {errstr}")
 
     if not os.path.isdir(dst):
         os.makedirs(dst)
@@ -214,10 +204,7 @@ def checkTeXPaths():
         fd, tmpfname = mkstemp(suffix='.ltx')
         if os.name == 'nt':
             encoding = sys.getfilesystemencoding()
-            if sys.version_info[0] < 3:
-                inpname = shortPath(unicode(tmpfname, encoding)).replace('\\', '/')
-            else:
-                inpname = shortPath(tmpfname).replace('\\', '/')
+            inpname = shortPath(tmpfname).replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
         logname = os.path.basename(re.sub("(?i).ltx", ".log", inpname))
@@ -329,10 +316,7 @@ def check_java():
     """ Check for Java, don't give up as often as checkProg, using platform-dependent techniques """
     if os.name == 'nt':
         # Check in the registry.
-        try:  # Python 3.
-            import winreg
-        except ImportError:  # Python 2.
-            import _winreg as winreg
+        import winreg
 
         potential_keys_64b = ["SOFTWARE\\JavaSoft\\Java Runtime Environment", "SOFTWARE\\JavaSoft\\Java Development Kit",
                               "SOFTWARE\\JavaSoft\\JDK", "SOFTWARE\\JavaSoft\\JRE"]
@@ -608,10 +592,7 @@ def checkInkscape():
             return 'inkscape-binary'
     elif os.name != 'nt':
         return 'inkscape'
-    if sys.version_info[0] < 3:
-        import _winreg as winreg
-    else:
-        import winreg
+    import winreg
     aReg = winreg.ConnectRegistry(None, winreg.HKEY_CLASSES_ROOT)
     try:
         aKey = winreg.OpenKey(aReg, r"inkscape.svg\DefaultIcon")
@@ -623,17 +604,17 @@ def checkInkscape():
             return valentry.split(',')[0]
         else:
             return 'inkscape'
-    except EnvironmentError:
+    except OSError:
         try:
             aKey = winreg.OpenKey(aReg, r"inkscape.SVG\shell\open\command")
             val = winreg.QueryValueEx(aKey, "")
             return str(val[0]).split('"')[1]
-        except EnvironmentError:
+        except OSError:
             try:
                 aKey = winreg.OpenKey(aReg, r"Applications\inkscape.exe\shell\open\command")
                 val = winreg.QueryValueEx(aKey, "")
                 return str(val[0]).split('"')[1]
-            except EnvironmentError:
+            except OSError:
                 return 'inkscape'
 
 
@@ -1508,7 +1489,7 @@ def processLayoutFile(file):
     q = re.compile('\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
     classdeclaration = ""
     categorydeclaration = '""'
-    for line in open(file, 'r', encoding='utf8').readlines():
+    for line in open(file, encoding='utf8').readlines():
         res = p.match(line)
         qres = q.match(line)
         if res is not None:
@@ -1610,7 +1591,7 @@ def checkLatexConfig(check_config):
         decline = ""
         catline = ""
         try:
-            for line in open(file, 'r', encoding='utf8').readlines():
+            for line in open(file, encoding='utf8').readlines():
                 if not empty.match(line) and line[0] != '#'[0]:
                     if decline == "":
                         logger.warning(r"Failed to find valid \Declare line "
@@ -1619,7 +1600,7 @@ def checkLatexConfig(check_config):
                     # A class, but no category declaration. Just break.
                     break
                 if declare.match(line) is not None:
-                    decline = "\\TestDocClass{%s}{%s}" % (classname, line[1:].strip())
+                    decline = f"\\TestDocClass{{{classname}}}{{{line[1:].strip()}}}"
                     testclasses.append(decline)
                 elif category.match(line) is not None:
                     catline = ("\\DeclareCategory{%s}{%s}"
@@ -1747,7 +1728,7 @@ def processModuleFile(file, filename):
     readingDescription = False
     descLines = []
 
-    for line in open(file, 'r', encoding='utf8').readlines():
+    for line in open(file, encoding='utf8').readlines():
       if readingDescription:
         res = redend.match(line)
         if res != None:
@@ -1874,7 +1855,7 @@ def processCiteEngineFile(file, filename):
     readingDescription = False
     descLines = []
 
-    for line in open(file, 'r', encoding='utf8').readlines():
+    for line in open(file, encoding='utf8').readlines():
       if readingDescription:
         res = redend.match(line)
         if res != None:
@@ -2002,7 +1983,7 @@ def rescanTeXFiles():
     interpreter = sys.executable
     if interpreter == '':
         interpreter = "python"
-    tfp = cmdOutput('"%s" -tt "%s"' % (interpreter, tfscript))
+    tfp = cmdOutput(f'"{interpreter}" "{tfscript}"')
     logger.info(tfp)
     logger.info("\tdone")
 
@@ -2024,7 +2005,8 @@ if __name__ == '__main__':
     lyx_keep_temps = False
     version_suffix = ''
     lyx_binary_dir = ''
-    logger.info("+Running LyX configure with Python %s.%s.%s", sys.version_info[0], sys.version_info[1], sys.version_info[2])
+    python_version = ".".join([str(n) for n in sys.version_info[:3]])
+    logger.info("+Running LyX configure with Python %s", python_version)
     ## Parse the command line
     for op in sys.argv[1:]:   # default shell/for list is $*, the options
         if op in [ '-help', '--help', '-h' ]:

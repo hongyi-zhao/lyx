@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file docbook2epub.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -11,7 +9,6 @@
 # Usage:
 #   python docbook2epub.py java_binary saxon_path xsltproc_path xslt_path in.docbook in.orig.path out.epub
 
-from __future__ import print_function
 
 import glob
 import os
@@ -19,7 +16,6 @@ import shutil
 import sys
 import tempfile
 import zipfile
-from io import open  # Required for Python 2.
 
 
 def _parse_nullable_argument(arg):
@@ -39,7 +35,7 @@ class DocBookToEpub:
             args = sys.argv
 
         if len(args) != 8:
-            print('Exactly eight arguments are expected, only %s found: %s.' % (len(args), args))
+            print(f'Exactly eight arguments are expected, only {len(args)} found: {args}.')
             sys.exit(1)
 
         self.own_path = sys.argv[0]
@@ -127,7 +123,7 @@ class DocBookToEpub:
         # The XHTML files are also <item> tags:
         #     <item id="id-d0e2" href="index.xhtml" media-type="application/xhtml+xml"/>
         try:
-            with open(self.package_opf, 'r') as f:
+            with open(self.package_opf) as f:
                 for line in f.readlines():
                     if '<item' in line and 'media-type="image' in line:
                         images.append(line.split('href="')[1].split('"')[0])
@@ -154,7 +150,7 @@ class DocBookToEpub:
     def change_image_paths(self, file):
         # This could be optimised, as the same operation is performed a zillion times on many files:
         # https://www.oreilly.com/library/view/python-cookbook/0596001673/ch03s15.html
-        with open(file, 'r', encoding='utf8') as f:
+        with open(file, encoding='utf8') as f:
             contents = list(f)
 
         with open(file, 'w', encoding='utf8') as f:

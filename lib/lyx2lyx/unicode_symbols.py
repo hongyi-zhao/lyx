@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2011 The LyX team
 #
 # This program is free software; you can redistribute it and/or
@@ -20,11 +19,6 @@
 
 import sys, os, re, codecs
 
-# Provide support for both python 2 and 3
-PY2 = sys.version_info[0] == 2
-if not PY2:
-    unichr = chr
-# End of code to support for both python 2 and 3
 
 def read_unicodesymbols():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
@@ -60,7 +54,7 @@ def read_unicodesymbols():
             [ucs4,command,dead] = line.split(None,2)
             if command[0:1] != "\\":
                 continue
-            literal_char = unichr(int(ucs4, 16))
+            literal_char = chr(int(ucs4, 16))
             if (line.find("notermination=text") < 0 and
                 line.find("notermination=both") < 0 and command[-1] != "}"):
                 command = command + "{}"
@@ -80,4 +74,3 @@ def read_unicodesymbols():
 
 
 unicode_reps = read_unicodesymbols()
-

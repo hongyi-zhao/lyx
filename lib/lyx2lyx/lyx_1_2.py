@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2002 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2004 José Matos <jamatos@lyx.org>
 #

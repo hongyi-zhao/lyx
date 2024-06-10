@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
 # Copyright (C) 2015 The LyX team
 #
@@ -159,7 +158,7 @@ def convert_separator(document):
                 content = "\n".join(document.body[lay[1]:lay[2]])
                 for val in list(sty_dict.keys()):
                     if content.find("\\%s" % val) != -1:
-                        document.body[j:j] = ["\\%s %s" % (val, sty_dict[val])]
+                        document.body[j:j] = [f"\\{val} {sty_dict[val]}"]
                         i = i + 1
                         j = j + 1
             document.body[j:j] = parins
@@ -195,7 +194,7 @@ def convert_separator(document):
                 content = "\n".join(document.body[lay[1]:lay[2]])
                 for val in list(sty_dict.keys()):
                     if content.find("\\%s" % val) != -1:
-                        document.body[j:j] = ["\\%s %s" % (val, sty_dict[val])]
+                        document.body[j:j] = [f"\\{val} {sty_dict[val]}"]
                         i = i + 1
                         j = j + 1
                 document.body[j:j] = parins
@@ -1168,11 +1167,11 @@ def convert_origin(document):
     if i == -1:
         document.warning("Malformed LyX document: No \\textclass!!")
         return
-    if document.dir == u'':
-        origin = u'stdin'
+    if document.dir == '':
+        origin = 'stdin'
     else:
-        relpath = u''
-        if document.systemlyxdir and document.systemlyxdir != u'':
+        relpath = ''
+        if document.systemlyxdir and document.systemlyxdir != '':
             try:
                 if os.path.isabs(document.dir):
                     absdir = os.path.normpath(document.dir)
@@ -1183,14 +1182,14 @@ def convert_origin(document):
                 else:
                     abssys = os.path.normpath(os.path.abspath(document.systemlyxdir))
                 relpath = os.path.relpath(absdir, abssys)
-                if relpath.find(u'..') == 0:
-                    relpath = u''
+                if relpath.find('..') == 0:
+                    relpath = ''
             except:
-                relpath = u''
-        if relpath == u'':
-            origin = document.dir.replace(u'\\', u'/') + u'/'
+                relpath = ''
+        if relpath == '':
+            origin = document.dir.replace('\\', '/') + '/'
         else:
-            origin = os.path.join(u"/systemlyxdir", relpath).replace(u'\\', u'/') + u'/'
+            origin = os.path.join("/systemlyxdir", relpath).replace('\\', '/') + '/'
     document.header[i:i] = ["\\origin " + origin]
 
 

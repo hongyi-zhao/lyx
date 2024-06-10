@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file prefs2prefs-prefs.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -271,7 +269,7 @@ def latex_flavor(line):
 	if flavor == "latex":
 		return no_match
 	return (True,
-		"\\converter \"%s\" \"%s\" \"%s\" \"latex=%s\"" % (conv, fmat, args, flavor))
+		f"\\converter \"{conv}\" \"{fmat}\" \"{args}\" \"latex={flavor}\"")
 
 
 emre = re.compile(r'^\\format\s+(.*)\s+"(document[^"]*?)"', re.IGNORECASE)
@@ -284,7 +282,7 @@ def export_menu(line):
 	fmat = m.group(1)
 	opts = m.group(2)
 	return (True,
-		"\\Format %s \"%s,menu=export\"" % (fmat, opts))
+		f"\\Format {fmat} \"{opts},menu=export\"")
 
 # End format 1 conversions (for LyX 2.0)
 ########################################
@@ -301,7 +299,7 @@ def zipped_native(line):
 	fmat = m.group(1)
 	opts = m.group(2)
 	return (True,
-		"\\Format %s \"%s,zipped=native\"" % (fmat, opts))
+		f"\\Format {fmat} \"{opts},zipped=native\"")
 
 def remove_default_papersize(line):
 	if not line.lower().startswith("\\default_papersize"):

@@ -56,12 +56,12 @@ int timeout_ms()
 }
 
 
-static string const python23_call(string const & binary, bool verbose = false)
+static string const python_call(string const & binary, bool verbose = false)
 {
-	const string version_info = " -c \"from __future__ import print_function; import sys; print(sys.version_info[:2], end='')\"";
-	// Default to "python" if no binary is given.
+	const string version_info = " -c \"import sys; print(sys.version_info[:2], end='')\"";
+	// Default to "python3" if no binary is given.
 	if (binary.empty())
-		return "python -tt";
+		return "python3";
 
 	if (verbose)
 		lyxerr << "Examining " << binary << "\n";
@@ -80,14 +80,12 @@ static string const python23_call(string const & binary, bool verbose = false)
 
 	int major = convert<int>(sm.str(1));
 	int minor = convert<int>(sm.str(2));
-	if((major == 2 && minor < 7) || (major == 3 && minor < 5))
+	if((major < 3) || (major == 3 && minor < 8))
 		return string();
 
 	if (verbose)
 		lyxerr << "Found Python " << out.result << "\n";
-	// Add the -tt switch so that mixed tab/whitespace
-	// indentation is an error
-	return binary + " -tt";
+	return binary;
 }
 
 
@@ -102,15 +100,14 @@ static string const find_python_binary()
 #ifdef _WIN32
 	// Check through python launcher whether python 3 is
 	// installed on computer.
-	string command = python23_call("py -3");
+	string command = python_call("py -3");
 #else
 	// Check whether python3 in PATH is the right one.
-	string command = python23_call("python3");
+	string command = python_call("python3");
 #endif // _WIN32
 	if (!command.empty())
 		return command;
 
-#ifndef _WIN32
 	// python3 does not exists, let us try to find python3.x in PATH
 	// the search is probably broader than required
 	// but we are trying hard to find a valid python binary
@@ -125,59 +122,18 @@ static string const find_python_binary()
 		for (auto const & bin2 : list) {
 			string const binary = "\"" + addName(localdir,
 				bin2.toLocal8Bit().constData()) + "\"";
-			command = python23_call(binary, true);
+			command = python_call(binary, true);
 			if (!command.empty())
 				return command;
 		}
 	}
-#endif // !_WIN32
 
-	// python 3 was not found let us look for python 2
-#ifdef _WIN32
-	command = python23_call("py -2");
-#else
-	command = python23_call("python2");
-#endif // _WIN32
 	if (!command.empty())
 		return command;
-
-#ifdef _WIN32
-	// python launcher is not installed, let cmd auto check
-	// PATH for a python.exe
-	command = python23_call("python");
-	if (!command.empty())
-		return command;
-
-	//failed, prepare to search PATH manually
-	vector<string> const path = getEnvPath("PATH");
-	lyxerr << "Manually looking for python in PATH ...\n";
-	QString const exeName = "python*";
-#else
-	// python2 does not exists, let us try to find python2.x in PATH
-	// the search is probably broader than required
-	// but we are trying hard to find a valid python binary
-	lyxerr << "Looking for python 2.x ...\n";
-	QString const exeName = "python2*";
-#endif // _WIN32
-
-	for (auto const & bin : path) {
-		QString const dir = toqstr(bin);
-		string const localdir = dir.toLocal8Bit().constData();
-		QDir qdir(dir);
-		qdir.setFilter(QDir::Files | QDir::Executable);
-		QStringList list = qdir.entryList(QStringList(exeName));
-		for (auto const & bin2 : list) {
-			string const binary = "\"" + addName(localdir,
-				bin2.toLocal8Bit().constData()) + "\"";
-			command = python23_call(binary, true);
-			if (!command.empty())
-				return command;
-		}
-	}
 
 	// If this happens all hope is lost that this is a sane system
-	lyxerr << "Warning: No python v2.x or 3.x binary found.\n";
-	return python23_call("");
+	lyxerr << "Warning: No Python 3.x binary found.\n";
+	return python_call("");
 }
 
 
@@ -194,12 +150,12 @@ string const python(bool reset)
 
 bool hasPython()
 {
-	return !(python23_call(python()).empty());
+	return !(python_call(python()).empty());
 }
 
 string const python_info()
 {
-	const string info_version = " -c \"from __future__ import print_function; import sys; print('{} ({})'.format(sys.version.split()[0],sys.executable), end='')\"";
+	const string info_version = " -c \"import sys; print('{} ({})'.format(sys.version.split()[0],sys.executable), end='')\"";
 	if (!hasPython())
 		return("None");
 	return (runCommand(python() + info_version).result);

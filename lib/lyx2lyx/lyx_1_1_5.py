@@ -1,5 +1,4 @@
 # This document is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
@@ -220,7 +219,7 @@ def update_ref(document):
         if lines[i].split()[-1] == "\\ref{":
             i = i + 1
             ref, label = latexdel_getargs(document, i)
-            lines[i - 1] = "%s[%s]{%s}" % (lines[i - 1][:-1], ref, label)
+            lines[i - 1] = f"{lines[i - 1][:-1]}[{ref}]{{{label}}}"
 
         i = i + 1
 
@@ -246,7 +245,7 @@ def update_latexdel(document):
             i = i + 1
 
             ref, label = latexdel_getargs(document, i)
-            lines[i -1] = "%s[%s]{%s}" % (lines[i-1][:-1], label, ref)
+            lines[i -1] = f"{lines[i-1][:-1]}[{label}]{{{ref}}}"
 
         i = i + 1
 

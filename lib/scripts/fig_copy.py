@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file fig_copy.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -17,7 +15,6 @@
 # picture files that are stored as relative paths are replaced
 # with the absolute path.
 
-from __future__ import print_function
 import os, sys
 
 if len(sys.argv) != 3:

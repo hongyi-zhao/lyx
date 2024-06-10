@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file prefs2prefs.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -18,7 +16,6 @@
 # 
 # The format of the existing files was format 0, as of 2.0.alpha6.
 
-from __future__ import print_function
 import os, re, string, sys
 from getopt import getopt
 import io
@@ -28,7 +25,7 @@ import io
 
 def trim_bom(line):
 	" Remove byte order mark."
-	if line[0:3] == u"\357\273\277":
+	if line[0:3] == "\357\273\277":
 		return line[3:]
 	else:
 		return line
@@ -128,8 +125,8 @@ def main(argv):
 		source = sys.stdin
 		output = sys.stdout
 	elif len(args) == 2:
-		source = io.open(args[0], 'r', encoding='utf_8', errors='surrogateescape')
-		output = io.open(args[1], 'w', encoding='utf_8', newline='\n')
+		source = open(args[0], encoding='utf_8', errors='surrogateescape')
+		output = open(args[1], 'w', encoding='utf_8', newline='\n')
 		opened_files = True
 	else:
 		usage()

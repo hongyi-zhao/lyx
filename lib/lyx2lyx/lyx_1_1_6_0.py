@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
@@ -48,7 +47,7 @@ def update_tabular(document):
 
         tabular_line = i
         i = i +1
-        lines.insert(i, '<Features rotate="%s" islongtable="%s" endhead="%s" endfirsthead="%s" endfoot="%s" endlastfoot="%s">' % (head[2],head[3],head[4],head[5],head[6],head[7]))
+        lines.insert(i, f'<Features rotate="{head[2]}" islongtable="{head[3]}" endhead="{head[4]}" endfirsthead="{head[5]}" endfoot="{head[6]}" endlastfoot="{head[7]}">')
 
         i = i +1
 
@@ -79,7 +78,7 @@ def update_tabular(document):
                     ncells = ncells + 1
                 del lines[i]
 
-        lines[tabular_line] = '<LyXTabular version="1" rows="%s" columns="%s">' % (rows-len(cont_row),columns)
+        lines[tabular_line] = f'<LyXTabular version="1" rows="{rows-len(cont_row)}" columns="{columns}">'
         del lines[i]
         if not lines[i]:
             del lines[i]
@@ -125,13 +124,13 @@ def update_tabular(document):
         for j in range(rows):
             if j in cont_row:
                 continue
-            tmp.append('<Row topline="%s" bottomline="%s" newpage="%s">' % (row_info[j][0],row_info[j][1],row_info[j][3]))
+            tmp.append(f'<Row topline="{row_info[j][0]}" bottomline="{row_info[j][1]}" newpage="{row_info[j][3]}">')
 
             for k in range(columns):
                 if j:
                     tmp.append('<Column>')
                 else:
-                    tmp.append('<Column alignment="%s" valignment="0" leftline="%s" rightline="%s" width=%s special=%s>' % (column_info[k][0],column_info[k][1], column_info[k][2], column_info[k][3], column_info[k][4]))
+                    tmp.append(f'<Column alignment="{column_info[k][0]}" valignment="0" leftline="{column_info[k][1]}" rightline="{column_info[k][2]}" width={column_info[k][3]} special={column_info[k][4]}>')
                 m = j*columns + k
 
                 leftline = int(column_info[k][1])
@@ -218,9 +217,9 @@ def set_paragraph_properties(lines, prop_dict):
         if prop_dict[prop] != 'default':
             insert = 1
             if prop == "color":
-                aux.append("\\%s %s" % (prop, prop_dict[prop]))
+                aux.append(f"\\{prop} {prop_dict[prop]}")
             elif prop != "family" or prop_dict[prop] != "roman":
-                    aux.append("\\%s %s " % (prop, prop_dict[prop]))
+                    aux.append(f"\\{prop} {prop_dict[prop]} ")
 
     # remove final char properties
     n = len(lines)

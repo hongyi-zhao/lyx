@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file docbook_copy.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -55,7 +53,7 @@ class DocBookCopier:
 
     def in_file_needs_lilypond(self):
         # Really tailored to the kind of output lilypond.module makes (in lib/layouts).
-        with open(self.in_file, 'r') as f:
+        with open(self.in_file) as f:
             return "language='lilypond'" in f.read()
 
     def preprocess_input_for_lilypond(self):
@@ -77,7 +75,7 @@ class DocBookCopier:
         # This issue must be fixed by LilyPond, as any change in this part would make the XML
         # file invalid.
         # Bug report: https://gitlab.com/lilypond/lilypond/-/issues/6204
-        with open(self.in_file, 'r', encoding='utf-8') as f, open(self.in_lily_file, 'w', encoding='utf-8') as f_lily:
+        with open(self.in_file, encoding='utf-8') as f, open(self.in_lily_file, 'w', encoding='utf-8') as f_lily:
             for line in f:
                 if "language='lilypond'" in line:
                     line = re.sub(
@@ -179,7 +177,7 @@ class DocBookCopier:
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
-        print('Exactly four arguments are expected, only %s found: %s.' % (len(sys.argv), sys.argv))
+        print(f'Exactly four arguments are expected, only {len(sys.argv)} found: {sys.argv}.')
         sys.exit(1)
 
     DocBookCopier(sys.argv).copy()

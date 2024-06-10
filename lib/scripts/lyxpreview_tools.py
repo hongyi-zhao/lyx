@@ -300,7 +300,7 @@ def run_latex(latex, latex_file, bibtex = None):
 
 
 def run_tex(tex, tex_file):
-    tex_call = '%s "%s"' % (tex, tex_file)
+    tex_call = f'{tex} "{tex_file}"'
 
     tex_status, tex_stdout = run_command(tex_call)
     if tex_status:
@@ -347,7 +347,7 @@ def check_latex_log(log_file):
                 found_error = False
                 match = data_re.search(line)
                 if match == None:
-                    error("Unexpected data in %s\n%s" % (log_file, line))
+                    error(f"Unexpected data in {log_file}\n{line}")
 
                 error_pages.append(int(match.group(1)))
 

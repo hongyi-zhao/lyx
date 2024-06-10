@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file convertDefault.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -16,7 +14,6 @@
 # replacement in ~/.lyx/scripts
 
 # converts an image $2 (format $1) to $4 (format $3)
-from __future__ import print_function
 import os, re, sys
 
 # We may need some extra options only supported by recent convert versions
@@ -73,11 +70,11 @@ if sys.argv[3] == 'ppm' and (im and version >= (6,3,5) or gm):
     topts = '-flatten'
 
 # print (command, sys.argv[2], sys.argv[4], file= sys.stdout)
-if (im or gm) and os.system(r'%s %s "%s" %s "%s"' % (command, sopts, sys.argv[2], topts, sys.argv[3] + ':' + sys.argv[4])) != 0:
+if (im or gm) and os.system(r'{} {} "{}" {} "{}"'.format(command, sopts, sys.argv[2], topts, sys.argv[3] + ':' + sys.argv[4])) != 0:
     print(sys.argv[0], 'ERROR', file= sys.stderr)
     print('Execution of "%s" failed.' % command, file= sys.stderr)
     sys.exit(1)
-elif not im and not gm and sys.platform == 'darwin' and os.system(r'%s "%s" "%s"' % (command, sys.argv[2], sys.argv[4])) != 0:
+elif not im and not gm and sys.platform == 'darwin' and os.system(fr'{command} "{sys.argv[2]}" "{sys.argv[4]}"') != 0:
     print(sys.argv[0], 'ERROR', file= sys.stderr)
     print('Execution of "%s" failed.' % command, file=sys.stderr)
     sys.exit(1)

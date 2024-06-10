@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file legacy_lyxpreview2ppm.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -115,7 +113,7 @@ def legacy_extract_metrics_info(log_file):
             success = 1
             match = data_re.search(line)
             if match == None:
-                error("Unexpected data in %s\n%s" % (log_file, line))
+                error(f"Unexpected data in {log_file}\n{line}")
 
             if snippet:
                 ascent  = float(match.group(2))
@@ -145,11 +143,11 @@ def legacy_extract_metrics_info(log_file):
     except:
         # Unable to open the file, but do nothing here because
         # the calling function will act on the value of 'success'.
-        warning('Warning in legacy_extract_metrics_info! Unable to open "%s"' % log_file)
+        warning(f'Warning in legacy_extract_metrics_info! Unable to open "{log_file}"')
         warning(repr(sys.exc_info()[0]) + ',' + repr(sys.exc_info()[1]))
 
     if success == 0:
-        error("Failed to extract metrics info from %s" % log_file)
+        error(f"Failed to extract metrics info from {log_file}")
 
     return results
 
@@ -176,7 +174,7 @@ def extract_resolution(log_file, dpi):
                 if match != None:
                     match = extract_decimal_re.search(line)
                     if match == None:
-                        error("Unable to parse: %s" % line)
+                        error(f"Unable to parse: {line}")
                     fontsize = float(match.group(1))
                     found_fontsize = 1
                     continue
@@ -427,13 +425,12 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
     dvi_file = latex_file_re.sub(".dvi", latex_file)
     ps_file  = latex_file_re.sub(".ps",  latex_file)
 
-    dvips_call = '%s -i -o "%s" "%s"' % (dvips, ps_file, dvi_file)
+    dvips_call = f'{dvips} -i -o "{ps_file}" "{dvi_file}"'
     dvips_failed = False
 
     dvips_status, dvips_stdout = run_command(dvips_call)
     if dvips_status:
-        warning('Failed: %s %s ... looking for PDF' \
-            % (os.path.basename(dvips), dvi_file))
+        warning(f'Failed: {os.path.basename(dvips)} {dvi_file} ... looking for PDF')
         dvips_failed = True
 
     return legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMetrics)
@@ -515,7 +512,7 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
             conv_status, conv_stdout = run_command(conv_call)
 
         if conv_status:
-            error("Failed: %s %s" % (os.path.basename(conv), pdf_file))
+            error(f"Failed: {os.path.basename(conv)} {pdf_file}")
     else:
         # Model for calling the converter on each file
         if use_pdftocairo and epstopdf != None:
@@ -537,11 +534,10 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
         # Call the converter for each file
         for file in ps_files:
             i = i + 1
-            progress("Processing page %s, file %s" % (i, file))
+            progress(f"Processing page {i}, file {file}")
             if use_pdftocairo and epstopdf != None:
                 conv_name = "epstopdf"
-                conv_status, conv_stdout = run_command("%s --outfile=%s.pdf %s"
-                                                       % (epstopdf, file, file))
+                conv_status, conv_stdout = run_command(f"{epstopdf} --outfile={file}.pdf {file}")
                 if not conv_status:
                     conv_name = "pdftocairo"
                     file = file + ".pdf"
@@ -552,7 +548,7 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
 
             if conv_status:
                 # The converter failed, keep track of this
-                warning("%s failed on page %s, file %s" % (conv_name, i, file))
+                warning(f"{conv_name} failed on page {i}, file {file}")
                 failed_pages.append(i)
 
     # Pass failed pages to pdflatex

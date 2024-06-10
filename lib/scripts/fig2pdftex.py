@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file fig2pdf.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -26,7 +24,6 @@
 #   the real pdf file will be overwritten by a tex file named file.pdf.
 #
 
-from __future__ import print_function
 import os, sys, re
 
 
@@ -64,13 +61,13 @@ if 'pdftex_t' in help_msg:
     # Modern versions of xfig can output the image without "special" text as
     # a PDF file ${base}.pdf and place the text in a LaTeX file
     # ${base}.pdftex_t for typesetting by pdflatex itself.
-    runCommand('fig2dev -Lpdftex -p1 %s %s.pdf' % (input, outbase))
-    runCommand('fig2dev -Lpdftex_t -p%s %s %s' % (outbase, input, output))
+    runCommand(f'fig2dev -Lpdftex -p1 {input} {outbase}.pdf')
+    runCommand(f'fig2dev -Lpdftex_t -p{outbase} {input} {output}')
 else:
     # Older versions of xfig cannot do this, so we emulate the behaviour using
     # pstex and pstex_t output.
-    runCommand('fig2dev -Lpstex %s %s.pstex' % (input, outbase))
-    runCommand('fig2dev -Lpstex_t -p %s %s %s' % (outbase, input, output))
+    runCommand(f'fig2dev -Lpstex {input} {outbase}.pstex')
+    runCommand(f'fig2dev -Lpstex_t -p {outbase} {input} {output}')
 
     # manipulates the Bounding Box info to enable gs to produce
     # the appropriate PDF file from an EPS one.

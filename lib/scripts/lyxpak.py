@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file lyxpak.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -15,15 +13,9 @@
 # a gzip compressed tar archive on *nix. This can be controlled by command
 # line options, however.
 
-from __future__ import print_function
 import gzip, os, re, sys
 from io import BytesIO
 import subprocess
-
-# Provide support for both python 2 and 3
-if sys.version_info[0] != 2:
-    def unicode(arg, enc):
-        return arg
 
 # The path to the current python executable. sys.executable may fail, so in
 # this case we revert to simply calling "python" from the path.
@@ -118,13 +110,13 @@ def gather_files(curfile, incfiles, lyx2lyx):
             try:
                 l2l_stdout = subprocess.check_output([PYTHON_BIN, lyx2lyx, tmp.name])
             except subprocess.CalledProcessError:
-                error('%s failed to convert "%s"' % (lyx2lyx, tostr(curfile)))
+                error(f'{lyx2lyx} failed to convert "{tostr(curfile)}"')
             os.unlink(tmp.name)
         else:
             try:
                 l2l_stdout = subprocess.check_output([PYTHON_BIN, lyx2lyx, curfile])
             except subprocess.CalledProcessError:
-                error('%s failed to convert "%s"' % (lyx2lyx, tostr(curfile)))
+                error(f'{lyx2lyx} failed to convert "{tostr(curfile)}"')
         if l2l_stdout.startswith(b"\x1f\x8b"):
             l2l_stdout = gzip.GzipFile("", "rb", 0, BytesIO(l2l_stdout)).read()
         elif running_on_windows:
@@ -168,9 +160,9 @@ def gather_files(curfile, incfiles, lyx2lyx):
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file)
             file_exists = False
-            if not os.path.isdir(unicode(file, 'utf-8')):
+            if not os.path.isdir(file):
                 for ext in extlist:
-                    if os.path.exists(unicode(file + ext, 'utf-8')):
+                    if os.path.exists(file + ext):
                         file = file + ext
                         file_exists = True
                         break
@@ -193,7 +185,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
                 file = file[9:]
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file + b'.bst')
-            if os.path.exists(unicode(file, 'utf-8')):
+            if os.path.exists(file):
                 incfiles.append(abspath(file))
             i += 1
             continue
@@ -208,7 +200,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
                     file = bibfiles[j] + b'.bib'
                 else:
                     file = os.path.join(curdir, bibfiles[j] + b'.bib')
-                if os.path.exists(unicode(file, 'utf-8')):
+                if os.path.exists(file):
                     incfiles.append(abspath(file))
                 j += 1
             i += 1
@@ -297,13 +289,11 @@ def main(args):
             lyx2lyx = param
         elif opt == "-o":
             outdir = param
-            if not os.path.isdir(unicode(outdir, 'utf-8')):
+            if not os.path.isdir(outdir):
                 error('Error: "%s" is not a directory.' % outdir)
 
     lyxfile = argv[0]
-    if not running_on_windows:
-        lyxfile = unicode(lyxfile, sys.getfilesystemencoding()).encode('utf-8')
-    if not os.path.exists(unicode(lyxfile, 'utf-8')):
+    if not os.path.exists(lyxfile):
         error('File "%s" not found.' % tostr(lyxfile))
 
     # Check that it actually is a LyX document
@@ -357,7 +347,7 @@ def main(args):
     incfiles.sort()
 
     if topdir != '':
-        os.chdir(unicode(topdir, 'utf-8'))
+        os.chdir(topdir)
 
     # Create the archive
     try:

@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2018 The LyX team
 #
 # This program is free software; you can redistribute it and/or
@@ -25,47 +24,47 @@ import unittest
 class TestParserTools(unittest.TestCase):
 
     def test_put_cmd_in_ert(self):
-        ert =  [u'\\begin_inset ERT',
-                u'status collapsed',
-                u'',
-                u'\\begin_layout Plain Layout',
-                u'',
-                u'',
-                u'\\backslash',
-                u'texttt{Gr',
-                u'\\backslash',
-                u'"{u}',
-                u'\\backslash',
-                u'ss{}e}',
-                u'\\end_layout',
-                u'',
-                u'\\end_inset']
+        ert =  ['\\begin_inset ERT',
+                'status collapsed',
+                '',
+                '\\begin_layout Plain Layout',
+                '',
+                '',
+                '\\backslash',
+                'texttt{Gr',
+                '\\backslash',
+                '"{u}',
+                '\\backslash',
+                'ss{}e}',
+                '\\end_layout',
+                '',
+                '\\end_inset']
         ert_open = ert[:]
-        ert_open[1] = u'status open'
+        ert_open[1] = 'status open'
         ert_paragraph = ["\\begin_layout Standard",
-                         u'\\begin_inset ERT',
-                         u'status collapsed',
-                         u'',
-                         u'\\begin_layout Plain Layout',
-                         u'',
-                         u'',
-                         u'\\backslash',
-                         u'texttt{Gr',
-                         u'\\backslash',
-                         u'"{u}',
-                         u'\\backslash',
-                         u'ss{}e}',
-                         u'\\end_layout',
-                         u'',
-                         u'\\end_inset',
-                         u'',
-                         u'',
-                         u'\\end_layout',
-                         u'']
+                         '\\begin_inset ERT',
+                         'status collapsed',
+                         '',
+                         '\\begin_layout Plain Layout',
+                         '',
+                         '',
+                         '\\backslash',
+                         'texttt{Gr',
+                         '\\backslash',
+                         '"{u}',
+                         '\\backslash',
+                         'ss{}e}',
+                         '\\end_layout',
+                         '',
+                         '\\end_inset',
+                         '',
+                         '',
+                         '\\end_layout',
+                         '']
         self.assertEqual(put_cmd_in_ert("\\texttt{Grüße}"), ert)
-        self.assertEqual(put_cmd_in_ert([u"\\texttt{Grüße}"]), ert)
-        self.assertEqual(put_cmd_in_ert(u"\\texttt{Grüße}", is_open=True), ert_open)
-        self.assertEqual(put_cmd_in_ert(u"\\texttt{Grüße}", as_paragraph=True), ert_paragraph)
+        self.assertEqual(put_cmd_in_ert(["\\texttt{Grüße}"]), ert)
+        self.assertEqual(put_cmd_in_ert("\\texttt{Grüße}", is_open=True), ert_open)
+        self.assertEqual(put_cmd_in_ert("\\texttt{Grüße}", as_paragraph=True), ert_paragraph)
 
     def test_latex_length(self):
         self.assertEqual(latex_length("-30.5col%"), (True, "-0.305\\columnwidth"))

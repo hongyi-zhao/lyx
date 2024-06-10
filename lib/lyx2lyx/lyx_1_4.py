@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2002 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
 # Copyright (C) 2004-2005 Georg Baum <Georg.Baum@post.rwth-aachen.de>
@@ -1893,7 +1892,7 @@ def convert_graphics(document):
             return
         i = i + 1
         filename = document.body[j].split()[1]
-        if document.dir == u'' and not os.path.isabs(filename):
+        if document.dir == '' and not os.path.isabs(filename):
             # We don't know the directory and cannot check the document.
             # We could use a heuristic and take the current directory,
             # and we could try to find out if documentname has an extension,

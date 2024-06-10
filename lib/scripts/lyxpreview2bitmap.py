@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file lyxpreview2bitmap.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -75,7 +73,6 @@
 # Moreover dvipng can't work with PDF files, so, if the CONVERTER
 # paramter is pdflatex we have to fallback to legacy route (step 2).
 
-from __future__ import print_function
 
 import getopt, glob, os, re, shutil, sys, tempfile
 
@@ -88,8 +85,6 @@ from lyxpreview_tools import bibtex_commands, check_latex_log, copyfileobj, \
      join_metrics_and_rename, latex_commands, latex_file_re, make_texcolor, \
      pdflatex_commands, progress, run_command, run_latex, run_tex, \
      warning, write_metrics_info
-
-PY2 = sys.version_info[0] == 2
 
 def usage(prog_name):
     msg = """
@@ -202,7 +197,7 @@ def convert_to_ppm_format(pngtopnm, basename):
     for png_file in glob.glob("%s*.png" % basename):
         ppm_file = png_file_re.sub(".ppm", png_file)
 
-        p2p_cmd = '%s "%s"' % (pngtopnm, png_file)
+        p2p_cmd = f'{pngtopnm} "{png_file}"'
         p2p_status, p2p_stdout = run_command(p2p_cmd)
         if p2p_status:
             error("Unable to convert %s to ppm format" % png_file)
@@ -226,7 +221,7 @@ def find_ps_pages(dvi_file):
     # and inclusion of PDF/PNG/JPG files.
     # This is required for correct rendering of PSTricks and TikZ
     dv2dt = find_exe_or_terminate(["dv2dt"])
-    dv2dt_call = '%s "%s"' % (dv2dt, dvi_file)
+    dv2dt_call = f'{dv2dt} "{dvi_file}"'
 
     # The output from dv2dt goes to stdout
     dv2dt_status, dv2dt_output = run_command(dv2dt_call)
@@ -333,7 +328,7 @@ def main(argv):
             "debug", "dpi=", "fg=", "help", "latex=", "lilypond",
             "lilypond-book=", "png", "ppm", "verbose"])
     except getopt.GetoptError as err:
-        error("%s\n%s" % (err, usage(script_name)))
+        error(f"{err}\n{usage(script_name)}")
 
     opts.reverse()
     for opt, val in opts:
@@ -367,7 +362,7 @@ def main(argv):
     # Determine input file
     if len(args) != 1:
         err = "A single input file is required, %s given" % (len(args) or "none")
-        error("%s\n%s" % (err, usage(script_name)))
+        error(f"{err}\n{usage(script_name)}")
 
     input_path = args[0]
     dir, latex_file = os.path.split(input_path)
@@ -394,18 +389,11 @@ def main(argv):
     progress("Resolution (dpi): %s" % dpi)
     progress("File to process: %s" % input_path)
 
-    # For python > 2 convert strings to bytes
-    if not PY2:
-        fg_color = bytes(fg_color, 'ascii')
-        bg_color = bytes(bg_color, 'ascii')
+    fg_color = bytes(fg_color, 'ascii')
+    bg_color = bytes(bg_color, 'ascii')
 
-    fg_color_dvipng = make_texcolor(fg_color, False)
-    bg_color_dvipng = make_texcolor(bg_color, False)
-
-    # For python > 2 convert bytes to string
-    if not PY2:
-        fg_color_dvipng = fg_color_dvipng.decode('ascii')
-        bg_color_dvipng = bg_color_dvipng.decode('ascii')
+    fg_color_dvipng = make_texcolor(fg_color, False).decode('ascii')
+    bg_color_dvipng = make_texcolor(bg_color, False).decode('ascii')
 
     # External programs used by the script.
     latex = find_exe_or_terminate(latex or latex_commands)

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file include_bib.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -27,7 +25,6 @@
 #
 # Please report any problems on the devel list.
 
-from __future__ import print_function
 import sys, os
 
 class secbib:
@@ -46,7 +43,7 @@ class BibError(Exception):
 def InsertBib(fil, out):
   ''' Inserts the contents of the .bbl file instead of the bibliography in a new .tex file '''
 
-  texlist = open(fil, 'r').readlines()
+  texlist = open(fil).readlines()
 
   # multiple bibliographies
   biblist = []
@@ -68,7 +65,7 @@ def InsertBib(fil, out):
   bibpos = biblist[0]
   newlist = texlist[0:bibpos]
   bblfile = fil[:-4] + ".bbl"
-  bbllist = open(bblfile, 'r').readlines()
+  bbllist = open(bblfile).readlines()
   newlist += bbllist
   newlist += texlist[bibpos + 1:]
 

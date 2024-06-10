@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file ext_copy.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -53,7 +51,7 @@ def main(argv):
       error(usage(progname))
     abs_from_file = args[0]
     if not os.path.isabs(abs_from_file):
-      error("%s is not an absolute file name.\n%s" % (abs_from_file, usage(progname)))
+      error(f"{abs_from_file} is not an absolute file name.\n{usage(progname)}")
     from_dir = os.path.dirname(abs_from_file)
 
     # output directory
@@ -64,7 +62,7 @@ def main(argv):
       if targext != '.':
         to_dir += "." + targext
       if not os.path.isabs(to_dir):
-        error("%s is not an absolute file name.\n%s" % (to_dir, usage(progname)))
+        error(f"{to_dir} is not an absolute file name.\n{usage(progname)}")
 
     if not copy_all(from_dir, to_dir, exts):
       # some kind of failure

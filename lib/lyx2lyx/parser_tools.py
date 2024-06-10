@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2002-2011 Dekel Tsur <dekel@lyx.org>,
 # José Matos <jamatos@lyx.org>, Richard Kimberly Heck <rikiheck@lyx.org>
 #
@@ -464,7 +463,7 @@ def set_bool_value(lines, token, value, start=0, end=0):
     if get_quoted_value(lines, token, i, i+1) in ('0', '1'):
         lines[i] = "%s %d" % (token, value)
     else:
-        lines[i] = "%s %s" % (token, str(value).lower())
+        lines[i] = f"{token} {str(value).lower()}"
 
     return oldvalue
 

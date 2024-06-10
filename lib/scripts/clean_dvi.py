@@ -94,7 +94,7 @@ def main(argv):
 
     if dv2dt_status != None or len(dv2dt_data) == 0:
         dv2dt_err = dv2dt_stderr.read()
-        error("Failed: %s\n%s\n" % ( dv2dt_call, dv2dt_err) )
+        error(f"Failed: {dv2dt_call}\n{dv2dt_err}\n" )
 
     # Manipulate the .dtl file.
     dtl_data = manipulated_dtl(dv2dt_data)

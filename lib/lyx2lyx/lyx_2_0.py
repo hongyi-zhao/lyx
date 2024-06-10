@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
 # Copyright (C) 2011 The LyX team
 #
@@ -801,7 +800,7 @@ def revert_author_id(document):
             idmap[author_id] = anum
             name = m.group(3)
             email = m.group(4)
-            document.header[i] = "\\author %s %s" % (name, email)
+            document.header[i] = f"\\author {name} {email}"
         i += 1
         # FIXME Should this be incremented if we didn't match?
         anum += 1
@@ -1316,7 +1315,7 @@ def revert_fontcolor(document):
     insert_to_preamble(document,
       ['%  Set the font color',
       '\\@ifundefined{definecolor}{\\usepackage{color}}{}',
-      '\\definecolor{document_fontcolor}{rgb}{%s,%s,%s}' % (red, green, blue),
+      f'\\definecolor{{document_fontcolor}}{{rgb}}{{{red},{green},{blue}}}',
       '\\color{document_fontcolor}'])
 
 
@@ -1335,7 +1334,7 @@ def revert_shadedboxcolor(document):
     insert_to_preamble(document,
       ['%  Set the color of boxes with shaded background',
       '\\@ifundefined{definecolor}{\\usepackage{color}}{}',
-      "\\definecolor{shadecolor}{rgb}{%s,%s,%s}" % (red, green, blue)])
+      f"\\definecolor{{shadecolor}}{{rgb}}{{{red},{green},{blue}}}"])
 
 
 def revert_lyx_version(document):

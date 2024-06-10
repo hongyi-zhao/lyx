@@ -40,9 +40,7 @@ for file in config/install-sh ; do
 done
 
 # Find a suitable python interpreter
-LYX_PATH_PYTHON23([2.7.0], [3.5.0])
-# do the usual python setup stuff
-AM_PATH_PYTHON
+AM_PATH_PYTHON([3.8.0])
 
 # Tools for creating libraries (note that we do not use libtool)
 AM_PROG_AR

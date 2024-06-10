@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # file layout2layout.py
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
@@ -365,19 +363,6 @@ currentFormat = 105
 import os, re, sys
 import argparse
 
-# Provide support for both python 2 and 3
-# (copied from lyx2lyx)
-PY2 = sys.version_info[0] == 2
-if PY2:
-    # argparse returns strings in the commandline encoding, we need to convert.
-    # sys.getdefaultencoding() would not always be correct, see
-    # http://legacy.python.org/dev/peps/pep-0383/
-    def cmd_arg(arg):
-        return arg.decode(sys.getfilesystemencoding())
-else:
-    cmd_arg = str
-# End of code to support for both python 2 and 3
-
 
 def error(message):
     sys.stderr.write(message + '\n')
@@ -570,15 +555,15 @@ def convert(lines, end_format):
             match = re_Format.match(lines[i])
             if match:
                 formatline = i
-                format = int(match.group(4))
-                if 1 < format < end_format:
-                    lines[i] = b"Format %d" % (format + 1)
+                format_ = int(match.group(4))
+                if 1 < format_ < end_format:
+                    lines[i] = b"Format %d" % (format_ + 1)
                     only_comment = 0
-                elif format == end_format:
+                elif format_ == end_format:
                     # nothing to do
-                    return format
+                    return format_
                 else:
-                    error('Cannot convert file format %s to %s' % (format, end_format))
+                    error(f'Cannot convert file format {format_} to {end_format}')
             else:
                 lines.insert(i, b"Format 2")
                 only_comment = 0
@@ -1404,9 +1389,9 @@ def main(argv):
 
     parser.add_argument("-t", "--to", type=int, dest="format", default= currentFormat,
                         help=("destination layout format, default %i (latest)") % currentFormat)
-    parser.add_argument("input_file", nargs='?', type=cmd_arg, default=None,
+    parser.add_argument("input_file", nargs='?', type=str, default=None,
                         help="input file (default stdin)")
-    parser.add_argument("output_file", nargs='?', type=cmd_arg, default=None,
+    parser.add_argument("output_file", nargs='?', type=str, default=None,
                         help="output file (default stdout)")
 
     options = parser.parse_args(argv[1:])
@@ -1414,15 +1399,11 @@ def main(argv):
     # Open files
     if options.input_file:
         source = open(options.input_file, 'rb')
-    elif PY2:
-        source = sys.stdin
     else:
         source = sys.stdin.buffer
 
     if options.output_file:
         output = open(options.output_file, 'wb')
-    elif PY2:
-        output = sys.stdout
     else:
         output = sys.stdout.buffer
 

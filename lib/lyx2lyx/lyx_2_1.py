@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
 # Copyright (C) 2011 The LyX team
 #
@@ -585,7 +584,7 @@ def convert_use_packages(document):
         i = find_token(document.header, "\\use_%s" % p, 0)
         if i != -1:
             value = get_value(document.header, "\\use_%s" % p, i)
-            document.header[i] = "\\use_package %s %s" % (p, value)
+            document.header[i] = f"\\use_package {p} {value}"
 
 
 def revert_use_packages(document):
@@ -607,7 +606,7 @@ def revert_use_packages(document):
         if i != -1:
             value = get_value(document.header, "\\use_package %s" % p, i).split()[1]
             del document.header[i]
-            document.header.insert(j, "\\use_%s %s" % (p, value))
+            document.header.insert(j, f"\\use_{p} {value}")
         else:
             document.header.insert(j, "\\use_%s 1" % p)
         j += 1

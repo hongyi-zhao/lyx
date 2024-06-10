@@ -1,5 +1,4 @@
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2011 The LyX team
 #
 # This program is free software; you can redistribute it and/or
@@ -90,7 +89,6 @@ revert_language(document, lyxname, babelname="", polyglossianame=""):
   this language package is not supported for the given language.
 '''
 
-from __future__ import print_function
 import re
 import sys
 from parser_tools import (find_token, find_end_of_inset, get_containing_layout,
@@ -169,9 +167,7 @@ def put_cmd_in_ert(cmd, is_open=False, as_paragraph=False):
                  "", "", "\\end_layout", ""]
     # ensure cmd is an unicode instance and make it "LyX safe".
     if isinstance(cmd, list):
-        cmd = u"\n".join(cmd)
-    elif sys.version_info[0] == 2 and isinstance(cmd, str):
-        cmd = cmd.decode('utf8')
+        cmd = "\n".join(cmd)
     cmd = cmd.translate(licr_table)
     cmd = cmd.replace("\\", "\n\\backslash\n")
 
@@ -615,13 +611,13 @@ def is_document_option(document, option):
 
 
 singlepar_insets = [s.strip() for s in
-    u"Argument, Caption Above, Caption Below, Caption Bicaption,"
-    u"Caption Centered, Caption FigCaption, Caption Standard, Caption Table,"
-    u"Flex Chemistry, Flex Fixme_Note, Flex Latin, Flex ListOfSlides,"
-    u"Flex Missing_Figure, Flex PDF-Annotation, Flex PDF-Comment-Setup,"
-    u"Flex Reflectbox, Flex S/R expression, Flex Sweave Input File,"
-    u"Flex Sweave Options, Flex Thanks_Reference, Flex URL, Foot InTitle,"
-    u"IPADeco, Index, Info, Phantom, Script".split(',')]
+    "Argument, Caption Above, Caption Below, Caption Bicaption,"
+    "Caption Centered, Caption FigCaption, Caption Standard, Caption Table,"
+    "Flex Chemistry, Flex Fixme_Note, Flex Latin, Flex ListOfSlides,"
+    "Flex Missing_Figure, Flex PDF-Annotation, Flex PDF-Comment-Setup,"
+    "Flex Reflectbox, Flex S/R expression, Flex Sweave Input File,"
+    "Flex Sweave Options, Flex Thanks_Reference, Flex URL, Foot InTitle,"
+    "IPADeco, Index, Info, Phantom, Script".split(',')]
 # print(singlepar_insets)
 
 def revert_language(document, lyxname, babelname="", polyglossianame=""):

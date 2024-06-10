@@ -4114,7 +4114,13 @@ string MatchStringAdv::convertLF2Space(docstring const &s, bool ignore_format) c
 static string showPos(DocIterator const & cur)
 {
 	stringstream a;
-	a << "[idx(" << cur.idx() << "),pit(" << cur.pit() << "),pos(" << cur.pos() << "),depth(" << cur.depth() << ")]";
+	string inmath;
+	if (cur.inMathed())
+		inmath = "inMath";
+	else
+		inmath = "inText";
+
+	a << "[idx(" << cur.idx() << "),pit(" << cur.pit() << "),pos(" << cur.pos() << "),depth(" << cur.depth() << ") " << inmath << ")]";
 	return(a.str());
 }
 
@@ -4147,7 +4153,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		docstring res = from_utf8(latexNamesToUtf8(par.asString(cur.pos(), end,
 								        option,
 								        &runparams), false));
-		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Stringified text from pos(" << cur.pos() << ") len(" << len << "): " << res);
+		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Stringified text from " << showPos(cur) << " len(" << len << "): " << res);
 		return res;
 	} else if (cur.inMathed()) {
 		CursorSlice cs = cur.top();
@@ -4203,7 +4209,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 			endpos = cur.pos() + len;
 		TeXOnePar(buf, *cur.innerText(), cur.pit(), os, runparams,
 			  string(), cur.pos(), endpos, true);
-		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Latexified text from pos(" << cur.pos() << ") len(" << len << "): " << ods.str());
+		LYXERR(Debug::FINDVERBOSE|Debug::FIND, "Latexified text from " << showPos(cur) << ods.str());
 		return(ods.str());
 	} else if (cur.inMathed()) {
 		// Retrieve the math environment type, and add '$' or '$[' or others (\begin{equation}) accordingly
@@ -4441,7 +4447,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 	do {
 		orig_cur = cur;
 		cur.forwardPos();
-	} while (cur.depth() > orig_cur.depth());
+	} while (cur.depth() > orig_cur.depth() && !cur.inMathed());
 	cur = orig_cur;
 	while (!theApp()->longOperationCancelled() && cur) {
 		//(void) findAdvForwardInnermost(cur);

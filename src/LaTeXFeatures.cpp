@@ -208,8 +208,8 @@ static docstring const lyxdot_def = from_ascii(
 
 static docstring const changetracking_xcolor_ulem_base_def = from_ascii(
 	"%% Change tracking with ulem and xcolor: base macros\n"
-	"\\DeclareRobustCommand{\\mklyxadded}[1]{\\bgroup\\color{lyxadded}{}#1\\egroup}\n"
-	"\\DeclareRobustCommand{\\mklyxdeleted}[1]{\\bgroup\\color{lyxdeleted}\\mklyxsout{#1}\\egroup}\n"
+	"\\DeclareRobustCommand{\\mklyxadded}[1]{\\textcolor{lyxadded}\\bgroup#1\\egroup}\n"
+	"\\DeclareRobustCommand{\\mklyxdeleted}[1]{\\textcolor{lyxdeleted}\\bgroup\\mklyxsout{#1}\\egroup}\n"
 	"\\DeclareRobustCommand{\\mklyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
 
 static docstring const changetracking_xcolor_ulem_def = from_ascii(

@@ -6,10 +6,10 @@
 # Kornel Benko <kornel@lyx.org>, 2009-2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX-2.4\n"
+"Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-06-03 08:10+0200\n"
-"PO-Revision-Date: 2024-06-03 06:54+0000\n"
+"POT-Creation-Date: 2024-06-10 16:04+0200\n"
+"PO-Revision-Date: 2024-06-11 11:23+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -31285,6 +31285,10 @@ msgstr "Neplatný argument (musí byť nie-negatívne číslo)!"
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Vlastnosti textu aplikované: %1$s"
+
+#: src/Text.cpp:5992
+msgid "Invalid argument of textstyle-update"
+msgstr "Neplatný argument aktualizácie štýlu textu 'master-buffer-forall'"
 
 #: src/Text.cpp:6129
 msgid "Path to thesaurus directory not set!"

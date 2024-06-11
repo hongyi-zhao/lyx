@@ -43,6 +43,8 @@ public:
 	///
 	void edit(Cursor & cur, bool front, EntryDirection entry_from) override;
 	///
+	Inset * editXY(Cursor & cur, int x, int y) override;
+	///
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 	///
 	void read(support::Lexer & lex) override;

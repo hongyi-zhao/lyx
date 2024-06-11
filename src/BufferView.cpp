@@ -592,6 +592,9 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		flags = (flags & ~Update::FitCursor) | Update::ForceDraw;
 	}
 
+	if (lyxrc.draw_strategy == LyXRC::DS_FULL)
+		flags = flags | Update::ForceDraw;
+
 	// Add flags to the the update flags. These will be reset to None
 	// after the redraw is actually done
 	d->update_flags_ = d->update_flags_ | flags;

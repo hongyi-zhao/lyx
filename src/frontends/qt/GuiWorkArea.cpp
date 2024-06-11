@@ -131,9 +131,13 @@ GuiWorkArea::Private::Private(GuiWorkArea * parent)
 	: p(parent), completer_(new GuiCompleter(p, p))
 {
 	use_backingstore_ = lyxrc.draw_strategy == LyXRC::DS_BACKINGSTORE
-		|| guiApp->needsBackingStore();
-	LYXERR(Debug::WORKAREA, "Drawing strategy is: "
-	                        << (use_backingstore_ ? "backingstore" : "partial"));
+		|| (lyxrc.draw_strategy == LyXRC::DS_PARTIAL && guiApp->noPartialDraw());
+	if (use_backingstore_)
+		LYXERR(Debug::WORKAREA, "Drawing strategy: partial draw on backing store");
+	else
+		LYXERR(Debug::WORKAREA, "Drawing strategy: "
+			   << (lyxrc.draw_strategy == LyXRC::DS_PARTIAL ? "partial draw"
+				   : "full draw"));
 
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time > 0) {

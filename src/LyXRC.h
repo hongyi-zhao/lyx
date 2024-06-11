@@ -580,8 +580,8 @@ public:
 	BookmarksVisibility bookmarks_visibility = BMK_NONE;
 
 	enum DrawStrategy {
-		// draw all (not implemented yet)
-		// FS_FULL,
+		// draw all
+		DS_FULL,
 		// draw only what has changed
 		DS_PARTIAL,
 		// draw in backing store (only what has changed)

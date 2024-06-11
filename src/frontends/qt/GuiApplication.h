@@ -113,8 +113,8 @@ public:
 	///
 	Menus & menus();
 
-	/// \returns true if painting the workarea requires a backing store.
-	bool needsBackingStore() const;
+	/// \returns true the "partial" draw strategy is known to be broken
+	bool noPartialDraw() const;
 
 	/// \name Methods inherited from QApplication class
 	//@{

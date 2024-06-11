@@ -625,6 +625,14 @@ void InsetMathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry
 }
 
 
+Inset * InsetMathMacroTemplate::editXY(Cursor & cur, int x, int y)
+{
+	updateLook();
+	cur.screenUpdateFlags(Update::SinglePar);
+	return InsetMathNest::editXY(cur, x, y);
+}
+
+
 bool InsetMathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	unsigned int const nargs_before = nargs();

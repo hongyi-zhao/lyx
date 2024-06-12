@@ -196,6 +196,12 @@ def revert_glue_parskip(document):
     document.header[i] = "\\paragraph_separation indent"
     document.header[j] = "\\paragraph_indentation default"
 
+def convert_he_letter(document):
+    """Convert hebrew letter to letter document class"""
+
+    if document.textclass == "heb-letter":
+        document.textclass = "letter"
+
 
 ##
 # Conversion hub
@@ -204,11 +210,13 @@ def revert_glue_parskip(document):
 supported_versions = ["2.5.0", "2.5"]
 convert = [
            [621, [convert_url_escapes, convert_url_escapes2]],
-           [622, []]
+           [622, []],
+           [623, [convert_he_letter]]
           ]
 
 
-revert =  [[621, [revert_glue_parskip]],
+revert =  [[622, []],
+           [621, [revert_glue_parskip]],
            [620, [revert_url_escapes2, revert_url_escapes]]
           ]
 

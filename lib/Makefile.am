@@ -2546,7 +2546,6 @@ dist_layouts_DATA =\
 	layouts/graphicboxes.module \
 	layouts/hanging.module \
 	layouts/heb-article.layout \
-	layouts/heb-letter.layout \
 	layouts/hollywood.layout \
 	layouts/hpstatement.module \
 	layouts/IEEEtran.layout \

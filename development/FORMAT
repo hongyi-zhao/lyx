@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2024-06-11 Udi Fogiel <ufogiel@lyx.org>
+	* Format incremented to 623: Remove hebrew letter document class.
+	  Old documents will be mapped to regular letter document class.
+
 2024-06-01 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 622: Allow glue length (skip) in parskip setting.
 

@@ -71,6 +71,10 @@ libraries. See the RELEASE-NOTES for details.
 Users of debian-based distributions are well advised to run
 'apt-get build-dep lyx' before compiling to install proper dependencies.
 
+Python 3.8 (or newer) must be installed. Python is used for many simple
+tasks that are executed by external scripts, such as the automatic
+configuration step and the import of older LyX documents with the
+lyx2lyx script (this script is called automatically when opening a file).
 
 * Other things to note
 
@@ -80,13 +84,6 @@ files, you will need to have the GNU gettext package installed to
 compile LyX with up-to-date translations (at least gettext version
 0.16.1 is needed). You can get the latest version from:
 	ftp://ftp.gnu.org/gnu/gettext/
-
-The two following programs should be available at configuration time:
-
-  o Python (2.7 or 3.5 and newer) must be installed. Python is used for many
-    simple tasks that are executed by external scripts, such as the automatic
-    configuration step and the import of older LyX documents with the lyx2lyx
-    script (this script is called automatically when opening a file).
 
 
 Creating the Makefile
@@ -286,4 +283,3 @@ variable, you have to compile LyX for one architecture at a time in
 the source code directory.  After you have installed LyX for one
 architecture, use `make distclean' before reconfiguring for another
 architecture.
-

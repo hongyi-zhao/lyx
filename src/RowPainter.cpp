@@ -352,12 +352,12 @@ void RowPainter::paintDepthBar() const
 		int const starty = yo_ - row_.ascent();
 		int const h =  row_.height() - 1 - (i - next_depth - 1) * 3;
 
-		pi_.pain.line(x, starty, x, starty + h, Color_depthbar);
+		pi_.pain.line(x, starty + (i > prev_depth ? 1 : 0), x, starty + h, Color_depthbar);
 
 		if (i > prev_depth)
 			pi_.pain.fillRectangle(x, starty, w, 2, Color_depthbar);
 		if (i > next_depth)
-			pi_.pain.fillRectangle(x, starty + h, w, 2, Color_depthbar);
+			pi_.pain.fillRectangle(x, starty + h - 1, w, 2, Color_depthbar);
 	}
 }
 

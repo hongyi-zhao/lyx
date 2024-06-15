@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-" This modules tests the functions used to help parse lines."
+"This modules tests the functions used to help parse lines."
 
 from parser_tools import *
 
@@ -77,44 +77,39 @@ newheader = r"""\begin_header
 
 
 class TestParserTools(unittest.TestCase):
-
     def test_check_token(self):
         line = "\\begin_layout Standard"
 
-        self.assertEqual(check_token(line, '\\begin_layout'), True)
-        self.assertEqual(check_token(line, 'Standard'), False)
-
+        self.assertEqual(check_token(line, "\\begin_layout"), True)
+        self.assertEqual(check_token(line, "Standard"), False)
 
     def test_is_nonempty_line(self):
         self.assertEqual(is_nonempty_line(lines[0]), False)
         self.assertEqual(is_nonempty_line(lines[1]), True)
-        self.assertEqual(is_nonempty_line(" "*5), False)
-
+        self.assertEqual(is_nonempty_line(" " * 5), False)
 
     def test_find_token(self):
-        self.assertEqual(find_token(lines, '\\emph', 0), 7)
+        self.assertEqual(find_token(lines, "\\emph", 0), 7)
         # no line starts with "emph" (without backspace):
-        self.assertEqual(find_token(lines, 'emph', 0), -1)
+        self.assertEqual(find_token(lines, "emph", 0), -1)
         # token on line[start] is found:
-        self.assertEqual(find_token(lines, '\\emph', 7), 7)
-        self.assertEqual(find_token(lines, '\\emph', 8), 9)
+        self.assertEqual(find_token(lines, "\\emph", 7), 7)
+        self.assertEqual(find_token(lines, "\\emph", 8), 9)
         # token on line[end] is not found:
-        self.assertEqual(find_token(lines, '\\emph', 0, 7), -1)
+        self.assertEqual(find_token(lines, "\\emph", 0, 7), -1)
         # `ignorews` looks for whitespace-separated tokens:
-        self.assertEqual(find_token(lines, '\\emp', 0, ignorews=True), -1)
-        self.assertEqual(find_token(lines, '\\emph',0, ignorews=True), 7)
-        self.assertEqual(find_token(lines, '\\emph', 7, ignorews=True), 7)
-        self.assertEqual(find_token(lines, '\\emph', 0, 7, True), -1)
+        self.assertEqual(find_token(lines, "\\emp", 0, ignorews=True), -1)
+        self.assertEqual(find_token(lines, "\\emph", 0, ignorews=True), 7)
+        self.assertEqual(find_token(lines, "\\emph", 7, ignorews=True), 7)
+        self.assertEqual(find_token(lines, "\\emph", 0, 7, True), -1)
         # only first token is found:
-        self.assertEqual(find_token(lines, 'Quotes', 0), -1)
-        self.assertEqual(find_token(lines, 'Quotes', 0, ignorews=True), -1)
-
+        self.assertEqual(find_token(lines, "Quotes", 0), -1)
+        self.assertEqual(find_token(lines, "Quotes", 0, ignorews=True), -1)
 
     def test_find_tokens(self):
-        tokens = ['\\emph', '\\end_inset']
+        tokens = ["\\emph", "\\end_inset"]
         self.assertEqual(find_tokens(lines, tokens, 0), 4)
         self.assertEqual(find_tokens(lines, tokens, 0, 4), -1)
-
 
     def test_find_substring(self):
         # Quotes is not a "token" (substring at the start of any line):
@@ -123,9 +118,8 @@ class TestParserTools(unittest.TestCase):
         # return -1 on failure:
         self.assertEqual(find_substring(lines, "Qualen", 0), -1)
 
-
     def test_find_re(self):
-        regexp_object = re.compile(r'\\begin.*Quote')
+        regexp_object = re.compile(r"\\begin.*Quote")
         # matching starts with line[start] (default: start=0)
         self.assertEqual(find_re(lines, regexp_object), 3)
         self.assertEqual(find_re(lines, regexp_object, start=3), 3)
@@ -134,13 +128,12 @@ class TestParserTools(unittest.TestCase):
         self.assertEqual(find_re(lines, regexp_object, start=4, end=11), -1)
 
     def test_find_complete_lines(self):
-        sublines = ["\\begin_inset Quotes eld",
-                    "\\end_inset"]
+        sublines = ["\\begin_inset Quotes eld", "\\end_inset"]
         # return index of first line of sublines:
         self.assertEqual(find_complete_lines(lines, sublines), 3)
         self.assertEqual(find_complete_lines(lines, ["\\end_inset"]), 4)
         # return -1 if sublines is not found:
-        self.assertEqual(find_complete_lines(lines, ['x']), -1)
+        self.assertEqual(find_complete_lines(lines, ["x"]), -1)
         # search includes line `start`:
         self.assertEqual(find_complete_lines(lines, sublines, 3), 3)
         self.assertEqual(find_complete_lines(lines, sublines, 4), 20)
@@ -149,7 +142,6 @@ class TestParserTools(unittest.TestCase):
         self.assertEqual(find_complete_lines(lines, sublines, 4, 20), -1)
         # an empty list is always found
         self.assertEqual(find_complete_lines(lines, []), 0)
-
 
     def test_find_across_lines(self):
         # sub with at least 2 line-breaks (uses find_complete_lines):
@@ -181,7 +173,6 @@ class TestParserTools(unittest.TestCase):
         self.assertEqual(find_across_lines(lines, sub, 0, 4), -1)
         self.assertEqual(find_across_lines(lines, sub, 2, 1), -1)
         self.assertEqual(find_across_lines(lines, "XXX"), -1)
-
 
     def test_get_value(self):
         self.assertEqual(get_value(lines, "\\begin_inset"), "Quotes eld")
@@ -216,12 +207,11 @@ class TestParserTools(unittest.TestCase):
 
     def test_del_complete_lines(self):
         l = lines[:]
-        sublines = ["\\begin_inset Quotes eld",
-                    "\\end_inset"]
+        sublines = ["\\begin_inset Quotes eld", "\\end_inset"]
         # normal operation: remove the first occurence of sublines:
         self.assertEqual(del_complete_lines(l, sublines), True)
         self.assertEqual(l[3], "")
-        self.assertEqual(len(l), len(lines)-len(sublines))
+        self.assertEqual(len(l), len(lines) - len(sublines))
         # special cases:
         l = lines[:]
         self.assertEqual(del_complete_lines(l, sublines, 21), False)
@@ -239,5 +229,5 @@ class TestParserTools(unittest.TestCase):
         self.assertEqual(del_value(l, "\\end_inset", default=None), "")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

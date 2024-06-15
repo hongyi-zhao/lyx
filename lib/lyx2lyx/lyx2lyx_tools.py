@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-'''
+"""
 This module offers several free functions to help with lyx2lyx'ing.
 More documentaton is below, but here is a quick guide to what
 they do. Optional arguments are marked by brackets.
@@ -87,41 +87,47 @@ revert_language(document, lyxname, babelname="", polyglossianame=""):
   Reverts native language support to ERT
   If babelname or polyglossianame is empty, it is assumed
   this language package is not supported for the given language.
-'''
+"""
 
 import re
-import sys
-from parser_tools import (find_token, find_end_of_inset, get_containing_layout,
-                          get_containing_inset, get_value, get_bool_value)
+from parser_tools import (
+    find_token,
+    find_end_of_inset,
+    get_containing_layout,
+    get_containing_inset,
+    get_value,
+    get_bool_value,
+)
 from unicode_symbols import unicode_reps
+
 
 # This will accept either a list of lines or a single line.
 # It is bad practice to pass something with embedded newlines,
 # though we will handle that.
 def add_to_preamble(document, text):
-    " Add text to the preamble if it is not already there. "
+    "Add text to the preamble if it is not already there."
 
-    if not type(text) is list:
-      # split on \n just in case
-      # it'll give us the one element list we want
-      # if there's no \n, too
-      text = text.split('\n')
+    if type(text) is not list:
+        # split on \n just in case
+        # it'll give us the one element list we want
+        # if there's no \n, too
+        text = text.split("\n")
 
     i = 0
     prelen = len(document.preamble)
     while True:
-      i = find_token(document.preamble, text[0], i)
-      if i == -1:
-        break
-      # we need a perfect match
-      matched = True
-      for line in text:
-        if i >= prelen or line != document.preamble[i]:
-          matched = False
-          break
-        i += 1
-      if matched:
-        return
+        i = find_token(document.preamble, text[0], i)
+        if i == -1:
+            break
+        # we need a perfect match
+        matched = True
+        for line in text:
+            if i >= prelen or line != document.preamble[i]:
+                matched = False
+                break
+            i += 1
+        if matched:
+            return
 
     document.preamble.extend(["% Added by lyx2lyx"])
     document.preamble.extend(text)
@@ -129,14 +135,14 @@ def add_to_preamble(document, text):
 
 # Note that text can be either a list of lines or a single line.
 # It should really be a list.
-def insert_to_preamble(document, text, index = 0):
-    """ Insert text to the preamble at a given line"""
+def insert_to_preamble(document, text, index=0):
+    """Insert text to the preamble at a given line"""
 
-    if not type(text) is list:
-      # split on \n just in case
-      # it'll give us the one element list we want
-      # if there's no \n, too
-      text = text.split('\n')
+    if type(text) is not list:
+        # split on \n just in case
+        # it'll give us the one element list we want
+        # if there's no \n, too
+        text = text.split("\n")
 
     text.insert(0, "% Added by lyx2lyx")
     document.preamble[index:index] = text
@@ -145,6 +151,7 @@ def insert_to_preamble(document, text, index = 0):
 # A dictionary of Unicode->LICR mappings for use in a Unicode string's translate() method
 # Created from the reversed list to keep the first of alternative definitions.
 licr_table = {ord(ch): cmd for cmd, ch in unicode_reps[::-1]}
+
 
 def put_cmd_in_ert(cmd, is_open=False, as_paragraph=False):
     """
@@ -156,15 +163,27 @@ def put_cmd_in_ert(cmd, is_open=False, as_paragraph=False):
     `as_paragraph` wraps the ERT inset in a Standard paragraph.
     """
 
-    status = {False:"collapsed", True:"open"}
-    ert_inset = ["\\begin_inset ERT", "status %s"%status[is_open], "",
-                 "\\begin_layout Plain Layout", "",
-                 # content here ([5:5])
-                 "\\end_layout", "", "\\end_inset"]
+    status = {False: "collapsed", True: "open"}
+    ert_inset = [
+        "\\begin_inset ERT",
+        "status %s" % status[is_open],
+        "",
+        "\\begin_layout Plain Layout",
+        "",
+        # content here ([5:5])
+        "\\end_layout",
+        "",
+        "\\end_inset",
+    ]
 
-    paragraph = ["\\begin_layout Standard",
-                 # content here ([1:1])
-                 "", "", "\\end_layout", ""]
+    paragraph = [
+        "\\begin_layout Standard",
+        # content here ([1:1])
+        "",
+        "",
+        "\\end_layout",
+        "",
+    ]
     # ensure cmd is an unicode instance and make it "LyX safe".
     if isinstance(cmd, list):
         cmd = "\n".join(cmd)
@@ -178,8 +197,8 @@ def put_cmd_in_ert(cmd, is_open=False, as_paragraph=False):
     return paragraph
 
 
-def get_ert(lines, i, verbatim = False):
-    'Convert an ERT inset into LaTeX.'
+def get_ert(lines, i, verbatim=False):
+    "Convert an ERT inset into LaTeX."
     if not lines[i].startswith("\\begin_inset ERT"):
         return ""
     j = find_end_of_inset(lines, i)
@@ -196,10 +215,10 @@ def get_ert(lines, i, verbatim = False):
                 first = False
             else:
                 ret = ret + "\n"
-            while i + 1 < j and lines[i+1] == "":
+            while i + 1 < j and lines[i + 1] == "":
                 i = i + 1
         elif lines[i] == "\\end_layout":
-            while i + 1 < j and lines[i+1] == "":
+            while i + 1 < j and lines[i + 1] == "":
                 i = i + 1
         elif lines[i] == "\\backslash":
             if verbatim:
@@ -213,7 +232,7 @@ def get_ert(lines, i, verbatim = False):
 
 
 def lyx2latex(document, lines):
-    'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
+    "Convert some LyX stuff into corresponding LaTeX stuff, as best we can."
 
     content = ""
     ert_end = 0
@@ -221,118 +240,137 @@ def lyx2latex(document, lines):
     hspace = ""
 
     for curline in range(len(lines)):
-      line = lines[curline]
-      if line.startswith("\\begin_inset Note Note"):
-          # We want to skip LyX notes, so remember where the inset ends
-          note_end = find_end_of_inset(lines, curline + 1)
-          continue
-      elif note_end >= curline:
-          # Skip LyX notes
-          continue
-      elif line.startswith("\\begin_inset ERT"):
-          # We don't want to replace things inside ERT, so figure out
-          # where the end of the inset is.
-          ert_end = find_end_of_inset(lines, curline + 1)
-          continue
-      elif line.startswith("\\begin_inset Formula"):
-          line = line[20:]
-      elif line.startswith("\\begin_inset Quotes"):
-          # For now, we do a very basic reversion. Someone who understands
-          # quotes is welcome to fix it up.
-          qtype = line[20:].strip()
-          # lang = qtype[0]
-          side = qtype[1]
-          dbls = qtype[2]
-          if side == "l":
-              if dbls == "d":
-                  line = "``"
-              else:
-                  line = "`"
-          else:
-              if dbls == "d":
-                  line = "''"
-              else:
-                  line = "'"
-      elif line.startswith("\\begin_inset Newline newline"):
-          line = "\\\\ "
-      elif line.startswith("\\noindent"):
-          line = "\\noindent " # we need the space behind the command
-      elif line.startswith("\\begin_inset space"):
-          line = line[18:].strip()
-          if line.startswith("\\hspace"):
-              # Account for both \hspace and \hspace*
-              hspace = line[:-2]
-              continue
-          elif line == "\\space{}":
-              line = "\\ "
-          elif line == "\\thinspace{}":
-              line = "\\,"
-      elif hspace != "":
-          # The LyX length is in line[8:], after the \length keyword
-          length = latex_length(line[8:])[1]
-          line = hspace + "{" + length + "}"
-          hspace = ""
-      elif line.isspace() or \
-            line.startswith("\\begin_layout") or \
-            line.startswith("\\end_layout") or \
-            line.startswith("\\begin_inset") or \
-            line.startswith("\\end_inset") or \
-            line.startswith("\\lang") or \
-            line.strip() == "status collapsed" or \
-            line.strip() == "status open":
-          #skip all that stuff
-          continue
+        line = lines[curline]
+        if line.startswith("\\begin_inset Note Note"):
+            # We want to skip LyX notes, so remember where the inset ends
+            note_end = find_end_of_inset(lines, curline + 1)
+            continue
+        elif note_end >= curline:
+            # Skip LyX notes
+            continue
+        elif line.startswith("\\begin_inset ERT"):
+            # We don't want to replace things inside ERT, so figure out
+            # where the end of the inset is.
+            ert_end = find_end_of_inset(lines, curline + 1)
+            continue
+        elif line.startswith("\\begin_inset Formula"):
+            line = line[20:]
+        elif line.startswith("\\begin_inset Quotes"):
+            # For now, we do a very basic reversion. Someone who understands
+            # quotes is welcome to fix it up.
+            qtype = line[20:].strip()
+            # lang = qtype[0]
+            side = qtype[1]
+            dbls = qtype[2]
+            if side == "l":
+                if dbls == "d":
+                    line = "``"
+                else:
+                    line = "`"
+            else:
+                if dbls == "d":
+                    line = "''"
+                else:
+                    line = "'"
+        elif line.startswith("\\begin_inset Newline newline"):
+            line = "\\\\ "
+        elif line.startswith("\\noindent"):
+            line = "\\noindent "  # we need the space behind the command
+        elif line.startswith("\\begin_inset space"):
+            line = line[18:].strip()
+            if line.startswith("\\hspace"):
+                # Account for both \hspace and \hspace*
+                hspace = line[:-2]
+                continue
+            elif line == "\\space{}":
+                line = "\\ "
+            elif line == "\\thinspace{}":
+                line = "\\,"
+        elif hspace != "":
+            # The LyX length is in line[8:], after the \length keyword
+            length = latex_length(line[8:])[1]
+            line = hspace + "{" + length + "}"
+            hspace = ""
+        elif (
+            line.isspace()
+            or line.startswith("\\begin_layout")
+            or line.startswith("\\end_layout")
+            or line.startswith("\\begin_inset")
+            or line.startswith("\\end_inset")
+            or line.startswith("\\lang")
+            or line.strip() == "status collapsed"
+            or line.strip() == "status open"
+        ):
+            # skip all that stuff
+            continue
 
-      # this needs to be added to the preamble because of cases like
-      # \textmu, \textbackslash, etc.
-      add_to_preamble(document, ['% added by lyx2lyx for converted index entries',
-                                 '\\@ifundefined{textmu}',
-                                 ' {\\usepackage{textcomp}}{}'])
-      # a lossless reversion is not possible
-      # try at least to handle some common insets and settings
-      if ert_end >= curline:
-          line = line.replace(r'\backslash', '\\')
-      else:
-          # No need to add "{}" after single-nonletter macros
-          line = line.replace('&', '\\&')
-          line = line.replace('#', '\\#')
-          line = line.replace('^', '\\textasciicircum{}')
-          line = line.replace('%', '\\%')
-          line = line.replace('_', '\\_')
-          line = line.replace('$', '\\$')
+        # this needs to be added to the preamble because of cases like
+        # \textmu, \textbackslash, etc.
+        add_to_preamble(
+            document,
+            [
+                "% added by lyx2lyx for converted index entries",
+                "\\@ifundefined{textmu}",
+                " {\\usepackage{textcomp}}{}",
+            ],
+        )
+        # a lossless reversion is not possible
+        # try at least to handle some common insets and settings
+        if ert_end >= curline:
+            line = line.replace(r"\backslash", "\\")
+        else:
+            # No need to add "{}" after single-nonletter macros
+            line = line.replace("&", "\\&")
+            line = line.replace("#", "\\#")
+            line = line.replace("^", "\\textasciicircum{}")
+            line = line.replace("%", "\\%")
+            line = line.replace("_", "\\_")
+            line = line.replace("$", "\\$")
 
-          # Do the LyX text --> LaTeX conversion
-          for rep in unicode_reps:
-              line = line.replace(rep[1], rep[0])
-          line = line.replace(r'\backslash', r'\textbackslash{}')
-          line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
-          line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
-          line = line.replace(r'\shape slanted', r'\slshape{}').replace(r'\shape default', r'\upshape{}')
-          line = line.replace(r'\emph on', r'\em{}').replace(r'\emph default', r'\em{}')
-          line = line.replace(r'\noun on', r'\scshape{}').replace(r'\noun default', r'\upshape{}')
-          line = line.replace(r'\bar under', r'\underbar{').replace(r'\bar default', r'}')
-          line = line.replace(r'\family sans', r'\sffamily{}').replace(r'\family default', r'\normalfont{}')
-          line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
-          line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
-      content += line
+            # Do the LyX text --> LaTeX conversion
+            for rep in unicode_reps:
+                line = line.replace(rep[1], rep[0])
+            line = line.replace(r"\backslash", r"\textbackslash{}")
+            line = line.replace(r"\series bold", r"\bfseries{}").replace(
+                r"\series default", r"\mdseries{}"
+            )
+            line = line.replace(r"\shape italic", r"\itshape{}").replace(
+                r"\shape smallcaps", r"\scshape{}"
+            )
+            line = line.replace(r"\shape slanted", r"\slshape{}").replace(
+                r"\shape default", r"\upshape{}"
+            )
+            line = line.replace(r"\emph on", r"\em{}").replace(r"\emph default", r"\em{}")
+            line = line.replace(r"\noun on", r"\scshape{}").replace(
+                r"\noun default", r"\upshape{}"
+            )
+            line = line.replace(r"\bar under", r"\underbar{").replace(r"\bar default", r"}")
+            line = line.replace(r"\family sans", r"\sffamily{}").replace(
+                r"\family default", r"\normalfont{}"
+            )
+            line = line.replace(r"\family typewriter", r"\ttfamily{}").replace(
+                r"\family roman", r"\rmfamily{}"
+            )
+            line = line.replace(r"\InsetSpace ", r"").replace(r"\SpecialChar ", r"")
+        content += line
     return content
 
 
 def lyx2verbatim(document, lines):
-    'Convert some LyX stuff into corresponding verbatim stuff, as best we can.'
+    "Convert some LyX stuff into corresponding verbatim stuff, as best we can."
 
     content = lyx2latex(document, lines)
-    content = re.sub(r'\\(?!backslash)', r'\n\\backslash\n', content)
+    content = re.sub(r"\\(?!backslash)", r"\n\\backslash\n", content)
 
     return content
 
 
 def latex_length(slen):
-    '''
+    """
     Convert lengths to their LaTeX representation. Returns (bool, length),
     where the bool tells us if it was a percentage, and the length is the
     LaTeX representation.
-    '''
+    """
     i = 0
     percent = False
     # the slen has the form
@@ -342,14 +380,15 @@ def latex_length(slen):
     # the + always precedes the -
 
     # Convert relative lengths to LaTeX units
-    units = {"col%": "\\columnwidth",
-             "text%": "\\textwidth",
-             "page%": "\\paperwidth",
-             "line%": "\\linewidth",
-             "theight%": "\\textheight",
-             "pheight%": "\\paperheight",
-             "baselineskip%": "\\baselineskip"
-            }
+    units = {
+        "col%": "\\columnwidth",
+        "text%": "\\textwidth",
+        "page%": "\\paperwidth",
+        "line%": "\\linewidth",
+        "theight%": "\\textheight",
+        "pheight%": "\\paperheight",
+        "baselineskip%": "\\baselineskip",
+    }
     for unit in list(units.keys()):
         i = slen.find(unit)
         if i == -1:
@@ -360,19 +399,19 @@ def latex_length(slen):
         latex_unit = units[unit]
         if plus == -1 and minus == -1:
             value = slen[:i]
-            value = str(float(value)/100)
-            end = slen[i + len(unit):]
+            value = str(float(value) / 100)
+            end = slen[i + len(unit) :]
             slen = value + latex_unit + end
         if plus > minus:
-            value = slen[plus + 1:i]
-            value = str(float(value)/100)
-            begin = slen[:plus + 1]
-            end = slen[i+len(unit):]
+            value = slen[plus + 1 : i]
+            value = str(float(value) / 100)
+            begin = slen[: plus + 1]
+            end = slen[i + len(unit) :]
             slen = begin + value + latex_unit + end
         if plus < minus:
-            value = slen[minus + 1:i]
-            value = str(float(value)/100)
-            begin = slen[:minus + 1]
+            value = slen[minus + 1 : i]
+            value = str(float(value) / 100)
+            begin = slen[: minus + 1]
             slen = begin + value + latex_unit
 
     # replace + and -, but only if the - is not the first character
@@ -387,170 +426,172 @@ def latex_length(slen):
 
 
 def length_in_bp(length):
-    " Convert a length in LyX format to its value in bp units "
+    "Convert a length in LyX format to its value in bp units"
 
-    em_width = 10.0 / 72.27 # assume 10pt font size
-    text_width = 8.27 / 1.7 # assume A4 with default margins
+    em_width = 10.0 / 72.27  # assume 10pt font size
+    text_width = 8.27 / 1.7  # assume A4 with default margins
     # scale factors are taken from Length::inInch()
-    scales = {"bp"       : 1.0,
-              "cc"       : (72.0 / (72.27 / (12.0 * 0.376 * 2.845))),
-              "cm"       : (72.0 / 2.54),
-              "dd"       : (72.0 / (72.27 / (0.376 * 2.845))),
-              "em"       : (72.0 * em_width),
-              "ex"       : (72.0 * em_width * 0.4305),
-              "in"       : 72.0,
-              "mm"       : (72.0 / 25.4),
-              "mu"       : (72.0 * em_width / 18.0),
-              "pc"       : (72.0 / (72.27 / 12.0)),
-              "pt"       : (72.0 / (72.27)),
-              "sp"       : (72.0 / (72.27 * 65536.0)),
-              "text%"    : (72.0 * text_width / 100.0),
-              "col%"     : (72.0 * text_width / 100.0), # assume 1 column
-              "page%"    : (72.0 * text_width * 1.7 / 100.0),
-              "line%"    : (72.0 * text_width / 100.0),
-              "theight%" : (72.0 * text_width * 1.787 / 100.0),
-              "pheight%" : (72.0 * text_width * 2.2 / 100.0)}
+    scales = {
+        "bp": 1.0,
+        "cc": (72.0 / (72.27 / (12.0 * 0.376 * 2.845))),
+        "cm": (72.0 / 2.54),
+        "dd": (72.0 / (72.27 / (0.376 * 2.845))),
+        "em": (72.0 * em_width),
+        "ex": (72.0 * em_width * 0.4305),
+        "in": 72.0,
+        "mm": (72.0 / 25.4),
+        "mu": (72.0 * em_width / 18.0),
+        "pc": (72.0 / (72.27 / 12.0)),
+        "pt": (72.0 / (72.27)),
+        "sp": (72.0 / (72.27 * 65536.0)),
+        "text%": (72.0 * text_width / 100.0),
+        "col%": (72.0 * text_width / 100.0),  # assume 1 column
+        "page%": (72.0 * text_width * 1.7 / 100.0),
+        "line%": (72.0 * text_width / 100.0),
+        "theight%": (72.0 * text_width * 1.787 / 100.0),
+        "pheight%": (72.0 * text_width * 2.2 / 100.0),
+    }
 
-    rx = re.compile(r'^\s*([^a-zA-Z%]+)([a-zA-Z%]+)\s*$')
+    rx = re.compile(r"^\s*([^a-zA-Z%]+)([a-zA-Z%]+)\s*$")
     m = rx.match(length)
     if not m:
         document.warning("Invalid length value: " + length + ".")
         return 0
     value = m.group(1)
     unit = m.group(2)
-    if not unit in scales.keys():
+    if unit not in scales.keys():
         document.warning("Unknown length unit: " + unit + ".")
         return value
     return "%g" % (float(value) * scales[unit])
 
 
 def revert_flex_inset(lines, name, LaTeXname):
-  " Convert flex insets to TeX code "
-  i = 0
-  while True:
-    i = find_token(lines, '\\begin_inset Flex ' + name, i)
-    if i == -1:
-      return
-    z = find_end_of_inset(lines, i)
-    if z == -1:
-      document.warning("Can't find end of Flex " + name + " inset.")
-      i += 1
-      continue
-    # remove the \end_inset
-    lines[z - 2:z + 1] = put_cmd_in_ert("}")
-    # we need to reset character layouts if necessary
-    j = find_token(lines, '\\emph on', i, z)
-    k = find_token(lines, '\\noun on', i, z)
-    l = find_token(lines, '\\series', i, z)
-    m = find_token(lines, '\\family', i, z)
-    n = find_token(lines, '\\shape', i, z)
-    o = find_token(lines, '\\color', i, z)
-    p = find_token(lines, '\\size', i, z)
-    q = find_token(lines, '\\bar under', i, z)
-    r = find_token(lines, '\\uuline on', i, z)
-    s = find_token(lines, '\\uwave on', i, z)
-    t = find_token(lines, '\\strikeout on', i, z)
-    if j != -1:
-      lines.insert(z - 2, "\\emph default")
-    if k != -1:
-      lines.insert(z - 2, "\\noun default")
-    if l != -1:
-      lines.insert(z - 2, "\\series default")
-    if m != -1:
-      lines.insert(z - 2, "\\family default")
-    if n != -1:
-      lines.insert(z - 2, "\\shape default")
-    if o != -1:
-      lines.insert(z - 2, "\\color inherit")
-    if p != -1:
-      lines.insert(z - 2, "\\size default")
-    if q != -1:
-      lines.insert(z - 2, "\\bar default")
-    if r != -1:
-      lines.insert(z - 2, "\\uuline default")
-    if s != -1:
-      lines.insert(z - 2, "\\uwave default")
-    if t != -1:
-      lines.insert(z - 2, "\\strikeout default")
-    lines[i:i + 4] = put_cmd_in_ert(LaTeXname + "{")
-    i += 1
+    "Convert flex insets to TeX code"
+    i = 0
+    while True:
+        i = find_token(lines, "\\begin_inset Flex " + name, i)
+        if i == -1:
+            return
+        z = find_end_of_inset(lines, i)
+        if z == -1:
+            document.warning("Can't find end of Flex " + name + " inset.")
+            i += 1
+            continue
+        # remove the \end_inset
+        lines[z - 2 : z + 1] = put_cmd_in_ert("}")
+        # we need to reset character layouts if necessary
+        j = find_token(lines, "\\emph on", i, z)
+        k = find_token(lines, "\\noun on", i, z)
+        l = find_token(lines, "\\series", i, z)
+        m = find_token(lines, "\\family", i, z)
+        n = find_token(lines, "\\shape", i, z)
+        o = find_token(lines, "\\color", i, z)
+        p = find_token(lines, "\\size", i, z)
+        q = find_token(lines, "\\bar under", i, z)
+        r = find_token(lines, "\\uuline on", i, z)
+        s = find_token(lines, "\\uwave on", i, z)
+        t = find_token(lines, "\\strikeout on", i, z)
+        if j != -1:
+            lines.insert(z - 2, "\\emph default")
+        if k != -1:
+            lines.insert(z - 2, "\\noun default")
+        if l != -1:
+            lines.insert(z - 2, "\\series default")
+        if m != -1:
+            lines.insert(z - 2, "\\family default")
+        if n != -1:
+            lines.insert(z - 2, "\\shape default")
+        if o != -1:
+            lines.insert(z - 2, "\\color inherit")
+        if p != -1:
+            lines.insert(z - 2, "\\size default")
+        if q != -1:
+            lines.insert(z - 2, "\\bar default")
+        if r != -1:
+            lines.insert(z - 2, "\\uuline default")
+        if s != -1:
+            lines.insert(z - 2, "\\uwave default")
+        if t != -1:
+            lines.insert(z - 2, "\\strikeout default")
+        lines[i : i + 4] = put_cmd_in_ert(LaTeXname + "{")
+        i += 1
 
 
 def revert_font_attrs(lines, name, LaTeXname):
-  " Reverts font changes to TeX code "
-  i = 0
-  changed = False
-  while True:
-    i = find_token(lines, name + ' on', i)
-    if i == -1:
-      break
-    j = find_token(lines, name + ' default', i)
-    k = find_token(lines, name + ' on', i + 1)
-    # if there is no default set, the style ends with the layout
-    # assure hereby that we found the correct layout end
-    if j != -1 and (j < k or k == -1):
-      lines[j:j + 1] = put_cmd_in_ert("}")
-    else:
-      j = find_token(lines, '\\end_layout', i)
-      lines[j:j] = put_cmd_in_ert("}")
-    lines[i:i + 1] = put_cmd_in_ert(LaTeXname + "{")
-    changed = True
-    i += 1
+    "Reverts font changes to TeX code"
+    i = 0
+    changed = False
+    while True:
+        i = find_token(lines, name + " on", i)
+        if i == -1:
+            break
+        j = find_token(lines, name + " default", i)
+        k = find_token(lines, name + " on", i + 1)
+        # if there is no default set, the style ends with the layout
+        # assure hereby that we found the correct layout end
+        if j != -1 and (j < k or k == -1):
+            lines[j : j + 1] = put_cmd_in_ert("}")
+        else:
+            j = find_token(lines, "\\end_layout", i)
+            lines[j:j] = put_cmd_in_ert("}")
+        lines[i : i + 1] = put_cmd_in_ert(LaTeXname + "{")
+        changed = True
+        i += 1
 
-  # now delete all remaining lines that manipulate this attribute
-  i = 0
-  while True:
-    i = find_token(lines, name, i)
-    if i == -1:
-      break
-    del lines[i]
+    # now delete all remaining lines that manipulate this attribute
+    i = 0
+    while True:
+        i = find_token(lines, name, i)
+        if i == -1:
+            break
+        del lines[i]
 
-  return changed
+    return changed
 
 
 def revert_layout_command(lines, name, LaTeXname):
-  " Reverts a command from a layout to TeX code "
-  i = 0
-  while True:
-    i = find_token(lines, '\\begin_layout ' + name, i)
-    if i == -1:
-      return
-    k = -1
-    # find the next layout
-    j = i + 1
-    while k == -1:
-      j = find_token(lines, '\\begin_layout', j)
-      l = len(lines)
-      # if nothing was found it was the last layout of the document
-      if j == -1:
-        lines[l - 4:l - 4] = put_cmd_in_ert("}")
-        k = 0
-      # exclude plain layout because this can be TeX code or another inset
-      elif lines[j] != '\\begin_layout Plain Layout':
-        lines[j - 2:j - 2] = put_cmd_in_ert("}")
-        k = 0
-      else:
-        j += 1
-    lines[i] = '\\begin_layout Standard'
-    lines[i + 1:i + 1] = put_cmd_in_ert(LaTeXname + "{")
-    i += 1
+    "Reverts a command from a layout to TeX code"
+    i = 0
+    while True:
+        i = find_token(lines, "\\begin_layout " + name, i)
+        if i == -1:
+            return
+        k = -1
+        # find the next layout
+        j = i + 1
+        while k == -1:
+            j = find_token(lines, "\\begin_layout", j)
+            l = len(lines)
+            # if nothing was found it was the last layout of the document
+            if j == -1:
+                lines[l - 4 : l - 4] = put_cmd_in_ert("}")
+                k = 0
+            # exclude plain layout because this can be TeX code or another inset
+            elif lines[j] != "\\begin_layout Plain Layout":
+                lines[j - 2 : j - 2] = put_cmd_in_ert("}")
+                k = 0
+            else:
+                j += 1
+        lines[i] = "\\begin_layout Standard"
+        lines[i + 1 : i + 1] = put_cmd_in_ert(LaTeXname + "{")
+        i += 1
 
 
 def hex2ratio(s):
-  " Converts an RRGGBB-type hexadecimal string to a float in [0.0,1.0] "
-  try:
-    val = int(s, 16)
-  except:
-    val = 0
-  if val != 0:
-    val += 1
-  return str(val / 256.0)
+    "Converts an RRGGBB-type hexadecimal string to a float in [0.0,1.0]"
+    try:
+        val = int(s, 16)
+    except:
+        val = 0
+    if val != 0:
+        val += 1
+    return str(val / 256.0)
 
 
 def str2bool(s):
-  "'true' goes to True, case-insensitively, and we strip whitespace."
-  s = s.strip().lower()
-  return s == "true"
+    "'true' goes to True, case-insensitively, and we strip whitespace."
+    s = s.strip().lower()
+    return s == "true"
 
 
 def convert_info_insets(document, type, func):
@@ -587,17 +628,17 @@ def insert_document_option(document, option):
 
 
 def remove_document_option(document, option):
-    """ Remove _option_ as a document option."""
+    """Remove _option_ as a document option."""
 
     i = find_token(document.header, "\\options")
     options = get_value(document.header, "\\options", i)
-    options = [op.strip() for op in options.split(',')]
+    options = [op.strip() for op in options.split(",")]
 
     # Remove `option` from \options
     options = [op for op in options if op != option]
 
     if options:
-        document.header[i] = "\\options " + ','.join(options)
+        document.header[i] = "\\options " + ",".join(options)
     else:
         del document.header[i]
 
@@ -606,22 +647,25 @@ def is_document_option(document, option):
     "Find if _option_ is a document option"
 
     options = get_value(document.header, "\\options")
-    options = [op.strip() for op in options.split(',')]
+    options = [op.strip() for op in options.split(",")]
     return option in options
 
 
-singlepar_insets = [s.strip() for s in
-    "Argument, Caption Above, Caption Below, Caption Bicaption,"
+singlepar_insets = [
+    s.strip()
+    for s in "Argument, Caption Above, Caption Below, Caption Bicaption,"
     "Caption Centered, Caption FigCaption, Caption Standard, Caption Table,"
     "Flex Chemistry, Flex Fixme_Note, Flex Latin, Flex ListOfSlides,"
     "Flex Missing_Figure, Flex PDF-Annotation, Flex PDF-Comment-Setup,"
     "Flex Reflectbox, Flex S/R expression, Flex Sweave Input File,"
     "Flex Sweave Options, Flex Thanks_Reference, Flex URL, Foot InTitle,"
-    "IPADeco, Index, Info, Phantom, Script".split(',')]
+    "IPADeco, Index, Info, Phantom, Script".split(",")
+]
 # print(singlepar_insets)
 
+
 def revert_language(document, lyxname, babelname="", polyglossianame=""):
-    " Revert native language support "
+    "Revert native language support"
 
     # Does the document use polyglossia?
     use_polyglossia = False
@@ -656,7 +700,7 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
     # Now look for occurences in the body
     i = 0
     while True:
-        i = find_token(document.body, "\\lang", i+1)
+        i = find_token(document.body, "\\lang", i + 1)
         if i == -1:
             break
         if document.body[i].startswith("\\lang %s" % lyxname):
@@ -669,12 +713,12 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
             continue
 
         parent = get_containing_layout(document.body, i)
-        i_e = parent[2] # end line no,
+        i_e = parent[2]  # end line no,
         # print(i, texname, parent, document.body[i+1], file=sys.stderr)
 
         # Move leading space to the previous line:
-        if document.body[i+1].startswith(" "):
-            document.body[i+1] = document.body[i+1][1:]
+        if document.body[i + 1].startswith(" "):
+            document.body[i + 1] = document.body[i + 1][1:]
             document.body.insert(i, " ")
             continue
 
@@ -691,35 +735,42 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
         # \end_layout
 
         # Ensure correct handling of list labels
-        if (parent[0] in ["Labeling", "Description"]
-            and not " " in "\n".join(document.body[parent[3]:i])):
+        if parent[0] in ["Labeling", "Description"] and " " not in "\n".join(
+            document.body[parent[3] : i]
+        ):
             # line `i+1` is first line of a list item,
             # part before a space character is the label
             # TODO: insets or language change before first space character
-            labelline = document.body[i+1].split(' ', 1)
+            labelline = document.body[i + 1].split(" ", 1)
             if len(labelline) > 1:
                 # Insert a space in the (original) document language
                 # between label and remainder.
                 # print("  Label:", labelline, file=sys.stderr)
-                lines = [labelline[0],
+                lines = [
+                    labelline[0],
                     "\\lang %s" % orig_doc_language,
                     " ",
                     "\\lang %s" % (primary and "english" or lyxname),
-                    labelline[1]]
-                document.body[i+1:i+2] = lines
+                    labelline[1],
+                ]
+                document.body[i + 1 : i + 2] = lines
                 i_e += 4
 
         # Find out where to end the language change.
         langswitch = i
         while True:
-            langswitch = find_token(document.body, "\\lang", langswitch+1, i_e)
+            langswitch = find_token(document.body, "\\lang", langswitch + 1, i_e)
             if langswitch == -1:
                 break
             # print("  ", langswitch, document.body[langswitch], file=sys.stderr)
             # skip insets
-            i_a = parent[3] # paragraph start line
-            container = get_containing_inset(document.body[i_a:i_e], langswitch-i_a)
-            if container and container[1] < langswitch-i_a and container[2] > langswitch-i_a:
+            i_a = parent[3]  # paragraph start line
+            container = get_containing_inset(document.body[i_a:i_e], langswitch - i_a)
+            if (
+                container
+                and container[1] < langswitch - i_a
+                and container[2] > langswitch - i_a
+            ):
                 # print("  inset", container, file=sys.stderr)
                 continue
             i_e = langswitch
@@ -733,29 +784,29 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
             singlepar = container[0] in singlepar_insets
 
         # Delete empty language switches:
-        if not "".join(document.body[i+1:i_e]):
+        if not "".join(document.body[i + 1 : i_e]):
             del document.body[i:i_e]
             i -= 1
             continue
 
         if singlepar:
             if with_polyglossia:
-                begin_cmd = "\\text%s{"%texname
+                begin_cmd = "\\text%s{" % texname
             elif with_babel:
                 begin_cmd = "\\foreignlanguage{%s}{" % texname
             end_cmd = "}"
         else:
             if with_polyglossia:
-                begin_cmd = "\\begin{%s}"%texname
-                end_cmd = "\\end{%s}"%texname
+                begin_cmd = "\\begin{%s}" % texname
+                end_cmd = "\\end{%s}" % texname
             elif with_babel:
                 begin_cmd = "\\begin{otherlanguage}{%s}" % texname
                 end_cmd = "\\end{otherlanguage}"
 
-        if (not primary or texname == "english"):
+        if not primary or texname == "english":
             try:
                 document.body[i_e:i_e] = put_cmd_in_ert(end_cmd)
-                document.body[i+1:i+1] = put_cmd_in_ert(begin_cmd)
+                document.body[i + 1 : i + 1] = put_cmd_in_ert(begin_cmd)
             except UnboundLocalError:
                 pass
         del document.body[i]
@@ -776,13 +827,14 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
     if with_polyglossia:
         # Define language in the user preamble
         # (don't use \AtBeginDocument, this fails with some languages).
-        add_to_preamble(document, ["\\usepackage{polyglossia}",
-                                   "\\setotherlanguage{%s}" % polyglossianame])
+        add_to_preamble(
+            document,
+            ["\\usepackage{polyglossia}", "\\setotherlanguage{%s}" % polyglossianame],
+        )
         if primary:
             # Changing the main language must be done in the document body.
             doc_lang_switch = "\\resetdefaultlanguage{%s}" % polyglossianame
 
     # Reset LaTeX main language if required and not already done
     if doc_lang_switch and doc_lang_switch[1:] not in document.body[8:20]:
-        document.body[2:2] = put_cmd_in_ert(doc_lang_switch,
-                                            is_open=True, as_paragraph=True)
+        document.body[2:2] = put_cmd_in_ert(doc_lang_switch, is_open=True, as_paragraph=True)

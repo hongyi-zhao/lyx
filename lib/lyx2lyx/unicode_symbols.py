@@ -15,15 +15,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-" Import unicode_reps from this module for access to the unicode<->LaTeX mapping. "
+"Import unicode_reps from this module for access to the unicode<->LaTeX mapping."
 
-import sys, os, re, codecs
+import os
+import re
+import codecs
 
 
 def read_unicodesymbols():
-    " Read the unicodesymbols list of unicode characters and corresponding commands."
+    "Read the unicodesymbols list of unicode characters and corresponding commands."
     pathname = os.path.abspath(os.path.dirname(__file__))
-    filename = os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols')
+    filename = os.path.join(pathname.strip("lyx2lyx"), "unicodesymbols")
 
     # Read as Unicode strings in both, Python 2 and 3
     # Specify the encoding for those systems where the default is not UTF-8
@@ -35,28 +37,31 @@ def read_unicodesymbols():
     # as: \"u or even \" u.
     # The two backslashes in the string literal are needed to specify a literal
     # backslash in the regex. Without r prefix, these would be four backslashes.
-    r = re.compile(r'\\(\W)\{(\w)\}')
+    r = re.compile(r"\\(\W)\{(\w)\}")
 
     spec_chars = []
     for line in fp.readlines():
-        if not line.strip() or line.startswith('#'):
+        if not line.strip() or line.startswith("#"):
             # skip empty lines and comments
             continue
         # Note: backslashes in the string literals with r prefix are not escaped,
         #       so one backslash in the source file equals one backslash in memory.
         #       Without r prefix backslahses are escaped, so two backslashes in the
         #       source file equal one backslash in memory.
-        line=line.replace(' "',' ') # remove all quotation marks with spaces before
-        line=line.replace('" ',' ') # remove all quotation marks with spaces after
-        line=line.replace(r'\"','"') # unescape "
-        line=line.replace(r'\\','\\') # unescape \
+        line = line.replace(' "', " ")  # remove all quotation marks with spaces before
+        line = line.replace('" ', " ")  # remove all quotation marks with spaces after
+        line = line.replace(r"\"", '"')  # unescape "
+        line = line.replace(r"\\", "\\")  # unescape \
         try:
-            [ucs4,command,dead] = line.split(None,2)
+            [ucs4, command, dead] = line.split(None, 2)
             if command[0:1] != "\\":
                 continue
             literal_char = chr(int(ucs4, 16))
-            if (line.find("notermination=text") < 0 and
-                line.find("notermination=both") < 0 and command[-1] != "}"):
+            if (
+                line.find("notermination=text") < 0
+                and line.find("notermination=both") < 0
+                and command[-1] != "}"
+            ):
                 command = command + "{}"
             spec_chars.append([command, literal_char])
         except:
@@ -66,7 +71,7 @@ def read_unicodesymbols():
             command = "\\"
             commandbl = command
             command += m.group(1) + m.group(2)
-            commandbl += m.group(1) + ' ' + m.group(2)
+            commandbl += m.group(1) + " " + m.group(2)
             spec_chars.append([command, literal_char])
             spec_chars.append([commandbl, literal_char])
     fp.close()

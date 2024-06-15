@@ -166,9 +166,10 @@ count_pars_in_inset(lines, i):
 
 import re
 
+
 # Utilities for one line
 def check_token(line, token):
-    """ check_token(line, token) -> bool
+    """check_token(line, token) -> bool
 
     Return True if token is present in line and is the first element
     else returns False.
@@ -179,7 +180,7 @@ def check_token(line, token):
 
 
 def is_nonempty_line(line):
-    """ is_nonempty_line(line) -> bool
+    """is_nonempty_line(line) -> bool
 
     Return False if line is either empty or it has only whitespaces,
     else return True."""
@@ -188,7 +189,7 @@ def is_nonempty_line(line):
 
 # Utilities for a list of lines
 def find_token(lines, token, start=0, end=0, ignorews=False):
-    """ find_token(lines, token, start[[, end], ignorews]) -> int
+    """find_token(lines, token, start[[, end], ignorews]) -> int
 
     Return the lowest line where token is found, and is the first
     element, in lines[start, end].
@@ -210,7 +211,7 @@ def find_token(lines, token, start=0, end=0, ignorews=False):
             x = lines[i].split()
             if len(x) < len(y):
                 continue
-            if x[:len(y)] == y:
+            if x[: len(y)] == y:
                 return i
         else:
             if lines[i].startswith(token):
@@ -223,7 +224,7 @@ def find_token_exact(lines, token, start=0, end=0):
 
 
 def find_tokens(lines, tokens, start=0, end=0, ignorews=False):
-    """ find_tokens(lines, tokens, start[[, end], ignorews]) -> int
+    """find_tokens(lines, tokens, start[[, end], ignorews]) -> int
 
     Return the lowest line where one token in tokens is found, and is
     the first element, in lines[start, end].
@@ -240,7 +241,7 @@ def find_tokens(lines, tokens, start=0, end=0, ignorews=False):
                 y = token.split()
                 if len(x) < len(y):
                     continue
-                if x[:len(y)] == y:
+                if x[: len(y)] == y:
                     return i
             else:
                 if lines[i].startswith(token):
@@ -253,7 +254,7 @@ def find_tokens_exact(lines, tokens, start=0, end=0):
 
 
 def find_substring(lines, sub, start=0, end=0):
-    """ find_substring(lines, sub[, start[, end]]) -> int
+    """find_substring(lines, sub[, start[, end]]) -> int
 
     Return the lowest line number `i` in [start, end] where
     `sub` is a substring of line[i].
@@ -264,12 +265,12 @@ def find_substring(lines, sub, start=0, end=0):
         end = len(lines)
     for i in range(start, end):
         if sub in lines[i]:
-                return i
+            return i
     return -1
 
 
 def find_re(lines, rexp, start=0, end=0):
-    """ find_re(lines, rexp[, start[, end]]) -> int
+    """find_re(lines, rexp[, start[, end]]) -> int
 
     Return the lowest line number `i` in [start, end] where the regular
     expression object `rexp` matches at the beginning of line[i].
@@ -282,12 +283,12 @@ def find_re(lines, rexp, start=0, end=0):
         end = len(lines)
     for i in range(start, end):
         if rexp.match(lines[i]):
-                return i
+            return i
     return -1
 
 
 def find_token_backwards(lines, token, start):
-    """ find_token_backwards(lines, token, start) -> int
+    """find_token_backwards(lines, token, start) -> int
 
     Return the highest line where token is found, and is the first
     element, in lines[start, end].
@@ -300,7 +301,7 @@ def find_token_backwards(lines, token, start):
 
 
 def find_tokens_backwards(lines, tokens, start):
-    """ find_tokens_backwards(lines, token, start) -> int
+    """find_tokens_backwards(lines, token, start) -> int
 
     Return the highest line where token is found, and is the first
     element, in lines[end, start].
@@ -325,9 +326,9 @@ def find_complete_lines(lines, sublines, start=0, end=0):
 
     The `start` and `end` arguments work similar to list.index()
 
-    >>> find_complete_lines([1, 2, 3, 1, 1 ,2], [1, 2], start=1)
+    >>> find_complete_lines([1, 2, 3, 1, 1, 2], [1, 2], start=1)
     4
-    >>> find_complete_lines([1, 2, 3, 1, 1 ,2], [1, 2], start=1, end=4)
+    >>> find_complete_lines([1, 2, 3, 1, 1, 2], [1, 2], start=1, end=4)
     -1
 
     The return value can be used to substitute the sub-list.
@@ -336,7 +337,8 @@ def find_complete_lines(lines, sublines, start=0, end=0):
     >>> l = [1, 1, 2]
     >>> s = find_complete_lines(l, [1, 2])
     >>> if s != -1:
-    ...     l[s:s+2] = [3]; l
+    ...     l[s : s + 2] = [3]
+    ...     l
     [1, 3]
 
     See also del_complete_lines().
@@ -350,12 +352,12 @@ def find_complete_lines(lines, sublines, start=0, end=0):
             for j, value in enumerate(sublines):
                 i = lines.index(value, start, end)
                 if j and i != start:
-                    start = i-j
+                    start = i - j
                     break
                 start = i + 1
             else:
-                return i +1 - N
-    except ValueError: # `sublines` not found
+                return i + 1 - N
+    except ValueError:  # `sublines` not found
         return -1
 
 
@@ -363,13 +365,14 @@ def find_across_lines(lines, sub, start=0, end=0):
     sublines = sub.splitlines()
     if len(sublines) > 2:
         # at least 3 lines: the middle one(s) are complete -> use index search
-        i = find_complete_lines(lines, sublines[1:-1], start+1, end-1)
-        if i < start+1:
+        i = find_complete_lines(lines, sublines[1:-1], start + 1, end - 1)
+        if i < start + 1:
             return -1
         try:
-            if (lines[i-1].endswith(sublines[0]) and
-                lines[i+len(sublines)].startswith(sublines[-1])):
-                return i-1
+            if lines[i - 1].endswith(sublines[0]) and lines[i + len(sublines)].startswith(
+                sublines[-1]
+            ):
+                return i - 1
         except IndexError:
             pass
     elif len(sublines) > 1:
@@ -377,9 +380,9 @@ def find_across_lines(lines, sub, start=0, end=0):
         i = find_token(lines, sublines[-1], start, end)
         if i < start + 1:
             return -1
-        if lines[i-1].endswith(sublines[0]):
-            return i-1
-    else: # no line-break, may be in the middle of a line
+        if lines[i - 1].endswith(sublines[0]):
+            return i - 1
+    else:  # no line-break, may be in the middle of a line
         if end == 0 or end > len(lines):
             end = len(lines)
         for i in range(start, end):
@@ -407,14 +410,14 @@ def get_value(lines, token, start=0, end=0, default="", delete=False):
     # see test_parser_tools.py
     l = lines[i].split(None, 1)
     if delete:
-        del(lines[i])
+        del lines[i]
     if len(l) > 1:
         return l[1].strip()
     return default
 
 
 def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
-    """ get_quoted_value(lines, token, start[[, end], default]) -> string
+    """get_quoted_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
       token "followed by other stuff"
@@ -426,15 +429,15 @@ def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
     """
     val = get_value(lines, token, start, end, "", delete)
     if not val:
-      return default
+        return default
     return val.strip('"')
 
 
-bool_values = {"true": True, "1": True,
-               "false": False, "0": False}
+bool_values = {"true": True, "1": True, "false": False, "0": False}
+
 
 def get_bool_value(lines, token, start=0, end=0, default=None, delete=False):
-    """ get_bool_value(lines, token, start[[, end], default]) -> string
+    """get_bool_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
       `token` <bool_value>
@@ -456,11 +459,11 @@ def set_bool_value(lines, token, value, start=0, end=0):
     i = find_token(lines, token, start, end)
     if i == -1:
         raise ValueError
-    oldvalue = get_bool_value(lines, token, i, i+1)
+    oldvalue = get_bool_value(lines, token, i, i + 1)
     if oldvalue is value:
         return oldvalue
     # set to new value
-    if get_quoted_value(lines, token, i, i+1) in ('0', '1'):
+    if get_quoted_value(lines, token, i, i + 1) in ("0", "1"):
         lines[i] = "%s %d" % (token, value)
     else:
         lines[i] = f"{token} {str(value).lower()}"
@@ -473,21 +476,21 @@ def get_option_value(line, option):
     rx = re.compile(rx)
     m = rx.search(line)
     if not m:
-      return ""
+        return ""
     return m.group(1)
 
 
 def set_option_value(line, option, value):
-    rx = '(' + option + r'\s*=\s*")[^"]+"'
+    rx = "(" + option + r'\s*=\s*")[^"]+"'
     rx = re.compile(rx)
     m = rx.search(line)
     if not m:
         return line
-    return re.sub(rx, r'\g<1>' + value + '"', line)
+    return re.sub(rx, r"\g<1>" + value + '"', line)
 
 
 def del_token(lines, token, start=0, end=0):
-    """ del_token(lines, token, start, end) -> int
+    """del_token(lines, token, start, end) -> int
 
     Find the first line in lines where token is the first element
     and delete that line. Returns True if we deleted a line, False
@@ -498,6 +501,7 @@ def del_token(lines, token, start=0, end=0):
         return False
     del lines[k]
     return True
+
 
 def del_complete_lines(lines, sublines, start=0, end=0):
     """Delete first occurence of `sublines` in list `lines`.
@@ -516,7 +520,7 @@ def del_complete_lines(lines, sublines, start=0, end=0):
     i = find_complete_lines(lines, sublines, start, end)
     if i == -1:
         return False
-    del(lines[i:i+len(sublines)])
+    del lines[i : i + len(sublines)]
     return True
 
 
@@ -532,19 +536,19 @@ def del_value(lines, token, start=0, end=0, default=None):
     i = find_token_exact(lines, token, start, end)
     if i == -1:
         return default
-    return lines.pop(i)[len(token):].strip()
+    return lines.pop(i)[len(token) :].strip()
 
 
 def find_beginning_of(lines, i, start_token, end_token):
     count = 1
     while i > 0:
-        i = find_tokens_backwards(lines, [start_token, end_token], i-1)
+        i = find_tokens_backwards(lines, [start_token, end_token], i - 1)
         if i == -1:
             return -1
         if lines[i].startswith(end_token):
-            count = count+1
+            count = count + 1
         else:
-            count = count-1
+            count = count - 1
         if count == 0:
             return i
     return -1
@@ -554,13 +558,13 @@ def find_end_of(lines, i, start_token, end_token):
     count = 1
     n = len(lines)
     while i < n:
-        i = find_tokens(lines, [end_token, start_token], i+1)
+        i = find_tokens(lines, [end_token, start_token], i + 1)
         if i == -1:
             return -1
         if lines[i].startswith(start_token):
-            count = count+1
+            count = count + 1
         else:
-            count = count-1
+            count = count - 1
         if count == 0:
             return i
     return -1
@@ -576,16 +580,16 @@ def find_nonempty_line(lines, start=0, end=0):
 
 
 def find_end_of_inset(lines, i):
-    " Find end of inset, where lines[i] is included."
+    "Find end of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
 
 def find_end_of_layout(lines, i):
-    " Find end of layout, where lines[i] is included."
+    "Find end of layout, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_layout", "\\end_layout")
 
 
-def is_in_inset(lines, i, inset, default=(-1,-1)):
+def is_in_inset(lines, i, inset, default=(-1, -1)):
     """
     Check if line i is in an inset of the given type.
     If so, return starting and ending lines, otherwise `default`.
@@ -601,126 +605,133 @@ def is_in_inset(lines, i, inset, default=(-1,-1)):
     """
     start = find_token_backwards(lines, inset, i)
     if start == -1:
-      return default
+        return default
     end = find_end_of_inset(lines, start)
-    if end < i: # this includes the notfound case.
-      return default
+    if end < i:  # this includes the notfound case.
+        return default
     return (start, end)
 
 
 def get_containing_inset(lines, i):
-  '''
-  Finds out what kind of inset line i is within. Returns a
-  list containing (i) what follows \\begin_inset on the line
-  on which the inset begins, plus the starting and ending line.
-  Returns False on any kind of error or if it isn't in an inset.
-  '''
-  j = i
-  while True:
-      stins = find_token_backwards(lines, "\\begin_inset", j)
-      if stins == -1:
-          return False
-      endins = find_end_of_inset(lines, stins)
-      if endins > j:
-          break
-      j = stins - 1
+    """
+    Finds out what kind of inset line i is within. Returns a
+    list containing (i) what follows \\begin_inset on the line
+    on which the inset begins, plus the starting and ending line.
+    Returns False on any kind of error or if it isn't in an inset.
+    """
+    j = i
+    while True:
+        stins = find_token_backwards(lines, "\\begin_inset", j)
+        if stins == -1:
+            return False
+        endins = find_end_of_inset(lines, stins)
+        if endins > j:
+            break
+        j = stins - 1
 
-  if endins < i:
-      return False
+    if endins < i:
+        return False
 
-  inset = get_value(lines, "\\begin_inset", stins)
-  if inset == "":
-      # shouldn't happen
-      return False
-  return (inset, stins, endins)
+    inset = get_value(lines, "\\begin_inset", stins)
+    if inset == "":
+        # shouldn't happen
+        return False
+    return (inset, stins, endins)
 
 
 def get_containing_layout(lines, i):
-  '''
-  Find out what kind of layout line `i` is within.
-  Return a tuple
-    (layoutname, layoutstart, layoutend, startofcontent)
-  containing
-    * layout style/name,
-    * start line number,
-    * end line number, and
-    * number of first paragraph line (after all params).
-  Return `False` on any kind of error.
-  '''
-  j = i
-  while True:
-      stlay = find_token_backwards(lines, "\\begin_layout", j)
-      if stlay == -1:
-          return False
-      endlay = find_end_of_layout(lines, stlay)
-      if endlay > i:
-          break
-      j = stlay - 1
+    """
+    Find out what kind of layout line `i` is within.
+    Return a tuple
+      (layoutname, layoutstart, layoutend, startofcontent)
+    containing
+      * layout style/name,
+      * start line number,
+      * end line number, and
+      * number of first paragraph line (after all params).
+    Return `False` on any kind of error.
+    """
+    j = i
+    while True:
+        stlay = find_token_backwards(lines, "\\begin_layout", j)
+        if stlay == -1:
+            return False
+        endlay = find_end_of_layout(lines, stlay)
+        if endlay > i:
+            break
+        j = stlay - 1
 
-  if endlay < i:
-      return False
+    if endlay < i:
+        return False
 
-  layoutname = get_value(lines, "\\begin_layout", stlay)
-  if layoutname == "": # layout style missing
-      # TODO: What shall we do in this case?
-      pass
-      # layoutname == "Standard" # use same fallback as the LyX parser:
-      # raise ValueError("Missing layout name on line %d"%stlay) # diagnosis
-      # return False # generic error response
-  par_params = ["\\noindent", "\\indent", "\\indent-toggle", "\\leftindent",
-                "\\start_of_appendix", "\\paragraph_spacing", "\\align",
-                "\\labelwidthstring"]
-  stpar = stlay
-  while True:
-      stpar += 1
-      if lines[stpar].split(' ', 1)[0] not in par_params:
-          break
-  return (layoutname, stlay, endlay, stpar)
+    layoutname = get_value(lines, "\\begin_layout", stlay)
+    if layoutname == "":  # layout style missing
+        # TODO: What shall we do in this case?
+        pass
+        # layoutname == "Standard" # use same fallback as the LyX parser:
+        # raise ValueError("Missing layout name on line %d"%stlay) # diagnosis
+        # return False # generic error response
+    par_params = [
+        "\\noindent",
+        "\\indent",
+        "\\indent-toggle",
+        "\\leftindent",
+        "\\start_of_appendix",
+        "\\paragraph_spacing",
+        "\\align",
+        "\\labelwidthstring",
+    ]
+    stpar = stlay
+    while True:
+        stpar += 1
+        if lines[stpar].split(" ", 1)[0] not in par_params:
+            break
+    return (layoutname, stlay, endlay, stpar)
 
 
 def count_pars_in_inset(lines, i):
-  '''
-  Counts the paragraphs within this inset
-  '''
-  ins = get_containing_inset(lines, i)
-  if ins == -1:
-      return -1
-  pars = 0
-  for j in range(ins[1], ins[2]):
-      m = re.match(r'\\begin_layout (.*)', lines[j])
-      found_inset = get_containing_inset(lines, j)
-      if m and found_inset and found_inset[1] == ins[1]:
-          pars += 1
+    """
+    Counts the paragraphs within this inset
+    """
+    ins = get_containing_inset(lines, i)
+    if ins == -1:
+        return -1
+    pars = 0
+    for j in range(ins[1], ins[2]):
+        m = re.match(r"\\begin_layout (.*)", lines[j])
+        found_inset = get_containing_inset(lines, j)
+        if m and found_inset and found_inset[1] == ins[1]:
+            pars += 1
 
-  return pars
+    return pars
 
 
 def find_end_of_sequence(lines, i):
-  '''
-  Returns the end of a sequence of identical layouts.
-  '''
-  lay = get_containing_layout(lines, i)
-  if lay == False:
-      return -1
-  layout = lay[0]
-  endlay = lay[2]
-  i = endlay
-  while True:
-      m = re.match(r'\\begin_layout (.*)', lines[i])
-      if m and m.group(1) != layout:
-          return endlay
-      elif lines[i] == "\\begin_deeper":
-          j = find_end_of(lines, i, "\\begin_deeper", "\\end_deeper")
-          if j != -1:
-              i = j
-              endlay = j
-              continue
-      if m and m.group(1) == layout:
-          endlay = find_end_of_layout(lines, i)
-          i = endlay
-          continue
-      if i == len(lines) - 1:
-          break
-      i = i + 1
+    """
+    Returns the end of a sequence of identical layouts.
+    """
+    lay = get_containing_layout(lines, i)
+    if lay == False:
+        return -1
+    layout = lay[0]
+    endlay = lay[2]
+    i = endlay
+    while True:
+        m = re.match(r"\\begin_layout (.*)", lines[i])
+        if m and m.group(1) != layout:
+            return endlay
+        elif lines[i] == "\\begin_deeper":
+            j = find_end_of(lines, i, "\\begin_deeper", "\\end_deeper")
+            if j != -1:
+                i = j
+                endlay = j
+                continue
+        if m and m.group(1) == layout:
+            endlay = find_end_of_layout(lines, i)
+            i = endlay
+            continue
+        if i == len(lines) - 1:
+            break
+        i = i + 1
 
-  return endlay
+    return endlay

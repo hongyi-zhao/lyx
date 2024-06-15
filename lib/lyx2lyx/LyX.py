@@ -17,10 +17,15 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-" The LyX module has all the rules related with different lyx file formats."
+"The LyX module has all the rules related with different lyx file formats."
 
-from parser_tools import (get_value, check_token, find_token, find_tokens,
-                          find_end_of, find_complete_lines)
+from parser_tools import (
+    get_value,
+    check_token,
+    find_token,
+    find_end_of,
+    find_complete_lines,
+)
 import os.path
 import gzip
 import locale
@@ -32,10 +37,11 @@ import codecs
 
 try:
     import lyx2lyx_version
+
     version__ = lyx2lyx_version.version
     stable_version = True
-except: # we are running from build directory so assume the last version
-    version__ = '2.5'
+except:  # we are running from build directory so assume the last version
+    version__ = "2.5"
     stable_version = False
 
 default_debug__ = 2
@@ -44,12 +50,14 @@ default_debug__ = 2
 ####################################################################
 # Private helper functions
 
+
 def find_end_of_inset(lines, i):
-    " Find beginning of inset, where lines[i] is included."
+    "Find beginning of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
+
 def minor_versions(major, last_minor_version):
-    """ Generate minor versions, using major as prefix and minor
+    """Generate minor versions, using major as prefix and minor
     versions from 0 until last_minor_version, plus the generic version.
 
     Example:
@@ -73,28 +81,29 @@ original_tex2lyx_version = re.compile(b".*?tex2lyx ([\\d.]*)")
 ##
 # file format information:
 #  file, supported formats, stable release versions
-format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
-                   ("0_08",    [210], minor_versions("0.8" , 6) + ["0.7"]),
-                   ("0_10",    [210], minor_versions("0.10", 7) + ["0.9"]),
-                   ("0_12",    [215], minor_versions("0.12", 1) + ["0.11"]),
-                   ("1_0",     [215], minor_versions("1.0" , 4)),
-                   ("1_1",     [215], minor_versions("1.1" , 4)),
-                   ("1_1_5",   [216], ["1.1", "1.1.5","1.1.5.1","1.1.5.2"]),
-                   ("1_1_6_0", [217], ["1.1", "1.1.6","1.1.6.1","1.1.6.2"]),
-                   ("1_1_6_3", [218], ["1.1", "1.1.6.3","1.1.6.4"]),
-                   ("1_2",     [220], minor_versions("1.2" , 4)),
-                   ("1_3",     [221], minor_versions("1.3" , 7)),
-                   # Note that range(i,j) is up to j *excluded*.
-                   ("1_4", list(range(222,246)), minor_versions("1.4" , 5)),
-                   ("1_5", list(range(246,277)), minor_versions("1.5" , 7)),
-                   ("1_6", list(range(277,346)), minor_versions("1.6" , 10)),
-                   ("2_0", list(range(346,414)), minor_versions("2.0" , 8)),
-                   ("2_1", list(range(414,475)), minor_versions("2.1" , 5)),
-                   ("2_2", list(range(475,509)), minor_versions("2.2" , 4)),
-                   ("2_3", list(range(509,545)), minor_versions("2.3" , 7)),
-                   ("2_4", list(range(545,621)), minor_versions("2.4" , 0)),
-                   ("2_5", (), minor_versions("2.5" , 0))
-                  ]
+format_relation = [
+    ("0_06", [200], minor_versions("0.6", 4)),
+    ("0_08", [210], minor_versions("0.8", 6) + ["0.7"]),
+    ("0_10", [210], minor_versions("0.10", 7) + ["0.9"]),
+    ("0_12", [215], minor_versions("0.12", 1) + ["0.11"]),
+    ("1_0", [215], minor_versions("1.0", 4)),
+    ("1_1", [215], minor_versions("1.1", 4)),
+    ("1_1_5", [216], ["1.1", "1.1.5", "1.1.5.1", "1.1.5.2"]),
+    ("1_1_6_0", [217], ["1.1", "1.1.6", "1.1.6.1", "1.1.6.2"]),
+    ("1_1_6_3", [218], ["1.1", "1.1.6.3", "1.1.6.4"]),
+    ("1_2", [220], minor_versions("1.2", 4)),
+    ("1_3", [221], minor_versions("1.3", 7)),
+    # Note that range(i,j) is up to j *excluded*.
+    ("1_4", list(range(222, 246)), minor_versions("1.4", 5)),
+    ("1_5", list(range(246, 277)), minor_versions("1.5", 7)),
+    ("1_6", list(range(277, 346)), minor_versions("1.6", 10)),
+    ("2_0", list(range(346, 414)), minor_versions("2.0", 8)),
+    ("2_1", list(range(414, 475)), minor_versions("2.1", 5)),
+    ("2_2", list(range(475, 509)), minor_versions("2.2", 4)),
+    ("2_3", list(range(509, 545)), minor_versions("2.3", 7)),
+    ("2_4", list(range(545, 621)), minor_versions("2.4", 0)),
+    ("2_5", (), minor_versions("2.5", 0)),
+]
 
 ####################################################################
 # This is useful just for development versions                     #
@@ -102,14 +111,13 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
 if not format_relation[-1][1]:
     step, mode = format_relation[-1][0], "convert"
     convert = getattr(__import__("lyx_" + step), mode)
-    format_relation[-1] = (step,
-                           [conv[0] for conv in convert],
-                           format_relation[-1][2])
+    format_relation[-1] = (step, [conv[0] for conv in convert], format_relation[-1][2])
 #                                                                  #
 ####################################################################
 
+
 def formats_list():
-    " Returns a list with supported file formats."
+    "Returns a list with supported file formats."
     formats = []
     for version in format_relation:
         for format in version[1]:
@@ -119,7 +127,7 @@ def formats_list():
 
 
 def format_info():
-    " Returns a list with the supported file formats."
+    "Returns a list with the supported file formats."
     template = """
 %s\tstable format:       %s
   \tstable versions:     %s
@@ -142,20 +150,20 @@ def format_info():
             stable_format = str(version[1][-1])
 
         out += template % (major, stable_format, versions, formats)
-    return out + '\n'
+    return out + "\n"
 
 
 def get_end_format():
-    " Returns the more recent file format available."
+    "Returns the more recent file format available."
     # this check will fail only when we have a new version
     # and there is no format change yet.
     if format_relation[-1][1]:
-      return format_relation[-1][1][-1]
+        return format_relation[-1][1][-1]
     return format_relation[-2][1][-1]
 
 
 def get_backend(textclass):
-    " For _textclass_ returns its backend."
+    "For _textclass_ returns its backend."
     if textclass == "linuxdoc" or textclass == "manpage":
         return "linuxdoc"
     if textclass.startswith("docbook") or textclass.startswith("agu-"):
@@ -164,18 +172,18 @@ def get_backend(textclass):
 
 
 def trim_eol(line):
-    " Remove end of line char(s)."
-    if line[-1] != '\n' and line[-1] != '\r':
+    "Remove end of line char(s)."
+    if line[-1] != "\n" and line[-1] != "\r":
         # May happen for the last line of a document
         return line
-    if line[-2:-1] == '\r':
+    if line[-2:-1] == "\r":
         return line[:-2]
     else:
         return line[:-1]
 
 
 def trim_eol_binary(line):
-    " Remove end of line char(s)."
+    "Remove end of line char(s)."
     if line[-1] != 10 and line[-1] != 13:
         # May happen for the last line of a document
         return line
@@ -186,18 +194,19 @@ def trim_eol_binary(line):
 
 
 def get_encoding(language, inputencoding, format, cjk_encoding):
-    " Returns enconding of the lyx file"
+    "Returns enconding of the lyx file"
     if format > 248:
         return "utf8"
     # CJK-LyX encodes files using the current locale encoding.
     # This means that files created by CJK-LyX can only be converted using
     # the correct locale settings unless the encoding is given as commandline
     # argument.
-    if cjk_encoding == 'auto':
+    if cjk_encoding == "auto":
         return locale.getpreferredencoding()
     elif cjk_encoding:
         return cjk_encoding
     from lyx2lyx_lang import lang
+
     if inputencoding == "auto" or inputencoding == "default":
         return lang[language][3]
     if inputencoding == "":
@@ -209,17 +218,27 @@ def get_encoding(language, inputencoding, format, cjk_encoding):
         return "iso-8859-15"
     return inputencoding
 
+
 ##
 # Class
 #
 class LyX_base:
     """This class carries all the information of the LyX file."""
 
-    def __init__(self, end_format = 0, input = '', output = '', error = '',
-                 debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 final_version = '', systemlyxdir = '', language = 'english',
-                 encoding = 'auto'):
-
+    def __init__(
+        self,
+        end_format=0,
+        input="",
+        output="",
+        error="",
+        debug=default_debug__,
+        try_hard=0,
+        cjk_encoding="",
+        final_version="",
+        systemlyxdir="",
+        language="english",
+        encoding="auto",
+    ):
         """Arguments:
         end_format: final format that the file should be converted. (integer)
         input: the name of the input source, if empty resort to standard input.
@@ -247,7 +266,9 @@ class LyX_base:
             # and ignore the version.
             if final_version:
                 message = "Incompatible version %s for specified format %d" % (
-                    final_version, self.end_format)
+                    final_version,
+                    self.end_format,
+                )
                 for version in format_relation:
                     if self.end_format in version[1]:
                         if final_version not in version[2]:
@@ -277,7 +298,7 @@ class LyX_base:
         # This is a hack: We use '' since we don't know the default
         # layout of the text class. LyX will parse it as default layout.
         # FIXME: Read the layout file and use the real default layout
-        self.default_layout = ''
+        self.default_layout = ""
         self.header = []
         self.preamble = []
         self.body = []
@@ -286,23 +307,20 @@ class LyX_base:
         self.language = language
         self.systemlyxdir = systemlyxdir
 
-
-    def warning(self, message, debug_level= default_debug__):
-        """ Emits warning to self.error, if the debug_level is less
+    def warning(self, message, debug_level=default_debug__):
+        """Emits warning to self.error, if the debug_level is less
         than the self.debug."""
         if debug_level <= self.debug:
             self.err.write("lyx2lyx warning: " + message + "\n")
 
-
     def error(self, message):
-        " Emits a warning and exits if not in try_hard mode."
+        "Emits a warning and exits if not in try_hard mode."
         self.warning(message)
         if not self.try_hard:
             self.warning("Quitting.")
             sys.exit(1)
 
         self.status = 2
-
 
     def read(self):
         """Reads a file into the self.header and
@@ -325,13 +343,13 @@ class LyX_base:
             if first_line:
                 # Remove UTF8 BOM marker if present
                 if line.startswith(codecs.BOM_UTF8):
-                    line = line[len(codecs.BOM_UTF8):]
+                    line = line[len(codecs.BOM_UTF8) :]
 
                 first_line = False
 
             line = trim_eol_binary(line)
-            decoded = line.decode('latin1')
-            if check_token(decoded, '\\begin_preamble'):
+            decoded = line.decode("latin1")
+            if check_token(decoded, "\\begin_preamble"):
                 while True:
                     line = self.input.readline()
                     if not line:
@@ -339,51 +357,60 @@ class LyX_base:
                         self.error("Invalid LyX file: Missing body.")
 
                     line = trim_eol_binary(line)
-                    decoded = line.decode('latin1')
-                    if check_token(decoded, '\\end_preamble'):
+                    decoded = line.decode("latin1")
+                    if check_token(decoded, "\\end_preamble"):
                         break
 
-                    if decoded.split()[:0] in ("\\layout",
-                                            "\\begin_layout", "\\begin_body"):
-
-                        self.warning("Malformed LyX file:"
-                                     "Missing '\\end_preamble'."
-                                     "\nAdding it now and hoping"
-                                     "for the best.")
+                    if decoded.split()[:0] in (
+                        "\\layout",
+                        "\\begin_layout",
+                        "\\begin_body",
+                    ):
+                        self.warning(
+                            "Malformed LyX file:"
+                            "Missing '\\end_preamble'."
+                            "\nAdding it now and hoping"
+                            "for the best."
+                        )
 
                     self.preamble.append(line)
 
-            if check_token(decoded, '\\end_preamble'):
+            if check_token(decoded, "\\end_preamble"):
                 continue
 
             line = line.rstrip()
             if not line:
                 continue
 
-            if decoded.split()[0] in ("\\layout", "\\begin_layout",
-                                   "\\begin_body", "\\begin_deeper"):
+            if decoded.split()[0] in (
+                "\\layout",
+                "\\begin_layout",
+                "\\begin_body",
+                "\\begin_deeper",
+            ):
                 self.body.append(line)
                 break
 
             self.header.append(line)
 
-        i = find_token(self.header, b'\\textclass', 0)
+        i = find_token(self.header, b"\\textclass", 0)
         if i == -1:
             self.warning("Malformed LyX file: Missing '\\textclass'.")
-            i = find_token(self.header, b'\\lyxformat', 0) + 1
-            self.header[i:i] = [b'\\textclass article']
+            i = find_token(self.header, b"\\lyxformat", 0) + 1
+            self.header[i:i] = [b"\\textclass article"]
 
-        self.textclass = get_value(self.header, b"\\textclass", 0,
-                                   default = b"")
-        self.language = get_value(self.header, b"\\language", 0,
-                                  default = b"english").decode('ascii')
-        self.inputencoding = get_value(self.header, b"\\inputencoding", 0,
-                                       default = b"auto").decode('ascii')
+        self.textclass = get_value(self.header, b"\\textclass", 0, default=b"")
+        self.language = get_value(self.header, b"\\language", 0, default=b"english").decode(
+            "ascii"
+        )
+        self.inputencoding = get_value(
+            self.header, b"\\inputencoding", 0, default=b"auto"
+        ).decode("ascii")
         self.format = self.read_format()
         self.initial_format = self.format
-        self.encoding = get_encoding(self.language,
-                                     self.inputencoding, self.format,
-                                     self.cjk_encoding)
+        self.encoding = get_encoding(
+            self.language, self.inputencoding, self.format, self.cjk_encoding
+        )
         self.initial_version = self.read_version()
 
         # Second pass over header and preamble, now we know the file encoding
@@ -404,26 +431,25 @@ class LyX_base:
                 break
             self.body.append(trim_eol(line))
 
-
     def write(self):
-        " Writes the LyX file to self.output."
+        "Writes the LyX file to self.output."
         self.choose_output(self.output)
         self.set_version()
         self.set_format()
         self.set_textclass()
         if self.encoding == "auto":
-            self.encoding = get_encoding(self.language, self.encoding,
-                                         self.format, self.cjk_encoding)
+            self.encoding = get_encoding(
+                self.language, self.encoding, self.format, self.cjk_encoding
+            )
         if self.preamble:
-            i = find_token(self.header, '\\textclass', 0) + 1
-            preamble = ['\\begin_preamble'] + self.preamble + ['\\end_preamble']
+            i = find_token(self.header, "\\textclass", 0) + 1
+            preamble = ["\\begin_preamble"] + self.preamble + ["\\end_preamble"]
             header = self.header[:i] + preamble + self.header[i:]
         else:
             header = self.header
 
-        for line in header + [''] + self.body:
-            self.output.write(line+'\n')
-
+        for line in header + [""] + self.body:
+            self.output.write(line + "\n")
 
     def choose_output(self, output):
         """Choose output streams dealing transparently with
@@ -435,20 +461,19 @@ class LyX_base:
         # interfaces.
         if self.compressed:
             if output:
-                outputfileobj = open(output, 'wb')
+                outputfileobj = open(output, "wb")
             else:
                 # We cannot not use stdout directly since it needs text, not bytes in python 3
-                outputfileobj = os.fdopen(sys.stdout.fileno(), 'wb')
+                outputfileobj = os.fdopen(sys.stdout.fileno(), "wb")
             # We cannot not use gzip.open() since it is not supported by python 2
-            zipbuffer = gzip.GzipFile(mode='wb', fileobj=outputfileobj)
+            zipbuffer = gzip.GzipFile(mode="wb", fileobj=outputfileobj)
             # We do not want to use different newlines on different OSes inside zipped files
-            self.output = io.TextIOWrapper(zipbuffer, encoding=self.encoding, newline='\n')
+            self.output = io.TextIOWrapper(zipbuffer, encoding=self.encoding, newline="\n")
         else:
             if output:
-                self.output = open(output, 'w', encoding=self.encoding)
+                self.output = open(output, "w", encoding=self.encoding)
             else:
-                self.output = open(sys.stdout.fileno(), 'w', encoding=self.encoding)
-
+                self.output = open(sys.stdout.fileno(), "w", encoding=self.encoding)
 
     def choose_input(self, input):
         """Choose input stream, dealing transparently with
@@ -456,27 +481,26 @@ class LyX_base:
 
         # Since we do not know the encoding yet we need to read the input as
         # bytes in binary mode, and convert later to unicode.
-        if input and input != '-':
+        if input and input != "-":
             self.dir = os.path.dirname(os.path.abspath(input))
             try:
                 gzip.open(input).readline()
                 self.input = gzip.open(input)
                 self.compressed = True
             except:
-                self.input = open(input, 'rb')
+                self.input = open(input, "rb")
                 self.compressed = False
         else:
-            self.dir = ''
-            self.input = os.fdopen(sys.stdin.fileno(), 'rb')
+            self.dir = ""
+            self.input = os.fdopen(sys.stdin.fileno(), "rb")
             self.compressed = False
 
-
     def lyxformat(self, format):
-        " Returns the file format representation, an integer."
+        "Returns the file format representation, an integer."
         result = format_re.match(format)
         if result:
             format = int(result.group(1) + result.group(2))
-        elif format == '2':
+        elif format == "2":
             format = 200
         else:
             self.error(str(format) + ": " + "Invalid LyX file.")
@@ -487,16 +511,15 @@ class LyX_base:
         self.error(str(format) + ": " + "Format not supported.")
         return None
 
-
     def read_version(self):
-        """ Searchs for clues of the LyX version used to write the
+        """Searchs for clues of the LyX version used to write the
         file, returns the most likely value, or None otherwise."""
 
         for line in self.header:
             if line[0:1] != b"#":
                 return None
 
-            line = line.replace(b"fix",b".")
+            line = line.replace(b"fix", b".")
             # need to test original_tex2lyx_version first because tex2lyx
             # writes "#LyX file created by tex2lyx 2.2"
             result = original_tex2lyx_version.match(line)
@@ -510,17 +533,20 @@ class LyX_base:
                 res = result.group(1)
                 if not res:
                     self.warning(line)
-                #self.warning("Version %s" % result.group(1))
-                return res.decode('ascii')
+                # self.warning("Version %s" % result.group(1))
+                return res.decode("ascii")
         self.warning(str(self.header[:2]))
         return None
 
-
     def set_version(self):
-        " Set the header with the version used."
+        "Set the header with the version used."
 
-        initial_comment = " ".join(["#LyX %s created this file." % version__,
-                                    "For more info see https://www.lyx.org/"])
+        initial_comment = " ".join(
+            [
+                "#LyX %s created this file." % version__,
+                "For more info see https://www.lyx.org/",
+            ]
+        )
 
         # Simple heuristic to determine the comment that always starts
         # a lyx file
@@ -534,61 +560,56 @@ class LyX_base:
         # 2) the second line had the lyx version used
         # later we decided that 1) was a privacy risk for no gain
         # here we remove the second line effectively erasing 1)
-        if self.header[1][0] == '#':
+        if self.header[1][0] == "#":
             del self.header[1]
 
-
     def read_format(self):
-        " Read from the header the fileformat of the present LyX file."
+        "Read from the header the fileformat of the present LyX file."
         for line in self.header:
-            result = fileformat.match(line.decode('ascii'))
+            result = fileformat.match(line.decode("ascii"))
             if result:
                 return self.lyxformat(result.group(1))
         else:
             self.error("Invalid LyX File: Missing format.")
         return None
 
-
     def set_format(self):
-        " Set the file format of the file, in the header."
+        "Set the file format of the file, in the header."
         if self.format <= 217:
-            format = str(float(self.format)/100)
+            format = str(float(self.format) / 100)
         else:
             format = str(self.format)
         i = find_token(self.header, "\\lyxformat", 0)
         self.header[i] = "\\lyxformat %s" % format
 
-
     def set_textclass(self):
         i = find_token(self.header, "\\textclass", 0)
         self.header[i] = "\\textclass %s" % self.textclass
 
-
-    #Note that the module will be added at the END of the extant ones
+    # Note that the module will be added at the END of the extant ones
     def add_module(self, module):
-      " Append module to the modules list."
-      i = find_token(self.header, "\\begin_modules", 0)
-      if i == -1:
-        #No modules yet included
-        i = find_token(self.header, "\\textclass", 0)
+        "Append module to the modules list."
+        i = find_token(self.header, "\\begin_modules", 0)
         if i == -1:
-          self.warning("Malformed LyX document: No \\textclass!!")
-          return
-        modinfo = ["\\begin_modules", module, "\\end_modules"]
-        self.header[i + 1: i + 1] = modinfo
-        return
-      j = find_token(self.header, "\\end_modules", i)
-      if j == -1:
-        self.warning("(add_module)Malformed LyX document: No \\end_modules.")
-        return
-      k = find_token(self.header, module, i)
-      if k != -1 and k < j:
-        return
-      self.header.insert(j, module)
-
+            # No modules yet included
+            i = find_token(self.header, "\\textclass", 0)
+            if i == -1:
+                self.warning("Malformed LyX document: No \\textclass!!")
+                return
+            modinfo = ["\\begin_modules", module, "\\end_modules"]
+            self.header[i + 1 : i + 1] = modinfo
+            return
+        j = find_token(self.header, "\\end_modules", i)
+        if j == -1:
+            self.warning("(add_module)Malformed LyX document: No \\end_modules.")
+            return
+        k = find_token(self.header, module, i)
+        if k != -1 and k < j:
+            return
+        self.header.insert(j, module)
 
     def del_module(self, module):
-        " Delete `module` from module list, return success."
+        "Delete `module` from module list, return success."
         modlist = self.get_module_list()
         if module not in modlist:
             return False
@@ -596,56 +617,55 @@ class LyX_base:
         return True
 
     def get_module_list(self):
-      " Return list of modules."
-      i = find_token(self.header, "\\begin_modules", 0)
-      if (i == -1):
-        return []
-      j = find_token(self.header, "\\end_modules", i)
-      return self.header[i + 1 : j]
-
+        "Return list of modules."
+        i = find_token(self.header, "\\begin_modules", 0)
+        if i == -1:
+            return []
+        j = find_token(self.header, "\\end_modules", i)
+        return self.header[i + 1 : j]
 
     def set_module_list(self, mlist):
-      i = find_token(self.header, "\\begin_modules", 0)
-      if (i == -1):
-        #No modules yet included
-        tclass = find_token(self.header, "\\textclass", 0)
-        if tclass == -1:
-          self.warning("Malformed LyX document: No \\textclass!!")
-          return
-        i = j = tclass + 1
-      else:
-        j = find_token(self.header, "\\end_modules", i)
-        if j == -1:
-            self.warning("(set_module_list) Malformed LyX document: No \\end_modules.")
-            return
-        j += 1
-      if mlist:
-          mlist = ['\\begin_modules'] + mlist + ['\\end_modules']
-      self.header[i:j] = mlist
-
+        i = find_token(self.header, "\\begin_modules", 0)
+        if i == -1:
+            # No modules yet included
+            tclass = find_token(self.header, "\\textclass", 0)
+            if tclass == -1:
+                self.warning("Malformed LyX document: No \\textclass!!")
+                return
+            i = j = tclass + 1
+        else:
+            j = find_token(self.header, "\\end_modules", i)
+            if j == -1:
+                self.warning("(set_module_list) Malformed LyX document: No \\end_modules.")
+                return
+            j += 1
+        if mlist:
+            mlist = ["\\begin_modules"] + mlist + ["\\end_modules"]
+        self.header[i:j] = mlist
 
     def set_parameter(self, param, value):
-        " Set the value of the header parameter."
-        i = find_token(self.header, '\\' + param, 0)
+        "Set the value of the header parameter."
+        i = find_token(self.header, "\\" + param, 0)
         if i == -1:
-            self.warning('Parameter not found in the header: %s' % param, 3)
+            self.warning("Parameter not found in the header: %s" % param, 3)
             return
-        self.header[i] = f'\\{param} {str(value)}'
-
+        self.header[i] = f"\\{param} {str(value)}"
 
     def is_default_layout(self, layout):
-        " Check whether a layout is the default layout of this class."
+        "Check whether a layout is the default layout of this class."
         # FIXME: Check against the real text class default layout
-        if layout == 'Standard' or layout == self.default_layout:
+        if layout == "Standard" or layout == self.default_layout:
             return 1
         return 0
-
 
     def convert(self):
         "Convert from current (self.format) to self.end_format."
         if self.format == self.end_format:
-            self.warning("No conversion needed: Target format %s "
-                "same as current format!" % self.format, default_debug__)
+            self.warning(
+                "No conversion needed: Target format %s "
+                "same as current format!" % self.format,
+                default_debug__,
+            )
             return
 
         mode, conversion_chain = self.chain()
@@ -654,17 +674,20 @@ class LyX_base:
         for step in conversion_chain:
             steps = getattr(__import__("lyx_" + step), mode)
 
-            self.warning(f"Convertion step: {step} - {mode}",
-                         default_debug__ + 1)
+            self.warning(f"Convertion step: {step} - {mode}", default_debug__ + 1)
             if not steps:
-                self.error("The conversion to an older "
-                "format (%s) is not implemented." % self.format)
+                self.error(
+                    "The conversion to an older "
+                    "format (%s) is not implemented." % self.format
+                )
 
             multi_conv = len(steps) != 1
             for version, table in steps:
-                if multi_conv and \
-                   (self.format >= version and mode == "convert") or\
-                   (self.format <= version and mode == "revert"):
+                if (
+                    multi_conv
+                    and (self.format >= version and mode == "convert")
+                    or (self.format <= version and mode == "revert")
+                ):
                     continue
 
                 for conv in table:
@@ -672,24 +695,24 @@ class LyX_base:
                     try:
                         conv(self)
                     except:
-                        self.warning("An error occurred in %s, %s" %
-                                     (version, str(conv)),
-                                     default_debug__)
+                        self.warning(
+                            "An error occurred in %s, %s" % (version, str(conv)),
+                            default_debug__,
+                        )
                         if not self.try_hard:
                             raise
                         self.status = 2
                     else:
-                        self.warning("%lf: Elapsed time on %s" %
-                                     (time.time() - init_t,
-                                      str(conv)), default_debug__ +
-                                     1)
+                        self.warning(
+                            "%lf: Elapsed time on %s" % (time.time() - init_t, str(conv)),
+                            default_debug__ + 1,
+                        )
                 self.format = version
                 if self.end_format == self.format:
                     return
 
-
     def chain(self):
-        """ This is where all the decisions related with the
+        """This is where all the decisions related with the
         conversion are taken.  It returns a list of modules needed to
         convert the LyX file from self.format to self.end_format"""
 
@@ -705,9 +728,11 @@ class LyX_base:
 
         if not correct_version:
             if format <= 215:
-                self.warning("Version does not match file format, "
-                             "discarding it. (Version %s, format %d)" %
-                             (self.initial_version, self.format))
+                self.warning(
+                    "Version does not match file format, "
+                    "discarding it. (Version %s, format %d)"
+                    % (self.initial_version, self.format)
+                )
             for rel in format_relation:
                 if format in rel[1]:
                     initial_step = rel[0]
@@ -730,7 +755,7 @@ class LyX_base:
             mode = "convert"
             full_steps = []
             for step in format_relation:
-                if  initial_step <= step[0] <= final_step and step[2][0] <= self.final_version:
+                if initial_step <= step[0] <= final_step and step[2][0] <= self.final_version:
                     full_steps.append(step)
             if full_steps[0][1][-1] == self.format:
                 full_steps = full_steps[1:]
@@ -743,19 +768,18 @@ class LyX_base:
             last_step = None
 
             for step in relation_format:
-                if  final_step <= step[0] <= initial_step:
+                if final_step <= step[0] <= initial_step:
                     steps.append(step[0])
                     last_step = step
 
             if last_step[1][-1] == self.end_format:
                 steps.pop()
 
-        self.warning("Convertion mode: %s\tsteps%s" %(mode, steps), 10)
+        self.warning("Convertion mode: %s\tsteps%s" % (mode, steps), 10)
         return mode, steps
 
-
     def append_local_layout(self, new_layout):
-        " Append `new_layout` to the local layouts."
+        "Append `new_layout` to the local layouts."
         # new_layout may be a string or a list of strings (lines)
         try:
             new_layout = new_layout.splitlines()
@@ -768,7 +792,7 @@ class LyX_base:
                 # this should not happen
                 self.warning("Malformed LyX document! No \\language header found!")
                 return
-            self.header[k : k] = ["\\begin_local_layout", "\\end_local_layout"]
+            self.header[k:k] = ["\\begin_local_layout", "\\end_local_layout"]
             i = k
 
         j = find_end_of(self.header, i, "\\begin_local_layout", "\\end_local_layout")
@@ -777,29 +801,32 @@ class LyX_base:
             self.warning("Malformed LyX document: Can't find end of local layout!")
             return
 
-        self.header[i+1 : i+1] = new_layout
+        self.header[i + 1 : i + 1] = new_layout
 
     def del_local_layout(self, layout_def):
-        " Delete `layout_def` from local layouts, return success."
+        "Delete `layout_def` from local layouts, return success."
         i = find_complete_lines(self.header, layout_def)
         if i == -1:
             return False
-        j = i+len(layout_def)
-        if (self.header[i-1] == "\\begin_local_layout" and
-            self.header[j] == "\\end_local_layout"):
-            i -=1
-            j +=1
+        j = i + len(layout_def)
+        if (
+            self.header[i - 1] == "\\begin_local_layout"
+            and self.header[j] == "\\end_local_layout"
+        ):
+            i -= 1
+            j += 1
         self.header[i:j] = []
         return True
 
     def del_from_header(self, lines):
-        " Delete `lines` from the document header, return success."
+        "Delete `lines` from the document header, return success."
         i = find_complete_lines(self.header, lines)
         if i == -1:
             return False
         j = i + len(lines)
         self.header[i:j] = []
         return True
+
 
 # Part of an unfinished attempt to make lyx2lyx gave a more
 # structured view of the document.
@@ -865,19 +892,37 @@ class LyX_base:
 
 
 class File(LyX_base):
-    " This class reads existing LyX files."
+    "This class reads existing LyX files."
 
-    def __init__(self, end_format = 0, input = '', output = '', error = '',
-                 debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 final_version = '', systemlyxdir = ''):
-        LyX_base.__init__(self, end_format, input, output, error,
-                          debug, try_hard, cjk_encoding, final_version,
-                          systemlyxdir)
+    def __init__(
+        self,
+        end_format=0,
+        input="",
+        output="",
+        error="",
+        debug=default_debug__,
+        try_hard=0,
+        cjk_encoding="",
+        final_version="",
+        systemlyxdir="",
+    ):
+        LyX_base.__init__(
+            self,
+            end_format,
+            input,
+            output,
+            error,
+            debug,
+            try_hard,
+            cjk_encoding,
+            final_version,
+            systemlyxdir,
+        )
         self.read()
 
 
 # FIXME: header settings are completely outdated, don't use like this
-#class NewFile(LyX_base):
+# class NewFile(LyX_base):
 #    " This class is to create new LyX files."
 #    def set_header(self, **params):
 #        # set default values
@@ -934,7 +979,7 @@ class File(LyX_base):
 
 # Part of an unfinished attempt to make lyx2lyx gave a more
 # structured view of the document.
-#class Paragraph:
+# class Paragraph:
 #    # unfinished implementation, it is missing the Text and Insets
 #    # representation.
 #    " This class represents the LyX paragraphs."

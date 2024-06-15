@@ -17,12 +17,13 @@
 
 # We need all this because lyx2lyx does not have the .py termination
 import imp
+
 lyx2lyx = imp.load_source("lyx2lyx", "lyx2lyx", open("lyx2lyx"))
 
 # Profiler used in the study
-import hotshot, hotshot.stats
+import hotshot
+import hotshot.stats
 
-import sys
 import os
 
 """
@@ -34,16 +35,17 @@ Example:
         ./profiling.py -ou.lyx ../doc/UserGuide.lyx
 """
 
+
 def main():
     # This will only work with python >= 2.2, the version where this module was added
-    prof = hotshot.Profile("lyx2lyx.prof") # Use temporary file, here?
+    prof = hotshot.Profile("lyx2lyx.prof")  # Use temporary file, here?
     benchtime = prof.runcall(lyx2lyx.main)
     prof.close()
 
     # After the tests, show the profile analysis.
     stats = hotshot.stats.load("lyx2lyx.prof")
     stats.strip_dirs()
-    stats.sort_stats('time', 'calls')
+    stats.sort_stats("time", "calls")
     stats.print_stats(20)
 
     os.unlink("lyx2lyx.prof")

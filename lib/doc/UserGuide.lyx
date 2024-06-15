@@ -157,6 +157,7 @@ logicalmkup
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author -1162675398 "Tobias Hilbricht" hilbricht@linopus.de
 \author -584632292 "Richard Kimberly Heck"
 \author 5863208 "ab"
 \end_header
@@ -22637,6 +22638,21 @@ Apart from static images specific scripts generating images can be used as well.
 
 \family default
  extension) instead of image filename.
+
+\change_inserted -1162675398 1718386882
+ Gnuplot scripts can also be included as external material.
+ Labels and numbers are then typeset in document fonts,
+ and LaTeX math used in the Gnuplot script is rendered.
+ See the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Gnuplot in LyX wiki page"
+target "https://wiki.lyx.org/Tools/GnuplotInLyX"
+literal "false"
+
+\end_inset
+
+ for more information about installing the template for Gnuplot scripts as external material.
 \change_unchanged
 
 \end_layout

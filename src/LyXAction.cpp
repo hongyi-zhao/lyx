@@ -4088,7 +4088,9 @@ void LyXAction::init()
                             size, emph, noun, underbar, number, color, language,
                             toggleall.\n
                             Use lyx -dbg action for exact syntax of text-style
-                            dialog parameters.
+                            dialog parameters. The code is expecting numerical parameters, 
+			    so that one needs to use e.g. "series 1" instead of "series bold".
+ * \li Sample: textstyle-update series 1
  * \li Origin: leeming, 12 Mar 2003
  * \endvar
  */

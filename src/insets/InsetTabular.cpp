@@ -1330,7 +1330,7 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 				changed = true;
 			}
 		}
-		if (changed && restwidth > 0)
+		if (changed && restwidth > 0 && restcols != 0)
 			vcolwidth = restwidth / restcols;
 	}
 

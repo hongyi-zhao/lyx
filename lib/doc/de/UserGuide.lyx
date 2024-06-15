@@ -1,4 +1,4 @@
-#LyX 2.5 created this file. For more info see https://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 620
 \begin_document
 \begin_header
@@ -22566,7 +22566,52 @@ name "sec:Grafikformate"
 \end_layout
 
 \begin_layout Standard
-Sie können Grafiken in allen bekannten Formaten einfügen,
+Sie können Grafiken
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Es können nicht nur statische Grafiken eingebunden werden;
+ Sie können auch spezifische Skripte verwenden,
+ die Grafiken dynamisch erzeugen.
+ Sie können beispielsweise ein Gnuplot-Skript (Dateien mit der Endung 
+\family typewriter
+.gp
+\family default
+ oder
+\family typewriter
+ .gnuplot
+\family default
+) einbinden.
+ Gnuplot-Skripte können aber auch als 
+\begin_inset Quotes gls
+\end_inset
+
+externes Material
+\begin_inset Quotes grs
+\end_inset
+
+ eingebunden werden.
+ Das hat den Vorteil,
+ dass Marken und Zahlen in der Dokumentschrift gesetzt werden und dass LaTeX-Matheformeln,
+ die im Skript verwendet werden,
+ richtig ausgegeben werden.
+ Unter 
+\begin_inset CommandInset href
+LatexCommand href
+name "Gnuplot in LyX wiki page"
+target "https://wiki.lyx.org/Tools/GnuplotInLyX"
+literal "false"
+
+\end_inset
+
+ finden Sie Informationen dazu,
+ wie Sie die Vorlage für Gnuplot-Skripte als externes Material installieren.
+\end_layout
+
+\end_inset
+
+ in allen bekannten Formaten einfügen,
  aber weil jedes Druckausgabe
 \begin_inset ERT
 status collapsed

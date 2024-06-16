@@ -27,6 +27,7 @@
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferView.h"
 #include "CiteEnginesList.h"
 #include "Color.h"
@@ -1883,6 +1884,7 @@ void GuiDocument::onBufferViewChanged()
 	// And ideally, we should propose to apply without having to switch back
 	// (e.g., via a LFUN_BUFFER_PARAMS_APPLY_OTHER)
 	if (!prev_buffer_filename_.empty() && prev_buffer_filename_ != new_filename
+	    && theBufferList().exists(FileName(prev_buffer_filename_))
 	    && buttonBox->button(QDialogButtonBox::Apply)->isEnabled()) {
 		// Only ask if we haven't yet in this cycle
 		int const ret = prompted_ ? 3 : Alert::prompt(_("Unapplied changes"),

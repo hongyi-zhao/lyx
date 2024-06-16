@@ -471,19 +471,11 @@ static docstring const textschwa_def = from_ascii(
 static docstring const xfrac_def = from_ascii(
 	   "\\usepackage{xfrac}\n");
 
+// https://tex.stackexchange.com/questions/720579/do-i-need-to-replace-declarecollectioninstance-after-recent-package-change/
 static docstring const smallLetterFrac_def = from_ascii(
-	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{default}{text}\n"
+	"\\EditTemplateDefaults{xfrac}{text}\n"
 	"  {phantom=c, scale-factor=1.0, slash-left-kern=-.05em}\n"
-	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{lmr}{text}\n"
-	"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
-	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{lmss}{text}\n"
-	"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
-	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{cmr}{text}\n"
-	"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
-	"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{cmss}{text}\n"
-	"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
-	"\\newcommand{\\smallLetterFrac}[2]{%\n"
-	"  {\\UseCollection{xfrac}{smallLetterFrac}\\sfrac{#1}{#2}}}\n");
+	"\\NewCommandCopy\\smallLetterFrac\\sfrac\n");
 
 static docstring const lyxref_def = from_ascii(
 	"\\RS@ifundefined{subsecref}\n"

@@ -174,10 +174,10 @@ void Dialog::showView(Qt::FocusReason reason)
 	prepareView();
 
 	QWidget * w = asQWidget();
-    if (!w->isVisible()) {
-        w->setFocus(reason);
-        w->show();
-    }
+	if (!w->isVisible()) {
+		w->setFocus(reason);
+		w->show();
+	}
 	w->raise();
 	w->activateWindow();
 	if (wantInitialFocus())

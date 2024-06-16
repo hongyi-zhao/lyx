@@ -1219,8 +1219,8 @@ void GuiView::setFocus()
 
 void GuiView::setFocus(Qt::FocusReason reason)
 {
-    LYXERR(Debug::DEBUG, "GuiView::setFocus()" << this << " reason = " << reason);
-    QMainWindow::setFocus(reason);
+	LYXERR(Debug::DEBUG, "GuiView::setFocus()" << this << " reason = " << reason);
+	QMainWindow::setFocus(reason);
 }
 
 
@@ -1579,9 +1579,9 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	connectBufferView(wa->bufferView());
 	connectBuffer(wa->bufferView().buffer());
 	d.current_work_area_ = wa;
-    // The below specifies that the input method item transformation will
-    // not reset
-    wa->setFocus(Qt::OtherFocusReason);
+	// The below specifies that the input method item transformation will
+	// not reset
+	wa->setFocus(Qt::OtherFocusReason);
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
 	                 this, SLOT(updateWindowTitle(GuiWorkArea *)));
 	QObject::connect(wa, SIGNAL(busy(bool)),
@@ -4864,7 +4864,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_DIALOG_HIDE: {
 			guiApp->hideDialogs(to_utf8(cmd.argument()), nullptr);
-            setFocus(Qt::PopupFocusReason);
+			setFocus(Qt::PopupFocusReason);
 			break;
 		}
 

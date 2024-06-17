@@ -166,40 +166,43 @@ AC_DEFUN([QT_DO_IT_ALL],
 	esac
 	AC_SUBST(QT_CPPFLAGS)
 
-	dnl Check if it possible to do a pkg-config
+	dnl Check if it possible to do a pkg-config (for later)
 	PKG_PROG_PKG_CONFIG
-	dnl Not possible with Qt6 (QTBUG-86080)
-	if test x$USE_QT6 = xno ; then
-	    if test -n "$PKG_CONFIG" ; then
-		    QT_DO_PKG_CONFIG
+
+	dnl Try qmake first
+	QT_QMAKE_CONFIG([$USE_QT6])
+	if test -z "$QT_LIB"; then
+	    dnl pkg-config does not work with Qt6 (QTBUG-86080)
+	    if test x$USE_QT6 = xno ; then
+	        if test -n "$PKG_CONFIG" ; then
+	            QT_DO_PKG_CONFIG
+	        fi
 	    fi
-	    if test "$pkg_failed" != "no" ; then
-		    QT_DO_MANUAL_CONFIG
-	    fi
-	else
-	    QT6_QMAKE_CONFIG
-	    if test -z "$QT_LIB"; then
-		    QT_DO_MANUAL_CONFIG
+	fi
+	dnl last chance: old-style configuration
+	if test -z "$QT_LIB"; then
+	    QT_DO_MANUAL_CONFIG
+	fi
+
+	if test -z "$QT_LIB"; then
+	    dnl Try again with Qt5 if configuring for Qt6 failed
+	    dnl this is mostly the same logic as above
+	    if test x$USE_QT6 = xyes ; then
+	        USE_QT6=no
+	        QT_QMAKE_CONFIG([$USE_QT6])
+	        if test -z "$QT_LIB"; then
+	            if test -n "$PKG_CONFIG" ; then
+	                QT_DO_PKG_CONFIG
+	            fi
+	        fi
+	        if test -z "$QT_LIB"; then
+	            QT_DO_MANUAL_CONFIG
+	        fi
 	    fi
 	fi
 
 	if test -z "$QT_LIB"; then
-	  dnl Try again with Qt5 and if configuring for Qt6/5 fails
-	  if test x$USE_QT6 = xyes ; then
-		USE_QT6=no
-		AC_SUBST([USE_QT6])
-		if test -n "$PKG_CONFIG" ; then
-		  QT_DO_PKG_CONFIG
-		fi
-		if test "$pkg_failed" != "no" ; then
-		  QT_DO_MANUAL_CONFIG
-		fi
-		if test -z "$QT_LIB"; then
-		  AC_MSG_ERROR([cannot find qt libraries.])
-		fi
-	  else
-		AC_MSG_ERROR([cannot find qt libraries.])
-	  fi
+	    AC_MSG_ERROR([Cannot find Qt libraries.])
 	fi
 
 	dnl Check qt version
@@ -375,13 +378,20 @@ AC_DEFUN([QT_DO_MANUAL_CONFIG],
 	fi
 ])
 
-AC_DEFUN([QT6_QMAKE_CONFIG],
+dnl QT_QMAKE_CONFIG(USE_QT6)
+dnl
+AC_DEFUN([QT_QMAKE_CONFIG],
 [
-	dnl Use first suitable qmake in PATH
-	AC_CHECK_PROGS([QT_QMAKE], [qmake-qt6 qmake6], [qmake], $PATH)
-	AC_MSG_CHECKING([for Qt6])
+dnl Use first suitable qmake in PATH
+	if test $1 = "yes"; then
+	  qt_major=6
+	else
+	  qt_major=5
+	fi
+	AC_CHECK_PROGS([QT_QMAKE], [qmake-qt$qt_major qmake$qt_major qmake], [], $PATH)
+	AC_MSG_CHECKING([for Qt$qt_major])
 	qtver=`$QT_QMAKE -v | grep -o "Qt version ."`
-	if test "$qtver" = "Qt version 6"; then
+	if test "$qtver" = "Qt version $qt_major"; then
 	    qt_cv_libexec=`$QT_QMAKE -query QT_INSTALL_LIBEXECS`
 	    dnl Use a .pro file for getting qmake's variables
 	    lyx_test_qt_dir=`mktemp -d`
@@ -412,18 +422,28 @@ EOF1
 		AC_SUBST(QT_CORE_LIB)
 		cat > $lyx_test_qt_pro << EOF2
 QMAKE_EXTRA_VARIABLES = MISSING
+percent.target = %
+percent.commands = @echo -n "\$(\$(@))\ "
+QMAKE_EXTRA_TARGETS += percent
+QMAKE_PROJECT_DEPTH = 0
 qtHaveModule(core)		{QT += core} else {MISSING += core}
 qtHaveModule(concurrent)	{QT += concurrent} else {MISSING += concurrent}
 qtHaveModule(gui)		{QT += gui} else {MISSING += gui}
 qtHaveModule(gui-private)	{QT += gui-private} else {MISSING += gui-private}
 qtHaveModule(svg)		{QT += svg} else {MISSING += svg}
-qtHaveModule(svgwidgets)	{QT += svgwidgets} else {MISSING += svgwidgets}
 qtHaveModule(widgets)		{QT += widgets} else {MISSING += widgets}
-percent.target = %
-percent.commands = @echo -n "\$(\$(@))\ "
-QMAKE_EXTRA_TARGETS += percent
-QMAKE_PROJECT_DEPTH = 0
 EOF2
+	        if test "$qt_major" = 6; then
+	            cat >> $lyx_test_qt_pro << EOF3
+qtHaveModule(svgwidgets)	{QT += svgwidgets} else {MISSING += svgwidgets}
+EOF3
+	        else
+	            cat >> $lyx_test_qt_pro << EOF4
+qtHaveModule(x11extras)	{QT += x11extras}
+qtHaveModule(macextras)	{QT += macextras}
+qtHaveModule(winextras)	{QT += winextras}
+EOF4
+	        fi
 		$QT_QMAKE $lyx_test_qt_pro -o $lyx_test_qt_mak 1>/dev/null 2>&1
 		QT_INCLUDES=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak INCPATH | sed 's/-I\. //g'`
 		qt_guilibs=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak LIBS`
@@ -434,15 +454,20 @@ EOF2
 		else
 		    QT_LIB=`echo $qt_guilibs | tr ' ' '\n' | grep -v "^-L" | tr '\n' ' '`
 		fi
-		QTLIB_VERSION=`$QT_QMAKE -v | grep "Qt version" | sed -e 's/.*\([[0-9]]\.[[0-9]]*\.[[0-9]]\).*/\1/'`
+		QTLIB_VERSION=`$QT_QMAKE -v | grep "Qt version" | sed -e 's/.*\([[0-9]]\.[[0-9]]*\.[[0-9]]*\).*/\1/'`
 		if test -z "$QT_LIB"; then
 		    AC_MSG_RESULT(no)
 		else
 		    QT_MISSING=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak EXPORT_MISSING | sed 's/^ *//'`
 		    if test -n "$QT_MISSING"; then
-			    AC_MSG_ERROR([Qt6 module(s) $QT_MISSING not found.])
+			    AC_MSG_ERROR([Qt$qt_major module(s) $QT_MISSING not found.])
 		    fi
-		    AC_MSG_RESULT(yes)
+		    QT5_X11_EXTRAS=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak DEFINES | grep QT_X11EXTRAS_LIB`
+		    if test -n "$QT5_X11_EXTRAS"; then
+			AC_DEFINE(HAVE_QT5_X11_EXTRAS, 1,
+				[Define if you have the Qt5X11Extras module])
+		    fi
+		    AC_MSG_RESULT($QTLIB_VERSION)
 		    AC_SUBST(QT_INCLUDES)
 		    AC_SUBST(QT_LDFLAGS)
 		    AC_SUBST(QT_LIB)
@@ -453,5 +478,8 @@ EOF2
 	    rmdir $lyx_test_qt_dir
 	else
 	    AC_MSG_RESULT(no)
+	fi
+	if test -z "$QT_LIB"; then
+	    LYX_WARNING([Unable to configure Qt$qt_major with qmake. Please report.])
 	fi
 ])

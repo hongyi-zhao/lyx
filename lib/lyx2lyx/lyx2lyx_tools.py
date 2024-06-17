@@ -107,7 +107,7 @@ from unicode_symbols import unicode_reps
 def add_to_preamble(document, text):
     "Add text to the preamble if it is not already there."
 
-    if type(text) is not list:
+    if not isinstance(text, list):
         # split on \n just in case
         # it'll give us the one element list we want
         # if there's no \n, too
@@ -138,7 +138,7 @@ def add_to_preamble(document, text):
 def insert_to_preamble(document, text, index=0):
     """Insert text to the preamble at a given line"""
 
-    if type(text) is not list:
+    if not isinstance(text, list):
         # split on \n just in case
         # it'll give us the one element list we want
         # if there's no \n, too
@@ -425,7 +425,7 @@ def latex_length(slen):
     return (percent, slen)
 
 
-def length_in_bp(length):
+def length_in_bp(document, length):
     "Convert a length in LyX format to its value in bp units"
 
     em_width = 10.0 / 72.27  # assume 10pt font size
@@ -465,8 +465,9 @@ def length_in_bp(length):
     return "%g" % (float(value) * scales[unit])
 
 
-def revert_flex_inset(lines, name, LaTeXname):
+def revert_flex_inset(document, name, LaTeXname):
     "Convert flex insets to TeX code"
+    lines = document.body
     i = 0
     while True:
         i = find_token(lines, "\\begin_inset Flex " + name, i)

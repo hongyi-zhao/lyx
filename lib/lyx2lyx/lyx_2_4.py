@@ -2232,11 +2232,11 @@ def revert_soul(document):
     if i != -1:
         add_to_preamble(document, ["\\usepackage{color}"])
 
-    revert_flex_inset(document.body, "Spaceletters", "\\so")
-    revert_flex_inset(document.body, "Strikethrough", "\\st")
-    revert_flex_inset(document.body, "Underline", "\\ul")
-    revert_flex_inset(document.body, "Highlight", "\\hl")
-    revert_flex_inset(document.body, "Capitalize", "\\caps")
+    revert_flex_inset(document, "Spaceletters", "\\so")
+    revert_flex_inset(document, "Strikethrough", "\\st")
+    revert_flex_inset(document, "Underline", "\\ul")
+    revert_flex_inset(document, "Highlight", "\\hl")
+    revert_flex_inset(document, "Capitalize", "\\caps")
 
 
 def revert_tablestyle(document):
@@ -4287,7 +4287,7 @@ def revert_enotez(document):
     if find_token(document.body, "\\begin_inset Flex Endnote", 0) != -1:
         use = True
 
-    revert_flex_inset(document.body, "Endnote", "\\endnote")
+    revert_flex_inset(document, "Endnote", "\\endnote")
 
     i = 0
     while True:
@@ -4324,7 +4324,7 @@ def revert_memoir_endnotes(document):
     ):
         encommand = "\\endnote"
 
-    revert_flex_inset(document.body, "Endnote", encommand)
+    revert_flex_inset(document, "Endnote", encommand)
 
     i = 0
     while True:
@@ -6634,10 +6634,10 @@ def revert_cov_options(document):
 def revert_expreambles(document):
     """Revert covington example preamble flex insets to ERT"""
 
-    revert_flex_inset(document.body, "Example Preamble", "\\expreamble")
-    revert_flex_inset(document.body, "Subexample Preamble", "\\subexpreamble")
-    revert_flex_inset(document.body, "Example Postamble", "\\expostamble")
-    revert_flex_inset(document.body, "Subexample Postamble", "\\subexpostamble")
+    revert_flex_inset(document, "Example Preamble", "\\expreamble")
+    revert_flex_inset(document, "Subexample Preamble", "\\subexpreamble")
+    revert_flex_inset(document, "Example Postamble", "\\expostamble")
+    revert_flex_inset(document, "Subexample Postamble", "\\subexpostamble")
 
 
 def revert_hequotes(document):

@@ -1685,8 +1685,8 @@ def revert_IEEEtran(document):
     if document.textclass != "IEEEtran":
         return
 
-    revert_flex_inset(document.body, "IEEE membership", "\\IEEEmembership")
-    revert_flex_inset(document.body, "Lowercase", "\\MakeLowercase")
+    revert_flex_inset(document, "IEEE membership", "\\IEEEmembership")
+    revert_flex_inset(document, "Lowercase", "\\MakeLowercase")
 
     layouts = (
         "Special Paper Notice",

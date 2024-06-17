@@ -1881,7 +1881,7 @@ def convert_revert_external_bbox(document, forward):
                 tokens[t] += "bp"
         else:
             for t in range(1, 5):
-                tokens[t] = length_in_bp(tokens[t])
+                tokens[t] = length_in_bp(document, tokens[t])
         document.body[k] = (
             "\tboundingBox " + tokens[1] + " " + tokens[2] + " " + tokens[3] + " " + tokens[4]
         )

@@ -113,8 +113,9 @@ public:
 	///
 	Menus & menus();
 
-	/// \returns true the "partial" draw strategy is known to be broken
-	bool noPartialDraw() const;
+	/// \returns the draw strategy used by the application
+	DrawStrategy drawStrategy() const;
+	virtual docstring drawStrategyDescription() const override;
 
 	/// \name Methods inherited from QApplication class
 	//@{

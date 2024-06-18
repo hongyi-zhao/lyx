@@ -2730,16 +2730,36 @@ Menus & GuiApplication::menus()
 }
 
 
-bool GuiApplication::noPartialDraw() const
+DrawStrategy GuiApplication::drawStrategy() const
 {
 	/* Qt on macOS and Wayland does not respect the
 	 * Qt::WA_OpaquePaintEvent attribute and resets the widget backing
 	 * store at each update. Therefore, if it not good to use
-	 * "partial" draw strategy in these cases. It is also possible to
-	 * force the use of the backing store for cases like x11 with
+	 * "partial" draw strategy in these cases. It can also be useful
+	 * to force the use of the backing store for cases like X11 with
 	 * transparent WM themes.
 	 */
-	return platformName() == "cocoa" || platformName().contains("wayland");
+	if (lyxrc.draw_strategy == DrawStrategy::Partial
+	     && (platformName() == "cocoa" || platformName().contains("wayland")))
+		return DrawStrategy::Backingstore;
+	else
+		return lyxrc.draw_strategy;
+}
+
+
+docstring GuiApplication::drawStrategyDescription() const
+{
+	switch(drawStrategy()) {
+	case DrawStrategy::Partial:
+		return _("partial draw");
+		break;
+	case DrawStrategy::Backingstore:
+		return _("partial draw on backing store");
+		break;
+	case DrawStrategy::Full:
+		return _("full draw");
+	}
+	return docstring();
 }
 
 

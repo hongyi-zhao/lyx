@@ -298,6 +298,11 @@ static QString version(bool const plain = false)
 		out << "</p><p>";
 #endif
 	out << toqstr(bformat(_("Python detected: %1$s"), from_utf8(os::python_info())));
+	if (plain)
+		out << '\n';
+	else
+		out << "</p><p>";
+	out << toqstr(bformat(_("Draw strategy: %1$s"), guiApp->drawStrategyDescription()));
 	if (!plain)
 		out << toqstr("</p></body></html>");
 	return res;

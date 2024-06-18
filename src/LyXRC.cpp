@@ -1144,11 +1144,11 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			if (lexrc.next()) {
 				string const tmp = lexrc.getString();
 				if (tmp == "partial")
-					draw_strategy = DS_PARTIAL;
+					draw_strategy = DrawStrategy::Partial;
 				else if (tmp == "backingstore")
-					draw_strategy = DS_BACKINGSTORE;
+					draw_strategy = DrawStrategy::Backingstore;
 				else if (tmp == "full")
-					draw_strategy = DS_FULL;
+					draw_strategy = DrawStrategy::Full;
 				else {
 					LYXERR0("Unrecognized draw strategy " << tmp <<'"');
 				}
@@ -2056,13 +2056,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			draw_strategy != system_lyxrc.draw_strategy) {
 			string status;
 			switch (draw_strategy) {
-			case DS_FULL:
+			case DrawStrategy::Full:
 				status = "full";
 				break;
-			case DS_PARTIAL:
+			case DrawStrategy::Partial:
 				status = "partial";
 				break;
-			case DS_BACKINGSTORE:
+			case DrawStrategy::Backingstore:
 				status = "backingstore";
 				break;
 			}

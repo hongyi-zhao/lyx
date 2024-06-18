@@ -130,14 +130,8 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
 	: p(parent), completer_(new GuiCompleter(p, p))
 {
-	use_backingstore_ = lyxrc.draw_strategy == LyXRC::DS_BACKINGSTORE
-		|| (lyxrc.draw_strategy == LyXRC::DS_PARTIAL && guiApp->noPartialDraw());
-	if (use_backingstore_)
-		LYXERR(Debug::WORKAREA, "Drawing strategy: partial draw on backing store");
-	else
-		LYXERR(Debug::WORKAREA, "Drawing strategy: "
-			   << (lyxrc.draw_strategy == LyXRC::DS_PARTIAL ? "partial draw"
-				   : "full draw"));
+	use_backingstore_ = guiApp->drawStrategy() == DrawStrategy::Backingstore;
+	LYXERR(Debug::WORKAREA, "Drawing strategy: " << guiApp->drawStrategyDescription());
 
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time > 0) {

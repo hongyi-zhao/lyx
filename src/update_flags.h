@@ -51,5 +51,17 @@ inline flags operator~(flags const f)
 
 } // namespace Update
 
+
+// How the work area gets drawn (painted)
+enum class DrawStrategy {
+	// draw all
+	Full,
+	// draw only what has changed
+	Partial,
+	// draw in backing store (only what has changed)
+	Backingstore
+};
+
+
 } // namespace lyx
 #endif

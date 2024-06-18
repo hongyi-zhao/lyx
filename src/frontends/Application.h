@@ -13,6 +13,7 @@
 
 #include "ColorCode.h"
 #include "FuncCode.h"
+#include "update_flags.h"
 
 #include "support/strfwd.h"
 
@@ -202,6 +203,11 @@ public:
 	virtual bool getRgbColor(ColorCode col, RGBColor & rgbcol) = 0;
 	/// Like getRgbColor(), but static and slower
 	static bool getRgbColorUncached(ColorCode col, RGBColor & rgbcol);
+
+	/// \returns the draw strategy used by the application
+	virtual DrawStrategy drawStrategy() const = 0;
+	/// \returns the description of the draw strategy used by the application
+	virtual docstring drawStrategyDescription() const = 0;
 
 	/**
 	 * @return true if LyX uses a dark theme

@@ -58,6 +58,7 @@
 #include "mathed/MathRow.h"
 
 #include "frontends/alert.h"
+#include "frontends/Application.h"
 #include "frontends/CaretGeometry.h"
 #include "frontends/Delegates.h"
 #include "frontends/FontMetrics.h"
@@ -592,7 +593,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		flags = (flags & ~Update::FitCursor) | Update::ForceDraw;
 	}
 
-	if (lyxrc.draw_strategy == LyXRC::DS_FULL)
+	if (theApp()->drawStrategy() == DrawStrategy::Full)
 		flags = flags | Update::ForceDraw;
 
 	// Add flags to the the update flags. These will be reset to None

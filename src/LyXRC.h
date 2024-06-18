@@ -19,6 +19,7 @@
 #define LYXRC_H
 
 #include "LyX.h"
+#include "update_flags.h"
 
 #include "support/Length.h"
 #include "support/strfwd.h"
@@ -579,16 +580,8 @@ public:
 	///
 	BookmarksVisibility bookmarks_visibility = BMK_NONE;
 
-	enum DrawStrategy {
-		// draw all
-		DS_FULL,
-		// draw only what has changed
-		DS_PARTIAL,
-		// draw in backing store (only what has changed)
-		DS_BACKINGSTORE
-	};
 	///
-	DrawStrategy draw_strategy = DS_PARTIAL;
+	DrawStrategy draw_strategy = DrawStrategy::Partial;
 };
 
 

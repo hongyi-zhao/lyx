@@ -464,6 +464,7 @@ EOF4
 		    fi
 		    QT5_X11_EXTRAS=`cd $lyx_test_qt_dir; make -s -f $lyx_test_qt_mak DEFINES | grep QT_X11EXTRAS_LIB`
 		    if test -n "$QT5_X11_EXTRAS"; then
+			QT_LIB="$QT_LIB -lxcb"
 			AC_DEFINE(HAVE_QT5_X11_EXTRAS, 1,
 				[Define if you have the Qt5X11Extras module])
 		    fi

@@ -19,33 +19,31 @@
 
 import re
 
-# Uncomment only what you need to import, please.
+# from parser_tools import find_token, find_end_of, find_tokens, \
+# find_end_of_inset, find_end_of_layout, \
+# is_in_inset, del_token, check_token
+from lyx2lyx_tools import add_to_preamble, get_ert, put_cmd_in_ert, revert_language
 
+# Uncomment only what you need to import, please.
 from parser_tools import (
     count_pars_in_inset,
     del_complete_lines,
     del_token,
-    find_token,
-    find_token_exact,
-    find_token_backwards,
     find_end_of,
     find_end_of_inset,
     find_end_of_layout,
     find_end_of_sequence,
     find_re,
-    get_option_value,
-    get_containing_layout,
+    find_token,
+    find_token_backwards,
+    find_token_exact,
     get_containing_inset,
-    get_value,
+    get_containing_layout,
+    get_option_value,
     get_quoted_value,
+    get_value,
     set_option_value,
 )
-
-# from parser_tools import find_token, find_end_of, find_tokens, \
-# find_end_of_inset, find_end_of_layout, \
-# is_in_inset, del_token, check_token
-
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert, revert_language
 
 # from lyx2lyx_tools import insert_to_preamble, \
 #  lyx2latex, latex_length, revert_flex_inset, \

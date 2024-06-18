@@ -19,33 +19,32 @@
 
 import re
 
-from parser_tools import (
-    del_complete_lines,
-    find_token,
-    find_end_of,
-    find_token_exact,
-    find_end_of_inset,
-    find_end_of_layout,
-    find_token_backwards,
-    is_in_inset,
-    get_value,
-    get_quoted_value,
-    del_token,
-    check_token,
-    get_option_value,
-)
-
 from lyx2lyx_tools import (
     add_to_preamble,
+    hex2ratio,
     insert_to_preamble,
-    put_cmd_in_ert,
-    lyx2latex,
     latex_length,
+    lyx2latex,
+    put_cmd_in_ert,
     revert_flex_inset,
     revert_font_attrs,
-    hex2ratio,
-    str2bool,
     revert_language,
+    str2bool,
+)
+from parser_tools import (
+    check_token,
+    del_complete_lines,
+    del_token,
+    find_end_of,
+    find_end_of_inset,
+    find_end_of_layout,
+    find_token,
+    find_token_backwards,
+    find_token_exact,
+    get_option_value,
+    get_quoted_value,
+    get_value,
+    is_in_inset,
 )
 
 ####################################################################

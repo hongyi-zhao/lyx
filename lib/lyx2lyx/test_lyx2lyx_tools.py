@@ -18,7 +18,8 @@
 "This modules tests the auxiliary functions for lyx2lyx."
 
 import unittest
-from lyx2lyx_tools import put_cmd_in_ert, latex_length
+
+from lyx2lyx_tools import latex_length, put_cmd_in_ert
 
 
 class TestParserTools(unittest.TestCase):

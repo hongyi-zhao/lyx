@@ -19,21 +19,22 @@
 
 "The LyX module has all the rules related with different lyx file formats."
 
-from parser_tools import (
-    get_value,
-    check_token,
-    find_token,
-    find_end_of,
-    find_complete_lines,
-)
-import os.path
-import gzip
-import locale
-import sys
-import re
-import time
-import io
 import codecs
+import gzip
+import io
+import locale
+import os.path
+import re
+import sys
+import time
+
+from parser_tools import (
+    check_token,
+    find_complete_lines,
+    find_end_of,
+    find_token,
+    get_value,
+)
 
 try:
     import lyx2lyx_version

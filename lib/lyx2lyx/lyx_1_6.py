@@ -19,7 +19,7 @@
 
 import re
 
-from parser_tools import find_token, find_end_of, find_tokens, get_value
+from parser_tools import find_end_of, find_token, find_tokens, get_value
 from unicode_symbols import unicode_reps
 
 ####################################################################

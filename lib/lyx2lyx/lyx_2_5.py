@@ -19,26 +19,21 @@
 
 import re
 
-# Uncomment only what you need to import, please.
-
-from parser_tools import find_end_of_inset, find_token, find_re, get_value
-#    count_pars_in_inset, del_complete_lines, del_token, find_end_of,
-#    find_end_of_layout,
-#    find_token_backwards, find_token_exact, get_bool_value,
-#    get_containing_inset, get_containing_layout, get_option_value,
-#    get_quoted_value, is_in_inset,
-#    del_value,
-#    find_complete_lines,
-#    find_re, find_substring,
-#    set_bool_value
-#    find_tokens, check_token
-
+# Uncomment only what you need to import, please (lyx2lyx_tools):
+#    convert_info_insets, get_ert, hex2ratio, insert_to_preamble,
+#    length_in_bp, lyx2latex, lyx2verbatim, put_cmd_in_ert,
+#    revert_flex_inset, revert_flex_inset, revert_font_attrs,
+#    revert_language, str2bool
 from lyx2lyx_tools import add_to_preamble, latex_length
-#  put_cmd_in_ert, insert_to_preamble, lyx2latex,
-#  revert_language, revert_flex_inset, str2bool,
-#  revert_font_attrs,
-#  get_ert, lyx2verbatim, length_in_bp, convert_info_insets
-#  revert_flex_inset, hex2ratio
+
+# Uncomment only what you need to import, please (parser_tools):
+#    check_token, count_pars_in_inset, del_complete_lines, del_token,
+#    del_value, find_complete_lines, find_end_of, find_end_of_layout,
+#    find_re, find_substring, find_token_backwards, find_token_exact,
+#    find_tokens, get_bool_value, get_containing_inset,
+#    get_containing_layout, get_option_value, get_quoted_value,
+#    is_in_inset, set_bool_value
+from parser_tools import find_end_of_inset, find_re, find_token, get_value
 
 ####################################################################
 # Private helper functions

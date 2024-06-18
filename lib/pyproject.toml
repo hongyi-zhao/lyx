@@ -20,6 +20,8 @@ docstring-code-format = true
 docstring-code-line-length = "dynamic"
 
 [tool.ruff.lint]
-# Ignore warnings like: Ambiguous variable name: `l`
-# ambiguous-variable-name (E741)
-ignore = ["E741"]
+select = ["E", "F", "I"]
+# Ignore warnings:
+# line-too-long (E501)
+# ambiguous-variable-name (E741): Ambiguous variable name: `l`
+ignore = ["E501", "E741"]

@@ -17,9 +17,9 @@
 
 "Import unicode_reps from this module for access to the unicode<->LaTeX mapping."
 
+import codecs
 import os
 import re
-import codecs
 
 
 def read_unicodesymbols():

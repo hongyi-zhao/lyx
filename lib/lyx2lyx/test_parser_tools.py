@@ -18,23 +18,23 @@
 "This modules tests the functions used to help parse lines."
 
 import unittest
+
 from parser_tools import (
     check_token,
-    is_nonempty_line,
-    find_token,
-    find_substring,
-    find_re,
-    re,
-    find_complete_lines,
-    find_across_lines,
-    find_tokens,
-    get_value,
-    get_bool_value,
     del_complete_lines,
     del_value,
-    set_bool_value
-    )
-
+    find_across_lines,
+    find_complete_lines,
+    find_re,
+    find_substring,
+    find_token,
+    find_tokens,
+    get_bool_value,
+    get_value,
+    is_nonempty_line,
+    re,
+    set_bool_value,
+)
 
 lines = r"""
 \begin_layout Standard

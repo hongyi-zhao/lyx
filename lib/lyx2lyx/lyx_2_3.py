@@ -19,38 +19,37 @@
 
 import re
 
-# Uncomment only what you need to import, please.
+from lyx2lyx_tools import (
+    add_to_preamble,
+    insert_document_option,
+    insert_to_preamble,
+    is_document_option,
+    latex_length,
+    put_cmd_in_ert,
+    remove_document_option,
+    revert_font_attrs,
+    revert_language,
+)
 
+# Uncomment only what you need to import, please.
 from parser_tools import (
+    del_complete_lines,
     del_token,
     del_value,
-    del_complete_lines,
     find_complete_lines,
-    find_end_of_layout,
     find_end_of_inset,
+    find_end_of_layout,
     find_re,
     find_substring,
     find_token,
     find_token_backwards,
+    get_bool_value,
     get_containing_inset,
     get_containing_layout,
-    get_bool_value,
-    get_value,
     get_quoted_value,
+    get_value,
     is_in_inset,
     set_bool_value,
-)
-
-from lyx2lyx_tools import (
-    add_to_preamble,
-    put_cmd_in_ert,
-    revert_font_attrs,
-    insert_to_preamble,
-    latex_length,
-    is_document_option,
-    insert_document_option,
-    remove_document_option,
-    revert_language,
 )
 
 ####################################################################

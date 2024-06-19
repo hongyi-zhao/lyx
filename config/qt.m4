@@ -389,6 +389,10 @@ dnl Use first suitable qmake in PATH
 	  qt_major=5
 	fi
 	AC_CHECK_PROGS([QT_QMAKE], [qmake-qt$qt_major qmake$qt_major qmake], [], $PATH)
+	case ${host} in
+	*mingw*) ;;
+	*) QT_QMAKE="env LC_ALL=C.UTF-8 $QT_QMAKE" ;;
+	esac
 	AC_MSG_CHECKING([for Qt$qt_major])
 	qtver=`$QT_QMAKE -v | grep -o "Qt version ."`
 	if test "$qtver" = "Qt version $qt_major"; then

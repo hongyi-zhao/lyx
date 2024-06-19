@@ -114,8 +114,8 @@ public:
 	Menus & menus();
 
 	/// \returns the draw strategy used by the application
-	DrawStrategy drawStrategy() const;
-	virtual docstring drawStrategyDescription() const override;
+	DrawStrategy drawStrategy() const override;
+	docstring drawStrategyDescription() const override;
 
 	/// \name Methods inherited from QApplication class
 	//@{

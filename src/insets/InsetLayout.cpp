@@ -59,6 +59,12 @@ InsetLaTeXType translateLaTeXType(std::string const & str)
 } // namespace
 
 
+InsetLayout const & InsetLayout::undefined() {
+	static const InsetLayout undefined_;
+	return undefined_;
+}
+
+
 bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 	bool validating)
 {

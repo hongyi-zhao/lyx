@@ -31,10 +31,10 @@ struct Geometry {
 
 	bool covers(int x, int y) const
 	{
-		return x >= pos.x_
-			&& x <= pos.x_ + dim.wid
-			&& y >= pos.y_ - dim.asc
-			&& y <= pos.y_ + dim.des;
+		return x >= pos.x
+			&& x <= pos.x + dim.wid
+			&& y >= pos.y - dim.asc
+			&& y <= pos.y + dim.des;
 	}
 
 	int squareDistance(int x, int y) const
@@ -42,15 +42,15 @@ struct Geometry {
 		int xx = 0;
 		int yy = 0;
 
-		if (x < pos.x_)
-			xx = pos.x_ - x;
-		else if (x > pos.x_ + dim.wid)
-			xx = x - pos.x_ - dim.wid;
+		if (x < pos.x)
+			xx = pos.x - x;
+		else if (x > pos.x + dim.wid)
+			xx = x - pos.x - dim.wid;
 
-		if (y < pos.y_ - dim.asc)
-			yy = pos.y_ - dim.asc - y;
-		else if (y > pos.y_ + dim.des)
-			yy = y - pos.y_ - dim.des;
+		if (y < pos.y - dim.asc)
+			yy = pos.y - dim.asc - y;
+		else if (y > pos.y + dim.des)
+			yy = y - pos.y - dim.des;
 
 		// Optimisation: We avoid to compute the sqrt on purpose.
 		return xx*xx + yy*yy;
@@ -101,13 +101,13 @@ public:
 	int x(T const * thing) const
 	{
 		check(thing, "x");
-		return data_.find(thing)->second.pos.x_;
+		return data_.find(thing)->second.pos.x;
 	}
 
 	int y(T const * thing) const
 	{
 		check(thing, "y");
-		return data_.find(thing)->second.pos.y_;
+		return data_.find(thing)->second.pos.y;
 	}
 
 	Point xy(T const * thing) const
@@ -122,7 +122,7 @@ public:
 
 		if (it == data_.end())
 			return false;
-		return it->second.pos.x_ != -10000;
+		return it->second.pos.x != -10000;
 	}
 
 	bool hasDim(T const * thing) const

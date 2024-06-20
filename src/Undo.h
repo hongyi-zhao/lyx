@@ -116,11 +116,13 @@ public:
 	/// prepare undo for the inset containing the cursor
 	void recordUndoInset(CursorData const & cur, Inset const * inset);
 
-	/// Convenience: record undo for buffer parameters
-	void recordUndoBufferParams(CursorData const & cur);
+	/// Prepare undo for the whole buffer (but not the buffer parameters)
+	void recordUndoFullBuffer();
 
-	/// Convenience: prepare undo for the whole buffer
-	void recordUndoFullBuffer(CursorData const & cur);
+	/// Record undo for buffer parameters, with or without pre-undo
+	/// cursor
+	void recordUndoBufferParams(CursorData const & cur);
+	void recordUndoBufferParams();
 
 private:
 	struct Private;
@@ -138,12 +140,18 @@ class UndoGroupHelper {
 public:
 	// Begin a new undo group for buffer \c buf.
 	UndoGroupHelper(Buffer * buf);
+	// Begin an undo group for the buffer of \c cur with the the
+	// `before' cursor set to \c cur.
+	UndoGroupHelper(CursorData & cur);
 	// End all active undo groups.
 	~UndoGroupHelper();
 
 	// Begin if needed an undo group for buffer \c buf.
 	void resetBuffer(Buffer * buf);
 
+	// Begin if needed an undo group for the buffer of \c cur with the
+	// the `before' cursor set to \c cur.
+	void resetBuffer(CursorData & cur);
 private:
 	class Impl;
 	Impl * const d;

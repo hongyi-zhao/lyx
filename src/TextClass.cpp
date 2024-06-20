@@ -1869,13 +1869,7 @@ InsetLayout const & DocumentClass::insetLayout(docstring const & name) const
 		n = n.substr(0, i);
 	}
 	// Layout "name" not found.
-	return plainInsetLayout();
-}
-
-
-InsetLayout const & DocumentClass::plainInsetLayout() {
-	static const InsetLayout plain_insetlayout_;
-	return plain_insetlayout_;
+	return InsetLayout::undefined();
 }
 
 

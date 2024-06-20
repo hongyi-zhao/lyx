@@ -93,8 +93,8 @@ DocIterator bruteFind(Cursor const & c, int x, int y)
 		Point const o = insetCache.xy(inset);
 		inset->cursorPos(c.bv(), it.top(), c.boundary(), xo, yo);
 		// Convert to absolute
-		xo += o.x_;
-		yo += o.y_;
+		xo += o.x;
+		yo += o.y;
 		double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 		// '<=' in order to take the last possible position
 		// this is important for clicking behind \sum in e.g. '\sum_i a'
@@ -647,7 +647,7 @@ void CursorData::recordUndoInset(Inset const * inset) const
 
 void CursorData::recordUndoFullBuffer() const
 {
-	buffer()->undo().recordUndoFullBuffer(*this);
+	buffer()->undo().recordUndoFullBuffer();
 }
 
 
@@ -968,8 +968,8 @@ bool Cursor::popForward()
 void Cursor::getPos(int & x, int & y) const
 {
 	Point p = bv().getPos(*this);
-	x = p.x_;
-	y = p.y_;
+	x = p.x;
+	y = p.y;
 }
 
 
@@ -1331,7 +1331,7 @@ void Cursor::posVisToRowExtremity(bool left)
 	TextMetrics const & tm = bv_->textMetrics(text());
 	// Looking for extremities is like clicking on the left or the
 	// right of the row.
-	int x = tm.origin().x_ + (left ? 0 : textRow().width());
+	int x = tm.origin().x + (left ? 0 : textRow().width());
 	bool b = false;
 	pos() = tm.getPosNearX(textRow(), x, b);
 	boundary(b);
@@ -2236,7 +2236,7 @@ bool Cursor::upDownInText(bool up)
 
 	// with and without selection are handled differently
 	if (!selection()) {
-		int yo1 = bv().getPos(*this).y_;
+		int yo1 = bv().getPos(*this).y;
 		Cursor old = *this;
 		// To next/previous row
 		// FIXME: the y position is often guessed wrongly across styles and
@@ -2565,7 +2565,7 @@ void Cursor::moveToClosestEdge(int const x, bool const edit)
 			return;
 		int const wid = insetCache.dim(inset).wid;
 		Point p = insetCache.xy(inset);
-		if (x > p.x_ + (wid + 1) / 2)
+		if (x > p.x + (wid + 1) / 2)
 			posForward();
 	}
 }

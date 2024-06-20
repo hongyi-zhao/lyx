@@ -883,10 +883,10 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 			docstring const layoutName = iit->layoutName();
 			docstring const & n = newone->insetLayout(layoutName).name();
 			bool const is_undefined = n.empty() ||
-				n == DocumentClass::plainInsetLayout().name();
+				n == InsetLayout::undefined().name();
 			docstring const & oldn = oldone->insetLayout(layoutName).name();
 			bool const was_undefined = oldn.empty() ||
-				oldn == DocumentClass::plainInsetLayout().name();
+				oldn == InsetLayout::undefined().name();
 			if (!is_undefined || was_undefined)
 				continue;
 

@@ -1476,10 +1476,9 @@ void InsetMathMacro::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	dim.asc += 3;
 
 	// and position
-	Point xy
-	= cur.bv().coordCache().insets().xy(this);
-	x = xy.x_;
-	y = xy.y_;
+	Point xy = cur.bv().coordCache().insets().xy(this);
+	x = xy.x;
+	y = xy.y;
 }
 
 

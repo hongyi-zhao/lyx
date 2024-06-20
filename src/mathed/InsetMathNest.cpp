@@ -165,10 +165,10 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 	}
 	Point const pt2 = coord_cache.getInsets().xy(this);
 	//lyxerr << "retrieving position cache for MathData "
-	//	<< pt.x_ << ' ' << pt.y_ << endl;
-	x = pt.x_ - pt2.x_ + ar.pos2x(&bv, sl.pos());
-	y = pt.y_ - pt2.y_;
-//	lyxerr << "pt.y_ : " << pt.y_ << " pt2_.y_ : " << pt2.y_
+	//	<< pt.x << ' ' << pt.y << endl;
+	x = pt.x - pt2.x + ar.pos2x(&bv, sl.pos());
+	y = pt.y - pt2.y;
+//	lyxerr << "pt.y : " << pt.y << " pt2_.y : " << pt2.y
 //		<< " asc: " << ascent() << "  des: " << descent()
 //		<< " ar.asc: " << ar.ascent() << " ar.des: " << ar.descent() << endl;
 	// move cursor visually into empty cells ("blue rectangles");
@@ -2464,8 +2464,8 @@ void InsetMathNest::completionPosAndDim(Cursor const & cur, int & x, int & y,
 
 	// and position
 	Point xy = cur.bv().coordCache().insets().xy(inset);
-	x = xy.x_;
-	y = xy.y_;
+	x = xy.x;
+	y = xy.y;
 }
 
 

@@ -80,8 +80,8 @@ public:
 	Point() = default;
 	Point(int x, int y);
 
-	int x_ = 0;
-	int y_ = 0;
+	int x = 0;
+	int y = 0;
 };
 
 } // namespace lyx

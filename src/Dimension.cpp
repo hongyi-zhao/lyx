@@ -26,12 +26,12 @@ void Dimension::operator+=(Dimension const & dim)
 }
 
 
-Point::Point(int x, int y) : x_(x), y_(y)
+Point::Point(int px, int py) : x(px), y(py)
 {
-	LASSERT(x > -1000000, x_ = -1000000);
-	LASSERT(x <  1000000, x_ =  1000000);
-	LASSERT(y > -1000000, y_ = -1000000);
-	LASSERT(y <  1000000, y_ =  1000000);
+	LASSERT(px > -1000000, x = -1000000);
+	LASSERT(px <  1000000, x =  1000000);
+	LASSERT(py > -1000000, y = -1000000);
+	LASSERT(py <  1000000, y =  1000000);
 }
 
 } // namespace lyx

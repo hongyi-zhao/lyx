@@ -48,7 +48,7 @@ void CoordCache::dump() const
 		// (therefore it has type 'void *') (see bug #7376).
 		void const * inset = ccd.first;
 		Point const p = ccd.second.pos;
-		LYXERR(Debug::PAINTING, "Inset " << inset << " has point " << p.x_ << "," << p.y_);
+		LYXERR(Debug::PAINTING, "Inset " << inset << " has point " << p.x << "," << p.y);
 	}
 }
 

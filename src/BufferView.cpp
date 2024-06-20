@@ -511,7 +511,7 @@ bool BufferView::needsFitCursor() const
 		int const asc = fm.maxAscent();
 		int const des = fm.maxDescent();
 		Point const p = getPos(d->cursor_);
-		if (p.y_ - asc >= 0 && p.y_ + des < height_)
+		if (p.y - asc >= 0 && p.y + des < height_)
 			return false;
 	}
 	return true;
@@ -844,7 +844,7 @@ void BufferView::setCursorFromScrollbar()
 		newy = last;
 		break;
 	case CUR_INSIDE:
-		int const y = getPos(oldcur).y_;
+		int const y = getPos(oldcur).y;
 		newy = min(last, max(y, first));
 		if (y == newy)
 			return;
@@ -885,9 +885,9 @@ Change const BufferView::getCurrentChange() const
 CursorStatus BufferView::cursorStatus(DocIterator const & dit) const
 {
 	Point const p = getPos(dit);
-	if (p.y_ < 0)
+	if (p.y < 0)
 		return CUR_ABOVE;
-	if (p.y_ > workHeight())
+	if (p.y > workHeight())
 		return CUR_BELOW;
 	return CUR_INSIDE;
 }
@@ -1060,7 +1060,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 		LBUFERR(!pm.rows().empty());
 		// FIXME: smooth scrolling doesn't work in mathed.
 		CursorSlice const & cs = dit.innerTextSlice();
-		int const ypos = pm.position() + coordOffset(dit).y_;
+		int const ypos = pm.position() + coordOffset(dit).y;
 		ParagraphMetrics const & inner_pm =
 			textMetrics(cs.text()).parMetrics(cs.pit());
 		Dimension const & row_dim =
@@ -1100,7 +1100,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 		d->inlineCompletionPos_ = DocIterator();
 
 	tm.redoParagraph(bot_pit);
-	int const offset = coordOffset(dit).y_;
+	int const offset = coordOffset(dit).y;
 	pit_type const old_pit = d->anchor_pit_;
 	d->anchor_pit_ = bot_pit;
 
@@ -1686,6 +1686,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_ALL_CHANGES_ACCEPT: {
+		UndoGroupHelper helper(cur);
 		// select complete document
 		cur.reset();
 		cur.selHandle(true);
@@ -1705,6 +1706,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_ALL_CHANGES_REJECT: {
+		UndoGroupHelper helper(cur);
 		// select complete document
 		cur.reset();
 		cur.selHandle(true);
@@ -2064,7 +2066,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		Point p = getPos(cur);
 		// This code has been commented out to enable to scroll down a
 		// document, even if there are large insets in it (see bug #5465).
-		/*if (p.y_ < 0 || p.y_ > height_) {
+		/*if (p.y < 0 || p.y > height_) {
 			// The cursor is off-screen so recenter before proceeding.
 			showCursor();
 			p = getPos(cur);
@@ -2082,7 +2084,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (scrolled)
 			processUpdateFlags(Update::Force);
 
-		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
+		d->text_metrics_[&buffer_.text()].editXY(cur, p.x, p.y,
 			true, act == LFUN_SCREEN_UP);
 		//FIXME: what to do with cur.x_target()?
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
@@ -2127,10 +2129,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.finishUndo();
 			break;
 		}
-		int y = getPos(cur).y_;
+		int y = getPos(cur).y;
 		int const ymin = y - height_ + defaultRowHeight();
 		while (y > ymin && cur.up())
-			y = getPos(cur).y_;
+			y = getPos(cur).y;
 
 		cur.finishUndo();
 		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
@@ -2145,10 +2147,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.finishUndo();
 			break;
 		}
-		int y = getPos(cur).y_;
+		int y = getPos(cur).y;
 		int const ymax = y + height_ - defaultRowHeight();
 		while (y < ymax && cur.down())
-			y = getPos(cur).y_;
+			y = getPos(cur).y;
 
 		cur.finishUndo();
 		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
@@ -2609,8 +2611,8 @@ Inset const * BufferView::clickableMathInset(InsetMathNest const * inset,
 void BufferView::updateHoveredInset() const
 {
 	// Get inset under mouse, if there is one.
-	int const x = d->mouse_position_cache_.x_;
-	int const y = d->mouse_position_cache_.y_;
+	int const x = d->mouse_position_cache_.x;
+	int const y = d->mouse_position_cache_.y;
 	Inset const * covering_inset = getCoveringInset(buffer_.text(), x, y);
 	if (covering_inset && covering_inset->asInsetMath()) {
 		Inset const * inner_inset = clickableMathInset(
@@ -2643,8 +2645,8 @@ void BufferView::updateHoveredInset() const
 
 	if (need_redraw) {
 		LYXERR(Debug::PAINTING, "Mouse hover detected at: ("
-				<< d->mouse_position_cache_.x_ << ", "
-				<< d->mouse_position_cache_.y_ << ")");
+				<< d->mouse_position_cache_.x << ", "
+				<< d->mouse_position_cache_.y << ")");
 
 		d->update_strategy_ = DecorationUpdate;
 
@@ -2706,8 +2708,8 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// make sure we stay within the screen...
 	cmd.set_y(min(max(cmd.y(), -1), height_));
 
-	d->mouse_position_cache_.x_ = cmd.x();
-	d->mouse_position_cache_.y_ = cmd.y();
+	d->mouse_position_cache_.x = cmd.x();
+	d->mouse_position_cache_.y = cmd.y();
 
 	d->mouse_selecting_ =
 		cmd.action() == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::button1;
@@ -3419,7 +3421,7 @@ Point BufferView::getPos(DocIterator const & dit) const
 
 	// offset from outer paragraph
 	Point p = coordOffset(dit);
-	p.y_ += tm.parMetrics(bot.pit()).position();
+	p.y += tm.parMetrics(bot.pit()).position();
 	return p;
 }
 
@@ -3453,9 +3455,9 @@ void BufferView::caretPosAndDim(Point & p, Dimension & dim) const
 
 	p = getPos(cur);
 	// center fat carets horizontally
-	p.x_ -= dim.wid / 2;
+	p.x -= dim.wid / 2;
 	// p is top-left
-	p.y_ -= dim.asc;
+	p.y -= dim.asc;
 }
 
 
@@ -3479,10 +3481,10 @@ void BufferView::buildCaretGeometry(bool complet)
 	bool const slant = fm.italic() && cur.inTexted() && !cur.selection();
 	double const slope = slant ? fm.italicSlope() : 0;
 	cg.shapes.push_back(
-		{{iround(p.x_ + dim.asc * slope),                 p.y_},
-		 {iround(p.x_ - dim.des * slope),                 p.y_ + dim.height()},
-		 {iround(p.x_ + dir * dim.wid - dim.des * slope), p.y_ + dim.height()},
-		 {iround(p.x_ + dir * dim.wid + dim.asc * slope), p.y_}}
+		{{iround(p.x + dim.asc * slope),                 p.y},
+		 {iround(p.x - dim.des * slope),                 p.y + dim.height()},
+		 {iround(p.x + dir * dim.wid - dim.des * slope), p.y + dim.height()},
+		 {iround(p.x + dir * dim.wid + dim.asc * slope), p.y}}
 		);
 
 	// The language indicator _| (if needed)
@@ -3490,8 +3492,8 @@ void BufferView::buildCaretGeometry(bool complet)
 	if (!((realfont.language() == doclang && isrtl == doclang->rightToLeft())
 		  || realfont.language() == latex_language)) {
 		int const lx = dim.height() / 3;
-		int const xx = iround(p.x_ - dim.des * slope);
-		int const yy = p.y_ + dim.height();
+		int const xx = iround(p.x - dim.des * slope);
+		int const yy = p.y + dim.height();
 		cg.shapes.push_back(
 			{{xx,                            yy - dim.wid},
 			 {xx + dir * (dim.wid + lx - 1), yy - dim.wid},
@@ -3502,12 +3504,12 @@ void BufferView::buildCaretGeometry(bool complet)
 
 	// The completion triangle |> (if needed)
 	if (complet) {
-		int const m = p.y_ + dim.height() / 2;
+		int const m = p.y + dim.height() / 2;
 		int const d = dim.height() / 8;
 		// offset for slanted carret
 		int const sx = iround((dim.asc - (dim.height() / 2 - d)) * slope);
 		// starting position x
-		int const xx = p.x_ + dir * dim.wid + sx;
+		int const xx = p.x + dir * dim.wid + sx;
 		cg.shapes.push_back(
 			{{xx,                     m - d},
 			 {xx + dir * d,           m},
@@ -3525,10 +3527,10 @@ void BufferView::buildCaretGeometry(bool complet)
 	cg.bottom = -1000000;
 	for (auto const & shape : cg.shapes)
 		for (Point const & p : shape) {
-			cg.left = min(cg.left, p.x_);
-			cg.right = max(cg.right, p.x_);
-			cg.top = min(cg.top, p.y_);
-			cg.bottom = max(cg.bottom, p.y_);
+			cg.left = min(cg.left, p.x);
+			cg.right = max(cg.right, p.x);
+			cg.top = min(cg.top, p.y);
+			cg.bottom = max(cg.bottom, p.y);
 		}
 }
 
@@ -3548,7 +3550,7 @@ bool BufferView::caretInView() const
 	caretPosAndDim(p, dim);
 
 	// does the cursor touch the screen ?
-	if (p.y_ + dim.height() < 0 || p.y_ >= workHeight())
+	if (p.y + dim.height() < 0 || p.y >= workHeight())
 		return false;
 	return true;
 }
@@ -3616,7 +3618,7 @@ void BufferView::checkCursorScrollOffset()
 	setCurrentRowSlice(rowSlice);
 
 	// Current x position of the cursor in pixels
-	int cur_x = getPos(d->cursor_).x_;
+	int cur_x = getPos(d->cursor_).x;
 
 	// Horizontal scroll offset of the cursor row in pixels
 	int offset = d->horiz_scroll_offset_;
@@ -3779,8 +3781,8 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 			if (!cur.inTexted())
 				break;
 			TextMetrics const & tm = textMetrics(cur.text());
-			if (d->caret_geometry_.left >= tm.origin().x_
-				&& d->caret_geometry_.right <= tm.origin().x_ + tm.dim().width())
+			if (d->caret_geometry_.left >= tm.origin().x
+				&& d->caret_geometry_.right <= tm.origin().x + tm.dim().width())
 				break;
 			cur.pop();
 		}

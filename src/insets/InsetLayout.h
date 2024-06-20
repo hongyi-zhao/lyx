@@ -56,6 +56,9 @@ class InsetLayout {
 public:
 	///
 	InsetLayout() { labelfont_.setColor(Color_insetlabel); }
+	/// a plain inset layout for when there is no inset layout
+	static InsetLayout const & undefined();
+
 	///
 	bool read(support::Lexer & lexrc, TextClass const & tclass,
 			bool validating = false);

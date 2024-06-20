@@ -981,7 +981,7 @@ int MathData::xm(BufferView const & bv) const
 {
 	Geometry const & g = bv.coordCache().getArrays().geometry(this);
 
-	return g.pos.x_ + g.dim.wid / 2;
+	return g.pos.x + g.dim.wid / 2;
 }
 
 
@@ -989,7 +989,7 @@ int MathData::ym(BufferView const & bv) const
 {
 	Geometry const & g = bv.coordCache().getArrays().geometry(this);
 
-	return g.pos.y_ + (g.dim.des - g.dim.asc) / 2;
+	return g.pos.y + (g.dim.des - g.dim.asc) / 2;
 }
 
 

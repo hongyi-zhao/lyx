@@ -6389,10 +6389,10 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 	int yy = 0;
 	Inset const & inset = *tabular.cellInset(cell);
 	Point o = bv.coordCache().getInsets().xy(&inset);
-	int const xbeg = o.x_ - tabular.textHOffset(cell);
+	int const xbeg = o.x - tabular.textHOffset(cell);
 	int const xend = xbeg + tabular.cellWidth(cell);
 	row_type const row = tabular.cellRow(cell);
-	int const ybeg = o.y_ - tabular.rowAscent(row)
+	int const ybeg = o.y - tabular.rowAscent(row)
 		- tabular.interRowSpace(row) - tabular.textVOffset(cell);
 	int const yend = ybeg + tabular.cellHeight(cell);
 

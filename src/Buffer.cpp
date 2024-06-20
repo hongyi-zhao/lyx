@@ -2865,7 +2865,7 @@ bool Buffer::branchActivationDispatch(FuncCode act, docstring const & branch)
 			"Please make sure to save the master."), branch), true);
 
 	UndoGroupHelper ugh(buf);
-	buf->undo().recordUndoBufferParams(CursorData());
+	buf->undo().recordUndoBufferParams();
 	our_branch->setSelected(activate);
 	// cur.forceBufferUpdate() is not enough)
 	buf->updateBuffer();
@@ -3029,7 +3029,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 					msg += ("\n");
 				msg += bformat(_("Branch \"%1$s\" already exists."), branch_name);
 			} else {
-				undo().recordUndoBufferParams(CursorData());
+				undo().recordUndoBufferParams();
 				branch_list.add(branch_name);
 				branch = branch_list.find(branch_name);
 				if (branch)
@@ -3089,13 +3089,13 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 	case LFUN_CHANGES_TRACK:
 		if (params().save_transient_properties)
-			undo().recordUndoBufferParams(CursorData());
+			undo().recordUndoBufferParams();
 		params().track_changes = !params().track_changes;
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
 		if (params().save_transient_properties)
-			undo().recordUndoBufferParams(CursorData());
+			undo().recordUndoBufferParams();
 		params().output_changes = !params().output_changes;
 		if (params().output_changes) {
 			bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
@@ -3113,17 +3113,17 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 	case LFUN_BUFFER_TOGGLE_COMPRESSION:
 		// turn compression on/off
-		undo().recordUndoBufferParams(CursorData());
+		undo().recordUndoBufferParams();
 		params().compressed = !params().compressed;
 		break;
 
 	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC:
-		undo().recordUndoBufferParams(CursorData());
+		undo().recordUndoBufferParams();
 		params().output_sync = !params().output_sync;
 		break;
 
 	case LFUN_BUFFER_ANONYMIZE: {
-		undo().recordUndoFullBuffer(CursorData());
+		undo().recordUndoFullBuffer();
 		CursorData cur(doc_iterator_begin(this));
 		for ( ; cur ; cur.forwardPar())
 			cur.paragraph().anonymize();

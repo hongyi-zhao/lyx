@@ -241,7 +241,7 @@ docstring Inset::layoutName() const
 InsetLayout const & Inset::getLayout() const
 {
 	if (!buffer_)
-		return DocumentClass::plainInsetLayout();
+		return InsetLayout::undefined();
 	return buffer().params().documentClass().insetLayout(layoutName());
 }
 
@@ -622,7 +622,7 @@ bool Inset::covers(BufferView const & bv, int x, int y) const
 bool Inset::undefined() const
 {
 	docstring const & n = getLayout().name();
-	return n.empty() || n == DocumentClass::plainInsetLayout().name();
+	return n.empty() || n == InsetLayout::undefined().name();
 }
 
 

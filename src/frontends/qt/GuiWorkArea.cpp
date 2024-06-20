@@ -223,8 +223,8 @@ void GuiWorkArea::init()
 	Point point;
 	Dimension dim;
 	d->buffer_view_->caretPosAndDim(point, dim);
-	int cur_x = point.x_ - dim.width();
-	int cur_y = point.y_ + dim.height();
+	int cur_x = point.x - dim.width();
+	int cur_y = point.y + dim.height();
 	d->im_cursor_rect_ = QRectF(cur_x, (cur_y - dim.height()) , 1, dim.height() );
 }
 
@@ -555,10 +555,10 @@ void GuiWorkArea::Private::drawCaret(QPainter & painter, int horiz_offset) const
 		QPainterPath path;
 		for (Point const & p : shape) {
 			if (first) {
-				path.moveTo(p.x_ - horiz_offset, p.y_);
+				path.moveTo(p.x - horiz_offset, p.y);
 				first = false;
 			} else
-				path.lineTo(p.x_ - horiz_offset, p.y_);
+				path.lineTo(p.x - horiz_offset, p.y);
 		}
 		painter.fillPath(path, color);
 	}
@@ -1197,8 +1197,8 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 	Point point;
 	Dimension dim;
 	buffer_view_->caretPosAndDim(point, dim);
-	int cur_x = point.x_ - dim.width();
-	int cur_y = point.y_ + dim.height();
+	int cur_x = point.x - dim.width();
+	int cur_y = point.y + dim.height();
 
 	if (preedit_string_.empty()) {
 		// Chinese input methods may exit here just obtaining im_cursor_rect
@@ -1323,14 +1323,14 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 					dim.height() + preedit_lower_margin);
 		if (mod_anc.rem >= 0)
 			im_anchor_rect_ = QRectF(mod_anc.rem,
-					point.y_ + (dim.height() + 1) * (mod_anc.quot - 1), 1,
+					point.y + (dim.height() + 1) * (mod_anc.quot - 1), 1,
 					dim.height() + preedit_lower_margin );
 		else
 			im_anchor_rect_ = QRectF(text_width + mod_anc.rem,
-					point.y_ + (dim.height() + 1) * (mod_anc.quot - 2), 1,
+					point.y + (dim.height() + 1) * (mod_anc.quot - 2), 1,
 					dim.height() + preedit_lower_margin );
 	} else {
-		im_cursor_rect_ =	QRectF(point.x_, point.y_, 1, dim.height() + preedit_lower_margin);
+		im_cursor_rect_ =	QRectF(point.x, point.y, 1, dim.height() + preedit_lower_margin);
 		im_anchor_rect_ = im_cursor_rect_;
 	}
 	// Urge platform input method to make inputMethodQuery to check the values

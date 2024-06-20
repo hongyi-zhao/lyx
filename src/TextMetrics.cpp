@@ -334,7 +334,7 @@ void TextMetrics::updatePosCache(pit_type pit) const
 {
 	frontend::NullPainter np;
 	PainterInfo pi(bv_, np);
-	drawParagraph(pi, pit, origin_.x_, par_metrics_[pit].position());
+	drawParagraph(pi, pit, origin_.x, par_metrics_[pit].position());
 }
 
 
@@ -1435,7 +1435,7 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
 	/// x Paragraph coordinate is always 0 for main text anyway.
-	int const xo = origin_.x_;
+	int const xo = origin_.x;
 	x -= xo;
 
 	// Adapt to cursor row scroll offset if applicable.
@@ -2041,8 +2041,8 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 	if (par_metrics_.empty())
 		return;
 
-	origin_.x_ = x;
-	origin_.y_ = y;
+	origin_.x = x;
+	origin_.y = y;
 
 	y -= par_metrics_.begin()->second.ascent();
 	for (auto & pm_pair : par_metrics_) {
@@ -2267,13 +2267,13 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	from.boundary(false);
 	Point lxy = cur.bv().getPos(from);
 	Point rxy = cur.bv().getPos(to);
-	dim.wid = abs(rxy.x_ - lxy.x_);
+	dim.wid = abs(rxy.x - lxy.x);
 
 	// calculate position of word
-	y = lxy.y_;
-	x = min(rxy.x_, lxy.x_);
+	y = lxy.y;
+	x = min(rxy.x, lxy.x);
 
-	//lyxerr << "wid=" << dim.width() << " x=" << x << " y=" << y << " lxy.x_=" << lxy.x_ << " rxy.x_=" << rxy.x_ << " word=" << word << std::endl;
+	//lyxerr << "wid=" << dim.width() << " x=" << x << " y=" << y << " lxy.x=" << lxy.x << " rxy.x=" << rxy.x << " word=" << word << std::endl;
 	//lyxerr << " wordstart=" << wordStart << " bvcur=" << bvcur << " cur=" << cur << std::endl;
 }
 

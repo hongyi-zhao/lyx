@@ -448,8 +448,6 @@ public:
 	/// If that doesn't work either, an empty object returns (shouldn't
 	/// happen).  -- Idea JMarc, comment MV
 	InsetLayout const & insetLayout(docstring const & name) const;
-	/// a plain inset layout for use as a default
-	static InsetLayout const & plainInsetLayout();
 	/// add a new layout \c name if it does not exist in layoutlist_
 	/// \return whether we had to add one.
 	bool addLayoutIfNeeded(docstring const & name) const;

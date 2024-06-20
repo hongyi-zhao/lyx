@@ -49,7 +49,7 @@ InsetFlex::InsetFlex(InsetFlex const & in)
 InsetLayout const & InsetFlex::getLayout() const
 {
 	if (!buffer_)
-		return DocumentClass::plainInsetLayout();
+		return InsetLayout::undefined();
 
 	DocumentClass const & dc = buffer().params().documentClass();
 	docstring const dname = from_utf8(name_);
@@ -102,7 +102,7 @@ bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 			InsetLyXType const type =
 				translateLyXType(to_utf8(cmd.argument()));
 			if (il.lyxtype() == type
-			    || (il.name() == DocumentClass::plainInsetLayout().name()
+			    || (il.name() == InsetLayout::undefined().name()
 				    && type == InsetLyXType::CHARSTYLE)) {
 				FuncRequest temp_cmd(cmd.action());
 				return InsetCollapsible::getStatus(cur, temp_cmd, flag);
@@ -127,7 +127,7 @@ void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 				translateLyXType(to_utf8(cmd.argument()));
 
 			if (il.lyxtype() == type
-			    || (il.name() == DocumentClass::plainInsetLayout().name()
+			    || (il.name() == InsetLayout::undefined().name()
 				    && type == InsetLyXType::CHARSTYLE)) {
 				FuncRequest temp_cmd(cmd.action());
 				InsetCollapsible::doDispatch(cur, temp_cmd);

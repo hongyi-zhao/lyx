@@ -75,9 +75,21 @@ public:
 		data_[thing].pos = Point(x, y);
 	}
 
-	void add(T const * thing, Dimension const & dim)
+	// this returns true if a change is done
+	bool add(T const * thing, Dimension const & dim)
 	{
-		data_[thing].dim = dim;
+		Geometry g;
+		g.dim = dim;
+		auto const result = data_.insert(std::make_pair(thing, g));
+		// did a new entry get inserted?
+		if (result.second)
+			return true;
+		// otherwise, if the existing value is different, update it
+		else if (result.first->second.dim != dim) {
+			result.first->second.dim = dim;
+			return true;
+		}
+		return false;
 	}
 
 	Geometry & geometry(T const * thing)

@@ -605,10 +605,7 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 		*/
 		extrawidths[e.inset] = mi.extrawidth;
 
-		if (!insetCache.has(e.inset) || insetCache.dim(e.inset) != dim) {
-			insetCache.add(e.inset, dim);
-			changed = true;
-		}
+		changed |= insetCache.add(e.inset, dim);
 	}
 
 	// Transform the paragraph into a single row containing all the elements.

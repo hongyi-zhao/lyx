@@ -1001,7 +1001,10 @@ void TeXOnePar(Buffer const & buf,
 		     && (prev_language->rightToLeft() != par_language->rightToLeft()));
 	bool const localswitch =
 			(runparams_in.find_effective()
-			|| text.inset().forceLocalFontSwitch()
+			// \cprotect'ed insets do not need, and actually
+			// break with, local switches
+			|| (text.inset().forceLocalFontSwitch()
+			    && !text.inset().needsCProtection(maintext, runparams.moving_arg))
 			|| (using_begin_end && text.inset().forcePlainLayout())
 			|| in_polyglossia_rtl_env)
 			&& !text.inset().forceParDirectionSwitch();

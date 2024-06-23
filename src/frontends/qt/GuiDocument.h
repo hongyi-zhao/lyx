@@ -358,9 +358,6 @@ private:
 	/// Track if we switch back to a buffer due to unapplied
 	/// changes
 	bool switchback_;
-	/// Track whether we prompted the user about unapplied
-	/// changes
-	bool prompted_;
 	/// Cache margin values
 	std::string tmp_leftmargin_;
 	///

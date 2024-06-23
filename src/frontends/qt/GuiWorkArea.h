@@ -267,6 +267,8 @@ private Q_SLOTS:
 	///
 	void on_currentTabChanged(int index);
 	///
+	void on_tabBarClicked(int index);
+	///
 	void showContextMenu(const QPoint & pos);
 	/// enable closing tab on middle-click
 	void mousePressEvent(QMouseEvent * me) override;

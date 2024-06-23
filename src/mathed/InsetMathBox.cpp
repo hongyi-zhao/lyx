@@ -28,6 +28,10 @@
 #include <iostream>
 #include <ostream>
 
+#include <QtXml/QDomDocument>
+#include <QtXml/QDomElement>
+#include "support/qstring_helpers.h"
+
 using namespace lyx::support;
 
 namespace lyx {
@@ -62,6 +66,10 @@ namespace {
 void splitAndWrapInMText(MathMLStream & ms, MathData const & cell,
 						 const std::string & attributes)
 {
+        // The goal of this function is to take an XML fragment and wrap
+        // anything that is outside of any tag in <mtext></mtext> tags,
+        // then wrap the whole thing in an <mrow></mrow> tag with attributes
+
 	// First, generate the inset into a string of its own.
 	docstring inset_contents;
 	{
@@ -74,53 +82,46 @@ void splitAndWrapInMText(MathMLStream & ms, MathData const & cell,
 		inset_contents = ostmp.str();
 	}
 
-	// No tags are allowed within <m:mtext>: split the string if there are tags.
-	std::vector<docstring> parts;
-	while (true) {
-		std::size_t angle_pos = inset_contents.find('<');
-		if (angle_pos == docstring::npos)
-			break;
+        // We use the QT XML library. It's easier if we deal with an XML "document"
+        // rather than "fragment", so we wrap it in a fake root node (which we will
+        // remove at the end).
+        docstring inset_contents_xml = "<root>" + inset_contents + "</root>";
 
-		// String structure:
-		// - prefix: pure text, no tag
-		// - tag to split: something like <m:mn>1</m:mn> or more complicated
-		//   (like nested tags), with or without name space
-		// - rest to be taken care of in the next iteration
+        // Parse the XML into a DOM
+        QDomDocument xml;
+        xml.setContent(toqstr(inset_contents_xml));
 
-		// Push the part before the tag.
-		parts.emplace_back(inset_contents.substr(0, angle_pos));
-		inset_contents = inset_contents.substr(angle_pos);
-		// Now, inset_contents starts with the tag to isolate, so that
-		//     inset_contents[0] == '<'
+        QDomElement docElem = xml.documentElement();
 
-		// Push the tag, up to its end. Process: find the tag name (either
-		// before > or the first attribute of the tag), then the matching end
-		// tag, then proceed with pushing.
-		const std::size_t tag_name_end =
-				std::min(inset_contents.find(' ', 1), inset_contents.find('>', 1));
-		const std::size_t tag_name_length = tag_name_end - 1;
-		const docstring tag_name = inset_contents.substr(1, tag_name_length);
+        // Iterate through the children of our fake root element.
+        QDomNode n = docElem.firstChild();
+        while (!n.isNull()) {
+			// try to convert the child into a text element
+			// (i.e. some text that is outside of an XML tag)
+            QDomText text = n.toText();
+            if (!text.isNull()) {
+				// if the result is not null, then the child was indeed
+				// bare text, so we need to wrap it in mtext tags
+				// make an mtext element
+                QDomElement wrapper = xml.createElement(toqstr(ms.namespacedTag("mtext")));
+				// put the mtext element in the document right before the text
+                docElem.insertBefore(wrapper,n);
+                // move the text node inside the mtext element (this has the side
+                // effect of removing it from where it was as a child of the root)
+				wrapper.appendChild(n);
+                n = wrapper.nextSibling();
+            } else {
+				// if the text is null, then we have something besides a text
+				// element (i.e. a tag), so we don't need to do anything and just
+				// move onto the next child
+                n = n.nextSibling();
+            }
+        }
 
-		const std::size_t end_tag_start =
-				inset_contents.find(tag_name, tag_name_end + 1);
-		const std::size_t end_tag = inset_contents.find('>', end_tag_start);
-
-		parts.emplace_back(inset_contents.substr(0, end_tag + 1));
-		inset_contents = inset_contents.substr(end_tag + 1);
-	}
-	parts.emplace_back(inset_contents);
-
-	// Finally, output the complete inset: escape the test in <m:mtext>, leave
-	// the other tags untouched.
-	ms << MTag("mrow", attributes);
-	for (std::size_t i = 0; i < parts.size(); i += 2) {
-		ms << MTag("mtext")
-		   << parts[i]
-		   << ETag("mtext");
-		if (parts.size() > i + 1)
-			ms << parts[i + 1];
-	}
-	ms << ETag("mrow");
+        ms << MTag("mrow", attributes);
+        docstring interior = qstring_to_ucs4(xml.toString(-1));
+        ms << interior.substr(6,interior.length()-13); // chop off the initial <root> and final </root> tags
+        ms << ETag("mrow");
 }
 }
 

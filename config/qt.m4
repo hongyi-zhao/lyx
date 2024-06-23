@@ -28,10 +28,10 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		qt_guilibs="'-lQtCore -lQtGui' '-lQtCore4 -lQtGui4'"
 		if test $USE_QT6 = "yes" ; then
 		    qt_corelibs="-lQt6Core"
-		    qt_guilibs="-lQt6Core -lQt6Concurrent -lQt6Gui -lQt6Svg -lQt6Widgets"
+		    qt_guilibs="-lQt6Core -lQt6Concurrent -lQt6Gui -lQt6Svg -lQt6Xml -lQt6Widgets"
 		else
 		    qt_corelibs="-lQt5Core"
-		    qt_guilibs="-lQt5Core -lQt5Concurrent -lQt5Gui -lQt5Svg -lQt5Widgets"
+		    qt_guilibs="-lQt5Core -lQt5Concurrent -lQt5Gui -lQt5Svg -lQt5Xml -lQt5Widgets"
 		fi
 		for libname in $qt_corelibs '-framework QtCore'
 		do
@@ -43,8 +43,8 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		done
 		qt_cv_libname=
 		for libname in $qt_guilibs \
-		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtWidgets -framework QtMacExtras -framework QtGui'\
-		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtSvgWidgets -framework QtWidgets -framework QtGui'\
+		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtXml -framework QtWidgets -framework QtMacExtras -framework QtGui'\
+		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtSvgWidgets -framework QtXml -framework QtWidgets -framework QtGui'\
 		               '-framework QtCore -framework QtGui'
 		do
 			QT_TRY_LINK($libname)
@@ -264,7 +264,7 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 	  export PKG_CONFIG_PATH
 	fi
 	qt_corelibs="Qt5Core"
-	qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Svg Qt5Widgets"
+	qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Svg Qt5Widgets Qt5Xml"
 	lyx_use_x11extras=false
 	PKG_CHECK_EXISTS(Qt5X11Extras, [lyx_use_x11extras=true], [])
 	if $lyx_use_x11extras; then
@@ -339,7 +339,7 @@ AC_DEFUN([QT_DO_MANUAL_CONFIG],
 	QT_CORE_LDFLAGS=
 	if test -n "$qt_cv_includes"; then
 		QT_INCLUDES="-I$qt_cv_includes"
-		for i in Qt QtCore QtGui QtWidgets QtSvg QtConcurrent QtSvgWidgets QtMacExtras; do
+		for i in Qt QtCore QtGui QtWidgets QtSvg QtConcurrent QtSvgWidgets QtXml QtMacExtras; do
 			QT_INCLUDES="$QT_INCLUDES -I$qt_cv_includes/$i"
 			if test "$lyx_use_packaging" = "macosx" ; then
 				QT_INCLUDES="$QT_INCLUDES -I$qt_cv_libraries/${i}.framework/Headers"
@@ -435,6 +435,7 @@ qtHaveModule(concurrent)	{QT += concurrent} else {MISSING += concurrent}
 qtHaveModule(gui)		{QT += gui} else {MISSING += gui}
 qtHaveModule(gui-private)	{QT += gui-private} else {MISSING += gui-private}
 qtHaveModule(svg)		{QT += svg} else {MISSING += svg}
+qtHaveModule(xml)       	{QT += xml} else {MISSING += xml}
 qtHaveModule(widgets)		{QT += widgets} else {MISSING += widgets}
 EOF2
 	        if test "$qt_major" = 6; then

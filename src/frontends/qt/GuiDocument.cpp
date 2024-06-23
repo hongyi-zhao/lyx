@@ -821,7 +821,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	: GuiDialog(lv, "document", qt_("Document Settings")),
 	  biblioChanged_(false), nonModuleChanged_(false),
 	  modulesChanged_(false), shellescapeChanged_(false),
-	  switchback_(false), prompted_(false)
+	  switchback_(false)
 {
 	setupUi(this);
 
@@ -1887,20 +1887,14 @@ void GuiDocument::onBufferViewChanged()
 	    && theBufferList().exists(FileName(prev_buffer_filename_))
 	    && buttonBox->button(QDialogButtonBox::Apply)->isEnabled()) {
 		// Only ask if we haven't yet in this cycle
-		int const ret = prompted_ ? 3 : Alert::prompt(_("Unapplied changes"),
+		int const ret = Alert::prompt(_("Unapplied changes"),
 				_("Some changes in the previous document were not yet applied.\n"
 				"Do you want to switch back in order to apply them or dismiss the changes?"),
 				1, 1, _("&Switch Back"), _("&Dismiss Changes"));
 		if (ret == 0) {
 			// Switch to previous buffer view
 			switchback_ = true;
-			// Record that we have asked.
-			prompted_ = true;
 			lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH, prev_buffer_filename_));
-			return;
-		} else if (ret == 3) {
-			// We are in the second cycle. Set back.
-			prompted_ = false;
 			return;
 		}
 	}

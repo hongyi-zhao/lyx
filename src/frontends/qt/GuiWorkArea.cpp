@@ -1644,7 +1644,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 		this, SLOT(on_currentTabChanged(int)));
 	// Fix for #11835
 	QObject::connect(this, SIGNAL(tabBarClicked(int)),
-		this, SLOT(on_currentTabChanged(int)));
+		this, SLOT(on_tabBarClicked(int)));
 
 	closeBufferButton = new QToolButton(this);
 	closeBufferButton->setPalette(pal);
@@ -1925,6 +1925,22 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 }
 
 
+void TabWorkArea::on_tabBarClicked(int i)
+{
+	// returns e.g. on application destruction
+	if (i == -1)
+		return;
+
+	// if we click on a tab in a different TabWorkArea,
+	// focus needs to be set (#11835)
+	if (currentWorkArea() && currentWorkArea()->view().currentTabWorkArea() != this) {
+		GuiWorkArea * wa = workArea(i);
+		LASSERT(wa, return);
+		wa->setFocus();
+	}
+}
+
+
 void TabWorkArea::on_currentTabChanged(int i)
 {
 	// returns e.g. on application destruction
@@ -1935,8 +1951,10 @@ void TabWorkArea::on_currentTabChanged(int i)
 	wa->setUpdatesEnabled(true);
 	wa->scheduleRedraw(true);
 	wa->setFocus();
-	///
-	currentWorkAreaChanged(wa);
+	// if the work area did change,
+	// inform the view and dialogs
+	if (wa == currentWorkArea())
+		currentWorkAreaChanged(wa);
 
 	LYXERR(Debug::GUI, "currentTabChanged " << i
 		<< " File: " << wa->bufferView().buffer().absFileName());

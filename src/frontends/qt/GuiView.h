@@ -209,6 +209,8 @@ public:
 	void removeWorkArea(GuiWorkArea * work_area);
 	/// return true if \c wa is one of the visibles workareas of this view
 	bool hasVisibleWorkArea(GuiWorkArea * wa) const;
+	///
+	TabWorkArea * currentTabWorkArea() const;
 	/// return the current WorkArea (the one that has the focus).
 	GuiWorkArea const * currentWorkArea() const;
 	/// return the current WorkArea (the one that has the focus).

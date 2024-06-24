@@ -895,6 +895,17 @@ convert_universal() {
 	for arch in ${ARCH_LIST} ; do
 		rm -f "${BUNDLE_PATH}"/*-${arch}
 	done
+	if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt_deployment}" ]; then
+		echo Verify runtime path configuration
+		for file in "${LyxAppPrefix}"/Contents/MacOS/*lyx* $(find "${LyxAppPrefix}"/Contents -name '*.dylib' -print) ; do
+			echo Check "${file}"
+			BAD_FRAMEWORKS=$(otool -L "${file}" | grep 'Qt.*framework' | grep -v '@rpath' | sort -u)
+			if [ -n "${BAD_FRAMEWORKS}" ]; then
+				echo Bad runtime path configuration in "${file}" for frameworks "${BAD_FRAMEWORKS}"
+				exit 1
+			fi
+		done
+	fi
 }
 
 # -------------------------

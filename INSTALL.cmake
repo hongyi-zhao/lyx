@@ -28,7 +28,7 @@ Building LyX with CMake
     Windows specific
 
         On Windows install the supplementary modules:
-        * Visual Studio 2015: ftp://ftp.lyx.org/pub/lyx/devel/win_deps/lyx-windows-deps-msvc2015.zip
+        * Visual Studio 2015: http://ftp.lyx.org/pub/lyx/devel/win_deps/lyx-windows-deps-msvc2015.zip
                 or use the option LYX_DEPENDENCIES_DOWNLOAD, then you have to add
                 these paths to your PATH variable:
                   <build-dir>\lyx-windows-deps-msvc2015\bin

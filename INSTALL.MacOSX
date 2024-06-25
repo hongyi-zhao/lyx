@@ -26,8 +26,7 @@ well.
 1. Qt/Mac Opensource Edition, version 4.
 
 This library is GPL-licensed and can be downloaded from
-<http://trolltech.com/developer/downloads/qt/mac/>.
-An alternative location is <ftp://ftp.qt.nokia.com/qt/source>.
+https://www.qt.io.
 To compile it, create a directory where you want to install Qt4.
 In the following, the full path to this directory is called /path/to/Qt4
 Decompress Qt/Mac in a convenient directory, cd to the top of the
@@ -90,7 +89,7 @@ using:
 
 5. To build with included spell checker (ASpell):
 The aspell library is GPL-licensed and can be downloaded from
-ftp://ftp.gnu.org/gnu/aspell or one of the mirrors.
+https://ftp.gnu.org/gnu/aspell or one of the mirrors.
 At the time of writing aspell-0.60.tar.gz is the current version.
 Unpack the tarball in the same directory where you placed the
 git checkout or LyX tarball.

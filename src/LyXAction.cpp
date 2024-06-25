@@ -3655,8 +3655,12 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_SELECTION_PASTE
  * \li Action: Pastes the internal selection text in permanent selection.
- * \li Notion: Created in order to have middle mouse button pasting correct (bound to
-               command-alternatives selection-paste ; primary-selection-paste paragraph).
+ * \li Notion: Created in order to have middle mouse button pasting correct. The middle
+               button is bound to "command-alternatives selection-paste ; primary-selection-paste".
+               selection-paste makes sure that if something is highlighted in LyX window
+               it gets into selection buffer and pasted. If nothing is highlighted, then
+               primary-selection-paste covers the cases of pasting from selection
+               buffer from another apps (or from LyX once the highlight is gone).
  * \li Syntax: selection-paste
  * \li Origin: lasgouttes, 14 Jan 2009
  * \endvar

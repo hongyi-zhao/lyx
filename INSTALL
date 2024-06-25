@@ -83,7 +83,7 @@ translations or you change the translation files themselves (po/*.po)
 files, you will need to have the GNU gettext package installed to
 compile LyX with up-to-date translations (at least gettext version
 0.16.1 is needed). You can get the latest version from:
-	ftp://ftp.gnu.org/gnu/gettext/
+	https://ftp.gnu.org/gnu/gettext/
 
 
 Creating the Makefile

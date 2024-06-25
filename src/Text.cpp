@@ -5279,7 +5279,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				bv->mouseSetCursor(cur);
 				lyx::dispatch(
 					FuncRequest(LFUN_COMMAND_ALTERNATIVES,
-						    "selection-paste ; primary-selection-paste paragraph"));
+						    "selection-paste ; primary-selection-paste"));
 			}
 			cur.noScreenUpdate();
 			break;

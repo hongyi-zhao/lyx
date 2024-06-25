@@ -404,7 +404,7 @@ public:
 	}
 	/// Returns the current math style in the stream.
 	const MathStyle & getFontMathStyle() const { return font_math_style_; }
-	/// Returns the current math style in the stream.
+	/// Sets the current math style in the stream.
 	void setFontMathStyle(const MathStyle style) { font_math_style_ = style; }
 private:
 	///

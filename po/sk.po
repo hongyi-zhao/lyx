@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-06-10 16:04+0200\n"
-"PO-Revision-Date: 2024-06-11 11:23+0000\n"
+"POT-Creation-Date: 2024-06-25 14:00+0200\n"
+"PO-Revision-Date: 2024-06-26 06:38+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4103,7 +4103,7 @@ msgid ""
 "emergency file (named filename.lyx.emergency) fails, this snapshot can be at "
 "rescue."
 msgstr ""
-"Keď je toto zaškrtnuté, LyX zálohuje prechodné kópie zmenených dokumentov v "
+"Keď je toto zaškrtnuté, LyX zálohuje dočasné kópie zmenených dokumentov v "
 "danom intervale (ako #menosúboru.lyx# v určenom adresáre). Ináč ako navyše, "
 "táto momentka bude odstránená keď budú patričné zmeny uložené. Keď aplikácia "
 "havaruje a bez uložených zmien a obnovenie z havarijnej kópie zlyhá, táto "
@@ -4887,7 +4887,7 @@ msgstr "Slovníky &tezauru:"
 
 #: src/frontends/qt/ui/PrefPathsUi.ui:106
 msgid "&Temporary directory:"
-msgstr "Po&mocný adresár:"
+msgstr "&Dočasný adresár:"
 
 #: src/frontends/qt/ui/PrefPathsUi.ui:129
 msgid "Ly&XServer pipe:"
@@ -13567,10 +13567,6 @@ msgstr "Pripomienky \\thetheorem."
 #: lib/layouts/ijmpd.layout:418
 msgid "Proof:"
 msgstr "Dôkaz:"
-
-#: lib/layouts/heb-letter.layout:3
-msgid "Hebrew Letter"
-msgstr "Hebrejský list"
 
 #: lib/layouts/hollywood.layout:3 lib/examples/Articles:0
 msgid "Hollywood"
@@ -27912,7 +27908,7 @@ msgstr "Chyba disku: "
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
-msgstr "LyX nemohol vytvoriť pomocný adresár '%1$s' (možné že je plný disk?)"
+msgstr "LyX nemohol vytvoriť dočasný adresár '%1$s' (možné že je plný disk?)"
 
 #: src/Buffer.cpp:577
 msgid "LyX attempted to close a document that had unsaved changes!\n"
@@ -27929,7 +27925,7 @@ msgstr "Pokúšam sa zavrieť zmenený dokument!"
 #: src/Buffer.cpp:592
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
-msgstr "Pomocný adresár %1$s sa nedal zmazať"
+msgstr "Dočasný adresár %1$s sa nedal zmazať"
 
 #: src/Buffer.cpp:1006 src/Text.cpp:616
 #, c-format
@@ -28002,7 +27998,7 @@ msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
-"%1$s je z inej verzie LyX-u, ale pomocný súbor pre jeho konverziu sa nedal "
+"%1$s je z inej verzie LyX-u, ale dočasný súbor pre jeho konverziu sa nedal "
 "vytvoriť."
 
 #: src/Buffer.cpp:1359
@@ -29725,17 +29721,17 @@ msgstr ""
 #: src/Converter.cpp:794
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
-msgstr "Pomocný adresár %1$s sa nedal presunúť na %2$s."
+msgstr "Dočasný adresár %1$s sa nedal presunúť na %2$s."
 
 #: src/Converter.cpp:837
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
-msgstr "Nedá sa skopírovať pomocný súbor z %1$s do %2$s."
+msgstr "Nedá sa skopírovať dočasný súbor z %1$s do %2$s."
 
 #: src/Converter.cpp:838
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
-msgstr "Nedá sa presunúť pomocný súbor z %1$s do %2$s."
+msgstr "Nedá sa presunúť dočasný súbor z %1$s do %2$s."
 
 #: src/Converter.cpp:878
 msgid "Running LaTeX..."
@@ -30216,19 +30212,19 @@ msgstr ""
 msgid "The following files could not be loaded:"
 msgstr "Nasledovné súbory sa nedali nahrať:"
 
-#: src/LyX.cpp:440
+#: src/LyX.cpp:420
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
-msgstr "%1$s nevyzerá ako pomocný adresár vytvorený LyXom."
+msgstr "%1$s nevyzerá ako dočasný adresár vytvorený LyXom."
 
-#: src/LyX.cpp:442
+#: src/LyX.cpp:422
 msgid "Cannot remove temporary directory"
-msgstr "Nedá sa zmazať pomocný adresár"
+msgstr "Nedá sa zmazať dočasný adresár"
 
-#: src/LyX.cpp:446
+#: src/LyX.cpp:426
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
-msgstr "Nedá sa zmazať pomocný adresár %1$s"
+msgstr "Nedá sa zmazať dočasný adresár %1$s"
 
 #: src/LyX.cpp:475
 #, c-format
@@ -30325,18 +30321,18 @@ msgstr "LyX havaroval!"
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:1046
+#: src/LyX.cpp:1026
 msgid "Could not create temporary directory"
-msgstr "Nedá sa vytvoriť pomocný adresár"
+msgstr "Nedá sa vytvoriť dočasný adresár"
 
-#: src/LyX.cpp:1047
+#: src/LyX.cpp:1027
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
 "\"%1$s\"\n"
 "Make sure that this path exists and is writable and try again."
 msgstr ""
-"Nedá sa vytvoriť pomocný adresár v\n"
+"Nedá sa vytvoriť dočasný adresár v\n"
 "\"%1$s\"\n"
 "Zaistite, že táto cesta existuje a má práva na zápis. Potom to skúste znovu."
 
@@ -30979,12 +30975,12 @@ msgstr ""
 msgid "De-select if you don't want the startup banner."
 msgstr "Zrušte výber keď si neprajete transparent pri štarte."
 
-#: src/LyXRC.cpp:3452
+#: src/LyXRC.cpp:3456
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
-"LyX bude umiestňovať svoje dočasné adresári do tejto cesty. Budú odstránené "
+"LyX bude umiestňovať svoje dočasné adresáre do tejto cesty. Budú odstránené "
 "pri skončení LyXu."
 
 #: src/LyXRC.cpp:3456
@@ -32036,6 +32032,11 @@ msgstr "OS verzia (čas pustenia): %1$s"
 msgid "Python detected: %1$s"
 msgstr "Detekovaný python: %1$s"
 
+#: src/frontends/qt/GuiAbout.cpp:305
+#, c-format
+msgid "Draw strategy: %1$s"
+msgstr "Stratégia kreslenia: %1$s"
+
 #: src/frontends/qt/GuiAbout.cpp:331
 msgid "About LyX"
 msgstr "O programe LyX"
@@ -32195,6 +32196,18 @@ msgstr "Nedajú sa uložiť štandardné definície dokumentu"
 #: src/frontends/qt/GuiApplication.cpp:2493
 msgid "Unknown function."
 msgstr "Neznáma funkcia."
+
+#: src/frontends/qt/GuiApplication.cpp:2754
+msgid "partial draw"
+msgstr "neúplné kreslenie"
+
+#: src/frontends/qt/GuiApplication.cpp:2757
+msgid "partial draw on backing store"
+msgstr "neúplné kreslenie na záložnom sklade"
+
+#: src/frontends/qt/GuiApplication.cpp:2760
+msgid "full draw"
+msgstr "úplné kreslenie"
 
 #: src/frontends/qt/GuiApplication.cpp:3025
 msgid "The current document was closed."
@@ -34421,9 +34434,9 @@ msgstr "Vyberte adresár s príkladmi"
 msgid "Select a document templates directory"
 msgstr "Vyberte adresár pre šablóny dokumentov"
 
-#: src/frontends/qt/GuiPrefs.cpp:1382
+#: src/frontends/qt/GuiPrefs.cpp:1405
 msgid "Select a temporary directory"
-msgstr "Vyberte pomocný adresár"
+msgstr "Vyberte dočasný adresár"
 
 #: src/frontends/qt/GuiPrefs.cpp:1391
 msgid "Select a backups directory"
@@ -36802,7 +36815,7 @@ msgid ""
 msgstr ""
 "Nepodaril sa skopírovať súbor\n"
 "%1$s\n"
-"do pomocného adresára."
+"do dočasného adresára."
 
 #: src/insets/InsetGraphics.cpp:783 src/insets/InsetGraphics.cpp:1033
 #, c-format
@@ -38741,6 +38754,15 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Temporary directory"
+#~ msgstr "Dočasný adresár"
+
+#~ msgid "Open temporary directory in file browser"
+#~ msgstr "Otvorí dočasný adresár knižnice v prehliadači"
+
+#~ msgid "Hebrew Letter"
+#~ msgstr "Hebrejský list"
+
 #~ msgid "Lan&guage:"
 #~ msgstr "&Jazyk:"
 
@@ -40066,10 +40088,10 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Spodný Riadok"
 
 #~ msgid "Could not remove temporary directory"
-#~ msgstr "Pomocný adresár sa nedal zmazať"
+#~ msgstr "Dočasný adresár sa nedal zmazať"
 
 #~ msgid "Unable to remove temporary directory"
-#~ msgstr "Nedá sa zmazať pomocný adresár"
+#~ msgstr "Nedá sa zmazať dočasný adresár"
 
 #~ msgid "Copy to Clip&board"
 #~ msgstr "&Kopírovať do schránky"
@@ -40512,7 +40534,7 @@ msgstr "Neznámy používateľ"
 #~ "  %1$s.\n"
 #~ "Even %2$s exists!"
 #~ msgstr ""
-#~ "Nenašiel som pomocný súbor pre:\n"
+#~ "Nenašiel som dočasný súbor pre:\n"
 #~ "  %1$s.\n"
 #~ "Dokonca ani %2$s neexistuje!"
 

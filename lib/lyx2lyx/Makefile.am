@@ -36,7 +36,6 @@ dist_lyx2lyx_PYTHON = \
 	lyx_2_3.py \
 	lyx_2_4.py \
 	lyx_2_5.py \
-	profiling.py \
 	test_parser_tools.py
 
 install-data-hook:
@@ -51,4 +50,3 @@ alltests-recursive:
 	else \
 		echo -e "=====================\nlyx2lyx tests failed.\n====================="; \
 	fi
-

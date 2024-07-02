@@ -95,9 +95,11 @@ void InsetBibitem::updateCommand(docstring const & new_key, bool)
 			++i;
 			key = new_key + '-' + convert<docstring>(i);
 		}
+		buffer().setBusy(true);
 		frontend::Alert::warning(_("Keys must be unique!"),
 			bformat(_("The key %1$s already exists,\n"
 			"it will be changed to %2$s."), new_key, key));
+		buffer().setBusy(false);
 	}
 	setParam("key", key);
 	buffer().invalidateBibinfoCache();

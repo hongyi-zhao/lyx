@@ -846,7 +846,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				from_utf8(master_tf));
 			Alert::warning(_("Different use-non-TeX-fonts settings"), text, true);
 		} 
-		else if (tmp->params().inputenc != masterBuffer->params().inputenc) {
+		else if (!tmp->params().useNonTeXFonts // implies both files do not use non-tex fonts
+			 && tmp->params().inputenc != masterBuffer->params().inputenc) {
 			docstring text = bformat(_("Included file `%1$s'\n"
 				"uses input encoding \"%2$s\" [%3$s]\n"
 				"while parent file uses input encoding \"%4$s\" [%5$s]."),

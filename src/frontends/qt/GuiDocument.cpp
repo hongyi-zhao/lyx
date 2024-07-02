@@ -1871,6 +1871,10 @@ void GuiDocument::onClosing(int const id)
 
 void GuiDocument::onBufferViewChanged()
 {
+	if (!isVisibleView())
+		// dialog not open, nothing to do
+		return;
+
 	if (switchback_) {
 		// We are just switching back. Nothing to do.
 		switchback_ = false;
@@ -1899,8 +1903,8 @@ void GuiDocument::onBufferViewChanged()
 		}
 	}
 
-	if (isVisibleView())
-		initialiseParams("");
+	// reset params if we haven't bailed out above
+	initialiseParams("");
 }
 
 

@@ -2000,7 +2000,7 @@ bool Cursor::upDownInMath(bool up)
 		}
 	}
 
-	// try to find an inset that knows better then we,
+	// try to find an inset that knows better than we do
 	if (inset().idxUpDown(*this, up)) {
 		//lyxerr << "idxUpDown triggered" << endl;
 		// try to find best position within this inset

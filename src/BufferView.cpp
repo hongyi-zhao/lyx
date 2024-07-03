@@ -567,7 +567,9 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	 * correct metrics at cursor position.
 	 */
 	else if ((flags & Update::SinglePar) && !(flags & Update::ForceDraw)) {
-		if (!singleParUpdate())
+		if (singleParUpdate())
+			updateMetrics(false);
+		else
 			updateMetrics(true);
 	}
 	else if (flags & Update::ForceDraw)
@@ -3150,6 +3152,10 @@ bool BufferView::singleParUpdate()
 	if (d->inlineCompletionPos_.fixIfBroken())
 		d->inlineCompletionPos_ = DocIterator();
 
+	if (!tm.contains(pit)) {
+		LYXERR(Debug::PAINTING, "SinglePar optimization failed: no known metrics");
+		return false;
+	}
 	/* Try to rebreak only the paragraph containing the cursor (if
 	 * this paragraph contains insets etc., rebreaking will
 	 * recursively descend). We need a full redraw if either
@@ -3167,18 +3173,19 @@ bool BufferView::singleParUpdate()
 	tm.redoParagraph(pit);
 	ParagraphMetrics & pm = tm.parMetrics(pit);
 	if (pm.height() != old_dim.height()
-		|| (pm.width() != old_dim.width() && old_dim.width() == tm.width())) {
+	     || (pm.width() != old_dim.width() && old_dim.width() == tm.width())) {
 		// Paragraph height or width has changed so we cannot proceed
 		// to the singlePar optimisation.
-		LYXERR(Debug::PAINTING, "SinglePar optimization failed.");
+		LYXERR(Debug::PAINTING, "SinglePar optimization failed: paragraph metrics changed");
 		return false;
 	}
 	// Since position() points to the baseline of the first row, we
 	// may have to update it. See ticket #11601 for an example where
 	// the height does not change but the ascent does.
-	pm.setPosition(pm.position() - old_dim.ascent() + pm.ascent());
-
-	tm.updatePosCache(pit);
+	if (pm.hasPosition())
+		pm.setPosition(pm.position() - old_dim.ascent() + pm.ascent());
+	else
+		LYXERR0("SinglePar optimization succeeded, but no position to update");
 
 	LYXERR(Debug::PAINTING, "\ny1: " << pm.top() << " y2: " << pm.bottom()
 		<< " pit: " << pit << " singlepar: 1");

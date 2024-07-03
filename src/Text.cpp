@@ -5344,7 +5344,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bvcur.setCurrentFont();
 		if (cur.top() == old) {
 			// We didn't move one iota, so no need to update the screen.
-			cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
+			cur.screenUpdateFlags(Update::FitCursor);
 			//cur.noScreenUpdate();
 			return;
 		}

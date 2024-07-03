@@ -260,7 +260,7 @@ public:
 	/// Label font
 	virtual FontInfo getLabelfont() const;
 
-	/// Where should we go when we press the up or down cursor key?
+	/// Move the cursor vertically into inset; returns false when not possible.
 	virtual bool idxUpDown(Cursor & cur, bool up) const;
 	/// Move one cell backwards
 	virtual bool idxBackward(Cursor &) const { return false; }

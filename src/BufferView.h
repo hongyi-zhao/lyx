@@ -219,8 +219,7 @@ public:
 	/// This method will automatically scroll and update the BufferView
 	/// (metrics+drawing) if needed.
 	/// \param how Use this scroll strategy
-	/// \param force If true, update screen after scrolling
-	void showCursor(DocIterator const & dit, ScrollType how, bool update);
+	void showCursor(DocIterator const & dit, ScrollType how);
 	/// Scroll to the cursor.
 	/// \param how Use this scroll strategy
 	/// \return true if screen was scrolled
@@ -232,7 +231,7 @@ public:
 	/// scroll document by the given number of pixels.
 	int scroll(int pixels);
 	/// Scroll the view by a number of pixels.
-	void scrollDocView(int pixels, bool update);
+	void scrollDocView(int pixels);
 	/// Set the cursor position based on the scrollbar one.
 	void setCursorFromScrollbar();
 

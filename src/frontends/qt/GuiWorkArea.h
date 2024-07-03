@@ -255,7 +255,7 @@ public Q_SLOTS:
 	///
 	void moveToEndCurrentTab();
 	///
-	bool openEnclosingFolder();
+	bool openEnclosingDirectory();
 	/// close the tab given by \c index
 	void closeTab(int index);
 	///

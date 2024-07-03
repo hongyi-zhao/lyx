@@ -586,7 +586,7 @@ void GuiWorkArea::Private::updateScrollbar()
 void GuiWorkArea::scrollTo(int value)
 {
 	stopBlinkingCaret();
-	d->buffer_view_->scrollDocView(value, true);
+	d->buffer_view_->scrollDocView(value);
 
 	if (lyxrc.cursor_follows_scrollbar) {
 		d->buffer_view_->setCursorFromScrollbar();
@@ -959,9 +959,9 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 	// Scroll
 	if (step <= 2 * wh) {
 		d->buffer_view_->scroll(up ? -step : step);
-		d->buffer_view_->updateMetrics();
+		d->buffer_view_->processUpdateFlags(Update::ForceDraw);
 	} else {
-		d->buffer_view_->scrollDocView(value + (up ? -step : step), false);
+		d->buffer_view_->scrollDocView(value + (up ? -step : step));
 	}
 
 	// In which paragraph do we have to set the cursor ?
@@ -1997,7 +1997,7 @@ bool TabWorkArea::closeTabsToRight()
 }
 
 
-bool TabWorkArea::openEnclosingFolder()
+bool TabWorkArea::openEnclosingDirectory()
 {
 
 	if (clicked_tab_ == -1)
@@ -2358,7 +2358,7 @@ void TabWorkArea::showContextMenu(const QPoint & pos)
 
 	popup.addSeparator();
 
-	popup.addAction(qt_("Open Enclosing &Folder"), this, SLOT(openEnclosingFolder()));
+	popup.addAction(qt_("Open Enclosing &Directory"), this, SLOT(openEnclosingDirectory()));
 
 	popup.exec(tabBar()->mapToGlobal(pos));
 

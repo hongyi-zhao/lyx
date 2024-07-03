@@ -763,7 +763,7 @@ Inset const * BufferView::mathContextMenu(InsetMathNest const * inset,
 }
 
 
-void BufferView::scrollDocView(int const pixels, bool update)
+void BufferView::scrollDocView(int const pixels)
 {
 	// The scrollbar values are relative to the top of the screen, therefore the
 	// offset is equal to the target value.
@@ -786,7 +786,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	// cut off at the top
 	if (pixels <= d->scrollbarParameters_.min) {
 		DocIterator dit = doc_iterator_begin(&buffer_);
-		showCursor(dit, SCROLL_VISIBLE, update);
+		showCursor(dit, SCROLL_VISIBLE);
 		LYXERR(Debug::SCROLLING, "scroll to top");
 		return;
 	}
@@ -795,7 +795,7 @@ void BufferView::scrollDocView(int const pixels, bool update)
 	if (pixels >= d->scrollbarParameters_.max) {
 		DocIterator dit = doc_iterator_end(&buffer_);
 		dit.backwardPos();
-		showCursor(dit, SCROLL_VISIBLE, update);
+		showCursor(dit, SCROLL_VISIBLE);
 		LYXERR(Debug::SCROLLING, "scroll to bottom");
 		return;
 	}
@@ -814,14 +814,14 @@ void BufferView::scrollDocView(int const pixels, bool update)
 		// It seems we didn't find the correct pit so stay on the safe side and
 		// scroll to bottom.
 		LYXERR0("scrolling position not found!");
-		scrollDocView(d->scrollbarParameters_.max, update);
+		scrollDocView(d->scrollbarParameters_.max);
 		return;
 	}
 
 	DocIterator dit = doc_iterator_begin(&buffer_);
 	dit.pit() = i;
 	LYXERR(Debug::SCROLLING, "pixels = " << pixels << " -> scroll to pit " << i);
-	showCursor(dit, SCROLL_VISIBLE, update);
+	showCursor(dit, SCROLL_VISIBLE);
 }
 
 
@@ -1007,20 +1007,19 @@ int BufferView::workWidth() const
 
 void BufferView::recenter()
 {
-	showCursor(d->cursor_, SCROLL_CENTER, true);
+	showCursor(d->cursor_, SCROLL_CENTER);
 }
 
 
 void BufferView::showCursor()
 {
-	showCursor(d->cursor_, SCROLL_VISIBLE, true);
+	showCursor(d->cursor_, SCROLL_VISIBLE);
 }
 
 
-void BufferView::showCursor(DocIterator const & dit, ScrollType how,
-	bool update)
+void BufferView::showCursor(DocIterator const & dit, ScrollType how)
 {
-	if (scrollToCursor(dit, how) && update)
+	if (scrollToCursor(dit, how))
 		processUpdateFlags(Update::ForceDraw);
 }
 

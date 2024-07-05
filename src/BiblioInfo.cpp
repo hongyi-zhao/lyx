@@ -264,8 +264,18 @@ docstring constructName(docstring const & name, string const & scheme)
 }
 
 
-vector<docstring> const getAuthors(docstring const & author)
+vector<docstring> const getAuthors(docstring const & author_in,
+				   size_t const max_key_size)
 {
+	docstring author = author_in;
+	// for the GUI (not xhtml output) we cut obscenely long
+	// author lists as we won't display all authors anyway,
+	// and these long lists impact heavily on performance
+	// We take more than max_key_size, as we might have
+	// some extra characters in here
+	if (max_key_size < UINT_MAX && author.size() > 2 * max_key_size)
+		author.resize(2 * max_key_size);
+
 	// We check for goupings (via {...}) and only consider " and "
 	// outside groups as author separator. This is to account
 	// for cases such as {{Barnes and Noble, Inc.}}, which
@@ -315,7 +325,7 @@ vector<docstring> const getAuthors(docstring const & author)
 
 bool multipleAuthors(docstring const & author)
 {
-	return getAuthors(author).size() > 1;
+	return getAuthors(author, 128).size() > 1;
 }
 
 
@@ -513,18 +523,20 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 
 
 docstring const BibTeXInfo::getAuthorOrEditorList(Buffer const * buf,
-					  bool full, bool forceshort) const
+						  size_t const max_key_size,
+						  bool full, bool forceshort) const
 {
 	docstring author = operator[]("author");
 	if (author.empty())
 		author = operator[]("editor");
 
-	return getAuthorList(buf, author, full, forceshort);
+	return getAuthorList(buf, author, max_key_size, full, forceshort);
 }
 
 
 docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
-		docstring const & author, bool const full, bool const forceshort,
+		docstring const & author, size_t const max_key_size,
+		bool const full, bool const forceshort,
 		bool const allnames, bool const beginning) const
 {
 	// Maxnames treshold depend on engine
@@ -556,7 +568,7 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 
 	// OK, we've got some names. Let's format them.
 	// Try to split the author list
-	vector<docstring> const authors = getAuthors(author);
+	vector<docstring> const authors = getAuthors(author, max_key_size);
 
 	docstring retval;
 
@@ -1170,14 +1182,14 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// with respect to maxcitenames. Suitable for Bibliography
 			// beginnings.
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, false, false, true);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, false, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "fullnames:")) {
 			// Return a full name list. Suitable for Bibliography
 			// beginnings.
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, true, false, true);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, true, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "forceabbrvnames:")) {
@@ -1185,7 +1197,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// irrespective of maxcitenames. Suitable for Bibliography
 			// beginnings.
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, false, true, true);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, false, true, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "abbrvbynames:")) {
@@ -1193,14 +1205,14 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// with respect to maxcitenames. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, false, false, true, false);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, false, false, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "fullbynames:")) {
 			// Return a full name list. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, true, false, true, false);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, true, false, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "forceabbrvbynames:")) {
@@ -1208,26 +1220,26 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// irrespective of maxcitenames. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, false, true, true, false);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, false, true, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (key == "abbrvciteauthor") {
 			// Special key to provide abbreviated author or
 			// editor names (suitable for citation labels),
 			// with respect to maxcitenames.
-			ret = getAuthorOrEditorList(&buf, false, false);
+			ret = getAuthorOrEditorList(&buf, ci.max_key_size, false, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (key == "fullciteauthor") {
 			// Return a full author or editor list (for citation labels)
-			ret = getAuthorOrEditorList(&buf, true, false);
+			ret = getAuthorOrEditorList(&buf, ci.max_key_size, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (key == "forceabbrvciteauthor") {
 			// Special key to provide abbreviated author or
 			// editor names (suitable for citation labels),
 			// irrespective of maxcitenames.
-			ret = getAuthorOrEditorList(&buf, false, true);
+			ret = getAuthorOrEditorList(&buf, ci.max_key_size, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (key == "bibentry") {
@@ -1392,13 +1404,14 @@ vector<docstring> const BiblioInfo::getEntries() const
 }
 
 
-docstring const BiblioInfo::getAuthorOrEditorList(docstring const & key, Buffer const & buf) const
+docstring const BiblioInfo::getAuthorOrEditorList(docstring const & key, Buffer const & buf,
+						  size_t const max_key_size) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getAuthorOrEditorList(&buf, false);
+	return data.getAuthorOrEditorList(&buf, max_key_size, false);
 }
 
 
@@ -1686,7 +1699,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 		if (numbers) {
 			entry.label(entry.citeNumber());
 		} else {
-			docstring const auth = entry.getAuthorOrEditorList(&buf, false);
+			docstring const auth = entry.getAuthorOrEditorList(&buf, 128, false);
 			// we do it this way so as to access the xref, if necessary
 			// note that this also gives us the modifier
 			docstring const year = getYear(ce, buf, true);
@@ -1761,7 +1774,7 @@ void authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream & xs
 	}
 
 	// Split the input list of authors into individual authors.
-	vector<docstring> const authors = getAuthors(authorsString);
+	vector<docstring> const authors = getAuthors(authorsString, UINT_MAX);
 
 	// Retrieve the "et al." variation.
 	string const etal = buf.params().documentClass().getCiteMacro(buf.params().citeEngineType(), "_etal");

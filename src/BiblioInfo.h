@@ -67,9 +67,10 @@ public:
 	/// This will be translated to the UI language if buf is null
 	/// otherwise, it will be translated to the buffer language.
 	docstring const getAuthorOrEditorList(Buffer const * buf = nullptr,
-			bool full = false, bool forceshort = false) const;
+					      size_t const max_key_size = 128,
+					      bool full = false, bool forceshort = false) const;
 	/// Same for a specific author role (editor, author etc.)
-	docstring const getAuthorList(Buffer const * buf, docstring const & author,
+	docstring const getAuthorList(Buffer const * buf, docstring const & author, size_t const max_key_size,
 				      bool const full = false, bool const forceshort = false,
 				      bool const allnames = false, bool const beginning = true) const;
 	///
@@ -201,7 +202,8 @@ public:
 	/// \return a sorted vector of BibTeX entry types in use
 	std::vector<docstring> const getEntries() const;
 	/// \return author or editor list (abbreviated form by default)
-	docstring const getAuthorOrEditorList(docstring const & key, Buffer const & buf) const;
+	docstring const getAuthorOrEditorList(docstring const & key, Buffer const & buf,
+					      size_t const max_key_size) const;
 	/// \return the year from the bibtex data record for \param key
 	/// if \param use_modifier is true, then we will also append any
 	/// modifier for this entry (e.g., 1998b).

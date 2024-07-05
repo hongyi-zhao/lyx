@@ -32,6 +32,7 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/Messages.h"
 #include "support/textutils.h"
 
 using namespace lyx::support;
@@ -399,8 +400,8 @@ docstring InsetRef::displayString(docstring const & ref, string const & cmd,
 			display_string = value;
 		else if (cmd == "pageref" || cmd == "vpageref") {
 			// normally would be "on page #", but we have no pages.
-			display_string =
-				translateIfPossible(from_ascii("elsewhere"), language);
+			display_string = language.empty() ? buffer().B_("elsewhere")
+				: getMessages(language).get("elsewhere");
 		} else if (cmd == "eqref")
 			display_string = '(' + value + ')';
 		else if (cmd == "formatted") {

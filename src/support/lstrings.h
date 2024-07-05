@@ -196,7 +196,8 @@ std::string const subst(std::string const & a,
 
 /// substitutes all instances of \a oldstr with \a newstr
 docstring const subst(docstring const & a,
-		docstring const & oldstr, docstring const & newstr);
+		docstring const & oldstr, docstring const & newstr,
+		bool case_sens = true);
 
 /// Count all occurrences of char \a chr inside \a str
 int count_char(std::string const & str, char chr);

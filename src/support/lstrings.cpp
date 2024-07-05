@@ -913,16 +913,27 @@ String const subst_string(String const & a,
 
 
 docstring const subst_string(docstring const & a,
-		docstring const & oldstr, docstring const & newstr)
+		docstring const & oldstr, docstring const & newstr,
+		bool const case_sens)
 {
 	LASSERT(!oldstr.empty(), return a);
 	docstring lstr = a;
 	size_t i = 0;
 	size_t const olen = oldstr.length();
-	while ((i = lstr.find(oldstr, i)) != string::npos) {
-		lstr.replace(i, olen, newstr);
-		i += newstr.length(); // We need to be sure that we don't
-		// use the same i over and over again.
+	if (case_sens)
+		while ((i = lstr.find(oldstr, i)) != string::npos) {
+			lstr.replace(i, olen, newstr);
+			i += newstr.length(); // We need to be sure that we don't
+			// use the same i over and over again.
+		}
+	else {
+		docstring lcstr = lowercase(lstr);
+		while ((i = lcstr.find(oldstr, i)) != string::npos) {
+			lstr.replace(i, olen, newstr);
+			i += newstr.length(); // We need to be sure that we don't
+			// use the same i over and over again.
+			lcstr = lowercase(lstr);
+		}
 	}
 	return lstr;
 }
@@ -951,9 +962,10 @@ string const subst(string const & a,
 
 
 docstring const subst(docstring const & a,
-		docstring const & oldstr, docstring const & newstr)
+		docstring const & oldstr, docstring const & newstr,
+		bool case_sens)
 {
-	return subst_string(a, oldstr, newstr);
+	return subst_string(a, oldstr, newstr, case_sens);
 }
 
 

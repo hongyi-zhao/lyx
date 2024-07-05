@@ -24652,7 +24652,7 @@ and
 \end_layout
 
 \begin_layout Enumerate
-Für Namenlisten mit Vor- und Nachnamen,
+Für Namenslisten mit Vor- und Nachnamen,
  geeignet für die Hauptautoren\SpecialChar breakableslash
 \SpecialChar nobreakdash
 herausgeber eines Literatureintrags.
@@ -24693,7 +24693,7 @@ status collapsed
 
 :
  Bietet eine ggf.
- abgekürzte Namenliste (mit 
+ abgekürzte Namensliste (mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24727,7 +24727,7 @@ status collapsed
 \end_inset
 
 :
- Bietet eine volle Namenliste (niemals mit 
+ Bietet eine volle Namensliste (niemals mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24749,7 +24749,7 @@ status collapsed
 \end_inset
 
 :
- Bietet eine in jedem Fall abgekürzte Namenliste (mit 
+ Bietet eine in jedem Fall abgekürzte Namensliste (mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24773,7 +24773,7 @@ MaxCiteNames
 
 \end_deeper
 \begin_layout Enumerate
-Alternative Namenlisten mit Vor- und Nachnamen,
+Alternative Namenslisten mit Vor- und Nachnamen,
  für den Fall,
  dass die Reihenfolge der Vor- und Nachnamen innerhalb des Literaturverweises sich ändern (wie in:
  
@@ -24805,7 +24805,7 @@ status collapsed
 
 :
  Bietet eine ggf.
- abgekürzte Namenliste (mit 
+ abgekürzte Namensliste (mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24839,7 +24839,7 @@ status collapsed
 \end_inset
 
 :
- Bietet eine volle Namenliste (niemals mit 
+ Bietet eine volle Namensliste (niemals mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24861,7 +24861,7 @@ status collapsed
 \end_inset
 
 :
- Bietet eine in jedem Fall abgekürzte Namenliste (mit 
+ Bietet eine in jedem Fall abgekürzte Namensliste (mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24885,7 +24885,7 @@ MaxCiteNames
 
 \end_deeper
 \begin_layout Enumerate
-Schließlich Namelisten,
+Schließlich Namenslisten,
  die nur aus Nachnamen bestehen,
  so wie sie etwa in Autor-Jahr-Verweisen verwendet werden.
  Hier gibt es keinen 
@@ -24918,7 +24918,7 @@ status collapsed
 
 :
  Bietet eine ggf.
- abgekürzte Namenliste (mit 
+ abgekürzte Namensliste (mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24952,7 +24952,7 @@ status collapsed
 \end_inset
 
 :
- Bietet eine volle Namenliste (niemals mit 
+ Bietet eine volle Namensliste (niemals mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24974,7 +24974,7 @@ status collapsed
 \end_inset
 
 :
- Bietet eine in jedem Fall abgekürzte Namenliste (mit 
+ Bietet eine in jedem Fall abgekürzte Namensliste (mit 
 \begin_inset Quotes gld
 \end_inset
 
@@ -25072,7 +25072,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Damit können Sie Namenlisten wie die folgenden bekommen:
+Damit können Sie Namenslisten wie die folgenden bekommen:
  
 \begin_inset Quotes gld
 \end_inset

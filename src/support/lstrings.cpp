@@ -917,25 +917,20 @@ docstring const subst_string(docstring const & a,
 		bool const case_sens)
 {
 	LASSERT(!oldstr.empty(), return a);
-	docstring lstr = a;
+	docstring res = a;
 	size_t i = 0;
 	size_t const olen = oldstr.length();
-	if (case_sens)
-		while ((i = lstr.find(oldstr, i)) != string::npos) {
-			lstr.replace(i, olen, newstr);
-			i += newstr.length(); // We need to be sure that we don't
-			// use the same i over and over again.
-		}
-	else {
-		docstring lcstr = lowercase(lstr);
-		while ((i = lcstr.find(oldstr, i)) != string::npos) {
-			lstr.replace(i, olen, newstr);
-			i += newstr.length(); // We need to be sure that we don't
-			// use the same i over and over again.
-			lcstr = lowercase(lstr);
-		}
+	// string to be searched in
+	docstring se_str = case_sens ? res : lowercase(res);
+	// token to be searched within the above
+	docstring const se_tok = case_sens ? oldstr : lowercase(oldstr);
+	while ((i = se_str.find(se_tok, i)) != string::npos) {
+		res.replace(i, olen, newstr);
+		i += newstr.length(); // We need to be sure that we don't
+		// use the same i over and over again.
+		se_str = case_sens ? res : lowercase(res);
 	}
-	return lstr;
+	return res;
 }
 
 } // namespace

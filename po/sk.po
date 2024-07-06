@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-06-25 14:00+0200\n"
-"PO-Revision-Date: 2024-06-26 06:38+0000\n"
+"POT-Creation-Date: 2024-07-06 09:29+0200\n"
+"PO-Revision-Date: 2024-07-06 07:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -48,6 +48,14 @@ msgstr "Otvoriť používateľský adresár v prehliadači"
 #: src/frontends/qt/ui/AboutUi.ui:225
 msgid "[[do]]O&pen"
 msgstr "O&tvoriť"
+
+#: src/frontends/qt/ui/AboutUi.ui:238
+msgid "Temporary directory"
+msgstr "Dočasný adresár"
+
+#: src/frontends/qt/ui/AboutUi.ui:269
+msgid "Open temporary directory in file browser"
+msgstr "Otvorí dočasný adresár knižnice v prehliadači"
 
 #: src/frontends/qt/ui/AboutUi.ui:241
 msgid "Credits"
@@ -35951,8 +35959,8 @@ msgstr "Presunúť kartu na z&ačiatok"
 msgid "Move Tab to &End"
 msgstr "Presunúť kartu na &koniec"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2345
-msgid "Open Enclosing &Folder"
+#: src/frontends/qt/GuiWorkArea.cpp:2361
+msgid "Open Enclosing &Directory"
 msgstr "&Otvoriť uzatvárajúci adresár"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2193
@@ -37808,6 +37816,10 @@ msgstr "%1$stext"
 msgid "text%1$s"
 msgstr "text%1$s"
 
+#: src/insets/InsetRef.cpp:403
+msgid "elsewhere"
+msgstr "inde"
+
 #: src/insets/InsetRef.cpp:642
 msgid "Ref"
 msgstr "Ref"
@@ -38753,12 +38765,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
-
-#~ msgid "Temporary directory"
-#~ msgstr "Dočasný adresár"
-
-#~ msgid "Open temporary directory in file browser"
-#~ msgstr "Otvorí dočasný adresár knižnice v prehliadači"
 
 #~ msgid "Hebrew Letter"
 #~ msgstr "Hebrejský list"
@@ -40708,9 +40714,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "List of Changes"
 #~ msgstr "Zoznam Zmien"
-
-#~ msgid "elsewhere"
-#~ msgstr "inde"
 
 #~ msgid "BeginFrame"
 #~ msgstr "ZačiatokRámu"

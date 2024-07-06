@@ -195,6 +195,7 @@ std::string const subst(std::string const & a,
 		   std::string const & oldstr, std::string const & newstr);
 
 /// substitutes all instances of \a oldstr with \a newstr
+/// If \p case_sens is false, \a a and \a oldstr are treated case-insensitive
 docstring const subst(docstring const & a,
 		docstring const & oldstr, docstring const & newstr,
 		bool case_sens = true);

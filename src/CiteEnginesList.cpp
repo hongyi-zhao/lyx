@@ -135,6 +135,7 @@ CiteEngineTypeTranslator const init_citeenginetypetranslator()
 {
 	CiteEngineTypeTranslator translator("authoryear", ENGINE_TYPE_AUTHORYEAR);
 	translator.addPair("numerical", ENGINE_TYPE_NUMERICAL);
+	translator.addPair("notes", ENGINE_TYPE_NOTES);
 	translator.addPair("default", ENGINE_TYPE_DEFAULT);
 	return translator;
 }

@@ -9,7 +9,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 105
+currentFormat = 106
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -352,6 +352,9 @@ currentFormat = 105
 # Incremented to format 105, 2 June 2024 by spitz
 # ParskipFull and ParskipHalf class options
 
+# Incremented to format 106, 7 July 2024 by spitz
+# New CiteEngine type "notes"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -586,7 +589,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 101 <= format <= 104:
+        if 101 <= format <= 105:
             # nothing to do.
             i += 1
             continue

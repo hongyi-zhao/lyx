@@ -3286,6 +3286,9 @@ void GuiDocument::updateCiteStyles(vector<string> const & engs, CiteEngineType c
 		else if (*it == "numerical")
 			biblioModule->citeStyleCO->addItem(qt_("Author-number"),
 							   ENGINE_TYPE_NUMERICAL);
+		else if (*it == "notes")
+			biblioModule->citeStyleCO->addItem(qt_("Notes and Bibliography"),
+							   ENGINE_TYPE_NOTES);
 	}
 	int i = biblioModule->citeStyleCO->findData(sel);
 	if (biblioModule->citeStyleCO->findData(sel) == -1)

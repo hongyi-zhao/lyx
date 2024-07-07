@@ -59,7 +59,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 105; // spitz: ParskipHalf and ParskipFull class options
+int const LAYOUT_FORMAT = 106; // spitz: CiteEngineType notes
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -1117,6 +1117,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 	int const type = readCiteEngineType(lexrc);
 	bool authoryear = (type & ENGINE_TYPE_AUTHORYEAR);
 	bool numerical = (type & ENGINE_TYPE_NUMERICAL);
+	bool notes = (type & ENGINE_TYPE_NOTES);
 	bool defce = (type & ENGINE_TYPE_DEFAULT);
 
 	if (rt == CITE_ENGINE) {
@@ -1126,6 +1127,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 			authoryear = getCiteStyles(ENGINE_TYPE_AUTHORYEAR).empty();
 		if (numerical)
 			numerical = getCiteStyles(ENGINE_TYPE_NUMERICAL).empty();
+		if (notes)
+			numerical = getCiteStyles(ENGINE_TYPE_NOTES).empty();
 		if (defce)
 			defce = getCiteStyles(ENGINE_TYPE_DEFAULT).empty();
 	}
@@ -1137,6 +1140,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 			cite_styles_[ENGINE_TYPE_AUTHORYEAR].clear();
 		if (numerical)
 			cite_styles_[ENGINE_TYPE_NUMERICAL].clear();
+		if (notes)
+			cite_styles_[ENGINE_TYPE_NOTES].clear();
 		if (defce)
 			cite_styles_[ENGINE_TYPE_DEFAULT].clear();
 	}
@@ -1236,6 +1241,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 				class_cite_styles_[ENGINE_TYPE_AUTHORYEAR].push_back(cs);
 			if (numerical)
 				class_cite_styles_[ENGINE_TYPE_NUMERICAL].push_back(cs);
+			if (notes)
+				class_cite_styles_[ENGINE_TYPE_NOTES].push_back(cs);
 			if (defce)
 				class_cite_styles_[ENGINE_TYPE_DEFAULT].push_back(cs);
 		} else {
@@ -1243,6 +1250,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 				cite_styles_[ENGINE_TYPE_AUTHORYEAR].push_back(cs);
 			if (numerical)
 				cite_styles_[ENGINE_TYPE_NUMERICAL].push_back(cs);
+			if (notes)
+				cite_styles_[ENGINE_TYPE_NOTES].push_back(cs);
 			if (defce)
 				cite_styles_[ENGINE_TYPE_DEFAULT].push_back(cs);
 		}
@@ -1251,12 +1260,15 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 	// except if we have already a style to add something to
 	bool apply_ay = !add;
 	bool apply_num = !add;
+	bool apply_notes = !add;
 	bool apply_def = !add;
 	if (add) {
 		if (type & ENGINE_TYPE_AUTHORYEAR)
 			apply_ay = !getCiteStyles(ENGINE_TYPE_AUTHORYEAR).empty();
 		if (type & ENGINE_TYPE_NUMERICAL)
 			apply_num = !getCiteStyles(ENGINE_TYPE_NUMERICAL).empty();
+		if (type & ENGINE_TYPE_NOTES)
+			apply_num = !getCiteStyles(ENGINE_TYPE_NOTES).empty();
 		if (type & ENGINE_TYPE_DEFAULT)
 			apply_def = !getCiteStyles(ENGINE_TYPE_DEFAULT).empty();
 	}
@@ -1278,6 +1290,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 					cite_styles_[ENGINE_TYPE_AUTHORYEAR].push_back(ciss);
 				else if (cis.first == ENGINE_TYPE_NUMERICAL && apply_num)
 					cite_styles_[ENGINE_TYPE_NUMERICAL].push_back(ciss);
+				else if (cis.first == ENGINE_TYPE_NOTES && apply_notes)
+					cite_styles_[ENGINE_TYPE_NOTES].push_back(ciss);
 				else if (cis.first == ENGINE_TYPE_DEFAULT && apply_def)
 					cite_styles_[ENGINE_TYPE_DEFAULT].push_back(ciss);
 			}
@@ -1287,6 +1301,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		class_cite_styles_[ENGINE_TYPE_AUTHORYEAR].clear();
 	if (type & ENGINE_TYPE_NUMERICAL && apply_num)
 		class_cite_styles_[ENGINE_TYPE_NUMERICAL].clear();
+	if (type & ENGINE_TYPE_NOTES && apply_notes)
+		class_cite_styles_[ENGINE_TYPE_NOTES].clear();
 	if (type & ENGINE_TYPE_DEFAULT && apply_def)
 		class_cite_styles_[ENGINE_TYPE_DEFAULT].clear();
 	return getout;
@@ -1296,7 +1312,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 int TextClass::readCiteEngineType(Lexer & lexrc) const
 {
 	static_assert(ENGINE_TYPE_DEFAULT ==
-				  (ENGINE_TYPE_AUTHORYEAR | ENGINE_TYPE_NUMERICAL),
+				  (ENGINE_TYPE_AUTHORYEAR | ENGINE_TYPE_NUMERICAL | ENGINE_TYPE_NOTES),
 				  "Incorrect default engine type");
 	if (!lexrc.next()) {
 		lexrc.printError("No cite engine type given for token: `$$Token'.");
@@ -1307,6 +1323,8 @@ int TextClass::readCiteEngineType(Lexer & lexrc) const
 		return ENGINE_TYPE_AUTHORYEAR;
 	else if (compare_ascii_no_case(type, "numerical") == 0)
 		return ENGINE_TYPE_NUMERICAL;
+	else if (compare_ascii_no_case(type, "notes") == 0)
+		return ENGINE_TYPE_NOTES;
 	else if (compare_ascii_no_case(type, "default") != 0) {
 		string const s = "Unknown cite engine type `" + type
 			+ "' given for token: `$$Token',";
@@ -1340,6 +1358,7 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 			bool defined = false;
 			bool aydefined = false;
 			bool numdefined = false;
+			bool notesdefined = false;
 			// Check if the macro is already def'ed
 			for (auto const & cm : cite_macros_) {
 				if (!(type & cm.first))
@@ -1354,6 +1373,9 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 					else if (cm.first == ENGINE_TYPE_NUMERICAL)
 						// defined for numerical
 						numdefined = true;
+					else if (cm.first == ENGINE_TYPE_NOTES)
+						// defined for notes
+						notesdefined = true;
 				}
 			}
 			if (!defined || overwrite) {
@@ -1361,6 +1383,8 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 					cite_macros_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
 				if (type & ENGINE_TYPE_NUMERICAL && (type != ENGINE_TYPE_DEFAULT || !numdefined))
 					cite_macros_[ENGINE_TYPE_NUMERICAL][etype] = definition;
+				if (type & ENGINE_TYPE_NOTES && (type != ENGINE_TYPE_DEFAULT || !notesdefined))
+					cite_macros_[ENGINE_TYPE_NOTES][etype] = definition;
 				if (type == ENGINE_TYPE_DEFAULT)
 					cite_macros_[ENGINE_TYPE_DEFAULT][etype] = definition;
 			}
@@ -1368,6 +1392,7 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 			bool defined = false;
 			bool aydefined = false;
 			bool numdefined = false;
+			bool notesdefined = false;
 			// Check if the format is already def'ed
 			for (auto const & cm : cite_formats_) {
 				if (!(type & cm.first))
@@ -1382,6 +1407,9 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 					else if (cm.first == ENGINE_TYPE_NUMERICAL)
 						// defined for numerical
 						numdefined = true;
+					else if (cm.first == ENGINE_TYPE_NOTES)
+						// defined for notes
+						notesdefined = true;
 				}
 			}
 			if (!defined || overwrite){
@@ -1389,6 +1417,8 @@ bool TextClass::readCiteFormat(Lexer & lexrc, ReadType rt)
 					cite_formats_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
 				if (type & ENGINE_TYPE_NUMERICAL && (type != ENGINE_TYPE_DEFAULT || !numdefined))
 					cite_formats_[ENGINE_TYPE_NUMERICAL][etype] = definition;
+				if (type & ENGINE_TYPE_NOTES && (type != ENGINE_TYPE_DEFAULT || !notesdefined))
+					cite_formats_[ENGINE_TYPE_NOTES][etype] = definition;
 				if (type == ENGINE_TYPE_DEFAULT)
 					cite_formats_[ENGINE_TYPE_DEFAULT][etype] = definition;
 			}

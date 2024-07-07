@@ -23271,7 +23271,7 @@ Cite Engine
  Autorennamen und\SpecialChar breakableslash
 oder Jahresangaben oder anderes zum Einsatz kommen.
  Momentan unterstützt \SpecialChar LyX
- drei Engine-Typen,
+ vier Engine-Typen,
  nämlich:
 \end_layout
 
@@ -23354,6 +23354,41 @@ Schmidt und Müller [1]
 \end_inset
 
 )
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+notes
+\end_layout
+
+\end_inset
+
+:
+ Literaturverweise im 
+\begin_inset Quotes gld
+\end_inset
+
+Chicago-Stil
+\begin_inset Quotes grd
+\end_inset
+
+ (
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+notes and bibliography
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+),
+ bei dem Fuß- oder Endnoten mit dem vollständigen Literaturverweis (oder einem gekürzten bei wiederholten Verweisen) zusätzlich zu einer Bibliographie ausgegeben werden.
 \end_layout
 
 \begin_layout Standard

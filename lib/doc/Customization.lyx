@@ -12215,6 +12215,8 @@ status collapsed
 
 \change_inserted -712698321 1717320831
 ParskipFull
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -12227,6 +12229,8 @@ status collapsed
 
 \change_inserted -712698321 1717320820
 string
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -12265,6 +12269,8 @@ status collapsed
 
 \change_inserted -712698321 1717320913
 ParskipHalf
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -12277,6 +12283,8 @@ status collapsed
 
 \change_inserted -712698321 1717320909
 string
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -12291,6 +12299,8 @@ status collapsed
 
 \change_inserted -712698321 1717320920
 parskip=half
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -24411,7 +24421,13 @@ cite engine
  author names and/or years.
  Currently,
  \SpecialChar LyX
- supports three such engine types,
+ supports 
+\change_deleted -712698321 1720358297
+three
+\change_inserted -712698321 1720358297
+four
+\change_unchanged
+ such engine types,
  namely:
 \end_layout
 
@@ -24496,6 +24512,38 @@ Smith and Miller [1]
 \end_inset
 
 )
+\change_inserted -712698321 1720358301
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1720358652
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720358314
+notes
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+:
+ Chicago-style (
+\begin_inset Quotes eld
+\end_inset
+
+notes and bibliography
+\begin_inset Quotes erd
+\end_inset
+
+) citations using foot- or endnotes with full citations (or shortened ones on subsequent citations of the same source) next to a bibliography.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard

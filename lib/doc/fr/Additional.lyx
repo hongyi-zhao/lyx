@@ -13850,141 +13850,118 @@ Modules
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Academic Field Specifics
+Particularités d'un domaine académique
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Chemistry:
- Hazard and Precautionary Statements 
+Chimie:
+ mentions de danger et conseils de prudence
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides two insets and a paragraph style to typeset numbers and phrases of chemical hazard and precautionary statements.
- For a description see 
+Ce module fournit deux inserts et un style de paragraphe pour imprimer les nombres et les phrases des mentions de danger et des conseils de prudence pour la chimie.
+ Pour une description,
+ voir 
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir un exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Hazard and Precautionary Statements
+Chimie:
+ mentions de danger et conseils de prudence
 \family default
- and 
+ et 
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
-Hazard and Precautionary Statements
-\family default
-.
+Aide\SpecialChar menuseparator
+Manuels spécifiques\SpecialChar menuseparator
+Chimie:
+ mentions de danger et conseils de prudence.
 \end_layout
 
 \begin_layout Subsection
-
-\series bold
-\lang english
-Chemistry:
- Risk and Safety Statements
+Chimie:
+ énoncés de risque et sécurité
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides two insets,
+Ce module fournit deux inserts ,
  
 \family sans
-R-S number
+numéro R-S
 \family default
- and 
+ et 
 \family sans
-R-S phrase
+phrase R-S
 \family default
 ,
- accessible via the menu 
+ accessibles via le menu 
 \family sans
 \bar under
 I
 \bar default
-nsert\SpecialChar menuseparator
-Custom
+nsertion\SpecialChar menuseparator
+Inserts
 \begin_inset space ~
 \end_inset
 
-Insets
+personnalisables
 \family default
- and an environment to typeset numbers and phrases of chemical risk and safety statements.
+ et un environnement pour imprimer les énoncés de risque et sécurité.
+ Ces énoncés sont devenus obsolètes,
+ voir les mentions de danger et conseils de prudence ci-dessus.
 \end_layout
 
 \begin_layout Subsection
 
 \lang english
-Linguistics
+LinguistiqueLinguistics
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides specific environments useful for linguistics (numbered examples,
- glosses,
- semantic markup,
- OT tableau floats).
- You can obtain information about this module in 
+Ce document décrit quelques fonctionnalités de \SpecialChar LyX
+ utiles aux linguistes.
+ Il montre comment utiliser ces fonctionnalités de base pour produire des exemples numérotés,
+ des gloses interlinéaires,
+ des tableaux résultant de la théorie de l'optimalité,
+ un balisage sémantique,
+ des structures arborescentes,
+ des structures de représentation du discours (DRS) et des symboles phonétiques (API).
+ Vous pouvez trouver des informations sur ce module via
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar menuseparator
-S
-\bar under
-p
-\bar default
-ecific
-\begin_inset space ~
-\end_inset
-
-Manuals\SpecialChar menuseparator
+ Aide\SpecialChar menuseparator
+Manuels spécifiques\SpecialChar menuseparator
 
 \bar under
 L
 \bar default
-inguistics
+inguistique
 \family default
- and 
+ et 
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir un exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Linguistics
+Linguisti
 \family default
-.
+que.
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Accessibility
+Accessibilité
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Braille
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module supports the Braille script.
- It requires the \SpecialChar LaTeX
- package 
+The module permet l'écriture du Braille.
+ Il requiert le paquetage \SpecialChar LaTeX
+ 
 \family typewriter
 braille.sty
 \family default
 .
- This and its documentation can be obtained from 
+ Ce paquetage et sa documentation sont accessibles via 
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
@@ -13994,31 +13971,16 @@ literal "false"
 \end_inset
 
 .
- See 
+ Voir
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar menuseparator
-S
-\bar under
-p
-\bar default
-ecific
-\begin_inset space ~
-\end_inset
-
-Manuals\SpecialChar menuseparator
-
-\bar under
-B
-\bar default
-raille
+ Aide\SpecialChar menuseparator
+Manuels spécifiques\SpecialChar menuseparator
+Braille
 \family default
  and 
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir un exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
 Braille
 \family default
@@ -14026,28 +13988,39 @@ Braille
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Annotation & Revision
+Annotation & revue
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-FiXme Notes
+Notes FiXme
 \end_layout
 
 \begin_layout Standard
+Ce module fournit des annotations (marginales) 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-This module provides “FiXme” (marginal) annotations for document revision purposes.
- A list of annotations can be produced by using the “List of FIXMEs” paragraph style.
- The annotations are customizable via the LaTeX preamble.
- See the 
+FiXme
+\begin_inset Quotes crd
+\end_inset
+
+ pour les besoins de la revue de documents.
+ Une liste d'annotations peut être produite en utilisant la rubrique du plan 
+\begin_inset Quotes cld
+\end_inset
+
+Fixme
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Les annotations sont paramétrables via le préambule \SpecialChar LaTeX
+,
+ voir la documentation 
 \family typewriter
 fixme
 \family default
- documentation which can be obtained from 
+ qui peut être obtenue via 
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
@@ -14060,84 +14033,87 @@ literal "false"
  
 \end_layout
 
-\begin_layout Paragraph
-
-\lang english
-Note:
-\end_layout
-
 \begin_layout Standard
 
-\lang english
-by default,
- the notes are only displayed in “draft” mode (if the option “draft” has been inserted in 
+\series bold
+Note:
+
+\series default
+ implicitement,
+ les annotations ne sont imprimées qu'en mode 
+\begin_inset Quotes cld
+\end_inset
+
+draft
+\begin_inset Quotes crd
+\end_inset
+
+ (si l'option 
+\begin_inset Quotes cld
+\end_inset
+
+draft
+\begin_inset Quotes crd
+\end_inset
+
+ a été insérée dans 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Document Class\SpecialChar menuseparator
-Class Options\SpecialChar menuseparator
-Custom
+Paramètres\SpecialChar menuseparator
+Classe de document\SpecialChar menuseparator
+Option de classe\SpecialChar menuseparator
+Réglable
 \family default
 ).
- To display them always,
- insert 
+ Pour les imprimer dans tous les cas,
+ insérer 
 \family typewriter
 
 \backslash
 fxsetup{draft}
 \family default
- in 
+ dans 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-\SpecialChar LaTeX
- Preamble
+Paramètres\SpecialChar menuseparator
+Préambule \SpecialChar LaTeX
+
 \family default
 .
- 
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 PDF Comments
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides various kinds of annotations for PDF output.
- See 
+Ce module fournit diverses sortes d'annotations pour l'impression PDF.
+ Voir 
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
-PDF comments 
+Aide\SpecialChar menuseparator
+Manuels spécifiques\SpecialChar menuseparator
+Commentaires PDF 
 \family default
-and
+et 
 \family sans
- File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir un exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-PDF Comments
+Commentaires PDF
 \family default
 .
 \end_layout
 
 \begin_layout Subsection
-
-\series bold
-\lang english
 PDF Form
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides fields and buttons for PDF forms.
- See the 
+Ce module fournit champs et boutons pour les formulaires PDF.
+ Voir la 
 \begin_inset CommandInset href
 LatexCommand href
-name "hyperref documentation"
+name "documentation hyperref"
 target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
@@ -14146,33 +14122,26 @@ literal "false"
 ,
  
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
-PDF forms 
+Aide\SpecialChar menuseparator
+Manuels spécifiques\SpecialChar menuseparator
+Formulaires PDF 
 \family default
-and
+et 
 \family sans
- File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir un exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-PDF Form
-\family default
-.
+Formulaires PDF.
 \end_layout
 
 \begin_layout Subsection
-
-\series bold
-\lang english
 Ruby (Furigana)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module defines an inset to typeset reading aids (ruby,
- furigana) to Chinese characters.
- It uses the 
+Ce module définit un insert pour imprimer des aides à la lecture (ruby,
+ furigana) des caractères chinois.
+ Il utilise les paquetages 
 \family typewriter
 okumakro
 \family default
@@ -14181,43 +14150,46 @@ okumakro
 \family typewriter
 luatexja-ruby
 \family default
- or 
+ ou 
 \family typewriter
 ruby
 \family default
- package (depending on the TeX engine) or a fallback definition.
- 
+ (en fonction du moteur \SpecialChar TeX
+) ou une définition de secours.
 \end_layout
 
 \begin_layout Subsection
-
-\series bold
-\lang english
-TODO notes
+Notes TODO
 \end_layout
 
 \begin_layout Standard
+Ce module fournit des inserts adaptés à la saisie d'éléments TODO dans votre document.
+ Une liste des notes TODO peut être produite en utilisant la rubrique du plan 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-This module provides custom insets to insert TODO items in your document.
- In order to generate a “List of TODOs,” the module provides a paragraph style.
- Inserting 
+TODO
+\begin_inset Quotes crd
+\end_inset
+
+.
+ L'insertion de 
 \family typewriter
 final
 \family default
- in 
+ dans 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Document Class\SpecialChar menuseparator
-Class Options\SpecialChar menuseparator
-Custom
+Paramètres\SpecialChar menuseparator
+Classe de document\SpecialChar menuseparator
+Option de classe\SpecialChar menuseparator
+Réglable
 \family default
-) suppresses the output of TODO notes.
- See the 
+ supprime l'impression des notes TODO.
+ Voir la 
 \begin_inset CommandInset href
 LatexCommand href
-name "todonotes documentation"
+name "documentation todonotes"
 target "http://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
 literal "false"
 

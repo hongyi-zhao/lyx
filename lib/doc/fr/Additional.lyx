@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 624
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -39,6 +39,11 @@ shapepar
 hanging
 initials
 enumitem
+graphicboxes
+varwidth
+enotez
+customHeadersFooters
+theorems-named
 \end_modules
 \maintain_unincluded_children no
 \language french
@@ -328,7 +333,7 @@ enumitem
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 2
-\paperpagestyle headings
+\paperpagestyle fancy
 \tablestyle default
 \tracking_changes false
 \output_changes false
@@ -351,7 +356,7 @@ Options avancées de \SpecialChar LyX
 \begin_layout Subtitle
 Version 2.4.x
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -454,13 +459,27 @@ Importation de la dernière mise à jour de 2.3 dans 2.4 (JPC):
 
 \begin_layout Plain Layout
 Mise à jour pour 2.4.0 (JPC) :
- 05/06/2021 (JPC)
+ 05/06/2021
 \end_layout
 
 \begin_layout Plain Layout
 Suite à une restructuration complète du manuel,
- retranscription de ces modifications avant revue de la traduction pour 2.4.0 :
- 05/03/2024 (JPC)
+ retranscription de ces modifications avant revue de la traduction pour 2.4.0 (JPC):
+ 05/03/2024
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour finale pour 2.4.0 (JPC):
+ 22/04/2024,
+ 
+\nospellcheck on
+CVS
+\nospellcheck default
+/
+\nospellcheck on
+SVN
+\nospellcheck default
+ restent non traduits
 \end_layout
 
 \end_inset
@@ -8987,7 +9006,7 @@ Modern CV
 moderncv.cls
 \family default
 .
- Elle pêrmet la création de CV personnalisables.
+ Elle permet la création de CV personnalisables.
  
 \family sans
 Fichier\SpecialChar menuseparator
@@ -9309,16 +9328,21 @@ beamer.cls
 Fichier\SpecialChar menuseparator
 Nouveau avec modèle\SpecialChar menuseparator
 Présentations\SpecialChar menuseparator
-
-\bar under
 Beamer
 \family default
-\bar default
  ou 
 \family sans
 Aide\SpecialChar menuseparator
-Manuels spécifiques\SpecialChar menuseparator
-Présentations Beamer Presentations
+Manuels
+\begin_inset space ~
+\end_inset
+
+spécifiques\SpecialChar menuseparator
+Présentations
+\begin_inset space ~
+\end_inset
+
+Beamer
 \family default
  proposent une aide à l'utilisation.
  La documentation est disponible via 
@@ -10180,7 +10204,7 @@ Restriction
 \begin_layout Itemize
 
 \family sans
-Pied_Droite
+Pied_Droit
 \family default
  (Right_Footer)
 \end_layout
@@ -11108,7 +11132,7 @@ nolink "false"
 
 .
  En 2023,
- Dipos reste maintenue alors que la maintenance de 
+ Diapos reste maintenue alors que la maintenance de 
 \family sans
 Foil\SpecialChar TeX
  s'est arrêtée en 2008.
@@ -11202,7 +11226,7 @@ Paramètres
 \family sans
 ordinaire
 \family default
- Le rendu final contient des numéros de page dans le coin inférieur droit.
+ le rendu final contient des numéros de page dans le coin inférieur droit;
 \end_layout
 
 \begin_layout Description
@@ -11210,9 +11234,9 @@ ordinaire
 \family sans
 en-têtes
 \family default
- Comme ordinaire,
+ comme ordinaire,
  mais imprime aussi tous les marqueurs temporels que vous aurez placés.
- C'est le choix implicite.
+ C'est le choix implicite;
 \end_layout
 
 \begin_layout Description
@@ -11220,7 +11244,7 @@ en-têtes
 \family sans
 vide
 \family default
- Le rendu final ne contient pas de numéros de page,
+ le rendu final ne contient pas de numéros de page,
  de marqueurs temporels ni de marqueurs d'alignement.
 \end_layout
 
@@ -13844,8 +13868,6 @@ INSERT – insérez un plan rapproché
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
 Modules
 \end_layout
 
@@ -13911,9 +13933,7 @@ personnalisables
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-LinguistiqueLinguistics
+Linguistique
 \end_layout
 
 \begin_layout Standard
@@ -13954,7 +13974,7 @@ Braille
 \end_layout
 
 \begin_layout Standard
-The module permet l'écriture du Braille.
+Ce module permet l'écriture du Braille.
  Il requiert le paquetage \SpecialChar LaTeX
  
 \family typewriter
@@ -14083,7 +14103,7 @@ Préambule \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Subsection
-PDF Comments
+Commentaires PDF
 \end_layout
 
 \begin_layout Standard
@@ -14091,21 +14111,41 @@ Ce module fournit diverses sortes d'annotations pour l'impression PDF.
  Voir 
 \family sans
 Aide\SpecialChar menuseparator
-Manuels spécifiques\SpecialChar menuseparator
-Commentaires PDF 
+Manuels
+\begin_inset space ~
+\end_inset
+
+spécifiques\SpecialChar menuseparator
+Commentaires
+\begin_inset space ~
+\end_inset
+
+PDF 
 \family default
 et 
 \family sans
 Fichier\SpecialChar menuseparator
-Ouvrir un exemple\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Commentaires PDF
+Commentaires
+\begin_inset space ~
+\end_inset
+
+PDF
 \family default
 .
 \end_layout
 
 \begin_layout Subsection
-PDF Form
+Formulaires PDF
 \end_layout
 
 \begin_layout Standard
@@ -14124,14 +14164,30 @@ literal "false"
 \family sans
 Aide\SpecialChar menuseparator
 Manuels spécifiques\SpecialChar menuseparator
-Formulaires PDF 
+Formulaires
+\begin_inset space ~
+\end_inset
+
+PDF 
 \family default
 et 
 \family sans
 Fichier\SpecialChar menuseparator
-Ouvrir un exemple\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Formulaires PDF.
+Formulaires
+\begin_inset space ~
+\end_inset
+
+PDF.
 \end_layout
 
 \begin_layout Subsection
@@ -14199,26 +14255,20 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Bibliography 
+Bibliographie
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-APA Style with Natbib
+Style APA avec Natbib
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module adds support for using natbib together with apacite (the bibliography style need not be 
+Ce module ajoute les fonctionnalités utiles pour utiliser natbib avec apacite (le style bibliographique n'a pas à être nécessairement
 \family typewriter
-apacite
+ apacite
 \family default
  —
- it could be 
+ il peut être 
 \family typewriter
 apacite
 \family default
@@ -14228,98 +14278,85 @@ apacite
 apacitex
 \family default
 ,
- or any bibliography that works with both the natbib and apacite packages.) 
+ ou n'importe quel style qui fonctionne avec à la fois les paquetages natbib et apacite).
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Boxes
+Boîtes
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Fancy Colored Boxes
+Boîtes colorées sophistiquées
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module adds ten custom insets that support colored boxes via the 
+Ce module ajoute dix inserts personnalisés produisant des boîtes colorées à l'aide du paquetage
 \family typewriter
-tcolorbox
+ tcolorbox
 \family default
- package.
- See 
+.
+ 
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
-Colored boxes
+Voir Aide\SpecialChar menuseparator
+Manuels spécifiques\SpecialChar menuseparator
+Boîtes colorées
 \family default
 ,
  
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir un exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Fancy Color Boxes
+Boîtes colorées sophistiquées 
 \family default
- and the 
+et la 
 \begin_inset CommandInset href
 LatexCommand href
-name "tcolorbox documentation"
+name "documentation tcolorbox"
 target "http://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
 literal "false"
 
 \end_inset
 
- for details.
+ pour les détails.
  
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Graphic boxes
+Boîtes graphiques
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This provides the custom insets 
+Ce module fournit les inserts personnalisés 
 \family sans
-Reflectbox
+BoîteMiroir
 \family default
 ,
  
 \family sans
-Resizebox
+BoîteRetaillée
 \family default
 ,
  
 \family sans
-Rotatebox
+BoîtePivotée
 \family default
- and 
+ et 
 \family sans
-Scalebox
+BoîteÉchelle
 \family default
- to scale and rotate its content.
+ pour mettre à l'échelle et faire pivoter le contenu.
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
-Reflectbox
+BoîteMiroir
 \family default
- is a simple way of reversing text without any other enhancement:
+ offre un moyen simple de mettre le texte en miroir sans autre amélioration.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Reflectbox
 status open
 
@@ -14335,19 +14372,16 @@ Great Western Railway
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-(You will need to use Ctrl-R to see any of these examples.)
+(Vous devrez utiliser Ctrl-R (visionner) pour afficher l'un quelconque de ces exemples).
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
-Resizebox
+BoîteRetaillée 
 \family default
- allows you to specify the dimensions of the text or image;
- permissible units are em,
+vous permet de spécifier les dimensions du texte ou de l'image;
+ les unités possibles sont em,
  ex,
  in,
  pt,
@@ -14360,21 +14394,19 @@ Resizebox
  nc,
  bp,
  or sp;
- if you enter 
+ si vous saisissez 
 \family typewriter
 !
 
 \family default
- for 
+ pour 
 \family typewriter
-Height
+Hauteur
 \family default
- it scales by the width factor:
+ la mise à l'échelle utilise le facteur de largeur:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Resizebox
 status open
 
@@ -14415,18 +14447,21 @@ Great Western Railway
 \begin_layout Standard
 
 \family sans
-\lang english
-Rotatebox
+BoîtePivotée
 \family default
- allows you to rotate its contents around the reference point of the box.
- If you wish to rotate the box around a different origin,
- place the cursor inside the box and select Insert\SpecialChar menuseparator
-Origin;
- o
+ vous permet de faire tourner son contenu autour du point de référence de la boîte.
+ Si vous voulez la faire tourner autour d'un point différent,
+ placez le curseur dans la boîte et sélectionnez 
+\family sans
+Insérer\SpecialChar menuseparator
+Origine
+\family default
+;
+ 
 \family typewriter
-rigin
+origin
 \family default
- is specified as 
+ est précisée via les lettres 
 \family typewriter
 c
 \family default
@@ -14450,13 +14485,12 @@ c
 \family typewriter
  t
 \family default
- or meaningful combinations of these and the counterclockwise rotation angle is expressed in degrees.
- For example:
+ ou une combinaison signifiante de celles-ci,
+ et l'angle de rotation dans le sens contraire des aiguilles d'une montre est en degrés.
+ Par exemple:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Rotatebox
 status open
 
@@ -14495,14 +14529,10 @@ Great Western Railway
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can combine boxes as in:
+Vous pouvez combiner les boîtes comme ici:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Rotatebox
 status open
 
@@ -14590,21 +14620,24 @@ Great Western Railway
 \begin_layout Standard
 
 \family sans
-\lang english
-Scalebox
+BoîteÉchelle
 \family default
- scales its contents;
- select Insert\SpecialChar menuseparator
-V-Factor to add a vertical factor.
- If the vertical factor is omitted,
- the horizontal is used.
- Adding different horizontal and vertical values creates distortion as in 
+ met le contenu à l'échelle;
+ sélectionnez 
+\family sans
+Insérer\SpecialChar menuseparator
+Facteur-V
+\family default
+ pour ajouter un multiplicateur vertical.
+ Si ce multiplicateur est omis,
+ le facteur horizontal est utilisé.
+ Insérer des facteurs différents crée un distorsion comme ici:
+ 
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-\lang english
 \begin_inset Flex Scalebox
 status open
 
@@ -14645,16 +14678,12 @@ Great Western Railway
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A negative horizontal value reverses the text on the horizontal axis,
- a negative vertical value  on the vertical axis,
- so that you get 
+Une valeur négative horizontale met le texte en miroir sur l'axe horizontal,
+ une valeur négative verticale sur l'axe vertical,
+ et vous obtenez donc
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Scalebox
 status open
 
@@ -14689,7 +14718,14 @@ Great Western Railway
 
 \end_inset
 
- and 
+ 
+\end_layout
+
+\begin_layout Standard
+et
+\end_layout
+
+\begin_layout Standard
 \begin_inset Flex Scalebox
 status open
 
@@ -14728,115 +14764,100 @@ Great Western Railway
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Section Boxes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module defines Boxes with section header.
- It is mainly intended for the SciPoster Document class.
+Ce module définit les boîtes avec un en-tête de section.
+ Il sert essentiellement pour la classe de documents SciPoster.
  
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Variable-width Minipages
+Minipages à largeur variable
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module adds a 
+Ce module ajoute un insert 
 \family sans
-Minipage (Var.
-\begin_inset space \thinspace{}
+Minipage (larg.
+ variable)
+\family default
+ 
+\family sans
+à Insertion\SpecialChar menuseparator
+Inserts personnalisables
+\family default
+ en utilisant la paquetage \SpecialChar LaTeX
+
+\family typewriter
+ varwidth
+\family default
+.
+ Ce paquetage fournit une minipage à largeur variable,
+ dont la largeur résultante est celle de son contenu (si elle n'excède pas la largeur maximum spécifiée).
+ L'insert a deux arguments facultatifs qui peuvent être ajoutés en plaçant le curseur dan la minipage et en saisissant 
+\family sans
+Insertion\SpecialChar menuseparator
+Ajustement
+\begin_inset space ~
 \end_inset
 
-Width)
-\family default
- inset to 
-\family sans
-Insert\SpecialChar menuseparator
-Custom Inset
-\family default
- using the 
-\family typewriter
-varwidth
-\family default
- LaTeX package.
- The 
-\family typewriter
-varwidth
-\family default
- package provides a variable-width minipage,
- whose resulting width is the width of its contents (if this does not exceed the specified maximum width).
- The inset has two optional arguments which can be added by placing the cursor inside the minipage and entering 
-\family sans
-Insert\SpecialChar menuseparator
-Vert.
-\begin_inset space \thinspace{}
-\end_inset
+vert.
 
-Adjustment
 \family default
  (
 \family typewriter
 c|t|b
 \family default
-) or 
+) ou 
 \family sans
-Insert\SpecialChar menuseparator
-Max.
-\begin_inset space \thinspace{}
+Insertion\SpecialChar menuseparator
+Largeur
+\begin_inset space ~
 \end_inset
 
-Width
-\family default
- (defaults to 
-\family typewriter
+max.
 
+\family default
+ (implicitement
+\family typewriter
+ 
 \backslash
 linewidth
 \family default
 ).
- See 
+ Voir 
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
-Variable-width Minipages
+Fichier\SpecialChar menuseparator
+Ouvrir un exemple\SpecialChar menuseparator
+Modules\SpecialChar menuseparator
+Minipages à largeur variable
 \family default
 .
  
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Fixes & Hacks
+Solutions & astuces
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Fix Computer Modern Fonts
+Polices Computer Modern corrigées
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module uses the 
+Ce module utilise le paquetage
 \family sans
+ 
+\family typewriter
 fix-cm
 \family default
- package to improve the appearance of Computer Modern fonts and make them available with arbitrary sizes.
- See the 
+ pour améliorer l'apparence des polices Computer Modern et les rendre disponibles avec des tailles arbitraires.
+ Voir la 
 \begin_inset CommandInset href
 LatexCommand href
-name "fix-cm documentation"
+name "documentation fix-cm"
 target "http://mirrors.ctan.org/macros/latex/base/fix-cm.pdf"
 literal "false"
 
@@ -14847,150 +14868,152 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-\SpecialChar LaTeX
- Kernel Fixes (Obsolete)
+Corrections du noyau \SpecialChar LaTeX
+ (obsolète)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module loads the \SpecialChar LaTeX
- package 
+Ce module charge le paquetage
 \family sans
+ 
+\family typewriter
 fixltx2e
 \family default
- which contains some bug fixes for \SpecialChar LaTeX
+ qui contient quelques corrections de bogues pour \SpecialChar LaTeX
 .
- If you use this module your typeset document may look different when you process it,
- depending on the respective version of 
-\family sans
+ Si vous utilisez ce module,
+ l'impression du document peut varier,
+ en fonction de la version importée de 
+\family typewriter
 fixltx2e
 \family default
 .
  
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Standard
 
-\lang english
+\series bold
 Note:
-\end_layout
 
-\begin_layout Standard
-
-\lang english
-recent \SpecialChar LaTeX
- kernels (as of 2015/01/01) include the functionality of 
-\family sans
+\series default
+ les noyaux \SpecialChar LaTeX
+ récents (depuis le 01/01/2015) incluent la fonctionnalité de 
+\family typewriter
 fixltx2e
 \family default
 ,
- so the 
+ en conséquence le module 
 \family sans
 fixltx2e
 \family default
- module is obsolete with newer \SpecialChar LaTeX
- distributions.
+ est obsolète avec des distributions \SpecialChar LaTeX
+ postérieures.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Minimalistic Insets
+Inserts minimalistes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module redefines several insets (Index,
- Branch,
- URL) as being Minimalistic.
+Ce module redéfinit plusieurs inserts (Index,
+ Branche,
+ URL) sous forme minimaliste.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Title and Preamble Hacks
+Astuces pour le titre et le préambule
 \end_layout
 
 \begin_layout Standard
+Ce module propose deux styles de paragraphe nouveaux:
+\end_layout
 
-\lang english
-This module provides two new paragraph styles:
+\begin_layout Enumerate
+
+\family sans
+Dans
+\begin_inset space ~
+\end_inset
+
+le
+\begin_inset space ~
+\end_inset
+
+préambule
+\family default
+ met tout ce qui est saisi dans le préambule.
+ Ceci peut être utilisé,
+ à la demande,
+ pour inclure du code de préambule dans le corps d'un document \SpecialChar LyX
+.
  
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\lang english
-In Preamble
-\family default
- which puts whatever is entered into it into the preamble.
- This can be used,
- if one wishes,
- to include preamble code in the body of a LyX document.
- 
-\end_layout
+Dans
+\begin_inset space ~
+\end_inset
 
-\begin_layout Enumerate
+le
+\begin_inset space ~
+\end_inset
 
-\family sans
-\lang english
-In Title
+titre
 \family default
- which that will put its contents into the body of the LaTeX document,
- but before 
+ met tout son contenu dans le corps du document \SpecialChar LaTeX
+,
+ mais avant que la commande 
 \family typewriter
 
 \backslash
 maketitle
 \family default
- is issued.
- This is useful for making branches and notes in title-related material.
- (However,
- if you put these in a 
+ soit émise.
+ Ceci est utile pour créer des branches et des notes dans le matériau relatif au titre.
+ (Cependant,
+ si vous les mettez en 
 \family sans
-Standard
+Format standard
 \family default
- layout,
- this signals to LyX to output 
+,
+ ceci demande à \SpecialChar LyX
+ d'émettre 
 \family typewriter
 
 \backslash
 maketitle
 \family default
 ,
- which may then come too early.)
+ qui peut alors venir trop tôt.)
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Floats & captions
+Flottants & légendes
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Algorithm2e Float
+Flottant d'Algorithm2e
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module uses the 
-\family sans
+Ce module utilise le paquetage 
+\family typewriter
 algorithm2e
 \family default
- package for algorithm floats rather than LyX’s home-brewed algorithm floats.
- Use the Algorithm paragraph style to enter and indent the algorithm.
- See the 
+ pour les flottants d'algorithme plutôt que le flottant d'algorithme maison de \SpecialChar LyX
+.
+ Utiliser le style de paragraphe 
+\family sans
+Algorithme
+\family default
+ pour saisir et indenter l'algorithme.
+ Voir la 
 \begin_inset CommandInset href
 LatexCommand href
-name "algorithm2e documentation"
+name "documentation algorithm2e"
 target "http://mirrors.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf"
 literal "false"
 
@@ -15000,289 +15023,493 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Bilingual Captions AKA Multilingual Captions
+Légendes bilingues (multilingues)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides the paragraph style 
+Ce module fournit le style de paragraphe 
 \family sans
-Caption
+Mise
 \begin_inset space ~
 \end_inset
 
-setup
+en
+\begin_inset space ~
+\end_inset
+
+forme
+\begin_inset space ~
+\end_inset
+
+légende
 \family default
- with which to typeset bilingual captions.
- Within this paragraph style 
+ permettent d'imprimer des légendes bilingues.
+ Dans ce style de paragraphe
 \family sans
-Insert\SpecialChar menuseparator
-Language
+ Insertion\SpecialChar menuseparator
+Langue
 \family default
- allows you to enter the desired second language using one of the babel names.
- See 
+ vous permet de saisir la seconde langue désirée en utilisant son nom babel.
+ Voir 
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Multilingual Captions
+Légendes
+\begin_inset space ~
+\end_inset
+
+multilingues
 \family default
- and 
+ et 
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
-Multilingual Captions
+Aide\SpecialChar menuseparator
+Manuels spécifiques\SpecialChar menuseparator
+Légendes
+\begin_inset space ~
+\end_inset
+
+multilingues
 \family default
- further information on its use.
+ pour plus d'information sur son utilisation.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Number Figures by Section
+Numérotation des figures par section
 \end_layout
 
 \begin_layout Standard
+Ce module remet à zéro le numéro de figure au début de chaque section et précède le numéro de figure par le numéro de section,
+ comme dans 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-This module resets the figure number at section start and prepends the section number to the figure number,
- as in “Figure 2.1.” (By default book and report document classes number by Chapter and article document classes have a single sequence.) 
+Figure 2.1.
+\begin_inset Quotes crd
+\end_inset
+
+.
+ (Implicitement les classes livre et rapport numérotent par chapitre et les classes article ont une seule séquence de numéros.)
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Number Tables by Section
+Numérotation des tableaux par section
 \end_layout
 
 \begin_layout Standard
+Ce module remet à zéro le numéro de tableau au début de chaque section et précède numéro de tableau par le numéro de section,
+ comme dans 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-This module resets the table number at section start and prepends the section number to the table number,
- as in “Table 2.1.” (By default book and report document classes number by Chapter and article document classes have a single sequence.) 
+Tableau 2.1.
+\begin_inset Quotes crd
+\end_inset
+
+.
+ (Implicitement les classes livre et rapport numérotent par chapitre et les classes article ont une seule séquence de numéros.)
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Foot- and Endnotes
+Notes de bas de page et notes en fin de document
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Endnotes (Basic)
+Notes en fin de document (basiques)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module adds an endnote inset,
- in addition to footnotes.
- This uses the 
+Ce module ajoute un insert 
 \family sans
+endnote
+\family default
+ en plus des notes de bas de page.
+ Il utilise la paquetage 
+\family typewriter
 endnotes
 \family default
- package,
- which has some limitations but works with older \SpecialChar LaTeX
- distributions as well.
- Use 
+,
+ qui a quelques limitations mais fonctionne également avec les versions anciennes de \SpecialChar LaTeX
+.
+ Utiliser 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Inset\SpecialChar menuseparator
-Endnote
+Insertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
+
+personnalisables\SpecialChar menuseparator
+Notes
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+fin
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
 \family default
- to insert an endnote and 
+ pour insérer un note et 
 \family sans
-Insert\SpecialChar menuseparator
-List/Contents/References\SpecialChar menuseparator
-Endnotes
+Insertion\SpecialChar menuseparator
+Listes/Matières/Références\SpecialChar menuseparator
+Notes
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+fin
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
 \family default
- to insert the endnotes list where you want the endnotes to appear.
- See also 
+ pour insérer la liste des notes où vous voulez qu'elle apparaisse.
+ Voir aussi 
 \family sans
-Help\SpecialChar menuseparator
-Embedded Objects
+Aide\SpecialChar menuseparator
+Objets
+\begin_inset space ~
+\end_inset
+
+insérés
 \family default
 ,
  section 
 \emph on
-4.2 Footnotes
+4.2 Notes en bas de page
 \emph default
 .
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Endnotes (Extended)
+Notes en fin de document (étendues)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module adds an endnote inset,
- in addition to footnotes.
- This uses the 
+Ce module ajoute un insert 
 \family sans
+endnote
+\family default
+ en plus des notes de bas de page.
+ Il utilise la paquetage 
+\family typewriter
 enotez
 \family default
- package which is more powerful and customizable than the 
-\family sans
+,
+ qui est plus puissant et plus paramétrable que le paquetage 
+\family typewriter
 endnotes
 \family default
- package,
- but requires a fairly modern \SpecialChar LaTeX
- distribution (with \SpecialChar LaTeX
+,
+ mais qui requiert une distribution \SpecialChar LaTeX
+ plutôt moderne (avec \SpecialChar LaTeX
 3).
- Use 
+ Utiliser 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Inset\SpecialChar menuseparator
-Endnote
+Insertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
+
+personnalisables\SpecialChar menuseparator
+Notes
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+fin
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
 \family default
- to insert an endnote and 
+ pour insérer un note et 
 \family sans
-Insert\SpecialChar menuseparator
-List/Contents/References\SpecialChar menuseparator
-Endnotes
+Insertion\SpecialChar menuseparator
+Listes/Matières/Références\SpecialChar menuseparator
+Notes
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+fin
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
 \family default
- to insert the endnotes list where you want the endnotes to appear.
- See also 
+ pour insérer la liste des notes où vous voulez qu'elle apparaisse.
+ Voir aussi 
 \family sans
-Help\SpecialChar menuseparator
-Embedded Objects
+Aide\SpecialChar menuseparator
+Objets
+\begin_inset space ~
+\end_inset
+
+insérés
 \family default
 ,
  section 
 \emph on
-4.2 Footnotes
-\emph default
-..
-\end_layout
-
-\begin_layout Subsection
-
-\lang english
-Footnotes as Endnotes (Basic)
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-This module sets all footnotes as endnotes.
- This uses the 
-\family sans
-endnotes
-\family default
- package,
- which has some limitations but works with older \SpecialChar LaTeX
- distributions as well.
- Use 
-\family sans
-Insert\SpecialChar menuseparator
-List/Contents/References\SpecialChar menuseparator
-Endnotes
-\family default
- to insert the endnotes list where you want the endnotes to appear.
- See also 
-\family sans
-Help\SpecialChar menuseparator
-Embedded Objects
-\family default
-,
- section 
-\emph on
-4.2 Footnotes
+4.2 Notes en bas de page
 \emph default
 .
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Footnotes as Endnotes (Extended)
+Notes de bas de page renvoyées en fin de document (basiques)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module sets all footnotes as endnotes.
- This uses the 
-\family sans
-enotez
-\family default
- package which is more powerful and customizable than then 
-\family sans
+Ce module transforme les notes de bas de page en notes en fin de document.
+ Il utilise la paquetage 
+\family typewriter
 endnotes
 \family default
- package,
- but requires a fairly modern \SpecialChar LaTeX
- distribution (with \SpecialChar LaTeX
-3).
- Use 
+,
+ qui a quelques limitations mais fonctionne également avec les versions anciennes de \SpecialChar LaTeX
+.
+ Utiliser 
 \family sans
-Insert\SpecialChar menuseparator
-List/Contents/References\SpecialChar menuseparator
-Endnotes
+Insertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
+
+personnalisables\SpecialChar menuseparator
+Notes
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+fin
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
 \family default
- to insert the endnotes list where you want the endnotes to appear.
- See also 
+ pour insérer un note et 
 \family sans
-Help\SpecialChar menuseparator
-Embedded Objects
+Insertion\SpecialChar menuseparator
+Listes/Matières/Références\SpecialChar menuseparator
+Notes
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+fin
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
+\family default
+ pour insérer la liste des notes où vous voulez qu'elle apparaisse.
+ Voir aussi 
+\family sans
+Aide\SpecialChar menuseparator
+Objets
+\begin_inset space ~
+\end_inset
+
+insérés
 \family default
 ,
  section 
 \emph on
-4.2 Footnotes
+4.2 Notes en bas de page
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Notes de bas de page renvoyées en fin de document (étendues)
+\end_layout
+
+\begin_layout Standard
+Ce module transforme les notes de bas de page en notes en fin de document.
+ Il utilise la paquetage 
+\family typewriter
+enotez
+\family default
+,
+ qui est plus puissant et plus paramétrable que le paquetage 
+\family typewriter
+endnotes
+\family default
+,
+ mais qui requiert une distribution \SpecialChar LaTeX
+ plutôt moderne (avec \SpecialChar LaTeX
+3).
+ Utiliser 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
+
+personnalisables\SpecialChar menuseparator
+Notes
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+fin
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
+\family default
+ pour insérer un note et 
+\family sans
+Insertion\SpecialChar menuseparator
+Listes/Matières/Références\SpecialChar menuseparator
+Notes
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+fin
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
+\family default
+ pour insérer la liste des notes où vous voulez qu'elle apparaisse.
+ Voir aussi 
+\family sans
+Aide\SpecialChar menuseparator
+Objets
+\begin_inset space ~
+\end_inset
+
+insérés
+\family default
+,
+ section 
+\emph on
+4.2 Notes en bas de page
 \emph default
 .
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Leisure,
- Sports and Music
+Loisirs,
+ sport et musique
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Chess Board
+Échiquier
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides support for the 
-\family sans
+Ce module permet d'accéder au paquetage 
+\family typewriter
 chessboard
 \family default
- package to print chess games.
- See 
+ pour imprimer des parties d'échecs.
+
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+ Voir Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Articles\SpecialChar menuseparator
-Chess
+Échiquier
 \family default
- where you will find 
+,
+ où vous trouverez
 \family sans
-Game 1
+ Partie
+\begin_inset space ~
+\end_inset
+
+1
 \family default
- and 
+ et 
 \family sans
-Game 2
+Partie
+\begin_inset space ~
+\end_inset
+
+2,
+ et le lien vers la
 \family default
- and the 
+ 
 \begin_inset CommandInset href
 LatexCommand href
-name "chessboard documentation"
+name "documentation de chessboard "
 target "http://mirrors.ctan.org/macros/latex/contrib/chessboard/chessboard.pdf"
 literal "false"
 
@@ -15292,40 +15519,48 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Lilypond Music Notation
+Notation du format musical Lilypond
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides an inset via 
+Ce module fournit un insert via 
 \family sans
 \bar under
 I
 \bar default
-nsert\SpecialChar menuseparator
-Custom Inset\SpecialChar menuseparator
+nsertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
+
+personnalisables\SpecialChar menuseparator
 Lilypond
 \family default
- in which to enter code for the LilyPond music editor.
- It will then be processed in the output.
- See 
+ dans lequel saisir du code adapté à l'éditeur de musique LilyPond.
+ Ce code sera ensuite traité dans la sortie imprimable.
+
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
+ Voir Aide\SpecialChar menuseparator
+Manuels spécifiques\SpecialChar menuseparator
 Lilypond
 \family default
- and 
+ et 
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Lilypond Book
+Lilypond
 \family default
 .
- It cannot be used if the modules 
+ Il ne peut pas être utilisé si les modules 
 \family sans
 Rnw
 \begin_inset space \thinspace{}
@@ -15333,23 +15568,19 @@ Rnw
 
 (knitr) 
 \family default
-or
+ou
 \family sans
  Sweave
 \family default
- have been loaded.
+ ont été chargés.
 \end_layout
 
 \begin_layout Section
-
-\lang english
-List enhancements
+Améliorations des listes
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Customizable Lists
+Listes personnalisables
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Customizable-Lists"
@@ -15360,55 +15591,48 @@ name "subsec:Customizable-Lists"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module uses the
+Ce modulez utilise le paquetage
 \family sans
- enumitem
+ 
+\family typewriter
+enumitem
 \family default
- package to enable the customization of various list environments.
+ pour permettre le paramétrage de divers environnements de liste.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Custom Enumerate Lists
+Paramétrage des énumérations
 \end_layout
 
 \begin_layout Standard
 \noindent
-
-\lang english
-The default numbering of numbered lists can be changed by adding an optional argument (menu 
+La numérotation implicite des énumérations peut être modifiée pour ajouter un argument facultatif (menu 
 \family sans
 \bar under
 I
 \bar default
-nsert\SpecialChar menuseparator
+nsertion\SpecialChar menuseparator
+Options
+\begin_inset space ~
+\end_inset
 
-\bar under
-S
-\bar default
-hort Title
+d'énumération
 \family default
-) to the first item of each level in the list.
- There you add the command
+) au premier élément de chaque niveau de la liste.
+ Vous ajoutez la commande
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
 label=
 \backslash
 roman{enumi}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in \SpecialChar TeX
- Code (shortcut 
+en code \SpecialChar TeX
+ Code (raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "ert-insert"
@@ -15420,16 +15644,19 @@ arg   "ert-insert"
 \begin_layout Standard
 
 \family sans
-\lang english
 enumi
 \family default
- is the first level counter of the enumeration.
- To change the numbering for the list sublevels,
- replace the “
-\family sans
+ est le premier niveau de compteur de l'énumération.
+ Pour modifier la numérotation des sous-niveaux de liste,
+ remplacer le 
+\begin_inset Quotes cld
+\end_inset
+
 i
-\family default
-” in the command by the small Roman numeral of the level (
+\begin_inset Quotes crd
+\end_inset
+
+ de la commande par le numéro romain du niveau concerné (
 \family sans
 enumi
 \family default
@@ -15452,79 +15679,73 @@ enumiv
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The command 
+La commande 
 \family sans
 
 \backslash
 roman
 \family default
- outputs the counter as a small Roman numeral.
- For capital Roman numerals replace 
+ produit un numéro romain en bas de casse.
+ Pour obtenir une numérotation romaine en capitales,
+ remplacer 
 \family sans
 
 \backslash
 roman
 \family default
- with 
+ par 
 \family sans
 
 \backslash
 Roman
 \family default
- in the command above.
- For Arabic numerals use 
+ dans la commande ci-dessus.
+ Pour les chiffres arabes,
+ utiliser 
 \family sans
 
 \backslash
 arabic
 \family default
 .
- To 
-\begin_inset Quotes eld
+ Pour 
+\begin_inset Quotes cld
 \end_inset
 
-number
-\begin_inset Quotes erd
+numéroter
+\begin_inset Quotes crd
 \end_inset
 
- items with capital or small Latin letters use 
+ les éléments avec des lettre latines en capitales ou en bas de casse,
+ utiliser 
 \family sans
 
 \backslash
 Alph
 \family default
- or 
+ ou 
 \family sans
 
 \backslash
 alph
 \family default
 ,
- respectively.
+ respectivement.
 \end_layout
 
 \begin_layout Standard
 \noindent
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Note:
 
 \series default
- You can only number 26
-\begin_inset space ~
-\end_inset
-
-items with Latin letters,
- because this numbering is limited to single letters.
+ vous ne pouvez numéroter que 26 éléments avec des lettres latines,
+ parce que cette numérotation ne peut utiliser qu'une seule lettre.
 \end_layout
 
 \end_inset
@@ -15533,22 +15754,16 @@ items with Latin letters,
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is a list with custom numbering:
+Voici une liste paramétrée:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -15568,7 +15783,7 @@ Alph{enumi}
 
 \end_inset
 
-Level 1
+Niveau 1
 \begin_inset Separator latexpar
 \end_inset
 
@@ -15577,16 +15792,12 @@ Level 1
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -15604,13 +15815,11 @@ arabic{enumii}
 
 \end_inset
 
-Level 2
+Niveau 2
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Level 2
+Niveau 2
 \begin_inset Separator latexpar
 \end_inset
 
@@ -15619,16 +15828,12 @@ Level 2
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -15646,7 +15851,7 @@ arabic{enumiii}}
 
 \end_inset
 
-Level 3
+Niveau 3
 \begin_inset Separator latexpar
 \end_inset
 
@@ -15655,16 +15860,12 @@ Level 3
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -15682,23 +15883,21 @@ roman{enumiv})}
 
 \end_inset
 
-Level 4
+Niveau 4
 \end_layout
 
 \end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Standard
-
-\lang english
-For this list these commands were used:
+Pour cette liste,
+ les commandes suivantes ont été utilisées:
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \family sans
-\lang english
 label=
 \backslash
 #
@@ -15733,38 +15932,33 @@ roman{enumiv})}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where the command 
+où la commande 
 \family sans
 
 \backslash
 emph{}
 \family default
- makes the label emphasized and 
+ met le numéro en évidence et la commande 
 \family sans
 
 \backslash
 bfseries{}
 \family default
- makes it bold.
+ le met en gras.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Note:
 
 \series default
- When you change the label of a list level,
- it will be used for all following lists until you change the definition.
+ si vous modifiez la numérotation d'un niveau de liste,
+ cette numérotation sera utilisée jusqu'à ce que vous le redéfinissiez.
 \end_layout
 
 \end_inset
@@ -15773,8 +15967,6 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -15797,32 +15989,32 @@ arabic{enumi}}
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Numbered Paragraphs in Reports
+Paragraphes numérotés dans les rapports
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Official reports often include numbered paragraphs;
- you can achieve this with a variation on the approach outlined in  section
+Les rapports officiels incluent souvent des paragraphes numérotés;
+ vous pouvez faire cela via une variante de l'approche proposée à la section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:How-to-use"
+reference "sec:Comment-s'en-servir"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
 .
- Replace 
+ Remplacez dans chaque élément 
 \family sans
-item
+item 
 \family default
- in each command with 
+par 
 \family sans
 enum
 \family default
@@ -15830,10 +16022,7 @@ enum
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-These numbered paragraphs were generated by inserting the \SpecialChar TeX
- Code
+Les paragraphes numérotés ici ont été créée en insérant le code 
 \begin_inset Separator latexpar
 \end_inset
 
@@ -15844,7 +16033,6 @@ These numbered paragraphs were generated by inserting the \SpecialChar TeX
 \begin_layout Standard
 
 \family sans
-\lang english
 
 \backslash
 renewcommand{
@@ -15857,37 +16045,29 @@ arabic{enumi}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-before the start of the section;
+avant le début de la section;
  
 \family sans
 
 \backslash
 thesection
 \family default
- uses the \SpecialChar LaTeX
- section counter to generate the first part of the number.
+ utilise le compteur de section \SpecialChar LaTeX
+ pour engendrer le début du numéro..
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-I have ignored the subsection heading in this example because,
- with paragraphs numbered in this way,
- subsections are less likely to be used.
+L'en-tête de subsection a été ignoré dans cet exemple parce que,
+ avec des paragraphes numérotés de cette façon,
+ les subsections sont moins susceptibles d'utilisation.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Resumed Enumeration
+Reprise d'énumération
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -15908,22 +16088,16 @@ arabic{enumi}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Enumerations can be resumed after intermediate paragraphs:
+Les énumérations peuvent être reprises après des paragraphes intermédiaires:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -15939,14 +16113,12 @@ arabic{enumi}.
 
 \end_inset
 
-first
+premier
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-goes back to default numbering
+retour à la numérotation implicite
 \end_layout
 
 \end_inset
@@ -15955,50 +16127,39 @@ goes back to default numbering
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 second
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-regular text
+texte standard
 \end_layout
 
 \begin_layout Enumerate-Resume
-
-\lang english
-resumed
+reprise
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To resume an enumeration,
- use the style 
+Pour reprendre une énumération,
+ utiliser le style 
 \family sans
-Enumerate-Resume
+Énumeration-Re
 \family default
-.
+prise.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Note:
-
+ 
 \series default
- If there is no previous enumeration to resume,
- you will get a \SpecialChar LaTeX
- error.
+s'il n'y a pas d'énumération à reprendre,
+ il y aura une erreur \SpecialChar LaTeX
+.
 \end_layout
 
 \end_inset
@@ -16007,62 +16168,47 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Perhaps you might want to resume the list with a different number from the next one.
- Or you want to start a new enumeration with a defined number.
- This is possible by adding an optional argument to the first list item of a normal enumeration.
- There,
- insert the command
+Vous voudrez peut-être reprendre une liste avec un numéro différent du prochain.
+ Ou vous désirez une énumération avec un numéro défini.
+ Ceci est possible en ajoutant un argument facultatif à un élément de la liste d'une énumération normale.
+ Ici,
+ insérez la commande
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
-start=number
+start=numéro
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+où 
 \family sans
-number
+numéro
 \family default
- is the number with which you want to resume the list.
- An example:
+ est la valeur que vous souhaitez pour reprendre la liste.
+ Un exemple:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-first item
+premier élément
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-second item
+second élément
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Enumeration starting at a given value:
+Énumération démarrant à une valeur donnée:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -16076,13 +16222,11 @@ start=4
 
 \end_inset
 
-This enumeration starts at 4
+L'énumération commence à 4
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-List Spacing
+Espacement dans les listes
 \begin_inset Index idx
 range none
 pageformat default
@@ -16101,49 +16245,39 @@ Lists !
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In some cases you might want less or more vertical space between the items of a list.
- For example if the default space is too much in your opinion in this case:
+Dans certains cas,
+ vous désirez laisser plus ou moins d'espace entre les éléments d'une liste.
+ Par exemple,
+ si l'espacement implicite est trop grand dans ce cas:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-A bullet list
+Une liste à puces
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-with standard spacing 
+avec espacement standard
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can decrease the space by adding an optional argument to the first item of the list.
- Add there the command 
+Vous pouvez diminuer cet espace en ajoutant un argument facultatif au premier élément la liste.
+ Ajouter dans celui-ci la commande 
 \family sans
 nolistsep
 \family default
- to get no additional list space like in this example:
+ pour ne pas ajouter d'espacement de liste comme dans cet exemple:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\lang english
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
 nolistsep
 \end_layout
 
@@ -16154,26 +16288,21 @@ nolistsep
 
 \end_inset
 
-A bullet list
+Une liste à puces
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-without additional
+sans espacement vertical
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-vertical space
+additionnel
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To add space you can use several other commands provided by the 
-\family sans
+Pour ajouter de l'espace,
+ vous pouvez utiliser plusieurs autres commandes fournies par le paquetage 
+\family typewriter
 enumitem
 \family default
 
@@ -16192,11 +16321,12 @@ status collapsed
 
 \end_inset
 
- package.
- For more information see the 
+.
+ Pour plus d'information,
+ voir la 
 \begin_inset CommandInset href
 LatexCommand href
-name "enumitem documentation"
+name "documentation enumitem"
 target "http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
 literal "false"
 
@@ -16206,27 +16336,17 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are also many commands available to change the horizontal spacing and indentation.
- Here is an example where the indentation was changed to that of the paragraphs in the document and the label separation was set to 2
-\begin_inset space \thinspace{}
-\end_inset
-
-cm so that the number is in the page margin:
+Des nombreuses autres commandes sont également disponibles pour modifier l'espacement horizontal et l'indentation.
+ Voici un exemple où l'on a imposé l'indentation des paragraphes du document et positionné la séparation de l'étiquette à 2cm de sorte que le numéro soit dans la marge:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -16243,19 +16363,15 @@ parindent,
 
 \end_inset
 
-An enumeration
+Une énumération
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-with negative indentation
+avec indentation négative
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Further Customization
+D'autres personnalisations
 \begin_inset Index idx
 range none
 pageformat default
@@ -16274,81 +16390,59 @@ Lists !
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can also change the style of description lists.
- The command
+Vous pouvez également modifier le style des listes descriptives.
+ La commande
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
 font=definition
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-changes the description label font,
- the command
+modifie la police de l'étiquette de la description,
+ la commande
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
 style=definitio
 \family default
-\series bold
 n
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-sets the list style.
+règle le style de la liste.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-An example where the command
+Un exemple d'utilisation de la commande
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
 font=
 \backslash
 itshape,
  style=nextline
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-is used:
-\end_layout
-
 \begin_layout Description
-
-\lang english
-Ionizing
+Radiations
 \begin_inset space ~
 \end_inset
 
-radiation:
+ionisantes:
  
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -16367,32 +16461,31 @@ itshape,
 
 \end_inset
 
-Ionizing radiation consists of particles or electromagnetic waves that are energetic enough to detach electrons from atoms or molecules,
- therefore ionizing them.
+Une radiation ionisante est constituée de particules ou d'ondes électromagnétiques dotées d'assez d'énergie pour arracher des électrons aux atomes et aux molécules,
+ les ionisant de ce fait;
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Reference
+Comptage
 \begin_inset space ~
 \end_inset
 
-counting:
- In computer science,
- reference counting is a technique of storing the number of references,
- pointers,
- or handles to a resource such as an object,
- block of memory,
- disk space or other resource.
+de
+\begin_inset space ~
+\end_inset
+
+référence:
+ en informatique,
+ le comptage de référence est une technique pour enregistrer le nombre de références,
+ pointeurs ou poignées vers une ressource comme un objet,
+ un bloc de mémoire,
+ un espace disque ou autres.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are many more commands and features provided by the 
+Il existe de nombreuses autres commandes et fonctionnalités fournies par le paquetage
 \family sans
-enumitem
+ enumitem
 \family default
 
 \begin_inset Index idx
@@ -16410,11 +16503,12 @@ status collapsed
 
 \end_inset
 
- package.
- For more information see the 
+.
+ Pour plus d'information,
+ voir la 
 \begin_inset CommandInset href
 LatexCommand href
-name "enumitem documentation"
+name "documentation enumitem"
 target "http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
 literal "false"
 
@@ -16424,44 +16518,60 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\series bold
-\lang english
-Paragraph Lists
+Listes de paragraphe
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module uses the package 
+Ce module utilise le paquetage 
 \family sans
 paralist
 \family default
- to provide nine new list environments.
- Itemized and enumerated lists can be typeset within paragraphs,
- as paragraphs and in a compact version.
- Most environments have optional arguments to format the labels.
- Additionally,
- the \SpecialChar LaTeX
- list environments itemize and enumerate are extended to use a similar optional argument.
- For further details see 
+ pour fournir neuf nouveaux environnements de liste.
+ Les listes à puces et les énumérations peuvent être saisies à l'intérieur de paragraphes,
+ en tant que paragraphes et en version compacte.
+ La plupart des environnements ont des arguments facultatifs pour mettre ne forme les étiquettes.
+ De plus,
+ les environnements liste à puce et énumération \SpecialChar LaTeX
+ sont augmentées pour utiliser des arguments optionnels similaires.
+ Pour les détails,
+ voir 
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Paragraph Lists (paralist)
+Listes de paragraphe (paralist)
 \family default
 ,
  
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
-Paralist
+Aide\SpecialChar menuseparator
+Manuels
+\begin_inset space ~
+\end_inset
+
+spécifiques\SpecialChar menuseparator
+Listes
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+paragraphes
 \family default
- and the 
+ et la 
 \begin_inset CommandInset href
 LatexCommand href
-name "paralist documentation"
+name "documentation paralist"
 target "http://mirrors.ctan.org/macros/latex/contrib/paralist/paralist.pdf"
 literal "false"
 
@@ -16471,22 +16581,16 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Literate Programming
+Programmation littéraire
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Noweb
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module allows the use of Noweb as a literate programming tool.
- The files and the documentation for Noweb can be obtained from 
+Ce module permet l'utilisation de Noweb en tant qu'outil de programmation littéraire.
+ Les fichiers et la documentation de Noweb sont accessible via 
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
@@ -16496,7 +16600,7 @@ literal "false"
 \end_inset
 
 .
- Literate programming is described in section
+ La programmation littéraire est décrite à la section
 \begin_inset space ~
 \end_inset
 
@@ -16511,26 +16615,50 @@ nolink "false"
 
 \end_inset
 
- and there are three example files:
+ et il existe trois fichiers d'exemple:
  
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Noweb
+NoWeb
 \family default
 ,
  
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Noweb Listerrors
+Liste d'erreurs Noweb 
 \family default
- and 
+et 
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
 Noweb2\SpecialChar LyX
 
@@ -16539,43 +16667,35 @@ Noweb2\SpecialChar LyX
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Rnw (knitr)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module uses the 
+Ce module utilise les paquetages 
 \family typewriter
 knitr
 \family default
- and 
-\family sans
+ et 
+\family typewriter
 includernw
 \family default
- packages.
- The
+.
+ Le paquetage 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 knitr
 \end_layout
 
 \end_inset
 
- package in R for dynamic report generation has to be installed for this module to work:
+ de R pour la génération dynamiques de rapports doit être insllé pour que ce module fonctionne:
  
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 install.packages(“knitr”)
 \end_layout
 
@@ -16586,16 +16706,12 @@ install.packages(“knitr”)
 \end_layout
 
 \begin_layout Paragraph
-
-\lang english
 Note 
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-it depends on R >= 2.14.1.
- For more info see 
+il dépend de R >= 2.14.1.
+ Pour plus d'information voir 
 \begin_inset Flex URL
 status collapsed
 
@@ -16606,56 +16722,77 @@ http://yihui.name/knitr
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-The package 
-\family sans
+le paquetage 
+\family typewriter
 includernw
 \family default
- also has to be installed.
- 
+ doit éfgalement être installé;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-It cannot be used if the modules 
+il ne peut pas être utilisé si les modules 
 \family sans
-LilyPond
+Notation
 \begin_inset space ~
 \end_inset
 
-Book
+du
+\begin_inset space ~
+\end_inset
+
+format
+\begin_inset space ~
+\end_inset
+
+musical
+\begin_inset space \thinspace{}
+\end_inset
+
+LilyPond
 \family default
- or 
+ ou 
 \family sans
 Sweave
 \family default
- are loaded.
+ ont été chargés.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-See 
+Voir 
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
+Aide\SpecialChar menuseparator
+Manuels
+\begin_inset space ~
+\end_inset
+
+spécifiques\SpecialChar menuseparator
 Knitr
 \family default
 ,
  
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Rnw (knitr)
+Rnw
+\begin_inset space ~
+\end_inset
+
+(knitr)
 \family default
- and section
+ et la section
 \begin_inset space ~
 \end_inset
 
@@ -16670,29 +16807,25 @@ nolink "false"
 
 \end_inset
 
- for information about literate programming.
+ pour de l'information au sujet de la programmation littéraire.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Sweave
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module allows the use of the statistical language S/R as a literate programming tool.
- It requires the 
-\family sans
+Ce module utilise le langage statistique S/R en tant qu'outil de programmation littéraire.
+ Il requiert le paquetages 
+\family typewriter
 includernw
 \family default
- and 
-\family sans
+ et 
+\family typewriter
 fancyvrb
 \family default
- packages.
- Both 
+.
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "includernw"
@@ -16701,7 +16834,7 @@ literal "false"
 
 \end_inset
 
- and 
+ et 
 \begin_inset CommandInset href
 LatexCommand href
 name "fancyvrb"
@@ -16710,31 +16843,55 @@ literal "false"
 
 \end_inset
 
- are available from CTAN.
- It cannot be used if the module 
+ sont accessibles via CTAN.
+ Il ne peut pas être utilisé si le module 
 \family sans
-LilyPond
+Notation
 \begin_inset space ~
 \end_inset
 
-Book
+du
+\begin_inset space ~
+\end_inset
+
+format
+\begin_inset space ~
+\end_inset
+
+musical
+\begin_inset space \thinspace{}
+\end_inset
+
+LilyPond
 \family default
- has been loaded.
- See 
+ a été chargé.
+ Voir 
 \family sans
-Help\SpecialChar menuseparator
-Specific Manuals\SpecialChar menuseparator
+Aide\SpecialChar menuseparator
+Manuels
+\begin_inset space ~
+\end_inset
+
+spécifiques\SpecialChar menuseparator
 Sweave,
 
 \family default
  
 \family sans
-File\SpecialChar menuseparator
-Open Example\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Ouvrir
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+exemple\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
 Sweave
 \family default
- and section
+ et la section
 \begin_inset space ~
 \end_inset
 
@@ -16749,74 +16906,100 @@ nolink "false"
 
 \end_inset
 
- for information about literate programming.
+ pour de l'information au sujet de la programmation littéraire.
 \end_layout
 
 \begin_layout Section
-
-\lang english
 Maths
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-AMS Theorems
+Théorèmes AMS
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This modules defines theorem environments and the proof environment using the extended AMS machinery.
- Both numbered and unnumbered types are provided.
- By default,
- the theorems are numbered consecutively throughout the document.
- This can be changed by loading one of the 
+Ces modules définissent les environnements de théorème et de preuve en utilisant le mécanismes AMS.
+ Les types numérotés et non numérotés sont fournis.
+ Implicitement,
+ les théorèmes sont numérotés consécutivement à travers tout le document.
+ Ceci peut être modifié en chargeant l'un des modules
 \family sans
-AMS Theorems (Numbered by \SpecialChar ldots
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
+\begin_inset space ~
+\end_inset
+
+(numérotés
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+\SpecialChar ldots
 )
 \family default
- modules.
- It cannot be used if the modules 
+.
+ Ils ne peuvent pas être utilisés si les modules
 \family sans
-Standard Theorems
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
- or 
+ ou 
 \family sans
-Standard Theorems (Unnumbered)
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(non
+\begin_inset space ~
+\end_inset
+
+numérotés)
 \family default
- have been loaded.
+ ont été chargés.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-AMS Theorems (Extended)
+Théorèmes AMS (étendu)
 \end_layout
 
 \begin_layout Standard
+Ce module définit quelques environnements de théorème supplémentaires pour une utilisation avec le module 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-This module defines some additional theorem environments for use with the 
-\family sans
-AMS Theorems
+AMS
 \family default
- package (which must be loaded).
- It includes 
+ (qui doit être chargé).
+ Il inclut 
 \family sans
-Criterion
+Critère
 \family default
 ,
  
 \family sans
 Algorithm
 \family default
-,
+e,
  
 \family sans
 Axiom
 \family default
-,
+e,
  
 \family sans
 Condition
@@ -16834,7 +17017,7 @@ Notation
 ,
  
 \family sans
-Summary
+Résumé
 \family default
 ,
  
@@ -16844,55 +17027,75 @@ Conclusion
 ,
  
 \family sans
-Fact
+Fa
+\family default
+it,
+ 
+\family sans
+Hypothèse
 \family default
 ,
  
 \family sans
-Assumption
+Cas
 \family default
-,
- 
-\family sans
-Case
-\family default
- and 
+ et 
 \family sans
 Question
 \family default
- in both numbered and unnumbered forms.
+ à la fois sous forme numérotée et non numérotée.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-AMS Theorems (Extended,
- Numbered by Type within Chapters)
+Théorèmes AMS (étendu,
+ numérotation par type et par chapitre)
 \end_layout
 
 \begin_layout Standard
+Ce module définit quelques environnements de théorème supplémentaires pour une utilisation avec le module 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-This module defines some additional theorem environments for use with the 
-\family sans
-AMS Theorems (Numbered by Type within Chapters)
+AMS (numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+type
+\begin_inset space ~
+\end_inset
+
+et
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+chapitre)
 \family default
- module (which must be loaded).
- It includes 
+ (qui doit être chargé).
+ Il inclut 
 \family sans
-Criterion
+Critère
 \family default
 ,
  
 \family sans
 Algorithm
 \family default
-,
+e,
  
 \family sans
 Axiom
 \family default
-,
+e,
  
 \family sans
 Condition
@@ -16910,7 +17113,7 @@ Notation
 ,
  
 \family sans
-Summary
+Résumé
 \family default
 ,
  
@@ -16920,81 +17123,91 @@ Conclusion
 ,
  
 \family sans
-Assumption
+Hypothèse
 \family default
- and 
-\family sans
-Case
-\family default
- in both numbered and unnumbered forms.
+,
  
+\family sans
+Cas
+\family default
+ et 
+\family sans
+Question
+\family default
+ à la fois sous forme numérotée et non numérotée.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Unlike the 
+A l'inverse du module 
 \family sans
-AMS Theorems (Extended)
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
+\begin_inset space ~
+\end_inset
+
+(étendu)
 \family default
- module,
- the different theorem types provided here each have a separate counter,
- restarted with each new chapter (e.g.,
+,
+ les différents types de théorème fournis ont chacun leur compteur,
+ qui redémarre à chaque chapitre (e.g.,
  
 \emph on
-Criterion 1.1
+Critère 1.1
 \emph default
 ,
  
 \emph on
-Criterion 1.2
+Critère 1.2
 \emph default
 ,
  
 \emph on
-Axiom 1.1
+Axiome 1.1
 \emph default
 ,
  
 \emph on
-Assumption 1.1
+Hypothèse 1.1
 \emph default
 ,
  
 \emph on
-Criterion 2.1
+Critère 2.1
 \emph default
 ,
  
 \emph on
-Criterion 2.2
+Critère 2.2
 \emph default
 ,
 
 \emph on
- Axiom 2.1
+ Axiome 2.1
 \emph default
 ,
  \SpecialChar ldots
 ,
- as opposed to 
+ contrairement à 
 \emph on
-Criterion 1
+Critère 1
 \emph default
 ,
  
 \emph on
-Criterion 2
+Critère 2
 \emph default
 ,
  
 \emph on
-Axiom 3
+Axiome 3
 \emph default
 ,
  
 \emph on
-Assumption 4
+Hypothèse 4
 \emph default
 ,
  \SpecialChar ldots
@@ -17002,35 +17215,43 @@ Assumption 4
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-AMS Theorems (Extended,
- Numbered by Type)
+Théorèmes AMS (étendu,
+ numérotation par type)
 \end_layout
 
 \begin_layout Standard
+Ce module définit quelques environnements de théorème supplémentaires pour une utilisation avec le module 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-This module defines some additional theorem environments for use with the 
-\family sans
-AMS Theorems (Numbered by Type)
+AMS (numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+type)
 \family default
- package (which must be loaded).
- It includes 
+ (qui doit être chargé).
+ Il inclut 
 \family sans
-Criterion
+Critère
 \family default
 ,
  
 \family sans
 Algorithm
 \family default
-,
+e,
  
 \family sans
 Axiom
 \family default
-,
+e,
  
 \family sans
 Condition
@@ -17048,80 +17269,86 @@ Notation
 ,
  
 \family sans
-Summary
+Résumé
 \family default
 ,
-  
+ 
 \family sans
 Conclusion
 \family default
 ,
  
 \family sans
-Assumption
+Hypothèse
 \family default
- and 
+ et 
 \family sans
-Case
+Cas
 \family default
- in both numbered and unnumbered forms.
+ la fois sous forme numérotée et non numérotée.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Unlike the 
+A l'inverse du module 
 \family sans
-AMS Theorems (Extended)
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
+\begin_inset space ~
+\end_inset
+
+(étendu)
 \family default
- module,
- the different theorem types provided here each have a separate counter (e.g.,
- 
+,
+ les différents types de théorème fournis ont chacun leur compteur (e.g.
+
 \emph on
-Criterion 1
+ Critère 1
 \emph default
 ,
  
 \emph on
-Criterion 2
+Critère 2
 \emph default
 ,
  
 \emph on
-Axiom 1
+Axiome 1
 \emph default
 ,
  
 \emph on
-Assumption 1
+Hypothèse 1
 \emph default
 ,
  
 \emph on
-Criterion 3
+Critère 3
 \emph default
 ,
  \SpecialChar ldots
 ,
- as opposed to 
+ contrairement à 
 \emph on
-Criterion 1
+Critère 1
 \emph default
 ,
  
 \emph on
-Criterion 2
+Critère 2
 \emph default
 ,
  
 \emph on
-Axiom 3
+Axiome 3
 \emph default
 ,
  
 \emph on
-Assumption 4
+Hypothèse 4
 \emph default
 ,
  \SpecialChar ldots
@@ -17129,41 +17356,38 @@ Assumption 4
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-AMS Theorems (Numbered by Type within Chapters) 
+Théorèmes AMS (numérotation par type et par chapitre)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module defines theorem environments and the proof environment using the extended AMS machinery.
- Both numbered and unnumbered types are provided.
- 
+Ce module définit les environnements de théorème et de preuve en utilisant le mécanismes AMS.
+ Les types numérotés et non numérotés sont fournis.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Unlike the 
+A l'inverse du module 
 \family sans
-AMS Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
 \family default
- module,
- the different theorem types provided here each have a separate counter (e.g.,
+,
+ les différents types de théorème fournis ont chacun leur compteur (e.g.,
  
 \emph on
-Theorem 1.1
+Théorème 1.1
 \emph default
 ,
  
 \emph on
-Theorem 1.2
+Théorème 1.2
 \emph default
 ,
  
 \emph on
-Lemma 1.1
+Lemme 1.1
 \emph default
 ,
  
@@ -17173,29 +17397,29 @@ Proposition 1.1
 ,
  
 \emph on
-Theorem 1.3
+Théorème 1.3
 \emph default
 ,
  
 \emph on
-Lemma 1.2
+Lemme 1.2
 \emph default
 ,
  \SpecialChar ldots
 ,
- as opposed to 
+ 
 \emph on
-Theorem 1
+contrairement à Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 3
+Lemme 3
 \emph default
 ,
  
@@ -17205,15 +17429,15 @@ Proposition 4
 ,
  \SpecialChar ldots
 ).
- The numbering restarts for each chapter:
+ La numérotation redémarre à chaque chapitre:
  
 \emph on
-Theorem 1.1
+Théorème 1.1
 \emph default
 ,
  
 \emph on
-Theorem 2.1
+Théorème 2.1
 \emph default
 ,
  \SpecialChar ldots
@@ -17221,59 +17445,93 @@ Theorem 2.1
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It cannot be used if the modules 
+Il ne peut pas être utilisé si les modules 
 \family sans
-AMS Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
 \family default
 ,
  
 \family sans
-Standard Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
 ,
 
 \family sans
- Standard Theorems (Numbered by Type)
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotés par type)
 \family default
  or
 \family sans
- Standard Theorems (Unnumbered)
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(non
+\begin_inset space ~
+\end_inset
+
+numérotés)
 \family default
- have been loaded.
+ ont été chargés
+\family sans
+.
+
+\family default
+ 
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-AMS Theorems (Numbered by Type)
+Théorèmes AMS (numérotation par type)
 \end_layout
 
 \begin_layout Standard
+Ce module définit les environnements de théorème et de preuve en utilisant le mécanismes AMS.
+ Les types numérotés et non numérotés sont fournis.
+\end_layout
 
-\lang english
-This module defines theorem environments and the proof environment using the extended AMS machinery.
- Both numbered and unnumbered types are provided.
- Unlike the 
+\begin_layout Standard
+A l'inverse du module 
 \family sans
-AMS Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
 \family default
- module,
- the different theorem types provided here each have a separate counter (e.g.,
+,
+ les différents types de théorème fournis ont chacun leur compteur (e.g.
  
 \emph on
-Theorem 1
+Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 1
+Lemme 1
 \emph default
 ,
  
@@ -17283,29 +17541,29 @@ Proposition 1
 ,
  
 \emph on
-Theorem 3
+Théorème 3
 \emph default
 ,
  
 \emph on
-Lemma 2
+Lemme 2
 \emph default
 ,
  \SpecialChar ldots
 ,
- as opposed to 
+ contrairement à 
 \emph on
-Theorem 1
+Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 3
+Lemme 3
 \emph default
 ,
  
@@ -17315,48 +17573,73 @@ Proposition 4
 ,
  \SpecialChar ldots
 ).
- The numbering’s scope is the whole document.
- For chapter- and section-wide numbering,
- use one of the ‘within Sections’/‘within Chapters’ modules,
- respectively.
- 
+ La numérotation s'étend sur tout le document.
+ Pour une numérotation par chapitre ou par section,
+ voyez les modules appropriés.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It cannot be used if the modules 
+Il ne peut pas être utilisé si les modules 
 \family sans
-AMS Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
 \family default
 ,
  
 \family sans
-Standard Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
 ,
 
 \family sans
- Standard Theorems (Numbered by Type)
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotés par type)
 \family default
  or
 \family sans
- Standard Theorems (Unnumbered)
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(non
+\begin_inset space ~
+\end_inset
+
+numérotés)
 \family default
- have been loaded.
+ ont été chargés
+\family sans
+.
+
+\family default
+ 
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Number Equations by Section
+Numéroter les équations par section
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module resets the equation number at section start and prepends the section number to the equation number,
- as in 
+Ce module remet la numérotation des équations à zéro au début de chaque section et pré-ajoute le numéro de section au numéro d'équation,
+ comme dans 
 \emph on
 (2.1)
 \emph default
@@ -17365,160 +17648,231 @@ This module resets the equation number at section start and prepends the section
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Standard Theorems
+Théorèmes standard
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module defines some theorem environments for use with non-AMS classes.
- By default,
- the theorems are numbered consecutively throughout the document.
- This can be changed by loading one of the 
+Ce module définit quelques environnements de théorème supplémentaires pour une utilisation avec des classes non-AMS.
+ Implicitement,
+ les théorèmes sont numérotés consécutivement à travers tout le document.
+ t.
+ Ceci peut être modifié en chargeant l'un des modules
 \family sans
-Standard Theorems (Numbered by \SpecialChar ldots
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotés
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+\SpecialChar ldots
 )
 \family default
- modules.
+.
  
 \end_layout
 
 \begin_layout Standard
+Il ne peut pas être utilisé si les modules
+\family sans
+ Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-It cannot be used if the modules 
-\family sans
-AMS Theorems
+AMS
 \family default
- or
+ ou 
 \family sans
- Standard Theorems (Unnumbered)
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(non
+\begin_inset space ~
+\end_inset
+
+numérotés)
 \family default
- have been loaded.
- 
+ ont été chargés.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Standard Theorems (Nameable)
+Théorèmes standard (nommables)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module facilitates the use of named theorems.
- The name of the theorem can be inserted via 
+Ce module facilite l'utilisation de théorèmes nommés.
+ Le nom du théorème peut être saisi via 
 \family sans
-Insert\SpecialChar menuseparator
-Additional Theorem Text
+Insertion\SpecialChar menuseparator
+Texte de théorème complémentaire
 \family default
 .
  
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Standard Theorems (Numbered by Chapter)
+Théorèmes standard (numérotés par chapitre)
 \end_layout
 
 \begin_layout Standard
+Ce module numérote les théorèmes et assimilés par chapitre (i.e.
+ le compteur est remis à zéro au début de chaque chapitre).
+ N'utiliser ce module qu'avec des classes de document comportant l'environnement chapitre.
+\end_layout
 
-\lang english
-This module numbers theorems and the like by chapter (i.e.,
- the counter is reset at each chapter start).
- Use this module only with document classes that provide a chapter environment.
+\begin_layout Standard
+L'un des modules 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
+\family default
+ ou 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\family default
+ doit être chargé.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-One of the modules 
+Il ne peut pas être utilisé si le module
 \family sans
-AMS Theorems
-\family default
- or 
-\family sans
-Standard Theorems
-\family default
- must be loaded.
- 
-\end_layout
+ Théorèmes
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
+standard
+\begin_inset space ~
+\end_inset
 
-\lang english
-It cannot be used if the module
-\family sans
- Standard Theorems (Numbered by Section)
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+section)
 \family default
- has been loaded.
+ a été chargé.
 \end_layout
 
 \begin_layout Subsection
 
-\lang english
-Standard Theorems (Numbered by Section)
+\family sans
+Théorèmes standard (numérotation par section)
 \end_layout
 
 \begin_layout Standard
+Ce module numérote les théorèmes et assimilés par section (i.e.
+ le compteur est remis à zéro au début de chaque section).
+ 
+\end_layout
 
-\lang english
-This module numbers theorems and the like by section (i.e.,
- the counter is reset at each section start).
- One of the modules 
+\begin_layout Standard
+L'un des modules 
 \family sans
-AMS Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
 \family default
- or 
+ ou 
 \family sans
-Standard Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
- must be loaded.
- It cannot be used if the module
+ doit être chargé.
+ 
+\end_layout
+
+\begin_layout Standard
+Il ne peut pas être utilisé si le module
 \family sans
- Standard Theorems (Numbered by Chapter)
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+chapitre)
 \family default
- has been loaded.
+ a été chargé.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Standard Theorems (Numbered by Type within Chapters) 
+Théorèmes standard (numérotation par type et par chapitre)
 \end_layout
 
 \begin_layout Standard
+Ce module définit quelques environnements de théorème supplémentaires pour une utilisation avec des classes non-AMS.
+ Contrairement aux modules 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-This module defines some theorem environments for use with non-AMS classes.
- Unlike the
-\family sans
- AMS Theorems
+AMS
 \family default
- and 
+ et 
 \family sans
-Standard Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
- modules,
- the different theorem types provided here each have a separate counter (e.g.,
+,
+ les différents types de théorèmes ont un compteur séparé (e.g.
  
 \emph on
-Theorem 1
+Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 1
+Lemme 1
 \emph default
 ,
  
@@ -17528,29 +17882,29 @@ Proposition 1
 ,
  
 \emph on
-Theorem 3
+Théorème 3
 \emph default
 ,
  
 \emph on
-Lemma 2
+Lemme 2
 \emph default
 ,
  \SpecialChar ldots
 ,
- as opposed to 
+ contrairement à 
 \emph on
-Theorem 1
+Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 3
+Lemme 3
 \emph default
 ,
  
@@ -17560,87 +17914,182 @@ Proposition 4
 ,
  \SpecialChar ldots
 ).
- The numbering is reset at each chapter start.
+ La numérotation redémarre à chaque début de chapitre.
+\end_layout
+
+\begin_layout Standard
+L'un des modules 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+type)
+\family default
+ or 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+type)
+\family default
+ doit être chargé.
  
 \end_layout
 
 \begin_layout Standard
+Il ne peut être utilisé si l'un quelconque des modules
+\family sans
+ Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-One of the modules 
-\family sans
-AMS Theorems (Numbered by Type)
+AMS,
+
 \family default
- or 
-\family sans
-Standard Theorems (Numbered by Type)
-\family default
- must be loaded.
  
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-It cannot be used if any of the modules
 \family sans
- AMS Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
 ,
  
 \family sans
-Standard Theorems
-\family default
-,
- 
-\family sans
-Standard Theorems (Unnumbered)
-\family default
-,
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\family sans
- Standard Theorems (Numbered by Sections)
+standard
+\begin_inset space ~
+\end_inset
+
+(non
+\begin_inset space ~
+\end_inset
+
+numérotés),
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+section)
 \family default
- or 
+ ou 
 \family sans
-Standard Theorems (Numbered by Type within Sections)
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+type
+\begin_inset space ~
+\end_inset
+
+et
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+section)
 \family default
- have been loaded.
+ ont été chargés.
 \end_layout
 
 \begin_layout Subsection
 
-\lang english
-Standard Theorems (Numbered by Type within Sections) 
+\family sans
+Théorèmes standard (numérotation par type et par section)
+\family default
+ 
 \end_layout
 
 \begin_layout Standard
+Ce module définit quelques environnements de théorème supplémentaires pour une utilisation avec des classes non-AMS.
+ Contrairement aux modules 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-This module defines some theorem environments for use with non-AMS classes.
- Unlike the
-\family sans
- AMS Theorems
+AMS
 \family default
- and 
+ et 
 \family sans
-Standard Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
- modules,
- the different theorem types provided here each have a separate counter (e.g.,
+,
+ les différents types de théorèmes ont un compteur séparé (e.g.
  
 \emph on
-Theorem 1
+Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 1
+Lemme 1
 \emph default
 ,
  
@@ -17650,29 +18099,29 @@ Proposition 1
 ,
  
 \emph on
-Theorem 3
+Théorème 3
 \emph default
 ,
  
 \emph on
-Lemma 2
+Lemme 2
 \emph default
 ,
  \SpecialChar ldots
 ,
- as opposed to 
+ contrairement à 
 \emph on
-Theorem 1
+Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 3
+Lemme 3
 \emph default
 ,
  
@@ -17682,87 +18131,178 @@ Proposition 4
 ,
  \SpecialChar ldots
 ).
- The numbering is reset at each section start.
+ La numérotation redémarre à chaque début de section.
+\end_layout
+
+\begin_layout Standard
+L'un des modules 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+AMS
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+type)
+\family default
+ or 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+type)
+\family default
+ doit être chargé.
  
 \end_layout
 
 \begin_layout Standard
+Il ne peut être utilisé si l'un quelconque des modules
+\family sans
+ Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-One of the modules 
-\family sans
-AMS Theorems (Numbered by Type)
+AMS,
+
 \family default
- or 
-\family sans
-Standard Theorems (Numbered by Type)
-\family default
- must be loaded.
  
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-It cannot be used if any of the modules
 \family sans
- AMS Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
 ,
  
 \family sans
-Standard Theorems
-\family default
-,
- 
-\family sans
-Standard Theorems (Unnumbered)
-\family default
-,
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\family sans
- Standard Theorems (Numbered by Chapters)
+standard
+\begin_inset space ~
+\end_inset
+
+(non
+\begin_inset space ~
+\end_inset
+
+numérotés),
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+chapitre)
 \family default
- or 
+ ou 
 \family sans
-Standard Theorems (Numbered by Type within Chapters)
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotation
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+type
+\begin_inset space ~
+\end_inset
+
+et
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+chapitre)
 \family default
- have been loaded.
+ ont été chargés.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Standard Theorems (Numbered by Type)
+Théorèmes standard (numérotation par type)
 \end_layout
 
 \begin_layout Standard
+Ce module définit quelques environnements de théorème supplémentaires pour une utilisation avec des classes non-AMS.
+ Contrairement aux modules 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-This module defines some theorem environments for use with non-AMS classes.
- Unlike the 
-\family sans
-AMS Theorems
+AMS
 \family default
- and 
+ et 
 \family sans
-Standard Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
- modules,
- the different theorem types provided here each have a separate counter (e.g.,
+,
+ les différents types de théorèmes ont un compteur séparé (e.g.
  
 \emph on
-Theorem 1
+Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 1
+Lemme 1
 \emph default
 ,
  
@@ -17772,29 +18312,29 @@ Proposition 1
 ,
  
 \emph on
-Theorem 3
+Théorème 3
 \emph default
 ,
  
 \emph on
-Lemma 2
+Lemme 2
 \emph default
 ,
  \SpecialChar ldots
 ,
- as opposed to 
+ contrairement à 
 \emph on
-Theorem 1
+Théorème 1
 \emph default
 ,
  
 \emph on
-Theorem 2
+Théorème 2
 \emph default
 ,
  
 \emph on
-Lemma 3
+Lemme 3
 \emph default
 ,
  
@@ -17804,270 +18344,343 @@ Proposition 4
 ,
  \SpecialChar ldots
 ).
- The numbering’s scope is the whole document.
- For chapter- and section-wide numbering,
- use one of the “within Chapters”/“within Sections” modules,
- respectively.
- 
+ La numérotation s'étend sur la totalité du document.
+ Pour une numérotation par chapitre ou par section,
+ voyez les modules appropriés.
 \end_layout
 
 \begin_layout Standard
+Il ne peut pas être utilisé si les modules 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-It cannot be used if any of the modules
-\family sans
- AMS Theorems
+AMS
 \family default
 ,
  
 \family sans
-Standard Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
 \family default
 ,
- 
+
 \family sans
-Standard Theorems (Unnumbered)
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(numérotés par type)
 \family default
  or
 \family sans
- AMS Theorems (Numbered by Type)
+ Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+(non
+\begin_inset space ~
+\end_inset
+
+numérotés)
 \family default
- have been loaded.
+ ont été chargés
+\family sans
+.
+
+\family default
+ 
 \end_layout
 
 \begin_layout Subsection
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-Standard Theorems (Unnumbered)
+standard (non numérotés)
 \end_layout
 
 \begin_layout Standard
+Ce module ne définit que les environnements de théorème et de preuve non numérotés en utilisant le mécanismes AMS.
+ Il ne peut pas être utilisé si l'un des modules 
+\family sans
+Théorèmes
+\begin_inset space ~
+\end_inset
 
-\lang english
-This module defines only unnumbered theorem environments and the proof environment,
- using the extended AMS machinery.
- It cannot be used if either of the modules
-\family sans
- AMS Theorems
+AMS
 \family default
- or
+ ou 
 \family sans
- Standard Theorems
+Théorèmes
+\begin_inset space ~
+\end_inset
+
+standard 
 \family default
- have been loaded.
+a été chargé.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Subequations
+Sous-équations
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module provides a straightforward way to segregate subequations in LyX.
- See 
+Ce module fournit une méthode simple pour séparer les sous-équations en \SpecialChar LyX
+.
+ Voir 
 \family sans
-Help\SpecialChar menuseparator
-Math\SpecialChar menuseparator
-Subnumbering
+Aide\SpecialChar menuseparator
+Maths\SpecialChar menuseparator
+Numérotation
+\begin_inset space ~
+\end_inset
+
+des
+\begin_inset space ~
+\end_inset
+
+formules\SpecialChar menuseparator
+Sous-équations
 \family default
 .
  
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Page Layout
+Format de la page
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Custom Header/Footer Text
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-This module requires the 
-\family sans
-Page
+Personnalisation
 \begin_inset space ~
 \end_inset
 
+en-têtes/pieds
+\begin_inset space ~
+\end_inset
 
-\bar under
-s
-\bar default
-tyle
+de
+\begin_inset space ~
+\end_inset
+
+page
+\end_layout
+
+\begin_layout Standard
+Ce module requiert que l'option 
+\family sans
+Style
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+page
 \family default
- option in the 
+ de la fenêtre 
 \family sans
 \bar under
 D
 \bar default
 ocument\SpecialChar menuseparator
-
-\bar under
-S
-\bar default
-ettings\SpecialChar menuseparator
-Page
+Paramètres\SpecialChar menuseparator
+Format
 \begin_inset space ~
 \end_inset
 
-Layout
+de
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+page
 \family default
- dialog to be set to 
+ soit positionnée sur 
 \family typewriter
-fancy
+sophistiqué
 \family default
 .
- It adds six environments to document classes which support the 
+ Il ajoute six environnements aux classes de document qui reconnaissent la paquetage 
 \family typewriter
 fancyhdr
 \family default
- package:
+:
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Left Header
+En-tête
+\begin_inset space ~
+\end_inset
+
+gauche
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Center Header
+En-tête
+\begin_inset space ~
+\end_inset
+
+central
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Right Header
+En-tête
+\begin_inset space ~
+\end_inset
+
+droit
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Left Footer
+Pied
+\begin_inset space ~
+\end_inset
+
+gauche
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Center Footer
+Pied
+\begin_inset space ~
+\end_inset
+
+central
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Right Footer
+Pied
+\begin_inset space ~
+\end_inset
+
+droit
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Fancy Headers and Footers
+En-têtes et pieds de page sur mesure
 \end_layout
 
 \begin_layout Standard
+Le format de page implicite est assez banal :
+ pour un document avec la classe article,
+ tout ce que vous obtenez se limite au numéro de page en bas de la feuille.
+ Ce document-ci est de la classe 
+\begin_inset Quotes cld
+\end_inset
 
+Book KOMA script
+\begin_inset Quotes crd
+\end_inset
+
+ (livre),
+ donc il est un peu plus fourni
 \lang english
-The default page layout is rather plain;
- for an 
-\family sans
-Article (Standard Class)
-\family default
- document class,
- all you get is a centered page number at the bottom of the page.
- This document uses the 
-\family sans
-KOMA-Script Book
-\family default
- class;
- so it appears to be a bit fancier.
+.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Once the 
+Une fois le 
 \family sans
-Page
+Style
 \begin_inset space ~
 \end_inset
 
+de
+\begin_inset space ~
+\end_inset
 
-\bar under
-s
-\bar default
-tyle
+page
 \family default
- in 
+ de in 
 \family sans
 \bar under
 D
 \bar default
 ocument\SpecialChar menuseparator
-
-\bar under
-S
-\bar default
-ettings\SpecialChar menuseparator
-Page Layout
-\family default
- is set to 
-\begin_inset Quotes eld
+Paramètres\SpecialChar menuseparator
+Format
+\begin_inset space ~
 \end_inset
 
-fancy
-\begin_inset Quotes erd
+de
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+page
+\family default
+ positionné sur 
+\begin_inset Quotes cld
+\end_inset
+
+sophistiqué
+\begin_inset Quotes crd
 \end_inset
 
 ,
- you will find that the page header is divided into three fields,
- not surprisingly labeled 
-\begin_inset Quotes eld
+ vous allez découvrir que l'en-tête est divisé en trois champs,
+ appelés logiquement 
+\begin_inset Quotes cld
 \end_inset
 
-left
-\begin_inset Quotes erd
+gauche
+\begin_inset Quotes crd
 \end_inset
 
 ,
  
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
-center
-\begin_inset Quotes erd
+centre
+\begin_inset Quotes crd
 \end_inset
 
-,
- and 
-\begin_inset Quotes eld
+ et 
+\begin_inset Quotes cld
 \end_inset
 
-right
-\begin_inset Quotes erd
+droit
+\begin_inset Quotes crd
 \end_inset
 
 .
- The footer is also divided into these three fields.
- The \SpecialChar LaTeX
- commands to set these fields in the simplest manner are 
+ Le bas de page aussi a ces trois divisions.
+ Les commandes \SpecialChar LaTeX
+ pour éditer ces champs de la manière la plus simple sont 
 \family typewriter
 
 \backslash
@@ -18096,98 +18709,93 @@ lfoot
 \family default
 ,
  etc.
- Suppose you wish to put your name in the upper left hand corner of each page.
- Simply insert the following command in the preamble:
+ Si vous voulez mettre votre nom dans le coin en haut à gauche de chaque page,
+ insérez simplement cette commande dans le préambule :
  
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-
-\backslash
-lhead{John Q.
- DocWriter}
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-You will now see your name in the upper left.
- If a field has a default entry that you would like to get rid of (often the page number appears in the central footer) simply include a command with a blank argument,
- e.
-\begin_inset space \thinspace{}
-\end_inset
+\family typewriter
 
-g.:
+\backslash
+lhead{Jean D.
+ Rédacteur}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+Vous verrez désormais votre nom dans le coin supérieur gauche.
+ Si un champ a une entrée par défaut que vous souhaitez supprimer (comme le numéro de page apparaissant en bas,
+ centré),
+ insérez simplement une commande avec un paramètre vide,
+ par exemple :
+\end_layout
 
-\lang english
+\begin_layout Standard
+
+\family typewriter
 
 \backslash
 cfoot{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There is,
- however,
- an easier way to make simple changes.
- If you load the 
+Il y a cependant une manière plus simple de faire ces modifications:
+ si vous chargez le module 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar menuseparator
-
-\bar under
-S
-\bar default
-ettings\SpecialChar menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Modules\SpecialChar menuseparator
-Page Layout\SpecialChar menuseparator
-Custom Header/Footer Text
+Format
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space \thinspace{}
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+page\SpecialChar menuseparator
+Personnalisation
+\begin_inset space ~
+\end_inset
+
+en-têtes/pieds
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+page
 \family default
- module,
- you will find you have six new environments corresponding to the six fields described above.
+,
+ vous aurez six nouveaux environnements comme indiqué dans la section précédente.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Let's get really fancy:
- lets put the section number with the word 
-\begin_inset Quotes eld
+Maintenant,
+ plus difficile :
+ mettons le mot 
+\begin_inset Quotes cld
 \end_inset
 
 Section
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- (e.
-\begin_inset space \thinspace{}
+ et le numéro de la section en cours (par exemple Section
+\begin_inset space ~
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-Section 3) in the upper left,
- the page number (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-Page 4) in the upper right,
- your name in the lower left,
- and the date in the lower right.
- Use your newly enabled environments to add these entries:
+3) dans le coin supérieur gauche,
+ le numéro de page en haut à droite,
+ votre nom en bas à gauche et la date en bas à droite.
+ Utilisez ces nouveaux environnements (accessible via le menu déroulant des styles) pour ajouter ces éléments:
 \end_layout
 
 \begin_layout Standard
@@ -18197,12 +18805,7 @@ Page 4) in the upper right,
 \begin_layout LyX-Code
 
 \family sans
-\lang english
-Left
-\begin_inset space ~
-\end_inset
-
-header:
+En-tête gauche:
 
 \family default
 \series bold
@@ -18210,10 +18813,8 @@ header:
 \family roman
 \series default
 Section
-\family typewriter
- 
 \family default
-
+ 
 \backslash
 thesection
 \end_layout
@@ -18221,24 +18822,20 @@ thesection
 \begin_layout LyX-Code
 
 \family sans
-\lang english
-Center header:
+En-tête central:
 \end_layout
 
 \begin_layout LyX-Code
 
 \family sans
-\lang english
-Right header:
+En-tête droit:
 
 \family default
  
 \family roman
 Page
-\family typewriter
- 
 \family default
-
+ 
 \backslash
 thepage
 \end_layout
@@ -18246,28 +18843,25 @@ thepage
 \begin_layout LyX-Code
 
 \family sans
-\lang english
-Left footer:
+Pied gauche:
 
 \family default
  
-\family roman
-John Q.
- DocWriter
+\family sans
+Jean D.
+ Rédacteur
 \end_layout
 
 \begin_layout LyX-Code
 
 \family sans
-\lang english
-Center footer:
+Pied central:
 \end_layout
 
 \begin_layout LyX-Code
 
 \family sans
-\lang english
-Right footer:
+Pied droit:
 
 \family default
 \series bold
@@ -18283,9 +18877,7 @@ today
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Make sure you enter the commands 
+Saisissez bien les commandes 
 \family typewriter
 
 \backslash
@@ -18298,131 +18890,149 @@ thesection
 \backslash
 thepage
 \family default
- and 
+ et 
 \family typewriter
 
 \backslash
 today
 \family default
- as \SpecialChar TeX
- Code commands
+ en code \SpecialChar TeX
+
 \series bold
 .
 
 \series default
- The commands 
+ Les commandes 
 \family typewriter
 
 \backslash
 thesection
 \family default
- and
+ et 
 \family typewriter
- 
+
 \backslash
 thepage
 \family default
- access \SpecialChar LaTeX
-’s section and page counters,
- and so print out the current section and page numbers.
+ permettent d'accéder aux compteurs \SpecialChar LaTeX
+ de section et de page,
+ et d'afficher ainsi les numéros de la section et de la page en cours.
  
 \family typewriter
 
 \backslash
 today
 \family default
- simply prints out today’s date.
+ affiche simplement la date d'aujourd'hui.
 \end_layout
 
 \begin_layout Standard
+L'épaisseur de la barre horizontale dessinée au dessous de l'en-tête et au dessus du pied de page peut elle aussi être modifiée.
+ Si vous n'en voulez pas,
+ mettez sa largeur à 0.
+ Implicitement,
+ la barre d'en-tête a une épaisseur de 0,4
+\begin_inset space ~
+\end_inset
 
-\lang english
-The thicknesses of the horizontal rules drawn beneath the header and above the footer can also be modified.
- If you don't want one of the rules,
- set its thickness to 0.
- The header rule has a default thickness of 0.4pt,
- the footer rule is 0pt.
- For this you will need to use \SpecialChar TeX
- Code commands like 
-\end_layout
-
-\begin_layout Standard
-
+pt,
+ et celle de pied de page une épaisseur de 0.
+ Pour régler l'épaisseur,
+ utilisez les commandes 
 \family typewriter
-\lang english
 
 \backslash
-renewcommand{
+renewcommand\SpecialChar softhyphen
+{
 \backslash
-headrulewidth}{0.4pt}
+headrulewidth}\SpecialChar softhyphen
+{0.4pt}
 \family default
- and 
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-\lang english
-
-\backslash
-renewcommand{
-\backslash
-footrulewidth}{0.4pt}
-\family default
- to set the thicknesses.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-You can switch the header/footer settings on and off for individual pages using \SpecialChar TeX
- Code commands like 
+ et 
 \family typewriter
 
 \backslash
-thispagestyle{empty}
-\family default
-,
- 
-\family typewriter
-
+renewcommand\SpecialChar softhyphen
+{
 \backslash
-thispagestyle{plain}
-\family default
-,
- and 
-\family typewriter
-
-\backslash
-thispagestyle{fancy}
+footrulewidth}\SpecialChar softhyphen
+{0.4pt}
 \family default
 .
- Simply insert them in the text on the page you want changed and mark them as \SpecialChar TeX
- code.
- In fact,
- title pages are marked as plain by default,
- while following pages are marked fancy when using the global fancy setting.
- 
 \end_layout
 
 \begin_layout Standard
+Vous pouvez activer ou désactiver les paramètres d'en-tête et de pied de page pour une page donnée avec,
+ par exemple :
+ 
+\family typewriter
 
-\lang english
-If you want a header or footer to be on the outer side of a two sided document,
- you need to use something like:
+\backslash
+thispagestyle\SpecialChar softhyphen
+{empty}
+\family default
+,
+ 
+\family typewriter
+
+\backslash
+thispagestyle\SpecialChar softhyphen
+{plain}
+\family default
+,
+ et 
+\family typewriter
+
+\backslash
+thispagestyle\SpecialChar softhyphen
+{fancy}
+\family default
+.
+ Insérez simplement ces commandes dans le texte de la page que vous voulez modifier,
+ et mettez-les en mode \SpecialChar TeX
+.
+ En fait,
+ implicitement,
+ les pages de titre sont en 
+\begin_inset Quotes cld
+\end_inset
+
+ordinaire
+\begin_inset Quotes crd
+\end_inset
+
+ 
+\family typewriter
+(plain)
+\family default
+,
+ alors que les autres sont en 
+\begin_inset Quotes cld
+\end_inset
+
+sophistiqué
+\begin_inset Quotes crd
+\end_inset
+
+ 
+\family typewriter
+(fancy)
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Si vous désirez qu'un en-tête ou un pied de page soit du côté externe dans un document recto/verso,
+ vous devez utiliser ceci:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 
 \backslash
 fancyfoot{}
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 
 \backslash
 fancyfoot[LE,RO]{
@@ -18431,78 +19041,62 @@ thepage}
 \end_layout
 
 \begin_layout Standard
+La première commande vide tous les pieds de page existants pour éviter tout conflit avec la nouvelle commande.
+\end_layout
 
-\lang english
-The first command clears all existing footers avoiding any conflicts with your new command.
+\begin_layout Standard
+Vous pouvez saisir toutes ces commandes,
+ soit en utilisant les nouveaux environnements introduits pas le module,
+ soit pour les plus compliquées en saisissant du code \SpecialChar TeX
+ à n'importe quel endroit du document,
+ elles prendront effet à la page suivant la directive.
+ 
+\end_layout
+
+\begin_layout Standard
+Enfin,
+ il est possible d'insérer une image dans l'en-tête ou le pied de page.
+ Si vous voulez insérer un logo dans le coin supérieur gauche,
+ vous pouvez essayer quelque chose comme ceci dans le préambule:
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-You can enter any of these commands,
- the simpler ones in any of your new environments,
- the more complex ones as \SpecialChar TeX
- Code commands,
- at any point in your document and they will take effect on the next page.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-As a final example,
- it is possible to include an image in the header or footer.
- Suppose you want to put a company logo in the upper left hand corner.
- You might try something like this in 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-LaTeX Preamble
-\family default
-:
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
+\family typewriter
 
 \backslash
 lhead{
 \backslash
 resizebox{1in}{!}{
 \backslash
-includegraphics{logo.png}}}
-\end_layout
+includegraphics{logo.eps}}}
+\family default
 
-\begin_layout Standard
-\noindent
+\begin_inset Newline newline
+\end_inset
 
-\lang english
-You may need to preface this with 
+(il vous faudra peut-être pré-ajouter 
 \family typewriter
 
 \backslash
 usepackage{graphics}
 \family default
- if you don't include graphics elsewhere in your document.
+ avant si aucun autre fichier EPS n'est inséré dans votre document).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For more information on fancy headers,
- you can get the 
+Pour plus de détails sur les en-têtes et pieds de page sophistiqués,
+ vous pouvez consulter la documentation de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 fancyhdr
 \end_layout
 
 \end_inset
 
- documentation from 
+ via 
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
@@ -18516,25 +19110,33 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Landscape Document Parts
+Parties du document en format paysage
 \end_layout
 
 \begin_layout Standard
+Ce module imprime des parties du document en format paysage en utilisant 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
 
-\lang english
-This module outputs parts of the document in landscape mode using 
-\family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Landscape
+personnalisables\SpecialChar menuseparator
+Paysage
 \family default
- or 
+ ou 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Landscape (Floating)
+Insertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
+
+personnalisables\SpecialChar menuseparator
+Paysage
+\begin_inset space ~
+\end_inset
+
+(flottant)
 \family default
 .
 \end_layout
@@ -18999,7 +19601,6 @@ Vous pouvez également utiliser une en-tête de section en tant que préface si 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 subsection{subsection title}
@@ -19209,22 +19810,17 @@ Espacements environnants
 L’espacement avant et après un bloc de colonnes multiples peut être réglé via la longueur
 \family sans
  
-\lang english
-
 \backslash
 multicolsep
 \family default
 .
- 
-\lang french
-Par exemple la commande en code \SpecialChar TeX
+ Par exemple la commande en code \SpecialChar TeX
 
 \end_layout
 
 \begin_layout LyX-Code
 
 \family sans
-\lang english
 
 \backslash
 setlength{
@@ -20890,7 +21486,15 @@ Jpgfdraw
 \family sans
 TeX/LaTeX\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-Set Normal Size
+Set
+\begin_inset space ~
+\end_inset
+
+Normal
+\begin_inset space ~
+\end_inset
+
+Size
 \family default
  et sélectionner la taille de police utilisée dans le document.
  Par exemple,
@@ -21008,7 +21612,7 @@ Voici un exemple:
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "../SpecialParagraphShape.tex"
+filename "../../../../2.4.x/lib/doc/SpecialParagraphShape.tex"
 literal "true"
 
 \end_inset
@@ -21108,47 +21712,32 @@ shapepar
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Hanging Paragraphs
+Paragraphes en renfoncement
 \end_layout
 
 \begin_layout Hanging
-
-\lang english
-This module adds the 
-\family sans
-Hanging
-\family default
- paragraph style,
- that is,
- one where all but the first line of the paragraph is indented.
- This may not appear in your \SpecialChar LyX
- document but will appear in the final output.
+CE module ajoute un style pour les pragraphes en renfoncement,
+ c'est-à-dire quand toutes les lignes sauf la première sont identées.
+ Ceci peut ne pas apparaître dans la fenêtre \SpecialChar LyX
+ de votre document mais apparaîtra dans la version imprimée.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Initials"
 
 \end_inset
 
-Initials (Drop Caps)
+Initiales (lettrines)
 \end_layout
 
 \begin_layout Initial
-
-\lang english
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-T
+C
 \end_layout
 
 \end_inset
@@ -21158,105 +21747,124 @@ T
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-his
+e
 \end_layout
 
 \end_inset
 
- module adds a drop capitals paragraph style 
+ module ajoute un style de paragraphe 
 \family sans
-Initials
+Lettrine
 \family default
- for paragraph environments which you can use wherever you want to have drop capitals.
- You then have three more items in the 
+ que vous pouvez utiliser là où vous en avez besoin.
+ Vous avez alors trois nouvelles entrées dans le menu
 \family sans
-Insert
+ Insertion
 \family default
- menu:
+:
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Initial
+Lettrine 
 \family default
- which creates an inset for the drop capital
+qui crée un insert pour la capitale initiale;
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Rest of initial
+Résidu
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+lettrine 
 \family default
- which creates an inset for the rest of the word
+qui crée un insert pour le reste du mot;
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
 Options
 \family default
- which allow you configure the formatting of the drop capital.
+ qui vous permet de configurer la mise en page de la capitale initiale.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To customize the appearance of the style,
- see 
+Pour personnaliser cette dernière,
+ voir 
 \family sans
-Help\SpecialChar menuseparator
-Embedded Objects\SpecialChar menuseparator
-Objects Surrounded by Text\SpecialChar menuseparator
-Initials
+Aide\SpecialChar menuseparator
+Objets
+\begin_inset space ~
+\end_inset
+
+insérés\SpecialChar menuseparator
+Objets
+\begin_inset space ~
+\end_inset
+
+entourés
+\begin_inset space ~
+\end_inset
+
+par
+\begin_inset space ~
+\end_inset
+
+du
+\begin_inset space ~
+\end_inset
+
+texte\SpecialChar menuseparator
+Lettrines
 \family default
 .
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Text Markup
+Balisage du texte
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Hyphenatable Text Markup (Soul)
+Balisage du texte césurable (soul)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This modul defines text styles to highlight,
- space-out,
- strike-through,
- underline and capitalize/small-cap text by means of the 
-\family sans
+Ce module définit des styles de texte pour mettre en évidence,
+ espacer,
+ barrer,
+ souligner et mettre en petites capitales du texte en utilisant le paquetage 
+\family typewriter
 soul
+\family sans
+.
+
 \family default
- package.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-As opposed to the markup provided by the Text Properties dialog,
- words marked-up with 
+Contrairement au balisage fourni par le bouton 
+\family sans
+Propriétés du texte
+\family default
+,
+ les mots balisés avec 
 \family sans
 soul
 \family default
- are hyphenated.
- See the 
+ sont propices à la césure.
+ Voir la 
 \begin_inset CommandInset href
 LatexCommand href
-name "soul documentation"
+name "documentation soul"
 target "http://mirrors.ctan.org/macros/generic/soul/soul.pdf"
 literal "false"
 
@@ -21266,15 +21874,11 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Logical Markup
+Balisage logique
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This module defines some character styles for logical markup:
+Ce module définit quelques styles de caractères pour le balisage logique:
  
 \noun on
 
@@ -21282,10 +21886,7 @@ This module defines some character styles for logical markup:
 status collapsed
 
 \begin_layout Plain Layout
-
-\noun on
-\lang english
-noun
+Nom propre
 \end_layout
 
 \end_inset
@@ -21300,10 +21901,7 @@ noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\emph on
-\lang english
-emph
+en évidence
 \end_layout
 
 \end_inset
@@ -21316,47 +21914,43 @@ emph
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-strong
+fort
 \end_layout
 
 \end_inset
 
 ,
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 code
 \end_layout
 
 \end_inset
 
- which are accessed via the 
+ qui sont accessible via le menu 
 \family sans
 \bar under
-E
+Édition
 \bar default
-dit\SpecialChar menuseparator
-Custom
+\SpecialChar menuseparator
+Style
 \begin_inset space ~
 \end_inset
 
-Text
+de
 \begin_inset space ~
 \end_inset
 
+texte
+\begin_inset space ~
+\end_inset
 
-\bar under
-S
-\bar default
-tyles
+personnalisé
 \family default
- menu.
+.
 \end_layout
 
 \begin_layout Chapter
@@ -22583,6 +23177,13 @@ pifont.sty
 
 \begin_layout Section
 Comment s'en servir
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comment-s'en-servir"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

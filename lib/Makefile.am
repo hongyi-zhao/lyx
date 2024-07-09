@@ -2709,6 +2709,7 @@ citeenginesdir = $(pkgdatadir)/citeengines
 dist_citeengines_DATA = \
 	citeengines/basic.citeengine \
         citeengines/biblatex.citeengine \
+        citeengines/biblatex-chicago.citeengine \
         citeengines/biblatex-natbib.citeengine \
         citeengines/jurabib.citeengine \
         citeengines/natbib.citeengine

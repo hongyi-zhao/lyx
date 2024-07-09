@@ -32881,6 +32881,12 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
+Beachten Sie,
+ dass der Chicago-Stil von biblatex fest vorgegebene Zitier- und Bibliographiestile voraussetzt,
+ die nur über die Zitierstil-Optionen leicht angepasst werden können (bitte konsultieren Sie die Paketdokumentation für genauere Informationen).
+\end_layout
+
+\begin_layout Standard
 Ein Querverweis auf einen Datenbankeintrag erfolgt wie in Abschnitt
 \begin_inset space ~
 \end_inset
@@ -33369,6 +33375,50 @@ biblatex
 Optionen
 \family default
  eingeben.
+\end_layout
+
+\begin_layout Description
+Biblatex
+\begin_inset space ~
+\end_inset
+
+(Chicago-Stil) lädt das Paket 
+\series bold
+biblatex-chicago
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biblatex-chicago
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Dieses bietet eine spezifische Variante für Benutzer,
+ die sich nach dem 
+\emph on
+\lang english
+Chicago Manual of Style
+\emph default
+\lang ngerman
+ richten wollen.
+ Sowohl Autor-Jahr als auch Fuß-/Endnoten mit Bibliografie werden unterstützt.
 \end_layout
 
 \begin_layout Description

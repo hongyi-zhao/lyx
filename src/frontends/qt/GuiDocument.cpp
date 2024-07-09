@@ -3157,6 +3157,8 @@ void GuiDocument::checkPossibleCiteEngines()
 		force_engine = "biblatex";
 	else if (documentClass().provides("biblatex-natbib"))
 		force_engine = "biblatex-natbib";
+	else if (documentClass().provides("biblatex-chicago"))
+		force_engine = "biblatex-chicago";
 
 	if (!force_engine.empty())
 		biblioModule->citeEngineCO->setCurrentIndex(
@@ -3217,7 +3219,18 @@ void GuiDocument::citeEngineChanged(int n)
 
 void GuiDocument::updateEngineDependends()
 {
+	// These are useful with biblatex, jurabib and natbib
+	QString const engine =
+		biblioModule->citeEngineCO->itemData(
+				biblioModule->citeEngineCO->currentIndex()).toString();
+	LyXCiteEngine const * ce = theCiteEnginesList[fromqstr(engine)];
+
 	bool const biblatex = isBiblatex();
+	bool const citepack = biblatex
+			|| ce->required("jurabib.sty")
+			|| ce->required("natbib.sty");
+	biblioModule->citePackageOptionsLE->setEnabled(citepack);
+	biblioModule->citePackageOptionsL->setEnabled(citepack);
 
 	// These are only useful with BibTeX
 	biblioModule->defaultBiblioCO->setEnabled(!biblatex);
@@ -3225,25 +3238,16 @@ void GuiDocument::updateEngineDependends()
 	biblioModule->resetDefaultBiblioPB->setEnabled(!biblatex);
 	biblioModule->bibtopicCB->setEnabled(!biblatex);
 
-	// These are only useful with Biblatex
-	biblioModule->biblatexBbxCO->setEnabled(biblatex);
-	biblioModule->biblatexBbxLA->setEnabled(biblatex);
-	biblioModule->biblatexCbxCO->setEnabled(biblatex);
-	biblioModule->biblatexCbxLA->setEnabled(biblatex);
-	biblioModule->resetBbxPB->setEnabled(biblatex);
-	biblioModule->resetCbxPB->setEnabled(biblatex);
-	biblioModule->matchBbxPB->setEnabled(biblatex);
-
-	// These are useful with biblatex, jurabib and natbib
-	QString const engine =
-		biblioModule->citeEngineCO->itemData(
-				biblioModule->citeEngineCO->currentIndex()).toString();
-	LyXCiteEngine const * ce = theCiteEnginesList[fromqstr(engine)];
-
-	bool const citepack = ce->required("biblatex.sty") || ce->required("jurabib.sty")
-			|| ce->required("natbib.sty");
-	biblioModule->citePackageOptionsLE->setEnabled(citepack);
-	biblioModule->citePackageOptionsL->setEnabled(citepack);
+	// These are only useful with Biblatex (but not with
+	// biblatex-chicago or maybe other portmanteau packages)
+	bool const biblatex_pure = biblatex && !ce->required("biblatex-chicago.sty");
+	biblioModule->biblatexBbxCO->setEnabled(biblatex_pure);
+	biblioModule->biblatexBbxLA->setEnabled(biblatex_pure);
+	biblioModule->biblatexCbxCO->setEnabled(biblatex_pure);
+	biblioModule->biblatexCbxLA->setEnabled(biblatex_pure);
+	biblioModule->resetBbxPB->setEnabled(biblatex_pure);
+	biblioModule->resetCbxPB->setEnabled(biblatex_pure);
+	biblioModule->matchBbxPB->setEnabled(biblatex_pure);
 }
 
 

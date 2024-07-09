@@ -1,4 +1,4 @@
-#LyX 2.5 created this file. For more info see https://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 620
 \begin_document
 \begin_header
@@ -158,6 +158,7 @@ logicalmkup
 \docbook_table_output 0
 \docbook_mathml_prefix 1
 \author -1162675398 "Tobias Hilbricht" hilbricht@linopus.de
+\author -712698321 "Jürgen Spitzmüller"
 \author -584632292 "Richard Kimberly Heck"
 \author 5863208 "ab"
 \end_header
@@ -9645,12 +9646,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9663,6 +9666,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9686,6 +9690,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -33547,6 +33552,16 @@ literal "true"
 \end_inset
 
 .
+\change_inserted -712698321 1720530740
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1720530806
+Note that the Chicago style biblatex mode has built-in citation and bibliography styles which can only be slightly adapted via the bibliography options (please refer to the package manual for details).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -34013,6 +34028,85 @@ biblatex
 Options
 \family default
  field.
+\change_inserted -712698321 1720530575
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1720530576
+Biblatex
+\begin_inset space ~
+\end_inset
+
+(Chicago
+\begin_inset space ~
+\end_inset
+
+style) loads the package 
+\series bold
+biblatex-chicago
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720530576
+\SpecialChar LaTeX
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720530576
+biblatex-chicago
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ This is a specific variant particularly for users who want to follow the 
+\emph on
+Chicago Manual of Style
+\emph default
+.
+ Both 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720530576
+authordate
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720530576
+notes-bibliography
+\end_layout
+
+\end_inset
+
+ mode are supported.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34051,6 +34145,8 @@ Biblatex
 biblatex
 \series default
  styles are also supported by this variant.
+\change_inserted -712698321 1720530371
+
 \end_layout
 
 \begin_layout Description

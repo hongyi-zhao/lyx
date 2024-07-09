@@ -1806,20 +1806,29 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_biblio_options = join(options, ",");
 	}
 
-	else if (name == "biblatex") {
+	else if (name == "biblatex" || name == "biblatex-chicago") {
+		bool const chicago = name == "biblatex-chicago";
 		h_biblio_style = "plainnat";
 		h_cite_engine = "biblatex";
 		h_cite_engine_type = "authoryear";
 		string opt;
-		vector<string>::iterator it =
-			find(options.begin(), options.end(), "natbib");
-		if (it != options.end()) {
-			options.erase(it);
-			h_cite_engine = "biblatex-natbib";
+		if (chicago) {
+			h_cite_engine = "biblatex-chicago";
+			vector<string>::iterator it =
+				find(options.begin(), options.end(), "authordate");
+			if (it == options.end())
+				h_cite_engine_type = "notes";
 		} else {
-			opt = process_keyval_opt(options, "natbib");
-			if (opt == "true")
+			vector<string>::iterator it =
+				find(options.begin(), options.end(), "natbib");
+			if (it != options.end()) {
+				options.erase(it);
 				h_cite_engine = "biblatex-natbib";
+			} else {
+				opt = process_keyval_opt(options, "natbib");
+				if (opt == "true")
+					h_cite_engine = "biblatex-natbib";
+			}
 		}
 		opt = process_keyval_opt(options, "style");
 		if (!opt.empty()) {

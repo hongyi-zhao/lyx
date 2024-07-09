@@ -2607,6 +2607,15 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 				+ encodings.fromLyXName(bib_encoding)->latexName();
 			delim = ",";
 		}
+		// biblatex-chicago offers the style options "authordate"
+		// or "authordate-trad". We use "authordate" if none
+		// is given via the options field.
+		if (chicago && citeEngineType() == ENGINE_TYPE_AUTHORYEAR
+		    && !contains(biblio_opts, "authordate")) {
+			opts += delim + "authordate";
+			delim = ",";
+			
+		}
 		if (!biblio_opts.empty())
 			opts += delim + biblio_opts;
 		if (!opts.empty())

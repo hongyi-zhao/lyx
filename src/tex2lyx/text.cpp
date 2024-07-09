@@ -217,6 +217,14 @@ char const * const known_biblatex_commands[] = { "cite", "Cite", "textcite", "Te
 "supercite", "cites", "Cites", "textcites", "Textcites", "parencites", "Parencites",
 "smartcites", "Smartcites", "autocites", "Autocites", 0 };
 
+/*!
+ * biblatex-chicago commands.
+ * Known starred forms: \cite*, \citeauthor*, \Citeauthor*, \parencite*, \citetitle*.
+ */
+char const * const known_biblatex_chicago_commands[] = { "atcite", "atpcite", "Citetitle", "gentextcite",
+"Gentextcite", "shortcite", "shortrefcite", "shorthandcite", "shorthandrefcite",
+"citejournal", "headlesscite", "Headlesscite", "headlessfullcite", "surnamecite", 0 };
+
 // Whether we need to insert a bibtex inset in a comment
 bool need_commentbib = false;
 
@@ -3180,7 +3188,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			&& preamble.citeEngine() != "biblatex-natbib";
 	bool const use_biblatex_natbib = isProvided("biblatex-natbib")
 			|| (isProvided("biblatex") && preamble.citeEngine() == "biblatex-natbib");
-	need_commentbib = use_biblatex || use_biblatex_natbib;
+	bool const use_biblatex_chicago = isProvided("biblatex-chicago")
+			|| (isProvided("biblatex") && preamble.citeEngine() == "biblatex-chicago");
+	need_commentbib = use_biblatex || use_biblatex_natbib || use_biblatex_chicago;
 	string last_env;
 
 	// it is impossible to determine the correct encoding for non-CJK Japanese.
@@ -4683,22 +4693,24 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		if ((use_biblatex
-			 && is_known(t.cs(), known_biblatex_commands)
-			 && ((t.cs() == "cite"
-			     || t.cs() == "citeauthor"
-			     || t.cs() == "Citeauthor"
-			     || t.cs() == "parencite"
-			     || t.cs() == "citetitle")
+		     && is_known(t.cs(), known_biblatex_commands)
+		     && ((t.cs() == "cite"
+			  || t.cs() == "citeauthor"
+			  || t.cs() == "Citeauthor"
+			  || t.cs() == "parencite"
+			  || t.cs() == "citetitle")
 			 || p.next_token().asInput() != "*"))
-			|| (use_biblatex_natbib
-			    && (is_known(t.cs(), known_biblatex_commands)
-			      || is_known(t.cs(), known_natbib_commands))
-			    && ((t.cs() == "cite" || t.cs() == "citet" || t.cs() == "Citet"
-			       || t.cs() == "citep" || t.cs() == "Citep" || t.cs() == "citealt"
-			       || t.cs() == "Citealt" || t.cs() == "citealp" || t.cs() == "Citealp"
-			       || t.cs() == "citeauthor" || t.cs() == "Citeauthor"
-			       || t.cs() == "parencite" || t.cs() == "citetitle")
-			       || p.next_token().asInput() != "*"))){
+			 || (use_biblatex_natbib
+			     && (is_known(t.cs(), known_biblatex_commands)
+				 || is_known(t.cs(), known_natbib_commands))
+			     && ((t.cs() == "cite" || t.cs() == "citet" || t.cs() == "Citet"
+				  || t.cs() == "Citealt" || t.cs() == "citealp" || t.cs() == "Citealp"
+				  || t.cs() == "citeauthor" || t.cs() == "Citeauthor"
+				  || t.cs() == "parencite" || t.cs() == "citetitle")
+				 || p.next_token().asInput() != "*"))
+			 || (use_biblatex_chicago
+			     && (is_known(t.cs(), known_biblatex_commands)
+				 || is_known(t.cs(), known_biblatex_chicago_commands)))){
 			context.check_layout(os);
 			string command = t.cs();
 			if (p.next_token().asInput() == "*") {
@@ -4856,10 +4868,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 			// Need to set the cite engine if biblatex is loaded by
 			// the document class directly
-			if (preamble.citeEngine() == "basic")
-				use_biblatex_natbib ?
-					  preamble.citeEngine("biblatex-natbib")
-					: preamble.citeEngine("biblatex");
+			if (preamble.citeEngine() == "basic") {
+				if (use_biblatex_natbib)
+					preamble.citeEngine("biblatex-natbib");
+				else if (use_biblatex_chicago)
+					preamble.citeEngine("biblatex-chicago");
+				else
+					preamble.citeEngine("biblatex");
+			}
 			continue;
 		}
 

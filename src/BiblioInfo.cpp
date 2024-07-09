@@ -1282,6 +1282,9 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			}
 		} else if (key == "year")
 			ret = getYear();
+		else if (key == "elp")
+			// ellipsis
+			ret = docstring(1, char_type(0x2026));
 	}
 
 	// If we have no result, check in the cross-ref'ed entries

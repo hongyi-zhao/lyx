@@ -26272,6 +26272,45 @@ status collapsed
  Note that these are not macros,
  in the sense just defined.
  They will not be expanded.
+\change_inserted -712698321 1720499621
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1720499725
+For some characters which are otherwise hard to get,
+ we have predefined macros.
+ Currently,
+ this only includes:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1720499707
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720499707
+%elp%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ which outputs the ellipsis character (
+\begin_inset Quotes eld
+\end_inset
+
+\SpecialChar ldots
+
+\begin_inset Quotes erd
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard

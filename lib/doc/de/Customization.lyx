@@ -25324,6 +25324,34 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+Für manche Sonderzeichen haben wir Makros vordefiniert.
+ Momentan betrifft das nur
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%elp%
+\end_layout
+
+\end_inset
+
+,
+ welches Auslassungspunkte (
+\begin_inset Quotes gld
+\end_inset
+
+\SpecialChar ldots
+
+\begin_inset Quotes grd
+\end_inset
+
+) ausgibt.
+\end_layout
+
+\begin_layout Standard
 Hier ist abschließend ein Beispiel,
  das mehrere Möglichkeiten ausschöpft:
 \begin_inset VSpace defskip

@@ -273,20 +273,22 @@ def convert_biblatex_chicago(document):
 def revert_biblatex_chicago(document):
     """Revert biblatex-chicago to ERT where necessary"""
 
-    # 1. Get and reset cite engine
+    # 1. Get cite engine
     engine = "basic"
     i = find_token(document.header, "\\cite_engine", 0)
     if i == -1:
         document.warning("Malformed document! Missing \\cite_engine")
     else:
         engine = get_value(document.header, "\\cite_engine", i)
-        document.header[i] = "\\cite_engine biblatex"
 
     # 2. Do we use biblatex-chicago?
     if engine != "biblatex-chicago":
         return
+    
+    # 3. Reset cite engine
+    document.header[i] = "\\cite_engine biblatex"
 
-    # 3. Set cite type
+    # 4. Set cite type
     cetype = "authoryear"
     i = find_token(document.header, "\\cite_engine_type", 0)
     if i == -1:
@@ -295,7 +297,7 @@ def revert_biblatex_chicago(document):
         cetype = get_value(document.header, "\\cite_engine_type", i)
         document.header[i] = "\\cite_engine_type authoryear"
 
-    # 4. Add authordate option if needed
+    # 5. Add authordate option if needed
     if cetype == "authoryear":
         i = find_token(document.header, "\\biblio_options", 0)
         if i != -1:
@@ -309,10 +311,10 @@ def revert_biblatex_chicago(document):
             else:
                 document.header[i+1:i+1] = ["\\biblio_options authordate"]
 
-    # 5. Set local layout
+    # 6. Set local layout
     document.append_local_layout(chicago_local_layout)
 
-    # 6. Handle special citation commands
+    # 7. Handle special citation commands
     # Specific citation insets used in biblatex that need to be reverted to ERT
     new_citations = {
         "atcite": "atcite",

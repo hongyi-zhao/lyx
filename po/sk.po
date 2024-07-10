@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-07-08 11:00+0200\n"
-"PO-Revision-Date: 2024-07-08 09:07+0000\n"
+"POT-Creation-Date: 2024-07-10 09:53+0200\n"
+"PO-Revision-Date: 2024-07-10 08:57+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6374,6 +6374,20 @@ msgstr "Len kľúč."
 msgid "Key"
 msgstr "Kľúč"
 
+#: lib/citeengines/biblatex-chicago.citeengine:2
+msgid "Biblatex (Chicago style)"
+msgstr "Biblatex (Chikage štýl)"
+
+#: lib/citeengines/biblatex-chicago.citeengine:8
+msgid ""
+"This Biblatex variety uses the biblatex-chicago package on top of biblatex "
+"to produce citations according to the Chicago Manual of Style. As with "
+"normal Biblatex, the use of 'biber' as Bibliography processor is advised."
+msgstr ""
+"Tento Biblatex druh používa balík „biblatex-chicago“ na vrchu biblatexu na "
+"vytváranie citácií podľa „Chicago Manual of Style“. Rovnako ako pri bežnom "
+"Biblatexe sa odporúča použiť „biber“ ako procesor bibliografie."
+
 #: lib/citeengines/biblatex-natbib.citeengine:2
 msgid "Biblatex (natbib mode)"
 msgstr "Biblatex (na spôsob natbib)"
@@ -6403,16 +6417,18 @@ msgstr "Poznámka pod čiarou"
 msgid "Foot"
 msgstr "Päta"
 
+#: lib/citeengines/biblatex-chicago.citeengine:149
 #: lib/citeengines/biblatex-natbib.citeengine:145
 #: lib/citeengines/biblatex.citeengine:135
 #: lib/citeengines/jurabib.citeengine:125
 msgid "bibliography entry"
-msgstr "zápis do bibliografie"
+msgstr "záznam bibliografie"
 
+#: lib/citeengines/biblatex-chicago.citeengine:150
 #: lib/citeengines/biblatex-natbib.citeengine:146
 #: lib/citeengines/biblatex.citeengine:136 lib/layouts/tufte-book.layout:30
 msgid "Full bibliography entry."
-msgstr "Plný zápis bibliografie."
+msgstr "Plný záznam bibliografie."
 
 #: lib/citeengines/biblatex-natbib.citeengine:147
 #: lib/citeengines/biblatex.citeengine:137
@@ -6453,10 +6469,110 @@ msgstr ", a "
 msgid " and [[separate two authors in citation]]"
 msgstr " a "
 
+#: lib/citeengines/biblatex-chicago.citeengine:163
+msgid "'s[[genitive suffix for author names]]"
+msgstr "'ov"
+
 #: lib/citeengines/biblatex-natbib.citeengine:303
 #: lib/citeengines/biblatex.citeengine:289
 msgid "Super"
 msgstr "Super"
+
+#: lib/citeengines/biblatex-chicago.citeengine:320
+msgid "+ footnote: full or abbr. bib. entry"
+msgstr "+ poznámka: plný alebo skrátený bib.-záznam"
+
+#: lib/citeengines/biblatex-chicago.citeengine:321
+msgid "full or abbr. bib. entry"
+msgstr "úplný alebo skrátený bib.-záznam"
+
+#: lib/citeengines/biblatex-chicago.citeengine:322
+msgid "Full or abbreviated bibliography entry."
+msgstr "Úplný alebo skrátený záznam bibliografie."
+
+#: lib/citeengines/biblatex-chicago.citeengine:323
+msgid "full or abbr. bib. entry w/o author"
+msgstr "úplný alebo skrátený bib.-záznam bez autora"
+
+#: lib/citeengines/biblatex-chicago.citeengine:324
+msgid "Full or abbreviated bibliography entry without author."
+msgstr "Úplný alebo skrátený bibliografický záznam bez autora."
+
+#: lib/citeengines/biblatex-chicago.citeengine:325
+msgid "abbr. bib. entry"
+msgstr "skrátený bib. záznam"
+
+#: lib/citeengines/biblatex-chicago.citeengine:326
+msgid "Abbreviated bibliography entry."
+msgstr "Skrátený záznam bibliografie."
+
+#: lib/citeengines/biblatex-chicago.citeengine:327
+msgid "full bib. entry w/o author"
+msgstr "úplný bib. záznam bez autora"
+
+#: lib/citeengines/biblatex-chicago.citeengine:328
+msgid "Full bibliography entry without author."
+msgstr "Úplný záznam bibliografie bez autora."
+
+#: lib/citeengines/biblatex-chicago.citeengine:329
+msgid "full or abbr. bib. entry w/o prenames"
+msgstr "úplný alebo strátený bib. záznam bez predmien"
+
+#: lib/citeengines/biblatex-chicago.citeengine:330
+msgid "Full or abbreviated bibliography, omit prenames."
+msgstr "Úplná alebo skrátená bibliografia, vynechajte predmená."
+
+#: lib/citeengines/biblatex-chicago.citeengine:331
+msgid "No ibidem tracking"
+msgstr "Bez ibidem sledovania"
+
+#: lib/citeengines/biblatex-chicago.citeengine:332
+msgid "No ibid."
+msgstr "Bez ibid."
+
+#: lib/citeengines/biblatex-chicago.citeengine:333
+msgid "No &ibidem tracking[[Possible substitute to All aut&hors]]"
+msgstr "Bez &ibidem sledovania"
+
+#: lib/citeengines/biblatex-chicago.citeengine:334
+msgid "Disable ibidem tracking for this entry"
+msgstr "Sledovanie ibidem vypnúť pre tento záznam"
+
+#: lib/citeengines/biblatex-chicago.citeengine:335
+msgid "No &back reference[[Possible substitute to All aut&hors]]"
+msgstr "Bez &spätnej referencie"
+
+#: lib/citeengines/biblatex-chicago.citeengine:336
+msgid ""
+"Disable page tracking for this entry to prevent back references (with option "
+"noteref)"
+msgstr ""
+"Vypnúť sledovanie stránky pre tento záznam, aby sa zabránilo spätným odkazom "
+"(pri voľbe noteref)"
+
+#: lib/citeengines/biblatex-chicago.citeengine:337
+msgid "abbr. bib. entry w/ back ref."
+msgstr "skrátený bib. záznam so spätnou ref."
+
+#: lib/citeengines/biblatex-chicago.citeengine:338
+msgid "Abbreviated bib. entry (enforce back reference)"
+msgstr "Skrátený záznam bibliografie (a vynútiť spätnú referenciu)"
+
+#: lib/citeengines/biblatex-chicago.citeengine:339
+msgid "(w/ back ref.)"
+msgstr "(so spätným odkazom)"
+
+#: lib/citeengines/biblatex-chicago.citeengine:340
+msgid "(enforce back reference)"
+msgstr "(uplatniť spätnú referenciu)"
+
+#: lib/citeengines/biblatex-chicago.citeengine:341
+msgid "??? (no shorthand!)"
+msgstr "??? (bez skratky!)"
+
+#: lib/citeengines/biblatex-chicago.citeengine:342
+msgid "??? (no journal title!)"
+msgstr "??? (bez názvu časopisu!)"
 
 #: lib/citeengines/biblatex-natbib.citeengine:304
 #: lib/citeengines/biblatex.citeengine:290 lib/ui/stdtoolbars.inc:195
@@ -6504,7 +6620,7 @@ msgstr ""
 
 #: lib/citeengines/jurabib.citeengine:126
 msgid "Bibliography entry."
-msgstr "Zápis do bibliografie."
+msgstr "Záznam bibliografie."
 
 #: lib/citeengines/jurabib.citeengine:127
 msgid "before"
@@ -18853,7 +18969,7 @@ msgstr "poznámka na okraji (číslovaná)"
 
 #: lib/layouts/tufte-book.layout:29
 msgid "bibl. entry"
-msgstr "bibl. zápis"
+msgstr "bibl. záznam"
 
 #: lib/layouts/tufte-book.layout:184
 msgid "Marginnote"
@@ -36397,7 +36513,7 @@ msgstr "Skript `%1$s' zlyhal."
 
 #: src/insets/Inset.cpp:92
 msgid "Bibliography Entry"
-msgstr "Zápis do bibliografie"
+msgstr "Záznam bibliografie"
 
 #: src/insets/Inset.cpp:98
 msgid "Float"

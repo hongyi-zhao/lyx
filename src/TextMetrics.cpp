@@ -131,17 +131,6 @@ pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
 }
 
 
-pair<pit_type, ParagraphMetrics const *> TextMetrics::firstVisible() const
-{
-	// This only works in the main text, I think (bottom > 0)
-	LASSERT(text_->isMainText(), return first());
-	auto it = find_if(par_metrics_.begin(), par_metrics_.end(),
-	                  [] (ParMetricsCache::value_type const & p) {
-	                      return p.second.hasPosition() && p.second.bottom() > 0;
-	                  });
-	return make_pair(it->first, &it->second);
-}
-
 pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
 {
 	LBUFERR(!par_metrics_.empty());

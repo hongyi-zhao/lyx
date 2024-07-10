@@ -1749,6 +1749,8 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		docstring label = cit->second;
 		CitationStyle ccs = citeStyleList[ii - 1];
+		if (!ccs.style.empty() && ccs.style != bp.biblatex_citestyle)
+			continue;
 		ccs.forceUpperCase &= force;
 		ccs.hasStarredVersion &= star;
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),

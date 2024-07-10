@@ -24603,7 +24603,72 @@ CiteEngine
 \end_layout
 
 \begin_layout LyX-Code
+
+\change_inserted -712698321 1720623059
+style@
+\change_unchanged
 LyXName|alias$*<!_stardesc!_stardesctooltip>[][]=latexcmd
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1720623254
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720623079
+style
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+:
+ If this is given,
+ the command is specific to this (biblatex) citation style.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720623135
+apa@nptextcite
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ a citation command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720623254
+
+\backslash
+nptextcite
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ which is only available with the 
+\emph on
+apa
+\emph default
+ citation style can be defined.
 \end_layout
 
 \begin_layout Itemize
@@ -24713,11 +24778,36 @@ latexcmd
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1720623197
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-Alias
+
+\change_inserted -712698321 1720623197
+Style
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+,
+ 
+\change_unchanged
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_deleted -712698321 1720623181
+A
+\change_inserted -712698321 1720623181
+a
+\change_unchanged
+lias
 \end_layout
 
 \end_inset

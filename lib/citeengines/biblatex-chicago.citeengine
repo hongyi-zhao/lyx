@@ -27,8 +27,9 @@ MaxCiteNames 3
 
 
 # The syntax of the cite command definitions below is:
-# LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
+# style@LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
 # 
+# * style:    (Optional) citestyle to which this command is specific.
 # * LyXName:  The LyX name as output in the LyX file. For
 #             portability reasons, we try to use the same
 #             name for same-formatted commands in the

@@ -1569,6 +1569,8 @@ BiblioInfo::CiteStringMap const BiblioInfo::getCiteStrings(
 	string style;
 	CiteStringMap csm(styles.size());
 	for (size_t i = 0; i != csm.size(); ++i) {
+		if (!styles[i].style.empty() && styles[i].style != buf.masterParams().biblatex_citestyle)
+			continue;
 		style = styles[i].name;
 		csm[i] = make_pair(from_ascii(style), getLabel(keys, buf, style, ci));
 	}

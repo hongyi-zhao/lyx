@@ -23456,7 +23456,51 @@ CiteEngine
 \end_layout
 
 \begin_layout LyX-Code
-LyXName|alias$*<!_stardesc!_stardesctooltip>[][]=latexcmd
+style@LyXName|alias$*<!_stardesc!_stardesctooltip>[][]=latexcmd
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+style
+\end_layout
+
+\end_inset
+
+:
+ Wenn dies angegeben wird,
+ wird der Befehl als spezifisch für einen (Biblatex-)Zitierstil markiert.
+ Mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+apa@nptextcite
+\end_layout
+
+\end_inset
+
+ können Sie so bspw.
+ einen Befehl 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+nptextcite
+\end_layout
+
+\end_inset
+
+ definieren,
+ der nur mit dem Zitierstil 
+\emph on
+apa
+\emph default
+ verfügbar ist.
 \end_layout
 
 \begin_layout Itemize
@@ -23588,7 +23632,18 @@ latexcmd
 status collapsed
 
 \begin_layout Plain Layout
-Alias
+Style
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+alias
 \end_layout
 
 \end_inset

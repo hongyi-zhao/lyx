@@ -1169,15 +1169,16 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		/** For portability reasons (between different
 		 *  cite engines such as natbib and biblatex),
 		 *  we distinguish between:
-		 *  1. The LyX name as output in the LyX file
-		 *  2. Possible aliases that might fall back to
+		 *  1. The style that features this command
+		 *  2. The LyX name as output in the LyX file
+		 *  3. Possible aliases that might fall back to
 		 *     the given LyX name in the current engine
-		 *  3. The actual LaTeX command that is output
-		 *  (2) and (3) are optional.
+		 *  4. The actual LaTeX command that is output
+		 *  (1), (3) and (4) are optional.
 		 *  Also, the GUI string for the starred version can
 		 *  be changed
 		 *  The syntax is:
-		 *  LyXName|alias,nextalias*<!stardesc!stardesctooltip>[][]=latexcmd
+		 *  style@LyXName|alias,nextalias*<!stardesc!stardesctooltip>[][]=latexcmd
 		 */
 		enum ScanMode {
 			LyXName,
@@ -1192,6 +1193,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		string alias;
 		string latex_cmd;
 		string stardesc;
+		string style;
 		size_t const n = def.size();
 		for (size_t i = 0; i != n; ++i) {
 			ichar = def[i];
@@ -1222,6 +1224,11 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 				else
 					lyx_cmd += ichar;
 			}
+		}
+		// split off style prefix if there
+		if (contains(lyx_cmd, '@')) {
+			lyx_cmd = split(lyx_cmd, style, '@');
+			cs.style = style;
 		}
 		cs.name = lyx_cmd;
 		cs.cmd = latex_cmd.empty() ? lyx_cmd : latex_cmd;

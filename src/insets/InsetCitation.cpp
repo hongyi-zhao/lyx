@@ -380,6 +380,13 @@ CitationStyle asValidLatexCommand(BufferParams const & bp, string const & input,
 	for (; it != end; ++it) {
 		CitationStyle this_cs = *it;
 		if (this_cs.name == normalized_input) {
+			if (!this_cs.style.empty() && this_cs.style != bp.biblatex_citestyle) {
+				// citation not supported with current style
+				// reset to \cite
+				normalized_input = "cite";
+				it = valid_styles.begin();
+				continue;
+			}
 			cs = *it;
 			break;
 		}

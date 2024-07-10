@@ -43,6 +43,8 @@ public:
 	std::string stardesc;
 	/// Optional tooltip for the starred version
 	std::string startooltip;
+	/// Style that supports the command
+	std::string style;
 	/// upper casing author prefixes (van -> Van)
 	bool forceUpperCase;
 	/// starred version (full author list by default)

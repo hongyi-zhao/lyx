@@ -24692,6 +24692,48 @@ Falsch
 -Teil.
 \end_layout
 
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+{%ifstyle:<styles>%[[wahr]][[falsch]]}
+\end_layout
+
+\end_inset
+
+:
+ führt den 
+\begin_inset Quotes gld
+\end_inset
+
+Wahr
+\begin_inset Quotes grd
+\end_inset
+
+-Teil aus,
+ wenn der aktuelle Biblatex-Zitierstil einer der Stile in der komma-separierten Liste 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<styles>
+\end_layout
+
+\end_inset
+
+ ist,
+ sonst den 
+\begin_inset Quotes gld
+\end_inset
+
+Falsch
+\begin_inset Quotes grd
+\end_inset
+
+-Teil.
+\end_layout
+
 \begin_layout Standard
 Wir haben oben gesagt,
  dass 

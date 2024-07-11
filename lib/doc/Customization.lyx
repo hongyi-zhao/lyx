@@ -25725,6 +25725,51 @@ Biblatex
 \family default
  format for multi-reference citations),
  the false part if this is not the case.
+\change_inserted -712698321 1720625677
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1720628578
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720628557
+{%ifstyle:<styles>%[[true]][[false]]}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+:
+ process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ if the current biblatex citation style matches a style in the comma-separated list of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720628580
+<styles>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+,
+ else the false part.
 \end_layout
 
 \begin_layout Standard

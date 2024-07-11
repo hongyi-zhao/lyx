@@ -1171,6 +1171,17 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = modifier_;
 		else if (key == "numericallabel")
 			ret = cite_number_;
+		else if (prefixIs(key, "ifstyle:")) {
+			// Return whether we use a particular cite style
+			vector<string> const stls = getVectorFromString(to_ascii(subtype));
+			string const cs = buf.masterParams().biblatex_citestyle;
+			for (auto const & s : stls) {
+				if (cs == s) {
+					ret = from_ascii("x"); // any non-empty string will do
+					break;
+				}
+			}
+		}
 		else if (prefixIs(key, "ifmultiple:")) {
 			// Return whether we have multiple authors
 			docstring const kind = operator[](subtype);

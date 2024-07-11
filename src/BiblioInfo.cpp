@@ -524,19 +524,19 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 
 docstring const BibTeXInfo::getAuthorOrEditorList(Buffer const * buf,
 						  size_t const max_key_size,
-						  bool full, bool forceshort) const
+						  bool amp, bool full, bool forceshort) const
 {
 	docstring author = operator[]("author");
 	if (author.empty())
 		author = operator[]("editor");
 
-	return getAuthorList(buf, author, max_key_size, full, forceshort);
+	return getAuthorList(buf, author, max_key_size, amp, full, forceshort);
 }
 
 
 docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 		docstring const & author, size_t const max_key_size,
-		bool const full, bool const forceshort,
+		bool const amp, bool const full, bool const forceshort,
 		bool const allnames, bool const beginning) const
 {
 	// Maxnames treshold depend on engine
@@ -582,12 +582,14 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 	string const namesep =
 		buf ? buf->params().documentClass().getCiteMacro(engine_type, "B_namesep")
 		   : ", ";
-	string const lastnamesep =
-		buf ? buf->params().documentClass().getCiteMacro(engine_type, "B_lastnamesep")
-		    : ", and ";
-	string const pairnamesep =
-		buf ? buf->params().documentClass().getCiteMacro(engine_type, "B_pairnamesep")
-		     : " and ";
+	string lastnamesep = ", and ";
+	if (buf)
+		lastnamesep = amp ? buf->params().documentClass().getCiteMacro(engine_type, "B_lastampnamesep")
+				  : buf->params().documentClass().getCiteMacro(engine_type, "B_lastnamesep");
+	string pairnamesep = " and ";
+	if (buf)
+		pairnamesep = amp ? buf->params().documentClass().getCiteMacro(engine_type, "B_amppairnamesep")
+				  : buf->params().documentClass().getCiteMacro(engine_type, "B_pairnamesep");
 	string firstnameform =
 			buf ? buf->params().documentClass().getCiteMacro(engine_type, "!firstnameform")
 			     : "{%prefix%[[%prefix% ]]}%surname%{%suffix%[[, %suffix%]]}{%prename%[[, %prename%]]}";
@@ -1192,65 +1194,86 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			// Special key to provide abbreviated name list,
 			// with respect to maxcitenames. Suitable for Bibliography
 			// beginnings.
+			bool const amp = prefixIs(subtype, '&');
+			if (amp)
+				subtype = subtype.substr(1);
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, ci.max_key_size, false, false, true);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, amp, false, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "fullnames:")) {
 			// Return a full name list. Suitable for Bibliography
 			// beginnings.
+			bool const amp = prefixIs(subtype, '&');
+			if (amp)
+				subtype = subtype.substr(1);
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, ci.max_key_size, true, false, true);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, amp, true, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "forceabbrvnames:")) {
 			// Special key to provide abbreviated name lists,
 			// irrespective of maxcitenames. Suitable for Bibliography
 			// beginnings.
+			bool const amp = prefixIs(subtype, '&');
+			if (amp)
+				subtype = subtype.substr(1);
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, ci.max_key_size, false, true, true);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, amp, false, true, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "abbrvbynames:")) {
 			// Special key to provide abbreviated name list,
 			// with respect to maxcitenames. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
+			bool const amp = prefixIs(subtype, '&');
+			if (amp)
+				subtype = subtype.substr(1);
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, ci.max_key_size, false, false, true, false);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, amp, false, false, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "fullbynames:")) {
 			// Return a full name list. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
+			bool const amp = prefixIs(subtype, '&');
+			if (amp)
+				subtype = subtype.substr(1);
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, ci.max_key_size, true, false, true, false);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, amp, true, false, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (prefixIs(key, "forceabbrvbynames:")) {
 			// Special key to provide abbreviated name lists,
 			// irrespective of maxcitenames. Suitable for further names inside a
 			// bibliography item // (such as "ed. by ...")
+			bool const amp = prefixIs(subtype, '&');
+			if (amp)
+				subtype = subtype.substr(1);
 			docstring const kind = operator[](subtype);
-			ret = getAuthorList(&buf, kind, ci.max_key_size, false, true, true, false);
+			ret = getAuthorList(&buf, kind, ci.max_key_size, amp, false, true, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
-		} else if (key == "abbrvciteauthor") {
+		} else if (prefixIs(key, "abbrvciteauthor")) {
 			// Special key to provide abbreviated author or
 			// editor names (suitable for citation labels),
 			// with respect to maxcitenames.
-			ret = getAuthorOrEditorList(&buf, ci.max_key_size, false, false);
+			bool const amp = suffixIs(key, "&");
+			ret = getAuthorOrEditorList(&buf, ci.max_key_size, amp, false, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
-		} else if (key == "fullciteauthor") {
+		} else if (prefixIs(key, "fullciteauthor")) {
 			// Return a full author or editor list (for citation labels)
-			ret = getAuthorOrEditorList(&buf, ci.max_key_size, true, false);
+			bool const amp = suffixIs(key, "&");
+			ret = getAuthorOrEditorList(&buf, ci.max_key_size, amp, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
-		} else if (key == "forceabbrvciteauthor") {
+		} else if (prefixIs(key, "forceabbrvciteauthor")) {
 			// Special key to provide abbreviated author or
 			// editor names (suitable for citation labels),
 			// irrespective of maxcitenames.
-			ret = getAuthorOrEditorList(&buf, ci.max_key_size, false, true);
+			bool const amp = suffixIs(key, "&");
+			ret = getAuthorOrEditorList(&buf, ci.max_key_size, amp, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (key == "bibentry") {
@@ -1425,7 +1448,7 @@ docstring const BiblioInfo::getAuthorOrEditorList(docstring const & key, Buffer 
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getAuthorOrEditorList(&buf, max_key_size, false);
+	return data.getAuthorOrEditorList(&buf, max_key_size, false, false);
 }
 
 
@@ -1580,7 +1603,15 @@ BiblioInfo::CiteStringMap const BiblioInfo::getCiteStrings(
 	string style;
 	CiteStringMap csm(styles.size());
 	for (size_t i = 0; i != csm.size(); ++i) {
-		if (!styles[i].style.empty() && styles[i].style != buf.masterParams().biblatex_citestyle)
+		bool ours = false;
+		// exclude variants that are not supported in the current style
+		for (string const & s: styles[i].styles) {
+			if (s == buf.masterParams().biblatex_citestyle) {
+				ours = true;
+				break;
+			}
+		}
+		if (!styles[i].styles.empty() && !ours)
 			continue;
 		style = styles[i].name;
 		csm[i] = make_pair(from_ascii(style), getLabel(keys, buf, style, ci));

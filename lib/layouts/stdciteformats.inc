@@ -29,6 +29,8 @@ CiteFormat default
 	B_namesep , [[separate author names in citation, except for last name]]
 	B_lastnamesep , and [[separate name of last author in citation]]
 	B_pairnamesep  and [[separate two authors in citation]]
+	B_lastampnamesep , & [[separate name of last author in citation w/ ampersand]]
+	B_amppairnamesep  & [[separate two authors in citation w/ ampersand]]
 
 	#
 	# Macros

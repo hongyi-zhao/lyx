@@ -377,6 +377,64 @@ def revert_biblatex_chicago(document):
             document.body[i : j + 1] = put_cmd_in_ert([res])
         i = j + 1
 
+
+def revert_nptextcite(document):
+    """Revert \\nptextcite to ERT"""
+
+    # 1. Get cite engine
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    # 2. Do we use biblatex?
+    if engine != "biblatex" and engine != "biblatex-natbib":
+        return
+    
+    # 3. and APA?
+    cetype = "authoryear"
+    i = find_token(document.header, "\\biblatex_citestyle", 0)
+    if i == -1:
+        return
+
+    # 4. Convert \nptextcite to ERT
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset citation", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of citation inset at line %d!!" % (i))
+            i += 1
+            continue
+        k = find_token(document.body, "LatexCommand", i, j)
+        if k == -1:
+            document.warning("Can't find LatexCommand for citation inset at line %d!" % (i))
+            i = j + 1
+            continue
+        cmd = get_value(document.body, "LatexCommand", k)
+        if cmd == "nptextcite":
+            pre = get_quoted_value(document.body, "before", i, j)
+            post = get_quoted_value(document.body, "after", i, j)
+            key = get_quoted_value(document.body, "key", i, j)
+            if not key:
+                document.warning("Citation inset at line %d does not have a key!" % (i))
+                key = "???"
+            # Replace known new commands with ERT
+            res = "\\nptextcite"
+            if pre:
+                res += "[" + pre + "]"
+            if post:
+                res += "[" + post + "]"
+            elif pre:
+                res += "[]"
+            res += "{" + key + "}"
+            document.body[i : j + 1] = put_cmd_in_ert([res])
+        i = j + 1
+
 ##
 # Conversion hub
 #
@@ -386,11 +444,13 @@ convert = [
     [621, [convert_url_escapes, convert_url_escapes2]],
     [622, []],
     [623, [convert_he_letter]],
-    [624, [convert_biblatex_chicago]]
+    [624, [convert_biblatex_chicago]],
+    [625, []]
 ]
 
 
 revert = [
+    [624, [revert_nptextcite]],
     [623, [revert_biblatex_chicago]],
     [622, []],
     [621, [revert_glue_parskip]],

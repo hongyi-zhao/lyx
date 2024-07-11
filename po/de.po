@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-07-09 15:33+0200\n"
-"PO-Revision-Date: 2024-07-09 15:49+0200\n"
+"POT-Creation-Date: 2024-07-11 10:34+0200\n"
+"PO-Revision-Date: 2024-07-11 10:36+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -4443,9 +4443,9 @@ msgstr ""
 "Breite von der Bildschirmskalierung abhängt."
 
 #: src/frontends/qt/ui/PrefEditUi.ui:183
-#: lib/citeengines/biblatex-chicago.citeengine:152
-#: lib/citeengines/biblatex-natbib.citeengine:148
-#: lib/citeengines/biblatex.citeengine:138
+#: lib/citeengines/biblatex-chicago.citeengine:154
+#: lib/citeengines/biblatex-natbib.citeengine:151
+#: lib/citeengines/biblatex.citeengine:141
 msgid "Auto"
 msgstr "Automatisch"
 
@@ -6561,33 +6561,33 @@ msgstr ""
 "Naturwissenschaften und Mathematik geeignet sind."
 
 #: lib/citeengines/basic.citeengine:52
-#: lib/citeengines/biblatex-chicago.citeengine:143
-#: lib/citeengines/biblatex-natbib.citeengine:138
-#: lib/citeengines/biblatex.citeengine:129
+#: lib/citeengines/biblatex-chicago.citeengine:145
+#: lib/citeengines/biblatex-natbib.citeengine:141
+#: lib/citeengines/biblatex.citeengine:132
 #: lib/citeengines/jurabib.citeengine:121 lib/citeengines/natbib.citeengine:119
 msgid "not cited"
 msgstr "nicht zitiert"
 
 #: lib/citeengines/basic.citeengine:53
-#: lib/citeengines/biblatex-chicago.citeengine:144
-#: lib/citeengines/biblatex-natbib.citeengine:139
-#: lib/citeengines/biblatex.citeengine:130
+#: lib/citeengines/biblatex-chicago.citeengine:146
+#: lib/citeengines/biblatex-natbib.citeengine:142
+#: lib/citeengines/biblatex.citeengine:133
 #: lib/citeengines/jurabib.citeengine:122 lib/citeengines/natbib.citeengine:120
 msgid "Add to bibliography only."
 msgstr "Nur zum Literaturverzeichnis hinzufügen"
 
 #: lib/citeengines/basic.citeengine:54
-#: lib/citeengines/biblatex-chicago.citeengine:145
-#: lib/citeengines/biblatex-natbib.citeengine:140
-#: lib/citeengines/biblatex.citeengine:131
+#: lib/citeengines/biblatex-chicago.citeengine:147
+#: lib/citeengines/biblatex-natbib.citeengine:143
+#: lib/citeengines/biblatex.citeengine:134
 #: lib/citeengines/jurabib.citeengine:123 lib/citeengines/natbib.citeengine:121
 msgid "Key only."
 msgstr "Nur Schlüssel"
 
 #: lib/citeengines/basic.citeengine:55
-#: lib/citeengines/biblatex-chicago.citeengine:146
-#: lib/citeengines/biblatex-natbib.citeengine:141
-#: lib/citeengines/biblatex.citeengine:132
+#: lib/citeengines/biblatex-chicago.citeengine:148
+#: lib/citeengines/biblatex-natbib.citeengine:144
+#: lib/citeengines/biblatex.citeengine:135
 #: lib/citeengines/jurabib.citeengine:124 lib/citeengines/natbib.citeengine:122
 msgid "Key"
 msgstr "Schlüssel"
@@ -6602,205 +6602,203 @@ msgid ""
 "to produce citations according to the Chicago Manual of Style. As with "
 "normal Biblatex, the use of 'biber' as Bibliography processor is advised."
 msgstr ""
-"Diese Biblatex-Variante verwendet das Paket biblatex-chicago, das "
-"mithilfe von Biblatex Literaturverweise gemäß dem Chicago Manual of Style "
-"generiert. Wie beim normalen Biblatex wird die Verwendung von ,biber` als"
-" Literaturverzeichnis-"
-"Prozessor dringend empfohlen."
+"Diese Biblatex-Variante verwendet das Paket biblatex-chicago, das mithilfe "
+"von Biblatex Literaturverweise gemäß dem Chicago Manual of Style generiert. "
+"Wie beim normalen Biblatex wird die Verwendung von ,biber` als "
+"Literaturverzeichnis-Prozessor dringend empfohlen."
 
-#: lib/citeengines/biblatex-chicago.citeengine:147
-#: lib/citeengines/biblatex-natbib.citeengine:143
-#: lib/citeengines/biblatex.citeengine:133 lib/layouts/numreport.inc:44
+#: lib/citeengines/biblatex-chicago.citeengine:149
+#: lib/citeengines/biblatex-natbib.citeengine:146
+#: lib/citeengines/biblatex.citeengine:136 lib/layouts/numreport.inc:44
 #: lib/layouts/stdcounters.inc:91
 msgid "Footnote"
 msgstr "Fußnote"
 
-#: lib/citeengines/biblatex-chicago.citeengine:148
-#: lib/citeengines/biblatex-natbib.citeengine:144
-#: lib/citeengines/biblatex.citeengine:134 lib/layouts/stdinsets.inc:52
+#: lib/citeengines/biblatex-chicago.citeengine:150
+#: lib/citeengines/biblatex-natbib.citeengine:147
+#: lib/citeengines/biblatex.citeengine:137 lib/layouts/stdinsets.inc:52
 msgid "Foot"
 msgstr "Fußnote"
 
-#: lib/citeengines/biblatex-chicago.citeengine:149
-#: lib/citeengines/biblatex-natbib.citeengine:145
-#: lib/citeengines/biblatex.citeengine:135
+#: lib/citeengines/biblatex-chicago.citeengine:151
+#: lib/citeengines/biblatex-natbib.citeengine:148
+#: lib/citeengines/biblatex.citeengine:138
 #: lib/citeengines/jurabib.citeengine:125
 msgid "bibliography entry"
 msgstr "Literaturverzeichnis-Eintrag"
 
-#: lib/citeengines/biblatex-chicago.citeengine:150
-#: lib/citeengines/biblatex-natbib.citeengine:146
-#: lib/citeengines/biblatex.citeengine:136 lib/layouts/tufte-book.layout:30
+#: lib/citeengines/biblatex-chicago.citeengine:152
+#: lib/citeengines/biblatex-natbib.citeengine:149
+#: lib/citeengines/biblatex.citeengine:139 lib/layouts/tufte-book.layout:30
 msgid "Full bibliography entry."
 msgstr "Kompletter Literaturverzeichnis-Eintrag"
 
-#: lib/citeengines/biblatex-chicago.citeengine:151
-#: lib/citeengines/biblatex-natbib.citeengine:147
-#: lib/citeengines/biblatex.citeengine:137
+#: lib/citeengines/biblatex-chicago.citeengine:153
+#: lib/citeengines/biblatex-natbib.citeengine:150
+#: lib/citeengines/biblatex.citeengine:140
 msgid "Autocite"
 msgstr "Autocite"
 
-#: lib/citeengines/biblatex-chicago.citeengine:154
-#: lib/citeengines/biblatex.citeengine:140
+#: lib/citeengines/biblatex-chicago.citeengine:156
+#: lib/citeengines/biblatex.citeengine:143
 msgid "S&horten author list[[Possible substitute to All aut&hors]]"
 msgstr "A&utorenliste kürzen"
 
-#: lib/citeengines/biblatex-chicago.citeengine:155
-#: lib/citeengines/biblatex.citeengine:141
+#: lib/citeengines/biblatex-chicago.citeengine:157
+#: lib/citeengines/biblatex.citeengine:144
 msgid "Force a short author list (using et al.)"
 msgstr "Erzwinge eine mit \"et al.\" abgekürzte Autorenliste."
 
-#: lib/citeengines/biblatex-chicago.citeengine:156
-#: lib/citeengines/biblatex-natbib.citeengine:150
-#: lib/citeengines/biblatex.citeengine:142
+#: lib/citeengines/biblatex-chicago.citeengine:158
+#: lib/citeengines/biblatex-natbib.citeengine:153
+#: lib/citeengines/biblatex.citeengine:145
 msgid "F&orce full title[[Possible substitute to All aut&hors]]"
 msgstr "Volltitel erz&wingen"
 
-#: lib/citeengines/biblatex-chicago.citeengine:157
-#: lib/citeengines/biblatex-natbib.citeengine:151
-#: lib/citeengines/biblatex.citeengine:143
+#: lib/citeengines/biblatex-chicago.citeengine:159
+#: lib/citeengines/biblatex-natbib.citeengine:154
+#: lib/citeengines/biblatex.citeengine:146
 msgid "Use full title even if shorttitle exists"
 msgstr "Gebe den Volltitel aus, auch wenn ein Kurztitel existiert"
 
-#: lib/citeengines/biblatex-chicago.citeengine:159
-#: lib/citeengines/biblatex-natbib.citeengine:153
-#: lib/citeengines/biblatex.citeengine:145
+#: lib/citeengines/biblatex-chicago.citeengine:161
+#: lib/citeengines/biblatex-natbib.citeengine:156
+#: lib/citeengines/biblatex.citeengine:148
 #: lib/citeengines/jurabib.citeengine:130 lib/citeengines/natbib.citeengine:124
 msgid " et al."
 msgstr " et al."
 
-#: lib/citeengines/biblatex-chicago.citeengine:160
-#: lib/citeengines/biblatex-natbib.citeengine:154
-#: lib/citeengines/biblatex.citeengine:146
+#: lib/citeengines/biblatex-chicago.citeengine:162
+#: lib/citeengines/biblatex-natbib.citeengine:157
+#: lib/citeengines/biblatex.citeengine:149
 #: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:29
 msgid ", [[separate author names in citation, except for last name]]"
 msgstr ", "
 
-#: lib/citeengines/biblatex-chicago.citeengine:161
-#: lib/citeengines/biblatex-natbib.citeengine:155
-#: lib/citeengines/biblatex.citeengine:147
+#: lib/citeengines/biblatex-chicago.citeengine:163
+#: lib/citeengines/biblatex-natbib.citeengine:158
+#: lib/citeengines/biblatex.citeengine:150
 #: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:30
 msgid ", and [[separate name of last author in citation]]"
 msgstr " und "
 
-#: lib/citeengines/biblatex-chicago.citeengine:162
-#: lib/citeengines/biblatex-natbib.citeengine:156
-#: lib/citeengines/biblatex.citeengine:148
+#: lib/citeengines/biblatex-chicago.citeengine:164
+#: lib/citeengines/biblatex-natbib.citeengine:159
+#: lib/citeengines/biblatex.citeengine:151
 #: lib/citeengines/natbib.citeengine:127 lib/layouts/stdciteformats.inc:31
 msgid " and [[separate two authors in citation]]"
 msgstr " und "
 
-#: lib/citeengines/biblatex-chicago.citeengine:163
+#: lib/citeengines/biblatex-chicago.citeengine:165
 msgid "'s[[genitive suffix for author names]]"
 msgstr "s"
 
-#: lib/citeengines/biblatex-chicago.citeengine:318
-#: lib/citeengines/biblatex-natbib.citeengine:303
-#: lib/citeengines/biblatex.citeengine:289
+#: lib/citeengines/biblatex-chicago.citeengine:320
+#: lib/citeengines/biblatex-natbib.citeengine:318
+#: lib/citeengines/biblatex.citeengine:304
 msgid "Super"
 msgstr "Hochgestellt"
 
-#: lib/citeengines/biblatex-chicago.citeengine:319
-#: lib/citeengines/biblatex-natbib.citeengine:304
-#: lib/citeengines/biblatex.citeengine:290 lib/ui/stdtoolbars.inc:195
+#: lib/citeengines/biblatex-chicago.citeengine:321
+#: lib/citeengines/biblatex-natbib.citeengine:319
+#: lib/citeengines/biblatex.citeengine:305 lib/ui/stdtoolbars.inc:195
 #: src/insets/InsetScript.cpp:66
 msgid "Superscript"
 msgstr "Hochgestellt"
 
-#: lib/citeengines/biblatex-chicago.citeengine:320
+#: lib/citeengines/biblatex-chicago.citeengine:322
 msgid "+ footnote: full or abbr. bib. entry"
 msgstr "+ Fußnote: vollst. od. abgek. Litverz.-Eintrag"
 
-#: lib/citeengines/biblatex-chicago.citeengine:321
+#: lib/citeengines/biblatex-chicago.citeengine:323
 msgid "full or abbr. bib. entry"
 msgstr "vollst. od. abgek. Litverz.-Eintrag"
 
-#: lib/citeengines/biblatex-chicago.citeengine:322
+#: lib/citeengines/biblatex-chicago.citeengine:324
 msgid "Full or abbreviated bibliography entry."
 msgstr "Vollst. oder abgekürzter Literaturverzeichnis-Eintrag"
 
-#: lib/citeengines/biblatex-chicago.citeengine:323
+#: lib/citeengines/biblatex-chicago.citeengine:325
 msgid "full or abbr. bib. entry w/o author"
 msgstr "vollst. od. abgek. Litverz.-Eintrag ohne Autor"
 
-#: lib/citeengines/biblatex-chicago.citeengine:324
+#: lib/citeengines/biblatex-chicago.citeengine:326
 msgid "Full or abbreviated bibliography entry without author."
 msgstr "Vollst. oder abgekürzter Literaturver.-Eintrag ohne Autor"
 
-#: lib/citeengines/biblatex-chicago.citeengine:325
+#: lib/citeengines/biblatex-chicago.citeengine:327
 msgid "abbr. bib. entry"
 msgstr "abgek. Lit.-Eintrag"
 
-#: lib/citeengines/biblatex-chicago.citeengine:326
+#: lib/citeengines/biblatex-chicago.citeengine:328
 msgid "Abbreviated bibliography entry."
 msgstr "Abgekürzter Literaturverzeichnis-Eintrag"
 
-#: lib/citeengines/biblatex-chicago.citeengine:327
+#: lib/citeengines/biblatex-chicago.citeengine:329
 msgid "full bib. entry w/o author"
 msgstr "vollst. Lit.-Eintrag ohne Autor"
 
-#: lib/citeengines/biblatex-chicago.citeengine:328
+#: lib/citeengines/biblatex-chicago.citeengine:330
 msgid "Full bibliography entry without author."
 msgstr "Kompletter Literaturverzeichnis-Eintrag ohne Autor"
 
-#: lib/citeengines/biblatex-chicago.citeengine:329
+#: lib/citeengines/biblatex-chicago.citeengine:331
 msgid "full or abbr. bib. entry w/o prenames"
 msgstr "vollst. od. abgek. Lit.-Eintrag ohne Vornamen"
 
-#: lib/citeengines/biblatex-chicago.citeengine:330
+#: lib/citeengines/biblatex-chicago.citeengine:332
 msgid "Full or abbreviated bibliography, omit prenames."
 msgstr "Vollst. od. abgek. Litverz.-Eintrag ohne Vornamen"
 
-#: lib/citeengines/biblatex-chicago.citeengine:331
+#: lib/citeengines/biblatex-chicago.citeengine:333
 msgid "No ibidem tracking"
 msgstr "Kein Ibidem-Tracking"
 
-#: lib/citeengines/biblatex-chicago.citeengine:332
+#: lib/citeengines/biblatex-chicago.citeengine:334
 msgid "No ibid."
 msgstr "Kein ibid."
 
-#: lib/citeengines/biblatex-chicago.citeengine:333
+#: lib/citeengines/biblatex-chicago.citeengine:335
 msgid "No &ibidem tracking[[Possible substitute to All aut&hors]]"
 msgstr "Kein &Ibidem-Tracking"
 
-#: lib/citeengines/biblatex-chicago.citeengine:334
+#: lib/citeengines/biblatex-chicago.citeengine:336
 msgid "Disable ibidem tracking for this entry"
 msgstr "Ibidem-Tracking für diesen Eintrag deaktivieren"
 
-#: lib/citeengines/biblatex-chicago.citeengine:335
+#: lib/citeengines/biblatex-chicago.citeengine:337
 msgid "No &back reference[[Possible substitute to All aut&hors]]"
 msgstr "Keine &Rückverweise"
 
-#: lib/citeengines/biblatex-chicago.citeengine:336
+#: lib/citeengines/biblatex-chicago.citeengine:338
 msgid ""
 "Disable page tracking for this entry to prevent back references (with option "
 "noteref)"
 msgstr ""
-"Das Seiten-Tracking für diesen Eintrag deaktivieren, um (mit der Option"
-" noteref) "
-"Rückverweise zu verhindern"
+"Das Seiten-Tracking für diesen Eintrag deaktivieren, um (mit der Option "
+"noteref) Rückverweise zu verhindern"
 
-#: lib/citeengines/biblatex-chicago.citeengine:337
+#: lib/citeengines/biblatex-chicago.citeengine:339
 msgid "abbr. bib. entry w/ back ref."
 msgstr "abgek. Lit.-Eintrag mit Rückv."
 
-#: lib/citeengines/biblatex-chicago.citeengine:338
+#: lib/citeengines/biblatex-chicago.citeengine:340
 msgid "Abbreviated bib. entry (enforce back reference)"
 msgstr "Abgekürzter Literaturverzeichnis-Eintrag (Rückverweis erzwingen)"
 
-#: lib/citeengines/biblatex-chicago.citeengine:339
+#: lib/citeengines/biblatex-chicago.citeengine:341
 msgid "(w/ back ref.)"
 msgstr "(mit Rückverw.)"
 
-#: lib/citeengines/biblatex-chicago.citeengine:340
+#: lib/citeengines/biblatex-chicago.citeengine:342
 msgid "(enforce back reference)"
 msgstr "(Rückverweis erzwingen)"
 
-#: lib/citeengines/biblatex-chicago.citeengine:341
+#: lib/citeengines/biblatex-chicago.citeengine:343
 msgid "??? (no shorthand!)"
 msgstr "??? (kein Shorthand!)"
 
-#: lib/citeengines/biblatex-chicago.citeengine:342
+#: lib/citeengines/biblatex-chicago.citeengine:344
 msgid "??? (no journal title!)"
 msgstr "??? (kein Zeitschriftentitel!)"
 
@@ -6820,9 +6818,8 @@ msgstr ""
 "Besten für einen Umstieg von Natbib (oder dem vor LyX 2.3 verbreiteten, auf "
 "Natbib basierenden Biblatex-Workaround) zu Biblatex geeignet. Der Natbib-"
 "Modus unterstützt etwas andere und mehr Stile als das normale Biblatex. Wie "
-"beim normalen Biblatex wird die Verwendung von ,biber` als"
-" Literaturverzeichnis-"
-"Prozessor dringend empfohlen."
+"beim normalen Biblatex wird die Verwendung von ,biber` als "
+"Literaturverzeichnis-Prozessor dringend empfohlen."
 
 #: lib/citeengines/biblatex.citeengine:2 src/insets/InsetBibtex.cpp:148
 msgid "Biblatex"
@@ -7763,8 +7760,8 @@ msgstr "Zusammenfassung"
 msgid "Summary ##"
 msgstr "Zusammenfassung ##"
 
-#: lib/layouts/AEA.layout:356 src/frontends/qt/Menus.cpp:1892
-#: src/frontends/qt/Menus.cpp:1907
+#: lib/layouts/AEA.layout:356 src/frontends/qt/Menus.cpp:1902
+#: src/frontends/qt/Menus.cpp:1917
 msgid "Caption"
 msgstr "Legende"
 
@@ -17821,6 +17818,14 @@ msgstr "Nr."
 #: lib/layouts/stdciteformats.inc:27
 msgid "in"
 msgstr "in"
+
+#: lib/layouts/stdciteformats.inc:32
+msgid ", & [[separate name of last author in citation w/ ampersand]]"
+msgstr " & "
+
+#: lib/layouts/stdciteformats.inc:33
+msgid " & [[separate two authors in citation w/ ampersand]]"
+msgstr " & "
 
 #: lib/layouts/stdcounters.inc:10
 msgid "\\Roman{part}"
@@ -28317,16 +28322,16 @@ msgstr "Einfaches Gitter"
 msgid "%1$s[[name]] (%2$s[[email]])"
 msgstr "%1$s[[Name]] (%2$s[[Email]])"
 
-#: src/BiblioInfo.cpp:924 src/BiblioInfo.cpp:974 src/BiblioInfo.cpp:985
-#: src/BiblioInfo.cpp:1040 src/BiblioInfo.cpp:1044
+#: src/BiblioInfo.cpp:926 src/BiblioInfo.cpp:976 src/BiblioInfo.cpp:987
+#: src/BiblioInfo.cpp:1042 src/BiblioInfo.cpp:1046
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/BiblioInfo.cpp:1474
+#: src/BiblioInfo.cpp:1508
 msgid "No year"
 msgstr "Kein Jahr"
 
-#: src/BiblioInfo.cpp:1484
+#: src/BiblioInfo.cpp:1518
 msgid "Bibliography entry not found!"
 msgstr "Literaturverzeichnis-Eintrag nicht gefunden!"
 
@@ -29267,7 +29272,7 @@ msgstr "Konnte Klasse nicht laden"
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2776 src/TextClass.cpp:1997 src/TextClass.cpp:2030
+#: src/BufferParams.cpp:2776 src/TextClass.cpp:2004 src/TextClass.cpp:2037
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -31872,27 +31877,27 @@ msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Kann Datei stdinsets.inc nicht lesen! Dies kann zu Datenverlust führen!"
 
-#: src/TextClass.cpp:1676
+#: src/TextClass.cpp:1683
 #, c-format
 msgid "%1$s ##"
 msgstr "%1$s ##"
 
-#: src/TextClass.cpp:1677
+#: src/TextClass.cpp:1684
 #, c-format
 msgid "%1$s (Float)"
 msgstr "%1$s (Gleitobjekt)"
 
-#: src/TextClass.cpp:1682
+#: src/TextClass.cpp:1689
 #, c-format
 msgid "Sub-%1$s ##"
 msgstr "Unter-%1$s ##"
 
-#: src/TextClass.cpp:1683
+#: src/TextClass.cpp:1690
 #, c-format
 msgid "Sub-%1$s (Float)"
 msgstr "Unter-%1$s (Gleitobjekt)"
 
-#: src/TextClass.cpp:1973
+#: src/TextClass.cpp:1980
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -31906,11 +31911,11 @@ msgstr ""
 "Wenn Sie es erst kürzlich installiert haben,\n"
 "sollten Sie LyX neu konfigurieren.\n"
 
-#: src/TextClass.cpp:1977
+#: src/TextClass.cpp:1984
 msgid "Module not available"
 msgstr "Modul ist nicht verfügbar"
 
-#: src/TextClass.cpp:1984
+#: src/TextClass.cpp:1991
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -31929,16 +31934,16 @@ msgstr ""
 "Konsultieren Sie Abschnitt 3.1.2.3 des Benutzerhandbuchs (Module) für "
 "weitere Informationen."
 
-#: src/TextClass.cpp:1991 src/TextClass.cpp:2024
+#: src/TextClass.cpp:1998 src/TextClass.cpp:2031
 msgid "Package not available"
 msgstr "Paket ist nicht verfügbar"
 
-#: src/TextClass.cpp:1996
+#: src/TextClass.cpp:2003
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Fehler beim Lesen von Modul %1$s\n"
 
-#: src/TextClass.cpp:2008
+#: src/TextClass.cpp:2015
 #, c-format
 msgid ""
 "The cite engine %1$s has been requested by\n"
@@ -31952,11 +31957,11 @@ msgstr ""
 "Wenn Sie sie erst kürzlich installiert haben,\n"
 "sollten Sie LyX neu konfigurieren.\n"
 
-#: src/TextClass.cpp:2012
+#: src/TextClass.cpp:2019
 msgid "Cite Engine not available"
 msgstr "Zitierformatdatei nicht verfügbar"
 
-#: src/TextClass.cpp:2017
+#: src/TextClass.cpp:2024
 #, c-format
 msgid ""
 "The cite engine %1$s requires a package that is not\n"
@@ -31975,7 +31980,7 @@ msgstr ""
 "Konsultieren Sie Abschnitt 3.1.2.3 des Benutzerhandbuchs (Module) für "
 "weitere Informationen."
 
-#: src/TextClass.cpp:2029
+#: src/TextClass.cpp:2036
 #, c-format
 msgid "Error reading cite engine %1$s\n"
 msgstr "Fehler beim Lesen der Zitierformatdatei %1$s\n"
@@ -35879,10 +35884,10 @@ msgstr ""
 "Schieber, Strg-+/- oder Umschalt-Mausrad."
 
 #: src/frontends/qt/GuiView.cpp:735 src/frontends/qt/GuiView.cpp:846
-#: src/frontends/qt/GuiView.cpp:1033 src/frontends/qt/Menus.cpp:1931
-#: src/frontends/qt/Menus.cpp:1935 src/frontends/qt/Menus.cpp:1939
-#: src/frontends/qt/Menus.cpp:1943 src/frontends/qt/Menus.cpp:1947
-#: src/frontends/qt/Menus.cpp:1951
+#: src/frontends/qt/GuiView.cpp:1033 src/frontends/qt/Menus.cpp:1941
+#: src/frontends/qt/Menus.cpp:1945 src/frontends/qt/Menus.cpp:1949
+#: src/frontends/qt/Menus.cpp:1953 src/frontends/qt/Menus.cpp:1957
+#: src/frontends/qt/Menus.cpp:1961
 msgid "[[ZOOM]]%1$d%"
 msgstr "%1$d%"
 
@@ -36772,124 +36777,124 @@ msgid "No Citation in Scope!"
 msgstr "Keine Literaturverweis in Reichweite!"
 
 #: src/frontends/qt/Menus.cpp:1711 src/insets/InsetCitation.cpp:327
-#: src/insets/InsetCitation.cpp:457
+#: src/insets/InsetCitation.cpp:472
 msgid "No citations selected!"
 msgstr "Keine Literaturverweise ausgewählt!"
 
-#: src/frontends/qt/Menus.cpp:1760
+#: src/frontends/qt/Menus.cpp:1770
 msgid "All authors|h"
 msgstr "Alle Autoren|u"
 
-#: src/frontends/qt/Menus.cpp:1791
+#: src/frontends/qt/Menus.cpp:1801
 msgid "Force upper case|u"
 msgstr "Großschreibung erzwingen|G"
 
-#: src/frontends/qt/Menus.cpp:1805
+#: src/frontends/qt/Menus.cpp:1815
 msgid "No Text Field in Scope!"
 msgstr "Kein Textfeld in Reichweite!"
 
-#: src/frontends/qt/Menus.cpp:1824
+#: src/frontends/qt/Menus.cpp:1834
 msgid "Custom..."
 msgstr "Benutzerdefiniert..."
 
-#: src/frontends/qt/Menus.cpp:1900
+#: src/frontends/qt/Menus.cpp:1910
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Legende (%1$s)"
 
-#: src/frontends/qt/Menus.cpp:1920
+#: src/frontends/qt/Menus.cpp:1930
 msgid "Reset to Default (%1$d%)|R"
 msgstr "Auf Voreinstellungen (%1$d%) zurücksetzen|V"
 
 # , c-format
-#: src/frontends/qt/Menus.cpp:1923
+#: src/frontends/qt/Menus.cpp:1933
 msgid "Zoom In|I"
 msgstr "Größer|G"
 
-#: src/frontends/qt/Menus.cpp:1925
+#: src/frontends/qt/Menus.cpp:1935
 msgid "Zoom Out|O"
 msgstr "Kleiner|K"
 
-#: src/frontends/qt/Menus.cpp:1967
+#: src/frontends/qt/Menus.cpp:1977
 msgid "No Quote in Scope!"
 msgstr "Kein Anführungszeichen in Reichweite!"
 
-#: src/frontends/qt/Menus.cpp:1999 src/frontends/qt/Menus.cpp:2003
-#: src/frontends/qt/Menus.cpp:2007 src/frontends/qt/Menus.cpp:2011
+#: src/frontends/qt/Menus.cpp:2009 src/frontends/qt/Menus.cpp:2013
+#: src/frontends/qt/Menus.cpp:2017 src/frontends/qt/Menus.cpp:2021
 #, c-format
 msgid "%1$s (dynamic)"
 msgstr "%1$s (dynamisch)"
 
-#: src/frontends/qt/Menus.cpp:2045
+#: src/frontends/qt/Menus.cpp:2055
 #, c-format
 msgid "Use dynamic quotes (%1$s)|d"
 msgstr "Dynamische Anführungszeichen (%1$s) verwenden|y"
 
-#: src/frontends/qt/Menus.cpp:2051
+#: src/frontends/qt/Menus.cpp:2061
 msgid "dynamic[[Quotes]]"
 msgstr "dynamisch"
 
-#: src/frontends/qt/Menus.cpp:2051 src/frontends/qt/Menus.cpp:2061
+#: src/frontends/qt/Menus.cpp:2061 src/frontends/qt/Menus.cpp:2071
 msgid "static[[Quotes]]"
 msgstr "statisch"
 
-#: src/frontends/qt/Menus.cpp:2053
+#: src/frontends/qt/Menus.cpp:2063
 #, c-format
 msgid "Reset to document default (%1$s, %2$s)|o"
 msgstr "Auf Dokumentvoreinstellungen zurücksetzen (%1$s, %2$s)|o"
 
-#: src/frontends/qt/Menus.cpp:2060
+#: src/frontends/qt/Menus.cpp:2070
 #, c-format
 msgid "Reset to language default (%1$s, %2$s)|l"
 msgstr "Auf Sprachvoreinstellung zurücksetzen (%1$s, %2$s)|S"
 
-#: src/frontends/qt/Menus.cpp:2062
+#: src/frontends/qt/Menus.cpp:2072
 #, c-format
 msgid "Reset to language default (%1$s)|l"
 msgstr "Auf Sprachvoreinstellung zurücksetzen (%1$s)|S"
 
-#: src/frontends/qt/Menus.cpp:2070
+#: src/frontends/qt/Menus.cpp:2080
 msgid "Change Style|y"
 msgstr "Stil ändern|t"
 
-#: src/frontends/qt/Menus.cpp:2111
+#: src/frontends/qt/Menus.cpp:2121
 #, c-format
 msgid "Insert Separated %1$s Above"
 msgstr "Separierte Umgebung (%1$s) oberhalb einfügen"
 
-#: src/frontends/qt/Menus.cpp:2113
+#: src/frontends/qt/Menus.cpp:2123
 #, c-format
 msgid "Separated %1$s Above"
 msgstr "Separierte Umgebung (%1$s) oberhalb"
 
-#: src/frontends/qt/Menus.cpp:2119 src/frontends/qt/Menus.cpp:2132
-#: src/frontends/qt/Menus.cpp:2149
+#: src/frontends/qt/Menus.cpp:2129 src/frontends/qt/Menus.cpp:2142
+#: src/frontends/qt/Menus.cpp:2159
 #, c-format
 msgid "Insert Separated %1$s Below"
 msgstr "Separierte Umgebung (%1$s) unterhalb einfügen"
 
-#: src/frontends/qt/Menus.cpp:2121 src/frontends/qt/Menus.cpp:2134
-#: src/frontends/qt/Menus.cpp:2155
+#: src/frontends/qt/Menus.cpp:2131 src/frontends/qt/Menus.cpp:2144
+#: src/frontends/qt/Menus.cpp:2165
 #, c-format
 msgid "Separated %1$s Below"
 msgstr "Separierte Umgebung (%1$s) unterhalb"
 
-#: src/frontends/qt/Menus.cpp:2147
+#: src/frontends/qt/Menus.cpp:2157
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
 msgstr "Separierte äußere Umgebung (%1$s) unterhalb einfügen"
 
-#: src/frontends/qt/Menus.cpp:2153
+#: src/frontends/qt/Menus.cpp:2163
 #, c-format
 msgid "Separated Outer %1$s Below"
 msgstr "Separierte äußere Umgebung (%1$s) unterhalb"
 
-#: src/frontends/qt/Menus.cpp:2471
+#: src/frontends/qt/Menus.cpp:2481
 #, c-format
 msgid "Export [%1$s]|E"
 msgstr "Exportiere in das Standardformat [%1$s]|E"
 
-#: src/frontends/qt/Menus.cpp:2825
+#: src/frontends/qt/Menus.cpp:2835
 msgid "No Action Defined!"
 msgstr "Keine Aktion definiert!"
 
@@ -37262,7 +37267,7 @@ msgstr "Kein Literaturverzeichnis definiert!"
 msgid "+ %1$d more entries."
 msgstr "+ %1$d weitere Einträge."
 
-#: src/insets/InsetCitation.cpp:582 src/insets/InsetRef.cpp:554
+#: src/insets/InsetCitation.cpp:597 src/insets/InsetRef.cpp:554
 msgid "BROKEN: "
 msgstr "UNGÜLTIG: "
 

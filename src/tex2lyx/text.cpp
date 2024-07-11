@@ -215,7 +215,7 @@ char const * const known_biblatex_commands[] = { "cite", "Cite", "textcite", "Te
 "parencite", "Parencite", "citeauthor", "Citeauthor", "citeyear", "smartcite", "Smartcite",
  "footcite", "Footcite", "autocite", "Autocite", "citetitle", "fullcite", "footfullcite",
 "supercite", "cites", "Cites", "textcites", "Textcites", "parencites", "Parencites",
-"smartcites", "Smartcites", "autocites", "Autocites", 0 };
+"smartcites", "Smartcites", "autocites", "Autocites", "nptextcite", 0 };
 
 /*!
  * biblatex-chicago commands.

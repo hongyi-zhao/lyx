@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-07-10 09:53+0200\n"
-"PO-Revision-Date: 2024-07-10 08:57+0000\n"
+"POT-Creation-Date: 2024-07-11 09:34+0200\n"
+"PO-Revision-Date: 2024-07-11 07:51+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -17522,6 +17522,14 @@ msgstr "č."
 #: lib/layouts/stdciteformats.inc:27
 msgid "in"
 msgstr "v"
+
+#: lib/layouts/stdciteformats.inc:32
+msgid ", & [[separate name of last author in citation w/ ampersand]]"
+msgstr " & "
+
+#: lib/layouts/stdciteformats.inc:33
+msgid " & [[separate two authors in citation w/ ampersand]]"
+msgstr " & "
 
 #: lib/layouts/stdcounters.inc:10
 msgid "\\Roman{part}"

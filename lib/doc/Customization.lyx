@@ -24612,7 +24612,7 @@ LyXName|alias$*<!_stardesc!_stardesctooltip>[][]=latexcmd
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1720623254
+\change_inserted -712698321 1720682930
 \begin_inset Flex Code
 status collapsed
 
@@ -24627,8 +24627,7 @@ style
 \end_inset
 
 :
- If this is given,
- the command is specific to this (biblatex) citation style.
+ a (comma-separated) list of biblatex citation styles to which this command is specific.
  E.
 \begin_inset space \thinspace{}
 \end_inset

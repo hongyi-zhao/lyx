@@ -33,7 +33,8 @@ MaxCiteNames 3
 # The syntax of the cite command definitions below is:
 # style@LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
 # 
-# * style:    (Optional) citestyle to which this command is specific.
+# * style:    A (comma-separated) list of citestyles to which
+#             this command is specific.
 # * LyXName:  The LyX name as output in the LyX file. For
 #             portability reasons, we try to use the same
 #             name for same-formatted commands in the
@@ -44,7 +45,7 @@ MaxCiteNames 3
 #             This is a bit like "ObsoletedBy" in the layouts.
 # * latexcmd: The actual LaTeX command that is output.
 #
-# Alias and latexcmd are optional. If no latexcmd is given, the
+# Style, alias and latexcmd are optional. If no latexcmd is given, the
 # LyXName will be output to LaTeX.
 #
 # Note further:
@@ -81,6 +82,7 @@ MaxCiteNames 3
 CiteEngine authoryear
 	Citet|textcite*[][]
 	Citep|parencite*[][]
+	apa,apa6@nptextcite$[][]
 	Citealt|cite*[][]
 	Citealp*[][]
 	Citeauthor*[][]
@@ -175,6 +177,8 @@ CiteFormat default
 	# Add " , and " before the last item (but " and " if there are only two), else ", "
 	!smartsep {%second%[[{%next%[[%B_namesep%]][[%B_pairnamesep%]]}]][[{%next%[[%B_namesep%]][[%B_lastnamesep%]]}]]}
 
+	# "Author et al." (if > 3 authors) or "??" (variant in parentheses)
+	!abbrvpciteauthor {%abbrvciteauthor%[[{%ifstyle:apa,apa6%[[%abbrvciteauthor&%]][[%abbrvciteauthor%]]}]][[??]]}
 	# "Author et al." or "??"
 	!abbrvciteauthor {%abbrvciteauthor%[[%abbrvciteauthor%]][[??]]}
 	# "Author, ..." or "??"
@@ -183,18 +187,20 @@ CiteFormat default
 	!makeauthor {%ifstar%[[%!fullciteauthor%]][[%!abbrvciteauthor%]]}
 	# "prenote "
 	!textbefore {%textbefore%[[%textbefore% ]]}
+	# Separator before textafter
+	!tasep {%ifstyle:mla,mla-strict,mla-new,mla7%[[]][[,]]}
 	# ", postnote"
-	!textafter {%textafter%[[, %textafter%]]}
+	!textafter {%textafter%[[%!tasep% %textafter%]]}
 	# "prenote " (for qualified lists)
 	!ctextbefore {%curpretext%[[%curpretext% ]]}
 	# ", postnote" (for qualified lists)
-	!ctextafter {%curposttext%[[, %curposttext%]]}
+	!ctextafter {%curposttext%[[%!tasep% %curposttext%]]}
 	# Add a year if it exists (else "??") and possibly a modifier (as in 2017a)
 	!makeyear {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]]}
 	# Add a year if it exists (else "??") and indicate a possible modifier (as in 2017[a])
 	!myear {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]][[{%export%[[]][[%!dummymod%]]}]]}
 	# Add a shorthand if it exists else myear (see above)
-	!shmyear {%shorthand%[[%shorthand%]][[%!myear%]]}
+	!shmyear {%shorthand%[[%shorthand%]][[{%ifstyle:mla,mla-strict,mla-new,mla7%[[%!makeshorttitle%]][[%!myear%]]}]]}
 	# Add a year if it exists (else "??") without any modifier at all
 	!byear {%year%[[%year%]][[??]]}
 	# Add a shorttitle or title if it exists (else "??")
@@ -250,13 +256,20 @@ CiteFormat authoryear
 	# MACROS
 	#
 	!open (
+	!tcopen {%ifstyle:mla,mla-strict,mla-new,mla7%[[]][[(]]}
 	!sep ;
 	!close )
+	!tcclose {%ifstyle:mla,mla-strict,mla-new,mla7%[[]][[)]]}
+	!aysep {%ifstyle:apa%[[,]]}
 
+	# Title (with MLA), else year
+	!mkyear {%ifstyle:mla,mla-strict,mla-new,mla7%[[, %!makeshorttitle%]][[%!makeyear%]]}
 	# "cf. Author et. al Year..."
-	!makecite %!ctextbefore%%!startlink%%!abbrvciteauthor% %!makeyear%%!endlink%%!ctextafter%%!nextcite%
+	!makecite %!ctextbefore%%!startlink%%!abbrvciteauthor%%!aysep% %!mkyear%%!endlink%%!ctextafter%%!nextcite%
+	# "cf. Author et. al Year..."
+	!makepcite %!ctextbefore%%!startlink%%!abbrvpciteauthor%%!aysep% %!mkyear%%!endlink%%!ctextafter%%!nextpcite%
 	# "Author et al. (cf. Year..."
-	!makecitet %!startlink%%!makeauthor%%!endlink% %!open%%!textbefore%%!makeyear%%!nextcitet%
+	!makecitet %!startlink%%!makeauthor%%!endlink% %!tcopen%%!textbefore%%!mkyear%%!nextcitet%
 	# "cf. Author et al. Year..."
 	!makecitealt %!textbefore%%!startlink%%!makeauthor% %!makeyear%%!endlink%%!nextcitealt%
 	# "Author et al., Year..."
@@ -264,8 +277,10 @@ CiteFormat authoryear
 
 	# "...; Nextauthor Year..."
 	!nextcite {%next%[[%!sep% %!makecite%]]}
+	# "...; Nextauthor Year..."
+	!nextpcite {%next%[[%!sep% %!makepcite%]]}
 	# "...), [and] Nextauthor (Year..."
-	!nextcitet {%next%[[%!close%%!smartsep%%!startlink%%!makeauthor%%!endlink% %!open%%!makeyear%%!nextcitet%]]}
+	!nextcitet {%next%[[%!tcclose%%!smartsep%%!startlink%%!makeauthor%%!endlink% %!tcopen%%!mkyear%%!nextcitet%]]}
 	# "...; NextAuthor et al. Year..."
 	!nextcitealt {%next%[[%!sep% %!startlink%%!makeauthor% %!makeyear%%!endlink%%!nextcitealt%]]}
 	# "...; NextAuthor et al., Year..."
@@ -278,9 +293,9 @@ CiteFormat authoryear
 	#
 
 	# "Author (cf. Year),[ and] NextAuthor (Year, p. xx)"
-	citet %!makecitet%%!textafter%%!close%
+	citet %!makecitet%%!textafter%%!tcclose%
 	# "(cf. Author et al., Year; NextAuthor et al., Year, p. xx)"
-	citep %!open%%!textbefore%%!makecitealp%%!textafter%%!close%
+	citep %!open%%!textbefore%%!makepcite%%!textafter%%!close%
 	# "cf. Author et al., Year; NextAuthor et al., Year, p. xx"
 	citealp %!textbefore%%!makecitealp%%!textafter%
 	# "cf. Author Year; NextAuthor Year, p. xx" [NB: textbefore position differs from real natbib!]
@@ -288,10 +303,15 @@ CiteFormat authoryear
 	# "Footnote: cf. Author A Year; Author B Year, p. xx."
 	footcite {%dialog%[[%_footnote%]][[%_foot%]]}: %!textbefore%%!makecite%%!textafter%.
 	# "Auto: (cf. Author A Year; Author B Year, p. xx)"
-	autocite {%dialog%[[%_autocite%]][[%_auto%]]}: %!open%%!textbefore%%!makecite%%!textafter%%!close%
+	autocite {%dialog%[[%_autocite%]][[%_auto%]]}: %!open%%!textbefore%%!makepcite%%!textafter%%!close%
 
 	# Fallback style: "Author A (cf. Year),[ and] Author B (Year, p. xx)"
 	cite %!makecitet%%!textafter%%!close%
+	
+	# Style-specifics
+	# 1. APA
+	# "cf. Author A Year; Author B Year, p. xx"
+	nptextcite %!textbefore%%!makepcite%%!textafter%
 End
 
 CiteFormat numerical

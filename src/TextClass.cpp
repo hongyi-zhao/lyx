@@ -1228,7 +1228,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		// split off style prefix if there
 		if (contains(lyx_cmd, '@')) {
 			lyx_cmd = split(lyx_cmd, style, '@');
-			cs.style = style;
+			cs.styles = getVectorFromString(style);
 		}
 		cs.name = lyx_cmd;
 		cs.cmd = latex_cmd.empty() ? lyx_cmd : latex_cmd;

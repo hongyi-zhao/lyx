@@ -68,10 +68,10 @@ public:
 	/// otherwise, it will be translated to the buffer language.
 	docstring const getAuthorOrEditorList(Buffer const * buf = nullptr,
 					      size_t const max_key_size = 128,
-					      bool full = false, bool forceshort = false) const;
+					      bool amp = false, bool full = false, bool forceshort = false) const;
 	/// Same for a specific author role (editor, author etc.)
 	docstring const getAuthorList(Buffer const * buf, docstring const & author, size_t const max_key_size,
-				      bool const full = false, bool const forceshort = false,
+				      bool const amp = false, bool const full = false, bool const forceshort = false,
 				      bool const allnames = false, bool const beginning = true) const;
 	///
 	docstring const getYear() const;

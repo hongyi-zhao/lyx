@@ -23470,8 +23470,8 @@ style
 \end_inset
 
 :
- Wenn dies angegeben wird,
- wird der Befehl als spezifisch für einen (Biblatex-)Zitierstil markiert.
+ eine (kommaseparierter) Liste von (Biblatex-)Zitierstilen,
+ für die der Befehl spezifisch ist.
  Mit 
 \begin_inset Flex Code
 status collapsed

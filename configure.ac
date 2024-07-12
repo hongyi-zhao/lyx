@@ -122,6 +122,9 @@ AC_SUBST([HAVE_WCHAR_T])
 # Needed for Mingw-w64
 AC_TYPE_LONG_LONG_INT
 
+# egrep is used in lib/Makefile.am
+AC_PROG_EGREP
+
 ### We need iconv for unicode support (Qt frontend requires it too)
 LYX_USE_INCLUDED_ICONV
 

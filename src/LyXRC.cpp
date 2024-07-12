@@ -1150,7 +1150,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				else if (tmp == "full")
 					draw_strategy = DrawStrategy::Full;
 				else {
-					LYXERR0("Unrecognized draw strategy " << tmp <<'"');
+					LYXERR0("Unrecognized draw strategy \"" << tmp <<'"');
 				}
 			}
 			break;

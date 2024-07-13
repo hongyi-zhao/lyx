@@ -30,7 +30,9 @@ MaxCiteNames 3
 # style@LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
 # 
 # * style:    A (comma-separated) list of citestyles to which
-#             this command is specific.
+#             this command is specific. If preceeded by '!',
+#             the list indicates citestyles for which the command
+#             is _not_ supported.
 # * LyXName:  The LyX name as output in the LyX file. For
 #             portability reasons, we try to use the same
 #             name for same-formatted commands in the
@@ -74,7 +76,7 @@ MaxCiteNames 3
 #
 CiteEngine authoryear
 	Cite$|citealt,citealp[][]
-	Citet$[][]=textcite
+	!mla,mla-strict,mla-new,mla7@Citet$[][]=textcite
 	Citep$[][]=parencite
 	apa,apa6@nptextcite$[][]
 	Citeauthor*<!_citeauthorstar!_citeauthorstartooltip>[][]
@@ -82,9 +84,10 @@ CiteEngine authoryear
 	citeyear[][]=cite*
 	citebyear[][]=citeyear
 	Footcite$[][]=smartcite
-	Autocite$[][]
+	!mla,mla-strict,mla-new,mla7@Autocite$|mlaautocite[][]
+	mla,mla-strict,mla-new,mla7@Mlaautocite|autocite*<!_mlaautocitestar!_mlaautocitetooltip>$[][]=autocite
 	citetitle*<!_citetitlestar!_citetitlestartooltip>[][]
-	fullcite[][]
+	!mla,mla-strict,mla-new,mla7@fullcite[][]
 	footfullcite[][]
 	nocite
 	keyonly
@@ -144,6 +147,8 @@ CiteFormat default
 	_citeauthorstartooltip Force a short author list (using et al.)
 	_citetitlestar F&orce full title[[Possible substitute to All aut&hors]]
 	_citetitlestartooltip Use full title even if shorttitle exists
+	_mlaautocitestar Omit aut&hors[[Possible substitute to All aut&hors]]
+	_mlaautocitestartooltip Omit authors or editors in the citation
 	# The following are handled by BiblioInfo
 	B_etal  et al.
 	B_namesep , [[separate author names in citation, except for last name]]
@@ -298,6 +303,9 @@ CiteFormat authoryear
 	# 1. APA
 	# "cf. Author A Year; Author B Year, p. xx"
 	nptextcite %!textbefore%%!makepcite%%!textafter%
+	# 2. MLA
+	# "Auto: (cf. Author A Year; Author B Year, p. xx)"
+	mlaautocite {%dialog%[[%_autocite%]][[%_auto%]]}: %!open%%!textbefore%%!makepcite%%!textafter%%!close%
 End
 
 CiteFormat numerical

@@ -3755,10 +3755,17 @@ bool BufferParams::fullAuthorList() const
 
 string BufferParams::getCiteAlias(string const & s) const
 {
-	vector<string> commands =
-		documentClass().citeCommands(citeEngineType());
+	bool realcmd = false;
+	vector<CitationStyle> const styles = citeStyles();
+	for (size_t i = 0; i != styles.size(); ++i) {
+		// only include variants that are supported in the current style
+		if (styles[i].name == s && isActiveBiblatexCiteStyle(styles[i])) {
+			realcmd = true;
+			break;
+		}
+	}
 	// If it is a real command, don't treat it as an alias
-	if (find(commands.begin(), commands.end(), s) != commands.end())
+	if (realcmd)
 		return string();
 	map<string,string> aliases = documentClass().citeCommandAliases();
 	if (aliases.find(s) != aliases.end())
@@ -3788,6 +3795,33 @@ vector<CitationStyle> BufferParams::citeStyles() const
 	return styles;
 }
 
+
+bool BufferParams::isActiveBiblatexCiteStyle(CitationStyle const & cs) const
+{
+	if (!useBiblatex())
+		return false;
+
+	if (cs.styles.empty() && cs.nostyles.empty())
+		// no restrictions
+		return true;
+
+	// exclude variants that are excluded in the current style
+	for (string const & s: cs.nostyles) {
+		if (s == biblatex_citestyle)
+			// explicitly excluded style
+			return false;
+	}
+	if (cs.styles.empty())
+		// not excluded
+		return true;
+
+	// only include variants that are supported in the current style
+	for (string const & s: cs.styles) {
+		if (s == biblatex_citestyle)
+			return true;
+	}
+	return false;
+}
 
 string const BufferParams::getBibtexCommand(string const cmd, bool const warn) const
 {

@@ -1600,20 +1600,17 @@ BiblioInfo::CiteStringMap const BiblioInfo::getCiteStrings(
 	if (empty())
 		return vector<pair<docstring,docstring>>();
 
-	string style;
-	CiteStringMap csm(styles.size());
-	for (size_t i = 0; i != csm.size(); ++i) {
-		bool ours = false;
+	vector<CitationStyle> realStyles;
+	for (size_t i = 0; i != styles.size(); ++i) {
 		// exclude variants that are not supported in the current style
-		for (string const & s: styles[i].styles) {
-			if (s == buf.masterParams().biblatex_citestyle) {
-				ours = true;
-				break;
-			}
-		}
-		if (!styles[i].styles.empty() && !ours)
-			continue;
-		style = styles[i].name;
+		if (buf.masterParams().isActiveBiblatexCiteStyle(styles[i]))
+			realStyles.push_back(styles[i]);
+	}
+
+	string style;
+	CiteStringMap csm(realStyles.size());
+	for (size_t i = 0; i != csm.size(); ++i) {
+		style = realStyles[i].name;
 		csm[i] = make_pair(from_ascii(style), getLabel(keys, buf, style, ci));
 	}
 

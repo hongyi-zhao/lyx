@@ -45,6 +45,8 @@ public:
 	std::string startooltip;
 	/// Styles that supports the command
 	std::vector <std::string> styles;
+	/// Styles that do not supports the command
+	std::vector <std::string> nostyles;
 	/// upper casing author prefixes (van -> Van)
 	bool forceUpperCase;
 	/// starred version (full author list by default)

@@ -379,7 +379,7 @@ def revert_biblatex_chicago(document):
 
 
 def revert_nptextcite(document):
-    """Revert \\nptextcite to ERT"""
+    """Revert \\nptextcite and MLA's autocite variants to ERT"""
 
     # 1. Get cite engine
     engine = "basic"
@@ -400,6 +400,13 @@ def revert_nptextcite(document):
         return
 
     # 4. Convert \nptextcite to ERT
+    new_citations = {
+        "nptextcite": "nptextcite",
+        "mlaautocite": "autocite",
+        "Mlaautocite": "Autocite",
+        "mlaautocite*": "autocite*",
+        "Mlaautocite*": "Autocite*",
+    }
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset citation", i)
@@ -416,7 +423,7 @@ def revert_nptextcite(document):
             i = j + 1
             continue
         cmd = get_value(document.body, "LatexCommand", k)
-        if cmd == "nptextcite":
+        if cmd in list(new_citations.keys()):
             pre = get_quoted_value(document.body, "before", i, j)
             post = get_quoted_value(document.body, "after", i, j)
             key = get_quoted_value(document.body, "key", i, j)
@@ -424,7 +431,7 @@ def revert_nptextcite(document):
                 document.warning("Citation inset at line %d does not have a key!" % (i))
                 key = "???"
             # Replace known new commands with ERT
-            res = "\\nptextcite"
+            res = "\\" + new_citations[cmd]
             if pre:
                 res += "[" + pre + "]"
             if post:

@@ -1749,16 +1749,11 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		docstring label = cit->second;
 		CitationStyle ccs = citeStyleList[ii - 1];
-		bool ours = false;
 		// exclude variants that are not supported in the current style
-		for (string const & s: ccs.styles) {
-			if (s == bp.biblatex_citestyle) {
-				ours = true;
-				break;
-			}
+		while (!bp.isActiveBiblatexCiteStyle(ccs)) {
+			++ii;
+			ccs = citeStyleList[ii - 1];
 		}
-		if (!ccs.styles.empty() && !ours)
-			continue;
 		ccs.forceUpperCase &= force;
 		ccs.hasStarredVersion &= star;
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),

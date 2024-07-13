@@ -939,8 +939,17 @@ void GuiCitation::setCitedKeys()
 bool GuiCitation::initialiseParams(string const & sdata)
 {
 	InsetCommand::string2params(sdata, params_);
-	citeCmds_ = documentBuffer().params().citeCommands();
-	citeStyles_ = documentBuffer().params().citeStyles();
+	citeStyles_.clear();
+	citeCmds_.clear();
+	vector<string> const cmds = documentBuffer().params().citeCommands();
+	vector<CitationStyle> const styles = documentBuffer().params().citeStyles();
+	for (size_t i = 0; i != styles.size(); ++i) {
+		// only include variants that are supported in the current style
+		if (documentBuffer().params().isActiveBiblatexCiteStyle(styles[i])) {
+			citeStyles_.push_back(styles[i]);
+			citeCmds_.push_back(cmds[i]);
+		}
+	}
 	init();
 	return true;
 }

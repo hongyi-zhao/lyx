@@ -23501,6 +23501,23 @@ nptextcite
 apa
 \emph default
  verfügbar ist.
+ Wenn der Liste ein Ausrufezeichen (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+
+) vorangestellt ist,
+ ist die Bedeutung umgekehrt:
+ der Befehl gilt dann in allen 
+\emph on
+außer
+\emph default
+ den aufgelisteten Stilen.
 \end_layout
 
 \begin_layout Itemize

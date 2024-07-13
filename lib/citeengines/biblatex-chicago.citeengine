@@ -30,7 +30,9 @@ MaxCiteNames 3
 # style@LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
 # 
 # * style:    A (comma-separated) list of citestyles to which
-#             this command is specific.
+#             this command is specific. If preceeded by '!',
+#             the list indicates citestyles for which the command
+#             is _not_ supported.
 # * LyXName:  The LyX name as output in the LyX file. For
 #             portability reasons, we try to use the same
 #             name for same-formatted commands in the

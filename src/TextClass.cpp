@@ -1161,10 +1161,6 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		char ichar = def[0];
 		if (ichar == '#')
 			continue;
-		if (isUpperCase(ichar)) {
-			cs.forceUpperCase = true;
-			def[0] = lowercase(ichar);
-		}
 
 		/** For portability reasons (between different
 		 *  cite engines such as natbib and biblatex),
@@ -1228,7 +1224,17 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		// split off style prefix if there
 		if (contains(lyx_cmd, '@')) {
 			lyx_cmd = split(lyx_cmd, style, '@');
-			cs.styles = getVectorFromString(style);
+			// a '!' prefix indicates nostyle
+			if (prefixIs(style, "!")) {
+				style = style.substr(1);
+				cs.nostyles = getVectorFromString(style);
+			} else
+				cs.styles = getVectorFromString(style);
+		}
+		char fchar = lyx_cmd[0];
+		if (isUpperCase(fchar)) {
+			cs.forceUpperCase = true;
+			lyx_cmd[0] = lowercase(fchar);
 		}
 		cs.name = lyx_cmd;
 		cs.cmd = latex_cmd.empty() ? lyx_cmd : latex_cmd;

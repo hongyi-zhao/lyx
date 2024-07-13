@@ -24612,7 +24612,7 @@ LyXName|alias$*<!_stardesc!_stardesctooltip>[][]=latexcmd
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1720682930
+\change_inserted -712698321 1720883627
 \begin_inset Flex Code
 status collapsed
 
@@ -24668,6 +24668,27 @@ nptextcite
 apa
 \emph default
  citation style can be defined.
+ If the list is prepended by an exclamation mark (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1720883593
+!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+),
+ the meaning is reversed:
+ it means that the style is used in all 
+\emph on
+but
+\emph default
+ the listed styles.
 \end_layout
 
 \begin_layout Itemize

@@ -209,13 +209,17 @@ char const * const known_jurabib_commands[] = { "cite", "citet", "citep",
 
 /*!
  * biblatex commands.
- * Known starred forms: \cite*, \citeauthor*, \Citeauthor*, \parencite*, \citetitle*.
  */
 char const * const known_biblatex_commands[] = { "cite", "Cite", "textcite", "Textcite",
 "parencite", "Parencite", "citeauthor", "Citeauthor", "citeyear", "smartcite", "Smartcite",
- "footcite", "Footcite", "autocite", "Autocite", "citetitle", "fullcite", "footfullcite",
+"footcite", "Footcite", "autocite", "Autocite", "citetitle", "fullcite", "footfullcite",
 "supercite", "cites", "Cites", "textcites", "Textcites", "parencites", "Parencites",
-"smartcites", "Smartcites", "autocites", "Autocites", "nptextcite", 0 };
+"smartcites", "Smartcites", "autocites", "Autocites", 0 };
+/*!
+ * Known starred biblatex commands.
+ */
+char const * const known_biblatex_star_commands[] = { "cite", "citeauthor",
+"Citeauthor", "parencite", "citetitle", 0 };
 
 /*!
  * biblatex-chicago commands.
@@ -4692,25 +4696,31 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		if ((use_biblatex
+		if ((use_biblatex// normal biblatex
 		     && is_known(t.cs(), known_biblatex_commands)
-		     && ((t.cs() == "cite"
-			  || t.cs() == "citeauthor"
-			  || t.cs() == "Citeauthor"
-			  || t.cs() == "parencite"
-			  || t.cs() == "citetitle")
+		     && (is_known(t.cs(), known_biblatex_star_commands)
 			 || p.next_token().asInput() != "*"))
-			 || (use_biblatex_natbib
-			     && (is_known(t.cs(), known_biblatex_commands)
-				 || is_known(t.cs(), known_natbib_commands))
-			     && ((t.cs() == "cite" || t.cs() == "citet" || t.cs() == "Citet"
-				  || t.cs() == "Citealt" || t.cs() == "citealp" || t.cs() == "Citealp"
-				  || t.cs() == "citeauthor" || t.cs() == "Citeauthor"
-				  || t.cs() == "parencite" || t.cs() == "citetitle")
-				 || p.next_token().asInput() != "*"))
-			 || (use_biblatex_chicago
-			     && (is_known(t.cs(), known_biblatex_commands)
-				 || is_known(t.cs(), known_biblatex_chicago_commands)))){
+		     || (use_biblatex_natbib// biblatex-natbib
+			 && (is_known(t.cs(), known_biblatex_commands)
+			     || is_known(t.cs(), known_natbib_commands))
+			 && (is_known(t.cs(), known_biblatex_star_commands)
+			     || (t.cs() == "citet" || t.cs() == "Citet"
+				 || t.cs() == "Citealt" || t.cs() == "citealp"
+				 || t.cs() == "Citealp")
+			     || p.next_token().asInput() != "*"))
+		     || (use_biblatex_chicago// biblatex-chicago
+			 && (is_known(t.cs(), known_biblatex_commands)
+			     || is_known(t.cs(), known_biblatex_chicago_commands))
+			 && (is_known(t.cs(), known_biblatex_star_commands)
+			     || p.next_token().asInput() != "*"))
+		     || ((use_biblatex || use_biblatex_natbib)// specific styles: apa, mla
+			 && ((prefixIs(preamble.biblatexCiteStyle(), "apa")
+			      && (t.cs() == "nptextcite" || t.cs() == "nptextcites"))
+			     || (prefixIs(preamble.biblatexCiteStyle(), "mla")
+				 && ((t.cs() == "headlesscite" && p.next_token().asInput() != "*")
+				     || t.cs() == "autocite" || t.cs() == "Autocite"
+				     || t.cs() == "autocites" || t.cs() == "Autocites"))))){
+
 			context.check_layout(os);
 			string command = t.cs();
 			if (p.next_token().asInput() == "*") {
@@ -4729,7 +4739,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			get_cite_arguments(p, true, before, after, qualified);
 
 			// These use natbib cmd names in LyX
-			// for inter-citeengine compativility
+			// for inter-citeengine compatibility
 			if (command == "citeyear")
 				command = "citebyear";
 			else if (command == "cite*")
@@ -4748,6 +4758,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				command = "footcite";
 			else if (command == "Smartcite")
 				command = "Footcite";
+
+			// MLA-specific commands
+			if (prefixIs(preamble.biblatexCiteStyle(), "mla")) {
+				if (prefixIs(command, "autocite"))
+					command = "mla" + command;
+				else if (prefixIs(command, "Autocite"))
+					command = subst(command, "Auto", "Mlaauto");
+				else if (command == "headlesscite")
+					command = "autocite*";
+			}
 
 			string const emptyarg = qualified ? "()" : "[]";
 			if (before.empty() && after == emptyarg)

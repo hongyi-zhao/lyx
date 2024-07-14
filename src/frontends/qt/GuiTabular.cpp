@@ -67,6 +67,12 @@ GuiTabular::GuiTabular(QWidget * parent)
 	bottomspaceUnitLC->setCurrentItem(Length::defaultUnit());
 	interlinespaceUnitLC->setCurrentItem(Length::defaultUnit());
 
+	connect(topspaceCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
+	connect(bottomspaceCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
+	connect(interlinespaceCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
 	connect(topspaceED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
 	connect(topspaceUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),

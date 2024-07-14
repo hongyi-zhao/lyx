@@ -527,8 +527,8 @@ public:
 	std::vector<std::string> citeCommands() const;
 	/// the available citation styles
 	std::vector<CitationStyle> citeStyles() const;
-	/// is the biblatex citestyle active in the current context?
-	bool isActiveBiblatexCiteStyle(CitationStyle const & cs) const;
+	/// is the citestyle active in the current context?
+	bool isActiveCiteStyle(CitationStyle const & cs) const;
 
 	/// Return the actual bibtex command (lyxrc or buffer param)
 	std::string const bibtexCommand(bool const warn = false) const;

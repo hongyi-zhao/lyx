@@ -1603,7 +1603,7 @@ BiblioInfo::CiteStringMap const BiblioInfo::getCiteStrings(
 	vector<CitationStyle> realStyles;
 	for (size_t i = 0; i != styles.size(); ++i) {
 		// exclude variants that are not supported in the current style
-		if (buf.masterParams().isActiveBiblatexCiteStyle(styles[i]))
+		if (buf.masterParams().isActiveCiteStyle(styles[i]))
 			realStyles.push_back(styles[i]);
 	}
 

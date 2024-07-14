@@ -84,6 +84,8 @@ public:
 	///
 	void citeEngine(std::string const & e) { h_cite_engine = e; }
 	///
+	std::string biblatexCiteStyle() const { return h_biblatex_citestyle; }
+	///
 	std::string multibib() const { return h_multibib; }
 	///
 	void multibib(std::string const & s) { h_multibib = s; }

@@ -945,7 +945,7 @@ bool GuiCitation::initialiseParams(string const & sdata)
 	vector<CitationStyle> const styles = documentBuffer().params().citeStyles();
 	for (size_t i = 0; i != styles.size(); ++i) {
 		// only include variants that are supported in the current style
-		if (documentBuffer().params().isActiveBiblatexCiteStyle(styles[i])) {
+		if (documentBuffer().params().isActiveCiteStyle(styles[i])) {
 			citeStyles_.push_back(styles[i]);
 			citeCmds_.push_back(cmds[i]);
 		}

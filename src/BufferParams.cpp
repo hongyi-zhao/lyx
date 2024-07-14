@@ -3759,7 +3759,7 @@ string BufferParams::getCiteAlias(string const & s) const
 	vector<CitationStyle> const styles = citeStyles();
 	for (size_t i = 0; i != styles.size(); ++i) {
 		// only include variants that are supported in the current style
-		if (styles[i].name == s && isActiveBiblatexCiteStyle(styles[i])) {
+		if (styles[i].name == s && isActiveCiteStyle(styles[i])) {
 			realcmd = true;
 			break;
 		}
@@ -3796,10 +3796,11 @@ vector<CitationStyle> BufferParams::citeStyles() const
 }
 
 
-bool BufferParams::isActiveBiblatexCiteStyle(CitationStyle const & cs) const
+bool BufferParams::isActiveCiteStyle(CitationStyle const & cs) const
 {
 	if (!useBiblatex())
-		return false;
+		// outside biblatex, all cite styles are active
+		return true;
 
 	if (cs.styles.empty() && cs.nostyles.empty())
 		// no restrictions

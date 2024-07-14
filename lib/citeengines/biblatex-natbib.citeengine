@@ -93,7 +93,7 @@ CiteEngine authoryear
 	citebyear[][]=citeyear
 	Footcite$[][]=smartcite
 	!mla,mla-strict,mla-new,mla7@Autocite$|mlaautocite[][]
-	mla,mla-strict,mla-new,mla7@Mlaautocite|autocite*<!_mlaautocitestar!_mlaautocitetooltip>$[][]=autocite
+	mla,mla-strict,mla-new,mla7@Mlaautocite|autocite,headlesscite*<!_mlaautocitestar!_mlaautocitetooltip>$[][]=autocite
 	citetitle*<!_citetitlestar!_citetitlestartooltip>[][]
 	!mla,mla-strict,mla-new,mla7@fullcite[][]
 	footfullcite[][]

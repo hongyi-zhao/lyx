@@ -1750,7 +1750,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		docstring label = cit->second;
 		CitationStyle ccs = citeStyleList[ii - 1];
 		// exclude variants that are not supported in the current style
-		while (!bp.isActiveBiblatexCiteStyle(ccs)) {
+		while (!bp.isActiveCiteStyle(ccs)) {
 			++ii;
 			ccs = citeStyleList[ii - 1];
 		}

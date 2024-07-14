@@ -381,7 +381,7 @@ CitationStyle asValidLatexCommand(BufferParams const & bp, string const & input,
 		CitationStyle this_cs = *it;
 		if (this_cs.name == normalized_input) {
 			// exclude variants that are not supported in the current style
-			if (!bp.isActiveBiblatexCiteStyle(this_cs)) {
+			if (!bp.isActiveCiteStyle(this_cs)) {
 				// citation not supported with current style
 				// reset to \cite
 				normalized_input = "cite";

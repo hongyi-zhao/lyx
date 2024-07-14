@@ -153,6 +153,14 @@ export/examples/ko/Welcome_lyx2[23]
 # https://www.mail-archive.com/search?l=mid&q=20200915233446.atwbyulny5gsbtyi%40tallinn
 export/examples/ru/Presentations/Beamer_lyx(16|20)
 
+# xmllint now fails. Here is Jürgen's explanation:
+# Just as a pointer: the author-specific keys now can have a trailing &
+# after the key as in "abbrvciteauthor&" or at the start of the type
+# subtag, as in "abbrvnames:&author" (see 5c2652fa12b). This indicates
+# that we want "&" rather than "and" (in APA context).
+# see: https://www.mail-archive.com/search?l=mid&q=ildx4xd4o7ybeqroh3blxgnxqnsqnte256utip2fbmcwi4zolz%40wsh7ez36kkhl
+export/templates/Articles/American_Psychological_Association_%28APA%29,_v._7_xhtml
+
 
 # ==============================================================
 Sublabel: ert

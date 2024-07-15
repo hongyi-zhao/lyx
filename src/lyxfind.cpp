@@ -240,7 +240,7 @@ int findForward(DocIterator & cur, DocIterator const endcur,
 		bool find_del = true, bool onlysel = false)
 {
 	for (; cur; cur.forwardChar()) {
-		if (onlysel && endcur.pit() == cur.pit()
+		if (onlysel && cur.inTexted() && endcur.pit() == cur.pit()
 		    && endcur.idx() == cur.idx() && endcur.pos() < cur.pos())
 			break;
 		if (cur.inTexted()) {
@@ -259,7 +259,7 @@ int findBackwards(DocIterator & cur, DocIterator const endcur,
 {
 	while (cur) {
 		cur.backwardChar();
-		if (onlysel && endcur.pit() == cur.pit()
+		if (onlysel && cur.inTexted() && endcur.pit() == cur.pit()
 		    && endcur.idx() == cur.idx() && endcur.pos() > cur.pos())
 			break;
 		if (cur.inTexted()) {

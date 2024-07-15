@@ -103,6 +103,7 @@ SOURCEFILESCORE = \
 	BranchList.cpp \
 	Buffer.cpp \
 	buffer_funcs.cpp \
+	BufferEncodings.cpp \
 	BufferList.cpp \
 	BufferParams.cpp \
 	BufferView.cpp \
@@ -112,8 +113,8 @@ SOURCEFILESCORE = \
 	CiteEnginesList.cpp \
 	CmdDef.cpp \
 	Color.cpp \
-	ConverterCache.cpp \
 	Converter.cpp \
+	ConverterCache.cpp \
 	CoordCache.cpp \
 	Counters.cpp \
 	Cursor.cpp \
@@ -122,15 +123,14 @@ SOURCEFILESCORE = \
 	DepTable.cpp \
 	DocIterator.cpp \
 	Encoding.cpp \
-	BufferEncodings.cpp \
 	ErrorList.cpp \
 	Exporter.cpp \
 	factory.cpp \
 	Floating.cpp \
 	FloatList.cpp \
+	Font.cpp \
 	FontInfo.cpp \
 	FontList.cpp \
-	Font.cpp \
 	Format.cpp \
 	FuncRequest.cpp \
 	FuncStatus.cpp \
@@ -145,6 +145,7 @@ SOURCEFILESCORE = \
 	LaTeX.cpp \
 	LaTeXFeatures.cpp \
 	LaTeXPackages.cpp \
+	Layout.cpp \
 	LayoutFile.cpp \
 	LayoutModuleList.cpp \
 	LyX.cpp \
@@ -155,12 +156,12 @@ SOURCEFILESCORE = \
 	MetricsInfo.cpp \
 	ModuleList.cpp \
 	Mover.cpp \
-	output_docbook.cpp \
 	output.cpp \
+	output_docbook.cpp \
 	output_latex.cpp \
+	output_plaintext.cpp \
 	output_xhtml.cpp \
 	OutputParams.cpp \
-	output_plaintext.cpp \
 	Paragraph.cpp \
 	ParagraphMetrics.cpp \
 	ParagraphParameters.cpp \
@@ -170,7 +171,6 @@ SOURCEFILESCORE = \
 	RowPainter.cpp \
 	Server.cpp \
 	ServerSocket.cpp \
-	xml.cpp \
 	Session.cpp \
 	Spacing.cpp \
 	TexRow.cpp \
@@ -185,29 +185,30 @@ SOURCEFILESCORE = \
 	VCBackend.cpp \
 	version.cpp \
 	VSpace.cpp \
-	WordList.cpp
+	WordList.cpp \
+	xml.cpp
 
 HEADERFILESCORE = \
 	Author.h \
 	BranchList.h \
-	buffer_funcs.h \
 	Buffer.h \
+	buffer_funcs.h \
 	BufferEncodings.h \
 	BufferList.h \
 	BufferParams.h \
 	BufferView.h \
 	Bullet.h \
-	Citation.h \
-	CiteEnginesList.h \
 	Changes.h \
 	Chktex.h \
+	Citation.h \
+	CiteEnginesList.h \
 	CmdDef.h \
-	ColorCode.h \
 	Color.h \
+	ColorCode.h \
 	ColorSet.h \
 	CompletionList.h \
-	ConverterCache.h \
 	Converter.h \
+	ConverterCache.h \
 	CoordCache.h \
 	Counters.h \
 	Cursor.h \
@@ -239,28 +240,28 @@ HEADERFILESCORE = \
 	KeyMap.h \
 	KeySequence.h \
 	Language.h \
+	LaTeX.h \
 	LaTeXFeatures.h \
 	LaTeXPackages.h \
-	LaTeX.h \
 	Layout.h \
 	LayoutEnums.h \
 	LayoutFile.h \
 	LayoutModuleList.h \
+	LyX.h \
 	LyXAction.h \
 	lyxfind.h \
-	LyX.h \
 	LyXRC.h \
 	LyXVC.h \
 	MetricsInfo.h \
 	ModuleList.h \
 	Mover.h \
-	output_docbook.h \
 	output.h \
-	OutputEnums.h \
+	output_docbook.h \
 	output_latex.h \
-	output_xhtml.h \
-	OutputParams.h \
 	output_plaintext.h \
+	output_xhtml.h \
+	OutputEnums.h \
+	OutputParams.h \
 	paper.h \
 	Paragraph.h \
 	ParagraphList.h \
@@ -274,7 +275,6 @@ HEADERFILESCORE = \
 	Server.h \
 	ServerSocket.h \
 	Session.h \
-	xml.h \
 	Spacing.h \
 	SpellChecker.h \
 	TexRow.h \
@@ -292,11 +292,8 @@ HEADERFILESCORE = \
 	version.h \
 	VSpace.h \
 	WordLangTuple.h \
-	WordList.h
-
-STANDALONEFILES = \
-	Layout.cpp
-
+	WordList.h \
+	xml.h
 
 .PHONY: update_commit_hash
 
@@ -317,7 +314,7 @@ lyx_commit_hash.h: update_commit_hash
 BUILT_SOURCES = lyx_commit_hash.h
 CLEANFILES = lyx_commit_hash.h
 
-liblyxcore_a_SOURCES = $(SOURCEFILESCORE) $(STANDALONEFILES) $(HEADERFILESCORE)
+liblyxcore_a_SOURCES = $(SOURCEFILESCORE) $(HEADERFILESCORE)
 
 
 #########################  Qt stuff  ##############################
@@ -374,13 +371,13 @@ liblyxgraphics_a_SOURCES = \
 noinst_LIBRARIES += liblyxmathed.a
 
 SOURCEFILESMATHED = \
+	mathed/InsetMath.cpp \
 	mathed/InsetMathAMSArray.cpp \
 	mathed/InsetMathArray.cpp \
 	mathed/InsetMathBig.cpp \
 	mathed/InsetMathBoldSymbol.cpp \
 	mathed/InsetMathBox.cpp \
 	mathed/InsetMathBrace.cpp \
-	mathed/InsetMath.cpp \
 	mathed/InsetMathCancel.cpp \
 	mathed/InsetMathCancelto.cpp \
 	mathed/InsetMathCases.cpp \
@@ -449,6 +446,7 @@ SOURCEFILESMATHED = \
 	mathed/TextPainter.cpp
 
 HEADERFILESMATHED = \
+	mathed/InsetMath.h \
 	mathed/InsetMathAMSArray.h \
 	mathed/InsetMathArray.h \
 	mathed/InsetMathBig.h \
@@ -464,6 +462,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathCommand.h \
 	mathed/InsetMathComment.h \
 	mathed/InsetMathDelim.h \
+	mathed/InsetMathDiagram.h \
 	mathed/InsetMathDiff.h \
 	mathed/InsetMathDots.h \
 	mathed/InsetMathEnsureMath.h \
@@ -474,7 +473,6 @@ HEADERFILESMATHED = \
 	mathed/InsetMathFontOld.h \
 	mathed/InsetMathFrac.h \
 	mathed/InsetMathGrid.h \
-	mathed/InsetMath.h \
 	mathed/InsetMathHull.h \
 	mathed/InsetMathKern.h \
 	mathed/InsetMathLefteqn.h \
@@ -507,21 +505,20 @@ HEADERFILESMATHED = \
 	mathed/InsetMathUnknown.h \
 	mathed/InsetMathXArrow.h \
 	mathed/InsetMathXYMatrix.h \
-	mathed/InsetMathDiagram.h \
+	mathed/MacroTable.h \
 	mathed/MathAtom.h \
 	mathed/MathAutoCorrect.h \
 	mathed/MathClass.h \
-	mathed/MathData.h \
 	mathed/MathCompletionList.h \
+	mathed/MathData.h \
 	mathed/MathExtern.h \
 	mathed/MathFactory.h \
-	mathed/MacroTable.h \
 	mathed/MathParser.h \
 	mathed/MathParser_flags.h \
 	mathed/MathRow.h \
-	mathed/ReplaceData.h \
 	mathed/MathStream.h \
 	mathed/MathSupport.h \
+	mathed/ReplaceData.h \
 	mathed/TextPainter.h
 
 liblyxmathed_a_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED)
@@ -535,9 +532,6 @@ SOURCEFILESINSETS = \
 	insets/ExternalSupport.cpp \
 	insets/ExternalTemplate.cpp \
 	insets/ExternalTransforms.cpp \
-	insets/RenderButton.cpp \
-	insets/RenderGraphic.cpp \
-	insets/RenderPreview.cpp \
 	insets/Inset.cpp \
 	insets/InsetArgument.cpp \
 	insets/InsetBibitem.cpp \
@@ -558,8 +552,8 @@ SOURCEFILESINSETS = \
 	insets/InsetFloatList.cpp \
 	insets/InsetFoot.cpp \
 	insets/InsetFootlike.cpp \
-	insets/InsetGraphicsParams.cpp \
 	insets/InsetGraphics.cpp \
+	insets/InsetGraphicsParams.cpp \
 	insets/InsetHyperlink.cpp \
 	insets/InsetInclude.cpp \
 	insets/InsetIndex.cpp \
@@ -589,16 +583,15 @@ SOURCEFILESINSETS = \
 	insets/InsetText.cpp \
 	insets/InsetTOC.cpp \
 	insets/InsetVSpace.cpp \
-	insets/InsetWrap.cpp
+	insets/InsetWrap.cpp \
+	insets/RenderButton.cpp \
+	insets/RenderGraphic.cpp \
+	insets/RenderPreview.cpp
 
 HEADERFILESINSETS = \
 	insets/ExternalSupport.h \
 	insets/ExternalTemplate.h \
 	insets/ExternalTransforms.h \
-	insets/RenderBase.h \
-	insets/RenderButton.h \
-	insets/RenderGraphic.h \
-	insets/RenderPreview.h \
 	insets/Inset.h \
 	insets/InsetArgument.h \
 	insets/InsetBibitem.h \
@@ -617,11 +610,11 @@ HEADERFILESINSETS = \
 	insets/InsetExternal.h \
 	insets/InsetFlex.h \
 	insets/InsetFloat.h \
-	insets/InsetFoot.h \
 	insets/InsetFloatList.h \
+	insets/InsetFoot.h \
 	insets/InsetFootlike.h \
-	insets/InsetGraphicsParams.h \
 	insets/InsetGraphics.h \
+	insets/InsetGraphicsParams.h \
 	insets/InsetHyperlink.h \
 	insets/InsetInclude.h \
 	insets/InsetIndex.h \
@@ -629,7 +622,6 @@ HEADERFILESINSETS = \
 	insets/InsetInfo.h \
 	insets/InsetIPA.h \
 	insets/InsetIPAMacro.h \
-	insets/InsetPreview.h \
 	insets/InsetLabel.h \
 	insets/InsetLayout.h \
 	insets/InsetLine.h \
@@ -641,6 +633,7 @@ HEADERFILESINSETS = \
 	insets/InsetNomencl.h \
 	insets/InsetNote.h \
 	insets/InsetPhantom.h \
+	insets/InsetPreview.h \
 	insets/InsetQuotes.h \
 	insets/InsetRef.h \
 	insets/InsetScript.h \
@@ -651,7 +644,11 @@ HEADERFILESINSETS = \
 	insets/InsetText.h \
 	insets/InsetTOC.h \
 	insets/InsetVSpace.h \
-	insets/InsetWrap.h
+	insets/InsetWrap.h \
+	insets/RenderBase.h \
+	insets/RenderButton.h \
+	insets/RenderGraphic.h \
+	insets/RenderPreview.h
 
 liblyxinsets_a_SOURCES = $(SOURCEFILESINSETS) $(HEADERFILESINSETS)
 
@@ -659,15 +656,15 @@ liblyxinsets_a_SOURCES = $(SOURCEFILESINSETS) $(HEADERFILESINSETS)
 ############################## Tests ##################################
 
 EXTRA_DIST += \
-	tests/test_ExternalTransforms \
-	tests/test_ListingsCaption \
-	tests/test_layout \
-	tests/test_Length \
+	tests/boost.cpp \
+	tests/dummy_functions.cpp \
 	tests/regfiles/ExternalTransforms \
 	tests/regfiles/Length \
 	tests/regfiles/ListingsCaption \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/test_ExternalTransforms \
+	tests/test_layout \
+	tests/test_Length \
+	tests/test_ListingsCaption
 
 TESTS = tests/test_ExternalTransforms tests/test_ListingsCaption \
 	tests/test_layout tests/test_Length
@@ -704,9 +701,9 @@ check_layout_CPPFLAGS = $(AM_CPPFLAGS)
 check_layout_LDADD = $(check_layout_LYX_OBJS) $(TESTS_LIBS)
 check_layout_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
+	tests/boost.cpp \
 	tests/check_layout.cpp \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/dummy_functions.cpp
 check_layout_LYX_OBJS = \
 	insets/InsetLayout.o \
 	support/Lexer.o \
@@ -726,9 +723,9 @@ check_ExternalTransforms_CPPFLAGS = $(AM_CPPFLAGS)
 check_ExternalTransforms_LDADD = $(check_ExternalTransforms_LYX_OBJS) $(TESTS_LIBS)
 check_ExternalTransforms_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ExternalTransforms_SOURCES = \
+	tests/boost.cpp \
 	tests/check_ExternalTransforms.cpp \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/dummy_functions.cpp
 check_ExternalTransforms_LYX_OBJS = \
 	graphics/GraphicsParams.o \
 	insets/ExternalTransforms.o
@@ -737,17 +734,17 @@ check_Length_CPPFLAGS = $(AM_CPPFLAGS)
 check_Length_LDADD = $(TESTS_LIBS)
 check_Length_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_Length_SOURCES = \
+	tests/boost.cpp \
 	tests/check_Length.cpp \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/dummy_functions.cpp
 
 check_ListingsCaption_CPPFLAGS = $(AM_CPPFLAGS)
 check_ListingsCaption_LDADD = $(check_ListingsCaption_LYX_OBJS) $(TESTS_LIBS)
 check_ListingsCaption_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ListingsCaption_SOURCES = \
+	tests/boost.cpp \
 	tests/check_ListingsCaption.cpp \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/dummy_functions.cpp
 check_ListingsCaption_LYX_OBJS =
 
 .PHONY: alltests alltests-recursive updatetests

@@ -3600,7 +3600,7 @@ bool doInsertInset(Cursor & cur, Text * text,
 	if (InsetCollapsible * ci = inset->asInsetCollapsible())
 		ci->setButtonLabel();
 
-	cur.recordUndo();
+	cur.recordUndoSelection();
 	if (cmd.action() == LFUN_ARGUMENT_INSERT) {
 		bool cotextinsert = false;
 		InsetArgument * const ia = static_cast<InsetArgument *>(inset);

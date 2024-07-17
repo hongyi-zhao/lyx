@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-07-11 09:34+0200\n"
-"PO-Revision-Date: 2024-07-11 07:51+0000\n"
+"POT-Creation-Date: 2024-07-17 08:02+0200\n"
+"PO-Revision-Date: 2024-07-17 06:28+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6406,6 +6406,16 @@ msgstr ""
 "ako normálny biblatex. Ako aj s normálnym biblatex, doporučuje sa použiť "
 "'biber' ako procesor pre bibliografiu."
 
+#: lib/citeengines/biblatex-natbib.citeengine:158
+#: lib/citeengines/biblatex.citeengine:150
+msgid "Omit aut&hors[[Possible substitute to All aut&hors]]"
+msgstr "Vynechať &autorov"
+
+#: lib/citeengines/biblatex-natbib.citeengine:159
+#: lib/citeengines/biblatex.citeengine:151
+msgid "Omit authors or editors in the citation"
+msgstr "V citácii vynechať autorov alebo redaktorov"
+
 #: lib/citeengines/biblatex-natbib.citeengine:143
 #: lib/citeengines/biblatex.citeengine:133 lib/layouts/numreport.inc:44
 #: lib/layouts/stdcounters.inc:91
@@ -6435,10 +6445,11 @@ msgstr "Plný záznam bibliografie."
 msgid "Autocite"
 msgstr "Automaticky citovať"
 
-#: lib/citeengines/biblatex-natbib.citeengine:150
-#: lib/citeengines/biblatex.citeengine:142
+#: lib/citeengines/biblatex-chicago.citeengine:160
+#: lib/citeengines/biblatex-natbib.citeengine:156
+#: lib/citeengines/biblatex.citeengine:148
 msgid "F&orce full title[[Possible substitute to All aut&hors]]"
-msgstr "Vnútiť plný titul"
+msgstr "Vnútiť &plný titul"
 
 #: lib/citeengines/biblatex-natbib.citeengine:151
 #: lib/citeengines/biblatex.citeengine:143
@@ -6596,9 +6607,10 @@ msgstr ""
 "ktoré nie sú možné s BibTeX. Doporučuje sa použiť 'biber' ako procesor pre "
 "bibliografiu."
 
-#: lib/citeengines/biblatex.citeengine:140
+#: lib/citeengines/biblatex-chicago.citeengine:158
+#: lib/citeengines/biblatex.citeengine:146
 msgid "S&horten author list[[Possible substitute to All aut&hors]]"
-msgstr "Skrátiť súpis autorov"
+msgstr "S&krátiť súpis autorov"
 
 #: lib/citeengines/biblatex.citeengine:141
 msgid "Force a short author list (using et al.)"

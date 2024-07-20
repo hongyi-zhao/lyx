@@ -349,6 +349,9 @@ public:
 	static char_type fromLaTeXCommand(docstring const & cmd, int cmdtype,
 			bool & combining, bool & needsTermination,
 			std::set<std::string> * req = nullptr);
+	/// converts a string containing LaTeX commands into unicode
+	/// for display.
+	static docstring convertLaTeXCommands(docstring const & str);
 	///
 	enum LatexCmd {
 		///

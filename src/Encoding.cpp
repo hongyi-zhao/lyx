@@ -26,6 +26,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <iterator>
+#include <regex>
 #include <sstream>
 
 using namespace std;
@@ -610,6 +611,156 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 		}
 	}
 	return symbols;
+}
+
+
+docstring Encodings::convertLaTeXCommands(docstring const & str)
+{
+	docstring val = str;
+	docstring ret;
+	docstring mret;
+
+	bool scanning_cmd = false;
+	bool scanning_math = false;
+	bool is_section = false;
+	bool escaped = false; // used to catch \$, etc.
+	while (!val.empty()) {
+		char_type const ch = val[0];
+
+		// if we're scanning math, we collect everything until we
+		// find an unescaped $, and then try to convert this piecewise.
+		if (scanning_math) {
+			if (escaped)
+				escaped = false;
+			else if (ch == '\\')
+				escaped = true;
+			else if (ch == '$') {
+				scanning_math = false;
+				bool termination;
+				docstring rem;
+				ret += fromLaTeXCommand(mret, MATH_CMD, termination, rem);
+				// parse remaining math
+				while (!rem.empty()) {
+					docstring rrem;
+					// split command from normal text
+					docstring cmd = split(rem, rrem, '\\');
+					ret += rrem;
+					// done of no command was found
+					if (cmd.empty())
+						break;
+					// go on ...
+					ret += fromLaTeXCommand(from_ascii("\\") + cmd, MATH_CMD, termination, rem);
+				}
+				mret = docstring();
+			}
+			mret += ch;
+			val = val.substr(1);
+			continue;
+		}
+
+		// if we're scanning a command name, then we just
+		// discard characters until we hit something that
+		// isn't alpha.
+		if (scanning_cmd) {
+			if (!is_section && ch == 'S') {
+				is_section = true;
+				val = val.substr(1);
+				continue;
+			}
+			if (isAlphaASCII(ch)) {
+				is_section = false;
+				val = val.substr(1);
+				escaped = false;
+				continue;
+			} else if (is_section) {
+				ret.push_back(0x00a7);
+				is_section = false;
+				continue;
+			}
+			// so we're done with this command.
+			// now we fall through and check this character.
+			is_section = false;
+			scanning_cmd = false;
+		}
+
+		// was the last character a \? If so, then this is something like:
+		// \\ or \$, so we'll just output it. That's probably not always right...
+		if (escaped) {
+			// exception: output \, as THIN SPACE
+			if (ch == ',')
+				ret.push_back(0x2009);
+			else
+				ret += ch;
+			val = val.substr(1);
+			escaped = false;
+			continue;
+		}
+
+		if (ch == '~') {
+			ret += char_type(0x00a0);
+			val = val.substr(1);
+			continue;
+		}
+
+		if (ch == '$') {
+			val = val.substr(1);
+			scanning_math = true;
+			continue;
+		}
+
+		// Change text mode accents in the form
+		// {\v a} to \v{a} (see #9340).
+		// FIXME: This is a sort of mini-tex2lyx.
+		//        Use the real tex2lyx instead!
+		static regex const tma_reg("^\\{\\\\[bcCdfGhHkrtuUv]\\s\\w\\}");
+		if (regex_search(to_utf8(val), tma_reg)) {
+			val = val.substr(1);
+			val.replace(2, 1, from_ascii("{"));
+			continue;
+		}
+
+		// Apart from the above, we just ignore braces
+		if (ch == '{' || ch == '}') {
+			val = val.substr(1);
+			continue;
+		}
+
+		// we're going to check things that look like commands, so if
+		// this doesn't, just output it.
+		if (ch != '\\') {
+			ret += ch;
+			val = val.substr(1);
+			continue;
+		}
+
+		// ok, could be a command of some sort
+		// let's see if it corresponds to some unicode
+		// unicodesymbols has things in the form: \"{u},
+		// whereas we may see things like: \"u. So we'll
+		// look for that and change it, if necessary.
+		// FIXME: This is a sort of mini-tex2lyx.
+		//        Use the real tex2lyx instead!
+		static regex const reg("^\\\\\\W\\w");
+		if (regex_search(to_utf8(val), reg)) {
+			val.insert(3, from_ascii("}"));
+			val.insert(2, from_ascii("{"));
+		}
+		bool termination;
+		docstring rem;
+		docstring const cnvtd = fromLaTeXCommand(val,
+				TEXT_CMD, termination, rem);
+		if (!cnvtd.empty()) {
+			// it did, so we'll take that bit and proceed with what's left
+			ret += cnvtd;
+			val = rem;
+			continue;
+		}
+		// it's a command of some sort
+		scanning_cmd = true;
+		escaped = true;
+		val = val.substr(1);
+	}
+	return ret;
 }
 
 

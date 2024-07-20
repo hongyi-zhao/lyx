@@ -5267,7 +5267,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// Set the cursor
 				bvcur.resetAnchor();
 			if (!bv->mouseSetCursor(cur, cmd.modifier() == ShiftModifier))
-				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
+				cur.screenUpdateFlags(Update::FitCursor);
 			// FIXME: move this to mouseSetCursor?
 			if (bvcur.wordSelection() && bvcur.inTexted())
 				expandWordSel(bvcur);
@@ -5366,9 +5366,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// selectWord but bvcur is current
 				// mouse position.
 				cur.bv().cursor().setSelection();
-				// We might have removed an empty but drawn selection
-				// (probably a margin)
-				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
+				cur.screenUpdateFlags(Update::FitCursor);
 			} else
 				cur.noScreenUpdate();
 			// FIXME: We could try to handle drag and drop of selection here.

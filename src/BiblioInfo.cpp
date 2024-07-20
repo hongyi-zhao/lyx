@@ -329,141 +329,6 @@ bool multipleAuthors(docstring const & author)
 }
 
 
-// converts a string containing LaTeX commands into unicode
-// for display.
-docstring convertLaTeXCommands(docstring const & str)
-{
-	docstring val = str;
-	docstring ret;
-
-	bool scanning_cmd = false;
-	bool scanning_math = false;
-	bool is_section = false;
-	bool escaped = false; // used to catch \$, etc.
-	while (!val.empty()) {
-		char_type const ch = val[0];
-
-		// if we're scanning math, we output everything until we
-		// find an unescaped $, at which point we break out.
-		if (scanning_math) {
-			if (escaped)
-				escaped = false;
-			else if (ch == '\\')
-				escaped = true;
-			else if (ch == '$')
-				scanning_math = false;
-			ret += ch;
-			val = val.substr(1);
-			continue;
-		}
-
-		// if we're scanning a command name, then we just
-		// discard characters until we hit something that
-		// isn't alpha.
-		if (scanning_cmd) {
-			if (!is_section && ch == 'S') {
-				is_section = true;
-				val = val.substr(1);
-				continue;
-			}
-			if (isAlphaASCII(ch)) {
-				is_section = false;
-				val = val.substr(1);
-				escaped = false;
-				continue;
-			} else if (is_section) {
-				ret.push_back(0x00a7);
-				is_section = false;
-				continue;
-			}
-			// so we're done with this command.
-			// now we fall through and check this character.
-			is_section = false;
-			scanning_cmd = false;
-		}
-
-		// was the last character a \? If so, then this is something like:
-		// \\ or \$, so we'll just output it. That's probably not always right...
-		if (escaped) {
-			// exception: output \, as THIN SPACE
-			if (ch == ',')
-				ret.push_back(0x2009);
-			else
-				ret += ch;
-			val = val.substr(1);
-			escaped = false;
-			continue;
-		}
-
-		if (ch == '~') {
-			ret += char_type(0x00a0);
-			val = val.substr(1);
-			continue;
-		}
-
-		if (ch == '$') {
-			ret += ch;
-			val = val.substr(1);
-			scanning_math = true;
-			continue;
-		}
-
-		// Change text mode accents in the form
-		// {\v a} to \v{a} (see #9340).
-		// FIXME: This is a sort of mini-tex2lyx.
-		//        Use the real tex2lyx instead!
-		static regex const tma_reg("^\\{\\\\[bcCdfGhHkrtuUv]\\s\\w\\}");
-		if (regex_search(to_utf8(val), tma_reg)) {
-			val = val.substr(1);
-			val.replace(2, 1, from_ascii("{"));
-			continue;
-		}
-
-		// Apart from the above, we just ignore braces
-		if (ch == '{' || ch == '}') {
-			val = val.substr(1);
-			continue;
-		}
-
-		// we're going to check things that look like commands, so if
-		// this doesn't, just output it.
-		if (ch != '\\') {
-			ret += ch;
-			val = val.substr(1);
-			continue;
-		}
-
-		// ok, could be a command of some sort
-		// let's see if it corresponds to some unicode
-		// unicodesymbols has things in the form: \"{u},
-		// whereas we may see things like: \"u. So we'll
-		// look for that and change it, if necessary.
-		// FIXME: This is a sort of mini-tex2lyx.
-		//        Use the real tex2lyx instead!
-		static regex const reg("^\\\\\\W\\w");
-		if (regex_search(to_utf8(val), reg)) {
-			val.insert(3, from_ascii("}"));
-			val.insert(2, from_ascii("{"));
-		}
-		bool termination;
-		docstring rem;
-		docstring const cnvtd = Encodings::fromLaTeXCommand(val,
-				Encodings::TEXT_CMD, termination, rem);
-		if (!cnvtd.empty()) {
-			// it did, so we'll take that bit and proceed with what's left
-			ret += cnvtd;
-			val = rem;
-			continue;
-		}
-		// it's a command of some sort
-		scanning_cmd = true;
-		escaped = true;
-		val = val.substr(1);
-	}
-	return ret;
-}
-
-
 // Escape '<' and '>' and remove richtext markers (e.g. {!this is richtext!}) from a string.
 docstring processRichtext(docstring const & str, bool richtext)
 {
@@ -639,7 +504,7 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 			retval = constructName(authors[0], citenameform) + (buf ? buf->B_(etal) : from_ascii(etal));
 	}
 
-	return convertLaTeXCommands(retval);
+	return Encodings::convertLaTeXCommands(retval);
 }
 
 
@@ -1068,7 +933,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 	}
 
 	if (!richtext && !info_.empty()) {
-		info_ = convertLaTeXCommands(processRichtext(info_, false));
+		info_ = Encodings::convertLaTeXCommands(processRichtext(info_, false));
 		return info_;
 	}
 	if (richtext && !info_richtext_.empty())
@@ -1090,11 +955,11 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 	}
 
 	if (richtext) {
-		info_richtext_ = convertLaTeXCommands(processRichtext(info_, true));
+		info_richtext_ = Encodings::convertLaTeXCommands(processRichtext(info_, true));
 		return info_richtext_;
 	}
 
-	info_ = convertLaTeXCommands(processRichtext(info_, false));
+	info_ = Encodings::convertLaTeXCommands(processRichtext(info_, false));
 	return info_;
 }
 
@@ -1110,7 +975,7 @@ docstring const BibTeXInfo::getLabel(BibTeXInfoList const & xrefs,
 
 	if (!loclabel.empty() && !next) {
 		loclabel = processRichtext(loclabel, ci.richtext);
-		loclabel = convertLaTeXCommands(loclabel);
+		loclabel = Encodings::convertLaTeXCommands(loclabel);
 	}
 
 	return loclabel;

@@ -400,11 +400,15 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 			// strip out % characters which are used as escape in nomencl
 			// but act as comment in our context here
 			symbol = subst(symbol, from_ascii("%"), docstring());
+			// for measurement, convert to a somewhat more output-like string
+			docstring msymb = Encodings::convertLaTeXCommands(symbol);
 			// This is only an approximation,
 			// but the best we can get.
+			// FIXME: this might produce different results with
+			// and without GUI (#10634)
 			int const wx = use_gui ?
-				theFontMetrics(Font()).width(symbol) :
-				symbol.size();
+				theFontMetrics(Font()).width(msymb) :
+				msymb.size();
 			if (wx > w) {
 				w = wx;
 				symb = symbol;

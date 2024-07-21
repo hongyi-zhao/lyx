@@ -144,6 +144,7 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 string fboxrule = "";
 string fboxsep = "";
 string shadow_size = "";
+string printnomencl_textwidth = "";
 
 char const * const known_babel_shorthands[] = { "\"", "|", "-", "~", "=", "/",
  "~", "*", ":", "_", "x", "'", "`", "<", ">", 0 };
@@ -5083,6 +5084,24 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
+		if (t.cs() == "settowidth") {
+			context.check_layout(os);
+			string arg = p.getArg('{', '}');
+			// we are only interested in this:
+			if (arg == "\\nomlabelwidth") {
+				printnomencl_textwidth = p.getArg('{', '}');
+				eat_whitespace(p, os, context, false);
+				continue;
+			}
+			// for any other length, do ERT
+			string arg2 = p.getArg('{', '}');
+			string const ert = t.asInput()
+					+ '{' + arg + '}'
+					+ '{' + arg2 + '}';
+			output_ert_inset(os, ert, context);
+			continue;
+		}
+
 		if (t.cs() == "printnomenclature") {
 			string width = "";
 			string width_type = "";
@@ -5094,16 +5113,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				width = translate_len(width);
 				width_type = "custom";
 			}
-			// case of no custom width
-			// the case of no custom width but the width set
-			// via \settowidth{\nomlabelwidth}{***} cannot be supported
-			// because the user could have set anything, not only the width
-			// of the longest label (which would be width_type = "auto")
 			string label = convert_literate_command_inset_arg(p.getArg('{', '}'));
-			if (label.empty() && width_type.empty())
+			if (!printnomencl_textwidth.empty()) {
+				width_type = "textwidth";
+				width = printnomencl_textwidth;
+			}
+			else if (label.empty() && width_type.empty())
 				width_type = "none";
 			os << "set_width \"" << width_type << "\"\n";
-			if (width_type == "custom")
+			if (width_type == "custom" || width_type == "textwidth")
 				os << "width \"" << width << '\"';
 			end_inset(os);
 			skip_spaces_braces(p);

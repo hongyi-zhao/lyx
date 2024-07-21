@@ -34065,10 +34065,14 @@ status open
 
 \change_inserted -712698321 1720530576
 biblatex-chicago
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -34088,6 +34092,8 @@ status collapsed
 
 \change_inserted -712698321 1720530576
 authordate
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -34100,6 +34106,8 @@ status collapsed
 
 \change_inserted -712698321 1720530576
 notes-bibliography
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -37390,7 +37398,60 @@ label
 \begin_inset space ~
 \end_inset
 
-width the width of the widest symbol of all nomenclature entries is used
+width
+\change_inserted -712698321 1721576787
+
+\begin_inset space ~
+\end_inset
+
+(guessed)
+\change_unchanged
+ 
+\change_inserted -712698321 1721576880
+\SpecialChar LyX
+ tries to guess the 
+\change_deleted -712698321 1721576836
+the width of the 
+\change_unchanged
+widest symbol of all nomenclature entries 
+\change_deleted -712698321 1721576839
+is
+\change_inserted -712698321 1721576839
+and
+\change_unchanged
+ use
+\change_inserted -712698321 1721576845
+ this.
+\change_deleted -712698321 1721576844
+d
+\change_inserted -712698321 1721576994
+ Note that this guessing might go wrong,
+ as \SpecialChar LyX
+ does not know how how the formatted output in your PDF will look like exactly.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1721577537
+Longest
+\begin_inset space ~
+\end_inset
+
+label
+\begin_inset space ~
+\end_inset
+
+width
+\begin_inset space ~
+\end_inset
+
+(set) here you can enter the widest symbol yourself to use its width.
+ While this is more accurate than the second method,
+ the disadvantage is that you need to keep this up-to date if new (longer) entries are added to the nomenclature.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

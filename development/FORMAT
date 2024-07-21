@@ -7,9 +7,21 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2024-07-21 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 626: Support for manuel longest label in
+	  \printnomencl (via new param option set_width "textwidth").
+	  In LaTeX, this will be output as
+	  \settowidth{\nomlabelwidth}{<text>}
+	  before \printnomencl, which we will revert to ERT.
+
+2024-07-11 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 625: Support for \nptextcite (biblatex-apa)
+	  and \autocite*/\Autocite* (biblatex-mla).
+	  We will revert new commands to ERT where necessary.
+
 2024-07-09 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 624: Add biblatex-chicago cite engine.
-	  We will revert new commands to ERT where necessary
+	  We will revert new commands to ERT where necessary.
 
 2024-06-11 Udi Fogiel <ufogiel@lyx.org>
 	* Format incremented to 623: Remove hebrew letter document class.

@@ -153,7 +153,7 @@ ParamInfo const & InsetPrintNomencl::findInfo(string const & /* cmdName */)
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
 		// how is the width set?
-		// values: none|auto|custom
+		// values: none|auto|custom|textwidth
 		param_info_.add("set_width", ParamInfo::LYX_INTERNAL);
 		// custom width
 		param_info_.add("width", ParamInfo::LYX_INTERNAL);
@@ -424,8 +424,10 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 void InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
-	if (getParam("set_width") == "auto") {
-		docstring widest = nomenclWidest(buffer(), runparams);
+	bool const autowidth = getParam("set_width") == "auto";
+	if (autowidth || getParam("set_width") == "textwidth") {
+		docstring widest = autowidth ? nomenclWidest(buffer(), runparams)
+					     : getParam("width");
 		// Set the label width via nomencl's command \nomlabelwidth.
 		// This must be output before the command \printnomenclature
 		if (!widest.empty()) {

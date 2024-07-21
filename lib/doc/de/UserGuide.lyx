@@ -36707,7 +36707,43 @@ längsten
 \begin_inset space ~
 \end_inset
 
-Marke die Breite des breitesten Symbols aller Nomenklatureinträge wird verwendet
+Marke
+\begin_inset space ~
+\end_inset
+
+(geschätzt) \SpecialChar LyX
+ versucht zu schätzen,
+ welches das breiteste Symbol aller Nomenklatureinträge ist und verwendet dessen Breite.
+ Beachten Sie,
+ dass diese Schätzung falsch sein kann,
+ da \SpecialChar LyX
+ nicht genau weiß,
+ wie Ihr Text in der Ausgabe formatiert sein wird.
+\end_layout
+
+\begin_layout Description
+Breite
+\begin_inset space ~
+\end_inset
+
+der
+\begin_inset space ~
+\end_inset
+
+längsten
+\begin_inset space ~
+\end_inset
+
+Marke
+\begin_inset space ~
+\end_inset
+
+(gesetzt) Hier können Sie selbst das breiteste Symbol angeben,
+ dessen Breite dann verwendet wird.
+ Das ist zuverlässiger als die zweite Methode.
+ Der Nachteil allerdings ist,
+ dass Sie dies selbst aktualisieren müssen,
+ wenn neue (längere) Einträge hinzukommen.
 \end_layout
 
 \begin_layout Description

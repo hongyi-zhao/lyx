@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-07-14 14:03+0200\n"
-"PO-Revision-Date: 2024-07-14 14:05+0200\n"
+"POT-Creation-Date: 2024-07-21 18:09+0200\n"
+"PO-Revision-Date: 2024-07-21 18:10+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -650,7 +650,7 @@ msgstr "Oben"
 #: src/frontends/qt/ui/BoxUi.ui:209 src/frontends/qt/ui/BoxUi.ui:239
 #: src/frontends/qt/ui/TabularUi.ui:270 src/frontends/qt/ui/TabularUi.ui:393
 #: lib/ui/stdcontext.inc:484 src/frontends/qt/GuiMathMatrix.cpp:55
-#: src/frontends/qt/GuiTabular.cpp:252
+#: src/frontends/qt/GuiTabular.cpp:258
 msgid "Middle"
 msgstr "Mitte"
 
@@ -684,20 +684,20 @@ msgstr "Dehnen"
 #: src/frontends/qt/ui/BoxUi.ui:265 src/frontends/qt/ui/ListingsUi.ui:110
 #: src/frontends/qt/ui/TabularUi.ui:328 src/frontends/qt/ui/TabularUi.ui:1537
 #: src/frontends/qt/ui/WrapUi.ui:47 src/frontends/qt/GuiDocument.cpp:1607
-#: src/frontends/qt/GuiParagraph.cpp:114 src/frontends/qt/GuiTabular.cpp:1038
+#: src/frontends/qt/GuiParagraph.cpp:114 src/frontends/qt/GuiTabular.cpp:1044
 msgid "Left"
 msgstr "Links"
 
 #: src/frontends/qt/ui/BoxUi.ui:270 src/frontends/qt/ui/TabularUi.ui:333
 #: src/frontends/qt/GuiExternal.cpp:78 src/frontends/qt/GuiGraphics.cpp:73
-#: src/frontends/qt/GuiParagraph.cpp:116 src/frontends/qt/GuiTabular.cpp:1039
+#: src/frontends/qt/GuiParagraph.cpp:116 src/frontends/qt/GuiTabular.cpp:1045
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt/ui/BoxUi.ui:275 src/frontends/qt/ui/ListingsUi.ui:115
 #: src/frontends/qt/ui/TabularUi.ui:338 src/frontends/qt/ui/WrapUi.ui:52
 #: src/frontends/qt/GuiDocument.cpp:1609 src/frontends/qt/GuiParagraph.cpp:115
-#: src/frontends/qt/GuiTabular.cpp:1040
+#: src/frontends/qt/GuiTabular.cpp:1046
 msgid "Right"
 msgstr "Rechts"
 
@@ -3878,7 +3878,7 @@ msgstr "Doppelt"
 #: src/frontends/qt/GuiHSpace.cpp:57 src/frontends/qt/GuiIndex.cpp:50
 #: src/frontends/qt/GuiPrefs.cpp:703 src/frontends/qt/GuiPrefs.cpp:731
 #: src/frontends/qt/GuiPrefs.cpp:758 src/frontends/qt/GuiPrefs.cpp:2233
-#: src/frontends/qt/GuiPrefs.cpp:2258 src/frontends/qt/GuiPrintNomencl.cpp:51
+#: src/frontends/qt/GuiPrefs.cpp:2258 src/frontends/qt/GuiPrintNomencl.cpp:53
 #: src/insets/InsetInfo.cpp:241 src/insets/InsetInfo.cpp:251
 #: src/insets/InsetInfo.cpp:255 src/insets/InsetInfo.cpp:264
 #: src/insets/InsetInfo.cpp:327 src/insets/InsetInfo.cpp:350
@@ -5936,12 +5936,12 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
 #: src/frontends/qt/ui/TabularUi.ui:323 src/frontends/qt/GuiParagraph.cpp:113
-#: src/frontends/qt/GuiTabular.cpp:1042
+#: src/frontends/qt/GuiTabular.cpp:1048
 msgid "Justified"
 msgstr "Blocksatz"
 
-#: src/frontends/qt/ui/TabularUi.ui:343 src/frontends/qt/GuiTabular.cpp:245
-#: src/frontends/qt/GuiTabular.cpp:1044
+#: src/frontends/qt/ui/TabularUi.ui:343 src/frontends/qt/GuiTabular.cpp:251
+#: src/frontends/qt/GuiTabular.cpp:1050
 msgid "At Decimal Separator"
 msgstr "Am Dezimaltrenner"
 
@@ -28332,16 +28332,16 @@ msgstr "Einfaches Gitter"
 msgid "%1$s[[name]] (%2$s[[email]])"
 msgstr "%1$s[[Name]] (%2$s[[Email]])"
 
-#: src/BiblioInfo.cpp:926 src/BiblioInfo.cpp:976 src/BiblioInfo.cpp:987
-#: src/BiblioInfo.cpp:1042 src/BiblioInfo.cpp:1046
+#: src/BiblioInfo.cpp:791 src/BiblioInfo.cpp:841 src/BiblioInfo.cpp:852
+#: src/BiblioInfo.cpp:907 src/BiblioInfo.cpp:911
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/BiblioInfo.cpp:1508
+#: src/BiblioInfo.cpp:1373
 msgid "No year"
 msgstr "Kein Jahr"
 
-#: src/BiblioInfo.cpp:1518
+#: src/BiblioInfo.cpp:1383
 msgid "Bibliography entry not found!"
 msgstr "Literaturverzeichnis-Eintrag nicht gefunden!"
 
@@ -29154,7 +29154,7 @@ msgid "greyedout inset text"
 msgstr "Grauschrift-Einfügungstext"
 
 #: src/BufferParams.cpp:1727 src/BufferParams.cpp:1888
-#: src/BufferParams.cpp:2371 src/Encoding.cpp:263 src/Paragraph.cpp:3190
+#: src/BufferParams.cpp:2371 src/Encoding.cpp:264 src/Paragraph.cpp:3190
 #: src/frontends/qt/LaTeXHighlighter.cpp:176
 #: src/insets/InsetCommandParams.cpp:523 src/insets/InsetCommandParams.cpp:531
 #: src/insets/InsetGraphics.cpp:904 src/insets/InsetGraphics.cpp:912
@@ -29165,7 +29165,7 @@ msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
 #: src/BufferParams.cpp:1728 src/BufferParams.cpp:1889
-#: src/BufferParams.cpp:2372 src/Encoding.cpp:264 src/Paragraph.cpp:3191
+#: src/BufferParams.cpp:2372 src/Encoding.cpp:265 src/Paragraph.cpp:3191
 #: src/insets/InsetCommandParams.cpp:524 src/insets/InsetCommandParams.cpp:532
 #: src/insets/InsetGraphics.cpp:905 src/insets/InsetGraphics.cpp:913
 #: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
@@ -30570,7 +30570,7 @@ msgstr ""
 "Kann Tastenkürzeldatei %1$s nicht finden.\n"
 "Es wird die Standarddatei verwendet."
 
-#: src/KeySequence.cpp:179
+#: src/KeySequence.cpp:190
 msgid "   options: "
 msgstr "   Optionen: "
 
@@ -31816,40 +31816,40 @@ msgstr "&Nein, Vorgang abbrechen"
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text.cpp:5012 src/Text.cpp:5593
+#: src/Text.cpp:5012 src/Text.cpp:5591
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text.cpp:5592
+#: src/Text.cpp:5590
 msgid "Table Style "
 msgstr "Tabellenstil"
 
-#: src/Text.cpp:5801 src/frontends/qt/GuiApplication.cpp:1889
+#: src/Text.cpp:5799 src/frontends/qt/GuiApplication.cpp:1889
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text.cpp:5967
+#: src/Text.cpp:5965
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text.cpp:5971
+#: src/Text.cpp:5969
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
 
-#: src/Text.cpp:5976 src/Text.cpp:5990
+#: src/Text.cpp:5974 src/Text.cpp:5988
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Angewendete Texteigenschaften: %1$s"
 
-#: src/Text.cpp:5992
+#: src/Text.cpp:5990
 msgid "Invalid argument of textstyle-update"
 msgstr "Ungültiges Argument für textstyle-update"
 
-#: src/Text.cpp:6149
+#: src/Text.cpp:6147
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text.cpp:6150
+#: src/Text.cpp:6148
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -31861,7 +31861,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text.cpp:6276 src/Text.cpp:6287
+#: src/Text.cpp:6274 src/Text.cpp:6285
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -35318,8 +35318,12 @@ msgid "Identity"
 msgstr "Identität"
 
 #: src/frontends/qt/GuiPrintNomencl.cpp:49
-msgid "Longest label width"
-msgstr "Breite der längsten Marke"
+msgid "Longest label width (guessed)"
+msgstr "Breite der längsten Marke (geschätzt)"
+
+#: src/frontends/qt/GuiPrintNomencl.cpp:51
+msgid "Longest label width (set)"
+msgstr "Breite der längsten Marke (gesetzt)"
 
 #: src/frontends/qt/GuiPrintNomencl.h:40
 msgid "Nomenclature List Settings"

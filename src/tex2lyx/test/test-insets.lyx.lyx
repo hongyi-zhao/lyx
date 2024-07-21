@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.5
-\lyxformat 625
+\lyxformat 626
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -7580,24 +7580,10 @@ hello
 
 \begin_layout Standard
 manually set width: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-settowidth{
-\backslash
-nomlabelwidth}{URL2}
-\end_layout
-
-\end_inset
-
- 
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
-set_width "none"
-
+set_width "textwidth"
+width "URL2"
 \end_inset
 
 
@@ -7611,8 +7597,8 @@ nomenclature with set width:
 
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
-set_width "custom"
-width "2line%"
+set_width "textwidth"
+width "URL2"
 \end_inset
 
 

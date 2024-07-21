@@ -46,8 +46,10 @@ GuiPrintNomencl::GuiPrintNomencl(QWidget * parent) : InsetParamsWidget(parent)
 
 	setWidthCO->addItem(qt_("Default"),
 		QVariant(toqstr("none")));
-	setWidthCO->addItem(qt_("Longest label width"),
+	setWidthCO->addItem(qt_("Longest label width (guessed)"),
 		QVariant(toqstr("auto")));
+	setWidthCO->addItem(qt_("Longest label width (set)"),
+		QVariant(toqstr("textwidth")));
 	setWidthCO->addItem(qt_("Custom"),
 		QVariant(toqstr("custom")));
 }
@@ -61,11 +63,15 @@ void GuiPrintNomencl::on_setWidthCO_activated(int /*i*/)
 
 void GuiPrintNomencl::paramsToDialog(InsetCommandParams const & params)
 {
-	setWidthCO->setCurrentIndex(
-		setWidthCO->findData(toqstr(params["set_width"])));
+	QString const set_width = toqstr(params["set_width"]);
 
-	lengthToWidgets(valueLE, unitLC,
-			params["width"], Length::defaultUnit());
+	setWidthCO->setCurrentIndex(setWidthCO->findData(set_width));
+
+	if (set_width == "textwidth")
+		valueLE->setText(toqstr(params["width"]));
+	else
+		lengthToWidgets(valueLE, unitLC,
+				params["width"], Length::defaultUnit());
 }
 
 
@@ -85,6 +91,8 @@ docstring GuiPrintNomencl::dialogToParams() const
 	docstring width;
 	if (set_width == from_ascii("custom"))
 		width = from_utf8(widgetsToLength(valueLE, unitLC));
+	else if (set_width == from_ascii("textwidth"))
+		width = qstring_to_ucs4(valueLE->text());
 	params["width"] = width;
 	return from_ascii(InsetNomencl::params2string(params));
 }
@@ -92,23 +100,29 @@ docstring GuiPrintNomencl::dialogToParams() const
 
 bool GuiPrintNomencl::checkWidgets(bool readonly) const
 {
+	QString const set_width =
+		setWidthCO->itemData(setWidthCO->currentIndex()).toString();
+	bool const custom = (set_width == "custom");
+	bool const textwidth = (set_width == "textwidth");
 	valueLE->setReadOnly(readonly);
 	if (readonly) {
 		setWidthCO->setEnabled(false);
 		unitLC->setEnabled(false);
 		valueLA->setEnabled(false);
 	} else {
-		bool const custom =
-			(setWidthCO->itemData(setWidthCO->currentIndex()).toString() == "custom");
-		valueLE->setEnabled(custom);
+		valueLE->setEnabled(custom || textwidth);
 		unitLC->setEnabled(custom);
-		valueLA->setEnabled(custom);
+		valueLA->setEnabled(custom || textwidth);
 	}
+	if (textwidth)
+		// opt-out validator
+		valueLE->setValidator(nullptr);
+	else
+		valueLE->setValidator(unsignedLengthValidator(valueLE));
 
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
-	return setWidthCO->itemData(
-			setWidthCO->currentIndex()).toString() != "custom"
+	return (!custom && !textwidth)
 		|| !valueLE->text().isEmpty();
 }
 

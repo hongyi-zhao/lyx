@@ -31,13 +31,14 @@ from lyx2lyx_tools import (
 )
 
 # Uncomment only what you need to import, please (parser_tools):
-#    check_token, count_pars_in_inset, del_complete_lines, del_token,
+#    check_token, count_pars_in_inset, del_complete_lines, 
 #    del_value, find_complete_lines, find_end_of, find_end_of_layout,
 #    find_re, find_substring, find_token_backwards, find_token_exact,
 #    find_tokens, get_bool_value, get_containing_inset,
 #    get_containing_layout, get_option_value,
 #    is_in_inset, set_bool_value
 from parser_tools import (
+    del_token,
     find_end_of_inset,
     find_re,
     find_token,
@@ -442,6 +443,42 @@ def revert_nptextcite(document):
             document.body[i : j + 1] = put_cmd_in_ert([res])
         i = j + 1
 
+
+def revert_nomencl_textwidth(document):
+    """Revert nomencl textwidth parameter to ERT."""
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset nomencl_print", i)
+        if i == -1:
+            return
+
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning(
+                "Malformed LyX document: Can't find end of command inset at line %d" % i
+            )
+            i += 1
+            continue
+
+        sw = get_quoted_value(document.body, "set_width", i, j)
+        if sw != "textwidth":
+            i += 1
+            continue
+
+        # change set_width to "none"
+        k = find_token(document.body, "set_width", i, j)
+        if k != -1:
+            document.body[k] = "set_width \"none\""
+        tw = get_quoted_value(document.body, "width", i, j)
+        # delete width
+        del_token(document.body, "width", i, j)
+        # Insert ERT
+        res = "\\settowidth{\\nomlabelwidth}{" + tw + "}"
+        document.body[i : i] = put_cmd_in_ert([res])
+        i = j
+
+
 ##
 # Conversion hub
 #
@@ -452,11 +489,13 @@ convert = [
     [622, []],
     [623, [convert_he_letter]],
     [624, [convert_biblatex_chicago]],
-    [625, []]
+    [625, []],
+    [626, []]
 ]
 
 
 revert = [
+    [625, [revert_nomencl_textwidth]],
     [624, [revert_nptextcite]],
     [623, [revert_biblatex_chicago]],
     [622, []],

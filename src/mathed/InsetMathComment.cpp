@@ -16,6 +16,10 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
+#include "frontends/Painter.h"
+
+#include "MetricsInfo.h"
+
 #include <ostream>
 
 
@@ -55,6 +59,8 @@ void InsetMathComment::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathComment::draw(PainterInfo & pi, int x, int y) const
 {
+	Dimension const & dim = dimension(*pi.base.bv);
+	pi.pain.fillRectangle(x, y - dim.asc, dim.wid, dim.height(), Color_notebg);
 	cell(0).draw(pi, x, y);
 }
 

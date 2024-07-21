@@ -147,16 +147,27 @@ docstring const KeySequence::print(outputFormat format, bool const untranslated)
 			break;
 		case BindFile:
 			KeyModifier mod = modifiers[i].first;
+			KeyModifier nmod = modifiers[i].second;
 			if (mod & ControlModifier)
 				buf += "C-";
+			else if (nmod & ControlModifier)
+				buf += "~C-";
 			if (mod & AltModifier)
 #if defined(USE_MACOSX_PACKAGING) || defined(USE_META_KEYBINDING)
 				buf += "A-";
+			else if (nmod & AltModifier)
+				buf += "~A-";
 			if (mod & MetaModifier)
 #endif
 				buf += "M-";
+#if defined(USE_MACOSX_PACKAGING) || defined(USE_META_KEYBINDING)
+			else if (nmod & MetaModifier)
+				buf += "~M-";
+#endif
 			if (mod & ShiftModifier)
 				buf += "S-";
+			else if (nmod & ShiftModifier)
+				buf += "~S-";
 
 			buf += from_utf8(sequence[i].getSymbolName());
 			break;

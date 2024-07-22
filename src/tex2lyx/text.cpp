@@ -5009,10 +5009,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string prefix = convert_literate_command_inset_arg(p.getArg('[', ']'));
 			if (!prefix.empty())
 				os << "prefix " << '"' << prefix << '"' << "\n";
+			// nomencl activates %
+			CatCode savecc = p.catcode('%');
+			p.setCatcode('%', catActive);
 			string symbol = p.verbatim_item();
+			p.setCatcode('%', savecc);
+			// escape quotation marks
+			symbol = subst(symbol, "\"", "\\\"");
 			pair<bool, string> sym = convert_latexed_command_inset_arg(symbol);
 			bool literal = !sym.first;
 			string description = p.verbatim_item();
+			// escape quotation marks
+			description = subst(description, "\"", "\\\"");
 			pair<bool, string> desc = convert_latexed_command_inset_arg(description);
 			literal |= !desc.first;
 			if (literal) {

@@ -9302,12 +9302,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9320,7 +9318,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9346,7 +9343,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -36185,7 +36181,7 @@ in Nomenklatureinträgen mit \SpecialChar TeX
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "%@, %|, %!, %\"{}"
-description "Das Anführungszeichen wird im TeX-Code mit der Sequenz ' %\"{}%\"{} ' ausgegeben."
+description "Sonderzeichen im Nomenklatur-Kontext, denen für literale Ausgabe ,\\%` vorangestellt werden muss "
 literal "true"
 
 \end_inset

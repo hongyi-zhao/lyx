@@ -1515,7 +1515,7 @@ void PrefSpellchecker::applyRC(LyXRC & rc) const
 	if (!speller.empty())
 		rc.spellchecker = speller;
 	rc.spellchecker_alt_lang = fromqstr(altLanguageED->text());
-	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
+	rc.spellchecker_esc_chars = qstring_to_ucs4(escapeCharactersED->text());
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
 	rc.spellcheck_continuously = spellcheckContinuouslyCB->isChecked();
 	rc.spellcheck_notes = spellcheckNotesCB->isChecked();

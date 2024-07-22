@@ -2419,7 +2419,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	case RC_ESC_CHARS:
 		if (ignore_system_lyxrc ||
 		    spellchecker_esc_chars != system_lyxrc.spellchecker_esc_chars) {
-			os << "\\escape_chars \"" << spellchecker_esc_chars << "\"\n";
+			os << "\\escape_chars \"" << to_utf8(spellchecker_esc_chars) << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;

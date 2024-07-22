@@ -4275,8 +4275,8 @@ bool Paragraph::isWordSeparator(pos_type pos, bool const ignore_deleted) const
 		return false;
 	char_type const c = d->text_[pos];
 	// We want to pass the escape chars to the spellchecker
-	docstring const escape_chars = from_utf8(lyxrc.spellchecker_esc_chars);
-	return !isLetterChar(c) && !isDigitASCII(c) && !contains(escape_chars, c);
+	return !isLetterChar(c) && !isDigitASCII(c)
+	       && !contains(lyxrc.spellchecker_esc_chars, c);
 }
 
 

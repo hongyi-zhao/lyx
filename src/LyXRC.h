@@ -372,7 +372,7 @@ public:
 	/// Alternate language for spellchecker
 	std::string spellchecker_alt_lang;
 	/// Escape characters
-	std::string spellchecker_esc_chars;
+	docstring spellchecker_esc_chars;
 	/// Accept compound words in spellchecker?
 	bool spellchecker_accept_compound = false;
 	/// spellcheck continuously?

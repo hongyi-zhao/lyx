@@ -289,9 +289,9 @@ TeXMathStream & operator<<(TeXMathStream & ws, unsigned int i)
 
 
 MathMLStream::MathMLStream(odocstream & os, std::string const & xmlns)
-	: os_(os), tab_(0), line_(0), in_text_(false), xmlns_(xmlns)
+	: os_(os), xmlns_(xmlns)
 {
-	if (in_text_)
+	if (inText())
 		font_math_style_ = TEXT_STYLE;
 	else
 		font_math_style_ = DISPLAY_STYLE;
@@ -300,9 +300,9 @@ MathMLStream::MathMLStream(odocstream & os, std::string const & xmlns)
 
 void MathMLStream::cr()
 {
-	os() << '\n';
+	os_ << '\n';
 	for (int i = 0; i < tab(); ++i)
-		os() << ' ';
+		os_ << ' ';
 }
 
 
@@ -323,6 +323,23 @@ docstring MathMLStream::deferred() const
 	return deferred_.str();
 }
 
+void MathMLStream::beforeText()
+{
+	if (!in_mtext_ && nesting_level_ == text_level_) {
+		*this << MTagInline("mtext");
+		in_mtext_ = true;
+	}
+}
+
+
+void MathMLStream::beforeTag()
+{
+	if (in_mtext_ && nesting_level_ == text_level_ + 1) {
+		in_mtext_ = false;
+		*this << ETagInline("mtext");
+	}
+}
+
 
 MathMLStream & operator<<(MathMLStream & ms, MathAtom const & at)
 {
@@ -338,81 +355,96 @@ MathMLStream & operator<<(MathMLStream & ms, MathData const & ar)
 }
 
 
+MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
+{
+	ms.beforeText();
+	ms.os_ << s;
+	return ms;
+}
+
+
 MathMLStream & operator<<(MathMLStream & ms, char const * s)
 {
-	ms.os() << s;
+	ms << from_utf8(s);
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, char c)
 {
-	ms.os() << c;
+	ms << docstring(1,c);
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, char_type c)
 {
-	ms.os().put(c);
+	ms << docstring(1,c);
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, MTag const & t)
 {
+	ms.beforeTag();
+	SetMode rawmode(ms, false);
 	ms.cr();
 	++ms.tab();
-	ms.os() << '<' << from_ascii(ms.namespacedTag(t.tag_));
+	ms.os_ << '<' << from_ascii(ms.namespacedTag(t.tag_));
 	if (!t.attr_.empty())
-		ms.os() << " " << from_ascii(t.attr_);
+		ms.os_ << " " << from_ascii(t.attr_);
 	ms << ">";
+	++ms.nesting_level_;
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, MTagInline const & t)
 {
+	ms.beforeTag();
+	SetMode rawmode(ms, false);
 	ms.cr();
-	ms.os() << '<' << from_ascii(ms.namespacedTag(t.tag_));
+	ms.os_ << '<' << from_ascii(ms.namespacedTag(t.tag_));
 	if (!t.attr_.empty())
-		ms.os() << " " << from_ascii(t.attr_);
+		ms.os_ << " " << from_ascii(t.attr_);
 	ms << ">";
+	++ms.nesting_level_;
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, ETag const & t)
 {
+	ms.beforeTag();
+	SetMode rawmode(ms, false);
 	if (ms.tab() > 0)
 		--ms.tab();
 	ms.cr();
-	ms.os() << "</" << from_ascii(ms.namespacedTag(t.tag_)) << ">";
+	ms.os_ << "</" << from_ascii(ms.namespacedTag(t.tag_)) << ">";
+	--ms.nesting_level_;
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, ETagInline const & t)
 {
-	ms.os() << "</" << from_ascii(ms.namespacedTag(t.tag_)) << ">";
+	ms.beforeTag();
+	SetMode rawmode(ms, false);
+	ms.os_ << "</" << from_ascii(ms.namespacedTag(t.tag_)) << ">";
+	--ms.nesting_level_;
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, CTag const & t)
 {
+	ms.beforeTag();
+	SetMode rawmode(ms, false);
 	ms.cr();
-	ms.os() << "<" << from_ascii(ms.namespacedTag(t.tag_));
+	ms.os_ << "<" << from_ascii(ms.namespacedTag(t.tag_));
     if (!t.attr_.empty())
-        ms.os() << " " << from_utf8(t.attr_);
-    ms.os() << "/>";
-	return ms;
-}
-
-
-MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
-{
-	ms.os() << s;
+        ms.os_ << " " << from_utf8(t.attr_);
+    ms.os_ << "/>";
 	return ms;
 }
 
@@ -508,14 +540,14 @@ HtmlStream & operator<<(HtmlStream & ms, docstring const & s)
 SetMode::SetMode(MathMLStream & ms, bool text)
 	: ms_(ms)
 {
-	was_text_ = ms_.inText();
-	ms_.setTextMode(text);
+	old_text_level_ = ms_.text_level_;
+	ms_.text_level_ = text ? ms_.nesting_level_ : MathMLStream::nlevel;
 }
 
 
 SetMode::~SetMode()
 {
-	ms_.setTextMode(was_text_);
+	ms_.text_level_ = old_text_level_;
 }
 
 

@@ -2565,8 +2565,10 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 		if (haveNumbers()) {
 			ms << MTag("mtd");
 			docstring const & num = numbers_[row];
-			if (!num.empty())
-				ms << MTagInline("mtext") << '(' << num << ')' << ETagInline("mtext");
+			if (!num.empty()) {
+				SetMode textmode(ms, true);
+				ms << '(' << num << ')';
+			}
 		    ms << ETag("mtd");
 		}
 

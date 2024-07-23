@@ -204,10 +204,13 @@ void InsetMath::mathematica(MathematicaStream & os) const
 
 void InsetMath::mathmlize(MathMLStream & ms) const
 {
+	SetMode rawmode(ms, false);
 	ms << "<!-- " << from_utf8(insetName(lyxCode())) << " -->";
 	ms << MTagInline("mi");
-	NormalStream ns(ms.os());
+	odocstringstream ods;
+	NormalStream ns(ods);
 	normalize(ns);
+	ms << ods.str();
 	ms << ETagInline("mi");
 }
 

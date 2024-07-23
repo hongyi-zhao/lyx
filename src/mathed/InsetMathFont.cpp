@@ -220,9 +220,7 @@ void InsetMathFont::mathmlize(MathMLStream & ms) const
 	if (tag == "text" || tag == "textnormal" || tag == "textrm" ||
 			tag == "textup" || tag == "textmd") {
 		SetMode textmode(ms, true);
-		ms << MTagInline("mtext");
 		ms << cell(0);
-		ms << ETagInline("mtext");
 	} else if (!variant.empty()) {
 		ms << MTag("mstyle", "mathvariant='" + variant + "'");
 		ms << cell(0);

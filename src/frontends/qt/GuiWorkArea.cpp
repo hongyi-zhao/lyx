@@ -943,6 +943,8 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 				step = 80000 / (time * time);
 				time = 40;
 			}
+			step /= 8;
+			time /= 8;
 		}
 		d->synthetic_mouse_event_.timeout.setTimeout(time);
 		d->synthetic_mouse_event_.timeout.start();

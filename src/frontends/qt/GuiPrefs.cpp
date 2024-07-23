@@ -2963,7 +2963,7 @@ void PrefShortcuts::updateShortcutsTW()
 	systemItem_->setFlags(systemItem_->flags() & ~Qt::ItemIsSelectable);
 
 	// listBindings(unbound=true) lists all bound and unbound lfuns
-	// Items in this list is tagged by its source.
+	// Items in this list are tagged by their source.
 	KeyMap::BindingList bindinglist = system_bind_.listBindings(true,
 		KeyMap::System);
 	KeyMap::BindingList user_bindinglist = user_bind_.listBindings(false,

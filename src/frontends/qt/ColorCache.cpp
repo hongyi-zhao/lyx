@@ -86,7 +86,9 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 		QPalette::ColorRole const cr = role(color.baseColor);
 		if (syscolors && cr != QPalette::NoRole) {
 			static QColor const white = Qt::white;
-			QColor const c = pal_.brush(QPalette::Active, cr).color();
+			QColor c = pal_.brush(QPalette::Active, cr).color();
+			// Change to fully opaque color
+			c.setAlpha(255);
 			if (cr == QPalette::Base && c == white)
 				return lcolors_[color.baseColor];
 			else

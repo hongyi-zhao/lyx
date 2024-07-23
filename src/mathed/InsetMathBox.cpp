@@ -28,10 +28,6 @@
 #include <iostream>
 #include <ostream>
 
-#include <QtXml/QDomDocument>
-#include <QtXml/QDomElement>
-#include "support/qstring_helpers.h"
-
 using namespace lyx::support;
 
 namespace lyx {
@@ -63,66 +59,19 @@ void InsetMathBox::normalize(NormalStream & os) const
 
 
 namespace {
-void splitAndWrapInMText(MathMLStream & ms, MathData const & cell,
-						 const std::string & attributes)
+// Generate the MathML, making sure that anything that is outside of
+// any tag is wrapped in <mtext></mtext> tags, then wrap the whole thing in an
+// <mrow></mrow> tag with attributes
+void mathmlizeHelper(MathMLStream & ms, MathData const & cell, const std::string & attributes)
 {
-        // The goal of this function is to take an XML fragment and wrap
-        // anything that is outside of any tag in <mtext></mtext> tags,
-        // then wrap the whole thing in an <mrow></mrow> tag with attributes
-
-	// First, generate the inset into a string of its own.
-	docstring inset_contents;
+	ms << MTag("mrow", attributes);
 	{
-		odocstringstream ostmp;
-		MathMLStream mstmp(ostmp, ms.xmlns());
-
-		SetMode textmode(mstmp, true);
-		mstmp << cell;
-
-		inset_contents = ostmp.str();
+		SetMode textmode(ms, true);
+		ms << cell;
 	}
-
-        // We use the QT XML library. It's easier if we deal with an XML "document"
-        // rather than "fragment", so we wrap it in a fake root node (which we will
-        // remove at the end).
-        docstring inset_contents_xml = "<root>" + inset_contents + "</root>";
-
-        // Parse the XML into a DOM
-        QDomDocument xml;
-        xml.setContent(toqstr(inset_contents_xml));
-
-        QDomElement docElem = xml.documentElement();
-
-        // Iterate through the children of our fake root element.
-        QDomNode n = docElem.firstChild();
-        while (!n.isNull()) {
-			// try to convert the child into a text element
-			// (i.e. some text that is outside of an XML tag)
-            QDomText text = n.toText();
-            if (!text.isNull()) {
-				// if the result is not null, then the child was indeed
-				// bare text, so we need to wrap it in mtext tags
-				// make an mtext element
-                QDomElement wrapper = xml.createElement(toqstr(ms.namespacedTag("mtext")));
-				// put the mtext element in the document right before the text
-                docElem.insertBefore(wrapper,n);
-                // move the text node inside the mtext element (this has the side
-                // effect of removing it from where it was as a child of the root)
-				wrapper.appendChild(n);
-                n = wrapper.nextSibling();
-            } else {
-				// if the text is null, then we have something besides a text
-				// element (i.e. a tag), so we don't need to do anything and just
-				// move onto the next child
-                n = n.nextSibling();
-            }
-        }
-
-        ms << MTag("mrow", attributes);
-        docstring interior = qstring_to_ucs4(xml.toString(-1));
-        ms << interior.substr(6,interior.length()-13); // chop off the initial <root> and final </root> tags
-        ms << ETag("mrow");
+	ms << ETag("mrow");
 }
+
 }
 
 
@@ -132,7 +81,7 @@ void InsetMathBox::mathmlize(MathMLStream & ms) const
 	// Need to do something special for tags here.
 	// Probably will have to involve deferring them, which
 	// means returning something from this routine.
-	splitAndWrapInMText(ms, cell(0), "class='mathbox'");
+	mathmlizeHelper(ms, cell(0), "class='mathbox'");
 }
 
 
@@ -231,7 +180,7 @@ void InsetMathFBox::normalize(NormalStream & os) const
 
 void InsetMathFBox::mathmlize(MathMLStream & ms) const
 {
-	splitAndWrapInMText(ms, cell(0), "class='fbox'");
+	mathmlizeHelper(ms, cell(0), "class='fbox'");
 }
 
 
@@ -374,7 +323,7 @@ void InsetMathMakebox::mathmlize(MathMLStream & ms) const
 {
 	// FIXME We could do something with the other arguments.
 	std::string const cssclass = framebox_ ? "framebox" : "makebox";
-	splitAndWrapInMText(ms, cell(2), "class='" + cssclass + "'");
+	mathmlizeHelper(ms, cell(2), "class='" + cssclass + "'");
 }
 
 
@@ -453,7 +402,7 @@ void InsetMathBoxed::infoize(odocstream & os) const
 
 void InsetMathBoxed::mathmlize(MathMLStream & ms) const
 {
-	splitAndWrapInMText(ms, cell(0), "class='boxed'");
+	mathmlizeHelper(ms, cell(0), "class='boxed'");
 }
 
 

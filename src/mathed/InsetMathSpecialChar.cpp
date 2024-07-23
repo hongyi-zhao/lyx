@@ -139,7 +139,7 @@ void InsetMathSpecialChar::mathmlize(MathMLStream & ms) const
 		ms << "&amp;";
 		break;
 	default:
-		ms.os().put(char_);
+		ms << char_;
 		break;
 	}
 }

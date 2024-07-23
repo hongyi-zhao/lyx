@@ -469,7 +469,7 @@ private:
 	///
 	MathMLStream & ms_;
 	///
-	bool old_text_level_;
+	int old_text_level_;
 };
 
 

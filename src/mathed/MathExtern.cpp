@@ -1646,11 +1646,13 @@ void mathmlize(MathData const & dat, MathMLStream & ms)
 	} else if (ar.size() == 1) {
 		ms << ar.front();
 	} else {
-		if (!ms.inText())
+		// protect against the value changing in the second test.
+		bool const intext = ms.inText();
+		if (!intext)
 			ms << MTag("mrow");
 		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 			(*it)->mathmlize(ms);
-		if (!ms.inText())
+		if (!intext)
 			ms << ETag("mrow");
 	}
 }

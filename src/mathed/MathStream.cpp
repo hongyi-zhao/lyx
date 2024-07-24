@@ -547,6 +547,7 @@ SetMode::SetMode(MathMLStream & ms, bool text)
 
 SetMode::~SetMode()
 {
+	ms_.beforeTag();
 	ms_.text_level_ = old_text_level_;
 }
 

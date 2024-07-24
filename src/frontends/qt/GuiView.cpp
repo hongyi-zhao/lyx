@@ -60,8 +60,9 @@
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "Paragraph.h"
-#include "SpellChecker.h"
 #include "Session.h"
+#include "SpellChecker.h"
+#include "Statistics.h"
 #include "TexRow.h"
 #include "Text.h"
 #include "Toolbars.h"
@@ -1478,31 +1479,21 @@ void GuiView::showStats()
 	if (d.time_to_update > 0)
 		return;
 
-	DocIterator from, to;
-	if (cur.selection()) {
-		from = cur.selectionBegin();
-		to = cur.selectionEnd();
-		d.already_in_selection_ = true;
-	} else {
-		from = doc_iterator_begin(buf);
-		to = doc_iterator_end(buf);
-		d.already_in_selection_ = false;
-	}
-
 	// Don't attempt to calculate stats if
 	// the buffer is busy as this might crash (#12935)
+	Statistics & statistics = buf->statistics();
 	if (!busy() && !bv->busy())
-		buf->updateStatistics(from, to);
+		statistics.update(cur);
 
 	QStringList stats;
 	if (word_count_enabled_) {
-		int const words = buf->wordCount() - bv->stats_ref_value_w();
+		int const words = statistics.word_count - bv->stats_ref_value_w();
 		if (words == 1)
 			stats << toqstr(bformat(_("%1$d Word"), words));
 		else
 			stats << toqstr(bformat(_("%1$d Words"), words));
 	}
-	int const chars_with_blanks = buf->charCount(true);
+	int const chars_with_blanks = statistics.char_count + statistics.blank_count;
 	if (char_count_enabled_) {
 		int const chars_with_blanks_disp = chars_with_blanks - bv->stats_ref_value_c();
 		if (chars_with_blanks == 1)
@@ -1511,7 +1502,7 @@ void GuiView::showStats()
 			stats << toqstr(bformat(_("%1$d Characters"), chars_with_blanks_disp));
 	}
 	if (char_nb_count_enabled_) {
-		int const chars = buf->charCount(false) - bv->stats_ref_value_nb();
+		int const chars = statistics.char_count - bv->stats_ref_value_nb();
 		if (chars == 1)
 			stats << toqstr(bformat(_("%1$d Character (no Blanks)"), chars));
 		else

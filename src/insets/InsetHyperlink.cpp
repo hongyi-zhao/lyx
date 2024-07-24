@@ -20,8 +20,9 @@
 #include "LyX.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
-#include "xml.h"
+#include "Statistics.h"
 #include "texstream.h"
+#include "xml.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -299,10 +300,9 @@ void InsetHyperlink::validate(LaTeXFeatures & features) const
 }
 
 
-pair<int, int> InsetHyperlink::isWords() const
+void InsetHyperlink::updateStatistics(Statistics & stats) const
 {
-	docstring const label = getParam("name");
-	return pair<int, int>(label.size(), wordCount(label));
+	stats.update(getParam("name"));
 }
 
 

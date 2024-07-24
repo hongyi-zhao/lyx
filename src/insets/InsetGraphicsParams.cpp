@@ -76,7 +76,7 @@ void InsetGraphicsParams::init()
 	clip = false;			// clip image
 	darkModeSensitive = false;	// dark mode dependency
 
-	rotateAngle = "0";		// angle of rotation in degrees
+	rotateAngle = string("0");	// angle of rotation in degrees
 	rotateOrigin.erase();		// Origin of rotation
 	special.erase();		// additional userdefined stuff
 	groupId.clear();

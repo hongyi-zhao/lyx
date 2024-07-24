@@ -50,6 +50,7 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
+#include "Statistics.h"
 #include "TexRow.h"
 #include "texstream.h"
 #include "TextClass.h"
@@ -1138,6 +1139,12 @@ void InsetText::updateBuffer(ParIterator const & it, UpdateType utype, bool cons
 		buffer().updateBuffer(it2, utype, deleted);
 		tclass.counters() = std::move(savecnt);
 	}
+}
+
+
+void InsetText::updateStatistics(Statistics & stats) const
+{
+		stats.update(text());
 }
 
 

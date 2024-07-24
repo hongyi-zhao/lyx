@@ -178,7 +178,7 @@ public:
 	/// Returns the current quote type
 	std::string getType() const;
 	///
-	std::pair<int, int> isWords() const override;
+	void updateStatistics(Statistics & stats) const override;
 
 private:
 	///

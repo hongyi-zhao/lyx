@@ -1113,8 +1113,11 @@ public:
 	Inset * editXY(Cursor & cur, int x, int y) override;
 	/// can we go further down on mouse click?
 	bool descendable(BufferView const &) const override { return true; }
+
 	/// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
+	///
+	void updateStatistics(Statistics & stats) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const override;

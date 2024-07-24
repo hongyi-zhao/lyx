@@ -38,6 +38,7 @@
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "Session.h"
+#include "Statistics.h"
 #include "texstream.h"
 #include "Text.h"
 #include "TextMetrics.h"
@@ -78,6 +79,7 @@
 #include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/pmprof.h"
 #include "support/types.h"
 
 #include <algorithm>
@@ -2006,18 +2008,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_STATISTICS: {
-		DocIterator from, to;
-		if (cur.selection()) {
-			from = cur.selectionBegin();
-			to = cur.selectionEnd();
-		} else {
-			from = doc_iterator_begin(&buffer_);
-			to = doc_iterator_end(&buffer_);
-		}
-		buffer_.updateStatistics(from, to);
-		int const words = buffer_.wordCount();
-		int const chars = buffer_.charCount(false);
-		int const chars_blanks = buffer_.charCount(true);
+		Statistics & stats = buffer_.statistics();
+		stats.update(cur);
+		int const words = stats.word_count;
+		int const chars = stats.char_count;
+		int const chars_blanks = chars + stats.blank_count;
 		docstring message;
 		if (cur.selection())
 			message = _("Statistics for the selection:");
@@ -2040,8 +2035,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			message += _("One character (no blanks)");
 
 		Alert::information(_("Statistics"), message);
-	}
 		break;
+	}
 
 	case LFUN_STATISTICS_REFERENCE_CLAMP: {
 		d->stats_update_trigger_ = true;
@@ -2050,14 +2045,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 
-		DocIterator from, to;
-		from = doc_iterator_begin(&buffer_);
-		to = doc_iterator_end(&buffer_);
-		buffer_.updateStatistics(from, to);
-
-		d->stats_ref_value_w_ = buffer_.wordCount();
-		d->stats_ref_value_c_ = buffer_.charCount(true);
-		d->stats_ref_value_nb_ = buffer_.charCount(false);
+		Statistics & stats = buffer_.statistics();
+		stats.update(cur);
+		d->stats_ref_value_w_ = stats.word_count;
+		d->stats_ref_value_c_ = stats.char_count + stats.blank_count;
+		d->stats_ref_value_nb_ = stats.char_count;
 		break;
 	}
 

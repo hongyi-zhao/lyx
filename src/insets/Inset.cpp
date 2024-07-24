@@ -30,10 +30,11 @@
 #include "InsetLayout.h"
 #include "MetricsInfo.h"
 #include "output_xhtml.h"
-#include "xml.h"
+#include "Statistics.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "TocBackend.h"
+#include "xml.h"
 
 #include "frontends/Application.h"
 #include "frontends/Painter.h"
@@ -623,6 +624,17 @@ bool Inset::undefined() const
 {
 	docstring const & n = getLayout().name();
 	return n.empty() || n == InsetLayout::undefined().name();
+}
+
+
+void Inset::updateStatistics(Statistics & stats) const
+{
+	if (isLetter()) {
+		odocstringstream os;
+		toString(os);
+		stats.char_count += os.str().length();
+	} else if (isSpace())
+		++stats.blank_count;
 }
 
 

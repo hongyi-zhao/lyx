@@ -28,6 +28,7 @@
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
+#include "Statistics.h"
 #include "texstream.h"
 #include "xml.h"
 
@@ -1032,7 +1033,7 @@ string InsetQuotes::contextMenuName() const
 }
 
 
-pair<int, int> InsetQuotes::isWords() const
+void InsetQuotes::updateStatistics(Statistics & stats) const
 {
 	int length = 1;
 	// In PassThru, we use straight quotes otherwise we need to check for French
@@ -1052,7 +1053,7 @@ pair<int, int> InsetQuotes::isWords() const
 	}
 
 	//one or two characters from the statistics perspective
-	return std::pair<int,int>(length, 0);
+	stats.char_count += length;
 }
 
 } // namespace lyx

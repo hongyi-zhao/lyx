@@ -529,9 +529,11 @@ void Undo::Private::doUndoRedoAction(CursorData & cur, UndoElementStack & stack,
 
 	if (!undo.cur_before.empty())
 		cur = undo.cur_before;
-	if (undo.lyx_clean)
+	if (undo.lyx_clean) {
 		buffer_.markClean();
-	else
+		// since we have changed the buffer, update its id.
+		buffer_.updateId();
+	} else
 		buffer_.markDirty();
 	// Now that we're done with undo, we pop it off the stack.
 	stack.pop();

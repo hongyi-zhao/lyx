@@ -51,6 +51,7 @@ class otexstream;
 class ParagraphList;
 class ParIterator;
 class ParConstIterator;
+class Statistics;
 class TeXErrors;
 class TexRow;
 class TocBackend;
@@ -660,6 +661,12 @@ public:
 	///
 	Undo const & undo() const;
 
+	/// poor man versioning of the buffer (and its relatives).
+	int id() const;
+	/// change the id of this buffer and its relatives (indicating
+	/// something has changed). This is currently used by updateMacros().
+	void updateId();
+
 	/// This function is called when the buffer is changed.
 	void changed(bool update_metrics) const;
 	///
@@ -784,15 +791,8 @@ public:
 	std::string includedFilePath(std::string const & name,
 				std::string const & ext = empty_string()) const;
 
-	/// compute statistics between \p from and \p to
-	/// \p from initial position
-	/// \p to points to the end position
-	/// \p skipNoOutput if notes etc. should be ignored
-	void updateStatistics(DocIterator & from, DocIterator & to,
-						  bool skipNoOutput = true) const;
-	/// statistics accessor functions
-	int wordCount() const;
-	int charCount(bool with_blanks) const;
+	/// Count of words, characters and blanks
+	Statistics & statistics();
 
 	///
 	bool areChangesPresent() const;

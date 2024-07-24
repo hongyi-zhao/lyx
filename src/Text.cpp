@@ -52,6 +52,7 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "SpellChecker.h"
+#include "Statistics.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
 #include "Thesaurus.h"
@@ -6328,27 +6329,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SERVER_GET_STATISTICS: {
-		DocIterator from, to;
-		if (cur.selection()) {
-			from = cur.selectionBegin();
-			to = cur.selectionEnd();
-		} else {
-			from = doc_iterator_begin(cur.buffer());
-			to = doc_iterator_end(cur.buffer());
-		}
+		Statistics & stats = cur.buffer()->statistics();
+		stats.update(cur);
 
-		cur.buffer()->updateStatistics(from, to);
 		string const arg0 = cmd.getArg(0);
 		if (arg0 == "words") {
-			cur.message(convert<docstring>(cur.buffer()->wordCount()));
+			cur.message(convert<docstring>(stats.word_count));
 		} else if (arg0 == "chars") {
-			cur.message(convert<docstring>(cur.buffer()->charCount(false)));
+			cur.message(convert<docstring>(stats.char_count));
 		} else if (arg0 == "chars-space") {
-			cur.message(convert<docstring>(cur.buffer()->charCount(true)));
+			cur.message(convert<docstring>(stats.char_count + stats.blank_count));
 		} else {
-			cur.message(convert<docstring>(cur.buffer()->wordCount()) + " "
-			+ convert<docstring>(cur.buffer()->charCount(false)) + " "
-			+ convert<docstring>(cur.buffer()->charCount(true)));
+			cur.message(convert<docstring>(stats.word_count) + " "
+			+ convert<docstring>(stats.char_count) + " "
+			+ convert<docstring>(stats.char_count + stats.blank_count));
 		}
 		break;
 	}

@@ -6,7 +6,7 @@
 # With non-LuaLaTeX:	everyhook
 # With LuaLaTeX:		luatexja, luatexja-adjust
 
-Format 104
+Format 106
 
 Style Part
 	Argument post:1
@@ -30,6 +30,7 @@ Style Chapter
 		Tooltip			"Subtitle of the chapter"
 		InsertCotext	1
 	EndArgument
+	TocLevel 0
 End
 
 Style Chapter*
@@ -46,6 +47,7 @@ Style Section
 		Tooltip			"Subtitle of the section"
 		InsertCotext	1
 	EndArgument
+	TocLevel 1
 End
 
 Style Section*
@@ -62,6 +64,7 @@ Style Subsection
 		Tooltip			"Subtitle of the subsection"
 		InsertCotext	1
 	EndArgument
+	TocLevel 2
 End
 
 Style Subsection*
@@ -78,6 +81,7 @@ Style Subsubsection
 		Tooltip			"Subtitle of the subsubsection"
 		InsertCotext	1
 	EndArgument
+	TocLevel 3
 End
 
 Style Subsubsection*

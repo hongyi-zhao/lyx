@@ -173,6 +173,7 @@ SOURCEFILESCORE = \
 	ServerSocket.cpp \
 	Session.cpp \
 	Spacing.cpp \
+	Statistics.cpp \
 	TexRow.cpp \
 	texstream.cpp \
 	Text.cpp \
@@ -277,6 +278,7 @@ HEADERFILESCORE = \
 	Session.h \
 	Spacing.h \
 	SpellChecker.h \
+	Statistics.h \
 	TexRow.h \
 	texstream.h \
 	Text.h \

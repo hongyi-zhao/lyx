@@ -178,6 +178,9 @@ public:
 	/// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
+	void updateStatistics(Statistics & stats) const override;
+
+	///
 	void setMacrocontextPositionRecursive(DocIterator const & pos);
 	///
 	bool findUsesToString() const override { return true; }

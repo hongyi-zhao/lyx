@@ -45,6 +45,7 @@
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
+#include "Statistics.h"
 #include "TexRow.h"
 #include "texstream.h"
 #include "TextClass.h"
@@ -5014,6 +5015,13 @@ void InsetTabular::updateBuffer(ParIterator const & it, UpdateType utype, bool c
 		cnts.current_float(saveflt);
 		cnts.isLongtable(false);
 	}
+}
+
+
+void InsetTabular::updateStatistics(Statistics & stats) const
+{
+	for (idx_type idx = 0 ; idx < nargs(); ++idx)
+		stats.update(*getText(idx));
 }
 
 

@@ -55,7 +55,7 @@ public:
 	///
 	docstring xhtml(XMLStream &, OutputParams const &) const override;
 	///
-	std::pair<int, int> isWords() const override;
+	void updateStatistics(Statistics & stats) const override;
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

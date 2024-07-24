@@ -29,6 +29,7 @@
 #include "output_xhtml.h"
 #include "output_docbook.h"
 #include "ParIterator.h"
+#include "Statistics.h"
 #include "texstream.h"
 #include "TocBackend.h"
 
@@ -791,10 +792,9 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-pair<int, int> InsetCitation::isWords() const
+void InsetCitation::updateStatistics(Statistics & stats) const
 {
-	docstring const label = generateLabel(false);
-	return pair<int, int>(label.size(), wordCount(label));
+	stats.update(generateLabel(false));
 }
 
 

@@ -25,22 +25,21 @@ class Paragraph;
 // Class used to compute letters/words statistics on buffer or selection
 class Statistics {
 public:
+	/// Count characters in the whole document, or in the selection if
+	/// there is one. This is the main entry point.
+	void update(CursorData const & cur, bool skip = true);
+
+	/// Helper: count chars and words in this string
+	void update(docstring const & s);
+	/// Helper: count chars and words in the paragraphs of \c text
+	void update(Text const & text);
+
 	// Number of words
 	int word_count = 0;
 	// Number of non blank characters
 	int char_count = 0;
 	// Number of blank characters
 	int blank_count = 0;
-	// Indicate whether parts that are not output should be counted.
-	bool skip_no_output = true;
-
-	/// Count characters in the whole document, or in the selection if
-	/// there is one. This is the main entry point.
-	void update(CursorData const & cur);
-	///  Count chars and words in this string
-	void update(docstring const & s);
-	/// Count chars and words in the paragraphs of \c text
-	void update(Text const & text);
 
 private:
 
@@ -55,8 +54,12 @@ private:
 	 */
 	void update(Paragraph const & par, pos_type from = 0, pos_type to = -1);
 
+	// Indicate whether parts that produce no output should be counted.
+	bool skip_no_output_;
 	// Used in the code to track status
-	bool inword = false;
+	bool inword_ = false;
+	// The buffer id at last statistics computation.
+	int stats_id_ = -1;
 };
 
 }

@@ -13,11 +13,13 @@
 
 #include "Statistics.h"
 
+#include "Buffer.h"
 #include "Paragraph.h"
 #include "Text.h"
 #include "Cursor.h"
 
 #include "support/lassert.h"
+#include "support/debug.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
@@ -27,10 +29,17 @@ namespace lyx {
 using namespace support;
 
 
-void Statistics::update(CursorData const & cur)
+void Statistics::update(CursorData const & cur, bool skip)
 {
+	// early exit if the buffer has not changed since last time
+	if (stats_id_ == cur.buffer()->id())
+               return;
+
 	// reset counts
 	*this = Statistics();
+	skip_no_output_ = skip;
+	stats_id_ = cur.buffer()->id();
+
 	if (cur.selection()) {
 		if (cur.inMathed())
 			return;
@@ -91,15 +100,15 @@ void Statistics::update(Paragraph const & par, pos_type from, pos_type to)
 		// Stuff that we skip
 		if (par.isDeleted(pos))
 			continue;
-		if (ins && skip_no_output && !ins->producesOutput())
+		if (ins && skip_no_output_ && !ins->producesOutput())
 			continue;
 
 		// words
 		if (par.isWordSeparator(pos))
-			inword = false;
-		else if (!inword) {
+			inword_ = false;
+		else if (!inword_) {
 			++word_count;
-			inword = true;
+			inword_ = true;
 		}
 
 		if (ins)
@@ -112,7 +121,7 @@ void Statistics::update(Paragraph const & par, pos_type from, pos_type to)
 				++blank_count;
 		}
 	}
-	inword = false;
+	inword_ = false;
 }
 
 

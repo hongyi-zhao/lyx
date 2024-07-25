@@ -1117,7 +1117,7 @@ public:
 	/// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;
 	///
-	void updateStatistics(Statistics & stats) const;
+	void updateStatistics(Statistics & stats) const override;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const override;

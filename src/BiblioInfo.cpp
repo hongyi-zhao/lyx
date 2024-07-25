@@ -915,7 +915,8 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 
 
 docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
-	Buffer const & buf, CiteItem const & ci, docstring const & format_in) const
+	Buffer const & buf, CiteItem const & ci, docstring const & format_in,
+	bool const for_xhtml) const
 {
 	bool const richtext = ci.richtext;
 
@@ -933,7 +934,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 	}
 
 	if (!richtext && !info_.empty()) {
-		info_ = Encodings::convertLaTeXCommands(processRichtext(info_, false));
+		info_ = Encodings::convertLaTeXCommands(processRichtext(info_, false), for_xhtml);
 		return info_;
 	}
 	if (richtext && !info_richtext_.empty())
@@ -955,11 +956,11 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const & xrefs,
 	}
 
 	if (richtext) {
-		info_richtext_ = Encodings::convertLaTeXCommands(processRichtext(info_, true));
+		info_richtext_ = Encodings::convertLaTeXCommands(processRichtext(info_, true), for_xhtml);
 		return info_richtext_;
 	}
 
-	info_ = Encodings::convertLaTeXCommands(processRichtext(info_, false));
+	info_ = Encodings::convertLaTeXCommands(processRichtext(info_, false), for_xhtml);
 	return info_;
 }
 
@@ -1376,7 +1377,7 @@ docstring const BiblioInfo::getYear(docstring const & key, Buffer const & buf, b
 
 
 docstring const BiblioInfo::getInfo(docstring const & key,
-	Buffer const & buf, CiteItem const & ci, docstring const & format) const
+	Buffer const & buf, CiteItem const & ci, docstring const & format, bool const for_xhtml) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
@@ -1388,7 +1389,7 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 		if (xrefit != end())
 			xrefptrs.push_back(&(xrefit->second));
 	}
-	return data.getInfo(xrefptrs, buf, ci, format);
+	return data.getInfo(xrefptrs, buf, ci, format, for_xhtml);
 }
 
 

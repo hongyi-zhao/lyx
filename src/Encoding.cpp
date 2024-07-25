@@ -614,7 +614,7 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 }
 
 
-docstring Encodings::convertLaTeXCommands(docstring const & str)
+docstring Encodings::convertLaTeXCommands(docstring const & str, bool const for_xhtml)
 {
 	docstring val = str;
 	docstring ret;
@@ -630,6 +630,20 @@ docstring Encodings::convertLaTeXCommands(docstring const & str)
 		// if we're scanning math, we collect everything until we
 		// find an unescaped $, and then try to convert this piecewise.
 		if (scanning_math) {
+			if (for_xhtml) {
+				// with xhtml, we output everything until we
+				// find an unescaped $, at which point we break out.
+				if (escaped)
+					escaped = false;
+				else if (ch == '\\')
+					escaped = true;
+				else if (ch == '$')
+					scanning_math = false;
+				ret += ch;
+				val = val.substr(1);
+				continue;
+			}
+			
 			if (escaped)
 				escaped = false;
 			else if (ch == '\\')

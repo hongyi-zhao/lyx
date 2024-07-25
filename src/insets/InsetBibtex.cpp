@@ -1075,7 +1075,7 @@ docstring InsetBibtex::xhtml(XMLStream & xs, OutputParams const &) const
 		// entry, so there's a lot of repetition. This should be fixed.
 		xs << xml::StartTag("span", "class='bibtexinfo'")
 		   << XMLStream::ESCAPE_AND
-		   << bibinfo.getInfo(entry.key(), buffer(), ci)
+		   << bibinfo.getInfo(entry.key(), buffer(), ci, docstring(), true)
 		   << xml::EndTag("span")
 		   << xml::EndTag("div")
 		   << xml::CR();

@@ -3922,7 +3922,7 @@ void Buffer::updateMacros() const
 		return;
 
 	// early exit if the buffer has not changed since last time
-	if (d->update_macros_id_ == d->id_)
+	if (d->gui_ && d->update_macros_id_ == d->id_)
 		return;
 	d->update_macros_id_ = d->id_;
 

@@ -663,7 +663,13 @@ docstring Encodings::convertLaTeXCommands(docstring const & str, bool const for_
 					if (cmd.empty())
 						break;
 					// go on ...
+					docstring oldrem = rem;
 					ret += fromLaTeXCommand(from_ascii("\\") + cmd, MATH_CMD, termination, rem);
+					if (oldrem == rem) {
+						// Result unchanged, output
+						ret += rem;
+						break;
+					}
 				}
 				mret = docstring();
 			}

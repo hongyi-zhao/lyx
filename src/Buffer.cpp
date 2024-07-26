@@ -1886,6 +1886,7 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 		runparams.use_hyperref = features.isRequired("hyperref")
 				|| features.isProvided("hyperref");
 		runparams.use_CJK = features.mustProvide("CJK");
+		runparams.use_memindex = features.isProvided("memoir-idx");
 	}
 	LYXERR(Debug::OUTFILE, "  Buffer validation done.");
 
@@ -4220,6 +4221,7 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			runparams.use_babel = features.useBabel();
 			runparams.use_hyperref = features.isRequired("hyperref")
 				|| features.isProvided("hyperref");
+			runparams.use_memindex = features.isProvided("memoir-idx");
 			// latex or literate
 			otexstream ots(os);
 			// output above

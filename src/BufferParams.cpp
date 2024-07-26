@@ -2279,9 +2279,17 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// Additional Indices
 	if (features.isRequired("splitidx")) {
 		for (auto const & idx : indiceslist()) {
-			os << "\\newindex{";
+			if (features.isProvided("memoir-idx")) {
+				if (idx.shortcut() == "idx")
+					continue;
+				os << "\\makeindex[";
+			} else
+				os << "\\newindex{";
 			os << escape(idx.shortcut());
-			os << "}\n";
+			if (features.isProvided("memoir-idx"))
+				os << "]\n";
+			else
+				os << "}\n";
 		}
 	}
 

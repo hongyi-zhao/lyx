@@ -18,6 +18,8 @@ PageSize           letter
 Provides makeidx   1
 Provides framed    1
 Provides subscript 1
+# Memoir has its own implementation
+Provides memoir-idx 1
 # Geometry is supported, but the package options and paper sizes
 # are ignored
 Provides geometry-light  1

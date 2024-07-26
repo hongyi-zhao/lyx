@@ -20,6 +20,7 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
+#include "IndicesList.h"
 #include "LyXRC.h"
 #include "LyX.h"
 #include "DepTable.h"
@@ -466,6 +467,41 @@ int LaTeX::run(TeXErrors & terr)
 			iscanres = scanIlgFile(terr);
 		rerun = true;
 	}
+	// This is Memoir's multi-index idiosyncracy
+	if (runparams.use_indices && runparams.use_memindex) {
+		Buffer const * buf = theBufferList().getBufferFromTmp(file.absFileName());
+		if (buf) {
+			IndicesList const & indiceslist = buf->params().indiceslist();
+			if (!indiceslist.empty()) {
+				IndicesList::const_iterator it = indiceslist.begin();
+				IndicesList::const_iterator const end = indiceslist.end();
+				for (; it != end; ++it) {
+					docstring const & ci = it->shortcut();
+					if (ci == "idx")
+						continue;
+					FileName const aidxfile(to_utf8(ci + ".idx"));
+					LYXERR(Debug::OUTFILE, "Running Index Processor for " << ci);
+					message(_("Running Index Processor."));
+					// onlyFileName() is needed for cygwin
+					int const ret = 
+							runMakeIndex(onlyFileName(aidxfile.absFileName()), runparams);
+					if (ret == Systemcall::KILLED || ret == Systemcall::TIMEOUT)
+						return ret;
+					else if (ret != Systemcall::OK) {
+						iscanres |= INDEX_ERROR;
+						terr.insertError(0,
+								 _("Index Processor Error"),
+								 _("The index processor did not run successfully. "
+								   "Please check the output of View > Messages Pane!"));
+					}
+					FileName const ailgfile(changeExtension(aidxfile.absFileName(), ".ilg"));
+					if (ailgfile.exists())
+						iscanres = scanIlgFile(terr, ailgfile);
+					rerun = true;
+				}
+			}
+		}
+	}
 	if (run_nomencl) {
 		int const ret = runMakeIndexNomencl(file, ".nlo", ".nls");
 		if (ret == Systemcall::KILLED || ret == Systemcall::TIMEOUT)
@@ -592,7 +628,7 @@ int LaTeX::runMakeIndex(string const & f, OutputParams const & rp,
 		tmp = subst(tmp, "$$lang", doc_lang->babel());
 		tmp = subst(tmp, "$$lcode", doc_lang->code());
 	}
-	if (rp.use_indices) {
+	if (rp.use_indices && !rp.use_memindex) {
 		tmp = lyxrc.splitindex_command + " -m " + quoteName(tmp);
 		LYXERR(Debug::OUTFILE,
 		"Multiple indices. Using splitindex command: " << tmp);
@@ -1640,9 +1676,11 @@ int LaTeX::scanBlgFile(DepTable & dep, TeXErrors & terr)
 }
 
 
-int LaTeX::scanIlgFile(TeXErrors & terr)
+int LaTeX::scanIlgFile(TeXErrors & terr, FileName const fn)
 {
-	FileName const ilg_file(changeExtension(file.absFileName(), "ilg"));
+	FileName const ilg_file = fn.empty()
+			? FileName(changeExtension(file.absFileName(), "ilg"))
+			: fn;
 	LYXERR(Debug::OUTFILE, "Scanning ilg file: " << ilg_file);
 
 	ifstream ifs(ilg_file.toFilesystemEncoding().c_str());

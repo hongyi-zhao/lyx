@@ -142,7 +142,10 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 
 	if (buffer().masterBuffer()->params().use_indices && !params_.index.empty()
 		&& params_.index != "idx") {
-		os << "\\sindex[";
+		if (runparams.use_memindex)
+			os << "\\index[";
+		else
+			os << "\\sindex[";
 		os << escape(params_.index);
 		os << "]{";
 	} else {
@@ -1406,7 +1409,17 @@ void InsetPrintIndex::latex(otexstream & os, OutputParams const & runparams_in) 
 		return;
 	}
 	OutputParams runparams = runparams_in;
-	os << getCommand(runparams);
+	if (runparams.use_memindex) {
+		if (getParam("type") == from_ascii("idx"))
+			os << "\\printindex" << termcmd;
+		else {
+			os << "\\begingroup" << breakln;
+			os << "\\renewcommand{\\indexname}{" << getParam("name") << "}" << breakln;
+			os << "\\printindex[" << getParam("type") << "]" << breakln;
+			os << "\\endgroup" << breakln;
+		}
+	} else
+		os << getCommand(runparams);
 }
 
 

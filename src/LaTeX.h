@@ -230,7 +230,7 @@ private:
 	int scanBlgFile(DepTable & head, TeXErrors & terr);
 
 	///
-	int scanIlgFile(TeXErrors & terr);
+	int scanIlgFile(TeXErrors & terr, support::FileName const fn = support::FileName());
 
 	///
 	bool runBibTeX(std::vector<AuxInfo> const &,

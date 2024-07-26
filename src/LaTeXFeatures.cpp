@@ -1360,7 +1360,7 @@ string const LaTeXFeatures::getPackages() const
 	if (isRequired("makeidx") || isRequired("splitidx")) {
 		if (!isProvided("makeidx") && !isRequired("splitidx"))
 			packages << "\\usepackage{makeidx}\n";
-		if (mustProvide("splitidx"))
+		if (mustProvide("splitidx") && !isProvided("memoir-idx"))
 			packages << "\\usepackage{splitidx}\n";
 		packages << "\\makeindex\n";
 	}

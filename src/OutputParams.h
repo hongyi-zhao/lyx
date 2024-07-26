@@ -223,6 +223,11 @@ public:
 	*/
 	bool use_indices = false;
 
+	/** Are we using the memoir way to
+	 *  to multiple indices?
+	*/
+	bool use_memindex = false;
+
 	/** Are we using japanese (pLaTeX)?
 	*/
 	bool use_japanese = false;

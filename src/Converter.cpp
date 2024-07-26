@@ -21,6 +21,7 @@
 #include "Format.h"
 #include "InsetList.h"
 #include "Language.h"
+#include "LaTeXFeatures.h"
 #include "LaTeX.h"
 #include "LyXRC.h"
 #include "Mover.h"
@@ -553,6 +554,15 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 			else
 				outfile = FileName(addName(package().temp_dir().absFileName(),
 						   "tmpfile.out"));
+		}
+
+		if (buffer && buffer->params().use_indices && conv.latex()) {
+			// We need to validate the buffer to get access to features.
+			// FIXME Not nice that we need to do this here.
+			LYXERR(Debug::OUTFILE, "  Validating buffer...");
+			LaTeXFeatures features(*buffer, buffer->params(), runparams);
+			buffer->validate(features);
+			runparams.use_memindex = features.isProvided("memoir-idx");
 		}
 
 		if (buffer && buffer->params().use_minted

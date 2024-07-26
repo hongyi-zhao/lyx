@@ -81,7 +81,10 @@ private:
 	};
 
 	LogType type_;
+	/// The log as input by params
 	support::FileName logfile_;
+	/// The log file to display
+	support::FileName real_logfile_;
 };
 
 

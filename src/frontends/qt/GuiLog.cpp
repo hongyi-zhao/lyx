@@ -24,6 +24,9 @@
 #include "support/Lexer.h"
 #include "support/lstrings.h"
 
+#include "BufferParams.h"
+#include "IndicesList.h"
+
 #include <QTextBrowser>
 #include <QSyntaxHighlighter>
 #include <QClipboard>
@@ -167,11 +170,16 @@ void GuiLog::typeChanged(int i)
 		ext = "log";
 	else if (type == "bibtex")
 		ext = "blg";
-	else if (type == "index")
+	else if (prefixIs(type, "index"))
 		ext = "ilg";
 
-	if (!ext.empty())
-		logfile_.changeExtension(ext);
+	if (ext == "ilg" && type != "index")
+		real_logfile_ = FileName(split(type, ':'));
+	else {
+		real_logfile_ = logfile_;
+		if (!ext.empty())
+			real_logfile_.changeExtension(ext);
+	}
 
 	updateContents();
 }
@@ -250,6 +258,30 @@ bool GuiLog::initialiseParams(string const & sdata)
 		tmp.changeExtension("ilg");
 		if (tmp.exists())
 			logTypeCO->addItem(qt_("Index"), QString("index"));
+		// Generate ebtries for each index with multiple indexes.
+		string const tmppath = tmp.onlyPath().absFileName();
+		IndicesList const & indiceslist = buffer().params().indiceslist();
+		if (!indiceslist.empty()) {
+			IndicesList::const_iterator it = indiceslist.begin();
+			IndicesList::const_iterator const end = indiceslist.end();
+			for (; it != end; ++it) {
+				docstring const & ci = it->shortcut();
+				if (ci == "idx")
+					continue;
+				// splitidx: <filename>-<shortcut>.ilg
+				FileName stmp(tmppath + "/" + tmp.onlyFileNameWithoutExt()
+					      + "-" + to_ascii(ci) + ".ilg");
+				if (!stmp.exists()) {
+					// memoir: <shortcut>.ilg
+					stmp = FileName(tmppath + "/" + to_ascii(ci) + ".ilg");
+					if (!stmp.exists())
+						continue;
+				}
+				Index const * index = indiceslist.findShortcut(ci);
+				string const name = to_utf8(index->index());
+				logTypeCO->addItem(qt_(name), toqstr("index:" + stmp.absFileName()));
+			}
+		}
 	// FIXME: not sure "literate" still works.
 	} else if (logtype == "literate") {
 		type_ = LiterateLog;
@@ -264,6 +296,7 @@ bool GuiLog::initialiseParams(string const & sdata)
 		return false;
 
 	logfile_ = log;
+	real_logfile_ = log;
 
 	updateContents();
 
@@ -274,6 +307,7 @@ bool GuiLog::initialiseParams(string const & sdata)
 void GuiLog::clearParams()
 {
 	logfile_.erase();
+	real_logfile_.erase();
 }
 
 
@@ -296,7 +330,7 @@ docstring GuiLog::title() const
 
 void GuiLog::getContents(ostream & ss) const
 {
-	ifstream in(logfile_.toFilesystemEncoding().c_str());
+	ifstream in(real_logfile_.toFilesystemEncoding().c_str());
 
 	bool success = false;
 

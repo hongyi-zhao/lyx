@@ -1888,6 +1888,7 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 		runparams.use_CJK = features.mustProvide("CJK");
 		runparams.use_memindex = features.isProvided("memoir-idx");
 	}
+	params().use_memindex = features.isProvided("memoir-idx");
 	LYXERR(Debug::OUTFILE, "  Buffer validation done.");
 
 	bool const output_preamble =

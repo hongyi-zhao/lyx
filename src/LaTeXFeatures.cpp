@@ -1375,6 +1375,12 @@ string const LaTeXFeatures::getPackages() const
 				 << "]{graphicx}\n";
 	}
 
+	// geometry must be loaded after graphics, since
+	// graphic drivers might overwrite some settings
+	// see https://tex.stackexchange.com/a/384952/19291
+	if (!params_.set_geometry.empty())
+		packages << params_.set_geometry;
+
 	// These must be loaded after graphicx, since they try
 	// to load graphicx without options
 	if (mustProvide("rotating"))

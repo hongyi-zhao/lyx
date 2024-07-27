@@ -413,6 +413,7 @@ BufferParams::BufferParams()
 	use_bibtopic = false;
 	multibib = string();
 	use_indices = false;
+	use_memindex = false;
 	save_transient_properties = true;
 	track_changes = false;
 	output_changes = false;
@@ -2078,43 +2079,49 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		case PAPER_DEFAULT:
 			break;
 		}
-		docstring g_options = trim(ods.str(), ",");
-		os << "\\usepackage";
+		string g_options = to_ascii(trim(ods.str(), ","));
+		// geometry must be loaded after graphics nowadays, since
+		// graphic drivers might overwrite some settings
+		// see https://tex.stackexchange.com/a/384952/19291
+		// Hence we store this and output it later
+		ostringstream gs;
+		gs << "\\usepackage";
 		// geometry-light means that the class works with geometry, but overwrites
 		// the package options and paper sizes (memoir does this).
 		// In this case, all options need to go to \geometry
 		// and the standard paper sizes need to go to the class options.
 		if (!g_options.empty() && !features.isProvided("geometry-light")) {
-			os << '[' << g_options << ']';
+			gs << '[' << g_options << ']';
 			g_options.clear();
 		}
-		os << "{geometry}\n";
+		gs << "{geometry}\n";
 		if (use_geometry || features.isProvided("geometry-light")) {
-			os << "\\geometry{verbose";
+			gs << "\\geometry{verbose";
 			if (!g_options.empty())
 				// Output general options here with "geometry light".
-				os << "," << g_options;
+				gs << "," << g_options;
 			// output this only if use_geometry is true
 			if (use_geometry) {
 				if (!topmargin.empty())
-					os << ",tmargin=" << from_ascii(Length(topmargin).asLatexString());
+					gs << ",tmargin=" << Length(topmargin).asLatexString();
 				if (!bottommargin.empty())
-					os << ",bmargin=" << from_ascii(Length(bottommargin).asLatexString());
+					gs << ",bmargin=" << Length(bottommargin).asLatexString();
 				if (!leftmargin.empty())
-					os << ",lmargin=" << from_ascii(Length(leftmargin).asLatexString());
+					gs << ",lmargin=" << Length(leftmargin).asLatexString();
 				if (!rightmargin.empty())
-					os << ",rmargin=" << from_ascii(Length(rightmargin).asLatexString());
+					gs << ",rmargin=" << Length(rightmargin).asLatexString();
 				if (!headheight.empty())
-					os << ",headheight=" << from_ascii(Length(headheight).asLatexString());
+					gs << ",headheight=" << Length(headheight).asLatexString();
 				if (!headsep.empty())
-					os << ",headsep=" << from_ascii(Length(headsep).asLatexString());
+					gs << ",headsep=" << Length(headsep).asLatexString();
 				if (!footskip.empty())
-					os << ",footskip=" << from_ascii(Length(footskip).asLatexString());
+					gs << ",footskip=" << Length(footskip).asLatexString();
 				if (!columnsep.empty())
-					os << ",columnsep=" << from_ascii(Length(columnsep).asLatexString());
+					gs << ",columnsep=" << Length(columnsep).asLatexString();
 			}
-		os << "}\n";
+			gs << "}\n";
 		}
+		set_geometry = gs.str();
 	} else if (orientation == ORIENTATION_LANDSCAPE
 		   || papersize != PAPER_DEFAULT) {
 		features.require("papersize");

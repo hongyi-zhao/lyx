@@ -249,6 +249,8 @@ public:
 	/// use custom margins
 	bool use_geometry;
 	///
+	mutable std::string set_geometry;
+	///
 	std::string paperwidth;
 	///
 	std::string paperheight;
@@ -452,6 +454,8 @@ public:
 	std::string multibib;
 	/// Split the index?
 	bool use_indices;
+	/// do we use the memoir way to split indexes?
+	mutable bool use_memindex;
 	/// Save transient properties?
 	bool save_transient_properties;
 	/// revision tracking for this buffer ? (this is a transient property)

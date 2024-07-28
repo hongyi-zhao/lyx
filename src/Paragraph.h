@@ -201,6 +201,9 @@ public:
 	/// Get the id of the paragraph, useful for DocBook
 	std::string getID(Buffer const & buf, OutputParams const & runparams) const;
 
+	/// Get the (first) string of a \label in this paragraph, or empty string
+	std::string getLabel() const;
+
 	/// Output the first word of a paragraph, return the position where it left.
 	pos_type firstWordDocBook(XMLStream & xs, OutputParams const & runparams) const;
 

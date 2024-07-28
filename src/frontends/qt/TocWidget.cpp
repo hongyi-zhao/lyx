@@ -27,6 +27,7 @@
 #include "FuncStatus.h"
 #include "LyX.h"
 #include "Menus.h"
+#include "Paragraph.h"
 #include "TocBackend.h"
 
 #include "insets/InsetCommand.h"
@@ -180,6 +181,7 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
+	case LFUN_REFERENCE_TO_PARAGRAPH:
 	case LFUN_SECTION_SELECT:
 		status.setEnabled((bool)item.dit());
 		return true;
@@ -245,6 +247,46 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd,
 		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REFERENCE, item.str());
 		if (inset)
 			inset->dispatch(cur, label_copy);
+		break;
+	}
+
+	case LFUN_REFERENCE_TO_PARAGRAPH: {
+		docstring const type = cmd.argument();
+		TocItem const & item =
+			gui_view_.tocModels().currentItem(current_type_, index);
+		if (item.action().action() == LFUN_PARAGRAPH_GOTO) {
+			// easy case
+			docstring const id = item.dit().paragraphGotoArgument(true);
+			docstring const arg = (type.empty()) ? id : id + " " + type;
+			dispatch(FuncRequest(cmd, arg));
+			break;
+		}
+		// Captions etc.
+		// Here we cannot employ LFUN_REFERENCE_TO_PARAGRAPH
+		// as it won't land in the inset. Seo we do it ourselves;
+		// 1. save current position
+		lyx::dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
+		// go to the item
+		sendDispatch(item.action());
+		// check if it has a label
+		docstring label = from_utf8(cur.innerParagraph().getLabel());
+		if (label.empty()) {
+			// if not:
+			// insert a new label
+			// we do not want to open the dialog, hence we
+			// do not employ LFUN_LABEL_INSERT
+			InsetCommandParams p(LABEL_CODE);
+			label = cur.getPossibleLabel();
+			p["name"] = label;
+			string const data = InsetCommand::params2string(p);
+			lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+		}
+		// now go back to the original position ...
+		lyx::dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
+		// ... to insert the ref
+		docstring const arg = (type.empty()) ? label
+						  : label + from_ascii(" ") + type;
+		lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
 		break;
 	}
 

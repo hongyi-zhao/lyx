@@ -511,6 +511,7 @@ enum FuncCode
 	LFUN_STATISTICS_REFERENCE_CLAMP,// sanda, 20240324
 	LFUN_REFERENCE_INSERT,          // spitz, 20240728
 	// 400
+	LFUN_REFERENCE_TO_PARAGRAPH,    // spitz, 20240728
 	LFUN_LASTACTION                 // end of the table
 };
 

@@ -1292,6 +1292,12 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		    || getInsetByCode<InsetMathRef>(cur, MATH_REF_CODE));
 		break;
 
+	case LFUN_REFERENCE_TO_PARAGRAPH: {
+		int const id = convert<int>(cmd.getArg(0));
+		flag.setEnabled(id > 0);
+		break;
+	}
+
 	case LFUN_CHANGES_MERGE:
 	case LFUN_CHANGE_NEXT:
 	case LFUN_CHANGE_PREVIOUS:
@@ -1647,6 +1653,45 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				lyx::dispatch(cmd);
 			}
 			break;
+		}
+		break;
+	}
+
+	case LFUN_REFERENCE_TO_PARAGRAPH: {
+		int const id = convert<int>(cmd.getArg(0));
+		if (id < 1)
+			break;
+		string const type = cmd.getArg(1);
+		int i = 0;
+		for (Buffer * b = &buffer_; i == 0 || b != &buffer_;
+			b = theBufferList().next(b)) {
+			DocIterator const dit = b->getParFromID(id);
+			string const label = dit.innerParagraph().getLabel();
+			if (!label.empty()) {
+				// if the paragraph has a label, we refer to this
+				string const arg = (type.empty()) ? label : label + " " + type;
+				lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
+				break;
+			} else {
+				// if there is not a label yet, go to the paragraph ...
+				lyx::dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
+				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, cmd.argument()));
+				// ... insert the label
+				// we do not want to open the dialog, hence we
+				// do not employ LFUN_LABEL_INSERT
+				InsetCommandParams p(LABEL_CODE);
+				docstring const label = cur.getPossibleLabel();
+				p["name"] = label;
+				string const data = InsetCommand::params2string(p);
+				lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+				// ... and go back to the original position
+				lyx::dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
+				// ... to insert the ref
+				string const arg = (type.empty()) ? to_utf8(label)
+								  : to_utf8(label) + " " + type;
+				lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
+				break;
+			}
 		}
 		break;
 	}

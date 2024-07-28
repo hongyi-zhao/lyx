@@ -225,11 +225,12 @@ CursorSlice const & DocIterator::innerTextSlice() const
 }
 
 
-docstring DocIterator::paragraphGotoArgument() const
+docstring DocIterator::paragraphGotoArgument(bool const nopos) const
 {
 	CursorSlice const & s = innerTextSlice();
-	return convert<docstring>(s.paragraph().id()) + ' ' +
-		convert<docstring>(s.pos());
+	return nopos ? convert<docstring>(s.paragraph().id())
+		     : convert<docstring>(s.paragraph().id())
+		       + ' ' + convert<docstring>(s.pos());
 }
 
 

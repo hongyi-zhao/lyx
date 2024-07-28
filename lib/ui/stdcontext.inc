@@ -584,6 +584,8 @@ Menuset
 
 	Menu "context-toc-figure"
 		Item "Settings...|S" "inset-settings"
+		Separator
+		SubMenu "Insert Cross-Reference to this Item|C" "context-toc-ref-to-par"
 	End
 
 #
@@ -600,6 +602,8 @@ Menuset
 
 	Menu "context-toc-table"
 		Item "Settings...|S" "inset-settings"
+		Separator
+		SubMenu "Insert Cross-Reference to this Item|C" "context-toc-ref-to-par"
 	End
 
 #
@@ -707,6 +711,18 @@ Menuset
 # Toc Table of Context context menu
 #
 
+        Menu "context-toc-ref-to-par"
+        	Item "<Reference>|R" "reference-to-paragraph ref"
+		Item "(<Reference>)|e" "reference-to-paragraph eqref"
+		Item "<Page>|P" "reference-to-paragraph pageref"
+		Item "On Page <Page>|O" "reference-to-paragraph vpageref"
+		Item "<Reference> on Page <Page>|f" "reference-to-paragraph vref"
+		Item "Formatted Reference|t" "reference-to-paragraph formatted"
+		Item "Textual Reference|x" "reference-to-paragraph nameref"
+		Item "Label Only|L" "reference-to-paragraph labelonly"
+        
+        End
+
 	Menu "context-toc-tableofcontents"
 		Item "Promote Section|P" "outline-out"
 		Item "Demote Section|D" "outline-in"
@@ -714,6 +730,8 @@ Menuset
 		Item "Move Section Down|w" "outline-down"
 		Separator
 		Item "Select Section|S" "section-select"
+		Separator
+		SubMenu "Insert Cross-Reference to this Item|C" "context-toc-ref-to-par"
 	End
 
 #

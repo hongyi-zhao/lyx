@@ -3531,6 +3531,19 @@ void LyXAction::init()
  */
 		{ LFUN_REFERENCE_NEXT, "reference-next", ReadOnly, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_REFERENCE_TO_PARAGRAPH
+ * \li Action: Inserts a cross-reference to the paragraph with a given ID
+ * \li Notion: The function checks of the paragraph already has a label.
+ *             If so, it uses that. Otherwise it inserts a label and uses this.
+ * \li Syntax: reference-to-paragraph <PAR_ID> [<TYPE>]
+ * \li Params: <PAR_ID>:  paragraph id \n
+	       <TYPE>: cross-references type
+ * \li Origin: spitz, 28 Jul 2024
+ * \endvar
+ */
+		{ LFUN_REFERENCE_TO_PARAGRAPH, "reference-to-paragraph", ReadOnly | NoInternal, Edit },
+
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_REGEXP_MODE

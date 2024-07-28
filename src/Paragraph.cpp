@@ -3350,6 +3350,21 @@ string Paragraph::getID(Buffer const &, OutputParams const &)
 }
 
 
+string Paragraph::getLabel() const
+{
+	for (pos_type i = 0; i < size(); ++i) {
+		if (Inset const * inset = getInset(i)) {
+			InsetCode lyx_code = inset->lyxCode();
+			if (lyx_code == LABEL_CODE) {
+				InsetLabel const * const il = static_cast<InsetLabel const *>(inset);
+				return to_utf8(il->getParam("name"));
+			}
+		}
+	}
+	return string();
+}
+
+
 pos_type Paragraph::firstWordDocBook(XMLStream & xs, OutputParams const & runparams) const
 {
 	pos_type i;

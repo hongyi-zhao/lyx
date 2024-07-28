@@ -1527,7 +1527,7 @@ def revert_colorbox(document):
                     "Malformed LyX document: 'has_inner_box' or "
                     "'use_makebox' option not found in box inset!"
                 )
-            ertinset = put_cmd_in_ert("\\fcolorbox{%s}{%s}{" % (framecolor, backcolor))
+            ertinset = put_cmd_in_ert(f"\\fcolorbox{{{framecolor}}}{{{backcolor}}}{{")
         else:
             ertinset = put_cmd_in_ert("\\colorbox{%s}{" % backcolor)
         document.body[i:i] = ertinset + [""]
@@ -2704,12 +2704,12 @@ def revert_solution(document):
         add_to_preamble(document, "\\theoremstyle{definition}")
         if is_starred or mod == "theorems-bytype" or mod == "theorems-ams-bytype":
             add_to_preamble(
-                document, "\\%s{%s}{\\protect\\solutionname}" % (theoremName, LaTeXName)
+                document, f"\\{theoremName}{{{LaTeXName}}}{{\\protect\\solutionname}}"
             )
         else:  # mod == "theorems-std" or mod == "theorems-ams" and not is_starred
             add_to_preamble(
                 document,
-                "\\%s{%s}[thm]{\\protect\\solutionname}" % (theoremName, LaTeXName),
+                f"\\{theoremName}{{{LaTeXName}}}[thm]{{\\protect\\solutionname}}",
             )
 
         add_to_preamble(document, "\\providecommand{\\solutionname}{Solution}")

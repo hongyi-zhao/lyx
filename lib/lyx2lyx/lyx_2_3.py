@@ -2027,7 +2027,7 @@ def revert_baselineskip(document):
             # check if it is the starred version
             star = "*" if "*" in document.body[i] else ""
             # now output TeX code
-            cmd = "\\vspace%s{%s}" % (star, latex_length(baselineskip)[1])
+            cmd = f"\\vspace{star}{{{latex_length(baselineskip)[1]}}}"
             document.body[i : end + 1] = put_cmd_in_ert(cmd)
             i += 8
             continue
@@ -2036,7 +2036,7 @@ def revert_baselineskip(document):
             # output space inset as TeX code
             baselineskip = document.body[i].split()[-1]
             star = "*" if "*" in document.body[i - 1] else ""
-            cmd = "\\hspace%s{%s}" % (star, latex_length(baselineskip)[1])
+            cmd = f"\\hspace{star}{{{latex_length(baselineskip)[1]}}}"
             document.body[begin : end + 1] = put_cmd_in_ert(cmd)
 
 

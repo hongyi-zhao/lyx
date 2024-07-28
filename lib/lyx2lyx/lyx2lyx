@@ -20,6 +20,7 @@
 " Program used to convert between different versions of the lyx file format."
 import argparse
 import sys
+
 import LyX
 
 

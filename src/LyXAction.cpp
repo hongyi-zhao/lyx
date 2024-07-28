@@ -3513,6 +3513,16 @@ void LyXAction::init()
 		{ LFUN_REDO, "redo", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_REFERENCE_INSERT
+ * \li Action: Inserts a cross-reference into the document.
+ * \li Notion: Optional <TYPE> can be used to set the type of reference 
+ * \li Syntax: reference-insert <LABEL> [<TYPE>]
+ * \li Origin: spitz, 28 Jul 2024
+ * \endvar
+ */
+		{ LFUN_REFERENCE_INSERT, "reference-insert", Noop, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_REFERENCE_NEXT
  * \li Action: Go to the next label or cross-reference.
  * \li Syntax: reference-next

@@ -41,7 +41,8 @@ try:
 
     version__ = lyx2lyx_version.version
     stable_version = True
-except:  # we are running from build directory so assume the last version
+except ModuleNotFoundError:
+    # we are running from the build directory so assume the last version
     version__ = "2.5"
     stable_version = False
 
@@ -488,7 +489,7 @@ class LyX_base:
                 gzip.open(input).readline()
                 self.input = gzip.open(input)
                 self.compressed = True
-            except:
+            except OSError:
                 self.input = open(input, "rb")
                 self.compressed = False
         else:
@@ -695,17 +696,17 @@ class LyX_base:
                     init_t = time.time()
                     try:
                         conv(self)
-                    except:
+                    except Exception as exception:
                         self.warning(
-                            "An error occurred in %s, %s" % (version, str(conv)),
+                            f"An error occurred in {version}, {conv}",
                             default_debug__,
                         )
                         if not self.try_hard:
-                            raise
+                            raise exception
                         self.status = 2
                     else:
                         self.warning(
-                            "%lf: Elapsed time on %s" % (time.time() - init_t, str(conv)),
+                            f"{time.time() - init_t:f}: Elapsed time on {conv}",
                             default_debug__ + 1,
                         )
                 self.format = version
@@ -776,7 +777,7 @@ class LyX_base:
             if last_step[1][-1] == self.end_format:
                 steps.pop()
 
-        self.warning("Convertion mode: %s\tsteps%s" % (mode, steps), 10)
+        self.warning(f"Convertion mode: {mode}\tsteps{steps}", 10)
         return mode, steps
 
     def append_local_layout(self, new_layout):

@@ -82,6 +82,7 @@
 #include "insets/InsetIPAMacro.h"
 #include "insets/InsetNewline.h"
 #include "insets/InsetQuotes.h"
+#include "insets/InsetRef.h"
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
@@ -5483,6 +5484,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_REFERENCE_INSERT: {
+		string const label = cmd.getArg(0);
+		string const type = cmd.getArg(1);
+		InsetCommandParams p(REF_CODE, "ref");
+		if (!type.empty())
+			p.setCmdName(type);
+		p["reference"] = from_utf8(label);
+		string const data = InsetCommand::params2string(p);
+		lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+		break;
+	}
+
 	case LFUN_INFO_INSERT: {
 		if (cmd.argument().empty()) {
 			bv->showDialog("info", cur.current_font.language()->lang());
@@ -6726,6 +6739,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_PREVIEW_INSERT:
 		code = PREVIEW_CODE;
 		break;
+	case LFUN_REFERENCE_INSERT: {
+		string const type = cmd.getArg(1);
+		if (!type.empty())
+			enable = InsetRef::isCompatibleCommand(type);
+		code = REF_CODE;
+		break;
+	}
 	case LFUN_SCRIPT_INSERT:
 		code = SCRIPT_CODE;
 		break;

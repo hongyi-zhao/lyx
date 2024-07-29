@@ -3542,7 +3542,7 @@ void LyXAction::init()
  * \li Origin: spitz, 28 Jul 2024
  * \endvar
  */
-		{ LFUN_REFERENCE_TO_PARAGRAPH, "reference-to-paragraph", ReadOnly | NoInternal, Edit },
+		{ LFUN_REFERENCE_TO_PARAGRAPH, "reference-to-paragraph", Noop, Edit },
 
 
 /*!

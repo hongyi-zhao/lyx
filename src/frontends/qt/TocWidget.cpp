@@ -269,7 +269,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd,
 		// go to the item
 		sendDispatch(item.action());
 		// check if it has a label
-		docstring label = from_utf8(cur.innerParagraph().getLabel());
+		docstring label = from_utf8(cur.innerParagraph().getLabelForXRef());
 		if (label.empty()) {
 			// if not:
 			// insert a new label

@@ -1666,7 +1666,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		for (Buffer * b = &buffer_; i == 0 || b != &buffer_;
 			b = theBufferList().next(b)) {
 			DocIterator const dit = b->getParFromID(id);
-			string const label = dit.innerParagraph().getLabel();
+			string const label = dit.innerParagraph().getLabelForXRef();
 			if (!label.empty()) {
 				// if the paragraph has a label, we refer to this
 				string const arg = (type.empty()) ? label : label + " " + type;

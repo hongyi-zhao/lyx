@@ -1667,7 +1667,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_REFERENCE_TO_PARAGRAPH: {
 		vector<string> const pids = getVectorFromString(cmd.getArg(0));
 		string const type = cmd.getArg(1);
-		int id = convert<int>(pids.front());
+		int id = convert<int>(pids.back());
 		if (id < 0)
 			break;
 		int i = 0;
@@ -1686,8 +1686,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
 				break;
 			} else {
-				// if there is not a label yet, or we do not see it
-				// (since it is in a different buffer),
+				// if there is not a label yet
 				// go to the paragraph (including nested insets) ...
 				lyx::dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
 				for (string const & s : pids) {
@@ -1697,24 +1696,16 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					dit = b->getParFromID(id);
 					lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, s));
 				}
-				// ... and try again if we find a label ...
-				label = dit.innerParagraph().getLabelForXRef();
-				string arg;
-				if (!label.empty()) {
-					// if the paragraph has a label, we refer to this
-					arg = (type.empty()) ? label : label + " " + type;
-				} else {
-					// ... if not, insert a new label
-					// we do not want to open the dialog, hence we
-					// do not employ LFUN_LABEL_INSERT
-					InsetCommandParams p(LABEL_CODE);
-					docstring const new_label = dit.getPossibleLabel();
-					p["name"] = new_label;
-					string const data = InsetCommand::params2string(p);
-					lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
-					arg = (type.empty()) ? to_utf8(new_label)
-							     : to_utf8(new_label) + " " + type;
-				}
+				// ... if not, insert a new label
+				// we do not want to open the dialog, hence we
+				// do not employ LFUN_LABEL_INSERT
+				InsetCommandParams p(LABEL_CODE);
+				docstring const new_label = dit.getPossibleLabel();
+				p["name"] = new_label;
+				string const data = InsetCommand::params2string(p);
+				lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+				string const arg = (type.empty()) ? to_utf8(new_label)
+								  : to_utf8(new_label) + " " + type;
 				// ... and go back to the original position
 				lyx::dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
 				// ... to insert the ref

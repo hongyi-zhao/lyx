@@ -46,10 +46,13 @@ void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
                              bool output_active)
 {
 	// first show the float before moving to the caption
+	docstring parids = dit.paragraphGotoArgument(true);
 	docstring arg = "paragraph-goto " + dit.paragraphGotoArgument();
-	if (!stack_.empty())
+	if (!stack_.empty()) {
 		arg = "paragraph-goto " +
 			(*toc_)[stack_.top().pos].dit().paragraphGotoArgument() + ";" + arg;
+		parids = (*toc_)[stack_.top().pos].dit().paragraphGotoArgument(true) + "," + parids;
+	}
 	FuncRequest func(LFUN_COMMAND_SEQUENCE, arg);
 
 	if (!stack_.empty() && !stack_.top().is_captioned) {
@@ -58,6 +61,7 @@ void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
 		TocItem & captionable = (*toc_)[stack_.top().pos];
 		captionable.str(s);
 		captionable.setAction(func);
+		captionable.setParIDs(parids);
 		stack_.top().is_captioned = true;
 	} else {
 		// This is a new entry.

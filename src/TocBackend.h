@@ -75,17 +75,22 @@ public:
 	///
 	docstring const & prettyStr() const { return pretty_str_; }
 	///
-	void prettyStr (docstring const & s) { pretty_str_ = s; }
+	void prettyStr(docstring const & s) { pretty_str_ = s; }
 	///
 	bool isOutput() const { return output_; }
 	///
 	bool isMissing() const { return missing_; }
 	///
 	void setAction(FuncRequest const & a) { action_ = a; }
+	/// return comma-separated list of all par IDs (including nested insets)
+	/// this is used by captioned elements
+	docstring const parIDs() const { return par_ids_; }
+	///
+	void setParIDs(docstring const & ids) { par_ids_ = ids; }
 
 	/// custom action, or the default one (paragraph-goto) if not customised
 	FuncRequest action() const;
-	///
+	/// return only main par ID
 	int id() const;
 	/// String for display, e.g. it has a mark if output is inactive
 	docstring const asString() const;
@@ -105,6 +110,8 @@ private:
 	bool missing_;
 	/// Custom action
 	FuncRequest action_;
+	/// Paragraph IDs including nested insets (comma-separated).
+	docstring par_ids_;
 };
 
 

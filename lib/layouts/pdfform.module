@@ -87,7 +87,7 @@ InsetLayout Flex:ChoiceMenu
 	LatexName			ChoiceMenu
 	LabelString			"ChoiceMenu"
 	Argument 2
-	  LabelString		"Label"
+	  LabelString		"Label[[Form]]"
 	  Mandatory			1
 	  AutoInsert		1
 	  ToolTip			"Insert the label here"

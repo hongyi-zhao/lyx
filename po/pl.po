@@ -30,9 +30,8 @@ msgid "Version"
 msgstr "Wersja"
 
 #: src/frontends/qt/ui/AboutUi.ui:141
-#, fuzzy
 msgid "System directory"
-msgstr "Brak katalogu systemowego"
+msgstr "Katalog systemowy"
 
 #: src/frontends/qt/ui/AboutUi.ui:153
 #, fuzzy
@@ -44,9 +43,8 @@ msgid "[[do]]&Open"
 msgstr ""
 
 #: src/frontends/qt/ui/AboutUi.ui:191
-#, fuzzy
 msgid "User directory"
-msgstr "Katalog użytkownika: "
+msgstr "Katalog użytkownika"
 
 #: src/frontends/qt/ui/AboutUi.ui:222
 msgid "Open user directory in file browser"
@@ -104,18 +102,16 @@ msgid "&Label:"
 msgstr "&Etykieta:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:83
-#, fuzzy
 msgid "&Year:"
-msgstr "Rok"
+msgstr "Rok:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:96
 msgid "The year with \"Author (Year)\" citations (without parentheses)."
 msgstr ""
 
 #: src/frontends/qt/ui/BibitemUi.ui:105 src/frontends/qt/GuiBibitem.cpp:64
-#, fuzzy
 msgid "A&ll Author Names:"
-msgstr "Imiona autora"
+msgstr "Imiona autora:"
 
 #: src/frontends/qt/ui/BibitemUi.ui:115
 msgid ""
@@ -378,21 +374,18 @@ msgid "&Edit..."
 msgstr "&Edycja"
 
 #: src/frontends/qt/ui/BibtexUi.ui:201
-#, fuzzy
 msgid "Sele&cted:"
 msgstr "Wybran&e:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:218 src/frontends/qt/ui/CitationUi.ui:27
 #: src/frontends/qt/ui/ModulesUi.ui:76 src/frontends/qt/ui/RefUi.ui:53
 #: src/frontends/qt/ui/TocUi.ui:345
-#, fuzzy
 msgid "&Filter:"
 msgstr "Filtr:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:248 src/frontends/qt/GuiBibtex.cpp:326
-#, fuzzy
 msgid "E&ncoding:"
-msgstr "Kodowanie"
+msgstr "Kodowanie:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:258 src/frontends/qt/GuiBibtex.cpp:327
 msgid ""
@@ -1668,9 +1661,8 @@ msgid "Sear&ch"
 msgstr "&Szukaj"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
-#, fuzzy
 msgid "Search fo&r:"
-msgstr "Szukaj błędu"
+msgstr "Szukaj:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:92
 msgid "Replace &with:"
@@ -1690,9 +1682,8 @@ msgstr "Ograniczenie wyszukiwania tylko do całych wyrazów"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:153
 #: src/frontends/qt/ui/SearchUi.ui:241 src/frontends/qt/GuiSearch.cpp:98
-#, fuzzy
 msgid "Wh&ole words"
-msgstr "T&ylko całe wyrazy"
+msgstr "Całe wyrazy"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:160
 msgid "Perform a case-sensitive search"
@@ -1704,27 +1695,23 @@ msgstr "&Wielkość liter"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:205
 #: src/frontends/qt/FindAndReplace.cpp:716
-#, fuzzy
 msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
-msgstr "Szukanie następnego wystapienia [Enter]"
+msgstr "Szukanie następnego wystapienia (Enter, do tyłu: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
 #: src/frontends/qt/ui/SearchUi.ui:190 src/frontends/qt/FindAndReplace.cpp:715
-#, fuzzy
 msgid "Find &>"
-msgstr "Szukaj &następne"
+msgstr "Szukaj &>"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:221
 #: src/frontends/qt/FindAndReplace.cpp:718
-#, fuzzy
 msgid "Replace and find next occurrence (Enter, backwards: Shift+Enter)"
-msgstr "Zamiana i odnalezienie następnego wystąpienia [Enter]"
+msgstr "Zamiana i odnalezienie następnego wystąpienia (Enter, do tyłu: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:224
 #: src/frontends/qt/FindAndReplace.cpp:717
-#, fuzzy
 msgid "Rep&lace >"
-msgstr "&Zastąp"
+msgstr "&Zastąp >"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:234
 msgid "Replace all occurrences at once"
@@ -1736,7 +1723,6 @@ msgid "Replace &All"
 msgstr "&Wszystkie"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:264
-#, fuzzy
 msgid "Settin&gs"
 msgstr "Ustawienia"
 
@@ -3111,9 +3097,8 @@ msgid "&Update"
 msgstr "&Aktualizuj"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:23
-#, fuzzy
 msgid "Filter"
-msgstr "Filtr:"
+msgstr "Filtr"
 
 #: src/frontends/qt/ui/LyXFilesUi.ui:48
 msgid ""
@@ -5522,56 +5507,46 @@ msgid "Find previous occurrence (Shift+Enter)"
 msgstr "Szukanie następnego wystapienia [Enter]"
 
 #: src/frontends/qt/ui/SearchUi.ui:55 src/frontends/qt/FindAndReplace.cpp:710
-#, fuzzy
 msgid "&< Find"
-msgstr "&Szukaj:"
+msgstr "&< Szukaj"
 
 #: src/frontends/qt/ui/SearchUi.ui:65
-#, fuzzy
 msgid "Replace all occurrences"
-msgstr "Zastępuje wszystkie wystąpienia za jednym przebiegiem"
+msgstr "Zastąp wszystkie wystąpienia"
 
 #: src/frontends/qt/ui/SearchUi.ui:100 src/frontends/qt/GuiSearch.cpp:217
 msgid "Hide replace and option widgets"
 msgstr ""
 
 #: src/frontends/qt/ui/SearchUi.ui:103 src/frontends/qt/GuiSearch.cpp:216
-#, fuzzy
 msgid "&Minimize"
-msgstr "Minisekcja"
+msgstr "Minimalizuj"
 
 #: src/frontends/qt/ui/SearchUi.ui:110
-#, fuzzy
 msgid "Rep&lace with:"
 msgstr "Z&astąp:"
 
 #: src/frontends/qt/ui/SearchUi.ui:120
-#, fuzzy
 msgid "&Search:"
-msgstr "&Szukaj"
+msgstr "&Szukaj:"
 
 #: src/frontends/qt/ui/SearchUi.ui:155
-#, fuzzy
 msgid "Replace and find next occurrence"
 msgstr "Zamiana i odnalezienie następnego wystąpienia [Enter]"
 
 #: src/frontends/qt/ui/SearchUi.ui:161
-#, fuzzy
 msgid "&Replace >"
-msgstr "&Zastąp"
+msgstr "&Zastąp >"
 
 #: src/frontends/qt/ui/SearchUi.ui:171
-#, fuzzy
 msgid "Replace and find previous occurrence"
 msgstr "Zamiana i odnalezienie następnego wystąpienia [Enter]"
 
 #: src/frontends/qt/ui/SearchUi.ui:174
-#, fuzzy
 msgid "< Re&place"
-msgstr "&Zastąp"
+msgstr "< Z&astąp"
 
 #: src/frontends/qt/ui/SearchUi.ui:184
-#, fuzzy
 msgid "Find next occurrence (Enter)"
 msgstr "Szukanie następnego wystapienia [Enter]"
 
@@ -5580,12 +5555,10 @@ msgid "Treat uppercase/lowercase writing as distinct"
 msgstr ""
 
 #: src/frontends/qt/ui/SearchUi.ui:231 src/frontends/qt/GuiSearch.cpp:96
-#, fuzzy
 msgid "&Case sensitive[[search]]"
 msgstr "Uwzględniaj &wielkość liter"
 
 #: src/frontends/qt/ui/SearchUi.ui:238
-#, fuzzy
 msgid "Match whole words only"
 msgstr "Dopasuj t&ylko całe wyrazy"
 
@@ -5594,16 +5567,14 @@ msgid "Limit search and replace to selection"
 msgstr ""
 
 #: src/frontends/qt/ui/SearchUi.ui:251 src/frontends/qt/GuiSearch.cpp:100
-#, fuzzy
 msgid "Selection onl&y"
-msgstr "Zaznaczenie|S"
+msgstr "&Tylko zaznaczone"
 
 #: src/frontends/qt/ui/SearchUi.ui:258
 msgid "If this is checked, LyX will search forward immediately"
 msgstr ""
 
 #: src/frontends/qt/ui/SearchUi.ui:261 src/frontends/qt/GuiSearch.cpp:102
-#, fuzzy
 msgid "Search as yo&u type"
 msgstr "Szukaj w &trakcie wpisywania"
 
@@ -5612,9 +5583,8 @@ msgid "If the end/start of the document is reached, automatically wrap around"
 msgstr ""
 
 #: src/frontends/qt/ui/SearchUi.ui:271 src/frontends/qt/GuiSearch.cpp:104
-#, fuzzy
 msgid "&Wrap"
-msgstr "Rysunek"
+msgstr "Zawijaj"
 
 #: src/frontends/qt/ui/SendtoUi.ui:50
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -6344,7 +6314,7 @@ msgstr "Próbuj trwale utrzymać rozwinięte węzły w widoku"
 
 #: src/frontends/qt/ui/TocUi.ui:279
 msgid "Keep"
-msgstr "Urzymuj"
+msgstr "Nie zamykaj"
 
 #: src/frontends/qt/ui/TocUi.ui:313
 msgid ""
@@ -6353,9 +6323,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt/ui/TocUi.ui:317 src/frontends/qt/TocWidget.cpp:99
-#, fuzzy
 msgid "All items"
-msgstr "Wszystkie pliki"
+msgstr "Wszystkie elementy"
 
 #: src/frontends/qt/ui/TocUi.ui:322
 #, fuzzy
@@ -6369,7 +6338,7 @@ msgstr "Tylko na slajdach"
 
 #: src/frontends/qt/ui/TocUi.ui:335
 msgid "Sho&w:"
-msgstr ""
+msgstr "Pokaż:"
 
 #: src/frontends/qt/ui/TocUi.ui:358
 msgid ""
@@ -21235,7 +21204,6 @@ msgid "Split Cell|C"
 msgstr "Rozdziel komórkę|C"
 
 #: lib/ui/stdcontext.inc:69
-#, fuzzy
 msgid "Rows & Columns| "
 msgstr "Wiersze i kolumny|W"
 
@@ -21757,9 +21725,8 @@ msgid "Reject Change|j"
 msgstr "Odrzuć zmiany|R"
 
 #: lib/ui/stdcontext.inc:401 lib/ui/stdmenus.inc:124
-#, fuzzy
 msgid "Text Properties|x"
-msgstr "Właściwości PDF"
+msgstr "Właściwości Tekstu"
 
 #: lib/ui/stdcontext.inc:402 lib/ui/stdmenus.inc:125
 #, fuzzy
@@ -22341,11 +22308,11 @@ msgstr "Wybierz wszystko"
 
 #: lib/ui/stdmenus.inc:117
 msgid "Find & Replace (Quick)...|F"
-msgstr "Znajdź i zastąp (Szybkie)|Z"
+msgstr "Szukaj i zastąp (Szybkie)|Z"
 
 #: lib/ui/stdmenus.inc:118
 msgid "Find & Replace (Advanced)..."
-msgstr "Znajdź i zastąp (Zaawansowane)"
+msgstr "Szukaj i zastąp (Zaawansowane)"
 
 #: lib/ui/stdmenus.inc:126
 msgid "Manage Counter Values..."
@@ -22566,9 +22533,8 @@ msgid "Change Formula Type|F"
 msgstr "Zmień typ formuły|f"
 
 #: lib/ui/stdmenus.inc:250
-#, fuzzy
 msgid "Text Properties|T"
-msgstr "Właściwości PDF"
+msgstr "Właściwości Tekstu"
 
 #: lib/ui/stdmenus.inc:252
 msgid "Use Computer Algebra System|S"
@@ -22703,22 +22669,18 @@ msgid "Maple, Evalf|v"
 msgstr "Maple, evalf|v"
 
 #: lib/ui/stdmenus.inc:340
-#, fuzzy
 msgid "Outline Pane|O"
 msgstr "Okno konspektu|u"
 
 #: lib/ui/stdmenus.inc:341
-#, fuzzy
 msgid "Code Preview Pane|P"
-msgstr "Nieudany podgląd"
+msgstr "Okno podlgądu kodu"
 
 #: lib/ui/stdmenus.inc:342
-#, fuzzy
 msgid "Messages Pane|M"
 msgstr "Okno komunikatów|k"
 
 #: lib/ui/stdmenus.inc:343
-#, fuzzy
 msgid "Toolbars|T"
 msgstr "Paski narzędzi|b"
 
@@ -22731,12 +22693,10 @@ msgid "Fold Math Macro|d"
 msgstr "Zwiń makro matematyczne|t"
 
 #: lib/ui/stdmenus.inc:348
-#, fuzzy
 msgid "Split View Into Left and Right Half|L"
 msgstr "Podziel widok na lewą i prawą połówkę|l"
 
 #: lib/ui/stdmenus.inc:349
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|U"
 msgstr "Podziel widok na górną i dolną połówkę|d"
 
@@ -22745,12 +22705,10 @@ msgid "Close Current View|w"
 msgstr "Zamknij aktualny widok|w"
 
 #: lib/ui/stdmenus.inc:351
-#, fuzzy
 msgid "Fullscreen|F"
 msgstr "Pełny ekran|P"
 
 #: lib/ui/stdmenus.inc:353
-#, fuzzy
 msgid "Open All Insets|I"
 msgstr "Otwórz wszystkie wstawki|O"
 
@@ -22771,9 +22729,8 @@ msgid "Formatting|o"
 msgstr "Formatowanie|o"
 
 #: lib/ui/stdmenus.inc:380
-#, fuzzy
 msgid "Field|i"
-msgstr "Tekst:"
+msgstr "Pole"
 
 #: lib/ui/stdmenus.inc:381
 msgid "List/Contents/References|/"
@@ -22792,7 +22749,6 @@ msgid "Branch|B"
 msgstr "Gałąź|G"
 
 #: lib/ui/stdmenus.inc:385
-#, fuzzy
 msgid "Custom Inset"
 msgstr "Dostosowane wstawki"
 
@@ -22806,7 +22762,6 @@ msgid "Box[[Menu]]|x"
 msgstr "Pudełko"
 
 #: lib/ui/stdmenus.inc:388
-#, fuzzy
 msgid "Regular Expression"
 msgstr "W&yrażenie regularne"
 
@@ -23401,11 +23356,11 @@ msgstr "Ponów"
 
 #: lib/ui/stdtoolbars.inc:92
 msgid "Find and replace"
-msgstr "Znajdź i Zastąp"
+msgstr "Szukaj i Zastąp"
 
 #: lib/ui/stdtoolbars.inc:93
 msgid "Find and replace (advanced)"
-msgstr "Znajdź i zastąp (zaawansowane)"
+msgstr "Szukaj i zastąp (zaawansowane)"
 
 #: lib/ui/stdtoolbars.inc:94
 msgid "Navigate back"
@@ -23450,19 +23405,16 @@ msgid "Toggle outline"
 msgstr "Przełącz konspekt"
 
 #: lib/ui/stdtoolbars.inc:107 lib/ui/stdtoolbars.inc:303
-#, fuzzy
 msgid "Show math toolbar"
-msgstr "Przełącz pasek narzędzi matematyki"
+msgstr "Pokaż pasek narzędzi matematyki"
 
 #: lib/ui/stdtoolbars.inc:108 lib/ui/stdtoolbars.inc:315
-#, fuzzy
 msgid "Show table toolbar"
-msgstr "Przełącz pasek narzędzi tabelaryczny"
+msgstr "Pokaż pasek narzędzi tabelaryczny"
 
 #: lib/ui/stdtoolbars.inc:109 lib/ui/stdtoolbars.inc:321
-#, fuzzy
 msgid "Show review toolbar"
-msgstr "Przełącz pasek narzędzi tabel"
+msgstr "Pokaż pasek narzędzi tabel"
 
 #: lib/ui/stdtoolbars.inc:112
 msgid "View/Update"
@@ -23582,9 +23534,8 @@ msgid "Include file"
 msgstr "Dołącz plik"
 
 #: lib/ui/stdtoolbars.inc:151
-#, fuzzy
 msgid "Text properties"
-msgstr "Pismo pogrubione"
+msgstr "Właściwości tekstu"
 
 #: lib/ui/stdtoolbars.inc:152
 msgid "Paragraph settings"
@@ -23771,7 +23722,6 @@ msgid "Insert cases environment"
 msgstr "Wstaw środowisko Cases"
 
 #: lib/ui/stdtoolbars.inc:215 lib/ui/stdtoolbars.inc:309
-#, fuzzy
 msgid "Show math panels"
 msgstr "Pokaż panel matematyczny"
 
@@ -33301,7 +33251,7 @@ msgstr "Brak dokumentów otwartych do przeszukiwania"
 
 #: src/frontends/qt/FindAndReplace.cpp:661
 msgid "Advanced Find and Replace"
-msgstr "Zaawansowane Znajdź i Zastąp"
+msgstr "Zaawansowane Szukaj i Zastąp"
 
 #: src/frontends/qt/FindAndReplace.cpp:711
 msgid "Find previous occurrence (Shift+Enter, forwards: Enter)"
@@ -33982,9 +33932,8 @@ msgid "(Without)[[color]]"
 msgstr ""
 
 #: src/frontends/qt/GuiCharacter.cpp:208
-#, fuzzy
 msgid "Text Properties"
-msgstr "Właściwości PDF"
+msgstr "Właściwości Tekstu"
 
 #: src/frontends/qt/GuiCharacter.cpp:274
 #, fuzzy
@@ -36196,7 +36145,7 @@ msgstr "<Bez prefiksu>"
 
 #: src/frontends/qt/GuiSearch.cpp:204
 msgid "Ex&pand"
-msgstr ""
+msgstr "Rozwiń"
 
 #: src/frontends/qt/GuiSearch.cpp:205
 msgid "Show replace and option widgets"
@@ -36238,9 +36187,8 @@ msgid "Click here to change search options"
 msgstr "Kliknij, aby zmienić kolor"
 
 #: src/frontends/qt/GuiSearch.cpp:591
-#, fuzzy
 msgid "Search and Replace"
-msgstr "Znajdź i Zastąp"
+msgstr "Szukaj i Zastąp"
 
 #: src/frontends/qt/GuiSendto.cpp:41
 msgid "Export or Send Document"
@@ -37470,9 +37418,8 @@ msgid "Remove from document dictionary|r"
 msgstr "Usuń z osobistego słownika|u"
 
 #: src/frontends/qt/Menus.cpp:921
-#, fuzzy
 msgid "Switch Language...|L"
-msgstr "Język|J"
+msgstr "Zmień język|J"
 
 #: src/frontends/qt/Menus.cpp:935
 msgid "Language|L"

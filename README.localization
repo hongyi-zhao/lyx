@@ -150,7 +150,39 @@ As you wish. They can be reused for generating fuzzy hints when completely
 new strings appear, no other function.
 
 
-9) REFERENCES
+9) CAN YOU EXPLAIN THE "FUZZY" HINT MORE EXPLICITELY?
+
+In po files, strings are marked "fuzzy" if the po file generator (the program
+gettext in our case) thinks there is a somewhat sensible translation, but a
+Human translator needs to check and confirm that (by removing the "fuzzy"
+mark). Fuzzy translations are treated as if they were not there, so the
+translation is not used.
+
+Fuzzy strings can be auto-generated if a new string is added where gettext
+finds a similar enough translation to suggest a translation.
+
+But also if an existing string is changed, its translation is set to "fuzzy"
+(if the original string is similar enough to the previous version).
+
+This is often so in the case of accelerators. Accelerators mark the keyboard
+shortcut to access GUI elements. In LyX this is either marked by and ampersand
+(S&earch: shows Search: and has the accelerator Alt+e) or, in menus, by a
+suffix delimited by | (as in Search|e).
+
+Since accelerators must be unique in a context, and of course the letter should
+be part of a string, it is the task of translators to decide for an appropriate
+accelerator in their localization. For instance, in German we might have Ma&rke
+for English &Label.
+
+As LyX develops, we need to change the accelerators in the English strings in
+many cases to prevent shortcut clashes or adapt strings for coherence. So some
+label "&Foo" is treated as a different (but similar enough) string that was
+previously "F&oo" and hence you need to revisit this string. This makes sense
+as well, as the accelerator in the translation might very welll be adapted to
+the interface changes in your language, too.
+
+
+10) REFERENCES
 
 For a basic idea of how the translation works, you can look at
 

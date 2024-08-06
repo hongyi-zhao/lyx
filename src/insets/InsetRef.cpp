@@ -539,11 +539,14 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 		// put cross-reference value into tooltip
 		tooltip_ = displayString(ref, cmd);
 	}
-
+	toc_string_ = label;
+	
+	// Note: This could be changed later, in addToToc, if we are using
+	// fomatted references in the work area.
 	screen_label_ = label;
-	// If use_formatted_ref is active, this will be overwritten in addToToc.
-	// (We can't do it now because it might be a forward-reference
-	// and so the reference might not be in the label cache yet.
+	// This also can be overwritten in addToToc. (We can't do it now
+	// because it might be a forward-reference and so the reference might
+	// not be in the label cache yet.)
 	broken_ = false;
 	setBroken(broken_);
 }
@@ -661,7 +664,7 @@ docstring InsetRef::getTOCString() const
 		broken_ = !buffer().activeLabel(label) && active_;
 	else 
 		broken_ = active_;
-	return tooltip_.empty() ? screenLabel() : tooltip_;
+	return (broken_ ? _("BROKEN: ") : docstring()) + toc_string_;
 }
 
 } // namespace lyx

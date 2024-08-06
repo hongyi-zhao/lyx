@@ -127,6 +127,8 @@ private:
 	///
 	mutable docstring screen_label_;
 	///
+	mutable docstring toc_string_;
+	///
 	mutable bool broken_;
 	///
 	mutable bool active_;

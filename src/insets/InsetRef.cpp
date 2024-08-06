@@ -530,6 +530,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 
 	bool const use_formatted_ref = buffer().params().use_formatted_ref;
 	unsigned int const maxLabelChars = 24;
+	toc_string_ = label;
 	// Show label in tooltip when formatted references are shown in the work
 	// area or it is too long
 	if (use_formatted_ref || label.size() > maxLabelChars) {
@@ -539,8 +540,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 		// put cross-reference value into tooltip
 		tooltip_ = displayString(ref, cmd);
 	}
-	toc_string_ = label;
-	
+
 	// Note: This could be changed later, in addToToc, if we are using
 	// fomatted references in the work area.
 	screen_label_ = label;

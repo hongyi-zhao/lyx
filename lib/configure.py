@@ -1270,7 +1270,7 @@ def checkConverterEntries():
             path = ['', inkscape_path])
     #
     checkProg('Gnuplot', ['gnuplot'],
-        rc_entry = [ r'''\Format gnuplot     "gp, gnuplot"    "Gnuplot"     "" "" ""  "vector"	"text/plain"
+        rc_entry = [ r'''\Format gnuplot     "gp, gnuplot, plt"    "Gnuplot"     "" "" ""  "vector"	"text/plain"
 \converter gnuplot      pdf6      "$${python} $$s/scripts/gnuplot2pdf.py $$i $$o"    "needauth"''' ])
     #
     # gnumeric/xls/ods to tex

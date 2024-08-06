@@ -527,21 +527,15 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 		label += "||";
 		label += getParam("name");
 	}
-
-	bool const use_formatted_ref = buffer().params().use_formatted_ref;
-	unsigned int const maxLabelChars = 24;
+	
+	// The tooltip will be over-written later, in addToToc, if need be.
+	tooltip_ = label;
 	toc_string_ = label;
-	// Show label in tooltip when formatted references are shown in the work
-	// area or it is too long
-	if (use_formatted_ref || label.size() > maxLabelChars) {
-		tooltip_ = label;
-		support::truncateWithEllipsis(label, maxLabelChars);
-	} else {
-		// put cross-reference value into tooltip
-		tooltip_ = displayString(ref, cmd);
-	}
+	
+	unsigned int const maxLabelChars = 24;
+	support::truncateWithEllipsis(label, maxLabelChars);
 
-	// Note: This could be changed later, in addToToc, if we are using
+	// Note: This could also be changed later, in addToToc, if we are using
 	// fomatted references in the work area.
 	screen_label_ = label;
 	// This also can be overwritten in addToToc. (We can't do it now
@@ -572,13 +566,16 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 		}
 
 		// Code for display of formatted references
-		bool const use_formatted_ref = buffer().params().use_formatted_ref;
-		if (use_formatted_ref) {
-			string const & cmd = getCmdName();
+		string const & cmd = getCmdName();
+		if (cmd != "pageref" && cmd != "vpageref" &&
+			cmd != "vref"    && cmd != "labelonly")
+		{
+			bool const use_formatted_ref = buffer().params().use_formatted_ref;
+			// We will put the value of the reference either into the tooltip
+			// or the screen label, depending.
+			docstring & target = use_formatted_ref ? screen_label_ : tooltip_;
 			docstring const & ref = getParam("reference");
-			if (cmd != "pageref" && cmd != "vpageref" && cmd != "vref" &&
-					cmd != "labelonly")
-				screen_label_ = displayString(ref, cmd);
+				target = displayString(ref, cmd);
 		}
 		return;
 	}

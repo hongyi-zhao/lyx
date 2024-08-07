@@ -155,7 +155,8 @@ static bool isChosenFont(QFont & font, QString const & family,
 	// positions.
 	QFontInfo fi(font);
 
-	LYXERR_NOPOS(Debug::FONT, "got: " << fi.family());
+	LYXERR_NOPOS(Debug::FONT, "got: " << fi.family()
+		     << " (style: " << fi.styleName() << ")");
 
 	if (fi.family().contains(family)
 	    && (style.isEmpty() || fi.styleName().contains(style))) {

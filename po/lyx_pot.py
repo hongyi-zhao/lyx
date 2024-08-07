@@ -572,18 +572,15 @@ def external_l10n(input_files, output, base):
 def formats_l10n(input_files, output, base):
     '''Generate pot file from configure.py'''
     output = io.open(output, 'w', encoding='utf_8', newline='\n')
-    GuiName = re.compile(r'.*\\Format\s+\S+\s+\S+\s+"([^"]*)"\s+(\S*)\s+.*', re.IGNORECASE)
-    GuiName2 = re.compile(r'.*\\Format\s+\S+\s+\S+\s+([^"]\S+)\s+(\S*)\s+.*', re.IGNORECASE)
+    # \Format "shortname" "ext1, ext2..." "name" "shortcut" (quotation marks optional in each group)
+    GuiName = re.compile(r'.*\\Format\s+(""|"[^"]+"|\S+)\s+(""|"[^"]+"|\S+)\s+(""|"[^"]+"|\S+)\s+(""|"[^"]+"|\S+)\s+.*', re.IGNORECASE)
     input = io.open(input_files[0], encoding='utf_8')
     for lineno, line in enumerate(input.readlines()):
         label = ""
         labelsc = ""
         if GuiName.match(line):
-            label = GuiName.match(line).group(1)
-            shortcut = GuiName.match(line).group(2).replace('"', '')
-        elif GuiName2.match(line):
-            label = GuiName2.match(line).group(1)
-            shortcut = GuiName2.match(line).group(2).replace('"', '')
+            label = GuiName.match(line).group(3)
+            shortcut = GuiName.match(line).group(4).replace('"', '')
         else:
             continue
         label = label.replace('\\', '\\\\').replace('"', '')

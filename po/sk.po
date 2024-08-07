@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-02 08:37+0200\n"
-"PO-Revision-Date: 2024-08-02 06:48+0000\n"
+"POT-Creation-Date: 2024-08-07 10:09+0200\n"
+"PO-Revision-Date: 2024-08-07 08:15+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3420,6 +3420,10 @@ msgstr "MathML"
 
 #: src/frontends/qt/ui/OutputUi.ui:209 src/frontends/qt/ui/OutputUi.ui:401
 msgid "HTML"
+msgstr "HTML"
+
+#: lib/configure.py:834
+msgid "HTML|H"
 msgstr "HTML"
 
 #: src/frontends/qt/ui/OutputUi.ui:214
@@ -22110,6 +22114,10 @@ msgstr "Triediaci kľúč|k"
 msgid "Comment|C"
 msgstr "Komentár|K"
 
+#: lib/ui/stdmenus.inc:548
+msgid "Greyed Out|G"
+msgstr "Zosivelé|s"
+
 #: lib/ui/stdmenus.inc:553
 msgid "Insert New Branch...|I"
 msgstr "Vložiť novú vetvu…|e"
@@ -27264,13 +27272,9 @@ msgstr "Xfig obrázok"
 msgid "An Xfig figure.\n"
 msgstr "Jeden xfig obrázok.\n"
 
-#: lib/configure.py:726
-msgid "tgo"
-msgstr "tgo"
-
-#: lib/configure.py:726
-msgid "tgo|Tgif"
-msgstr "tgo|Tgif"
+#: lib/configure.py:707
+msgid "Tgif"
+msgstr "Tgif"
 
 #: lib/configure.py:729
 msgid "FIG"
@@ -27280,13 +27284,9 @@ msgstr "FIG"
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:735
-msgid "sxd"
-msgstr "sxd"
-
-#: lib/configure.py:735
-msgid "sxd|OpenDocument"
-msgstr "sxd|OpenDocument"
+#: lib/configure.py:716
+msgid "OpenDocument drawing"
+msgstr "OpenDocument kreslenie"
 
 #: lib/configure.py:738
 msgid "Grace"
@@ -27311,14 +27311,6 @@ msgstr "BMP"
 #: lib/configure.py:749
 msgid "GIF"
 msgstr "GIF"
-
-#: lib/configure.py:750
-msgid "jpeg"
-msgstr "jpeg"
-
-#: lib/configure.py:750
-msgid "jpeg|JPEG"
-msgstr "jpeg|JPEG"
 
 #: lib/configure.py:751
 msgid "PBM"
@@ -27593,14 +27585,6 @@ msgstr "DVI (LuaTeX)|V"
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:853 lib/configure.py:890
-msgid "htm"
-msgstr "htm"
-
-#: lib/configure.py:853 lib/configure.py:890
-msgid "htm|HTML"
-msgstr "htm|HTML"
-
 #: lib/configure.py:856
 msgid "Noteedit"
 msgstr "Noteedit"
@@ -27702,25 +27686,21 @@ msgstr "CJK LyX 1.4.x (euc-kr)"
 msgid "LyX Preview"
 msgstr "Náhľad LyX"
 
-#: lib/configure.py:885
-msgid "pdf_tex"
-msgstr "pdf_tex"
-
-#: lib/configure.py:885
-msgid "pdf_tex|PDFTEX"
-msgstr "pdf_tex|PDFTEX"
+#: lib/configure.py:867
+msgid "PDFTEX"
+msgstr "PDFTEX"
 
 #: lib/configure.py:886
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:887
-msgid "ps_tex"
-msgstr "ps_tex"
+#: lib/configure.py:869
+msgid "PSTEX"
+msgstr "PSTEX"
 
-#: lib/configure.py:887
-msgid "ps_tex|PSTEX"
-msgstr "ps_tex|PSTEX"
+#: lib/configure.py:872
+msgid "HTML (MS Word)"
+msgstr "HTML (MS Word)"
 
 #: lib/configure.py:888 src/frontends/qt/GuiClipboard.cpp:178
 msgid "Windows Metafile"
@@ -27733,14 +27713,6 @@ msgstr "Rozšírený WMF"
 #: lib/configure.py:1009
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
-
-#: lib/configure.py:1291
-msgid "gnuplot"
-msgstr "gnuplot"
-
-#: lib/configure.py:1291
-msgid "gnuplot|Gnuplot"
-msgstr "gnuplot|Gnuplot"
 
 #: lib/configure.py:1398
 msgid "LyX Archive (zip)"
@@ -41300,9 +41272,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 #~ msgstr "PDF stránky: $$AbsOrRelPathParent$$Basename"
 
-#~ msgid "HTML|H"
-#~ msgstr "HTML"
-
 #~ msgid "LyX Preview (LilyPond book)"
 #~ msgstr "Náhľad LyX (LilyPond book)"
 
@@ -44454,9 +44423,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Plain Quotation Mark|Q"
 #~ msgstr "Prosté úvodzovky|P"
-
-#~ msgid "Greyed Out|G"
-#~ msgstr "Zosivelé|s"
 
 #~ msgid "Split Inset|t"
 #~ msgstr "Rozdeliť vložku| "

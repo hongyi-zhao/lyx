@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-01 12:05+0200\n"
-"PO-Revision-Date: 2024-08-01 12:06+0200\n"
+"POT-Creation-Date: 2024-08-07 10:53+0200\n"
+"PO-Revision-Date: 2024-08-07 10:54+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -3565,6 +3565,7 @@ msgid "MathML"
 msgstr "MathML"
 
 #: src/frontends/qt/ui/OutputUi.ui:209 src/frontends/qt/ui/OutputUi.ui:401
+#: lib/configure.py:834
 msgid "HTML"
 msgstr "HTML"
 
@@ -20807,7 +20808,7 @@ msgstr "LyX-Notiz|z"
 msgid "Comment|m"
 msgstr "Kommentar|K"
 
-#: lib/ui/stdcontext.inc:237 lib/ui/stdmenus.inc:548
+#: lib/ui/stdcontext.inc:237
 msgid "Greyed Out|y"
 msgstr "Grauschrift|G"
 
@@ -22404,6 +22405,10 @@ msgstr "Sortierschlüssel|o"
 #: lib/ui/stdmenus.inc:547
 msgid "Comment|C"
 msgstr "Kommentar|K"
+
+#: lib/ui/stdmenus.inc:548
+msgid "Greyed Out|G"
+msgstr "Grauschrift|G"
 
 #: lib/ui/stdmenus.inc:554
 msgid "Insert New Branch...|I"
@@ -27565,12 +27570,8 @@ msgid "An Xfig figure.\n"
 msgstr "Eine Xfig-Abbildung.\n"
 
 #: lib/configure.py:707
-msgid "tgo"
-msgstr "tgo"
-
-#: lib/configure.py:707
-msgid "tgo|Tgif"
-msgstr "tgo|Tgif"
+msgid "Tgif"
+msgstr "Tgif"
 
 #: lib/configure.py:710
 msgid "FIG"
@@ -27581,12 +27582,8 @@ msgid "DIA"
 msgstr "DIA"
 
 #: lib/configure.py:716
-msgid "sxd"
-msgstr "sxd"
-
-#: lib/configure.py:716
-msgid "sxd|OpenDocument"
-msgstr "sxd|OpenDocument"
+msgid "OpenDocument drawing"
+msgstr "OpenDocument-Zeichnung"
 
 #: lib/configure.py:719
 msgid "Grace"
@@ -27612,13 +27609,9 @@ msgstr "BMP"
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:731
-msgid "jpeg"
-msgstr "jpeg"
-
-#: lib/configure.py:731
-msgid "jpeg|JPEG"
-msgstr "jpeg|JPEG"
+#: lib/configure.py:731 src/frontends/qt/GuiClipboard.cpp:182
+msgid "JPEG"
+msgstr "JPEG"
 
 #: lib/configure.py:732
 msgid "PBM"
@@ -27893,13 +27886,9 @@ msgstr "DVI (LuaTeX)|V"
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:834 lib/configure.py:872
-msgid "htm"
-msgstr "htm"
-
-#: lib/configure.py:834 lib/configure.py:872
-msgid "htm|HTML"
-msgstr "htm|HTML"
+#: lib/configure.py:834
+msgid "HTML|H"
+msgstr "HTML|H"
 
 #: lib/configure.py:837
 msgid "Noteedit"
@@ -28003,24 +27992,16 @@ msgid "LyX Preview"
 msgstr "LyX-Vorschau"
 
 #: lib/configure.py:867
-msgid "pdf_tex"
-msgstr "pdf_tex"
-
-#: lib/configure.py:867
-msgid "pdf_tex|PDFTEX"
-msgstr "pdf_tex|PDFTEX"
+msgid "PDFTEX"
+msgstr "PDFTEX"
 
 #: lib/configure.py:868
 msgid "Program"
 msgstr "Programm"
 
 #: lib/configure.py:869
-msgid "ps_tex"
-msgstr "ps_tex"
-
-#: lib/configure.py:869
-msgid "ps_tex|PSTEX"
-msgstr "ps_tex|PSTEX"
+msgid "PSTEX"
+msgstr "PSTEX"
 
 #: lib/configure.py:870 src/frontends/qt/GuiClipboard.cpp:178
 msgid "Windows Metafile"
@@ -28030,17 +28011,17 @@ msgstr "Windows Metafile"
 msgid "Enhanced Metafile"
 msgstr "Erweiterte Metadatei"
 
+#: lib/configure.py:872
+msgid "HTML (MS Word)"
+msgstr "HTML (MS Word)"
+
 #: lib/configure.py:991
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:1273
-msgid "gnuplot"
-msgstr "gnuplot"
-
-#: lib/configure.py:1273
-msgid "gnuplot|Gnuplot"
-msgstr "gnuplot|Gnuplot"
+#: lib/configure.py:1273 lib/examples/Articles:0
+msgid "Gnuplot"
+msgstr "Gnuplot"
 
 #: lib/configure.py:1380
 msgid "LyX Archive (zip)"
@@ -28065,10 +28046,6 @@ msgstr "Beispiel (geLyXt)"
 #: lib/examples/Articles:0
 msgid "Example (raw)"
 msgstr "Beispiel (roh)"
-
-#: lib/examples/Articles:0
-msgid "Gnuplot"
-msgstr "Gnuplot"
 
 #: lib/examples/Articles:0 src/TocBackend.cpp:302
 #: src/frontends/qt/GuiExternal.cpp:86
@@ -33332,10 +33309,6 @@ msgstr "Text danach"
 msgid "LinkBack PDF"
 msgstr "LinkBack-PDF"
 
-#: src/frontends/qt/GuiClipboard.cpp:182
-msgid "JPEG"
-msgstr "JPEG"
-
 #: src/frontends/qt/GuiClipboard.cpp:191
 msgid "pasted"
 msgstr "eingefügt"
@@ -37292,7 +37265,8 @@ msgstr "Kein Literaturverzeichnis definiert!"
 msgid "+ %1$d more entries."
 msgstr "+ %1$d weitere Einträge."
 
-#: src/insets/InsetCitation.cpp:591 src/insets/InsetRef.cpp:554
+#: src/insets/InsetCitation.cpp:591 src/insets/InsetRef.cpp:551
+#: src/insets/InsetRef.cpp:664
 msgid "BROKEN: "
 msgstr "UNGÜLTIG: "
 
@@ -39457,6 +39431,42 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "tgo"
+#~ msgstr "tgo"
+
+#~ msgid "sxd"
+#~ msgstr "sxd"
+
+#~ msgid "sxd|OpenDocument"
+#~ msgstr "sxd|OpenDocument"
+
+#~ msgid "jpeg"
+#~ msgstr "jpeg"
+
+#~ msgid "jpeg|JPEG"
+#~ msgstr "jpeg|JPEG"
+
+#~ msgid "htm"
+#~ msgstr "htm"
+
+#~ msgid "htm|HTML"
+#~ msgstr "htm|HTML"
+
+#~ msgid "pdf_tex"
+#~ msgstr "pdf_tex"
+
+#~ msgid "ps_tex"
+#~ msgstr "ps_tex"
+
+#~ msgid "ps_tex|PSTEX"
+#~ msgstr "ps_tex|PSTEX"
+
+#~ msgid "gnuplot"
+#~ msgstr "gnuplot"
+
+#~ msgid "gnuplot|Gnuplot"
+#~ msgstr "gnuplot|Gnuplot"
+
 #~ msgid "Hebrew Letter"
 #~ msgstr "Hebräischer Brief"
 
@@ -41197,9 +41207,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Source Pane|S"
 #~ msgstr "Quelltext-Panel|Q"
 
-#~ msgid "PSTEX"
-#~ msgstr "PSTEX"
-
 #~ msgid "LaTeX Source"
 #~ msgstr "LaTeX-Quelle"
 
@@ -42312,17 +42319,11 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Dia: $$AbsOrRelPathParent$$Basename"
 #~ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
 
-#~ msgid "HTML|H"
-#~ msgstr "HTML|H"
-
 #~ msgid "LyX Preview (LilyPond book)"
 #~ msgstr "LyX-Vorschau (LilyPond-Buch)"
 
 #~ msgid "LyX Preview (pLaTeX)"
 #~ msgstr "LyX-Vorschau (pLaTeX)"
-
-#~ msgid "HTML (MS Word)"
-#~ msgstr "HTML (MS Word)"
 
 #~ msgid "branch"
 #~ msgstr "Zweig"

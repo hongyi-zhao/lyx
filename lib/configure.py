@@ -838,8 +838,7 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewerEditor('an OpenDocument viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
         rc_entry = [r'''\Format odt        odt     "OpenDocument (tex4ht)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
-\Format odt2       odt    "OpenDocument (eLyXer)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
-\Format odt3       odt    "OpenDocument (Pandoc)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
+\Format odt2       odt    "OpenDocument (Pandoc)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"	"application/vnd.sun.xml.writer"'''])
     #
     checkViewerEditor('a Rich Text and Word viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
@@ -948,41 +947,24 @@ def checkConverterEntries():
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
 
-    # eLyXer: search as an executable (elyxer.py, elyxer)
-    path, elyxer = checkProg('a LyX -> HTML converter',
-        ['elyxer.py --nofooter --directory $$r $$i $$o', 'elyxer --nofooter --directory $$r $$i $$o'],
-        rc_entry = [ r'\converter lyx      html       "%%"	""' ])
-    path, elyxer = checkProg('a LyX -> HTML (MS Word) converter',
-        ['elyxer.py --nofooter --html --directory $$r $$i $$o', 'elyxer --nofooter --html --directory $$r $$i $$o'],
-        rc_entry = [ r'\converter lyx      wordhtml       "%%"	""' ])
-    path, elyxer = checkProg('a LyX -> OpenDocument (eLyXer) converter',
-        ['elyxer.py --html --nofooter --unicode --directory $$r $$i $$o', 'elyxer --html --nofooter --unicode --directory $$r $$i $$o'],
-        rc_entry = [ r'\converter lyx      odt2       "%%"	""' ])
-    path, elyxer = checkProg('a LyX -> Word converter',
-        ['elyxer.py --html --nofooter --unicode --directory $$r $$i $$o', 'elyxer --html --nofooter --unicode --directory $$r $$i $$o'],
-        rc_entry = [ r'\converter lyx      word      "%%"	""' ])
-    if elyxer.find('elyxer') >= 0:
-      addToRC(r'''\copier    html       "$${python} $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
-      addToRC(r'''\copier    wordhtml       "$${python} $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
+    # search for HTML converters
+    # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
+    path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i',
+        '/usr/share/tex4ht/htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o',
+        'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
+        rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
+    if htmlconv.find('htlatex') >= 0 or htmlconv == 'latex2html':
+      addToRC(r'''\copier    html       "$${python} $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
     else:
-      # search for HTML converters other than eLyXer
-      # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
-      path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i',
-          '/usr/share/tex4ht/htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o',
-          'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
-          rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
-      if htmlconv.find('htlatex') >= 0 or htmlconv == 'latex2html':
-        addToRC(r'''\copier    html       "$${python} $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
-      else:
-        addToRC(r'''\copier    html       "$${python} $$s/scripts/ext_copy.py $$i $$o"''')
-      path, htmlconv = checkProg('a LaTeX -> HTML (MS Word) converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'",
-          "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'",
-          "/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
-          rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
-      if htmlconv.find('htlatex') >= 0:
-        addToRC(r'''\copier    wordhtml       "$${python} $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
-      else:
-        addToRC(r'''\copier    wordhtml       "$${python} $$s/scripts/ext_copy.py $$i $$o"''')
+      addToRC(r'''\copier    html       "$${python} $$s/scripts/ext_copy.py $$i $$o"''')
+    path, htmlconv = checkProg('a LaTeX -> HTML (MS Word) converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'",
+        "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'",
+        "/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
+        rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
+    if htmlconv.find('htlatex') >= 0:
+      addToRC(r'''\copier    wordhtml       "$${python} $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+    else:
+      addToRC(r'''\copier    wordhtml       "$${python} $$s/scripts/ext_copy.py $$i $$o"''')
 
 
     # Check if LyXBlogger is installed

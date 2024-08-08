@@ -32,6 +32,8 @@
 - The support for python 2 was completely removed. Python 3.8 (or newer)
   must be present on your system for LyX to work properly.
 
+- The support for (long unmaintained) eLyXer was removed.
+
 
 !!Known issues in version 2.5.0
 

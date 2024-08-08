@@ -135,6 +135,7 @@ initials
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author -584632292 "Richard Kimberly Heck"
 \author 5863208 "ab"
 \end_header
 
@@ -22596,9 +22597,17 @@ Converters
 
 \end_inset
 
- These fall into two large groups:
- there are converters that use \SpecialChar LaTeX
- as an intermediate format,
+ These 
+\change_deleted -584632292 1723129205
+fall into two large groups:
+ there are 
+\change_unchanged
+converters
+\change_deleted -584632292 1723129216
+ that use \SpecialChar LaTeX
+ as an intermediate format
+\change_unchanged
+,
  such as 
 \begin_inset Flex Code
 status collapsed
@@ -22632,7 +22641,13 @@ plastex
 \end_inset
 
 ,
- relying upon \SpecialChar LyX
+ 
+\change_inserted -584632292 1723129224
+use \SpecialChar LaTeX
+ as an intermediate format,
+ 
+\change_unchanged
+relying upon \SpecialChar LyX
  to produce the \SpecialChar LaTeX
 
 \change_deleted 5863208 1723062487
@@ -22823,11 +22838,16 @@ er
  these problems could be solved,
  but the \SpecialChar LyX
  developers have decided to follow a different path and have made 
+\change_inserted -584632292 1723129317
+Beginning with \SpecialChar LyX
+ 2.0,
+ however,
+ 
 \change_unchanged
 \SpecialChar LyX
  itself 
-\change_inserted 5863208 1723062721
-is 
+\change_inserted -584632292 1723129321
+has been 
 \change_unchanged
 capable of writing XHTML,
  just as it is capable of writing \SpecialChar LaTeX
@@ -22840,7 +22860,12 @@ capable of writing XHTML,
 
 \begin_layout Standard
 As of this writing,
- XHTML output remains under development and should probably be regarded as 
+ 
+\change_inserted -584632292 1723129359
+however,
+ 
+\change_unchanged
+XHTML output remains under development and should probably be regarded as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -22849,6 +22874,10 @@ experimental
 \end_inset
 
 .
+
+\change_inserted -584632292 1723129393
+ Nonetheless,
+ it has several advantages over the other converters mentioned.
 
 \change_inserted 5863208 1723062863
  

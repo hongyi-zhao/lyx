@@ -1,4 +1,4 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
 \lyxformat 620
 \begin_document
 \begin_header
@@ -22102,10 +22102,7 @@ Anpassung
 
 \end_inset
 
- Diese Konverter können in zwei große Gruppen unterteilt werden:
- solche,
- die \SpecialChar LaTeX
- als Zwischenformat benutzen (bspw.
+ Diese Konverter (bspw.
  
 \begin_inset Flex Code
 status collapsed
@@ -22138,23 +22135,10 @@ plastex
 
 \end_inset
 
-) und dabei die \SpecialChar LaTeX
+) benutzen \SpecialChar LaTeX
+ als Zwischenformat und verarbeiten dabei die \SpecialChar LaTeX
 -Ausgabe von \SpecialChar LyX
- weiterverarbeiten,
- und solche,
- die direkt mit \SpecialChar LyX
--Dateien arbeiten (
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-e\SpecialChar LyX
-er
-\end_layout
-
-\end_inset
-
-).
+ weite.
  Jedes dieser Programme hat seine eigenen Vor- und Nachteile.
 \end_layout
 
@@ -22221,126 +22205,13 @@ htlatex
 \end_layout
 
 \begin_layout Standard
-Alex Fernandez' 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-e\SpecialChar LyX
-er
-\end_layout
-
-\end_inset
-
- (
-\begin_inset CommandInset href
-LatexCommand href
-name "http://pinchito.es/elyxer/"
-target "http://pinchito.es/elyxer/"
-literal "false"
-
-\end_inset
-
-) löst einige dieser Probleme.
- Insbesondere die von dem Programm produzierten Formeln skalieren perfekt,
- da das Programm mathematischen Text mithilfe einer Kombination von HTML und CSS darstellt,
- statt die Formeln in Bildern umzuwandeln.
- Aber schon halbwegs komplexe Formeln sehen schlechter aus als bei 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-htlatex
-\end_layout
-
-\end_inset
-
-;
- hier zeigen sich die Grenzen von HTML.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Allerdings kann 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-e\SpecialChar LyX
-er
-\end_layout
-
-\end_inset
-
- auch 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-jsMath
-\end_layout
-
-\end_inset
-
- und 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-MathJax
-\end_layout
-
-\end_inset
-
- für Formeln verwenden.
- Das kann man aber nur global festlegen,
- und man benötigt Zugang zu einem Server,
- auf dem das entsprechende Backend läuft.
-\end_layout
-
-\end_inset
-
- Wichtiger noch ist,
- dass 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-e\SpecialChar LyX
-er
-\end_layout
-
-\end_inset
-
- (jedenfalls ab Version 1.1.1) Mathe-Makros nur beschränkt und benutzerdefinierte Absatz- und Zeichenstile gar nicht unterstützt.
- Diese Einschränkungen lassen 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-e\SpecialChar LyX
-er
-\end_layout
-
-\end_inset
-
- für viele Dokumente,
- die \SpecialChar LyX
--Anwender produzieren,
- als ungeeignet erscheinen.
- Zwar könnten diese Probleme grundsätzlich gelöst werden,
- aber die \SpecialChar LyX
--Entwickler haben sich dafür entschieden,
- einen anderen Weg einzuschlagen und \SpecialChar LyX
- selbst für die Ausgabe von XHTML fit zu machen,
+Seit der Version 2.0 kann \SpecialChar LyX
+ selbst XHTML ausgeben,
  ganz analog zur Ausgabe von \SpecialChar LaTeX
 ,
  DocBook,
  und einfachem Text.
-\end_layout
-
-\begin_layout Standard
-Diese XHTML-Ausgabe ist noch in der Entwicklung und in vielerlei Hinsicht experimentell.
+ Diese XHTML-Ausgabe ist noch in der Entwicklung und in vielerlei Hinsicht experimentell.
 \begin_inset Foot
 status collapsed
 
@@ -22382,61 +22253,7 @@ literal "false"
 
 \end_inset
 
- Dennoch wird dieser Ansatz favorisiert,
- da er gegenüber den genannten zahlreiche potenzielle Vorteile hat.
- Diese Vorteile hängen vor allem damit zusammen,
- dass die XHTML-Ausgaberoutinen,
- weil sie selbst Teil von \SpecialChar LyX
- sind,
- alles wissen,
- was auch \SpecialChar LyX
- über das exportierte Dokument weiß.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Ein weiterer Vorteil ist,
- dass diese Routinen als inhärenter Teil von \SpecialChar LyX
- nicht von Dateiformatänderungen oder Änderungen in der Semantik bestehender Elemente beeinträchtigt werden können.
-\end_layout
-
-\end_inset
-
- Sie kennen also das Inhaltsverzeichnis (wie es in der Gliederung des Dokuments dargestellt ist),
- die Zähler,
- die mit verschiedenen Absatzstilen verknüpft sind und benutzerdefinierte Stile.
- Die XHTML-Ausgabe weiß auch,
- was \SpecialChar LyX
- über Internationalisierung weiß,
- es wird also 
-\begin_inset Quotes gld
-\end_inset
-
-
-\lang english
-Chapter 1
-\lang ngerman
-
-\begin_inset Quotes grd
-\end_inset
-
- oder 
-\begin_inset Quotes gld
-\end_inset
-
-Kapitel 1
-\begin_inset Quotes grd
-\end_inset
-
- ausgegeben,
- je nachdem,
- welche Sprache aktuell verwendet wird.
- Allgemein gesprochen weiß die XHTML-Ausgabe über das Dokumentlayout dasselbe wie \SpecialChar LyX
-,
- sie weiß also,
- wie das Dokument auf dem Bildschirm dargestellt wird.
- Diese Informationen verwenden wir,
- wenn wir das Dokument als XHTML ausgeben.
+ Dennoch hat dieser Ansatz gegenüber den genannten zahlreiche potenzielle Vorteile.
  Insbesondere generiert \SpecialChar LyX
  
 \emph on
@@ -22522,43 +22339,11 @@ HTML
 \begin_inset Newline newline
 \end_inset
 
-Wie oben erwähnt gibt 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-elyxer
-\end_layout
-
-\end_inset
-
- mathematischen Text als CSS-stilisiertes HTML aus.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LyX
- hat etwas von diesem CSS für seine XHTML-Ausgabe von 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-elyxer
-\end_layout
-
-\end_inset
-
- übernommen.
-\end_layout
-
-\end_inset
-
- Für einfache Formeln kann das sehr gut funktionieren,
- aber mit komplexeren Formeln gibt es häufig Probleme.
- Trotzdem hat diese Methode den Vorteil,
+Diese Methode hat den Vorteil,
  dass sie weithin unterstützt ist.
  Sie ist also möglicherweise für Dokumente angemessen,
- die nur wenig und einfache Formeln verwenden.
+ die nur wenig und einfache Formeln verwenden,
+ mit komplizierteren Formeln geht sie oft schief.
 \begin_inset Newline newline
 \end_inset
 

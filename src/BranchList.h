@@ -12,8 +12,6 @@
 #ifndef BRANCHLIST_H
 #define BRANCHLIST_H
 
-#include "ColorCode.h"
-
 #include "support/docstring.h"
 
 #include <cstdlib> // rand()

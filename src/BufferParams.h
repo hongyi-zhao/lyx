@@ -17,7 +17,6 @@
 
 #include "Citation.h"
 #include "ColorCode.h"
-#include "ColorSet.h"
 #include "DocumentClassPtr.h"
 #include "LayoutModuleList.h"
 #include "paper.h"

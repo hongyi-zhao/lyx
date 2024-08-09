@@ -9646,12 +9646,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9664,6 +9666,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9687,6 +9690,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -31082,11 +31086,30 @@ name "sec:Cross-References"
 \begin_layout Standard
 One of \SpecialChar LyX
 's strengths is cross-references.
- You can reference every section,
+ You can reference every
+\change_inserted -712698321 1723183496
+thing in the document that has a counter
+\change_unchanged
+ 
+\change_inserted -712698321 1723183501
+(e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\change_unchanged
+section,
  float,
  footnote,
  formula,
- and list in the document.
+ and list
+\change_inserted -712698321 1723183507
+)
+\change_deleted -712698321 1723183511
+ in the document
+\change_unchanged
+.
  To reference a document part,
  you have to insert a label into it.
  The label is used as an anchor and a name for the reference.
@@ -31222,16 +31245,79 @@ enu:Second-item
 
 .
  At the position of the cross-reference box the item number will appear in the output.
+\change_inserted -712698321 1723183607
+
 \end_layout
 
 \begin_layout Standard
-As an alternative to 
+
+\change_inserted -712698321 1723185545
+For section headings,
+ footnotes,
+ table and figure floats,
+ this procedure can be simplified by using the outliner (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-Outliner"
+
+\end_inset
+
+).
+ To insert a reference,
+ simply right-click on the item you want to refer to,
+ select 
+\family sans
+Insert Cross-Reference to this Item
+\family default
+ and the desired cross-reference format (see below for those) in the context menu.
+ \SpecialChar LyX
+ will check if the item already has a label and if not,
+ creates one before inserting the reference.
+ So all of the above boils down to two clicks!
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1723184542
+A
+\change_inserted -712698321 1723184543
+Other
+\change_deleted -712698321 1723184013
+s an
+\change_unchanged
+ alternative
+\change_inserted -712698321 1723184545
+s
+\change_unchanged
+ to 
 \family sans
 Insert\SpecialChar menuseparator
 Cross-Reference
+\change_inserted -712698321 1723184603
+
 \family default
+ which work for all item types (but require a label to exist already) are the following:
+\change_deleted -712698321 1723184051
 ,
- you can right-click on a label and in the popup menu select 
+ you can
+\change_inserted -712698321 1723184553
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -712698321 1723184557
+ 
+\change_inserted -712698321 1723184638
+R
+\change_deleted -712698321 1723184638
+r
+\change_unchanged
+ight-click on a label and in the popup menu select 
 \family sans
 Copy as Reference
 \family default
@@ -31248,10 +31334,45 @@ arg   "paste"
 \end_inset
 
 ).
+\change_inserted -712698321 1723184640
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1723184714
+In the outliner,
+ section 
+\family sans
+Labels and Cross-References
+\family default
+,
+ right-click on the label you want to refer to and select 
+\family sans
+Insert Reference at Cursor Position
+\family default
+ from the context menu.
 \end_layout
 
 \begin_layout Standard
-Here is our cross-reference:
+
+\change_inserted -712698321 1723184132
+Whatever approach you take,
+ 
+\change_deleted -712698321 1723184093
+H
+\change_inserted -712698321 1723184094
+h
+\change_unchanged
+ere is 
+\change_inserted -712698321 1723184100
+how 
+\change_unchanged
+our cross-reference
+\change_inserted -712698321 1723185807
+ ultimately comes out
+\change_unchanged
+:
  Item
 \begin_inset space ~
 \end_inset

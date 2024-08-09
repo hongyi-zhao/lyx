@@ -588,6 +588,15 @@ Menuset
 		SubMenu "Insert Cross-Reference to this Item|C" "context-toc-ref-to-par"
 	End
 
+
+#
+# Toc Footnotes context menu
+#
+
+	Menu "context-toc-footnote"
+		SubMenu "Insert Cross-Reference to this Item|C" "context-toc-ref-to-par"
+	End
+
 #
 # Toc Listings context menu
 #

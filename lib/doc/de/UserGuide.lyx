@@ -9302,10 +9302,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9318,6 +9320,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9343,6 +9346,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -30264,10 +30268,12 @@ name "sec:Querverweise"
 \begin_layout Standard
 Eine von \SpecialChar LyX
 ’ Stärken sind Querverweise.
- Sie können auf jeden Abschnitt,
- jedes Gleitobjekt,
- jede Fußnote,
- Formel und Liste im Dokument referenzieren.
+ Sie können auf jeden alles im Dokument verweisen,
+ was einen Zähler hat (Kapitel\SpecialChar breakableslash
+Abschnitte,
+ Gleitobjekte,
+ Fußnote,
+ Formel und Listen).
  Für eine Referenz müssen Sie zuerst eine Marke in den zu referenzieren Teil einfügen.
  Die Marke dient als Anker und Name für die Referenz.
  Angenommen Sie wollen den zweiten Eintrag der folgenden Liste referenzieren:
@@ -30394,16 +30400,52 @@ Format
 \end_layout
 
 \begin_layout Standard
-Alternativ zu 
+Für Kapitel\SpecialChar breakableslash
+Abschnitte,
+ Fußnoten,
+ Tabellen- und Abbildungsgleitobjekte geht das Ganze auch noch einfacher,
+ wenn Sie die Gliederungsansicht (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Gliederung"
+
+\end_inset
+
+) verwenden.
+ Um einen Querverweis einzufügen,
+ klicken Sie dort einfach mit der rechten Maustaste auf den Eintrag,
+ auf den Sie verweisen wollen,
+ wählen dann Querverweis auf diesen Eintrag einfügen und den gewünschten Querverweisstil (s.
+ dazu unten) aus dem Kontextmenü.
+ \SpecialChar LyX
+ prüft,
+ ob eine entsprechende Marke vorhanden ist,
+ falls nicht,
+ legt es diese an,
+ bevor es den Querverweis einfügt.
+ Das ganze Prozedere reduziert sich damit auf zwei Klicks!
+\end_layout
+
+\begin_layout Standard
+Andere Alternativen zu 
 \family sans
 Einfügen\SpecialChar menuseparator
 Querverweis
 \family default
- können Sie mit rechts auf die Marke klicken und im erscheinenden Kontextmenü 
+,
+ die für alle Eintragstypen funktionieren (so lange ein Label vorhanden ist) sind diese:
+\end_layout
+
+\begin_layout Itemize
+Klicken Sie mit rechts auf die Marke und verwenden Sie dann im erscheinenden Kontextmenü 
 \family sans
 Als Querverweis kopieren
 \family default
- verwenden.
+.
  Der Querverweis zu dieser Marke ist nun in der Zwischenablage und kann an der aktuellen Cursorposition mit dem Menü 
 \family sans
 Bearbeiten\SpecialChar menuseparator
@@ -30416,8 +30458,24 @@ Ctrl+V
 ) eingefügt werden.
 \end_layout
 
+\begin_layout Itemize
+In der Gliederungsansicht,
+ Abschnitt 
+\family sans
+Marken und Querverweise
+\family default
+,
+ klicken Sie mit rechts auf die Marke,
+ auf die Sie verweisen möchten und wählen dann im Kontextmenü 
+\family sans
+Verweis an der Cursor-Position einfügen
+\family default
+.
+\end_layout
+
 \begin_layout Standard
-Hier ist unser Querverweis:
+Welche dieser Möglichkeiten Sie auch immer wählen,
+ so sieht unser Querverweis schließlich aus:
  Eintrag
 \begin_inset space ~
 \end_inset
@@ -30428,13 +30486,6 @@ LatexCommand ref
 reference "enu:Zweiter-Eintrag"
 nolink "false"
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 

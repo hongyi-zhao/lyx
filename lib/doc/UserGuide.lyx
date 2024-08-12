@@ -35194,10 +35194,33 @@ Note also that in \SpecialChar LaTeX
 .
  This also works in \SpecialChar LyX
 ,
- although you have to take care that the character is not formatted.
- For this reason,
+ although you 
+\change_deleted -712698321 1723474901
+have
+\change_inserted -712698321 1723474901
+need
+\change_unchanged
+ to 
+\change_inserted -712698321 1723474911
+insert 
+\change_deleted -712698321 1723474914
+take care that
+\change_unchanged
+ the character 
+\change_deleted -712698321 1723474917
+is not formatted
+\change_inserted -712698321 1723474926
+in \SpecialChar TeX
+ mode
+\change_unchanged
+.
+ 
+\change_deleted -712698321 1723474935
+For this reason,
  a real exclamation mark has to be inserted to an index entry in a specific way.
- See section
+ 
+\change_unchanged
+See section
 \begin_inset space ~
 \end_inset
 
@@ -35493,10 +35516,21 @@ Note that in \SpecialChar LaTeX
 .
  This also works in \SpecialChar LyX
 ,
- although you have to take care that the character is not formatted.
- For this reason,
+ although you 
+\change_deleted -712698321 1723475013
+have to take care that the character is not formatted
+\change_inserted -712698321 1723475013
+need to insert  the character in \SpecialChar TeX
+ mode
+\change_unchanged
+.
+ 
+\change_deleted -712698321 1723475019
+For this reason,
  a real @ character has to be inserted to an index entry in a specific way.
- See section
+ 
+\change_unchanged
+See section
 \begin_inset space ~
 \end_inset
 
@@ -35894,13 +35928,39 @@ status collapsed
 \end_inset
 
 .
- If you use them literally,
+ 
+\change_deleted -712698321 1723475049
+If you use them literally,
  you might get surprising results or even a non-working index.
  In any case,
- you will not get the character itself.
+ you will not get the character itself
+\change_inserted -712698321 1723475153
+Since the respective functionality is achievable in \SpecialChar LyX
+ via sub-insets,
+ these characters are escaped by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723475136
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ if you insert them to indexes,
+ so you get the literal character in the output
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1723475160
 In order to use these characters in inset entries,
  they have to be 
 \begin_inset Quotes els
@@ -36002,11 +36062,27 @@ status collapsed
 \end_inset
 
 ,
+\change_inserted -712698321 1723475173
+If you want the special meaning instead,
+ you
+\change_unchanged
  
 \emph on
 must
 \emph default
- be inserted in a TeX code box (see section
+ 
+\change_deleted -712698321 1723475181
+be 
+\change_unchanged
+insert
+\change_deleted -712698321 1723475183
+ed
+\change_unchanged
+ 
+\change_inserted -712698321 1723475191
+these special characters 
+\change_unchanged
+in a TeX code box (see section
 \begin_inset space ~
 \end_inset
 
@@ -37370,6 +37446,8 @@ status collapsed
 
 \backslash
 protect
+\change_unchanged
+
 \end_layout
 
 \end_inset

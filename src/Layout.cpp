@@ -669,9 +669,11 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 			lex >> pass_thru;
 			break;
 
-		case LT_ESCAPE_CHARS:
-			lex >> escape_chars;
+		case LT_ESCAPE_CHARS: {
+			lex.next(true);
+			escape_chars = lex.getDocString();
 			break;
+		}
 
 		case LT_PASS_THRU_CHARS:
 			lex >> pass_thru_chars;

@@ -1253,12 +1253,14 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		return;
 	}
 
-	if (!style.escape_chars.empty() && contains(style.escape_chars.substr(1), c)){
+	if (!style.pass_thru && !runparams.pass_thru && !style.escape_chars.empty()
+	    && contains(style.escape_chars.substr(1), c)){
 		os << style.escape_chars.substr(0,1);
 		os.put(c);
 		return;
 	}
-	if (!runparams.escape_chars.empty() && contains(runparams.escape_chars.substr(1), c)){
+	if (!style.pass_thru && !runparams.pass_thru && !runparams.escape_chars.empty()
+	    && contains(runparams.escape_chars.substr(1), c)){
 		os << runparams.escape_chars.substr(0,1);
 		os.put(c);
 		return;

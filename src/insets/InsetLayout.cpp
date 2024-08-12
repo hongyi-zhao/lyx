@@ -386,9 +386,11 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 			lex >> forceplain_;
 			readCustomOrPlain = true;
 			break;
-		case IL_ESCAPE_CHARS:
-			lex >> escape_chars_;
+		case IL_ESCAPE_CHARS: {
+			lex.next(true);
+			escape_chars_ = lex.getDocString();
 			break;
+		}
 		case IL_PASSTHRU:
 			lex >> passthru_;
 			break;
@@ -928,7 +930,7 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "labelfont") {
 			arg.labelfont = lyxRead(lex, arg.labelfont);
 		} else if (tok == "escapechars") {
-			lex.next();
+			lex.next(true);
 			arg.escape_chars = lex.getDocString();
 		} else if (tok == "passthruchars") {
 			lex.next();

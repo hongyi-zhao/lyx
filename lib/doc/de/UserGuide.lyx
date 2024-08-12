@@ -34426,10 +34426,8 @@ Beachten Sie außerdem,
  markiert werden.
  Das funktioniert auch in \SpecialChar LyX
 ,
- allerdings müssen Sie darauf achten,
- dass das Zeichen nicht formatiert ist.
- Da das Ausrufezeichen in Indexeinträgen diese spezielle Bedeutung hat,
- müssen echte Anführungszeichen in einer spezifischen Art und Weise eingegeben werden.
+ allerdings müssen Sie das Zeichen hierfür im \SpecialChar TeX
+-Modus eingeben.
  Dies wird in Abschnitt
 \begin_inset space ~
 \end_inset
@@ -34734,10 +34732,9 @@ Beachten Sie,
  abgetrennt werden.
  Das funktioniert auch in \SpecialChar LyX
 ,
- allerdings müssen Sie darauf achten,
- dass das Zeichen nicht formatiert ist.
- Da das @-Zeichen in Indexeinträgen diese spezielle Bedeutung hat,
- müssen echte Klammeraffen in einer spezifischen Art und Weise eingegeben werden.
+ ,
+ allerdings müssen Sie das Zeichen hierfür im \SpecialChar TeX
+-Modus eingeben.
  Dies wird in Abschnitt
 \begin_inset space ~
 \end_inset
@@ -35215,112 +35212,29 @@ status collapsed
 \end_inset
 
 .
- Wenn Sie diese verwenden,
- bekommen Sie unter Umständen überraschende Ergebnisse oder die Erstellung des Stichwortverzeichnisses schlägt sogar fehl.
- Jedenfalls bekommen Sie nicht das Zeichen selbst.
+ Da die damit erzielte Funktionalität in \SpecialChar LyX
+ durch Untereinfügungen zugänglich ist,
+ werden diese Sonderzeichen mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ maskiert,
+ wenn Sie sie in einen Index eingeben.
+ Dadurch bekommen Sie das Zeichen selbst im Index ausgegeben.
 \end_layout
 
 \begin_layout Standard
-Um diese Zeichen in Stichworteinträgen zu verwenden,
- müssen Sie spezifisch markiert werden:
- Ihnen muss ein sog.
- Escape-Zeichen vorangestellt werden,
- das dem Indexprozessor mitteilt,
- dass dieses Zeichen nicht in seiner speziellen Bedeutung gemeint ist.
- Per Voreinstellung ist dieses Escape-Zeichen 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- (aber das kann man auch ändern).
- Geben Sie also 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-!
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-@
-\end_layout
-
-\end_inset
-
-,
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-
-\begin_inset Quotes qrd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-,
- oder 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-|
-\end_layout
-
-\end_inset
-
- ein,
- um das entsprechende Zeichen im Stichwortverzeichnis zu bekommen.
- Beachten Sie,
- dass das Escape-Zeichen 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- dabei über ein TeX-Code-Kästchen eingegeben werden 
-\emph on
-muss
-\emph default
- (siehe Abschnitt
+Wenn Sie die Zeichen in ihrer Spezialbedeutung verwenden wollen,
+ müssen Sie sie über ein TeX-Code-Kästchen eingeben (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 

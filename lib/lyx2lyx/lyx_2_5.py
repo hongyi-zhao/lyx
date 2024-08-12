@@ -34,8 +34,8 @@ from lyx2lyx_tools import (
 # Uncomment only what you need to import, please (parser_tools):
 #    check_token, count_pars_in_inset, del_complete_lines, 
 #    del_value, find_complete_lines, find_end_of, 
-#    find_re, find_substring, find_token_backwards, find_token_exact,
-#    find_tokens, get_bool_value, get_containing_inset,
+#    find_re, find_token_backwards, find_token_exact,
+#    find_tokens, get_bool_value, 
 #    get_containing_layout, get_option_value,
 #    is_in_inset, set_bool_value
 from parser_tools import (
@@ -43,7 +43,9 @@ from parser_tools import (
     find_end_of_inset,
     find_end_of_layout,
     find_re,
+    find_substring,
     find_token,
+    get_containing_inset,
     get_quoted_value,
     get_value
 )
@@ -620,6 +622,93 @@ def revert_nomencl(document):
         i += 1
 
 
+def convert_index_sc(document):
+    """Convert index special characters to ERT."""
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Index", i)
+        if i == -1:
+            return
+
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning(
+                "Malformed LyX document: Can't find end of index inset at line %d" % i
+            )
+            i += 1
+            continue
+
+        escchars = ["!", "@", "|"]
+        for ec in escchars:
+            k = i;
+            while True:
+                j = find_end_of_inset(document.body, i)
+                k = find_substring(document.body, ec, k, j)
+                if k == -1:
+                    break
+                if get_containing_inset(document.body, k)[0] == "ERT":
+                    k += 1
+                    continue
+                    
+                line = document.body[k]
+                chunks = line.split(ec)
+                repl = []
+                if line[0] == ec:
+                    repl = put_cmd_in_ert(ec)
+                chunks_len = len(chunks)-1
+                for ch in chunks[:-1]:
+                    repl += [ch]
+                    repl += put_cmd_in_ert(ec)
+                repl += chunks[-1:]
+                if line[-1:] == ec:
+                    repl += put_cmd_in_ert(ec)
+                document.body[k:k+1] = repl
+        i += 1
+
+
+def revert_index_sc(document):
+    """Escape index special characters."""
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Index", i)
+        if i == -1:
+            return
+
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning(
+                "Malformed LyX document: Can't find end of index inset at line %d" % i
+            )
+            i += 1
+            continue
+
+        escchars = ["!", "@", "|"]
+        for ec in escchars:
+            k = i;
+            while True:
+                j = find_end_of_inset(document.body, i)
+                k = find_substring(document.body, ec, k, j)
+                if k == -1:
+                    break
+                if get_containing_inset(document.body, k)[0] == "ERT":
+                    k += 1
+                    continue
+                    
+                line = document.body[k]
+                chunks = line.split(ec)
+                repl = []
+                chunks_len = len(chunks)-1
+                for ch in chunks[:-1]:
+                    repl += [ch]
+                    repl += put_cmd_in_ert("\"")
+                    repl += [ec]
+                repl += chunks[-1:]
+                document.body[k:k+1] = repl
+                k += len(repl)
+        i += 1
+
 ##
 # Conversion hub
 #
@@ -632,12 +721,12 @@ convert = [
     [624, [convert_biblatex_chicago]],
     [625, []],
     [626, []],
-    [627, [convert_nomencl]]
+    [627, [convert_nomencl, convert_index_sc]]
 ]
 
 
 revert = [
-    [626, [revert_nomencl]],
+    [626, [revert_nomencl, revert_index_sc]],
     [625, [revert_nomencl_textwidth]],
     [624, [revert_nptextcite]],
     [623, [revert_biblatex_chicago]],

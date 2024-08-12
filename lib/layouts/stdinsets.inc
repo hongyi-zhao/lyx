@@ -420,7 +420,7 @@ InsetLayout Index
 	CustomPars            false
 	ForcePlain            true
 	ContentAsLabel        true
-	PassThruChars         @|!
+	EscapeChars           \"@|!
 End
 
 InsetLayout IndexMacro:see

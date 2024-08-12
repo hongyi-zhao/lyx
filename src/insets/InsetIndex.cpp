@@ -190,6 +190,11 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		// These are the LaTeX and plaintext representations
 		docstring latexstr = ourlatex.str();
 		docstring plainstr = ourplain.str();
+
+		// get the escape char from the layout
+		docstring const escape_char = (runparams.escape_chars.empty())
+				? from_ascii("\"")
+				: runparams.escape_chars.substr(0,1);
 	
 		// This will get what follows | if anything does,
 		// the command (e.g., see, textbf) for pagination
@@ -205,10 +210,10 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 			cmd = from_utf8(params_.pagefmt);
 		} else {
 			// Check for the | separator to strip the cmd.
-			// This goes wrong on an escaped "|", but as the escape
-			// character can be changed in style files, we cannot
-			// prevent that.
+			// Consider escaped "|"
 			size_t pos = latexstr.find(from_ascii("|"));
+			while (pos > 0 && pos < docstring::npos && prefixIs(latexstr.substr(pos - 1), escape_char))
+				pos = latexstr.find(from_ascii("|"), pos + 1);
 			if (pos != docstring::npos) {
 				// Put the bit after "|" into cmd...
 				cmd = latexstr.substr(pos + 1);
@@ -228,23 +233,22 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 		getSubentries(otsub, runparams, ourlatex.str());
 		if (subentries.str().empty()) {
 			// Separate the entries and subentries, i.e., split on "!".
-			// This goes wrong on an escaped "!", but as the escape
-			// character can be changed in style files, we cannot
-			// prevent that.
+			// Consider escaped "!"
+			// temporarily replace "! with SUBST character
+			docstring const sub_latexstring =
+					subst(latexstr, escape_char + from_ascii("!"), docstring(1, 0x001A));
 			std::vector<docstring> const levels =
-					getVectorFromString(latexstr, from_ascii("!"), true);
-			std::vector<docstring> const levels_plain =
-					getVectorFromString(plainstr, from_ascii("!"), true);
+					getVectorFromString(sub_latexstring, from_ascii("!"), true);
 		
 			vector<docstring>::const_iterator it = levels.begin();
 			vector<docstring>::const_iterator end = levels.end();
-			vector<docstring>::const_iterator it2 = levels_plain.begin();
 			bool first = true;
 			for (; it != end; ++it) {
-				if ((*it).empty()) {
+				// replace back "!
+				docstring const thislevel =
+					subst(*it, docstring(1, 0x001A), escape_char + from_ascii("!"));
+				if (thislevel.empty()) {
 					emptySubentriesWarning(ourlatex.str());
-					if (it2 < levels_plain.end())
-						++it2;
 					continue;
 				}
 				// The separator needs to be put back when
@@ -261,15 +265,12 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 				// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}.
 				// We do this on all levels.
 				// We don't do it if the level already contains a '@', though.
-				// Plaintext might return nothing (e.g. for ERTs).
-				// In that case, we use LaTeX.
-				docstring const spart = (levels_plain.empty() || (*it2).empty()) ? *it : *it2;
-				processLatexSorting(os, runparams, *it, spart);
-				if (it2 < levels_plain.end())
-					++it2;
+				// We use a somewhat "plain" representation for this
+				docstring const spart = Encodings::convertLaTeXCommands(thislevel);
+				processLatexSorting(os, runparams, thislevel, spart, escape_char);
 			}
 		} else {
-			processLatexSorting(os, runparams, latexstr, plainstr);
+			processLatexSorting(os, runparams, latexstr, plainstr, escape_char);
 			os << subentries.str();
 		}
 
@@ -295,9 +296,13 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 
 
 void InsetIndex::processLatexSorting(otexstream & os, OutputParams const & runparams,
-				docstring const & latex, docstring const & spart) const
+				     docstring const & latex, docstring const & spart,
+				     docstring const & esc) const
 {
-	if (contains(latex, '\\') && !contains(latex, '@')) {
+	size_t at_pos = latex.find(from_ascii("@"));
+	while (at_pos > 0 && at_pos < docstring::npos && latex.substr(at_pos - 1, at_pos) == esc)
+		at_pos = latex.find(from_ascii("|"), at_pos + 1);
+	if (contains(latex, '\\') && at_pos == docstring::npos) {
 		// Now we need to validate that all characters in
 		// the sorting part are representable in the current
 		// encoding. If not try the LaTeX macro which might

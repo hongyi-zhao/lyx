@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-07 10:53+0200\n"
-"PO-Revision-Date: 2024-08-07 10:54+0200\n"
+"POT-Creation-Date: 2024-08-12 18:23+0200\n"
+"PO-Revision-Date: 2024-08-12 18:25+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -219,7 +219,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/BibitemUi.ui:125 src/frontends/qt/ui/CitationUi.ui:378
 #: src/frontends/qt/ui/HyperlinkUi.ui:80 src/frontends/qt/ui/IncludeUi.ui:302
-#: src/frontends/qt/ui/NomenclUi.ui:72 src/frontends/qt/ui/PrintindexUi.ui:74
+#: src/frontends/qt/ui/PrintindexUi.ui:74
 msgid "Li&teral"
 msgstr "Unfor&matiert"
 
@@ -2402,8 +2402,8 @@ msgstr "Automatischen Zeilenumbruch nach dem Leerzeichen verhindern"
 #: lib/layouts/acmart.layout:725 lib/layouts/acmart.layout:743
 #: lib/layouts/amsdefs.inc:190 lib/layouts/maa-monthly.layout:165
 #: lib/layouts/maa-monthly.layout:169 lib/layouts/minimalistic.module:27
-#: lib/layouts/scrlttr2.layout:271 lib/layouts/stdinsets.inc:603
-#: lib/layouts/stdinsets.inc:606
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/stdinsets.inc:634
+#: lib/layouts/stdinsets.inc:637
 msgid "URL"
 msgstr "URL"
 
@@ -3417,30 +3417,6 @@ msgstr "&Löschen"
 #: src/frontends/qt/ui/ModulesUi.ui:186
 msgid "S&elected:"
 msgstr "Ausg&ewählt:"
-
-#: src/frontends/qt/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:167
-msgid "Nomenclature"
-msgstr "Nomenklatur"
-
-#: src/frontends/qt/ui/NomenclUi.ui:22
-msgid "Sy&mbol:"
-msgstr "&Symbol:"
-
-#: src/frontends/qt/ui/NomenclUi.ui:39
-msgid "Des&cription:"
-msgstr "&Beschreibung:"
-
-#: src/frontends/qt/ui/NomenclUi.ui:56
-msgid "Sort &as:"
-msgstr "&Einsortieren als:"
-
-#: src/frontends/qt/ui/NomenclUi.ui:69
-msgid ""
-"Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
-"Check this if you want to enter LaTeX code."
-msgstr ""
-"Übergebe den Inhalt der Felder ,Symbol` und ,Beschreibung` unformatiert an "
-"LaTeX. Aktivieren Sie dies, wenn Sie LaTeX-Code eingeben wollen."
 
 #: src/frontends/qt/ui/NoteUi.ui:23 src/frontends/qt/ui/PhantomUi.ui:23
 msgid "Type"
@@ -7849,7 +7825,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/scrlttr2.layout:19 lib/layouts/siamltex.layout:37
 #: lib/layouts/sigplanconf.layout:41 lib/layouts/simplecv.layout:18
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
-#: lib/layouts/stdinsets.inc:713 lib/layouts/stdletter.inc:12
+#: lib/layouts/stdinsets.inc:744 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
 #: src/insets/InsetRef.cpp:645
 msgid "Standard"
@@ -8603,8 +8579,8 @@ msgstr "Aufzählung"
 #: lib/layouts/egs.layout:247 lib/layouts/hollywood.layout:130
 #: lib/layouts/paper.layout:115 lib/layouts/scrclass.inc:56
 #: lib/layouts/scrlettr.layout:21 lib/layouts/scrlttr2.layout:33
-#: lib/layouts/stdlists.inc:99 lib/layouts/svcommon.inc:693
-#: lib/ui/stdtoolbars.inc:129
+#: lib/layouts/stdinsets.inc:478 lib/layouts/stdlists.inc:99
+#: lib/layouts/svcommon.inc:693 lib/ui/stdtoolbars.inc:129
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -8940,7 +8916,7 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/scrclass.inc:149 lib/layouts/scrclass.inc:162
 #: lib/layouts/scrclass.inc:175 lib/layouts/scrclass.inc:331
 #: lib/layouts/scrclass.inc:356 lib/layouts/siamltex.layout:206
-#: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:720
+#: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:751
 #: lib/layouts/stdsections.inc:32 lib/layouts/stdsections.inc:76
 #: lib/layouts/stdsections.inc:117 lib/layouts/tufte-book.layout:98
 #: lib/layouts/tufte-book.layout:131 lib/layouts/tufte-handout.layout:40
@@ -8970,7 +8946,7 @@ msgstr "Zusätzliche Zugehörigkeit"
 #: lib/layouts/achemso.layout:157 lib/layouts/europasscv.layout:141
 #: lib/layouts/europecv.layout:140 lib/layouts/lettre.layout:48
 #: lib/layouts/lettre.layout:381 lib/layouts/moderncv.layout:210
-#: lib/layouts/scrlttr2.layout:242 lib/configure.py:852
+#: lib/layouts/scrlttr2.layout:242 lib/configure.py:851
 msgid "Fax"
 msgstr "Fax"
 
@@ -9925,7 +9901,7 @@ msgstr "Spezialabschnitt*"
 
 #: lib/layouts/amsart.layout:98 lib/layouts/beamer.layout:344
 #: lib/layouts/beamer.layout:409 lib/layouts/beamer.layout:472
-#: lib/layouts/memoir.layout:257 lib/layouts/stdinsets.inc:738
+#: lib/layouts/memoir.layout:257 lib/layouts/stdinsets.inc:769
 #: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:31
 #: lib/layouts/stdstarsections.inc:47 lib/layouts/stdstarsections.inc:63
 #: lib/layouts/stdstarsections.inc:79 lib/layouts/stdstarsections.inc:95
@@ -10148,13 +10124,13 @@ msgid "Centered"
 msgstr "Zentriert"
 
 #: lib/layouts/apa.layout:280 lib/layouts/apax.inc:379
-#: lib/layouts/stdinsets.inc:714 src/insets/InsetCaption.cpp:449
+#: lib/layouts/stdinsets.inc:745 src/insets/InsetCaption.cpp:449
 msgid "standard"
 msgstr "Standard"
 
 #: lib/layouts/apa.layout:287 lib/layouts/apax.inc:386
 #: lib/layouts/scrclass.inc:332 lib/layouts/scrclass.inc:357
-#: lib/layouts/stdinsets.inc:721
+#: lib/layouts/stdinsets.inc:752
 msgid "The caption as it appears in the list of figures/tables"
 msgstr "Die Legende, wie sie im Abbildungs-/Tabellenverzeichnis erscheint"
 
@@ -17889,11 +17865,11 @@ msgstr "Fußnote \\arabic{footnote}"
 msgid "\\fnsymbol{thanks}"
 msgstr "\\fnsymbol{thanks}"
 
-#: lib/layouts/stdfloatnames.inc:5 lib/layouts/stdinsets.inc:583
+#: lib/layouts/stdfloatnames.inc:5 lib/layouts/stdinsets.inc:614
 msgid "Tables"
 msgstr "Tabellen"
 
-#: lib/layouts/stdfloatnames.inc:6 lib/layouts/stdinsets.inc:584
+#: lib/layouts/stdfloatnames.inc:6 lib/layouts/stdinsets.inc:615
 msgid "Figures"
 msgstr "Abbildungen"
 
@@ -17972,7 +17948,8 @@ msgstr "Siehe"
 msgid "See also"
 msgstr "Siehe auch"
 
-#: lib/layouts/stdinsets.inc:448 src/insets/InsetIndexMacro.cpp:66
+#: lib/layouts/stdinsets.inc:448 lib/layouts/stdinsets.inc:474
+#: src/insets/InsetIndexMacro.cpp:66
 msgid "Sort as"
 msgstr "Einsortieren als"
 
@@ -17980,27 +17957,39 @@ msgstr "Einsortieren als"
 msgid "Subentry"
 msgstr "Untereintrag"
 
-#: lib/layouts/stdinsets.inc:633
+#: lib/layouts/stdinsets.inc:457
+msgid "Nom"
+msgstr "Nom"
+
+#: lib/layouts/stdinsets.inc:475
+msgid "Sort this entry as specified in the inset"
+msgstr "Sortiere diesen Eintrag wie in der Einfügung spezifiziert"
+
+#: lib/layouts/stdinsets.inc:479
+msgid "Description of the entry"
+msgstr "Beschreibung des Eintrags"
+
+#: lib/layouts/stdinsets.inc:664
 msgid "Argument"
 msgstr "Argument"
 
-#: lib/layouts/stdinsets.inc:740
+#: lib/layouts/stdinsets.inc:771
 msgid "unlabelled"
 msgstr "ohne Marke"
 
-#: lib/layouts/stdinsets.inc:747
+#: lib/layouts/stdinsets.inc:778
 msgid "Preview"
 msgstr "Vorschau"
 
-#: lib/layouts/stdinsets.inc:781 lib/layouts/stdinsets.inc:789
+#: lib/layouts/stdinsets.inc:812 lib/layouts/stdinsets.inc:820
 msgid "see equation[[nomencl]]"
 msgstr "siehe Gleichung"
 
-#: lib/layouts/stdinsets.inc:782 lib/layouts/stdinsets.inc:790
+#: lib/layouts/stdinsets.inc:813 lib/layouts/stdinsets.inc:821
 msgid "page[[nomencl]]"
 msgstr "Seite"
 
-#: lib/layouts/stdinsets.inc:783 lib/layouts/stdinsets.inc:791
+#: lib/layouts/stdinsets.inc:814 lib/layouts/stdinsets.inc:822
 msgid "Nomenclature[[output]]"
 msgstr "Nomenklatur"
 
@@ -20587,7 +20576,7 @@ msgid "Copy as Reference|R"
 msgstr "Als Querverweis kopieren|k"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:108
-#: lib/ui/stdtoolbars.inc:89 src/Text.cpp:4979 src/mathed/InsetMathNest.cpp:870
+#: lib/ui/stdtoolbars.inc:89 src/Text.cpp:5012 src/mathed/InsetMathNest.cpp:870
 msgid "Cut"
 msgstr "Ausschneiden"
 
@@ -20597,7 +20586,7 @@ msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:110
-#: lib/ui/stdtoolbars.inc:91 src/Text.cpp:4924
+#: lib/ui/stdtoolbars.inc:91 src/Text.cpp:4957
 #: src/frontends/qt/GuiToolbar.cpp:464 src/mathed/InsetMathGrid.cpp:1566
 #: src/mathed/InsetMathNest.cpp:839
 msgid "Paste"
@@ -20675,38 +20664,38 @@ msgstr "Nächster Querverweis|Q"
 msgid "Go to Label|G"
 msgstr "Gehe zur Marke|G"
 
-#: lib/ui/stdcontext.inc:95 lib/ui/stdcontext.inc:115 lib/ui/stdcontext.inc:715
+#: lib/ui/stdcontext.inc:95 lib/ui/stdcontext.inc:115 lib/ui/stdcontext.inc:724
 msgid "<Reference>|R"
 msgstr "<Querverweis>|r"
 
-#: lib/ui/stdcontext.inc:96 lib/ui/stdcontext.inc:116 lib/ui/stdcontext.inc:716
+#: lib/ui/stdcontext.inc:96 lib/ui/stdcontext.inc:116 lib/ui/stdcontext.inc:725
 msgid "(<Reference>)|e"
 msgstr "(<Querverweis>)|u"
 
-#: lib/ui/stdcontext.inc:97 lib/ui/stdcontext.inc:117 lib/ui/stdcontext.inc:717
+#: lib/ui/stdcontext.inc:97 lib/ui/stdcontext.inc:117 lib/ui/stdcontext.inc:726
 msgid "<Page>|P"
 msgstr "<Seite>|S"
 
-#: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:118 lib/ui/stdcontext.inc:718
+#: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:118 lib/ui/stdcontext.inc:727
 msgid "On Page <Page>|O"
 msgstr "Auf Seite <Seite>|A"
 
-#: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:119 lib/ui/stdcontext.inc:719
+#: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:119 lib/ui/stdcontext.inc:728
 msgid "<Reference> on Page <Page>|f"
 msgstr "<Querverweis> auf Seite <Seite>|v"
 
 #: lib/ui/stdcontext.inc:100 lib/ui/stdcontext.inc:120
-#: lib/ui/stdcontext.inc:720
+#: lib/ui/stdcontext.inc:729
 msgid "Formatted Reference|t"
 msgstr "Formatierter Querverweis|F"
 
 #: lib/ui/stdcontext.inc:101 lib/ui/stdcontext.inc:121
-#: lib/ui/stdcontext.inc:721
+#: lib/ui/stdcontext.inc:730
 msgid "Textual Reference|x"
 msgstr "Textverweis|T"
 
 #: lib/ui/stdcontext.inc:102 lib/ui/stdcontext.inc:122
-#: lib/ui/stdcontext.inc:722
+#: lib/ui/stdcontext.inc:731
 msgid "Label Only|L"
 msgstr "Nur Marke|M"
 
@@ -20720,10 +20709,10 @@ msgstr "Nur Marke|M"
 #: lib/ui/stdcontext.inc:525 lib/ui/stdcontext.inc:549
 #: lib/ui/stdcontext.inc:560 lib/ui/stdcontext.inc:568
 #: lib/ui/stdcontext.inc:578 lib/ui/stdcontext.inc:586
-#: lib/ui/stdcontext.inc:596 lib/ui/stdcontext.inc:604
-#: lib/ui/stdcontext.inc:619 lib/ui/stdcontext.inc:631
-#: lib/ui/stdcontext.inc:681 lib/ui/stdcontext.inc:689
-#: lib/ui/stdcontext.inc:751 lib/ui/stdcontext.inc:760 lib/ui/stdmenus.inc:586
+#: lib/ui/stdcontext.inc:605 lib/ui/stdcontext.inc:613
+#: lib/ui/stdcontext.inc:628 lib/ui/stdcontext.inc:640
+#: lib/ui/stdcontext.inc:690 lib/ui/stdcontext.inc:698
+#: lib/ui/stdcontext.inc:760 lib/ui/stdcontext.inc:769 lib/ui/stdmenus.inc:586
 msgid "Settings...|S"
 msgstr "Einstellungen...|E"
 
@@ -20760,7 +20749,7 @@ msgid "Close Inset|C"
 msgstr "Einfügung schließen|s"
 
 #: lib/ui/stdcontext.inc:179 lib/ui/stdcontext.inc:185
-#: lib/ui/stdcontext.inc:201 lib/ui/stdcontext.inc:697
+#: lib/ui/stdcontext.inc:201 lib/ui/stdcontext.inc:706
 msgid "Dissolve Inset|D"
 msgstr "Einfügung auflösen|ü"
 
@@ -20992,27 +20981,27 @@ msgstr "Benutzerdefiniert|t"
 msgid "Settings...|e"
 msgstr "Einstellungen...|n"
 
-#: lib/ui/stdcontext.inc:329 lib/ui/stdcontext.inc:613
+#: lib/ui/stdcontext.inc:329 lib/ui/stdcontext.inc:622
 msgid "Include|c"
 msgstr "Include|c"
 
-#: lib/ui/stdcontext.inc:330 lib/ui/stdcontext.inc:614
+#: lib/ui/stdcontext.inc:330 lib/ui/stdcontext.inc:623
 msgid "Input|p"
 msgstr "Input|p"
 
-#: lib/ui/stdcontext.inc:331 lib/ui/stdcontext.inc:615
+#: lib/ui/stdcontext.inc:331 lib/ui/stdcontext.inc:624
 msgid "Verbatim|V"
 msgstr "Unformatiert|U"
 
-#: lib/ui/stdcontext.inc:332 lib/ui/stdcontext.inc:616
+#: lib/ui/stdcontext.inc:332 lib/ui/stdcontext.inc:625
 msgid "Verbatim (marked blanks)|b"
 msgstr "Unformatiert (Leerzeichen markiert)|m"
 
-#: lib/ui/stdcontext.inc:333 lib/ui/stdcontext.inc:617
+#: lib/ui/stdcontext.inc:333 lib/ui/stdcontext.inc:626
 msgid "Listing|L"
 msgstr "Programmlisting|l"
 
-#: lib/ui/stdcontext.inc:337 lib/ui/stdcontext.inc:621
+#: lib/ui/stdcontext.inc:337 lib/ui/stdcontext.inc:630
 msgid "Edit Included File...|E"
 msgstr "Eingebettete Datei bearbeiten...|b"
 
@@ -21052,11 +21041,11 @@ msgstr "Einfacher Trenner|T"
 msgid "Paragraph Break|B"
 msgstr "Absatzumbruch|b"
 
-#: lib/ui/stdcontext.inc:373 lib/ui/stdcontext.inc:743
+#: lib/ui/stdcontext.inc:373 lib/ui/stdcontext.inc:752
 msgid "Edit Externally..."
 msgstr "Extern bearbeiten..."
 
-#: lib/ui/stdcontext.inc:374 lib/ui/stdcontext.inc:744
+#: lib/ui/stdcontext.inc:374 lib/ui/stdcontext.inc:753
 msgid "End Editing Externally"
 msgstr "Externe Bearbeitung beenden"
 
@@ -21092,7 +21081,7 @@ msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 msgid "Move Section Down|D"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:394 lib/ui/stdcontext.inc:729
+#: lib/ui/stdcontext.inc:394 lib/ui/stdcontext.inc:738
 msgid "Move Section Up|U"
 msgstr "Abschnitt nach oben verschieben|b"
 
@@ -21100,7 +21089,7 @@ msgstr "Abschnitt nach oben verschieben|b"
 msgid "Insert Regular Expression"
 msgstr "Regulären Ausdruck einfügen"
 
-#: lib/ui/stdcontext.inc:398 lib/ui/stdcontext.inc:706
+#: lib/ui/stdcontext.inc:398 lib/ui/stdcontext.inc:715
 msgid "Accept Change|c"
 msgstr "Änderung akzeptieren|k"
 
@@ -21337,160 +21326,160 @@ msgstr "Unbekannten Zweig hinzufügen|w"
 msgid "Insert Reference at Cursor Position|I"
 msgstr "Verweis an der Cursor-Position einfügen|V"
 
-#: lib/ui/stdcontext.inc:588 lib/ui/stdcontext.inc:606
-#: lib/ui/stdcontext.inc:734
+#: lib/ui/stdcontext.inc:588 lib/ui/stdcontext.inc:597
+#: lib/ui/stdcontext.inc:615 lib/ui/stdcontext.inc:743
 msgid "Insert Cross-Reference to this Item|C"
 msgstr "Querverweis zu diesem Eintrag einfügen|Q"
 
-#: lib/ui/stdcontext.inc:629
+#: lib/ui/stdcontext.inc:638
 msgid "Insert Copy at Cursor Position|I"
 msgstr "Kopie an der Cursor-Position einfügen|K"
 
-#: lib/ui/stdcontext.inc:641
+#: lib/ui/stdcontext.inc:650
 msgid "Index All Occurrences of this Word|W"
 msgstr "Alle Vorkommen dieses Worts indexieren|A"
 
-#: lib/ui/stdcontext.inc:643
+#: lib/ui/stdcontext.inc:652
 msgid "Single Page (No Page Range)|P"
 msgstr "Einzelseite (kein Seitenbereich)|z"
 
-#: lib/ui/stdcontext.inc:644
+#: lib/ui/stdcontext.inc:653
 msgid "Start Page Range|t"
 msgstr "Seitenbereich beginnen|b"
 
-#: lib/ui/stdcontext.inc:645
+#: lib/ui/stdcontext.inc:654
 msgid "End Page Range|E"
 msgstr "Seitenbereich beenden|d"
 
-#: lib/ui/stdcontext.inc:647
+#: lib/ui/stdcontext.inc:656
 msgid "No Page Formatting|N"
 msgstr "Normaler Seitenverweis|N"
 
-#: lib/ui/stdcontext.inc:648
+#: lib/ui/stdcontext.inc:657
 msgid "Bold Page Formatting|B"
 msgstr "Fetter Seitenverweis|F"
 
-#: lib/ui/stdcontext.inc:649
+#: lib/ui/stdcontext.inc:658
 msgid "Italic Page Formatting|I"
 msgstr "Kursiver Seitenverweis|K"
 
-#: lib/ui/stdcontext.inc:650
+#: lib/ui/stdcontext.inc:659
 msgid "Emphasized Page Formatting|z"
 msgstr "Hervorgehobener Seitenverweis|H"
 
-#: lib/ui/stdcontext.inc:651
+#: lib/ui/stdcontext.inc:660
 msgid "Custom Page Formatting...|u"
 msgstr "Benutzerdefinierter Seitenverweis...|u"
 
-#: lib/ui/stdcontext.inc:655
+#: lib/ui/stdcontext.inc:664
 msgid "Insert Subentry|n"
 msgstr "Untereintrag einfügen|n"
 
-#: lib/ui/stdcontext.inc:656
+#: lib/ui/stdcontext.inc:665
 msgid "Insert Sortkey|k"
 msgstr "Sortierschlüssel einfügen|r"
 
-#: lib/ui/stdcontext.inc:657
+#: lib/ui/stdcontext.inc:666
 msgid "Insert See Reference|cf"
 msgstr "\"Siehe\"-Verweis einfügen|w"
 
-#: lib/ui/stdcontext.inc:658
+#: lib/ui/stdcontext.inc:667
 msgid "Insert See also Reference|a"
 msgstr "\"Siehe-auch\"-Verweis einfügen|c"
 
-#: lib/ui/stdcontext.inc:666 lib/ui/stdmenus.inc:541
+#: lib/ui/stdcontext.inc:675 lib/ui/stdmenus.inc:541
 msgid "See|e"
 msgstr "Siehe|S"
 
-#: lib/ui/stdcontext.inc:667 lib/ui/stdmenus.inc:542
+#: lib/ui/stdcontext.inc:676 lib/ui/stdmenus.inc:542
 msgid "See also|a"
 msgstr "Siehe auch|a"
 
-#: lib/ui/stdcontext.inc:676
+#: lib/ui/stdcontext.inc:685
 msgid "All Indexes|A"
 msgstr "Alle Indexe|A"
 
-#: lib/ui/stdcontext.inc:679
+#: lib/ui/stdcontext.inc:688
 msgid "Subindex|b"
 msgstr "Unterindex|t"
 
-#: lib/ui/stdcontext.inc:707 lib/ui/stdmenus.inc:593
+#: lib/ui/stdcontext.inc:716 lib/ui/stdmenus.inc:593
 msgid "Reject Change|R"
 msgstr "Änderung ablehnen|b"
 
-#: lib/ui/stdcontext.inc:727
+#: lib/ui/stdcontext.inc:736
 msgid "Promote Section|P"
 msgstr "Verschachtelungstiefe des Abschnitts verringern|r"
 
-#: lib/ui/stdcontext.inc:728
+#: lib/ui/stdcontext.inc:737
 msgid "Demote Section|D"
 msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 
-#: lib/ui/stdcontext.inc:730
+#: lib/ui/stdcontext.inc:739
 msgid "Move Section Down|w"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:732
+#: lib/ui/stdcontext.inc:741
 msgid "Select Section|S"
 msgstr "Abschnitt auswählen|h"
 
-#: lib/ui/stdcontext.inc:742
+#: lib/ui/stdcontext.inc:751
 msgid "Wrap by Preview|y"
 msgstr "Eingebettete Vorschau|r"
 
-#: lib/ui/stdcontext.inc:753
+#: lib/ui/stdcontext.inc:762
 msgid "Open Target...|O"
 msgstr "Verweisziel öffnen...|ö"
 
-#: lib/ui/stdcontext.inc:769 lib/ui/stdmenus.inc:362
+#: lib/ui/stdcontext.inc:778 lib/ui/stdmenus.inc:362
 msgid "Lock Toolbars|L"
 msgstr "Verankere die Werkzeugleisten|V"
 
-#: lib/ui/stdcontext.inc:771 lib/ui/stdmenus.inc:364
+#: lib/ui/stdcontext.inc:780 lib/ui/stdmenus.inc:364
 msgid "Small-sized Icons"
 msgstr "Kleine Symbole"
 
-#: lib/ui/stdcontext.inc:772 lib/ui/stdmenus.inc:365
+#: lib/ui/stdcontext.inc:781 lib/ui/stdmenus.inc:365
 msgid "Normal-sized Icons"
 msgstr "Normalgroße Symbole"
 
-#: lib/ui/stdcontext.inc:773 lib/ui/stdmenus.inc:366
+#: lib/ui/stdcontext.inc:782 lib/ui/stdmenus.inc:366
 msgid "Big-sized Icons"
 msgstr "Große Symbole"
 
-#: lib/ui/stdcontext.inc:774 lib/ui/stdmenus.inc:367
+#: lib/ui/stdcontext.inc:783 lib/ui/stdmenus.inc:367
 msgid "Huge-sized Icons"
 msgstr "Riesige Symbole"
 
-#: lib/ui/stdcontext.inc:775 lib/ui/stdmenus.inc:368
+#: lib/ui/stdcontext.inc:784 lib/ui/stdmenus.inc:368
 msgid "Giant-sized Icons"
 msgstr "Gigantische Symbole"
 
-#: lib/ui/stdcontext.inc:789
+#: lib/ui/stdcontext.inc:798
 msgid "Zoom Level|Z"
 msgstr "Vergrößerungsfaktor|f"
 
-#: lib/ui/stdcontext.inc:790
+#: lib/ui/stdcontext.inc:799
 msgid "Zoom Slider|S"
 msgstr "Schieberegler|r"
 
-#: lib/ui/stdcontext.inc:792
+#: lib/ui/stdcontext.inc:801
 msgid "Word Count|W"
 msgstr "Wortzählung|W"
 
-#: lib/ui/stdcontext.inc:793
+#: lib/ui/stdcontext.inc:802
 msgid "Character Count|C"
 msgstr "Zeichenzählung|Z"
 
-#: lib/ui/stdcontext.inc:794
+#: lib/ui/stdcontext.inc:803
 msgid "Character Count (No Blanks)|h"
 msgstr "Zeichenzählung (ohne Leerzeichen)|o"
 
-#: lib/ui/stdcontext.inc:795
+#: lib/ui/stdcontext.inc:804
 msgid "Start Statistics Relative to Current Count|R"
 msgstr "Zählung relativ zum aktuellen Wert starten|v"
 
-#: lib/ui/stdcontext.inc:796
+#: lib/ui/stdcontext.inc:805
 msgid "Reset to Absolute Statistics Count|A"
 msgstr "Zur absoluten Zählung zurückkehren|a"
 
@@ -22147,8 +22136,8 @@ msgid "Index Properties"
 msgstr "Stichworteigenschaften"
 
 #: lib/ui/stdmenus.inc:396
-msgid "Nomenclature Entry...|y"
-msgstr "Nomenklatureintrag...|k"
+msgid "Nomenclature Entry|y"
+msgstr "Nomenklatureintrag|k"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Table...|T"
@@ -27899,135 +27888,131 @@ msgid "OpenDocument (tex4ht)"
 msgstr "OpenDocument (tex4ht)"
 
 #: lib/configure.py:841
-msgid "OpenDocument (eLyXer)"
-msgstr "OpenDocument (eLyXer)"
-
-#: lib/configure.py:842
 msgid "OpenDocument (Pandoc)"
 msgstr "OpenDocument (Pandoc)"
 
-#: lib/configure.py:843
+#: lib/configure.py:842
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.org (sxw)"
 
-#: lib/configure.py:846
+#: lib/configure.py:845
 msgid "Rich Text Format"
 msgstr "Rich-Text-Format"
 
-#: lib/configure.py:847
+#: lib/configure.py:846
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:847
+#: lib/configure.py:846
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:848
+#: lib/configure.py:847
 msgid "MS Word Office Open XML"
 msgstr "MS-Word Office-Open XML"
 
-#: lib/configure.py:848
+#: lib/configure.py:847
 msgid "MS Word Office Open XML|O"
 msgstr "MS-Word Office-Open XML"
 
-#: lib/configure.py:851
+#: lib/configure.py:850
 msgid "Table (CSV)"
 msgstr "Tabelle (CSV)"
 
-#: lib/configure.py:853 src/frontends/qt/GuiView.cpp:1821
+#: lib/configure.py:852 src/frontends/qt/GuiView.cpp:1821
 #: src/mathed/InsetMathMacroTemplate.cpp:548
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:854
+#: lib/configure.py:853
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:855
+#: lib/configure.py:854
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:856
+#: lib/configure.py:855
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:857
+#: lib/configure.py:856
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:858
+#: lib/configure.py:857
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:859
+#: lib/configure.py:858
 msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
-#: lib/configure.py:860
+#: lib/configure.py:859
 msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
-#: lib/configure.py:861
+#: lib/configure.py:860
 msgid "LyX 2.3.x"
 msgstr "LyX 2.3.x"
 
-#: lib/configure.py:862
+#: lib/configure.py:861
 msgid "LyX 2.4.x"
 msgstr "LyX 2.4.x"
 
-#: lib/configure.py:863
+#: lib/configure.py:862
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK-LyX 1.4.x (big5)"
 
-#: lib/configure.py:864
+#: lib/configure.py:863
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK-LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:865
+#: lib/configure.py:864
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK-LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:866
+#: lib/configure.py:865
 msgid "LyX Preview"
 msgstr "LyX-Vorschau"
 
-#: lib/configure.py:867
+#: lib/configure.py:866
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:868
+#: lib/configure.py:867
 msgid "Program"
 msgstr "Programm"
 
-#: lib/configure.py:869
+#: lib/configure.py:868
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:870 src/frontends/qt/GuiClipboard.cpp:178
+#: lib/configure.py:869 src/frontends/qt/GuiClipboard.cpp:178
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:871 src/frontends/qt/GuiClipboard.cpp:177
+#: lib/configure.py:870 src/frontends/qt/GuiClipboard.cpp:177
 msgid "Enhanced Metafile"
 msgstr "Erweiterte Metadatei"
 
-#: lib/configure.py:872
+#: lib/configure.py:871
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:991
+#: lib/configure.py:973
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:1273 lib/examples/Articles:0
+#: lib/configure.py:1255 lib/examples/Articles:0
 msgid "Gnuplot"
 msgstr "Gnuplot"
 
-#: lib/configure.py:1380
+#: lib/configure.py:1362
 msgid "LyX Archive (zip)"
 msgstr "LyX-Archiv (zip)"
 
-#: lib/configure.py:1383
+#: lib/configure.py:1365
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
@@ -28397,7 +28382,7 @@ msgstr ""
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
 #: src/Buffer.cpp:1094 src/BufferParams.cpp:480 src/frontends/qt/GuiLog.cpp:260
-#: src/insets/InsetIndex.cpp:1285
+#: src/insets/InsetIndex.cpp:1290
 msgid "Index"
 msgstr "Stichwortverzeichnis"
 
@@ -29142,9 +29127,9 @@ msgid "greyedout inset text"
 msgstr "Grauschrift-Einfügungstext"
 
 #: src/BufferParams.cpp:1728 src/BufferParams.cpp:1889
-#: src/BufferParams.cpp:2386 src/Encoding.cpp:264 src/Paragraph.cpp:3190
+#: src/BufferParams.cpp:2386 src/Encoding.cpp:264 src/Paragraph.cpp:3203
 #: src/frontends/qt/LaTeXHighlighter.cpp:176
-#: src/insets/InsetCommandParams.cpp:523 src/insets/InsetCommandParams.cpp:531
+#: src/insets/InsetCommandParams.cpp:516 src/insets/InsetCommandParams.cpp:524
 #: src/insets/InsetGraphics.cpp:904 src/insets/InsetGraphics.cpp:912
 #: src/insets/InsetListings.cpp:298 src/insets/InsetListings.cpp:306
 #: src/insets/InsetListings.cpp:331 src/mathed/InsetMathMacro.cpp:1178
@@ -29153,8 +29138,8 @@ msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
 #: src/BufferParams.cpp:1729 src/BufferParams.cpp:1890
-#: src/BufferParams.cpp:2387 src/Encoding.cpp:265 src/Paragraph.cpp:3191
-#: src/insets/InsetCommandParams.cpp:524 src/insets/InsetCommandParams.cpp:532
+#: src/BufferParams.cpp:2387 src/Encoding.cpp:265 src/Paragraph.cpp:3204
+#: src/insets/InsetCommandParams.cpp:517 src/insets/InsetCommandParams.cpp:525
 #: src/insets/InsetGraphics.cpp:905 src/insets/InsetGraphics.cpp:913
 #: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
 #: src/mathed/InsetMathMacro.cpp:1179 src/mathed/MathExtern.cpp:1491
@@ -29728,238 +29713,242 @@ msgid "margin note label"
 msgstr "Randnotiz (Marke)"
 
 #: src/Color.cpp:292
+msgid "nomenclature label"
+msgstr "Nomenklatur (Marke)"
+
+#: src/Color.cpp:293
 msgid "URL label"
 msgstr "URL (Marke)"
 
-#: src/Color.cpp:293
+#: src/Color.cpp:294
 msgid "URL text"
 msgstr "URL (Text)"
 
-#: src/Color.cpp:294
+#: src/Color.cpp:295
 msgid "depth bar"
 msgstr "Balken für Tiefe"
 
-#: src/Color.cpp:295
+#: src/Color.cpp:296
 msgid "scroll indicator"
 msgstr "Scroll-Indikator"
 
-#: src/Color.cpp:296
+#: src/Color.cpp:297
 msgid "language"
 msgstr "Sprache"
 
-#: src/Color.cpp:297
+#: src/Color.cpp:298
 msgid "command inset"
 msgstr "Befehlseinfügung"
 
-#: src/Color.cpp:298
+#: src/Color.cpp:299
 msgid "command inset background"
 msgstr "Befehlseinfügung (Hintergrund)"
 
-#: src/Color.cpp:299
+#: src/Color.cpp:300
 msgid "command inset frame"
 msgstr "Befehlseinfügung (Rahmen)"
 
-#: src/Color.cpp:300
+#: src/Color.cpp:301
 msgid "command inset (broken reference)"
 msgstr "Befehlseinfügung (ungültiger Verweis)"
 
-#: src/Color.cpp:301
+#: src/Color.cpp:302
 msgid "button background (broken reference)"
 msgstr "Knopf (Hintergrund bei ungültigem Verweis)"
 
-#: src/Color.cpp:302
+#: src/Color.cpp:303
 msgid "button frame (broken reference)"
 msgstr "Knopf (Rahmen bei ungültigem Verweis)"
 
-#: src/Color.cpp:303
+#: src/Color.cpp:304
 msgid "button background (broken reference) under focus"
 msgstr "Knopf (Hintergrund bei Fokus auf ungültigem Verweis)"
 
-#: src/Color.cpp:304
+#: src/Color.cpp:305
 msgid "special character"
 msgstr "Sonderzeichen"
 
-#: src/Color.cpp:305
+#: src/Color.cpp:306
 msgid "math text"
 msgstr "Mathe (Text)"
 
-#: src/Color.cpp:306
+#: src/Color.cpp:307
 msgid "math background"
 msgstr "Mathe (Hintergrund)"
 
-#: src/Color.cpp:307
+#: src/Color.cpp:308
 msgid "graphics background"
 msgstr "Grafik (Hintergrund)"
 
-#: src/Color.cpp:308 src/Color.cpp:312
+#: src/Color.cpp:309 src/Color.cpp:313
 msgid "math macro background"
 msgstr "Mathe-Makro (Hintergrund)"
 
-#: src/Color.cpp:309
+#: src/Color.cpp:310
 msgid "math frame"
 msgstr "Mathe (Rahmen)"
 
-#: src/Color.cpp:310
+#: src/Color.cpp:311
 msgid "math corners"
 msgstr "Mathe (Ecken)"
 
-#: src/Color.cpp:311
+#: src/Color.cpp:312
 msgid "math line"
 msgstr "Mathe (Linie)"
 
-#: src/Color.cpp:313
+#: src/Color.cpp:314
 msgid "math macro hovered background"
 msgstr "Mathe-Makro (schwebender Hintergrund)"
 
-#: src/Color.cpp:314
+#: src/Color.cpp:315
 msgid "math macro label"
 msgstr "Mathe-Makro (Marke)"
 
-#: src/Color.cpp:315
+#: src/Color.cpp:316
 msgid "math macro frame"
 msgstr "Mathe-Makro (Rahmen)"
 
-#: src/Color.cpp:316
+#: src/Color.cpp:317
 msgid "math macro blended out"
 msgstr "Mathe-Makro (ausgeblendet)"
 
-#: src/Color.cpp:317
+#: src/Color.cpp:318
 msgid "math macro old parameter"
 msgstr "Mathe-Makro (alter Parameter)"
 
-#: src/Color.cpp:318
+#: src/Color.cpp:319
 msgid "math macro new parameter"
 msgstr "Mathe-Makro (neuer Parameter)"
 
-#: src/Color.cpp:319
+#: src/Color.cpp:320
 msgid "collapsible inset text"
 msgstr "Einklappbare Einfügung (Text)"
 
-#: src/Color.cpp:320
+#: src/Color.cpp:321
 msgid "collapsible inset frame"
 msgstr "Einklappbare Einfügung (Rahmen)"
 
-#: src/Color.cpp:321
+#: src/Color.cpp:322
 msgid "inset background"
 msgstr "Einfügung (Hintergrund)"
 
-#: src/Color.cpp:322
+#: src/Color.cpp:323
 msgid "inset label"
 msgstr "Einfügung (Marke)"
 
-#: src/Color.cpp:323
+#: src/Color.cpp:324
 msgid "inset frame"
 msgstr "Einfügung (Rahmen)"
 
-#: src/Color.cpp:324
+#: src/Color.cpp:325
 msgid "LaTeX error"
 msgstr "LaTeX-Fehler"
 
-#: src/Color.cpp:325
+#: src/Color.cpp:326
 msgid "end-of-line marker"
 msgstr "Zeilenende-Markierung"
 
-#: src/Color.cpp:326
+#: src/Color.cpp:327
 msgid "appendix marker"
 msgstr "Anhangskennzeichnung"
 
-#: src/Color.cpp:327
+#: src/Color.cpp:328
 msgid "change bar"
 msgstr "Balken für Änderung"
 
-#: src/Color.cpp:328
+#: src/Color.cpp:329
 msgid "changes - deleted text (exported output)"
 msgstr "Änderungsverfolgung – gelöschter Text (Ausgabe)"
 
-#: src/Color.cpp:329
+#: src/Color.cpp:330
 msgid "changes - added text (exported output)"
 msgstr "Änderungsverfolgung – hinzugefügter Text (Ausgabe)"
 
-#: src/Color.cpp:330
+#: src/Color.cpp:331
 msgid "changed text (workarea, 1st author)"
 msgstr "Geänderter Text (Arbeitsbereich, 1. Autor)"
 
-#: src/Color.cpp:331
+#: src/Color.cpp:332
 msgid "changed text (workarea, 2nd author)"
 msgstr "Geänderter Text (Arbeitsbereich, 2. Autor)"
 
-#: src/Color.cpp:332
+#: src/Color.cpp:333
 msgid "changed text (workarea, 3rd author)"
 msgstr "Geänderter Text (Arbeitsbereich, 3. Autor)"
 
-#: src/Color.cpp:333
+#: src/Color.cpp:334
 msgid "changed text (workarea, 4th author)"
 msgstr "Geänderter Text (Arbeitsbereich, 4. Autor)"
 
-#: src/Color.cpp:334
+#: src/Color.cpp:335
 msgid "changed text (workarea, 5th author)"
 msgstr "Geänderter Text (Arbeitsbereich, 5. Autor)"
 
-#: src/Color.cpp:335
+#: src/Color.cpp:336
 msgid "changed text (workarea, document comparison)"
 msgstr "Geänderter Text (Arbeitsbereich, Dokumentvergleich)"
 
-#: src/Color.cpp:336
+#: src/Color.cpp:337
 msgid "changes - deleted text brightness (workarea)"
 msgstr "Änderungsverfolgung – Helligkeit gelöschter Text (Arbeitsbereich)"
 
-#: src/Color.cpp:337
+#: src/Color.cpp:338
 msgid "added space markers"
 msgstr "Abstandsmarkierungen"
 
-#: src/Color.cpp:338
+#: src/Color.cpp:339
 msgid "table line"
 msgstr "Tabelle (Linie)"
 
-#: src/Color.cpp:339
+#: src/Color.cpp:340
 msgid "table on/off line"
 msgstr "Tabelle an/aus Linie"
 
-#: src/Color.cpp:340
+#: src/Color.cpp:341
 msgid "bottom area"
 msgstr "Unterer Bereich"
 
-#: src/Color.cpp:341
+#: src/Color.cpp:342
 msgid "new page"
 msgstr "Neue Seite"
 
-#: src/Color.cpp:342
+#: src/Color.cpp:343
 msgid "page break / line break"
 msgstr "Seitenumbruch / Zeilenumbruch"
 
-#: src/Color.cpp:343
+#: src/Color.cpp:344
 msgid "button frame"
 msgstr "Knopf (Rahmen)"
 
-#: src/Color.cpp:344
+#: src/Color.cpp:345
 msgid "button background"
 msgstr "Knopf (Hintergrund)"
 
-#: src/Color.cpp:345
+#: src/Color.cpp:346
 msgid "button background under focus"
 msgstr "Knopf (Hintergrund bei Fokus)"
 
-#: src/Color.cpp:346
+#: src/Color.cpp:347
 msgid "paragraph marker"
 msgstr "Absatzmarkierung"
 
-#: src/Color.cpp:347
+#: src/Color.cpp:348
 msgid "preview frame"
 msgstr "Vorschaurahmen"
 
-#: src/Color.cpp:348
+#: src/Color.cpp:349
 msgid "regexp frame"
 msgstr "Regulärer Ausdruck (Rahmen)"
 
-#: src/Color.cpp:349
+#: src/Color.cpp:350
 msgid "bookmark"
 msgstr "Lesezeichen"
 
-#: src/Color.cpp:350
+#: src/Color.cpp:351
 msgid "inherit"
 msgstr "übernehmen"
 
-#: src/Color.cpp:351
+#: src/Color.cpp:352
 msgid "ignore"
 msgstr "ignorieren"
 
@@ -31644,15 +31633,15 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
-#: src/Paragraph.cpp:2241
+#: src/Paragraph.cpp:2254
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/Paragraph.cpp:2295
+#: src/Paragraph.cpp:2308
 msgid "Alignment not permitted"
 msgstr "Ausrichtung nicht erlaubt"
 
-#: src/Paragraph.cpp:2296
+#: src/Paragraph.cpp:2309
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -31777,11 +31766,11 @@ msgstr "Bereits im Regexp-Modus"
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text.cpp:3952
+#: src/Text.cpp:3985
 msgid "Action flattens document structure"
 msgstr "Vorgang flacht die Dokumentstruktur ab"
 
-#: src/Text.cpp:3953
+#: src/Text.cpp:3986
 msgid ""
 "This action will cause some headings that have been on different level "
 "before to be on the same level since there is no more lower or higher "
@@ -31792,52 +31781,52 @@ msgstr ""
 "Unterparagraph), auf derselben Stufe sein, da das Ende der Hierarchieskala "
 "nach oben oder unten erreicht ist. Trotzdem fortfahren?"
 
-#: src/Text.cpp:3958
+#: src/Text.cpp:3991
 msgid "&Yes, continue nonetheless"
 msgstr "&Ja, trotzdem fortfahren"
 
-#: src/Text.cpp:3959
+#: src/Text.cpp:3992
 msgid "&No, quit operation"
 msgstr "&Nein, Vorgang abbrechen"
 
-#: src/Text.cpp:5013
+#: src/Text.cpp:5046
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text.cpp:5014 src/Text.cpp:5605
+#: src/Text.cpp:5047 src/Text.cpp:5596
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text.cpp:5604
+#: src/Text.cpp:5595
 msgid "Table Style "
 msgstr "Tabellenstil"
 
-#: src/Text.cpp:5813 src/frontends/qt/GuiApplication.cpp:1889
+#: src/Text.cpp:5791 src/frontends/qt/GuiApplication.cpp:1889
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text.cpp:5979
+#: src/Text.cpp:5957
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Ungültiges Argument (Zahl größer als Zwischenspeicher)!"
 
-#: src/Text.cpp:5983
+#: src/Text.cpp:5961
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Ungültiges Argument (muss eine nicht-negative Zahl sein)!"
 
-#: src/Text.cpp:5988 src/Text.cpp:6002
+#: src/Text.cpp:5966 src/Text.cpp:5980
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Angewendete Texteigenschaften: %1$s"
 
-#: src/Text.cpp:6004
+#: src/Text.cpp:5982
 msgid "Invalid argument of textstyle-update"
 msgstr "Ungültiges Argument für textstyle-update"
 
-#: src/Text.cpp:6161
+#: src/Text.cpp:6139
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text.cpp:6162
+#: src/Text.cpp:6140
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -31849,7 +31838,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text.cpp:6288 src/Text.cpp:6299
+#: src/Text.cpp:6266 src/Text.cpp:6277
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -31987,8 +31976,8 @@ msgstr "Fehler beim Lesen der Zitierformatdatei %1$s\n"
 msgid "MISSING: "
 msgstr "NICHT VORHANDEN:"
 
-#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:1023
-#: src/insets/InsetIndex.cpp:1058
+#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:1028
+#: src/insets/InsetIndex.cpp:1063
 msgid "unknown type!"
 msgstr "unbekannter Typ!"
 
@@ -34972,10 +34961,6 @@ msgstr "smallmatrix"
 msgid "Math Matrix"
 msgstr "Mathe-Matrix"
 
-#: src/frontends/qt/GuiNomenclature.h:36
-msgid "Nomenclature Settings"
-msgstr "Nomenklatur-Einstellungen"
-
 #: src/frontends/qt/GuiNote.cpp:24
 msgid "Note Settings"
 msgstr "Notiz-Einstellungen"
@@ -36611,7 +36596,7 @@ msgstr "Einstellungen für umflossene Gleitobjekte"
 msgid "Click to detach"
 msgstr "Zum Abtrennen bitte anklicken"
 
-#: src/frontends/qt/InsetParamsDialog.cpp:90
+#: src/frontends/qt/InsetParamsDialog.cpp:89
 msgid "Ne&w Inset"
 msgstr "&Neue Einfügung"
 
@@ -37049,11 +37034,11 @@ msgstr "Horizontaler Abstand"
 msgid "Horizontal Math Space"
 msgstr "Horizontaler Mathe-Abstand"
 
-#: src/insets/InsetArgument.cpp:153
+#: src/insets/InsetArgument.cpp:154
 msgid "Unknown Argument"
 msgstr "Unbekanntes Argument"
 
-#: src/insets/InsetArgument.cpp:154
+#: src/insets/InsetArgument.cpp:155
 msgid "Argument not known in this Layout. Will be suppressed in the output."
 msgstr ""
 "Dieses Argument ist im gewählten Absatzstil unbekannt. Es wird in der "
@@ -37195,7 +37180,7 @@ msgid "active"
 msgstr "aktiv"
 
 #: src/insets/InsetBranch.cpp:74 src/insets/InsetBranch.cpp:76
-#: src/insets/InsetIndex.cpp:1293
+#: src/insets/InsetIndex.cpp:1298
 msgid "non-active"
 msgstr "inaktiv"
 
@@ -37274,35 +37259,35 @@ msgstr "UNGÜLTIG: "
 msgid "LaTeX Command: "
 msgstr "LaTeX-Befehl: "
 
-#: src/insets/InsetCommandParams.cpp:279
+#: src/insets/InsetCommandParams.cpp:273
 msgid "InsetCommand Error: "
 msgstr "Befehl für Einfügung: "
 
-#: src/insets/InsetCommandParams.cpp:280 src/insets/InsetCommandParams.cpp:303
+#: src/insets/InsetCommandParams.cpp:274 src/insets/InsetCommandParams.cpp:297
 msgid "Incompatible command name."
 msgstr "Inkompatibler Befehlsname."
 
-#: src/insets/InsetCommandParams.cpp:302 src/insets/InsetCommandParams.cpp:356
+#: src/insets/InsetCommandParams.cpp:296 src/insets/InsetCommandParams.cpp:350
 msgid "InsetCommandParams Error: "
 msgstr "Befehl für Einfügung: "
 
-#: src/insets/InsetCommandParams.cpp:348
+#: src/insets/InsetCommandParams.cpp:342
 msgid "InsetCommandParams: "
 msgstr "Befehl für Einfügung: "
 
-#: src/insets/InsetCommandParams.cpp:349
+#: src/insets/InsetCommandParams.cpp:343
 msgid "Unknown parameter name: "
 msgstr "Unbekannter Argumentname: "
 
-#: src/insets/InsetCommandParams.cpp:357
+#: src/insets/InsetCommandParams.cpp:351
 msgid "Missing \\end_inset at this point: "
 msgstr "Fehlendes \\end_inset an dieser Stelle: "
 
-#: src/insets/InsetCommandParams.cpp:479
+#: src/insets/InsetCommandParams.cpp:472
 msgid "Uncodable characters"
 msgstr "Unkodierbare Zeichen"
 
-#: src/insets/InsetCommandParams.cpp:480
+#: src/insets/InsetCommandParams.cpp:473
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
@@ -37314,11 +37299,11 @@ msgstr ""
 "aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
 "%2$s."
 
-#: src/insets/InsetCommandParams.cpp:542
+#: src/insets/InsetCommandParams.cpp:535
 msgid "Uncodable characters in inset"
 msgstr "Unkodierbare Zeichen in Einfügung"
 
-#: src/insets/InsetCommandParams.cpp:543
+#: src/insets/InsetCommandParams.cpp:536
 #, c-format
 msgid ""
 "The following characters in one of the insets are\n"
@@ -37710,7 +37695,7 @@ msgstr "Beginnt einen Seitenbereich"
 msgid "Ends page range"
 msgstr "Beendet einen Seitenbereich"
 
-#: src/insets/InsetIndex.cpp:312
+#: src/insets/InsetIndex.cpp:317
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced problems with the entry "
@@ -37723,11 +37708,11 @@ msgstr ""
 "Bitte legen Sie die Sortierung manuell fest. Hinweise\n"
 "zum Vorgehen finden Sie im Benutzerhandbuch."
 
-#: src/insets/InsetIndex.cpp:317 src/insets/InsetIndexMacro.cpp:283
+#: src/insets/InsetIndex.cpp:322 src/insets/InsetIndexMacro.cpp:283
 msgid "Index sorting failed"
 msgstr "Indexsortierung fehlgeschlagen"
 
-#: src/insets/InsetIndex.cpp:774
+#: src/insets/InsetIndex.cpp:779
 #, c-format
 msgid ""
 "There is an empty index subentry in the entry '%1$s'.\n"
@@ -37736,39 +37721,39 @@ msgstr ""
 "Das Stichwort '%1$s' hat einen leeren Untereintrag.\n"
 "Er wird in der Ausgabe ignoriert."
 
-#: src/insets/InsetIndex.cpp:777
+#: src/insets/InsetIndex.cpp:782
 msgid "Empty index subentry!"
 msgstr "Leerer Untereintrag!"
 
-#: src/insets/InsetIndex.cpp:1016
+#: src/insets/InsetIndex.cpp:1021
 msgid "Index Entry"
 msgstr "Stichwort"
 
-#: src/insets/InsetIndex.cpp:1033
+#: src/insets/InsetIndex.cpp:1038
 msgid "Pagination format:"
 msgstr "Seitenzahlenformat:"
 
-#: src/insets/InsetIndex.cpp:1035
+#: src/insets/InsetIndex.cpp:1040
 msgid "bold"
 msgstr "Fett"
 
-#: src/insets/InsetIndex.cpp:1037
+#: src/insets/InsetIndex.cpp:1042
 msgid "italic"
 msgstr "Kursiv"
 
-#: src/insets/InsetIndex.cpp:1039
+#: src/insets/InsetIndex.cpp:1044
 msgid "emphasized"
 msgstr "Hervorgehoben"
 
-#: src/insets/InsetIndex.cpp:1290
+#: src/insets/InsetIndex.cpp:1295
 msgid "Unknown index type!"
 msgstr "Unbekannter Index-Typ!"
 
-#: src/insets/InsetIndex.cpp:1291
+#: src/insets/InsetIndex.cpp:1296
 msgid "All indexes"
 msgstr "Alle Indexe"
 
-#: src/insets/InsetIndex.cpp:1295
+#: src/insets/InsetIndex.cpp:1300
 msgid "subindex"
 msgstr "Unterindex"
 
@@ -38409,21 +38394,21 @@ msgstr "Doppelseite leeren"
 msgid "No Page Break"
 msgstr "Seitenumbruch verhindern"
 
-#: src/insets/InsetNomencl.cpp:79
-msgid "Nom: "
-msgstr "Nom: "
-
-#: src/insets/InsetNomencl.cpp:87
+#: src/insets/InsetNomencl.cpp:61
 msgid "Nomenclature Symbol: "
 msgstr "Nomenklatursymbol: "
 
-#: src/insets/InsetNomencl.cpp:88
+#: src/insets/InsetNomencl.cpp:64
 msgid "Description: "
 msgstr "Beschreibung: "
 
-#: src/insets/InsetNomencl.cpp:91
+#: src/insets/InsetNomencl.cpp:67
 msgid "Sorting: "
 msgstr "Sortierung: "
+
+#: src/insets/InsetNomencl.cpp:184
+msgid "Nomenclature"
+msgstr "Nomenklatur"
 
 #: src/insets/InsetNote.cpp:283
 msgid "note"
@@ -38651,7 +38636,7 @@ msgstr ""
 
 # , c-format
 # , c-format
-#: src/insets/InsetText.cpp:1409
+#: src/insets/InsetText.cpp:1411
 msgid "[contains tracked changes]"
 msgstr "[enthält verfolgte Änderungen]"
 
@@ -39430,6 +39415,31 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Sy&mbol:"
+#~ msgstr "&Symbol:"
+
+#~ msgid "Des&cription:"
+#~ msgstr "&Beschreibung:"
+
+#~ msgid "Sort &as:"
+#~ msgstr "&Einsortieren als:"
+
+#~ msgid ""
+#~ "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
+#~ "Check this if you want to enter LaTeX code."
+#~ msgstr ""
+#~ "Übergebe den Inhalt der Felder ,Symbol` und ,Beschreibung` unformatiert "
+#~ "an LaTeX. Aktivieren Sie dies, wenn Sie LaTeX-Code eingeben wollen."
+
+#~ msgid "OpenDocument (eLyXer)"
+#~ msgstr "OpenDocument (eLyXer)"
+
+#~ msgid "Nomenclature Settings"
+#~ msgstr "Nomenklatur-Einstellungen"
+
+#~ msgid "Nom: "
+#~ msgstr "Nom: "
 
 #~ msgid "tgo"
 #~ msgstr "tgo"

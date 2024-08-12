@@ -213,6 +213,8 @@ public:
 	///
 	bool allowParagraphCustomization() const { return custompars_; }
 	///
+	docstring escapeChars() const { return escape_chars_; }
+	///
 	bool isPassThru() const { return passthru_; }
 	///
 	docstring passThruChars() const { return passthru_chars_; }
@@ -401,6 +403,8 @@ private:
 	bool custompars_ = true;
 	///
 	bool forceplain_ = false;
+	///
+	docstring escape_chars_;
 	///
 	bool passthru_ = false;
 	///

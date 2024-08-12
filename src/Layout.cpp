@@ -48,6 +48,7 @@ enum LayoutTags {
 	LT_DEPENDSON,
 	LT_OBSOLETEDBY,
 	LT_END,
+	LT_ESCAPE_CHARS,
 	LT_FONT,
 	LT_FREE_SPACING,
 	LT_PASS_THRU,
@@ -272,6 +273,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "end",            LT_END },
 		{ "endlabelstring", LT_ENDLABELSTRING },
 		{ "endlabeltype",   LT_ENDLABELTYPE },
+		{ "escapechars",    LT_ESCAPE_CHARS },
 		{ "font",           LT_FONT },
 		{ "forcelocal",     LT_FORCELOCAL },
 		{ "freespacing",    LT_FREE_SPACING },
@@ -665,6 +667,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
 		case LT_PASS_THRU:
 			lex >> pass_thru;
+			break;
+
+		case LT_ESCAPE_CHARS:
+			lex >> escape_chars;
 			break;
 
 		case LT_PASS_THRU_CHARS:
@@ -1291,6 +1297,9 @@ void Layout::readArgument(Lexer & lex, bool validating)
 			arg.font = lyxRead(lex, arg.font);
 		} else if (tok == "labelfont") {
 			arg.labelfont = lyxRead(lex, arg.labelfont);
+		} else if (tok == "escapechars") {
+			lex.next();
+			arg.escape_chars = lex.getDocString();
 		} else if (tok == "passthruchars") {
 			lex.next();
 			arg.pass_thru_chars = lex.getDocString();
@@ -1385,6 +1394,8 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 			os << "\t\tPassThru inherited\n";
 			break;
 	}
+	if (!arg.escape_chars.empty())
+		os << "\t\tEscapeChars \"" << to_utf8(arg.escape_chars) << "\"\n";
 	if (!arg.pass_thru_chars.empty())
 		os << "\t\tPassThruChars \"" << to_utf8(arg.pass_thru_chars) << "\"\n";
 	if (arg.free_spacing)
@@ -1638,6 +1649,8 @@ void Layout::write(ostream & os) const
 		os << "\tLabelCounter \"" << to_utf8(counter) << "\"\n";
 	os << "\tFreeSpacing " << free_spacing << '\n';
 	os << "\tPassThru " << pass_thru << '\n';
+	if (!escape_chars.empty())
+		os << "\tEscapeChars " << to_utf8(escape_chars) << '\n';
 	if (!pass_thru_chars.empty())
 		os << "\tPassThruChars " << to_utf8(pass_thru_chars) << '\n';
 	os << "\tParbreakIsNewline " << parbreak_is_newline << '\n';

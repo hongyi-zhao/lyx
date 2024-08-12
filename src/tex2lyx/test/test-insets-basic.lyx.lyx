@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.5
-\lyxformat 626
+\lyxformat 627
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -957,12 +957,34 @@ URL
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-prefix "www"
-symbol "URL"
-description "uniform resource locator"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status collapsed
+
+
+\begin_layout Standard
+www
+\end_layout
+
+\end_inset
+
+URL
+\begin_inset Argument post:1
+status collapsed
+
+
+\begin_layout Standard
+uniform resource locator
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -981,11 +1003,23 @@ http://www.lyx.org
 \end_inset
 
  
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "URL2"
-description "uniform resource locator"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+URL2
+\begin_inset Argument post:1
+status collapsed
+
+
+\begin_layout Standard
+uniform resource locator
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

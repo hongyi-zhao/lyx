@@ -109,6 +109,7 @@ public:
 		bool insertcotext = false;
 		bool insertonnewline = false;
 		ArgPassThru passthru = PT_INHERITED;
+		docstring escape_chars;
 		docstring pass_thru_chars;
 		bool is_toc_caption = false;
 		bool free_spacing = false;
@@ -385,6 +386,8 @@ public:
 	bool free_spacing;
 	///
 	bool pass_thru;
+	/// Individual chars to be escaped
+	docstring escape_chars;
 	/// Individual chars to be passed verbatim
 	docstring pass_thru_chars;
 	/// Individual characters that must not be

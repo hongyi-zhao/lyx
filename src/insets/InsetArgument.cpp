@@ -45,8 +45,8 @@ InsetArgument::InsetArgument(Buffer * buf, string const & name)
     : InsetCollapsible(buf), name_(name), labelstring_(docstring()),
       font_(inherit_font), labelfont_(inherit_font), decoration_(string()),
       pass_thru_context_(false), pass_thru_local_(false), pass_thru_(false),
-      free_spacing_(false), pass_thru_chars_(docstring()), is_toc_caption_(false),
-      newline_cmd_(string())
+      free_spacing_(false), escape_chars_(docstring()), pass_thru_chars_(docstring()),
+      is_toc_caption_(false), newline_cmd_(string())
 {}
 
 
@@ -120,6 +120,7 @@ void InsetArgument::init(Paragraph const & par)
 		font_ = (*lait).second.font;
 		labelfont_ = (*lait).second.labelfont;
 		decoration_ = (*lait).second.decoration;
+		escape_chars_ = (*lait).second.escape_chars;
 		pass_thru_chars_ = (*lait).second.pass_thru_chars;
 		newline_cmd_ = (*lait).second.newlinecmd;
 		free_spacing_ = (*lait).second.free_spacing;
@@ -342,6 +343,8 @@ void InsetArgument::latexArgument(otexstream & os,
 {
 	otexstringstream ots;
 	OutputParams runparams = runparams_in;
+	if (!escape_chars_.empty())
+		runparams.escape_chars = escape_chars_;
 	if (!pass_thru_chars_.empty())
 		runparams.pass_thru_chars += pass_thru_chars_;
 	if (!newline_cmd_.empty())

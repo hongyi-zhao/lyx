@@ -233,11 +233,8 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_IPA_INSERT:
 			return new InsetIPA(buf);
 
-		case LFUN_NOMENCL_INSERT: {
-			InsetCommandParams icp(NOMENCL_CODE);
-			icp["symbol"] = cmd.argument();
-			return new InsetNomencl(buf, icp);
-		}
+		case LFUN_NOMENCL_INSERT: 
+			return new InsetNomencl(buf);
 
 		case LFUN_TABULAR_INSERT: {
 			if (cmd.argument().empty())
@@ -380,11 +377,8 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				return new InsetListings(buf, par);
 			}
 
-			case NOMENCL_CODE: {
-				InsetCommandParams icp(code);
-				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
-				return new InsetNomencl(buf, icp);
-			}
+			case NOMENCL_CODE: 
+				return new InsetNomencl(buf);
 
 			case REF_CODE: {
 				InsetCommandParams icp(code);
@@ -585,9 +579,6 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			case LINE_CODE:
 				inset.reset(new InsetLine(buf, inscmd));
 				break;
-			case NOMENCL_CODE:
-				inset.reset(new InsetNomencl(buf, inscmd));
-				break;
 			case NOMENCL_PRINT_CODE:
 				inset.reset(new InsetPrintNomencl(buf, inscmd));
 				break;
@@ -689,6 +680,8 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetIPA(buf));
 		} else if (tmptok == "IPADeco") {
 			inset.reset(new InsetIPADeco(buf, tmptok));
+		} else if (tmptok == "Nomenclature") {
+			inset.reset(new InsetNomencl(buf));
 		} else if (tmptok == "Preview") {
 			inset.reset(new InsetPreview(buf));
 		} else {

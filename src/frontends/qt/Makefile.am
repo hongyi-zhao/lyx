@@ -101,7 +101,6 @@ SOURCEFILES = \
 	GuiLog.cpp \
 	GuiLyXFiles.cpp \
 	GuiMathMatrix.cpp \
-	GuiNomenclature.cpp \
 	GuiNote.cpp \
 	GuiPainter.cpp \
 	GuiParagraph.cpp \
@@ -216,7 +215,6 @@ MOCHEADER = \
 	GuiLog.h \
 	GuiLyXFiles.h \
 	GuiMathMatrix.h \
-	GuiNomenclature.h \
 	GuiNote.h \
 	GuiParagraph.h \
 	GuiPhantom.h \
@@ -308,7 +306,6 @@ UIFILES = \
 	MathMatrixUi.ui \
 	MathsUi.ui \
 	ModulesUi.ui \
-	NomenclUi.ui \
 	NoteUi.ui \
 	NumberingUi.ui \
 	OutputUi.ui \

@@ -13041,6 +13041,97 @@ EndLabelType
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1723455721
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455730
+EscapeChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455616
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters that should be escaped in the context of this paragraph.
+ Not that the first character in the string denotes the escape character,
+ so 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455696
+%!@
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ will escape 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455704
+!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455712
+@
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455721
+%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -19671,6 +19762,43 @@ InsetLayout
 \end_inset
 
  declarations.
+\change_inserted -712698321 1723455878
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1723455890
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455884
+EscapeChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455884
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters that should be escaped in the context of this inset.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -22645,6 +22773,96 @@ Classic
 \end_inset
 
 ] describes the rendering style used for the inset's frame and buttons.
+\change_inserted -712698321 1723455759
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1723455909
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455760
+EscapeChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455760
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters that should be escaped in the context of this paragraph.
+ Note that the first character in the string denotes the escape character,
+ so 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455760
+%!@
+\end_layout
+
+\end_inset
+
+ will escape 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455760
+!
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455760
+@
+\end_layout
+
+\end_inset
+
+ with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723455760
+%
+\end_layout
+
+\end_inset
+
+.
+ Note that this needs to be explicitly defined for arguments.
+ That is,
+ arguments do not inherit EscapeChars from their parent inset or layout.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize

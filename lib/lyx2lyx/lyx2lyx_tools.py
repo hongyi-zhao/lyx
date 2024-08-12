@@ -237,7 +237,7 @@ def lyx2latex(document, lines):
 
     content = ""
     ert_end = 0
-    note_end = 0
+    note_end = -1
     hspace = ""
 
     for curline in range(len(lines)):

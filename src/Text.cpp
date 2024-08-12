@@ -3643,8 +3643,10 @@ bool doInsertInset(Cursor & cur, Text * text,
 
 	bool gotsel = false;
 	bool move_layout = false;
+	bool const copy_cotext = cmd.action() == LFUN_INDEX_INSERT
+			|| cmd.action() == LFUN_NOMENCL_INSERT;
 	if (cur.selection()) {
-		if (cmd.action() == LFUN_INDEX_INSERT)
+		if (copy_cotext)
 			copySelectionToTemp(cur);
 		else {
 			cutSelectionToTemp(cur, pastesel);
@@ -3662,7 +3664,7 @@ bool doInsertInset(Cursor & cur, Text * text,
 		}
 		cur.clearSelection();
 		gotsel = true;
-	} else if (cmd.action() == LFUN_INDEX_INSERT) {
+	} else if (copy_cotext) {
 		gotsel = text->selectWordWhenUnderCursor(cur, WHOLE_WORD);
 		copySelectionToTemp(cur);
 		cur.clearSelection();
@@ -3708,11 +3710,42 @@ bool doInsertInset(Cursor & cur, Text * text,
 		 */
 		if (!move_layout)
 			cur.paragraph().setPlainOrDefaultLayout(bparams.documentClass());
-		// FIXME: what does this do?
-		if (cmd.action() == LFUN_FLEX_INSERT)
-			return true;
+		// Insert auto-insert arguments
+		bool autoargs = false, inautoarg = false;
+		Layout::LaTeXArgMap args = cur.inset().getLayout().args();
+		for (auto const & argt : args) {
+			Layout::latexarg arg = argt.second;
+			if (!inautoarg && arg.insertonnewline && cur.pos() > 0) {
+				FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
+				lyx::dispatch(cmd2);
+			}
+			if (arg.autoinsert) {
+				// The cursor might have been invalidated by the replaceSelection.
+				cur.buffer()->changed(true);
+				// If we had already inserted an arg automatically,
+				// leave this now in order to insert the next one.
+				if (inautoarg) {
+					cur.leaveInset(cur.inset());
+					cur.setCurrentFont();
+					cur.posForward();
+					if (arg.insertonnewline && cur.pos() > 0) {
+						FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
+						lyx::dispatch(cmd2);
+					}
+				}
+				if (prefixIs(argt.first, "post:"))
+					cur.pos() = cur.paragraph().size();
+				else
+					cur.pos() = 0;
+				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, argt.first);
+				lyx::dispatch(cmd2);
+				autoargs = true;
+				inautoarg = true;
+			}
+		}
 		Cursor old = cur;
-		cur.leaveInset(*inset);
+		if (!autoargs)
+			cur.leaveInset(*inset);
 		if (cmd.action() == LFUN_PREVIEW_INSERT
 			|| cmd.action() == LFUN_IPA_INSERT)
 			// trigger preview
@@ -5517,67 +5550,25 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BOX_INSERT:
 	case LFUN_BRANCH_INSERT:
 	case LFUN_PHANTOM_INSERT:
+	case LFUN_FLEX_INSERT:
 	case LFUN_ERT_INSERT:
 	case LFUN_INDEXMACRO_INSERT:
 	case LFUN_LISTING_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_ARGUMENT_INSERT:
 	case LFUN_INDEX_INSERT:
+	case LFUN_NOMENCL_INSERT:
 	case LFUN_PREVIEW_INSERT:
 	case LFUN_SCRIPT_INSERT:
 	case LFUN_IPA_INSERT: {
-		// Indexes reset font formatting (#11961)
-		bool const resetfont = cmd.action() == LFUN_INDEX_INSERT;
+		// Indexes and Nomencl reset font formatting (#11961)
+		bool const resetfont = cmd.action() == LFUN_INDEX_INSERT
+				|| cmd.action() == LFUN_NOMENCL_INSERT;
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true, resetfont);
 		cur.posForward();
 		cur.setCurrentFont();
-		// Some insets are numbered, others are shown in the outline pane so
-		// let's update the labels and the toc backend.
-		cur.forceBufferUpdate();
-		break;
-	}
-
-	case LFUN_FLEX_INSERT: {
-		// Open the inset, and move the current selection
-		// inside it.
-		bool const sel = cur.selection();
-		doInsertInset(cur, this, cmd, true, true);
-		// Insert auto-insert arguments
-		bool autoargs = false, inautoarg = false;
-		Layout::LaTeXArgMap args = cur.inset().getLayout().args();
-		for (auto const & argt : args) {
-			Layout::latexarg arg = argt.second;
-			if (!inautoarg && arg.insertonnewline && cur.pos() > 0) {
-				FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
-				lyx::dispatch(cmd2);
-			}
-			if (arg.autoinsert) {
-				// The cursor might have been invalidated by the replaceSelection.
-				cur.buffer()->changed(true);
-				// If we had already inserted an arg automatically,
-				// leave this now in order to insert the next one.
-				if (inautoarg) {
-					cur.leaveInset(cur.inset());
-					cur.setCurrentFont();
-					cur.posForward();
-					if (arg.insertonnewline && cur.pos() > 0) {
-						FuncRequest cmd2(LFUN_PARAGRAPH_BREAK);
-						lyx::dispatch(cmd2);
-					}
-				}
-				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, argt.first);
-				lyx::dispatch(cmd2);
-				autoargs = true;
-				inautoarg = true;
-			}
-		}
-		if (!autoargs) {
-			if (sel)
-				cur.leaveInset(cur.inset());
-			cur.posForward();
-		}
 		// Some insets are numbered, others are shown in the outline pane so
 		// let's update the labels and the toc backend.
 		cur.forceBufferUpdate();
@@ -5707,19 +5698,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// FIXME: When leaving the Float (or Wrap) inset we should
 		// delete any empty paragraph left above or below the
 		// caption.
-		break;
-	}
-
-	case LFUN_NOMENCL_INSERT: {
-		InsetCommandParams p(NOMENCL_CODE);
-		if (cmd.argument().empty()) {
-			p["symbol"] =
-				bv->cursor().innerText()->getStringForDialog(bv->cursor());
-			cur.clearSelection();
-		} else
-			p["symbol"] = cmd.argument();
-		string const data = InsetCommand::params2string(p);
-		bv->showDialog("nomenclature", data);
 		break;
 	}
 

@@ -289,6 +289,7 @@ ColorSet::ColorSet()
 	{ Color_footlabel, N_("footnote label"), "footlabel", "#00aaff", blue, "footlabel" },
 	{ Color_indexlabel, N_("index label"), "indexlabel", Green, teal, "indexlabel" },
 	{ Color_marginlabel, N_("margin note label"), "marginlabel", "#aa55ff", violet, "marginlabel" },
+	{ Color_nomlabel, N_("nomenclature label"), "nomlabel", "#ff6d2f", "#ff6d2f", "nomlabel" },
 	{ Color_urllabel, N_("URL label"), "urllabel", blue, blue, "urllabel" },
 	{ Color_urltext, N_("URL text"), "urltext", blue, "#86a4ff", "urltext" },
 	{ Color_depthbar, N_("depth bar"), "depthbar", IndianRed, IndianRed, "depthbar" },

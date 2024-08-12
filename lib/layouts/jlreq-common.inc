@@ -6,7 +6,7 @@
 # With non-LuaLaTeX:	everyhook
 # With LuaLaTeX:		luatexja, luatexja-adjust
 
-Format 106
+Format 107
 
 Style Part
 	Argument post:1

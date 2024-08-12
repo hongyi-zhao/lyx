@@ -125,6 +125,8 @@ private:
 	///
 	bool free_spacing_;
 	///
+	docstring escape_chars_;
+	///
 	docstring pass_thru_chars_;
 	/// Does this argument provide content for the TOC?
 	bool is_toc_caption_;

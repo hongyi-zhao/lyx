@@ -13,7 +13,7 @@
 #include <config.h>
 
 #include "InsetNomencl.h"
-#include "InsetNote.h"
+#include "InsetArgument.h"
 
 #include "Buffer.h"
 #include "Cursor.h"
@@ -51,62 +51,80 @@ namespace lyx {
 //
 /////////////////////////////////////////////////////////////////////
 
-InsetNomencl::InsetNomencl(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p)
+InsetNomencl::InsetNomencl(Buffer * buf)
+	: InsetCollapsible(buf)
 {}
-
-
-ParamInfo const & InsetNomencl::findInfo(string const & /* cmdName */)
-{
-	static ParamInfo param_info_;
-	if (param_info_.empty()) {
-		param_info_.add("prefix", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("symbol", ParamInfo::LATEX_REQUIRED,
-				ParamInfo::ParamHandling(ParamInfo::HANDLING_LATEXIFY
-							 | ParamInfo::HANDLING_INDEX_ESCAPE));
-		param_info_.add("description", ParamInfo::LATEX_REQUIRED,
-				ParamInfo::ParamHandling(ParamInfo::HANDLING_LATEXIFY
-							 | ParamInfo::HANDLING_INDEX_ESCAPE));
-		param_info_.add("literal", ParamInfo::LYX_INTERNAL);
-	}
-	return param_info_;
-}
-
-
-docstring InsetNomencl::screenLabel() const
-{
-	size_t const maxLabelChars = 25;
-	docstring label = _("Nom: ") + getParam("symbol");
-	support::truncateWithEllipsis(label, maxLabelChars);
-	return label;
-}
 
 
 docstring InsetNomencl::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) const
 {
-	docstring tip = _("Nomenclature Symbol: ") + getParam("symbol") + "\n";
-	tip += _("Description: ") + "\t"
-		+ subst(getParam("description"), from_ascii("\\\\"), from_ascii("\n\t"));
-	if (!getParam("prefix").empty())
-		tip += "\n" + _("Sorting: ") + getParam("prefix");
+	docstring tip = _("Nomenclature Symbol: ") + getSymbol();
+	docstring const desc = getDescription();
+	if (!desc.empty())
+		tip += "\n" + _("Description: ") + "\t" + getDescription();
+	docstring const prefix = getPrefix();
+	if (!prefix.empty())
+		tip += "\n" + _("Sorting: ") + prefix;
 	return tip;
 }
 
 
-int InsetNomencl::plaintext(odocstringstream & os,
-        OutputParams const &, size_t) const
+void InsetNomencl::write(ostream & os) const
 {
-	docstring s = "[" + getParam("symbol") + ": " + getParam("description") + "]";
-	os << s;
-	return s.size();
+	os << to_utf8(layoutName()) << endl;
+	InsetCollapsible::write(os);
+}
+
+
+docstring InsetNomencl::getSymbol() const
+{
+	return text().asString();
+}
+
+
+docstring InsetNomencl::getPrefix() const
+{
+	docstring res;
+	for (auto const & elem : paragraphs()[0].insetList()) {
+		if (InsetArgument const * x = elem.inset->asInsetArgument())
+			if (x->name() == "1")
+				res = x->text().asString(AS_STR_INSETS);
+	}
+	return res;
+}
+
+
+docstring InsetNomencl::getDescription() const
+{
+	docstring res;
+	for (auto const & elem : paragraphs()[0].insetList()) {
+		if (InsetArgument const * x = elem.inset->asInsetArgument())
+			if (x->name() == "post:1")
+				res = x->text().asString(AS_STR_INSETS);
+	}
+	return res;
+}
+
+
+int InsetNomencl::plaintext(odocstringstream & os,
+			    OutputParams const & rp, size_t) const
+{
+	docstring const desc = getDescription();
+	os << "[";
+	InsetText::plaintext(os, rp);
+	if (!desc.empty())
+		os << ": " << desc;
+	os << "]";
+	return os.str().size();
 }
 
 
 void InsetNomencl::docbook(XMLStream & xs, OutputParams const &) const
 {
-	docstring attr = "linkend=\"" + xml::cleanID(from_ascii("nomen") + getParam("symbol")) + "\"";
+	docstring const symbol = getSymbol();
+	docstring attr = "linkend=\"" + xml::cleanID(from_ascii("nomen") + symbol) + "\"";
 	xs << xml::StartTag("glossterm", attr);
-	xs << xml::escapeString(getParam("symbol"));
+	xs << xml::escapeString(symbol);
 	xs << xml::EndTag("glossterm");
 }
 
@@ -120,16 +138,15 @@ docstring InsetNomencl::xhtml(XMLStream &, OutputParams const &) const
 void InsetNomencl::validate(LaTeXFeatures & features) const
 {
 	features.require("nomencl");
-	InsetCommand::validate(features);
+	InsetCollapsible::validate(features);
 }
 
 
 void InsetNomencl::addToToc(DocIterator const & cpit, bool output_active,
-							UpdateType, TocBackend & backend) const
+			    UpdateType, TocBackend & backend) const
 {
-	docstring const str = getParam("symbol");
 	TocBuilder & b = backend.builder("nomencl");
-	b.pushItem(cpit, str, output_active);
+	b.pushItem(cpit, getSymbol(), output_active);
 	b.pop();
 }
 
@@ -312,16 +329,20 @@ void InsetPrintNomencl::docbook(XMLStream & xs, OutputParams const & runparams) 
 		Inset const * inset = par.getInset(dit.top().pos());
 		if (!inset)
 			return;
-		InsetCommand const * ic = inset->asInsetCommand();
-		if (!ic)
+		InsetNomencl const * in = inset->asInsetNomencl();
+		if (!in)
 			return;
 
 		// FIXME We need a link to the paragraph here, so we
 		// need some kind of struct.
-		docstring const symbol = ic->getParam("symbol");
-		docstring const desc = ic->getParam("description");
-		docstring const prefix = ic->getParam("prefix");
-		docstring const sortas = prefix.empty() ? symbol : prefix;
+		docstring const symbol = in->getSymbol();
+		docstring const desc = in->getDescription();
+		docstring const prefix = in->getPrefix();
+		// lowercase sortkey since map is case sensitive
+		docstring sortas = prefix.empty() ? lowercase(symbol) : lowercase(prefix);
+		// assure key uniqueness
+		while (entries.find(sortas) != entries.end())
+			sortas += "a";
 
 		entries[sortas] = NomenclEntry(symbol, desc, &par);
 	}
@@ -371,7 +392,7 @@ void InsetPrintNomencl::docbook(XMLStream & xs, OutputParams const & runparams) 
 
 
 namespace {
-docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
+docstring nomenclWidest(Buffer const & buffer)
 {
 	// nomenclWidest() determines and returns the widest used
 	// nomenclature symbol in the document
@@ -394,9 +415,8 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 			nomencl = static_cast<InsetNomencl const *>(inset);
 			// Use proper formatting. We do not escape makeindex chars here
 			docstring symbol = nomencl ?
-				nomencl->params().prepareCommand(runparams, nomencl->getParam("symbol"),
-							ParamInfo::HANDLING_LATEXIFY)
-				: docstring();
+						nomencl->getSymbol()
+					      : docstring();
 			// strip out % characters which are used as escape in nomencl
 			// but act as comment in our context here
 			symbol = subst(symbol, from_ascii("%"), docstring());
@@ -426,7 +446,7 @@ void InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in
 	OutputParams runparams = runparams_in;
 	bool const autowidth = getParam("set_width") == "auto";
 	if (autowidth || getParam("set_width") == "textwidth") {
-		docstring widest = autowidth ? nomenclWidest(buffer(), runparams)
+		docstring widest = autowidth ? nomenclWidest(buffer())
 					     : getParam("width");
 		// Set the label width via nomencl's command \nomlabelwidth.
 		// This must be output before the command \printnomenclature

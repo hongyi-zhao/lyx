@@ -36569,7 +36569,11 @@ nomencl
 
  installed.
  You find it in the \SpecialChar TeX
- catalogue,
+ catalog
+\change_deleted -712698321 1723454635
+ue
+\change_unchanged
+,
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -36579,7 +36583,13 @@ literal "true"
 \end_inset
 
  or in the package manager of your \SpecialChar LaTeX
--system.
+
+\change_inserted -712698321 1723454632
+ 
+\change_deleted -712698321 1723454632
+-
+\change_unchanged
+system.
 \end_layout
 
 \begin_layout Standard
@@ -36603,7 +36613,13 @@ arg   "nomencl-insert"
 \end_inset
 
 .
- A gray box labeled 
+ A 
+\change_deleted -712698321 1723454657
+gray box
+\change_inserted -712698321 1723454660
+collapsible inset
+\change_unchanged
+ labeled 
 \begin_inset Quotes eld
 \end_inset
 
@@ -36615,7 +36631,17 @@ Nom
 \begin_inset Quotes erd
 \end_inset
 
- is inserted and a window pops up asking for the nomenclature entry.
+ is inserted
+\change_deleted -712698321 1723454685
+ and a window pops up asking for the nomenclature entry
+\change_unchanged
+.
+
+\change_inserted -712698321 1723454710
+ If the cursor is after a word,
+ this is copied into the inset.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -36630,9 +36656,25 @@ Symbol
 Description
 \family default
  of the term or symbol.
+
+\change_inserted -712698321 1723454817
+ The former is inserted into the collapsible inset directly,
+ the latter into the 
+\family sans
+Description
+\family default
+ sub-inset which is automatically inserted or can be inserted via the 
+\family sans
+Insert
+\family default
+ menu.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1723454741
 \begin_inset Note Greyedout
 status open
 
@@ -36652,6 +36694,8 @@ Literal
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -36682,6 +36726,11 @@ Layout
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1723454941
+Within the nomenclature inset,
+ you can use math and formatting as usual.
+\change_deleted -712698321 1723454925
 If you have symbols in formulas,
  you have to define them in the 
 \family sans
@@ -36749,6 +36798,8 @@ Sigma
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1723454925
 (A short introduction to the \SpecialChar LaTeX
  syntax is given in section
 \begin_inset space ~
@@ -36766,6 +36817,8 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1723454925
 You cannot use the 
 \family sans
 Text
@@ -36851,6 +36904,8 @@ emphasized
 emph
 \series default
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -36899,6 +36954,8 @@ serif
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1723454959
 If the characters |
 \begin_inset space \space{}
 \end_inset
@@ -36931,6 +36988,8 @@ literal "true"
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -36961,8 +37020,20 @@ Sort order
 
 \begin_layout Standard
 The nomenclature entries are sorted alphabetically by the \SpecialChar LaTeX
--code of the symbol definition.
- This leads to undesired results when you,
+
+\change_deleted -712698321 1723454966
+-
+\change_inserted -712698321 1723454966
+ 
+\change_unchanged
+code of the symbol definition.
+ This leads to undesired results 
+\change_deleted -712698321 1723454971
+when
+\change_inserted -712698321 1723454971
+if
+\change_unchanged
+ you,
  for example,
  have symbols in formulas.
  Suppose you have nomenclature entries for the symbols 
@@ -37040,7 +37111,9 @@ $
 
 \begin_layout Standard
 To control the sort order,
- you can edit the 
+ you can 
+\change_deleted -712698321 1723454992
+edit the 
 \family sans
 Sort
 \begin_inset space ~
@@ -37048,7 +37121,19 @@ Sort
 
 as
 \family default
- field of the nomenclature dialog.
+ field of the nomenclature dialog
+\change_inserted -712698321 1723455033
+use the 
+\family sans
+Sort as
+\family default
+ subinset which is to be found in the 
+\family sans
+Insert
+\family default
+ menu
+\change_unchanged
+.
  Then the nomenclature entry will be sorted by this entry and not the symbol definition.
  For the example given,
  you can insert 
@@ -37270,6 +37355,26 @@ nomnorefpage,
 
 \backslash
 nomnorefeqpage Turns off the corresponding options
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1723460016
+Note that you need to add 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723460010
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+ in front of the command if the nomenclature is in a section heading or caption.
 \end_layout
 
 \begin_layout Standard

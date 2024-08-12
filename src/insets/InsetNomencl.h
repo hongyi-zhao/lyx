@@ -13,7 +13,7 @@
 #ifndef INSET_NOMENCL_H
 #define INSET_NOMENCL_H
 
-
+#include "InsetCollapsible.h"
 #include "InsetCommand.h"
 
 
@@ -23,10 +23,10 @@ class LaTeXFeatures;
 
 /** Used to insert nomenclature entries
   */
-class InsetNomencl : public InsetCommand {
+class InsetNomencl : public InsetCollapsible {
 public:
 	///
-	InsetNomencl(Buffer * buf, InsetCommandParams const &);
+	InsetNomencl(Buffer * buf);
 
 	/// \name Public functions inherited from Inset class
 	//@{
@@ -38,7 +38,7 @@ public:
 	void validate(LaTeXFeatures & features) const override;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype, TocBackend & backend) const override;
+		      UpdateType utype, TocBackend & backend) const override;
 	///
 	InsetCode lyxCode() const override { return NOMENCL_CODE; }
 	///
@@ -48,18 +48,15 @@ public:
 	void docbook(XMLStream &, OutputParams const &) const override;
 	/// Does nothing at the moment.
 	docstring xhtml(XMLStream &, OutputParams const &) const override;
+	///
+	InsetNomencl const * asInsetNomencl() const override { return this; }
 	//@}
-
-	/// \name Static public methods obligated for InsetCommand derived classes
-	//@{
 	///
-	static ParamInfo const & findInfo(std::string const &);
+	docstring getSymbol() const;
 	///
-	static std::string defaultCommand() { return "nomenclature"; }
+	docstring getDescription() const;
 	///
-	static bool isCompatibleCommand(std::string const & s)
-		{ return s == "nomenclature"; }
-	//@}
+	docstring getPrefix() const;
 
 private:
 	/// \name Private functions inherited from Inset class
@@ -68,10 +65,12 @@ private:
 	Inset * clone() const override { return new InsetNomencl(*this); }
 	//@}
 
-	/// \name Private functions inherited from InsetCommand class
+	/// \name Private functions inherited from InsetCollapsible class
 	//@{
 	///
-	docstring screenLabel() const override;
+	docstring layoutName() const override { return from_ascii("Nomenclature"); }
+	///
+	void write(std::ostream & os) const override;
 	//@}
 };
 

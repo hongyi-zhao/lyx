@@ -393,7 +393,7 @@ Menuset
 		Captions
 		Indices
 		OptSubmenu "Index Properties" "index_properties"
-		Item "Nomenclature Entry...|y" "nomencl-insert"
+		Item "Nomenclature Entry|y" "nomencl-insert"
 		Separator
 		Item "Table...|T" "tabular-insert"
 		Item "Graphics...|G" "dialog-show-new-inset graphics"

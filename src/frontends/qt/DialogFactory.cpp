@@ -41,7 +41,6 @@
 #include "GuiLog.h"
 #include "GuiLyXFiles.h"
 #include "GuiMathMatrix.h"
-#include "GuiNomenclature.h"
 #include "GuiNote.h"
 #include "GuiParagraph.h"
 #include "GuiPhantom.h"
@@ -110,9 +109,6 @@ Dialog * createDialog(GuiView & gv, string const & name)
 		break;
 	case MATH_SPACE_CODE:
 		widget = new GuiHSpace(true);
-		break;
-	case NOMENCL_CODE:
-		widget = new GuiNomenclature;
 		break;
 	case NOMENCL_PRINT_CODE:
 		widget = new GuiPrintNomencl;

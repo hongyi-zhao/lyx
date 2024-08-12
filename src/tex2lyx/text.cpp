@@ -5005,36 +5005,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		if (t.cs() == "nomenclature") {
 			context.check_layout(os);
-			begin_command_inset(os, "nomenclature", "nomenclature");
-			string prefix = convert_literate_command_inset_arg(p.getArg('[', ']'));
-			if (!prefix.empty())
-				os << "prefix " << '"' << prefix << '"' << "\n";
-			// nomencl activates %
-			CatCode savecc = p.catcode('%');
-			p.setCatcode('%', catActive);
-			string symbol = p.verbatim_item();
-			p.setCatcode('%', savecc);
-			// escape quotation marks
-			symbol = subst(symbol, "\"", "\\\"");
-			pair<bool, string> sym = convert_latexed_command_inset_arg(symbol);
-			bool literal = !sym.first;
-			string description = p.verbatim_item();
-			// escape quotation marks
-			description = subst(description, "\"", "\\\"");
-			pair<bool, string> desc = convert_latexed_command_inset_arg(description);
-			literal |= !desc.first;
-			if (literal) {
-				symbol = subst(symbol, "\n", " ");
-				description = subst(description, "\n", " ");
-			} else {
-				symbol = sym.second;
-				description = desc.second;
-			}
-			string lit = literal ? "\"true\"" : "\"false\"";
-			os << "symbol " << '"' << symbol;
-			os << "\"\ndescription \""
-			   << description << "\"\n"
-			   << "literal " << lit << "\n";
+			begin_inset(os, "Nomenclature\n");
+			os << "status open\n";
+			set<string> pass_thru_cmds = context.pass_thru_cmds;
+			// These commands have special meanings in Nomenclature
+			context.pass_thru_cmds.insert("%");
+			parse_text_in_inset(p, os, FLAG_ITEM, outer, context, "Nomenclature");
+			context.pass_thru_cmds = pass_thru_cmds;
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("nomencl");
 			continue;

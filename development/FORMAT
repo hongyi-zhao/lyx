@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2024-08-12 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 627: Transform nomenclature inset to
+	  collapsible.
+
 2024-07-21 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 626: Support for manuel longest label in
 	  \printnomencl (via new param option set_width "textwidth").

@@ -22,7 +22,6 @@
 #include "GuiInfo.h"
 #include "GuiLabel.h"
 #include "GuiLine.h"
-#include "GuiNomenclature.h"
 #include "GuiPrintNomencl.h"
 #include "GuiTabular.h"
 #include "GuiVSpace.h"

@@ -77,7 +77,7 @@ void GuiPrintNomencl::paramsToDialog(InsetCommandParams const & params)
 
 void GuiPrintNomencl::paramsToDialog(Inset const * inset)
 {
-	InsetNomencl const * nomencl = static_cast<InsetNomencl const *>(inset);
+	InsetPrintNomencl const * nomencl = static_cast<InsetPrintNomencl const *>(inset);
 	paramsToDialog(nomencl->params());
 }
 
@@ -94,7 +94,7 @@ docstring GuiPrintNomencl::dialogToParams() const
 	else if (set_width == from_ascii("textwidth"))
 		width = qstring_to_ucs4(valueLE->text());
 	params["width"] = width;
-	return from_ascii(InsetNomencl::params2string(params));
+	return from_ascii(InsetPrintNomencl::params2string(params));
 }
 
 

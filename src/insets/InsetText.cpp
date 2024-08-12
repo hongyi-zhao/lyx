@@ -548,6 +548,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 		rp.moving_arg = true;
 	if (il.isNeedMBoxProtect())
 		++rp.inulemcmd;
+	if (!il.escapeChars().empty())
+		rp.escape_chars = il.escapeChars();
 	if (!il.passThruChars().empty())
 		rp.pass_thru_chars += il.passThruChars();
 	if (!il.noPassThruChars().empty())

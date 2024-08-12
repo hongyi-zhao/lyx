@@ -379,6 +379,9 @@ public:
 	/// Should we output verbatim or escape LaTeX's special chars?
 	bool pass_thru = false;
 
+	/// Should we escape specific chars?
+	docstring escape_chars;
+
 	/// Should we output verbatim specific chars?
 	docstring pass_thru_chars;
 

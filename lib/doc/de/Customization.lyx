@@ -11505,6 +11505,78 @@ EndLabelType
 status collapsed
 
 \begin_layout Plain Layout
+EscapeChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Definiert Zeichen,
+ die im Kontext dieses Absatzes maskiert werden müssen.
+ Beachten Sie,
+ dass das erste Zeichen in der Kette das Maskierungszeichen selbst ist.
+ Das heißt,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%!@
+\end_layout
+
+\end_inset
+
+ maskiert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+ mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Font
 \end_layout
 
@@ -18462,6 +18534,91 @@ InsetLayout
 status collapsed
 
 \begin_layout Plain Layout
+EscapeChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Definiert Zeichen,
+ die im Kontext dieses Absatzes maskiert werden müssen.
+ Beachten Sie,
+ dass das erste Zeichen in der Kette das Maskierungszeichen selbst ist.
+ Das heißt,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%!@
+\end_layout
+
+\end_inset
+
+ maskiert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+ mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+
+.
+ Beachten Sie,
+ dass ein Wert für Argumente explizit spezifiziert werden muss.
+ Argumente übernehmen also nicht die 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EscapeChars
+\end_layout
+
+\end_inset
+
+ des zugehörigen Absatzstils oder der zugehörigen Einfügung.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Font
 \end_layout
 
@@ -20360,6 +20517,61 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
+PassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Buchstabenkette
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+bestimmt einzelne Zeichen,
+ für die der Inhalt dieses Arguments in unbearbeiteter Form,
+ ohne spezifische Bearbeitung,
+ die \SpecialChar LaTeX
+ verlangen würde,
+ ausgegeben wird.
+ Beachten Sie,
+ dass anders als bei 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThru
+\end_layout
+
+\end_inset
+
+ ein Wert für Argumente explizit spezifiziert werden muss.
+ Argumente übernehmen also nicht die 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThruChars
+\end_layout
+
+\end_inset
+
+ des zugehörigen Absatzstils oder der zugehörigen Einfügung.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Preamble
 \end_layout
 
@@ -21549,6 +21761,91 @@ status collapsed
 
  gesetzt wird,
  wird dieses Argument mit einer Kopie des umgebenden Texts (entweder der ausgewählte Text oder der ganze Absatz) als Inhalt eingefügt.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EscapeChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Definiert Zeichen,
+ die im Kontext dieses Absatzes maskiert werden müssen.
+ Beachten Sie,
+ dass das erste Zeichen in der Kette das Maskierungszeichen selbst ist.
+ Das heißt,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%!@
+\end_layout
+
+\end_inset
+
+ maskiert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+ mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+
+.
+ Beachten Sie,
+ dass ein Wert für Argumente explizit spezifiziert werden muss.
+ Argumente übernehmen also nicht die 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EscapeChars
+\end_layout
+
+\end_inset
+
+ des zugehörigen Absatzstils oder der zugehörigen Einfügung.
 \end_layout
 
 \begin_layout Itemize

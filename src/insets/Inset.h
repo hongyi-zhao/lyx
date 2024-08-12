@@ -52,6 +52,7 @@ class InsetIterator;
 class InsetLayout;
 class InsetList;
 class InsetMath;
+class InsetNomencl;
 class InsetTabular;
 class InsetText;
 class Language;
@@ -154,6 +155,8 @@ public:
 	virtual InsetArgument const * asInsetArgument() const { return nullptr; }
 	/// is this inset based on the InsetIndex class?
 	virtual InsetIndex const * asInsetIndex() const { return nullptr; }
+	/// is this inset based on the InsetNomencl class?
+	virtual InsetNomencl const * asInsetNomencl() const { return nullptr; }
 	/// is this inset based on the InsetGraphics class?
 	virtual InsetGraphics * asInsetGraphics() { return nullptr; }
 	/// is this inset based on the InsetGraphics class?

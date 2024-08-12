@@ -21,18 +21,19 @@ import re
 
 # Uncomment only what you need to import, please (lyx2lyx_tools):
 #    convert_info_insets, get_ert, hex2ratio, insert_to_preamble,
-#    length_in_bp, lyx2latex, lyx2verbatim,
+#    length_in_bp, lyx2verbatim,
 #    revert_flex_inset, revert_flex_inset, revert_font_attrs,
 #    revert_language, str2bool
 from lyx2lyx_tools import (
     add_to_preamble,
     latex_length,
+    lyx2latex,
     put_cmd_in_ert
 )
 
 # Uncomment only what you need to import, please (parser_tools):
 #    check_token, count_pars_in_inset, del_complete_lines, 
-#    del_value, find_complete_lines, find_end_of, find_end_of_layout,
+#    del_value, find_complete_lines, find_end_of, 
 #    find_re, find_substring, find_token_backwards, find_token_exact,
 #    find_tokens, get_bool_value, get_containing_inset,
 #    get_containing_layout, get_option_value,
@@ -40,6 +41,7 @@ from lyx2lyx_tools import (
 from parser_tools import (
     del_token,
     find_end_of_inset,
+    find_end_of_layout,
     find_re,
     find_token,
     get_quoted_value,
@@ -479,6 +481,145 @@ def revert_nomencl_textwidth(document):
         i = j
 
 
+def convert_nomencl(document):
+    """Convert nomencl inset to collapsible."""
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset nomenclature", i)
+        if i == -1:
+            return
+
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning(
+                "Malformed LyX document: Can't find end of command inset at line %d" % i
+            )
+            i += 1
+            continue
+
+        literal = get_quoted_value(document.body, "literal", i, j)
+        prefix = get_quoted_value(document.body, "prefix", i, j)
+        symbol = get_quoted_value(document.body, "symbol", i, j)
+        description = get_quoted_value(document.body, "description", i, j)
+
+        newins = ["\\begin_inset Nomenclature", "status open", "", "\\begin_layout Plain Layout"]
+        if prefix:
+            newins += ["\\begin_inset Argument 1",
+                       "status open",
+                       "",
+                       "\\begin_layout Plain Layout",
+                       prefix,
+                       "\\end_layout",
+                       "",
+                       "\\end_inset",
+                       ""]
+        if literal == "true":
+            newins += put_cmd_in_ert(symbol.replace("\\\\", "\\").replace("\\\"", "\""))
+        else:
+            newins += [symbol.replace("\\\"", "\"")]
+        if description:
+            newins += ["\\begin_inset Argument post:1",
+                       "status open",
+                       "",
+                       "\\begin_layout Plain Layout"]
+            if literal == "true":
+                newins += put_cmd_in_ert(description.replace("\\\\", "\\").replace("\\\"", "\""))
+            else:
+                newins += [description.replace("\\\"", "\"")]
+            newins += ["\\end_layout",
+                       "",
+                       "\\end_inset",
+                       ""]
+        newins += ["\\end_layout",
+                   "",
+                   "\\end_inset"]
+        document.body[i : j + 1] = newins
+
+
+def revert_nomencl(document):
+    """Revert nomencl inset to InsetCommand."""
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Nomenclature", i)
+        if i == -1:
+            return
+
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning(
+                "Malformed LyX document: Can't find end of command inset at line %d" % i
+            )
+            i += 1
+            continue
+
+        arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+        prefix = []
+        if arg != -1:
+            endarg = find_end_of_inset(document.body, arg)
+            argbeginPlain = find_token(
+                document.body, "\\begin_layout Plain Layout", arg, endarg
+            )
+            if argbeginPlain == -1:
+                document.warning("Malformed LyX document: Can't find optarg plain Layout")
+                continue
+            argendPlain = find_end_of_inset(document.body, argbeginPlain)
+            prefix = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+            # remove Arg insets and paragraph, if it only contains this inset
+            if (
+                document.body[arg - 1] == "\\begin_layout Plain Layout"
+                and find_end_of_layout(document.body, arg - 1) == endarg + 3
+            ):
+                del document.body[arg - 1 : endarg + 4]
+            else:
+                del document.body[arg : endarg + 1]
+
+        arg = find_token(document.body, "\\begin_inset Argument post:1", i, j)
+        description = []
+        if arg != -1:
+            endarg = find_end_of_inset(document.body, arg)
+            argbeginPlain = find_token(
+                document.body, "\\begin_layout Plain Layout", arg, endarg
+            )
+            if argbeginPlain == -1:
+                document.warning("Malformed LyX document: Can't find arg 1 plain Layout")
+                continue
+            argendPlain = find_end_of_inset(document.body, argbeginPlain)
+            description = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+            # remove Arg insets and paragraph, if it only contains this inset
+            if (
+                document.body[arg - 1] == "\\begin_layout Plain Layout"
+                and find_end_of_layout(document.body, arg - 1) == endarg + 3
+            ):
+                del document.body[arg - 1 : endarg + 4]
+            else:
+                del document.body[arg : endarg + 1]
+
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+        endPlain = find_end_of_layout(document.body, beginPlain)
+        symbol = document.body[beginPlain + 1 : endPlain]
+        literal = "false"
+        if "\\begin_inset ERT" in symbol or "\\begin_inset ERT" in description:
+            literal = "true"
+
+        newins = ["\\begin_inset CommandInset nomenclature", "LatexCommand nomenclature"]
+        if prefix:
+            newins += ["prefix \"" + lyx2latex(document, prefix) + "\""]
+        if symbol:
+            newins += ["symbol \"" + lyx2latex(document, symbol) + "\""]
+        if description:
+            newins += ["description \"" + lyx2latex(document, description) + "\""]
+        newins += ["literal \"" + literal + "\""]
+
+        j = find_end_of_inset(document.body, i)
+        document.body[i : j] = newins
+
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -490,11 +631,13 @@ convert = [
     [623, [convert_he_letter]],
     [624, [convert_biblatex_chicago]],
     [625, []],
-    [626, []]
+    [626, []],
+    [627, [convert_nomencl]]
 ]
 
 
 revert = [
+    [626, [revert_nomencl]],
     [625, [revert_nomencl_textwidth]],
     [624, [revert_nptextcite]],
     [623, [revert_biblatex_chicago]],

@@ -123,6 +123,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_DOCBOOKINNERATTR,
 		IL_DOCBOOKNOFONTINSIDE,
 		IL_DOCBOOKRENDERASIMAGE,
+		IL_ESCAPE_CHARS,
 		IL_INHERITFONT,
 		IL_INTOC,
 		IL_ISTOCCAPTION,
@@ -197,6 +198,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "docbookwrappertagtype", IL_DOCBOOKWRAPPERTAGTYPE },
 		{ "editexternal", IL_EDITEXTERNAL },
 		{ "end", IL_END },
+		{ "escapechars", IL_ESCAPE_CHARS },
 		{ "fixedwidthpreambleencoding", IL_FIXEDWIDTH_PREAMBLE_ENCODING },
 		{ "font", IL_FONT },
 		{ "forcelocalfontswitch", IL_FORCE_LOCAL_FONT_SWITCH },
@@ -383,6 +385,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		case IL_FORCEPLAIN:
 			lex >> forceplain_;
 			readCustomOrPlain = true;
+			break;
+		case IL_ESCAPE_CHARS:
+			lex >> escape_chars_;
 			break;
 		case IL_PASSTHRU:
 			lex >> passthru_;
@@ -922,6 +927,9 @@ void InsetLayout::readArgument(Lexer & lex)
 			arg.font = lyxRead(lex, arg.font);
 		} else if (tok == "labelfont") {
 			arg.labelfont = lyxRead(lex, arg.labelfont);
+		} else if (tok == "escapechars") {
+			lex.next();
+			arg.escape_chars = lex.getDocString();
 		} else if (tok == "passthruchars") {
 			lex.next();
 			arg.pass_thru_chars = lex.getDocString();

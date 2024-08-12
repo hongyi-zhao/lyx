@@ -35929,8 +35929,7 @@ nomencl
 
  installiert sein.
  Sie finden es im \SpecialChar TeX
--Katalog,
- 
+-Katalog 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeX-Katalog"
@@ -35956,11 +35955,13 @@ arg   "nomencl-insert"
 \end_inset
 
  wählen.
- Ein graues Kästchen mit der Aufschrift 
+ Eine aufklappbare Einfügung mit der Aufschrift 
 \family sans
 Nom
 \family default
- wird eingefügt und ein Dialogfenster geöffnet.
+ wird eingefügt.
+ Falls der Cursor direkt hinter einem Wort steht,
+ wird dieses hineinkopiert.
  Ein Nomenklatur-Eintrag besteht aus zwei Hauptteilen:
  das 
 \family sans
@@ -35971,30 +35972,12 @@ Symbol
 Beschreibung
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Achtung:
-
-\series default
- Um \SpecialChar TeX
--Code für Nomenklatureinträge verwenden zu können,
- muss die Option 
+ Ersteres wird direkt in die Einfügung geschrieben,
+ letzteres in die Untereinfügung 
 \family sans
-Unformatiert
+Beschreibung
 \family default
- im Nomenklatur-Dialog aktiviert sein.
-\end_layout
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -36024,139 +36007,7 @@ Layout
 \end_layout
 
 \begin_layout Standard
-Wenn Sie Symbole in Formeln haben,
- müssen diese im 
-\family sans
-Symbol
-\family default
- Feld als \SpecialChar LaTeX
--Formel eingegeben werden.
- Um z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- „
-\begin_inset Formula $\sigma$
-\end_inset
-
-“ zu bekommen,
- fügt man dies ein:
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-$
-\backslash
-sigma$
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-Das Zeichen '$' beginnt/beendet die Formel.
- Der \SpecialChar LaTeX
--Befehl für den griechischen Buchstaben ist dessen Name beginnend mit einem umgekehrten Schrägstrich '
-\backslash
-'.
- Für große griechische Buchstaben beginnt der Befehl mit einem Großbuchstaben:
- 
-\series bold
-
-\backslash
-Sigma
-\series default
-.
-\end_layout
-
-\begin_layout Standard
-(Eine kurze Einführung in die \SpecialChar LaTeX
--Syntax ist in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:LaTeX-Syntax"
-nolink "false"
-
-\end_inset
-
- zu finden.)
-\end_layout
-
-\begin_layout Standard
-Man kann den 
-\family sans
-Textstil
-\family default
- Dialog nicht verwenden,
- um den Beschreibungstext zu formatieren,
- sondern man muss \SpecialChar LaTeX
--Befehle verwenden.
- Zum Beispiel lautet die Beschreibung für den Nomenklatureintrag für „
-\begin_inset Formula $\sigma$
-\end_inset
-
-“ in diesem Dokument:
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Sinnsloseintrag für das Zeichen 
-\backslash
-textsf{sigma}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-Der Befehl 
-\series bold
-
-\backslash
-textsf
-\series default
- setzt die Schrift auf 
-\family sans
-serifenlos
-\family default
-.
- Für 
-\series bold
-fett
-\series default
- verwenden Sie den Befehl 
-\series bold
-
-\backslash
-textbf
-\series default
-,
- für 
-\family typewriter
-Schreibmaschine
-\family default
- 
-\series bold
-
-\backslash
-texttt
-\series default
-,
- für 
-\emph on
-hervorgehoben 
-\series bold
-\emph default
-
-\backslash
-emph
-\series default
-.
+Innerhalb der Nomenklatur-Einfügung können Sie wie üblich Text formatieren und den Mathe-Modus verwenden.
 \end_layout
 
 \begin_layout Standard
@@ -36196,48 +36047,6 @@ fett
 serifenlos
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-Sollen die Zeichen |
-\begin_inset space \space{}
-\end_inset
-
-,
-\begin_inset space \space{}
-\end_inset
-
-!
-\begin_inset space \space{}
-\end_inset
-
-,
- @ und
-\begin_inset space \space{}
-\end_inset
-
-"
-\begin_inset space \space{}
-\end_inset
-
-in Nomenklatureinträgen mit \SpecialChar TeX
--Code erscheinen,
- müssen sie geschützt werden.
- indem man ein Prozentzeichen davor setzt.
- Um zu verhindern,
- dass das Anführungszeichen nachfolgende Zeichen beeinflusst,
- wird es mit einem leeren \SpecialChar TeX
--Klammerpaar abgeschlossen:
- %"{}
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "%@, %|, %!, %\"{}"
-description "Sonderzeichen im Nomenklatur-Kontext, denen für literale Ausgabe ,\\%` vorangestellt werden muss "
-literal "true"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -36326,24 +36135,16 @@ a
 
 \begin_layout Standard
 Um das zu ändern,
- können Sie etwas ins Feld 
+ verwenden Sie die Untereinfügung 
 \family sans
-Einsortieren
-\begin_inset space \space{}
-\end_inset
-
-als
+Sortieren als
 \family default
- schreiben,
- zum Beispiel 
-\family typewriter
-sigma
+,
+ die Sie im Menü 
+\family sans
+Einfügen
 \family default
- bei 
-\begin_inset Formula $\sigma$
-\end_inset
-
- .
+ finden.
  Dann stimmt die Sortierreihenfolge wieder.
 \end_layout
 
@@ -36517,6 +36318,24 @@ nomnorefpage,
 
 \backslash
 nomnorefeqpage schaltet die entsprechende Option ab
+\end_layout
+
+\begin_layout Standard
+Beachten Sie,
+ dass Sie dem Befehl 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+ voranstellen müssen,
+ wenn sich der Nomenklatureintrag in einer Überschrift oder Legende befindet.
 \end_layout
 
 \begin_layout Standard

@@ -125,6 +125,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		IL_DOCBOOKRENDERASIMAGE,
 		IL_ESCAPE_CHARS,
 		IL_INHERITFONT,
+		IL_INSERTCOTEXT,
 		IL_INTOC,
 		IL_ISTOCCAPTION,
 		IL_LABELFONT,
@@ -217,6 +218,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 		{ "htmlstyle", IL_HTMLSTYLE },
 		{ "htmltag", IL_HTMLTAG },
 		{ "inheritfont", IL_INHERITFONT },
+		{ "insertcotext", IL_INSERTCOTEXT },
 		{ "intoc", IL_INTOC },
 		{ "istoccaption", IL_ISTOCCAPTION },
 		{ "keepempty", IL_KEEPEMPTY },
@@ -361,6 +363,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass,
 			break;
 		case IL_INHERITFONT:
 			lex >> inheritfont_;
+			break;
+		case IL_INSERTCOTEXT:
+			lex >> insert_cotext_;
 			break;
 		case IL_INTOC:
 			lex >> intoc_;

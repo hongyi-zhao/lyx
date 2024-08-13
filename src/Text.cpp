@@ -3643,8 +3643,7 @@ bool doInsertInset(Cursor & cur, Text * text,
 
 	bool gotsel = false;
 	bool move_layout = false;
-	bool const copy_cotext = cmd.action() == LFUN_INDEX_INSERT
-			|| cmd.action() == LFUN_NOMENCL_INSERT;
+	bool const copy_cotext = inset->getLayout().insertCotext();
 	if (cur.selection()) {
 		if (copy_cotext)
 			copySelectionToTemp(cur);

@@ -421,6 +421,7 @@ InsetLayout Index
 	ForcePlain            true
 	ContentAsLabel        true
 	EscapeChars           \"@|!
+	InsertCotext          1
 End
 
 InsetLayout IndexMacro:see
@@ -482,6 +483,7 @@ InsetLayout Nomenclature
 		EscapeChars   %!@|
 	EndArgument
 	EscapeChars           %!@|
+	InsertCotext          1
 End
 
 InsetLayout Box

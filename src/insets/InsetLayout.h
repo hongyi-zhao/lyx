@@ -271,6 +271,8 @@ public:
 	int allowedOccurrences() const { return allowed_occurrences_; }
 	///
 	bool allowedOccurrencesPerItem() const { return allowed_occurrences_per_item_; }
+	///
+	bool insertCotext() const { return insert_cotext_; }
 private:
 	///
 	void makeDefaultCSS() const;
@@ -468,6 +470,8 @@ private:
 	int allowed_occurrences_ = -1;
 	///
 	bool allowed_occurrences_per_item_ = false;
+	///
+	bool insert_cotext_ = false;
 };
 
 ///

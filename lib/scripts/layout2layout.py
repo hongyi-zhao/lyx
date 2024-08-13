@@ -356,7 +356,8 @@ currentFormat = 107
 # New CiteEngine type "notes"
 
 # Incremented to format 107, 12 August 2023 by spitz
-# New InsetLayout and Layout tags "EscapeChars"
+# New InsetLayout, Argument and Layout tags "EscapeChars"
+# New InsetLayout tag "InsertCotext"
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

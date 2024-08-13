@@ -19027,6 +19027,56 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
+InsertCotext
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Wenn dies auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt wird,
+ wird eine Kopie des umgebenden Texts (entweder der ausgewählte Text oder das Wort vor dem Cursor) bei der Erstellung als Inhalt eingefügt.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InToc
 \end_layout
 

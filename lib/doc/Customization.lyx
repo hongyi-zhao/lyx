@@ -13050,6 +13050,8 @@ status collapsed
 
 \change_inserted -712698321 1723455730
 EscapeChars
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -13062,6 +13064,8 @@ status collapsed
 
 \change_inserted -712698321 1723455616
 string
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -19776,6 +19780,8 @@ status collapsed
 
 \change_inserted -712698321 1723455884
 EscapeChars
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -19788,6 +19794,8 @@ status collapsed
 
 \change_inserted -712698321 1723455884
 string
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20250,6 +20258,82 @@ status collapsed
  export if this parameter is 1,
  as well as on screen.
  Otherwise the document default font is used.
+\change_inserted -712698321 1723525171
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1723526674
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723525171
+InsertCotext
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723525183
+[
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723525183
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723525183
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+
+ If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723525171
+1
+\end_layout
+
+\end_inset
+
+,
+ a copy of the co-text (either selected text or the word preceding the cursor) is inserted as content on inset creation.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -22787,6 +22871,8 @@ status collapsed
 
 \change_inserted -712698321 1723455760
 EscapeChars
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22799,6 +22885,8 @@ status collapsed
 
 \change_inserted -712698321 1723455760
 string
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22817,6 +22905,8 @@ status collapsed
 
 \change_inserted -712698321 1723455760
 %!@
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22829,6 +22919,8 @@ status collapsed
 
 \change_inserted -712698321 1723455760
 !
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22841,6 +22933,8 @@ status collapsed
 
 \change_inserted -712698321 1723455760
 @
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22853,6 +22947,8 @@ status collapsed
 
 \change_inserted -712698321 1723455760
 %
+\change_unchanged
+
 \end_layout
 
 \end_inset

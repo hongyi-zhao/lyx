@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-07 10:09+0200\n"
-"PO-Revision-Date: 2024-08-07 08:15+0000\n"
+"POT-Creation-Date: 2024-08-13 08:10+0200\n"
+"PO-Revision-Date: 2024-08-13 06:52+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3278,26 +3278,6 @@ msgstr "&Vybrané:"
 #: src/frontends/qt/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:167
 msgid "Nomenclature"
 msgstr "Nomenklatúra"
-
-#: src/frontends/qt/ui/NomenclUi.ui:22
-msgid "Sy&mbol:"
-msgstr "&Symbol:"
-
-#: src/frontends/qt/ui/NomenclUi.ui:39
-msgid "Des&cription:"
-msgstr "O&pis:"
-
-#: src/frontends/qt/ui/NomenclUi.ui:56
-msgid "Sort &as:"
-msgstr "&Triediť ako:"
-
-#: src/frontends/qt/ui/NomenclUi.ui:69
-msgid ""
-"Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
-"Check this if you want to enter LaTeX code."
-msgstr ""
-"Podaj obsah poľa `Symbol' a `Opis' priamo pre LaTeX. Označte toto keď "
-"vkladáte LaTeX kód."
 
 #: src/frontends/qt/ui/NoteUi.ui:23 src/frontends/qt/ui/PhantomUi.ui:23
 msgid "Type"
@@ -17674,6 +17654,18 @@ msgstr "Programové výpisy"
 msgid "Idx"
 msgstr "Heslo"
 
+#: lib/layouts/stdinsets.inc:458
+msgid "Nom"
+msgstr "Nom"
+
+#: lib/layouts/stdinsets.inc:476
+msgid "Sort this entry as specified in the inset"
+msgstr "Zoraďte tento záznam tak, ako je uvedené vo vložke"
+
+#: lib/layouts/stdinsets.inc:480
+msgid "Description of the entry"
+msgstr "Popis záznamu"
+
 #: lib/layouts/stdinsets.inc:440 src/insets/InsetIndexMacro.cpp:63
 msgid "See"
 msgstr "Viď"
@@ -21855,8 +21847,8 @@ msgid "Index Properties"
 msgstr "Vlastnosti registru"
 
 #: lib/ui/stdmenus.inc:396
-msgid "Nomenclature Entry...|y"
-msgstr "Záznam nomenklatúry…|ú"
+msgid "Nomenclature Entry|y"
+msgstr "Záznam nomenklatúry|ú"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Table...|T"
@@ -27593,10 +27585,6 @@ msgstr "Noteedit"
 msgid "OpenDocument (tex4ht)"
 msgstr "OpenDocument (tex4ht)"
 
-#: lib/configure.py:860
-msgid "OpenDocument (eLyXer)"
-msgstr "OpenDocument (eLyXer)"
-
 #: lib/configure.py:861
 msgid "OpenDocument (Pandoc)"
 msgstr "OpenDocument (Pandoc)"
@@ -29394,6 +29382,10 @@ msgstr "heslo registra: štítok"
 #: src/Color.cpp:291
 msgid "margin note label"
 msgstr "okrajová poznámka: štítok"
+
+#: src/Color.cpp:292
+msgid "nomenclature label"
+msgstr "Nomenklatúrny štítok"
 
 #: src/Color.cpp:292
 msgid "URL label"
@@ -34488,10 +34480,6 @@ msgstr "smallmatrix"
 msgid "Math Matrix"
 msgstr "Matematická matica"
 
-#: src/frontends/qt/GuiNomenclature.h:36
-msgid "Nomenclature Settings"
-msgstr "Nastavenia nomenklatúry"
-
 #: src/frontends/qt/GuiNote.cpp:24
 msgid "Note Settings"
 msgstr "Nastavenia poznámky"
@@ -37876,10 +37864,6 @@ msgstr "Vyprázdniť dvojitú stránku (\\cleardoublepage)"
 #: src/insets/InsetNewpage.cpp:247
 msgid "No Page Break"
 msgstr "Bez zalomenia strany"
-
-#: src/insets/InsetNomencl.cpp:79
-msgid "Nom: "
-msgstr "Nom: "
 
 #: src/insets/InsetNomencl.cpp:87
 msgid "Nomenclature Symbol: "

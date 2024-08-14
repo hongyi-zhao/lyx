@@ -362,8 +362,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-10 17:52+0200\n"
-"PO-Revision-Date: 2024-08-10 18:03+0200\n"
+"POT-Creation-Date: 2024-08-14 11:37+0200\n"
+"PO-Revision-Date: 2024-08-14 11:40+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -484,7 +484,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/BibitemUi.ui:125 src/frontends/qt/ui/CitationUi.ui:378
 #: src/frontends/qt/ui/HyperlinkUi.ui:80 src/frontends/qt/ui/IncludeUi.ui:302
-#: src/frontends/qt/ui/NomenclUi.ui:72 src/frontends/qt/ui/PrintindexUi.ui:74
+#: src/frontends/qt/ui/PrintindexUi.ui:74
 msgid "Li&teral"
 msgstr "Lit&téral"
 
@@ -2668,8 +2668,8 @@ msgstr "Évite la césure automatique à l'espace"
 #: lib/layouts/acmart.layout:725 lib/layouts/acmart.layout:743
 #: lib/layouts/amsdefs.inc:190 lib/layouts/maa-monthly.layout:165
 #: lib/layouts/maa-monthly.layout:169 lib/layouts/minimalistic.module:27
-#: lib/layouts/scrlttr2.layout:271 lib/layouts/stdinsets.inc:603
-#: lib/layouts/stdinsets.inc:606
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/stdinsets.inc:636
+#: lib/layouts/stdinsets.inc:639
 msgid "URL"
 msgstr "URL"
 
@@ -3674,30 +3674,6 @@ msgstr "Supprim&er"
 #: src/frontends/qt/ui/ModulesUi.ui:186
 msgid "S&elected:"
 msgstr "Sél&ectionné :"
-
-#: src/frontends/qt/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:167
-msgid "Nomenclature"
-msgstr "Liste des symboles"
-
-#: src/frontends/qt/ui/NomenclUi.ui:22
-msgid "Sy&mbol:"
-msgstr "S&ymbole :"
-
-#: src/frontends/qt/ui/NomenclUi.ui:39
-msgid "Des&cription:"
-msgstr "Des&cription :"
-
-#: src/frontends/qt/ui/NomenclUi.ui:56
-msgid "Sort &as:"
-msgstr "&Classé comme :"
-
-#: src/frontends/qt/ui/NomenclUi.ui:69
-msgid ""
-"Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
-"Check this if you want to enter LaTeX code."
-msgstr ""
-"Transmet littéralement le contenu des champs « Symbole » et « Description » "
-"à LaTeX. À cocher si vous souhaitez saisir du code LaTeX."
 
 #: src/frontends/qt/ui/NoteUi.ui:23 src/frontends/qt/ui/PhantomUi.ui:23
 msgid "Type"
@@ -8123,7 +8099,7 @@ msgstr "Transactions IEEE"
 #: lib/layouts/scrlttr2.layout:19 lib/layouts/siamltex.layout:37
 #: lib/layouts/sigplanconf.layout:41 lib/layouts/simplecv.layout:18
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
-#: lib/layouts/stdinsets.inc:713 lib/layouts/stdletter.inc:12
+#: lib/layouts/stdinsets.inc:746 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
 #: src/insets/InsetRef.cpp:645
 msgid "Standard"
@@ -8879,8 +8855,8 @@ msgstr "Énumération"
 #: lib/layouts/egs.layout:247 lib/layouts/hollywood.layout:130
 #: lib/layouts/paper.layout:115 lib/layouts/scrclass.inc:56
 #: lib/layouts/scrlettr.layout:21 lib/layouts/scrlttr2.layout:33
-#: lib/layouts/stdlists.inc:99 lib/layouts/svcommon.inc:693
-#: lib/ui/stdtoolbars.inc:129
+#: lib/layouts/stdinsets.inc:479 lib/layouts/stdlists.inc:99
+#: lib/layouts/svcommon.inc:693 lib/ui/stdtoolbars.inc:129
 msgid "Description"
 msgstr "Description"
 
@@ -9215,7 +9191,7 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/scrclass.inc:149 lib/layouts/scrclass.inc:162
 #: lib/layouts/scrclass.inc:175 lib/layouts/scrclass.inc:331
 #: lib/layouts/scrclass.inc:356 lib/layouts/siamltex.layout:206
-#: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:720
+#: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:753
 #: lib/layouts/stdsections.inc:32 lib/layouts/stdsections.inc:76
 #: lib/layouts/stdsections.inc:117 lib/layouts/tufte-book.layout:98
 #: lib/layouts/tufte-book.layout:131 lib/layouts/tufte-handout.layout:40
@@ -10200,7 +10176,7 @@ msgstr "Section-spéciale*"
 
 #: lib/layouts/amsart.layout:98 lib/layouts/beamer.layout:344
 #: lib/layouts/beamer.layout:409 lib/layouts/beamer.layout:472
-#: lib/layouts/memoir.layout:257 lib/layouts/stdinsets.inc:738
+#: lib/layouts/memoir.layout:257 lib/layouts/stdinsets.inc:771
 #: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:31
 #: lib/layouts/stdstarsections.inc:47 lib/layouts/stdstarsections.inc:63
 #: lib/layouts/stdstarsections.inc:79 lib/layouts/stdstarsections.inc:95
@@ -10423,13 +10399,13 @@ msgid "Centered"
 msgstr "Centré"
 
 #: lib/layouts/apa.layout:280 lib/layouts/apax.inc:379
-#: lib/layouts/stdinsets.inc:714 src/insets/InsetCaption.cpp:449
+#: lib/layouts/stdinsets.inc:747 src/insets/InsetCaption.cpp:449
 msgid "standard"
 msgstr "standard"
 
 #: lib/layouts/apa.layout:287 lib/layouts/apax.inc:386
 #: lib/layouts/scrclass.inc:332 lib/layouts/scrclass.inc:357
-#: lib/layouts/stdinsets.inc:721
+#: lib/layouts/stdinsets.inc:754
 msgid "The caption as it appears in the list of figures/tables"
 msgstr "La légende telle qu'elle apparaîtra dans la liste des figures/tableaux"
 
@@ -18182,11 +18158,11 @@ msgstr "Note de bas de page \\arabic{footnote}"
 msgid "\\fnsymbol{thanks}"
 msgstr "\\fnsymbol{thanks}"
 
-#: lib/layouts/stdfloatnames.inc:5 lib/layouts/stdinsets.inc:583
+#: lib/layouts/stdfloatnames.inc:5 lib/layouts/stdinsets.inc:616
 msgid "Tables"
 msgstr "Tableaux"
 
-#: lib/layouts/stdfloatnames.inc:6 lib/layouts/stdinsets.inc:584
+#: lib/layouts/stdfloatnames.inc:6 lib/layouts/stdinsets.inc:617
 msgid "Figures"
 msgstr "Figures"
 
@@ -18257,43 +18233,56 @@ msgstr "Listings"
 msgid "Idx"
 msgstr "Idx"
 
-#: lib/layouts/stdinsets.inc:427 src/insets/InsetIndexMacro.cpp:63
+#: lib/layouts/stdinsets.inc:428 src/insets/InsetIndexMacro.cpp:63
 msgid "See"
 msgstr "Voir"
 
-#: lib/layouts/stdinsets.inc:443 src/insets/InsetIndexMacro.cpp:64
+#: lib/layouts/stdinsets.inc:444 src/insets/InsetIndexMacro.cpp:64
 msgid "See also"
 msgstr "Voir aussi"
 
-#: lib/layouts/stdinsets.inc:448 src/insets/InsetIndexMacro.cpp:66
+#: lib/layouts/stdinsets.inc:449 lib/layouts/stdinsets.inc:475
+#: src/insets/InsetIndexMacro.cpp:66
 msgid "Sort as"
 msgstr "Trier par"
 
-#: lib/layouts/stdinsets.inc:453 src/insets/InsetIndexMacro.cpp:65
+#: lib/layouts/stdinsets.inc:454 src/insets/InsetIndexMacro.cpp:65
 msgid "Subentry"
 msgstr "Sous-entrée"
 
-#: lib/layouts/stdinsets.inc:633
+#: lib/layouts/stdinsets.inc:458
+msgid "Nom"
+msgstr "Nom"
+
+#: lib/layouts/stdinsets.inc:476
+msgid "Sort this entry as specified in the inset"
+msgstr "Ordonner cette entrée comme spécifié dans l'insert"
+
+#: lib/layouts/stdinsets.inc:480
+msgid "Description of the entry"
+msgstr "Description de l'entrée"
+
+#: lib/layouts/stdinsets.inc:666
 msgid "Argument"
 msgstr "Argument"
 
-#: lib/layouts/stdinsets.inc:740
+#: lib/layouts/stdinsets.inc:773
 msgid "unlabelled"
 msgstr "sans étiquette"
 
-#: lib/layouts/stdinsets.inc:747
+#: lib/layouts/stdinsets.inc:780
 msgid "Preview"
 msgstr "Aperçu"
 
-#: lib/layouts/stdinsets.inc:781 lib/layouts/stdinsets.inc:789
+#: lib/layouts/stdinsets.inc:814 lib/layouts/stdinsets.inc:822
 msgid "see equation[[nomencl]]"
 msgstr "voir équation"
 
-#: lib/layouts/stdinsets.inc:782 lib/layouts/stdinsets.inc:790
+#: lib/layouts/stdinsets.inc:815 lib/layouts/stdinsets.inc:823
 msgid "page[[nomencl]]"
 msgstr "page"
 
-#: lib/layouts/stdinsets.inc:783 lib/layouts/stdinsets.inc:791
+#: lib/layouts/stdinsets.inc:816 lib/layouts/stdinsets.inc:824
 msgid "Nomenclature[[output]]"
 msgstr "Liste des symboles"
 
@@ -20887,7 +20876,7 @@ msgid "Copy as Reference|R"
 msgstr "Copier comme référence|C"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:108
-#: lib/ui/stdtoolbars.inc:89 src/Text.cpp:4979 src/mathed/InsetMathNest.cpp:870
+#: lib/ui/stdtoolbars.inc:89 src/Text.cpp:5011 src/mathed/InsetMathNest.cpp:870
 msgid "Cut"
 msgstr "Couper"
 
@@ -20897,7 +20886,7 @@ msgid "Copy"
 msgstr "Copier"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:110
-#: lib/ui/stdtoolbars.inc:91 src/Text.cpp:4924
+#: lib/ui/stdtoolbars.inc:91 src/Text.cpp:4956
 #: src/frontends/qt/GuiToolbar.cpp:464 src/mathed/InsetMathGrid.cpp:1566
 #: src/mathed/InsetMathNest.cpp:839
 msgid "Paste"
@@ -22455,7 +22444,7 @@ msgid "Index Properties"
 msgstr "Propriétés de l'index"
 
 #: lib/ui/stdmenus.inc:396
-msgid "Nomenclature Entry...|y"
+msgid "Nomenclature Entry|y"
 msgstr "Symbole...|y"
 
 #: lib/ui/stdmenus.inc:398
@@ -28690,7 +28679,7 @@ msgstr ""
 "le préambule LaTeX."
 
 #: src/Buffer.cpp:1094 src/BufferParams.cpp:480 src/frontends/qt/GuiLog.cpp:260
-#: src/insets/InsetIndex.cpp:1285
+#: src/insets/InsetIndex.cpp:1290
 msgid "Index"
 msgstr "Index"
 
@@ -29439,9 +29428,9 @@ msgid "greyedout inset text"
 msgstr "texte d'insert grisé"
 
 #: src/BufferParams.cpp:1728 src/BufferParams.cpp:1889
-#: src/BufferParams.cpp:2386 src/Encoding.cpp:264 src/Paragraph.cpp:3190
+#: src/BufferParams.cpp:2386 src/Encoding.cpp:264 src/Paragraph.cpp:3203
 #: src/frontends/qt/LaTeXHighlighter.cpp:176
-#: src/insets/InsetCommandParams.cpp:523 src/insets/InsetCommandParams.cpp:531
+#: src/insets/InsetCommandParams.cpp:516 src/insets/InsetCommandParams.cpp:524
 #: src/insets/InsetGraphics.cpp:904 src/insets/InsetGraphics.cpp:912
 #: src/insets/InsetListings.cpp:298 src/insets/InsetListings.cpp:306
 #: src/insets/InsetListings.cpp:331 src/mathed/InsetMathMacro.cpp:1178
@@ -29450,8 +29439,8 @@ msgid "LyX Warning: "
 msgstr "Avertissement LyX : "
 
 #: src/BufferParams.cpp:1729 src/BufferParams.cpp:1890
-#: src/BufferParams.cpp:2387 src/Encoding.cpp:265 src/Paragraph.cpp:3191
-#: src/insets/InsetCommandParams.cpp:524 src/insets/InsetCommandParams.cpp:532
+#: src/BufferParams.cpp:2387 src/Encoding.cpp:265 src/Paragraph.cpp:3204
+#: src/insets/InsetCommandParams.cpp:517 src/insets/InsetCommandParams.cpp:525
 #: src/insets/InsetGraphics.cpp:905 src/insets/InsetGraphics.cpp:913
 #: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
 #: src/mathed/InsetMathMacro.cpp:1179 src/mathed/MathExtern.cpp:1491
@@ -30031,238 +30020,242 @@ msgid "margin note label"
 msgstr "étiquette de note en marge"
 
 #: src/Color.cpp:292
+msgid "nomenclature label"
+msgstr "étiquette de symbole"
+
+#: src/Color.cpp:293
 msgid "URL label"
 msgstr "Étiquette d'URL"
 
-#: src/Color.cpp:293
+#: src/Color.cpp:294
 msgid "URL text"
 msgstr "Texte d'URL"
 
-#: src/Color.cpp:294
+#: src/Color.cpp:295
 msgid "depth bar"
 msgstr "barre de profondeur"
 
-#: src/Color.cpp:295
+#: src/Color.cpp:296
 msgid "scroll indicator"
 msgstr "indicateur de déroulement"
 
-#: src/Color.cpp:296
+#: src/Color.cpp:297
 msgid "language"
 msgstr "langue étrangère"
 
-#: src/Color.cpp:297
+#: src/Color.cpp:298
 msgid "command inset"
 msgstr "insert de commande"
 
-#: src/Color.cpp:298
+#: src/Color.cpp:299
 msgid "command inset background"
 msgstr "fond d'insert de commande"
 
-#: src/Color.cpp:299
+#: src/Color.cpp:300
 msgid "command inset frame"
 msgstr "cadre d'insert de commande"
 
-#: src/Color.cpp:300
+#: src/Color.cpp:301
 msgid "command inset (broken reference)"
 msgstr "insert de commande (référence cassée)"
 
-#: src/Color.cpp:301
+#: src/Color.cpp:302
 msgid "button background (broken reference)"
 msgstr "fond du bouton (référence cassée)"
 
-#: src/Color.cpp:302
+#: src/Color.cpp:303
 msgid "button frame (broken reference)"
 msgstr "entourage de bouton (référence cassée)"
 
-#: src/Color.cpp:303
+#: src/Color.cpp:304
 msgid "button background (broken reference) under focus"
 msgstr "fond de bouton pointé (référence cassée)"
 
-#: src/Color.cpp:304
+#: src/Color.cpp:305
 msgid "special character"
 msgstr "caractère spécial"
 
-#: src/Color.cpp:305
+#: src/Color.cpp:306
 msgid "math text"
 msgstr "texte mathématique"
 
-#: src/Color.cpp:306
+#: src/Color.cpp:307
 msgid "math background"
 msgstr "fond mathématique"
 
-#: src/Color.cpp:307
+#: src/Color.cpp:308
 msgid "graphics background"
 msgstr "fond graphique"
 
-#: src/Color.cpp:308 src/Color.cpp:312
+#: src/Color.cpp:309 src/Color.cpp:313
 msgid "math macro background"
 msgstr "fond de macro mathématique"
 
-#: src/Color.cpp:309
+#: src/Color.cpp:310
 msgid "math frame"
 msgstr "cadre mathématique (pointé)"
 
-#: src/Color.cpp:310
+#: src/Color.cpp:311
 msgid "math corners"
 msgstr "cadre mathématique (non pointé)"
 
-#: src/Color.cpp:311
+#: src/Color.cpp:312
 msgid "math line"
 msgstr "ligne mathématique"
 
-#: src/Color.cpp:313
+#: src/Color.cpp:314
 msgid "math macro hovered background"
 msgstr "fond dynamique de macro mathématique"
 
-#: src/Color.cpp:314
+#: src/Color.cpp:315
 msgid "math macro label"
 msgstr "étiquette de macro mathématique"
 
-#: src/Color.cpp:315
+#: src/Color.cpp:316
 msgid "math macro frame"
 msgstr "cadre de macro mathématique"
 
-#: src/Color.cpp:316
+#: src/Color.cpp:317
 msgid "math macro blended out"
 msgstr "macro mathématique désactivée"
 
-#: src/Color.cpp:317
+#: src/Color.cpp:318
 msgid "math macro old parameter"
 msgstr "macro mathématique : ancien paramètre"
 
-#: src/Color.cpp:318
+#: src/Color.cpp:319
 msgid "math macro new parameter"
 msgstr "macro mathématique : nouveau paramètre"
 
-#: src/Color.cpp:319
+#: src/Color.cpp:320
 msgid "collapsible inset text"
 msgstr "texte d'insert repliable"
 
-#: src/Color.cpp:320
+#: src/Color.cpp:321
 msgid "collapsible inset frame"
 msgstr "cadre d'insert repliable"
 
-#: src/Color.cpp:321
+#: src/Color.cpp:322
 msgid "inset background"
 msgstr "fond d'insert"
 
-#: src/Color.cpp:322
+#: src/Color.cpp:323
 msgid "inset label"
 msgstr "insert d'étiquette"
 
-#: src/Color.cpp:323
+#: src/Color.cpp:324
 msgid "inset frame"
 msgstr "cadre d'insert"
 
-#: src/Color.cpp:324
+#: src/Color.cpp:325
 msgid "LaTeX error"
 msgstr "Erreur LaTeX"
 
-#: src/Color.cpp:325
+#: src/Color.cpp:326
 msgid "end-of-line marker"
 msgstr "marqueur de fin de ligne"
 
-#: src/Color.cpp:326
+#: src/Color.cpp:327
 msgid "appendix marker"
 msgstr "marque d'annexe"
 
-#: src/Color.cpp:327
+#: src/Color.cpp:328
 msgid "change bar"
 msgstr "barre de modification"
 
-#: src/Color.cpp:328
+#: src/Color.cpp:329
 msgid "changes - deleted text (exported output)"
 msgstr "modifications - texte supprimé (en sortie)"
 
-#: src/Color.cpp:329
+#: src/Color.cpp:330
 msgid "changes - added text (exported output)"
 msgstr "modifications - texte ajouté (en sortie)"
 
-#: src/Color.cpp:330
+#: src/Color.cpp:331
 msgid "changed text (workarea, 1st author)"
 msgstr "texte modifié (zone de travail, auteur 1)"
 
-#: src/Color.cpp:331
+#: src/Color.cpp:332
 msgid "changed text (workarea, 2nd author)"
 msgstr "texte modifié (zone de travail, auteur 2)"
 
-#: src/Color.cpp:332
+#: src/Color.cpp:333
 msgid "changed text (workarea, 3rd author)"
 msgstr "texte modifié (zone de travail, auteur 3)"
 
-#: src/Color.cpp:333
+#: src/Color.cpp:334
 msgid "changed text (workarea, 4th author)"
 msgstr "texte modifié (zone de travail, auteur 4)"
 
-#: src/Color.cpp:334
+#: src/Color.cpp:335
 msgid "changed text (workarea, 5th author)"
 msgstr "texte modifié (zone de travail, auteur 5)"
 
-#: src/Color.cpp:335
+#: src/Color.cpp:336
 msgid "changed text (workarea, document comparison)"
 msgstr "texte modifié (zone de travail, comparaison des documents)"
 
-#: src/Color.cpp:336
+#: src/Color.cpp:337
 msgid "changes - deleted text brightness (workarea)"
 msgstr "modifications - surbrillance de texte supprimée (zone de travail)"
 
-#: src/Color.cpp:337
+#: src/Color.cpp:338
 msgid "added space markers"
 msgstr "marqueur d'espace ajoutée"
 
-#: src/Color.cpp:338
+#: src/Color.cpp:339
 msgid "table line"
 msgstr "ligne de tableau"
 
-#: src/Color.cpp:339
+#: src/Color.cpp:340
 msgid "table on/off line"
 msgstr "ligne on/off de tableau"
 
-#: src/Color.cpp:340
+#: src/Color.cpp:341
 msgid "bottom area"
 msgstr "zone du bas"
 
-#: src/Color.cpp:341
+#: src/Color.cpp:342
 msgid "new page"
 msgstr "saut de page"
 
-#: src/Color.cpp:342
+#: src/Color.cpp:343
 msgid "page break / line break"
 msgstr "saut de page / saut de ligne"
 
-#: src/Color.cpp:343
+#: src/Color.cpp:344
 msgid "button frame"
 msgstr "cadre de bouton"
 
-#: src/Color.cpp:344
+#: src/Color.cpp:345
 msgid "button background"
 msgstr "fond de bouton d'insert"
 
-#: src/Color.cpp:345
+#: src/Color.cpp:346
 msgid "button background under focus"
 msgstr "fond du bouton d'insert (pointé)"
 
-#: src/Color.cpp:346
+#: src/Color.cpp:347
 msgid "paragraph marker"
 msgstr "marqueur de paragraphe"
 
-#: src/Color.cpp:347
+#: src/Color.cpp:348
 msgid "preview frame"
 msgstr "cadre d'aperçu"
 
-#: src/Color.cpp:348
+#: src/Color.cpp:349
 msgid "regexp frame"
 msgstr "cadre d'expression régulière"
 
-#: src/Color.cpp:349
+#: src/Color.cpp:350
 msgid "bookmark"
 msgstr "signet"
 
-#: src/Color.cpp:350
+#: src/Color.cpp:351
 msgid "inherit"
 msgstr "couleur héritée"
 
-#: src/Color.cpp:351
+#: src/Color.cpp:352
 msgid "ignore"
 msgstr "couleur ignorée"
 
@@ -31918,15 +31911,15 @@ msgstr "Revenir à la version enregistrée du document ?"
 msgid "&Revert"
 msgstr "&Revenir à la Sauvegarde"
 
-#: src/Paragraph.cpp:2241
+#: src/Paragraph.cpp:2254
 msgid "Senseless with this layout!"
 msgstr "Inapproprié avec ce style !"
 
-#: src/Paragraph.cpp:2295
+#: src/Paragraph.cpp:2308
 msgid "Alignment not permitted"
 msgstr "Alignement non autorisé"
 
-#: src/Paragraph.cpp:2296
+#: src/Paragraph.cpp:2309
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -32051,11 +32044,11 @@ msgstr "Déjà en mode « expression régulière »"
 msgid "Regexp editor mode"
 msgstr "Mode « expression régulière »"
 
-#: src/Text.cpp:3952
+#: src/Text.cpp:3984
 msgid "Action flattens document structure"
 msgstr "Cette action mets à plat la structure du document"
 
-#: src/Text.cpp:3953
+#: src/Text.cpp:3985
 msgid ""
 "This action will cause some headings that have been on different level "
 "before to be on the same level since there is no more lower or higher "
@@ -32065,52 +32058,52 @@ msgstr ""
 "différents avant, du fait qu'il n'y a palus de niveau plus haut ou plus bas "
 "disponible. Continuer ?"
 
-#: src/Text.cpp:3958
+#: src/Text.cpp:3990
 msgid "&Yes, continue nonetheless"
 msgstr "&Oui, continuer néanmoins"
 
-#: src/Text.cpp:3959
+#: src/Text.cpp:3991
 msgid "&No, quit operation"
 msgstr "&Non, abandonner l'action"
 
-#: src/Text.cpp:5013
+#: src/Text.cpp:5045
 msgid "Layout "
 msgstr "Environnement "
 
-#: src/Text.cpp:5014 src/Text.cpp:5605
+#: src/Text.cpp:5046 src/Text.cpp:5595
 msgid " not known"
 msgstr " inconnu"
 
-#: src/Text.cpp:5604
+#: src/Text.cpp:5594
 msgid "Table Style "
 msgstr "Style de tableau "
 
-#: src/Text.cpp:5813 src/frontends/qt/GuiApplication.cpp:1889
+#: src/Text.cpp:5790 src/frontends/qt/GuiApplication.cpp:1889
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
-#: src/Text.cpp:5979
+#: src/Text.cpp:5956
 msgid "Invalid argument (number exceeds stack size)!"
 msgstr "Argument invalide (le nombre est supérieur à la taille de la pile) !"
 
-#: src/Text.cpp:5983
+#: src/Text.cpp:5960
 msgid "Invalid argument (must be a non-negative number)!"
 msgstr "Argument invalide (nombre non négatif obligatoire)"
 
-#: src/Text.cpp:5988 src/Text.cpp:6002
+#: src/Text.cpp:5965 src/Text.cpp:5979
 #, c-format
 msgid "Text properties applied: %1$s"
 msgstr "Propriétés du texte appliquées : %1$s"
 
-#: src/Text.cpp:6004
+#: src/Text.cpp:5981
 msgid "Invalid argument of textstyle-update"
 msgstr "Argument invalide pour textstyle-update"
 
-#: src/Text.cpp:6161
+#: src/Text.cpp:6138
 msgid "Path to thesaurus directory not set!"
 msgstr "Chemin d'accès au répertoire du thésaurus non précisé !"
 
-#: src/Text.cpp:6162
+#: src/Text.cpp:6139
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -32122,7 +32115,7 @@ msgstr ""
 "Se référer au Guide de l'utilisateur, section 6.15.1, pour\n"
 "les instructions de réglage."
 
-#: src/Text.cpp:6288 src/Text.cpp:6299
+#: src/Text.cpp:6265 src/Text.cpp:6276
 msgid "Paragraph layout set"
 msgstr "Style du paragraphe redéfini"
 
@@ -32256,8 +32249,8 @@ msgstr "Erreur de lecture du moteur bibliographique %1$s\n"
 msgid "MISSING: "
 msgstr "MANQUANT : "
 
-#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:1023
-#: src/insets/InsetIndex.cpp:1058
+#: src/TocBackend.cpp:273 src/insets/InsetIndex.cpp:1028
+#: src/insets/InsetIndex.cpp:1063
 msgid "unknown type!"
 msgstr "type  inconnu !"
 
@@ -35220,10 +35213,6 @@ msgstr "smallmatrix"
 msgid "Math Matrix"
 msgstr "Matrice mathématique"
 
-#: src/frontends/qt/GuiNomenclature.h:36
-msgid "Nomenclature Settings"
-msgstr "Paramètres de la liste des symboles"
-
 #: src/frontends/qt/GuiNote.cpp:24
 msgid "Note Settings"
 msgstr "Paramètres de note"
@@ -36847,7 +36836,7 @@ msgstr "Paramètres d'encapsulation de flottant"
 msgid "Click to detach"
 msgstr "Cliquer pour désolidariser"
 
-#: src/frontends/qt/InsetParamsDialog.cpp:90
+#: src/frontends/qt/InsetParamsDialog.cpp:89
 msgid "Ne&w Inset"
 msgstr "Nou&vel insert"
 
@@ -37287,11 +37276,11 @@ msgstr "Espacement horizontal"
 msgid "Horizontal Math Space"
 msgstr "Espacement horizontal mathématique"
 
-#: src/insets/InsetArgument.cpp:153
+#: src/insets/InsetArgument.cpp:154
 msgid "Unknown Argument"
 msgstr "Argument inconnu"
 
-#: src/insets/InsetArgument.cpp:154
+#: src/insets/InsetArgument.cpp:155
 msgid "Argument not known in this Layout. Will be suppressed in the output."
 msgstr "Argument inconnu de ce format. Sera supprimé dans la sortie."
 
@@ -37430,7 +37419,7 @@ msgid "active"
 msgstr "actif"
 
 #: src/insets/InsetBranch.cpp:74 src/insets/InsetBranch.cpp:76
-#: src/insets/InsetIndex.cpp:1293
+#: src/insets/InsetIndex.cpp:1298
 msgid "non-active"
 msgstr "non-actif"
 
@@ -37509,35 +37498,35 @@ msgstr "CASSÉ : "
 msgid "LaTeX Command: "
 msgstr "Commande LaTeX : "
 
-#: src/insets/InsetCommandParams.cpp:279
+#: src/insets/InsetCommandParams.cpp:273
 msgid "InsetCommand Error: "
 msgstr "Erreur de commande d'insert : "
 
-#: src/insets/InsetCommandParams.cpp:280 src/insets/InsetCommandParams.cpp:303
+#: src/insets/InsetCommandParams.cpp:274 src/insets/InsetCommandParams.cpp:297
 msgid "Incompatible command name."
 msgstr "Nom de commande incompatible."
 
-#: src/insets/InsetCommandParams.cpp:302 src/insets/InsetCommandParams.cpp:356
+#: src/insets/InsetCommandParams.cpp:296 src/insets/InsetCommandParams.cpp:350
 msgid "InsetCommandParams Error: "
 msgstr "Erreur de paramètres de commande d'insert : "
 
-#: src/insets/InsetCommandParams.cpp:348
+#: src/insets/InsetCommandParams.cpp:342
 msgid "InsetCommandParams: "
 msgstr "Paramètres de commande d'insert : "
 
-#: src/insets/InsetCommandParams.cpp:349
+#: src/insets/InsetCommandParams.cpp:343
 msgid "Unknown parameter name: "
 msgstr "Nom de paramètre inconnu : "
 
-#: src/insets/InsetCommandParams.cpp:357
+#: src/insets/InsetCommandParams.cpp:351
 msgid "Missing \\end_inset at this point: "
 msgstr "Il manque un \\end_inset à cet endroit : "
 
-#: src/insets/InsetCommandParams.cpp:479
+#: src/insets/InsetCommandParams.cpp:472
 msgid "Uncodable characters"
 msgstr "Caractères incodables"
 
-#: src/insets/InsetCommandParams.cpp:480
+#: src/insets/InsetCommandParams.cpp:473
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
@@ -37548,11 +37537,11 @@ msgstr ""
 "pas représentables dans l'encodage courant et on donc été omis :\n"
 "%2$s."
 
-#: src/insets/InsetCommandParams.cpp:542
+#: src/insets/InsetCommandParams.cpp:535
 msgid "Uncodable characters in inset"
 msgstr "Caractère incodable dans l'insert"
 
-#: src/insets/InsetCommandParams.cpp:543
+#: src/insets/InsetCommandParams.cpp:536
 #, c-format
 msgid ""
 "The following characters in one of the insets are\n"
@@ -37941,7 +37930,7 @@ msgstr "Page initiale"
 msgid "Ends page range"
 msgstr "Page finale"
 
-#: src/insets/InsetIndex.cpp:312
+#: src/insets/InsetIndex.cpp:317
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced problems with the entry "
@@ -37954,11 +37943,11 @@ msgstr ""
 "Merci de préciser la position de tri de cette entrée manuellement,\n"
 "comme expliqué dans le Guide d'utilisation."
 
-#: src/insets/InsetIndex.cpp:317 src/insets/InsetIndexMacro.cpp:283
+#: src/insets/InsetIndex.cpp:322 src/insets/InsetIndexMacro.cpp:283
 msgid "Index sorting failed"
 msgstr "Échec du tri d'index"
 
-#: src/insets/InsetIndex.cpp:774
+#: src/insets/InsetIndex.cpp:779
 #, c-format
 msgid ""
 "There is an empty index subentry in the entry '%1$s'.\n"
@@ -37967,39 +37956,39 @@ msgstr ""
 "Il y a une sous-entrée d'index vide dans l'entrée '%1$s'.\n"
 "Elle sera ignorée dans le résultat imprimable."
 
-#: src/insets/InsetIndex.cpp:777
+#: src/insets/InsetIndex.cpp:782
 msgid "Empty index subentry!"
 msgstr "Sous-entrée d'index vide !"
 
-#: src/insets/InsetIndex.cpp:1016
+#: src/insets/InsetIndex.cpp:1021
 msgid "Index Entry"
 msgstr "Entrée d'index"
 
-#: src/insets/InsetIndex.cpp:1033
+#: src/insets/InsetIndex.cpp:1038
 msgid "Pagination format:"
 msgstr "Format de la pagination :"
 
-#: src/insets/InsetIndex.cpp:1035
+#: src/insets/InsetIndex.cpp:1040
 msgid "bold"
 msgstr "gras"
 
-#: src/insets/InsetIndex.cpp:1037
+#: src/insets/InsetIndex.cpp:1042
 msgid "italic"
 msgstr "italique"
 
-#: src/insets/InsetIndex.cpp:1039
+#: src/insets/InsetIndex.cpp:1044
 msgid "emphasized"
 msgstr "en évidence"
 
-#: src/insets/InsetIndex.cpp:1290
+#: src/insets/InsetIndex.cpp:1295
 msgid "Unknown index type!"
 msgstr "Type d'index inconnu !"
 
-#: src/insets/InsetIndex.cpp:1291
+#: src/insets/InsetIndex.cpp:1296
 msgid "All indexes"
 msgstr "Tous les index"
 
-#: src/insets/InsetIndex.cpp:1295
+#: src/insets/InsetIndex.cpp:1300
 msgid "subindex"
 msgstr "sous-index"
 
@@ -38641,21 +38630,21 @@ msgstr "Saut de page impaire"
 msgid "No Page Break"
 msgstr "Pas de saut de page"
 
-#: src/insets/InsetNomencl.cpp:79
-msgid "Nom: "
-msgstr "Nom : "
-
-#: src/insets/InsetNomencl.cpp:87
+#: src/insets/InsetNomencl.cpp:61
 msgid "Nomenclature Symbol: "
 msgstr "Symbole : "
 
-#: src/insets/InsetNomencl.cpp:88
+#: src/insets/InsetNomencl.cpp:64
 msgid "Description: "
 msgstr "Description : "
 
-#: src/insets/InsetNomencl.cpp:91
+#: src/insets/InsetNomencl.cpp:67
 msgid "Sorting: "
 msgstr "Tri : "
+
+#: src/insets/InsetNomencl.cpp:184
+msgid "Nomenclature"
+msgstr "Liste des symboles"
 
 #: src/insets/InsetNote.cpp:283
 msgid "note"
@@ -38880,7 +38869,7 @@ msgid "Selection size should match clipboard content."
 msgstr ""
 "La taille de la sélection doit correspondre au contenu du presse-papier."
 
-#: src/insets/InsetText.cpp:1409
+#: src/insets/InsetText.cpp:1411
 msgid "[contains tracked changes]"
 msgstr "[contient les modifications suivies]"
 
@@ -39660,6 +39649,28 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
+
+#~ msgid "Sy&mbol:"
+#~ msgstr "S&ymbole :"
+
+#~ msgid "Des&cription:"
+#~ msgstr "Des&cription :"
+
+#~ msgid "Sort &as:"
+#~ msgstr "&Classé comme :"
+
+#~ msgid ""
+#~ "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
+#~ "Check this if you want to enter LaTeX code."
+#~ msgstr ""
+#~ "Transmet littéralement le contenu des champs « Symbole » et « Description "
+#~ "» à LaTeX. À cocher si vous souhaitez saisir du code LaTeX."
+
+#~ msgid "Nomenclature Settings"
+#~ msgstr "Paramètres de la liste des symboles"
+
+#~ msgid "Nom: "
+#~ msgstr "Nom : "
 
 #~ msgid "tgo"
 #~ msgstr "tgo"

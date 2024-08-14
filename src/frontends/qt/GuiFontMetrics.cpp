@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "GuiFontLoader.h"
 #include "GuiFontMetrics.h"
 
 #include "qt_helpers.h"
@@ -276,10 +277,12 @@ int GuiFontMetrics::width(docstring const & s) const
 	*/
 	int w = 0;
 	// is the string a single character from a math font ?
-	bool const math_char = s.length() == 1 && font_.styleName() == "LyX";
+	// we have to also explicitly check for the family, see bug 13087
+	bool const math_char = s.length() == 1
+		&& (font_.styleName() == "LyX" || isMathFamily(font_.family()));
 	if (math_char) {
 		QString const qs = toqstr(s);
-		int br_width = metrics_.boundingRect(qs).width();
+		int br_width = rbearing(s[0]);
 #if QT_VERSION >= 0x050b00
 		int s_width = metrics_.horizontalAdvance(qs);
 #else

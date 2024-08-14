@@ -44,6 +44,15 @@ int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
 
 namespace lyx {
 
+bool isMathFamily(QString const & name)
+{
+	for (int i = 0; i < num_math_fonts; ++i) {
+		if (math_fonts[i] == name)
+			return true;
+	}
+	return false;
+}
+
 namespace frontend {
 
 /**

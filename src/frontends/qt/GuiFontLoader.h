@@ -13,10 +13,13 @@
 #define GUI_FONTLOADER_H
 
 class QFont;
+class QString;
 
 namespace lyx {
 
 class FontInfo;
+
+bool isMathFamily(QString const & name);
 
 namespace frontend {
 

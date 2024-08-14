@@ -267,7 +267,8 @@ void GuiTabular::enableWidgets() const
 	bool const enable_valign =
 		!multirowCB->isChecked()
 		&& !widgetsToLength(columnWidthED, columnWidthUnitLC).empty()
-		&& specialAlignmentED->text().isEmpty();
+		&& specialAlignmentED->text().isEmpty()
+		&& funcEnabled(Tabular::VALIGN_BOTTOM);
 	vAlignCO->setEnabled(enable_valign);
 	vAlignLA->setEnabled(enable_valign);
 
@@ -1278,7 +1279,7 @@ bool GuiTabular::checkWidgets(bool readonly) const
 
 bool GuiTabular::funcEnabled(Tabular::Feature f) const
 {
-	FuncRequest r(LFUN_INSET_MODIFY, "tabular for-dialog" + featureAsString(f));
+	FuncRequest r(LFUN_INSET_MODIFY, "tabular for-dialog " + featureAsString(f));
 	return getStatus(r).enabled();
 }
 

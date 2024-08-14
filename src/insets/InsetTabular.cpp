@@ -5378,7 +5378,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY:
 		// we come from the dialog
-		if (cmd.getArg(0) == "tabular")
+		if (cmd.getArg(0) == "tabular" && cmd.getArg(1) != "for-dialog")
 			tabularFeatures(cur, cmd.getLongArg(1));
 		else
 			cur.undispatched();
@@ -5683,6 +5683,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 		col_type sel_col_end = 0;
 		Tabular::ltType dummyltt;
 		bool flag = true;
+		bool const tabularx = tabular.hasVarwidthColumn();
 
 		getSelection(cur, sel_row_start, sel_row_end, sel_col_start, sel_col_end);
 
@@ -5958,7 +5959,8 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			flag = false;
 			// fall through
 		case Tabular::VALIGN_BOTTOM:
-			status.setEnabled((!tabular.getPWidth(cur.idx()).zero()
+			status.setEnabled(!tabularx
+					  && (!tabular.getPWidth(cur.idx()).zero()
 					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_BOTTOM);
@@ -5968,7 +5970,8 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 			flag = false;
 			// fall through
 		case Tabular::VALIGN_MIDDLE:
-			status.setEnabled((!tabular.getPWidth(cur.idx()).zero()
+			status.setEnabled(!tabularx
+					  && (!tabular.getPWidth(cur.idx()).zero()
 					   || tabular.getUsebox(cur.idx()) == Tabular::BOX_VARWIDTH));
 			status.setOnOff(
 				tabular.getVAlignment(cur.idx(), flag) == Tabular::LYX_VALIGN_MIDDLE);

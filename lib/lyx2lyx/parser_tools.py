@@ -430,7 +430,14 @@ def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
     val = get_value(lines, token, start, end, "", delete)
     if not val:
         return default
-    return val.strip('"')
+    # remove only outer pair of quotes,
+    # hence do not use strip('"')
+    if val[:1] == '"':
+        val = val[1:]
+    if val[-1:] == '"':
+        val = val[:-1]
+    
+    return val
 
 
 bool_values = {"true": True, "1": True, "false": False, "0": False}

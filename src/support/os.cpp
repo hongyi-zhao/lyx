@@ -108,7 +108,7 @@ static string const find_python_binary()
 	if (!command.empty())
 		return command;
 
-	// python3 does not exists, let us try to find python3.x in PATH
+	// python3 does not exist, let us try to find python3.x in PATH
 	// the search is probably broader than required
 	// but we are trying hard to find a valid python binary
 	vector<string> const path = getEnvPath("PATH");

@@ -430,13 +430,13 @@ def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
     val = get_value(lines, token, start, end, "", delete)
     if not val:
         return default
-    # remove only outer pair of quotes,
-    # hence do not use strip('"')
-    if val.startswith('"'):
-        val = val[1:]
-    if val.endswith('"'):
-        val = val[:-1]
-    
+
+    # We only remove quoation marks if the string starts and ends with one.
+    # Also, we remove only the outer pair of quotes (think of "\"").
+    # Hence, we do not use strip('"')
+    if val.startswith('"') and val.endswith('"'):
+        val = val[1:-1]
+
     return val
 
 

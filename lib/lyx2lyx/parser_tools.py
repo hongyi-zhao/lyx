@@ -432,9 +432,9 @@ def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
         return default
     # remove only outer pair of quotes,
     # hence do not use strip('"')
-    if val[:1] == '"':
+    if val.startswith('"'):
         val = val[1:]
-    if val[-1:] == '"':
+    if val.endswith('"'):
         val = val[:-1]
     
     return val

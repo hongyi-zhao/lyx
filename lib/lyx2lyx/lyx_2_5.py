@@ -611,9 +611,15 @@ def revert_nomencl(document):
         if prefix:
             newins += ["prefix \"" + lyx2latex(document, prefix) + "\""]
         if symbol:
-            newins += ["symbol \"" + lyx2latex(document, symbol) + "\""]
+            if literal == "true":
+                newins += ["symbol \"" + lyx2latex(document, symbol).replace("\\", "\\\\").replace("\"", "\\\"") + "\""]
+            else:
+                newins += ["symbol \"" + lyx2latex(document, symbol).replace("\"", "\\\"") + "\""]
         if description:
-            newins += ["description \"" + lyx2latex(document, description) + "\""]
+            if literal == "true":
+                newins += ["description \"" + lyx2latex(document, description).replace("\\", "\\\\").replace("\"", "\\\"") + "\""]
+            else:
+                newins += ["description \"" + lyx2latex(document, description).replace("\"", "\\\"") + "\""]
         newins += ["literal \"" + literal + "\""]
 
         j = find_end_of_inset(document.body, i)

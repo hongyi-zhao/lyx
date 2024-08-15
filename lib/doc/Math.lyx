@@ -37465,8 +37465,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-User-defined commands!
- Math macros
+User-defined commands
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+Math macros
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

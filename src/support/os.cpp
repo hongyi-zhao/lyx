@@ -128,6 +128,10 @@ static string const find_python_binary()
 		}
 	}
 
+	// last chance: try the unversioned name
+	if (command.empty())
+	  command = python_call("python");
+
 	if (!command.empty())
 		return command;
 

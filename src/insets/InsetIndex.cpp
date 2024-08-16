@@ -266,7 +266,11 @@ void InsetIndex::latex(otexstream & ios, OutputParams const & runparams_in) cons
 				// We do this on all levels.
 				// We don't do it if the level already contains a '@', though.
 				// We use a somewhat "plain" representation for this
-				docstring const spart = Encodings::convertLaTeXCommands(thislevel);
+				docstring spart = Encodings::convertLaTeXCommands(thislevel);
+				// if convertLaTeXCommands() returns nothing, we fall back
+				// to the command name without backslash
+				if (trim(spart).empty())
+					spart = ltrim(thislevel, "\\");
 				processLatexSorting(os, runparams, thislevel, spart, escape_char);
 			}
 		} else {

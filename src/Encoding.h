@@ -352,7 +352,7 @@ public:
 	/// converts a string containing LaTeX commands into unicode
 	/// for display.
 	static docstring convertLaTeXCommands(docstring const & str,
-					      bool const for_xhtml = false);
+					      bool const literal_math = false);
 	///
 	enum LatexCmd {
 		///

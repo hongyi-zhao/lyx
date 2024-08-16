@@ -614,23 +614,30 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 }
 
 
-docstring Encodings::convertLaTeXCommands(docstring const & str, bool const for_xhtml)
+/// text macros we can convert beyond unicodesymbols
+char const * const known_text_macros[] = {"LyX", "TeX", "LaTeXe", "LaTeX", ""};
+char const * const known_text_macros_out[] = {"LyX", "TeX", "LaTeX2e", "LaTeX", ""};
+
+
+docstring Encodings::convertLaTeXCommands(docstring const & str, bool const literal_math)
 {
 	docstring val = str;
 	docstring ret;
 	docstring mret;
+	docstring cret;
 
 	bool scanning_cmd = false;
 	bool scanning_math = false;
 	bool is_section = false;
 	bool escaped = false; // used to catch \$, etc.
+	bool skip_space = false;
 	while (!val.empty()) {
 		char_type const ch = val[0];
 
 		// if we're scanning math, we collect everything until we
 		// find an unescaped $, and then try to convert this piecewise.
 		if (scanning_math) {
-			if (for_xhtml) {
+			if (literal_math) {
 				// with xhtml, we output everything until we
 				// find an unescaped $, at which point we break out.
 				if (escaped)
@@ -688,6 +695,7 @@ docstring Encodings::convertLaTeXCommands(docstring const & str, bool const for_
 				continue;
 			}
 			if (isAlphaASCII(ch)) {
+				cret += ch;
 				is_section = false;
 				val = val.substr(1);
 				escaped = false;
@@ -701,6 +709,17 @@ docstring Encodings::convertLaTeXCommands(docstring const & str, bool const for_
 			// now we fall through and check this character.
 			is_section = false;
 			scanning_cmd = false;
+		}
+
+		// check if it's a know text macro
+		// If so, output and skip the following space
+		if (!cret.empty()) {
+			int const n = findToken(known_text_macros, to_ascii(cret));
+			if (n != -1) {
+				ret += known_text_macros_out[n];
+				skip_space = true;
+			}
+			cret.clear();
 		}
 
 		// was the last character a \? If so, then this is something like:
@@ -727,6 +746,13 @@ docstring Encodings::convertLaTeXCommands(docstring const & str, bool const for_
 			scanning_math = true;
 			continue;
 		}
+
+		if (isSpace(ch) && skip_space) {
+			val = val.substr(1);
+			skip_space = false;
+			continue;
+		}
+		skip_space = false;
 
 		// Change text mode accents in the form
 		// {\v a} to \v{a} (see #9340).
@@ -780,6 +806,14 @@ docstring Encodings::convertLaTeXCommands(docstring const & str, bool const for_
 		escaped = true;
 		val = val.substr(1);
 	}
+	// check if it's a know text macro
+	// If so, output and skip the following space
+	if (!cret.empty()) {
+		int const n = findToken(known_text_macros, to_ascii(cret));
+		if (n != -1)
+			ret += known_text_macros_out[n];
+	}
+
 	return ret;
 }
 

@@ -30,18 +30,18 @@ InsetLayout Marginal
 	MultiPar              true
 	NeedProtect           true
 	HTMLStyle
-		div.marginal {
-			border: 2px solid black;
-			padding: 1ex;
-			margin: 1ex;
-			background-color: #F0F0F0;
-			float:right;
-			font-size: small;
-			font-weight: normal;
-			font-family: serif;
-			font-variant: normal;
-			font-style: normal;
-		}
+	  div.marginal {
+	    border: 2px solid black;
+	    padding: 1ex;
+	    margin: 1ex;
+	    background-color: #F0F0F0;
+	    float:right;
+	    font-size: small;
+	    font-weight: normal;
+	    font-family: serif;
+	    font-variant: normal;
+	    font-style: normal;
+	  }
 	EndHTMLStyle
 	AddToToc              marginalnote
 	IsTocCaption          true
@@ -66,27 +66,27 @@ InsetLayout Foot
 	HTMLLabel             \arabic{footnote}
 	HTMLInnerTag          div
 	HTMLStyle
-		span.foot_label {
-			vertical-align: super;
-			font-size: smaller;
-			font-weight: bold;
-			text-decoration: underline;
-		}
-		div.foot {
-			display: inline;
-			font-size: small;
-			font-weight: normal;
-			font-family: serif;
-			font-variant: normal;
-			font-style: normal;
-		}
-		div.foot_inner { display: none; }
-		div.foot:hover div.foot_inner {
-			display: block;
-			border: 1px double black;
-			margin: 0em 1em;
-			padding: 1em;
-		}
+	  span.foot_label {
+	    vertical-align: super;
+	    font-size: smaller;
+	    font-weight: bold;
+	    text-decoration: underline;
+	  }
+	  div.foot {
+	    display: inline;
+	    font-size: small;
+	    font-weight: normal;
+	    font-family: serif;
+	    font-variant: normal;
+	    font-style: normal;
+	  }
+	  div.foot_inner { display: none; }
+	  div.foot:hover div.foot_inner {
+	    display: block;
+	    border: 1px double black;
+	    margin: 0em 1em;
+	    padding: 1em;
+	  }
 	EndHTMLStyle
 	AddToToc              footnote
 	IsTocCaption          true
@@ -103,27 +103,27 @@ InsetLayout Foot:InTitle
 	HTMLLabel             \fnsymbol{thanks}
 	HTMLInnerTag          span
 	HTMLStyle
-		span.foot_intitle_label {
-			vertical-align: super;
-			font-size: smaller;
-			font-weight: bold;
-			text-decoration: underline;
-		}
-		span.foot_intitle {
-			display: inline;
-			font-size: small;
-			font-weight: normal;
-			font-family: serif;
-			font-variant: normal;
-			font-style: normal;
-		}
-		span.foot_intitle_inner { display: none; }
-		span.foot_intitle:hover span.foot_intitle_inner {
-			display: block;
-			border: 1px double black;
-			margin: 0em 1em;
-			padding: 1em;
-		}
+	  span.foot_intitle_label {
+	    vertical-align: super;
+	    font-size: smaller;
+	    font-weight: bold;
+	    text-decoration: underline;
+	  }
+	  span.foot_intitle {
+	    display: inline;
+	    font-size: small;
+	    font-weight: normal;
+	    font-family: serif;
+	    font-variant: normal;
+	    font-style: normal;
+	  }
+	  span.foot_intitle_inner { display: none; }
+	  span.foot_intitle:hover span.foot_intitle_inner {
+	    display: block;
+	    border: 1px double black;
+	    margin: 0em 1em;
+	    padding: 1em;
+	  }
 	EndHTMLStyle
 End
 
@@ -150,9 +150,9 @@ InsetLayout Note:Comment
 	HTMLTag               div
 	HTMLIsBlock           true
 	HTMLStyle
-	div.note_comment {
-		display: none;
-	}
+	  div.note_comment {
+	    display: none;
+	  }
 	EndHTMLStyle
 	AddToToc              note
 	IsTocCaption          true
@@ -195,12 +195,12 @@ InsetLayout Note:Greyedout
 	Display               false
 	HTMLInnerTag div
 	HTMLStyle
-		div.note_greyedout {
-			display: inline;
-			color: #A0A0A0;
-			padding-left: 1ex;
-			padding-right: 1ex;
-		}
+	  div.note_greyedout {
+	    display: inline;
+	    color: #A0A0A0;
+	    padding-left: 1ex;
+	    padding-right: 1ex;
+	  }
 	EndHTMLStyle
 	HTMLIsBlock           false
 	AddToToc              note
@@ -252,40 +252,40 @@ InsetLayout IPADeco
 End
 
 InsetLayout TOC
-  HTMLTag h2
-  HTMLStyle
-    div.toc {
-      margin: 2em 0em;
-      border-style: solid;
-      border-width: 2px 0px;
-      padding: 1em 0em;
-    }
-    h2.tochead { font-size: x-large; font-weight: bold; }
-    div.lyxtoc-0 {
-      margin: 2em 0em 0em 0em;
-      font-size: xx-large;
-      font-weight: bold;
-    }
-    div.lyxtoc-1 {
-      margin: 1em 0em 0em 0em;
-      font-size: x-large;
-      font-weight: bold;
-    }
-    div.lyxtoc-2 {
-      margin: 0.5em 0.1em 0em 1em;
-      font-size: large;
-      font-weight: normal;
-    }
-    div.lyxtoc-3 { margin: 0.2em 0.1em 0em 0.5em; font-size: medium; }
-    div.lyxtoc-4 { margin: 0em 0.1em 0em 0.5em; }
-    div.lyxtoc-5 { margin: 0em 0.1em 0em 0.5em; }
-    div.lyxtoc-6 { margin: 0em 0.1em 0em 0.5em; }
-    a.tocentry {
-      text-decoration: none;
-      color: black;
-    }
-    a.tocentry:visited { color: black; }
-  EndHTMLStyle
+	HTMLTag h2
+	HTMLStyle
+	  div.toc {
+	    margin: 2em 0em;
+	    border-style: solid;
+	    border-width: 2px 0px;
+	    padding: 1em 0em;
+	  }
+	  h2.tochead { font-size: x-large; font-weight: bold; }
+	  div.lyxtoc-0 {
+	    margin: 2em 0em 0em 0em;
+	    font-size: xx-large;
+	    font-weight: bold;
+	  }
+	  div.lyxtoc-1 {
+	    margin: 1em 0em 0em 0em;
+	    font-size: x-large;
+	    font-weight: bold;
+	  }
+	  div.lyxtoc-2 {
+	    margin: 0.5em 0.1em 0em 1em;
+	    font-size: large;
+	    font-weight: normal;
+	  }
+	  div.lyxtoc-3 { margin: 0.2em 0.1em 0em 0.5em; font-size: medium; }
+	  div.lyxtoc-4 { margin: 0em 0.1em 0em 0.5em; }
+	  div.lyxtoc-5 { margin: 0em 0.1em 0em 0.5em; }
+	  div.lyxtoc-6 { margin: 0em 0.1em 0em 0.5em; }
+	  a.tocentry {
+	    text-decoration: none;
+	    color: black;
+	  }
+	  a.tocentry:visited { color: black; }
+	EndHTMLStyle
 End
 
 InsetLayout TOC:Listings
@@ -295,57 +295,57 @@ InsetLayout TOC:Listings
 	# ("Listings" is the predefined english name) in listings.sty, so it
 	# must be used here as well.
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}
+	  \addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}
 	EndBabelPreamble
 	# The command does not need to be defined in LangPreamble, since
 	# listings.sty does that already. However it needs to be redefined
 	# in order to be used for non-english single-language documents.
 	LangPreamble
-		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
+	  \renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
 	EndLangPreamble
 	FixedWidthPreambleEncoding true
-  HTMLTag h2
-  HTMLStyle
-    div.lyxtoc-flat {
-      margin: 0em 0em 0em 1em;
-      font-size: large;
-      font-weight: normal;
-    }
-  EndHTMLStyle
+	HTMLTag h2
+	HTMLStyle
+	  div.lyxtoc-flat {
+	    margin: 0em 0em 0em 1em;
+	    font-size: large;
+	    font-weight: normal;
+	  }
+	EndHTMLStyle
 End
 
 InsetLayout TOC:MintedListings
 	# "List of Listings" is the name of the "List of listings"
 	# in minted.sty so it must be used here as well.
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\listoflistingscaption}{_(List of Listings)}}
+	  \addto\captions$$lang{\renewcommand{\listoflistingscaption}{_(List of Listings)}}
 	EndBabelPreamble
 	# The command does not need to be defined in LangPreamble, since
 	# minted.sty does that already. However it needs to be redefined
 	# in order to be used for non-english single-language documents.
 	LangPreamble
-		\renewcommand{\listoflistingscaption}{_(List of Listings)}
+	  \renewcommand{\listoflistingscaption}{_(List of Listings)}
 	EndLangPreamble
 	FixedWidthPreambleEncoding false
-  HTMLTag h2
-  HTMLStyle
-    div.lyxtoc-flat {
-      margin: 0em 0em 0em 1em;
-      font-size: large;
-      font-weight: normal;
-    }
-  EndHTMLStyle
+	HTMLTag h2
+	HTMLStyle
+	  div.lyxtoc-flat {
+	    margin: 0em 0em 0em 1em;
+	    font-size: large;
+	    font-weight: normal;
+	  }
+	EndHTMLStyle
 End
 
 InsetLayout Include:Listings
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
+	  \addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
 	EndBabelPreamble
 	# The command does not need to be defined in LangPreamble, since
 	# listings.sty does that already. However it needs to be redefined
 	# in order to be used for non-english single-language documents.
 	LangPreamble
-		\renewcommand{\lstlistingname}{_(Listing)}
+	  \renewcommand{\lstlistingname}{_(Listing)}
 	EndLangPreamble
 	FixedWidthPreambleEncoding true
 End
@@ -382,13 +382,13 @@ End
 InsetLayout MintedListings
 	CopyStyle Listings
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\listingscaption}{_(Listing)}}
+	  \addto\captions$$lang{\renewcommand{\listingscaption}{_(Listing)}}
 	EndBabelPreamble
 	# The command does not need to be defined in LangPreamble, since
 	# minted.sty does that already. However it needs to be redefined
 	# in order to be used for non-english single-language documents.
 	LangPreamble
-		\renewcommand{\listingscaption}{_(Listing)}
+	  \renewcommand{\listingscaption}{_(Listing)}
 	EndLangPreamble
 	FixedWidthPreambleEncoding false
 End
@@ -472,15 +472,15 @@ InsetLayout Nomenclature
 	ContentAsLabel        true
 	AddToToc              nomencl
 	Argument 1
-		LabelString   "Sort as"
-		Tooltip       "Sort this entry as specified in the inset"
+	  LabelString         "Sort as"
+	  Tooltip             "Sort this entry as specified in the inset"
 	EndArgument
 	Argument post:1
-		LabelString   "Description"
-		Tooltip       "Description of the entry"
-		AutoInsert    1
-		Mandatory     1
-		EscapeChars   %!@|
+	  LabelString         "Description"
+	  Tooltip             "Description of the entry"
+	  AutoInsert          1
+	  Mandatory           1
+	  EscapeChars         %!@|
 	EndArgument
 	EscapeChars           %!@|
 	InsertCotext          1
@@ -500,7 +500,7 @@ End
 InsetLayout Box:Frameless
 	CopyStyle Box
 	HTMLStyle
-		div.Frameless { margin: 1em; }
+	  div.Frameless { margin: 1em; }
 	EndHTMLStyle
 	DocBookWrapperTag     sidebar
 	DocBookTag            para
@@ -511,10 +511,10 @@ InsetLayout Box:Shaded
 	CopyStyle Box
 	BgColor shaded
 	HTMLStyle
-		div.Shaded {
-			background-color: gray;
-			padding: 0.5ex;
-		}
+	  div.Shaded {
+	    background-color: gray;
+	    padding: 0.5ex;
+	  }
 	EndHTMLStyle
 	DocBookWrapperTag     sidebar
 	DocBookTag            para
@@ -524,10 +524,10 @@ End
 InsetLayout Box:Boxed
 	CopyStyle Box
 	HTMLStyle
-		div.Boxed {
-			border: solid thick black;
-			padding: 0.5ex;
-		}
+	  div.Boxed {
+	    border: solid thick black;
+	    padding: 0.5ex;
+	  }
 	EndHTMLStyle
 	DocBookWrapperTag     sidebar
 	DocBookTag            para
@@ -537,10 +537,10 @@ End
 InsetLayout Box:Framed
 	CopyStyle Box
 	HTMLStyle
-		div.Framed {
-			border: solid thick black;
-			padding: 0.5ex;
-		}
+	  div.Framed {
+	    border: solid thick black;
+	    padding: 0.5ex;
+	  }
 	EndHTMLStyle
 	DocBookWrapperTag     sidebar
 	DocBookTag            para
@@ -550,10 +550,10 @@ End
 InsetLayout Box:ovalbox
 	CopyStyle Box
 	HTMLStyle
-		div.ovalbox {
-			border: groove medium black;
-			padding: 0.5ex;
-		}
+	  div.ovalbox {
+	    border: groove medium black;
+	    padding: 0.5ex;
+	  }
 	EndHTMLStyle
 	DocBookWrapperTag     sidebar
 	DocBookTag            para
@@ -563,10 +563,10 @@ End
 InsetLayout Box:Ovalbox
 	CopyStyle Box
 	HTMLStyle
-		div.Ovalbox {
-			border: ridge thick black;
-			padding: 0.5ex;
-		}
+	  div.Ovalbox {
+	    border: ridge thick black;
+	    padding: 0.5ex;
+	  }
 	EndHTMLStyle
 	DocBookWrapperTag     sidebar
 	DocBookTag            para
@@ -576,7 +576,12 @@ End
 InsetLayout Box:Shadowbox
 	CopyStyle Box
 	HTMLStyle
-		div.Shadowbox { border: solid gray medium; border-bottom: solid black 1ex; border-right: solid black 1ex; padding: 0.5ex; }
+	  div.Shadowbox {
+	    border: solid gray medium;
+	    border-bottom: solid black 1ex;
+	    border-right: solid black 1ex;
+	    padding: 0.5ex;
+	  }
 	EndHTMLStyle
 	DocBookWrapperTag     sidebar
 	DocBookTag            para
@@ -586,10 +591,10 @@ End
 InsetLayout Box:Doublebox
 	CopyStyle Box
 	HTMLStyle
-		div.Doublebox {
-			border: double thick black;
-			padding: 0.5ex;
-		}
+	  div.Doublebox {
+	    border: double thick black;
+	    padding: 0.5ex;
+	  }
 	EndHTMLStyle
 	DocBookWrapperTag     sidebar
 	DocBookTag            para
@@ -605,10 +610,10 @@ InsetLayout Float
 	EndFont
 	MultiPar              true
 	HTMLStyle
-		div.float {
-			border: 2px solid black;
-			text-align: center;
-		}
+	  div.float {
+	    border: 2px solid black;
+	    text-align: center;
+	  }
 	EndHTMLStyle
 End
 
@@ -624,12 +629,12 @@ InsetLayout Wrap
 	MultiPar              true
 	RefPrefix             wrap
 	HTMLStyle
-		div.wrap {
-			float: right;
-			border: 2px solid black;
-			padding: 1ex;
-			margin: 1ex;
-		}
+	  div.wrap {
+	    float: right;
+	    border: 2px solid black;
+	    padding: 1ex;
+	    margin: 1ex;
+	  }
 	EndHTMLStyle
 End
 
@@ -675,7 +680,7 @@ End
 InsetLayout Info
 	Decoration	      conglomerate
 	HTMLStyle
-		span.info { font-family: sans-serif; }
+	  span.info { font-family: sans-serif; }
 	EndHTMLStyle
 	HTMLTag               span
 	MultiPar              false
@@ -695,7 +700,7 @@ InsetLayout Info:menu
 	EndFont
 	HTMLClass             "info menu"
 	HTMLStyle
-		span.menu { font-family: sans-serif; }
+	  span.menu { font-family: sans-serif; }
 	EndHTMLStyle
 	DocBookTag            guimenu
 	DocBookTagType        inline
@@ -714,7 +719,7 @@ InsetLayout Info:shortcut
 	EndFont
 	HTMLClass             "info shortcut"
 	HTMLStyle
-		span.shortcut { font-family: sans-serif; }
+	  span.shortcut { font-family: sans-serif; }
 	EndHTMLStyle
 	DocBookWrapperTag     keycombo
 	DocBookWrapperTagType inline
@@ -735,7 +740,7 @@ InsetLayout Info:shortcuts
 	EndFont
 	HTMLClass             "info shortcut"
 	HTMLStyle
-		span.shortcuts { font-family: sans-serif; }
+	  span.shortcuts { font-family: sans-serif; }
 	EndHTMLStyle
 	DocBookWrapperTag     keycombo
 	DocBookWrapperTagType inline
@@ -750,19 +755,19 @@ InsetLayout Caption:Standard
 	NeedProtect	     1
 	MultiPar             false
 	Argument 1
-		LabelString   "Short Title|S"
-		Tooltip       "The caption as it appears in the list of figures/tables"
-		InsertCotext  1
-		DocBookTag    titleabbrev
-		DocBookArgumentAfterMainTag  true
+	  LabelString   "Short Title|S"
+	  Tooltip       "The caption as it appears in the list of figures/tables"
+	  InsertCotext  1
+	  DocBookTag    titleabbrev
+	  DocBookArgumentAfterMainTag  true
 	EndArgument
 	HTMLStyle
-		div.float-caption {
-			text-align: center;
-			border: 2px solid black;
-			padding: 1ex;
-			margin: 1ex;
-		}
+	  div.float-caption {
+	    text-align: center;
+	    border: 2px solid black;
+	    padding: 1ex;
+	    margin: 1ex;
+	  }
 	EndHTMLStyle
 	HTMLClass             "float-caption float-caption-standard"
 End
@@ -810,18 +815,18 @@ End
 
 InsetLayout PrintNomencl
 	BabelPreamble
-		\addto\captions$$lang{%
-			\def\eqdeclaration#1{, _(see equation[[nomencl]])\nobreakspace(#1)}%
-			\def\pagedeclaration#1{, _(page[[nomencl]])\nobreakspace#1}%
-			\def\nomname{_(Nomenclature[[output]])}%
-		}
+	  \addto\captions$$lang{%
+	    \def\eqdeclaration#1{, _(see equation[[nomencl]])\nobreakspace(#1)}%
+	    \def\pagedeclaration#1{, _(page[[nomencl]])\nobreakspace#1}%
+	    \def\nomname{_(Nomenclature[[output]])}%
+	  }
 	EndBabelPreamble
 	# The command is defined for several languages in nomencl.sty. However, we need to define
 	# it anyway for the other, non suppported languages.
 	LangPreamble
-		\def\eqdeclaration#1{, _(see equation[[nomencl]])\nobreakspace(#1)}
-		\def\pagedeclaration#1{, _(page[[nomencl]])\nobreakspace#1}
-		\def\nomname{_(Nomenclature[[output]])}
+	  \def\eqdeclaration#1{, _(see equation[[nomencl]])\nobreakspace(#1)}
+	  \def\pagedeclaration#1{, _(page[[nomencl]])\nobreakspace#1}
+	  \def\nomname{_(Nomenclature[[output]])}
 	EndLangPreamble
 	HTMLTag h2
 End
@@ -829,12 +834,12 @@ End
 InsetLayout Tabular
 	InheritFont false
 	HTMLStyle
-		table {
-			border-collapse: collapse;
-			display: inline-block;
-		}
-		td {
-			padding: 0.5ex;
-		}
+	  table {
+	    border-collapse: collapse;
+	    display: inline-block;
+	  }
+	  td {
+	    padding: 0.5ex;
+	  }
 	EndHTMLStyle
 End

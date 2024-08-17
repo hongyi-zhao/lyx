@@ -558,7 +558,6 @@ def revert_biblio_style(document):
     "BibTeX insets with default option use the style defined by \\biblio_style."
     i = find_token(document.header, "\\biblio_style", 0)
     if i == -1:
-        document.warning("No \\biblio_style line. Nothing to do.")
         return
 
     default_style = get_value(document.header, "\\biblio_style", i)

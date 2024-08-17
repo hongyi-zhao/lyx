@@ -653,15 +653,14 @@ def convert_index_sc(document):
                 k = find_substring(document.body, ec, k, j)
                 if k == -1:
                     break
-                if get_containing_inset(document.body, k)[0] == "ERT":
+                inInset = get_containing_inset(document.body, k)
+                if inInset and inInset[0] == "ERT":
                     k += 1
                     continue
                     
                 line = document.body[k]
                 chunks = line.split(ec)
                 repl = []
-                if line[0] == ec:
-                    repl = put_cmd_in_ert(ec)
                 chunks_len = len(chunks)-1
                 for ch in chunks[:-1]:
                     repl += [ch]
@@ -696,7 +695,8 @@ def revert_index_sc(document):
                 k = find_substring(document.body, ec, k, j)
                 if k == -1:
                     break
-                if get_containing_inset(document.body, k)[0] == "ERT":
+                inInset = get_containing_inset(document.body, k)
+                if inInset and inInset[0] == "ERT":
                     k += 1
                     continue
                     

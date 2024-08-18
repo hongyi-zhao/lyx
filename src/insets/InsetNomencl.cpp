@@ -448,11 +448,18 @@ void InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in
 	if (autowidth || getParam("set_width") == "textwidth") {
 		docstring widest = autowidth ? nomenclWidest(buffer())
 					     : getParam("width");
+		// We need to validate that all characters are representable
+		// in the current encoding. If not try the LaTeX macro which might
+		// or might not be a good choice, and issue a warning.
+		pair<docstring, docstring> widest_latexed =
+				runparams.encoding->latexString(widest, runparams.dryrun);
+		if (!widest_latexed.second.empty())
+			LYXERR0("Uncodable character in nomencl entry. List width might be wrong!");
 		// Set the label width via nomencl's command \nomlabelwidth.
 		// This must be output before the command \printnomenclature
-		if (!widest.empty()) {
+		if (!widest_latexed.first.empty()) {
 			os << "\\settowidth{\\nomlabelwidth}{"
-			   << widest
+			   << widest_latexed.first
 			   << "}\n";
 		}
 	} else if (getParam("set_width") == "custom") {

@@ -35948,6 +35948,8 @@ status collapsed
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -53152,6 +53154,8 @@ Features
 \emph default
  manual.
  
+\change_deleted -712698321 1723968417
+
 \family sans
 Math
 \begin_inset space ~
@@ -53164,6 +53168,8 @@ image
 scaling
 \family default
  is used for the size of equations in the output.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -53190,7 +53196,48 @@ Additional Features
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1723968656
+
+\family sans
+Scaling
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+generated
+\begin_inset space ~
+\end_inset
+
+images
+\family default
+ is the scaling factor used for images that are generated to represent some \SpecialChar LaTeX
+ constructs (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ math,
+ linguistics structure trees) in non-\SpecialChar LaTeX
+ output (XHTML,
+ DocBook) graphically
+\change_unchanged
 .
+
+\change_inserted -712698321 1723968904
+ The factor multiplies with 72
+\begin_inset space \thinspace{}
+\end_inset
+
+dpi.
+ The higher the value,
+ thus,
+ the better the image quality (and the bigger the file size).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

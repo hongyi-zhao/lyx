@@ -2619,6 +2619,65 @@ latex
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1723633863
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723632792
+needcopiesfrom=<format>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ Some formats (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ DocBook) generate external files with specific names (for instance if math is rendered as graphic),
+ but they are only generated in the working directory if the respective format is the target format.
+ If you have such a format in your conversion chain and need those files in conversion,
+ use this flag with the respective 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723633006
+<format>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (cf.
+ the DocBook to ePub converter,
+ which uses 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1723633014
+needcopiesfrom=docbook5
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+ The files will then be made available in the temporary directory as soon as the intermediate format has been generated.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Flex Code
 status collapsed
 
@@ -20272,6 +20331,8 @@ status collapsed
 
 \change_inserted -712698321 1723525171
 InsertCotext
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20291,6 +20352,8 @@ status collapsed
 
 \change_inserted -712698321 1723525183
 0
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20309,11 +20372,15 @@ status collapsed
 
 \emph on
 1
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 ]
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -20326,6 +20393,8 @@ status collapsed
 
 \change_inserted -712698321 1723525171
 1
+\change_unchanged
+
 \end_layout
 
 \end_inset

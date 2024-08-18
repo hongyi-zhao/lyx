@@ -18,6 +18,7 @@
 #include "TextClass.h"
 #include "Encoding.h"
 #include "ErrorList.h"
+#include "Exporter.h"
 #include "Format.h"
 #include "InsetList.h"
 #include "Language.h"
@@ -144,6 +145,8 @@ void Converter::readFlags()
 			need_auth_ = true;
 		else if (flag_name == "hyperref-driver")
 			href_driver_ = flag_value;
+		else if (flag_name == "needcopiesfrom")
+			need_renamed_copies_from_ = flag_value;
 	}
 	if (!result_dir_.empty() && result_file_.empty())
 		result_file_ = "index." + theFormats().extension(to_);
@@ -415,7 +418,8 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 			 FileName const & from_file, FileName const & to_file,
 			 FileName const & orig_from,
 			 string const & from_format, string const & to_format,
-			 ErrorList & errorList, int conversionflags, bool includeall)
+			 ErrorList & errorList, int conversionflags, bool includeall,
+			 shared_ptr<ExportData> exportdata)
 {
 	if (from_format == to_format)
 		return move(from_format, from_file, to_file, false) ?
@@ -528,6 +532,22 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 	FileName outfile = from_file;
 	for (auto const & edge : edgepath) {
 		Converter const & conv = converterlist_[edge];
+		// If the converter requires renamed file copies from an involved
+		// converter, handle this here. These copies stay in the tmp dir
+		if (exportdata && conv.need_renamed_copies_from() == conv.from()) {
+			vector<ExportedFile> const extfiles =
+				exportdata->externalFiles(conv.from());
+			CopyStatus status = FORCE;
+			for (ExportedFile const & exp : extfiles) {
+				string const fmt = theFormats().getFormatFromFile(exp.sourceName);
+				FileName expFileName = makeAbsPath(exp.exportName,
+								   exp.sourceName.onlyPath().realPath());
+				status = copyFile(fmt, exp.sourceName,
+					expFileName,
+					exp.exportName, status == FORCE,
+					true);
+			}
+		}
 		bool dummy = conv.To()->dummy() && conv.to() != "program";
 		if (!dummy) {
 			LYXERR(Debug::FILES, "Converting from  "

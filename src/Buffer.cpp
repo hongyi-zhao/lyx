@@ -4629,7 +4629,8 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	Converters::RetVal const retval = 
 		converters.convert(this, FileName(filename), tmp_result_file,
 				   FileName(absFileName()), backend_format, format,
-				   error_list, Converters::none, includeall);
+				   error_list, Converters::none, includeall,
+				   runparams.exportdata);
 	if (retval == Converters::KILLED)
 		return ExportCancel;
 	bool success = (retval == Converters::SUCCESS);

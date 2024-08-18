@@ -51476,7 +51476,6 @@ Mathe-Ausgabe in XHTML
 Handbuchergänzungen
 \emph default
  beschrieben.
- Die Skalierung wird für die Größe von Gleichungen in der Ausgabe verwendet.
 \end_layout
 
 \begin_layout Description
@@ -51486,6 +51485,32 @@ DocBook-Ausgabe-Optionen erlaubt Einstellungen betreffend der DocBook-Ausgabe.
 DocBook-Ausgabe
 \emph default
  in den Handbuchergänzungen.
+\end_layout
+
+\begin_layout Description
+Skalierung
+\begin_inset space ~
+\end_inset
+
+generierter
+\begin_inset space ~
+\end_inset
+
+Grafiken ist ein Faktor,
+ der bestimmt,
+ in welcher Auflösung Grafiken erzeugt werden,
+ sie in einigen Nicht-\SpecialChar LaTeX
+-Ausgaben verwendet werden,
+ um bestimmte \SpecialChar LaTeX
+-Konstrukte (bspw.
+ mathematische Formeln oder linguistische Strukturbäume) grafisch darzustellen.
+ Der Faktor wird mit 72
+\begin_inset space \thinspace{}
+\end_inset
+
+dpi multipliziert.
+ Je größer der Wert,
+ desto besser also die Qualität der Grafiken (desto größer aber auch die Datei).
 \end_layout
 
 \begin_layout Description

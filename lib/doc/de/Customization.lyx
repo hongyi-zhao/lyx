@@ -2183,6 +2183,51 @@ latex
 status collapsed
 
 \begin_layout Plain Layout
+needcopiesfrom=<Format>
+\end_layout
+
+\end_inset
+
+ Manche Formate (bspw.
+ DocBook) erzeugen externe Dateien mit speziellen Namen (zum Beispiel,
+ wenn mathematische Formeln als Grafiken dargestellt werden),
+ allerdings geschieht dies nur,
+ wenn das Format den Endpunkt der Konversion darstellt,
+ die Dateien landen dann im Arbeitsverzeichnis.
+ Wenn Sie eines dieser Formate als Zwischenformat haben und diese Dateien im Konvertierungsprozess benötigen,
+ verwenden Sie diesen Flag mit dem entsprechenden 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Format>
+\end_layout
+
+\end_inset
+
+ (vgl.
+ den Konverter von DocBook nach ePub,
+ der 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+needcopiesfrom=docbook5
+\end_layout
+
+\end_inset
+
+ verwendet).
+ Die Dateien werden dann im temporären Verzeichnis zur Verfügung gestellt,
+ nachdem das Zwischenformat erzeugt wurde.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 nice
 \end_layout
 

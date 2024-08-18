@@ -15,6 +15,7 @@
 #include "Graph.h"
 #include "support/trivstring.h"
 
+#include <memory>
 #include <vector>
 #include <set>
 #include <string>
@@ -26,6 +27,7 @@ namespace support { class FileName; }
 
 class Buffer;
 class ErrorList;
+class ExportData;
 class Format;
 class Formats;
 class OutputParams;
@@ -91,6 +93,8 @@ public:
 	std::string const parselog() const { return parselog_; }
 	///
 	std::string const hyperref_driver() const { return href_driver_; }
+	///
+	std::string const need_renamed_copies_from() const { return need_renamed_copies_from_; }
 
 private:
 	///
@@ -128,6 +132,8 @@ private:
 	trivstring parselog_;
 	/// The hyperref driver
 	trivstring href_driver_;
+	/// Needs renamed file copies from an intermediate format
+	trivstring need_renamed_copies_from_;
 };
 
 
@@ -195,7 +201,8 @@ public:
 		     support::FileName const & from_file, support::FileName const & to_file,
 		     support::FileName const & orig_from,
 		     std::string const & from_format, std::string const & to_format,
-		     ErrorList & errorList, int conversionflags = none, bool includeall = false);
+		     ErrorList & errorList, int conversionflags = none, bool includeall = false,
+		     std::shared_ptr<ExportData> exportdata = nullptr);
 	///
 	void update(Formats const & formats);
 	///

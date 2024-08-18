@@ -986,7 +986,7 @@ def checkConverterEntries():
     checkProg('DocBook converter -> PDF (docbook)',
               ['pandoc -f docbook -t latex --pdf-engine=lualatex --toc -o $$o $$i',  # Since Pandoc 2.0
                'pandoc -f docbook -t latex --latex-engine=lualatex --toc -o $$o $$i'],  # Up to Pandoc 1.19
-              rc_entry = [ r'\converter docbook5      pdf9      "%%"	""' ])
+              rc_entry = [ r'\converter docbook5      pdf9      "%%"	"needcopiesfrom=docbook5"' ])
     #
     xpath, xslt_sheet = checkProg('XSLT stylesheets for ePub', ['chunk.xsl'], '', ['/usr/share/xml/docbook/stylesheet/docbook-xsl-ns/epub3'])
     if xslt_sheet == 'chunk.xsl':
@@ -995,9 +995,9 @@ def checkConverterEntries():
         xpath = 'none'
     global java
     if xsltproc != '':
-        addToRC(r'\converter docbook5 epub "$${python} $$s/scripts/docbook2epub.py none none \"' + xsltproc + r'\" ' + xpath + ' $$i $$r $$o" ""')
+        addToRC(r'\converter docbook5 epub "$${python} $$s/scripts/docbook2epub.py none none \"' + xsltproc + r'\" ' + xpath + ' $$i $$r $$o" "needcopiesfrom=docbook5"')
     elif java != '':
-        addToRC(r'\converter docbook5 epub "$${python} $$s/scripts/docbook2epub.py \"' + java + r'\" none none ' + xpath + ' $$i $$r $$o" ""')
+        addToRC(r'\converter docbook5 epub "$${python} $$s/scripts/docbook2epub.py \"' + java + r'\" none none ' + xpath + ' $$i $$r $$o" "needcopiesfrom=docbook5"')
     #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])

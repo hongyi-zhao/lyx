@@ -5,7 +5,7 @@
 \save_transient_properties true
 \origin /systemlyxdir/templates/Articles/
 \textclass aa
-\options referee, bibyear
+\options referee, bibauthoryear
 \use_default_options true
 \maintain_unincluded_children no
 \language english
@@ -31,6 +31,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -46,8 +48,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -55,6 +57,7 @@
 \suppress_date false
 \justification false
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index
@@ -391,9 +394,21 @@ bla.
  A citation:
  
 \begin_inset CommandInset citation
-LatexCommand cite
-key "book-full"
+LatexCommand citet
+key "article-minimal"
 literal "true"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Note:
+ the citations are hardcoded by the package options;
+ all selections give the same style
+\end_layout
 
 \end_inset
 

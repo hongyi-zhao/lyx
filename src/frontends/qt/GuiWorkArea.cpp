@@ -1225,11 +1225,20 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 	// get attributes of input method cursor.
 	// cursor_pos : cursor position in preedit string.
 	size_t cursor_pos = 0;
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 	bool cursor_is_visible = false;
+#endif
+
 	for (auto const & attr : preedit_attr_) {
 		if (attr.type == QInputMethodEvent::Cursor) {
+			// in the completing mode, cursor_pos comes after the selected
+			// snippet in Qt 5
+			// in Qt 6, it comes at the head of the selected snippet
 			cursor_pos = size_t(attr.start);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 			cursor_is_visible = attr.length != 0;
+#endif
 			break;
 		}
 	}
@@ -1242,21 +1251,34 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 	size_t rStart = 0;
 	// rLength : selected string length in IM.
 	size_t rLength = 0;
-	if (cursor_pos < preedit_length) {
-		for (auto const & attr : preedit_attr_) {
-			if (attr.type == QInputMethodEvent::TextFormat) {
-				if (attr.start <= int(cursor_pos)
-					&& int(cursor_pos) < attr.start + attr.length) {
-						rStart = size_t(attr.start);
-						rLength = size_t(attr.length);
-						if (!cursor_is_visible)
-							cursor_pos += rLength;
-						break;
-				}
+
+	for (auto const & attr : preedit_attr_) {
+		if (attr.type == QInputMethodEvent::TextFormat) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+			if (attr.start <= int(cursor_pos)
+				&& int(cursor_pos) < attr.start + attr.length) {
+				// we are in the completing mode
+				// (selecting the right chars from candidates)
+				rStart = size_t(attr.start);
+				rLength = size_t(attr.length);
+				if (!cursor_is_visible)
+					cursor_pos += rLength;
+				break;
 			}
+#else
+			if (attr.start < int(cursor_pos)
+				&& int(cursor_pos) <= attr.start + attr.length) {
+				// we are in the completing mode
+				// (selecting the right chars from candidates)
+				rStart = size_t(attr.start);
+				rLength = size_t(attr.length);
+				break;
+			}
+#endif
 		}
 	}
-	else {
+	if (rStart == 0 && rLength == preedit_length) {
+		// we are in the composing mode (typing) as we didn't break above
 		rStart = cursor_pos;
 		rLength = 0;
 	}
@@ -1288,9 +1310,9 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 			ps = Painter::preedit_selecting;
 		}
 
-		if (pos == cursor_pos
-			&& (cursor_pos < rLength && rLength == preedit_length))
+		if (pos == cursor_pos && rLength == 0) {
 			ps = Painter::preedit_cursor;
+		}
 
 		// draw one character and update cur_x.
 		cur_x += pain.preeditText(cur_x, cur_y, typed_char, font, ps);

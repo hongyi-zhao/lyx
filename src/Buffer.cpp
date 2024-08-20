@@ -5667,7 +5667,6 @@ void Buffer::Impl::fileExternallyModified(bool const exists)
 		       "checksum unchanged: " << filename);
 		return;
 	}
-	lyx_clean = false;
 	// If the file has been deleted, only mark the file as dirty since it is
 	// pointless to prompt for reloading. If later a file is moved into this
 	// location, then the externally modified warning will appear then.
@@ -5678,6 +5677,7 @@ void Buffer::Impl::fileExternallyModified(bool const exists)
 	if (wa_ && wa_->unhide(owner_)) {
 		wa_->updateTitles();
 		if (!exists) {
+			lyx_clean = false;
 			frontend::Alert::warning(
 				_("File deleted from disk"),
 				bformat(_("The file\n  %1$s\n"

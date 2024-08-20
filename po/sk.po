@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-13 08:10+0200\n"
-"PO-Revision-Date: 2024-08-13 06:52+0000\n"
+"POT-Creation-Date: 2024-08-20 12:26+0200\n"
+"PO-Revision-Date: 2024-08-20 10:34+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3339,10 +3339,6 @@ msgstr "Čís&lovanie"
 msgid "&LaTeX"
 msgstr "&LaTeX"
 
-#: src/frontends/qt/ui/OutputUi.ui:43
-msgid "LaTeX Output Options"
-msgstr "Výstupné LaTeX-voľby"
-
 #: src/frontends/qt/ui/OutputUi.ui:51
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
 msgstr ""
@@ -3378,17 +3374,9 @@ msgstr "Vys&unúť lámavý obsah z pohyblivých argumentov"
 msgid "&XHTML"
 msgstr "&XHTML"
 
-#: src/frontends/qt/ui/OutputUi.ui:155
-msgid "XHTML Output Options"
-msgstr "XHTML Voľby"
-
 #: src/frontends/qt/ui/OutputUi.ui:164
 msgid "Write CSS to file"
 msgstr "Píš CSS do súboru"
-
-#: src/frontends/qt/ui/OutputUi.ui:176
-msgid "Scaling factor for images used for math output."
-msgstr "Faktor pre mierky obrázkov používaných pre matematický výstup."
 
 #: src/frontends/qt/ui/OutputUi.ui:200 src/frontends/qt/ui/OutputUi.ui:397
 msgid "Format to use for math output."
@@ -3417,10 +3405,6 @@ msgstr "Obrázky"
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: src/frontends/qt/ui/OutputUi.ui:232
-msgid "Math &image scaling:"
-msgstr "Mat. mier&ka obrázku:"
-
 #: src/frontends/qt/ui/OutputUi.ui:255
 msgid "Whether to comply strictly with XHTML 1.1."
 msgstr "Či konať v striktnom zhode s XHTML 1.1."
@@ -3436,10 +3420,6 @@ msgstr "Výstup pre &matematiku:"
 #: src/frontends/qt/ui/OutputUi.ui:297
 msgid "&DocBook"
 msgstr "&DocBook"
-
-#: src/frontends/qt/ui/OutputUi.ui:303
-msgid "DocBook Output Options"
-msgstr "Výstupné DocBook-voľby"
 
 #: src/frontends/qt/ui/OutputUi.ui:323
 msgid ""
@@ -3504,6 +3484,22 @@ msgstr "Určite štandardný výstupný formát (pre náhľad/aktualizáciu)"
 #: src/frontends/qt/ui/OutputUi.ui:518
 msgid "De&fault output format:"
 msgstr "Š&tandardný výstup:"
+
+#: src/frontends/qt/ui/OutputUi.ui:144
+msgid "Output Options"
+msgstr "Výstupné voľby"
+
+#: src/frontends/qt/ui/OutputUi.ui:157 src/frontends/qt/ui/OutputUi.ui:175
+msgid ""
+"Scaling factor for images that are generated for some LaTeX constructs (e."
+"g., math formulae) in non-LaTeX output."
+msgstr ""
+"Faktor mierky pre obrázky, ktoré sú generované pre niektoré konštrukty "
+"LaTeXu (napr. matematické vzorce) vo výstupe mimo LaTeXu."
+
+#: src/frontends/qt/ui/OutputUi.ui:160
+msgid "Scaling of generated &images:"
+msgstr "Mierka vygenerovaných &obrázkov:"
 
 #: src/frontends/qt/ui/OutputUi.ui:553
 msgid ""
@@ -38875,6 +38871,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "XHTML Output Options"
+#~ msgstr "XHTML Voľby"
+
+#~ msgid "Scaling factor for images used for math output."
+#~ msgstr "Faktor pre mierky obrázkov používaných pre matematický výstup."
+
+#~ msgid "Math &image scaling:"
+#~ msgstr "Mat. mier&ka obrázku:"
+
+#~ msgid "DocBook Output Options"
+#~ msgstr "Výstupné DocBook-voľby"
+
 #~ msgid "Hebrew Letter"
 #~ msgstr "Hebrejský list"
 
@@ -44437,3 +44445,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Insert See Reference|c"
 #~ msgstr "Vložiť \"Viď\" referenciu|V"
+
+#~ msgid "LaTeX Output Options"
+#~ msgstr "Výstupné LaTeX-voľby"

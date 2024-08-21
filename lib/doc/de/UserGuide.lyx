@@ -35876,7 +35876,7 @@ Nom
  wird eingefügt.
  Falls der Cursor direkt hinter einem Wort steht,
  wird dieses hineinkopiert.
- Ein Nomenklatur-Eintrag besteht aus zwei Hauptteilen:
+ Ein Nomenklatur-Eintrag besteht im Standard-Stil aus zwei Hauptteilen:
  das 
 \family sans
 Symbol
@@ -35892,6 +35892,39 @@ Beschreibung
 Beschreibung
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Wenn Sie in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Stichwortverzeichnis & Nomenklatur
+\family default
+ den Nomenklatur-Stil 
+\begin_inset Quotes gld
+\end_inset
+
+Tabelle
+\begin_inset Quotes grd
+\end_inset
+
+ auswählen,
+ wird das Verzeichnis als mehrseitige Tabelle und nicht als Liste gesetzt und Sie haben zwei weitere Teile:
+ 
+\family sans
+Einheit
+\family default
+ (für Einheiten aller Art) und 
+\family sans
+Anmerkung
+\family default
+ (für zusätzliche Informationen).
+ Diese können Sie im Menü 
+\family sans
+Einfügen
+\family default
+ auswählen.
 \end_layout
 
 \begin_layout Subsection
@@ -50592,7 +50625,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Section
-Stichwortverzeichnis
+Stichwortverzeichnis & Nomenklatur
 \end_layout
 
 \begin_layout Standard
@@ -50614,6 +50647,22 @@ nolink "false"
 \end_inset
 
  für Details).
+ Außerdem können Sie hier einen Nomenklatur-Stil auswählen (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Nomenklatur/Glossar"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten).
 \end_layout
 
 \begin_layout Section

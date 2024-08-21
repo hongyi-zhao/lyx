@@ -1497,7 +1497,10 @@ string const LaTeXFeatures::getPackages() const
 			    "\\usepackage{ulem}\n";
 
 	if (mustProvide("nomencl")) {
-		packages << "\\usepackage{nomencl}\n";
+		packages << "\\usepackage";
+		if (params_.use_nomentbl)
+			packages << "[nomentbl]";
+		packages << "{nomencl}\n";
 		// Make it work with the new and old version of the package,
 		// but don't use the compatibility option since it is
 		// incompatible to other packages.

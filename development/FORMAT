@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2024-08-21 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 628: Add support for nomentbl-style
+	  nomencl insets:
+	  \nomenclature[<prefix>]{<symbol>}{<description>}{<units>}{<note>}
+
 2024-08-12 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 627: Transform nomenclature inset to
 	  collapsible.

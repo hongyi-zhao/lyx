@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-18 18:38+0200\n"
-"PO-Revision-Date: 2024-08-18 18:41+0200\n"
+"POT-Creation-Date: 2024-08-21 18:06+0200\n"
+"PO-Revision-Date: 2024-08-21 18:07+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -353,12 +353,12 @@ msgstr ""
 msgid "Bibliography Generation"
 msgstr "Literaturverzeichnis-Erzeugung"
 
-#: src/frontends/qt/ui/BiblioUi.ui:390 src/frontends/qt/ui/IndicesUi.ui:33
+#: src/frontends/qt/ui/BiblioUi.ui:390 src/frontends/qt/ui/IndicesUi.ui:51
 #: src/frontends/qt/ui/PrefLatexUi.ui:195
 msgid "&Processor:"
 msgstr "&Prozessor:"
 
-#: src/frontends/qt/ui/BiblioUi.ui:400 src/frontends/qt/ui/IndicesUi.ui:43
+#: src/frontends/qt/ui/BiblioUi.ui:400 src/frontends/qt/ui/IndicesUi.ui:61
 msgid "Select a processor"
 msgstr "Wählen Sie einen Prozessor"
 
@@ -781,7 +781,7 @@ msgstr "&Verfügbare Zweige:"
 msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
-#: src/frontends/qt/ui/BranchesUi.ui:74 src/frontends/qt/ui/IndicesUi.ui:165
+#: src/frontends/qt/ui/BranchesUi.ui:74 src/frontends/qt/ui/IndicesUi.ui:199
 #: src/Buffer.cpp:4836 src/Buffer.cpp:4849
 msgid "&Remove"
 msgstr "&Entfernen"
@@ -807,7 +807,7 @@ msgid "Add a new branch to the list"
 msgstr "Füge einen neuen Zweig zur Liste hinzu"
 
 #: src/frontends/qt/ui/BranchesUi.ui:116 src/frontends/qt/ui/CitationUi.ui:146
-#: src/frontends/qt/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:459
+#: src/frontends/qt/ui/IndicesUi.ui:135 src/CutAndPaste.cpp:459
 msgid "&Add"
 msgstr "&Hinzufügen"
 
@@ -815,7 +815,7 @@ msgstr "&Hinzufügen"
 msgid "Define or change background color"
 msgstr "Hintergrundfarbe definieren oder ändern"
 
-#: src/frontends/qt/ui/BranchesUi.ui:126 src/frontends/qt/ui/IndicesUi.ui:185
+#: src/frontends/qt/ui/BranchesUi.ui:126 src/frontends/qt/ui/IndicesUi.ui:231
 msgid "Alter Co&lor..."
 msgstr "&Farbe ändern..."
 
@@ -918,10 +918,10 @@ msgstr "&Größe:"
 #: src/frontends/qt/GuiDocument.cpp:2983 src/frontends/qt/GuiDocument.cpp:3599
 #: src/frontends/qt/GuiDocument.cpp:5105 src/frontends/qt/GuiExternal.cpp:76
 #: src/frontends/qt/GuiGraphics.cpp:71 src/frontends/qt/GuiIndex.cpp:46
-#: src/frontends/qt/GuiIndices.cpp:58 src/frontends/qt/GuiListings.cpp:156
-#: src/frontends/qt/GuiListings.cpp:163 src/frontends/qt/GuiPrefs.cpp:2386
-#: src/frontends/qt/GuiPrefs.cpp:2544 src/frontends/qt/GuiPrefs.cpp:2548
-#: src/frontends/qt/GuiPrintNomencl.cpp:47
+#: src/frontends/qt/GuiIndices.cpp:58 src/frontends/qt/GuiIndices.cpp:66
+#: src/frontends/qt/GuiListings.cpp:156 src/frontends/qt/GuiListings.cpp:163
+#: src/frontends/qt/GuiPrefs.cpp:2386 src/frontends/qt/GuiPrefs.cpp:2544
+#: src/frontends/qt/GuiPrefs.cpp:2548 src/frontends/qt/GuiPrintNomencl.cpp:47
 #: src/frontends/qt/GuiTabularCreate.cpp:107
 #: src/frontends/qt/GuiViewSource.cpp:351
 msgid "Default"
@@ -2402,8 +2402,8 @@ msgstr "Automatischen Zeilenumbruch nach dem Leerzeichen verhindern"
 #: lib/layouts/acmart.layout:725 lib/layouts/acmart.layout:743
 #: lib/layouts/amsdefs.inc:190 lib/layouts/maa-monthly.layout:165
 #: lib/layouts/maa-monthly.layout:169 lib/layouts/minimalistic.module:27
-#: lib/layouts/scrlttr2.layout:271 lib/layouts/stdinsets.inc:641
-#: lib/layouts/stdinsets.inc:644
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/stdinsets.inc:657
+#: lib/layouts/stdinsets.inc:660
 msgid "URL"
 msgstr "URL"
 
@@ -2604,74 +2604,82 @@ msgstr ""
 msgid "Enter custom command here (without leading backslash)."
 msgstr "Geben Sie hier einen LaTeX-Befehl (ohne \"\\\") ein."
 
-#: src/frontends/qt/ui/IndicesUi.ui:19
-msgid ""
-"Here you can define an alternative index processor and specify its options."
-msgstr ""
-"Hier können Sie einen alternativen Indexprozessor und seine Optionen angeben."
-
-#: src/frontends/qt/ui/IndicesUi.ui:22 src/frontends/qt/ui/PrefLatexUi.ui:184
-msgid "Index Generation"
-msgstr "Indexerzeugung"
-
-#: src/frontends/qt/ui/IndicesUi.ui:54 src/frontends/qt/GuiPrefs.cpp:595
-#: src/frontends/qt/GuiPrefs.cpp:721
-msgid "&Options:"
-msgstr "&Optionen:"
-
-#: src/frontends/qt/ui/IndicesUi.ui:64
-msgid "Define program options of the selected processor."
-msgstr "Definieren Sie die Programmoptionen des ausgewählten Prozessors."
-
-#: src/frontends/qt/ui/IndicesUi.ui:89
+#: src/frontends/qt/ui/IndicesUi.ui:20
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 "Aktivieren Sie dies, wenn sie mehrere Indexe (z.B. ein Namensregister) "
 "benötigen."
 
-#: src/frontends/qt/ui/IndicesUi.ui:92
+#: src/frontends/qt/ui/IndicesUi.ui:23
 msgid "&Use multiple indexes"
 msgstr "&Mehrere Indexe verwenden"
 
-#: src/frontends/qt/ui/IndicesUi.ui:114
+#: src/frontends/qt/ui/IndicesUi.ui:37
+msgid ""
+"Here you can define an alternative index processor and specify its options."
+msgstr ""
+"Hier können Sie einen alternativen Indexprozessor und seine Optionen angeben."
+
+#: src/frontends/qt/ui/IndicesUi.ui:40 src/frontends/qt/ui/PrefLatexUi.ui:184
+msgid "Index Generation"
+msgstr "Indexerzeugung"
+
+#: src/frontends/qt/ui/IndicesUi.ui:72 src/frontends/qt/GuiPrefs.cpp:595
+#: src/frontends/qt/GuiPrefs.cpp:721
+msgid "&Options:"
+msgstr "&Optionen:"
+
+#: src/frontends/qt/ui/IndicesUi.ui:82
+msgid "Define program options of the selected processor."
+msgstr "Definieren Sie die Programmoptionen des ausgewählten Prozessors."
+
+#: src/frontends/qt/ui/IndicesUi.ui:115
 msgid "&New:[[index]]"
 msgstr "&Neuer Index:"
 
-#: src/frontends/qt/ui/IndicesUi.ui:124
+#: src/frontends/qt/ui/IndicesUi.ui:125
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Geben Sie den Namen des benötigten Verzeichnisses (z.B. \"Namensregister\") "
 "ein und drücken Sie \"Hinzufügen\"."
 
-#: src/frontends/qt/ui/IndicesUi.ui:131
+#: src/frontends/qt/ui/IndicesUi.ui:132
 msgid "Add a new index to the list"
 msgstr "Füge einen neuen Index zur Liste hinzu"
 
-#: src/frontends/qt/ui/IndicesUi.ui:143
-msgid "A&vailable Indexes:"
-msgstr "&Verfügbare Indexe:"
+#: src/frontends/qt/ui/IndicesUi.ui:144 src/insets/InsetNomencl.cpp:193
+msgid "Nomenclature"
+msgstr "Nomenklatur"
 
-#: src/frontends/qt/ui/IndicesUi.ui:154
+#: src/frontends/qt/ui/IndicesUi.ui:153
+msgid "Nomenclature St&yle:"
+msgstr "Nomenklatur&stil: "
+
+#: src/frontends/qt/ui/IndicesUi.ui:182
 #: src/frontends/qt/ui/ProgressViewUi.ui:171
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt/ui/IndicesUi.ui:162
+#: src/frontends/qt/ui/IndicesUi.ui:196
 msgid "Remove the selected index"
 msgstr "Den ausgewählten Index entfernen"
 
-#: src/frontends/qt/ui/IndicesUi.ui:172
+#: src/frontends/qt/ui/IndicesUi.ui:212
 msgid "Rename the selected index"
 msgstr "Den ausgewählten Index umbenennen"
 
-#: src/frontends/qt/ui/IndicesUi.ui:175
+#: src/frontends/qt/ui/IndicesUi.ui:215
 msgid "R&ename..."
 msgstr "&Umbenennen..."
 
-#: src/frontends/qt/ui/IndicesUi.ui:182
+#: src/frontends/qt/ui/IndicesUi.ui:228
 msgid "Define or change button color"
 msgstr "Farbe der Schaltfläche definieren oder ändern"
+
+#: src/frontends/qt/ui/IndicesUi.ui:256
+msgid "A&vailable Indexes:"
+msgstr "&Verfügbare Indexe:"
 
 #: src/frontends/qt/ui/InfoUi.ui:25
 msgid "Infor&mation Type:"
@@ -3517,8 +3525,8 @@ msgid ""
 "Scaling factor for images that are generated for some LaTeX constructs (e."
 "g., math formulae) in non-LaTeX output."
 msgstr ""
-"Skalierungsfaktor für Grafiken, die in Nicht-LaTeX-Ausgaben zur Darstellung"
-" mancher LaTeX-Konstrukte (bspw. Formeln) generiert werden"
+"Skalierungsfaktor für Grafiken, die in Nicht-LaTeX-Ausgaben zur Darstellung "
+"mancher LaTeX-Konstrukte (bspw. Formeln) generiert werden"
 
 #: src/frontends/qt/ui/OutputUi.ui:160
 msgid "Scaling of generated &images:"
@@ -7821,7 +7829,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/scrlttr2.layout:19 lib/layouts/siamltex.layout:37
 #: lib/layouts/sigplanconf.layout:41 lib/layouts/simplecv.layout:18
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
-#: lib/layouts/stdinsets.inc:751 lib/layouts/stdletter.inc:12
+#: lib/layouts/stdinsets.inc:767 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
 #: src/insets/InsetRef.cpp:645
 msgid "Standard"
@@ -8912,7 +8920,7 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/scrclass.inc:149 lib/layouts/scrclass.inc:162
 #: lib/layouts/scrclass.inc:175 lib/layouts/scrclass.inc:331
 #: lib/layouts/scrclass.inc:356 lib/layouts/siamltex.layout:206
-#: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:758
+#: lib/layouts/simplecv.layout:52 lib/layouts/stdinsets.inc:774
 #: lib/layouts/stdsections.inc:32 lib/layouts/stdsections.inc:76
 #: lib/layouts/stdsections.inc:117 lib/layouts/tufte-book.layout:98
 #: lib/layouts/tufte-book.layout:131 lib/layouts/tufte-handout.layout:40
@@ -9897,7 +9905,7 @@ msgstr "Spezialabschnitt*"
 
 #: lib/layouts/amsart.layout:98 lib/layouts/beamer.layout:344
 #: lib/layouts/beamer.layout:409 lib/layouts/beamer.layout:472
-#: lib/layouts/memoir.layout:257 lib/layouts/stdinsets.inc:776
+#: lib/layouts/memoir.layout:257 lib/layouts/stdinsets.inc:792
 #: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:31
 #: lib/layouts/stdstarsections.inc:47 lib/layouts/stdstarsections.inc:63
 #: lib/layouts/stdstarsections.inc:79 lib/layouts/stdstarsections.inc:95
@@ -10120,13 +10128,13 @@ msgid "Centered"
 msgstr "Zentriert"
 
 #: lib/layouts/apa.layout:280 lib/layouts/apax.inc:379
-#: lib/layouts/stdinsets.inc:752 src/insets/InsetCaption.cpp:449
+#: lib/layouts/stdinsets.inc:768 src/insets/InsetCaption.cpp:449
 msgid "standard"
 msgstr "Standard"
 
 #: lib/layouts/apa.layout:287 lib/layouts/apax.inc:386
 #: lib/layouts/scrclass.inc:332 lib/layouts/scrclass.inc:357
-#: lib/layouts/stdinsets.inc:759
+#: lib/layouts/stdinsets.inc:775
 msgid "The caption as it appears in the list of figures/tables"
 msgstr "Die Legende, wie sie im Abbildungs-/Tabellenverzeichnis erscheint"
 
@@ -17861,11 +17869,11 @@ msgstr "Fußnote \\arabic{footnote}"
 msgid "\\fnsymbol{thanks}"
 msgstr "\\fnsymbol{thanks}"
 
-#: lib/layouts/stdfloatnames.inc:5 lib/layouts/stdinsets.inc:621
+#: lib/layouts/stdfloatnames.inc:5 lib/layouts/stdinsets.inc:637
 msgid "Tables"
 msgstr "Tabellen"
 
-#: lib/layouts/stdfloatnames.inc:6 lib/layouts/stdinsets.inc:622
+#: lib/layouts/stdfloatnames.inc:6 lib/layouts/stdinsets.inc:638
 msgid "Figures"
 msgstr "Abbildungen"
 
@@ -17965,27 +17973,43 @@ msgstr "Sortiere diesen Eintrag wie in der Einfügung spezifiziert"
 msgid "Description of the entry"
 msgstr "Beschreibung des Eintrags"
 
-#: lib/layouts/stdinsets.inc:671
+#: lib/layouts/stdinsets.inc:492
+msgid "Unit"
+msgstr "Einheit"
+
+#: lib/layouts/stdinsets.inc:493
+msgid "Nomenclature unit"
+msgstr "Nomenklatur-Einheit"
+
+#: lib/layouts/stdinsets.inc:498
+msgid "Note[[nomencl]]"
+msgstr "Anmerkung"
+
+#: lib/layouts/stdinsets.inc:499
+msgid "Nomenclature note"
+msgstr "Nomenklatur-Anmerkung"
+
+#: lib/layouts/stdinsets.inc:687
 msgid "Argument"
 msgstr "Argument"
 
-#: lib/layouts/stdinsets.inc:778
+#: lib/layouts/stdinsets.inc:794
 msgid "unlabelled"
 msgstr "ohne Marke"
 
-#: lib/layouts/stdinsets.inc:785
+#: lib/layouts/stdinsets.inc:801
 msgid "Preview"
 msgstr "Vorschau"
 
-#: lib/layouts/stdinsets.inc:819 lib/layouts/stdinsets.inc:827
+#: lib/layouts/stdinsets.inc:835 lib/layouts/stdinsets.inc:843
 msgid "see equation[[nomencl]]"
 msgstr "siehe Gleichung"
 
-#: lib/layouts/stdinsets.inc:820 lib/layouts/stdinsets.inc:828
+#: lib/layouts/stdinsets.inc:836 lib/layouts/stdinsets.inc:844
 msgid "page[[nomencl]]"
 msgstr "Seite"
 
-#: lib/layouts/stdinsets.inc:821 lib/layouts/stdinsets.inc:829
+#: lib/layouts/stdinsets.inc:837 lib/layouts/stdinsets.inc:845
 msgid "Nomenclature[[output]]"
 msgstr "Nomenklatur"
 
@@ -29010,7 +29034,7 @@ msgstr ""
 "  %1$s\n"
 "wurde von der Festplatte gelöscht!"
 
-#: src/BufferParams.cpp:537
+#: src/BufferParams.cpp:538
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
 "the AMS math toolbars are inserted into formulas"
@@ -29018,7 +29042,7 @@ msgstr ""
 "Die AMS-LaTeX-Pakete werden nur verwendet, wenn Symbole der AMS-"
 "Werkzeugleisten in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:539
+#: src/BufferParams.cpp:540
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
@@ -29026,7 +29050,7 @@ msgstr ""
 "Das AMS-Symb-Paket wird nur verwendet, wenn Symbole der AMS-Werkzeugleisten "
 "in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:541
+#: src/BufferParams.cpp:542
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
@@ -29034,7 +29058,7 @@ msgstr ""
 "Das LaTeX-Paket 'cancel' wird nur verwendet, wenn der Befehl \\cancel in "
 "Formeln eingefügt wird"
 
-#: src/BufferParams.cpp:543
+#: src/BufferParams.cpp:544
 msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
@@ -29042,7 +29066,7 @@ msgstr ""
 "Das LaTeX-Paket 'esint' wird nur verwendet, wenn spezielle Integralzeichen "
 "in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:545
+#: src/BufferParams.cpp:546
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
@@ -29050,7 +29074,7 @@ msgstr ""
 "Das LaTeX-Paket 'mathdots' wird nur verwendet, wenn der Befehl \\iddots in "
 "Formeln eingefügt wird"
 
-#: src/BufferParams.cpp:547
+#: src/BufferParams.cpp:548
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
 "inserted into formulas"
@@ -29058,7 +29082,7 @@ msgstr ""
 "Das LaTeX-Paket mathtools wird nur verwendet, wenn mathematische Relationen "
 "in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:549
+#: src/BufferParams.cpp:550
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
@@ -29066,7 +29090,7 @@ msgstr ""
 "Das LaTeX-Paket 'mhchem' wird nur verwendet, wenn entweder der Befehl \\ce "
 "oder \\cf in Formeln eingefügt wird"
 
-#: src/BufferParams.cpp:551
+#: src/BufferParams.cpp:552
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
 "subscript is inserted into formulas"
@@ -29074,7 +29098,7 @@ msgstr ""
 "Das LaTeX-Paket 'stackrel' wird nur verwendet, wenn der Befehl \\stackrel "
 "mit Tiefstellung in Formeln eingefügt wird"
 
-#: src/BufferParams.cpp:553
+#: src/BufferParams.cpp:554
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
 "symbol font for theoretical computer science are inserted into formulas"
@@ -29082,7 +29106,7 @@ msgstr ""
 "Das Stmaryrd-Paket wird nur verwendet, wenn Symbole des St.-Mary's-Road-"
 "Symbolzeichensatzes für theoretische Informatik in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:555
+#: src/BufferParams.cpp:556
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
 "decoration 'utilde'"
@@ -29090,7 +29114,7 @@ msgstr ""
 "Das LaTeX-Paket undertilde wird nur verwendet, wenn die Mathe Rahmen-"
 "Verzierung 'utilde' verwendet wird"
 
-#: src/BufferParams.cpp:790
+#: src/BufferParams.cpp:791
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -29113,17 +29137,17 @@ msgstr ""
 "In Abschnitt 3.1.2.2 des Benutzerhandbuchs\n"
 "finden Sie weitere Hilfe."
 
-#: src/BufferParams.cpp:799
+#: src/BufferParams.cpp:800
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:1106 src/Color.cpp:283
+#: src/BufferParams.cpp:1107 src/Color.cpp:283
 #: src/frontends/qt/GuiDocument.cpp:3737
 msgid "greyedout inset text"
 msgstr "Grauschrift-Einfügungstext"
 
-#: src/BufferParams.cpp:1728 src/BufferParams.cpp:1889
-#: src/BufferParams.cpp:2386 src/Encoding.cpp:264 src/Paragraph.cpp:3203
+#: src/BufferParams.cpp:1732 src/BufferParams.cpp:1893
+#: src/BufferParams.cpp:2390 src/Encoding.cpp:264 src/Paragraph.cpp:3203
 #: src/frontends/qt/LaTeXHighlighter.cpp:176
 #: src/insets/InsetCommandParams.cpp:516 src/insets/InsetCommandParams.cpp:524
 #: src/insets/InsetGraphics.cpp:904 src/insets/InsetGraphics.cpp:912
@@ -29133,8 +29157,8 @@ msgstr "Grauschrift-Einfügungstext"
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
-#: src/BufferParams.cpp:1729 src/BufferParams.cpp:1890
-#: src/BufferParams.cpp:2387 src/Encoding.cpp:265 src/Paragraph.cpp:3204
+#: src/BufferParams.cpp:1733 src/BufferParams.cpp:1894
+#: src/BufferParams.cpp:2391 src/Encoding.cpp:265 src/Paragraph.cpp:3204
 #: src/insets/InsetCommandParams.cpp:517 src/insets/InsetCommandParams.cpp:525
 #: src/insets/InsetGraphics.cpp:905 src/insets/InsetGraphics.cpp:913
 #: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
@@ -29143,11 +29167,11 @@ msgstr "LyX-Warnung: "
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
 
-#: src/BufferParams.cpp:1742
+#: src/BufferParams.cpp:1746
 msgid "Uncodable character in document metadata"
 msgstr "Unkodierbares Zeichen in Dokument-Metadaten"
 
-#: src/BufferParams.cpp:1744
+#: src/BufferParams.cpp:1748
 #, c-format
 msgid ""
 "The metadata of your document contains glyphs that are unknown in the "
@@ -29165,11 +29189,11 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie die Metadaten entsprechend."
 
-#: src/BufferParams.cpp:1903
+#: src/BufferParams.cpp:1907
 msgid "Uncodable character in class options"
 msgstr "Unkodierbare Zeichen in den Klassenoptionen"
 
-#: src/BufferParams.cpp:1905
+#: src/BufferParams.cpp:1909
 #, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
@@ -29187,11 +29211,11 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2400
+#: src/BufferParams.cpp:2404
 msgid "Uncodable character in user preamble"
 msgstr "Unkodierbares Zeichen im Benutzervorspann"
 
-#: src/BufferParams.cpp:2402
+#: src/BufferParams.cpp:2406
 #, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -29209,7 +29233,7 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2726
+#: src/BufferParams.cpp:2730
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -29224,11 +29248,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2732
+#: src/BufferParams.cpp:2736
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2739
+#: src/BufferParams.cpp:2743
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -29243,23 +29267,23 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2745 src/BufferView.cpp:1494 src/BufferView.cpp:1526
+#: src/BufferParams.cpp:2749 src/BufferView.cpp:1494 src/BufferView.cpp:1526
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2790
+#: src/BufferParams.cpp:2794
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2791 src/TextClass.cpp:2010 src/TextClass.cpp:2043
+#: src/BufferParams.cpp:2795 src/TextClass.cpp:2010 src/TextClass.cpp:2043
 msgid "Read Error"
 msgstr "Lesefehler"
 
-#: src/BufferParams.cpp:3878
+#: src/BufferParams.cpp:3882
 msgid "No bibliography processor found!"
 msgstr "Kein Literaturverzeichnis-Prozessor gefunden!"
 
-#: src/BufferParams.cpp:3880
+#: src/BufferParams.cpp:3884
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -29273,11 +29297,11 @@ msgstr ""
 "Literaturverweise erzeugt werden.\n"
 "Bitte reparieren Sie Ihr System!"
 
-#: src/BufferParams.cpp:3888
+#: src/BufferParams.cpp:3892
 msgid "Requested bibliography processor not found!"
 msgstr "Verlangter Literaturverzeichnis-Prozessor nicht gefunden!"
 
-#: src/BufferParams.cpp:3890
+#: src/BufferParams.cpp:3894
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -33065,7 +33089,7 @@ msgstr ""
 msgid "&Merge"
 msgstr "&Zusammenführen"
 
-#: src/frontends/qt/GuiBranches.cpp:234 src/frontends/qt/GuiIndices.cpp:243
+#: src/frontends/qt/GuiBranches.cpp:234 src/frontends/qt/GuiIndices.cpp:252
 msgid "Renaming failed"
 msgstr "Umbenennung fehlgeschlagen"
 
@@ -33796,8 +33820,8 @@ msgid "Numbering & TOC"
 msgstr "Nummerierung & Inhaltsverzeichnis"
 
 #: src/frontends/qt/GuiDocument.cpp:1839
-msgid "Indexes"
-msgstr "Stichwortverzeichnis"
+msgid "Indexes & Nomenclature"
+msgstr "Stichwortverzeichnis & Nomenklatur"
 
 #: src/frontends/qt/GuiDocument.cpp:1840
 msgid "PDF Properties"
@@ -34435,19 +34459,23 @@ msgstr "Hervorgehoben"
 msgid "Label Color"
 msgstr "Farbe der Stichwortmarke"
 
-#: src/frontends/qt/GuiIndices.cpp:216
+#: src/frontends/qt/GuiIndices.cpp:67
+msgid "Tabular"
+msgstr "Tabelle"
+
+#: src/frontends/qt/GuiIndices.cpp:225
 msgid "Cannot remove standard index"
 msgstr "Das Standard-Stichwortverzeichnis kann nicht entfernt werden"
 
-#: src/frontends/qt/GuiIndices.cpp:217
+#: src/frontends/qt/GuiIndices.cpp:226
 msgid "The default index cannot be removed."
 msgstr "Das Standard-Stichwortverzeichnis kann nicht entfernt werden."
 
-#: src/frontends/qt/GuiIndices.cpp:236
+#: src/frontends/qt/GuiIndices.cpp:245
 msgid "Enter new index name"
 msgstr "Neuen Indexnamen eingeben"
 
-#: src/frontends/qt/GuiIndices.cpp:244
+#: src/frontends/qt/GuiIndices.cpp:253
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
 "Der Index konnte nicht umbenannt werden. Prüfen Sie, ob der Name bereits "
@@ -36536,51 +36564,51 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt/GuiWorkArea.cpp:1658
+#: src/frontends/qt/GuiWorkArea.cpp:1680
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2308
+#: src/frontends/qt/GuiWorkArea.cpp:2330
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2316
+#: src/frontends/qt/GuiWorkArea.cpp:2338
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2338
+#: src/frontends/qt/GuiWorkArea.cpp:2360
 msgid "&Hide Tab"
 msgstr "Unterfenster &verstecken"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2343
+#: src/frontends/qt/GuiWorkArea.cpp:2365
 msgid "&Close Tab"
 msgstr "Unterfenster &schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2347
+#: src/frontends/qt/GuiWorkArea.cpp:2369
 msgid "Close &Other Tabs"
 msgstr "&Andere Unterfenster schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2349
+#: src/frontends/qt/GuiWorkArea.cpp:2371
 msgid "Close Tabs to the &Right"
 msgstr "&Rechte Unterfenster schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2351
+#: src/frontends/qt/GuiWorkArea.cpp:2373
 msgid "Close Tabs to the &Left"
 msgstr "&Linke Unterfenster schließen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2356
+#: src/frontends/qt/GuiWorkArea.cpp:2378
 msgid "Move Tab to &Start"
 msgstr "Unterfenster an den An&fang verschieben"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2358
+#: src/frontends/qt/GuiWorkArea.cpp:2380
 msgid "Move Tab to &End"
 msgstr "Unterfenster ans &Ende verschieben"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2363
+#: src/frontends/qt/GuiWorkArea.cpp:2385
 msgid "Open Enclosing &Directory"
 msgstr "Beinhaltendes Ver&zeichnis öffnen"
 
-#: src/frontends/qt/GuiWorkArea.cpp:2408
+#: src/frontends/qt/GuiWorkArea.cpp:2430
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
@@ -38390,21 +38418,17 @@ msgstr "Doppelseite leeren"
 msgid "No Page Break"
 msgstr "Seitenumbruch verhindern"
 
-#: src/insets/InsetNomencl.cpp:61
+#: src/insets/InsetNomencl.cpp:62
 msgid "Nomenclature Symbol: "
 msgstr "Nomenklatursymbol: "
 
-#: src/insets/InsetNomencl.cpp:64
+#: src/insets/InsetNomencl.cpp:65
 msgid "Description: "
 msgstr "Beschreibung: "
 
-#: src/insets/InsetNomencl.cpp:67
+#: src/insets/InsetNomencl.cpp:68
 msgid "Sorting: "
 msgstr "Sortierung: "
-
-#: src/insets/InsetNomencl.cpp:184
-msgid "Nomenclature"
-msgstr "Nomenklatur"
 
 #: src/insets/InsetNote.cpp:283
 msgid "note"
@@ -39411,6 +39435,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Indexes"
+#~ msgstr "Stichwortverzeichnis"
 
 #~ msgid "XHTML Output Options"
 #~ msgstr "XHTML-Ausgabe-Optionen"
@@ -42425,9 +42452,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Find & Replace...|F"
 #~ msgstr "Suchen & Ersetzen...|S"
-
-#~ msgid "Tabular|T"
-#~ msgstr "Tabelle|T"
 
 #~ msgid "Thesaurus..."
 #~ msgstr "Thesaurus..."

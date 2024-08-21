@@ -11,14 +11,11 @@
 %\lochermarke % prints puncher marks 
 \trennlinien % prints striplines
 %\unserzeichen % prints "our ref" instead of "my ref"
-% Added by lyx2lyx
-\setlength{\parskip}{\medskipamount}
-\setlength{\parindent}{0pt}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children no
 \language english
-\language_package default
+\language_package babel
 \inputencoding utf8
 \fontencoding auto
 \font_roman "palatino" "default"
@@ -40,6 +37,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref false
@@ -64,6 +63,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index
@@ -72,8 +72,8 @@
 \end_index
 \secnumdepth 4
 \tocdepth 4
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english

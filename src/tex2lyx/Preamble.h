@@ -50,6 +50,8 @@ public:
 	void fontCJK(std::string const & f) { h_font_cjk_set = true; h_font_cjk = f; }
 	///
 	bool minted() const { return h_use_minted; }
+	///
+	bool nomentbl() const { return h_use_nomentbl; }
 	/// The document language
 	std::string docLanguage() const { return h_language; }
 	/// The language of text which is not explicitly marked
@@ -255,6 +257,7 @@ private:
 	std::vector<std::string> h_includeonlys;
 	bool h_use_refstyle;
 	bool h_use_minted;
+	bool h_use_nomentbl;
 
 	/*!
 	 * Add package \p name with options \p options to used_packages.

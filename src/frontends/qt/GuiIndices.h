@@ -54,6 +54,7 @@ protected Q_SLOTS:
 	void on_indicesTW_itemSelectionChanged();
 	void on_colorPB_clicked();
 	void on_multipleIndicesCB_toggled(bool);
+	void on_nomenclStyleCO_activated(int);
 
 private:
 	///

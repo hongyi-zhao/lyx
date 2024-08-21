@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.5
-\lyxformat 627
+\lyxformat 628
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -62,6 +62,7 @@
 \justification true
 \use_refstyle 0
 \use_minted 0
+\use_nomentbl 0
 \use_lineno false
 \index Index
 \shortcut idx

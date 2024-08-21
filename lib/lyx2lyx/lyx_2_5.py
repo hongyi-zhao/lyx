@@ -713,6 +713,152 @@ def revert_index_sc(document):
                 k += len(repl)
         i += 1
 
+
+def revert_nomentbl(document):
+    """Revert nomentbl inset to ERT."""
+
+    i = find_token(document.header, "\\use_nomentbl", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\use_nomentbl")
+        return
+    if get_value(document.header, "\\use_nomentbl", i) == 0:
+        # just remove header
+        del document.header[i]
+        return
+
+    # remove header
+    del document.header[i]
+
+    # revert insets to ERT
+    have_nomencl = False
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Nomenclature", i)
+        if i == -1:
+            break
+
+        have_nomencl = True
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning(
+                "Malformed LyX document: Can't find end of command inset at line %d" % i
+            )
+            i += 1
+            continue
+
+        arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+        prefix = []
+        if arg != -1:
+            endarg = find_end_of_inset(document.body, arg)
+            argbeginPlain = find_token(
+                document.body, "\\begin_layout Plain Layout", arg, endarg
+            )
+            if argbeginPlain == -1:
+                document.warning("Malformed LyX document: Can't find optarg plain Layout")
+                continue
+            argendPlain = find_end_of_inset(document.body, argbeginPlain)
+            prefix = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+            # remove Arg insets and paragraph, if it only contains this inset
+            if (
+                document.body[arg - 1] == "\\begin_layout Plain Layout"
+                and find_end_of_layout(document.body, arg - 1) == endarg + 3
+            ):
+                del document.body[arg - 1 : endarg + 4]
+            else:
+                del document.body[arg : endarg + 1]
+
+        j = find_end_of_inset(document.body, i)
+        arg = find_token(document.body, "\\begin_inset Argument post:1", i, j)
+        description = []
+        if arg != -1:
+            endarg = find_end_of_inset(document.body, arg)
+            argbeginPlain = find_token(
+                document.body, "\\begin_layout Plain Layout", arg, endarg
+            )
+            if argbeginPlain == -1:
+                document.warning("Malformed LyX document: Can't find arg post:1 plain Layout")
+                continue
+            argendPlain = find_end_of_inset(document.body, argbeginPlain)
+            description = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+            # remove Arg insets and paragraph, if it only contains this inset
+            if (
+                document.body[arg - 1] == "\\begin_layout Plain Layout"
+                and find_end_of_layout(document.body, arg - 1) == endarg + 3
+            ):
+                del document.body[arg - 1 : endarg + 4]
+            else:
+                del document.body[arg : endarg + 1]
+
+        j = find_end_of_inset(document.body, i)
+        arg = find_token(document.body, "\\begin_inset Argument post:2", i, j)
+        unit = []
+        if arg != -1:
+            endarg = find_end_of_inset(document.body, arg)
+            argbeginPlain = find_token(
+                document.body, "\\begin_layout Plain Layout", arg, endarg
+            )
+            if argbeginPlain == -1:
+                document.warning("Malformed LyX document: Can't find arg post:2 plain Layout")
+                continue
+            argendPlain = find_end_of_inset(document.body, argbeginPlain)
+            unit = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+            # remove Arg insets and paragraph, if it only contains this inset
+            if (
+                document.body[arg - 1] == "\\begin_layout Plain Layout"
+                and find_end_of_layout(document.body, arg - 1) == endarg + 3
+            ):
+                del document.body[arg - 1 : endarg + 4]
+            else:
+                del document.body[arg : endarg + 1]
+
+        j = find_end_of_inset(document.body, i)
+        arg = find_token(document.body, "\\begin_inset Argument post:3", i, j)
+        note = []
+        if arg != -1:
+            endarg = find_end_of_inset(document.body, arg)
+            argbeginPlain = find_token(
+                document.body, "\\begin_layout Plain Layout", arg, endarg
+            )
+            if argbeginPlain == -1:
+                document.warning("Malformed LyX document: Can't find arg post:3 plain Layout")
+                continue
+            argendPlain = find_end_of_inset(document.body, argbeginPlain)
+            note = document.body[argbeginPlain + 1 : argendPlain - 2]
+
+            # remove Arg insets and paragraph, if it only contains this inset
+            if (
+                document.body[arg - 1] == "\\begin_layout Plain Layout"
+                and find_end_of_layout(document.body, arg - 1) == endarg + 3
+            ):
+                del document.body[arg - 1 : endarg + 4]
+            else:
+                del document.body[arg : endarg + 1]
+
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+        endPlain = find_end_of_layout(document.body, beginPlain)
+        symbol = document.body[beginPlain + 1 : endPlain]
+
+        # Replace command with ERT
+        res = put_cmd_in_ert(["\\nomenclature"])
+        if prefix:
+            res += put_cmd_in_ert(["["]) + prefix + put_cmd_in_ert(["]"])
+        res += put_cmd_in_ert(["{"]) + symbol + put_cmd_in_ert(["}{"]) \
+            + description + put_cmd_in_ert(["}{"]) + unit + put_cmd_in_ert(["}{"]) \
+            + note + put_cmd_in_ert(["}"])
+
+        j = find_end_of_inset(document.body, i)
+        document.body[i : j + 1] = res
+
+        i += 1
+        
+    if have_nomencl:
+        document.append_local_layout([r"### Inserted by lyx2lyx (nomencl) ###",
+                                      r"PackageOptions nomencl nomentbl"])
+
+
 ##
 # Conversion hub
 #
@@ -725,11 +871,13 @@ convert = [
     [624, [convert_biblatex_chicago]],
     [625, []],
     [626, []],
-    [627, [convert_nomencl, convert_index_sc]]
+    [627, [convert_nomencl, convert_index_sc]],
+    [628, []]
 ]
 
 
 revert = [
+    [627, [revert_nomentbl]],
     [626, [revert_nomencl, revert_index_sc]],
     [625, [revert_nomencl_textwidth]],
     [624, [revert_nptextcite]],

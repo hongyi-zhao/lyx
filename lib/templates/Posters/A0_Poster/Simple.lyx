@@ -8,9 +8,6 @@
 \begin_preamble
 % Adjust padding in boxes
 \setlength\fboxsep{12pt}
-% Added by lyx2lyx
-\setlength{\parskip}{\bigskipamount}
-\setlength{\parindent}{0pt}
 \end_preamble
 \options a0,portrait
 \use_default_options false
@@ -38,6 +35,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -62,6 +61,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index
@@ -74,8 +74,8 @@
 \bottommargin 1cm
 \secnumdepth 0
 \tocdepth 0
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english

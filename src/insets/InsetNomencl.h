@@ -68,7 +68,7 @@ private:
 	/// \name Private functions inherited from InsetCollapsible class
 	//@{
 	///
-	docstring layoutName() const override { return from_ascii("Nomenclature"); }
+	docstring layoutName() const override;
 	///
 	void write(std::ostream & os) const override;
 	//@}

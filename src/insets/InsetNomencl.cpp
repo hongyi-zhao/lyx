@@ -16,6 +16,7 @@
 #include "InsetArgument.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Font.h"
@@ -71,7 +72,7 @@ docstring InsetNomencl::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/)
 
 void InsetNomencl::write(ostream & os) const
 {
-	os << to_utf8(layoutName()) << endl;
+	os << "Nomenclature" << endl;
 	InsetCollapsible::write(os);
 }
 
@@ -148,6 +149,14 @@ void InsetNomencl::addToToc(DocIterator const & cpit, bool output_active,
 	TocBuilder & b = backend.builder("nomencl");
 	b.pushItem(cpit, getSymbol(), output_active);
 	b.pop();
+}
+
+
+docstring InsetNomencl::layoutName() const
+{
+	return (buffer().params().use_nomentbl) ?
+				from_ascii("Nomenclature:nomentbl")
+			      : from_ascii("Nomenclature");
 }
 
 

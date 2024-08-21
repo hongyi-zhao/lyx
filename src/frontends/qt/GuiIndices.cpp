@@ -62,6 +62,10 @@ GuiIndices::GuiIndices(QWidget * parent)
 		indexCO->addItem(command, command);
 	}
 
+	nomenclStyleCO->clear();
+	nomenclStyleCO->addItem(qt_("Default"), QString("default"));
+	nomenclStyleCO->addItem(qt_("Tabular"), QString("tabular"));
+
 	indexOptionsLE->setValidator(new NoNewLineValidator(indexOptionsLE));
 	newIndexLE->setValidator(new NoNewLineValidator(newIndexLE));
 }
@@ -104,7 +108,7 @@ void GuiIndices::update(BufferParams const & params, bool const readonly)
 	string options =
 		split(params.index_command, command, ' ');
 
-	int const pos = indexCO->findData(toqstr(command));
+	int pos = indexCO->findData(toqstr(command));
 	if (pos != -1) {
 		indexCO->setCurrentIndex(pos);
 		indexOptionsLE->setText(toqstr(options).trimmed());
@@ -114,6 +118,9 @@ void GuiIndices::update(BufferParams const & params, bool const readonly)
 		indexCO->setCurrentIndex(indexCO->findData(toqstr("default")));
 		indexOptionsLE->clear();
 	}
+
+	pos = (params.use_nomentbl) ? 1 : 0;
+	nomenclStyleCO->setCurrentIndex(pos);
 
 	updateView();
 }
@@ -161,6 +168,8 @@ void GuiIndices::apply(BufferParams & params) const
 {
 	params.use_indices = multipleIndicesCB->isChecked();
 	params.indiceslist() = indiceslist_;
+
+	params.use_nomentbl = nomenclStyleCO->currentIndex() == 1;
 
 	string const index_command =
 		fromqstr(indexCO->itemData(
@@ -298,6 +307,12 @@ void GuiIndices::toggleColor(QTreeWidgetItem * item)
 	index->setColor(fromqstr(ncol.name()));
 	newIndexLE->clear();
 	updateView();
+}
+
+
+void GuiIndices::on_nomenclStyleCO_activated(int)
+{
+	changed();
 }
 
 } // namespace frontend

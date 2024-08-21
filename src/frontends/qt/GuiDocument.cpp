@@ -1836,7 +1836,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(changesModule, N_("Change Tracking"));
 	docPS->addPanel(numberingModule, N_("Numbering & TOC"));
 	docPS->addPanel(biblioModule, N_("Bibliography"));
-	docPS->addPanel(indicesModule, N_("Indexes"));
+	docPS->addPanel(indicesModule, N_("Indexes & Nomenclature"));
 	docPS->addPanel(pdfSupportModule, N_("PDF Properties"));
 	docPS->addPanel(mathsModule, N_("Math Options"));
 	docPS->addPanel(floatModule, N_("Float Settings"));

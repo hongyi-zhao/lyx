@@ -486,6 +486,22 @@ InsetLayout Nomenclature
 	InsertCotext          1
 End
 
+InsetLayout Nomenclature:nomentbl
+	CopyStyle             Nomenclature
+	Argument post:2
+	  LabelString         "Unit"
+	  Tooltip             "Nomenclature unit"
+	  AutoInsert          1
+	  Mandatory           1
+	EndArgument
+	Argument post:3
+	  LabelString         "Note[[nomencl]]"
+	  Tooltip             "Nomenclature note"
+	  AutoInsert          1
+	  Mandatory           1
+	EndArgument
+End
+
 InsetLayout Box
 	InheritFont           false
 	LabelFont

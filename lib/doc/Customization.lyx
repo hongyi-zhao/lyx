@@ -20323,7 +20323,7 @@ status collapsed
 
 \begin_layout Description
 
-\change_inserted -712698321 1723526674
+\change_inserted -712698321 1724213734
 \begin_inset Flex Code
 status collapsed
 
@@ -20337,23 +20337,14 @@ InsertCotext
 
 \end_inset
 
- 
+ [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1723525183
-[
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1723525183
+\change_inserted -712698321 1724213734
 0
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -20368,24 +20359,15 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1723525183
+\change_inserted -712698321 1724213734
 
 \emph on
 1
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-]
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- If this is set to 
+] If this is set to 
 \begin_inset Flex Code
 status collapsed
 

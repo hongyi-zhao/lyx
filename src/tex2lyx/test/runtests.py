@@ -132,8 +132,8 @@ def main(argv):
                     lines1 = f1.readlines()
                     i1 = 0
                     for linex in lines1:
-                      if linex[:-1] == '\origin ' + inputdir + '/':
-                        lines1[i1] = '\origin ' + outputdir + '/' + "\n"
+                      if linex[:-1] == r'\origin ' + inputdir + '/':
+                        lines1[i1] = r'\origin ' + outputdir + '/' + "\n"
                         break
                       i1 = i1+1
                     lines2 = f2.readlines()

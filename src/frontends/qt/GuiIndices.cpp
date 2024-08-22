@@ -62,10 +62,6 @@ GuiIndices::GuiIndices(QWidget * parent)
 		indexCO->addItem(command, command);
 	}
 
-	nomenclStyleCO->clear();
-	nomenclStyleCO->addItem(qt_("Default"), QString("default"));
-	nomenclStyleCO->addItem(qt_("Tabular"), QString("tabular"));
-
 	indexOptionsLE->setValidator(new NoNewLineValidator(indexOptionsLE));
 	newIndexLE->setValidator(new NoNewLineValidator(newIndexLE));
 }
@@ -119,9 +115,6 @@ void GuiIndices::update(BufferParams const & params, bool const readonly)
 		indexOptionsLE->clear();
 	}
 
-	pos = (contains(params.nomencl_opts, "nomentbl")) ? 1 : 0;
-	nomenclStyleCO->setCurrentIndex(pos);
-
 	updateView();
 }
 
@@ -168,9 +161,6 @@ void GuiIndices::apply(BufferParams & params) const
 {
 	params.use_indices = multipleIndicesCB->isChecked();
 	params.indiceslist() = indiceslist_;
-
-	if (nomenclStyleCO->currentIndex() == 1)
-		params.nomencl_opts = "nomentbl";
 
 	string const index_command =
 		fromqstr(indexCO->itemData(
@@ -310,11 +300,6 @@ void GuiIndices::toggleColor(QTreeWidgetItem * item)
 	updateView();
 }
 
-
-void GuiIndices::on_nomenclStyleCO_activated(int)
-{
-	changed();
-}
 
 } // namespace frontend
 } // namespace lyx

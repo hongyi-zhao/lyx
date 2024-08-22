@@ -11,6 +11,8 @@ changes happened in particular if possible. A good example would be
 	* Format incremented to 628: Add support for nomentbl-style
 	  nomencl insets:
 	  \nomenclature[<prefix>]{<symbol>}{<description>}{<units>}{<note>}
+	  New buffer param \nomencl_options which holds a comma-separated
+	  list of options (of the nomencl package).
 
 2024-08-12 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 627: Transform nomenclature inset to

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-20 12:26+0200\n"
-"PO-Revision-Date: 2024-08-20 10:34+0000\n"
+"POT-Creation-Date: 2024-08-22 11:13+0200\n"
+"PO-Revision-Date: 2024-08-22 09:32+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3274,6 +3274,65 @@ msgstr "Zm&azať"
 #: src/frontends/qt/ui/ModulesUi.ui:186
 msgid "S&elected:"
 msgstr "&Vybrané:"
+
+#: src/frontends/qt/ui/NomenclUi.ui:24
+msgid "Nomenclature St&yle:"
+msgstr "Št&ýl nomenklatúry:"
+
+#: src/frontends/qt/ui/NomenclUi.ui:52
+msgid "Add the nomenclature list to the table of contents"
+msgstr "Pridať zoznam nomenklatúry do obsahu"
+
+#: src/frontends/qt/ui/NomenclUi.ui:55
+msgid "Add to &table of contents"
+msgstr "Pr&idať do obsahu"
+
+#: src/frontends/qt/ui/NomenclUi.ui:62
+msgid ""
+"The phrase \\\", see equation (x)\" is appended to every entry in the "
+"nomenclature where x is the number of the last equation in front of the "
+"corresponding nomenclature"
+msgstr ""
+"Fráza \\\", pozri rovnicu (x)\" je pripojená ku každému záznamu v "
+"nomenklatúre, kde x je číslo poslednej rovnice pred zodpovedajúcou "
+"nomenklatúrou"
+
+#: src/frontends/qt/ui/NomenclUi.ui:65
+msgid "Add &equation references"
+msgstr "Pridať odkazy na &rovnice"
+
+#: src/frontends/qt/ui/NomenclUi.ui:72
+msgid ""
+"The phrase \", see page x\" is appended to every entry in the nomenclature "
+"where x is the number of the page number on which the corresponding "
+"nomenclature is used"
+msgstr ""
+"Fráza „pozri stranu x“ je pripojená ku každému záznamu v nomenklatúre, kde x "
+"je číslo čísla strany, na ktorej sa používa zodpovedajúca nomenklatúra"
+
+#: src/frontends/qt/ui/NomenclUi.ui:75
+msgid "Add &page references"
+msgstr "Pridať odkazy na &stránky"
+
+#: src/frontends/qt/ui/NomenclUi.ui:82
+msgid ""
+"Use standard subgroups (Latin Letters, Greek Letters, ...) to structure the "
+"nomenclature list"
+msgstr ""
+"Na štruktúrovanie zoznamu nomenklatúr použiť štandardné podskupiny (latinské "
+"písmená, grécke písmená, ...)"
+
+#: src/frontends/qt/ui/NomenclUi.ui:85
+msgid "Use standard &subgroups"
+msgstr "Použite štandardné &podskupiny"
+
+#: src/frontends/qt/ui/NomenclUi.ui:94
+msgid "&Other options:"
+msgstr "Iné &voľby:"
+
+#: src/frontends/qt/ui/NomenclUi.ui:104
+msgid "Insert additional options of the nomencl package here"
+msgstr "Tu môžte vložiť ďalšie voľby (poskytnuté balíkom nomencl)"
 
 #: src/frontends/qt/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:167
 msgid "Nomenclature"
@@ -17661,6 +17720,22 @@ msgstr "Zoraďte tento záznam tak, ako je uvedené vo vložke"
 #: lib/layouts/stdinsets.inc:480
 msgid "Description of the entry"
 msgstr "Popis záznamu"
+
+#: lib/layouts/stdinsets.inc:492
+msgid "Unit"
+msgstr "Jednotka"
+
+#: lib/layouts/stdinsets.inc:493
+msgid "Nomenclature unit"
+msgstr "Nomenklatúrna jednotka"
+
+#: lib/layouts/stdinsets.inc:498
+msgid "Note[[nomencl]]"
+msgstr "Poznámka"
+
+#: lib/layouts/stdinsets.inc:499
+msgid "Nomenclature note"
+msgstr "Nomenklatúrna poznámka"
 
 #: lib/layouts/stdinsets.inc:440 src/insets/InsetIndexMacro.cpp:63
 msgid "See"
@@ -33251,6 +33326,10 @@ msgstr "Číslované"
 #: src/frontends/qt/GuiDocument.cpp:1407
 msgid "Appears in TOC"
 msgstr "Zobrazí sa v obsahu"
+
+#: src/frontends/qt/GuiDocument.cpp:1510
+msgid "Tabular"
+msgstr "Tabuľka"
 
 #: src/frontends/qt/GuiDocument.cpp:1495
 msgid "Package"

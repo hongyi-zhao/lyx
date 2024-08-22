@@ -1491,6 +1491,24 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(indicesModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
+	// nomencl
+	nomenclModule = new UiWidget<Ui::NomenclUi>(this);
+	connect(nomenclModule->nomenclStyleCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(nomenclModule->inTocCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(nomenclModule->eqRefCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(nomenclModule->pageRefCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(nomenclModule->subgroupsCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(nomenclModule->extraOptionsLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	nomenclModule->nomenclStyleCO->clear();
+	nomenclModule->nomenclStyleCO->addItem(qt_("Default"), QString("default"));
+	nomenclModule->nomenclStyleCO->addItem(qt_("Tabular"), QString("tabular"));
+
 
 	// maths
 	mathsModule = new UiWidget<Ui::MathsUi>(this);
@@ -1836,7 +1854,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(changesModule, N_("Change Tracking"));
 	docPS->addPanel(numberingModule, N_("Numbering & TOC"));
 	docPS->addPanel(biblioModule, N_("Bibliography"));
-	docPS->addPanel(indicesModule, N_("Indexes & Nomenclature"));
+	docPS->addPanel(indicesModule, N_("Indexes"));
+	docPS->addPanel(nomenclModule, N_("Nomenclature"));
 	docPS->addPanel(pdfSupportModule, N_("PDF Properties"));
 	docPS->addPanel(mathsModule, N_("Math Options"));
 	docPS->addPanel(floatModule, N_("Float Settings"));
@@ -3678,6 +3697,27 @@ void GuiDocument::applyView()
 	// Indices
 	indicesModule->apply(bp_);
 
+	// nomencl
+	vector<string> nomenclOpts;
+	if (nomenclModule->nomenclStyleCO->currentIndex() == 1)
+		nomenclOpts.push_back("nomentbl");
+	if (nomenclModule->inTocCB->isChecked())
+		nomenclOpts.push_back("intoc");
+	if (nomenclModule->eqRefCB->isChecked())
+		nomenclOpts.push_back("refeq");
+	if (nomenclModule->pageRefCB->isChecked())
+		nomenclOpts.push_back("refpage");
+	if (nomenclModule->subgroupsCB->isChecked())
+		nomenclOpts.push_back("stdsubgroups");
+	
+	bp_.nomencl_opts = getStringFromVector(nomenclOpts);
+
+	if (!nomenclModule->extraOptionsLE->text().isEmpty()) {
+		if (!bp_.nomencl_opts.empty())
+			bp_.nomencl_opts += ",";
+		bp_.nomencl_opts += fromqstr(nomenclModule->extraOptionsLE->text());
+	}
+
 	// language & quotes
 	switch (langModule->encodingCO->currentIndex()) {
 		case EncodingSets::unicode: {
@@ -4212,6 +4252,40 @@ void GuiDocument::paramsToDialog()
 	// the last view has just been closed.
 	bool const isReadOnly = isBufferAvailable() ? buffer().isReadonly() : false;
 	indicesModule->update(bp_, isReadOnly);
+
+	// nomenclature
+	vector<string> nomencl_opts = getVectorFromString(bp_.nomencl_opts);
+	vector<string>::iterator it = std::find(nomencl_opts.begin(), nomencl_opts.end(), "nomentbl");
+	if (it != nomencl_opts.end()) {
+		nomenclModule->nomenclStyleCO->setCurrentIndex(1);
+		nomencl_opts.erase(it);
+	} else
+		nomenclModule->nomenclStyleCO->setCurrentIndex(0);
+	it = std::find(nomencl_opts.begin(), nomencl_opts.end(), "intoc");
+	if (it != nomencl_opts.end()) {
+		nomenclModule->inTocCB->setChecked(true);
+		nomencl_opts.erase(it);
+	} else
+		nomenclModule->inTocCB->setChecked(false);
+	it = std::find(nomencl_opts.begin(), nomencl_opts.end(), "refeq");
+	if (it != nomencl_opts.end()) {
+		nomenclModule->eqRefCB->setChecked(true);
+		nomencl_opts.erase(it);
+	} else
+		nomenclModule->eqRefCB->setChecked(false);
+	it = std::find(nomencl_opts.begin(), nomencl_opts.end(), "refpage");
+	if (it != nomencl_opts.end()) {
+		nomenclModule->pageRefCB->setChecked(true);
+		nomencl_opts.erase(it);
+	} else
+		nomenclModule->pageRefCB->setChecked(false);
+	it = std::find(nomencl_opts.begin(), nomencl_opts.end(), "stdsubgroups");
+	if (it != nomencl_opts.end()) {
+		nomenclModule->subgroupsCB->setChecked(true);
+		nomencl_opts.erase(it);
+	} else
+		nomenclModule->subgroupsCB->setChecked(false);
+	nomenclModule->extraOptionsLE->setText(toqstr(getStringFromVector(nomencl_opts)));
 
 	// language & quotes
 	int const pos = langModule->languageCO->findData(toqstr(

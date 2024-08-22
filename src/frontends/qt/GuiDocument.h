@@ -32,6 +32,7 @@
 #include "ui_MasterChildUi.h"
 #include "ui_MathsUi.h"
 #include "ui_ModulesUi.h"
+#include "ui_NomenclUi.h"
 #include "ui_NumberingUi.h"
 #include "ui_OutputUi.h"
 #include "ui_PageLayoutUi.h"
@@ -192,6 +193,7 @@ private:
 	UiWidget<Ui::ModulesUi> *modulesModule;
 	UiWidget<Ui::OutputUi> *outputModule;
 	UiWidget<Ui::ListingsSettingsUi> *listingsModule;
+	UiWidget<Ui::NomenclUi> *nomenclModule;
 	PreambleModule * preambleModule;
 	LocalLayout * localLayout;
 

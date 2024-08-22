@@ -507,4 +507,10 @@ string InsetPrintNomencl::contextMenuName() const
 }
 
 
+bool InsetPrintNomencl::hasSettings() const
+{
+	return !contains(buffer().params().nomencl_opts, "nomentbl");
+}
+
+
 } // namespace lyx

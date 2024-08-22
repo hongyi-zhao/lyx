@@ -6,83 +6,124 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>319</width>
-    <height>223</height>
+    <width>404</width>
+    <height>315</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Nomenclature</string>
+   <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="symbolLA">
-       <property name="text">
-        <string>Sy&amp;mbol:</string>
-       </property>
-       <property name="buddy">
-        <cstring>symbolED</cstring>
-       </property>
-      </widget>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="nomenclStyleLA">
+         <property name="text">
+          <string>Nomenclature St&amp;yle:</string>
+         </property>
+         <property name="buddy">
+          <cstring>nomenclStyleCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="nomenclStyleCO"/>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>138</width>
+           <height>23</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="symbolED">
+     <item>
+      <widget class="QCheckBox" name="inTocCB">
        <property name="toolTip">
-        <string/>
+        <string>Add the nomenclature list to the table of contents</string>
        </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="descrLA">
        <property name="text">
-        <string>Des&amp;cription:</string>
-       </property>
-       <property name="buddy">
-        <cstring>descriptionTE</cstring>
+        <string>Add to &amp;table of contents</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QTextEdit" name="descriptionTE">
-       <property name="acceptRichText">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="prefixLA">
-       <property name="text">
-        <string>Sort &amp;as:</string>
-       </property>
-       <property name="buddy">
-        <cstring>prefixED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="prefixED"/>
-     </item>
-     <item row="3" column="1">
-      <widget class="QCheckBox" name="literalCB">
+     <item>
+      <widget class="QCheckBox" name="eqRefCB">
        <property name="toolTip">
-        <string>Pass content of the `Symbol' and `Description' fields literally to LaTeX. Check this if you want to enter LaTeX code.</string>
+        <string>The phrase \&quot;, see equation (x)&quot; is appended to every entry in the nomenclature where x is the number of the last equation in front of the corresponding nomenclature</string>
        </property>
        <property name="text">
-        <string>Li&amp;teral</string>
+        <string>Add &amp;equation references</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="pageRefCB">
+       <property name="toolTip">
+        <string>The phrase &quot;, see page x&quot; is appended to every entry in the nomenclature where x is the number of the page number on which the corresponding nomenclature is used</string>
+       </property>
+       <property name="text">
+        <string>Add &amp;page references</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="subgroupsCB">
+       <property name="toolTip">
+        <string>Use standard subgroups (Latin Letters, Greek Letters, ...) to structure the nomenclature list</string>
+       </property>
+       <property name="text">
+        <string>Use standard &amp;subgroups</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="extraOptionsLA">
+         <property name="text">
+          <string>&amp;Other options:</string>
+         </property>
+         <property name="buddy">
+          <cstring>extraOptionsLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="extraOptionsLE">
+         <property name="toolTip">
+          <string>Insert additional options of the nomencl package here</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
+   <item row="1" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
- <tabstops>
-  <tabstop>symbolED</tabstop>
-  <tabstop>descriptionTE</tabstop>
-  <tabstop>prefixED</tabstop>
- </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>
  </includes>

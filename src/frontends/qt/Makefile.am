@@ -306,6 +306,7 @@ UIFILES = \
 	MathMatrixUi.ui \
 	MathsUi.ui \
 	ModulesUi.ui \
+	NomenclUi.ui \
 	NoteUi.ui \
 	NumberingUi.ui \
 	OutputUi.ui \

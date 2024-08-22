@@ -9302,12 +9302,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9320,7 +9318,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9346,7 +9343,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -35804,10 +35800,7 @@ Nomenklatur
 
 \begin_layout Standard
 Manchmal benötigen Sie vielleicht ein Verzeichnis von Symbolen oder Begriffen mit deren Bedeutung – eine sogenannte Nomenklatur bzw.
-\begin_inset space ~
-\end_inset
-
-ein Glossar.
+ ein Glossar.
 \end_layout
 
 \begin_layout Standard
@@ -35876,7 +35869,11 @@ Nom
  wird eingefügt.
  Falls der Cursor direkt hinter einem Wort steht,
  wird dieses hineinkopiert.
- Ein Nomenklatur-Eintrag besteht im Standard-Stil aus zwei Hauptteilen:
+ 
+\end_layout
+
+\begin_layout Standard
+Ein Nomenklatur-Eintrag besteht im Standard-Stil aus zwei Hauptteilen:
  das 
 \family sans
 Symbol
@@ -35899,7 +35896,7 @@ Wenn Sie in
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
-Stichwortverzeichnis & Nomenklatur
+Nomenklatur
 \family default
  den Nomenklatur-Stil 
 \begin_inset Quotes gld
@@ -36095,24 +36092,6 @@ Einfügen
  Dann stimmt die Sortierreihenfolge wieder.
 \end_layout
 
-\begin_layout Standard
-Um verschachtelte Nomenklaturen zu erstellen,
- lesen Sie bitte in der 
-\series bold
-nomencl
-\series default
--Dokumentation nach,
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "nomencl"
-literal "true"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Subsection
 Nomenklatur-Optionen
 \begin_inset Index idx
@@ -36151,78 +36130,159 @@ Das Paket
 \series bold
 nomencl
 \series default
- bietet einige Optionen an um das Aussehen der Nomenklatur zu verändern.
- Hier sind einige seiner Optionen,
- für weitere siehe seine Dokumentation:
+ bietet eine Reihe von Optionen an,
+ um das Aussehen des Nomenklaturverzeichnisses zu verändern.
+ Diese können Sie in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Nomenklatur
+\family default
+ verwalten:
 \end_layout
 
 \begin_layout Description
-refeq Verweis mit dem Ausdruck 
+Nomenklatur-Stil bietet Ihnen die Auswahl zwischen dem Standard-Stil,
+ der das Nomenklaturverzeichnis als Liste ausgibt,
+ und dem Tabellen-Stil,
+ der es als mehrseitige Tabelle setzt.
+ Im letzteren haben Sie zwei zusätzliche Konstituenten zur Verfügung:
+ (Maß-)Einheit (welche mithilfe des Pakets 
+\family sans
+siunits
+\family default
+ gesetzt wird) sowie ein Feld für zusätzliche Anmerkungen.
+\end_layout
+
+\begin_layout Description
+Zum
+\begin_inset space ~
+\end_inset
+
+Inhaltsverzeichnis
+\begin_inset space ~
+\end_inset
+
+hinzufügen fügt das Nomenklaturverzeichnis ins Inhaltsverzeichnis ein.
+\end_layout
+
+\begin_layout Description
+Gleichungsverweise
+\begin_inset space ~
+\end_inset
+
+hinzufügen fügt den Einträgen den Zusatz 
 \family sans
 „,
  siehe Gleichung (#)
 \family default
-“
+“ an,
+ wobei (#) die Nummer der letzten Gleichung vor dem jeweiligen Nomenklatureintrag ist.
 \end_layout
 
 \begin_layout Description
-refpage Verweis mit dem Ausdruck 
-\family sans
-„,
- Seite (#)
-\family default
-“
-\end_layout
-
-\begin_layout Description
-intoc fügt die Nomenklatur ins Inhaltsverzeichnis ein.
-\end_layout
-
-\begin_layout Standard
-Um eine oder mehrere Optionen benutzen zu können,
- fügen Sie sie,
- durch Kommas getrennt,
- in das Feld 
-\family sans
-Optionen
-\family default
- von 
-\family sans
-Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar menuseparator
-Dokumentklasse
-\family default
- ein.
- In diesem Dokument werden die Optionen 
-\series bold
-refpage,
- intoc
-\series default
- verwendet.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
+Seitenverweise
+\begin_inset space ~
 \end_inset
 
+einfügen fügt den Einträgen den Zusatz 
+\family sans
+„,
+ Seite #
+\family default
+“ an,
+ wobei # die Paginierung der Seite ist,
+ auf der der jeweilige Eintrag erscheint.
+\end_layout
 
+\begin_layout Description
+Standard-Untergruppen
+\begin_inset space ~
+\end_inset
+
+verwenden verwendet vordefinierte Untergruppen (Lateinische Buchstaben,
+ Griechische Buchstaben,
+ Hochgestellt,
+ Tiefgestellt),
+ um das Nomenklaturverzeichnis zu strukturieren.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Einträge werden den Untergruppen über die Untereinfügung 
+\family sans
+Sortieren als
+\family default
+ zugewiesen.
+ Wenn Sie Untergruppen verwenden,
+ markiert der erste Buchstabe des Sortierschlüssels die Untergruppe (a:
+ Lateinische Buchstaben,
+ g:
+ Griechische Buchstaben,
+ x:
+ Hochgestellt,
+ z:
+ Tiefgestellt),
+ alles Folgende die Sortierung innerhalb der Gruppe.
+ A wird verwendet falls keine Sortierung manuell spezifiziert wird.
 \end_layout
 
 \begin_layout Standard
-Die ersten beiden Optionen können Sie auch nur für gewisse Nomenklatureinträge benutzen,
+Wenn Sie eine andere Strukturierung brauchen,
+ konsultieren Sie bitte die 
+\series bold
+nomencl
+\series default
+-Dokumentation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Weitere
+\begin_inset space ~
+\end_inset
+
+Optionen ermöglicht es Ihnen,
+ jede weitere Option des Pakets einzufügen.
+ Bitte konsultieren Sie die 
+\series bold
+nomencl
+\series default
+-Dokumentation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+literal "true"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Standard
+Falls Sie Seiten- oder Gleichungsverweise nur für einzelne Nomenklatureinträge verwenden wollen,
+ können Sie dies im Standardstil tun,
  wenn Sie als letzten Eintrag im Feld 
 \family sans
 Beschreibung
 \family default
- folgendes schreiben:
+ im \SpecialChar TeX
+-Modus folgendes schreiben:
 \end_layout
 
 \begin_layout Description
 
 \backslash
-nomrefeq wie die Option 
-\series bold
-refeq
+nomrefeq für einen Gleichungsverweis
 \end_layout
 
 \begin_layout Description
@@ -36232,44 +36292,42 @@ refeq
 \backslash
 nomrefpage
 \series default
- wie die Option 
-\series bold
-refpage
-\series default
- 
+ für einen Seitenverweis
 \end_layout
 
 \begin_layout Description
 
 \backslash
-nomrefeqpage ist die Kurzform von 
-\series bold
+nomrefeqpage für einen kombinierten Gleichungs- und Seitenverweis
+\end_layout
 
-\backslash
-nomrefeq
+\begin_layout Standard
+Falls Sie eine Verweis-Option in den Dokumenteinstellungen ausgewählt haben,
+ können Sie diese für einzelne Einträge auch deaktivieren.
+ Schreiben Sie hierfür an die genannte Position statt dessen eines dieser Befehle
 \end_layout
 
 \begin_layout Description
 
 \backslash
-nomnorefeq,
-\begin_inset space ~
-\end_inset
+nomnorefeq
+\end_layout
 
-
-\backslash
-nomnorefpage,
-\begin_inset space ~
-\end_inset
-
+\begin_layout Description
 
 \backslash
-nomnorefeqpage schaltet die entsprechende Option ab
+nomnorefpage
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomnorefeqpage
 \end_layout
 
 \begin_layout Standard
 Beachten Sie,
- dass Sie dem Befehl 
+ dass Sie den Befehlen 
 \begin_inset Flex Code
 status collapsed
 
@@ -36283,6 +36341,8 @@ protect
 
  voranstellen müssen,
  wenn sich der Nomenklatureintrag in einer Überschrift oder Legende befindet.
+ Beachten Sie weiterhin,
+ dass diese Befehle im Tabellenstil nichts bewirken.
 \end_layout
 
 \begin_layout Standard
@@ -36297,7 +36357,7 @@ Seite
  automatisch übersetzt.
  Wenn Sie diese Übersetzungen ändern wollen,
  fügen Sie diese Zeilen als \SpecialChar TeX
--Code vor dem Nomenklatueverzeichnis ein:
+-Code vor dem Nomenklaturverzeichnis ein:
 \end_layout
 
 \begin_layout Standard
@@ -36370,7 +36430,7 @@ Wenn die Nummern Hyperlinks sein sollen,
 \family sans
 Hyperref-Unterstützung
 \family default
- in den Documenteinstellungen unter 
+ in den Dokumenteinstellungen unter 
 \family sans
 PDF-Eigenschaften
 \family default
@@ -36445,7 +36505,7 @@ nobreakspace{}#1}}
 \end_layout
 
 \begin_layout Subsection
-Nomenklatur drucken
+Nomenklaturverzeichnis drucken
 \begin_inset Index idx
 range none
 pageformat default
@@ -36477,25 +36537,19 @@ Einfügen\SpecialChar menuseparator
 Verzeichnis\SpecialChar menuseparator
 Nomenklatur
 \family default
- können Sie ein Nomenklatur
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"=
-\end_layout
-
-\end_inset
-
-Verzeichnis einfügen.
+ können Sie ein Nomenklaturverzeichnis einfügen.
  An der Stelle erscheint ein Kästchen mit der Aufschrift 
 \family sans
 „Nomenklatur
 \family default
 “,
  und dort wird das Verzeichnis auch gedruckt.
- Mit einem Rechtsklick auf das Kästchen kann man die verfügbare Breite für die Symbole einstellen.
+ 
+\end_layout
+
+\begin_layout Standard
+Im Fall des Standardstils können Sie mit einem Rechtsklick auf das Kästchen einen Dialog öffnen,
+ in dem Sie das Aussehen der Liste (den Einzug und den Abstand zwischen Symbol und Beschreibung) anpassen können.
  Sie können dabei zwischen diesen Einstellungen wählen:
 \end_layout
 
@@ -36560,7 +36614,7 @@ Marke
 \end_layout
 
 \begin_layout Description
-Benutzerdefiniert benutzerdefinierte Breite
+Benutzerdefiniert benutzerdefinierte Breite wie im Dialog eingegeben.
 \end_layout
 
 \begin_layout Standard
@@ -36605,7 +36659,7 @@ captionsngerman
 \series bold
 
 \backslash
-extras***
+captions***
 \series default
 ,
  wobei *** der Name der verwendeten Sprache ist.
@@ -50625,7 +50679,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Section
-Stichwortverzeichnis & Nomenklatur
+Stichwortverzeichnis
 \end_layout
 
 \begin_layout Standard
@@ -50647,7 +50701,15 @@ nolink "false"
 \end_inset
 
  für Details).
- Außerdem können Sie hier einen Nomenklatur-Stil auswählen (siehe Abschnitt
+\end_layout
+
+\begin_layout Section
+Nomenklatur
+\end_layout
+
+\begin_layout Standard
+Hier können Sie hier Nomenklatur-Stil auswählen und einige Optionen verwalten,
+ die die Darstellung der Nomenklaturverzeichnisses bestimmten (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 

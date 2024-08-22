@@ -91,7 +91,7 @@ public:
 	///
 	InsetCode lyxCode() const override;
 	///
-	bool hasSettings() const override { return true; }
+	bool hasSettings() const override;
 	///
 	int rowFlags() const override { return Display; }
 	///

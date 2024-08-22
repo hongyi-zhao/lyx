@@ -36773,7 +36773,7 @@ Tabular
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-Indexes & Nomenclature
+Nomenclature
 \family default
 .
  With this,
@@ -37282,6 +37282,8 @@ a
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1724304988
 For subgrouping and tips for using sort entries see the 
 \series bold
 nomencl
@@ -37296,6 +37298,8 @@ literal "true"
 \end_inset
 
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -37336,13 +37340,90 @@ The
 \series bold
 nomencl
 \series default
- package offers some options to adjust the appearance of the nomenclature.
- Here are some of its options;
+ package offers 
+\change_deleted -712698321 1724303919
+some
+\change_inserted -712698321 1724303922
+a range of
+\change_unchanged
+ options to adjust the appearance of the nomenclature.
+ 
+\change_inserted -712698321 1724303527
+They can be set in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Nomenclature
+\family default
+:
+\change_deleted -712698321 1724303912
+Here are some of its options;
  for more have a look at its documentation:
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
-refeq Appends the phrase 
+
+\change_inserted -712698321 1724303686
+Nomenclature
+\begin_inset space ~
+\end_inset
+
+style offers the selection between the default style,
+ which outputs the nomenclature as a list and a tabular style which sets it as a multipart table.
+ The latter style features two more constituents of the nomenclature entry:
+ a unit (which is typeset by means of the 
+\family sans
+siunits
+\family default
+ package) and an additional note.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1724303561
+Add
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+table
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+contents adds the nomenclature list to the table of contents.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1724305361
+Add
+\begin_inset space ~
+\end_inset
+
+equation
+\begin_inset space ~
+\end_inset
+
+references
+\change_deleted -712698321 1724303715
+refeq
+\change_unchanged
+ 
+\change_deleted -712698321 1724303716
+A
+\change_inserted -712698321 1724303717
+a
+\change_unchanged
+ppends the phrase 
 \begin_inset Quotes eld
 \end_inset
 
@@ -37370,7 +37451,27 @@ eq
 \end_layout
 
 \begin_layout Description
-refpage Appends the phrase 
+
+\change_deleted -712698321 1724303727
+refpage
+\change_inserted -712698321 1724305363
+Add
+\begin_inset space ~
+\end_inset
+
+page
+\begin_inset space ~
+\end_inset
+
+references
+\change_unchanged
+ 
+\change_deleted -712698321 1724303734
+A
+\change_inserted -712698321 1724303734
+a
+\change_unchanged
+ppends the phrase 
 \begin_inset Quotes eld
 \end_inset
 
@@ -37394,14 +37495,120 @@ page
 page
 \family default
 \emph default
- is the number of the page on which the nomenclature entry appeared
+ is the number of the page on which the nomenclature entry appear
+\change_deleted -712698321 1724305457
+ed
+\change_inserted -712698321 1724305457
+s
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
-intoc Inserts the nomenclature in the Table of Contents
+
+\change_deleted -712698321 1724303752
+intoc
+\change_inserted -712698321 1724303758
+Use
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+subgroups
+\change_unchanged
+ 
+\change_deleted -712698321 1724303777
+Inserts the nomenclature in the Table of Contents
+\change_inserted -712698321 1724309742
+uses predefined subgroups (Latin Letters,
+ Greek Letters,
+ Superscripts,
+ Subscripts) to structure the nomenclature list.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1724311045
+Entries are assigned to a subgroup via the 
+\family sans
+Sort
+\begin_inset space ~
+\end_inset
+
+as
+\family default
+ sub-inset.
+ If you use subgroups,
+ the first letter of the sort string indicates the subgroup (a:
+ Latin letters,
+ g:
+ Greek letters,
+ x:
+ Superscripts,
+ z:
+ Subscripts),
+ the following the sorting within the group.
+ A is used by default if no sorting has been manually specified.
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1724309722
+Please refer to the 
+\series bold
+nomencl
+\series default
+ documentation,
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+literal "true"
+
+\end_inset
+
+,
+ if you need different subgrouping.
+\change_unchanged
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+
+\change_inserted -712698321 1724303903
+Other
+\begin_inset space ~
+\end_inset
+
+options lets you insert any of the other options the package provides.
+ Please refer to the 
+\series bold
+nomencl
+\series default
+ documentation,
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+literal "true"
+
+\end_inset
+
+,
+ for details.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1724303935
 To use one or more of the options,
  add them to the comma-separated document class options list in the 
 \family sans
@@ -37418,73 +37625,183 @@ refpage,
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1724303935
 \begin_inset VSpace bigskip
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-You can also use the first two options above only for certain nomenclature entries when you add one of the following commands as last entry to the 
+
+\change_deleted -712698321 1724303954
+You can also use the first two options above
+\change_inserted -712698321 1724306838
+With the default style,
+ if you want to add page or equation references
+\change_unchanged
+ only 
+\change_deleted -712698321 1724303972
+for
+\change_inserted -712698321 1724303972
+to
+\change_unchanged
+ 
+\change_inserted -712698321 1724303974
+selected
+\change_deleted -712698321 1724303976
+certain
+\change_unchanged
+ nomenclature entries
+\change_inserted -712698321 1724303985
+,
+ you can do this by
+\change_deleted -712698321 1724303987
+ when you
+\change_unchanged
+ add
+\change_inserted -712698321 1724303990
+ing
+\change_unchanged
+ one of the following commands 
+\change_inserted -712698321 1724304028
+in \SpecialChar TeX
+ mode 
+\change_unchanged
+a
+\change_inserted -712698321 1724304042
+t
+\change_deleted -712698321 1724304042
+s
+\change_unchanged
+ 
+\change_inserted -712698321 1724304098
+the very end 
+\change_deleted -712698321 1724304050
+last entry to
+\change_inserted -712698321 1724304050
+of
+\change_unchanged
+ the 
 \family sans
 Description
 \family default
- field in the nomenclature dialog:
+ field 
+\change_deleted -712698321 1724304011
+in
+\change_inserted -712698321 1724304011
+of
+\change_unchanged
+ the nomenclature 
+\change_inserted -712698321 1724304088
+entry
+\change_deleted -712698321 1724304016
+dialog
+\change_unchanged
+:
 \end_layout
 
 \begin_layout Description
 
 \backslash
-nomrefeq Like the 
+nomrefeq 
+\change_deleted -712698321 1724304118
+Like the 
 \series bold
 refeq
 \series default
  option
+\change_inserted -712698321 1724304130
+for an equation reference
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
 
 \backslash
-nomrefpage Like the 
+nomrefpage 
+\change_deleted -712698321 1724304133
+Like the 
 \series bold
 refpage
 \series default
  option
+\change_inserted -712698321 1724304135
+for a page reference
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
 
 \backslash
-nomrefeqpage Short notation of 
+nomrefeqpage 
+\change_deleted -712698321 1724304161
+Short notation of 
 \series bold
 
 \backslash
 nomrefeq
 \backslash
 nomrefpage
+\change_inserted -712698321 1724304175
+for a combined equation and page reference
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1724304216
+If you have selected a reference option in document settings,
+ you can also disable it for selected entries by adding instead either of
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
 
 \backslash
-nomnorefeq,
+nomnorefeq
+\change_deleted -712698321 1724304228
+,
 \begin_inset space ~
 \end_inset
 
 
+\change_inserted -712698321 1724304229
+
+\end_layout
+
+\begin_layout Description
+
 \backslash
-nomnorefpage,
+nomnorefpage
+\change_deleted -712698321 1724304230
+,
 \begin_inset space ~
 \end_inset
 
 
+\change_inserted -712698321 1724304231
+
+\end_layout
+
+\begin_layout Description
+
 \backslash
-nomnorefeqpage Turns off the corresponding options
+nomnorefeqpage
+\change_deleted -712698321 1724304230
+ Turns off the corresponding options
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1723460016
+\change_inserted -712698321 1724306868
 Note that you need to add 
 \begin_inset Flex Code
 status collapsed
@@ -37501,11 +37818,18 @@ protect
 
 \end_inset
 
- in front of the command if the nomenclature is in a section heading or caption.
+ in front of these command if the nomenclature is in a section heading or caption.
+ Also note that these commands do not work in tabular style.
 \end_layout
 
 \begin_layout Standard
-Words like 
+
+\change_deleted -712698321 1724304289
+Words like
+\change_inserted -712698321 1724304292
+Expressions such as
+\change_unchanged
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -37514,7 +37838,11 @@ page
 \end_inset
 
  are automatically translated for most document languages.
- If not,
+ If not
+\change_inserted -712698321 1724304360
+ (or if you want a different wording)
+\change_unchanged
+,
  add these lines in front of the nomenclature list as \SpecialChar TeX
  code:
 \end_layout
@@ -37704,7 +38032,17 @@ Printing
 \end_layout
 
 \begin_layout Standard
-To print the nomenclature,
+To 
+\change_deleted -712698321 1724304544
+print
+\change_inserted -712698321 1724304545
+input
+\change_unchanged
+ the nomenclature
+\change_inserted -712698321 1724304556
+ at the location where it should be printed
+\change_unchanged
+,
  use the menu 
 \family sans
 Insert\SpecialChar menuseparator
@@ -37725,9 +38063,36 @@ Nomenclature
 \end_inset
 
  will show the place where the nomenclature is printed in the output.
- By right-clicking on it,
- the amount of space for symbols can be altered.
- You can choose between these settings:
+ 
+\change_inserted -712698321 1724304569
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1724304668
+With default nomenclature style,
+ you can adjust the list appearance (space between symbol and description and list indentation) 
+\change_deleted -712698321 1724304607
+B
+\change_inserted -712698321 1724304610
+b
+\change_unchanged
+y right-clicking on 
+\change_inserted -712698321 1724304620
+this box.
+\change_deleted -712698321 1724304636
+it,
+ the amount of space for symbols can be altered
+\change_unchanged
+.
+ You can 
+\change_deleted -712698321 1724304674
+choose
+\change_inserted -712698321 1724304674
+select
+\change_unchanged
+ between these settings:
 \end_layout
 
 \begin_layout Description
@@ -37776,14 +38141,14 @@ d
 \change_inserted -712698321 1721576994
  Note that this guessing might go wrong,
  as \SpecialChar LyX
- does not know how how the formatted output in your PDF will look like exactly.
+ does not know how the formatted output in your PDF will look like exactly.
 \change_unchanged
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted -712698321 1721577537
+\change_inserted -712698321 1724304720
 Longest
 \begin_inset space ~
 \end_inset
@@ -37798,13 +38163,17 @@ width
 
 (set) here you can enter the widest symbol yourself to use its width.
  While this is more accurate than the second method,
- the disadvantage is that you need to keep this up-to date if new (longer) entries are added to the nomenclature.
+ the disadvantage is that you need to keep this up to date if new (longer) entries are added to the nomenclature.
 \change_unchanged
 
 \end_layout
 
 \begin_layout Description
 Custom custom space
+\change_inserted -712698321 1724304744
+ as specified in the widget.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -37851,7 +38220,13 @@ nomname{List of Symbols}}}
 \end_layout
 
 \begin_layout Standard
-When you are using another document language than English,
+
+\change_deleted -712698321 1724304772
+When
+\change_inserted -712698321 1724304772
+If
+\change_unchanged
+ you are using another document language than English,
  replace
 \begin_inset Newline newline
 \end_inset
@@ -37866,7 +38241,13 @@ captionsenglish
 \series bold
 
 \backslash
-extras***
+
+\change_deleted -712698321 1724304814
+extras
+\change_inserted -712698321 1724304814
+captions
+\change_unchanged
+***
 \series default
 ,
  where *** is the name of the language used.
@@ -52286,10 +52667,20 @@ nolink "false"
 \end_inset
 
  for details).
+\change_inserted -712698321 1724303218
 
-\change_inserted -712698321 1724253333
- Moreover,
- you can select a nomenclature style (see section
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -712698321 1724303226
+Nomenclature
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1724303279
+Here you can select a nomenclature style and select among some options that determine the output of the nomenclature list (see section
 \begin_inset space ~
 \end_inset
 

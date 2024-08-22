@@ -51,7 +51,7 @@ public:
 	///
 	bool minted() const { return h_use_minted; }
 	///
-	bool nomentbl() const { return h_use_nomentbl; }
+	std::string nomenclOpts() const { return h_nomencl_options; }
 	/// The document language
 	std::string docLanguage() const { return h_language; }
 	/// The language of text which is not explicitly marked
@@ -257,7 +257,7 @@ private:
 	std::vector<std::string> h_includeonlys;
 	bool h_use_refstyle;
 	bool h_use_minted;
-	bool h_use_nomentbl;
+	std::string h_nomencl_options;
 
 	/*!
 	 * Add package \p name with options \p options to used_packages.

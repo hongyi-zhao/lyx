@@ -492,7 +492,6 @@ BufferParams::BufferParams()
 	use_formatted_ref = false;
 	use_minted = false;
 	use_lineno = false;
-	use_nomentbl = false;
 
 	// map current author
 	author_map_[pimpl_->authorlist.get(0).bufferId()] = 0;
@@ -1212,8 +1211,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> use_formatted_ref;
 	} else if (token == "\\use_minted") {
 		lex >> use_minted;
-	} else if (token == "\\use_nomentbl") {
-		lex >> use_nomentbl;
+	} else if (token == "\\nomencl_options") {
+		lex.eatLine();
+		nomencl_opts = trim(lex.getString());
 	} else if (token == "\\use_lineno") {
 		lex >> use_lineno;
 	} else if (token == "\\lineno_options") {
@@ -1442,12 +1442,14 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\n\\use_refstyle " << use_refstyle
 	   << "\n\\use_formatted_ref " << use_formatted_ref
 	   << "\n\\use_minted " << use_minted
-	   << "\n\\use_nomentbl " << use_nomentbl
 	   << "\n\\use_lineno " << use_lineno
 	   << '\n';
 
 	if (!lineno_opts.empty())
 		os << "\\lineno_options " << lineno_opts << '\n';
+
+	if (!nomencl_opts.empty())
+		os << "\\nomencl_options " << nomencl_opts << '\n';
 
 	if (isbackgroundcolor)
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';

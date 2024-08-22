@@ -119,7 +119,7 @@ void GuiIndices::update(BufferParams const & params, bool const readonly)
 		indexOptionsLE->clear();
 	}
 
-	pos = (params.use_nomentbl) ? 1 : 0;
+	pos = (contains(params.nomencl_opts, "nomentbl")) ? 1 : 0;
 	nomenclStyleCO->setCurrentIndex(pos);
 
 	updateView();
@@ -169,7 +169,8 @@ void GuiIndices::apply(BufferParams & params) const
 	params.use_indices = multipleIndicesCB->isChecked();
 	params.indiceslist() = indiceslist_;
 
-	params.use_nomentbl = nomenclStyleCO->currentIndex() == 1;
+	if (nomenclStyleCO->currentIndex() == 1)
+		params.nomencl_opts = "nomentbl";
 
 	string const index_command =
 		fromqstr(indexCO->itemData(

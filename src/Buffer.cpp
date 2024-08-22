@@ -969,6 +969,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().biblatex_citestyle.erase();
 	params().multibib.erase();
 	params().lineno_opts.clear();
+	params().nomencl_opts.clear();
 	params().spellignore().clear();
 
 	for (int i = 0; i < 4; ++i) {

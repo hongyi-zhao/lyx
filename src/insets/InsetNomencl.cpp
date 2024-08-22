@@ -154,7 +154,7 @@ void InsetNomencl::addToToc(DocIterator const & cpit, bool output_active,
 
 docstring InsetNomencl::layoutName() const
 {
-	return (buffer().params().use_nomentbl) ?
+	return (contains(buffer().params().nomencl_opts, "nomentbl")) ?
 				from_ascii("Nomenclature:nomentbl")
 			      : from_ascii("Nomenclature");
 }

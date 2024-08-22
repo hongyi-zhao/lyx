@@ -616,7 +616,6 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_lineno              = "false";
 	h_use_refstyle            = false;
 	h_use_minted              = false;
-	h_use_nomentbl            = false;
 	h_use_packages["amsmath"]    = "1";
 	h_use_packages["amssymb"]    = "0";
 	h_use_packages["cancel"]     = "0";
@@ -1780,19 +1779,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (name == "nomencl") {
-		vector<string>::iterator it =
-			find(options.begin(), options.end(), "nomentbl");
-		if (it != options.end()) {
-			h_use_nomentbl = true;
-			options.erase(it);
-		}
-		// Add the package options to the global document options
-		if (!options.empty()) {
-			if (h_options.empty())
-				h_options = join(options, ",");
-			else
-				h_options += ',' + join(options, ",");
-		}
+		h_nomencl_options = join(options, ",");
+		options.clear();
 	}
 
 	else if (name == "geometry")
@@ -2124,10 +2112,11 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\justification " << h_justification << '\n'
 	   << "\\use_refstyle " << h_use_refstyle << '\n'
 	   << "\\use_minted " << h_use_minted << '\n'
-	   << "\\use_nomentbl " << h_use_nomentbl << '\n'
 	   << "\\use_lineno " << h_use_lineno << '\n';
 	if (!h_lineno_options.empty())
 		os << "\\lineno_options " << h_lineno_options << '\n';
+	if (!h_nomencl_options.empty())
+		os << "\\nomencl_options " << h_nomencl_options << '\n';
 	if (!h_fontcolor.empty())
 		os << "\\fontcolor " << h_fontcolor << '\n';
 	if (!h_notefontcolor.empty())

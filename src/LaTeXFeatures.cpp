@@ -1498,8 +1498,8 @@ string const LaTeXFeatures::getPackages() const
 
 	if (mustProvide("nomencl")) {
 		packages << "\\usepackage";
-		if (params_.use_nomentbl)
-			packages << "[nomentbl]";
+		if (!params_.nomencl_opts.empty())
+			packages << "[" << params_.nomencl_opts << "]";
 		packages << "{nomencl}\n";
 		// Make it work with the new and old version of the package,
 		// but don't use the compatibility option since it is

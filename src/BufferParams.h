@@ -623,8 +623,8 @@ public:
 	bool use_lineno;
 	/// optional params for lineno package
 	std::string lineno_opts;
-	/// use nomentbl nomenclature sty
-	bool use_nomentbl;
+	/// options for nomencl package
+	std::string nomencl_opts;
 
 	/// Return true if language could be set to lang,
 	/// otherwise return false and do not change language

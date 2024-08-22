@@ -717,18 +717,23 @@ def revert_index_sc(document):
 def revert_nomentbl(document):
     """Revert nomentbl inset to ERT."""
 
-    i = find_token(document.header, "\\use_nomentbl", 0)
+    # intermediate format
+    i = find_token(document.header, "\\nomencl_options", 0)
     if i == -1:
-        document.warning("Malformed document! Missing \\use_nomentbl")
-        return
-    if get_value(document.header, "\\use_nomentbl", i) == 0:
-        # just remove header
-        del document.header[i]
+        # nothing to do
         return
 
+    opts = get_value(document.header, "\\nomencl_options", i)
     # remove header
     del document.header[i]
 
+    # store options
+    document.append_local_layout([r"### Inserted by lyx2lyx (nomencl) ###",
+                                  r"PackageOptions nomencl %s" % opts])
+
+    if opts.find("nomentbl") == -1:
+        return
+    
     # revert insets to ERT
     have_nomencl = False
     i = 0
@@ -853,10 +858,6 @@ def revert_nomentbl(document):
         document.body[i : j + 1] = res
 
         i += 1
-        
-    if have_nomencl:
-        document.append_local_layout([r"### Inserted by lyx2lyx (nomencl) ###",
-                                      r"PackageOptions nomencl nomentbl"])
 
 
 ##

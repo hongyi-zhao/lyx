@@ -5010,7 +5010,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			set<string> pass_thru_cmds = context.pass_thru_cmds;
 			// These commands have special meanings in Nomenclature
 			context.pass_thru_cmds.insert("%");
-			if (preamble.nomentbl())
+			if (contains(preamble.nomenclOpts(), "nomentbl"))
 				parse_text_in_inset(p, os, FLAG_ITEM, outer, context, "Nomenclature:nomentbl");
 			else
 				parse_text_in_inset(p, os, FLAG_ITEM, outer, context, "Nomenclature");

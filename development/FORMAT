@@ -7,6 +7,12 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2024-08-23 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 629: Add support for language options
+	  New buffer params \language_options_babel and
+	  \language_options_polyglossia
+	  These are simply removed on document reversion.
+
 2024-08-21 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 628: Add support for nomentbl-style
 	  nomencl insets:

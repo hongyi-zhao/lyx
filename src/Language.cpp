@@ -131,6 +131,7 @@ bool Language::readLanguage(Lexer & lex)
 {
 	enum LanguageTags {
 		LA_BABELNAME = 1,
+		LA_BABELOPTFORMAT,
 		LA_DATEFORMATS,
 		LA_ENCODING,
 		LA_END,
@@ -157,6 +158,7 @@ bool Language::readLanguage(Lexer & lex)
 	LexerKeyword languageTags[] = {
 		{ "activechars",          LA_ACTIVECHARS },
 		{ "babelname",            LA_BABELNAME },
+		{ "babeloptformat",       LA_BABELOPTFORMAT },
 		{ "dateformats",          LA_DATEFORMATS },
 		{ "encoding",             LA_ENCODING },
 		{ "end",                  LA_END },
@@ -203,6 +205,9 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_BABELNAME:
 			lex >> babel_;
+			break;
+		case LA_BABELOPTFORMAT:
+			lex >> babeloptformat_;
 			break;
 		case LA_POLYGLOSSIANAME:
 			lex >> polyglossia_name_;
@@ -283,6 +288,7 @@ bool Language::read(Lexer & lex)
 	encoding_ = nullptr;
 	internal_enc_ = false;
 	rightToLeft_ = false;
+	babeloptformat_ = "\\languageattribute{$lang$}{$opts$}";
 
 	if (!lex.next()) {
 		lex.printError("No name given for language: `$$Token'.");

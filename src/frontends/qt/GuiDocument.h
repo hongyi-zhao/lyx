@@ -43,6 +43,7 @@
 #include "support/unique_ptr.h"
 
 #include <QStandardItemModel>
+#include <QStyledItemDelegate>
 
 namespace lyx {
 
@@ -73,6 +74,17 @@ class UiWidget : public QWidget, public UI
 {
 public:
 	UiWidget(QWidget * parent) : QWidget(parent) { UI::setupUi(this); }
+};
+
+// use to make single QTreeWidget column editable
+// courtesy of https://stackoverflow.com/a/4657065
+class NoEditDelegate : public QStyledItemDelegate {
+public:
+	NoEditDelegate(QObject* parent=0): QStyledItemDelegate(parent) {}
+	virtual QWidget* createEditor(QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const
+	{
+		return 0;
+	}
 };
 
 
@@ -173,6 +185,7 @@ private Q_SLOTS:
 	void setOutputSync(bool);
 	void bookmarksopenChanged(bool);
 	void changeTrackingChanged(bool);
+	void updateLanguageOptions();
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();

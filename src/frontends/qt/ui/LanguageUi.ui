@@ -7,80 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>472</width>
-    <height>316</height>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
   <layout class="QGridLayout" name="gridLayout_4">
-   <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="0">
-      <widget class="QLabel" name="languageL">
-       <property name="text">
-        <string>&amp;Language:</string>
-       </property>
-       <property name="buddy">
-        <cstring>languageCO</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="languageCO">
-       <property name="maxVisibleItems">
-        <number>20</number>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="typeL">
-       <property name="text">
-        <string>&amp;Quote style:</string>
-       </property>
-       <property name="buddy">
-        <cstring>quoteStyleCO</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="quoteStyleCO">
-       <property name="toolTip">
-        <string>Select the default quotation marks style</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout"/>
-     </item>
-     <item row="2" column="1">
-      <widget class="QCheckBox" name="dynamicQuotesCB">
-       <property name="toolTip">
-        <string>Output quotation marks that automatically adapt to the style selected above. If this is not selected, the quotation marks will stick with the style they have been inserted with.</string>
-       </property>
-       <property name="text">
-        <string>Use d&amp;ynamic quotation marks</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="1">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::MinimumExpanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>23</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="1" column="0">
     <widget class="QGroupBox" name="encodingGB">
      <property name="title">
@@ -157,18 +90,56 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="languageL">
+       <property name="text">
+        <string>&amp;Language:</string>
+       </property>
+       <property name="buddy">
+        <cstring>languageCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="languageCO">
+       <property name="maxVisibleItems">
+        <number>20</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="typeL">
+       <property name="text">
+        <string>&amp;Quote style:</string>
+       </property>
+       <property name="buddy">
+        <cstring>quoteStyleCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="quoteStyleCO">
+       <property name="toolTip">
+        <string>Select the default quotation marks style</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QCheckBox" name="dynamicQuotesCB">
+       <property name="toolTip">
+        <string>Output quotation marks that automatically adapt to the style selected above. If this is not selected, the quotation marks will stick with the style they have been inserted with.</string>
+       </property>
+       <property name="text">
+        <string>Use d&amp;ynamic quotation marks</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="2" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -199,7 +170,7 @@
      <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -211,18 +182,63 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0">
-    <spacer>
+   <item row="1" column="1">
+    <spacer name="horizontalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>71</width>
-       <height>171</height>
+       <width>0</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QGroupBox" name="langaugeOptsGB">
+     <property name="title">
+      <string>Language &amp;Options</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <widget class="QTreeWidget" name="languageOptionsTW">
+        <property name="rootIsDecorated">
+         <bool>false</bool>
+        </property>
+        <property name="headerHidden">
+         <bool>false</bool>
+        </property>
+        <property name="columnCount">
+         <number>2</number>
+        </property>
+        <column>
+         <property name="text">
+          <string>Language</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Options</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Policy::MinimumExpanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>23</height>
       </size>
      </property>
     </spacer>

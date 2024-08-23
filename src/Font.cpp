@@ -242,8 +242,9 @@ int Font::latexWriteStartChanges(otexstream & os, BufferParams const & bparams,
 			if (needs_cprotection)
 				tmp += "\\cprotect";
 			tmp += "\\text" + language()->polyglossia();
-			if (!language()->polyglossiaOpts().empty()) {
-				tmp += "[" + language()->polyglossiaOpts() + "]";
+			string const opts = bparams.polyglossiaLangOptions(language()->lang());
+			if (!opts.empty()) {
+				tmp += "[" + opts + "]";
 				if (runparams.use_hyperref && runparams.moving_arg) {
 					// We need to strip the command for
 					// the pdf string, see #11813

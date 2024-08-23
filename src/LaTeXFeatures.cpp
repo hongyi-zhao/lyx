@@ -1816,9 +1816,21 @@ docstring const LaTeXFeatures::getBabelPostsettings() const
 {
 	odocstringstream tmp;
 
-	for (auto const & lang : UsedLanguages_)
+	std::set<Language const *> langs = UsedLanguages_;
+	// add main language
+	langs.insert(bufferParams().language);
+	for (auto const & lang : langs) {
 		if (!lang->babel_postsettings().empty())
 			tmp << lang->babel_postsettings() << '\n';
+		if (lang->babelOptFormat() != "modifier") {
+			// user-set options
+			string const opts = bufferParams().babelLangOptions(lang->lang());
+			if (!opts.empty())
+				tmp << from_utf8(subst(subst(lang->babelOptFormat(), "$lang$",
+							     lang->babel()), "$opts$", opts))
+				    << '\n';
+		}
+	}
 	if (!params_.language->babel_postsettings().empty())
 		tmp << params_.language->babel_postsettings() << '\n';
 

@@ -87,6 +87,9 @@
    </item>
    <item row="2" column="0" rowspan="7" colspan="3">
     <widget class="QTreeWidget" name="branchesTW">
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
      <column>
       <property name="text">
        <string notr="true">1</string>

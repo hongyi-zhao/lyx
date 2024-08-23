@@ -133,6 +133,8 @@ public:
 	/// A vector of all used languages supported only by babel
 	std::vector<std::string> getBabelExclusiveLanguages() const;
 	///
+	std::set<Language const *> getLanguages() const { return UsedLanguages_; }
+	///
 	std::string getBabelLanguages() const;
 	///
 	std::set<std::string> getPolyglossiaLanguages() const;

@@ -9646,14 +9646,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9666,7 +9664,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9690,7 +9687,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -51225,6 +51221,20 @@ usepackage{ngerman}
 \begin_layout Description
 None will not use a language package.
  This is necessary for some document classes for scientific articles.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1724421528
+In 
+\family sans
+Language Options
+\family default
+,
+ the languages currently used in the document are listed,
+ together with the (babel or polyglossia) options currently set.
+ You can modify the options by clicking on the options list.
+ Please refer to the documentation of the language package or language module for valid options.
 \end_layout
 
 \begin_layout Standard

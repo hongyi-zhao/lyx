@@ -340,6 +340,20 @@ public:
 	Language const * language;
 	/// language package
 	std::string lang_package;
+	/// babel language options
+	std::map<std::string, std::string> lang_options_babel_;
+	///
+	std::string const babelLangOptions(std::string const & lang) const;
+	///
+	void setBabelLangOptions(std::string const & lang, std::string const & opts)
+		{ lang_options_babel_[lang] = opts; }
+	/// polyglossia language options
+	std::map<std::string, std::string> lang_options_polyglossia_;
+	///
+	std::string const polyglossiaLangOptions(std::string const & lang) const;
+	///
+	void setPolyglossiaLangOptions(std::string const & lang, std::string const & opts)
+		{ lang_options_polyglossia_[lang] = opts; }
 	/// BranchList:
 	BranchList & branchlist();
 	BranchList const & branchlist() const;
@@ -505,7 +519,9 @@ public:
 	std::string paperSizeName(PapersizePurpose purpose,
 				  std::string const & psize = std::string()) const;
 	/// set up if and how babel is called
-	std::string babelCall(std::string const & lang_opts, bool const langoptions) const;
+	std::string babelCall(LaTeXFeatures const & features,
+			      std::string lang_opts,
+			      bool const langoptions) const;
 	/// return supported drivers for specific packages
 	docstring getGraphicsDriver(std::string const & package) const;
 	/// handle inputenc etc.

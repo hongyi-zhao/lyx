@@ -8,6 +8,7 @@
 #	GuiName            "<Gui Name>"
 #	HasGuiSupport      <true|false>
 #	BabelName          <babelname>
+#       BabelOptFormat     <format of option specification>
 #	PolyglossiaName    <polyglossianame>
 #	PolyglossiaOpts    "<language-specific options>"
 #	XindyName          <xindyname>
@@ -128,6 +129,10 @@
 #   be de-activated in some contexts (such as - or =).
 # * XindyName holds the value to the (te)xindy -L option. We only give it
 #   if a corresponding language module exists.
+# * BabelOptFormat specifies how the language-specific options shall be
+#   passed with babel (which differs between languages).
+#   Default is \languageattribute{$lang$}{$opts$}
+#   The special value "modifier" indicates to use babel modifiers.
 #
 ##########################################################################
 
@@ -314,6 +319,7 @@ End
 Language austrian
 	GuiName          "German (Austria, old spelling)"
 	BabelName        austrian
+	BabelOptFormat   modifier
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=austrian,spelling=old,babelshorthands=true"
 	XindyName        german-duden
@@ -329,6 +335,7 @@ End
 Language naustrian
 	GuiName          "German (Austria)"
 	BabelName        naustrian
+	BabelOptFormat   modifier
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=austrian,spelling=new,babelshorthands=true"
 	XindyName        german-duden
@@ -658,6 +665,7 @@ End
 Language estonian
 	GuiName          "Estonian"
 	BabelName        estonian
+	BabelOptFormat   modifier
 	PolyglossiaName  estonian
 	XindyName        estonian
 	QuoteStyle       german
@@ -706,6 +714,7 @@ Language french
 	GuiName          "French"
 	HasGuiSupport    true
 	BabelName        french
+	BabelOptFormat   \frenchsetup{$opts§}
 	ActiveChars      ;!?:
 	PolyglossiaName  french
 	XindyName        french
@@ -759,6 +768,7 @@ End
 Language german
 	GuiName          "German (old spelling)"
 	BabelName        german
+	BabelOptFormat   modifier
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=german,spelling=old,babelshorthands=true"
 	XindyName        german-duden
@@ -774,6 +784,7 @@ Language ngerman
 	GuiName          "German"
 	HasGuiSupport    true
 	BabelName        ngerman
+	BabelOptFormat   modifier
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=german,spelling=new,babelshorthands=true"
 	XindyName        german-duden
@@ -791,6 +802,7 @@ End
 Language german-ch
 	GuiName          "German (Switzerland)"
 	BabelName        nswissgerman
+	BabelOptFormat   modifier
 	PolyglossiaName  german
 	PolyglossiaOpts  "variant=swiss,spelling=new,babelshorthands=true"
 	XindyName        german-duden
@@ -807,6 +819,7 @@ End
 Language german-ch-old
 	GuiName          "German (Switzerland, old spelling)"
  	BabelName        swissgerman
+	BabelOptFormat   modifier
  	PolyglossiaName  german
  	PolyglossiaOpts  "variant=swiss,spelling=old,babelshorthands=true"
 	XindyName        german-duden
@@ -889,6 +902,7 @@ End
 Language icelandic
 	GuiName          "Icelandic"
 	BabelName        icelandic
+	BabelOptFormat   modifier
 	PolyglossiaName  icelandic
 	XindyName        icelandic
 	QuoteStyle       german
@@ -1038,6 +1052,7 @@ End
 Language latin
 	GuiName          "Latin"
 	BabelName        latin
+	BabelOptFormat   modifier
 	PolyglossiaName  latin
 	XindyName        latin
 	ActiveChars      ^=
@@ -1052,6 +1067,7 @@ End
 Language latvian
 	GuiName          "Latvian"
 	BabelName        latvian
+	BabelOptFormat   modifier
 	PolyglossiaName  latvian
 	XindyName        latvian
 	QuoteStyle       german
@@ -1111,6 +1127,7 @@ Language magyar
 	GuiName          "Hungarian"
 	HasGuiSupport    true
 	BabelName        magyar
+	BabelOptFormat   \magyarOptions{$opts§}
 	PolyglossiaName  magyar
 	XindyName        hungarian
 	QuoteStyle       hungarian
@@ -1364,6 +1381,7 @@ Language serbian
 	GuiName          "Serbian"
 	HasGuiSupport    true
 	BabelName        serbianc
+	BabelOptFormat   modifier
 	PolyglossiaName  serbian
 	PolyglossiaOpts  "script=Cyrillic"
 	XindyName        serbian
@@ -1420,6 +1438,7 @@ Language spanish
 	GuiName          "Spanish"
 	HasGuiSupport    true
 	BabelName        spanish
+	BabelOptFormat   modifier
 	PolyglossiaName  spanish
 	XindyName        spanish-modern
 	QuoteStyle       french
@@ -1610,6 +1629,7 @@ End
 Language vietnamese
 	GuiName          "Vietnamese"
 	BabelName        vietnamese
+	BabelOptFormat   modifier
 	PolyglossiaName  vietnamese
 	XindyName        vietnamese
 	QuoteStyle       english

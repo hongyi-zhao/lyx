@@ -717,7 +717,6 @@ def revert_index_sc(document):
 def revert_nomentbl(document):
     """Revert nomentbl inset to ERT."""
 
-    # intermediate format
     i = find_token(document.header, "\\nomencl_options", 0)
     if i == -1:
         # nothing to do
@@ -860,6 +859,19 @@ def revert_nomentbl(document):
         i += 1
 
 
+def revert_langopts(document):
+    """Remove language options header."""
+
+    i = 0
+    while True:
+        i = find_token(document.header, "\\language_options_", 0)
+        if i == -1:
+            # nothing to do
+            return
+
+        # remove header
+        del document.header[i]
+
 ##
 # Conversion hub
 #
@@ -873,11 +885,13 @@ convert = [
     [625, []],
     [626, []],
     [627, [convert_nomencl, convert_index_sc]],
-    [628, []]
+    [628, []],
+    [629, []]
 ]
 
 
 revert = [
+    [628, [revert_langopts]],
     [627, [revert_nomentbl]],
     [626, [revert_nomencl, revert_index_sc]],
     [625, [revert_nomencl_textwidth]],

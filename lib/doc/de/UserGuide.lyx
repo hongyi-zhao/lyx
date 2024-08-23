@@ -9302,10 +9302,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9318,6 +9320,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9343,6 +9346,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -49230,6 +49234,20 @@ usepackage{ngerman}
 \begin_layout Description
 Keines verwendet kein Sprachpaket.
  Dies ist für einige Dokumentklassen für wissenschaftliche Artikel notwendig.
+\end_layout
+
+\begin_layout Standard
+Unter 
+\family sans
+Sprachoptionen
+\family default
+ werden die aktuell im Dokument verwendeten Sprachen mit den Sprachoptionen,
+ die für sie gesetzt sind,
+ angezeigt.
+ Sie können die Optionen ändern,
+ indem Sie auf die Optionenliste klicken.
+ Bitte konsultieren Sie die Dokumentation des jeweiligen Sprachpakets bzw.
+ Sprachmoduls für Informationen zu zulässigen Optionen.
 \end_layout
 
 \begin_layout Standard

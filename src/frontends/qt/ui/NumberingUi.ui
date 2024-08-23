@@ -114,6 +114,9 @@
    </item>
    <item row="4" column="0">
     <widget class="QTreeWidget" name="tocTW">
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
      <column>
       <property name="text">
        <string notr="true">1</string>

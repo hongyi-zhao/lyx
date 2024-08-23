@@ -148,7 +148,10 @@
     </widget>
    </item>
    <item rowspan="4" row="5" column="0" >
-    <widget class="QTreeWidget" name="indicesTW" >
+    <widget class="QTreeWidget" name="indicesTW">
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
      <column>
       <property name="text" >
        <string>1</string>

@@ -255,7 +255,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 		    !par_lang.empty()) {
 			    string bc = use_polyglossia ?
 					getPolyglossiaBegin(lang_begin_command, par_lang,
-							    data.par_language->polyglossiaOpts())
+							    bparams.polyglossiaLangOptions(data.par_language->lang()))
 				      : subst(lang_begin_command, "$$lang", par_lang);
 			    os << bc;
 			    // the '%' is necessary to prevent unwanted whitespace
@@ -1091,7 +1091,7 @@ void TeXOnePar(Buffer const & buf,
 			    && !par_lang.empty()) {
 				string bc = use_polyglossia ?
 					  getPolyglossiaBegin(lang_begin_command, par_lang,
-					  		      par_language->polyglossiaOpts(),
+							      bparams.polyglossiaLangOptions(par_language->lang()),
 					  		      localswitch)
 					  : subst(lang_begin_command, "$$lang", par_lang);
 				os << bc;
@@ -1357,7 +1357,7 @@ void TeXOnePar(Buffer const & buf,
 				    && current_lang != openLanguageName(state)) {
 					string bc = use_polyglossia ?
 						    getPolyglossiaBegin(lang_begin_command, current_lang,
-									current_language->polyglossiaOpts(),
+									bparams.polyglossiaLangOptions(current_language->lang()),
 									localswitch)
 						  : subst(lang_begin_command, "$$lang", current_lang);
 					os << bc;
@@ -1651,7 +1651,7 @@ void latexParagraphs(Buffer const & buf,
 		// FIXME UNICODE
 		string bc = runparams.use_polyglossia ?
 			    getPolyglossiaBegin(lang_begin_command, mainlang,
-						bparams.language->polyglossiaOpts())
+						bparams.polyglossiaLangOptions(bparams.language->lang()))
 			  : subst(lang_begin_command, "$$lang", mainlang);
 		os << bc;
 		os << '\n';

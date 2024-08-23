@@ -136,7 +136,7 @@ if __name__ == "__main__":
     print("""<?php
 // The current version
 $lyx_version = "%s";
-// The branch tag
+// The branch tag which will be used for git URL pointing to proper .po file
 $branch_tag = "%s";
 
 // The data itself

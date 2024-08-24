@@ -14,8 +14,6 @@
 #ifndef GUICOMMANDBUFFER_H
 #define GUICOMMANDBUFFER_H
 
-#include "support/docstring.h"
-
 #include <QPushButton>
 #include <QWidget>
 

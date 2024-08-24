@@ -288,7 +288,6 @@ bool Language::read(Lexer & lex)
 	encoding_ = nullptr;
 	internal_enc_ = false;
 	rightToLeft_ = false;
-	babeloptformat_ = "\\languageattribute{$lang$}{$opts$}";
 
 	if (!lex.next()) {
 		lex.printError("No name given for language: `$$Token'.");

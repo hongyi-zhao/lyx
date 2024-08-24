@@ -2869,6 +2869,8 @@ void GuiDocument::updateLanguageOptions()
 	Language const * newlang = lyx::languages.getLanguage(fromqstr(langname));
 	langs.insert(newlang);
 	for (auto const & l : langs) {
+		if (!use_polyglossia && l->babelOptFormat().empty())
+			continue;
 		QTreeWidgetItem * twi = new QTreeWidgetItem();
 		twi->setData(0, Qt::DisplayRole, qt_(l->display()));
 		twi->setData(0, Qt::UserRole, toqstr(l->lang()));

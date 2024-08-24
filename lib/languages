@@ -131,7 +131,8 @@
 #   if a corresponding language module exists.
 # * BabelOptFormat specifies how the language-specific options shall be
 #   passed with babel (which differs between languages).
-#   Default is \languageattribute{$lang$}{$opts$}
+#   You can use the placeholders $lang$ and $opts$ (as in
+#   \languageattribute{$lang$}{$opts$})
 #   The special value "modifier" indicates to use babel modifiers.
 #
 ##########################################################################
@@ -217,6 +218,7 @@ End
 Language ancientgreek
 	GuiName          "Greek (ancient)"
 	BabelName        greek
+	BabelOptFormat   modifier
 	PostBabelPreamble
 	\languageattribute{greek}{ancient}
 	EndPostBabelPreamble
@@ -404,6 +406,7 @@ End
 Language belarusian
 	GuiName          "Belarusian"
 	BabelName        belarusian
+	BabelOptFormat   \languageattribute{$lang$}{$opts$}
 	PolyglossiaName  belarusian
 	XindyName        belarusian
 	QuoteStyle       french
@@ -477,6 +480,7 @@ Language bulgarian
 	GuiName          "Bulgarian"
 	HasGuiSupport    true
 	BabelName        bulgarian
+	BabelOptFormat   \languageattribute{$lang$}{$opts$}
 	PolyglossiaName  bulgarian
 	XindyName        bulgarian
 	QuoteStyle       german
@@ -588,6 +592,7 @@ Language czech
 	GuiName          "Czech"
 	HasGuiSupport    true
 	BabelName        czech
+	BabelOptFormat   \languageattribute{$lang$}{$opts$}
 	PolyglossiaName  czech
 	XindyName        czech
 	QuoteStyle       german
@@ -834,6 +839,7 @@ Language greek
 	GuiName          "Greek"
 	HasGuiSupport    true
 	BabelName        greek
+	BabelOptFormat   modifier
 	PolyglossiaName  greek
 	PolyglossiaOpts  "variant=monotonic"
 	XindyName        greek
@@ -849,6 +855,7 @@ End
 Language polutonikogreek
 	GuiName          "Greek (polytonic)"
 	BabelName        polutonikogreek
+	BabelOptFormat   modifier
 	PolyglossiaName  greek
 	PolyglossiaOpts  "variant=polytonic"
 	XindyName        greek
@@ -956,6 +963,7 @@ Language japanese
 	GuiName          "Japanese"
 	HasGuiSupport    true
 	BabelName        japanese
+	BabelOptFormat   \languageattribute{$lang$}{$opts$}
 	Encoding         jis-platex
 	WordWrap         false
 	LangCode         ja_JP
@@ -1028,6 +1036,7 @@ End
 Language kurmanji
 	GuiName          "Kurdish (Kurmanji)"
 	BabelName        kurmanji
+	BabelOptFormat   \languageattribute{$lang$}{$opts$}
 	PolyglossiaName  kurdish
 	XindyName        kurdish-bedirxan
 	PolyglossiaOpts  "variant=kurmanji"
@@ -1328,6 +1337,7 @@ Language russian
 	GuiName          "Russian"
 	HasGuiSupport    true
 	BabelName        russian
+	BabelOptFormat   \languageattribute{$lang$}{$opts$}
 	PolyglossiaName  russian
 	PolyglossiaOpts  "spelling=modern"
 	XindyName        russian
@@ -1398,6 +1408,7 @@ End
 Language serbian-latin
 	GuiName          "Serbian (Latin)"
 	BabelName        serbian
+	BabelOptFormat   modifier
 	PolyglossiaName  serbian
 	PolyglossiaOpts  "script=Latin"
 	XindyName        croatian
@@ -1412,6 +1423,7 @@ Language slovak
 	GuiName          "Slovak"
 	HasGuiSupport    true
 	BabelName        slovak
+	BabelOptFormat   \languageattribute{$lang$}{$opts$}
 	PolyglossiaName  slovak
 	XindyName        slovak-large
 	QuoteStyle       german

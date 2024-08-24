@@ -3503,6 +3503,7 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 	langs.insert(language);
 	for (auto const & l : langs) {
 		string blang = l->babel();
+		bool use_opt = langoptions;
 		if (blang.empty())
 			continue;
 		if (l->babelOptFormat() == "modifier") {
@@ -3516,9 +3517,11 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 					blang = "modifiers." + blang + "=" + s;
 					have_one = true;
 				}
+				use_opt = true;
 			}
 		}
-		blangs.push_back(blang);
+		if (use_opt)
+			blangs.push_back(blang);
 	}
 	if (have_mods)
 		lang_opts = getStringFromVector(blangs);

@@ -43,6 +43,8 @@ public:
 	std::string const lang() const { return lang_; }
 	/// Babel language name
 	std::string const babel() const { return babel_; }
+	/// babel language options
+	std::string const babelOpts() const { return babel_opts_; }
 	/// Babel option format
 	std::string const babelOptFormat() const { return babeloptformat_; }
 	/// polyglossia language name
@@ -117,6 +119,8 @@ private:
 	trivstring lang_;
 	///
 	trivstring babel_;
+	///
+	trivstring babel_opts_;
 	///
 	trivstring babeloptformat_;
 	///

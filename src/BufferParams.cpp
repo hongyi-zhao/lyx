@@ -1371,7 +1371,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	if (language != ignore_language)
 		os << "\\language " << language->lang() << '\n';
 	for (auto const & s : lang_options_babel_) {
-		if (!s.second.empty())
+		Language const * l = languages.getLanguage(s.first);
+		if (l && l->babelOpts() != s.second)
+			// babel options can be empty
 			os << "\\language_options_babel " << s.first << " \"" << s.second << "\"\n";
 	}
 	for (auto const & s : lang_options_polyglossia_) {
@@ -4039,8 +4041,10 @@ string const BufferParams::bibFileEncoding(string const & file) const
 
 string const BufferParams::babelLangOptions(string const & lang) const
 {
-	if (lang_options_babel_.find(lang) == lang_options_babel_.end())
-		return string();
+	if (lang_options_babel_.find(lang) == lang_options_babel_.end()) {
+		Language const * l = languages.getLanguage(lang);
+		return l ? l->babelOpts() :string();
+	}
 	return lang_options_babel_.find(lang)->second;
 }
 

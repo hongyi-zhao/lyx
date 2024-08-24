@@ -132,6 +132,7 @@ bool Language::readLanguage(Lexer & lex)
 	enum LanguageTags {
 		LA_BABELNAME = 1,
 		LA_BABELOPTFORMAT,
+		LA_BABELOPTS,
 		LA_DATEFORMATS,
 		LA_ENCODING,
 		LA_END,
@@ -159,6 +160,7 @@ bool Language::readLanguage(Lexer & lex)
 		{ "activechars",          LA_ACTIVECHARS },
 		{ "babelname",            LA_BABELNAME },
 		{ "babeloptformat",       LA_BABELOPTFORMAT },
+		{ "babelopts",            LA_BABELOPTS },
 		{ "dateformats",          LA_DATEFORMATS },
 		{ "encoding",             LA_ENCODING },
 		{ "end",                  LA_END },
@@ -208,6 +210,9 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_BABELOPTFORMAT:
 			lex >> babeloptformat_;
+			break;
+		case LA_BABELOPTS:
+			lex >> babel_opts_;
 			break;
 		case LA_POLYGLOSSIANAME:
 			lex >> polyglossia_name_;

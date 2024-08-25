@@ -50,19 +50,21 @@ namespace {
  * please keep this in sync with known_coded_languages line by line!
  */
 const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
-"american", "arabic", "arabtex", "australian", "austrian", "azerbaijani", "bahasa", "bahasai",
-"bahasam", "basque", "belarusian", "bosnian", "brazil", "brazilian", "breton", "british",
-"bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
-"dutch", "english", "esperanto", "estonian", "farsi", "finnish", "francais",
-"french", "frenchb", "frenchle", "frenchpro", "friulan", "galician", "german", "germanb",
-"georgian", "greek", "hebrew", "hungarian", "icelandic", "indon", "indonesian",
-"interlingua", "irish", "italian", "japanese", "kazakh", "kurmanji", "latin",
-"latvian", "lithuanian", "lowersorbian", "lsorbian", "macedonian", "magyar", "malay", "meyalu",
-"mongolian", "naustrian", "newzealand", "ngerman", "ngermanb", "norsk", "nswissgerman",
-"nynorsk", "piedmontese", "polutonikogreek", "polish", "portuges", "portuguese",
-"romanian", "romansh", "russian", "russianb", "samin", "scottish", "serbian", "serbian-latin",
-"slovak", "slovene", "spanish", "swedish", "swissgerman", "thai", "turkish", "turkmen",
-"ukraineb", "ukrainian", "uppersorbian", "UKenglish", "USenglish", "usorbian",
+"american", "amharic", "ancientgreek", "arabic", "arabtex", "armenian", "asturian",
+"australian", "austrian", "azerbaijani", "bahasa", "bahasai", "bahasam", "basque",
+"belarusian", "bengali", "bosnian", "brazil", "brazilian", "breton", "british",
+"bulgarian", "canadian", "canadien", "catalan", "churchslavic", "classiclatin", "coptic",
+"croatian", "czech", "danish", "divehi", "dutch", "ecclesiasticlatin", "english", "esperanto",
+"estonian", "farsi", "finnish", "francais", "french", "frenchb", "frenchle", "frenchpro", "friulan",
+"galician", "german", "germanb", "georgian", "greek", "hebrew", "hindi", "hungarian", "icelandic",
+"indon", "indonesian", "interlingua", "irish", "italian", "japanese", "kannada", "kazakh", "khmer",
+"kurmanji", "lao", "latin", "latvian", "lithuanian", "lowersorbian", "lsorbian", "macedonian", "magyar",
+"malay", "malayalam", "marathi", "medievallatin", "meyalu", "mexican", "mongolian", "naustrian", "newzealand",
+"ngerman", "ngermanb", "nko", "norsk", "nswissgerman", "nynorsk", "occitan", "odia", "piedmontese",
+"polutonikogreek", "polish", "portuges", "portuguese", "romanian", "romansh", "russian", "russianb",
+"samin", "scottish", "serbian", "serbian-latin", "punjabi", "sanskrit", "slovak", "slovene", "sorani",
+"spanish", "swedish", "swissgerman", "syriac", "tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
+"ukraineb", "ukrainian", "uppersorbian", "UKenglish", "urdu", "USenglish", "usorbian", "uyghur",
 "vietnam", "welsh",
 0};
 
@@ -71,19 +73,21 @@ const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
  * please keep this in sync with known_languages line by line!
  */
 const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
-"american", "arabic_arabi", "arabic_arabtex", "australian", "austrian", "azerbaijani", "bahasa", "bahasa",
-"bahasam", "basque", "belarusian", "bosnian", "brazilian", "brazilian", "breton", "british",
-"bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
-"dutch", "english", "esperanto", "estonian", "farsi", "finnish", "french",
-"french", "french", "french", "french", "friulan", "galician", "german", "german",
-"georgian", "greek", "hebrew", "magyar", "icelandic", "bahasa", "bahasa",
-"interlingua", "irish", "italian", "japanese", "kazakh", "kurmanji", "latin",
-"latvian", "lithuanian", "lowersorbian", "lowersorbian", "macedonian", "magyar", "bahasam", "bahasam",
-"mongolian", "naustrian", "newzealand", "ngerman", "ngerman", "norsk", "german-ch",
-"nynorsk", "piedmontese", "polutonikogreek", "polish", "portuguese", "portuguese",
-"romanian", "romansh", "russian", "russian", "samin", "scottish", "serbian", "serbian-latin",
-"slovak", "slovene", "spanish", "swedish", "german-ch-old", "thai", "turkish", "turkmen",
-"ukrainian", "ukrainian", "uppersorbian", "english", "english", "uppersorbian",
+"american", "amharic", "ancientgreek", "arabic_arabi", "arabic_arabtex", "armenian", "asturian",
+"australian", "austrian", "azerbaijani", "bahasa", "bahasa", "bahasam", "basque",
+"belarusian", "bengali", "bosnian", "brazilian", "brazilian", "breton", "british",
+"bulgarian", "canadian", "canadien", "catalan", "churchslavonic", "latin-classic", "coptic",
+"croatian", "czech", "danish", "divehi", "dutch", "latin-ecclesiastic", "english", "esperanto",
+"estonian", "farsi", "finnish", "french", "french", "french", "french", "french", "friulan",
+"galician", "german", "german", "georgian", "greek", "hebrew", "hindi", "magyar", "icelandic",
+"bahasa", "bahasa", "interlingua", "irish", "italian", "japanese", "kannada", "kazakh", "khmer",
+"kurmanji", "lao", "latin", "latvian", "lithuanian", "lowersorbian", "lowersorbian", "macedonian", "magyar",
+"bahasam", "malayalam", "marathi", "latin-medieval", "bahasam", "spanish-mexico", "mongolian", "naustrian", "newzealand",
+"ngerman", "ngerman", "nko", "norsk", "german-ch", "nynorsk", "occitan", "odia", "piedmontese",
+"polutonikogreek", "polish", "portuguese", "portuguese", "romanian", "romansh", "russian", "russian",
+"samin", "scottish", "serbian", "serbian-latin", "punjabi", "sanskrit", "slovak", "slovene", "sorani",
+"spanish", "swedish", "german-ch-old", "syriac", "tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
+"ukrainian", "ukrainian", "uppersorbian", "english", "urdu", "english", "uppersorbian", "uyghur",
 "vietnamese", "welsh",
 0};
 
@@ -326,17 +330,16 @@ string process_keyval_opt(vector<string> & options, string const & name)
 const char * const Preamble::polyglossia_languages[] = {
 "albanian", "american", "amharic", "ancient", "arabic", "armenian", "asturian", "australian",
 "bahasai", "bahasam", "basque", "bengali", "brazil", "brazilian", "breton", "british", "bulgarian",
-"catalan", "churchslavonic", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
+"catalan", "chinese", "chinese", "churchslavonic", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
 "english", "esperanto", "estonian", "farsi", "finnish", "french", "friulan",
 "galician", "greek", "monotonic", "hebrew", "hindi",
-"icelandic", "interlingua", "irish", "italian", "kannada", "khmer", "korean",
-"lao", "latin", "latvian", "lithuanian", "lsorbian", "magyar", "malayalam", "marathi",
-"austrian", "newzealand", "german", "norsk", "nynorsk", "occitan", "oldrussian",
-"piedmontese", "polish", "polytonic", "portuges", "romanian", "romansh", "russian",
+"icelandic", "interlingua", "irish", "italian", "japanese", "kannada", "khmer", "korean",
+"kurdish", "kurmanji", "lao", "latin", "latvian", "lithuanian", "lsorbian", "magyar", "malayalam", "marathi",
+"austrian", "newzealand", "german", "nko", "norsk", "nynorsk", "occitan", "odia", "oldrussian",
+"piedmontese", "polish", "polytonic", "portuguese", "punjabi", "romanian", "romansh", "russian",
 "samin", "sanskrit", "scottish", "serbian", "slovak", "slovenian", "spanish", "swedish", "syriac",
 "tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
-"ukrainian", "urdu", "usorbian", "vietnamese", "welsh", 0};
-// not yet supported by LyX: "korean", "nko"
+"ukrainian", "urdu", "usorbian", "uyghur", "vietnamese", "welsh", 0};
 
 /**
  * the same as polyglossia_languages with .lyx names
@@ -345,17 +348,17 @@ const char * const Preamble::polyglossia_languages[] = {
 const char * const Preamble::coded_polyglossia_languages[] = {
 "albanian", "american", "amharic", "ancientgreek", "arabic_arabi", "armenian", "asturian", "australian",
 "bahasa", "bahasam", "basque", "bengali", "brazilian", "brazilian", "breton", "british", "bulgarian",
-"catalan", "churchslavonic", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
+"catalan", "chinese-simplified", "chinese-traditional", "churchslavonic", "coptic", "croatian", "czech",
+"danish", "divehi", "dutch",
 "english", "esperanto", "estonian", "farsi", "finnish", "french", "friulan",
 "galician", "greek", "greek", "hebrew", "hindi",
-"icelandic", "interlingua", "irish", "italian", "kannada", "khmer", "korean",
-"lao", "latin", "latvian", "lithuanian", "lowersorbian", "magyar", "malayalam", "marathi",
-"naustrian","newzealand", "ngerman", "norsk", "nynorsk", "occitan", "oldrussian",
-"piedmontese", "polish", "polutonikogreek", "portuges", "romanian", "romansh", "russian",
+"icelandic", "interlingua", "irish", "italian", "japanese", "kannada", "khmer", "korean",
+"sorani", "kurmanji", "lao", "latin", "latvian", "lithuanian", "lowersorbian", "magyar", "malayalam", "marathi",
+"naustrian","newzealand", "ngerman", "nko", "norsk", "nynorsk", "occitan", "odia", "oldrussian",
+"piedmontese", "polish", "polutonikogreek", "portuges", "punjabi", "romanian", "romansh", "russian",
 "samin", "sanskrit", "scottish", "serbian", "slovak", "slovene", "spanish", "swedish", "syriac",
 "tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
-"ukrainian", "urdu", "uppersorbian", "vietnamese", "welsh", 0};
-// not yet supported by LyX: "korean-polyglossia", "nko"
+"ukrainian", "urdu", "uppersorbian", "uyghur", "vietnamese", "welsh", 0};
 
 
 bool Preamble::usePolyglossia() const

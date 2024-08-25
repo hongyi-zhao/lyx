@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-22 11:13+0200\n"
-"PO-Revision-Date: 2024-08-22 09:32+0000\n"
+"POT-Creation-Date: 2024-08-25 11:08+0200\n"
+"PO-Revision-Date: 2024-08-25 09:12+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2670,9 +2670,9 @@ msgstr ""
 msgid "Format cross-references in the &work area"
 msgstr "&Formátovať krížovú referenciu v pracovnej ploche"
 
-#: src/frontends/qt/ui/LanguageUi.ui:39
+#: src/frontends/qt/ui/LanguageUi.ui:115
 msgid "&Quote style:"
-msgstr "&Typ úvodzoviek:"
+msgstr "Typ &úvodzoviek:"
 
 #: src/frontends/qt/ui/LanguageUi.ui:49
 msgid "Select the default quotation marks style"
@@ -2729,6 +2729,10 @@ msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
 "Zadajte príkaz na nahranie jazykového balíku (štandard: \\usepackage{babel})"
+
+#: src/frontends/qt/ui/LanguageUi.ui:201
+msgid "Language &Options"
+msgstr "Jazykové &nastavenia"
 
 #: src/frontends/qt/ui/LineUi.ui:22
 msgid "Of&fset:"

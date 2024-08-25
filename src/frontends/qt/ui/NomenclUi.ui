@@ -59,7 +59,7 @@
      <item>
       <widget class="QCheckBox" name="eqRefCB">
        <property name="toolTip">
-        <string>The phrase \&quot;, see equation (x)&quot; is appended to every entry in the nomenclature where x is the number of the last equation in front of the corresponding nomenclature</string>
+        <string>The phrase &quot;, see equation (x)&quot; is appended to every entry in the nomenclature where x is the number of the last equation in front of the corresponding nomenclature</string>
        </property>
        <property name="text">
         <string>Add &amp;equation references</string>

@@ -102,6 +102,12 @@ bool InsetParamsDialog::initialiseParams(std::string const & sdata)
 {
 	if (!d->widget_->initialiseParams(sdata))
 		resetDialog();
+	else {
+		// Needed to keep the OK/Apply buttons
+		// disabled (see #8927)
+		d->changed_ = false;
+		d->inset_ = inset(d->widget_->insetCode());
+	}
 	return true;
 }
 

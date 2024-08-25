@@ -38,7 +38,8 @@ class Language {
 public:
 	///
 	Language() : rightToLeft_(false), encoding_(0), internal_enc_(false),
-				 has_gui_support_(false), word_wrap_(true) {}
+				 has_gui_support_(false), word_wrap_(true),
+				 use_babel_provide_(0){}
 	/// LyX language name
 	std::string const lang() const { return lang_; }
 	/// Babel language name
@@ -47,6 +48,8 @@ public:
 	std::string const babelOpts() const { return babel_opts_; }
 	/// Babel option format
 	std::string const babelOptFormat() const { return babeloptformat_; }
+	/// Use \babelprovide with babel?
+	int useBabelProvide() const { return use_babel_provide_; }
 	/// polyglossia language name
 	std::string const polyglossia() const { return polyglossia_name_; }
 	/// polyglossia language options
@@ -165,6 +168,8 @@ private:
 	bool word_wrap_;
 	///
 	TranslationMap layoutTranslations_;
+	///
+	int use_babel_provide_;
 };
 
 

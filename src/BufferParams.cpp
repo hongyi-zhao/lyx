@@ -3503,6 +3503,7 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 	std::set<Language const *> langs = features.getLanguages();
 	// add main language
 	langs.insert(language);
+	ostringstream os;
 	for (auto const & l : langs) {
 		string blang = l->babel();
 		bool use_opt = langoptions;
@@ -3522,16 +3523,25 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 				use_opt = true;
 			}
 		}
-		if (use_opt)
+		if (l->useBabelProvide() == 1 || (l->useBabelProvide() == 2 && useNonTeXFonts)) {
+			os << "\n\\babelprovide[import";
+			if (l == language)
+				os << ", main";
+			if (!babelLangOptions(l->lang()).empty())
+				os << ", " << babelLangOptions(l->lang());
+			os << "]{" << blang << "}";
+			have_mods = true;
+		}
+		else if (use_opt)
 			blangs.push_back(blang);
 	}
 	if (have_mods)
 		lang_opts = getStringFromVector(blangs);
 	// The prefs may require the languages to
 	// be submitted to babel itself (not the class).
-	if (langoptions || have_mods)
-		return "\\usepackage[" + lang_opts + "]{babel}";
-	return "\\usepackage{babel}";
+	if ((langoptions || have_mods) && !lang_opts.empty())
+		return "\\usepackage[" + lang_opts + "]{babel}" + os.str();
+	return "\\usepackage{babel}" + os.str();
 }
 
 

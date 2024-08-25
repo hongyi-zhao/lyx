@@ -23,19 +23,20 @@ import re
 #    convert_info_insets, get_ert, hex2ratio, insert_to_preamble,
 #    length_in_bp, lyx2verbatim,
 #    revert_flex_inset, revert_flex_inset, revert_font_attrs,
-#    revert_language, str2bool
+#    str2bool
 from lyx2lyx_tools import (
     add_to_preamble,
     latex_length,
     lyx2latex,
-    put_cmd_in_ert
+    put_cmd_in_ert,
+    revert_language
 )
 
 # Uncomment only what you need to import, please (parser_tools):
 #    check_token, count_pars_in_inset, del_complete_lines, 
 #    del_value, find_complete_lines, find_end_of, 
 #    find_re, find_token_backwards, find_token_exact,
-#    find_tokens, get_bool_value, 
+#    find_tokens,
 #    get_containing_layout, get_option_value,
 #    is_in_inset, set_bool_value
 from parser_tools import (
@@ -46,6 +47,7 @@ from parser_tools import (
     find_substring,
     find_token,
     get_containing_inset,
+    get_bool_value,
     get_quoted_value,
     get_value
 )
@@ -872,6 +874,142 @@ def revert_langopts(document):
         # remove header
         del document.header[i]
 
+
+def revert_new_polyglossia_languages(document):
+    """Emulate support for Simplified Chinese, Traditional Chinese, Japanese, Sorani Kurdish,
+       Classic, Ecclesiastic and Medieval Latin, N'ko, Odia, Punjabi, and Uyghur with polyglossia."""
+
+    # Does the document use polyglossia?
+    use_polyglossia = False
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
+        i = find_token(document.header, "\\language_package")
+        if i == -1:
+            document.warning("Malformed document! Missing \\language_package")
+        else:
+            pack = get_value(document.header, "\\language_package", i)
+            if pack in ("default", "auto"):
+                use_polyglossia = True
+
+    if not use_polyglossia:
+        return
+
+    #    lyxname:    (babelname, polyglossianame, polyglossiaopts)
+    new_languages = {
+        "chinese-simplified": ("", "chinese", "variant=simplified"),
+        "chinese-traditional": ("", "chinese", "variant=traditional"),
+        "japanese": ("", "japanese", ""),
+        "sorani": ("", "kurdish", "variant=sorani"),
+        "latin-classic": ("", "latin", "variant=classic"),
+        "latin-ecclesiastic": ("", "latin", "variant=ecclesiastic"),
+        "latin-medieval": ("", "latin", "variant=medieval"),
+        "nko": ("", "nko", ""),
+        "odia": ("", "odia", ""),
+        "punjabi": ("", "punjabi", ""),
+        "uyghur": ("", "uyghur", ""),
+    }
+    if document.language in new_languages:
+        used_languages = {document.language}
+    else:
+        used_languages = set()
+    i = 0
+    while True:
+        i = find_token(document.body, "\\lang", i + 1)
+        if i == -1:
+            break
+        val = get_value(document.body, "\\lang", i)
+        if val in new_languages:
+            used_languages.add(val)
+
+    for lang in used_languages:
+        revert_language(document, lang, *new_languages[lang])
+ 
+
+def revert_new_babel_languages(document):
+    """Emulate support for Amharic, Armenian, Asturian, Bengali, Church Slavonic,
+    Coptic, Divehi, Kannada, Kazakh, Khmer, Kurdish (Sorani), Lao, Latin (Classic),
+    Latin (Ecclesiastic), Latin (Medieval), Malayalam, Marathi, N'ko, Occitan, Odia,
+    Punjabi, Russian (Petrine orthography), Sanskrit, Syriac, Tamil, Telugu, Tibetan,
+    Urdu, and Uyghur with babel."""
+
+    # Does the document use polyglossia?
+    use_polyglossia = False
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
+        i = find_token(document.header, "\\language_package")
+        if i == -1:
+            document.warning("Malformed document! Missing \\language_package")
+        else:
+            pack = get_value(document.header, "\\language_package", i)
+            if pack in ("default", "auto"):
+                use_polyglossia = True
+
+    if use_polyglossia:
+        return
+
+    #    lyxname:    (babelname, polyglossianame, polyglossiaopts, babelprovide)
+    new_languages = {
+        "amharic": ("amharic", "", "", True),
+        "armenian": ("armenian", "", "", True),
+        "asturian": ("asturian", "", "", True),
+        "bengali": ("bengali", "", "", True),
+        "churchslavonic": ("churchslavic", "", "", True),
+        "coptic": ("coptic", "", "", True),
+        "divehi": ("divehi", "", "", True),
+        "hindi": ("hindi", "", "", True),
+        "kannada": ("kannada", "", "", True),
+        "kazakh": ("kazakh", "", "", True),
+        "khmer": ("khmer", "", "", True),
+        "lao": ("lao", "", "", True),
+        "latin-classic": ("classiclatin", "", "", False),
+        "latin-ecclesiastic": ("ecclesiasticlatin", "", "", False),
+        "latin-medieval": ("medievallatin", "", "", False),
+        "malayalam": ("malayalam", "", "", True),
+        "marathi": ("marathi", "", "", True),
+        "nko": ("nko", "", "", True),
+        "occitan": ("occitan", "", "", False),
+        "odia": ("odia", "", "", True),
+        "punjabi": ("punjabi", "", "", True),
+        "sanskrit": ("sanskrit", "", "", True),
+        "sorani": ("sorani", "", "", True),
+        "syriac": ("syriac", "", "", True),
+        "tamil": ("tamil", "", "", True),
+        "telugu": ("telugu", "", "", True),
+        "tibetan": ("tibetan", "", "", True),
+        "urdu": ("urdu", "", "", True),
+        "uyghur": ("uyghur", "", "", True),
+    }
+    if document.language in new_languages:
+        used_languages = {document.language}
+    else:
+        used_languages = set()
+    i = 0
+    while True:
+        i = find_token(document.body, "\\lang", i + 1)
+        if i == -1:
+            break
+        val = get_value(document.body, "\\lang", i)
+        if val in new_languages:
+            used_languages.add(val)
+
+    for lang in used_languages:
+        revert_language(document, lang, *new_languages[lang])
+
+    # revert oldrussian to russian
+    have_oldrussian = False
+    if document.language == "oldrussian":
+        document.language = "russian"
+        have_oldrussian = True
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\lang oldrussian", i + 1)
+        if i == -1:
+            break
+        have_oldrussian = True
+        document.body[i] = "\\lang russian"
+
+    if have_oldrussian:
+        add_to_preamble(document, ["\\AddToHook{package/babel/after}{\\languageattribute{russian}{ancient}}"])
+
 ##
 # Conversion hub
 #
@@ -886,11 +1024,13 @@ convert = [
     [626, []],
     [627, [convert_nomencl, convert_index_sc]],
     [628, []],
-    [629, []]
+    [629, []],
+    [630, []]
 ]
 
 
 revert = [
+    [629, [revert_new_polyglossia_languages, revert_new_babel_languages]],
     [628, [revert_langopts]],
     [627, [revert_nomentbl]],
     [626, [revert_nomencl, revert_index_sc]],

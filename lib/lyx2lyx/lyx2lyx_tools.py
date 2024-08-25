@@ -666,7 +666,7 @@ singlepar_insets = [
 # print(singlepar_insets)
 
 
-def revert_language(document, lyxname, babelname="", polyglossianame=""):
+def revert_language(document, lyxname, babelname="", polyglossianame="", polyglossiaopts="", babelprovide=False):
     "Revert native language support"
 
     # Does the document use polyglossia?
@@ -791,15 +791,18 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
             i -= 1
             continue
 
+
+        if polyglossiaopts != "":
+            polyglossiaopts = "[" + polyglossiaopts + "]"
         if singlepar:
             if with_polyglossia:
-                begin_cmd = "\\text%s{" % texname
+                begin_cmd = "\\text%s%s{" % (texname, polyglossiaopts)
             elif with_babel:
                 begin_cmd = "\\foreignlanguage{%s}{" % texname
             end_cmd = "}"
         else:
             if with_polyglossia:
-                begin_cmd = "\\begin{%s}" % texname
+                begin_cmd = "\\begin%s{%s}" % (polyglossiaopts, texname)
                 end_cmd = "\\end{%s}" % texname
             elif with_babel:
                 begin_cmd = "\\begin{otherlanguage}{%s}" % texname
@@ -822,6 +825,16 @@ def revert_language(document, lyxname, babelname="", polyglossianame=""):
     if with_babel:
         # add as global option
         insert_document_option(document, babelname)
+        # babelprovide
+        if babelprovide:
+           babelprovide = "\\babelprovide[import"
+           if primary:
+               babelprovide += ", main"
+           babelprovide += "]{%s}" % babelname
+           add_to_preamble(
+            document,
+            ["\\AddToHook{package/babel/after}{%s}" % babelprovide],
+           )
         # Since user options are appended to the document options,
         # Babel will treat `babelname` as primary language.
         if not primary:

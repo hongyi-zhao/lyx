@@ -7,6 +7,17 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2024-08-25 Jürgen Spitzmüller <spitz@lyx.org> 
+	* Format incremented to 630: Add support for a number of languages in
+	  babel and polyglossia:
+	  Polyglossia: Chinese (Simplified), Chinese (Traditional), Japanese, Kurdish (Sorani),
+          Latin (Classic), Latin (Ecclesiastic), Latin (Medieval), N'ko, Odia, Punjabi, and Uyghur
+          Babel: Amharic, Armenian, Asturian, Bengali, Church Slavonic, Coptic, Divehi,
+          Kannada, Kazakh, Khmer, Kurdish (Sorani), Lao, Latin (Classic), Latin (Ecclesiastic),
+          Latin (Medieval), Malayalam, Marathi, N'ko, Occitan, Odia, Punjabi,
+          Russian (Petrine orthography), Sanskrit, Syriac, Tamil, Telugu, Tibetan, Urdu,
+          and Uyghur
+
 2024-08-23 Jürgen Spitzmüller <spitz@lyx.org> 
 	* Format incremented to 629: Add support for language options
 	  New buffer params \language_options_babel and

@@ -77,7 +77,7 @@
 # If possible, the script will use pdftocairo instead of gs,
 # as it's much faster and gives better results.
 
-import glob, os, pipes, re, sys, tempfile
+import glob, os, re, subprocess, sys, tempfile
 
 from lyxpreview_tools import check_latex_log, copyfileobj, error, filter_pages,\
      find_exe, find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
@@ -279,16 +279,15 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 
 
 def crop_files(pnmcrop, basename):
-    t = pipes.Template()
-    t.append('%s -left' % pnmcrop, '--')
-    t.append('%s -right' % pnmcrop, '--')
-
     for file in glob.glob("%s*.ppm" % basename):
         tmp = tempfile.TemporaryFile()
-        new = t.open(file, "r")
-        copyfileobj(new, tmp)
-        if not new.close():
-            copyfileobj(tmp, open(file,"wb"), 1)
+        conv_call = f'{pnmcrop} -left -right -- {file}'
+        conv_status = subprocess.run(conv_call, stdout=tmp)
+
+        if conv_status:
+            continue
+
+        copyfileobj(tmp, open(file, "wb"), 1)
 
 
 def legacy_conversion(argv, skipMetrics = False):

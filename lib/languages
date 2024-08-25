@@ -133,7 +133,8 @@
 #   if a corresponding language module exists.
 # * BabelProvide determines if and when a language should be loaded from
 #   babel *.ini files with babel. Possible values:
-#   0 (= never, default), 1 (always), 2 (with Unicode engines/non-TeX fonts)
+#   0 (= never, default), 1 (always), 2 (with Unicode engines/non-TeX fonts).
+#   The latter advises babel to ignore existing *.ldf files.
 # * BabelOpts are comma separated, no matter how they shall be represented
 #   in the output.
 # * BabelOptFormat specifies how the language-specific options shall be
@@ -242,7 +243,7 @@ End
 # FIXME: dummy babel language for arabic_arabtex to be able
 # to switch the language the way of the ArabTeX-package
 Language arabic_arabtex
-	GuiName          "Arabic (ArabTeX)"
+	GuiName          "Arabic (ArabTeX, only with TeX fonts)"
 	HasGuiSupport    true
 	BabelName        arabtex
 	QuoteStyle       french
@@ -254,8 +255,9 @@ End
 
 # polyglossia uses "Arabic" for the lang environment
 Language arabic_arabi
-	GuiName          "Arabic (Arabi)"
+	GuiName          "Arabic (Arabi or non-TeX fonts)"
 	BabelName        arabic
+	BabelProvide     2
 	PolyglossiaName  arabic
 	QuoteStyle       french
 	Encoding         cp1256
@@ -706,6 +708,7 @@ End
 Language farsi
 	GuiName          "Farsi"
 	BabelName        farsi
+	BabelProvide     2
 	PolyglossiaName  persian
 	XindyName        persian
 	Encoding         utf8
@@ -891,6 +894,7 @@ Language hebrew
 	GuiName          "Hebrew"
 	HasGuiSupport    true
 	BabelName        hebrew
+	BabelProvide     2
 	PolyglossiaName  hebrew
 	XindyName        hebrew
 	Encoding         cp1255
@@ -985,7 +989,7 @@ End
 
 # uses CJK package
 Language japanese-cjk
-	GuiName         "Japanese (CJK)"
+	GuiName         "Japanese (CJK, only with TeX fonts)"
 	Encoding        euc-jp
 	DateFormats     "yyyy年M月d日|yyyy/MM/dd|yy/MM/dd"
 	WordWrap        false
@@ -1470,7 +1474,7 @@ End
 # Gaidhlig (Scottish Gaelic)
 # FontEncoding: no hyphenation, grave accent (à, è, ì, ò, ù)
 Language scottish
-	GuiName          "Scottish"
+	GuiName          "Scottish Gaelic"
 	BabelName        scottish
 	PolyglossiaName  gaelic
 	PolyglossiaOpts  "variant=scottish"

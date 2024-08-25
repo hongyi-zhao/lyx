@@ -1010,6 +1010,11 @@ def revert_new_babel_languages(document):
     if have_oldrussian:
         add_to_preamble(document, ["\\AddToHook{package/babel/after}{\\languageattribute{russian}{ancient}}"])
 
+    # Some babel languages require special treatment with unicode engines
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
+        if document.language == "hebrew" or find_token(document.body, "\\lang oldrussian", 0) != -1:
+            add_to_preamble(document, ["\\PassOptionsToPackage{provide*=*}{babel}"])
+
 ##
 # Conversion hub
 #

@@ -1822,7 +1822,8 @@ docstring const LaTeXFeatures::getBabelPostsettings() const
 	for (auto const & lang : langs) {
 		if (!lang->babel_postsettings().empty())
 			tmp << lang->babel_postsettings() << '\n';
-		if (lang->babelOptFormat() != "modifier" && lang->useBabelProvide() == 0) {
+		if (lang->babelOptFormat() != "modifier" && lang->useBabelProvide() == 0
+		    && (!params_.useNonTeXFonts || !languages.haveOtherForceProvide())) {
 			// user-set options
 			string const opts = bufferParams().babelLangOptions(lang->lang());
 			if (!opts.empty())

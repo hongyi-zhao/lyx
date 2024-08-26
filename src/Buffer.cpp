@@ -971,6 +971,8 @@ int Buffer::readHeader(Lexer & lex)
 	params().lineno_opts.clear();
 	params().nomencl_opts.clear();
 	params().spellignore().clear();
+	params().lang_options_babel_.clear();
+	params().lang_options_polyglossia_.clear();
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];

@@ -3503,12 +3503,17 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 	ostringstream os;
 	string force_provide;
 	bool have_main_forceprovide = false;
+	bool have_other_forceprovide = useNonTeXFonts
+			? languages.haveOtherForceProvide()
+			: false;
 	for (auto const & l : langs) {
 		string blang = l->babel();
 		bool use_opt = langoptions;
 		if (blang.empty())
 			continue;
-		if (l->babelOptFormat() == "modifier") {
+		int const bp = l->useBabelProvide();
+		// pass option as modifier if apt
+		if (bp != 2 && !have_other_forceprovide && l->babelOptFormat() == "modifier") {
 			vector<string> opts = getVectorFromString(babelLangOptions(l->lang()));
 			bool have_one = false;
 			for (string const & s : opts) {
@@ -3522,8 +3527,8 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 				use_opt = true;
 			}
 		}
-		int const bp = l->useBabelProvide();
-		if (bp == 1) {
+		// language that always requires \babelprovide
+		if (bp == 1 && !have_other_forceprovide) {
 			os << "\n\\babelprovide[import";
 			if (l == language)
 				os << ", main";
@@ -3532,9 +3537,11 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 			os << "]{" << blang << "}";
 			have_mods = true;
 		}
+		// language that only requires \babelprovide with nonTeXFonts
 		if (bp == 2 && useNonTeXFonts) {
-			// here we need to tell babel to use the ini
-			// even though an *.ldf exists
+			// here we need to tell babel to use the *.ini
+			// even though an *.ldf exists.
+			// This imports the *ini, so no "import" needed.
 			if (l == language) {
 				force_provide = force_provide.empty()
 						? "provide=*"
@@ -3545,6 +3552,13 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 						? "provide*=*"
 						: "provide+=*";
 			have_mods = true;
+		}
+		if ((bp == 2 && useNonTeXFonts) || have_other_forceprovide) {
+			// Options need to go to \babeprovide
+			if (!babelLangOptions(l->lang()).empty())
+				os << "\n\\babelprovide["
+				   << babelLangOptions(l->lang())
+				   << "]{" << blang << "}";
 		}
 		if (bp != 1 && use_opt)
 			blangs.push_back(blang);

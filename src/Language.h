@@ -205,6 +205,8 @@ public:
 	const_iterator begin() const { return languagelist_.begin(); }
 	///
 	const_iterator end() const { return languagelist_.end(); }
+	///
+	bool haveOtherForceProvide() const;
 
 private:
 	///

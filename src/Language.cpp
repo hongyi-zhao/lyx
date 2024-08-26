@@ -535,4 +535,15 @@ Language const * Languages::getLanguage(string const & language) const
 }
 
 
+bool Languages::haveOtherForceProvide() const
+{
+	for (auto const & l : languagelist_) {
+		if (l.second.useBabelProvide())
+			return true;
+	}
+	return false;
+}
+
+
+
 } // namespace lyx

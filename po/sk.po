@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-25 11:08+0200\n"
-"PO-Revision-Date: 2024-08-25 09:12+0000\n"
+"POT-Creation-Date: 2024-08-26 11:41+0200\n"
+"PO-Revision-Date: 2024-08-26 10:02+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3293,11 +3293,11 @@ msgstr "Pr&idať do obsahu"
 
 #: src/frontends/qt/ui/NomenclUi.ui:62
 msgid ""
-"The phrase \\\", see equation (x)\" is appended to every entry in the "
+"The phrase \", see equation (x)\" is appended to every entry in the "
 "nomenclature where x is the number of the last equation in front of the "
 "corresponding nomenclature"
 msgstr ""
-"Fráza \\\", pozri rovnicu (x)\" je pripojená ku každému záznamu v "
+"Fráza \\\", pozri rovnicu (x)\" sa pripája ku každému záznamu v "
 "nomenklatúre, kde x je číslo poslednej rovnice pred zodpovedajúcou "
 "nomenklatúrou"
 
@@ -19203,13 +19203,13 @@ msgstr "Amharsky"
 msgid "Greek (ancient)"
 msgstr "Grécky (antický)"
 
-#: lib/languages:233
-msgid "Arabic (ArabTeX)"
-msgstr "Arabsky (ArabTeX)"
+#: lib/languages:246
+msgid "Arabic (ArabTeX, only with TeX fonts)"
+msgstr "Arabsky (ArabTeX, iba s fontami TeX)"
 
-#: lib/languages:245
-msgid "Arabic (Arabi)"
-msgstr "Arabsky (Arabi)"
+#: lib/languages:258
+msgid "Arabic (Arabi or non-TeX fonts)"
+msgstr "Arabsky (Písma Arabi alebo nie TeX)"
 
 #: lib/languages:280 src/frontends/qt/GuiSymbols.cpp:64
 msgid "Armenian"
@@ -19413,9 +19413,9 @@ msgstr "Taliansky"
 msgid "Japanese"
 msgstr "Japonsky"
 
-#: lib/languages:956
-msgid "Japanese (CJK)"
-msgstr "Japonsky (CJK)"
+#: lib/languages:992
+msgid "Japanese (CJK, only with TeX fonts)"
+msgstr "Japonsky (CJK, iba s fontami TeX)"
 
 #: lib/languages:967 src/frontends/qt/GuiSymbols.cpp:74
 msgid "Kannada"
@@ -19436,6 +19436,26 @@ msgstr "Kórejsky"
 #: lib/languages:1015
 msgid "Kurdish (Kurmanji)"
 msgstr "Kurdsky (Kurmanji)"
+
+#: lib/languages:1068
+msgid "Kurdish (Sorani)"
+msgstr "Kurdsky (Sorani)"
+
+#: lib/languages:1095
+msgid "Latin (Modern)"
+msgstr "Latinsky (moderné)"
+
+#: lib/languages:1108
+msgid "Latin (Classic)"
+msgstr "Latinsky (klasické)"
+
+#: lib/languages:1121
+msgid "Latin (Ecclesiastic)"
+msgstr "Latinsky (cirkevné)"
+
+#: lib/languages:1134
+msgid "Latin (Medieval)"
+msgstr "Latinsky (stredoveké)"
 
 #: lib/languages:1028 src/frontends/qt/GuiSymbols.cpp:77
 msgid "Lao"
@@ -19477,6 +19497,10 @@ msgstr "Mongolsky"
 msgid "English (New Zealand)"
 msgstr "Anglicky (Nový Zéland)"
 
+#: lib/languages:1286
+msgid "N'Ko"
+msgstr "N'Ko"
+
 #: lib/languages:1183
 msgid "Norwegian (Bokmaal)"
 msgstr "Nórsky (Bolmål)"
@@ -19488,6 +19512,10 @@ msgstr "Nórsky (Nynorsk)"
 #: lib/languages:1226
 msgid "Occitan"
 msgstr "Okcitánčinsky"
+
+#: lib/languages:1337
+msgid "Odia"
+msgstr "Odia"
 
 #: lib/languages:1238
 msgid "Russian (Petrine orthography)"
@@ -19505,6 +19533,10 @@ msgstr "Poľsky"
 #: lib/languages:1273
 msgid "Portuguese"
 msgstr "Portugalsky"
+
+#: lib/languages:1403
+msgid "Punjabi"
+msgstr "Pandžábsky"
 
 #: lib/languages:1286
 msgid "Romanian"
@@ -19526,9 +19558,9 @@ msgstr "Sámsky (Severný)"
 msgid "Sanskrit"
 msgstr "Sanskrit (stará indoárijčina)"
 
-#: lib/languages:1348
-msgid "Scottish"
-msgstr "Škótsky"
+#: lib/languages:1477
+msgid "Scottish Gaelic"
+msgstr "Škótska galčina"
 
 #: lib/languages:1364
 msgid "Serbian"
@@ -19597,6 +19629,10 @@ msgstr "Srbsky (Hornolužicky)"
 #: lib/languages:1602
 msgid "Urdu"
 msgstr "Urdsky"
+
+#: lib/languages:1747
+msgid "Uyghur"
+msgstr "Ujgursky"
 
 #: lib/languages:1611
 msgid "Vietnamese"

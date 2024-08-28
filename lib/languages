@@ -1553,7 +1553,7 @@ Language spanish
 	GuiName          "Spanish"
 	HasGuiSupport    true
 	BabelName        spanish
-	BabelOpts        "noquoting, nodecimaldot"
+	BabelOpts        "notilde, noquoting, nodecimaldot"
 	BabelOptFormat   modifier
 	PolyglossiaName  spanish
 	PolyglossiaOpts  "variant=spanish"

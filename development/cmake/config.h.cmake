@@ -91,9 +91,12 @@ ${Include_used_spellchecker}
 // Define to 1 if enchant is version 2.x at least
 #cmakedefine HAVE_ENCHANT2 1
 
-#endif // config.h guard
+// Define to 1 if have xcb library
+#cmakedefine HAVE_LIBXCB ${HAVE_LIBXCB}
 
 #define MYTHES_H_LOCATION <${MYTHES_DIR}/mythes.hxx>
+
+#endif // config.h guard
 
 // Unguarded cleanup of global namespace:
 

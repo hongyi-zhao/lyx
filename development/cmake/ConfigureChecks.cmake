@@ -28,7 +28,7 @@ test_big_endian(WORDS_BIGENDIAN)
 set(Include_Defines)
 foreach(_h_file aspell.h aspell/aspell.h limits.h locale.h
 	stdlib.h sys/stat.h sys/time.h sys/types.h sys/utime.h
-	sys/socket.h unistd.h inttypes.h utime.h string.h argz.h)
+	sys/socket.h unistd.h inttypes.h utime.h string.h argz.h xcb/xcb.h)
 	string(REGEX REPLACE "[/\\.]" "_" _hf ${_h_file})
 	string(TOUPPER ${_hf} _HF)
 	check_include_files(${_h_file} HAVE_${_HF})

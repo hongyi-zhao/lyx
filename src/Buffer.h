@@ -661,10 +661,11 @@ public:
 	///
 	Undo const & undo() const;
 
-	/// poor man versioning of the buffer (and its relatives).
+	/// Poor man versioning of the buffer (and its relatives).
+	///  This is currently used by updateMacros() and Statistics::update().
 	int id() const;
 	/// change the id of this buffer and its relatives (indicating
-	/// something has changed). This is currently used by updateMacros().
+	/// something has changed).
 	void updateId();
 
 	/// This function is called when the buffer is changed.

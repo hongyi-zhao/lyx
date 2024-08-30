@@ -803,7 +803,6 @@ int Buffer::id() const
 
 void Buffer::updateId()
 {
-	++d->id_;
 	for(Buffer * b : allRelatives())
 		++(b->d->id_);
 }

@@ -1771,7 +1771,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	switch (cmd.action()) {
 
 	case LFUN_WINDOW_NEW:
-		createView(toqstr(cmd.argument()));
+		createAndShowView();
 		break;
 
 	case LFUN_WINDOW_CLOSE:
@@ -1811,7 +1811,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		validateCurrentView();
 		if (!current_view_
 		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != nullptr)) {
-			createView(QString(), false); // keep hidden
+			createView(); // keep hidden
 			current_view_->newDocument(to_utf8(cmd.argument()));
 			current_view_->show();
 			current_view_->activateWindow();
@@ -1826,7 +1826,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		validateCurrentView();
 		if (!current_view_
 		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != nullptr)) {
-			createView();
+			createAndShowView();
 			current_view_->newDocument(file, temp, true);
 			if (!current_view_->documentBufferView())
 				current_view_->close();
@@ -1850,7 +1850,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			&& !is_open)) {
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
-			createView(support::checksum(fname));
+			createAndShowView(support::checksum(fname));
 			current_view_->openDocuments(fname, cmd.origin());
 			if (!current_view_->documentBufferView())
 				current_view_->close();
@@ -1873,7 +1873,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_HELP_OPEN: {
 		// FIXME: create a new method shared with LFUN_FILE_OPEN.
 		if (current_view_ == nullptr)
-			createView();
+			createAndShowView();
 		string const arg = to_utf8(cmd.argument());
 		if (arg.empty()) {
 			current_view_->message(_("Missing argument"));
@@ -2263,7 +2263,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		    || name == "progress" || name == "texinfo")
 		{
 			if (current_view_ == nullptr)
-				createView();
+				createAndShowView();
 		}
 	}
 	// fall through
@@ -2572,14 +2572,13 @@ bool GuiApplication::rtlContext() const
 }
 
 
-void GuiApplication::createView(int view_id)
+void GuiApplication::createAndShowView(int view_id)
 {
-	createView(QString(), true, view_id);
+	createView(true, view_id);
 }
 
 
-void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
-	int view_id)
+void GuiApplication::createView(bool autoShow, int view_id)
 {
 	// release the keyboard which might have been grabbed by the global
 	// menubar on Mac to catch shortcuts even without any GuiView.
@@ -2603,44 +2602,6 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 		view->activateWindow();
 	}
 
-	if (!geometry_arg.isEmpty()) {
-#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
-		int x, y;
-		int w, h;
-		QChar sx, sy;
-		QRegularExpression re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)){0,1}(?:([+-][0-9]*)){0,1}" );
-		QRegularExpressionMatch match = re.match(geometry_arg);
-		w = match.captured(1).toInt();
-		h = match.captured(2).toInt();
-		x = match.captured(3).toInt();
-		y = match.captured(4).toInt();
-		sx = match.captured(3).isEmpty() ? '+' : match.captured(3).at(0);
-		sy = match.captured(4).isEmpty() ? '+' : match.captured(4).at(0);
-
-		// Set initial geometry such that we can get the frame size.
-		view->setGeometry(x, y, w, h);
-		int framewidth = view->geometry().x() - view->x();
-		int titleheight = view->geometry().y() - view->y();
-		// Negative displacements must be interpreted as distances
-		// from the right or bottom screen borders.
-		if (sx == '-' || sy == '-') {
-			QRect rec = QGuiApplication::primaryScreen()->geometry();
-			if (sx == '-')
-				x += rec.width() - w - framewidth;
-			if (sy == '-')
-				y += rec.height() - h - titleheight;
-			view->setGeometry(x, y, w, h);
-		}
-		// Make sure that the left and top frame borders are visible.
-		if (view->x() < 0 || view->y() < 0) {
-			if (view->x() < 0)
-				x = framewidth;
-			if (view->y() < 0)
-				y = titleheight;
-			view->setGeometry(x, y, w, h);
-		}
-#endif
-	}
 	view->setFocus();
 }
 
@@ -2900,7 +2861,7 @@ void GuiApplication::restoreGuiSession()
 		if (!current_view_ || (!lyxrc.open_buffers_in_tabs
 			  && current_view_->documentBufferView() != nullptr)) {
 			string const & fname = file_name.absFileName();
-			createView(support::checksum(fname));
+			createAndShowView(support::checksum(fname));
 		}
 		current_view_->loadDocument(file_name, false);
 
@@ -3469,7 +3430,7 @@ void GuiApplication::onApplicationStateChanged(Qt::ApplicationState state)
 		/// cmd+tab only one QEvent::ApplicationStateChangeEvent event
 		if (d->views_.empty() && d->last_state_ == state) {
 			LYXERR(Debug::GUI, "Open new window...");
-			createView();
+			createAndShowView();
 		}
 		break;
 	}

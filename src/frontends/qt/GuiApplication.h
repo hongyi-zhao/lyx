@@ -132,13 +132,12 @@ public:
 #endif
 	//@}
 
-	/// Create the main window with given geometry settings.
-	/// \param geometry_arg: only for Windows platform.
-	/// \param optional id identifier.
-	void createView(QString const & geometry_arg = QString(),
-		bool autoShow = true, int id = 0);
-	/// FIXME: this method and the one above are quite ugly.
-	void createView(int id);
+	/// Create the main window
+	/// \param autoShow: show the created window
+	/// \param id: optional identifier.
+	void createView(bool autoShow = false, int id = 0);
+	/// Same as createView, but with \c autoShow = true
+	void createAndShowView(int id = 0);
 	///
 	GuiView const * currentView() const { return current_view_; }
 	///

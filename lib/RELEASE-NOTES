@@ -15,6 +15,10 @@
 
 !!!The following LyX functions have been changed in 2.5:
 
+- The funcion window_new does not take an optional <GEOMETRY>
+  parameter anymore. This only worked in windows and existed for
+  internal reasons.
+
 !!!The following LyX functions have been removed in 2.5:
 
 !!!The following LyX function has been added and then removed in 2.5 development cycle:

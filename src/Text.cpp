@@ -4629,10 +4629,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 					int const n = (c == ' ' ? 4 : 1);
 					for (int i = 0; i < n
 						  && !par.empty() && par.getChar(0) == c; ++i) {
-						if (cur.pit() == pit)
+						if (cur.pit() == pit && cur.pos() > 0)
 							cur.posBackward();
-						if (cur.realAnchor().pit() == pit
-							  && cur.realAnchor().pos() > 0 )
+						if (cur.realAnchor().pit() == pit && cur.realAnchor().pos() > 0)
 							cur.realAnchor().backwardPos();
 						par.eraseChar(0, tc);
 					}

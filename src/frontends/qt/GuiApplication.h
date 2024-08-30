@@ -20,7 +20,7 @@
 
 #include <QApplication>
 #include <QList>
-#ifdef QPA_XCB
+#if defined(HAVE_XCB_XCB_H) && defined(HAVE_LIBXCB)
 #include <QAbstractNativeEventFilter>
 #endif
 
@@ -53,7 +53,7 @@ There should be only one instance of this class. No Qt object
 initialisation should be done before the instantiation of this class.
 */
 class GuiApplication : public QApplication, public Application
-#ifdef QPA_XCB
+#if defined(HAVE_XCB_XCB_H) && defined(HAVE_LIBXCB)
 		     , public QAbstractNativeEventFilter
 #endif
 {
@@ -121,7 +121,7 @@ public:
 	//@{
 	bool notify(QObject * receiver, QEvent * event) override;
 	void commitData(QSessionManager & sm);
-#if defined(QPA_XCB)
+#if defined(HAVE_XCB_XCB_H) && defined(HAVE_LIBXCB)
 #if (QT_VERSION < 0x060000)
 #define QINTPTR long
 #else

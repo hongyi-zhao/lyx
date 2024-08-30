@@ -275,7 +275,6 @@ else()
   endif()
 endif()
 
-set(QPA_XCB)
 set(HAVE_QT5_X11_EXTRAS)
 set(HAVE_QT6_X11_EXTRAS)
 if (LYX_USE_QT MATCHES "QT5|QT6")
@@ -312,10 +311,6 @@ if (LYX_USE_QT MATCHES "QT5|QT6")
       }
       "
       QT_USES_X11)
-    if(QT_USES_X11 AND NOT LYX_USE_QT MATCHES "QT6")
-      set(QPA_XCB ${QT_USES_X11})
-      message(STATUS "Found QPA_XCB = ${QPA_XCB}")
-    endif()
   endif()
 
   if (${QtVal}X11Extras_FOUND)

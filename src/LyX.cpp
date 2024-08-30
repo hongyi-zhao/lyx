@@ -127,8 +127,6 @@ namespace {
 string cl_system_support;
 string cl_user_support;
 
-string geometryArg;
-
 LyX * singleton_ = nullptr;
 
 void showFileError(string const & error)
@@ -611,7 +609,7 @@ void LyX::execCommands()
 	}
 
 	// create the first main window
-	lyx::dispatch(FuncRequest(LFUN_WINDOW_NEW, geometryArg));
+	lyx::dispatch(FuncRequest(LFUN_WINDOW_NEW));
 
 	if (!pimpl_->files_to_load_.empty()) {
 		// if some files were specified at command-line we assume that the
@@ -1342,20 +1340,6 @@ int parse_import(string const & type, string const & file, string & batch)
 }
 
 
-int parse_geometry(string const & arg1, string const &, string &)
-{
-	geometryArg = arg1;
-#if !defined(QPA_XCB)
-	// don't remove "-geometry", it will be pruned out later in the
-	// frontend if need be.
-	return -1;
-#else
-	// but that is only done if QPA_XCB is not defined.
-	return 1;
-#endif
-}
-
-
 int parse_batch(string const &, string const &, string &)
 {
 	use_gui = false;
@@ -1433,7 +1417,6 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["--export-to"] = parse_export_to;
 	cmdmap["-i"] = parse_import;
 	cmdmap["--import"] = parse_import;
-	cmdmap["-geometry"] = parse_geometry;
 	cmdmap["-batch"] = parse_batch;
 	cmdmap["-f"] = parse_force;
 	cmdmap["--force-overwrite"] = parse_force;
@@ -1446,6 +1429,10 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["--ignore-error-message"] = parse_ignore_error_message;
 
 	for (int i = 1; i < argc; ++i) {
+		// Let Qt handle -geometry even when not on X11.
+		if (from_utf8(argv[i]) == "-geometry")
+			argv[i] = const_cast<char *>("-qwindowgeometry");
+
 		map<string, cmd_helper>::const_iterator it
 			= cmdmap.find(argv[i]);
 

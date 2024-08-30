@@ -217,31 +217,15 @@ AC_DEFUN([QT_DO_IT_ALL],
 	     fi;;
 	esac
 
+	dnl Specific support for X11 will be built if these are available
+	AC_CHECK_HEADERS([xcb/xcb.h])
+	AC_CHECK_LIB([xcb], [xcb_send_event])
 
 	save_CPPFLAGS=$CPPFLAGS
 	CPPFLAGS="$save_CPPFLAGS $QT_CORE_INCLUDES"
 	AC_CHECK_HEADER(QtGui/qtgui-config.h,
 	  [lyx_qt_config=QtGui/qtgui-config.h],
 	  [lyx_qt_config=qconfig.h])
-	AC_MSG_CHECKING([whether Qt uses the X Window system])
-	if test x$USE_QT6 = xyes ; then
-	  dnl FIXME: Check whether defining QPA_XCB makes sense with Qt6
-	  AC_PREPROC_IFELSE([AC_LANG_SOURCE([
-	    [#include <$lyx_qt_config>]
-	    [#if !defined(QT_FEATURE_xcb) || QT_FEATURE_xcb < 0]
-	    [#error Fail]
-	    [#endif]])],
-	    [AC_MSG_RESULT(yes)
-	     AC_DEFINE(QPA_XCB, 1, [Define if Qt uses the X Window System])],
-	    [AC_MSG_RESULT(no)])
-	else
-	  AC_EGREP_CPP(xcb,
-	    [#include <$lyx_qt_config>
-	    QT_QPA_DEFAULT_PLATFORM_NAME],
-	    [AC_MSG_RESULT(yes)
-	     AC_DEFINE(QPA_XCB, 1, [Define if Qt uses the X Window System])],
-	    [AC_MSG_RESULT(no)])
-	fi
 	CPPFLAGS=$save_CPPFLAGS
 
 	QT_FIND_TOOL([QT_MOC], [moc])

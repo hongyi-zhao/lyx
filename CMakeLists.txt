@@ -812,7 +812,6 @@ if(LYX_USE_QT MATCHES "QT6|QT5")
 			Qt5_wrap_ui(${ARGN})
 		endmacro()
 	endif()
-	# set QPA_XCB if QT uses X11
 	find_package(${QtVal}Core CONFIG REQUIRED)
 	if (${QtVal}Core_FOUND)
 		find_package(${QtVal}Widgets CONFIG REQUIRED)
@@ -1186,6 +1185,7 @@ get_data_destination(dest_data)
 list(APPEND tmp_vi "  LyX files dir:           ${CMAKE_INSTALL_PREFIX}/${dest_data}")
 string(REPLACE ";" "\\n" VERSION_INFO "${tmp_vi}")
 
+# the result XCB_LIBRARY will be used in src/CMakeLists.txt and also in configuring config.h
 find_library(XCB_LIBRARY NAMES xcb)
 if (XCB_LIBRARY)
   set(HAVE_LIBXCB 1 CACHE BOOL "" FORCE)

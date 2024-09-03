@@ -1053,6 +1053,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 		bot_pit = max_pit;
 	}
 
+	// Add surrounding paragraph metrics to scroll properly with cursor up/down
 	if (bot_pit == tm.first().first - 1)
 		tm.newParMetricsUp();
 	else if (bot_pit == tm.last().first + 1)
@@ -1068,7 +1069,8 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 			textMetrics(cs.text()).parMetrics(cs.pit());
 		Dimension const & row_dim =
 			inner_pm.getRow(cs.pos(), dit.boundary()).dim();
-		int scrolled = 0;
+		// Assume first that we do not have to scroll anything
+		int ynew = ypos;
 
 		// We try to visualize the whole row, if the row height is larger than
 		// the screen height, we scroll to a heuristic value of height_ / 4.
@@ -1076,51 +1078,55 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 		// for a row in the inset that can be visualized completely.
 		if (row_dim.height() > height_) {
 			if (ypos < defaultRowHeight())
-				scrolled = scroll(ypos - height_ / 4);
+				ynew = height_ / 4;
 			else if (ypos > height_ - defaultRowHeight())
-				scrolled = scroll(ypos - 3 * height_ / 4);
+				ynew = 3 * height_ / 4;
 		}
-
 		// If the top part of the row falls of the screen, we scroll
 		// up to align the top of the row with the top of the screen.
-		else if (ypos - row_dim.ascent() < 0 && ypos < height_) {
-			int const ynew = row_dim.ascent();
-			scrolled = scrollUp(ynew - ypos);
-		}
-
+		else if (ypos - row_dim.ascent() < 0 && ypos < height_)
+			ynew = row_dim.ascent();
 		// If the bottom of the row falls of the screen, we scroll down.
-		else if (ypos + row_dim.descent() > height_ && ypos > 0) {
-			int const ynew = height_ - row_dim.descent();
-			scrolled = scrollDown(ypos - ynew);
-		}
+		else if (ypos + row_dim.descent() > height_ && ypos > 0)
+			ynew = height_ - row_dim.descent();
 
-		// else, nothing to do, the cursor is already visible so we just return.
-		return scrolled != 0;
+		d->anchor_ypos_ += ynew - ypos;
+		return ynew != ypos;
 	}
 
 	// fix inline completion position
 	if (d->inlineCompletionPos_.fixIfBroken())
 		d->inlineCompletionPos_ = DocIterator();
 
-	tm.redoParagraph(bot_pit);
-	int const offset = coordOffset(dit).y;
 	pit_type const old_pit = d->anchor_pit_;
-	d->anchor_pit_ = bot_pit;
+	int const old_ypos = d->anchor_ypos_;
+
+	if (!tm.contains(bot_pit))
+		tm.redoParagraph(bot_pit);
+	int const offset = coordOffset(dit).y;
 
 	CursorSlice const & cs = dit.innerTextSlice();
 	ParagraphMetrics const & inner_pm =
 		textMetrics(cs.text()).parMetrics(cs.pit());
-	Dimension const & row_dim =
-		inner_pm.getRow(cs.pos(), dit.boundary()).dim();
+	// dimension of the contents of the text row that holds dit
+	Dimension const & row_dim = inner_pm.getRow(cs.pos(), dit.boundary()).contents_dim();
 
-	int const old_ypos = d->anchor_ypos_;
-	d->anchor_ypos_ = - offset + row_dim.ascent();
-	if (how == SCROLL_CENTER)
-		d->anchor_ypos_ += height_/2 - row_dim.height() / 2;
-	else if (offset > height_)
-		d->anchor_ypos_ = height_ - offset - defaultRowHeight();
-	else
-		d->anchor_ypos_ = defaultRowHeight() * 2;
+	// Compute typical ypos values.
+	int const ypos_center = height_/2 - row_dim.height() / 2 + row_dim.ascent() - offset;
+	int const ypos_top = (offset > height_) ? height_ - offset - defaultRowHeight()
+	                                        : defaultRowHeight() * 2;
+
+	// Select the right one.
+	d->anchor_pit_ = bot_pit;
+	switch(how) {
+	case SCROLL_CENTER:
+		d->anchor_ypos_ = ypos_center;
+		break;
+	case SCROLL_TOP:
+	case SCROLL_VISIBLE:
+		d->anchor_ypos_ = ypos_top;
+		// more to come: BOTTOM, TOGGLE
+	}
 
 	return d->anchor_ypos_ != old_ypos || d->anchor_pit_ != old_pit;
 }
@@ -2848,34 +2854,13 @@ int BufferView::minVisiblePart()
 
 int BufferView::scroll(int pixels)
 {
-	if (pixels > 0)
-		return scrollDown(pixels);
-	if (pixels < 0)
-		return scrollUp(-pixels);
-	return 0;
+	d->anchor_ypos_ -= pixels;
+	return -pixels;
 }
 
 
 int BufferView::scrollDown(int pixels)
 {
-	Text * text = &buffer_.text();
-	TextMetrics & tm = d->text_metrics_[text];
-	int const ymax = height_ + pixels;
-	while (true) {
-		pair<pit_type, ParagraphMetrics const *> last = tm.last();
-		int bottom_pos = last.second->bottom();
-		if (lyxrc.scroll_below_document)
-			bottom_pos += height_ - minVisiblePart();
-		if (last.first + 1 == int(text->paragraphs().size())) {
-			if (bottom_pos <= height_)
-				return 0;
-			pixels = min(pixels, bottom_pos - height_);
-			break;
-		}
-		if (bottom_pos > ymax)
-			break;
-		tm.newParMetricsDown();
-	}
 	d->anchor_ypos_ -= pixels;
 	return -pixels;
 }
@@ -2883,22 +2868,6 @@ int BufferView::scrollDown(int pixels)
 
 int BufferView::scrollUp(int pixels)
 {
-	Text * text = &buffer_.text();
-	TextMetrics & tm = d->text_metrics_[text];
-	int ymin = - pixels;
-	while (true) {
-		pair<pit_type, ParagraphMetrics const *> first = tm.first();
-		int top_pos = first.second->top();
-		if (first.first == 0) {
-			if (top_pos >= 0)
-				return 0;
-			pixels = min(pixels, - top_pos);
-			break;
-		}
-		if (top_pos < ymin)
-			break;
-		tm.newParMetricsUp();
-	}
 	d->anchor_ypos_ += pixels;
 	return pixels;
 }

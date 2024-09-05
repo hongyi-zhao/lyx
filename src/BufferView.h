@@ -218,18 +218,18 @@ public:
 	/// Ensure the passed cursor \p dit is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// (metrics+drawing) if needed.
-	/// \param how Use this scroll strategy
+	/// \param how: where the cursor should appear (visible/top/center)
 	void showCursor(DocIterator const & dit, ScrollType how);
 	/// Scroll to the cursor.
-	/// \param how Use this scroll strategy
+	/// This only updates the anchor vertical position, but does not
+	/// recompute metrics nor trigger a screen refresh.
+	/// \param how: where the cursor should appear (visible/top/center)
 	/// \return true if screen was scrolled
 	bool scrollToCursor(DocIterator const & dit, ScrollType how);
-	/// scroll down document by the given number of pixels.
-	int scrollDown(int pixels);
-	/// scroll up document by the given number of pixels.
-	int scrollUp(int pixels);
-	/// scroll document by the given number of pixels.
-	int scroll(int pixels);
+	/// scroll the view by the given number of pixels. This only
+	/// updates the anchor vertical position, but does not recompute
+	/// metrics nor trigger a screen refresh.
+	void scroll(int pixels);
 	/// Scroll the view by a number of pixels.
 	void scrollDocView(int pixels);
 	/// Set the cursor position based on the scrollbar one.
@@ -418,15 +418,15 @@ private:
 	/// Update current paragraph metrics.
 	/// \return true if no further update is needed.
 	bool singleParUpdate();
-	/** Helper for the public updateMetrics() and for processUpdateFlags()
-	 * * When \c force is true, get rid of all paragraph metrics and
-         rebuild them anew.
-	 * * When it is false, keep the paragraphs that are still visible in
-	 *   WorkArea and rebuild the missing ones.
-	 *
-	 * This does also set the anchor paragraph and its position correctly
+	/** Helper for the public updateMetrics() and for processUpdateFlags().
+	 * This does also set the anchor paragraph and its position correctly.
+	 * \param force when true, get rid of all paragraph metrics and
+	 *    rebuild them anew. Otherwise keep the paragraphs that are
+	 *    still visible in work area and rebuild the missing ones.
+	 * \return the correction needed (same sign as anchor vertical
+	 * position change) when hitting top or bottom constraints.
 	*/
-	void updateMetrics(bool force);
+	int updateMetrics(bool force);
 
 	// Set the row on which the cursor lives.
 	void setCurrentRowSlice(CursorSlice const & rowSlice);

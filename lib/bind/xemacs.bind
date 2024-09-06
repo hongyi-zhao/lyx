@@ -44,7 +44,7 @@ Format 5
 \bind "C-i"                    "space-insert hfill"
 #bind "C-j"                    "------"
 \bind "C-k"                    "line-delete-forward"
-\bind "C-l"                    "screen-recenter"
+\bind "C-l"                    "scroll caret toggle"
 \bind "C-m"                    "mark-toggle"
 \bind "C-n"                    "down"
 \bind "C-o"                    "inset-toggle"

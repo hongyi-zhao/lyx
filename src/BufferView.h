@@ -61,10 +61,14 @@ enum CursorStatus {
 enum ScrollType {
 	// Make sure row if visible (do nothing if it is visible already)
 	SCROLL_VISIBLE,
-	// Force cursor to be on top of screen
+	// Cursor on top of screen
 	SCROLL_TOP,
-	// Force cursor to be at center of screen
-	SCROLL_CENTER
+	// Cursor at center of screen
+	SCROLL_CENTER,
+	// Cursor at bottom of the screen
+	SCROLL_BOTTOM,
+	// Alternate between center, top, bottom, center, etc.
+	SCROLL_TOGGLE
 };
 
 /// Scrollbar Parameters.
@@ -213,18 +217,18 @@ public:
 	/// Ensure that the BufferView cursor is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// (metrics+drawing) if needed.
-	void showCursor();
+	/// \param how: where the cursor should appear (visible, top, center...)
+	void showCursor(ScrollType how = SCROLL_VISIBLE);
 
 	/// Ensure the passed cursor \p dit is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// (metrics+drawing) if needed.
-	/// \param how: where the cursor should appear (visible/top/center)
+	/// \param how: where the cursor should appear (visible, top, center...)
 	void showCursor(DocIterator const & dit, ScrollType how);
 	/// Scroll to the cursor.
 	/// This only updates the anchor vertical position, but does not
 	/// recompute metrics nor trigger a screen refresh.
-	/// \param how: where the cursor should appear (visible/top/center)
-	/// \return true if screen was scrolled
+	/// \param how: where the cursor should appear (visible, top, center...)
 	bool scrollToCursor(DocIterator const & dit, ScrollType how);
 	/// scroll the view by the given number of pixels. This only
 	/// updates the anchor vertical position, but does not recompute

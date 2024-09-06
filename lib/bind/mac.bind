@@ -63,8 +63,8 @@ Format 5
 #  -: "Control-K"                    # Delete from the character in front of the cursor to the end of the line/paragraph
 # used by menu.bind - keymap
 #  +: "Control-L"                    # Center the cursor/selection in the visible area
-\bind "M-l"                          "screen-recenter"
-\bind "F5"                           "screen-recenter"
+\bind "M-l"                          "scroll caret toggle"
+\bind "F5"                           "scroll caret toggle"
 #  +: "Control-N"                    # Move down one line
 \bind "M-n"                          "down"
 #  +: "Control-O"                    # Insert a new line after the cursor

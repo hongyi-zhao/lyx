@@ -3657,8 +3657,9 @@ void LyXAction::init()
  * \li Action: Scroll the buffer view.
  * \li Notion: Only scrolls the screen up or down; does not move the cursor.
  * \li Syntax: scroll <TYPE> <QUANTITY>
- * \li Params: <TYPE>:  line|page\n
-               <QUANTITY>: up|down|<number>
+ * \li Params: <TYPE>:  line|page|caret\n
+               <QUANTITY>: top|center|bottom|toggle [if <TYPE> is caret]
+               <QUANTITY>: up|down|<number>  [otherwise]
  * \li Origin: Abdel, Dec 27 2007
  * \endvar
  */

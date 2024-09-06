@@ -1015,9 +1015,9 @@ void BufferView::recenter()
 }
 
 
-void BufferView::showCursor()
+void BufferView::showCursor(ScrollType how)
 {
-	showCursor(d->cursor_, SCROLL_VISIBLE);
+	showCursor(d->cursor_, how);
 }
 
 
@@ -1038,6 +1038,10 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 		LYXERR(Debug::SCROLLING, "Centering cursor in workarea");
 	else if (how == SCROLL_TOP)
 		LYXERR(Debug::SCROLLING, "Setting cursor to top of workarea");
+	else if (how == SCROLL_BOTTOM)
+		LYXERR(Debug::SCROLLING, "Setting cursor to bottom of workarea");
+	else if (how == SCROLL_TOGGLE)
+		LYXERR(Debug::SCROLLING, "Alternate cursor position between center, top and bottom");
 	else
 		LYXERR(Debug::SCROLLING, "Making sure cursor is visible in workarea");
 
@@ -1115,6 +1119,7 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 	int const ypos_center = height_/2 - row_dim.height() / 2 + row_dim.ascent() - offset;
 	int const ypos_top = (offset > height_) ? height_ - offset - defaultRowHeight()
 	                                        : defaultRowHeight() * 2;
+	int const ypos_bottom = height_ - offset - defaultRowHeight();
 
 	// Select the right one.
 	d->anchor_pit_ = bot_pit;
@@ -1125,7 +1130,24 @@ bool BufferView::scrollToCursor(DocIterator const & dit, ScrollType how)
 	case SCROLL_TOP:
 	case SCROLL_VISIBLE:
 		d->anchor_ypos_ = ypos_top;
-		// more to come: BOTTOM, TOGGLE
+		break;
+	case SCROLL_BOTTOM:
+		d->anchor_ypos_ = ypos_bottom;
+		break;
+	case SCROLL_TOGGLE: {
+		ParagraphMetrics const & bot_pm = tm.parMetrics(bot_pit);
+		if (!bot_pm.hasPosition()) {
+			d->anchor_ypos_ = ypos_center;
+			break;
+		}
+		int const ypos = bot_pm.position();
+		if (ypos == ypos_center)
+			d->anchor_ypos_ = ypos_top;
+		else if (ypos == ypos_top)
+			d->anchor_ypos_ = ypos_bottom;
+		else
+			d->anchor_ypos_ = ypos_center;
+	}
 	}
 
 	return d->anchor_ypos_ != old_ypos || d->anchor_pit_ != old_pit;
@@ -1428,8 +1450,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	    && lyxaction.funcHasFlag(cmd.action(), LyXAction::NoInternal))
 		return;
 
-	// We'll set this back to false if need be.
-	bool dispatched = true;
 	buffer_.undo().beginUndoGroup();
 
 	FuncCode const act = cmd.action();
@@ -1616,8 +1636,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			InsetMathRef * minset =
 				getInsetByCode<InsetMathRef>(cur, MATH_REF_CODE);
 			if (minset)
-				lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO,
-							minset->getTarget()));
+				lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, minset->getTarget()));
 		}
 		break;
 	}
@@ -1657,7 +1676,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					success = setCursorFromEntries({id, pos},
 					                               {id_end, pos_end});
 				}
-				if (success && scrollToCursor(d->cursor_, SCROLL_TOP))
+				if (success && scrollToCursor(d->cursor_, SCROLL_TOGGLE))
 						dr.screenUpdate(Update::Force);
 			} else {
 				// Switch to other buffer view and resend cmd
@@ -1876,14 +1895,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		FindAndReplaceOptions opt;
 		istringstream iss(to_utf8(cmd.argument()));
 		iss >> opt;
-		if (findAdv(this, opt)) {
+		if (findAdv(this, opt))
 			dr.screenUpdate(Update::Force | Update::FitCursor);
-			cur.dispatched();
-			dispatched = true;
-		} else {
-			cur.undispatched();
-			dispatched = false;
-		}
 		break;
 	}
 
@@ -2164,15 +2177,32 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_SCROLL: {
 		string const scroll_type = cmd.getArg(0);
+		if (scroll_type == "caret") {
+			string const where = cmd.getArg(1);
+			ScrollType how;
+			if (where == "top")
+				how = SCROLL_TOP;
+			else if (where == "center")
+				how = SCROLL_CENTER;
+			else if (where == "bottom")
+				how = SCROLL_BOTTOM;
+			else if (where == "toggle")
+				how = SCROLL_TOGGLE;
+			else if (where == "visible")
+				how = SCROLL_VISIBLE;
+			else
+				break;
+			showCursor(how);
+			break;
+		}
+
 		int scroll_step = 0;
 		if (scroll_type == "line")
 			scroll_step = d->scrollbarParameters_.single_step;
 		else if (scroll_type == "page")
 			scroll_step = d->scrollbarParameters_.page_step;
-		else {
-			dispatched = false;
-			return;
-		}
+		else
+			break;
 
 		string const scroll_quantity = cmd.getArg(1);
 
@@ -2182,10 +2212,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			scroll(scroll_step);
 		else if (isStrInt(scroll_quantity))
 			scroll(scroll_step * convert<int>(scroll_quantity));
-		else {
-			dispatched = false;
-			return;
-		}
+		else
+			break;
 
 		dr.screenUpdate(Update::ForceDraw);
 		dr.forceBufferUpdate();
@@ -2435,14 +2463,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				if (!opt1.empty())
 					LYXERR0("Discarding optional argument to citation-insert.");
 			}
-			dispatched = true;
 			break;
 		}
 		InsetCommandParams icp(CITE_CODE);
 		icp["key"] = from_utf8(arg);
 		if (!opt1.empty())
 			icp["before"] = from_utf8(opt1);
-		icp["literal"] = 
+		icp["literal"] =
 			from_ascii(InsetCitation::last_literal ? "true" : "false");
 		string icstr = InsetCommand::params2string(icp);
 		FuncRequest fr(LFUN_INSET_INSERT, icstr);
@@ -2528,7 +2555,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (cur.inTexted() && cur.selection()
 		    && cur.selectionBegin().idx() != cur.selectionEnd().idx()) {
 			buffer_.dispatch(cmd, dr);
-			dispatched = dr.dispatched();
 			break;
 		}
 		cap::copySelection(cur);
@@ -2538,12 +2564,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	default:
 		// OK, so try the Buffer itself...
 		buffer_.dispatch(cmd, dr);
-		dispatched = dr.dispatched();
 		break;
 	}
 
 	buffer_.undo().endUndoGroup();
-	dr.dispatched(dispatched);
 
 	// NOTE: The code below is copied from Cursor::dispatch. If you
 	// need to modify this, please update the other one too.

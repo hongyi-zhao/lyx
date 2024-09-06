@@ -120,7 +120,7 @@ Format 5
 \bind "C-F3"			"search-string-set"
 \bind "C-F4"			"buffer-close"
 \bind "M-F4"			"lyx-quit"
-\bind "F5"			"screen-recenter"
+\bind "F5"			"scroll caret toggle"
 \bind "C-M-Up"			"scroll line up"
 \bind "C-M-Down"		"scroll line down"
 \bind "C-M-Prior"		"scroll page up"

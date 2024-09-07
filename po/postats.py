@@ -25,6 +25,11 @@ and generates a PHP web page.
 
 Invocation:
    postats.py lyx_version po_files > "pathToWebPages"/i18n.inc
+
+or simply
+   make i18n.inc
+to create stats only for allowed langauages in LINGUAS file
+(typically good for stable branch stats).
 """
 from __future__ import print_function
 

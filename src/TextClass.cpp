@@ -1128,7 +1128,7 @@ bool TextClass::readCiteEngine(Lexer & lexrc, ReadType rt, bool const add)
 		if (numerical)
 			numerical = getCiteStyles(ENGINE_TYPE_NUMERICAL).empty();
 		if (notes)
-			numerical = getCiteStyles(ENGINE_TYPE_NOTES).empty();
+			notes = getCiteStyles(ENGINE_TYPE_NOTES).empty();
 		if (defce)
 			defce = getCiteStyles(ENGINE_TYPE_DEFAULT).empty();
 	}

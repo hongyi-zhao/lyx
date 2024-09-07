@@ -278,6 +278,8 @@ bool GuiLog::initialiseParams(string const & sdata)
 						continue;
 				}
 				Index const * index = indiceslist.findShortcut(ci);
+				if (!index)
+					continue;
 				string const name = to_utf8(index->index());
 				logTypeCO->addItem(qt_(name), toqstr("index:" + stmp.absFileName()));
 			}

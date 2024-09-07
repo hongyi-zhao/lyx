@@ -440,7 +440,7 @@ docstring nomenclWidest(Buffer const & buffer)
 				msymb.size();
 			if (wx > w) {
 				w = wx;
-				symb = symbol;
+				symb = move(symbol);
 			}
 		}
 	}

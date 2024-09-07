@@ -33,7 +33,7 @@ void Statistics::update(CursorData const & cur, bool skip)
 {
 	// early exit if the buffer has not changed since last time
 	if (stats_id_ == cur.buffer()->id())
-               return;
+		return;
 
 	// reset counts
 	*this = Statistics();

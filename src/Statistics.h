@@ -55,7 +55,7 @@ private:
 	void update(Paragraph const & par, pos_type from = 0, pos_type to = -1);
 
 	// Indicate whether parts that produce no output should be counted.
-	bool skip_no_output_;
+	bool skip_no_output_ = false;
 	// Used in the code to track status
 	bool inword_ = false;
 	// The buffer id at last statistics computation.

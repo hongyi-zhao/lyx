@@ -1237,7 +1237,7 @@ docstring const escape(docstring const & lab)
 	for (char_type const c : lab) {
 		if (c >= 128 || c == '=' || c == '%' || c == '#' || c == '$'
 		    || c == '}' || c == '{' || c == ']' || c == '[' || c == '&'
-		    || c == '\\' || c == ' ') // refstyle doesn't support spaces
+		    || c == '\\')
 		{
 			// Although char_type is a 32 bit type we know that
 			// UCS4 occupies only 21 bits, so we don't need to

@@ -440,7 +440,7 @@ docstring nomenclWidest(Buffer const & buffer)
 				msymb.size();
 			if (wx > w) {
 				w = wx;
-				symb = move(symbol);
+				symb = std::move(symbol);
 			}
 		}
 	}

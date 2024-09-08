@@ -1707,7 +1707,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string label = dit.innerParagraph().getLabelForXRef();
 			if (!label.empty()) {
 				// if the paragraph has a label, we refer to this
-				string const arg = (type.empty()) ? move(label) : move(label) + " " + type;
+				string const arg = (type.empty()) ? std::move(label) : std::move(label) + " " + type;
 				lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
 				break;
 			} else {

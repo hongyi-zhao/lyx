@@ -4574,7 +4574,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "reference \"";
 			os << known_refstyle_prefixes[where - known_refstyle_commands]
 			   << ":";
-			os << convert_literate_command_inset_arg(p.getArg('{', '}'))
+			string arg = p.getArg('{', '}');
+			// with refstyle, labels containing blanks are grouped
+			// remove the grouping
+			if (contains(arg, ' '))
+				arg = ltrim(rtrim(arg, "}"), "{");
+			os << convert_literate_command_inset_arg(arg)
 			   << "\"\n";
 			os << "plural \"" << plural << "\"\n";
 			os << "caps \"" << cap << "\"\n";

@@ -495,7 +495,7 @@ docstring KeyMap::printBindings(FuncRequest const & func,
 		if (!firstone)
 			res << ", ";
 		res << key.print(format, untranslated);
-		firstone = true;
+		firstone = false;
 	}
 	return res.str();
 }

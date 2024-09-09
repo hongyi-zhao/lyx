@@ -22,6 +22,7 @@
 
 #include <boost/assert.hpp>
 
+#include <iostream>
 
 #ifdef LYX_CALLSTACK_PRINTING
 #include <cstdio>
@@ -52,6 +53,13 @@ void doAssert(char const * expr, char const * file, long line)
 	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
 	// comment this out if not needed
 	doAssertWithCallstack(false);
+}
+
+
+void doAssertStatic(char const * expr, char const * file, long line)
+{
+	cerr << "ASSERTION " << expr << " VIOLATED IN " << file << ":" << line << endl;
+	BOOST_ASSERT(false);
 }
 
 

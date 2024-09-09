@@ -34,6 +34,11 @@ LATTEST(expr)
   continue with the usual program flow, but failure of expr still means that
   there is something that needs to be fixed.
 
+LATTEST_STATIC(expr)
+  This is the same as macro LATTEST above, except
+  that it does not use lyxerr, so that it is suitable in static
+  variables initialization.
+
 LASSERT(expr, escape)
   This macro should be used when a failure of expr is not compatible with
   continuing the ordinary program flow, but is something from which we can
@@ -61,6 +66,7 @@ LAPPERR(expr)
 
 
 void doAssert(char const * expr, char const * file, long line);
+void doAssertStatic(char const * expr, char const * file, long line);
 void doWarnIf(char const * expr, char const * file, long line);
 void doBufErr(char const * expr, char const * file, long line);
 void doAppErr(char const * expr, char const * file, long line);
@@ -75,6 +81,9 @@ docstring printCallStack();
 
 #define LATTEST(expr) \
 	if (expr) {} else { lyx::doAssert(#expr, __FILE__, __LINE__); }
+
+#define LATTEST_STATIC(expr) \
+	if (expr) {} else { lyx::doAssertStatic(#expr, __FILE__, __LINE__); }
 
 #define LASSERT(expr, escape) \
 	if (expr) {} else { lyx::doAssert(#expr, __FILE__, __LINE__); escape; }

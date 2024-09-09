@@ -1902,7 +1902,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// set default
 			arg = "templates";
 		if (arg != "templates" && arg != "examples") {
-			current_view_->message(_("Wrong argument. Must be 'examples' or 'templates'."));
+			if (current_view_)
+				current_view_->message(_("Wrong argument. Must be 'examples' or 'templates'."));
 			break;
 		}
 		lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "lyxfiles " + arg));

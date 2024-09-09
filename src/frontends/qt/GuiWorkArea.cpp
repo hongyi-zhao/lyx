@@ -1510,7 +1510,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 {
-	LYXERR(Debug::INFO, "incoming InputMethodQuery Value: 0x" << std::hex << query);
+	LYXERR(Debug::INFO, "incoming InputMethodQuery Value: 0x" << std::hex << query << std::dec);
 	switch (query) {
 	// this is the CJK-specific composition window position and
 	// the context menu position when the menu key is pressed.

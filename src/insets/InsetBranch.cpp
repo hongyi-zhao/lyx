@@ -121,10 +121,6 @@ docstring const InsetBranch::buttonLabel(BufferView const &) const
 	if (decoration() == InsetDecoration::MINIMALISTIC)
 		return symb + inv_symb + params_.branch;
 
-	if (!buffer_) {
-		return symb + inv_symb + _("Branch (undefined): ")
-			+ params_.branch;
-	}
 	bool const has_layout =
 		buffer().params().documentClass().hasInsetLayout(layoutName());
 	if (has_layout) {

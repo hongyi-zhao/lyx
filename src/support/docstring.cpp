@@ -40,7 +40,7 @@ docstring const from_ascii(char const * ascii)
 		char_type *d = &s[0];
 		while (--n >= 0) {
 			d[n] = ascii[n];
-			LATTEST(static_cast<unsigned char>(ascii[n]) < 0x80);
+			LATTEST_STATIC(static_cast<unsigned char>(ascii[n]) < 0x80);
 		}
 	}
 	return s;

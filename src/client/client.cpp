@@ -460,8 +460,7 @@ int h(vector<docstring> const &)
 }
 
 
-docstring clientName =
-	from_ascii(to_string(::getppid()) + ">" + to_string(::getpid()));
+docstring clientName;
 
 int n(vector<docstring> const & arg)
 {
@@ -710,9 +709,12 @@ int LyXClientApp::run()
 
 int main(int argc, char * argv[])
 {
-	lyx::lyxerr.setStream(cerr);
+	using namespace lyx;
+	lyxerr.setStream(cerr);
+	cmdline::clientName =
+		from_ascii(to_string(::getppid()) + ">" + to_string(::getpid()));
 
-	lyx::LyXClientApp app(argc, argv);
+	LyXClientApp app(argc, argv);
 	return app.exec();
 }
 

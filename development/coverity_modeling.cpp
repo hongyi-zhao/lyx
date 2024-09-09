@@ -11,6 +11,12 @@ void doAssertWithCallstack(bool value)
 }
 
 
+void doAssertStatic(char const * expr, char const * file, long line)
+{
+	__coverity_panic__();
+}
+
+
 // Tell coverity that this function always exits
 void doAppErr(char const * expr, char const * file, long line)
 {
@@ -22,5 +28,12 @@ void lyx_exit(int exit_code)
 {
 	__coverity_panic__();
 }
+
+
+void lyxbreaker(void const * data, const char * hint, int size)
+{
+	__coverity_panic__();
+}
+
 
 }

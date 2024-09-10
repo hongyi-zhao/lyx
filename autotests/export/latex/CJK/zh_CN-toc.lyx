@@ -5,13 +5,6 @@
 \save_transient_properties true
 \origin unavailable
 \textclass report
-\begin_preamble
-% Chinese localization
-\@ifpackageloaded{fontspec}%
-{\usepackage{ctex}}% ctex with non-TeX fonts
-{%\usepackage[UTF8]{ctex}% error with font setup (missing font?)
-}
-\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language chinese-traditional

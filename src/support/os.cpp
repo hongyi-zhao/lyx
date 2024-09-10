@@ -129,6 +129,7 @@ static string const find_python_binary()
 	}
 
 	// last chance: try the unversioned name
+	// This case is very common on Windows.
 	if (command.empty())
 	  command = python_call("python");
 

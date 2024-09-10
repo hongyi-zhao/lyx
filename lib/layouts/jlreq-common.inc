@@ -94,7 +94,7 @@ End
 
 Style Abstract_over_Columns
 	CopyStyle			Abstract
-	InPreamble			1
+	InTitle               		1
 	LabelString			"Abstract"
 	Category			FrontMatter
 	LatexType			Command

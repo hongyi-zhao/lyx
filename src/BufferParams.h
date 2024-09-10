@@ -343,7 +343,8 @@ public:
 	/// babel language options
 	std::map<std::string, std::string> lang_options_babel_;
 	///
-	std::string const babelLangOptions(std::string const & lang) const;
+    std::string const babelLangOptions(std::string const & lang,
+                                       bool const onlycust = false) const;
 	///
 	void setBabelLangOptions(std::string const & lang, std::string const & opts)
 		{ lang_options_babel_[lang] = opts; }

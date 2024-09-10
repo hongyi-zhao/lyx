@@ -3532,7 +3532,7 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 			os << "\n\\babelprovide[import";
 			if (l == language)
 				os << ", main";
-			if (!babelLangOptions(l->lang()).empty())
+            if (!babelLangOptions(l->lang(), true).empty())
 				os << ", " << babelLangOptions(l->lang());
 			os << "]{" << blang << "}";
 			have_mods = true;
@@ -3555,7 +3555,8 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 		}
 		if ((bp == 2 && useNonTeXFonts) || have_other_forceprovide) {
 			// Options need to go to \babeprovide
-			if (!babelLangOptions(l->lang()).empty())
+            // but only those set in document settings
+            if (!babelLangOptions(l->lang(), true).empty())
 				os << "\n\\babelprovide["
 				   << babelLangOptions(l->lang())
 				   << "]{" << blang << "}";
@@ -4095,11 +4096,11 @@ string const BufferParams::bibFileEncoding(string const & file) const
 }
 
 
-string const BufferParams::babelLangOptions(string const & lang) const
+string const BufferParams::babelLangOptions(string const & lang, bool const onlycust) const
 {
 	if (lang_options_babel_.find(lang) == lang_options_babel_.end()) {
 		Language const * l = languages.getLanguage(lang);
-		return l ? l->babelOpts() :string();
+        return (l && !onlycust) ? l->babelOpts() : string();
 	}
 	return lang_options_babel_.find(lang)->second;
 }

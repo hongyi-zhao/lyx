@@ -470,7 +470,7 @@ bool getTokenValue(string const & str, char const * token, Change & change, Buff
 				         "is incomplete. I will ignore this."));
 			return false;
 		}
-		BufferParams::AuthorMap const & am = bp.author_map_;
+		BufferParams::AuthorMap & am = bp.authormap();
 		int aid = convert<int>(changedata[1]);
 		if (am.find(aid) == am.end()) {
 			// FIXME Use ErrorList
@@ -488,10 +488,10 @@ bool getTokenValue(string const & str, char const * token, Change & change, Buff
 		time_t ct;
 		is >> ct;
 		if (changedata[0] == "inserted") {
-			change = Change(Change::INSERTED, am.find(aid)->second, ct);
+			change = Change(Change::INSERTED, am[aid], ct);
 			return true;
 		} else if (changedata[0] == "deleted") {
-			change = Change(Change::DELETED, am.find(aid)->second, ct);
+			change = Change(Change::DELETED, am[aid], ct);
 			return true;
 		}
 	}

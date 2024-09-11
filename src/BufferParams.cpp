@@ -341,6 +341,7 @@ public:
 	Impl();
 
 	AuthorList authorlist;
+	AuthorMap authormap;
 	BranchList branchlist;
 	WordLangTable spellignore;
 	Bullet temp_bullets[4];
@@ -494,7 +495,7 @@ BufferParams::BufferParams()
 	use_lineno = false;
 
 	// map current author
-	author_map_[pimpl_->authorlist.get(0).bufferId()] = 0;
+	pimpl_->authormap[pimpl_->authorlist.get(0).bufferId()] = 0;
 }
 
 
@@ -578,9 +579,21 @@ AuthorList const & BufferParams::authors() const
 }
 
 
+BufferParams::AuthorMap & BufferParams::authormap()
+{
+	return pimpl_->authormap;
+}
+
+
+BufferParams::AuthorMap const & BufferParams::authormap() const
+{
+	return pimpl_->authormap;
+}
+
+
 void BufferParams::addAuthor(Author const & a)
 {
-	author_map_[a.bufferId()] = pimpl_->authorlist.record(a);
+	pimpl_->authormap[a.bufferId()] = pimpl_->authorlist.record(a);
 }
 
 

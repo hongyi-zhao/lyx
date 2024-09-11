@@ -594,7 +594,7 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		int aid;
 		time_t ct;
 		is >> aid >> ct;
-		BufferParams::AuthorMap const & am = bp.author_map_;
+		BufferParams::AuthorMap & am = bp.authormap();
 		if (am.find(aid) == am.end()) {
 			errorList.push_back(ErrorItem(
 				_("Change tracking author index missing"),
@@ -609,9 +609,9 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 			bp.addAuthor(Author(aid));
 		}
 		if (token == "\\change_inserted")
-			change = Change(Change::INSERTED, am.find(aid)->second, ct);
+			change = Change(Change::INSERTED, am[aid], ct);
 		else
-			change = Change(Change::DELETED, am.find(aid)->second, ct);
+			change = Change(Change::DELETED, am[aid], ct);
 	} else {
 		lex.eatLine();
 		errorList.push_back(ErrorItem(_("Unknown token"),

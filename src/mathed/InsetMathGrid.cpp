@@ -59,11 +59,12 @@ static docstring verboseHLine(int n)
 }
 
 
+// read a number to be used as an iteration count (limited arbitrary to 1000)
 static int extractInt(istream & is)
 {
 	int num = 1;
 	is >> num;
-	return (num == 0) ? 1 : num;
+	return min(max(num, 1), 1000);
 }
 
 

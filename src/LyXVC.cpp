@@ -245,14 +245,13 @@ LyXVC::CommandResult LyXVC::checkIn(string & log)
 	LYXERR(Debug::LYXVC, "LyXVC: checkIn");
 	if (!vcs_)
 		return ErrorBefore;
-	docstring empty(_("(no log message)"));
 	docstring response;
 	bool ok = true;
 	if (vcs_->isCheckInWithConfirmation())
 		ok = Alert::askForText(response, _("LyX VC: Log Message"));
 	if (ok) {
 		if (response.empty())
-			response = empty;
+			response = _("(no log message)");
 		//shell collisions
 		response = subst(response, from_ascii("\""), from_ascii("\\\""));
 		return vcs_->checkIn(to_utf8(response), log);

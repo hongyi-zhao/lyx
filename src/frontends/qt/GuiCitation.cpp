@@ -835,7 +835,7 @@ void GuiCitation::init()
 
 void GuiCitation::findKey(BiblioInfo const & bi,
 	QString const & str, bool only_keys,
-	docstring field, docstring entry_type,
+	docstring const & field, docstring const & entry_type,
 	bool case_sensitive, bool reg_exp, bool reset)
 {
 	// FIXME THREAD

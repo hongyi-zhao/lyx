@@ -1136,7 +1136,8 @@ public:
 private:
 	/// Auxiliary find method (does not account for opt.matchword)
 	MatchResult findAux(DocIterator const & cur, int len, matchType at_begin) const;
-	void CreateRegexp(FindAndReplaceOptions const & opt, string regexp_str, string regexp2_str, string par_as_string = "");
+	void CreateRegexp(FindAndReplaceOptions const & opt, string const & regexp_str,
+	                  string const & regexp2_str, string const & par_as_string = string());
 
 	/** Normalize a stringified or latexified LyX paragraph.
 	 **
@@ -3619,7 +3620,8 @@ static void identifyClosing(string & t, bool ignoreformat)
 static int num_replaced = 0;
 static bool previous_single_replace = true;
 
-void MatchStringAdv::CreateRegexp(FindAndReplaceOptions const & opt, string regexp_str, string regexp2_str, string par_as_string)
+void MatchStringAdv::CreateRegexp(FindAndReplaceOptions const & opt, string const & regexp_str,
+                                  string const & regexp2_str, string const & par_as_string)
 {
 #if QTSEARCH
 	if (regexp_str.empty() || regexp2_str.empty()) {

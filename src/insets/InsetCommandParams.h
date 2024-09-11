@@ -55,7 +55,7 @@ public:
 		///
 		ParamData(std::string const &, ParamType, ParamHandling = HANDLING_NONE,
 		          bool ignore = false,
-		          docstring default_value = docstring());
+		          docstring const & default_value = docstring());
 		///
 		std::string name() const { return name_; }
 		///

@@ -129,8 +129,8 @@ private:
 		BiblioInfo const & bi, //< optimize by passing this
 		QString const & str, //< string expression
 		bool only_keys, //< set to true if only keys shall be searched.
-		docstring field, //<field to search, empty for all fields
-		docstring entryType, //<entry type to display, empty for all
+		docstring const & field, //<field to search, empty for all fields
+		docstring const & entryType, //<entry type to display, empty for all
 		bool case_sensitive, //< set to true for case sensitive search.
 		bool reg_exp, //< set to true if \c str is a regular expression.
 		bool reset = false //< whether to reset and search all keys

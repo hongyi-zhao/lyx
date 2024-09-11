@@ -99,7 +99,7 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 
 ParamInfo::ParamData::ParamData(std::string const & s, ParamType t,
                                 ParamHandling h, bool ignore,
-                                docstring default_value)
+                                docstring const & default_value)
 	: name_(s), type_(t), handling_(h), ignore_(ignore),
 	  default_value_(default_value)
 {}

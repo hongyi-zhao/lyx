@@ -24,63 +24,63 @@ using namespace std;
 namespace lyx {
 
 template<>
-string convert<string>(bool b)
+string convert<string>(bool const & b)
 {
 	return (b ? "true" : "false");
 }
 
 
 template<>
-string convert<string>(char c)
+string convert<string>(char const & c)
 {
 	return string(1, c);
 }
 
 
 template<>
-string convert<string>(short unsigned int sui)
+string convert<string>(short unsigned int const & sui)
 {
 	return to_string(sui);
 }
 
 
 template<>
-string convert<string>(int i)
+string convert<string>(int const & i)
 {
 	return to_string(i);
 }
 
 
 template<>
-docstring convert<docstring>(int i)
+docstring convert<docstring>(int const & i)
 {
 	return from_ascii(to_string(i));
 }
 
 
 template<>
-string convert<string>(unsigned int ui)
+string convert<string>(unsigned int const & ui)
 {
 	return to_string(ui);
 }
 
 
 template<>
-docstring convert<docstring>(unsigned int ui)
+docstring convert<docstring>(unsigned int const & ui)
 {
 	return from_ascii(to_string(ui));
 }
 
 
 template<>
-string convert<string>(unsigned long ul)
+string convert<string>(unsigned long const & ul)
 {
 	return to_string(ul);
 }
 
 
 template<>
-docstring convert<docstring>(unsigned long ul)
+docstring convert<docstring>(unsigned long const & ul)
 {
 	return from_ascii(to_string(ul));
 }
@@ -88,35 +88,35 @@ docstring convert<docstring>(unsigned long ul)
 
 #ifdef HAVE_LONG_LONG_INT
 template<>
-string convert<string>(unsigned long long ull)
+string convert<string>(unsigned long long const & ull)
 {
 	return to_string(ull);
 }
 
 
 template<>
-docstring convert<docstring>(unsigned long long ull)
+docstring convert<docstring>(unsigned long long const & ull)
 {
 	return from_ascii(to_string(ull));
 }
 
 
 template<>
-string convert<string>(long long ll)
+string convert<string>(long long const & ll)
 {
 	return to_string(ll);
 }
 
 
 template<>
-docstring convert<docstring>(long long ll)
+docstring convert<docstring>(long long const & ll)
 {
 	return from_ascii(to_string(ll));
 }
 
 
 template<>
-unsigned long long convert<unsigned long long>(string const s)
+unsigned long long convert<unsigned long long>(string const & s)
 {
 	return strtoull(s.c_str(), nullptr, 10);
 }
@@ -124,7 +124,7 @@ unsigned long long convert<unsigned long long>(string const s)
 
 /* not presently needed
 template<>
-long long convert<long long>(string const s)
+long long convert<long long>(string const & s)
 {
 	return strtoll(s.c_str(), nullptr, 10);
 }
@@ -133,21 +133,21 @@ long long convert<long long>(string const s)
 
 
 template<>
-string convert<string>(long l)
+string convert<string>(long const & l)
 {
 	return to_string(l);
 }
 
 
 template<>
-docstring convert<docstring>(long l)
+docstring convert<docstring>(long const & l)
 {
 	return from_ascii(to_string(l));
 }
 
 
 template<>
-string convert<string>(float f)
+string convert<string>(float const & f)
 {
 	ostringstream val;
 	val << f;
@@ -156,7 +156,7 @@ string convert<string>(float f)
 
 
 template<>
-string convert<string>(double d)
+string convert<string>(double const & d)
 {
 	ostringstream val;
 	val << d;
@@ -165,14 +165,14 @@ string convert<string>(double d)
 
 
 template<>
-docstring convert<docstring>(double d)
+docstring convert<docstring>(double const & d)
 {
 	return from_ascii(convert<string>(d));
 }
 
 
 template<>
-int convert<int>(string const s)
+int convert<int>(string const & s)
 {
 	return int(strtol(s.c_str(), nullptr, 10));
 }
@@ -185,28 +185,28 @@ int convert(string const & s, int base)
 
 
 template<>
-int convert<int>(docstring const s)
+int convert<int>(docstring const & s)
 {
 	return int(strtol(to_ascii(s).c_str(), nullptr, 10));
 }
 
 
 template<>
-unsigned int convert<unsigned int>(string const s)
+unsigned int convert<unsigned int>(string const & s)
 {
 	return static_cast<unsigned int>(strtoul(s.c_str(), nullptr, 10));
 }
 
 
 template<>
-unsigned long convert<unsigned long>(string const s)
+unsigned long convert<unsigned long>(string const & s)
 {
 	return strtoul(s.c_str(), nullptr, 10);
 }
 
 
 template<>
-double convert<double>(string const s)
+double convert<double>(string const & s)
 {
 	return strtod(s.c_str(), nullptr);
 }

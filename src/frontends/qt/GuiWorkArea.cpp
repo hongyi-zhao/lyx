@@ -1037,7 +1037,7 @@ bool CompressorProxy::emitCheck(bool isAutoRepeat)
 }
 
 
-void CompressorProxy::slot(KeySymbol sym, KeyModifier mod, bool isAutoRepeat)
+void CompressorProxy::slot(KeySymbol const & sym, KeyModifier mod, bool isAutoRepeat)
 {
 	if (emitCheck(isAutoRepeat))
 		Q_EMIT signal(sym, mod);

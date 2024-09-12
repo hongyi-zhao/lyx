@@ -32,11 +32,11 @@ public:
 	///
 	docstring const & formattedCounter() const { return formatted_counter_; }
 	///
-	void setCounterValue(docstring cv) { counter_value_ = cv; }
+	void setCounterValue(docstring const & cv) { counter_value_ = cv; }
 	///
-	void setPrettyCounter(docstring pc) { pretty_counter_ = pc; }
+	void setPrettyCounter(docstring const & pc) { pretty_counter_ = pc; }
 	///
-	void setFormattedCounter(docstring fc) { formatted_counter_ = fc; }
+	void setFormattedCounter(docstring const & fc) { formatted_counter_ = fc; }
 	///
 	int rowFlags() const override { return CanBreakBefore | CanBreakAfter; }
 	/// Updates only the label string, doesn't handle undo nor references.

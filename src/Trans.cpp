@@ -176,19 +176,13 @@ tex_accent getkeymod(string const &);
 
 void Trans::addDeadkey(tex_accent accent, docstring const & keys)
 {
-	KmodInfo tmp;
-	tmp.data = keys;
-	tmp.accent = accent;
-	kmod_list_[accent] = tmp;
+	kmod_list_[accent] = KmodInfo(keys, accent, KmodException());
 
 	for (char_type key : keys) {
 		// FIXME This is a hack.
 		// tmp is no valid UCS4 string, but misused to store the
 		// accent.
-		docstring tmpd;
-		tmpd += char_type(0);
-		tmpd += char_type(accent);
-		keymap_[key] = tmpd;
+		keymap_[key] = docstring() + char_type(0) + char_type(accent);
 	}
 }
 
@@ -451,7 +445,7 @@ docstring const TransInitState::normalkey(char_type c)
 }
 
 
-docstring const TransInitState::deadkey(char_type c, KmodInfo d)
+docstring const TransInitState::deadkey(char_type c, KmodInfo const & d)
 {
 	deadkey_ = c;
 	deadkey_info_ = d;
@@ -488,7 +482,7 @@ docstring const TransDeadkeyState::normalkey(char_type c)
 }
 
 
-docstring const TransDeadkeyState::deadkey(char_type c, KmodInfo d)
+docstring const TransDeadkeyState::deadkey(char_type c, KmodInfo const & d)
 {
 	docstring res;
 
@@ -548,7 +542,7 @@ docstring const TransCombinedState::normalkey(char_type c)
 }
 
 
-docstring const TransCombinedState::deadkey(char_type c, KmodInfo d)
+docstring const TransCombinedState::deadkey(char_type c, KmodInfo const & d)
 {
 	// Third key in a row. Output the first one and
 	// reenter with shifted deadkeys

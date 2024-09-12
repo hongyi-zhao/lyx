@@ -112,6 +112,9 @@ public:
 	///
 	KmodInfo() : accent(TEX_NOACCENT) {}
 	///
+	KmodInfo(docstring const & d, tex_accent a, KmodException const & e)
+		: data(d), accent(a), exception_list(e) {}
+	///
 	docstring data;
 	///
 	tex_accent accent;
@@ -197,7 +200,7 @@ public:
 	///
 	virtual bool backspace() = 0;
 	///
-	virtual docstring const deadkey(char_type, KmodInfo) = 0;
+	virtual docstring const deadkey(char_type, KmodInfo const &) = 0;
 	///
 	static char_type const TOKEN_SEP;
 };
@@ -243,7 +246,7 @@ public:
 	///
 	bool backspace() override { return true; }
 	///
-	docstring const deadkey(char_type, KmodInfo) override;
+	docstring const deadkey(char_type, KmodInfo const &) override;
 };
 
 
@@ -260,7 +263,7 @@ public:
 		return false;
 	}
 	///
-	docstring const deadkey(char_type, KmodInfo) override;
+	docstring const deadkey(char_type, KmodInfo const &) override;
 };
 
 
@@ -281,7 +284,7 @@ public:
 		return false;
 	}
 	///
-	docstring const deadkey(char_type, KmodInfo) override;
+	docstring const deadkey(char_type, KmodInfo const &) override;
 };
 
 
@@ -335,7 +338,7 @@ public:
 	///
 	void translateAndInsert(char_type, Text *, Cursor &);
 	///
-	docstring const deadkey(char_type c, KmodInfo t)
+	docstring const deadkey(char_type c, KmodInfo const & t)
 		{ return trans_fsm_.currentState->deadkey(c, t); }
 	///
 	docstring const normalkey(char_type c)

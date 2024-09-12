@@ -590,9 +590,8 @@ Buffer * Buffer::cloneWithChildren() const
 {
 	BufferMap bufmap;
 	cloned_buffers.emplace_back(new CloneList);
-	CloneList_ptr clones = cloned_buffers.back();
 
-	cloneWithChildren(bufmap, clones);
+	cloneWithChildren(bufmap, cloned_buffers.back());
 
 	// make sure we got cloned
 	BufferMap::const_iterator bit = bufmap.find(this);

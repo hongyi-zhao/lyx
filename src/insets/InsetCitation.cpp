@@ -476,7 +476,7 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 			break;
 		}
 	}
-	
+
 	string cite_type = getCmdName();
 	bool const uppercase = isUpperCase(cite_type[0]);
 	if (uppercase)
@@ -502,8 +502,6 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 		&& (keys.size() > 1
 		    || !getParam("pretextlist").empty()
 		    || !getParam("posttextlist").empty());
-	QualifiedList pres = getQualifiedLists(getParam("pretextlist"));
-	QualifiedList posts = getQualifiedLists(getParam("posttextlist"));
 
 	CiteItem ci;
 	ci.textBefore = getParam("before");
@@ -512,8 +510,8 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	ci.Starred = starred;
 	ci.max_size = UINT_MAX;
 	ci.isQualified = qualified;
-	ci.pretexts = pres;
-	ci.posttexts = posts;
+	ci.pretexts = getQualifiedLists(getParam("pretextlist"));
+	ci.posttexts = getQualifiedLists(getParam("posttextlist"));
 	if (for_xhtml) {
 		ci.max_key_size = UINT_MAX;
 		ci.context = CiteItem::Export;

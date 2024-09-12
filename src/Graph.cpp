@@ -79,9 +79,8 @@ Graph::EdgePath const
 }
 
 
-Graph::EdgePath const
-	Graph::getReachable(int from, bool only_viewable,
-		bool clear_visited, set<int> excludes)
+Graph::EdgePath const Graph::getReachable(int from, bool only_viewable, bool clear_visited,
+	                                      set<int> const & excludes)
 {
 	EdgePath result;
 	queue<int> Q;

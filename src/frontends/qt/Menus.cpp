@@ -1725,10 +1725,6 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		&& (keys.size() > 1
 		    || !citinset->getParam("pretextlist").empty()
 		    || !citinset->getParam("posttextlist").empty());
-	vector<pair<docstring, docstring>> pres =
-		citinset->getQualifiedLists(citinset->getParam("pretextlist"));
-	vector<pair<docstring, docstring>> posts =
-		citinset->getQualifiedLists(citinset->getParam("posttextlist"));
 
 	CiteItem ci;
 	ci.textBefore = citinset->getParam("before");
@@ -1738,8 +1734,10 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	ci.context = CiteItem::Dialog;
 	ci.max_size = 40;
 	ci.isQualified = qualified;
-	ci.pretexts = pres;
-	ci.posttexts = posts;
+	ci.pretexts =
+		citinset->getQualifiedLists(citinset->getParam("pretextlist"));
+	ci.posttexts =
+		citinset->getQualifiedLists(citinset->getParam("posttextlist"));
 	BiblioInfo::CiteStringMap citeStrings =
 		buf->masterBibInfo().getCiteStrings(keys, citeStyleList, bv->buffer(), ci);
 

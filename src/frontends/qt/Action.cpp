@@ -40,7 +40,7 @@ Action::Action(FuncRequest func, QIcon const & icon, QString const & text,
 }
 
 
-Action::Action(shared_ptr<FuncRequest const> func,
+Action::Action(shared_ptr<FuncRequest const> const & func,
                QIcon const & icon, QString const & text,
                QString const & tooltip, QObject * parent)
 	: QAction(parent), func_(func), icon_(icon)

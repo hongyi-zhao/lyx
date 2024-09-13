@@ -11,9 +11,6 @@
 #ifndef COORDCACHE_H
 #define COORDCACHE_H
 
-// It seems that MacOSX define the check macro.
-#undef check
-
 #include "Dimension.h"
 
 #include <unordered_map>
@@ -22,6 +19,24 @@ namespace lyx {
 
 class Inset;
 class MathData;
+
+#ifdef ENABLE_ASSERTIONS
+#define ASSERT_HAS_DIM(thing, hint)			  \
+	if (data_.find(thing) != data_.end()) \
+	{} \
+	else \
+		lyxbreaker(thing, hint, data_.size());
+
+#define ASSERT_HAS_POS(thing, hint) \
+	auto it = data_.find(thing); \
+	if (it != data_.end() && it->second.pos.x != -10000) \
+	{} \
+	else \
+		lyxbreaker(thing, hint, data_.size());
+#else
+#define ASSERT_HAS_DIM(thing, hint)
+#define ASSERT_HAS_POS(thing, hint)
+#endif
 
 void lyxbreaker(void const * data, const char * hint, int size);
 
@@ -94,37 +109,37 @@ public:
 
 	Geometry & geometry(T const * thing)
 	{
-		checkDim(thing, "geometry");
+		ASSERT_HAS_DIM(thing, "geometry");
 		return data_.find(thing)->second;
 	}
 
 	Geometry const & geometry(T const * thing) const
 	{
-		checkDim(thing, "geometry");
+		ASSERT_HAS_DIM(thing, "geometry");
 		return data_.find(thing)->second;
 	}
 
 	Dimension const & dim(T const * thing) const
 	{
-		checkDim(thing, "dim");
+		ASSERT_HAS_DIM(thing, "dim");
 		return data_.find(thing)->second.dim;
 	}
 
 	int x(T const * thing) const
 	{
-		check(thing, "x");
+		ASSERT_HAS_POS(thing, "x");
 		return data_.find(thing)->second.pos.x;
 	}
 
 	int y(T const * thing) const
 	{
-		check(thing, "y");
+		ASSERT_HAS_POS(thing, "y");
 		return data_.find(thing)->second.pos.y;
 	}
 
 	Point xy(T const * thing) const
 	{
-		check(thing, "xy");
+		ASSERT_HAS_POS(thing, "xy");
 		return data_.find(thing)->second.pos;
 	}
 
@@ -158,24 +173,6 @@ public:
 
 private:
 	friend class CoordCache;
-
-#ifdef ENABLE_ASSERTIONS
-	void checkDim(T const * thing, char const * hint) const
-	{
-		if (!hasDim(thing))
-			lyxbreaker(thing, hint, data_.size());
-	}
-
-	void check(T const * thing, char const * hint) const
-	{
-		if (!has(thing))
-			lyxbreaker(thing, hint, data_.size());
-	}
-#else
-	void checkDim(T const *, char const * const ) const {}
-
-	void check(T const *, char const *) const {}
-#endif
 
 	typedef std::unordered_map<T const *, Geometry> cache_type;
 	cache_type data_;
@@ -213,11 +210,15 @@ public:
 	/// Dump the contents of the cache to lyxerr in debugging form
 	void dump() const;
 private:
+
 	/// MathDatas
 	Arrays arrays_;
 	// All insets
 	Insets insets_;
 };
+
+#undef ASSERT_HAS_DIM
+#undef ASSERT_HAS_POS
 
 } // namespace lyx
 

@@ -1162,7 +1162,7 @@ void BufferView::makeDocumentClass()
 }
 
 
-void BufferView::updateDocumentClass(DocumentClassConstPtr olddc)
+void BufferView::updateDocumentClass(DocumentClassConstPtr const & olddc)
 {
 	StableDocIterator backcur(d->cursor_);
 	ErrorList & el = buffer_.errorList("Class Switch");

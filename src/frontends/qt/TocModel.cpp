@@ -160,7 +160,7 @@ void TocModel::updateItem(DocIterator const & dit)
 }
 
 
-void TocModel::reset(shared_ptr<Toc const> toc)
+void TocModel::reset(shared_ptr<Toc const> const & toc)
 {
 	toc_ = toc;
 	if (toc_->empty()) {

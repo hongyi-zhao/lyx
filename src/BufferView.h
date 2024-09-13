@@ -456,7 +456,7 @@ private:
 	void updateHoveredInset() const;
 
 	///
-	void updateDocumentClass(DocumentClassConstPtr olddc);
+	void updateDocumentClass(DocumentClassConstPtr const & olddc);
 	///
 	int width_;
 	///

@@ -39,7 +39,7 @@ public:
 	///
 	TocModel(QObject * parent);
 	///
-	void reset(std::shared_ptr<Toc const>);
+	void reset(std::shared_ptr<Toc const> const &);
 	///
 	void reset();
 	///

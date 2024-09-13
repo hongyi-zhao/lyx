@@ -27,7 +27,7 @@ class DocIterator;
 class TocBuilder
 {
 public:
-	TocBuilder(std::shared_ptr<Toc> toc);
+	TocBuilder(std::shared_ptr<Toc> const & toc);
 	/// Open a level.
 	/// When entering a float or flex or paragraph (with AddToToc)
 	void pushItem(DocIterator const & dit, docstring const & s,

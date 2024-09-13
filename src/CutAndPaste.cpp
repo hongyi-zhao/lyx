@@ -600,7 +600,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 }
 
 
-Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPtr docclass)
+Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPtr const & docclass)
 {
 	// This used to need to be static to avoid a memory leak. It no longer needs
 	// to be so, but the alternative is to construct a new one of these (with a
@@ -828,15 +828,15 @@ bool multipleCellsSelected(CursorData const & cur)
 }
 
 
-void switchBetweenClasses(DocumentClassConstPtr oldone,
-		DocumentClassConstPtr newone, InsetText & in) {
+void switchBetweenClasses(DocumentClassConstPtr const & oldone,
+		DocumentClassConstPtr const & newone, InsetText & in) {
 	ErrorList el = {};
 	switchBetweenClasses(oldone, newone, in, el);
 }
 
 
-void switchBetweenClasses(DocumentClassConstPtr oldone,
-		DocumentClassConstPtr newone, InsetText & in, ErrorList & errorlist)
+void switchBetweenClasses(DocumentClassConstPtr const & oldone,
+		DocumentClassConstPtr const & newone, InsetText & in, ErrorList & errorlist)
 {
 	errorlist.clear();
 

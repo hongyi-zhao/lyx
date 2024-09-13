@@ -138,11 +138,11 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
  *  It changes layouts and character styles. Errors are reported
  *  in the passed ErrorList.
  */
-void switchBetweenClasses(DocumentClassConstPtr oldone,
-            DocumentClassConstPtr newone, InsetText & in, ErrorList & el);
+void switchBetweenClasses(DocumentClassConstPtr const & oldone,
+            DocumentClassConstPtr const & newone, InsetText & in, ErrorList & el);
 /// Same but without error reporting.
-void switchBetweenClasses(DocumentClassConstPtr oldone,
-            DocumentClassConstPtr newone, InsetText & in);
+void switchBetweenClasses(DocumentClassConstPtr const & oldone,
+            DocumentClassConstPtr const & newone, InsetText & in);
 
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.

@@ -11,9 +11,7 @@
 
 #include "CoordCache.h"
 
-
 #include "support/debug.h"
-
 #include "support/lassert.h"
 
 

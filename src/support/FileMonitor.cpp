@@ -158,7 +158,7 @@ void FileMonitorGuard::notifyChange(QString const & path)
 }
 
 
-FileMonitor::FileMonitor(std::shared_ptr<FileMonitorGuard> monitor)
+FileMonitor::FileMonitor(std::shared_ptr<FileMonitorGuard> const & monitor)
 	: monitor_(monitor)
 {
 	connectToFileMonitorGuard();
@@ -193,7 +193,7 @@ void FileMonitor::changed(bool const exists)
 }
 
 
-ActiveFileMonitor::ActiveFileMonitor(std::shared_ptr<FileMonitorGuard> monitor,
+ActiveFileMonitor::ActiveFileMonitor(std::shared_ptr<FileMonitorGuard> const & monitor,
                                      FileName const & filename, int interval)
 	: FileMonitor(monitor), filename_(filename), interval_(interval),
 	  timestamp_(0), checksum_(0), cooldown_(true)

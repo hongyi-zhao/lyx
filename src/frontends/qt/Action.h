@@ -39,7 +39,7 @@ public:
 
 	// Takes shared ownership of func.
 	// Use for perf-sensitive code such as populating menus.
-	Action(std::shared_ptr<FuncRequest const> func,
+	Action(std::shared_ptr<FuncRequest const> const & func,
 	       QIcon const & icon, QString const & text,
 	       QString const & tooltip, QObject * parent);
 

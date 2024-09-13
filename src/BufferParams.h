@@ -165,7 +165,7 @@ public:
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().
-	void setDocumentClass(DocumentClassConstPtr);
+	void setDocumentClass(DocumentClassConstPtr const &);
 	/// List of modules in use
 	LayoutModuleList const & getModules() const { return layout_modules_; }
 	/// List of default modules the user has removed

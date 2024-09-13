@@ -128,7 +128,7 @@ class FileMonitor : public QObject
 	Q_OBJECT
 
 public:
-	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
+	FileMonitor(std::shared_ptr<FileMonitorGuard> const & monitor);
 
 	typedef signal<void(bool)> sig;
 	typedef sig::slot_type slot;
@@ -166,7 +166,7 @@ class ActiveFileMonitor : public FileMonitor
 {
 	Q_OBJECT
 public:
-	ActiveFileMonitor(std::shared_ptr<FileMonitorGuard> monitor,
+	ActiveFileMonitor(std::shared_ptr<FileMonitorGuard> const & monitor,
 	                  FileName const & filename, int interval);
 	/// call checkModified asynchronously
 	void checkModifiedAsync();

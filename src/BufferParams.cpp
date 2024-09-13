@@ -2752,7 +2752,7 @@ DocumentClassConstPtr BufferParams::documentClassPtr() const
 }
 
 
-void BufferParams::setDocumentClass(DocumentClassConstPtr tc)
+void BufferParams::setDocumentClass(DocumentClassConstPtr const & tc)
 {
 	// evil, but this function is evil
 	doc_class_ = const_pointer_cast<DocumentClass>(tc);

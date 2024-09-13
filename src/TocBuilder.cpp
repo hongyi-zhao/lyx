@@ -24,7 +24,7 @@ namespace lyx {
 
 
 
-TocBuilder::TocBuilder(shared_ptr<Toc> toc)
+TocBuilder::TocBuilder(shared_ptr<Toc> const & toc)
 	: toc_(toc ? toc : make_shared<Toc>()),
 	  stack_()
 {

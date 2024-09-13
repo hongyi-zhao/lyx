@@ -14,7 +14,6 @@
 
 #include "support/docstring.h"
 
-#include <cstdlib> // rand()
 #include <list>
 
 
@@ -104,7 +103,7 @@ public:
 	typedef List::const_iterator const_iterator;
 
 	///
-	BranchList() : separator_(from_ascii("|")), id_(rand()) {}
+	BranchList();
 
 	///
 	docstring separator() const { return separator_; }

@@ -101,7 +101,7 @@ private:
 	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	///
 	void processLatexSorting(otexstream &, OutputParams const &,
-			    docstring const, docstring const) const;
+			    docstring const &, docstring const &) const;
 	///
 	bool hasSortKey() const;
 	///

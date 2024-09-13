@@ -258,7 +258,7 @@ bool InsetIndexMacro::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 void InsetIndexMacro::processLatexSorting(otexstream & os, OutputParams const & runparams,
-				docstring const latex, docstring const plain) const
+				docstring const & latex, docstring const & plain) const
 {
 	if (contains(latex, '\\') && !contains(latex, '@')) {
 		// Plaintext might return nothing (e.g. for ERTs).

@@ -1184,7 +1184,7 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 		im_lang_ = lang;
 	}
 #endif
-		
+
 	// Chinese IM may want cursor position even when preedit string is empty
 	// such a case is handled below
 	if (preedit_string_.empty() && im_->locale().language() != QLocale::Chinese)

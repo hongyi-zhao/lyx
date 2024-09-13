@@ -32,6 +32,11 @@ docstring const & Branch::branch() const
 	return branch_;
 }
 
+static int list_id_generator = 0;
+
+BranchList::BranchList()
+	: separator_(from_ascii("|")), id_(++list_id_generator) {}
+
 
 void Branch::setBranch(docstring const & s)
 {

@@ -149,7 +149,7 @@ struct GuiWorkArea::Private
 	QTransform item_trans_;
 	bool item_trans_needs_reset_ = false;
 	/// for debug
-	QLocale::Language im_lang_;
+	QLocale::Language im_lang_ = QLocale::AnyLanguage;
 
 	/// Ratio between physical pixels and device-independent pixels
 	/// We save the last used value to detect changes of the

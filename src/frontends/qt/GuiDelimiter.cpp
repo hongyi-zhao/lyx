@@ -82,7 +82,7 @@ static docstring fix_name(string const & str, bool big)
 }
 
 struct MathSymbol {
-	MathSymbol(char_type uc = '?', string icon = string())
+	MathSymbol(char_type uc = '?', string const & icon = string())
 		: unicode(uc), icon(icon)
 	{}
 	char_type unicode;

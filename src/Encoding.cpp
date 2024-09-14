@@ -798,7 +798,7 @@ docstring Encodings::convertLaTeXCommands(docstring const & str, bool const lite
 		if (!cnvtd.empty()) {
 			// it did, so we'll take that bit and proceed with what's left
 			ret += cnvtd;
-			val = std::move(rem);
+			val = rem;
 			continue;
 		}
 		// it's a command of some sort

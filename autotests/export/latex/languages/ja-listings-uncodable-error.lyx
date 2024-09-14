@@ -1,27 +1,26 @@
 #LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 573
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties false
 \origin unavailable
 \textclass scrbook
 \use_default_options false
-\maintain_unincluded_children false
-\begin_local_layout
-
-\end_local_layout
+\maintain_unincluded_children no
 \language japanese
 \language_package default
 \inputencoding utf8
 \fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
-\font_typewriter "default" "default"
+\font_typewriter "default" "Source Han Code JP"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,12 +70,14 @@
 \suppress_date false
 \justification false
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \notefontcolor #0000ff
 \branch OutDated
 \selected 0
 \filename_suffix 0
-\color #f5fae7
+\color #f5fae7 #0a0518
 \end_branch
 \index 索引
 \shortcut idx
@@ -97,9 +98,13 @@
 \tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -109,16 +114,18 @@ False positive error:
 \end_layout
 
 \begin_layout Standard
-A listings inset in a Japanese document (both, platex and CJK) resulted
- in a
+A listings inset in a Japanese document (both,
+ platex and CJK) resulted in a
 \end_layout
 
 \begin_layout LyX-Code
-Encoding.cpp (251): Uncodable character in latexString!
+Encoding.cpp (251):
+ Uncodable character in latexString!
 \end_layout
 
 \begin_layout Standard
-error messages in the terminal, even if the content is pure ASCII and
+error messages in the terminal,
+ even if the content is pure ASCII and
 \end_layout
 
 \begin_layout Standard
@@ -126,8 +133,7 @@ the output is fine.
 \end_layout
 
 \begin_layout Standard
-This is because it wants to put the translated listingsname into the preamble
- but does not believe it can be encoded there...
+This is because it wants to put the translated listingsname into the preamble but does not believe it can be encoded there...
 \end_layout
 
 \begin_layout Standard

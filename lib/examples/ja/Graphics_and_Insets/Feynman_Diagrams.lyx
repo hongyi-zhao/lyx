@@ -16,14 +16,16 @@
 % email: lyx-docs@lists.lyx.org
 
 % increase link area for cross-references and autoname them,
-\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\newlength{\abc}
-\settowidth{\abc}{\space}
-\addto\extrasenglish{
+\AtBeginDocument{
+ \renewcommand{\ref}[1]{\mbox{\autoref{#1}}}
+ \newlength{\abc}
+ \settowidth{\abc}{\space}
+ \addto\extrasenglish{
  \renewcommand{\equationautorefname}{\hspace{-\abc}}
  \renewcommand{\sectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsectionautorefname}{sec.\negthinspace}
  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}}
+}
 
 % wird benutzt, um Tabellenzellen zu vergrosern
 \@ifundefined{extrarowheight}
@@ -58,6 +60,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -94,6 +98,7 @@
 \suppress_date true
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index

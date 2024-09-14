@@ -38,7 +38,7 @@ EndPreamble
 End
 \end_local_layout
 \language japanese
-\language_package default
+\language_package babel
 \inputencoding utf8
 \fontencoding auto
 \font_roman "default" "default"
@@ -95,6 +95,7 @@ End
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index Index
@@ -538,7 +539,6 @@ LaTeXプリアンブル
 \end_layout
 
 \begin_layout JLReq Setup
-
 sidenote_type=symbol
 \end_layout
 

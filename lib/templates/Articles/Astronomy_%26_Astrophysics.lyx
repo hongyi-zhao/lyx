@@ -9,7 +9,7 @@
 \use_default_options true
 \maintain_unincluded_children no
 \language english
-\language_package default
+\language_package babel
 \inputencoding utf8
 \fontencoding auto
 \font_roman "default" "default"

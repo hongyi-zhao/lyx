@@ -3402,7 +3402,7 @@ status open
 \begin_layout Quote
 
 \series bold
-\lang japanese-cjk
+\lang japanese
 日本語
 \series default
 （にほんご、にっぽんご[注 1]）は、主に日本国内や日本人同士の間で使用されている言語である。
@@ -3548,6 +3548,11 @@ Script Kannada
 LangCode kn_IN
 \end_layout
 
+\begin_layout Standard
+\begin_inset Branch babel-only
+inverted 0
+status open
+
 \begin_layout Subsection*
 Kazakh
 \end_layout
@@ -3581,7 +3586,7 @@ LangCode kk_KZ
 \end_layout
 
 \begin_layout Itemize
-Not supported by Babel nor Polyglossia.
+Not supported by Polyglossia.
 \end_layout
 
 \begin_layout Itemize
@@ -3636,6 +3641,11 @@ As of 2018,
  Kazakh speakers in China,
  Iran,
  and Afghanistan also use an Arabic-derived alphabet.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*

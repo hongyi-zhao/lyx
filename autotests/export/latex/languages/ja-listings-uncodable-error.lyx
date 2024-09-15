@@ -13,7 +13,7 @@
 \fontencoding auto
 \font_roman "lmodern" "IPAexMincho"
 \font_sans "default" "IPAexGothic"
-\font_typewriter "default" "Source Han Code JP"
+\font_typewriter "default" "Noto Sans Mono CJK JP"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false

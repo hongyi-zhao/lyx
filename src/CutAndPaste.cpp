@@ -126,7 +126,7 @@ static bool isFullyDeleted(ParagraphList const & pars)
 
 PasteReturnValue
 pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
-                     DocumentClassConstPtr oldDocClass, cap::BranchAction branchAction,
+                     DocumentClassConstPtr const & oldDocClass, cap::BranchAction branchAction,
                      ErrorList & errorlist)
 {
 	Buffer const & buffer = *cur.buffer();
@@ -229,7 +229,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	}
 
 	// set the paragraphs to plain layout if necessary
-	DocumentClassConstPtr newDocClass = buffer.params().documentClassPtr();
+	DocumentClassConstPtr const & newDocClass = buffer.params().documentClassPtr();
 	Layout const & plainLayout = newDocClass->plainLayout();
 	Layout const & defaultLayout = newDocClass->defaultLayout();
 	if (cur.inset().usePlainLayout()) {
@@ -699,7 +699,7 @@ void putClipboard(ParagraphList const & paragraphs,
 
 void copySelectionHelper(Buffer const & buf, Text const & text,
 	pit_type startpit, pit_type endpit,
-	int start, int end, DocumentClassConstPtr dc, CutStack & cutstack)
+	int start, int end, DocumentClassConstPtr const & dc, CutStack & cutstack)
 {
 	ParagraphList const & pars = text.paragraphs();
 
@@ -1245,14 +1245,14 @@ docstring selection(size_t sel_index, DocInfoPair docinfo, bool for_math)
 
 
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			DocumentClassConstPtr docclass, AuthorList const & authors,
+			DocumentClassConstPtr const & docclass, AuthorList const & authors,
 			ErrorList & errorList,
 			cap::BranchAction branchAction)
 {
 	// Copy authors to the params. We need those pointers.
 	for (Author const & a : authors)
 		cur.buffer()->params().authors().record(a);
-	
+
 	if (cur.inTexted()) {
 		Text * text = cur.text();
 		LBUFERR(text);

@@ -290,7 +290,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
 }
 
 
-int ForkedCall::startScript(string const & what, sigPtr signal)
+int ForkedCall::startScript(string const & what, sigPtr const & signal)
 {
 	command_ = commandPrep(trim(what));
 	signal_  = signal;

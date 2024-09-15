@@ -128,7 +128,7 @@ enum BranchAction {
 /// Paste the paragraph list \p parlist at the position given by \p cur.
 /// Does not handle undo. Does only work in text, not mathed.
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			DocumentClassConstPtr textclass, AuthorList const & authors,
+			DocumentClassConstPtr const & textclass, AuthorList const & authors,
 			ErrorList & errorList,
 			BranchAction branchAction = BRANCH_ASK);
 

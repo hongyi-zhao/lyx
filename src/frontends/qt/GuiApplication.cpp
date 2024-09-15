@@ -744,7 +744,7 @@ class SocketNotifier : public QSocketNotifier
 {
 public:
 	/// connect a connection notification from the LyXServerSocket
-	SocketNotifier(QObject * parent, int fd, Application::SocketCallback func)
+	SocketNotifier(QObject * parent, int fd, Application::SocketCallback const & func)
 		: QSocketNotifier(fd, QSocketNotifier::Read, parent), func_(func)
 	{}
 

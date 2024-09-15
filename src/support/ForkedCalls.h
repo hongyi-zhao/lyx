@@ -177,7 +177,7 @@ public:
 	int startScript(Starttype, std::string const & what);
 
 	///
-	int startScript(std::string const & what, sigPtr ptr);
+	int startScript(std::string const & what, sigPtr const & ptr);
 
 private:
 	///

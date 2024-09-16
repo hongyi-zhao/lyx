@@ -23,8 +23,8 @@
 \newfontfamily\thaanafont{FreeSerif} % prevent "missing script tag" error
 %\newfontfamily\thaanafont{Noto Sans Thaana} % works, too
 \newfontfamily\tibetanfont{Noto Serif Tibetan}
-\newfontfamily\CJKfont{IPAexMincho}
-\newfontfamily\CJKfontsf{IPAexGothic}
+\newfontfamily\chinesefont[script=CJK]{IPAexMincho}
+\newfontfamily\chinesefontsf[script=CJK]{IPAexGothic}
 \newfontfamily\japanesefont[script=CJK]{IPAexMincho}
 \end_preamble
 \use_default_options false

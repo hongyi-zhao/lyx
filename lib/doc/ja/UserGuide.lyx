@@ -54,6 +54,12 @@
 \renewcommand{\see}[2]{→\,#1\,の項\,参照}{}
 \renewcommand{\chaptermark}[1]{\markboth{第\textup{\thechapter}章\enspace #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\enspace #1}}
+
+% Needed for XeTeX
+\AddToHook{package/fontspec/after}{%
+\newfontfamily\englishfont{FreeSerif}
+\newfontfamily\englishfontsf{FreeSans}
+}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading,bookmarkpackage=false
 \use_default_options false
@@ -21988,14 +21994,22 @@ status open
 引用文の開始部分には開く引用符，
 終了部分には閉じる引用符をつけます．例えば，
 
+\lang english
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\lang japanese
 開く，
 閉じる
+\lang english
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\lang japanese
 という具合です．これは，
 キーボードの「
 \family sans
@@ -22106,19 +22120,23 @@ status open
 \noindent
 
 \family sans
+\lang english
 \begin_inset Quotes eld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes erd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22129,42 +22147,61 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes els
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes ers
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\lang japanese
  および
 \family sans
 \series bold
  
 \family default
 \series default
+\lang english
 
 \begin_inset Quotes els
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes ers
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（アメリカなどで一般的）
 \end_layout
 
@@ -22172,19 +22209,23 @@ status open
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes sld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes sld
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22195,31 +22236,42 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes sls
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes srs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes sld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes sld
 \end_inset
 
 
 \family sans
 \series bold
+\lang japanese
  
 \family default
 \series default
@@ -22229,17 +22281,23 @@ status open
  
 \family default
 \series default
+\lang english
 
 \begin_inset Quotes sls
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes srs
 \end_inset
 
 
 \family sans
 \series bold
+\lang japanese
  
 \family default
 \series default
@@ -22250,19 +22308,23 @@ status open
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes gld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes grd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22273,36 +22335,56 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes gls
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes grs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes gld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes grd
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes gls
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes grs
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（ドイツなどで一般的）
 \end_layout
 
@@ -22310,19 +22392,23 @@ status open
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes pld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes prd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22333,36 +22419,56 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes pls
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes prs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes pld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes prd
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes pls
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes prs
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する （ポーランドなどで一般的）
 \end_layout
 
@@ -22370,19 +22476,23 @@ status open
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes cld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes crd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22393,36 +22503,56 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes cls
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes crs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes cld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes crd
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes cls
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes crs
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（スイスなどで一般的）
 \end_layout
 
@@ -22430,19 +22560,23 @@ status open
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes ald
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes ard
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22453,36 +22587,56 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes als
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes ars
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes ald
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes ard
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes als
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes ars
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（デンマークなどで一般的）
 \end_layout
 
@@ -22550,19 +22704,23 @@ status open
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes bld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes brd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22573,36 +22731,56 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes bls
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes brs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes bld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes brd
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes bls
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes brs
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（イギリスなどで一般的）
 \end_layout
 
@@ -22610,19 +22788,23 @@ status open
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes fld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes frd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22633,36 +22815,56 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes fls
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes frs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes frd
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes fls
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes frs
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（フランスなどで一般的）
 \end_layout
 
@@ -22670,19 +22872,23 @@ status open
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes ild
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes ird
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22693,36 +22899,56 @@ status open
 
 
 \series default
+\lang english
 
 \begin_inset Quotes ils
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes irs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes ild
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes ird
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes ils
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes irs
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（フランスなどで一般的）
 \begin_inset Foot
 status collapsed
@@ -22744,19 +22970,23 @@ status collapsed
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes rld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes rrd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22767,36 +22997,56 @@ status collapsed
 
 
 \series default
+\lang english
 
 \begin_inset Quotes rls
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes rrs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes rld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes rrd
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes rls
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes rrs
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（ロシアなどで一般的）
 \end_layout
 
@@ -22804,19 +23054,23 @@ status collapsed
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes wld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes wrd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22827,36 +23081,56 @@ status collapsed
 
 
 \series default
+\lang english
 
 \begin_inset Quotes wls
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes wrs
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes wld
 \end_inset
 
+
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes wrd
 \end_inset
 
+
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes wls
 \end_inset
 
+
+\lang japanese
 これが内側
+\lang english
+
 \begin_inset Quotes wrs
 \end_inset
 
+
+\lang japanese
  という形の引用符を生成する（スウェーデンなどで一般的）
 \end_layout
 
@@ -22864,19 +23138,23 @@ status collapsed
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes pld
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes prd
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -22887,36 +23165,50 @@ status collapsed
 
 
 \series default
+\lang english
 
 \begin_inset Quotes ald
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes ard
 \end_inset
 
 
 \family default
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes pld
 \end_inset
 
+
+\lang japanese
 これが外側
 \family sans
+\lang english
 
 \begin_inset Quotes prd
 \end_inset
 
 
 \family default
+\lang japanese
  および 
+\lang english
+
 \begin_inset Quotes ald
 \end_inset
 
+
+\lang japanese
 これが内側
 \begin_inset Quotes ard
 \end_inset
@@ -23049,19 +23341,23 @@ nolink "false"
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
+\lang english
 \begin_inset Quotes prd
 \end_inset
 
 
 \series bold
+\lang japanese
 外側
 \series default
+\lang english
 
 \begin_inset Quotes pld
 \end_inset
 
 
 \series bold
+\lang japanese
 
 \begin_inset space \space{}
 \end_inset
@@ -23072,49 +23368,67 @@ nolink "false"
 
 
 \series default
+\lang english
 
 \begin_inset Quotes prs
 \end_inset
 
 
 \series bold
+\lang japanese
 内側
 \series default
+\lang english
 
 \begin_inset Quotes pls
 \end_inset
 
+
+\lang japanese
  
+\lang english
+
 \begin_inset Quotes prd
 \end_inset
 
 
 \family default
+\lang japanese
 これが外側
+\lang english
+
 \begin_inset Quotes pld
 \end_inset
 
+
+\lang japanese
  および 
 \family sans
+\lang english
 
 \begin_inset Quotes prs
 \end_inset
 
 
 \family default
+\lang japanese
 これが内側
 \family sans
+\lang english
 
 \begin_inset Quotes pls
 \end_inset
 
 
 \family default
+\lang japanese
  という形の引用符を生成する（ハンガリーなどで一般的）
 \end_layout
 
 \begin_layout Standard
 引用符の中の引用符（言語によっては注意喚起(
+\lang english
+
 \begin_inset Quotes els
 \end_inset
 
@@ -23122,6 +23436,8 @@ scare quotes
 \begin_inset Quotes ers
 \end_inset
 
+
+\lang japanese
 )など他の役割を担うこともあります）として使われる内側引用符
 \begin_inset Foot
 status collapsed

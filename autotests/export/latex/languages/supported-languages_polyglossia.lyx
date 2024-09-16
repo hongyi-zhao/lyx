@@ -24,8 +24,8 @@
 \newfontfamily\thaanafont{FreeSerif}  % missing script tag in FreeSerif
 %\newfontfamily\thaanafont{Noto Sans Thaana} % works, too
 \newfontfamily\tibetanfont{Noto Sans Tibetan}
-\newfontfamily\CJKfont{IPAexMincho}
-\newfontfamily\CJKfontsf{IPAexGothic}
+\newfontfamily\chinesefont[script=CJK]{IPAexMincho}
+\newfontfamily\chinesefontsf[script=CJK]{IPAexGothic}
 \newfontfamily\japanesefont[script=CJK]{IPAexMincho}
 
 % Needed for churchslavonic which is an extra package

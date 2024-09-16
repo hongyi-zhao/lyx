@@ -34,11 +34,16 @@
 \emergencystretch 1.5em
 \hfuzz 0.3pt
 
-% additional setting for Japanese manual
-\IfFileExists{pxjahyper.sty}
-{\usepackage{pxjahyper}}
+\usepackage{iftex}
+\iftutex\else
+  % Not Xe/LuaTeX:
+  % additional setting for Japanese manual
+  \IfFileExists{pxjahyper.sty}{\usepackage{pxjahyper}}
+  \usepackage{t1enc}
+\fi
 
-\usepackage{t1enc}
+% need to increase this
+\AtBeginDocument{\premulticols = 70pt}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,bookmarkpackage=false
 \use_default_options false

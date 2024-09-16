@@ -143,6 +143,12 @@
 % Added by lyx2lyx
 \setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
+
+% Needed for XeTeX
+\AddToHook{package/fontspec/after}{%
+\newfontfamily\englishfont{FreeSerif}
+\newfontfamily\englishfontsf{FreeSans}
+}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,samesize,bookmarkpackage=false
 \use_default_options true
@@ -31531,6 +31537,8 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $\textrm{ı}$
 \end_inset
 
@@ -31769,6 +31777,8 @@ j
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset Formula $\textrm{ȷ}$
 \end_inset
 
@@ -32361,6 +32371,8 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset ERT
 status collapsed
 
@@ -32437,6 +32449,8 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\lang english
 \begin_inset ERT
 status collapsed
 

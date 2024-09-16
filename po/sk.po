@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-08-26 11:41+0200\n"
-"PO-Revision-Date: 2024-08-26 10:02+0000\n"
+"POT-Creation-Date: 2024-09-07 09:29+0200\n"
+"PO-Revision-Date: 2024-09-07 08:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3411,9 +3411,9 @@ msgstr ""
 msgid "S&ynchronize with output"
 msgstr "S&ynchronizovať s výstupom"
 
-#: src/frontends/qt/ui/OutputUi.ui:85
+#: src/frontends/qt/ui/OutputUi.ui:271
 msgid "C&ustom macro:"
-msgstr "V&lastné makro:"
+msgstr "Vlastn&é makro:"
 
 #: src/frontends/qt/ui/OutputUi.ui:95
 msgid "Custom LaTeX preamble macro"
@@ -3455,7 +3455,7 @@ msgstr "HTML"
 
 #: lib/configure.py:834
 msgid "HTML|H"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: src/frontends/qt/ui/OutputUi.ui:214
 msgid "Images"
@@ -34439,7 +34439,7 @@ msgstr "Protokolový súbor správy verzií nenájdený."
 
 #: src/frontends/qt/GuiLyXFiles.cpp:158 src/frontends/qt/GuiLyXFiles.cpp:632
 msgid "New File From Template"
-msgstr "Nový Súbor zo šablóny…|b"
+msgstr "Nový Súbor zo šablóny"
 
 #: src/frontends/qt/GuiLyXFiles.cpp:190
 msgid "All available files"
@@ -36221,9 +36221,9 @@ msgstr "Zadajte znaky na výber z listiny schém."
 msgid "%1$s (unknown)"
 msgstr "%1$s (neznámy)"
 
-#: src/frontends/qt/Menus.cpp:733
+#: src/frontends/qt/Menus.cpp:765
 msgid "More...|M"
-msgstr "Viac…"
+msgstr "Viac…|V"
 
 #: src/frontends/qt/Menus.cpp:815
 msgid "No Group"

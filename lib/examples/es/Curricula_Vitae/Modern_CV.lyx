@@ -6,7 +6,9 @@
 \origin /systemlyxdir/examples/es/Curricula_Vitae/
 \textclass moderncv
 \begin_preamble
-
+% This is only needed for the case of export
+% to an older version
+\AddToHook{package/babel/after}{\spanishlcroman}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children no

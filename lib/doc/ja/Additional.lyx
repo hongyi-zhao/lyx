@@ -38,7 +38,7 @@
 \iftutex\else
   % Not Xe/LuaTeX:
   % additional setting for Japanese manual
-  \IfFileExists{pxjahyper.sty}{\usepackage{pxjahyper}}
+  \IfFileExists{pxjahyper.sty}{\usepackage{pxjahyper}}{}
   \usepackage{t1enc}
 \fi
 

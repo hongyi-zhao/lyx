@@ -7,8 +7,8 @@
 # LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates,tabletemplates}
 # LYX_USERDIR_VER = Name of environment variable for the user directory
 # lyx       =
-# format    = lyx16x|lyx20x|lyx21x|lyx22x|xhtml|docbook5|epub
-# extension = 16.lyx|20.lyx|21.lyx|22.lyx|xhtml|xml|epub
+# format    = lyx16x|lyx20x|lyx21x|lyx22x|lyx23x|xhtml|docbook5|epub
+# extension = 16.lyx|20.lyx|21.lyx|22.lyx|23.lyx|xhtml|xml|epub
 # file      = xxx
 #
 # Script should be called like:
@@ -37,6 +37,7 @@ set(_TestResultMessage "")
 message(STATUS "IgnoreErrorMessage = \"${IgnoreErrorMessage}\"")
 set(Perl_Script "${TOP_SRC_DIR}/development/autotests/useSystemFonts.pl")
 set(Structure_Script "${TOP_SRC_DIR}/development/autotests/beginEndStructureCheck.pl")
+set(readDefaultOutputFormat "${TOP_SRC_DIR}/development/autotests/readDefaultOutputFormat.pl")
 set(LanguageFile "${TOP_SRC_DIR}/lib/languages")
 set(GetTempDir "${TOP_SRC_DIR}/development/autotests/getTempDir.pl")
 set(_ft ${fonttype})
@@ -226,6 +227,23 @@ set(ENV{LANGUAGE} "US:en")
 if (extension MATCHES "\\.lyx$")
   include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
   get_md5sum(LYX_SOURCE source_md5sum _err)
+  message(STATUS "Executing ${PERL_EXECUTABLE} ${readDefaultOutputFormat} ${LYX_SOURCE}")
+  execute_process(
+    COMMAND ${PERL_EXECUTABLE} ${readDefaultOutputFormat} "${LYX_SOURCE}"
+    OUTPUT_VARIABLE _export_format)
+  message(STATUS "readDefaultOutputFormat = ${_export_format}")
+  if (${_export_format} MATCHES "pdf2")
+    set(_texformat "pdflatex")
+  elsif(${_export_format} MATCHES "pdf3")
+    set(_texformat "platex")
+  elsif(${_export_format} MATCHES "pdf4")
+    set(_texformat "xetex")
+  elsif(${_export_format} MATCHES "pdf5")
+    set(_texformat "luatex")
+  else()
+    set(_texformat "empty")
+  endif()
+
   foreach(_lv RANGE 1 20)
     set(used_tex_file "${result_file_base}.tex")
     set(result_file_base "${result_file_base}.${LYX_FORMAT_NUM}")
@@ -260,9 +278,11 @@ if (extension MATCHES "\\.lyx$")
           break()
         endif()
         message(STATUS "Create the corresponding .tex file \"${used_tex_file}\"")
-        execute_process(
-          COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E pdflatex ${used_tex_file} "${LYX_SOURCE}"
-          RESULT_VARIABLE _errx)
+       if (NOT ${_texformat} MATCHES "empty")
+          execute_process(
+            COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${_texformat} ${used_tex_file} "${LYX_SOURCE}"
+            RESULT_VARIABLE _errx)
+        endif()
       endif()
     endif()
     get_md5sum(result_file_name result_md5sum _err)
@@ -284,12 +304,14 @@ if (extension MATCHES "\\.lyx$")
       endif()
       message(STATUS "Source(${LYX_SOURCE}) and dest(${result_file_name}) are equal")
       message(STATUS "Now try to export the lyx2lyx created file")
-      message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E default \"${result_file_name}.default\" \"${result_file_name}\"")
-      execute_process(
-        COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E default "${result_file_name}.default" "${result_file_name}"
-        RESULT_VARIABLE _err
-        ERROR_VARIABLE lyxerr)
-      Summary(_err "Test-compilation of \"${result_file_name}\" to format default")
+      if (_export_format MATCHES "^pdf")
+        message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${_export_format} \"${result_file_name}.default\" \"${result_file_name}\"")
+        execute_process(
+          COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${_export_format} "${result_file_name}.default" "${result_file_name}"
+          RESULT_VARIABLE _err
+          ERROR_VARIABLE lyxerr)
+        Summary(_err "Test-compilation of \"${result_file_name}\" to format ${_export_format}")
+      endif()
       break()
     else()
       list(APPEND _TestResultMessage "Warning: \"${LYX_SOURCE}\" and \"${result_file_name}\" differ")

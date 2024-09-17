@@ -22,7 +22,6 @@
 
 #include "BiblioInfo.h"
 
-#include <QAbstractListModel>
 #include <QStandardItemModel>
 #include <QStringList>
 #include <QStringListModel>

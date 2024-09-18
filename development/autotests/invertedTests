@@ -64,7 +64,22 @@ export/export/latex/unicodesymbols/031-thai_th_(euc-|gbk|jis|utf8-cjk).*
 
 # Package clashes when Japanese documents are compiled with non-TeX fonts,
 #
+# Comments from Jürgen (Message-ID:<09d6e9eb3f248be1e28d9133f7c5b582ab1a6b77.camel@lyx.org>):
+#
+# The construct that breaks is the formula
+#
+#  \[
+#  \mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{\textbackslash
+#  mathbfを使用した数式}
+#  \]
+#
+#in sec. 11.2. It's the \Gamma, for that matter. If replaced by \gamma
+#(though not \Delta), the document compiles.
+# I think the solution would be setting a different font for maths with
+# unicode-math or mathspec, but I am not familiar with those packages,
+# and my attempts only made things worse.
 export/doc/ja/(Math).*_systemF
+#
 export/doc/ja/(Formula-numbering|EmbeddedObjects)_pdf4_systemF
 
 # Test for command \pdfsave fails:

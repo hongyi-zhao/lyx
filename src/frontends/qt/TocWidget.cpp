@@ -501,8 +501,7 @@ void TocWidget::updateView()
 	if (tocTV->model() != toc_model) {
 		tocTV->setModel(toc_model);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
-		if (persistent_)
-			setTreeDepth(depth_);
+		setTreeDepth(depth_);
 	}
 
 	sortCB->blockSignals(true);
@@ -709,8 +708,7 @@ void TocWidget::init(QString const & str)
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
 	updateViewNow();
-	if (persistent_)
-		setTreeDepth(depth_);
+	setTreeDepth(depth_);
 }
 
 } // namespace frontend

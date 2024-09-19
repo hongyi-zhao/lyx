@@ -18,7 +18,6 @@
 #include "frontends/Painter.h"
 
 #include <QPainter>
-#include <QPainterPath>
 #include <stack>
 
 namespace lyx {

@@ -30,6 +30,7 @@
 
 #include <algorithm>
 
+#include <QPainterPath>
 #include <QTextLayout>
 
 using namespace std;

@@ -62,6 +62,7 @@
 #include <QMimeData>
 #include <QMenu>
 #include <QPainter>
+#include <QPainterPath>
 #include <QPalette>
 #include <QScrollBar>
 #include <QStyleOption>

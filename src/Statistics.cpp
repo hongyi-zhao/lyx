@@ -72,8 +72,8 @@ void Statistics::update(Text const & text)
 
 void Statistics::update(CursorSlice const & from, CursorSlice & to)
 {
-	LASSERT(from.text() == to.text(), return);
 	if (from.idx() == to.idx()) {
+		LASSERT(from.text() == to.text(), return);
 		if (from.pit() == to.pit()) {
 			update(from.paragraph(), from.pos(), to.pos());
 		} else {

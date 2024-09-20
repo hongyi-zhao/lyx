@@ -30,7 +30,7 @@ if (defined($useNonTexFonts) && defined($outputFormat)) {
   if ($useNonTexFonts) {
     if ($outputFormat eq "default") {
       if ($language eq "japanese") {
-        $outputFormat = "pdf3";
+        $outputFormat = "pdf4";
       }
       else {
         $outputFormat = "pdf5";

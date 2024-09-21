@@ -91,6 +91,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		this, SLOT(browseBibPressed()));
 	connect(inheritPB, SIGNAL(clicked()),
 		this, SLOT(inheritPressed()));
+	connect(relAbsPB, SIGNAL(clicked()),
+		this, SLOT(relAbsPressed()));
 
 	selected_model_.insertColumns(0, 1);
 	selectionManager = new GuiSelectionManager(this, availableLV, selectedLV,
@@ -123,6 +125,7 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	bc().addReadOnly(styleCB);
 	bc().addReadOnly(bibtocCB);
 	bc().addReadOnly(bibEncodingCO);
+	bc().addReadOnly(relAbsPB);
 
 	selectedLV->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
@@ -180,6 +183,7 @@ void GuiBibtex::selUpdated()
 {
 	selectionManager->update();
 	editPB->setEnabled(deletePB->isEnabled());
+	updateReAbs();
 	changed();
 }
 
@@ -234,6 +238,23 @@ void GuiBibtex::browseBibPressed()
 	}
 }
 
+GuiBibtex::LocalPath GuiBibtex::localPathSelected()
+{
+	QModelIndexList selIdx =
+		selectedLV->selectionModel()->selectedIndexes();
+	if (selIdx.isEmpty())
+		return LP_None;
+	QModelIndex idx = selIdx.first();
+	QString sel = idx.data().toString();
+	string const texfile = support::changeExtension(fromqstr(sel), "bib");
+	if (FileName::isAbsolute(texfile))
+		return LP_Absolute;
+	FileName const file = support::makeAbsPath(texfile, buffer().filePath());
+	if (file.exists())
+		return LP_Relative;
+	return LP_None;
+}
+
 
 bool GuiBibtex::hasInherits()
 {
@@ -278,6 +299,38 @@ void GuiBibtex::inheritPressed()
 }
 
 
+void GuiBibtex::relAbsPressed()
+{
+	LocalPath const p = localPathSelected();
+
+	if (p == LP_None)
+		return;
+
+	QModelIndexList selIdx =
+		selectedLV->selectionModel()->selectedIndexes();
+	QModelIndex idx = selIdx.first();
+	QString const qf = idx.data().toString();
+	string f = fromqstr(qf);
+	FileName const file = (p == LP_Absolute) ?
+				FileName(f)
+			      : support::makeAbsPath(f, buffer().filePath());
+	QString const new_item = (p == LP_Absolute)
+			? toqstr(file.relPath(buffer().filePath()))
+			: toqstr(file.absoluteFilePath());
+	QStringList sb;
+	for (QString s : selected_bibs_) {
+		if (s == qf)
+			sb << new_item;
+		else
+			sb << s;
+	}
+	selected_bibs_ = sb;
+	setSelectedBibs(selected_bibs_);
+	selectedLV->selectRow(selected_bibs_.indexOf(new_item));
+	changed();
+}
+
+
 void GuiBibtex::on_editPB_clicked()
 {
 	QModelIndexList selIdx =
@@ -302,6 +355,25 @@ void GuiBibtex::clearSelection()
 {
 	selected_bibs_.clear();
 	setSelectedBibs(selected_bibs_);
+}
+
+
+void GuiBibtex::updateReAbs()
+{
+	switch (localPathSelected()) {
+	case LP_Absolute:
+		relAbsPB->setText(qt_("&Make Relative"));
+		relAbsPB->setEnabled(true);
+		break;
+	case LP_Relative:
+		relAbsPB->setText(qt_("&Make Absolute"));
+		relAbsPB->setEnabled(true);
+		break;
+	case LP_None:
+	default:
+		relAbsPB->setEnabled(false);
+		break;
+	}
 }
 
 
@@ -349,6 +421,7 @@ void GuiBibtex::setSelectedBibs(QStringList const & sl)
 		selectedLV->setIndexWidget(selected_model_.index(i, 1), cb);
 	}
 	editPB->setEnabled(deletePB->isEnabled());
+	updateReAbs();
 }
 
 
@@ -446,6 +519,7 @@ void GuiBibtex::updateContents()
 
 	setFileEncodings(getVectorFromString(params_["file_encodings"], from_ascii("\t")));
 	editPB->setEnabled(deletePB->isEnabled());
+	updateReAbs();
 }
 
 

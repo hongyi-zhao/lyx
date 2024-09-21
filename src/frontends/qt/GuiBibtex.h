@@ -39,6 +39,7 @@ private Q_SLOTS:
 	void on_buttonBox_accepted();
 	void browseBstPressed();
 	void browseBibPressed();
+	void relAbsPressed();
 	void inheritPressed();
 	void on_editPB_clicked();
 	void databaseChanged();
@@ -101,6 +102,16 @@ private:
 	bool isBufferDependent() const override { return true; }
 	/// Is his a child which can inherit bibs from its master?
 	bool hasInherits();
+	/// Is an item with local path selected?
+	/// returns which (none, absolute, relative)
+	enum LocalPath {
+		LP_None,
+		LP_Absolute,
+		LP_Relative
+	};
+	LocalPath localPathSelected();
+	///
+	void updateReAbs();
 
 private:
 	///

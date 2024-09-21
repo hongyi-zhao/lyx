@@ -86,6 +86,16 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="relAbsPB">
+          <property name="toolTip">
+           <string>Transfer an absolute local path to a relative one or vice versa</string>
+          </property>
+          <property name="text">
+           <string>&amp;Make Relative</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="inheritPB">
           <property name="toolTip">
            <string>Inherit bibliography databases from the master document</string>

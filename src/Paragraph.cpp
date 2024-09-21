@@ -3110,7 +3110,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		OutputParams rp = runparams;
 		rp.free_spacing = style.free_spacing;
 		rp.local_font = &current_font;
-		rp.intitle = style.intitle;
+		rp.intitle |= style.intitle;
 
 		// Two major modes:  LaTeX or plain
 		// Handle here those cases common to both modes

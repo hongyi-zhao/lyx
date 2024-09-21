@@ -346,10 +346,10 @@ void InsetLabel::latex(otexstream & os, OutputParams const & runparams_in) const
 	if (runparams_in.postpone_fragile_stuff)
 		runparams_in.post_macro += command;
 	else {
-		// protect label in moving argument (#9404),
-		// but not in subfloat caption (#11950)
+		// protect label in \thanks notes (#9404)
 		if (runparams.moving_arg
-		    && runparams.inFloat != OutputParams::SUBFLOAT)
+		    && runparams.intitle
+		    && runparams.inFootnote)
 			os << "\\protect";
 		os << command;
 	}

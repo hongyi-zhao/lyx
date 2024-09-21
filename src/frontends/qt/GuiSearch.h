@@ -13,7 +13,6 @@
 #ifndef GUISEARCH_H
 #define GUISEARCH_H
 
-#include "GuiDialog.h"
 #include "DockView.h"
 #include "FancyLineEdit.h"
 

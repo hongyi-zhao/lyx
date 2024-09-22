@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-09-07 09:29+0200\n"
-"PO-Revision-Date: 2024-09-07 08:59+0000\n"
+"POT-Creation-Date: 2024-09-21 21:29+0200\n"
+"PO-Revision-Date: 2024-09-21 19:33+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -310,6 +310,10 @@ msgstr "Pridať BibTeX databázu z vášho lokálneho adresára"
 #: src/frontends/qt/ui/BibtexUi.ui:78
 msgid "Add &Local..."
 msgstr "&Pridať lokálnu…"
+
+#: src/frontends/qt/ui/BibtexUi.ui:91
+msgid "Transfer an absolute local path to a relative one or vice versa"
+msgstr "Preniesť absolútnu lokálnu cestu na relatívnu alebo naopak"
 
 #: src/frontends/qt/ui/BibtexUi.ui:91
 msgid "Inherit bibliography databases from the master document"
@@ -32556,6 +32560,14 @@ msgstr ""
 #: src/frontends/qt/GuiBibtex.cpp:130 src/frontends/qt/GuiBibtex.cpp:341
 msgid "Document Encoding"
 msgstr "Kódovanie dokumentu"
+
+#: src/frontends/qt/GuiBibtex.cpp:365 src/frontends/qt/ui/BibtexUi.ui:94
+msgid "&Make Relative"
+msgstr "&Vytvoriť relatívne"
+
+#: src/frontends/qt/GuiBibtex.cpp:369
+msgid "&Make Absolute"
+msgstr "&Vytvoriť absolútne"
 
 #: src/frontends/qt/GuiBibtex.cpp:312
 msgid "Database"

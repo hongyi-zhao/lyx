@@ -49,7 +49,6 @@ macro(add_gettext_python  _par _dir)
     endif()
     ADD_CUSTOM_COMMAND(
       OUTPUT "${_dst}"
-      PRE_BUILD
       COMMAND  ${CMAKE_COMMAND}
 	"-DTOP_SRC_DIR=${TOP_SRC_DIR}"
 	"-DDestFile=${_dst}"
@@ -71,7 +70,6 @@ macro(add_gettext_python  _par _dir)
   else()
     ADD_CUSTOM_COMMAND(
       OUTPUT "${_dst}"
-      PRE_BUILD
       COMMAND ${LYX_PYTHON_EXECUTABLE}
       ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
       DEPENDS ${_sources} ${_src_files} "${TOP_SRC_DIR}/po/lyx_pot.py"

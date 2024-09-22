@@ -5,7 +5,7 @@
 \save_transient_properties true
 \origin /systemlyxdir/examples/es/Handouts/
 \textclass tufte-handout
-\use_default_options true
+\use_default_options false
 \maintain_unincluded_children no
 \language spanish
 \language_package default
@@ -78,7 +78,7 @@
 \tracking_changes false
 \output_changes false
 \change_bars false
-\postpone_fragile_content true
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -239,9 +239,6 @@ Primera parte
 
 \begin_layout Section
 Composición de las páginas
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:composición-de-páginas"
@@ -253,15 +250,16 @@ name "sec:composición-de-páginas"
 
 \begin_layout Subsection
 Diseño de encabezados y párrafos
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:diseño-de-encabezados"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Este estilo suministra cabeceras 
 \shape smallcaps
 a
@@ -392,15 +390,16 @@ Idea nueva
 
 \begin_layout Subsection
 Notas laterales
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:notas-laterales"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Una de las características más destacadas y peculiares de este estilo es el uso exhaustivo de notas que se ubican en el margen de la página.
  Hay un amplio margen para dejar sitio a notas y pequeñas figuras.
  Las notas al pie se convertirán automáticamente a notas laterales (numeradas).
@@ -539,15 +538,16 @@ nobibliography
 
 \begin_layout Section
 Figuras y cuadros
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:figuras-y-cuadros"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Imágenes y gráficos juegan un papel esencial en el trabajo de Tufte.
  Además de los flotantes normales 
 \emph on
@@ -1130,9 +1130,6 @@ Segunda parte
 
 \begin_layout Section
 Tipografía
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:tipografía"
@@ -1144,15 +1141,16 @@ name "sec:tipografía"
 
 \begin_layout Subsection
 Tipos de letra
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:tipos-de-letra"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Si están instalados los tipos 
 \emph on
 Palatino
@@ -1173,15 +1171,16 @@ Computer Modern
 
 \begin_layout Subsection
 Espacio entre letras
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:espacio-entre-letras"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Esta clase de documento incluye dos nuevos estilos de texto y algunas mejoras de los comandos existentes para el espaciado de letras.
 \end_layout
 
@@ -1352,9 +1351,6 @@ Las Letras Iniciales De Las Palabras En Esta Frase Son Capitales.
 
 \begin_layout Section
 Personalización
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:personalización"
@@ -1366,15 +1362,16 @@ name "sec:personalización"
 
 \begin_layout Subsection
 Opciones de clase de documento
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:opciones-de-clase"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 La clase 
 \family sans
 tufte-handout
@@ -1457,15 +1454,16 @@ justified
 
 \begin_layout Subsection
 Definición de secciones nuevas
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:definición-de-secciones"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Como se ha mencionado en la página
 \begin_inset space ~
 \end_inset
@@ -1611,9 +1609,6 @@ titlesec
 
 \begin_layout Section
 Soporte
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:soporte"
@@ -1625,15 +1620,16 @@ name "sec:soporte"
 
 \begin_layout Subsection
 Dependencias de paquete
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:dependencias"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Lo siguiente es una lista de paquetes de los que depende la clase de documento 
 \family sans
 tufte-handout
@@ -1701,15 +1697,16 @@ beramono*
 \begin_layout Subsection
 Sitio web de Tufte-\SpecialChar LaTeX
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:website"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 El sitio web para los paquetes Tufte-\SpecialChar LaTeX
  está ubicado en 
 \begin_inset Flex URL

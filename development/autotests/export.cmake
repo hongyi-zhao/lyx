@@ -230,19 +230,11 @@ if (extension MATCHES "\\.lyx$")
   message(STATUS "Executing ${PERL_EXECUTABLE} ${readDefaultOutputFormat} ${LYX_SOURCE}")
   execute_process(
     COMMAND ${PERL_EXECUTABLE} ${readDefaultOutputFormat} "${LYX_SOURCE}"
-    OUTPUT_VARIABLE _export_format)
-  message(STATUS "readDefaultOutputFormat = ${_export_format}")
-  if (${_export_format} MATCHES "pdf2")
-    set(_texformat "pdflatex")
-  elseif(${_export_format} MATCHES "pdf3")
-    # Ideally we would set to "platex" if Japanese, and "latex" if not Japanese.
-    # For example, currently we invert export/examples/Articles/Chess/Game_1_lyx because
-    # it should be exported to "latex" instead of "platex".
-    set(_texformat "platex")
-  elseif(${_export_format} MATCHES "pdf4")
-    set(_texformat "xetex")
-  elseif(${_export_format} MATCHES "pdf5")
-    set(_texformat "luatex")
+    OUTPUT_VARIABLE _formats)
+  message(STATUS "readDefaultOutputFormat = ${_formats}")
+  if (${_formats} MATCHES "^([a-z]+)/(pdf[2345]?)$")
+    set(_texformat ${CMAKE_MATCH_1})
+    set(_export_format ${CMAKE_MATCH_2})
   else()
     set(_texformat "empty")
   endif()

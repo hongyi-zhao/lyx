@@ -57,10 +57,6 @@ export/export/lyx2lyx/lyx_2_3_test2_lyx(16|20)
 # clear it is worth the time to try to fix the issue.
 export/doc/ja/UserGuide_lyx(16|20)
 export/examples/ja/Modules/LilyPond_Book_lyx(16|20)
-# in export.cmake, if output format is pdf3, we try to export to "platex" which
-# makes sense for all other tests except this one (which should be exported to
-# "latex" instead).
-export/examples/Articles/Chess/Game_1_lyx.*
 
 # nonstandard tests failing for unknown reason:
 export/templates/Articles/R_Journal_(dvi3|pdf[45])_systemF

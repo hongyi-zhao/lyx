@@ -2332,10 +2332,10 @@
 0x2224 ""                         "" "force!=utf8x" "\\nmid" "" # DOES NOT DIVIDE # or "\\notdivides" "mathabx"
 0x2225 ""                         "" "force!=utf8x" "\\parallel" "" # PARALLEL TO
 0x2226 ""                         "" "force!=utf8x" "\\nparallel" "amssymb" # NOT PARALLEL TO
-0x2227 ""                         "" "force!=utf8x" "\\bigwedge" "" # LOGICAL AND
-0x2228 ""                         "" "force!=utf8x" "\\bigvee" "" # LOGICAL OR
-0x2229 ""                         "" "force!=utf8x" "\\bigcap" # INTERSECTION
-0x222a ""                         "" "force!=utf8x" "\\bigcup" "" # UNION
+0x2227 ""                         "" "force!=utf8x" "\\wedge" "" # LOGICAL AND
+0x2228 ""                         "" "force!=utf8x" "\\vee" "" # LOGICAL OR
+0x2229 ""                         "" "force!=utf8x" "\\cap" # INTERSECTION
+0x222a ""                         "" "force!=utf8x" "\\cup" "" # UNION
 0x222b ""                         "" "force!=utf8x" "\\int" "esint" # INTEGRAL
 0x222c ""                         "" "force!=utf8x" "\\iint" "esint|amsmath" # DOUBLE INTEGRAL
 0x222d ""                         "" "force!=utf8x" "\\iiint" "esint|amsmath" # TRIPLE INTEGRAL

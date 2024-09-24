@@ -214,6 +214,8 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd,
 
 	// Start an undo group.
 	cur.beginUndoGroup();
+	// re-focus the workarea after the action?
+	bool refocus_wa = false;
 
 	switch (cmd.action())
 	{
@@ -259,6 +261,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd,
 				: item.parIDs();
 		docstring const arg = (type.empty()) ? id : id + " " + type;
 		dispatch(FuncRequest(cmd, arg));
+		refocus_wa = true;
 		break;
 	}
 
@@ -269,11 +272,21 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd,
 		outline(cmd.action());
 		break;
 
+	case LFUN_LABEL_INSERT_AS_REFERENCE:
+		refocus_wa = true;
+	// fall through
 	default: {
 		FuncRequest tmpcmd(cmd);
 		if (inset)
 			inset->dispatch(cur, tmpcmd);
 	}
+	}
+	if (refocus_wa) {
+		QMainWindow * mw = static_cast<QMainWindow *>(&gui_view_);
+		if (mw) {
+			mw->activateWindow();
+			mw->setFocus();
+		}
 	}
 	cur.endUndoGroup();
 }

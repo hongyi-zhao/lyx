@@ -252,7 +252,7 @@ export/export/latex/languages/supported-languages_polyglossia_XeTeX_(dvi3|pdf5)_
 # Some packages fail with XeTeX/LuaTeX
 # Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
 # Is there a new version fixing the problem?
-export/examples/Articles/Astronomy_%26_Astrophysics_(dvi3|pdf5)_texF
+export/examples/Articles/Astronomy_%26_Astrophysics_(dvi3|pdf4|pdf5)_(texF|systemF)
 
 # These files use packages that are not compatible with the newest LuaTeX. We
 # could potentially fix these by loading the luatex85 package early in the

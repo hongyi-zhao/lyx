@@ -894,9 +894,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	textLayoutModule->indentLE->setValidator(new LengthValidator(
 		textLayoutModule->indentLE, false));
 	// parskip accepts glue length
-	LengthValidator * skipLEValidator = new LengthValidator(textLayoutModule->skipLE, false);
-	skipLEValidator->setBottom(GlueLength());
-	textLayoutModule->skipLE->setValidator(skipLEValidator);
+	textLayoutModule->skipLE->setValidator(glueLengthValidator(textLayoutModule->skipLE));
 
 	textLayoutModule->indentCO->addItem(qt_("Default"), toqstr("default"));
 	textLayoutModule->indentCO->addItem(qt_("Custom"), toqstr("custom"));

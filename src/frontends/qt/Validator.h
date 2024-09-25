@@ -86,6 +86,11 @@ LengthValidator * unsignedLengthValidator(QLineEdit *);
  */
 LengthValidator * unsignedGlueLengthValidator(QLineEdit *);
 
+/** @returns a new @c LengthValidator that does accept negative lengths
+ *  and glue lengths.
+ */
+LengthValidator * glueLengthValidator(QLineEdit *);
+
 
 /** A class to ascertain whether the data passed to the @c validate()
  *  member function can be interpreted as a GlueLength or is @param autotext.

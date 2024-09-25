@@ -56,7 +56,7 @@ GuiLine::GuiLine(QWidget * parent) : InsetParamsWidget(parent)
 	addCheckedWidget(WidthLE, WidthValueL);
 	addCheckedWidget(HeightLE, HeightValueL);
 
-	OffsetLE->setValidator(unsignedGlueLengthValidator(OffsetLE));
+	OffsetLE->setValidator(glueLengthValidator(OffsetLE));
 	WidthLE->setValidator(unsignedGlueLengthValidator(WidthLE));
 	HeightLE->setValidator(unsignedGlueLengthValidator(HeightLE));
 

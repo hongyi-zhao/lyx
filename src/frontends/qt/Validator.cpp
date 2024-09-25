@@ -134,6 +134,15 @@ LengthValidator * unsignedGlueLengthValidator(QLineEdit * ed)
 }
 
 
+LengthValidator * glueLengthValidator(QLineEdit * ed)
+{
+	LengthValidator * v = new LengthValidator(ed);
+	v->setBottom(GlueLength());
+	v->setUnsigned(false);
+	return v;
+}
+
+
 LengthAutoValidator::LengthAutoValidator(QWidget * parent, QString const & autotext)
 	: LengthValidator(parent),
 	  autotext_(autotext)

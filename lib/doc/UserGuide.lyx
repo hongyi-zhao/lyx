@@ -9646,12 +9646,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9664,6 +9666,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9687,6 +9690,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -39036,7 +39040,40 @@ Color
 
 links
 \family default
- both turn off the default behavior of enclosing all links in frames;
+ both turn off the default behavior of enclosing all links in frames
+\change_inserted 5863208 1727201632
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1727201632
+The "colorlinks" option in the hyperref package disables the borders at the beginning of the document.
+ If you want both you need to add the following to the preamble after enabling colored links 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1727201632
+
+\backslash
+AtBeginDocument{
+\backslash
+hypersetup{pdfborder=0 0 1}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+;
  
 \family sans
 Color

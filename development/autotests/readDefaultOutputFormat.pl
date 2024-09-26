@@ -65,6 +65,7 @@ if ($language eq "japanese") {
 else { # not a japanese language
   if ($useNonTexFonts) {
     if ($outputFormat =~ /^(default|pdf4)$/) {
+      $outputFormat = "pdf4";
       $texFormat = "xetex";
     }
     elsif ($outputFormat eq "pdf5") {

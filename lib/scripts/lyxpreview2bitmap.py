@@ -400,7 +400,11 @@ def main(argv):
     bibtex = find_exe(bibtex or bibtex_commands)
     if lilypond:
         lilypond_book = find_exe_or_terminate(lilypond_book or
-            ["lilypond-book --safe"])
+            ["lilypond-book"])
+        if lilypond_book and latex == "latex":
+            # with lilypond, we default to pdflatex rather than latex
+            # as we do not want to deal with eps conversion (see #13103)
+            latex = "pdflatex"
 
     # These flavors of latex are known to produce pdf output
     pdf_output = latex in pdflatex_commands

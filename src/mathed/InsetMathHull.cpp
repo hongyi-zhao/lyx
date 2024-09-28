@@ -2417,7 +2417,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	}
 
 	odocstringstream osmath;
-	MathMLStream ms(osmath, mathmlNamespacePrefix);
+	MathMLStream ms(osmath, mathmlNamespacePrefix, MathMLStream::mathml3);
 
 	// Output the MathML subtree.
 	// TeX transcription. Avoid MTag/ETag so that there are no extraneous spaces.
@@ -2440,7 +2440,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 		// First, generate the MathML expression. If there is an error in the generation, this block is not fully
 		// executed, and the formula is not output to the DocBook stream.
 		odocstringstream ostmp;
-		MathMLStream mstmp(ostmp, ms.xmlns());
+		MathMLStream mstmp(ostmp, ms.xmlns(), ms.version());
 		mathmlize(mstmp);
 
 		// Choose the display style for the formula, to be output as an attribute near the formula root.
@@ -2651,7 +2651,7 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 	// FIXME Eventually we would like to do this inset by inset.
 	if (mathtype == BufferParams::MathML) {
 		odocstringstream os;
-		MathMLStream ms(os);
+		MathMLStream ms(os, "", MathMLStream::mathmlCore);
 		try {
 			mathmlize(ms);
 			success = true;

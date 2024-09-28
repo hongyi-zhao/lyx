@@ -288,8 +288,8 @@ TeXMathStream & operator<<(TeXMathStream & ws, unsigned int i)
 //////////////////////////////////////////////////////////////////////
 
 
-MathMLStream::MathMLStream(odocstream & os, std::string const & xmlns)
-	: os_(os), xmlns_(xmlns)
+MathMLStream::MathMLStream(odocstream & os, std::string const & xmlns, MathMLVersion version)
+	: os_(os), xmlns_(xmlns), version_(version)
 {
 	if (inText())
 		font_math_style_ = TEXT_STYLE;

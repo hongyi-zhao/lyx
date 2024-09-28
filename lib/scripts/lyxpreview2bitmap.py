@@ -425,6 +425,10 @@ def main(argv):
         if pdf_output:
             lilypond_book += " --pdf"
         lilypond_book += " --latex-program=%s" % latex.split()[0]
+        if pdf_output:
+            lilypond_book += " --lily-output-dir=ly-pdf"
+        else:
+            lilypond_book += " --lily-output-dir=ly-eps"
 
         # Make a copy of the latex file
         lytex_file = latex_file_re.sub(".lytex", latex_file)

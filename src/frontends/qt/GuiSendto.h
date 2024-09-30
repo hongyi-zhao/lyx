@@ -16,8 +16,6 @@
 #include "GuiDialog.h"
 #include "ui_SendtoUi.h"
 
-#include <vector>
-
 class QListWidgetItem;
 
 namespace lyx {

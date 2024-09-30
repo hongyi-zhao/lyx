@@ -9646,14 +9646,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9666,7 +9664,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9690,7 +9687,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -51056,7 +51052,8 @@ Encodings
 \family default
  dropdown,
  \SpecialChar LyX
- automatically selects the appropriate traditional encoding for the given language(s).If the document contains text in more than one language you thus may get more than one encoding in the \SpecialChar LaTeX
+ automatically selects the appropriate traditional encoding for the given language(s).
+ If the document contains text in more than one language you thus may get more than one encoding in the \SpecialChar LaTeX
  file.
  
 \end_layout

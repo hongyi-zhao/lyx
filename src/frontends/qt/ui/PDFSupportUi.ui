@@ -281,6 +281,9 @@
             </item>
             <item>
              <widget class="QCheckBox" name="colorlinksCB">
+              <property name="toolTip">
+               <string>Mutually exclusive with frames around links, see manual.</string>
+              </property>
               <property name="text">
                <string>C&amp;olor links</string>
               </property>

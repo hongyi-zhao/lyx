@@ -1083,6 +1083,13 @@ struct GuiApplication::Private
 	///
 	KeyModifier meta_fake_bit;
 
+	/// input method uses this to preserve initial input item transform
+	bool first_work_area = true;
+	/// geometry of the input item of the first working area
+	QRectF item_rect_base_;
+	/// input item transformation of the first working area
+	QTransform item_trans_base_;
+
 	/// The result of last dispatch action
 	DispatchResult dispatch_result_;
 
@@ -2301,6 +2308,42 @@ docstring GuiApplication::viewStatusMessage()
 }
 
 
+bool GuiApplication::isFirstWorkArea() const
+{
+	return d->first_work_area;
+}
+
+
+void GuiApplication::firstWorkAreaDone()
+{
+	d->first_work_area = false;
+}
+
+
+QRectF GuiApplication::baseInputItemRectangle()
+{
+	return d->item_rect_base_;
+}
+
+
+void GuiApplication::setBaseInputItemRectangle(QRectF rect)
+{
+	d->item_rect_base_ = rect;
+}
+
+
+QTransform GuiApplication::baseInputItemTransform()
+{
+	return d->item_trans_base_;
+}
+
+
+void GuiApplication::setBaseInputItemTransform(QTransform trans)
+{
+	d->item_trans_base_ = trans;
+}
+
+
 string GuiApplication::inputLanguageCode() const
 {
 	QLocale loc = inputMethod()->locale();
@@ -2585,6 +2628,11 @@ void GuiApplication::createView(bool autoShow, int view_id)
 	// menubar on Mac to catch shortcuts even without any GuiView.
 	if (d->global_menubar_)
 		d->global_menubar_->releaseKeyboard();
+
+	// need to reset system input method coords with the preserved one
+	// when the new view is the second one or later
+	if (d->views_.size() > 0)
+		current_view_->currentWorkArea()->resetInputItemGeometry(true);
 
 	// create new view
 	int id = view_id;

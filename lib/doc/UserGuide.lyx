@@ -39048,25 +39048,44 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 5863208 1727201632
-The "colorlinks" option in the hyperref package disables the borders at the beginning of the document.
- If you want both you need to add the following to the preamble after enabling colored links 
+\change_inserted 5863208 1727641281
+The "colorlinks" option in the hyperref package disables the frames around links at the beginning of the document.
+ If you want both you need to add the following to the preamble after enabling colored links:
+ 
 \begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 5863208 1727201632
+\change_inserted 5863208 1727641266
 
 \backslash
 AtBeginDocument{
 \backslash
 hypersetup{pdfborder=0 0 1}}
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+.
+ In similar vein 
+\begin_inset Flex Code
+status open
 
+\begin_layout Plain Layout
+
+\change_inserted 5863208 1727641281
+pdfborderstyle={/S/U/W 1}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ can be used for underline style instead of frames.
+ Consult hyperref manual for details.
 \end_layout
 
 \end_inset

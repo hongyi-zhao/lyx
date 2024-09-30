@@ -69,8 +69,14 @@ public:
 
 	/// return true if the key is part of a shortcut
 	bool queryKeySym(KeySymbol const & key, KeyModifier mod) const;
-	/// Ask relative position of input item coordinates against the main coordinates
-	void queryInputItemTransform();
+
+	/// Ask relative position of the input item coordinates against the main
+	/// coordinates to the system input method
+	void queryInputItemGeometry();
+	/// Restore coordinate transformation information
+	void resetInputItemGeometry();
+	/// Restore coordinate transformation information
+	void resetInputItemGeometry(bool is_new_view);
 
 	bool inDialogMode() const;
 	void setDialogMode(bool mode);

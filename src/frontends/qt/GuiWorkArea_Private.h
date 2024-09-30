@@ -137,7 +137,7 @@ struct GuiWorkArea::Private
 	bool need_resize_ = false;
 
 	/// provides access to the platform input method
-	QInputMethod * im_ = QGuiApplication::inputMethod();
+	QInputMethod * sys_im_ = QGuiApplication::inputMethod();
 	/// the current preedit text of the input method
 	docstring preedit_string_;
 	/// Number of lines used by preedit text
@@ -146,8 +146,12 @@ struct GuiWorkArea::Private
 	QList<QInputMethodEvent::Attribute> preedit_attr_;
 	QRectF im_cursor_rect_;
 	QRectF im_anchor_rect_;
+	/// geometry of the input item
+	QRectF item_rect_;
+	/// transformation from input item coordinates to the working area
 	QTransform item_trans_;
-	bool item_trans_needs_reset_ = false;
+	/// whether item_rect_ and item_trans need to be reset
+	bool item_geom_needs_reset_ = false;
 	/// for debug
 	QLocale::Language im_lang_ = QLocale::AnyLanguage;
 

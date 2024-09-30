@@ -185,6 +185,19 @@ public:
 	/// return the status bar state string
 	docstring viewStatusMessage();
 
+	/// if current work area is the first one in the lyx application
+	bool isFirstWorkArea() const;
+	/// mark first work area is already set up
+	void firstWorkAreaDone();
+	/// input item rectangle of the base view
+	QRectF baseInputItemRectangle();
+	/// set input item rectangle of the base view
+	void setBaseInputItemRectangle(QRectF rect);
+	/// input item transform of the base view
+	QTransform baseInputItemTransform();
+	/// set input item transform of the base view
+	void setBaseInputItemTransform(QTransform trans);
+
 	/// \name Methods to process FuncRequests
 	//@{
 	/// process the func request

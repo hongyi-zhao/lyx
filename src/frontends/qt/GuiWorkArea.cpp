@@ -286,7 +286,7 @@ void GuiWorkArea::setFullScreen(bool full_screen)
 {
 	d->buffer_view_->setFullScreen(full_screen);
 
-	queryInputItemTransform();
+	queryInputItemGeometry();
 
 	if (full_screen && lyxrc.full_screen_scrollbar)
 		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -705,10 +705,10 @@ void GuiWorkArea::focusInEvent(QFocusEvent * e)
 	if ((e->reason() == Qt::PopupFocusReason || e->reason() == Qt::ActiveWindowFocusReason) &&
 		!(this->inDialogMode())) {
 		// Switched from most of dialogs or other apps, and not on a dialog (e.g. findreplaceadv)
-		d->item_trans_needs_reset_ = true;
+		d->item_geom_needs_reset_ = true;
 	} else {
 		// Switched from advanced search dialog or else (e.g. mouse event)
-		d->item_trans_needs_reset_ = false;
+		d->item_geom_needs_reset_ = false;
 	}
 
 	startBlinkingCaret();
@@ -1142,33 +1142,111 @@ void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 }
 
 
-void GuiWorkArea::queryInputItemTransform()
+void GuiWorkArea::queryInputItemGeometry()
 {
 	LYXERR(
-		   Debug::DEBUG,
-		   "item_trans_ is aquired: dx() = " << d->item_trans_.dx() <<
-		   " -> " << d->im_->inputItemTransform().dx() <<
-		   ", dy() = " << d->item_trans_.dy() <<
-		   " -> " << d->im_->inputItemTransform().dy()
-		   );
+		Debug::DEBUG,
+		"item_rect_  is aquired:  x() = " << d->item_rect_.x() <<
+			" -> " << d->sys_im_->inputItemRectangle().x() <<
+			",  y() = " << d->item_rect_.y() <<
+			" -> " << d->sys_im_->inputItemRectangle().y() <<
+			", width() = " << d->item_rect_.width() <<
+			" -> " << d->sys_im_->inputItemRectangle().width() <<
+			", height() = " << d->item_rect_.height() <<
+			" -> " << d->sys_im_->inputItemRectangle().height()
+	);
+	LYXERR(
+	   Debug::DEBUG,
+	   "item_trans_ is aquired: dx() = " << d->item_trans_.dx() <<
+	   " -> " << d->sys_im_->inputItemTransform().dx() <<
+	   ", dy() = " << d->item_trans_.dy() <<
+	   " -> " << d->sys_im_->inputItemTransform().dy()
+	);
 
-	d->item_trans_ = d->im_->inputItemTransform();
+	d->item_rect_  = d->sys_im_->inputItemRectangle();
+	d->item_trans_ = d->sys_im_->inputItemTransform();
+
+	// save coordinates of the base working area for later use necessary to
+	// creat new GuiViews
+	if (guiApp->isFirstWorkArea()) {
+		guiApp->setBaseInputItemRectangle(d->item_rect_);
+		guiApp->setBaseInputItemTransform(d->item_trans_);
+		guiApp->firstWorkAreaDone();
+
+		LYXERR(
+			Debug::DEBUG,
+			"base inputItemRectangle x = " <<
+					guiApp->baseInputItemRectangle().x() <<
+			",  y = " << guiApp->baseInputItemRectangle().y() <<
+			", width = " << guiApp->baseInputItemRectangle().width() <<
+			", height = " << guiApp->baseInputItemRectangle().height()
+		);
+		LYXERR(
+			Debug::DEBUG,
+			"base inputItemTransform dx = " <<
+					guiApp->baseInputItemTransform().dx() <<
+			",  dy = " << guiApp->baseInputItemTransform().dy()
+		);
+	}
 }
 
 
-void GuiWorkArea::Private::resetInputItemTransform()
+void GuiWorkArea::resetInputItemGeometry()
 {
-	if (item_trans_needs_reset_) {
-		LYXERR(
-			   Debug::DEBUG,
-			   "(" << this <<
-			   ") item_trans_ is reset: dx() = " << im_->inputItemTransform().dx() <<
-			   " -> " << item_trans_.dx() <<
-			   ", dy() = " << im_->inputItemTransform().dy() <<
-			   " -> " << item_trans_.dy()
-			   );
-		im_->setInputItemTransform(item_trans_);
-		item_trans_needs_reset_ = false;
+	resetInputItemGeometry(false);
+}
+
+void GuiWorkArea::resetInputItemGeometry(bool is_new_view)
+{
+	if (d->item_geom_needs_reset_) {
+		if (is_new_view) {
+			LYXERR(
+				Debug::DEBUG,
+				"QInputMethod::inputItemRectangle is reset: x = " <<
+					d->sys_im_->inputItemRectangle().x() <<
+					" -> " << guiApp->baseInputItemRectangle().x() <<
+					",  y = " << d->sys_im_->inputItemRectangle().y() <<
+					" -> " << guiApp->baseInputItemRectangle().y() <<
+					", width = " << d->sys_im_->inputItemRectangle().width() <<
+					" -> " << guiApp->baseInputItemRectangle().width() <<
+					", height = " << d->sys_im_->inputItemRectangle().height() <<
+					" -> " << guiApp->baseInputItemRectangle().height()
+			);
+			LYXERR(
+				Debug::DEBUG,
+				"QInputMethod::inputItemTransform is reset: dx = " <<
+					d->sys_im_->inputItemTransform().dx() <<
+					" -> " << guiApp->baseInputItemTransform().dx() <<
+					", dy = " << d->sys_im_->inputItemTransform().dy() <<
+					" -> " << guiApp->baseInputItemTransform().dy()
+			);
+			d->sys_im_->setInputItemRectangle(guiApp->baseInputItemRectangle());
+			d->sys_im_->setInputItemTransform(guiApp->baseInputItemTransform());
+		} else {
+			LYXERR(
+				Debug::DEBUG,
+				"QInputMethod::inputItemRectangle is reset:  x = " <<
+					d->sys_im_->inputItemRectangle().x() <<
+					" -> " << d->item_rect_.x() <<
+					",  y = " << d->sys_im_->inputItemRectangle().y() <<
+					" -> " << d->item_rect_.y() <<
+					", width = " << d->sys_im_->inputItemRectangle().width() <<
+					" -> " << d->item_rect_.width() <<
+					", height = " << d->sys_im_->inputItemRectangle().height() <<
+					" -> " << d->item_rect_.height()
+			);
+			LYXERR(
+				Debug::DEBUG,
+				"QInputMethod::inputItemTransform is reset: dx = " <<
+					d->sys_im_->inputItemTransform().dx() <<
+					" -> " << d->item_trans_.dx() <<
+					", dy = " << d->sys_im_->inputItemTransform().dy() <<
+					" -> " << d->item_trans_.dy()
+			);
+			d->sys_im_->setInputItemRectangle(d->item_rect_);
+			d->sys_im_->setInputItemTransform(d->item_trans_);
+		}
+		d->item_geom_needs_reset_ = false;
 	}
 }
 
@@ -1179,7 +1257,7 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 {
 #ifdef DEBUG_PREEDIT
 	// check the language that current input method uses
-	QLocale::Language lang = im_->locale().language();
+	QLocale::Language lang = sys_im_->locale().language();
 	if (lang != im_lang_) {
 		LYXERR0("QLocale = " << QLocale::languageToString(lang));
 		im_lang_ = lang;
@@ -1188,7 +1266,7 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 
 	// Chinese IM may want cursor position even when preedit string is empty
 	// such a case is handled below
-	if (preedit_string_.empty() && im_->locale().language() != QLocale::Chinese)
+	if (preedit_string_.empty() && sys_im_->locale().language() != QLocale::Chinese)
 		return;
 
 	// lower margin of the preedit area to separate the candidate window
@@ -1207,13 +1285,13 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 		// Chinese input methods may exit here just obtaining im_cursor_rect
 		im_cursor_rect_ =
 			QRectF(cur_x, cur_y - dim.height(), 1, dim.height() + preedit_lower_margin);
-		im_->update(Qt::ImCursorRectangle);
+		sys_im_->update(Qt::ImCursorRectangle);
 		return;
 	}
 
 	// reset item transformation since it can go wrong after the item gets
 	// lost and regains focus or after a new tab (dis)appears etc.
-	resetInputItemTransform();
+	p->resetInputItemGeometry();
 
 	// FIXME: shall we use real_current_font here? (see #10478)
 	FontInfo const font = buffer_view_->cursor().getFont().fontInfo();
@@ -1360,7 +1438,7 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 	}
 	// Urge platform input method to make inputMethodQuery to check the values
 	// set above
-	im_->update(Qt::ImQueryInput);
+	sys_im_->update(Qt::ImQueryInput);
 }
 
 
@@ -1910,9 +1988,9 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 	updateTabTexts();
 
 	// obtain new input item coordinates in the new and old work areas
-	wa->queryInputItemTransform();
+	wa->queryInputItemGeometry();
 	if (currentWorkArea())
-		currentWorkArea()->queryInputItemTransform();
+		currentWorkArea()->queryInputItemGeometry();
 
 	view.setBusy(false);
 
@@ -1940,7 +2018,7 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 		else
 			// Show tabbar only if there's more than one tab.
 			showBar(count() > 1);
-		currentWorkArea()->queryInputItemTransform();
+		currentWorkArea()->queryInputItemGeometry();
 	} else
 		lastWorkAreaRemoved();
 

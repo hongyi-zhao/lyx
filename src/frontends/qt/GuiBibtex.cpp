@@ -317,14 +317,10 @@ void GuiBibtex::relAbsPressed()
 	QString const new_item = (p == LP_Absolute)
 			? toqstr(file.relPath(buffer().filePath()))
 			: toqstr(file.absoluteFilePath());
-	QStringList sb;
-	for (QString s : selected_bibs_) {
+	for (QString & s : selected_bibs_) {
 		if (s == qf)
-			sb << new_item;
-		else
-			sb << s;
+			s = new_item;
 	}
-	selected_bibs_ = sb;
 	setSelectedBibs(selected_bibs_);
 	selectedLV->selectRow(selected_bibs_.indexOf(new_item));
 	changed();

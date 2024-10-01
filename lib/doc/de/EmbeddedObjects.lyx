@@ -50199,7 +50199,7 @@ Dokumentation des \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "KOMA-Script"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/doc/scrguide.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-de.pdf"
 literal "false"
 
 \end_inset

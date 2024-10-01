@@ -3865,7 +3865,7 @@ Klassenoptionen
 \begin_inset CommandInset href
 LatexCommand href
 name "scrguide"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/doc/scrguide.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-de.pdf"
 literal "false"
 
 \end_inset
@@ -3988,7 +3988,7 @@ Eine ausführliche deutsche Beschreibung der \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "scrguide"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/doc/scrguide.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-de.pdf"
 literal "false"
 
 \end_inset
@@ -5034,7 +5034,7 @@ KOMA-Script-Brief (V.
 \begin_inset CommandInset href
 LatexCommand href
 name "scrguide"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/doc/scrguide.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-de.pdf"
 literal "false"
 
 \end_inset

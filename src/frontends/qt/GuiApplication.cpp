@@ -2326,7 +2326,7 @@ QRectF GuiApplication::baseInputItemRectangle()
 }
 
 
-void GuiApplication::setBaseInputItemRectangle(QRectF rect)
+void GuiApplication::setBaseInputItemRectangle(QRectF const & rect)
 {
 	d->item_rect_base_ = rect;
 }
@@ -2338,7 +2338,7 @@ QTransform GuiApplication::baseInputItemTransform()
 }
 
 
-void GuiApplication::setBaseInputItemTransform(QTransform trans)
+void GuiApplication::setBaseInputItemTransform(QTransform const & trans)
 {
 	d->item_trans_base_ = trans;
 }

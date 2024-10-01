@@ -192,11 +192,11 @@ public:
 	/// input item rectangle of the base view
 	QRectF baseInputItemRectangle();
 	/// set input item rectangle of the base view
-	void setBaseInputItemRectangle(QRectF rect);
+	void setBaseInputItemRectangle(QRectF const & rect);
 	/// input item transform of the base view
 	QTransform baseInputItemTransform();
 	/// set input item transform of the base view
-	void setBaseInputItemTransform(QTransform trans);
+	void setBaseInputItemTransform(QTransform const & trans);
 
 	/// \name Methods to process FuncRequests
 	//@{

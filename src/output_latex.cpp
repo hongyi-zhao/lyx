@@ -501,13 +501,10 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 }
 
 
-// FIXME: pass the \c required vector by reference and add the stuff
-// from \c latexargs to a different vector. This avoids a copy and
-// (more importantly?) a coverity defect.
 void getArgInsets(otexstream & os, OutputParams const & runparams,
                   Layout::LaTeXArgMap const & latexargs,
                   map<size_t, lyx::InsetArgument const *> const & ilist,
-                  vector<string> required, string const & prefix)
+                  vector<string> const & required, string const & prefix)
 {
 	size_t const argnr = latexargs.size();
 	if (argnr == 0)
@@ -515,24 +512,24 @@ void getArgInsets(otexstream & os, OutputParams const & runparams,
 
 	// Default and preset args are always output, so if they require
 	// other arguments, consider this.
+	vector<string> required_args;
 	for (auto const & larg : latexargs) {
 		Layout::latexarg const & arg = larg.second;
 		if ((!arg.presetarg.empty() || !arg.defaultarg.empty()) && !arg.required.empty()) {
-				vector<string> req = getVectorFromString(arg.required);
-				required.insert(required.end(), req.begin(), req.end());
-			}
+			vector<string> const req = getVectorFromString(arg.required);
+			required_args.insert(required_args.end(), req.begin(), req.end());
+		}
 	}
 
 	for (size_t i = 1; i <= argnr; ++i) {
-		map<size_t, InsetArgument const *>::const_iterator lit = ilist.find(i);
+		auto const lit = ilist.find(i);
 		bool inserted = false;
 		if (lit != ilist.end()) {
 			InsetArgument const * ins = lit->second;
 			if (ins) {
-				Layout::LaTeXArgMap::const_iterator const lait =
-						latexargs.find(ins->name());
+				auto const lait = latexargs.find(ins->name());
 				if (lait != latexargs.end()) {
-					Layout::latexarg arg = lait->second;
+					Layout::latexarg const arg = lait->second;
 					docstring ldelim;
 					docstring rdelim;
 					if (!arg.nodelims) {
@@ -553,12 +550,10 @@ void getArgInsets(otexstream & os, OutputParams const & runparams,
 			}
 		}
 		if (!inserted) {
-			Layout::LaTeXArgMap::const_iterator lait = latexargs.begin();
-			Layout::LaTeXArgMap::const_iterator const laend = latexargs.end();
-			for (; lait != laend; ++lait) {
+			for (auto const & la_p : latexargs) {
 				string const name = prefix + convert<string>(i);
-				if ((*lait).first == name) {
-					Layout::latexarg arg = (*lait).second;
+				if (la_p.first == name) {
+					Layout::latexarg const arg = la_p.second;
 					docstring preset = arg.presetarg;
 					if (!arg.defaultarg.empty()) {
 						if (!preset.empty())
@@ -578,7 +573,9 @@ void getArgInsets(otexstream & os, OutputParams const & runparams,
 								from_ascii("]") : arg.rdelim;
 						os << ldelim << preset << rdelim;
 					} else if (find(required.begin(), required.end(),
-						   (*lait).first) != required.end()) {
+						            la_p.first) != required.end()
+						       || find(required_args.begin(), required_args.end(),
+						               la_p.first) != required_args.end()) {
 						docstring ldelim = arg.ldelim.empty() ?
 								from_ascii("[") : arg.ldelim;
 						docstring rdelim = arg.rdelim.empty() ?

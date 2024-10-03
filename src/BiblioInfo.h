@@ -241,7 +241,7 @@ public:
 				bool const for_xhtml = false) const;
 	/// \return formatted BibTeX data for citation labels.
 	/// Citation labels can have more than one key.
-	docstring const getLabel(std::vector<docstring> keys, Buffer const & buf,
+	docstring const getLabel(std::vector<docstring> const & keys, Buffer const & buf,
 				 std::string const & style, CiteItem const & ci) const;
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?

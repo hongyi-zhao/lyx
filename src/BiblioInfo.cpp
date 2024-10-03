@@ -1393,32 +1393,28 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 }
 
 
-docstring const BiblioInfo::getLabel(vector<docstring> keys,
+docstring const BiblioInfo::getLabel(vector<docstring> const & keys,
 	Buffer const & buf, string const & style, CiteItem const & ci) const
 {
 	size_t max_size = ci.max_size;
 	// shorter makes no sense
 	LASSERT(max_size >= 16, max_size = 16);
 
-	// we can't display more than 10 of these, anyway
-	// but since we truncate in the middle,
-	// we need to split into two halfs.
-	bool const too_many_keys = keys.size() > 10;
-	vector<docstring> lkeys;
-	if (too_many_keys) {
-		lkeys.insert(lkeys.end(), keys.end() - 5, keys.end());
-		keys.resize(5);
-		keys.insert(keys.end(), lkeys.begin(), lkeys.end());
-	}
-
 	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
 	docstring const & format = from_utf8(dc.getCiteFormat(engine_type, style, false, "cite"));
 	docstring ret = format;
-	vector<docstring>::const_iterator key = keys.begin();
-	vector<docstring>::const_iterator ken = keys.end();
+	auto key = keys.begin();
+	auto const ken = keys.end();
 	vector<docstring> handled_keys;
 	for (int i = 0; key != ken; ++key, ++i) {
+		// we can't display more than 10 keys anyway, so keep 5 from
+		// the start and 5 from the end.
+		if (i == 5 && keys.size() > 10) {
+			i = keys.size() - 5;
+			key = ken - 5;
+		}
+
 		handled_keys.push_back(*key);
 		int n = 0;
 		for (auto const & k : handled_keys) {

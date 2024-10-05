@@ -114,12 +114,14 @@ void Branch::setColors(string const & lmcol, string const & dmcol)
 	string lmcolor = lmcolor_;
 	string dmcolor = dmcolor_;
 	if (lmcolor == "none")
-		lmcolor = lcolor.getX11HexName(Color_background);
-	else if (lmcolor.size() != 7 || lmcolor[0] != '#')
+		lmcolor = "background";
+	// if we have background color, keep semantic value, as system colors might vary
+	else if (lmcolor != "background" && (lmcolor.size() != 7 || lmcolor[0] != '#'))
 		lmcolor = lcolor.getX11HexName(lcolor.getFromLyXName(lmcolor));
 	if (dmcolor == "none")
-		dmcolor = lcolor.getX11HexName(Color_background, true);
-	else if (dmcolor.size() != 7 || dmcolor[0] != '#')
+		dmcolor = "background";
+	// if we have background color, keep semantic value, as system colors might vary
+	else if (dmcolor != "background" && (dmcolor.size() != 7 || dmcolor[0] != '#'))
 		dmcolor = lcolor.getX11HexName(lcolor.getFromLyXName(dmcolor), true);
 
 	// FIXME UNICODE

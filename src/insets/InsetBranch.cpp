@@ -154,6 +154,10 @@ ColorCode InsetBranch::backgroundColor(PainterInfo const & pi) const
 	// FIXME UNICODE
 	string const branchcol = "branch" + branch_id + to_utf8(params_.branch);
 	ColorCode c = lcolor.getFromLyXName(branchcol);
+	// if we have background color, set to semantic value, as system colors
+	// might vary
+	if (lcolor.getX11HexName(c, (theApp() && theApp()->isInDarkMode())) == "background")
+		c = Color_background;
 	if (c == Color_none)
 		c = Color_error;
 	return c;

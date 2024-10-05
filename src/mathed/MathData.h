@@ -21,8 +21,6 @@
 #include "Dimension.h"
 #include "OutputEnums.h"
 
-#include "support/strfwd.h"
-
 #include <cstddef>
 #include <vector>
 

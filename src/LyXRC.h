@@ -22,7 +22,6 @@
 #include "update_flags.h"
 
 #include "support/Length.h"
-#include "support/strfwd.h"
 #include "support/userinfo.h"
 
 #include <map>

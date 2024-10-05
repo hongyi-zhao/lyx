@@ -16,7 +16,6 @@
 #define LANGUAGE_H
 
 #include "support/docstring.h"
-#include "support/trivstring.h"
 
 #include <map>
 #include <set>

@@ -12,7 +12,7 @@
 #ifndef QSTRING_HELPERS_H
 #define QSTRING_HELPERS_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 class QString;
 

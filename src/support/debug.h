@@ -15,7 +15,7 @@
 #ifndef LYXDEBUG_H
 #define LYXDEBUG_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 // Forward definitions do not work with libc++
 // but ios_base has already been defined in strfwd

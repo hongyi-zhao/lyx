@@ -16,8 +16,6 @@
 #ifndef LYXFIND_H
 #define LYXFIND_H
 
-#include "support/strfwd.h"
-
 // FIXME
 #include "support/docstring.h"
 

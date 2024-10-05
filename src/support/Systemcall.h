@@ -15,8 +15,6 @@
 #ifndef SYSTEMCALL_H
 #define SYSTEMCALL_H
 
-#include "strfwd.h"
-
 namespace lyx {
 namespace support {
 

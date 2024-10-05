@@ -12,10 +12,7 @@
 #ifndef FLOATING_H
 #define FLOATING_H
 
-#include "support/strfwd.h"
-
-#include <string>
-
+#include "support/docstring.h"
 
 namespace lyx {
 

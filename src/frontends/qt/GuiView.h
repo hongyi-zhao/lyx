@@ -17,8 +17,6 @@
 
 #include "frontends/Delegates.h"
 
-#include "support/strfwd.h"
-
 #include <QMainWindow>
 #include <QLabel>
 #include <QMenu>

@@ -15,9 +15,6 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
-#include "support/strfwd.h"
-
-
 namespace lyx {
 namespace graphics {
 

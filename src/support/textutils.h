@@ -15,9 +15,6 @@
 #ifndef TEXTUTILS_H
 #define TEXTUTILS_H
 
-#include "support/strfwd.h"
-
-
 namespace lyx {
 
 /// return true if the char is a line separator

@@ -14,7 +14,6 @@
 #define ENCODING_H
 
 #include "support/docstring.h"
-#include "support/trivstring.h"
 #include "support/types.h"
 
 #include <map>

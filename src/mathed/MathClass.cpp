@@ -20,8 +20,6 @@
 #include "support/docstring.h"
 #include "support/lassert.h"
 
-#include <ostream>
-
 using namespace std;
 
 namespace lyx {

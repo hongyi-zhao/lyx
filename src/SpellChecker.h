@@ -13,7 +13,7 @@
 #ifndef SPELL_BASE_H
 #define SPELL_BASE_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 #include <vector>
 
 

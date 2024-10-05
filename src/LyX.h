@@ -14,8 +14,7 @@
 #ifndef LYX_H
 #define LYX_H
 
-#include "support/strfwd.h"
-
+#include <string>
 #include <vector>
 
 namespace lyx {

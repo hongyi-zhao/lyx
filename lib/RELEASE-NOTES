@@ -38,6 +38,8 @@
 
 - The support for (long unmaintained) eLyXer was removed.
 
+- When compiling with GCC, LyX know needs at least version >= 5.
+
 
 !!Known issues in version 2.5.0
 

@@ -12,10 +12,9 @@
 #ifndef CMDDEF_H
 #define CMDDEF_H
 
-#include "support/strfwd.h"
-
 #include <map>
 #include <set>
+#include <string>
 
 namespace lyx {
 

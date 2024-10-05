@@ -17,8 +17,7 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-#include "support/strfwd.h"
-#include <string>
+#include "support/docstring.h"
 
 namespace lyx {
 

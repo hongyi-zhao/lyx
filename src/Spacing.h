@@ -12,8 +12,6 @@
 #ifndef SPACING_H
 #define SPACING_H
 
-#include "support/strfwd.h"
-
 #include <string>
 
 namespace lyx {

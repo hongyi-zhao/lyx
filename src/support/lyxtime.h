@@ -14,9 +14,8 @@
 #define LYXTIME_H
 
 #include <time.h>
-#include <string>
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 
 namespace lyx {

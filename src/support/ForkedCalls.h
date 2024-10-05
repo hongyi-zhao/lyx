@@ -15,7 +15,7 @@
 #define FORKEDCALLS_H
 
 #include "support/signals.h"
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 #ifdef HAVE_SYS_TYPES_H
 # include <sys/types.h>

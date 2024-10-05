@@ -17,7 +17,7 @@
 #ifndef COUNTER_REPS_H
 #define COUNTER_REPS_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

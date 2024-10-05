@@ -11,7 +11,7 @@
 #ifndef CONSOLEAPPLICATION_H
 #define CONSOLEAPPLICATION_H
 
-#include "support/strfwd.h"
+#include <string>
 
 namespace lyx {
 

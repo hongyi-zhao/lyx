@@ -20,7 +20,6 @@
 #include "TexRow.h"
 #include "update_flags.h"
 
-#include "support/strfwd.h"
 #include "support/types.h"
 
 namespace lyx {

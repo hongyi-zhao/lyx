@@ -19,10 +19,10 @@
 #ifndef COLORSET_H
 #define COLORSET_H
 
+#include "support/docstring.h"
 #include "Color.h"
 
 #include <map>
-#include <string>
 
 namespace lyx {
 

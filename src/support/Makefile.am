@@ -106,7 +106,6 @@ liblyxsupport_a_SOURCES = \
 	signals.h \
 	socktools.cpp \
 	socktools.h \
-	strfwd.h \
 	Systemcall.cpp \
 	Systemcall.h \
 	SystemcallPrivate.h \
@@ -116,8 +115,6 @@ liblyxsupport_a_SOURCES = \
 	Translator.h \
 	Timeout.cpp \
 	Timeout.h \
-	trivstring.cpp \
-	trivstring.h \
 	types.h \
 	unique_ptr.h \
 	userinfo.cpp \

@@ -12,7 +12,6 @@
 #ifndef PERSONAL_WORD_LIST_H
 #define PERSONAL_WORD_LIST_H
 
-#include "support/strfwd.h"
 #include "support/docstring_list.h"
 #include "support/FileName.h"
 

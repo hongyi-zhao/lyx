@@ -12,7 +12,7 @@
 #ifndef STATISTICS_H
 #define STATISTICS_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 #include "support/types.h"
 
 namespace lyx {

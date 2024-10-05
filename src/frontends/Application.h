@@ -15,7 +15,7 @@
 #include "FuncCode.h"
 #include "update_flags.h"
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 #include <functional>
 

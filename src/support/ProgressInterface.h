@@ -12,7 +12,7 @@
 #ifndef LYX_SUPPORT_PROGRESSINTERFACE_H
 #define LYX_SUPPORT_PROGRESSINTERFACE_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 class QString;
 

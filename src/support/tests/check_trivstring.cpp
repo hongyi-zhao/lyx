@@ -1,6 +1,5 @@
 #include <config.h>
 
-#include "../trivstring.h"
 #include "../docstring.h"
 
 #include <iostream>

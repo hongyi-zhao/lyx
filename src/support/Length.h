@@ -15,7 +15,7 @@
 #ifndef LENGTH_H
 #define LENGTH_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 
 namespace lyx {

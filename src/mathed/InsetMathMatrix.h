@@ -13,7 +13,6 @@
 #define MATH_MATRIXINSET_H
 
 #include "InsetMathGrid.h"
-#include "support/strfwd.h"
 
 
 namespace lyx {

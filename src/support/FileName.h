@@ -13,7 +13,6 @@
 #define FILENAME_H
 
 #include "support/os.h"
-#include "support/strfwd.h"
 
 #include <ctime>
 #include <set>

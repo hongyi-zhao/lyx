@@ -15,8 +15,6 @@
 
 #include "TextClass.h"
 
-#include "support/strfwd.h"
-
 #include <string>
 #include <vector>
 

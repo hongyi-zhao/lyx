@@ -15,7 +15,7 @@
 
 #ifdef __cplusplus
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

@@ -16,13 +16,12 @@
 #include "OutputEnums.h"
 
 #include "support/unique_ptr.h"
-#include "support/strfwd.h"
+#include "support/docstring.h"
 #include "support/types.h"
 
 #include <map>
 #include <list>
 #include <set>
-#include <string>
 #include <vector>
 
 

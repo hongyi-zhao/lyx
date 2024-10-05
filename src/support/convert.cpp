@@ -14,7 +14,6 @@
 #include "support/convert.h"
 #include "support/docstring.h"
 
-#include <string>
 #include <sstream>
 //needed for Mac OSX 10.5.2 Leopard
 #include <cstdlib>

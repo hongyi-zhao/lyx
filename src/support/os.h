@@ -14,7 +14,7 @@
 #ifndef OS_H
 #define OS_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 #include <cstddef>
 
 

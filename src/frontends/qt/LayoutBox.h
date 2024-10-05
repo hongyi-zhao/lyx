@@ -16,7 +16,7 @@
 #ifndef LYX_LAYOUT_BOX_H
 #define LYX_LAYOUT_BOX_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 #include <QComboBox>
 

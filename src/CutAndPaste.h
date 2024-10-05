@@ -17,7 +17,6 @@
 #include "Author.h"
 #include "DocumentClassPtr.h"
 
-#include "support/strfwd.h"
 #include "support/types.h"
 
 #include "frontends/Clipboard.h"

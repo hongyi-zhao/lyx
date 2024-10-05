@@ -13,12 +13,11 @@
 #define CONVERTER_H
 
 #include "Graph.h"
-#include "support/trivstring.h"
+#include "support/docstring.h"
 
 #include <memory>
 #include <vector>
 #include <set>
-#include <string>
 
 
 namespace lyx {

@@ -18,7 +18,6 @@
 #include "ui_FindAndReplaceUi.h"
 #include "support/docstring.h"
 
-#include <string>
 
 namespace lyx {
 

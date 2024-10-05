@@ -20,7 +20,7 @@
 #include "FontEnums.h"
 
 #include "support/Changer.h"
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 
 namespace lyx {

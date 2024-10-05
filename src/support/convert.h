@@ -16,7 +16,7 @@
 #ifndef CONVERT_H
 #define CONVERT_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

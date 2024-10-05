@@ -20,7 +20,6 @@
 #include "support/docstring.h"
 
 #include <set>
-#include <string>
 
 namespace lyx {
 

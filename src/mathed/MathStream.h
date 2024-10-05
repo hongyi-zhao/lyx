@@ -19,7 +19,6 @@
 #include "texstream.h"
 
 #include "support/Changer.h"
-#include "support/strfwd.h"
 
 
 namespace lyx {

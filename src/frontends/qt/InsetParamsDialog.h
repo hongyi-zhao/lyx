@@ -12,6 +12,8 @@
 #ifndef INSET_PARAMS_DIALOG_H
 #define INSET_PARAMS_DIALOG_H
 
+#include "support/docstring.h"
+
 #include "DialogView.h"
 #include "ui_InsetParamsUi.h"
 

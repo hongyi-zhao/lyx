@@ -13,9 +13,65 @@
 #ifndef LYX_DOCSTRING_H
 #define LYX_DOCSTRING_H
 
-#include "support/strfwd.h"
+#ifdef USE_WCHAR_T
+
+// Prefer this if possible because GNU libstdc++ has usable
+// std::ctype<wchar_t> locale facets but not
+// std::ctype<boost::uint32_t>. gcc older than 3.4 is also missing
+// usable std::char_traits<boost::uint32_t>.
+namespace lyx { typedef wchar_t char_type; }
+
+#else
+
+#include <cstdint>
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1600)
+namespace lyx { typedef uint32_t char_type; }
+#include "support/numpunct_lyx_char_type.h" // implementation for our char_type needed
+#else
+namespace lyx { typedef std::uint32_t char_type; }
+#endif
+
+#endif
 
 #include <string>
+
+namespace lyx {
+
+/**
+ * String type for storing the main text in UCS4 encoding.
+ * Use std::string only in cases 7-bit ASCII is to be manipulated
+ * within the variable.
+ */
+typedef std::basic_string<char_type, std::char_traits<char_type>,
+	std::allocator<char_type> > docstring;
+
+/// Base class for UCS4 input streams
+typedef std::basic_istream<char_type, std::char_traits<char_type> > idocstream;
+
+/// Base class for UCS4 output streams
+typedef std::basic_ostream<char_type, std::char_traits<char_type> > odocstream;
+
+/// UCS4 output stringstream
+typedef std::basic_ostringstream<char_type, std::char_traits<char_type>, std::allocator<char_type> > odocstringstream;
+
+#if ! defined(USE_WCHAR_T)
+extern odocstream & operator<<(odocstream &, char);
+#endif
+
+// defined in lstrings.cpp
+docstring const & empty_docstring();
+std::string const & empty_string();
+// defined in docstring.cpp
+bool operator==(docstring const &, char const *);
+
+//trivstring signalizes thread-safety request; should not be needed for any
+//C++11 conformant std::basic_string, e.g. GCC >= 5.
+//Once properly tested we can ditch these two in favour of std::string/docstring.
+typedef std::string trivstring;
+typedef docstring trivdocstring;
+
+} // namespace lyx
 
 namespace lyx {
 

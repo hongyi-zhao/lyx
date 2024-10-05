@@ -13,7 +13,7 @@
 #ifndef GETTEXT_H
 #define GETTEXT_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 
 namespace lyx {

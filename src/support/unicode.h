@@ -14,11 +14,10 @@
 #ifndef LYX_SUPPORT_UNICODE_H
 #define LYX_SUPPORT_UNICODE_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 #include "support/unique_ptr.h"
 
 #include <cstddef>
-#include <string>
 #include <vector>
 
 

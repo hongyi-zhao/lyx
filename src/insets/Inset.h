@@ -24,7 +24,6 @@
 #include "RowFlags.h"
 
 #include "support/docstring.h"
-#include "support/strfwd.h"
 #include "support/types.h"
 
 #include <climits>

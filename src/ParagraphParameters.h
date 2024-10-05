@@ -18,7 +18,6 @@
 #include "Spacing.h"
 
 #include "support/types.h"
-#include "support/strfwd.h"
 #include "support/Length.h"
 
 

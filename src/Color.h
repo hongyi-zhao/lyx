@@ -21,7 +21,7 @@
 
 #include "ColorCode.h"
 
-#include "support/strfwd.h"
+#include <string>
 
 namespace lyx {
 

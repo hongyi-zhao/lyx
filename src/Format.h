@@ -12,11 +12,9 @@
 #ifndef FORMAT_H
 #define FORMAT_H
 
-#include "support/strfwd.h"
-#include "support/trivstring.h"
+#include "support/docstring.h"
 
 #include <vector>
-#include <string>
 
 namespace lyx {
 

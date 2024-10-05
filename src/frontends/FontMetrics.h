@@ -16,7 +16,7 @@
 
 
 #include "support/mute_warning.h"
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 #include <vector>
 

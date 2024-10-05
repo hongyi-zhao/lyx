@@ -21,7 +21,6 @@
 #include "Toc.h"
 #include "TocBuilder.h"
 
-#include "support/strfwd.h"
 #include "support/unique_ptr.h"
 
 

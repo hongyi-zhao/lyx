@@ -13,7 +13,6 @@
 #define CITATION_H
 
 #include "support/docstring.h"
-#include <string>
 #include <vector>
 
 namespace lyx {

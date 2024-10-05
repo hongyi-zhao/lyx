@@ -17,8 +17,6 @@
 #include "FuncRequest.h"
 #include "KeySequence.h"
 
-#include "support/strfwd.h"
-
 #include <memory>
 #include <vector>
 

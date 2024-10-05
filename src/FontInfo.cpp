@@ -27,7 +27,6 @@
 #include "support/lstrings.h"
 
 #include <algorithm>
-#include <ostream>
 #include <sstream>
 
 using namespace std;

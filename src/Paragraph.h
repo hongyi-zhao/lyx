@@ -19,7 +19,6 @@
 #include "LayoutEnums.h"
 #include "SpellChecker.h"
 
-#include "support/strfwd.h"
 #include "support/types.h"
 
 #include "insets/InsetCode.h"

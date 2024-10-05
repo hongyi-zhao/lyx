@@ -12,11 +12,12 @@
 #ifndef GUISYMBOLSDIALOG_H
 #define GUISYMBOLSDIALOG_H
 
+#include "support/docstring.h"
+
 #include "DialogView.h"
 #include "ui_SymbolsUi.h"
 
 #include <map>
-#include <string>
 #include <vector>
 
 namespace lyx {

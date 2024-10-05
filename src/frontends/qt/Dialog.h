@@ -16,8 +16,6 @@
 
 #include "insets/InsetCode.h"
 
-#include "support/strfwd.h"
-
 #include <QString>
 
 class QSettings;

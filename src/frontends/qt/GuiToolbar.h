@@ -20,8 +20,6 @@
 #include <QToolBar>
 #include <QToolButton>
 
-#include "support/strfwd.h"
-
 class QSettings;
 
 namespace lyx {

@@ -12,7 +12,7 @@
 #ifndef MATH_CLASS_H
 #define MATH_CLASS_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

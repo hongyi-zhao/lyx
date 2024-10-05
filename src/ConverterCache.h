@@ -21,7 +21,7 @@
 #ifndef CONVERTERCACHE_H
 #define CONVERTERCACHE_H
 
-#include "support/strfwd.h"
+#include <string>
 
 
 namespace lyx {

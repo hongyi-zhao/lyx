@@ -12,7 +12,7 @@
 #ifndef LYX_ALERT_H
 #define LYX_ALERT_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 
 namespace lyx {

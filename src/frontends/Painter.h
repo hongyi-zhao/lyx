@@ -13,7 +13,7 @@
 #ifndef PAINTER_H
 #define PAINTER_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 #include "support/types.h"
 
 namespace lyx {

@@ -4437,8 +4437,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_EXPORT: {
 			if (!doc_buffer)
 				break;
-			// GCC only sees strfwd.h when building merged
-			if (::lyx::operator==(cmd.argument(), "custom")) {
+			if (cmd.argument() == "custom") {
 				// LFUN_MASTER_BUFFER_EXPORT is not enabled for this case,
 				// so the following test should not be needed.
 				// In principle, we could try to switch to such a view...

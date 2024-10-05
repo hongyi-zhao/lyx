@@ -16,8 +16,6 @@
 
 #include "Encoding.h"
 
-#include "support/strfwd.h"
-
 namespace lyx {
 
 class Buffer;

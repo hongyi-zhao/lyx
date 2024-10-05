@@ -25,7 +25,6 @@
 
 #include <algorithm>
 #include <cstring>
-#include <ostream>
 #include <FontInfo.h>
 
 using namespace std;

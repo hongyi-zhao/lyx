@@ -12,7 +12,7 @@
 #ifndef MATH_EXTERN_H
 #define MATH_EXTERN_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

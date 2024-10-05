@@ -17,7 +17,6 @@
 #include "ColorCode.h"
 #include "FontInfo.h"
 
-#include "support/strfwd.h"
 #include "support/Changer.h"
 
 #include "insets/Inset.h"

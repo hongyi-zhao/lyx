@@ -12,7 +12,7 @@
 #ifndef MATHAUTOCORRECT_H
 #define MATHAUTOCORRECT_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

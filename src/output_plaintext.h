@@ -12,7 +12,7 @@
 #ifndef OUTPUT_PLAINTEXT_H
 #define OUTPUT_PLAINTEXT_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 #include "support/types.h"
 
 #include <climits>

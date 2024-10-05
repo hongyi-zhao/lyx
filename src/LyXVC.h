@@ -15,8 +15,6 @@
 #include "support/docstring.h"
 #include "support/unique_ptr.h"
 
-#include <string>
-
 
 namespace lyx {
 

@@ -14,8 +14,6 @@
 
 #include "TexRow.h"
 
-#include "support/strfwd.h"
-
 #include <vector>
 
 

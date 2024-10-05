@@ -16,7 +16,7 @@
 
 #include "FuncCode.h"
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 #include <QWidget>
 

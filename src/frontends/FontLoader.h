@@ -12,7 +12,7 @@
 #ifndef FONTLOADER_H
 #define FONTLOADER_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

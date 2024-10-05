@@ -13,7 +13,7 @@
 #ifndef THESAURUS_H
 #define THESAURUS_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 #include <map>
 #include <vector>

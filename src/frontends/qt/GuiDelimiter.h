@@ -12,6 +12,8 @@
 #ifndef GUIDELIMITERDIALOG_H
 #define GUIDELIMITERDIALOG_H
 
+#include "support/docstring.h"
+
 #include "GuiDialog.h"
 
 #include "ui_DelimiterUi.h"

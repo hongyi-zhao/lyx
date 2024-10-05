@@ -12,7 +12,7 @@
 #ifndef USERINFO_H
 #define USERINFO_H
 
-#include "support/strfwd.h"
+#include <string>
 
 
 namespace lyx {

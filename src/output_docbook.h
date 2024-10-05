@@ -28,7 +28,6 @@
 #include "ParagraphList.h"
 
 #include "support/docstream.h"
-#include "support/strfwd.h"
 #include "xml.h"
 
 namespace lyx {

@@ -14,8 +14,6 @@
 
 #include "MathParser.h"
 
-#include "support/strfwd.h"
-
 #include <map>
 
 namespace lyx {

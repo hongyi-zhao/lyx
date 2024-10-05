@@ -17,8 +17,6 @@
 
 #include "FontInfo.h"
 
-#include "support/strfwd.h"
-
 
 namespace lyx {
 

@@ -14,7 +14,7 @@
 #define MATH_SUPPORT_H
 
 #include "MathParser_flags.h"
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

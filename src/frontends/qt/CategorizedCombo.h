@@ -17,8 +17,6 @@
 #ifndef LYX_CATEGORIZEDCOMBO_H
 #define LYX_CATEGORIZEDCOMBO_H
 
-#include "support/strfwd.h"
-
 #include <QComboBox>
 
 

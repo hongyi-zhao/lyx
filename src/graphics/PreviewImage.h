@@ -12,7 +12,7 @@
 #ifndef PREVIEWIMAGE_H
 #define PREVIEWIMAGE_H
 
-#include "support/strfwd.h"
+#include "support/docstring.h"
 
 namespace lyx {
 

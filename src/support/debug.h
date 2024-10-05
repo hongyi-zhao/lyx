@@ -17,20 +17,6 @@
 
 #include "support/docstring.h"
 
-// Forward definitions do not work with libc++
-// but ios_base has already been defined in strfwd
-// if compiling with it
-#ifndef USE_LLVM_LIBCPP
-namespace std {
-
-class ios_base;
-
-template<typename CharT, typename Traits> class basic_streambuf;
-typedef basic_streambuf<char, char_traits<char> > streambuf;
-
-} // namespace std
-#endif
-
 
 // Make sure at compile time that sizeof(unsigned long long) >= 8
 typedef char p__LINE__[ (sizeof(unsigned long long) > 7) ? 1 : -1];

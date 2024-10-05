@@ -210,32 +210,6 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
 ])
 
 
-dnl Usage: LYX_CXX_USE_CALL_ONCE
-dnl check whether we can use std::call_once and set the
-dnl LYX_USE_STD_CALL_ONCE macro and conditional accordingly.
-AC_DEFUN([LYX_CXX_USE_CALL_ONCE],
-[AC_MSG_CHECKING([for std::call_once availability])
-   save_CPPFLAGS=$CPPFLAGS
-   CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
-   save_CXXFLAGS=$CXXFLAGS
-   CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
-   AC_LINK_IFELSE([AC_LANG_PROGRAM([[
-	#include <mutex>
-	static std::once_flag flag;
-     ]], [[
-	std::call_once(flag, [](){ return; });
-   ]])],[lyx_std_call_once=yes],[lyx_std_call_once=no])
-   CXXFLAGS=$save_CXXFLAGS
-   CPPFLAGS=$save_CPPFLAGS
-   AC_MSG_RESULT([$lyx_std_call_once])
-
- if test $lyx_std_call_once = yes ; then
-  AC_DEFINE([LYX_USE_STD_CALL_ONCE], 1, [define to 1 if std::call_once is supported by the compiler])
- fi
- AM_CONDITIONAL([LYX_USE_STD_CALL_ONCE], test $lyx_std_call_once = yes)
-])
-
-
 dnl Usage: LYX_LIB_STDCXX: set lyx_cv_lib_stdcxx to yes if the STL library is libstdc++.
 AC_DEFUN([LYX_LIB_STDCXX],
 [AC_CACHE_CHECK([whether STL is libstdc++],
@@ -245,19 +219,6 @@ AC_DEFUN([LYX_LIB_STDCXX],
 	    this is not libstdc++
 #endif
 ]])],[lyx_cv_lib_stdcxx=yes],[lyx_cv_lib_stdcxx=no])])
-])
-
-
-dnl Usage: LYX_LIB_STDCXX_CXX11_ABI: set lyx_cv_lib_stdcxx_cxx11_abi to yes
-dnl        if the STL library is GNU libstdc++ and the C++11 ABI is used.
-AC_DEFUN([LYX_LIB_STDCXX_CXX11_ABI],
-[AC_CACHE_CHECK([whether STL is libstdc++ using the C++11 ABI],
-               [lyx_cv_lib_stdcxx_cxx11_abi],
-[AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include<vector>]], [[
-#if ! defined(_GLIBCXX_USE_CXX11_ABI) || ! _GLIBCXX_USE_CXX11_ABI
-	    this is not libstdc++ using the C++11 ABI
-#endif
-]])],[lyx_cv_lib_stdcxx_cxx11_abi=yes],[lyx_cv_lib_stdcxx_cxx11_abi=no])])
 ])
 
 
@@ -275,21 +236,7 @@ AC_LANG_PUSH(C++)
 LYX_PROG_CLANG
 LYX_CXX_CXX11_FLAGS($enable_cxx_mode)
 LYX_LIB_STDCXX
-LYX_LIB_STDCXX_CXX11_ABI
-LYX_CXX_USE_CALL_ONCE
 AC_LANG_POP(C++)
-
-if test $lyx_cv_lib_stdcxx = "yes" ; then
-  if test $lyx_cv_lib_stdcxx_cxx11_abi = "yes" ; then
-    AC_DEFINE(USE_GLIBCXX_CXX11_ABI, 1, [use GNU libstdc++ with C++11 ABI])
-  else
-    AC_DEFINE(STD_STRING_USES_COW, 1, [std::string uses copy-on-write])
-  fi
-else
-  if test $lyx_cv_prog_clang = "yes" ; then
-    AC_DEFINE(USE_LLVM_LIBCPP, 1, [use libc++ provided by llvm instead of GNU libstdc++])
-  fi
-fi
 
 ### We might want to get or shut warnings.
 AC_ARG_ENABLE(warnings,
@@ -363,7 +310,7 @@ if test x$GXX = xyes; then
   fi
 
   case $gxx_version in
-      2.*|3.*|4.@<:@0-8@:>@*) AC_MSG_ERROR([gcc >= 4.9 is required]);;
+      2.*|3.*|4.*) AC_MSG_ERROR([gcc >= 5 is required]);;
   esac
 
   AM_CXXFLAGS="$lyx_optim $AM_CXXFLAGS"

@@ -1676,7 +1676,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					success = setCursorFromEntries({id, pos},
 					                               {id_end, pos_end});
 				}
-				if (success && scrollToCursor(d->cursor_, SCROLL_TOGGLE))
+				if (success && scrollToCursor(d->cursor_, SCROLL_TOP))
 						dr.screenUpdate(Update::Force);
 			} else {
 				// Switch to other buffer view and resend cmd

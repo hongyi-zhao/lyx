@@ -2040,7 +2040,9 @@ docstring const i18npreamble(docstring const & templ, Language const * lang,
 		else if (ascii_fallback)
 			translated = to_ascii(testenc->latexString(name).first);
 		else
-			translated = "\\inputencoding{" + texenc + "}"
+			// We need to \protect this as it can end up in a moving argument
+			// (\lstlistlistingname in book classes goes to \@mkboth via \contentsname)
+			translated = "\\protect\\inputencoding{" + texenc + "}"
 				+ s1 + langenc + s2 + to_utf8(name)
 				+ s1 + bufenc + s2;
 		preamble = subst(preamble, sub.str(), translated);

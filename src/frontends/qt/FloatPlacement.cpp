@@ -346,7 +346,7 @@ bool FloatPlacement::checkWidgets(bool readonly) const
 	if (readonly) {
 		floatTypeCO->setEnabled(false);
 		placementCO->setEnabled(false);
-		aligmentGB->setEnabled(false);
+		alignmentGB->setEnabled(false);
 		spanCB->setEnabled(false);
 		sidewaysCB->setEnabled(false);
 	} else

@@ -1,5 +1,6 @@
 # -*- mode: perl; -*-
 package CheckURL;
+
 # file CheckURL.pm
 #
 # This file is part of LyX, the document processor.
@@ -13,9 +14,10 @@ package CheckURL;
 #
 use strict;
 
-our(@EXPORT, @ISA);
+our (@EXPORT, @ISA);
+
 BEGIN {
-  use Exporter   ();
+  use Exporter ();
   @ISA    = qw(Exporter);
   @EXPORT = qw(check_url);
 }
@@ -25,16 +27,18 @@ sub check_http_url($$$$);
 sub check_ftp_dir_entry($$);
 sub check_ftp_url($$$$);
 sub check_unknown_url($$$$);
-sub check_url($$);
+sub check_url($$$$);
 ################
 
-sub check_http_url($$$$)
-{
+my $fe;
+my $fs;
+
+sub check_http_url($$$$) {
   require LWP::UserAgent;
 
   my ($protocol, $host, $path, $file) = @_;
 
-  my $ua = LWP::UserAgent->new;
+  my $ua   = LWP::UserAgent->new(timeout => 20);
   my $getp = "/";
   if ($path ne "") {
     $getp .= $path;
@@ -54,11 +58,11 @@ sub check_http_url($$$$)
     $buf = $response->decoded_content;
   }
   else {
-    print " " . $response->status_line . ": ";
+    print $fe " " . $response->status_line . ": ";
     return 3;
   }
   my @title = ();
-  my $res = 0;
+  my $res   = 0;
   while ($buf =~ s/\<title\>([^\<]*)\<\/title\>//i) {
     my $title = $1;
     $title =~ s/[\r\n]/ /g;
@@ -66,9 +70,9 @@ sub check_http_url($$$$)
     $title =~ s/^ //;
     $title =~ s/ $//;
     push(@title, $title);
-    print "title = \"$title\": ";
+    print $fe "title = \"$title\": ";
     if ($title =~ /Error 404|Not Found/) {
-      print " Page reports 'Not Found' from \"$protocol://$host$getp\": ";
+      print $fe " Page reports 'Not Found' from \"$protocol://$host$getp\": ";
       $res = 3;
     }
   }
@@ -79,39 +83,39 @@ sub check_http_url($$$$)
 # returns 0, x if file does not match entry
 #         1, x everything OK
 #         2, x if not accesible (permission)
-sub check_ftp_dir_entry($$)
-{
+sub check_ftp_dir_entry($$) {
   my ($file, $e) = @_;
   my $other = '---';
   my $isdir = 0;
 
-  #print "Checking '$file' against '$e'\n";
+  #print $fe "Checking '$file' against '$e'\n";
   $file =~ s/^\///;
   $isdir = 1 if ($e =~ /^d/);
-  return(0,$isdir) if ($e !~ /\s$file$/);
+  return (0, $isdir) if ($e !~ /\s$file$/);
   if ($e =~ /^.[-rwx]{6}([-rwx]{3})\s/) {
     $other = $1;
   }
   else {
-    #print "Invalid entry\n";
+    #print $fe "Invalid entry\n";
     # Invalid entry
-    return(0,$isdir);
+    return (0, $isdir);
   }
-  return(2,$isdir) if ($other !~ /^r/); # not readable
+  return (2, $isdir) if ($other !~ /^r/);    # not readable
   if ($isdir) {
+
     #return(2,$isdir) if ($other !~ /x$/); # directory, but not executable
   }
-  return(1,$isdir);
+  return (1, $isdir);
 }
 
-sub check_ftp2_url($$$$)
-{
+sub check_ftp2_url($$$$) {
   my ($protocol, $host, $path, $file) = @_;
 
   my $checkentry = 1;
-  print "\nhost $host\n";
-  print "path $path\n";
-  print "file $file\n";
+
+  #print $fe "\nhost $host\n";
+  #print $fe "path $path\n";
+  #print $fe "file $file\n";
   my $url = "$protocol://$host";
   $path =~ s/\/$//;
   if (defined($file)) {
@@ -120,7 +124,8 @@ sub check_ftp2_url($$$$)
   else {
     $url = "$url/$path/.";
   }
-  print "curl $url, file = $file\n";
+
+  #print $fe "curl $url, file = $file\n";
   my %listfiles = ();
   if (open(FFTP, "curl --anyauth -l $url|")) {
     while (my $l = <FFTP>) {
@@ -130,44 +135,44 @@ sub check_ftp2_url($$$$)
     close(FFTP);
   }
   if (%listfiles) {
-    if (! defined($file)) {
-      return(0, "OK");
+    if (!defined($file)) {
+      return (0, "OK");
     }
     elsif (defined($listfiles{$file})) {
-      return(0, "OK");
+      return (0, "OK");
     }
     elsif (defined($listfiles{"ftpinfo.txt"})) {
-      return(0, "Probably a directory");
+      return (0, "Probably a directory");
     }
     else {
-      return(1, "Not found");
+      return (1, "Not found");
     }
   }
   else {
-    return(1, "Error");
+    return (1, "Error");
   }
 }
 
-sub check_ftp_url($$$$)
-{
+sub check_ftp_url($$$$) {
   use Net::FTP;
 
   my ($protocol, $host, $path, $file) = @_;
-  my $res = 0;
+  my $res     = 0;
   my $message = "";
 
-  my $ftp = Net::FTP->new($host, Debug => 0, Timeout => 120);
-  if(!$ftp) {
-    return(3,"Cannot connect to $host");
+  my $ftp = Net::FTP->new($host, Debug => 0, Timeout => 20);
+  if (!$ftp) {
+    return (3, "Cannot connect to $host");
   }
-  if (! $ftp->login("anonymous",'-anonymous@')) {
+  if (!$ftp->login("anonymous", '-anonymous@')) {
     $message = $ftp->message;
-    $res = 3;
+    $res     = 3;
   }
   else {
     my $rEntries;
     if ($path ne "") {
-      #print "Path = $path\n";
+
+      #print $fe "Path = $path\n";
       #if (!$ftp->cwd($path)) {
       # $message = $ftp->message;
       # $res = 3;
@@ -177,41 +182,43 @@ sub check_ftp_url($$$$)
     else {
       $rEntries = $ftp->dir();
     }
-    if (! $rEntries) {
-      $res = 3;
+    if (!$rEntries) {
+      $res     = 3;
       $message = "Could not read directory \"$path\"";
     }
     elsif (defined($file)) {
-      my $found = 0;
+      my $found  = 0;
       my $found2 = 0;
-      for my $f ( @{$rEntries}) {
-	#print "Entry: $path $f\n";
-	my ($res1,$isdir) = check_ftp_dir_entry($file,$f);
-	if ($res1 == 1) {
-	  $found = 1;
-	  last;
-	}
-	elsif ($res1 == 2) {
-	  # found, but not accessible
-	  $found2 = 1;
-	  $message = "Permission denied for '$file'";
-	}
+      for my $f (@{$rEntries}) {
+
+        #print $fe "Entry: $path $f\n";
+        my ($res1, $isdir) = check_ftp_dir_entry($file, $f);
+        if ($res1 == 1) {
+          $found = 1;
+          last;
+        }
+        elsif ($res1 == 2) {
+
+          # found, but not accessible
+          $found2  = 1;
+          $message = "Permission denied for '$file'";
+        }
       }
-      if (! $found) {
-	$res = 4;
-	if (! $found2) {
-	  $message = "File or directory '$file' not found";
-	}
+      if (!$found) {
+        $res = 4;
+        if (!$found2) {
+          $message = "File or directory '$file' not found";
+        }
       }
     }
   }
   $ftp->quit;
-  #print "returning ($res,$message)\n";
-  return($res, $message);
+
+  #print $fe "returning ($res,$message)\n";
+  return ($res, $message);
 }
 
-sub check_unknown_url($$$$)
-{
+sub check_unknown_url($$$$) {
   use LWP::Simple;
 
   my ($protocol, $host, $path, $file) = @_;
@@ -226,49 +233,53 @@ sub check_unknown_url($$$$)
       $url .= "/$path";
     }
   }
-  if(defined($file)) {
-    #print "Trying $url$file\n";
+  if (defined($file)) {
+
+    #print $fe "Trying $url$file\n";
     $res = head("$url/$file");
-    if(! $res) {
+    if (!$res) {
+
       # try to check for directory '/';
-      #print "Trying $url$file/\n";
+      #print $fe "Trying $url$file/\n";
       $res = head("$url/$file/");
     }
   }
   else {
-    #print "Trying $url\n";
+    #print $fe "Trying $url\n";
     $res = head($url);
   }
-  return(! $res);
+  return (!$res);
 }
 
 #
 # Main entry
-sub check_url($$)
-{
-  my($url,$use_curl) = @_;
+sub check_url($$$$) {
+  my ($url, $use_curl, $fex, $fsx) = @_;
+  $fe = $fex;
+  $fs = $fsx;
   my $file = undef;
-  my ($protocol,$host,$path);
+  my ($protocol, $host, $path);
 
   my $res = 0;
 
   # Split the url to protocol,host,path
   if ($url =~ /^([a-z]+):\/\/([^\/]+)(.*)$/) {
     $protocol = $1;
-    $host = $2;
-    $path = $3;
+    $host     = $2;
+    $path     = $3;
     $path =~ s/^\///;
-    if($path =~ s/\/([^\/]+)$//) {
+    if ($path =~ s/\/([^\/]+)$//) {
       $file = $1;
-      if($file =~ / /) {
-	# Filename contains ' ', maybe invalid. Don't check
-	$file = undef;
+      if ($file =~ / /) {
+
+        # Filename contains ' ', maybe invalid. Don't check
+        $file = undef;
       }
       $path .= "/";
     }
   }
   else {
-    print " Invalid url '$url'";
+    print $fe " Invalid url '$url'";
     return 2;
   }
   if ($protocol =~ /^https?$/) {
@@ -286,7 +297,7 @@ sub check_url($$)
   }
   else {
     # it never should reach this point
-    print " What protocol is '$protocol'?";
+    print $fe " What protocol is '$protocol'?";
     $res = check_unknown_url($protocol, $host, $path, $file);
     return $res;
   }

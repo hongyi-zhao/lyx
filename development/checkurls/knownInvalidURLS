@@ -2,3 +2,4 @@ http://www.uon.edu/doe
 ftp://www.test.test
 http://www.test.test
 #proto://host.xx.ab/abcd
+http://example.com/%20foo

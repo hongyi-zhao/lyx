@@ -31,20 +31,26 @@
 
 use strict;
 
-BEGIN  {
+BEGIN {
   use File::Spec;
   my $p = File::Spec->rel2abs(__FILE__);
   $p =~ s/[\/\\]?[^\/\\]+$//;
   unshift(@INC, "$p");
 }
 
+use warnings;
+use Cwd qw(abs_path);
 use CheckURL;
 use Try::Tiny;
 use locale;
 use POSIX qw(locale_h);
 
-setlocale(LC_CTYPE, "");
+setlocale(LC_CTYPE,    "");
 setlocale(LC_MESSAGES, "en_US.UTF-8");
+
+use File::Temp qw/ tempfile tempdir /;
+use File::Spec;
+use Fcntl qw(:flock SEEK_END);
 
 # Prototypes
 sub printNotUsedURLS($\%);
@@ -52,26 +58,28 @@ sub replaceSpecialChar($);
 sub readUrls($\%);
 sub parse_file($ );
 sub handle_url($$$ );
+sub printx($$$$);
 ##########
 
-my %URLS = ();
-my %ignoredURLS = ();
-my %revertedURLS = ();
-my %extraURLS = ();
-my %selectedURLS = ();
+my %URLS                = ();
+my %ignoredURLS         = ();
+my %revertedURLS        = ();
+my %extraURLS           = ();
+my %selectedURLS        = ();
 my %knownToRegisterURLS = ();
-my $summaryFile = undef;
+my $summaryFile         = undef;
 
 my $checkSelectedOnly = 0;
 for my $arg (@ARGV) {
   die("Bad argument \"$arg\"") if ($arg !~ /=/);
-  my ($type,$val) = split("=", $arg);
+  my ($type, $val) = split("=", $arg);
   if ($type eq "filesToScan") {
+
     #The file should be a list of files to search in
     if (open(FLIST, $val)) {
       while (my $l = <FLIST>) {
-	chomp($l);
-	parse_file($l);
+        chomp($l);
+        parse_file($l);
       }
       close(FLIST);
     }
@@ -102,7 +110,9 @@ for my $arg (@ARGV) {
   }
 }
 
-my @urls = sort keys %URLS, keys %extraURLS;
+my @urls     = sort keys %URLS, keys %extraURLS;
+my @testvals = ();
+
 # Tests
 #my @urls = ("ftp://ftp.edpsciences.org/pub/aa/readme.html", "ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author");
 my $errorcount = 0;
@@ -126,57 +136,146 @@ for my $u (@urls) {
   if (defined($selectedURLS{$u})) {
     ${selectedURLS}{$u}->{count} += 1;
   }
-  next if ($checkSelectedOnly && ! defined($selectedURLS{$u}));
+  next if ($checkSelectedOnly && !defined($selectedURLS{$u}));
   $URLScount++;
-  print "Checking '$u': ";
-  my ($res, $prnt, $outSum);
-  try {
-    $res = check_url($u, $use_curl);
-    if ($res) {
-      print "Failed\n";
-      $prnt = "";
-      $outSum = 1;
-    }
-    else {
-      $prnt = "OK\n";
-      $outSum = 0;
-    }
-  }
-  catch {
-    $prnt = "Failed, caught error: $_\n";
-    $outSum = 1;
-    $res = 700;
-  };
-  printx("$prnt", $outSum);
-  my $printSourceFiles = 0;
-  my $err_txt = "Error url:";
-
-  if ($res || $checkSelectedOnly) {
-    $printSourceFiles = 1;
-  }
-  if ($res && defined($revertedURLS{$u})) {
-    $err_txt = "Failed url:";
-  }
-  $res = ! $res if (defined($revertedURLS{$u}));
-  if ($res || $checkSelectedOnly) {
-    printx("$err_txt \"$u\"\n", $outSum);
-  }
-  if ($printSourceFiles) {
-    if (defined($URLS{$u})) {
-      for my $f(sort keys %{$URLS{$u}}) {
-	my $lines = ":" . join(',', @{$URLS{$u}->{$f}});
-	printx("  $f$lines\n", $outSum);
-      }
-    }
-    if ($res ) {
-      $errorcount++;
-    }
-  }
+  push(@testvals, {u => $u, use_curl => $use_curl,});
 }
 
+# Ready to go multitasking
+my ($vol, $dir, $file) = File::Spec->splitpath($summaryFile);
+my $tempdir   = tempdir("$dir/CounterXXXXXXX", CLEANUP => 1);
+my $countfile = "$tempdir/counter";
+my $counter   = 0;
+if (open(my $FO, '>', $countfile)) {
+  print {$FO} $counter;
+  close($FO);
+}
+else {
+  unlink($countfile);
+  die("Could not write to $countfile");
+}
+
+print "Using tempdir \"" . abs_path($tempdir) . "\"\n";
+
+my @wait = ();
+for (my $i = 0; $i < 10; $i++) {    # Number of subprocesses
+  my $pid = fork();
+  if ($pid == 0) {
+
+    # I am child
+    open(my $fe, '>:encoding(UTF-8)', "$tempdir/xxxError$i");
+    open(my $fs, '>:encoding(UTF-8)', "$tempdir/xxxSum$i");
+    while (1) {
+      open(my $fh, '+<', $countfile) or die("cannot open $countfile");
+      flock($fh, LOCK_EX)            or die "$i: Cannot lock $countfile - $!\n";
+      my $l    = <$fh>;    # get actual count number
+      my $diff = undef;
+      if (defined($testvals[$l + 150])) {
+        $diff = 5;
+      }
+      elsif (defined($testvals[$l + 50])) {
+        $diff = 3;
+      }
+      elsif (defined($testvals[$l + 20])) {
+        $diff = 2;
+      }
+      elsif (defined($testvals[$l])) {
+        $diff = 1;
+      }
+      else {
+        close($fs);
+        print $fe "NumberOfErrors $errorcount\n";
+        close($fe);
+        exit(0);
+      }
+      my $next = $l + $diff;
+      seek($fh, 0, 0);
+      truncate($fh, 0);
+      print $fh $next;
+      close($fh);
+      for (my $i = 0; $i < $diff; $i++) {
+        my $entryidx = $l + $i;
+        my $rentry   = $testvals[$entryidx];
+        next if (!defined($rentry));
+        my $u        = $rentry->{u};
+        my $use_curl = $rentry->{use_curl};
+
+        print $fe "Checking($entryidx) '$u': ";
+        my ($res, $prnt, $outSum);
+        try {
+          $res = check_url($u, $use_curl, $fe, $fs);
+          if ($res) {
+            print $fe "Failed\n";
+            $prnt   = "";
+            $outSum = 1;
+          }
+          else {
+            $prnt   = "OK\n";
+            $outSum = 0;
+          }
+        }
+        catch {
+          $prnt   = "Failed, caught error: $_\n";
+          $outSum = 1;
+          $res    = 700;
+        };
+        printx("$prnt", $outSum, $fe, $fs);
+        my $printSourceFiles = 0;
+        my $err_txt          = "Error url:";
+
+        if ($res || $checkSelectedOnly) {
+          $printSourceFiles = 1;
+        }
+        if ($res && defined($revertedURLS{$u})) {
+          $err_txt = "Failed url:";
+        }
+        $res = !$res if (defined($revertedURLS{$u}));
+        if ($res || $checkSelectedOnly) {
+          printx("$err_txt \"$u\"\n", $outSum, $fe, $fs);
+        }
+        if ($printSourceFiles) {
+          if (defined($URLS{$u})) {
+            for my $f (sort keys %{$URLS{$u}}) {
+              my $lines = ":" . join(',', @{$URLS{$u}->{$f}});
+              printx("  $f$lines\n", $outSum, $fe, $fs);
+            }
+          }
+          if ($res) {
+            $errorcount++;
+          }
+        }
+      }
+    }
+  }
+  $wait[$i] = $pid;
+}
+
+for (my $i = 0; $i < 10; $i++) {
+  my $p = $wait[$i];
+  if ($p > 0) {
+    waitpid($p, 0);
+    open(my $fe, '<', "$tempdir/xxxError$i");
+    while (my $l = <$fe>) {
+      if ($l =~ /^NumberOfErrors\s(\d+)/) {
+        $errorcount += $1;
+      }
+      else {
+        print $l;
+      }
+    }
+    close($fe);
+    open(my $fs, '<', "$tempdir/xxxSum$i");
+    while (my $l = <$fs>) {
+      print SFO $l;
+    }
+    close($fs);
+  }
+}
+unlink($countfile);
+
 if (%URLS) {
-  printNotUsedURLS("Ignored", %ignoredURLS);
-  printNotUsedURLS("Selected", %selectedURLS);
+  printNotUsedURLS("Ignored",      %ignoredURLS);
+  printNotUsedURLS("Selected",     %selectedURLS);
   printNotUsedURLS("KnownInvalid", %extraURLS);
 }
 
@@ -187,124 +286,119 @@ if (defined($summaryFile)) {
 exit($errorcount);
 
 ###############################################################################
-sub printx($$)
-{
-  my ($txt, $outSum) = @_;
-  print "$txt";
+sub printx($$$$) {
+  my ($txt, $outSum, $fe, $fs) = @_;
+  print $fe "$txt";
   if ($outSum && defined($summaryFile)) {
-    print SFO "$txt";
+    print $fs "$txt";
   }
 }
 
-sub printNotUsedURLS($\%)
-{
+sub printNotUsedURLS($\%) {
   my ($txt, $rURLS) = @_;
   my @msg = ();
-  for my $u ( sort keys %{$rURLS}) {
+  for my $u (sort keys %{$rURLS}) {
     if ($rURLS->{$u}->{count} < 2) {
       my @submsg = ();
       for my $f (sort keys %{$rURLS->{$u}}) {
-	next if ($f eq "count");
-	push(@submsg, "$f:" . $rURLS->{$u}->{$f});
+        next if ($f eq "count");
+        push(@submsg, "$f:" . $rURLS->{$u}->{$f});
       }
       push(@msg, "\n  $u\n    " . join("\n    ", @submsg) . "\n");
     }
   }
   if (@msg) {
-    print "\n$txt URLs not found in sources: " . join(' ',@msg) . "\n";
+    print "\n$txt URLs not found in sources: " . join(' ', @msg) . "\n";
   }
 }
 
-sub replaceSpecialChar($)
-{
+sub replaceSpecialChar($) {
   my ($l) = @_;
   $l =~ s/\\SpecialChar(NoPassThru)?\s*(TeX|LaTeX|LyX)[\s]?/\2/;
-  return($l);
+  return ($l);
 }
 
-sub readUrls($\%)
-{
+sub readUrls($\%) {
   my ($file, $rUrls) = @_;
 
-  die("Could not read file $file") if (! open(ULIST, $file));
+  die("Could not read file $file") if (!open(ULIST, $file));
   my $line = 0;
   while (my $l = <ULIST>) {
     $line++;
-    $l =~ s/[\r\n]+$//;		# remove eol
-    $l =~ s/\s*\#.*$//;		# remove comment
+    $l =~ s/[\r\n]+$//;    # remove eol
+    $l =~ s/\s*\#.*$//;    # remove comment
     $l = &replaceSpecialChar($l);
     next if ($l eq "");
     my $use_curl = 0;
     if ($l =~ s/^\s*UseCurl\s*//) {
       $use_curl = 1;
     }
-    if (! defined($rUrls->{$l} )) {
+    if (!defined($rUrls->{$l})) {
       $rUrls->{$l} = {$file => $line, count => 1, use_curl => $use_curl};
     }
   }
   close(ULIST);
 }
 
-sub parse_file($)
-{
-  my($f) = @_;
-  my $status = "out";		# outside of URL/href
+sub parse_file($) {
+  my ($f) = @_;
+  my $status = "out";    # outside of URL/href
 
   return if ($f =~ /\/attic\//);
-  if(open(FI, $f)) {
+  if (open(FI, $f)) {
     my $line = 0;
-    while(my $l = <FI>) {
+    while (my $l = <FI>) {
       $line++;
-      $l =~ s/[\r\n]+$//;	#  Simulate chomp
+      $l =~ s/[\r\n]+$//;    #  Simulate chomp
       if ($status eq "out") {
-	# searching for "\begin_inset Flex URL"
-	if($l =~ /^\s*\\begin_inset\s+Flex\s+URL\s*$/) {
-	  $status = "inUrlInset";
-	}
-	elsif ($l =~ /^\s*\\begin_inset\s+CommandInset\s+href\s*$/) {
-	  $status = "inHrefInset";
-	}
-	else {
-	  # Outside of url, check also
-	  if ($l =~ /"((ftp|http|https):\/\/[^ ]+)"/) {
-	    my $url = $1;
-	    handle_url($url, $f, "x$line");
-	  }
-	}
+
+        # searching for "\begin_inset Flex URL"
+        if ($l =~ /^\s*\\begin_inset\s+Flex\s+URL\s*$/) {
+          $status = "inUrlInset";
+        }
+        elsif ($l =~ /^\s*\\begin_inset\s+CommandInset\s+href\s*$/) {
+          $status = "inHrefInset";
+        }
+        else {
+          # Outside of url, check also
+          if ($l =~ /"((ftp|http|https):\/\/[^ ]+)"/) {
+            my $url = $1;
+            handle_url($url, $f, "x$line");
+          }
+        }
       }
       else {
-	if($l =~ /^\s*\\end_(layout|inset)\s*$/) {
-	  $status = "out";
-	}
-	elsif ($status eq "inUrlInset") {
-	  if ($l =~ /\s*([a-z]+:\/\/.+)\s*$/) {
-	    my $url = $1;
-	    $status = "out";
-	    handle_url($url, $f, "u$line");
-	  }
-	}
-	elsif ($status eq "inHrefInset") {
-	  if ($l =~ /^target\s+"([a-z]+:\/\/[^ ]+)"$/) {
-	    my $url = $1;
-	    $status = "out";
-	    handle_url($url, $f, "h$line");
-	  }
-	}
+        if ($l =~ /^\s*\\end_(layout|inset)\s*$/) {
+          $status = "out";
+        }
+        elsif ($status eq "inUrlInset") {
+          if ($l =~ /\s*([a-z]+:\/\/.+)\s*$/) {
+            my $url = $1;
+            $status = "out";
+            handle_url($url, $f, "u$line");
+          }
+        }
+        elsif ($status eq "inHrefInset") {
+          if ($l =~ /^target\s+"([a-z]+:\/\/[^ ]+)"$/) {
+            my $url = $1;
+            $status = "out";
+            handle_url($url, $f, "h$line");
+          }
+        }
       }
     }
     close(FI);
   }
 }
 
-sub handle_url($$$)
-{
-  my($url, $f, $line) = @_;
+sub handle_url($$$) {
+  my ($url, $f, $line) = @_;
 
   $url = &replaceSpecialChar($url);
-  if(!defined($URLS{$url})) {
+  if (!defined($URLS{$url})) {
     $URLS{$url} = {};
   }
-  if(!defined($URLS{$url}->{$f})) {
+  if (!defined($URLS{$url}->{$f})) {
     $URLS{$url}->{$f} = [];
   }
   push(@{$URLS{$url}->{$f}}, $line);

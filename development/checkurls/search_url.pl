@@ -44,6 +44,9 @@ use CheckURL;
 use Try::Tiny;
 use locale;
 use POSIX qw(locale_h);
+use Readonly;
+
+Readonly::Scalar my $NR_JOBS => 10;
 
 setlocale(LC_CTYPE,    "");
 setlocale(LC_MESSAGES, "en_US.UTF-8");
@@ -59,6 +62,7 @@ sub readUrls($\%);
 sub parse_file($ );
 sub handle_url($$$ );
 sub printx($$$$);
+sub getnrjobs($$$);
 ##########
 
 my %URLS                = ();
@@ -158,7 +162,7 @@ else {
 print "Using tempdir \"" . abs_path($tempdir) . "\"\n";
 
 my @wait = ();
-for (my $i = 0; $i < 10; $i++) {    # Number of subprocesses
+for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
   my $pid = fork();
   if ($pid == 0) {
 
@@ -168,25 +172,16 @@ for (my $i = 0; $i < 10; $i++) {    # Number of subprocesses
     while (1) {
       open(my $fh, '+<', $countfile) or die("cannot open $countfile");
       flock($fh, LOCK_EX)            or die "$i: Cannot lock $countfile - $!\n";
-      my $l    = <$fh>;    # get actual count number
-      my $diff = undef;
-      if (defined($testvals[$l + 150])) {
-        $diff = 5;
-      }
-      elsif (defined($testvals[$l + 50])) {
-        $diff = 3;
-      }
-      elsif (defined($testvals[$l + 20])) {
-        $diff = 2;
-      }
-      elsif (defined($testvals[$l])) {
-        $diff = 1;
-      }
-      else {
+      my $l = <$fh>;    # get actual count number
+      if (!defined($testvals[$l])) {
         close($fs);
         print $fe "NumberOfErrors $errorcount\n";
         close($fe);
         exit(0);
+      }
+      my $diff = getnrjobs(scalar @testvals, $l, $NR_JOBS);
+      if ($diff < 1) {
+        $diff = 1;
       }
       my $next = $l + $diff;
       seek($fh, 0, 0);
@@ -402,4 +397,18 @@ sub handle_url($$$) {
     $URLS{$url}->{$f} = [];
   }
   push(@{$URLS{$url}->{$f}}, $line);
+}
+
+sub getnrjobs($$$) {
+  my ($tabsize, $actualidx, $nr_jobs) = @_;
+  my $maxidx    = $tabsize - 1;
+  my $remaining = $maxidx - $actualidx;
+  if ($remaining <= 0) {
+    return (1);
+  }
+  if ($nr_jobs < 2) {
+    return ($remaining);
+  }
+  my $diff = 1 + int($remaining / (2 * $nr_jobs));
+  return $diff;
 }

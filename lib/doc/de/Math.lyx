@@ -42346,7 +42346,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Beschreibung"
-target "http://tug.ctan.org/info/amslatex/english/amsldoc.pdf"
+target "https://mirrors.ctan.org/macros/latex/required/amsmath/amsldoc.pdf"
 literal "false"
 
 \end_inset
@@ -42380,7 +42380,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Auflistung"
-target "http://tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
+target "https://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
 literal "false"
 
 \end_inset
@@ -42448,7 +42448,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset

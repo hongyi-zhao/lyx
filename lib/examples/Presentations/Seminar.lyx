@@ -230,7 +230,7 @@ The seminar handbook
 \begin_inset CommandInset href
 LatexCommand href
 name "sem-user.pdf"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
 literal "false"
 
 \end_inset
@@ -410,7 +410,7 @@ For more configuration options and commands see
 \begin_inset CommandInset href
 LatexCommand href
 name "sem-user.pdf"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
 literal "false"
 
 \end_inset
@@ -562,7 +562,7 @@ See
 \begin_inset CommandInset href
 LatexCommand href
 name "sem-user.pdf"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
 literal "false"
 
 \end_inset

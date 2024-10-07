@@ -733,8 +733,8 @@ For more informations about the Braille cell dimensions have a look at
 
 \begin_inset CommandInset href
 LatexCommand href
-name "http://www.brailleauthority.org/sizespacingofbraille/index.html"
-target "http://www.brailleauthority.org/sizespacingofbraille/index.html"
+name "https://www.brailleauthority.org/sizespacingofbraille/index.html"
+target "https://www.brailleauthority.org/sizespacingofbraille/index.html"
 literal "false"
 
 \end_inset

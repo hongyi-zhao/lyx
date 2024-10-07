@@ -288,7 +288,7 @@ paralist
 \begin_inset CommandInset href
 LatexCommand href
 name "its documentation on CTAN"
-target "http://dante.ctan.org/CTAN/macros/latex/contrib/paralist/paralist.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/paralist/paralist.pdf"
 literal "false"
 
 \end_inset

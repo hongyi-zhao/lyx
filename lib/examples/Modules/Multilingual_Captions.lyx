@@ -1946,7 +1946,7 @@ Documentation of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "caption"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption-eng.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf"
 literal "false"
 
 \end_inset

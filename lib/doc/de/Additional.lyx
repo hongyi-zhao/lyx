@@ -1917,7 +1917,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://www.tex.ac.uk/FAQ-overfull.html
+https://texfaq.org/FAQ-overfull
 \end_layout
 
 \end_inset
@@ -2469,7 +2469,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://ftp.ams.org/pub/tex/amslatex/
+https://ctan.org/tex-archive/macros/latex/required/amsmath
 \end_layout
 
 \end_inset
@@ -6211,7 +6211,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://aas.org/aastex/aastex-downloads
+https://journals.aas.org/aastex-package-for-manuscript-preparation/
 \end_layout
 
 \end_inset
@@ -7639,7 +7639,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://publish.aps.org/revtex4/
+https://journals.aps.org/revtex
 \end_layout
 
 \end_inset
@@ -8846,7 +8846,7 @@ Französischer Brief
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/lettre/lettre.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/lettre/lettre.pdf"
 literal "false"
 
 \end_inset
@@ -13871,7 +13871,7 @@ Man installiert das Programm
 \begin_inset CommandInset href
 LatexCommand href
 name "Jpgfdraw"
-target "https://www.ctan.org/tex-archive/graphics/jpgfdraw"
+target "https://www.ctan.org/pkg/flowframtk"
 literal "false"
 
 \end_inset
@@ -13931,7 +13931,7 @@ status collapsed
 Siehe 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
+target "https://ctan.org/pkg/shapepar"
 literal "false"
 
 \end_inset
@@ -14116,7 +14116,7 @@ Diese Befehle werden intern für alle hier beschriebenen Formen verwendet.
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/shapepar/shapepar.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
 literal "false"
 
 \end_inset
@@ -15371,7 +15371,7 @@ Algorithmus
 \begin_inset CommandInset href
 LatexCommand href
 name "Algorithm2e-Dokumentation"
-target "http://mirrors.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf"
 literal "false"
 
 \end_inset
@@ -17841,7 +17841,7 @@ Dieses Modul verbessert das Erscheinungsbild der Computer-Modern-Schriften und s
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation des Pakets"
-target "http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
+target "https://ctan.org/pkg/fixltx2e"
 literal "false"
 
 \end_inset
@@ -18455,7 +18455,7 @@ Es gibt noch weitere komplexe Befehle,
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "https://www.ctan.org/tex-archive/help/Catalogue/entries/fancyhdr.html"
+target "https://ctan.org/tex-archive/macros/latex/contrib/fancyhdr"
 literal "false"
 
 \end_inset
@@ -19957,7 +19957,7 @@ Im Gegensatz zu den normalen Auszeichnungen von \SpecialChar LyX
 \begin_inset CommandInset href
 LatexCommand href
 name "Soul-Dokumentation"
-target "http://mirrors.ctan.org/macros/generic/soul/soul.pdf"
+target "https://mirror.funkfreundelandshut.de/latex/macros/generic/soul/soul.pdf"
 literal "false"
 
 \end_inset
@@ -20199,7 +20199,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
+https://ctan.org/tex-archive/macros/latex/contrib/custom-bib
 \end_layout
 
 \end_inset
@@ -20247,7 +20247,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
+https://ctan.org/tex-archive/macros/latex/contrib/bibtopic
 \end_layout
 
 \end_inset
@@ -25606,7 +25606,7 @@ chktex
 \begin_layout Quote
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
+target "https://www.nongnu.org/chktex/ChkTeX.pdf"
 literal "false"
 
 \end_inset
@@ -27861,7 +27861,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.nongnu.org/cvs
+https://www.nongnu.org/cvs/
 \end_layout
 
 \end_inset
@@ -27872,7 +27872,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://ximbiot.com/cvs
+https://cvs.nongnu.org/
 \end_layout
 
 \end_inset
@@ -29655,7 +29655,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "TortoiseSVN"
-target "http://tortoisesvn.tigris.org/"
+target "https://tortoisesvn.net/"
 literal "false"
 
 \end_inset

@@ -47406,7 +47406,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "caption"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/caption/caption-eng.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf"
 literal "false"
 
 \end_inset
@@ -47484,7 +47484,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "endfloat"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//endfloat/endfloat.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/endfloat/endfloat.pdf"
 literal "false"
 
 \end_inset
@@ -47523,7 +47523,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "footmisc"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//footmisc/footmisc.pdf"
+target "https://ctan.net/macros/latex/contrib/footmisc/footmisc-doc.pdf"
 literal "false"
 
 \end_inset
@@ -47562,7 +47562,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "hypcap"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/hypcap/hypcap.pdf"
 literal "false"
 
 \end_inset
@@ -47601,7 +47601,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "hyperref"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//hyperref/hyperref.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset
@@ -47640,7 +47640,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "KOMA-Script"
-target "https://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-en.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-en.pdf"
 literal "false"
 
 \end_inset
@@ -47690,7 +47690,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "ejemplo"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/lettrine/doc/demo.pdf"
+target "https://ftp.fau.de/ctan/macros/latex/contrib/lettrine/doc/lettrine.pdf"
 literal "false"
 
 \end_inset
@@ -47961,7 +47961,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "refstyle"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
 literal "false"
 
 \end_inset
@@ -48000,7 +48000,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "sidecap"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//sidecap/sidecap.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/sidecap/sidecap.pdf"
 literal "false"
 
 \end_inset

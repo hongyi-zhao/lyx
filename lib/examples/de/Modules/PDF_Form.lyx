@@ -3392,7 +3392,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "https://ctan.org/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset
@@ -3415,7 +3415,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "https://ctan.org/tex-archive/macros/latex/required/psnfss/psnfss2e.pdf"
+target "https://ctan.joethei.xyz/macros/latex/required/psnfss/psnfss2e.pdf"
 literal "false"
 
 \end_inset

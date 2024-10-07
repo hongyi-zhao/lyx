@@ -44799,7 +44799,7 @@ status open
 
 \begin_layout Plain Layout
 
-https://www.lyx.org/trac/export/HEAD/lyxsvn/dictionaries/trunk/thes/
+https://www.lyx.org/trac/browser/dictionaries/thes/
 \end_layout
 
 \end_inset
@@ -60075,7 +60075,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Credits"
-target "https://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS"
+target "https://www.lyx.org/trac/browser/lyxgit/lib/CREDITS"
 literal "false"
 
 \end_inset
@@ -60233,7 +60233,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.tex.ac.uk/faq/
+https://texfaq.org/
 \end_layout
 
 \end_inset
@@ -60442,7 +60442,7 @@ biber
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "https://www.ctan.org/tex-archive/biblio/biber/documentation/biber.pdf"
+target "http://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf"
 literal "false"
 
 \end_inset
@@ -60457,7 +60457,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/biblio/biber/documentation/biber.pdf
+http://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf
 \end_layout
 
 \end_inset
@@ -60706,7 +60706,7 @@ caption
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/caption/caption-eng.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf"
 literal "false"
 
 \end_inset
@@ -60721,7 +60721,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/caption/caption-eng.pdf
+https://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf
 \end_layout
 
 \end_inset
@@ -60778,7 +60778,7 @@ enumitem
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/enumitem.pdf"
+target "https://ftp.mpi-inf.mpg.de/pub/tex/mirror/ftp.dante.de/pub/tex/macros/latex/contrib/enumitem/enumitem.pdf"
 literal "false"
 
 \end_inset
@@ -60793,7 +60793,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/enumitem.pdf
+https://ftp.mpi-inf.mpg.de/pub/tex/mirror/ftp.dante.de/pub/tex/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
 \end_inset
@@ -60922,7 +60922,7 @@ hyperref
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset
@@ -60937,7 +60937,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf
+http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf
 \end_layout
 
 \end_inset
@@ -61210,7 +61210,7 @@ refstyle
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
 literal "false"
 
 \end_inset
@@ -61225,7 +61225,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf
+https://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
 \end_inset

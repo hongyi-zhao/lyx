@@ -2221,7 +2221,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://www.tex.ac.uk/FAQ-overfull.html
+https://texfaq.org/FAQ-overfull
 \end_layout
 
 \end_inset
@@ -3160,7 +3160,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
+https://ctan.org/tex-archive/macros/latex/contrib/custom-bib
 \end_layout
 
 \end_inset
@@ -3231,7 +3231,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
+https://ctan.org/tex-archive/macros/latex/contrib/bibtopic
 \end_layout
 
 \end_inset
@@ -9100,7 +9100,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://ftp.edpsciences.org/pub/aa/readme.html
+https://www.overleaf.com/latex/templates/astronomy-and-astrophysics-template/ngdddtchkbcg
 \end_layout
 
 \end_inset
@@ -9823,7 +9823,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://aas.org/aastex/aastex-downloads
+https://journals.aas.org/aastex-package-for-manuscript-preparation/
 \end_layout
 
 \end_inset
@@ -11058,7 +11058,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://ftp.ams.org/pub/tex/amslatex/
+https://ctan.org/tex-archive/macros/latex/required/amsmath
 \end_layout
 
 \end_inset
@@ -13832,7 +13832,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
+https://www.worldscientific.com/page/ijmpc/submission-guidelines
 \end_layout
 
 \end_inset
@@ -13843,7 +13843,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
+https://www.worldscientific.com/page/ijmpd/submission-guidelines
 \end_layout
 
 \end_inset
@@ -14419,7 +14419,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-ftp://ftp.iop.org/pub/journals/latex2e
+https://publishingsupport.iopscience.iop.org/questions/latex-template/
 \end_layout
 
 \end_inset
@@ -17740,7 +17740,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://publish.aps.org/revtex4/
+https://journals.aps.org/revtex
 \end_layout
 
 \end_inset
@@ -20524,7 +20524,7 @@ chktex
 
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
+target "https://www.nongnu.org/chktex/ChkTeX.pdf"
 literal "false"
 
 \end_inset
@@ -22519,7 +22519,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.nongnu.org/cvs
+https://www.nongnu.org/cvs/
 \end_layout
 
 \end_inset
@@ -22530,7 +22530,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://ximbiot.com/cvs
+https://cvs.nongnu.org/
 \end_layout
 
 \end_inset
@@ -24450,7 +24450,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "TortoiseSVN"
-target "http://tortoisesvn.tigris.org/"
+target "https://tortoisesvn.net/"
 literal "false"
 
 \end_inset
@@ -29228,7 +29228,7 @@ Instala el programa
 \begin_inset CommandInset href
 LatexCommand href
 name "Jpgfdraw"
-target "https://www.ctan.org/tex-archive/graphics/jpgfdraw"
+target "https://www.ctan.org/pkg/flowframtk"
 literal "false"
 
 \end_inset
@@ -29275,7 +29275,7 @@ status collapsed
 Más información en 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
+target "https://ctan.org/pkg/shapepar"
 literal "false"
 
 \end_inset
@@ -29463,7 +29463,7 @@ Estos comandos se usan internamente para todas las formas que se han descrito aq
 \begin_inset CommandInset href
 LatexCommand href
 name "documentación"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/shapepar/shapepar.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
 literal "false"
 
 \end_inset

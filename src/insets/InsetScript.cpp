@@ -18,7 +18,6 @@
 #include "Cursor.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
-#include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
@@ -26,8 +25,6 @@
 #include "MetricsInfo.h"
 #include "output_docbook.h"
 #include "output_xhtml.h"
-#include "TextClass.h"
-#include "TextMetrics.h"
 
 #include "support/docstream.h"
 #include "support/gettext.h"
@@ -35,9 +32,7 @@
 #include "support/lstrings.h"
 #include "support/Translator.h"
 
-#include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
-#include "frontends/Painter.h"
 
 #include <algorithm>
 

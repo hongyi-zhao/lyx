@@ -52411,7 +52411,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentación"
-target "http://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf"
+target "https://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf"
 literal "false"
 
 \end_inset
@@ -52446,7 +52446,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf
+https://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf
 \end_layout
 
 \end_inset

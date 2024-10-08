@@ -46544,7 +46544,7 @@ hyperref
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset

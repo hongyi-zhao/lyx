@@ -9296,7 +9296,7 @@ G-Brief (V.
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/g-brief/g-brief.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/g-brief/g-brief.pdf"
 literal "false"
 
 \end_inset
@@ -14154,7 +14154,7 @@ Ce module fournit champs et boutons pour les formulaires PDF.
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation hyperref"
-target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset
@@ -14246,7 +14246,7 @@ Réglable
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation todonotes"
-target "http://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
 literal "false"
 
 \end_inset
@@ -14313,7 +14313,7 @@ et la
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation tcolorbox"
-target "http://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf`"
 literal "false"
 
 \end_inset

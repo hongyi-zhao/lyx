@@ -45012,7 +45012,7 @@ dvi2ps,
  в 
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.ctan.org/tex-archive/macros/latex/required/graphics/grfguide.pdf"
+target "https://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
 literal "false"
 
 \end_inset
@@ -52324,7 +52324,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "https://ftp.mpi-inf.mpg.de/pub/tex/mirror/ftp.dante.de/pub/tex/macros/latex/contrib/enumitem/enumitem.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
 literal "false"
 
 \end_inset
@@ -52358,7 +52358,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://ftp.mpi-inf.mpg.de/pub/tex/mirror/ftp.dante.de/pub/tex/macros/latex/contrib/enumitem/enumitem.pdf
+https://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
 \end_inset
@@ -52432,7 +52432,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset
@@ -52466,7 +52466,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf
+https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf
 \end_layout
 
 \end_inset
@@ -52540,7 +52540,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf"
 literal "false"
 
 \end_inset
@@ -52574,7 +52574,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
+https://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \end_inset

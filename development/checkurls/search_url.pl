@@ -228,6 +228,10 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
         if ($res || $checkSelectedOnly) {
           printx("$err_txt \"$u\"\n", $outSum, $fe, $fs);
         }
+        else {
+          printx("OK url: \"$u\"\n", $outSum, $fe, $fs);
+          $printSourceFiles = 1;
+        }
         if ($printSourceFiles) {
           if (defined($URLS{$u})) {
             for my $f (sort keys %{$URLS{$u}}) {
@@ -245,7 +249,7 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
   $wait[$i] = $pid;
 }
 
-for (my $i = 0; $i < 10; $i++) {
+for (my $i = 0; $i < $NR_JOBS; $i++) {
   my $p = $wait[$i];
   if ($p > 0) {
     waitpid($p, 0);

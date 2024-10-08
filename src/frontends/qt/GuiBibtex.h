@@ -91,6 +91,8 @@ private:
 	std::vector<docstring> getFileEncodings();
 	///
 	void setFileEncodings(std::vector<docstring> const & m);
+	/// Does this have non-default file encodings?
+	bool hasFileEncodings() const;
 
 	///
 	bool initialiseParams(std::string const & data) override;
@@ -110,8 +112,13 @@ private:
 		LP_Relative
 	};
 	LocalPath localPathSelected();
-	///
+	/// Update "Make Relative/Absolute" button text and status
 	void updateReAbs();
+	/// Update the file encodings in the available widget
+	void updateFileEncodings();
+	/// Add an encoding combo to the selected
+	/// item in row \p row if noe exists yet
+	void addEncCombo(int const row);
 
 private:
 	///
@@ -128,8 +135,10 @@ private:
 	QStringList selected_bibs_;
 	/// contains the search box
 	FancyLineEdit * filter_;
-	///
+	/// List of available encodings
 	QMap<QString, QString> encodings_;
+	/// cache of not yet applied file encodings
+	QMap<QString, QString> cached_file_encodings_;
 };
 
 } // namespace frontend

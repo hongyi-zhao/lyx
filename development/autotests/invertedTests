@@ -179,6 +179,10 @@ export/examples/ru/Presentations/Beamer_lyx(16|20)
 # that we want "&" rather than "and" (in APA context).
 # see: https://www.mail-archive.com/search?l=mid&q=ildx4xd4o7ybeqroh3blxgnxqnsqnte256utip2fbmcwi4zolz%40wsh7ez36kkhl
 export/templates/Articles/American_Psychological_Association_%28APA%29,_v._7_xhtml
+#
+# from Jürgen: ampersands in the bibliography (as in "Hartley & Marks" here)
+# need to be transferred to &amp; in DocBook.
+export/examples/es/Handouts/Tufte_Handout_xhtml
 
 
 # ==============================================================

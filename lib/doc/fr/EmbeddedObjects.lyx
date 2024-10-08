@@ -50124,7 +50124,7 @@ Documentation du paquetage \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "arydshln"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//arydshln/arydshln.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/arydshln/arydshln.pdf"
 literal "false"
 
 \end_inset
@@ -50364,7 +50364,7 @@ Documentation du paquetage \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "footmisc"
-target "https://ctan.net/macros/latex/contrib/footmisc/footmisc-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/footmisc/footmisc-doc.pdf"
 literal "false"
 
 \end_inset
@@ -50460,7 +50460,7 @@ Documentation du paquetage \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "hyperref"
-target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset
@@ -50508,7 +50508,7 @@ Documentation du paquetage \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "KOMA-Script"
-target "http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-en.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-en.pdf"
 literal "false"
 
 \end_inset
@@ -50567,7 +50567,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "exemple"
-target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine-demo-fr.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine-demo-fr.pdf"
 literal "false"
 
 \end_inset

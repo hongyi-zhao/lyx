@@ -10236,7 +10236,7 @@ G-Brief
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/g-brief/g-brief.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/g-brief/g-brief.pdf"
 literal "false"
 
 \end_inset
@@ -14406,7 +14406,7 @@ PDFフォーム用のフィールドとボタンを提供します．
 \begin_inset CommandInset href
 LatexCommand href
 name "hyperref解説文書"
-target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset
@@ -14471,7 +14471,7 @@ TODO註釈は出力されません．
 \begin_inset CommandInset href
 LatexCommand href
 name "todonotes解説文書"
-target "http://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
 literal "false"
 
 \end_inset
@@ -14531,7 +14531,7 @@ tcolorboxパッケージを使って色付きボックスをサポートする�
 \begin_inset CommandInset href
 LatexCommand href
 name "tcolorbox 解説文書"
-target "http://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf`"
 literal "false"
 
 \end_inset

@@ -8784,7 +8784,7 @@ G-Brief (V.
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/g-brief/g-brief.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/g-brief/g-brief.pdf"
 literal "false"
 
 \end_inset
@@ -13471,7 +13471,7 @@ This module provides fields and buttons for PDF forms.
 \begin_inset CommandInset href
 LatexCommand href
 name "hyperref documentation"
-target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf"
 literal "false"
 
 \end_inset
@@ -13544,7 +13544,7 @@ Custom
 \begin_inset CommandInset href
 LatexCommand href
 name "todonotes documentation"
-target "http://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf"
 literal "false"
 
 \end_inset
@@ -13611,7 +13611,7 @@ Fancy Color Boxes
 \begin_inset CommandInset href
 LatexCommand href
 name "tcolorbox documentation"
-target "http://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf`"
 literal "false"
 
 \end_inset

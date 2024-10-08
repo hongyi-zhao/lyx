@@ -181,8 +181,31 @@ void GuiBibtex::setButtons()
 
 void GuiBibtex::selUpdated()
 {
+	vector<docstring> nfe;
+	if (usingBiblatex()) {
+		// check for current file encodings
+		for (int i = 0; i != selected_model_.rowCount(); ++i) {
+			QStandardItem const * key = selected_model_.item(i, 0);
+			QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(i, 1)));
+			QString fenc = cb ? cb->itemData(cb->currentIndex()).toString() : QString();
+			if (fenc.isEmpty())
+				fenc = cached_file_encodings_[key->text()];
+			else
+				cached_file_encodings_[key->text()] = fenc;
+			docstring const enc = qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(fenc);
+			if (key && !key->text().isEmpty() && !fenc.isEmpty() && fenc != "general")
+				nfe.push_back(enc);
+		}
+	}
 	selectionManager->update();
 	editPB->setEnabled(deletePB->isEnabled());
+	if (usingBiblatex()) {
+		// Set file encodings as assembled above
+		for (int i = 0; i != selected_model_.rowCount(); ++i)
+			addEncCombo(i);
+		if (!nfe.empty())
+			setFileEncodings(nfe);
+	}
 	updateReAbs();
 	changed();
 }
@@ -282,7 +305,6 @@ void GuiBibtex::inheritPressed()
 		if (!selected_bibs_.contains(toqstr(f))) {
 			selected_bibs_.append(toqstr(f));
 			setSelectedBibs(selected_bibs_);
-			string enc;
 			if (usingBiblatex()) {
 				string const bfe = buffer().masterParams().bibFileEncoding(to_utf8(f));
 				if (!bfe.empty())
@@ -296,6 +318,48 @@ void GuiBibtex::inheritPressed()
 			setFileEncodings(nfe);
 		change_adaptor();
 	}
+}
+
+
+void GuiBibtex::updateFileEncodings()
+{
+	vector<docstring> nfe;
+	for (int i = 0; i != selected_model_.rowCount(); ++i) {
+		QStandardItem const * key = selected_model_.item(i, 0);
+		QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(i, 1)));
+		QString fenc = cb ? cb->itemData(cb->currentIndex()).toString() : QString();
+		docstring const enc = qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(fenc);
+		if (key && !key->text().isEmpty() && !fenc.isEmpty() && fenc != "general")
+			nfe.push_back(enc);
+	}
+	if (!nfe.empty()) {
+		setFileEncodings(nfe);
+		change_adaptor();
+	}
+}
+
+
+bool GuiBibtex::hasFileEncodings() const
+{
+	if (!usingBiblatex())
+		// only with biblatex, we have file encodings
+		return false;
+
+	// first check the applied encodings
+	docstring_list const mbibs = buffer().masterBuffer()->getBibfiles();
+	for (auto const & f : mbibs) {
+		string const bfe = buffer().masterParams().bibFileEncoding(to_utf8(f));
+		if (!bfe.empty() && bfe != "general")
+			return true;
+	}
+
+	// now check unapplied ones
+	for (QString const & enc : cached_file_encodings_) {
+		if (!enc.isEmpty() && enc != "general")
+			return true;
+	}
+
+	return false;
 }
 
 
@@ -373,6 +437,28 @@ void GuiBibtex::updateReAbs()
 }
 
 
+void GuiBibtex::addEncCombo(int const row)
+{
+	QComboBox * ecb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(row, 1)));
+	if (ecb)
+		// encoding combo already exists
+		return;
+
+	// Add new combo and fill it
+	QComboBox * cb = new QComboBox;
+	cb->addItem(qt_("General Encoding"), "general");
+	cb->addItem(qt_("Document Encoding"), "auto");
+	QMap<QString, QString>::const_iterator it = encodings_.constBegin();
+	while (it != encodings_.constEnd()) {
+		cb->addItem(it.key(), it.value());
+		++it;
+	}
+	cb->setToolTip(qt_("If this bibliography database uses a different "
+			   "encoding than specified below, set it here"));
+	selectedLV->setIndexWidget(selected_model_.index(row, 1), cb);
+}
+
+
 void GuiBibtex::setSelectedBibs(QStringList const & sl)
 {
 	selected_model_.clear();
@@ -380,7 +466,28 @@ void GuiBibtex::setSelectedBibs(QStringList const & sl)
 	headers << qt_("Database")
 		<< qt_("File Encoding");
 	selected_model_.setHorizontalHeaderLabels(headers);
-	bool const moreencs = usingBiblatex() && sl.count() > 1;
+	QStringList::const_iterator it  = sl.begin();
+	QStringList::const_iterator end = sl.end();
+	for (int i = 0; it != end; ++it, ++i) {
+		QStandardItem * si = new QStandardItem();
+		si->setData(*it);
+		si->setText(*it);
+		si->setToolTip(*it);
+		si->setEditable(false);
+		selected_model_.insertRow(i, si);
+		addEncCombo(i);
+		QString const enc = cached_file_encodings_[*it];
+		if (!enc.isEmpty()) {
+			QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(i, 1)));
+			cb->setCurrentIndex(cb->findData(enc));
+		}
+	}
+
+	// Decide if we show file encoding combos. This is the case:
+	// 1. if we use Biblatex
+	// 2. and we have multiple items (otherwise you could set the genral encodung)
+	// 3. or a single item already has a non-standard encoding set
+	bool const moreencs = usingBiblatex() && (sl.count() > 1 || hasFileEncodings());
 	selectedLV->setColumnHidden(1, !moreencs);
 	selectedLV->verticalHeader()->setVisible(false);
 	selectedLV->horizontalHeader()->setVisible(moreencs);
@@ -395,28 +502,8 @@ void GuiBibtex::setSelectedBibs(QStringList const & sl)
 		bibEncodingCO->setToolTip(qt_("If your bibliography databases use a different "
 					      "encoding than the LyX document, specify it here"));
 	}
-	QStringList::const_iterator it  = sl.begin();
-	QStringList::const_iterator end = sl.end();
-	for (int i = 0; it != end; ++it, ++i) {
-		QStandardItem * si = new QStandardItem();
-		si->setData(*it);
-		si->setText(*it);
-		si->setToolTip(*it);
-		si->setEditable(false);
-		selected_model_.insertRow(i, si);
-		QComboBox * cb = new QComboBox;
-		cb->addItem(qt_("General Encoding"), "general");
-		cb->addItem(qt_("Document Encoding"), "auto");
-		QMap<QString, QString>::const_iterator it = encodings_.constBegin();
-		while (it != encodings_.constEnd()) {
-			cb->addItem(it.key(), it.value());
-			++it;
-		}
-		cb->setToolTip(qt_("If this bibliography database uses a different "
-				   "encoding than specified below, set it here"));
-		selectedLV->setIndexWidget(selected_model_.index(i, 1), cb);
-	}
 	editPB->setEnabled(deletePB->isEnabled());
+	updateFileEncodings();
 	updateReAbs();
 }
 
@@ -523,11 +610,12 @@ void GuiBibtex::applyView()
 {
 	docstring dbs;
 
-	int maxCount = selected_bibs_.count();
+	QStringList sb = selectedBibs();
+	int maxCount = sb.count();
 	for (int i = 0; i < maxCount; i++) {
 		if (i != 0)
 			dbs += ',';
-		QString item = selected_bibs_.at(i);
+		QString item = sb.at(i);
 		docstring bibfile = qstring_to_ucs4(item);
 		dbs += bibfile;
 	}
@@ -630,17 +718,30 @@ vector<docstring> GuiBibtex::getFileEncodings()
 
 void GuiBibtex::setFileEncodings(vector<docstring> const & m)
 {
+	if (!usingBiblatex())
+		// no file encodings
+		return;
+
 	for (docstring const & s: m) {
 		docstring key;
 		QString enc = toqstr(split(s, key, ' '));
+		// check if we have the key
 		QModelIndexList qmil =
-				selected_model_.match(selected_model_.index(0, 0),
-						     Qt::DisplayRole, toqstr(key), 1,
-						     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
-		if (!qmil.empty()) {
-			QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(qmil.front().row(), 1)));
-			cb->setCurrentIndex(cb->findData(enc));
+			selected_model_.match(selected_model_.index(0, 0),
+					     Qt::DisplayRole, toqstr(key), 1,
+					     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
+		if (qmil.isEmpty())
+			continue;
+		int const row = qmil.front().row();
+		// assure we have an encoding combo in this row ...
+		QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(row, 1)));
+		if (!cb) {
+			addEncCombo(row);
+			cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(row, 1)));
 		}
+		if (!qmil.empty())
+			// ... and set it to the desired value
+			cb->setCurrentIndex(cb->findData(enc));
 	}
 }
 

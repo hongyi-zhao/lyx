@@ -10082,7 +10082,7 @@ DIN-Brief
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/dinbrief/liesmich"
+target "https://mirrors.ctan.org/macros/latex/contrib/dinbrief/liesmich"
 literal "false"
 
 \end_inset
@@ -14531,7 +14531,7 @@ tcolorboxパッケージを使って色付きボックスをサポートする�
 \begin_inset CommandInset href
 LatexCommand href
 name "tcolorbox 解説文書"
-target "https://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf`"
+target "https://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
 literal "false"
 
 \end_inset
@@ -17958,7 +17958,7 @@ usepackage{graphics}
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://www.ctan.org/pkg/fancyhdr"
+target "https://ctan.org/pkg/fancyhdr"
 literal "false"
 
 \end_inset

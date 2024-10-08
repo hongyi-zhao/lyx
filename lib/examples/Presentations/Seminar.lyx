@@ -175,7 +175,7 @@ The
 \begin_inset CommandInset href
 LatexCommand href
 name "seminar"
-target "http://www.ctan.org/pkg/seminar"
+target "https://ctan.org/pkg/seminar"
 literal "false"
 
 \end_inset

@@ -49293,7 +49293,7 @@ Documentation of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "booktabs"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//booktabs/booktabs.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/booktabs/booktabs.pdf"
 literal "false"
 
 \end_inset
@@ -49677,7 +49677,7 @@ Documentation of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "lettrine"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/lettrine/doc/lettrine.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine.pdf"
 literal "false"
 
 \end_inset

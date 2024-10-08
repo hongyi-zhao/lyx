@@ -9160,7 +9160,7 @@ DIN-Brief
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/dinbrief/liesmich"
+target "https://mirrors.ctan.org/macros/latex/contrib/dinbrief/liesmich"
 literal "false"
 
 \end_inset
@@ -14313,7 +14313,7 @@ et la
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation tcolorbox"
-target "https://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf`"
+target "https://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
 literal "false"
 
 \end_inset
@@ -19092,7 +19092,7 @@ fancyhdr
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://www.ctan.org/pkg/fancyhdr"
+target "https://ctan.org/pkg/fancyhdr"
 literal "false"
 
 \end_inset

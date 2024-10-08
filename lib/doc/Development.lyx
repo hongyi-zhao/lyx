@@ -1207,7 +1207,7 @@ See
 \begin_inset CommandInset href
 LatexCommand href
 name "the thread “Proposal for a guide on updating layouts”"
-target "http://permalink.gmane.org/gmane.editors.lyx.devel/161202"
+target "https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg193244.html"
 literal "false"
 
 \end_inset
@@ -7705,7 +7705,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/trac/changeset/35855
+https://www.lyx.org/trac/changeset/573500dd04f154f27318ac5ec469a337f97fe9f0/lyxgit
 \end_layout
 
 \end_inset

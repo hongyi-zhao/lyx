@@ -39545,7 +39545,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentación"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/cancel/cancel.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/cancel/cancel.pdf"
 literal "false"
 
 \end_inset

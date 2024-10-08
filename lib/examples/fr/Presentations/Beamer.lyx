@@ -4538,7 +4538,7 @@ En plus de cet ensemble standard,
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://www.ctan.org"
+target "https://www.ctan.org"
 literal "false"
 
 \end_inset

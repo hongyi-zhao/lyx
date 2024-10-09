@@ -50448,7 +50448,7 @@ Dokumentation des \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "pdfpages"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/pdfpages/pdfpages.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/pdfpages/pdfpages.pdf"
 literal "false"
 
 \end_inset

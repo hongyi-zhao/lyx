@@ -161,13 +161,17 @@ else {
 
 print "Using tempdir \"" . abs_path($tempdir) . "\"\n";
 
-my @wait = ();
+my %wait = ();
 for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
   my $pid = fork();
-  if ($pid == 0) {
+  if ($pid > 0) {
+    $wait{$pid} = $i;
+  }
+  elsif ($pid == 0) {
 
     # I am child
     open(my $fe, '>:encoding(UTF-8)', "$tempdir/xxxError$i");
+    my $subprocess = $i;
     open(my $fs, '>:encoding(UTF-8)', "$tempdir/xxxSum$i");
     while (1) {
       open(my $fh, '+<', $countfile) or die("cannot open $countfile");
@@ -195,7 +199,7 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
         my $u        = $rentry->{u};
         my $use_curl = $rentry->{use_curl};
 
-        print $fe "Checking($entryidx) '$u': ";
+        print $fe "Checking($entryidx-$subprocess) '$u': ";
         my ($res, $prnt, $outSum);
         try {
           $res = check_url($u, $use_curl, $fe, $fs);
@@ -246,30 +250,45 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
       }
     }
   }
-  $wait[$i] = $pid;
 }
 
-for (my $i = 0; $i < $NR_JOBS; $i++) {
-  my $p = $wait[$i];
-  if ($p > 0) {
-    waitpid($p, 0);
-    open(my $fe, '<', "$tempdir/xxxError$i");
-    while (my $l = <$fe>) {
-      if ($l =~ /^NumberOfErrors\s(\d+)/) {
-        $errorcount += $1;
-      }
-      else {
-        print $l;
-      }
+sub readsublog($) {
+  my ($i) = @_;
+  open(my $fe, '<', "$tempdir/xxxError$i");
+  while (my $l = <$fe>) {
+    if ($l =~ /^NumberOfErrors\s(\d+)/) {
+      $errorcount += $1;
     }
-    close($fe);
-    open(my $fs, '<', "$tempdir/xxxSum$i");
-    while (my $l = <$fs>) {
-      print SFO $l;
+    else {
+      print $l;
     }
-    close($fs);
+  }
+  close($fe);
+  open(my $fs, '<', "$tempdir/xxxSum$i");
+  while (my $l = <$fs>) {
+    print SFO $l;
+  }
+  close($fs);
+}
+
+my $p;
+do {
+  $p = waitpid(-1, 0);
+  if (($p > 0) && defined($wait{$p}) && $wait{$p} >= 0) {
+    &readsublog($wait{$p});
+    $wait{$p} = -1;
   }
 }
+until ($p < 0);
+print SFO "Started to protocol remaining subprocess-logs\n";
+
+for my $p (keys %wait) {
+  if ($wait{$p} >= 0) {
+    &readsublog($wait{$p});
+    $wait{$p} = -1;
+  }
+}
+print SFO "Stopped to protocol remaining subprocess-logs\n";
 unlink($countfile);
 
 if (%URLS) {
@@ -348,7 +367,8 @@ sub parse_file($) {
     my $line = 0;
     while (my $l = <FI>) {
       $line++;
-      $l =~ s/[\r\n]+$//;    #  Simulate chomp
+      chomp($l);
+      # $l =~ s/[\r\n]+$//;    #  Simulate chomp
       if ($status eq "out") {
 
         # searching for "\begin_inset Flex URL"
@@ -413,6 +433,6 @@ sub getnrjobs($$$) {
   if ($nr_jobs < 2) {
     return ($remaining);
   }
-  my $diff = 1 + int($remaining / (2 * $nr_jobs));
+  my $diff = 1 + int($remaining / (3 * $nr_jobs));
   return $diff;
 }

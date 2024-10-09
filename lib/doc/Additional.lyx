@@ -10358,7 +10358,7 @@ Powerdot
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/powerdot/doc/powerdot.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/powerdot/doc/powerdot.pdf"
 literal "false"
 
 \end_inset

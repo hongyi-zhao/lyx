@@ -510,7 +510,7 @@ AmS
 \begin_inset CommandInset href
 LatexCommand href
 name "amsguide.pdf"
-target "https://www.ctan.org/tex-archive/macros/amstex/doc/amsguide.pdf"
+target "https://mirrors.ctan.org/macros/amstex/doc/amsguide.pdf"
 literal "false"
 
 \end_inset
@@ -5605,7 +5605,7 @@ B.
 \series bold
 ×
 \series default
-4
+
 \begin_inset space ~
 \end_inset
 
@@ -12584,7 +12584,7 @@ qquad
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+
 \end_layout
 
 \end_inset
@@ -12662,7 +12662,7 @@ hfill
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+
 \end_layout
 
 \end_inset
@@ -12832,7 +12832,7 @@ Leerraum
 \begin_inset space ~
 \end_inset
 
-5
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -42495,7 +42495,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/mhchem/mhchem.pdf"
 literal "false"
 
 \end_inset

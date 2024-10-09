@@ -7962,7 +7962,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "https://ctan.org/tex-archive/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf"
 literal "false"
 
 \end_inset

@@ -61,7 +61,8 @@ sub check_http_url($$$$) {
     print $fe " " . $response->status_line . ": ";
     return 3;
   }
-  my @title = ();
+  my @atitle = ();
+  my %htitle = ();
   my $res   = 0;
   while ($buf =~ s/\<title\>([^\<]*)\<\/title\>//i) {
     my $title = $1;
@@ -69,13 +70,17 @@ sub check_http_url($$$$) {
     $title =~ s/  +/ /g;
     $title =~ s/^ //;
     $title =~ s/ $//;
-    push(@title, $title);
-    print $fe "title = \"$title\": ";
+    if (! defined($htitle{$title})) {
+      push(@atitle, $title);
+      $htitle{$title} = 1;
+    }
     if ($title =~ /Error 404|Not Found/) {
       print $fe " Page reports 'Not Found' from \"$protocol://$host$getp\": ";
       $res = 3;
     }
   }
+
+  print $fe "title = \"" . join(': ', @atitle) . "\": ";
   return $res;
 }
 

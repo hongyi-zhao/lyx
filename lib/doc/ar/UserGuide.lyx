@@ -54327,7 +54327,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "وثيقة عن"
-target "https://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/btxdoc.pdf"
+target "https://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf"
 literal "false"
 
 \end_inset
@@ -54347,7 +54347,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/btxdoc.pdf
+https://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
 \end_inset
@@ -54512,7 +54512,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "وثيقة"
-target "https://www.ctan.org/tex-archive/indexing/makeindex/doc/makeindex.pdf"
+target "https://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf"
 literal "false"
 
 \end_inset
@@ -54531,7 +54531,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/indexing/makeindex/doc/makeindex.pdf
+https://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
 \end_layout
 
 \end_inset
@@ -54551,7 +54551,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "خيارات"
-target "https://www.ctan.org/tex-archive/indexing/makeindex/doc/manpages.dvi"
+target "https://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi"
 literal "false"
 
 \end_inset
@@ -54570,7 +54570,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/indexing/makeindex/doc/manpages.dvi
+https://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \end_inset
@@ -54771,7 +54771,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "وثيقة"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 literal "false"
 
 \end_inset
@@ -54804,7 +54804,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+https://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \end_inset

@@ -616,7 +616,7 @@ dans le fichier
 \begin_inset CommandInset href
 LatexCommand href
 name "amsguide.pdf"
-target "https://www.ctan.org/tex-archive/macros/amstex/doc/amsguide.pdf"
+target "https://mirrors.ctan.org/macros/amstex/doc/amsguide.pdf"
 literal "false"
 
 \end_inset
@@ -6180,7 +6180,7 @@ right
 \begin_inset space ~
 \end_inset
 
-4
+
 \series bold
 ×
 \series default
@@ -13316,7 +13316,7 @@ qquad
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+
 \end_layout
 
 \end_inset
@@ -13396,7 +13396,7 @@ hfill
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+
 \end_layout
 
 \end_inset
@@ -43889,7 +43889,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/mhchem/mhchem.pdf"
 literal "false"
 
 \end_inset

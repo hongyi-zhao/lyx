@@ -522,7 +522,7 @@ AmS
 \begin_inset CommandInset href
 LatexCommand href
 name "amsguide.pdf"
-target "https://www.ctan.org/tex-archive/macros/amstex/doc/amsguide.pdf"
+target "https://mirrors.ctan.org/macros/amstex/doc/amsguide.pdf"
 literal "false"
 
 \end_inset
@@ -39169,7 +39169,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/mhchem/mhchem.pdf"
 literal "false"
 
 \end_inset

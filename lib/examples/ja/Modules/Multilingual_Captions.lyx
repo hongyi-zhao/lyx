@@ -1861,7 +1861,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "bicaption"
-target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/bicaption.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/caption/bicaption.pdf"
 literal "false"
 
 \end_inset

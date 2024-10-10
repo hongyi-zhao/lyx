@@ -2804,7 +2804,7 @@ status open
 
 \begin_layout Plain Layout
 
-https://ctan.org/tex-archive/macros/latex/required/amsmath
+https://www.ctan.org/tex-archive/macros/latex/required/amsmath
 \end_layout
 
 \end_inset
@@ -3949,7 +3949,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
+https://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
 \end_layout
 
 \end_inset
@@ -8939,7 +8939,7 @@ Europass (2013)
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/europasscv/europasscv.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/europasscv/europasscv.pdf"
 literal "false"
 
 \end_inset
@@ -8983,7 +8983,7 @@ Europe CV
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/europecv/europecv.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/europecv/europecv.pdf"
 literal "false"
 
 \end_inset
@@ -9019,7 +9019,7 @@ Modern CV
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/moderncv/manual/moderncv_userguide.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/moderncv/manual/moderncv_userguide.pdf"
 literal "false"
 
 \end_inset
@@ -9056,7 +9056,7 @@ Curricula Vitae\SpecialChar menuseparator
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/simplecv/simplecv.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/simplecv/simplecv.pdf"
 literal "false"
 
 \end_inset
@@ -9349,7 +9349,7 @@ Beamer
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf"
 literal "false"
 
 \end_inset
@@ -11061,7 +11061,7 @@ Seminar
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
 literal "false"
 
 \end_inset
@@ -14858,7 +14858,7 @@ fix-cm
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation fix-cm"
-target "http://mirrors.ctan.org/macros/latex/base/fix-cm.pdf"
+target "https://mirrors.ctan.org/macros/latex/base/fix-cm.pdf"
 literal "false"
 
 \end_inset
@@ -15510,7 +15510,7 @@ Partie
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation de chessboard "
-target "http://mirrors.ctan.org/macros/latex/contrib/chessboard/chessboard.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/chessboard/chessboard.pdf"
 literal "false"
 
 \end_inset
@@ -16323,7 +16323,7 @@ status open
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation enumitem"
-target "http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
 literal "false"
 
 \end_inset
@@ -16501,7 +16501,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation enumitem"
-target "http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
 literal "false"
 
 \end_inset
@@ -16564,7 +16564,7 @@ paragraphes
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation paralist"
-target "http://mirrors.ctan.org/macros/latex/contrib/paralist/paralist.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/paralist/paralist.pdf"
 literal "false"
 
 \end_inset
@@ -19092,7 +19092,7 @@ fancyhdr
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "https://ctan.org/pkg/fancyhdr"
+target "https://www.ctan.org/pkg/fancyhdr"
 literal "false"
 
 \end_inset
@@ -19493,7 +19493,7 @@ Pour découvrir d'autres fonctionnalités,
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation"
-target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+target "http//mirrors.ctan.org/macros/latex/required/tools/multicol.pdf"
 literal "false"
 
 \end_inset
@@ -21514,7 +21514,7 @@ status collapsed
 Pour plus d'information voir 
 \begin_inset CommandInset href
 LatexCommand href
-target "https://ctan.org/pkg/shapepar"
+target "https://www.ctan.org/pkg/shapepar"
 literal "false"
 
 \end_inset
@@ -22148,7 +22148,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://ctan.org/tex-archive/macros/latex/contrib/custom-bib
+https://www.ctan.org/tex-archive/macros/latex/contrib/custom-bib
 \end_layout
 
 \end_inset
@@ -22211,7 +22211,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://ctan.org/tex-archive/macros/latex/contrib/bibtopic
+https://www.ctan.org/tex-archive/macros/latex/contrib/bibtopic
 \end_layout
 
 \end_inset

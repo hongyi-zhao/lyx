@@ -39524,7 +39524,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Lista"
-target "https://ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
+target "https://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf"
 literal "false"
 
 \end_inset

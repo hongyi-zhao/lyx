@@ -813,7 +813,7 @@ feyn
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "http://mirror.ctan.org/fonts/feyn/feyn.pdf"
+target "https://mirrors.ctan.org/fonts/feyn/feyn.pdf"
 literal "false"
 
 \end_inset

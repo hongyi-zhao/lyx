@@ -49389,7 +49389,7 @@ Documentation of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "diagbox"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//diagbox/diagbox.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/diagbox/diagbox.pdf"
 literal "false"
 
 \end_inset
@@ -49734,7 +49734,7 @@ Documentation of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "listings"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//listings/listings.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/listings/listings.pdf"
 literal "false"
 
 \end_inset
@@ -49782,7 +49782,7 @@ Documentation of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "minted"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//minted/minted.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/minted/minted.pdf"
 literal "false"
 
 \end_inset
@@ -49830,7 +49830,7 @@ Documentation of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "marginnote"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib//marginnote/marginnote.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/marginnote/marginnote.pdf"
 literal "false"
 
 \end_inset
@@ -49926,7 +49926,7 @@ Documentation of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "prettyref"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/prettyref/prettyref.pdf"
 literal "false"
 
 \end_inset
@@ -50115,7 +50115,7 @@ Documentation of the option
 \begin_inset CommandInset href
 LatexCommand href
 name "Omit text in PDF"
-target "https://www.ctan.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf"
+target "https://mirrors.ctan.org/info/svg-inkscape/InkscapePDFLaTeX.pdf"
 literal "false"
 
 \end_inset

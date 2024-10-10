@@ -190,7 +190,7 @@ La classe
 \begin_inset CommandInset href
 LatexCommand href
 name "seminar"
-target "https://ctan.org/pkg/seminar"
+target "https://www.ctan.org/pkg/seminar"
 literal "false"
 
 \end_inset
@@ -275,7 +275,7 @@ Seminar
 \begin_inset CommandInset href
 LatexCommand href
 name "PGF"
-target "http://ctan.org/pkg/pgf"
+target "https://www.ctan.org/pkg/pgf"
 literal "false"
 
 \end_inset
@@ -675,7 +675,7 @@ seminar.cls
 \begin_inset CommandInset href
 LatexCommand href
 name "PGF"
-target "http://ctan.org/pkg/pgf"
+target "https://www.ctan.org/pkg/pgf"
 literal "false"
 
 \end_inset

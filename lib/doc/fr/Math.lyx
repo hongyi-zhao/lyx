@@ -43710,7 +43710,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Description"
-target "http://mirrors.ctan.org/obsolete/info/math/voss/mathmode/Mathmode.pdf"
+target "https://mirrors.ctan.org/obsolete/info/math/voss/mathmode/Mathmode.pdf"
 literal "false"
 
 \end_inset

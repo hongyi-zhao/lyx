@@ -894,7 +894,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "http://mirror.ctan.org/fonts/feyn/feyn.pdf"
+target "https://mirrors.ctan.org/fonts/feyn/feyn.pdf"
 literal "false"
 
 \end_inset

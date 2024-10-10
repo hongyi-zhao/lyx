@@ -31347,7 +31347,7 @@ Hay información sobre el modo de hacerlo en
 
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/btxhak.pdf"
+target "https://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
 literal "false"
 
 \end_inset
@@ -52229,7 +52229,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://ctan.org/topic
+https://www.ctan.org/topic
 \end_layout
 
 \end_inset
@@ -52316,7 +52316,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentación"
-target "https://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf"
+target "https://mirrors.ctan.org/info/bibtex/tamethebeast/ttb_en.pdf"
 literal "false"
 
 \end_inset
@@ -52336,7 +52336,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
+https://mirrors.ctan.org/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
 \end_inset
@@ -52356,7 +52356,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentación"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/biblatex/doc/biblatex.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf"
 literal "false"
 
 \end_inset
@@ -52391,7 +52391,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/biblatex/doc/biblatex.pdf
+https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \end_layout
 
 \end_inset
@@ -52838,7 +52838,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentación"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/microtype/microtype.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf"
 literal "false"
 
 \end_inset
@@ -52873,7 +52873,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/microtype/microtype.pdf
+https://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf
 \end_layout
 
 \end_inset
@@ -52948,7 +52948,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentación"
-target "https://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/prettyref/prettyref.pdf"
 literal "false"
 
 \end_inset
@@ -52983,7 +52983,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
+https://mirrors.ctan.org/macros/latex/contrib/prettyref/prettyref.pdf
 \end_layout
 
 \end_inset

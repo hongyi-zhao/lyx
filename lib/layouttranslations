@@ -1466,8 +1466,8 @@ Translation sr
 End
 
 Translation sv
-	"Acknowledgement" "Tacksägelse"
-	"Acknowledgment" "Tacksägelse"
+	"Acknowledgement" "Tack till"
+	"Acknowledgment" "Tack till"
 	"Algorithm" "Algoritm"
 	"Assumption" "Antagande"
 	"Axiom" "Axiom"
@@ -1496,7 +1496,7 @@ Translation sv
 	"Nomenclature[[output]]" "Nomenklatur"
 	"Notation" "Notation"
 	"Note" "Not"
-	"Notes[[Endnotes]]" "Notes"
+	"Notes[[Endnotes]]" "Noter"
 	"Problem" "Problem"
 	"Proof" "Bevis"
 	"Property" "Egenskap"

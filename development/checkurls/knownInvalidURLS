@@ -3,3 +3,5 @@ ftp://www.test.test
 http://www.test.test
 #proto://host.xx.ab/abcd
 http://example.com/%20foo
+http://ftp.edpsciences.org/pub/aa/aa-package.zip
+http://www.istri.fr/spip/zip/CMCDDE.zip

@@ -1466,8 +1466,8 @@ Translation sr
 End
 
 Translation sv
-	"Acknowledgement" "Tack till"
-	"Acknowledgment" "Tack till"
+	"Acknowledgement" "Tackord"
+	"Acknowledgment" "Tackord"
 	"Algorithm" "Algoritm"
 	"Assumption" "Antagande"
 	"Axiom" "Axiom"

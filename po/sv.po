@@ -20,7 +20,7 @@
 #
 # Dictionary / Ordlista
 #
-#   acknowledgement      -> Tack till
+#   acknowledgement      -> tackord
 #   add                  -> lägg till, addera?
 #   addition             -> tillägg
 #   advanced             -> avancerat(d)
@@ -4434,7 +4434,7 @@ msgid ""
 msgstr ""
 "Huruvida dokument ska öppnas i en instans av LyX som redan körs. (Sätt "
 "sökvägen för LyX-serverns sluss och starta om LyX för att aktivera denna "
-"finess)"
+"funktion)"
 
 #: src/frontends/qt/ui/PrefDocHandlingUi.ui:190
 msgid "Use s&ingle instance"
@@ -6921,7 +6921,7 @@ msgid ""
 msgstr ""
 "Biblatex stöder många författare-år och numeriska stilar. Det är "
 "huvudsakligen inriktat på humaniora. Det är högst anpassningsbart, helt "
-"lokaliserat, och förser många finesser som inte är möjliga med BibTeX. "
+"lokaliserat, och förser många funktioner som inte är möjliga med BibTeX. "
 "Användningen av 'biber' som bibliografibehandlare är rekommenderad."
 
 #: lib/citeengines/jurabib.citeengine:2
@@ -6968,7 +6968,7 @@ msgid ""
 "names, shortened and full author lists, and more."
 msgstr ""
 "Natbib stöder ett omfång av både författare-år och numeriska stilar "
-"huvudsakligen inriktade på humaniora. Det har finesser som automatisk "
+"huvudsakligen inriktade på humaniora. Det har funktioner som automatisk "
 "sortering och sammanfogning av numeriska citat, annoteringar, kapitalisering "
 "av 'van'-delen av författarnamn, förkortade och hela författarlistor, och "
 "mer."
@@ -7247,13 +7247,13 @@ msgstr "Sammandrag"
 #: lib/layouts/spie.layout:100 lib/layouts/svcommon.inc:640
 #: lib/layouts/svcommon.inc:653 lib/examples/Articles:0
 msgid "Acknowledgments"
-msgstr "Tack till"
+msgstr "Tackord"
 
 #: lib/layouts/AEA.layout:135 lib/layouts/aa.layout:181
 #: lib/layouts/agutex.layout:205 lib/layouts/copernicus.layout:427
 #: lib/layouts/egs.layout:610
 msgid "Acknowledgments."
-msgstr "Tack till."
+msgstr "Tackord."
 
 #: lib/layouts/AEA.layout:143
 msgid "Figure Notes"
@@ -8758,7 +8758,7 @@ msgstr "Ämnesrubriker:"
 
 #: lib/layouts/aastex.layout:365
 msgid "[Acknowledgments]"
-msgstr "[Tack till]"
+msgstr "[Acknowledgments]"
 
 #: lib/layouts/aastex.layout:377
 msgid "PlaceFigure"
@@ -10209,7 +10209,7 @@ msgstr "Fyra tillhörigheter"
 
 #: lib/layouts/apa.layout:256 lib/layouts/iucr.layout:257
 msgid "Acknowledgments:"
-msgstr "Tack till:"
+msgstr "Tackord:"
 
 #: lib/layouts/apa.layout:268 lib/layouts/apax.inc:367
 msgid "ThickLine"
@@ -12392,11 +12392,11 @@ msgstr "begäran_om_omtryck_till:"
 #: lib/layouts/elsart.layout:570 lib/layouts/svcommon.inc:625
 #: lib/layouts/svmult.layout:158
 msgid "Acknowledgment"
-msgstr "Tack till"
+msgstr "Tackord"
 
 #: lib/layouts/egs.layout:634
 msgid "Acknowledgment."
-msgstr "Tack till."
+msgstr "Tackord."
 
 #: lib/layouts/elsart.layout:3
 msgid "Elsevier (Obsolete Version)"
@@ -13191,7 +13191,7 @@ msgstr ""
 "Inställningar > Dokumentklass > Klassalternativ > Anpassad). För att alltid "
 "visa dem, infoga \\fxsetup{draft} till Dokument > Inställningar > Ingress. "
 "Notera även att du behöver version 4 eller senare av FiXme-paketet för vissa "
-"finesser."
+"funktioner."
 
 #: lib/layouts/fixme.module:18 lib/layouts/fixme.module:56
 msgid "Fixme"
@@ -14426,7 +14426,7 @@ msgstr "Kommission"
 
 #: lib/layouts/isprs.layout:232
 msgid "ACKNOWLEDGEMENTS"
-msgstr "TACK TILL"
+msgstr "TACKORD"
 
 #: lib/layouts/iucr.layout:3 lib/examples/Articles:0
 msgid "International Union of Crystallography (IUCr)"
@@ -15669,7 +15669,7 @@ msgstr "Tillhörighet (inkludera epost):"
 
 #: lib/layouts/maa-monthly.layout:147
 msgid "Title of acknowledgment"
-msgstr "Titel på tacksägelse"
+msgstr "Titel på tackord"
 
 #: lib/layouts/maa-monthly.layout:181 lib/layouts/theorems-order.inc:70
 #: lib/layouts/theorems-starred.inc:307
@@ -16966,7 +16966,7 @@ msgstr "Kort titel som den visas i löpande sidhuvud"
 
 #: lib/layouts/revtex4-x.inc:267
 msgid "acknowledgments"
-msgstr "tack till"
+msgstr "tackord"
 
 #: lib/layouts/revtex4-x.inc:283
 msgid "Ruled Table"
@@ -17836,7 +17836,7 @@ msgstr "Författarens info:"
 
 #: lib/layouts/spie.layout:105
 msgid "ACKNOWLEDGMENTS"
-msgstr "TACK TILL"
+msgstr "TACKORD"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 msgid "UNDEFINED"
@@ -22681,11 +22681,11 @@ msgstr "Nybörjarkurs"
 
 #: lib/ui/stdmenus.inc:652
 msgid "User's Guide|U"
-msgstr "Handbok"
+msgstr "Handbok|U"
 
 #: lib/ui/stdmenus.inc:653
 msgid "Additional Features|F"
-msgstr "Avancerad redigering"
+msgstr "Ytterligare funktioner|F"
 
 #: lib/ui/stdmenus.inc:654
 msgid "Embedded Objects|O"
@@ -28156,8 +28156,8 @@ msgid "External Material"
 msgstr "Externt material"
 
 #: lib/examples/Articles:0
-msgid "XY-Figure"
-msgstr "XY-figur"
+msgid "Minted File Listing"
+msgstr "Präglad fillista"
 
 #: lib/examples/Articles:0
 msgid "Minted Listings"
@@ -28172,40 +28172,44 @@ msgid "XY-Pic"
 msgstr "XY-pic"
 
 #: lib/examples/Articles:0
-msgid "Minted File Listing"
-msgstr "Präglad fillista"
-
-#: lib/examples/Articles:0
-msgid "Itemize Bullets"
-msgstr "Punktlista"
+msgid "XY-Figure"
+msgstr "XY-figur"
 
 #: lib/examples/Articles:0
 msgid "Feynman Diagrams"
 msgstr "Feynman-diagram"
 
 #: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "Punktlista"
+
+#: lib/examples/Articles:0
 msgid "Graphics and Insets"
 msgstr "Grafik och insättningar"
-
-#: lib/examples/Articles:0
-msgid "Mixing Japanese with other Languages (with CJKutf8)"
-msgstr "Blanda japanska med andra språk (med CJKutf8)"
-
-#: lib/examples/Articles:0
-msgid "Localization Test (for Developers)"
-msgstr "Lokaliseringstest (för utvecklare)"
-
-#: lib/examples/Articles:0
-msgid "Writing Armenian"
-msgstr "Skriva armeniska"
 
 #: lib/examples/Articles:0
 msgid "Mixing Japanese with other Languages (with platex)"
 msgstr "Blanda japanska med andra språk (med platex)"
 
 #: lib/examples/Articles:0
+msgid "Localization Test (for Developers)"
+msgstr "Lokaliseringstest (för utvecklare)"
+
+#: lib/examples/Articles:0
+msgid "Mixing Japanese with other Languages (with CJKutf8)"
+msgstr "Blanda japanska med andra språk (med CJKutf8)"
+
+#: lib/examples/Articles:0
+msgid "Writing Armenian"
+msgstr "Skriva armeniska"
+
+#: lib/examples/Articles:0
 msgid "Language Support"
 msgstr "Språkstöd"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 2"
+msgstr "Seriebrev 2"
 
 #: lib/examples/Articles:0
 msgid "Serial Letter 3"
@@ -28216,10 +28220,6 @@ msgid "Serial Letter 1"
 msgstr "Seriebrev 1"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 2"
-msgstr "Seriebrev 2"
-
-#: lib/examples/Articles:0
 msgid "LilyPond Book"
 msgstr "LilyPond-bok"
 
@@ -28228,16 +28228,16 @@ msgid "Multilingual Captions"
 msgstr "Flerspråkiga bildtexter"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "Faro- och skyddsangivelser"
+msgid "Noweb Listerrors"
+msgstr "Noweb Listfel"
 
 #: lib/examples/Articles:0
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
 #: lib/examples/Articles:0
-msgid "Noweb Listerrors"
-msgstr "Noweb Listfel"
+msgid "Hazard and Precautionary Statements"
+msgstr "Faro- och skyddsangivelser"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1850
 msgid "Modules"
@@ -28248,12 +28248,12 @@ msgid "Foils Landslide"
 msgstr "Foils Landslide"
 
 #: lib/examples/Articles:0
-msgid "Foils"
-msgstr "Foils"
-
-#: lib/examples/Articles:0
 msgid "Beamer (Complex)"
 msgstr "Beamer (komplex)"
+
+#: lib/examples/Articles:0
+msgid "Foils"
+msgstr "Foils"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
@@ -28264,116 +28264,116 @@ msgid "Writing Korean with CJK-ko"
 msgstr "Skriva koreanska med CJK-ko"
 
 #: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
-
-#: lib/examples/Articles:0
-msgid "Springers Global Journal Template (V. 3)"
-msgstr "Springers Global Journal-mall (V. 3)"
-
-#: lib/examples/Articles:0
 msgid "IEEE Transactions Conference"
 msgstr "IEEE Transactions Konferens"
-
-#: lib/examples/Articles:0
-msgid "IEEE Transactions Journal"
-msgstr "IEEE Transactions Tidskrift"
 
 #: lib/examples/Articles:0
 msgid "Hebrew Article (KOMA-Script)"
 msgstr "Hebreisk artikel (Koma-script)"
 
 #: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Huvudfil"
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
-msgid "02 Foreword"
-msgstr "02 Förord"
+msgid "IEEE Transactions Journal"
+msgstr "IEEE Transactions Tidskrift"
 
 #: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Ordlista"
-
-#: lib/examples/Articles:0
-msgid "09 Appendix"
-msgstr "09 Bilaga"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Referenser"
-
-#: lib/examples/Articles:0
-msgid "04 Acknowledgements"
-msgstr "04 Tack till"
-
-#: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Författare"
-
-#: lib/examples/Articles:0
-msgid "06 Acronym"
-msgstr "06 Förkortningar"
-
-#: lib/examples/Articles:0
-msgid "01 Dedication"
-msgstr "01 Dedikation"
-
-#: lib/examples/Articles:0
-msgid "03 Preface"
-msgstr "03 Företal"
-
-#: lib/examples/Articles:0
-msgid "07 Part"
-msgstr "07 Del"
-
-#: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Medarbetarlista"
+msgid "Springers Global Journal Template (V. 3)"
+msgstr "Springers Global Journal-mall (V. 3)"
 
 #: lib/examples/Articles:0
 msgid "09 Glossary"
 msgstr "09 Ordlista"
 
 #: lib/examples/Articles:0
+msgid "02 Foreword"
+msgstr "02 Förord"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11 Referenser"
+
+#: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Huvudfil"
+
+#: lib/examples/Articles:0
 msgid "06 Part"
 msgstr "06 Del"
 
 #: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Förkortningar"
-
-#: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Kapitel"
-
-#: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08 Bilaga"
+msgid "03 Preface"
+msgstr "03 Företal"
 
 #: lib/examples/Articles:0
 msgid "10 Solutions"
 msgstr "10 Lösningar"
 
 #: lib/examples/Articles:0
-msgid "Simple"
-msgstr "Enkelt"
+msgid "07 Chapter"
+msgstr "07 Kapitel"
+
+#: lib/examples/Articles:0
+msgid "01 Dedication"
+msgstr "01 Dedikation"
+
+#: lib/examples/Articles:0
+msgid "08 Appendix"
+msgstr "08 Bilaga"
+
+#: lib/examples/Articles:0
+msgid "04 Acknowledgements"
+msgstr "04 Tackord"
+
+#: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Förkortningar"
+
+#: lib/examples/Articles:0
+msgid "06 Acronym"
+msgstr "06 Förkortningar"
+
+#: lib/examples/Articles:0
+msgid "05 Contributor List"
+msgstr "05 Medarbetarlista"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Författare"
+
+#: lib/examples/Articles:0
+msgid "10 Glossary"
+msgstr "10 Ordlista"
+
+#: lib/examples/Articles:0
+msgid "07 Part"
+msgstr "07 Del"
+
+#: lib/examples/Articles:0
+msgid "09 Appendix"
+msgstr "09 Bilaga"
 
 #: lib/examples/Articles:0
 msgid "Colored"
 msgstr "Färgad"
 
 #: lib/examples/Articles:0
-msgid "Main File"
-msgstr "Huvudfil"
+msgid "Simple"
+msgstr "Enkelt"
+
+#: lib/examples/Articles:0
+msgid "Chapter 2"
+msgstr "Kapitel 2"
 
 #: lib/examples/Articles:0
 msgid "Chapter 1"
 msgstr "Kapitel 1"
 
 #: lib/examples/Articles:0
-msgid "Chapter 2"
-msgstr "Kapitel 2"
+msgid "Main File"
+msgstr "Huvudfil"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
@@ -33545,7 +33545,7 @@ msgid ""
 "You need to install the package \"fontspec\" to use this feature"
 msgstr ""
 "Använd OpenType- och TrueType-typsnitt direkt (kräver XeTeX eller LuaTeX)\n"
-"Du måste installera paketet \"fontspec\" för att använda denna finess"
+"Du måste installera paketet \"fontspec\" för att använda denna funktion"
 
 #: src/frontends/qt/GuiDocument.cpp:1224
 msgid "empty"
@@ -34115,7 +34115,7 @@ msgid ""
 msgstr ""
 "Du måste inkludera denna fil i dokumentet\n"
 "'%1$s' för att kunna använda huvuddokumentets\n"
-"finess."
+"funktion."
 
 #: src/frontends/qt/GuiDocument.cpp:5377
 msgid "Could not load master"
@@ -38806,7 +38806,7 @@ msgstr "Ingen vline att radera"
 #: src/mathed/InsetMathGrid.cpp:1784
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Okänd tabellarisk finess '%1$s'"
+msgstr "Okänd tabellarisk funktion '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1752
 #, c-format

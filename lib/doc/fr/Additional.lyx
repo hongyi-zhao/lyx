@@ -1435,7 +1435,7 @@ Sur ce dernier point,
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "https://www.ctan.org/"
+target "https://www.ctan.org"
 literal "false"
 
 \end_inset
@@ -14044,7 +14044,7 @@ fixme
 \begin_inset CommandInset href
 LatexCommand href
 name "CTAN"
-target "http://mirrors.ctan.org/macros/latex/contrib/fixme/fixme.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/fixme/fixme.pdf"
 literal "false"
 
 \end_inset

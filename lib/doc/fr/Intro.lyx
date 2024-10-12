@@ -2922,7 +2922,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "git.lyx.org"
-target "https://git.lyx.org/gitweb/?p=lyx.git;a=tree;f=lib/doc;hb=HEAD"
+target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?order=name&rev=HEAD"
 literal "false"
 
 \end_inset
@@ -3053,7 +3053,7 @@ D'autre part il faut prendre garde à ne modifier que la dernière version de la
  C'est toujours celle qui est sur le serveur git 
 \begin_inset CommandInset href
 LatexCommand href
-target "https://git.lyx.org/gitweb/?p=lyx.git;a=tree;f=lib/doc/fr;hb=HEAD"
+target "https://www.lyx.org/trac/browser/lyxgit/lib/doc/fr?order=name&rev=HEAD"
 literal "false"
 
 \end_inset

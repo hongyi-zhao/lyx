@@ -466,7 +466,7 @@ Translation eu
 	"Nomenclature[[output]]" "Nomenklatura"
 	"Notation" "Notazioa"
 	"Note" "Oharra"
-	"Notes[[Endnotes]]" "Notes"
+	"Notes[[Endnotes]]" "Oharrak"
 	"Problem" "Buruketa"
 	"Proof" "Frogapena"
 	"Property" "Propietatea"
@@ -479,7 +479,7 @@ Translation eu
 	"Tableau" "Taula"
 	"Theorem" "Teorema"
 	"page[[nomencl]]" "orrialdea"
-	"see equation[[nomencl]]" "ikus ekuazioa"
+	"see equation[[nomencl]]" "ikusi ekuazioa"
 End
 
 Translation fi

@@ -13,9 +13,13 @@
 
 !!!The following new LyX functions have been introduced in 2.5:
 
+- The new function word-togglecase is a companion of word-upcase and
+  word-lowcase: it toggles each character between lowcase and upcase,
+  which is useful when one FORGOT THE cAPS lOCK KEY.
+
 !!!The following LyX functions have been changed in 2.5:
 
-- The funcion window_new does not take an optional <GEOMETRY>
+- The funcion window-new does not take an optional <GEOMETRY>
   parameter anymore. This only worked in windows and existed for
   internal reasons.
 

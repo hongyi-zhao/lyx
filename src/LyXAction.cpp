@@ -4655,6 +4655,17 @@ void LyXAction::init()
 		{ LFUN_WORD_SELECT, "word-select", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_TOGGLECASE
+ * \li Action: Invert the case of the words in the selection or word at cursor position.
+ * \li Syntax: word-togglecase [<SEL_TYPE>]
+ * \li Params: <SEL_TYPE>: if this is equal to "partial", then the
+ *             default word starts at cursor position (emacs-style).
+ *             Otherwise, the whole word is considered.
+ * \endvar
+ */
+		{ LFUN_WORD_TOGGLECASE, "word-togglecase", Noop, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_WORD_UPCASE
  * \li Action: Change the words in the selection or word at cursor position
                to upper case.

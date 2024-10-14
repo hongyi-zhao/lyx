@@ -4789,18 +4789,23 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 		// ignore insets and don't play with deleted text!
 		if (oldChar != META_INSET && !isDeleted(pos)) {
 			switch (action) {
-				case text_lowercase:
-					newChar = lowercase(oldChar);
-					break;
-				case text_capitalization:
-					if (capitalize) {
-						newChar = uppercase(oldChar);
-						capitalize = false;
-					}
-					break;
-				case text_uppercase:
+			case text_lowercase:
+				newChar = lowercase(oldChar);
+				break;
+			case text_capitalization:
+				if (capitalize) {
 					newChar = uppercase(oldChar);
-					break;
+					capitalize = false;
+				}
+				break;
+			case text_uppercase:
+				newChar = uppercase(oldChar);
+				break;
+			case text_togglecase:
+				if (isUpperCase(oldChar))
+					newChar = lowercase(oldChar);
+				else if (isLowerCase(oldChar))
+					newChar = uppercase(oldChar);
 			}
 		}
 

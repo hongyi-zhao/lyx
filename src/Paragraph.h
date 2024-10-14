@@ -110,11 +110,13 @@ public:
 ///
 enum TextCase {
 	///
-	text_lowercase = 0,
+	text_lowercase,
 	///
-	text_capitalization = 1,
+	text_capitalization,
 	///
-	text_uppercase = 2
+	text_uppercase,
+	///
+	text_togglecase
 };
 
 

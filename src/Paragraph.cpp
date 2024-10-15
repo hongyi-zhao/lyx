@@ -4801,7 +4801,7 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 			case text_uppercase:
 				newChar = uppercase(oldChar);
 				break;
-			case text_togglecase:
+			case text_invertcase:
 				if (isUpperCase(oldChar))
 					newChar = lowercase(oldChar);
 				else if (isLowerCase(oldChar))

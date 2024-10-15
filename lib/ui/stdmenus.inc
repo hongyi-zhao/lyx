@@ -190,7 +190,7 @@ Menuset
 		Item "Capitalize|p" "word-capitalize"
 		Item "Uppercase|U" "word-upcase"
 		Item "Lowercase|L" "word-lowcase"
-		Item "Toggle Case|T" "word-togglecase"
+		Item "Invert Case|I" "word-invertcase"
 	End
 
 	Menu "edit_textstyles"

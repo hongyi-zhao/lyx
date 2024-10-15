@@ -4655,17 +4655,17 @@ void LyXAction::init()
 		{ LFUN_WORD_SELECT, "word-select", ReadOnly, Edit },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_WORD_TOGGLECASE
+ * \var lyx::FuncCode lyx::LFUN_WORD_INVERTCASE
  * \li Action: Invert the case of the words in the selection or word at cursor position.
                This is useful when one FORGOT THE cAPS lOCK KEY.
- * \li Syntax: word-togglecase [<SEL_TYPE>]
+ * \li Syntax: word-invertcase [<SEL_TYPE>]
  * \li Params: <SEL_TYPE>: if this is equal to "partial", then the
  *             default word starts at cursor position (emacs-style).
  *             Otherwise, the whole word is considered.
  * \li Origin: lasgouttes, 14 Oct 2024
  * \endvar
  */
-		{ LFUN_WORD_TOGGLECASE, "word-togglecase", Noop, Edit },
+		{ LFUN_WORD_INVERTCASE, "word-invertcase", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_UPCASE

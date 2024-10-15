@@ -116,7 +116,7 @@ enum TextCase {
 	///
 	text_uppercase,
 	///
-	text_togglecase
+	text_invertcase
 };
 
 

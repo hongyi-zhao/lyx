@@ -18,7 +18,6 @@
 #include "frontends/WorkArea.h"
 
 #include <QAbstractScrollArea>
-#include <QTabBar>
 #include <QTabWidget>
 
 class QToolButton;

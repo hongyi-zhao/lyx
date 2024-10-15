@@ -154,7 +154,7 @@ Format 5
 
 \bind "M-z Down"		"word-lowcase"
 \bind "M-z Up"			"word-upcase"
-\bind "M-z Left"		"word-togglecase"
+\bind "M-z Left"		"word-invertcase"
 \bind "M-z Right"		"word-capitalize"
 
 \bind "M-z space"		"font-default"

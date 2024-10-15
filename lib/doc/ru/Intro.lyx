@@ -1337,7 +1337,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "вики проекта \\LyX"
-target "https://wiki.lyx.org/"
+target "https://wiki.lyx.org"
 literal "true"
 
 \end_inset
@@ -2575,7 +2575,7 @@ literal "false"
  
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.lyx.org/"
+target "https://www.lyx.org"
 literal "false"
 
 \end_inset

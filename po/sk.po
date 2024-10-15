@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-10-03 13:38+0200\n"
-"PO-Revision-Date: 2024-10-03 11:44+0000\n"
+"POT-Creation-Date: 2024-10-15 11:07+0200\n"
+"PO-Revision-Date: 2024-10-15 09:23+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -21635,15 +21635,19 @@ msgstr "Použiť posledné nastavenia|s"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Capitalize|p"
-msgstr "Prvé veľké|P"
+msgstr "Prvé Veľké|V"
 
 #: lib/ui/stdmenus.inc:191
 msgid "Uppercase|U"
-msgstr "Veľké písmená|V"
+msgstr "VEĽKÉ PÍSMENÁ|E"
 
 #: lib/ui/stdmenus.inc:192
 msgid "Lowercase|L"
-msgstr "Malé písmená|M"
+msgstr "malé písmená|m"
+
+#: lib/ui/stdmenus.inc:193
+msgid "Toggle Case|T"
+msgstr "Prepnúť VEĽKÉ/malé písmená|P"
 
 #: lib/ui/stdmenus.inc:196
 msgid "Dissolve Text Style"

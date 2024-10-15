@@ -2359,7 +2359,7 @@ literal "false"
 には
 \begin_inset CommandInset href
 LatexCommand href
-target "http://wiki.lyx.org/"
+target "https://www.lyx.org"
 literal "false"
 
 \end_inset
@@ -4200,7 +4200,7 @@ literal "false"
 のメインウェブサイト
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.lyx.org"
+target "https://www.lyx.org"
 
 \end_inset
 

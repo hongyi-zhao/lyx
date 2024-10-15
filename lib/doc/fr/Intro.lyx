@@ -1259,7 +1259,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "wiki"
-target "http://wiki.lyx.org/"
+target "https://www.lyx.org"
 literal "false"
 
 \end_inset

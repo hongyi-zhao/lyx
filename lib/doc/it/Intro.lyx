@@ -2420,7 +2420,7 @@ literal "false"
 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.lyx.org"
+target "https://www.lyx.org"
 
 \end_inset
 

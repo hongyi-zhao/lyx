@@ -280,7 +280,7 @@ do {
   }
 }
 until ($p < 0);
-print SFO "Started to protocol remaining subprocess-logs\n";
+print "Started to protocol remaining subprocess-logs\n";
 
 for my $p (keys %wait) {
   if ($wait{$p} >= 0) {
@@ -288,7 +288,7 @@ for my $p (keys %wait) {
     $wait{$p} = -1;
   }
 }
-print SFO "Stopped to protocol remaining subprocess-logs\n";
+print "Stopped to protocol remaining subprocess-logs\n";
 unlink($countfile);
 
 if (%URLS) {
@@ -297,7 +297,7 @@ if (%URLS) {
   printNotUsedURLS("KnownInvalid", %extraURLS);
 }
 
-print "\n$errorcount URL-tests failed out of $URLScount\n\n";
+print SFO "\n$errorcount URL-tests failed out of $URLScount\n\n";
 if (defined($summaryFile)) {
   close(SFO);
 }
@@ -332,7 +332,7 @@ sub printNotUsedURLS($\%) {
 
 sub replaceSpecialChar($) {
   my ($l) = @_;
-  $l =~ s/\\SpecialChar(NoPassThru)?\s*(TeX|LaTeX|LyX)[\s]?/\2/;
+  $l =~ s/\\SpecialChar(NoPassThru)?\s*(TeX|LaTeX|LyX)[\s]?/$2/;
   return ($l);
 }
 
@@ -362,7 +362,7 @@ sub parse_file($) {
   my ($f) = @_;
   my $status = "out";    # outside of URL/href
 
-  return if ($f =~ /\/attic\//);
+  #return if ($f =~ /\/attic\//);
   if (open(FI, $f)) {
     my $line = 0;
     while (my $l = <FI>) {

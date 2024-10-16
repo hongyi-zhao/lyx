@@ -217,6 +217,12 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 }
 
 
+docstring InsetMathHull::layoutName() const
+{
+	return "Formula:" + hullName(type_);
+}
+
+
 void InsetMathHull::setBuffer(Buffer & buffer)
 {
 	InsetMathGrid::setBuffer(buffer);

@@ -47,6 +47,8 @@ public:
 	///
 	virtual ~InsetMathHull();
 	///
+	docstring layoutName() const override;
+	///
 	void setBuffer(Buffer &) override;
 	///
 	void updateBuffer(ParIterator const &, UpdateType, bool const deleted = false) override;

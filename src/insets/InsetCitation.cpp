@@ -663,7 +663,9 @@ docstring InsetCitation::xhtml(XMLStream & xs, OutputParams const &) const
 		return docstring();
 
 	// have to output this raw, because generateLabel() will include tags
-	xs << XMLStream::ESCAPE_NONE << generateLabel(true);
+	// but we need to escape standalone ampersands
+	xs << XMLStream::ESCAPE_NONE
+	   << subst(generateLabel(true), from_ascii(" & "), from_ascii(" &amp; "));
 
 	return docstring();
 }

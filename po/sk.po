@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-10-15 11:07+0200\n"
-"PO-Revision-Date: 2024-10-15 09:23+0000\n"
+"POT-Creation-Date: 2024-10-16 09:55+0200\n"
+"PO-Revision-Date: 2024-10-16 07:58+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -21646,8 +21646,8 @@ msgid "Lowercase|L"
 msgstr "malé písmená|m"
 
 #: lib/ui/stdmenus.inc:193
-msgid "Toggle Case|T"
-msgstr "Prepnúť VEĽKÉ/malé písmená|P"
+msgid "Invert Case|I"
+msgstr "Obrátiť veľkosť písmen|O"
 
 #: lib/ui/stdmenus.inc:196
 msgid "Dissolve Text Style"
@@ -39009,6 +39009,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Toggle Case|T"
+#~ msgstr "Prepnúť VEĽKÉ/malé písmená|P"
 
 #~ msgid "XHTML Output Options"
 #~ msgstr "XHTML Voľby"

@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-10-14 18:52+0200\n"
-"PO-Revision-Date: 2024-10-14 18:57+0200\n"
+"POT-Creation-Date: 2024-10-16 09:00+0200\n"
+"PO-Revision-Date: 2024-10-16 09:02+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -3795,8 +3795,8 @@ msgstr "Kein &Rahmen um Links"
 #: src/frontends/qt/ui/PDFSupportUi.ui:285
 msgid "Mutually exclusive with frames around links, see manual."
 msgstr ""
-"Kann nicht gemeinsam mit \"Kein Rahmen um Links\" verwendet werden, siehe Hand"
-"buch."
+"Kann nicht gemeinsam mit \"Kein Rahmen um Links\" verwendet werden, siehe "
+"Handbuch."
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:288
 msgid "C&olor links"
@@ -21944,7 +21944,7 @@ msgid "Lowercase|L"
 msgstr "Kleinbuchstaben|K"
 
 #: lib/ui/stdmenus.inc:193
-msgid "Toggle Case|T"
+msgid "Invert Case|I"
 msgstr "Groß- und Kleinbuchstaben vertauschen|v"
 
 #: lib/ui/stdmenus.inc:197
@@ -39555,6 +39555,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Toggle Case|T"
+#~ msgstr "Groß- und Kleinbuchstaben vertauschen|v"
 
 #~ msgid "Arabic (Arabi)"
 #~ msgstr "Arabisch (Arabi)"

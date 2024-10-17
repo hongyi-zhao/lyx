@@ -401,7 +401,7 @@ status collapsed
 \lang english
 \begin_inset CommandInset href
 LatexCommand href
-target "http://svnbook.red-bean.com/"
+target "https://svnbook.red-bean.com"
 
 \end_inset
 

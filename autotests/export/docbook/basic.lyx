@@ -249,7 +249,7 @@ I am the only paragraph of the second section.
 \begin_inset CommandInset href
 LatexCommand href
 name "Hyperlink."
-target "http://example.org"
+target "https://example.org"
 literal "false"
 
 \end_inset

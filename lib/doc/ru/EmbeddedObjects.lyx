@@ -48299,7 +48299,7 @@ Web page of the \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "PSTricks"
-target "http://tug.org/PSTricks/"
+target "https://tug.org/PSTricks/"
 literal "false"
 
 \end_inset

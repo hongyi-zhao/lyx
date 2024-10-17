@@ -4530,7 +4530,7 @@ er
 \begin_inset CommandInset href
 LatexCommand href
 name "http://pinchito.es/elyxer/"
-target "http://pinchito.es/elyxer/"
+target "https://pinchito.es/elyxer/"
 literal "false"
 
 \end_inset
@@ -4963,7 +4963,7 @@ dpi.
 \begin_inset CommandInset href
 LatexCommand href
 name "jsMath"
-target "http://www.math.union.edu/~dpvc/jsMath/"
+target "https://www.math.union.edu/~dpvc/jsMath/"
 literal "false"
 
 \end_inset
@@ -7694,7 +7694,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.aanda.org/
+https://www.aanda.org
 \end_layout
 
 \end_inset
@@ -9363,7 +9363,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://www.ams.org
+https://www.ams.org
 \end_layout
 
 \end_inset
@@ -12019,7 +12019,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.springer.com
+https://www.springer.com
 \end_layout
 
 \end_inset
@@ -13364,7 +13364,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://svnbook.red-bean.com/
+https://svnbook.red-bean.com
 \end_layout
 
 \end_inset
@@ -15050,7 +15050,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
+https://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
 \end_layout
 
 \end_inset
@@ -15624,7 +15624,7 @@ SVN и среда Windows
 \begin_inset CommandInset href
 LatexCommand href
 name "CollabNet"
-target "http://www.collab.net/nonav/downloads/subversion/"
+target "https://www.collab.net/nonav/downloads/subversion/"
 literal "false"
 
 \end_inset
@@ -15841,7 +15841,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 \end_layout
 
 \end_inset
@@ -16051,7 +16051,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
+https://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
 \end_layout
 
 \end_inset

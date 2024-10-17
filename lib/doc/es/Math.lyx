@@ -39685,7 +39685,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Página web"
-target "http://www.texnia.com/spanish.html"
+target "https://www.texnia.com/spanish.html"
 literal "false"
 
 \end_inset
@@ -39714,7 +39714,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documento"
-target "http://www.texnia.com/archive/ortomatem.pdf"
+target "https://www.texnia.com/archive/ortomatem.pdf"
 literal "false"
 
 \end_inset

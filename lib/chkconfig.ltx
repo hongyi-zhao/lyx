@@ -60,11 +60,6 @@
 %   the variable chk_<name>.
 %%%
 
-% we need to load the minmal class
-% since some packages will error out
-% on checking of no class is loaded
-\documentclass{minimal}
-
 \newcommand{\prefix}{+} % the character used by grep to filter 'good' output
 
 \newcommand{\AddLayout}[5][\default]{
@@ -125,12 +120,22 @@
     #6
   \fi}
 
+
+% For the version test below, we need to load the tested package.
+% However, we are only interested in the version information, so
+% we redefine an internal method of \ProvidesPackage to quit
+% as soon as we have that information 
+\let\chk@pr@videpackage\@pr@videpackage
+\def\@pr@videpackage[#1]{\chk@pr@videpackage[#1]\endinput}
+
 % Tests whether an package is present and also adds the version to the package list
 \newcommand{\TestPackageAddVersion}[2][\default]{
    \def\default{#2}
    \def\package@version{}
-   % The actual test only works after the package has been loaded
    \IfFileExists{#1.sty}{%
+      % The actual test only works after the package has been loaded,
+      % but with the redefinition of \@pr@videpackage above, we quit
+      % as early as possible
       \RequirePackage{#1}%
       \protected@edef\package@@version{\csname ver@#1.sty\endcsname}%
       \protected@edef\package@version{\expandafter\@parse@version\package@@version//00\@nil}%

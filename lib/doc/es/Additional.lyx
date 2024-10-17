@@ -6197,7 +6197,7 @@ er
 \begin_inset CommandInset href
 LatexCommand href
 name "http://pinchito.es/elyxer/"
-target "http://pinchito.es/elyxer/"
+target "https://pinchito.es/elyxer/"
 literal "false"
 
 \end_inset
@@ -6629,7 +6629,7 @@ Para acabar,
 \begin_inset CommandInset href
 LatexCommand href
 name "jsMath"
-target "http://www.math.union.edu/~dpvc/jsMath/"
+target "https://www.math.union.edu/~dpvc/jsMath/"
 literal "false"
 
 \end_inset
@@ -9068,7 +9068,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.aanda.org/
+https://www.aanda.org
 \end_layout
 
 \end_inset
@@ -11047,7 +11047,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ams.org
+https://www.ams.org
 \end_layout
 
 \end_inset
@@ -18083,7 +18083,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.springer.de/author/tex/help-journals.html
+https://www.springer.de/author/tex/help-journals.html
 \end_layout
 
 \end_inset
@@ -21959,7 +21959,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-target "http://svnbook.red-bean.com/"
+target "https://svnbook.red-bean.com"
 literal "false"
 
 \end_inset
@@ -23840,7 +23840,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-target "http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html"
+target "https://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html"
 literal "false"
 
 \end_inset
@@ -24439,7 +24439,7 @@ Además de instalar \SpecialChar LyX
 \begin_inset CommandInset href
 LatexCommand href
 name "CollabNet"
-target "http://www.collab.net/nonav/downloads/subversion/"
+target "https://www.collab.net/nonav/downloads/subversion/"
 literal "false"
 
 \end_inset
@@ -24641,7 +24641,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 \end_layout
 
 \end_inset
@@ -24836,7 +24836,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
+https://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
 \end_layout
 
 \end_inset

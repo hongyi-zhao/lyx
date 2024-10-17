@@ -1671,7 +1671,7 @@ MIME
 \begin_inset CommandInset href
 LatexCommand href
 name "IANA"
-target "http://www.iana.org/assignments/media-types/"
+target "https://www.iana.org/assignments/media-types/"
 literal "false"
 
 \end_inset
@@ -1683,7 +1683,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "freedesktop.org"
-target "http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec"
+target "https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec"
 literal "false"
 
 \end_inset

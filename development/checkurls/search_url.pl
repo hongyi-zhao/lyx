@@ -143,6 +143,12 @@ for my $u (@urls) {
   next if ($checkSelectedOnly && !defined($selectedURLS{$u}));
   $URLScount++;
   push(@testvals, {u => $u, use_curl => $use_curl,});
+  if ($u =~ s/^http:/https:/) {
+    if (!defined($selectedURLS{$u})) {    # check also the corresponging 'https:' url
+      push(@testvals, {u => $u, use_curl => $use_curl, extra => 1,});
+      $URLScount++;
+    }
+  }
 }
 
 # Ready to go multitasking
@@ -198,6 +204,7 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
         next if (!defined($rentry));
         my $u        = $rentry->{u};
         my $use_curl = $rentry->{use_curl};
+        my $extra    = defined($rentry->{extra});
 
         print $fe "Checking($entryidx-$subprocess) '$u': ";
         my ($res, $prnt, $outSum);
@@ -220,7 +227,13 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
         };
         printx("$prnt", $outSum, $fe, $fs);
         my $printSourceFiles = 0;
-        my $err_txt          = "Error url:";
+        my $err_txt;
+        if ($extra) {
+          $err_txt = "Extra_Error url:";
+        }
+        else {
+          $err_txt = "Error url:";
+        }
 
         if ($res || $checkSelectedOnly) {
           $printSourceFiles = 1;
@@ -233,7 +246,14 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
           printx("$err_txt \"$u\"\n", $outSum, $fe, $fs);
         }
         else {
-          printx("OK url: \"$u\"\n", $outSum, $fe, $fs);
+          my $succes;
+          if ($extra) {
+            $succes = "Extra_OK url:";
+          }
+          else {
+            $succes = "OK url:";
+          }
+          printx("$succes \"$u\"\n", $outSum, $fe, $fs);
           $printSourceFiles = 1;
         }
         if ($printSourceFiles) {
@@ -278,8 +298,7 @@ do {
     &readsublog($wait{$p});
     $wait{$p} = -1;
   }
-}
-until ($p < 0);
+} until ($p < 0);
 print "Started to protocol remaining subprocess-logs\n";
 
 for my $p (keys %wait) {
@@ -368,6 +387,7 @@ sub parse_file($) {
     while (my $l = <FI>) {
       $line++;
       chomp($l);
+
       # $l =~ s/[\r\n]+$//;    #  Simulate chomp
       if ($status eq "out") {
 

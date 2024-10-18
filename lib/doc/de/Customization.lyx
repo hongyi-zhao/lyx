@@ -11870,19 +11870,6 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
-InnerTag
-\end_layout
-
-\end_inset
-
- [FIXME] (Wird nur für XML-Formate benutzt.)
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 InPreamble
 \end_layout
 
@@ -26441,7 +26428,8 @@ itemtag
 
 \begin_layout Standard
 Die spezifischen Tags und Attribute,
- die für Absatztypen ausgegeben werden können mithilfe der Absatzspezifikationen kontrolliert werden,
+ die für Absatztypen ausgegeben werden,
+ können mithilfe der Absatzspezifikationen kontrolliert werden,
  die wir im Folgenden beschreiben.
  Wir erwähnt verwendet \SpecialChar LyX
  für viele von diesen sinnvolle Voreinstellungen,
@@ -28286,6 +28274,1841 @@ src/FontInfo.cpp
 \end_inset
 
  an.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:DocBook-Spezifikationen"
+
+\end_inset
+
+Spezifikationen der DocBook-Ausgabe
+\end_layout
+
+\begin_layout Standard
+Wie im Fall von \SpecialChar LaTeX
+ oder XHTML wird das Format der DocBook-Ausgabe von \SpecialChar LyX
+ durch Layout-Informationen kontrolliert.
+ Grundsätzlich bietet \SpecialChar LyX
+ sinnvolle Voreinstellungen für die Formatierung einzelner Elemente,
+ allerdings gehen viele davon während der Konvertierung verloren,
+ da DocBook strikt semantisch ist und keine statische Formatierung erlaubt.
+ Um trotzdem gewünschte Formatierungen zu erzeugen,
+ werden manche Formatierungen von \SpecialChar LyX
+ in Form von Rollen-Attributen (
+\family typewriter
+role
+\family default
+) umgesetzt.
+\end_layout
+
+\begin_layout Standard
+In vielen Fällen müssen Sie gar nichts tun,
+ um eine akzeptable DocBook-Ausgabe für ihre eigenen Umgebungen,
+ benutzerdefinierten Einfügungen usw.
+ zu bekommen.
+ Aber manchmal ist das nötig,
+ und daher bietet \SpecialChar LyX
+ eine Reihe von Layout-Tags für die Anpassung der DocBook-Ausgabe.
+\end_layout
+
+\begin_layout Standard
+Anders als bei XHTML werden selten Marken (
+\family sans
+labeltag
+\family default
+ usw.) ausgegeben,
+ da diese mit DocBook redundant sind:
+ Diese Informationen werden von den Tags übermittelt.
+ Ob Marken im finalen Dokument erscheinen (nachdem die DocBook-Dateien generiert wurden),
+ wird von den Stildateien bestimmt.
+ In manchen Fällen sind Marken nicht redundant,
+ etwa im Fall von Definitionslisten;
+ in diesem Fall wird durch die Marke eine wichtige (definierende) Funktion erfüllt.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Absatzstile-DocBook"
+
+\end_inset
+
+Absatzstile
+\end_layout
+
+\begin_layout Standard
+Die Art von DocBook,
+ die \SpecialChar LyX
+ für einen jeweiligen Absatz ausgibt,
+ hängt davon ab,
+ ob wir es mit einem normalen Absatz zu tun haben,
+ mit einem Befehl oder einer Umgebung,
+ für die die entsprechende 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+Type
+\end_layout
+
+\end_inset
+
+-Spezifikation die Ausgabe bestimmt.
+\end_layout
+
+\begin_layout Standard
+Im Fall eines Befehls oder eines normalen Absatzes sieht die DocBook-Ausgabe so aus:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+
+\family sans
+Inhalt des Absatzes.
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+Im Fall einer Umgebung,
+ die 
+\emph on
+keine
+\emph default
+ Liste ist,
+ sieht die DocBook-Ausgabe so aus:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag>
+\family sans
+Erster Absatz.
+\family default
+</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag>
+\family sans
+Zweiter Absatz.
+\family default
+</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+Im Fall von Listen wird die folgenden Ausgabeform generiert:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr>
+\family sans
+Erster Listeneintrag
+\family default
+.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr>
+\family sans
+Zweiter Listeneintrag
+\family default
+.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+Die spezifischen Tags und Rollen,
+ die für Absatztypen ausgegeben werden,
+ können mithilfe der Absatzspezifikationen kontrolliert werden,
+ die wir im Folgenden beschreiben.
+ Beachten Sie,
+ dass aufgrund der spezifischen Natur von DocBook keine sinnvollen Voreinstellungen vorhanden sind;
+ die Werte müssen immer sehr sorgfältig ausgewählt werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt die Attribute fest,
+ die mit dem Haupt-Tag ausgegeben werden,
+ sie werden anstelle von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben ausgegeben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der in diesem Stil verwendet werden soll,
+ er ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Voreinstellung ist der Name des Absatzstils.
+ Er muss immer angepasst werden,
+ da DocBook keine generischen Tags bietet.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block,
+ paragraph,
+ inline
+\end_layout
+
+\end_inset
+
+] Die Handhabung von Zeilenumbrüchen im Umfeld dieses Tags,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-Zeilenumbrüche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Subsection
+Handhabung von Zeilenumbrüchen vor und nach Tags
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:DocBook-Zeilenumbrüche"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für alle Tags gibt es drei verschiedene Möglichkeiten,
+ wie die Zeilen davor oder danach umbrochen werden (Sie werden im Attribut 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTagType
+\end_layout
+
+\end_inset
+
+ festgelegt):
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+:
+ öffnende und schließende Tags stehen auf eigenen Zeilen (d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h.
+ es gibt einen Zeilenumbruch jeweils davor und danach).
+ Das ist typisch etwa bei Gleitumgebungen,
+ beispielsweise:
+\end_layout
+
+\begin_layout LyX-Code
+Inhalt davor
+\end_layout
+
+\begin_layout LyX-Code
+<blocktag>
+\end_layout
+
+\begin_layout LyX-Code
+  Inhalt des Blocks.
+\end_layout
+
+\begin_layout LyX-Code
+</blocktag>
+\end_layout
+
+\begin_layout LyX-Code
+Inhalt danach
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+:
+ öffnende und schließende Tags stehen auf derselben neuen Zeile;
+ ein Zeilenumbruch wird vor dem öffnenden und nach dem schließenden Tag eingefügt.
+ Das ist typisch für Absätze und Listen,
+ beispielsweise:
+\end_layout
+
+\begin_layout LyX-Code
+Inhalt davor
+\end_layout
+
+\begin_layout LyX-Code
+<paratag>Inhalt des Absatzes.</paratag>
+\end_layout
+
+\begin_layout LyX-Code
+Inhalt danach
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+:
+ öffnende und schließende Tags stehen auf derselben Zeile wir der umgebende Text.
+ Keine Zeilenumbrüche werden eingefügt.
+ Das ist typisch für Schriftattribute,
+ beispielsweise:
+\end_layout
+
+\begin_layout LyX-Code
+Inhalt davor<inlinetag>Inhalt</inlinetag>Inhalt danach
+\end_layout
+
+\begin_layout Standard
+Der voreingestellte Wert ist immer 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+InsetLayout und DocBook
+\end_layout
+
+\begin_layout Standard
+Die DocBook-Ausgabe von Einfügungen kann durch Layout-Dateien kontrolliert werden
+\end_layout
+
+\begin_layout Standard
+Die DocBook-Ausgabe für Einfügungen hat folgende Form:
+\end_layout
+
+\begin_layout LyX-Code
+<wrappertag wrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+  <tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+    <innertag innerattr>
+\end_layout
+
+\begin_layout LyX-Code
+     Inhalt der Einfügung.
+\end_layout
+
+\begin_layout LyX-Code
+    </innertag>
+\end_layout
+
+\begin_layout LyX-Code
+  </tag>
+\end_layout
+
+\begin_layout LyX-Code
+</wrappertag>
+\end_layout
+
+\begin_layout Standard
+Für aufzählende Einfügungen sieht die Ausgabe so aus:
+\end_layout
+
+\begin_layout LyX-Code
+<wrappertag wrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+  <tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+    <innertag innerattr>
+\end_layout
+
+\begin_layout LyX-Code
+      <itemwrappertag itemwrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemlabeltag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          Marke des ersten Listeneintrags.
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+            Inhalt des ersten Listeneintrags.
+\end_layout
+
+\begin_layout LyX-Code
+          </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+      </itemwrappertag>
+\end_layout
+
+\begin_layout LyX-Code
+      <itemwrappertag itemwrapperattr>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemlabeltag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+         Marke des zweiten Listeneintrags.
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+          <itemtag itemattr>
+\end_layout
+
+\begin_layout LyX-Code
+            Inhalt des zweiten Listeneintrags.
+\end_layout
+
+\begin_layout LyX-Code
+          </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+        </itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+      </itemwrappertag>
+\end_layout
+
+\begin_layout LyX-Code
+      ...
+\end_layout
+
+\begin_layout LyX-Code
+    </innertag>
+\end_layout
+
+\begin_layout LyX-Code
+  </tag>
+\end_layout
+
+\begin_layout LyX-Code
+</wrappertag>
+\end_layout
+
+\begin_layout Standard
+Wenn die Einfügung mehrere Absätze zulässt – das heißt,
+ wenn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+ auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+true
+\end_layout
+
+\end_inset
+
+ eingestellt ist –,
+ wird der Inhalt der Einfügung in Form von Absätzen ausgegeben,
+ die nach den Vorgaben für diese Absätze formatiert sind (Standard,
+ Zitat usw.).
+ Das 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+innertag
+\end_layout
+
+\end_inset
+
+ ist optional und wird in der Voreinstellung nicht ausgegeben.
+\end_layout
+
+\begin_layout Standard
+Die spezifischen Tags und Attribute,
+ die für Einfügen ausgegeben werden können mithilfe der folgenden Absatzspezifikationen kontrolliert werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt die Attribute fest,
+ die mit dem Haupt-Tag ausgegeben werden,
+ das wird anstelle von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben ausgegeben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInInfo
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never,
+ always,
+ maybe
+\end_layout
+
+\end_inset
+
+] Legt fest,
+ ob dieser Tag am Beginn des umgebenden Stils in den 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+-Tag aufgenommen wird.
+ Der Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never
+\end_layout
+
+\end_inset
+
+ legt fest,
+ dass der Tag niemals in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ aufgenommen wird (das ist die Voreinstellung);
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+always
+\end_layout
+
+\end_inset
+
+ legt fest,
+ dass der Tag immer in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ aufgenommen wird (das entspricht normalen Metadaten):
+ falls noch kein 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+-Tag existiert,
+ wird dieser erzeugt;
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+maybe
+\end_layout
+
+\end_inset
+
+ bestimmt,
+ dass der Tag in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+ aufgenommen werden kann (das ist nur bei Titeln der Fall):
+ falls noch kein 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<info>
+\end_layout
+
+\end_inset
+
+-Tag existiert,
+ wird auch keiner erzeugt,
+ der korrespondierende Tag wird dann direkt als Inhalt ausgegeben.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt die Attribute fest,
+ die mit dem Eintrags-Tag ausgegeben werden,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemattr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt die Attribute fest,
+ die mit dem inneren Eintrags-Tag ausgegeben werden,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+iteminnerattr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der für den inneren Eintrag verwendet wird,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+iteminnertag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ im Beispiel oben.
+ Voreingestellt ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+,
+ was bedeutet,
+ dass es keinen inneren Eintrags-Tag gibt:
+ Für jeden Listeneintrag wird der Inhalt einfach so ausgegeben.
+ Dieser Parameter ist nur sinnvoll,
+ wenn aufzählende Absatzformate verwendet werden (bspw.
+ Listen).
+ Der wahrscheinlichste Wert ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+para
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Wenn ein Listeneintrag einen Zeilenumbruch enthält,
+ wird der inneren Eintragstag für jeden durch Zeilenumbruch separierten Teil des Absatzes wiederholt.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemInnerTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block,
+ paragraph,
+ inline
+\end_layout
+
+\end_inset
+
+] Die Handhabung von Zeilenumbrüchen im Umfeld dieses Tags,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-Zeilenumbrüche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt Attributinformationen fest,
+ die mit dem Eintragsmarken-Tag ausgegeben werden,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemlabelattr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der für Eintragsmarken verwendet wird,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemlabeltag
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Dieser Parameter ist nur sinnvoll,
+ wenn aufzählende Absatzformate verwendet werden,
+ die Marken haben,
+ beispielsweise Definitionslisten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemLabelTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block,
+ paragraph,
+ inline
+\end_layout
+
+\end_inset
+
+] Die Handhabung von Zeilenumbrüchen im Umfeld dieses Tags,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-Zeilenumbrüche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der für den Eintrag verwendet wird,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemtag
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Voreingestellt ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+,
+ was bedeutet,
+ dass es keinen Eintrags-Tag gibt.
+ Dieser Parameter ist nur sinnvoll,
+ wenn aufzählende Absatzformate verwendet werden (bspw.
+ Listen).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block,
+ paragraph,
+ inline
+\end_layout
+
+\end_inset
+
+] Die Handhabung von Zeilenumbrüchen im Umfeld dieses Tags,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-Zeilenumbrüche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt Attributinformationen fest,
+ die mit dem Itemwrapper-Tag ausgegeben werden,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemwrapperattr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der für den 
+\begin_inset Quotes gld
+\end_inset
+
+item wrapper
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet wird,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemwrappertag
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Voreingestellt ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+,
+ was bedeutet,
+ dass es keinen inneren Eintrags-Tag gibt:
+ Für jeden Listeneintrag wird der Inhalt und der Tag einfach so ausgegeben.
+ Dieser Parameter ist nur sinnvoll,
+ wenn aufzählende Absatzformate verwendet werden (bspw.
+ Listen).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookItemWrapperTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block,
+ paragraph,
+ inline
+\end_layout
+
+\end_inset
+
+] Die Handhabung von Zeilenumbrüchen im Umfeld dieses Tags,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-Zeilenumbrüche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt Attributinformationen fest,
+ die mit dem inneren Tag ausgegeben werden,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+innerattr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der als innerer Tag innerhalb der Einfügung ausgegeben wird,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+innertag
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Voreingestellt ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+,
+ was bedeutet,
+ dass es keinen inneren Tag gibt:
+ Inhalte werden direkt ohne einen solchen ausgegeben.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookInnerTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block,
+ paragraph,
+ inline
+\end_layout
+
+\end_inset
+
+] Die Handhabung von Zeilenumbrüchen im Umfeld dieses Tags,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-Zeilenumbrüche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookSectionTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der mit dieser Art Abschnitt korrespondiert.
+ Dieser Parameter ist nur sinnvoll für Abschnitte (Teil,
+ Kapitel,
+ Abschnitt usw.).
+ Voreingestellt ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+section
+\end_layout
+
+\end_inset
+
+,
+ und dies wird nur geändert,
+ wenn DocBook andere Gliederungseinheiten verwendet (etwa Teile und Kapitel in einem Buch).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der für diese Einfügung verwendet wird,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Voreinstellung ist der Name des Absatzstils.
+ Er muss immer angepasst werden,
+ da DocBook keine generischen Tags bietet.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block,
+ paragraph,
+ inline
+\end_layout
+
+\end_inset
+
+] Die Handhabung von Zeilenumbrüchen im Umfeld dieses Tags,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-Zeilenumbrüche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt Attributinformationen fest,
+ die mit dem äußeren Wrapper-Tag ausgegeben werden,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+wrapperattr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der für den 
+\begin_inset Quotes gld
+\end_inset
+
+wrapper
+\begin_inset Quotes grd
+\end_inset
+
+ um die Einfügung herum verwendet wird,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+wrappertag
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Voreingestellt ist 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NONE
+\end_layout
+
+\end_inset
+
+,
+ was bedeutet,
+ dass es keinen 
+\begin_inset Quotes gld
+\end_inset
+
+wrapper
+\begin_inset Quotes grd
+\end_inset
+
+ gibt:
+ Der Tag der Einfügung und ihr Inhalt werden direkt ohne einen solchen ausgegeben.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookWrapperTagType
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+block,
+ paragraph,
+ inline
+\end_layout
+
+\end_inset
+
+] Die Handhabung von Zeilenumbrüchen im Umfeld dieses Tags,
+ siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-Zeilenumbrüche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ für Einzelheiten.
+\end_layout
+
+\begin_layout Subsection
+Gleitobjekte und DocBook
+\end_layout
+
+\begin_layout Standard
+Auch die DocBook-Ausgabe für Gleitobjekte kann durch Layout-Dateien kontrolliert werden.
+ Die Ausgabe hat folgende Form:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr>
+\end_layout
+
+\begin_layout LyX-Code
+  Inhalt des Gleitobjekts.
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+Die Legende ist,
+ falls eine existiert,
+ eine separate Einfügung und wird als Titel ausgegeben.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Legt die Attribute fest,
+ die mit dem Haupt-Tag ausgegeben werden,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+attr
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Diese Information kann bei der weiteren Verarbeitung der DocBook-Dateien verwenden werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+DocBookTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Der Tag,
+ der für dieses Gleitobjekt verwendet wird,
+ das ersetzt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+ im Beispiel oben.
+ Voreingestellt ist der Name des Gleitobjekt.
+ Er muss immer angepasst werden,
+ da DocBook keine generischen Gleitobjekt-Tags bietet.
+\end_layout
+
+\begin_layout Subsection
+Formatierung des Literaturverzeichnisses
+\end_layout
+
+\begin_layout Standard
+Eingebundene Literaturverzeichnisse können nicht formatiert werden.
+ Alle Felder werden stets im datenbankähnlichen DocBook-Format ausgegeben (das entspricht einer BibTeX-Datei).
+ Dabei wird der Tag 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+biblioentry
+\end_layout
+
+\end_inset
+
+ verwendet.
+\end_layout
+
+\begin_layout Standard
+Wenn bibliographische Einträge manuell als Literaturverzeichniseinträge in das \SpecialChar LyX
+-Dokument eingegeben wurden,
+ müssen Benutzer:innen selbst die Formatierung vornehmen.
+ Es wird nicht versucht,
+ solche Eingaben zu verarbeiten,
+ alle Eingaben werden unbearbeitet verwendet (mittels des Tags 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+bibliomixed
+\end_layout
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Chapter

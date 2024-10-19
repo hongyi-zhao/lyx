@@ -1,3 +1,14 @@
+# OK urls with firefox, but checking with our test leads to
+# 403 Forbidden
+https://journals.aps.org/PACS
+https://journals.aps.org/revtex
+https://www.worldscientific.com/page/ijmpd/submission-guidelines
+https://www.worldscientific.com/page/ijmpc/submission-guidelines
+
+# OK urls with firefox, but checking with our test leads to
+# SSL connect attempt failed error:0A00018A:SSL routines::dh key too small
+https://texample.net/media/tikz/examples/TEX/free-body-diagrams.tex
+
 # Urls probably exist, but to check
 # we need to register and login first
 http://www.issn.org/en/node/344
@@ -10,7 +21,6 @@ http://jasa.peerx-press.org/html/jasa/Using_LaTeX
 http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings
 http://www.jstatsoft.org/downloads/JSSstyle.zip
 http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls
-https://journals.aps.org/revtex
 
 # The following ftp url is correct, but
 # ftp commands like 'dir', 'get' do not work.

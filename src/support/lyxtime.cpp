@@ -19,6 +19,9 @@
 
 #include <QDateTime>
 #include <QLocale>
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+#include <QTimeZone>
+#endif
 
 using namespace std;
 
@@ -69,7 +72,11 @@ time_t from_asctime_utc(string t)
 				<< "´ (invalid format)");
 		return static_cast<time_t>(-1);
 	}
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+	loc_dt.setTimeZone(QTimeZone(QTimeZone::UTC));
+#else
 	loc_dt.setTimeSpec(Qt::UTC);
+#endif
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
 	return loc_dt.toSecsSinceEpoch();
 #else

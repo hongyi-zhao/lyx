@@ -186,6 +186,8 @@ void GuiBibtex::selUpdated()
 		// check for current file encodings
 		for (int i = 0; i != selected_model_.rowCount(); ++i) {
 			QStandardItem const * key = selected_model_.item(i, 0);
+			if (!key)
+				continue;
 			QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(i, 1)));
 			QString fenc = cb ? cb->itemData(cb->currentIndex()).toString() : QString();
 			if (fenc.isEmpty())
@@ -193,7 +195,7 @@ void GuiBibtex::selUpdated()
 			else
 				cached_file_encodings_[key->text()] = fenc;
 			docstring const enc = qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(fenc);
-			if (key && !key->text().isEmpty() && !fenc.isEmpty() && fenc != "general")
+			if (!key->text().isEmpty() && !fenc.isEmpty() && fenc != "general")
 				nfe.push_back(enc);
 		}
 	}
@@ -326,10 +328,12 @@ void GuiBibtex::updateFileEncodings()
 	vector<docstring> nfe;
 	for (int i = 0; i != selected_model_.rowCount(); ++i) {
 		QStandardItem const * key = selected_model_.item(i, 0);
+		if (!key)
+			continue;
 		QComboBox * cb = qobject_cast<QComboBox*>(selectedLV->indexWidget(selected_model_.index(i, 1)));
 		QString fenc = cb ? cb->itemData(cb->currentIndex()).toString() : QString();
 		docstring const enc = qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(fenc);
-		if (key && !key->text().isEmpty() && !fenc.isEmpty() && fenc != "general")
+		if (!key->text().isEmpty() && !fenc.isEmpty() && fenc != "general")
 			nfe.push_back(enc);
 	}
 	if (!nfe.empty()) {

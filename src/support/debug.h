@@ -255,6 +255,6 @@ extern LyXErr lyxerr;
  *   var=2 var + 1=3
  * Not a great typesetting, but it is handy in debugging sessions.
  */
-#define _v_(var) #var"=" << var << " "
+#define _v_(var) " " << #var"=" << var << " "
 
 #endif

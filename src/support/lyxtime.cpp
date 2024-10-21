@@ -19,7 +19,7 @@
 
 #include <QDateTime>
 #include <QLocale>
-#if (QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 5, 0))
 #include <QTimeZone>
 #endif
 
@@ -72,7 +72,7 @@ time_t from_asctime_utc(string t)
 				<< "´ (invalid format)");
 		return static_cast<time_t>(-1);
 	}
-#if (QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 5, 0))
 	loc_dt.setTimeZone(QTimeZone(QTimeZone::UTC));
 #else
 	loc_dt.setTimeSpec(Qt::UTC);

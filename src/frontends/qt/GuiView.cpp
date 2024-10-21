@@ -1062,7 +1062,7 @@ bool GuiView::restoreLayout()
 	word_count_enabled_ = settings.value("word_count_enabled", true).toBool();
 	char_count_enabled_ = settings.value("char_count_enabled", true).toBool();
 	char_nb_count_enabled_ = settings.value("char_nb_count_enabled", true).toBool();
-	stat_counts_->setVisible(word_count_enabled_ || char_count_enabled_ || char_nb_count_enabled_);
+	stat_counts_->setVisible(statsEnabled());
 
 	if (guiApp->platformName() == "xcb") {
 		QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -1481,8 +1481,7 @@ void GuiView::showStats()
 	// Don't attempt to calculate stats if
 	// the buffer is busy as this might crash (#12935)
 	Statistics & statistics = buf->statistics();
-	if (!busy() && !bv->busy()
-	     && (word_count_enabled_ || char_count_enabled_ || char_nb_count_enabled_))
+	if (!busy() && !bv->busy())
 		statistics.update(cur);
 
 	QStringList stats;
@@ -5177,16 +5176,13 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		zoom_widget_->setVisible(!zoom_widget_->isVisible());
 	} else if (ui_component == "statistics-w") {
 		word_count_enabled_ = !word_count_enabled_;
-		if (statsEnabled())
-			showStats();
+		showStats();
 	} else if (ui_component == "statistics-cb") {
 		char_count_enabled_ = !char_count_enabled_;
-		if (statsEnabled())
-			showStats();
+		showStats();
 	} else if (ui_component == "statistics-c") {
 		char_nb_count_enabled_ = !char_nb_count_enabled_;
-		if (statsEnabled())
-			showStats();
+		showStats();
 	} else if (ui_component == "frame") {
 		int const l = contentsMargins().left();
 

@@ -124,10 +124,9 @@ bool ColorCache::isSystem(ColorCode const color) const
 
 bool ColorCache::isDarkMode() const
 {
-	QPalette palette = QPalette();
-	QColor text_color = palette.color(QPalette::Active, QPalette::WindowText);
-	QColor bg_color = palette.color(QPalette::Active, QPalette::Window);
-	
+	QColor text_color = pal_.color(QPalette::Active, QPalette::WindowText);
+	QColor bg_color = pal_.color(QPalette::Active, QPalette::Window);
+
 	return (text_color.black() < bg_color.black());
 }
 

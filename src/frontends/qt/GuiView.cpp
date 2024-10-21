@@ -659,7 +659,6 @@ GuiView::GuiView(int id)
 
 	stat_counts_ = new GuiClickableLabel(statusBar());
 	stat_counts_->setAlignment(Qt::AlignCenter);
-	stat_counts_->setStyleSheet("padding-left: 5px; padding-right: 5px;");
 	stat_counts_->hide();
 	statusBar()->addPermanentWidget(stat_counts_);
 
@@ -1509,7 +1508,9 @@ void GuiView::showStats()
 		else
 			stats << toqstr(bformat(_("%1$d Characters (no Blanks)"), chars));
 	}
-	stat_counts_->setText(stats.join(qt_(", [[stats separator]]")));
+	// we need to add space before and after manually, using stylesheet
+	// would break with dark mode on Qt >= 6.8.
+	stat_counts_->setText(" " + stats.join(qt_(", [[stats separator]]")) + " ");
 	stat_counts_->show();
 
 	d.time_to_update = d.default_stats_rate;
@@ -1793,7 +1794,17 @@ bool GuiView::event(QEvent * e)
 		return QMainWindow::event(e);
 	}
 
-	// dark/light mode runtime switch support, OS-dependent.
+	// dark/light mode runtime switch support
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	case QEvent::ThemeChange: {
+		guiApp->setPalette(guiApp->style()->standardPalette());
+		// We need to update metrics here to avoid a crash (#12786)
+		theBufferList().changed(true);
+		refillToolbars();
+		return QMainWindow::event(e);
+	}
+#else
+	// Pre 6.8: OS-dependent
 	// 1. Mac OS X
 	// Limit to Q_OS_MAC as this unnecessarily would also
 	// trigger on Linux with grave performance issues
@@ -1811,6 +1822,7 @@ bool GuiView::event(QEvent * e)
 		theBufferList().changed(true);
 		return QMainWindow::event(e);
 	}
+#endif
 
 	default:
 		return QMainWindow::event(e);

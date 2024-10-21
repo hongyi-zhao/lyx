@@ -639,17 +639,14 @@ IconInfo iconInfo(FuncRequest const & f, bool unknown, bool rtl)
 
 QPixmap prepareForDarkMode(QPixmap pixmap)
 {
-	QPalette palette = QPalette();
-	QColor text_color = palette.color(QPalette::Active, QPalette::WindowText);
-	QColor bg_color = palette.color(QPalette::Active, QPalette::Window);
-
 	// guess whether we are in dark mode
-	if (text_color.black() > bg_color.black())
+	if (!theGuiApp()->isInDarkMode())
 		// not in dark mode, do nothing
 		return pixmap;
 
 	// create a layer with black text turned to QPalette::WindowText
 	QPixmap black_overlay(pixmap.size());
+	QColor text_color = theGuiApp()->style()->standardPalette().color(QPalette::Active, QPalette::WindowText);
 	black_overlay.fill(text_color);
 	black_overlay.setMask(pixmap.createMaskFromColor(Qt::black, Qt::MaskOutColor));
 

@@ -11,7 +11,6 @@
 #
 
 HEADERS="\
-  boost/any.hpp \
   boost/assert.hpp \
   boost/crc.hpp \
   "

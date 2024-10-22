@@ -161,12 +161,12 @@ fi
 ])
 
 
-dnl Usage: LYX_CXX_CXX11_FLAGS(VERSION): add to AM_CXXFLAGS the best flag that
-dnl selects C++11 mode; gives an error when C++11 mode is not found.
-dnl VERSION is a list of years to try (e.g. 11 or {14,11}).
-AC_DEFUN([LYX_CXX_CXX11_FLAGS],
-[AC_CACHE_CHECK([for a good C++ mode], [lyx_cv_cxx11_flags],
- [lyx_cv_cxx11_flags=none
+dnl Usage: LYX_CXX_CXX17_FLAGS(VERSION): add to AM_CXXFLAGS the best flag that
+dnl selects C++17 mode; gives an error when C++17 mode is not found.
+dnl VERSION is a list of years to try (e.g. 17 or {20,17}).
+AC_DEFUN([LYX_CXX_CXX17_FLAGS],
+[AC_CACHE_CHECK([for a good C++ mode], [lyx_cv_cxx17_flags],
+ [lyx_cv_cxx17_flags=none
   for flag in `eval echo -std=c++$1 default -std=gnu++$1` ; do
     if test $flag = default ; then
       flag=
@@ -199,14 +199,17 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
        check_type c;
        check_type&& cr = static_cast<check_type&&>(c);
 
-       auto d = a;]], [[]])],[lyx_cv_cxx11_flags=$flag; break],[])
+       auto d = a;
+
+       #include <any>
+       std::any any_var = 10;]], [[]])],[lyx_cv_cxx17_flags=$flag; break],[])
    CXXFLAGS=$save_CXXFLAGS
    CPPFLAGS=$save_CPPFLAGS
   done])
-  if test x$lyx_cv_cxx11_flags = xnone ; then
+  if test x$lyx_cv_cxx17_flags = xnone ; then
     AC_MSG_ERROR([Cannot find suitable mode for compiler $CXX])
   fi
-  AM_CXXFLAGS="$lyx_cv_cxx11_flags $AM_CXXFLAGS"
+  AM_CXXFLAGS="$lyx_cv_cxx17_flags $AM_CXXFLAGS"
 ])
 
 
@@ -228,13 +231,13 @@ AC_REQUIRE([AC_PROG_CXXCPP])
 
 ### We might want to force the C++ standard.
 AC_ARG_ENABLE(cxx-mode,
-  AS_HELP_STRING([--enable-cxx-mode],[choose C++ standard (default: 17, 14, then 11)]),,
-  [enable_cxx_mode={17,14,11}]
+  AS_HELP_STRING([--enable-cxx-mode],[choose C++ standard (default: 17)]),,
+  [enable_cxx_mode={17}]
 )
 
 AC_LANG_PUSH(C++)
 LYX_PROG_CLANG
-LYX_CXX_CXX11_FLAGS($enable_cxx_mode)
+LYX_CXX_CXX17_FLAGS($enable_cxx_mode)
 LYX_LIB_STDCXX
 AC_LANG_POP(C++)
 

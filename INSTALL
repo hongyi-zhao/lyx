@@ -52,7 +52,7 @@ You will also probably need GNU m4 (perhaps installed as gm4).
 Requirements
 ------------
 
-First of all, you will need a C++11 standard conforming compiler, like
+First of all, you will need a C++17 standard conforming compiler, like
 g++ (at least 5.0, to have proper std::regex & std::string) or
 clang++.
 

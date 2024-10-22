@@ -70,8 +70,6 @@
 #include <string>
 #include <vector>
 
-#include <qglobal.h> // For QT_VERSION
-
 using namespace std;
 using namespace lyx::support;
 

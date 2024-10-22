@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 626
+\lyxformat 630
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -15175,7 +15175,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists !
+Lists 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+!
+\end_layout
+
+\end_inset
+
  Spacing
 \end_layout
 
@@ -15250,7 +15260,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages !
+-packages 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+!
+\end_layout
+
+\end_inset
+
  enumitem
 \end_layout
 
@@ -15316,7 +15336,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Lists !
+Lists 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+!
+\end_layout
+
+\end_inset
+
  Customization
 \end_layout
 
@@ -15433,7 +15463,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages !
+-packages 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+!
+\end_layout
+
+\end_inset
+
  enumitem
 \end_layout
 
@@ -17363,7 +17403,17 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--packages !
+-packages 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+!
+\end_layout
+
+\end_inset
+
  multicol
 \end_layout
 
@@ -26046,6 +26096,8 @@ If you have the
 chktex
 \family default
  program installed
+\change_deleted 5863208 1729542513
+
 \begin_inset Foot
 status collapsed
 
@@ -26061,6 +26113,8 @@ chktex
 
 \end_inset
 
+
+\change_unchanged
 ,
  you'll find in the 
 \family sans

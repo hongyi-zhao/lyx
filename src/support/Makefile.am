@@ -65,7 +65,6 @@ liblyxsupport_a_SOURCES = \
 	filetools.h \
 	ForkedCalls.cpp \
 	ForkedCalls.h \
-	functional.h \
 	gettext.cpp \
 	gettext.h \
 	gzstream.cpp \

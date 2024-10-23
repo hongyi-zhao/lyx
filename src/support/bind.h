@@ -12,8 +12,6 @@
 #ifndef LYX_BIND_H
 #define LYX_BIND_H
 
-#include "support/functional.h"
-
 namespace lyx
 {
 	using std::placeholders::_1;

@@ -53,8 +53,7 @@ Requirements
 ------------
 
 First of all, you will need a C++17 standard conforming compiler, like
-g++ (at least 5.0, to have proper std::regex & std::string) or
-clang++.
+g++ (we suggest at least version 8.0) or clang++.
 
 LyX makes great use of the C++ Standard Library. This means that gcc
 users will have to install the relevant libstdc++ library to be able

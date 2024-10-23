@@ -17,9 +17,11 @@
 #include <QWaitCondition>
 
 #include "support/bind.h"
-#include "support/functional.h"
 
 namespace lyx {
+
+using std::function;
+
 namespace frontend {
 
 

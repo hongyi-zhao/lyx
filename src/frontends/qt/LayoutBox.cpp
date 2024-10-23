@@ -320,7 +320,7 @@ void LayoutBox::Private::setFilter(QString const & s)
 		lastSel_ = filterModel_->mapToSource(filterModel_->index(sel, 0)).row();
 
 	filter_ = s;
-	filterModel_->setFilterRegExp(charFilterRegExp(filter_));
+	filterModel_->setFilterRegularExpression(charFilterRegExp(filter_));
 	countCategories();
 
 	// restore old selection

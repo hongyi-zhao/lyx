@@ -541,11 +541,11 @@ bool GuiClipboard::isInternal() const
 
 bool GuiClipboard::hasInternal() const
 {
-	// Windows and Mac OS X does not have the concept of ownership;
+	// Windows and macOS does not have the concept of ownership;
 	// the clipboard is a fully global resource so all applications
 	// are notified of changes. However, on Windows ownership is
 	// emulated by Qt through the OleIsCurrentClipboard() API, while
-	// on Mac OS X we deal with this issue by ourself.
+	// on macOS we deal with this issue by ourself.
 #ifndef Q_OS_MAC
 	return true;
 #else

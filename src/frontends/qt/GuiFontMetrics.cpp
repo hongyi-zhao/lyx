@@ -78,8 +78,6 @@ int const strwidth_cache_max_cost = 1024 * 1024;
 // Limit breakstr_cache_ total cost to 10MB of string data.
 // This is useful for documents with very large insets.
 int const breakstr_cache_max_cost = 10 * 1024 * 1024;
-// Qt 5.x already has its own caching of QTextLayout objects
-// but it does not seem to work well on MacOS X.
 #if defined(Q_OS_MAC)
 // For some reason, the built-in cache of QTextLayout does not work or
 // exist on macOS.
@@ -424,7 +422,7 @@ getTextLayout_helper(TextLayoutHelper const & tlh, double const wordspacing,
 	ptl->setFont(font);
 #ifdef BIDI_USE_FLAG
 	/* Use undocumented flag to enforce drawing direction
-	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
+	 * This does not work with some Qt versions (ticket #11284).
 	 */
 	ptl->setFlags(tlh.rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
 #endif
@@ -527,7 +525,7 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 	QTextLayout tl;
 #ifdef BIDI_USE_FLAG
 	/* Use undocumented flag to enforce drawing direction
-	 * FIXME: This does not work with Qt 5.11 (ticket #11284).
+	 * This does not work with some Qt versions (ticket #11284).
 	 */
 	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
 #endif

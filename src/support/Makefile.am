@@ -35,7 +35,6 @@ liblyxsupport_a_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.cpp \
 	RandomAccessList.h \
-	bind.h \
 	Cache.h \
 	Changer.h \
 	checksum.cpp \

@@ -92,7 +92,7 @@ namespace frontend {
 
 namespace {
 
-// MacOSX specific stuff is at the end.
+// macOS specific stuff is at the end.
 
 class MenuDefinition;
 
@@ -2327,8 +2327,8 @@ struct Menus::Impl {
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
 		BufferView const *) const;
 
-	/// Initialize specific MACOS X menubar
-	void macxMenuBarInit(QMenuBar * qmb);
+	/// Initialize specific macOS menubar
+	void macMenuBarInit(QMenuBar * qmb);
 
 	/// Mac special menu.
 	/** This defines a menu whose entries list the FuncRequests
@@ -2378,9 +2378,9 @@ MenuDefinition Menus::Impl::mac_special_menu_;
   that this menubar will be used also when one of LyX' dialogs has
   focus. (JMarc)
 */
-void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
+void Menus::Impl::macMenuBarInit(QMenuBar * qmb)
 {
-	/* The qt/mac menu code has special code for specifying the role
+	/* The macOS menu code has special code for specifying the role
 	   of a menu entry. However, it does not work very well with our
 	   scheme of creating menus on demand, and therefore we need to
 	   put these entries in a special invisible menu. (JMarc)
@@ -2410,7 +2410,7 @@ void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
 	const bool first_call = mac_special_menu_.empty();
 
-	LYXERR(Debug::GUI, "Creating Mac OS X special menu bar");
+	LYXERR(Debug::GUI, "Creating macOS special menu bar");
 	// the special menu for Menus. Fill it up only once.
 	if (first_call) {
 		for (size_t i = 0 ; i < num_entries ; ++i) {
@@ -2726,13 +2726,13 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		// the first time a QMenuBar is created. Otherwise Qt will
 		// create duplicate items in the application menu. It seems
 		// that Qt does not remove them when the QMenubar is cleared.
-		d->macxMenuBarInit(qmb);
+		d->macMenuBarInit(qmb);
 #endif
 	} else {
 		// Clear all menubar contents before filling it.
 		qmb->clear();
 #if (defined(Q_OS_MAC))
-		d->macxMenuBarInit(qmb);
+		d->macMenuBarInit(qmb);
 #endif
 	}
 

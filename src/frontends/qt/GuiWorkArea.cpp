@@ -789,7 +789,7 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	// QAbstractScrollArea::mouseMoveEvent, the event is triggered falsely when quickly
 	// double tapping a touchpad. To test: try to select a word by quickly double tapping
 	// on a touchpad while hovering the cursor over that word in the work area.
-	// This bug does not occur on Qt versions 5.10.1 and below. Only Windows seems to be affected.
+	// Only Windows seems to be affected.
 	// ML thread: https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg211699.html
 	// Qt bugtracker: https://bugreports.qt.io/browse/QTBUG-85431
 	// Bug was fixed in Qt 5.15.1

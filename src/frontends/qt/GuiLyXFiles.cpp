@@ -613,12 +613,7 @@ void GuiLyXFiles::passParams(string const & data)
 
 void GuiLyXFiles::selectItem(QString const & item)
 {
-	/* Using an intermediary variable flags is needed up to at least
-	 * Qt 5.5 because of a subtle namespace issue. See:
-	 *   https://stackoverflow.com/questions/10755058/qflags-enum-type-conversion-fails-all-of-a-sudden
-	 * for details.*/
-	Qt::MatchFlags const flags(Qt::MatchExactly|Qt::MatchRecursive);
-	QList<QTreeWidgetItem *> twi = filesLW->findItems(item, flags);
+	QList<QTreeWidgetItem *> twi = filesLW->findItems(item, Qt::MatchExactly | Qt::MatchRecursive);
 	if (!twi.isEmpty())
 		twi.first()->setSelected(true);
 }

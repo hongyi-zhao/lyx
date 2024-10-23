@@ -21,8 +21,6 @@
 #include "support/os.h"
 #include "support/Timeout.h"
 
-#include "support/bind.h"
-
 #include <cerrno>
 #include <cstring>
 #include <list>
@@ -50,6 +48,10 @@ using namespace std;
 
 
 namespace lyx {
+
+using std::placeholders::_1;
+using std::bind;
+
 namespace support {
 
 namespace {

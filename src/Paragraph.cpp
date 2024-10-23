@@ -72,7 +72,7 @@
 using namespace std;
 using namespace lyx::support;
 
-// OSX clang and msvc < 2015 do not support C++11 thread_local
+// (old?) macOS clang and msvc < 2015 do not support C++11 thread_local
 #if defined(__APPLE__)
 #define THREAD_LOCAL_STATIC static __thread
 #elif defined(_MSC_VER) && (_MSC_VER < 1900)

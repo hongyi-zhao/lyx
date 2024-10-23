@@ -15,7 +15,7 @@
 #include "support/docstring.h"
 
 #include <sstream>
-//needed for Mac OSX 10.5.2 Leopard
+// needed for Mac OS X 10.5.2 Leopard
 #include <cstdlib>
 
 using namespace std;

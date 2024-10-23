@@ -1094,7 +1094,7 @@ struct GuiApplication::Private
 	Qt::ApplicationState last_state_;
 
 #if defined(Q_OS_MAC) && (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
-	/// Linkback mime handler for MacOSX.
+	/// Linkback mime handler for macOS.
 	QMacPasteboardMimeGraphics mac_pasteboard_mime_;
 #endif
 
@@ -1172,7 +1172,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	if (platformName() == "xcb") {
 		// doubleClickInterval() is 400 ms on X11 which is just too long.
-		// On Windows and Mac OS X, the operating system's value is used.
+		// On Windows and macOS, the operating system's value is used.
 		// On Microsoft Windows, calling this function sets the double
 		// click interval for all applications. So we don't!
 		QApplication::setDoubleClickInterval(300);
@@ -2972,7 +2972,7 @@ bool GuiApplication::event(QEvent * e)
 {
 	switch(e->type()) {
 	case QEvent::FileOpen: {
-		// Open a file; this happens only on Mac OS X for now.
+		// Open a file; this happens only on macOS for now.
 		//
 		// We do this asynchronously because on startup the batch
 		// commands are not executed here yet and the gui is not ready

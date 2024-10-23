@@ -3203,7 +3203,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_MAC_LIKE_CURSOR_MOVEMENT:
-		str = _("Use the Mac OS X conventions for cursor movement");
+		str = _("Use the macOS conventions for cursor movement");
 		break;
 
 	case RC_SHOW_MACRO_LABEL:

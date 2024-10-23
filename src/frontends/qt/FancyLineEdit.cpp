@@ -136,8 +136,7 @@ void FancyLineEdit::checkButtons(const QString &text)
 
 void FancyLineEdit::setClearButton(bool visible)
 {
-	// QLineEdit::setClearButtonEnabled() has been implemented in Qt 5.2.
-	// This is now the minimum required version
+	// FIXME: remove and adapt code
 	setClearButtonEnabled(visible);
 }
 

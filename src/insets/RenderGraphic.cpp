@@ -28,8 +28,6 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 
-#include "support/bind.h"
-
 using namespace std;
 
 namespace lyx {

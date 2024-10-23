@@ -733,7 +733,7 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 		return editLinkBackFile(filename.absFileName().c_str());
 #else
 		Alert::error(_("Cannot edit file"),
-			     _("LinkBack files can only be edited on Apple Mac OSX."));
+			     _("LinkBack files can only be edited on macOS."));
 		return false;
 #endif // USE_MACOSX_PACKAGING
 	}

@@ -102,7 +102,7 @@ struct AspellChecker::Private
 		return "data";
 	}
 	/// os package directory constants
-	/// macports on Mac OS X or
+	/// macports on macOS or
 	/// aspell rpms on Linux
 	const string osPackageBase(void)
 	{

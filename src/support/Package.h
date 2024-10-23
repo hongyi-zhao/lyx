@@ -10,7 +10,7 @@
  *
  * A store of the paths to the various different directories used
  * by LyX. These paths differ markedly from one OS to another,
- * following the local Windows, MacOS X or Posix conventions.
+ * following the local Windows, macOS or Posix conventions.
  */
 
 #ifndef PACKAGE_H

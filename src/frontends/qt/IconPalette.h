@@ -27,7 +27,7 @@ class TearOff : public QWidget {
 	Q_OBJECT
 public:
 	TearOff(QWidget * parent);
-#if QT_VERSION < 0x060000
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	void enterEvent(QEvent *) override;
 #else
 	void enterEvent(QEnterEvent *) override;

@@ -179,24 +179,6 @@ QString changeExtension(QString const & oldname, QString const & ext);
 QString formatToolTip(QString text, int width = 30);
 
 
-#if QT_VERSION < 0x050300
-// Very partial implementation of QSignalBlocker for archaic qt versions.
-class QSignalBlocker {
-public:
-	explicit QSignalBlocker(QObject * o)
-		: obj(o), init_state(obj && obj->blockSignals(true)) {}
-
-	~QSignalBlocker() {
-		if (obj)
-			obj->blockSignals(init_state);
-	}
-private:
-	QObject * obj;
-	bool init_state;
-};
-#endif
-
-
 // Check if text is understood as rich text (Qt HTML) and if so, produce a
 // rendering in plain text.
 QString qtHtmlToPlainText(QString const & text);

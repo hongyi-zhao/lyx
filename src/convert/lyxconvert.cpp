@@ -28,9 +28,7 @@
 #include <QImage>
 #include <QFile>
 #include <QPainter>
-#if (QT_VERSION >= 0x050300)
 #include <QPdfWriter>
-#endif
 
 
 const char * basename(const char * name)
@@ -143,7 +141,6 @@ int main(int argc, char **argv)
 		std::cerr << myname << ": Conversion of images to format '" << oformat << "' is not supported" << std::endl;
 		return 4;
 	} else if (NULL != oformat && !strcmp(oformat, "pdf")) {
-#if (QT_VERSION >= 0x050300)
 		QSize size = img.size();
 		QPdfWriter pdfwriter(QString::fromLocal8Bit(outfile));
 		int dpi = pdfwriter.logicalDpiX();
@@ -154,10 +151,6 @@ int main(int argc, char **argv)
 		QPainter painter(&pdfwriter);
 		painter.drawImage(0, 0, img);
 		painter.end();
-#else
-		std::cerr << myname << ": Conversion of images to format '" << oformat << "' is not supported" << std::endl;
-		return 4;
-#endif
 	} else if (!img.save(QString::fromLocal8Bit(outfile), oformat)) {
 		std::cerr << myname << ": Cannot save converted image to '" << outfile << "'" << std::endl;
 		return 5;

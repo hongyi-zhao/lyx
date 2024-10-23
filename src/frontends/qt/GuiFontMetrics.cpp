@@ -284,11 +284,7 @@ int GuiFontMetrics::width(docstring const & s) const
 	if (math_char) {
 		QString const qs = toqstr(s);
 		int br_width = rbearing(s[0]);
-#if QT_VERSION >= 0x050b00
 		int s_width = metrics_.horizontalAdvance(qs);
-#else
-		int s_width = metrics_.width(qs);
-#endif
 		// keep value 0 for math chars with width 0
 		if (s_width != 0)
 			w = max(br_width, s_width);
@@ -668,17 +664,10 @@ int GuiFontMetrics::width(char_type c) const
 	if (value != outOfLimitMetric)
 		return value;
 
-#if QT_VERSION >= 0x050b00
 	if (is_utf16(c))
 		value = metrics_.horizontalAdvance(ucs4_to_qchar(c));
 	else
 		value = metrics_.horizontalAdvance(toqstr(docstring(1, c)));
-#else
-	if (is_utf16(c))
-		value = metrics_.width(ucs4_to_qchar(c));
-	else
-		value = metrics_.width(toqstr(docstring(1, c)));
-#endif
 
 	width_cache_.insert(c, value);
 

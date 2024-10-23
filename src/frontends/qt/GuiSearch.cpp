@@ -603,7 +603,7 @@ GuiSearch::GuiSearch(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags 
 void GuiSearch::mousePressEvent(QMouseEvent * event)
 {
 	if (isFloating() && event->button() == Qt::LeftButton) {
-#if QT_VERSION >= 0x060000
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 		dragPosition = event->globalPosition().toPoint() - frameGeometry().topLeft();
 #else
 		dragPosition = event->globalPos() - frameGeometry().topLeft();
@@ -617,7 +617,7 @@ void GuiSearch::mousePressEvent(QMouseEvent * event)
 void GuiSearch::mouseMoveEvent(QMouseEvent * event)
 {
 	if (isFloating() && event->buttons() & Qt::LeftButton) {
-#if QT_VERSION >= 0x060000
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 		move(event->globalPosition().toPoint() - dragPosition);
 #else
 		move(event->globalPos() - dragPosition);

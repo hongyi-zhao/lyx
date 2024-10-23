@@ -303,11 +303,7 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 		string const dt = split(name, '@');
 		QDate date;
 		if (itype == "moddate")
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
 			date = QDateTime::fromSecsSinceEpoch(buf->fileName().lastModified()).date();
-#else
-			date = QDateTime::fromTime_t(buf->fileName().lastModified()).date();
-#endif
 		else if (itype == "fixdate" && !dt.empty()) {
 			QDate const gdate = QDate::fromString(toqstr(dt), Qt::ISODate);
 			date = (gdate.isValid()) ? gdate : QDate::currentDate();
@@ -334,11 +330,7 @@ vector<pair<string,docstring>> InsetInfoParams::getArguments(Buffer const * buf,
 		string const tt = split(name, '@');
 		QTime time;
 		if (itype == "modtime")
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
 			time = QDateTime::fromSecsSinceEpoch(buf->fileName().lastModified()).time();
-#else
-			time = QDateTime::fromTime_t(buf->fileName().lastModified()).time();
-#endif
 		else if (itype == "fixtime" && !tt.empty()) {
 			QTime const gtime = QTime::fromString(toqstr(tt), Qt::ISODate);
 			time = (gtime.isValid()) ? gtime : QTime::currentTime();
@@ -1230,11 +1222,7 @@ void InsetInfo::build()
 				? split(params_.name, date_format, '@') : string();
 		QDate date;
 		if (params_.type == InsetInfoParams::MODDATE_INFO)
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
 			date = QDateTime::fromSecsSinceEpoch(buffer().fileName().lastModified()).date();
-#else
-			date = QDateTime::fromTime_t(buffer().fileName().lastModified()).date();
-#endif
 		else if (params_.type == InsetInfoParams::FIXDATE_INFO && !date_specifier.empty())
 			date = QDate::fromString(toqstr(date_specifier), Qt::ISODate);
 		else
@@ -1252,11 +1240,7 @@ void InsetInfo::build()
 				? split(params_.name, time_format, '@') : string();
 		QTime time;
 		if (params_.type == InsetInfoParams::MODTIME_INFO)
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
 			time = QDateTime::fromSecsSinceEpoch(buffer().fileName().lastModified()).time();
-#else
-			time = QDateTime::fromTime_t(buffer().fileName().lastModified()).time();
-#endif
 		else if (params_.type == InsetInfoParams::FIXTIME_INFO && !time_specifier.empty())
 			time = QTime::fromString(toqstr(time_specifier), Qt::ISODate);
 		else
@@ -1303,11 +1287,7 @@ std::pair<QDate, std::string> parseDate(Buffer const & buffer, const InsetInfoPa
 
 	QDate date;
 	if (params.type == InsetInfoParams::MODDATE_INFO)
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
 		date = QDateTime::fromSecsSinceEpoch(buffer.fileName().lastModified()).date();
-#else
-		date = QDateTime::fromTime_t(buffer.fileName().lastModified()).date();
-#endif
 	else if (params.type == InsetInfoParams::FIXDATE_INFO && !date_specifier.empty()) {
 		QDate date = QDate::fromString(toqstr(date_specifier), Qt::ISODate);
 		date = (date.isValid()) ? date : QDate::currentDate();
@@ -1328,11 +1308,7 @@ std::pair<QTime, std::string> parseTime(Buffer const & buffer, const InsetInfoPa
 
 	QTime time;
 	if (params.type == InsetInfoParams::MODTIME_INFO)
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
 		time = QDateTime::fromSecsSinceEpoch(buffer.fileName().lastModified()).time();
-#else
-		time = QDateTime::fromTime_t(buffer.fileName().lastModified()).time();
-#endif
 	else if (params.type == InsetInfoParams::FIXTIME_INFO && !date_specifier.empty()) {
 		time = QTime::fromString(toqstr(date_specifier), Qt::ISODate);
 		time = (time.isValid()) ? time : QTime::currentTime();

@@ -50,7 +50,7 @@ void TearOff::mouseReleaseEvent(QMouseEvent * /*event*/)
 }
 
 
-#if QT_VERSION < 0x060000
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void TearOff::enterEvent(QEvent * event)
 #else
 void TearOff::enterEvent(QEnterEvent * event)
@@ -81,7 +81,7 @@ void TearOff::paintEvent(QPaintEvent * /*event*/)
 	menuOpt.checkType = QStyleOptionMenuItem::NotCheckable;
 	menuOpt.menuRect = rect();
 	menuOpt.maxIconWidth = 0;
-#if QT_VERSION < 0x060000
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	menuOpt.tabWidth = 0;
 #endif
 	menuOpt.menuItemType = QStyleOptionMenuItem::TearOff;
@@ -103,7 +103,7 @@ IconPalette::IconPalette(QWidget * parent)
 	v->setSpacing(0);
 	layout_ = new QGridLayout;
 	layout_->setSpacing(0);
-#if QT_VERSION < 0x060000
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	const int fw = style()->pixelMetric(QStyle::PM_MenuPanelWidth, 0, this);
 	layout_->setMargin(fw);
 #else

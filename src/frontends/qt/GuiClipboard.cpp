@@ -361,7 +361,7 @@ QString tidyHtml(QString const & input)
 	// clutter.
 	QTextDocument converter;
 	converter.setHtml(input);
-#if QT_VERSION < 0x060000
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	return converter.toHtml("utf-8");
 #else
 	return converter.toHtml();

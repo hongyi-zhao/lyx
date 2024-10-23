@@ -178,7 +178,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 
 double GuiWorkArea::pixelRatio() const
 {
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	return devicePixelRatioF();
 #else
 	return devicePixelRatio();
@@ -774,8 +774,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 #endif
 			q_button_state(e->button()), q_key_state(e->modifiers()));
-#if (QT_VERSION > QT_VERSION_CHECK(5,10,1) && \
-	QT_VERSION < QT_VERSION_CHECK(5,15,1))
+#if QT_VERSION < QT_VERSION_CHECK(5,15,1)
 	d->synthetic_mouse_event_.cmd = cmd; // QtBug QAbstractScrollArea::mouseMoveEvent
 #endif
 	d->dispatch(cmd);
@@ -785,8 +784,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 {
-#if (QT_VERSION > QT_VERSION_CHECK(5,10,1) && \
-	QT_VERSION < QT_VERSION_CHECK(5,15,1))
+#if QT_VERSION < QT_VERSION_CHECK(5,15,1)
 	// cancel the event if the coordinates didn't change, this is due to QtBug
 	// QAbstractScrollArea::mouseMoveEvent, the event is triggered falsely when quickly
 	// double tapping a touchpad. To test: try to select a word by quickly double tapping
@@ -1597,12 +1595,10 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 		return QVariant(d->im_cursor_rect_);
 		break;
 	}
-#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
 	case Qt::ImAnchorRectangle: {
 		return QVariant(d->im_anchor_rect_);
 		break;
 	}
-#endif
 	default:
 		return QWidget::inputMethodQuery(query);
 	}

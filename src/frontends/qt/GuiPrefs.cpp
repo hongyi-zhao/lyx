@@ -802,7 +802,7 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 {
 	setupUi(this);
 
-#if QT_VERSION < 0x050e00
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
 	connect(screenRomanCO, SIGNAL(activated(QString)),
 		this, SLOT(selectRoman(QString)));
 	connect(screenSansCO, SIGNAL(activated(QString)),
@@ -818,7 +818,7 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 		this, SLOT(selectTypewriter(QString)));
 #endif
 
-#if QT_VERSION >= 0x060000
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 	const QStringList families(QFontDatabase::families());
 #else
 	QFontDatabase fontdb;
@@ -829,7 +829,7 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 		screenSansCO->addItem(family);
 		screenTypewriterCO->addItem(family);
 	}
-#if QT_VERSION < 0x050e00
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
 	connect(screenRomanCO, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
 	connect(screenSansCO, SIGNAL(activated(QString)),
@@ -1563,7 +1563,7 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 		this, SLOT(updateConverter()));
 	connect(convertersLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switchConverter()));
-#if QT_VERSION < 0x050e00
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
 	connect(converterFromCO, SIGNAL(activated(QString)),
 		this, SLOT(changeConverter()));
 	connect(converterToCO, SIGNAL(activated(QString)),
@@ -1934,7 +1934,7 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 		this, SLOT(updatePrettyname()));
 	connect(formatsCB->lineEdit(), SIGNAL(textEdited(QString)),
 		this, SIGNAL(changed()));
-#if QT_VERSION < 0x050e00
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
 	connect(defaultFormatCB, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
 	connect(defaultOTFFormatCB, SIGNAL(activated(QString)),

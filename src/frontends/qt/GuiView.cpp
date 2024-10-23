@@ -261,7 +261,7 @@ private:
 
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const {
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 		return devicePixelRatioF();
 #else
 		return devicePixelRatio();
@@ -665,11 +665,7 @@ GuiView::GuiView(int id)
 	connect(stat_counts_, SIGNAL(clicked()), this, SLOT(statsPressed()));
 
 	zoom_slider_ = new QSlider(Qt::Horizontal, statusBar());
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	zoom_slider_->setFixedWidth(fm.horizontalAdvance('x') * 15);
-#else
-	zoom_slider_->setFixedWidth(fm.width('x') * 15);
-#endif
 	// Make the defaultZoom center
 	zoom_slider_->setRange(10, (lyxrc.defaultZoom * 2) - 10);
 	// Initialize proper zoom value
@@ -682,11 +678,7 @@ GuiView::GuiView(int id)
 	zoom_slider_->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
 
 	// Buttons to change zoom stepwise
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	QSize s(fm.horizontalAdvance('+'), fm.height());
-#else
-	QSize s(fm.width('+'), fm.height());
-#endif
 	zoom_in_ = new GuiClickableLabel(statusBar());
 	zoom_in_->setText("+");
 	zoom_in_->setFixedSize(s);
@@ -726,11 +718,7 @@ GuiView::GuiView(int id)
 	// zoom_value_->setPalette(palette);
 	zoom_value_->setForegroundRole(statusBar()->foregroundRole());
 	zoom_value_->setFixedHeight(fm.height());
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	zoom_value_->setMinimumWidth(fm.horizontalAdvance("444\%"));
-#else
-	zoom_value_->setMinimumWidth(fm.width("444\%"));
-#endif
 	zoom_value_->setAlignment(Qt::AlignCenter);
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
 	statusBar()->addPermanentWidget(zoom_value_);
@@ -1706,10 +1694,8 @@ bool GuiView::event(QEvent * e)
 			}
 			for (int i = 0; i != d.splitter_->count(); ++i)
 				d.tabWorkArea(i)->setFullScreen(true);
-#if QT_VERSION > 0x050903
-			//Qt's 5.9.4 ba44cdae38406c safe area measures won't allow us to go negative in margins
+			// Safe area measures won't allow us to go negative in margins
 			setAttribute(Qt::WA_ContentsMarginsRespectsSafeArea, false);
-#endif
 			setContentsMargins(-2, -2, -2, -2);
 			// bug 5274
 			hideDialogs("prefs", nullptr);
@@ -1728,9 +1714,7 @@ bool GuiView::event(QEvent * e)
 			}
 			for (int i = 0; i != d.splitter_->count(); ++i)
 				d.tabWorkArea(i)->setFullScreen(false);
-#if QT_VERSION > 0x050903
 			setAttribute(Qt::WA_ContentsMarginsRespectsSafeArea, true);
-#endif
 			setContentsMargins(0, 0, 0, 0);
 		}
 		return result;
@@ -1872,7 +1856,7 @@ void GuiView::resetCommandExecute()
 
 double GuiView::pixelRatio() const
 {
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	return devicePixelRatioF();
 #else
 	return devicePixelRatio();
@@ -5189,14 +5173,10 @@ bool GuiView::lfunUiToggle(string const & ui_component)
 		//are the frames in default state?
 		d.current_work_area_->setFrameStyle(QFrame::NoFrame);
 		if (l == 0) {
-#if QT_VERSION >  0x050903
 			setAttribute(Qt::WA_ContentsMarginsRespectsSafeArea, false);
-#endif
 			setContentsMargins(-2, -2, -2, -2);
 		} else {
-#if QT_VERSION >  0x050903
 			setAttribute(Qt::WA_ContentsMarginsRespectsSafeArea, true);
-#endif
 			setContentsMargins(0, 0, 0, 0);
 		}
 	} else

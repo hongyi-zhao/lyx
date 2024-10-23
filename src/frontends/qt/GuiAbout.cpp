@@ -59,7 +59,7 @@ static QString credits()
 			out << qt_("Please install correctly to estimate the great\namount of work other people have done for the LyX project.");
 		} else {
 			QTextStream ts(&file);
-#if QT_VERSION < 0x060000
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 			ts.setCodec("UTF-8");
 #endif
 			QString line;
@@ -103,7 +103,7 @@ static QString release_notes()
 			out << qt_("Please install correctly to see what has changed\nfor this version of LyX.");
 		} else {
 			QTextStream ts(&file);
-#if QT_VERSION < 0x060000
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 			ts.setCodec("UTF-8");
 #endif
 			QString line;
@@ -295,14 +295,12 @@ static QString version(bool const plain = false)
 		out << '\n';
 	else
 		out << "</p><p>";
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
 	out << toqstr(bformat(_("OS Version (run-time): %1$s"),
 		qstring_to_ucs4(QSysInfo::prettyProductName())));
 	if (plain)
 		out << '\n';
 	else
 		out << "</p><p>";
-#endif
 	out << toqstr(bformat(_("Python detected: %1$s"), from_utf8(os::python_info())));
 	if (plain)
 		out << '\n';

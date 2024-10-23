@@ -122,7 +122,7 @@ public:
 	bool notify(QObject * receiver, QEvent * event) override;
 	void commitData(QSessionManager & sm);
 #if defined(HAVE_XCB_XCB_H) && defined(HAVE_LIBXCB)
-#if (QT_VERSION < 0x060000)
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 #define QINTPTR long
 #else
 #define QINTPTR qintptr

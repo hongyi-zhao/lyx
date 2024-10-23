@@ -766,11 +766,7 @@ QString formatToolTip(QString text, int width)
 		text = Qt::convertFromPlainText(text, Qt::WhiteSpaceNormal);
 	// Compute desired width in pixels
 	QFont const font = QToolTip::font();
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	int const px_width = width * QFontMetrics(font).horizontalAdvance("M");
-#else
-	int const px_width = width * QFontMetrics(font).width("M");
-#endif
 	// Determine the ideal width of the tooltip
 	QTextDocument td("");
 	td.setHtml(text);

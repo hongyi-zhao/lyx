@@ -658,7 +658,7 @@ else()
 	set(LYX_DEBUG ON)
 endif()
 
-set(min_qt5_version "5.6")
+set(min_qt5_version "5.12")
 if(LYX_USE_QT MATCHES "AUTO")
 	# try qt6 first
 	foreach(_mod Core Gui Widgets Concurrent Svg)

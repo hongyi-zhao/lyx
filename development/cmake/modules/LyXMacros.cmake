@@ -468,12 +468,12 @@ function(determineversionandbuildtype configfile package version dirs date build
 endfunction(determineversionandbuildtype)
 
 # determine known cmake cxx_std features but only if not greater than ${max_desired}
-function(lyxgetknowncmakestd max_desired result)
+function(lyxgetknowncmakestd max_desired min_enabled result)
   set(tmp_list)
   set(CXX_STD_LIST)
   math(EXPR max_desired "${max_desired}+1")
   if (CMAKE_VERSION VERSION_LESS "3.9")
-    list(APPEND tmp_list 98 11 14)
+    list(APPEND tmp_list 14 17 20)
   else()
     foreach(_e ${CMAKE_CXX_COMPILE_FEATURES})
       if (_e MATCHES "^cxx_std_\(.*)")
@@ -484,7 +484,7 @@ function(lyxgetknowncmakestd max_desired result)
   list(REVERSE tmp_list)
   # Filter undesired from list
   foreach(i ${tmp_list})
-    if (i LESS ${max_desired} OR i GREATER 89)
+    if (i LESS ${max_desired} AND i GREATER_EQUAL ${min_enabled})
       list(APPEND CXX_STD_LIST ${i})
     endif()
   endforeach()

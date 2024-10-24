@@ -38,7 +38,8 @@ INCLUDE(FindPackageHandleStandardArgs)
 # Detection of c++20 works well, but our code is not ready for it yet.
 # We currently get errors with internal boost and also from our code.
 set(_max_std_num 20)
-lyxgetknowncmakestd(${_max_std_num} tmpnums)
+set(_min_std_num 17)
+lyxgetknowncmakestd(${_max_std_num} ${_min_std_num} tmpnums)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "^([cC]lang|AppleClang)$")
   foreach(_num ${tmpnums})

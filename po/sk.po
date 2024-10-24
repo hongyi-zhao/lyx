@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-10-16 09:55+0200\n"
-"PO-Revision-Date: 2024-10-16 07:58+0000\n"
+"POT-Creation-Date: 2024-10-24 11:49+0200\n"
+"PO-Revision-Date: 2024-10-24 10:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4485,10 +4485,10 @@ msgstr "&Primárna:"
 
 #: src/frontends/qt/ui/PrefInputUi.ui:101
 msgid ""
-"Mac OS X specific setting for use with emacs bindings. Takes effect next "
-"time LyX is launched."
+"macOS specific setting for use with emacs bindings. Takes effect next time "
+"LyX is launched."
 msgstr ""
-"Špeciálne nastavenia pre MAC OS X na používanie skratiek v emacs. Zmeny sa "
+"Špeciálne nastavenie pre macOS na používanie emacs-skratiek. Zmeny sa "
 "aktivujú pri nasledujúcom vyvolaní LyX-a."
 
 #: src/frontends/qt/ui/PrefInputUi.ui:104
@@ -30276,8 +30276,8 @@ msgid "Cannot edit file"
 msgstr "Nemôžem editovať súbor"
 
 #: src/Format.cpp:736
-msgid "LinkBack files can only be edited on Apple Mac OSX."
-msgstr "Súbory LinkBack je možné editovať len na Apple Mac OSX."
+msgid "LinkBack files can only be edited on macOS."
+msgstr "Súbory LinkBack je možné upravovať iba v systéme macOS."
 
 #: src/Format.cpp:749
 #, c-format
@@ -30894,9 +30894,9 @@ msgstr ""
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr "Prehoď Apple klávesu na Meta a Kontrol klávesu na Ctrl."
 
-#: src/LyXRC.cpp:3202
-msgid "Use the Mac OS X conventions for cursor movement"
-msgstr "Použiť dohody Mac OS X pre pohyb kurzoru"
+#: src/LyXRC.cpp:3206
+msgid "Use the macOS conventions for cursor movement"
+msgstr "Na pohyb kurzora použite konvencie systému macOS"
 
 #: src/LyXRC.cpp:3206
 msgid ""

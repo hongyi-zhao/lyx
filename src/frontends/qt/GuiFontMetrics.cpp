@@ -28,6 +28,7 @@
 #include "support/pmprof.h"
 
 #include <QByteArray>
+#include <QFontInfo>
 #include <QRawFont>
 #include <QtEndian>
 

@@ -24,6 +24,7 @@
 #include "support/Lexer.h"
 #include "support/lstrings.h"
 
+#include "Buffer.h"
 #include "BufferParams.h"
 #include "IndicesList.h"
 

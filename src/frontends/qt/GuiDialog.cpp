@@ -22,6 +22,7 @@
 #include <QCloseEvent>
 #include <QDialogButtonBox>
 #include <QColorDialog>
+#include <QRegularExpression>
 
 using namespace std;
 

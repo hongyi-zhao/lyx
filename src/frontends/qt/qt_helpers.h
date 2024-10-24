@@ -13,7 +13,6 @@
 #ifndef QTHELPERS_H
 #define QTHELPERS_H
 
-#include "Buffer.h"
 #include "ColorSet.h"
 #include "support/Length.h"
 #include "support/qstring_helpers.h"
@@ -22,14 +21,15 @@
 
 #include <list>
 
-#include <QHeaderView>
-
 class QComboBox;
 class QLineEdit;
 class QString;
 class QWidget;
+class QAbstractItemView;
 
 namespace lyx {
+
+class Buffer;
 
 namespace support { class FileName; }
 

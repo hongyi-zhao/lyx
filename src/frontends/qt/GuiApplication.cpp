@@ -113,6 +113,7 @@
 #include <QSocketNotifier>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
+#include <QStyle>
 #include <QSvgRenderer>
 #include <QTimer>
 #include <QTranslator>

@@ -12,8 +12,10 @@
 
 #include <config.h>
 
+#include <QString>
 #include "qt_helpers.h"
 
+#include "Buffer.h"
 #include "Format.h"
 #include "LengthCombo.h"
 #include "LyXRC.h"
@@ -33,6 +35,7 @@
 #include <QComboBox>
 #include <QDesktopServices>
 #include <QDir>
+#include <QHeaderView>
 #include <QInputDialog>
 #include <QLineEdit>
 #include <QMessageBox>

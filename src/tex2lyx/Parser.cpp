@@ -882,6 +882,9 @@ void Parser::tokenize_one()
 		if (!is_) {
 			error("unexpected end of input");
 		} else {
+			// A single \ at the end of a line is like "\ "
+			if (catcode(c) == catNewline)
+				c = ' ';
 			docstring s(1, c);
 			if (catcode(c) == catLetter) {
 				// collect letters

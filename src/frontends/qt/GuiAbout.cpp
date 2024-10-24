@@ -26,6 +26,7 @@
 #include <QClipboard>
 #include <QDate>
 #include <QFile>
+#include <QRegularExpression>
 #include <QTextStream>
 
 using namespace lyx::support;

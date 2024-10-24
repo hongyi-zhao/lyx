@@ -24,6 +24,7 @@
 #include <QLabel>
 #include <QList>
 #include <QTabWidget>
+#include <QTabBar>
 #include <QValidator>
 
 

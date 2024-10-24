@@ -185,19 +185,6 @@ else()
   LYX_CALLSTACK_PRINTING)
 endif()
 
-# Check whether STL is libstdc++
-check_cxx_source_compiles(
-	"
-	#include <vector>
-	int main() {
-	#if ! defined(__GLIBCXX__) && ! defined(__GLIBCPP__)
-		this is not libstdc++
-	#endif
-		return(0);
-	}
-	"
-lyx_cv_lib_stdcxx)
-
 # Check whether STL is libstdc++ with C++11 ABI
 check_cxx_source_compiles(
 	"
@@ -232,8 +219,6 @@ check_cxx_source_compiles(
   "
 HAVE_DEF_MAKE_UNIQUE)
 
-LYX_USE_STD_CALL_ONCE)
-
 if (ENCHANT_FOUND)
   set(CMAKE_REQUIRED_INCLUDES ${ENCHANT_INCLUDE_DIR})
   set(CMAKE_REQUIRED_LIBRARIES ${ENCHANT_LIBRARY})
@@ -252,19 +237,7 @@ if (ENCHANT_FOUND)
   endif()
 endif()
 
-set(USE_LLVM_LIBCPP)
-set(STD_STRING_USES_COW)
 set(USE_GLIBCXX_CXX11_ABI)
-if(lyx_cv_lib_stdcxx)
-  if(NOT USE_GLIBCXX_CXX11_ABI)
-    set(STD_STRING_USES_COW 1)
-  endif()
-else()
-  if(lyx_cv_prog_clang)
-    # use libc++ provided by llvm instead of GNU libstdc++
-    set(USE_LLVM_LIBCPP 1)
-  endif()
-endif()
 
 set(HAVE_QT5_X11_EXTRAS)
 set(HAVE_QT6_X11_EXTRAS)

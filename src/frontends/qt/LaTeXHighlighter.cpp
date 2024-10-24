@@ -13,6 +13,8 @@
 #include "LaTeXHighlighter.h"
 #include "qt_helpers.h"
 
+#include <QPalette>
+#include <QRegularExpression>
 #include <QString>
 #include <QTextDocument>
 

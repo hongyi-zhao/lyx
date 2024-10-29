@@ -119,7 +119,8 @@ void InsetMathBox::validate(LaTeXFeatures & features) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
+	if (features.runparams().math_flavor == OutputParams::MathAsMathMLCore ||
+			features.runparams().math_flavor == OutputParams::MathAsMathML3)
 		features.addCSSSnippet("mtext.mathbox { font-style: normal; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet("span.mathbox { font-style: normal; }");
@@ -204,7 +205,8 @@ void InsetMathFBox::validate(LaTeXFeatures & features) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
+	if (features.runparams().math_flavor == OutputParams::MathAsMathMLCore ||
+			features.runparams().math_flavor == OutputParams::MathAsMathML3)
 		features.addCSSSnippet(
 			"mtext.fbox { border: 1px solid black; font-style: normal; padding: 0.5ex; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
@@ -343,7 +345,8 @@ void InsetMathMakebox::validate(LaTeXFeatures & features) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
+	if (features.runparams().math_flavor == OutputParams::MathAsMathMLCore ||
+			features.runparams().math_flavor == OutputParams::MathAsMathML3)
 		features.addCSSSnippet("mtext.framebox { border: 1px solid black; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet("span.framebox { border: 1px solid black; }");
@@ -423,7 +426,8 @@ void InsetMathBoxed::validate(LaTeXFeatures & features) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
+	if (features.runparams().math_flavor == OutputParams::MathAsMathMLCore ||
+			features.runparams().math_flavor == OutputParams::MathAsMathML3)
 		features.addCSSSnippet("mtext.boxed { border: 1px solid black; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet("span.boxed { border: 1px solid black; }");

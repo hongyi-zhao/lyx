@@ -28,6 +28,8 @@
 #include <map>
 #include <vector>
 
+#include "mathed/MathStream.h"
+
 namespace lyx {
 
 namespace support {
@@ -587,7 +589,8 @@ public:
 
 	// do not change these values. we rely upon them.
 	enum MathOutput {
-		MathML = 0,
+		MathMLCore = 0,
+		MathML3 = 4,
 		HTML = 1,
 		Images = 2,
 		LaTeX = 3
@@ -624,6 +627,9 @@ public:
 	};
 	/// what prefix to use when outputting MathML. present choices are above
 	MathMLNameSpacePrefix docbook_mathml_prefix;
+
+	/// what version of MathML to use for DocBook output (likely different from the version used for XHTML)
+	MathMLStream::MathMLVersion docbook_mathml_version;
 
 	/// allow the LaTeX backend to run external programs
 	bool shell_escape;

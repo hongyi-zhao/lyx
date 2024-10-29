@@ -54,7 +54,8 @@ class OutputParams {
 public:
 	enum MathFlavor {
 		NotApplicable,
-		MathAsMathML,
+		MathAsMathMLCore,
+		MathAsMathML3,
 		MathAsHTML,
 		MathAsImages,
 		MathAsLaTeX

@@ -7,7 +7,12 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
-2024-08-25 Jürgen Spitzmüller <spitz@lyx.org> 
+2024-09-29 Thibaut Cuvelier <tcuvelier@lyx.org>
+    * Format incremented to 631: Add support for MathML versions, which
+      are stored separately for DocBook and XHTML (\docbook_mathml_version,
+      which is new, and \html_math_output, which receives a new value).
+
+2024-08-25 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 630: Add support for a number of languages in
 	  babel and polyglossia:
 	  Polyglossia: Chinese (Simplified), Chinese (Traditional), Japanese, Kurdish (Sorani),

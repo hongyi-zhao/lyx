@@ -480,11 +480,12 @@ BufferParams::BufferParams()
 	// default index
 	indiceslist().addDefault(B_("Index"));
 	html_be_strict = false;
-	html_math_output = MathML;
+	html_math_output = MathMLCore;
 	html_math_img_scale = 1.0;
 	html_css_as_file = false;
 	docbook_table_output = HTMLTable;
 	docbook_mathml_prefix = MPrefix;
+	docbook_mathml_version = MathMLStream::mathml3;
 	display_pixel_ratio = 1.0;
 
 	shell_escape = false;
@@ -1226,6 +1227,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		int temp;
 		lex >> temp;
 		docbook_mathml_prefix = static_cast<MathMLNameSpacePrefix>(temp);
+	} else if (token == "\\docbook_mathml_version") {
+		int temp;
+		lex >> temp;
+		docbook_mathml_version = static_cast<MathMLStream::MathMLVersion>(temp);
 	} else if (token == "\\output_sync") {
 		lex >> output_sync;
 	} else if (token == "\\output_sync_macro") {
@@ -1621,6 +1626,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 
 	os << "\\docbook_table_output " << docbook_table_output << '\n';
 	os << "\\docbook_mathml_prefix " << docbook_mathml_prefix << '\n';
+	os << "\\docbook_mathml_version " << docbook_mathml_version << '\n';
 
 	if (html_math_img_scale != 1.0)
 		os << "\\html_math_img_scale " << convert<string>(html_math_img_scale) << '\n';

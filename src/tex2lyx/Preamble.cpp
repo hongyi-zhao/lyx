@@ -552,7 +552,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	// h_font_roman_opts;
 	// h_font_sans_opts;
 	// h_font_typewriter_opts;
-	//h_font_cjk
+	// h_font_cjk
 	h_is_mathindent           = "0";
 	h_math_numbering_side     = "default";
 	h_graphics                = "default";
@@ -562,6 +562,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_html_math_output        = "0";
 	h_docbook_table_output    = "0";
 	h_docbook_mathml_prefix   = "1";
+	h_docbook_mathml_version  = "0";
 	h_index[0]                = "Index";
 	h_index_command           = "default";
 	h_inputencoding           = "auto-legacy";
@@ -2168,6 +2169,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\html_be_strict " << h_html_be_strict << "\n"
 	   << "\\docbook_table_output " << h_docbook_table_output << "\n"
 	   << "\\docbook_mathml_prefix " << h_docbook_mathml_prefix << "\n"
+	   << "\\docbook_mathml_version " << h_docbook_mathml_version << "\n"
 	   << authors_
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";

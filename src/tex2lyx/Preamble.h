@@ -199,6 +199,7 @@ private:
 	std::string h_html_math_output;
 	std::string h_docbook_table_output;
 	std::string h_docbook_mathml_prefix;
+	std::string h_docbook_mathml_version;
 	std::string h_index[99];
 	std::string h_index_command;
 	std::string h_inputencoding;

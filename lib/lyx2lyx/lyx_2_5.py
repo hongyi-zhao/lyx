@@ -1015,6 +1015,48 @@ def revert_new_babel_languages(document):
         if document.language == "hebrew" or find_token(document.body, "\\lang oldrussian", 0) != -1:
             add_to_preamble(document, ["\\PassOptionsToPackage{provide*=*}{babel}"])
 
+
+def convert_mathml_version(document):
+    """Add MathML version header for DocBook to use MathML 3 preferably.
+
+    For cleanliness, add this header close to other DocBook headers if present.
+
+    Leave XHTML alone, as the default value is still probably what the user wants (MathML Core)."""
+
+    i = find_token(document.header, "\\docbook", 0)
+    if i == -1:
+        document.header += ["\\docbook_mathml_version 0"]
+    else:
+        document.header.insert(i + 1, "\\docbook_mathml_version 0")
+
+
+def revert_mathml_version(document):
+    """Remove MathML version header.
+
+    For XHTML, only remove the value 4 for \html_math_output (MathML 3) and replace it with 0
+    (MathML Core with format 631+, MathML for 630-).
+
+    For DocBook, totally remove the header (the default with 630- is MathML)."""
+
+    while True:
+        i = find_token(document.header, "\\html_math_output", 0)
+        if i == -1:
+            # nothing to do
+            break
+
+        # remove XHTML header if using the new value, leave alone otherwise.
+        if "4" in document.header:
+            document.header[i] = "\\html_math_output 0"
+
+    while True:
+        i = find_token(document.header, "\\docbook_mathml_version", 0)
+        if i == -1:
+            # nothing to do
+            return
+
+        # remove header
+        del document.header[i]
+
 ##
 # Conversion hub
 #
@@ -1030,11 +1072,13 @@ convert = [
     [627, [convert_nomencl, convert_index_sc]],
     [628, []],
     [629, []],
-    [630, []]
+    [630, []],
+    [631, [convert_mathml_version]]
 ]
 
 
 revert = [
+    [630, [revert_mathml_version]],
     [629, [revert_new_polyglossia_languages, revert_new_babel_languages]],
     [628, [revert_langopts]],
     [627, [revert_nomentbl]],

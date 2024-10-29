@@ -2655,9 +2655,13 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 	}
 
 	// FIXME Eventually we would like to do this inset by inset.
-	if (mathtype == BufferParams::MathML) {
+	if (mathtype == BufferParams::MathML3 || mathtype == BufferParams::MathMLCore) {
+		MathMLStream::MathMLVersion mathml_version = MathMLStream::mathmlCore;
+		if (mathtype == BufferParams::MathML3)
+			mathml_version = MathMLStream::mathml3;
+
 		odocstringstream os;
-		MathMLStream ms(os, "", MathMLStream::mathmlCore);
+		MathMLStream ms(os, "", mathml_version);
 		try {
 			mathmlize(ms);
 			success = true;

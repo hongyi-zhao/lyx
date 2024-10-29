@@ -952,6 +952,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(outputModule->mathmlprefixCB, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
+	connect(outputModule->mathmlverCB, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
 
 	connect(outputModule->shellescapeCB, SIGNAL(stateChanged(int)),
 		this, SLOT(shellescapeChanged()));
@@ -4075,6 +4077,12 @@ void GuiDocument::applyView()
 		mathmlprefix = 0;
 	auto const mp = static_cast<BufferParams::MathMLNameSpacePrefix>(mathmlprefix);
 	bp_.docbook_mathml_prefix = mp;
+
+	int mathmlversion = outputModule->mathmlverCB->currentIndex();
+	if (mathmlversion == -1)
+		mathmlversion = 0;
+	auto const mv = static_cast<MathMLStream::MathMLVersion>(mathmlversion);
+	bp_.docbook_mathml_version = mv;
 
 	bp_.save_transient_properties =
 		outputModule->saveTransientPropertiesCB->isChecked();

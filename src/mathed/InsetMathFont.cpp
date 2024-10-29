@@ -28,6 +28,164 @@ using namespace lyx::support;
 
 namespace lyx {
 
+namespace {
+// Similar to FontInfo and its related enums, but specifically for the math
+// mode.
+//
+// All types have enumerations, like FontEnums.h, even though there are
+// sometimes only two cases: this design ensures some future-proofness and
+// ensures that you cannot inadvertently swap two values.
+class MathFontInfo {
+public:
+	enum MathFontFamily {
+		MATH_NORMAL_FAMILY = 0, // Default value in MathML.
+		MATH_FRAKTUR_FAMILY,
+		MATH_SANS_FAMILY,
+		MATH_MONOSPACE_FAMILY,
+		MATH_DOUBLE_STRUCK_FAMILY,
+		MATH_SCRIPT_FAMILY,
+		MATH_SMALL_CAPS // Not natively supported in any version of MathML.
+	};
+
+	enum MathFontSeries {
+		MATH_MEDIUM_SERIES = 0, // Default value in MathML. // Default value in MathML.
+		MATH_BOLD_SERIES
+	};
+
+	enum MathFontShape {
+		MATH_UP_SHAPE = 0,
+		MATH_ITALIC_SHAPE // Default value in MathML mi, not outside.
+	};
+
+	MathFontInfo() :
+		family_(MATH_NORMAL_FAMILY), series_(MATH_MEDIUM_SERIES), shape_(MATH_UP_SHAPE) {}
+	MathFontInfo(const MathFontFamily family, const MathFontSeries series, const MathFontShape shape) :
+		family_(family), series_(series), shape_(shape) {}
+
+	static MathFontInfo fromMacro(const docstring& tag)
+	{
+		MathFontInfo font;
+		if (tag == "mathnormal" || tag == "mathrm"
+				|| tag == "text" || tag == "textnormal"
+				|| tag == "textrm" || tag == "textup"
+				|| tag == "textmd")
+			font.shape_ = MATH_UP_SHAPE;
+		else if (tag == "frak" || tag == "mathfrak")
+			font.family_ = MATH_FRAKTUR_FAMILY;
+		else if (tag == "mathbf" || tag == "textbf")
+			font.series_ = MATH_BOLD_SERIES;
+		else if (tag == "mathbb" || tag == "mathbbm"
+				 || tag == "mathds")
+			font.family_ = MATH_DOUBLE_STRUCK_FAMILY;
+		else if (tag == "mathcal")
+			font.family_ = MATH_SCRIPT_FAMILY;
+		else if (tag == "mathit" || tag == "textsl"
+				 || tag == "emph" || tag == "textit")
+			font.shape_ = MATH_ITALIC_SHAPE;
+		else if (tag == "mathsf" || tag == "textsf")
+			font.family_ = MATH_SANS_FAMILY;
+		else if (tag == "mathtt" || tag == "texttt")
+			font.family_ = MATH_MONOSPACE_FAMILY;
+		else if (tag == "textipa" || tag == "textsc" || tag == "noun")
+			font.family_ = MATH_SMALL_CAPS;
+
+		return font;
+	}
+
+	MathFontFamily family() const { return family_; }
+	MathFontSeries series() const { return series_; }
+	MathFontShape shape() const { return shape_; }
+
+	std::string toMathMLMathVariant(MathMLStream::MathMLVersion mathml_version) const
+	{
+		return mathml_version == MathMLStream::MathMLVersion::mathml3 ?
+			toMathVariantForMathML3() : toMathVariantForMathMLCore();
+	}
+
+	std::string toHTMLSpanClass() const
+	{
+		std::string span_class;
+		switch (family_) {
+			case MATH_NORMAL_FAMILY:
+				break;
+			case MATH_FRAKTUR_FAMILY:
+				span_class = "fraktur";
+				break;
+			case MATH_SANS_FAMILY:
+				span_class = "sans";
+				break;
+			case MATH_MONOSPACE_FAMILY:
+				span_class = "monospace";
+				break;
+			case MATH_DOUBLE_STRUCK_FAMILY:
+				// This style does not exist in HTML and cannot be implemented in CSS.
+				break;
+			case MATH_SCRIPT_FAMILY:
+				span_class = "script";
+				break;
+			case MATH_SMALL_CAPS:
+				span_class = "noun";
+				break;
+		}
+
+		if (series_ == MATH_BOLD_SERIES) {
+			if (!span_class.empty()) span_class += "-";
+			span_class += "bold";
+		}
+
+		if (shape_ == MATH_ITALIC_SHAPE) {
+			if (!span_class.empty()) span_class += "-";
+			span_class += "italic";
+		}
+
+		return span_class;
+	}
+
+private:
+	MathFontFamily family_;
+	MathFontSeries series_;
+	MathFontShape shape_;
+
+	std::string toMathVariantForMathML3() const
+	{
+		// mathvariant is the way MathML 3 encodes fonts.
+		// Not all combinations are supported. Official list:
+		// https://www.w3.org/TR/MathML3/chapter3.html#presm.commatt
+		// "initial", "tailed", "looped", and "stretched" are not implemented,
+		// as they are only useful for Arabic characters (for which LyX has no
+		// support right now).
+		switch (family_) {
+		case MATH_MONOSPACE_FAMILY:
+			return "monospace";
+		case MATH_DOUBLE_STRUCK_FAMILY:
+			return "double-struck";
+		case MATH_FRAKTUR_FAMILY:
+			return series_ == MATH_BOLD_SERIES ? "bold-fraktur" : "fraktur";
+		case MATH_SCRIPT_FAMILY:
+			return series_ == MATH_BOLD_SERIES ? "bold-script" : "script";
+		case MATH_SANS_FAMILY:
+			if (series_ == MATH_MEDIUM_SERIES) {
+				return shape_ == MATH_UP_SHAPE ? "sans-serif" : "sans-serif-italic";
+			}
+			return shape_ == MATH_UP_SHAPE ? "bold-sans-serif" : "sans-serif-bold-italic";
+		case MATH_NORMAL_FAMILY:
+			if (series_ == MATH_MEDIUM_SERIES) {
+				return shape_ == MATH_UP_SHAPE ? "normal" : "italic";
+			}
+			return shape_ == MATH_UP_SHAPE ? "bold" : "bold-italic";
+		case MATH_SMALL_CAPS:
+			// No valid value...
+				return "";
+		}
+	}
+
+	std::string toMathVariantForMathMLCore() const
+	{
+		return shape_ == MATH_UP_SHAPE ? "normal" : "";
+	}
+};
+}
+
 InsetMathFont::InsetMathFont(Buffer * buf, latexkeys const * key)
 	: InsetMathNest(buf, 1), key_(key)
 {}
@@ -137,13 +295,29 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
 		features.addCSSSnippet(
 			"span.normal{font: normal normal normal inherit serif;}\n"
-			"span.fraktur{font: normal normal normal inherit cursive;}\n"
 			"span.bold{font: normal normal bold inherit serif;}\n"
-			"span.script{font: normal normal normal inherit cursive;}\n"
 			"span.italic{font: italic normal normal inherit serif;}\n"
+			"span.bold-italic{font: italic normal bold inherit serif;}\n"
+			"span.fraktur{font: normal normal normal inherit cursive;}\n"
+			"span.fraktur-bold{font: normal normal bold inherit cursive;}\n"
+			"span.fraktur-italic{font: italic normal normal inherit cursive;}\n"
+			"span.fraktur-bold-italic{font: italic normal bold inherit cursive;}\n"
+			"span.script{font: normal normal normal inherit cursive;}\n"
+			"span.script-bold{font: normal normal bold inherit cursive;}\n"
+			"span.script-italic{font: italic normal normal inherit cursive;}\n"
+			"span.script-bold-italic{font: italic normal bold inherit cursive;}\n"
 			"span.sans{font: normal normal normal inherit sans-serif;}\n"
+			"span.sans-bold{font: normal normal normal inherit bold-serif;}\n"
+			"span.sans-italic{font: italic normal normal inherit sans-serif;}\n"
+			"span.sans-bold-italic{font: italic normal normal inherit bold-serif;}\n"
 			"span.monospace{font: normal normal normal inherit monospace;}\n"
-			"span.noun{font: normal small-caps normal inherit normal;}");
+			"span.monospace-bold{font: normal normal bold inherit monospace;}\n"
+			"span.monospace-italic{font: italic normal normal inherit monospace;}\n"
+			"span.monospace-bold-italic{font: italic normal bold inherit monospace;}\n"
+			"span.noun{font: normal small-caps normal inherit normal;}\n"
+			"span.noun-bold{font: normal small-caps bold inherit normal;}\n"
+			"span.noun-italic{font: italic small-caps normal inherit normal;}\n"
+			"span.noun-bold-italic{font: italic small-caps bold inherit normal;}");
 	}
 }
 
@@ -154,35 +328,11 @@ void InsetMathFont::htmlize(HtmlStream & os) const
 	// FIXME These are not quite right, because they do not nest
 	// correctly. A proper fix would presumably involve tracking
 	// the fonts already in effect.
-	std::string variant;
-	docstring const & tag = key_->name;
-	if (tag == "mathnormal" || tag == "mathrm"
-	    || tag == "text" || tag == "textnormal"
-	    || tag == "textrm" || tag == "textup"
-	    || tag == "textmd")
-		variant = "normal";
-	else if (tag == "frak" || tag == "mathfrak")
-		variant = "fraktur";
-	else if (tag == "mathbf" || tag == "textbf")
-		variant = "bold";
-	else if (tag == "mathbb" || tag == "mathbbm"
-	         || tag == "mathds")
-		variant = "double-struck";
-	else if (tag == "mathcal")
-		variant = "script";
-	else if (tag == "mathit" || tag == "textsl"
-	         || tag == "emph" || tag == "textit")
-		variant = "italic";
-	else if (tag == "mathsf" || tag == "textsf")
-		variant = "sans";
-	else if (tag == "mathtt" || tag == "texttt")
-		variant = "monospace";
-	else if (tag == "textipa" || tag == "textsc" || tag == "noun")
-		variant = "noun";
+	const MathFontInfo font = MathFontInfo::fromMacro(key_->name);
+	const std::string span_class = font.toHTMLSpanClass();
 
-	docstring const beg = (tag.size() < 4) ? from_ascii("") : tag.substr(0, 4);
-	if (!variant.empty()) {
-		os << MTag("span", "class='" + variant + "'")
+	if (!span_class.empty()) {
+		os << MTag("span", "class='" + span_class + "'")
 		   << cell(0)
 		   << ETag("span");
 	} else
@@ -196,29 +346,10 @@ void InsetMathFont::mathmlize(MathMLStream & ms) const
 	// FIXME These are not quite right, because they do not nest
 	// correctly. A proper fix would presumably involve tracking
 	// the fonts already in effect.
-	std::string variant;
-	docstring const & tag = key_->name;
-	if (tag == "mathnormal" || tag == "mathrm")
-		variant = "normal";
-	else if (tag == "frak" || tag == "mathfrak")
-		variant = "fraktur";
-	else if (tag == "mathbf" || tag == "textbf")
-		variant = "bold";
-	else if (tag == "mathbb" || tag == "mathbbm" || tag == "mathds")
-		variant = "double-struck";
-	else if (tag == "mathcal")
-		variant = "script";
-	else if (tag == "mathit" || tag == "textsl" || tag == "emph" ||
-			tag == "textit")
-		variant = "italic";
-	else if (tag == "mathsf" || tag == "textsf")
-		variant = "sans-serif";
-	else if (tag == "mathtt" || tag == "texttt")
-		variant = "monospace";
-	// no support at present for textipa, textsc, noun
+	const MathFontInfo font = MathFontInfo::fromMacro(key_->name);
+	const std::string variant = font.toMathMLMathVariant(ms.version());
 
-	if (tag == "text" || tag == "textnormal" || tag == "textrm" ||
-			tag == "textup" || tag == "textmd") {
+	if (font.shape() == MathFontInfo::MATH_UP_SHAPE) {
 		SetMode textmode(ms, true);
 		ms << cell(0);
 	} else if (!variant.empty()) {

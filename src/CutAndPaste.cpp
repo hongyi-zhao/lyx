@@ -658,7 +658,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	// We don't want to produce images that are not used. Therefore,
 	// output formulas as MathML. Even if this is not understood by all
 	// applications, the number that can parse it should go up in the future.
-	buffer->params().html_math_output = BufferParams::MathML;
+	buffer->params().html_math_output = BufferParams::MathMLCore;
 
 	// Copy authors to the params. We need those pointers.
 	for (Author const & a : bp.authors())

@@ -4472,8 +4472,11 @@ void Buffer::setMathFlavor(OutputParams & op) const
 	// In particular, this function has no impact on the DocBook code, as it
 	// uses another mechanism to handle math flavours.
 	switch (params().html_math_output) {
-	case BufferParams::MathML:
-		op.math_flavor = OutputParams::MathAsMathML;
+	case BufferParams::MathMLCore:
+		op.math_flavor = OutputParams::MathAsMathMLCore;
+		break;
+	case BufferParams::MathML3:
+		op.math_flavor = OutputParams::MathAsMathML3;
 		break;
 	case BufferParams::HTML:
 		op.math_flavor = OutputParams::MathAsHTML;

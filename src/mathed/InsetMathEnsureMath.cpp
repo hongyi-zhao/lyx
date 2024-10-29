@@ -98,7 +98,8 @@ void InsetMathEnsureMath::validate(LaTeXFeatures & features) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	if (features.runparams().math_flavor == OutputParams::MathAsMathML)
+	if (features.runparams().math_flavor == OutputParams::MathAsMathMLCore ||
+			features.runparams().math_flavor == OutputParams::MathAsMathML3)
 		features.addCSSSnippet("mstyle.math { font-style: italic; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet("span.mathbox { font-style: italic; }");

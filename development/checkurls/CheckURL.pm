@@ -19,7 +19,7 @@ our (@EXPORT, @ISA);
 BEGIN {
   use Exporter ();
   @ISA    = qw(Exporter);
-  @EXPORT = qw(check_url);
+  @EXPORT = qw(check_url constructExtraTestUrl);
 }
 
 # Prototypes
@@ -260,6 +260,7 @@ sub check_unknown_url($$$$) {
 # Main entry
 sub check_url($$$$) {
   my ($url, $use_curl, $fex, $fsx) = @_;
+  $url =~ s/%20/ /g;
   $fe = $fex;
   $fs = $fsx;
   my $file = undef;
@@ -306,6 +307,61 @@ sub check_url($$$$) {
     $res = check_unknown_url($protocol, $host, $path, $file);
     return $res;
   }
+}
+
+sub constructExtraTestUrl($) {
+  my ($url) = @_;
+
+  my $urlok = $url;
+  my $protokol;
+  if ($urlok =~ s/^(ftp|https?):\/\///) {
+    $protokol = $1;
+    if ($protokol eq 'http') {
+      $protokol = 'https';
+    }
+    if (($protokol eq 'ftp') && ($urlok =~ /ctan/)) {
+      $protokol = 'https';
+    }
+  }
+  $urlok =~ s/^([^\/]+)//;
+  my $server = $1;
+  $urlok =~ s/^\///;
+  if ($server =~ /ctan/) {
+    $urlok =~ s/\/\/+/\//g;
+    $urlok =~ s/^ctan\///;
+    if ($urlok =~ /[\w][.](pdf|html|dvi)$/) {
+      if ($urlok =~ s/^(tex-archive|CTAN)\///) {
+        $server = 'mirrors.ctan.org';
+      }
+      elsif ($urlok =~ /(pgf)\//) {
+        $server = 'www.ctan.org';
+      }
+    }
+    else {
+      if ($urlok =~ s/\/$//) {
+        $server = 'www.cpan.org';
+        if ($urlok ne '') {
+          if ("$urlok/" =~
+              /^(biblio|bibliography|digest|documentation|dviware|fonts|graphics|help|indexing|info|install|languages?|macros|obsolete|support|systems|tds|usergrps|web)\//
+          )
+          {
+            $urlok = 'tex-archive/' . $urlok;
+          }
+          if ("$urlok/" !~ /^(pkg|topic|tex-archive|author)\//) {
+            die("");
+          }
+        }
+      }
+    }
+  }
+  my $url2;
+  if ($urlok eq '') {
+    $url2 = "$protokol://$server";
+  }
+  else {
+    $url2 = "$protokol://$server/$urlok";
+  }
+  return($url2);
 }
 
 1;

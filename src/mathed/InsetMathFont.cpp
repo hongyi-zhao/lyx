@@ -88,6 +88,7 @@ public:
 			font.family_ = MATH_MONOSPACE_FAMILY;
 		else if (tag == "textipa" || tag == "textsc" || tag == "noun")
 			font.family_ = MATH_SMALL_CAPS;
+		// Otherwise, the tag is not recognised, use the default font.
 
 		return font;
 	}
@@ -106,26 +107,33 @@ public:
 	{
 		std::string span_class;
 		switch (family_) {
-			case MATH_NORMAL_FAMILY:
-				break;
-			case MATH_FRAKTUR_FAMILY:
-				span_class = "fraktur";
-				break;
-			case MATH_SANS_FAMILY:
-				span_class = "sans";
-				break;
-			case MATH_MONOSPACE_FAMILY:
-				span_class = "monospace";
-				break;
-			case MATH_DOUBLE_STRUCK_FAMILY:
-				// This style does not exist in HTML and cannot be implemented in CSS.
-				break;
-			case MATH_SCRIPT_FAMILY:
-				span_class = "script";
-				break;
-			case MATH_SMALL_CAPS:
-				span_class = "noun";
-				break;
+		case MATH_NORMAL_FAMILY:
+			break;
+		case MATH_FRAKTUR_FAMILY:
+			span_class = "fraktur";
+			break;
+		case MATH_SANS_FAMILY:
+			span_class = "sans";
+			break;
+		case MATH_MONOSPACE_FAMILY:
+			span_class = "monospace";
+			break;
+		case MATH_DOUBLE_STRUCK_FAMILY:
+			// This style does not exist in HTML and cannot be implemented in CSS.
+			break;
+		case MATH_SCRIPT_FAMILY:
+			span_class = "script";
+			break;
+		case MATH_SMALL_CAPS:
+			span_class = "noun";
+			break;
+		}
+		// Explicitly match the cases with an empty output. This ensures that we catch at runtime
+		// invalid values for the enum while keeping compile-time warnings.
+		if (span_class.empty() && (family_ != MATH_NORMAL_FAMILY || family_ != MATH_DOUBLE_STRUCK_FAMILY)) {
+			LYXERR(Debug::MATHED,
+				"Unexpected case in MathFontInfo::toHTMLSpanClass: family_ = " << family_
+					<< ", series = " << series_ << ", shape = " << shape_);
 		}
 
 		if (series_ == MATH_BOLD_SERIES) {
@@ -175,8 +183,14 @@ private:
 			return shape_ == MATH_UP_SHAPE ? "bold" : "bold-italic";
 		case MATH_SMALL_CAPS:
 			// No valid value...
-				return "";
+			return "";
 		}
+
+		// Better safe than sorry.
+		LYXERR(Debug::MATHED,
+			"Unexpected case in MathFontInfo::toMathVariantForMathML3: family_ = " << family_
+				<< ", series = " << series_ << ", shape = " << shape_);
+		return "";
 	}
 
 	std::string toMathVariantForMathMLCore() const

@@ -30,6 +30,7 @@
 #           (c) 2013 Scott Kostyshak <skotysh@lyx.org>
 
 use strict;
+use warnings;
 
 BEGIN {
   use File::Spec;
@@ -38,13 +39,14 @@ BEGIN {
   unshift(@INC, "$p");
 }
 
-use warnings;
 use Cwd qw(abs_path);
 use CheckURL;
 use Try::Tiny;
 use locale;
 use POSIX qw(locale_h);
 use Readonly;
+
+binmode(STDOUT, ":encoding(UTF-8)");
 
 Readonly::Scalar my $NR_JOBS => 10;
 
@@ -71,6 +73,7 @@ my %revertedURLS        = ();
 my %extraURLS           = ();
 my %selectedURLS        = ();
 my %knownToRegisterURLS = ();
+my %extraTestURLS       = ();
 my $summaryFile         = undef;
 
 my $checkSelectedOnly = 0;
@@ -80,7 +83,7 @@ for my $arg (@ARGV) {
   if ($type eq "filesToScan") {
 
     #The file should be a list of files to search in
-    if (open(FLIST, $val)) {
+    if (open(FLIST, '<', $val)) {
       while (my $l = <FLIST>) {
         chomp($l);
         parse_file($l);
@@ -105,7 +108,7 @@ for my $arg (@ARGV) {
     readUrls($val, %knownToRegisterURLS);
   }
   elsif ($type eq "summaryFile") {
-    if (open(SFO, '>', "$val")) {
+    if (open(SFO, '>:encoding(UTF8)', "$val")) {
       $summaryFile = $val;
     }
   }
@@ -143,10 +146,15 @@ for my $u (@urls) {
   next if ($checkSelectedOnly && !defined($selectedURLS{$u}));
   $URLScount++;
   push(@testvals, {u => $u, use_curl => $use_curl,});
-  if ($u =~ s/^http:/https:/) {
-    if (!defined($selectedURLS{$u})) {    # check also the corresponging 'https:' url
-      push(@testvals, {u => $u, use_curl => $use_curl, extra => 1,});
-      $URLScount++;
+  my $uorig = $u;
+  $u = constructExtraTestUrl($uorig);
+  if ($u ne $uorig) {
+    if (!defined($selectedURLS{$u})) {
+      if (!defined($extraTestURLS{$u})) {
+        $extraTestURLS{$u} = 1; # omit multiple tests
+        push(@testvals, {u => $u, use_curl => $use_curl, extra => 1});
+        $URLScount++;
+      }
     }
   }
 }
@@ -206,7 +214,7 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
         my $use_curl = $rentry->{use_curl};
         my $extra    = defined($rentry->{extra});
 
-        print $fe "Checking($entryidx-$subprocess) '$u': ";
+        print $fe "Checking($entryidx-$subprocess) '$u': time=" . time() . ' ';
         my ($res, $prnt, $outSum);
         try {
           $res = check_url($u, $use_curl, $fe, $fs);
@@ -248,6 +256,7 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
         else {
           my $succes;
           if ($extra) {
+            # This url is created
             $succes = "Extra_OK url:";
           }
           else {
@@ -274,7 +283,7 @@ for (my $i = 0; $i < $NR_JOBS; $i++) {    # Number of subprocesses
 
 sub readsublog($) {
   my ($i) = @_;
-  open(my $fe, '<', "$tempdir/xxxError$i");
+  open(my $fe, '<:encoding(UTF-8)', "$tempdir/xxxError$i");
   while (my $l = <$fe>) {
     if ($l =~ /^NumberOfErrors\s(\d+)/) {
       $errorcount += $1;
@@ -345,29 +354,32 @@ sub printNotUsedURLS($\%) {
     }
   }
   if (@msg) {
-    print "\n$txt URLs not found in sources: " . join(' ', @msg) . "\n";
+    print "\n$txt URLs: " . join(' ', @msg) . "\n";
   }
 }
 
 sub replaceSpecialChar($) {
   my ($l) = @_;
   $l =~ s/\\SpecialChar(NoPassThru)?\s*(TeX|LaTeX|LyX)[\s]?/$2/;
+  $l =~ s/ /%20/g;
   return ($l);
 }
 
 sub readUrls($\%) {
   my ($file, $rUrls) = @_;
 
-  die("Could not read file $file") if (!open(ULIST, $file));
+  die("Could not read file $file") if (!open(ULIST, '<:encoding(UTF-8)', $file));
+  print "Read urls from $file\n";
   my $line = 0;
   while (my $l = <ULIST>) {
     $line++;
-    $l =~ s/[\r\n]+$//;    # remove eol
-    $l =~ s/\s*\#.*$//;    # remove comment
-    $l = &replaceSpecialChar($l);
+    chomp($l);                  # remove eol
+    $l =~ s/^\s+//;
+    next if ($l =~ /^\#/);      # discard comment lines
     next if ($l eq "");
+    $l = &replaceSpecialChar($l);
     my $use_curl = 0;
-    if ($l =~ s/^\s*UseCurl\s*//) {
+    if ($l =~ s/^UseCurl\s*//) {
       $use_curl = 1;
     }
     if (!defined($rUrls->{$l})) {
@@ -382,13 +394,12 @@ sub parse_file($) {
   my $status = "out";    # outside of URL/href
 
   #return if ($f =~ /\/attic\//);
-  if (open(FI, $f)) {
+  if (open(FI, '<:encoding(UTF-8)', $f)) {
     my $line = 0;
     while (my $l = <FI>) {
       $line++;
       chomp($l);
 
-      # $l =~ s/[\r\n]+$//;    #  Simulate chomp
       if ($status eq "out") {
 
         # searching for "\begin_inset Flex URL"

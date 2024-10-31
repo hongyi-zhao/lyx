@@ -14,8 +14,6 @@
 
 #include "InsetCaptionable.h"
 
-#include <map>
-
 namespace lyx {
 
 class InsetListingsParams {

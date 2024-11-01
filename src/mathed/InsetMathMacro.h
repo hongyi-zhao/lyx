@@ -17,8 +17,6 @@
 #include "MacroTable.h"
 #include "MathData.h"
 
-#include <map>
-
 namespace lyx {
 
 /// This class contains the data for a macro.

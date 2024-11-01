@@ -1381,6 +1381,12 @@ string const LaTeXFeatures::getPackages() const
 	if (!params_.set_geometry.empty())
 		packages << params_.set_geometry;
 
+	if (tokenPos(params_.documentClass().opt_pagestyle(), '|', params_.pagestyle) >= 0) {
+		if (params_.pagestyle == "fancy")
+			packages << "\\usepackage{fancyhdr}\n";
+		packages << "\\pagestyle{" << params_.pagestyle << "}\n";
+	}
+
 	// These must be loaded after graphicx, since they try
 	// to load graphicx without options
 	if (mustProvide("rotating"))

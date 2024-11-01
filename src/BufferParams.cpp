@@ -2176,12 +2176,6 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		features.require("papersize");
 	}
 
-	if (tokenPos(tclass.opt_pagestyle(), '|', pagestyle) >= 0) {
-		if (pagestyle == "fancy")
-			os << "\\usepackage{fancyhdr}\n";
-		os << "\\pagestyle{" << from_ascii(pagestyle) << "}\n";
-	}
-
 	// only output when the background color is not default
 	if (isbackgroundcolor) {
 		// only require color here, the background color will be defined

@@ -130,7 +130,7 @@ public:
 		}
 		// Explicitly match the cases with an empty output. This ensures that we catch at runtime
 		// invalid values for the enum while keeping compile-time warnings.
-		if (span_class.empty() && (family_ != MATH_NORMAL_FAMILY || family_ != MATH_DOUBLE_STRUCK_FAMILY)) {
+		if (span_class.empty() && (family_ == MATH_NORMAL_FAMILY || family_ == MATH_DOUBLE_STRUCK_FAMILY)) {
 			LYXERR(Debug::MATHED,
 				"Unexpected case in MathFontInfo::toHTMLSpanClass: family_ = " << family_
 					<< ", series = " << series_ << ", shape = " << shape_);

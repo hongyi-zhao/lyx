@@ -30,7 +30,7 @@
        <item row="0" column="0">
         <layout class="QVBoxLayout" name="verticalLayout">
          <property name="sizeConstraint">
-          <enum>QLayout::SizeConstraint::SetFixedSize</enum>
+          <enum>QLayout::SetFixedSize</enum>
          </property>
          <item>
           <widget class="QSvgWidget" name="iconSW" native="true">
@@ -45,7 +45,7 @@
          <item>
           <spacer name="verticalSpacer_2">
            <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
+            <enum>Qt::Vertical</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -57,31 +57,15 @@
          </item>
         </layout>
        </item>
-       <item row="0" column="1">
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Policy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="0" column="2">
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <spacer name="verticalSpacer_3">
            <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
+            <enum>Qt::Vertical</enum>
            </property>
            <property name="sizeType">
-            <enum>QSizePolicy::Policy::Fixed</enum>
+            <enum>QSizePolicy::Fixed</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -106,7 +90,7 @@
             <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;LyX version info goes here.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Qt version (run-time) goes here.&lt;/p&gt;&lt;p&gt;Qt version (compile-time) goes here.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
            </property>
            <property name="wordWrap">
             <bool>true</bool>
@@ -115,17 +99,17 @@
             <number>0</number>
            </property>
            <property name="textInteractionFlags">
-            <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
            </property>
           </widget>
          </item>
          <item>
           <spacer name="verticalSpacer">
            <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
+            <enum>Qt::Vertical</enum>
            </property>
            <property name="sizeType">
-            <enum>QSizePolicy::Policy::MinimumExpanding</enum>
+            <enum>QSizePolicy::MinimumExpanding</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -178,7 +162,7 @@
                <bool>false</bool>
               </property>
               <property name="textInteractionFlags">
-               <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
               </property>
              </widget>
             </item>
@@ -206,7 +190,7 @@
                <bool>false</bool>
               </property>
               <property name="textInteractionFlags">
-               <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
               </property>
              </widget>
             </item>
@@ -253,7 +237,7 @@
                <bool>false</bool>
               </property>
               <property name="textInteractionFlags">
-               <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
               </property>
              </widget>
             </item>
@@ -280,6 +264,35 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item row="0" column="1">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="2">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -415,7 +428,7 @@
      <item>
       <widget class="QDialogButtonBox" name="buttonBox">
        <property name="standardButtons">
-        <set>QDialogButtonBox::StandardButton::Close</set>
+        <set>QDialogButtonBox::Close</set>
        </property>
       </widget>
      </item>

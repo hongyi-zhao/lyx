@@ -19,6 +19,7 @@
 #include "MathSupport.h"
 #include "MetricsInfo.h"
 
+#include "Dimension.h"
 #include "LaTeXFeatures.h"
 
 #include "support/docstring.h"

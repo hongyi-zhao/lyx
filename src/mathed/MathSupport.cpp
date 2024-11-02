@@ -20,6 +20,7 @@
 #include "MathParser.h"
 #include "MathStream.h"
 
+#include "Dimension.h"
 #include "Encoding.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"

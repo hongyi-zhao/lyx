@@ -12,6 +12,7 @@
 
 #include "InsetMathBoldSymbol.h"
 
+#include "Dimension.h"
 #include "MathStream.h"
 #include "MathData.h"
 #include "MetricsInfo.h"

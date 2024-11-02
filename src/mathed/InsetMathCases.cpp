@@ -13,6 +13,7 @@
 #include "InsetMathCases.h"
 
 #include "Cursor.h"
+#include "Dimension.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "support/gettext.h"

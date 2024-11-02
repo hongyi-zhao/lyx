@@ -16,6 +16,7 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
+#include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 

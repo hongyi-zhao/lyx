@@ -18,6 +18,7 @@
 
 #include "frontends/Painter.h"
 
+#include "Dimension.h"
 #include "MetricsInfo.h"
 
 #include <ostream>

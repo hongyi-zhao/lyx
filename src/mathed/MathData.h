@@ -18,7 +18,6 @@
 #include "MathAtom.h"
 #include "MathClass.h"
 
-#include "Dimension.h"
 #include "OutputEnums.h"
 
 #include <cstddef>

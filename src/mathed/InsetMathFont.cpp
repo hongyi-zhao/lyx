@@ -12,6 +12,7 @@
 
 #include "InsetMathFont.h"
 
+#include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"

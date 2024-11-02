@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "Dimension.h"
 #include "InsetMathLefteqn.h"
 
 #include "support/docstream.h"

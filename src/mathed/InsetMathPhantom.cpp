@@ -15,6 +15,7 @@
 #include "LaTeXFeatures.h"
 #include "MathStream.h"
 
+#include "Dimension.h"
 #include "MetricsInfo.h"
 
 #include "frontends/Painter.h"

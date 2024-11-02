@@ -12,6 +12,7 @@
 
 #include "InsetMathBrace.h"
 
+#include "Dimension.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"

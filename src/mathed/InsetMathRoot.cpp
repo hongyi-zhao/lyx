@@ -17,6 +17,7 @@
 #include "MathSupport.h"
 
 #include "Cursor.h"
+#include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 

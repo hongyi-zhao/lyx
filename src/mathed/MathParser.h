@@ -36,7 +36,7 @@ public:
 	char const * MathMLtype() const;
 	/// name of the macro or primitive
 	docstring name;
-	/// name of a inset that handles that macro
+	/// name of an inset that handles that macro
 	std::string inset;
 	/**
 	 * The string or symbol to draw.
@@ -48,7 +48,7 @@ public:
 	 * docstring argument.
 	 * If \p name is a known symbol, but the corresponding font is not
 	 * available, or if it is a function name, then \c draw contains a
-	 * regular UCS4 string (actuallay \c draw == \c name) that is painted
+	 * regular UCS4 string (actually \c draw == \c name) that is painted
 	 * on screen.
 	 */
 	docstring draw;

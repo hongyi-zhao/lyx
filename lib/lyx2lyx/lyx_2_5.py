@@ -1025,7 +1025,7 @@ def convert_mathml_version(document):
 
     i = find_token(document.header, "\\docbook", 0)
     if i == -1:
-        document.header += ["\\docbook_mathml_version 0"]
+        document.header.insert(-1, "\\docbook_mathml_version 0")
     else:
         document.header.insert(i + 1, "\\docbook_mathml_version 0")
 
@@ -1033,7 +1033,7 @@ def convert_mathml_version(document):
 def revert_mathml_version(document):
     """Remove MathML version header.
 
-    For XHTML, only remove the value 4 for \html_math_output (MathML 3) and replace it with 0
+    For XHTML, only remove the value 4 for \\html_math_output (MathML 3) and replace it with 0
     (MathML Core with format 631+, MathML for 630-).
 
     For DocBook, totally remove the header (the default with 630- is MathML)."""
@@ -1045,7 +1045,7 @@ def revert_mathml_version(document):
             break
 
         # remove XHTML header if using the new value, leave alone otherwise.
-        if "4" in document.header:
+        if "4" in document.header[i]:
             document.header[i] = "\\html_math_output 0"
 
     while True:

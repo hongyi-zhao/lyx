@@ -371,14 +371,14 @@ MathMLStream & operator<<(MathMLStream & ms, char const * s)
 
 MathMLStream & operator<<(MathMLStream & ms, char c)
 {
-	ms << docstring(1,c);
+	ms << docstring(1, c);
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, char_type c)
 {
-	ms << docstring(1,c);
+	ms << docstring(1, c);
 	return ms;
 }
 

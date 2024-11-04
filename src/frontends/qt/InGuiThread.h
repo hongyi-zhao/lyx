@@ -16,11 +16,9 @@
 #include <QObject>
 #include <QWaitCondition>
 
-namespace lyx {
+#include <functional>
 
-using std::function;
-using std::ref;
-using std::bind;
+namespace lyx {
 
 namespace frontend {
 
@@ -68,25 +66,25 @@ public:
 	template<class F, class P1>
 	R call(F f, P1& p1)
 	{
-		return call(lyx::bind(f, lyx::ref(p1)));
+		return call(std::bind(f, std::ref(p1)));
 	}
 
 	template<class F, class P1, class P2>
 	R call(F f, P1& p1, P2& p2)
 	{
-		return call(lyx::bind(f, lyx::ref(p1), lyx::ref(p2)));
+		return call(std::bind(f, std::ref(p1), std::ref(p2)));
 	}
 
 	template<class F, class P1, class P2, class P3>
 	R call(F f, P1& p1, P2& p2, P3& p3)
 	{
-		return call(lyx::bind(f, lyx::ref(p1), lyx::ref(p2), lyx::ref(p3)));
+		return call(std::bind(f, std::ref(p1), std::ref(p2), std::ref(p3)));
 	}
 
 	template<class F, class P1, class P2, class P3, class P4>
 	R call(F f, P1& p1, P2& p2, P3& p3, P4& p4)
 	{
-		return call(lyx::bind(f, lyx::ref(p1), lyx::ref(p2), lyx::ref(p3), lyx::ref(p4)));
+		return call(std::bind(f, std::ref(p1), std::ref(p2), std::ref(p3), std::ref(p4)));
 	}
 
 	/*
@@ -96,8 +94,8 @@ public:
 	template<class F, class P1, class P2, class P3, class P4, class P5, class P6, class P7, class P8>
 	R call(F f, P1& p1, P2& p2, P3& p3, P4& p4, P5& p5, P6& p6, P7& p7, P8& p8)
 	{
-		return call(lyx::bind(f, lyx::ref(p1), lyx::ref(p2), lyx::ref(p3), lyx::ref(p4),
-			lyx::ref(p5), lyx::ref(p6), lyx::ref(p7), lyx::ref(p8)));
+		return call(std::bind(f, std::ref(p1), std::ref(p2), std::ref(p3), std::ref(p4),
+			std::ref(p5), std::ref(p6), std::ref(p7), std::ref(p8)));
 	}
 
 private:
@@ -109,7 +107,7 @@ private:
 
 private:
 	R return_value_;
-	function<R()> func_;
+	std::function<R()> func_;
 };
 
 
@@ -131,25 +129,25 @@ public:
 	template<class F, class P1>
 	void call(F f, P1& p1)
 	{
-		call(lyx::bind(f, lyx::ref(p1)));
+		call(std::bind(f, std::ref(p1)));
 	}
 
 	template<class F, class P1, class P2>
 	void call(F f, P1& p1, P2& p2)
 	{
-		call(lyx::bind(f, lyx::ref(p1), lyx::ref(p2)));
+		call(std::bind(f, std::ref(p1), std::ref(p2)));
 	}
 
 	template<class F, class P1, class P2, class P3>
 	void call(F f, P1& p1, P2& p2, P3& p3)
 	{
-		call(lyx::bind(f, lyx::ref(p1), lyx::ref(p2), lyx::ref(p3)));
+		call(std::bind(f, std::ref(p1), std::ref(p2), std::ref(p3)));
 	}
 
 	template<class F, class P1, class P2, class P3, class P4>
 	void call(F f, P1& p1, P2& p2, P3& p3, P4& p4)
 	{
-		call(lyx::bind(f, lyx::ref(p1), lyx::ref(p2), lyx::ref(p3), lyx::ref(p4)));
+		call(std::bind(f, std::ref(p1), std::ref(p2), std::ref(p3), std::ref(p4)));
 	}
 
 	/*
@@ -159,8 +157,8 @@ public:
 	template<class F, class P1, class P2, class P3, class P4, class P5, class P6, class P7, class P8>
 	void call(F f, P1& p1, P2& p2, P3& p3, P4& p4, P5& p5, P6& p6, P7& p7, P8& p8)
 	{
-		call(bind(f, lyx::ref(p1), lyx::ref(p2), lyx::ref(p3), lyx::ref(p4), lyx::ref(p5),
-			lyx::ref(p6), lyx::ref(p7), lyx::ref(p8)));
+		call(bind(f, std::ref(p1), std::ref(p2), std::ref(p3), std::ref(p4), std::ref(p5),
+			std::ref(p6), std::ref(p7), std::ref(p8)));
 	}
 
 private:
@@ -171,7 +169,7 @@ private:
 	}
 
 private:
-	function<void()> func_;
+	std::function<void()> func_;
 };
 
 

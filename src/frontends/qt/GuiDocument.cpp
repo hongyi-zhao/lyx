@@ -494,7 +494,13 @@ PreambleModule::PreambleModule(QWidget * parent)
 	checkFindButton();
 	int const tabStop = 4;
 	QFontMetrics metrics(preambleTE->currentFont());
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+	// horizontalAdvance() is available starting in 5.11.0
+	// setTabStopDistance() is available starting in 5.10.0
 	preambleTE->setTabStopDistance(tabStop * metrics.horizontalAdvance(' '));
+#else
+	preambleTE->setTabStopWidth(tabStop * metrics.width(' '));
+#endif
 }
 
 
@@ -640,7 +646,13 @@ LocalLayout::LocalLayout(QWidget * parent)
 	connect(editPB, SIGNAL(clicked()), this, SLOT(editExternal()));
 	int const tabStop = 4;
 	QFontMetrics metrics(locallayoutTE->currentFont());
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+	// horizontalAdvance() is available starting in 5.11.0
+	// setTabStopDistance() is available starting in 5.10.0
 	locallayoutTE->setTabStopDistance(tabStop * metrics.horizontalAdvance(' '));
+#else
+	locallayoutTE->setTabStopWidth(tabStop * metrics.width(' '));
+#endif
 }
 
 
@@ -2512,7 +2524,11 @@ void GuiDocument::updateQuoteStyles(bool const set)
 	for (int i = 0; i < langModule->quoteStyleCO->count(); ++i) {
 		langModule->quoteStyleCO->setItemData(i, QVariant(comboFont), Qt::FontRole);
 		QString str = langModule->quoteStyleCO->itemText(i);
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 		qswidth = max(qswidth, fm.horizontalAdvance(str));
+#else
+		qswidth = max(qswidth, fm.width(str));
+#endif
 	}
 	// add scrollbar width and margin to width
 	qswidth += langModule->quoteStyleCO->style()->pixelMetric(QStyle::PM_ScrollBarExtent);

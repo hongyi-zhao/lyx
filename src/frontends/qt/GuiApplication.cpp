@@ -106,7 +106,9 @@
 #include <QObject>
 #include <QPainter>
 #include <QPixmap>
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
 #include <QRandomGenerator>
+#endif
 #include <QScreen>
 #include <QSessionManager>
 #include <QSettings>
@@ -1136,7 +1138,12 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 #endif
 
 	setDesktopFileName(lyx_package);
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
 	QRandomGenerator(QDateTime::currentDateTime().toSecsSinceEpoch());
+#else
+	qsrand(QDateTime::currentDateTime().toTime_t());
+#endif
 
 	// Install LyX translator for missing Qt translations
 	installTranslator(&d->gui_trans_);

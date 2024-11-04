@@ -665,7 +665,11 @@ GuiView::GuiView(int id)
 	connect(stat_counts_, SIGNAL(clicked()), this, SLOT(statsPressed()));
 
 	zoom_slider_ = new QSlider(Qt::Horizontal, statusBar());
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	zoom_slider_->setFixedWidth(fm.horizontalAdvance('x') * 15);
+#else
+	zoom_slider_->setFixedWidth(fm.width('x') * 15);
+#endif
 	// Make the defaultZoom center
 	zoom_slider_->setRange(10, (lyxrc.defaultZoom * 2) - 10);
 	// Initialize proper zoom value
@@ -678,7 +682,11 @@ GuiView::GuiView(int id)
 	zoom_slider_->setToolTip(qt_("Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."));
 
 	// Buttons to change zoom stepwise
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	QSize s(fm.horizontalAdvance('+'), fm.height());
+#else
+	QSize s(fm.width('+'), fm.height());
+#endif
 	zoom_in_ = new GuiClickableLabel(statusBar());
 	zoom_in_->setText("+");
 	zoom_in_->setFixedSize(s);
@@ -718,7 +726,11 @@ GuiView::GuiView(int id)
 	// zoom_value_->setPalette(palette);
 	zoom_value_->setForegroundRole(statusBar()->foregroundRole());
 	zoom_value_->setFixedHeight(fm.height());
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 	zoom_value_->setMinimumWidth(fm.horizontalAdvance("444\%"));
+#else
+	zoom_value_->setMinimumWidth(fm.width("444\%"));
+#endif
 	zoom_value_->setAlignment(Qt::AlignCenter);
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));
 	statusBar()->addPermanentWidget(zoom_value_);

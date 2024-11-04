@@ -13,7 +13,7 @@
 #ifndef LYX_MUTE_WARNING_H
 #define LYX_MUTE_WARNING_H
 
-#if defined(__GNUC__) && !defined(__clang__)
+#if defined(__GNUC__) && __GNUC__ > 7 && !defined(__clang__)
 /* This macro can be used to stipulate that a given GCC warning is not
  * relevant in a given block.
  *

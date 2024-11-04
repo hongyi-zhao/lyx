@@ -90,7 +90,7 @@ What do I need to compile LyX from the source distribution?
       but clang and MSVC are known to work too. As of LyX 2.5.0, you
       need at least gcc 8.0.
 
-    * The Qt library, at least version 5.12. It is also possible to
+    * The Qt library, at least version 5.9.4. It is also possible to
       compile with Qt 6.x.
 
     Read the file "INSTALL" for more information on compiling.

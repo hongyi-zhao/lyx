@@ -1044,9 +1044,10 @@ def revert_mathml_version(document):
             # nothing to do
             break
 
-        # remove XHTML header if using the new value, leave alone otherwise.
+        # reset XHTML header if using the new value, leave alone otherwise.
         if "4" in document.header[i]:
             document.header[i] = "\\html_math_output 0"
+        break
 
     while True:
         i = find_token(document.header, "\\docbook_mathml_version", 0)

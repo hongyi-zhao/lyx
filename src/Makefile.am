@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-############################### Core  ##############################
+############################### LyX ###############################
 
 AM_CPPFLAGS += -I$(top_srcdir)/src
 AM_CPPFLAGS += $(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES)
@@ -24,7 +24,6 @@ OTHERLIBS = $(MYTHES_LIBS) $(ENCHANT_LIBS) $(HUNSPELL_LIBS) \
             @LIBS@ $(ICONV_LIBS) $(ZLIB_LIBS) $(SOCKET_LIBS) \
 	    $(LIBSHLWAPI) $(LIBPSAPI)
 
-noinst_LIBRARIES = liblyxcore.a
 bin_PROGRAMS = lyx
 
 lyx_LDFLAGS = $(AM_LDFLAGS) $(QT_LDFLAGS)
@@ -74,228 +73,20 @@ PWL = PersonalWordList.cpp PersonalWordList.h
 endif
 
 lyx_SOURCES = \
-	main.cpp \
 	$(APPLESPELL) \
 	$(ASPELL) \
-	BiblioInfo.h \
-	BiblioInfo.cpp \
-	Box.cpp \
-	Box.h \
-	Compare.cpp \
-	Compare.h \
-	Dimension.cpp \
-	Dimension.h \
 	$(ENCHANT) \
 	$(HUNSPELL) \
 	$(PWL) \
-	LaTeXFonts.cpp \
-	LaTeXFonts.h \
-	Thesaurus.cpp \
-	Thesaurus.h
+	Compare.cpp \
+	Compare.h \
+	main.cpp \
+	version.cpp \
+	version.h
 
 if LYX_WIN_RESOURCE
 lyx_SOURCES += lyxwinres.rc
 endif
-
-SOURCEFILESCORE = \
-	Author.cpp \
-	boost.cpp \
-	BranchList.cpp \
-	Buffer.cpp \
-	buffer_funcs.cpp \
-	BufferEncodings.cpp \
-	BufferList.cpp \
-	BufferParams.cpp \
-	BufferView.cpp \
-	Bullet.cpp \
-	Changes.cpp \
-	Chktex.cpp \
-	CiteEnginesList.cpp \
-	CmdDef.cpp \
-	Color.cpp \
-	Converter.cpp \
-	ConverterCache.cpp \
-	CoordCache.cpp \
-	Counters.cpp \
-	Cursor.cpp \
-	CursorSlice.cpp \
-	CutAndPaste.cpp \
-	DepTable.cpp \
-	DocIterator.cpp \
-	Encoding.cpp \
-	ErrorList.cpp \
-	Exporter.cpp \
-	factory.cpp \
-	Floating.cpp \
-	FloatList.cpp \
-	Font.cpp \
-	FontInfo.cpp \
-	FontList.cpp \
-	Format.cpp \
-	FuncRequest.cpp \
-	FuncStatus.cpp \
-	Graph.cpp \
-	IndicesList.cpp \
-	InsetIterator.cpp \
-	InsetList.cpp \
-	Intl.cpp \
-	KeyMap.cpp \
-	KeySequence.cpp \
-	Language.cpp \
-	LaTeX.cpp \
-	LaTeXFeatures.cpp \
-	LaTeXPackages.cpp \
-	Layout.cpp \
-	LayoutFile.cpp \
-	LayoutModuleList.cpp \
-	LyX.cpp \
-	LyXAction.cpp \
-	lyxfind.cpp \
-	LyXRC.cpp \
-	LyXVC.cpp \
-	MetricsInfo.cpp \
-	ModuleList.cpp \
-	Mover.cpp \
-	output.cpp \
-	output_docbook.cpp \
-	output_latex.cpp \
-	output_plaintext.cpp \
-	output_xhtml.cpp \
-	OutputParams.cpp \
-	Paragraph.cpp \
-	ParagraphMetrics.cpp \
-	ParagraphParameters.cpp \
-	ParIterator.cpp \
-	PDFOptions.cpp \
-	Row.cpp \
-	RowPainter.cpp \
-	Server.cpp \
-	ServerSocket.cpp \
-	Session.cpp \
-	Spacing.cpp \
-	Statistics.cpp \
-	TexRow.cpp \
-	texstream.cpp \
-	Text.cpp \
-	TextClass.cpp \
-	TextMetrics.cpp \
-	TocBackend.cpp \
-	TocBuilder.cpp \
-	Trans.cpp \
-	Undo.cpp \
-	VCBackend.cpp \
-	version.cpp \
-	VSpace.cpp \
-	WordList.cpp \
-	xml.cpp
-
-HEADERFILESCORE = \
-	Author.h \
-	BranchList.h \
-	Buffer.h \
-	buffer_funcs.h \
-	BufferEncodings.h \
-	BufferList.h \
-	BufferParams.h \
-	BufferView.h \
-	Bullet.h \
-	Changes.h \
-	Chktex.h \
-	Citation.h \
-	CiteEnginesList.h \
-	CmdDef.h \
-	Color.h \
-	ColorCode.h \
-	ColorSet.h \
-	CompletionList.h \
-	Converter.h \
-	ConverterCache.h \
-	CoordCache.h \
-	Counters.h \
-	Cursor.h \
-	CursorSlice.h \
-	CutAndPaste.h \
-	DepTable.h \
-	DispatchResult.h \
-	DocIterator.h \
-	DocumentClassPtr.h \
-	Encoding.h \
-	ErrorList.h \
-	Exporter.h \
-	factory.h \
-	Floating.h \
-	FloatList.h \
-	Font.h \
-	FontEnums.h \
-	FontInfo.h \
-	FontList.h \
-	Format.h \
-	FuncCode.h \
-	FuncRequest.h \
-	FuncStatus.h \
-	Graph.h \
-	IndicesList.h \
-	InsetIterator.h \
-	InsetList.h \
-	Intl.h \
-	KeyMap.h \
-	KeySequence.h \
-	Language.h \
-	LaTeX.h \
-	LaTeXFeatures.h \
-	LaTeXPackages.h \
-	Layout.h \
-	LayoutEnums.h \
-	LayoutFile.h \
-	LayoutModuleList.h \
-	LyX.h \
-	LyXAction.h \
-	lyxfind.h \
-	LyXRC.h \
-	LyXVC.h \
-	MetricsInfo.h \
-	ModuleList.h \
-	Mover.h \
-	output.h \
-	output_docbook.h \
-	output_latex.h \
-	output_plaintext.h \
-	output_xhtml.h \
-	OutputEnums.h \
-	OutputParams.h \
-	paper.h \
-	Paragraph.h \
-	ParagraphList.h \
-	ParagraphMetrics.h \
-	ParagraphParameters.h \
-	ParIterator.h \
-	PDFOptions.h \
-	Row.h \
-	RowFlags.h \
-	RowPainter.h \
-	Server.h \
-	ServerSocket.h \
-	Session.h \
-	Spacing.h \
-	SpellChecker.h \
-	Statistics.h \
-	TexRow.h \
-	texstream.h \
-	Text.h \
-	TextClass.h \
-	TextMetrics.h \
-	Toc.h \
-	TocBackend.h \
-	TocBuilder.h \
-	Trans.h \
-	Undo.h \
-	update_flags.h \
-	VCBackend.h \
-	version.h \
-	VSpace.h \
-	WordLangTuple.h \
-	WordList.h \
-	xml.h
 
 .PHONY: update_commit_hash
 
@@ -316,8 +107,214 @@ lyx_commit_hash.h: update_commit_hash
 BUILT_SOURCES = lyx_commit_hash.h
 CLEANFILES = lyx_commit_hash.h
 
-liblyxcore_a_SOURCES = $(SOURCEFILESCORE) $(HEADERFILESCORE)
+############################### Core ##############################
 
+noinst_LIBRARIES = liblyxcore.a
+
+liblyxcore_a_SOURCES = \
+	Author.cpp \
+	Author.h \
+	BiblioInfo.cpp \
+	BiblioInfo.h \
+	boost.cpp \
+	Box.h \
+	BranchList.cpp \
+	BranchList.h \
+	Buffer.cpp \
+	Buffer.h \
+	buffer_funcs.cpp \
+	buffer_funcs.h \
+	BufferEncodings.cpp \
+	BufferEncodings.h \
+	BufferList.cpp \
+	BufferList.h \
+	BufferParams.cpp \
+	BufferParams.h \
+	BufferView.cpp \
+	BufferView.h \
+	Bullet.cpp \
+	Bullet.h \
+	Changes.cpp \
+	Changes.h \
+	Chktex.cpp \
+	Chktex.h \
+	Citation.h \
+	CiteEnginesList.cpp \
+	CiteEnginesList.h \
+	CmdDef.cpp \
+	CmdDef.h \
+	Color.cpp \
+	Color.h \
+	ColorCode.h \
+	ColorSet.h \
+	CompletionList.h \
+	Converter.cpp \
+	Converter.h \
+	ConverterCache.cpp \
+	ConverterCache.h \
+	CoordCache.cpp \
+	CoordCache.h \
+	Counters.cpp \
+	Counters.h \
+	Cursor.cpp \
+	Cursor.h \
+	CursorSlice.cpp \
+	CursorSlice.h \
+	CutAndPaste.cpp \
+	CutAndPaste.h \
+	DepTable.cpp \
+	DepTable.h \
+	Dimension.cpp \
+	Dimension.h \
+	DispatchResult.h \
+	DocIterator.cpp \
+	DocIterator.h \
+	DocumentClassPtr.h \
+	Encoding.cpp \
+	Encoding.h \
+	ErrorList.cpp \
+	ErrorList.h \
+	Exporter.cpp \
+	Exporter.h \
+	factory.cpp \
+	factory.h \
+	Floating.cpp \
+	Floating.h \
+	FloatList.cpp \
+	FloatList.h \
+	Font.cpp \
+	Font.h \
+	FontEnums.h \
+	FontInfo.cpp \
+	FontInfo.h \
+	FontList.cpp \
+	FontList.h \
+	Format.cpp \
+	Format.h \
+	FuncCode.h \
+	FuncRequest.cpp \
+	FuncRequest.h \
+	FuncStatus.cpp \
+	FuncStatus.h \
+	Graph.cpp \
+	Graph.h \
+	IndicesList.cpp \
+	IndicesList.h \
+	InsetIterator.cpp \
+	InsetIterator.h \
+	InsetList.cpp \
+	InsetList.h \
+	Intl.cpp \
+	Intl.h \
+	KeyMap.cpp \
+	KeyMap.h \
+	KeySequence.cpp \
+	KeySequence.h \
+	Language.cpp \
+	Language.h \
+	LaTeX.cpp \
+	LaTeX.h \
+	LaTeXFeatures.cpp \
+	LaTeXFeatures.h \
+	LaTeXFonts.cpp \
+	LaTeXFonts.h \
+	LaTeXPackages.cpp \
+	LaTeXPackages.h \
+	Layout.cpp \
+	Layout.h \
+	LayoutEnums.h \
+	LayoutFile.cpp \
+	LayoutFile.h \
+	LayoutModuleList.cpp \
+	LayoutModuleList.h \
+	LyX.cpp \
+	LyX.h \
+	LyXAction.cpp \
+	LyXAction.h \
+	lyxfind.cpp \
+	lyxfind.h \
+	LyXRC.cpp \
+	LyXRC.h \
+	LyXVC.cpp \
+	LyXVC.h \
+	MetricsInfo.cpp \
+	MetricsInfo.h \
+	ModuleList.cpp \
+	ModuleList.h \
+	Mover.cpp \
+	Mover.h \
+	output.cpp \
+	output.h \
+	output_docbook.cpp \
+	output_docbook.h \
+	output_latex.cpp \
+	output_latex.h \
+	output_plaintext.cpp \
+	output_plaintext.h \
+	output_xhtml.cpp \
+	output_xhtml.h \
+	OutputEnums.h \
+	OutputParams.cpp \
+	OutputParams.h \
+	paper.h \
+	Paragraph.cpp \
+	Paragraph.h \
+	ParagraphList.h \
+	ParagraphMetrics.cpp \
+	ParagraphMetrics.h \
+	ParagraphParameters.cpp \
+	ParagraphParameters.h \
+	ParIterator.cpp \
+	ParIterator.h \
+	PDFOptions.cpp \
+	PDFOptions.h \
+	Row.cpp \
+	Row.h \
+	RowFlags.h \
+	RowPainter.cpp \
+	RowPainter.h \
+	Server.cpp \
+	Server.h \
+	ServerSocket.cpp \
+	ServerSocket.h \
+	Session.cpp \
+	Session.h \
+	Spacing.cpp \
+	Spacing.h \
+	SpellChecker.h \
+	Statistics.cpp \
+	Statistics.h \
+	TexRow.cpp \
+	TexRow.h \
+	texstream.cpp \
+	texstream.h \
+	Text.cpp \
+	Text.h \
+	TextClass.cpp \
+	TextClass.h \
+	TextMetrics.cpp \
+	TextMetrics.h \
+	Thesaurus.cpp \
+	Thesaurus.h \
+	Toc.h \
+	TocBackend.cpp \
+	TocBackend.h \
+	TocBuilder.cpp \
+	TocBuilder.h \
+	Trans.cpp \
+	Trans.h \
+	Undo.cpp \
+	Undo.h \
+	update_flags.h \
+	VCBackend.cpp \
+	VCBackend.h \
+	VSpace.cpp \
+	VSpace.h \
+	WordLangTuple.h \
+	WordList.cpp \
+	WordList.h \
+	xml.cpp \
+	xml.h
 
 #########################  Qt stuff  ##############################
 
@@ -372,287 +369,279 @@ liblyxgraphics_a_SOURCES = \
 
 noinst_LIBRARIES += liblyxmathed.a
 
-SOURCEFILESMATHED = \
+liblyxmathed_a_SOURCES = \
 	mathed/InsetMath.cpp \
+	mathed/InsetMath.h \
 	mathed/InsetMathAMSArray.cpp \
+	mathed/InsetMathAMSArray.h \
 	mathed/InsetMathArray.cpp \
+	mathed/InsetMathArray.h \
 	mathed/InsetMathBig.cpp \
+	mathed/InsetMathBig.h \
 	mathed/InsetMathBoldSymbol.cpp \
+	mathed/InsetMathBoldSymbol.h \
 	mathed/InsetMathBox.cpp \
+	mathed/InsetMathBox.h \
 	mathed/InsetMathBrace.cpp \
+	mathed/InsetMathBrace.h \
 	mathed/InsetMathCancel.cpp \
+	mathed/InsetMathCancel.h \
 	mathed/InsetMathCancelto.cpp \
+	mathed/InsetMathCancelto.h \
 	mathed/InsetMathCases.cpp \
+	mathed/InsetMathCases.h \
 	mathed/InsetMathChar.cpp \
+	mathed/InsetMathChar.h \
 	mathed/InsetMathClass.cpp \
+	mathed/InsetMathClass.h \
 	mathed/InsetMathColor.cpp \
+	mathed/InsetMathColor.h \
 	mathed/InsetMathCommand.cpp \
+	mathed/InsetMathCommand.h \
 	mathed/InsetMathComment.cpp \
+	mathed/InsetMathComment.h \
 	mathed/InsetMathDecoration.cpp \
 	mathed/InsetMathDecoration.h \
 	mathed/InsetMathDelim.cpp \
-	mathed/InsetMathDiagram.cpp \
-	mathed/InsetMathDiff.cpp \
-	mathed/InsetMathDots.cpp \
-	mathed/InsetMathEnsureMath.cpp \
-	mathed/InsetMathEnv.cpp \
-	mathed/InsetMathExFunc.cpp \
-	mathed/InsetMathExInt.cpp \
-	mathed/InsetMathFont.cpp \
-	mathed/InsetMathFontOld.cpp \
-	mathed/InsetMathFrac.cpp \
-	mathed/InsetMathGrid.cpp \
-	mathed/InsetMathHull.cpp \
-	mathed/InsetMathKern.cpp \
-	mathed/InsetMathLefteqn.cpp \
-	mathed/InsetMathLim.cpp \
-	mathed/InsetMathMacro.cpp \
-	mathed/InsetMathMacroArgument.cpp \
-	mathed/InsetMathMacroTemplate.cpp \
-	mathed/InsetMathMatrix.cpp \
-	mathed/InsetMathNest.cpp \
-	mathed/InsetMathNumber.cpp \
-	mathed/InsetMathOverset.cpp \
-	mathed/InsetMathPar.cpp \
-	mathed/InsetMathPhantom.cpp \
-	mathed/InsetMathRef.cpp \
-	mathed/InsetMathRoot.cpp \
-	mathed/InsetMathScript.cpp \
-	mathed/InsetMathSideset.cpp \
-	mathed/InsetMathSize.cpp \
-	mathed/InsetMathSpace.cpp \
-	mathed/InsetMathSpecialChar.cpp \
-	mathed/InsetMathSplit.cpp \
-	mathed/InsetMathSqrt.cpp \
-	mathed/InsetMathStackrel.cpp \
-	mathed/InsetMathString.cpp \
-	mathed/InsetMathSubstack.cpp \
-	mathed/InsetMathSymbol.cpp \
-	mathed/InsetMathTabular.cpp \
-	mathed/InsetMathTextsize.cpp \
-	mathed/InsetMathUnderset.cpp \
-	mathed/InsetMathUnknown.cpp \
-	mathed/InsetMathXArrow.cpp \
-	mathed/InsetMathXYMatrix.cpp \
-	mathed/MacroTable.cpp \
-	mathed/MathAtom.cpp \
-	mathed/MathAutoCorrect.cpp \
-	mathed/MathClass.cpp \
-	mathed/MathData.cpp \
-	mathed/MathExtern.cpp \
-	mathed/MathFactory.cpp \
-	mathed/MathParser.cpp \
-	mathed/MathRow.cpp \
-	mathed/MathStream.cpp \
-	mathed/MathSupport.cpp \
-	mathed/TextPainter.cpp
-
-HEADERFILESMATHED = \
-	mathed/InsetMath.h \
-	mathed/InsetMathAMSArray.h \
-	mathed/InsetMathArray.h \
-	mathed/InsetMathBig.h \
-	mathed/InsetMathBoldSymbol.h \
-	mathed/InsetMathBox.h \
-	mathed/InsetMathBrace.h \
-	mathed/InsetMathCancel.h \
-	mathed/InsetMathCancelto.h \
-	mathed/InsetMathCases.h \
-	mathed/InsetMathChar.h \
-	mathed/InsetMathClass.h \
-	mathed/InsetMathColor.h \
-	mathed/InsetMathCommand.h \
-	mathed/InsetMathComment.h \
 	mathed/InsetMathDelim.h \
+	mathed/InsetMathDiagram.cpp \
 	mathed/InsetMathDiagram.h \
+	mathed/InsetMathDiff.cpp \
 	mathed/InsetMathDiff.h \
+	mathed/InsetMathDots.cpp \
 	mathed/InsetMathDots.h \
+	mathed/InsetMathEnsureMath.cpp \
 	mathed/InsetMathEnsureMath.h \
+	mathed/InsetMathEnv.cpp \
 	mathed/InsetMathEnv.h \
+	mathed/InsetMathExFunc.cpp \
 	mathed/InsetMathExFunc.h \
+	mathed/InsetMathExInt.cpp \
 	mathed/InsetMathExInt.h \
+	mathed/InsetMathFont.cpp \
 	mathed/InsetMathFont.h \
+	mathed/InsetMathFontOld.cpp \
 	mathed/InsetMathFontOld.h \
+	mathed/InsetMathFrac.cpp \
 	mathed/InsetMathFrac.h \
+	mathed/InsetMathGrid.cpp \
 	mathed/InsetMathGrid.h \
+	mathed/InsetMathHull.cpp \
 	mathed/InsetMathHull.h \
+	mathed/InsetMathKern.cpp \
 	mathed/InsetMathKern.h \
+	mathed/InsetMathLefteqn.cpp \
 	mathed/InsetMathLefteqn.h \
+	mathed/InsetMathLim.cpp \
 	mathed/InsetMathLim.h \
+	mathed/InsetMathMacro.cpp \
 	mathed/InsetMathMacro.h \
+	mathed/InsetMathMacroArgument.cpp \
 	mathed/InsetMathMacroArgument.h \
+	mathed/InsetMathMacroTemplate.cpp \
 	mathed/InsetMathMacroTemplate.h \
+	mathed/InsetMathMatrix.cpp \
 	mathed/InsetMathMatrix.h \
+	mathed/InsetMathNest.cpp \
 	mathed/InsetMathNest.h \
+	mathed/InsetMathNumber.cpp \
 	mathed/InsetMathNumber.h \
+	mathed/InsetMathOverset.cpp \
 	mathed/InsetMathOverset.h \
+	mathed/InsetMathPar.cpp \
 	mathed/InsetMathPar.h \
+	mathed/InsetMathPhantom.cpp \
 	mathed/InsetMathPhantom.h \
+	mathed/InsetMathRef.cpp \
 	mathed/InsetMathRef.h \
+	mathed/InsetMathRoot.cpp \
 	mathed/InsetMathRoot.h \
+	mathed/InsetMathScript.cpp \
 	mathed/InsetMathScript.h \
+	mathed/InsetMathSideset.cpp \
 	mathed/InsetMathSideset.h \
+	mathed/InsetMathSize.cpp \
 	mathed/InsetMathSize.h \
+	mathed/InsetMathSpace.cpp \
 	mathed/InsetMathSpace.h \
+	mathed/InsetMathSpecialChar.cpp \
 	mathed/InsetMathSpecialChar.h \
+	mathed/InsetMathSplit.cpp \
 	mathed/InsetMathSplit.h \
+	mathed/InsetMathSqrt.cpp \
 	mathed/InsetMathSqrt.h \
+	mathed/InsetMathStackrel.cpp \
 	mathed/InsetMathStackrel.h \
+	mathed/InsetMathString.cpp \
 	mathed/InsetMathString.h \
+	mathed/InsetMathSubstack.cpp \
 	mathed/InsetMathSubstack.h \
+	mathed/InsetMathSymbol.cpp \
 	mathed/InsetMathSymbol.h \
+	mathed/InsetMathTabular.cpp \
 	mathed/InsetMathTabular.h \
+	mathed/InsetMathTextsize.cpp \
 	mathed/InsetMathTextsize.h \
+	mathed/InsetMathUnderset.cpp \
 	mathed/InsetMathUnderset.h \
+	mathed/InsetMathUnknown.cpp \
 	mathed/InsetMathUnknown.h \
+	mathed/InsetMathXArrow.cpp \
 	mathed/InsetMathXArrow.h \
+	mathed/InsetMathXYMatrix.cpp \
 	mathed/InsetMathXYMatrix.h \
+	mathed/MacroTable.cpp \
 	mathed/MacroTable.h \
+	mathed/MathAtom.cpp \
 	mathed/MathAtom.h \
+	mathed/MathAutoCorrect.cpp \
 	mathed/MathAutoCorrect.h \
+	mathed/MathClass.cpp \
 	mathed/MathClass.h \
 	mathed/MathCompletionList.h \
+	mathed/MathData.cpp \
 	mathed/MathData.h \
+	mathed/MathExtern.cpp \
 	mathed/MathExtern.h \
+	mathed/MathFactory.cpp \
 	mathed/MathFactory.h \
+	mathed/MathParser.cpp \
 	mathed/MathParser.h \
 	mathed/MathParser_flags.h \
+	mathed/MathRow.cpp \
 	mathed/MathRow.h \
+	mathed/MathStream.cpp \
 	mathed/MathStream.h \
+	mathed/MathSupport.cpp \
 	mathed/MathSupport.h \
 	mathed/ReplaceData.h \
+	mathed/TextPainter.cpp \
 	mathed/TextPainter.h
-
-liblyxmathed_a_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED)
 
 
 ############################### Insets  ##############################
 
 noinst_LIBRARIES += liblyxinsets.a
 
-SOURCEFILESINSETS = \
+liblyxinsets_a_SOURCES = \
 	insets/ExternalSupport.cpp \
-	insets/ExternalTemplate.cpp \
-	insets/ExternalTransforms.cpp \
-	insets/Inset.cpp \
-	insets/InsetArgument.cpp \
-	insets/InsetBibitem.cpp \
-	insets/InsetBibtex.cpp \
-	insets/InsetBox.cpp \
-	insets/InsetBranch.cpp \
-	insets/InsetCaption.cpp \
-	insets/InsetCaptionable.cpp \
-	insets/InsetCitation.cpp \
-	insets/InsetCollapsible.cpp \
-	insets/InsetCommand.cpp \
-	insets/InsetCommandParams.cpp \
-	insets/InsetCounter.cpp \
-	insets/InsetERT.cpp \
-	insets/InsetExternal.cpp \
-	insets/InsetFlex.cpp \
-	insets/InsetFloat.cpp \
-	insets/InsetFloatList.cpp \
-	insets/InsetFoot.cpp \
-	insets/InsetFootlike.cpp \
-	insets/InsetGraphics.cpp \
-	insets/InsetGraphicsParams.cpp \
-	insets/InsetHyperlink.cpp \
-	insets/InsetInclude.cpp \
-	insets/InsetIndex.cpp \
-	insets/InsetIndexMacro.cpp \
-	insets/InsetInfo.cpp \
-	insets/InsetIPA.cpp \
-	insets/InsetIPAMacro.cpp \
-	insets/InsetLabel.cpp \
-	insets/InsetLayout.cpp \
-	insets/InsetLine.cpp \
-	insets/InsetListings.cpp \
-	insets/InsetListingsParams.cpp \
-	insets/InsetMarginal.cpp \
-	insets/InsetNewline.cpp \
-	insets/InsetNewpage.cpp \
-	insets/InsetNomencl.cpp \
-	insets/InsetNote.cpp \
-	insets/InsetPhantom.cpp \
-	insets/InsetPreview.cpp \
-	insets/InsetQuotes.cpp \
-	insets/InsetRef.cpp \
-	insets/InsetScript.cpp \
-	insets/InsetSeparator.cpp \
-	insets/InsetSpace.cpp \
-	insets/InsetSpecialChar.cpp \
-	insets/InsetTabular.cpp \
-	insets/InsetText.cpp \
-	insets/InsetTOC.cpp \
-	insets/InsetVSpace.cpp \
-	insets/InsetWrap.cpp \
-	insets/RenderButton.cpp \
-	insets/RenderGraphic.cpp \
-	insets/RenderPreview.cpp
-
-HEADERFILESINSETS = \
 	insets/ExternalSupport.h \
+	insets/ExternalTemplate.cpp \
 	insets/ExternalTemplate.h \
+	insets/ExternalTransforms.cpp \
 	insets/ExternalTransforms.h \
+	insets/Inset.cpp \
 	insets/Inset.h \
+	insets/InsetArgument.cpp \
 	insets/InsetArgument.h \
+	insets/InsetBibitem.cpp \
 	insets/InsetBibitem.h \
+	insets/InsetBibtex.cpp \
 	insets/InsetBibtex.h \
+	insets/InsetBox.cpp \
 	insets/InsetBox.h \
+	insets/InsetBranch.cpp \
 	insets/InsetBranch.h \
+	insets/InsetCaption.cpp \
 	insets/InsetCaption.h \
+	insets/InsetCaptionable.cpp \
 	insets/InsetCaptionable.h \
+	insets/InsetCitation.cpp \
 	insets/InsetCitation.h \
 	insets/InsetCode.h \
+	insets/InsetCollapsible.cpp \
 	insets/InsetCollapsible.h \
+	insets/InsetCommand.cpp \
 	insets/InsetCommand.h \
+	insets/InsetCommandParams.cpp \
 	insets/InsetCommandParams.h \
+	insets/InsetCounter.cpp \
 	insets/InsetCounter.h \
+	insets/InsetERT.cpp \
 	insets/InsetERT.h \
+	insets/InsetExternal.cpp \
 	insets/InsetExternal.h \
+	insets/InsetFlex.cpp \
 	insets/InsetFlex.h \
+	insets/InsetFloat.cpp \
 	insets/InsetFloat.h \
+	insets/InsetFloatList.cpp \
 	insets/InsetFloatList.h \
+	insets/InsetFoot.cpp \
 	insets/InsetFoot.h \
+	insets/InsetFootlike.cpp \
 	insets/InsetFootlike.h \
+	insets/InsetGraphics.cpp \
 	insets/InsetGraphics.h \
+	insets/InsetGraphicsParams.cpp \
 	insets/InsetGraphicsParams.h \
+	insets/InsetHyperlink.cpp \
 	insets/InsetHyperlink.h \
+	insets/InsetInclude.cpp \
 	insets/InsetInclude.h \
+	insets/InsetIndex.cpp \
 	insets/InsetIndex.h \
+	insets/InsetIndexMacro.cpp \
 	insets/InsetIndexMacro.h \
+	insets/InsetInfo.cpp \
 	insets/InsetInfo.h \
+	insets/InsetIPA.cpp \
 	insets/InsetIPA.h \
+	insets/InsetIPAMacro.cpp \
 	insets/InsetIPAMacro.h \
+	insets/InsetLabel.cpp \
 	insets/InsetLabel.h \
+	insets/InsetLayout.cpp \
 	insets/InsetLayout.h \
+	insets/InsetLine.cpp \
 	insets/InsetLine.h \
+	insets/InsetListings.cpp \
 	insets/InsetListings.h \
+	insets/InsetListingsParams.cpp \
 	insets/InsetListingsParams.h \
+	insets/InsetMarginal.cpp \
 	insets/InsetMarginal.h \
+	insets/InsetNewline.cpp \
 	insets/InsetNewline.h \
+	insets/InsetNewpage.cpp \
 	insets/InsetNewpage.h \
+	insets/InsetNomencl.cpp \
 	insets/InsetNomencl.h \
+	insets/InsetNote.cpp \
 	insets/InsetNote.h \
+	insets/InsetPhantom.cpp \
 	insets/InsetPhantom.h \
+	insets/InsetPreview.cpp \
 	insets/InsetPreview.h \
+	insets/InsetQuotes.cpp \
 	insets/InsetQuotes.h \
+	insets/InsetRef.cpp \
 	insets/InsetRef.h \
+	insets/InsetScript.cpp \
 	insets/InsetScript.h \
+	insets/InsetSeparator.cpp \
 	insets/InsetSeparator.h \
+	insets/InsetSpace.cpp \
 	insets/InsetSpace.h \
+	insets/InsetSpecialChar.cpp \
 	insets/InsetSpecialChar.h \
+	insets/InsetTabular.cpp \
 	insets/InsetTabular.h \
+	insets/InsetText.cpp \
 	insets/InsetText.h \
+	insets/InsetTOC.cpp \
 	insets/InsetTOC.h \
+	insets/InsetVSpace.cpp \
 	insets/InsetVSpace.h \
+	insets/InsetWrap.cpp \
 	insets/InsetWrap.h \
 	insets/RenderBase.h \
+	insets/RenderButton.cpp \
 	insets/RenderButton.h \
+	insets/RenderGraphic.cpp \
 	insets/RenderGraphic.h \
+	insets/RenderPreview.cpp \
 	insets/RenderPreview.h
-
-liblyxinsets_a_SOURCES = $(SOURCEFILESINSETS) $(HEADERFILESINSETS)
 
 
 ############################## Tests ##################################

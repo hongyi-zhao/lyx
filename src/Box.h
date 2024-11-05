@@ -27,26 +27,33 @@ namespace lyx {
  */
 class Box {
 public:
-	int x1;
-	int x2;
-	int y1;
-	int y2;
+	int x1 = 0;
+	int x2 = 0;
+	int y1 = 0;
+	int y2 = 0;
 
 	/// Zero-initialise the member variables.
-	Box();
+	Box() {}
 	/// Initialise the member variables.
-	Box(int x1_, int x2_, int y1_, int y2_);
+	Box(int x1_, int x2_, int y1_, int y2_) : x1(x1_), x2(x2_), y1(y1_), y2(y2_) {}
 
 	/**
 	 * Returns true if the given co-ordinates are within
 	 * the box. Check is exclusive (point on a border
 	 * returns false).
 	 */
-	bool contains(int x, int y) const;
+	bool contains(int x, int y) const { return (x1 < x && x2 > x && y1 < y && y2 > y); }
+
 };
 
 
-std::ostream & operator<<(std::ostream &, Box const &);
+inline std::ostream & operator<<(std::ostream & os, Box const & b)
+{
+	return os << "x1,y1: " << b.x1 << ',' << b.y1
+	          << " x2,y2: " << b.x2 << ',' << b.y2
+	          << std::endl;
+}
+
 
 
 } // namespace lyx

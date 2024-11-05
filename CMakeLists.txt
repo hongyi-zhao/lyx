@@ -77,7 +77,7 @@ if(NOT help AND NOT HELP)
   # 'project' triggers the searching for a compiler
   project(${LYX_PROJECT})
   if (CMAKE_COMPILER_IS_GNUCXX)
-    set(MIN_GCC_VERSION "5.1")
+    set(MIN_GCC_VERSION "7.1")
     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MIN_GCC_VERSION})
       message(STATUS "Gnu CXX compiler version = ${CMAKE_CXX_COMPILER_VERSION}")
       message(STATUS "is too old, should be >= ${MIN_GCC_VERSION}")
@@ -659,7 +659,7 @@ else()
 	set(LYX_DEBUG ON)
 endif()
 
-set(min_qt5_version "5.12")
+set(min_qt5_version "5.9.4")
 if(LYX_USE_QT MATCHES "AUTO")
 	# try qt6 first
 	foreach(_mod Core Gui Widgets Concurrent Svg)

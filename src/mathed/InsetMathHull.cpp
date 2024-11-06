@@ -817,8 +817,11 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 			if (data) {
 				odocstringstream macro_def;
 				data->write(macro_def, true);
-				macro_def << endl;
-				defs.insert(macro_def.str());
+				// Empty lines will generate full rows
+				// with legacy preview and tightpage (#13120).
+				// So remove all preceding and trailing line breaks
+				// and re-add one at the end of the snippet
+				defs.insert(trim(macro_def.str(), "\n") + "\n");
 				asArray(data->definition(), ar);
 			}
 			usedMacros(ar, pos, macros, defs);

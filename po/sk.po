@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-10-24 11:49+0200\n"
-"PO-Revision-Date: 2024-10-24 10:00+0000\n"
+"POT-Creation-Date: 2024-11-01 18:23+0100\n"
+"PO-Revision-Date: 2024-11-01 17:45+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3449,9 +3449,9 @@ msgstr "Píš CSS do súboru"
 msgid "Format to use for math output."
 msgstr "Formát na použitie pre výstup matematiky."
 
-#: src/frontends/qt/ui/OutputUi.ui:204
-msgid "MathML"
-msgstr "MathML"
+#: src/frontends/qt/ui/OutputUi.ui:293
+msgid "MathML Core (default)"
+msgstr "Základné MathML (štandard)"
 
 #: src/frontends/qt/ui/OutputUi.ui:209 src/frontends/qt/ui/OutputUi.ui:401
 msgid "HTML"
@@ -3464,6 +3464,10 @@ msgstr "HTML|H"
 #: src/frontends/qt/ui/OutputUi.ui:214
 msgid "Images"
 msgstr "Obrázky"
+
+#: src/frontends/qt/ui/OutputUi.ui:313
+msgid "MathML 3"
+msgstr "MathML 3"
 
 #: src/frontends/qt/ui/OutputUi.ui:219 lib/layouts/aapaper.layout:63
 #: lib/layouts/egs.layout:720 lib/languages:147
@@ -3515,6 +3519,18 @@ msgstr "Výstup pre tabu&ľku:"
 #: src/frontends/qt/ui/OutputUi.ui:406
 msgid "CALS"
 msgstr "CALS"
+
+#: src/frontends/qt/ui/OutputUi.ui:457
+msgid "MathML &version:"
+msgstr "Ver&zia MathML:"
+
+#: src/frontends/qt/ui/OutputUi.ui:484
+msgid "MathML 3 (default)"
+msgstr "MathML 3 (štandard)"
+
+#: src/frontends/qt/ui/OutputUi.ui:489
+msgid "MathML Core"
+msgstr "Základné MathML"
 
 #: src/frontends/qt/ui/OutputUi.ui:419
 msgid "&MathML namespace prefix:"

@@ -127,3 +127,9 @@ if (LYX_ENABLE_EXPORT_TESTS)
   message(STATUS "Number of ignored export tests now ${lyx_ignored_count}")
   set(LYX_ignored_count ${lyx_ignored_count} PARENT_SCOPE)
 endif()
+
+set(CHECK_QT_CONSTANTS_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/checkQtConstants.pl")
+add_test(NAME "check_Qt_ui_Constants"
+  WORKING_DIRECTORY ${TOP_SRC_DIR}
+  COMMAND ${PERL_EXECUTABLE} ${CHECK_QT_CONSTANTS_SCRIPT}
+)

@@ -60,7 +60,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 38; // chillenb: screen_width and screen_limit
+static unsigned int const LYXRC_FILEFORMAT = 39; // spitz: \color_scheme {system|light|dark}
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
@@ -81,6 +81,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\citation_search_pattern", LyXRC::RC_CITATION_SEARCH_PATTERN },
 	{ "\\citation_search_view", LyXRC::RC_CITATION_SEARCH_VIEW },
 	{ "\\close_buffer_with_last_view", LyXRC::RC_CLOSE_BUFFER_WITH_LAST_VIEW },
+	{ "\\color_scheme", LyXRC::RC_COLOR_SCHEME },
 	{ "\\completion_cursor_text", LyXRC::RC_COMPLETION_CURSOR_TEXT },
 	{ "\\completion_inline_delay", LyXRC::RC_COMPLETION_INLINE_DELAY },
 	{ "\\completion_inline_dots", LyXRC::RC_COMPLETION_INLINE_DOTS },
@@ -705,6 +706,11 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_CITATION_SEARCH_VIEW:
 			if (lexrc.next())
 				citation_search_view = lexrc.getString();
+			break;
+
+		case RC_COLOR_SCHEME:
+			if (lexrc.next())
+				color_scheme = lexrc.getString();
 			break;
 
 		case RC_CT_ADDITIONS_UNDERLINED:
@@ -1700,6 +1706,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    citation_search_pattern != system_lyxrc.citation_search_pattern) {
 			os << "\\citation_search_pattern \""
 			   << citation_search_pattern << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+		// fall through
+	case RC_COLOR_SCHEME:
+		if (ignore_system_lyxrc ||
+			color_scheme != system_lyxrc.color_scheme) {
+			os << "# Set color scheme (system|light|dark)\n";
+			os << "\\color_scheme " << color_scheme << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2926,6 +2941,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_CITATION_SEARCH_PATTERN:
 	case LyXRC::RC_CITATION_SEARCH_VIEW:
 	case LyXRC::RC_CHECKLASTFILES:
+	case LyXRC::RC_COLOR_SCHEME:
 	case LyXRC::RC_COMPLETION_CURSOR_TEXT:
 	case LyXRC::RC_COMPLETION_INLINE_DELAY:
 	case LyXRC::RC_COMPLETION_INLINE_DOTS:
@@ -3208,6 +3224,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_SHOW_MACRO_LABEL:
 		str = _("Show a small box around a Math Macro with the macro name when the cursor is inside.");
+		break;
+
+	case LyXRC::RC_COLOR_SCHEME:
+		str = _("Possibility to enforce a particular color scheme (system|dark|light)");
 		break;
 
 	case RC_DEFFILE:

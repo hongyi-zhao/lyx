@@ -64,6 +64,9 @@
 #include <QSpinBox>
 #include <QString>
 #include <QStyleFactory>
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+#include <QStyleHints>
+#endif
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QValidator>
@@ -2523,6 +2526,10 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(uiStyleCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	connect(colorSchemeCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
+#endif
 	connect(useSystemThemeIconsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
@@ -2544,6 +2551,15 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 	iconSetCO->addItem(qt_("Default"), QString());
 	iconSetCO->addItem(qt_("Classic"), "classic");
 	iconSetCO->addItem(qt_("Oxygen"), "oxygen");
+
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	colorSchemeCO->addItem(qt_("System Default"), "system");
+	colorSchemeCO->addItem(qt_("Light Mode"), "light");
+	colorSchemeCO->addItem(qt_("Dark Mode"), "dark");
+#else
+	colorSchemeCO->setVisible(false);
+	colorSchemeLA->setVisible(false);
+#endif
 
 	uiStyleCO->addItem(qt_("Default"), toqstr("default"));
 	for (auto const & style : QStyleFactory::keys())
@@ -2575,6 +2591,19 @@ void PrefUserInterface::applyRC(LyXRC & rc) const
 		else
 			frontend::GuiApplication::setStyle(uistyle);
 	}
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	QString const color_scheme = colorSchemeCO->itemData(
+		colorSchemeCO->currentIndex()).toString();
+	if (rc.color_scheme != fromqstr(color_scheme)) {
+		if (lyxrc.color_scheme == "dark")
+			guiApp->styleHints()->setColorScheme(Qt::ColorScheme::Dark);
+		else if (lyxrc.color_scheme == "light")
+			guiApp->styleHints()->setColorScheme(Qt::ColorScheme::Light);
+		else
+			guiApp->styleHints()->unsetColorScheme();
+	}
+	rc.color_scheme = fromqstr(color_scheme);
+#endif
 
 	rc.ui_file = internal_path(fromqstr(uiFileED->text()));
 	rc.use_system_theme_icons = useSystemThemeIconsCB->isChecked();
@@ -2607,6 +2636,12 @@ void PrefUserInterface::updateRC(LyXRC const & rc)
 	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
 	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
 	toggleMenubarCB->setChecked(rc.full_screen_menubar);
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	int colorscheme = colorSchemeCO->findData(toqstr(rc.color_scheme));
+	if (colorscheme < 0)
+		colorscheme = 0;
+	colorSchemeCO->setCurrentIndex(colorscheme);
+#endif
 }
 
 

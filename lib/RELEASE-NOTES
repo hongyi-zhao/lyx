@@ -7,6 +7,10 @@
 
 !!!The following pref variables were added in 2.5:
 
+- \color_scheme {system,light,dark} allows to override the system-wide
+  color scheme (i.e., dark or light mode). This requires LyX to be built
+  against Qt >= 6.8.0.
+
 !!!The following pref variables were changed in 2.5:
 
 !!!The following pref variables are obsoleted in 2.5:

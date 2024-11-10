@@ -1792,10 +1792,12 @@ bool GuiView::event(QEvent * e)
 	// dark/light mode runtime switch support
 #if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 	case QEvent::ThemeChange: {
-		guiApp->setPalette(guiApp->style()->standardPalette());
-		// We need to update metrics here to avoid a crash (#12786)
-		theBufferList().changed(true);
-		refillToolbars();
+		if (lyxrc.color_scheme != "dark" && lyxrc.color_scheme != "light") {
+			guiApp->setPalette(guiApp->style()->standardPalette());
+			// We need to update metrics here to avoid a crash (#12786)
+			theBufferList().changed(true);
+			refillToolbars();
+		}
 		return QMainWindow::event(e);
 	}
 #else

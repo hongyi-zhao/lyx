@@ -58,6 +58,7 @@ public:
 		RC_CITATION_SEARCH,
 		RC_CITATION_SEARCH_PATTERN,
 		RC_CITATION_SEARCH_VIEW,
+		RC_COLOR_SCHEME,
 		RC_COMPLETION_CURSOR_TEXT,
 		RC_COMPLETION_INLINE_DELAY,
 		RC_COMPLETION_INLINE_MATH,
@@ -550,6 +551,8 @@ public:
 	std::string forward_search_dvi;
 	///
 	std::string forward_search_pdf;
+	/// specifiy color scheme (system|dark|light)
+	std::string color_scheme;
 	///
 	int export_overwrite = NO_FILES;
 	/// Default decimal point when aligning table columns on decimal

@@ -116,6 +116,9 @@
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include <QStyle>
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 8, 0))
+#include <QStyleHints>
+#endif
 #include <QSvgRenderer>
 #include <QTimer>
 #include <QTranslator>
@@ -1256,6 +1259,13 @@ void Application::applyPrefs()
 {
 	if (lyxrc.ui_style != "default")
 		lyx::frontend::GuiApplication::setStyle(toqstr(lyxrc.ui_style));
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	// Set color scheme from prefs
+	if (lyxrc.color_scheme == "dark")
+		guiApp->styleHints()->setColorScheme(Qt::ColorScheme::Dark);
+	else if (lyxrc.color_scheme == "light")
+		guiApp->styleHints()->setColorScheme(Qt::ColorScheme::Light);
+#endif
 }
 
 FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const

@@ -170,6 +170,10 @@
 #   Add option to configure ui style
 #   No conversion necessary.
 
+# Incremented to format 39, by spitz
+#   Add \color_scheme {system|light|dark}
+#   No conversion necessary.
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py (search for lyxrc_fileformat).
 
@@ -558,5 +562,6 @@ conversions = [
 	[ 35, [add_dark_color]],
 	[ 36, [add_spellcheck_default]],
 	[ 37, [remove_fullscreen_widthlimit]],
-	[ 38, []]
+	[ 38, []],
+	[ 39, []]
 ]

@@ -1345,9 +1345,11 @@ void Preamble::handle_package(Parser &p, string const & name,
 		options.clear();
 	}
 
-	if (name == "PTSans") {
+	if (name == "PTSans")
 		h_font_sans[0] = "PTSans-TLF";
-	}
+
+	if (name == "classico")
+		h_font_sans[0] = "uop";
 
 	if (name == "FiraSans") {
 		h_font_sans_osf = "true";

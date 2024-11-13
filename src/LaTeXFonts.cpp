@@ -199,7 +199,8 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath, boo
 		 && altfonts_.empty()) {
 			return name_;
 	}
-	else if (!altfonts_.empty()) {
+	// if we haven't somethin up to here, try fallback fonts
+	if (!altfonts_.empty()) {
 		for (auto const & name : altfonts_) {
 			LaTeXFont altf = altFont(name);
 			if (altf.available(ot1, nomath))

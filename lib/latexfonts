@@ -1064,6 +1064,13 @@ Font uop
 	Family           sf
 	SwitchDefault    1
 	Requires         urwclassico
+	AltFonts         classico
+EndFont
+
+AltFont classico
+	GuiName          "URW Classico (Optima)"
+	Family           sf
+	Package          classico
 EndFont
 
 #

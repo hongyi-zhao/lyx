@@ -2443,6 +2443,24 @@ Notes:
  Live the font needs to be installed via the 'getnonfreefonts-sys' utility.
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Alternatively,
+ you can also use the 
+\family sans
+classico
+\family default
+ package (installed:
+ 
+\begin_inset Info
+type  "package"
+arg   "classico"
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 URW Garamond
 \end_layout

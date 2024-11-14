@@ -142,10 +142,12 @@ void InsetMathCases::maple(MapleStream & os) const
 
 void InsetMathCases::mathmlize(MathMLStream & ms) const
 {
-	ms << MTagInline("mo", "form='prefix' fence='true' stretchy='true' symmetric='true'")
+	ms << MTag("mrow")
+	   << MTagInline("mo", "form='prefix' fence='true' stretchy='true' symmetric='true'")
 	   << "{"
 	   << ETagInline("mo");
 	InsetMathGrid::mathmlize(ms);
+	ms << ETag("mrow");
 }
 
 

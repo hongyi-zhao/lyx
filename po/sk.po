@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2024-11-01 18:23+0100\n"
-"PO-Revision-Date: 2024-11-01 17:45+0000\n"
+"POT-Creation-Date: 2024-11-14 11:53+0100\n"
+"PO-Revision-Date: 2024-11-14 11:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5143,6 +5143,18 @@ msgstr "&Súbor s užívateľským rozhraním:"
 #: src/frontends/qt/ui/PrefUi.ui:88
 msgid "User interface &style:"
 msgstr "&Štýl používateľského rozhrania:"
+
+#: src/frontends/qt/ui/PrefUi.ui:108
+msgid ""
+"You can override the system's color scheme here if the selected style "
+"supports multiple schemes."
+msgstr ""
+"Tu môžte prepísať farebnú schému systému, ak vybraný štýl podporuje viacero "
+"schém."
+
+#: src/frontends/qt/ui/PrefUi.ui:115
+msgid "C&olor scheme:"
+msgstr "Schéma &farieb:"
 
 #: src/frontends/qt/ui/PrefUi.ui:98
 msgid ""
@@ -30922,6 +30934,10 @@ msgstr ""
 "Zobraziť malý rámik okolo mat. makra spolu s menom makra keď je kurzor "
 "vnútri."
 
+#: src/LyXRC.cpp:3230
+msgid "Possibility to enforce a particular color scheme (system|dark|light)"
+msgstr "Možnosť vynútenia konkrétnej farebnej schémy (systémová|tmavá|svetlá)"
+
 #: src/LyXRC.cpp:3210
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
@@ -34813,6 +34829,14 @@ msgstr "Klasické"
 #: src/frontends/qt/GuiPrefs.cpp:2520
 msgid "Oxygen"
 msgstr "Oxygen"
+
+#: src/frontends/qt/GuiPrefs.cpp:2557
+msgid "Light Mode"
+msgstr "Svetlý mód"
+
+#: src/frontends/qt/GuiPrefs.cpp:2558
+msgid "Dark Mode"
+msgstr "Tmavý mód"
 
 #: src/frontends/qt/GuiPrefs.cpp:2544
 msgid "Restart needed"

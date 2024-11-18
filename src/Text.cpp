@@ -5620,10 +5620,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		FileName const tabstyle = libFileSearch("tabletemplates",
 							style + suffix + ".lyx", "lyx");
 		if (tabstyle.empty())
-			    break;
+			break;
 		UndoGroupHelper ugh(cur.buffer());
 		cur.recordUndo();
-		FuncRequest cmd2(LFUN_FILE_INSERT, tabstyle.absFileName() + " ignorelang");
+		FuncRequest cmd2(LFUN_FILE_INSERT,
+				 quoteName(tabstyle.absFileName()) + " ignorelang");
 		lyx::dispatch(cmd2);
 		// go into table
 		cur.backwardPos();

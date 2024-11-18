@@ -3644,8 +3644,6 @@ void GuiDocument::getTableStyles()
 			QString data = fn.left(fn.lastIndexOf(".lyx"));
 			QString guiname = data;
 			guiname = toqstr(translateIfPossible(qstring_to_ucs4(guiname.replace('_', ' '))));
-			QString relpath = toqstr(makeRelPath(qstring_to_ucs4(fn),
-							     qstring_to_ucs4(dir)));
 			if (textLayoutModule->tableStyleCO->findData(data) == -1)
 				textLayoutModule->tableStyleCO->addItem(guiname, data);
 		}

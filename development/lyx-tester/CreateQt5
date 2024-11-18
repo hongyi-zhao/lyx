@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+
+# Copyright 2014, Kornel Benko
+# Copyright 2014, Scott Kostyshak
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+set -eu
+
+USERNAME=$( grep "/bin/bash" /etc/passwd | perl -pe 's/.*\/(\w+):\/bin\/bash/$1/g' | grep -v "root" )
+sudo -u "${USERNAME}" echo "If no error, then USERNAME is valid" >/dev/null || { echo "could not get the user name"; exit 1 ;}
+
+# Not used yet. Eventually add options.
+QTSTABLE=1
+QTDEV=1
+# TODO check that at least one of the above is set.
+# The git repo for Qt WebEngine is about 3.3G and LyX doesn't need it. If set
+# to 0, no need to download it or build it.
+QTWEB=0
+CLANG=1
+
+if [ "${CLANG}" = "1" ]; then
+  platform="linux-clang"
+else
+  platform="linux-g++"
+fi
+
+# This installs most dependencies.
+sudo apt-get -y build-dep qt5-default
+
+# needed (even if using GCC as main compiler) for QDoc. Otherwise, configure gives:
+#   "WARNING: QDoc will not be compiled, probably because libclang could not be located. This
+#   means that you cannot build the Qt documentation."
+# just need to install libclang-dev and the package containing the command llvm-config
+sudo apt-get -y install llvm libclang-dev
+
+# don't need to install if CLANG=0, but might as well (this way can test both
+# gcc and clang after installation).
+sudo apt-get -y install clang
+
+# needed for building Qt
+# Alternative: try to give the path directly to Qt when configuring or building.
+#              Look at environment variables PYTHONPATH and PYTHONNAME.
+ln -s /usr/bin/python3 /usr/bin/python
+
+# this turns on Qt's "GStreamer 1.0" to "yes" in configure output.
+sudo apt-get -y install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+
+# TODO:
+# TODO: also check if these should be here or in lyx-tester. any change in configure output???
+# If the following package is installed, xvkbd passes capital letters as lowercase
+# to LyX. This results in several keytest failures (such as hello-world).
+sudo apt-get -y purge libxcb-xkb-dev
+sudo apt-get -y install libxkbcommon-dev libxkbcommon-x11-dev      # This does not help xvkbd :(
+
+if [ "${QTWEB}" = "1" ]; then
+  # for an updated list of packages, see section for Qt WebEngine here:
+  #   https://wiki.qt.io/Building_Qt_5_from_Git
+  # see also here:
+  #   https://doc.qt.io/qt-5/qtwebengine-platform-notes.html
+  sudo apt-get -y install gperf bison flex libgl1-mesa-dev libnspr4-dev mesa-common-dev x11proto-scrnsaver-dev libcap-dev libnspr4-dev libnss3-dev libpci-dev libxss-dev x11proto-scrnsaver-dev
+  # configure requires that Python 2 must be installed for building Qt WebEngine
+  sudo apt-get -y install python2
+fi
+
+# the dir in which we download the source files
+qtsrc_d='/usr/src/qt'
+
+# This check is for convenience. On a virtual box, it is nice to
+# do a git clone and init once and then test variations through
+# cloning of virtual boxes.
+if [ ! -d "${qtsrc_d}" ]; then
+  sudo mkdir -p "${qtsrc_d}"
+  sudo chown ${USERNAME} "${qtsrc_d}"
+  cd "${qtsrc_d}"
+  sudo -u "${USERNAME}" git clone git://code.qt.io/qt/qt5.git qt5
+  cd qt5
+  #
+  # Qt's git branch policies:
+  #   http://qt-project.org/wiki/Branch-Guidelines
+  # Here is where we would check out a branch if we don't want dev. e.g.,
+  # check out a release:
+  #   sudo -u "${USERNAME}" git checkout v5.14.1
+  # checkout a branch (e.g., unreleased stable branch):
+  #   sudo -u "${USERNAME}" git checkout 5.14.2
+  # checkout a beta release:
+  #   sudo -u "${USERNAME}" git checkout "v5.15.0-beta2"
+  sudo -u "${USERNAME}" git checkout "v5.15.0"
+  #
+  # This is what downloads the bulk (the "git clone" above only downloads 15 MB).
+  if [ "${QTWEB}" = "1" ]; then
+    sudo -u "${USERNAME}" ./init-repository
+  else
+    # configure will automatically not try to build it if it is not init'd.
+    sudo -u "${USERNAME}" ./init-repository --module-subset=default,-qtwebengine
+  fi
+fi
+
+
+# create build dir and compile
+sudo mkdir /usr/BUILD
+sudo chown ${USERNAME} /usr/BUILD
+sudo -u ${USERNAME} mkdir /usr/BUILD/BuildQt5-dev
+cd /usr/BUILD/BuildQt5-dev
+# to get list of features, do the following (takes a minute to generate them):
+# configure -list-features
+# also here:
+# https://doc.qt.io/qt-5/configure-options.html
+#
+# -v adds verbose output (specifically helpful when there's an error)
+# TODO: switch back to -developer-build so I can help report breaks?
+sudo -u "${USERNAME}" "${qtsrc_d}/qt5/configure" -platform "${platform}" -opensource -nomake examples -nomake tests -confirm-license -v
+numCores=$( cat /proc/cpuinfo | grep processor | wc -l )
+sudo -u "${USERNAME}" make -j${numCores}
+
+# Uncomment this block if you want the "git" Qt to be used by the whole system.
+## Inform the OS about the new libraries
+#echo "/usr/BUILD/BuildQt5-dev/qtbase/lib" > qt5.conf
+#sudo cp qt5.conf /etc/ld.so.conf.d/qt5.conf
+#sudo ldconfig
+
+# Add qt-bin to own path
+# vi ~/.pam_environment
+#       Append '/usr/BUILD/BuildQt5-dev/qtbase/bin' to PATH
+#       e.g. 'PATH DEFAULT=${PATH}:/usr/local/lyx2.2/bin:/usr/local/texlive/2013/bin/x86_64-linux:/usr/BUILD/BuildQt5-dev/qtbase/bin'
+
+# Before compiling lyx, make sure that PATH contains /usr/BUILD/BuildQt5-dev/qtbase/bin

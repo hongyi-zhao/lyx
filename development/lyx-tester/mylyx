@@ -1,0 +1,169 @@
+# set to 0 to disable.
+#
+# If set to 1 (or currently any non-zero value), mylyx will read the file and
+# open with the appropriate LyX version. If the format is less than the master
+# format, we don't open with master because we want to know when the file
+# format changes (and when to review lyx2lyx diff).
+_mylyx_veropen_=1
+# TODO: create and use a variable _mylyx_dir_
+# _mylyx_dir_="~/lyxbuilds/"
+
+
+function _validate_requested_mylyx ()
+{
+  potential_dir="/home/${USER}/lyxbuilds/${requested_build}"
+  if [ ! -d "${potential_dir}" ]; then
+    echo "ERROR: the requested mylyx build does not exist: ${potential_dir}" >&2
+    return 1
+  fi
+
+  return 0
+}
+
+
+
+function mylyx ()
+{
+  if [ "${_mylyx_veropen_}" = "0" ]; then
+    requested_build="$1"
+    _validate_requested_mylyx "$1" || return 1
+    shift
+  else
+    if [ -f "$1" ]; then
+      # TODO: need to fix tab expansion.
+      # we assume user wants the default build
+      lyxformat="$( head -n2 "$1" | grep -o -P "\d\d\d" )"
+      echo "lyxformat is: ${lyxformat}"
+      if [ "${lyxformat}" = "544" ]; then
+        requested_build="2.3.x"
+      elif [ "${lyxformat}" = "474" ]; then
+        requested_build="2.1.0"
+      elif [ "${lyxformat}" = "620" ]; then
+        requested_build="2.4.x"
+      else
+        # now we see what format my current master build is in
+        master_frmt="$( grep "LYX_FORMAT_LYX" ~/lyxbuilds/master/repo/src/version.h | grep -P -o "\d\d\d" )"
+        if [ "${lyxformat}" = "${master_frmt}" ]; then
+          requested_build="master"
+        else
+          echo "No build associated with LyX format ${lyxformat}." >&2
+          return 1
+        fi
+      fi
+      echo "Auto-selecting ${requested_build}"
+    else
+      requested_build="$1"
+      shift
+    fi
+
+    _validate_requested_mylyx "${requested_build}" || return 1
+  fi
+
+  if [ -e ~/lyxbuilds/$requested_build/repo/src/lyx ]; then
+    echo "starting local autotools binary"
+    # This assumes we're using --qt-build-dir when building. Otherwise,
+    # mismatch could happen.
+    # not sure why need to set LD_LIBRARY_PATH for autotools and not for CMake
+    # how does CMake find it?
+    LD_LIBRARY_PATH='/usr/BUILD/BuildQt5-dev/qtbase/lib' ~/lyxbuilds/$requested_build/repo/src/lyx -userdir ~/lyxbuilds/$requested_build/user-dir/ "$@"
+  else
+    # the regex "^lyx(\d\.\d)?" allows for both lyx2.3 and lyx. Depends on what the user sets for -DLYX_PROGRAM_SUFFIX
+    LYX_VER="$( ls ~/lyxbuilds/$requested_build/CMakeBuild/bin/ | grep -oP "^lyx(\d\.\d)?$" )"
+    if [ -e ~/lyxbuilds/$requested_build/CMakeBuild/bin/${LYX_VER} ]; then
+      echo "starting local cmake binary for ${LYX_VER}"
+      # Adding the build's bin dir to PATH makes it so e.g., the local build's
+      # tex2lyx is used, rather than a system-installed tex2lyx.
+      PATH="/home/${USER}/lyxbuilds/${requested_build}/CMakeBuild/bin:${PATH}" ~/lyxbuilds/$requested_build/CMakeBuild/bin/${LYX_VER} -userdir ~/lyxbuilds/$requested_build/user-dir/ "$@"
+    else
+      echo "ERROR: no autotools or cmake binary available" >&2
+    fi
+  fi
+}
+
+
+_mylyx()
+{
+  local cur
+
+  cur=${COMP_WORDS[COMP_CWORD]}
+
+  if [ "$COMP_CWORD" == "1" ]; then
+    COMPREPLY=( $( compgen -W '`ls ~/lyxbuilds`' -- $cur ) )
+
+    if [ "${_mylyx_veropen_}" != "0" ]; then
+      # need to protect against an empty directory, otherwise get the following
+      # error:
+      #   mylyx find: ‘*’: No such file or directory
+      if [ "$(ls -A .)" ]; then
+        # for find command:
+        #   https://stackoverflow.com/a/2596474/1376404
+        # for case insenstivity, replace ${cur} with ${cur,,}:
+        #   (this messed something else up so I changed back.
+        #   https://unix.stackexchange.com/a/128390/197212
+        #   This one is also useful:
+        #   https://stackoverflow.com/a/10981916/1376404
+        COMPREPLY+=( $( compgen -W '`find * -maxdepth 0 -type f -name "*.lyx"`' -- "${cur}" ) )
+      fi
+    fi
+  else
+    _filedir '@(lyx)'
+  fi
+}
+complete -F _mylyx ${filenames:-} mylyx
+
+
+function mylyxcd ()
+{
+  requested_build="$1"
+  _validate_requested_mylyx "$1" || return 1
+
+  # TODO could allow for 'repo' to be named anything. Just check for a git folder.
+
+  cd ~/lyxbuilds/$requested_build/repo
+}
+
+
+_mylyxcd()
+{
+  local cur
+
+  cur=${COMP_WORDS[COMP_CWORD]}
+
+  if [ "$COMP_CWORD" == "1" ]; then
+    COMPREPLY=( $( compgen -W '`ls ~/lyxbuilds`' -- $cur ) )
+  fi
+}
+complete -F _mylyxcd ${filenames:-} mylyxcd
+
+
+function mylyx-gdb ()
+{
+  # (https://stackoverflow.com/questions/9057387/process-all-arguments-except-the-first-one-in-a-bash-script)
+  # the "${@:2}" relays all arguments except the first.
+  requested_build="$1"
+  _validate_requested_mylyx "$1" || return 1
+  PATH="/home/${USER}/lyxbuilds/${requested_build}/CMakeBuild/bin:${PATH}" gdb --args ~/"lyxbuilds/${requested_build}/CMakeBuild/bin/lyx" -userdir ~/"lyxbuilds/${requested_build}/user-dir" "${@:2}"
+}
+complete -F _mylyxcd ${filenames:-} mylyx-gdb
+
+
+function mylyx-valgrind ()
+{
+  # (https://stackoverflow.com/questions/9057387/process-all-arguments-except-the-first-one-in-a-bash-script)
+  # the "${@:2}" relays all arguments except the first.
+  requested_build="$1"
+  _validate_requested_mylyx "$1" || return 1
+  PATH="/home/${USER}/lyxbuilds/${requested_build}/CMakeBuild/bin:${PATH}" valgrind --track-origins=yes --log-file=valgrind.log ~/lyxbuilds/${requested_build}/CMakeBuild/bin/lyx -userdir ~/"lyxbuilds/${requested_build}/user-dir" "${@:2}"
+}
+complete -F _mylyxcd ${filenames:-} mylyx-valgrind
+
+
+function mylyx-valgrind-leak-check-full ()
+{
+  # (https://stackoverflow.com/questions/9057387/process-all-arguments-except-the-first-one-in-a-bash-script)
+  # the "${@:2}" relays all arguments except the first.
+  requested_build="$1"
+  _validate_requested_mylyx "$1" || return 1
+  PATH="/home/${USER}/lyxbuilds/${requested_build}/CMakeBuild/bin:${PATH}" valgrind --track-origins=yes --log-file=valgrind.log --leak-check=full ~/lyxbuilds/${requested_build}/CMakeBuild/bin/lyx -userdir ~/"lyxbuilds/${requested_build}/user-dir" "${@:2}"
+}
+complete -F _mylyxcd ${filenames:-} mylyx-valgrind-leak-check-full

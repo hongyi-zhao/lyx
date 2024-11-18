@@ -1,0 +1,76 @@
+function add_suffix () {
+  base_s="$1"
+  if [ -e "${base_s}" ]; then
+
+    # we could rename the existing but let's just leave things as is.
+    # echo "${base_s} already exists."
+    #if [ -e "${base_s}_1" ]; then
+    #  echo "ERROR: ${base_s}_1 already exists. Unexpected." >&2
+    #else
+    #  # we are renaming the *existing* dir.
+    #  echo "Suffixing '_1' to existing dir name ({base_s})."
+    #  sudo mv "${base_s}" "${base_s}_1"
+    #fi
+
+    # The non-suffixed dir should be interpreted as number 1.
+    suffix=2
+    while [ -e "${base_s}_${suffix}" ]; do
+      suffix=$((suffix + 1))
+    done
+    base_s="${base_s}_${suffix}"
+  fi
+  echo "${base_s}"
+}
+
+# "Missing glyphs" from Noto Tibetan:
+# supported-languages_polyglossia_pdf4_systemF
+#
+# %28APA%29,_v._6: not sure why these are failing (the apa6.cls exists) but not worth the time since obsolete.
+#
+# supported-languages_polyglossia_.*_systemF: The LuaTeX changes started failing at 99299169. I think XeTeX failed before. I need to figure out the Noto fonts thing.
+#
+# Europe_CV: see here: https://github.com/gsilano/EuropeCV/issues/29
+# There is a patch but is not backwards-compatible so it's not clear if
+# it will be merged.
+#
+# BATCH_compare-test: I'm not sure why this fails, but no time to look into it.
+#
+# BATCH_vcs-info, BATCH_outline-beamer: these tests fail when configure.ac has, e.g., "beta".
+#   We know what we need to do to fix this, but just need to do it.
+#   sk: see personal email here for more info:
+#     Message-ID:<20221221165514.pbfrlpt77o3my55o@gary>
+#
+# Astronomical: the required file aastex62.cls is not found anymore. Probably there is a new version with a new file name.
+#               TODO: look into ^this when I have time.
+#               Jean-Pierre helped transition things to a new class (and file name) version.
+#
+ctest_exclude='(supported-languages_polyglossia_.*_systemF|(%28APA%29,_v._6|Astronomical).*(pdf|dvi|lyx22|lyx23)|BATCH_compare-test|BATCH_outline-beamer|BATCH_vcs-info)'
+# timeout of 10m.
+function ctest-reg-if-fail ()
+{
+  ctest -E "${ctest_exclude}" --timeout 600 $@
+  ret="$?"
+
+  failed_log="Testing/Temporary/LastTestsFailed.log"
+  # there is no file if no failures.
+  if [ -e "${failed_log}" ]; then
+    if [ -e "/tmp/LastTestsFailed" ]; then
+      target_f="$( add_suffix "/tmp/LastTestsFailed" )"
+      # we want the root one to be the newest.
+      mv /tmp/LastTestsFailed "${target_f}"
+    fi
+    cp -f "${failed_log}" /tmp/LastTestsFailed
+  fi
+
+  return "${ret}"
+}
+# This tests all of the ones excluded above. Good to check once in a while to
+# see if we can "uninvert" them (in our 'ctest_exclude' variable that is).
+alias ctest-reg-if-fail-INVERTED='ctest -R "${ctest_exclude}"'
+# TODO: this doesn't work. Ask on SO? Use my specific case (of ctest)
+source /usr/share/bash-completion/completions/ctest
+complete -F _ctest ctest-reg-if-fail
+#
+# useful when want to test mainly for polyglossia regressions
+alias ctest-reg-if-fail-polyglossia='ctest -E "${ctest_exclude}" -R "systemF" --timeout 600'
+

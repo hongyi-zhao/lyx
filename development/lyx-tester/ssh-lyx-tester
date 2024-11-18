@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+
+# File: ssh-lyx-tester
+
+# Usage:
+# ssh-lyx-tester <path-to-key> <server>
+
+# Description:
+# Uploads required files to a server and runs lyx-tester
+
+
+# Copyright 2013, Scott Kostyshak
+# Copyright 2013, Kornel Benko
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+set -o nounset
+
+if [[ "$-" =~ i ]]; then
+  ECHOPREFIX=
+else
+  ECHOPREFIX="$( basename "$0" ): "
+fi
+ERRORPREFIX="${ECHOPREFIX}Error: "
+WARNINGPREFIX="${ECHOPREFIX}Warning: "
+USAGE="correct usage: $( basename "$0" ) <key> <server>"
+
+# TODO implement command parsing and options.
+# if SOURCE_ENV is 1, then the path will be reloaded in each new bash instance.
+# This is useful on a server when you don't want to restart.
+SOURCE_ENV=0
+
+if [ "$#" != "2" ]; then
+  echo -e "${ERRORPREFIX}incorrect usage.\n${USAGE}"
+  exit 1
+fi
+
+key="$1"
+server="$2"
+
+if [ ! -r ${key} ]; then
+  echo -e "${ERRORPREFIX}specified key does not exist or does not have read permission.\n${USAGE}"
+  exit 1
+fi
+
+# This is a personal preference (if this line is removed though, you might need
+# to run the next ssh/scp command with -o StrictHostKeyChecking=no).
+ssh -o StrictHostKeyChecking=no -f -i "${key}" ubuntu@${server} 'byobu-launcher-install' \
+  >/dev/null 2>&1 || { echo "${ERRORPREFIX}could not run byobu-launcher-install" >&2; exit 1; }
+
+filesToTransfer=(
+  lyx-tester
+  debian-control-texlive-in.txt
+  install-tl-ubuntu
+  lyxbuild
+)
+
+for file in ${filesToTransfer[@]}; do
+  [ -e "${file}" ] || { echo "${ERRORPREFIX}required file, ${file}, does not exist." >&2; exit 1; }
+done
+
+echo "${ECHOPREFIX}transfering files..."
+scp -r -i "${key}" "${filesToTransfer[@]}" ubuntu@${server}:/home/ubuntu/ >/dev/null 2>&1 \
+  || { echo "${ERRORPREFIX}could not scp the main files over." >&2; exit 1; }
+echo "${ECHOPREFIX}transfer done."
+
+ssh -f -i "${key}" ubuntu@${server} "mkdir /home/ubuntu/lyx-tester-logs && sudo /home/ubuntu/lyx-tester >/home/ubuntu/lyx-tester-logs/mainlog.log 2>&1" \
+  || { echo "${ERRORPREFIX}could not dispatch lyx-tester." >&2; exit 1; }
+
+if [ "${SOURCE_ENV}" ]; then
+  ssh -i "${key}" ubuntu@${server} "echo \"source /etc/environment\" >> ~/.bashrc" \
+    || { echo "${ERRORPREFIX}: could not append to .bashrc." >&2; }
+fi
+
+echo "${ECHOPREFIX}lyx-tester is off and running on the remote server."

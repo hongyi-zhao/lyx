@@ -1,0 +1,783 @@
+#!/usr/bin/env bash
+
+
+# File: lyx-tester
+
+# Usage:
+# sudo ./lyx-tester [OPTIONS]
+
+# Description:
+# This script does the following:
+#   - makes changes to /etc/apt/sources.list
+#   - apt-get update
+#   - runs install-tl-ubuntu to set up a full TeX Live installation
+#   - installs dependencies of LyX's export tests
+#   - builds master branch of LyX (jobs=#cores)
+#   - runs the tests (tex2lyx, export, and autotests)
+
+# Progress and profiling are logged to STDOUT.
+# Important errors are logged to STDERR.
+# Annoying STDOUT and STDERR messages are redirected to a file descriptor
+# (which is connected to a file *EXTRAS.log by default) in case they are
+# actually useful for debugging.
+
+# If the directory "ChineseFonts" exists in the current directory,
+# lyx-tester will install system fonts located in ChineseFonts/xetex and
+# TrueType fonts located in ChineseFonts/pdftex.
+# For more details, see 'install-tl-ubuntu --help'.
+# Note that we do not currently test Chinese documents with pdfTeX.
+
+
+# Copyright 2013-2015, Scott Kostyshak
+# Copyright 2013-2015, Kornel Benko
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+set -o nounset
+
+ubuntu_ver="$( lsb_release -sr )"
+ubuntu_ver_num="${ubuntu_ver/\./}"
+
+function checkTerm() {
+  # check if the column is 0 and if not start a new line (useful bc of the progress bar).
+  # based on code from: http://stackoverflow.com/questions/2575037/how-to-get-the-cursor-position-in-bash
+  exec < /dev/tty
+  oldstty=$(stty -g)
+  stty raw -echo min 0
+  # on my system, the following line can be replaced by the line below it
+  echo -en "\033[6n" > /dev/tty
+  # tput u7 > /dev/tty    # when TERM=xterm (and relatives)
+  IFS=';' read -r -d R -a pos
+  stty $oldstty
+  # change from one-based to zero based so they work with: tput cup $row $col
+  row=$((${pos[0]:2} - 1))    # strip off the esc-[
+  col=$((${pos[1]} - 1))
+  if [ "${col}" = "0" ]; then
+    exit
+  else
+    echo "\n"
+  fi
+}
+
+function ECHOPREFIX() {
+  if [[ "$-" =~ i ]]; then
+    exit
+  else
+    # At some point (first noticed on Ubuntu 22.04), the checkTerm magic
+    # caused some problems so disable for now.
+    # TODO: check back on this and see if it's worth debugging and putting back in.
+    #echo -e "$(checkTerm)$( basename "$0" ): "
+    echo -e "$( basename "$0" ): "
+  fi
+}
+
+function ERRORPREFIX() {
+  echo "$(ECHOPREFIX)ERROR: "
+}
+
+function WARNINGPREFIX() {
+  echo "$(ECHOPREFIX)WARNING: "
+}
+
+function show_help() {
+  echo -e "
+  USAGE
+  sudo ./lyx-tester [OPTIONS]
+
+  DESCRIPTION
+  A script to test various components of LyX
+
+  This script can be run on a fresh installation of Ubuntu and will git clone and compile the
+  latest development version of LyX and run the extensive suite of tests in LyX.
+
+  OPTIONS
+  -b <branch>, --itl-branch <branch>     \e[00;36m Checkout <branch> of install-tl-ubuntu.                          \e[00m
+  -d, --only-install-deps                \e[00;36m Only install some (not all) dependencies, mostly using apt-get.  \e[00m
+  -h, --help                             \e[00;36m Show this help and exit.                                         \e[00m
+  -n, --no-test                          \e[00;36m Do not run the ctests. This option is useful if you just want to
+                                            quickly get a development environment for LyX.                          \e[00m
+  -q <source>, --qt-from <source>        \e[00;36m How Qt should be installed. <source> can be 'ubuntu' or 'git'.
+                                            'git' compiles the development version of Qt from the cloned Git
+                                            repository. This requires a lot of space: if the 'git' option
+                                            is chosen for a 'lyx-tester' run on a fresh install of Ubuntu, a total
+                                            of about 37G is needed.                                                 \e[00m
+  -u, --no-workarounds                   \e[00;36m Do not apply workarounds for TeX issues. e.g., CTAN packages where
+                                            a fix/workaround is known but a new version has not been released.      \e[00m
+  -x <options>, --itl-options <options>  \e[00;36m <options> will be appended to the default options that
+                                            lyx-tester calls install-tl-ubuntu with. For a list of options,
+                                            see 'install-tl-ubuntu --help'.                                         \e[00m
+
+  AUTHOR
+  Scott Kostyshak
+  Kornel Benko
+"
+}
+
+ARGS=$( getopt -o "x:q:b:nhd" -l "itl-options:,qt-from:,itl-branch:,no-test,help,only-install-deps" \
+      -n "$( basename "$0" )" -- "$@" )
+# If bad arguments, exit (getopt will have already written the error to STDERR).
+[ "$?" = "0" ] || { exit 1; }
+
+eval set -- "$ARGS"
+
+ITL_BRANCH=''
+ITL_OPTIONS=''
+# 'git' means use the development branch of Qt 5 (requires a lot of space and time to compile)
+QT_FROM='ubuntu'
+RUN_TESTS=1
+WORKAROUNDS=1
+ONLY_DEPS=0
+#
+# todo: Is it worth fixing the autotests for Wayland?
+# currently no option to change this. Make an option
+# if we keep the framework around.
+autotests=1
+
+
+while true
+do
+  case "$1" in
+  -b|--itl-branch)
+      ITL_BRANCH="$2"
+      shift 2
+      ;;
+  -d|--only-install-deps)
+      ONLY_DEPS=1
+      shift 1
+      ;;
+  -h|--help)
+      show_help
+      exit 0
+      ;;
+  -n|--no-test)
+      RUN_TESTS=0
+      shift 1
+      ;;
+  -q|--qt-from)
+      if [[ "$2" = "ubuntu" || "$2" = "git" ]]; then
+        QT_FROM="$2"
+        shift 2
+      else
+        echo "$(ERRORPREFIX) --qt-from supports 'ubuntu' and 'git'"
+        exit 1
+      fi
+      ;;
+  -u|--no-workarounds)
+      WORKAROUNDS=0
+      shift 1
+      ;;
+  -x|--itl-options)
+      ITL_OPTIONS="$2"
+      shift 2
+      ;;
+  --)
+      shift 1
+      break;;
+  *)
+      echo -e "${ERRORPREFIX}the getopt command must be out of sync. Please report this."\\n\
+          "The following flag is not recognized: $1" >&2
+      exit 1
+      ;;
+  esac
+done
+
+# I do this because I run this script with sudo, but I want some files to be
+# created by the user. Note that other ways of getting the user name (such as
+# logname, whoami, and 'who am i') seem to fail in some cases.
+users="$(grep "/bin/bash" /etc/passwd \
+     | perl -pe 's/.*\/(\w+):\/bin\/bash/$1/g' | grep -v "root")"
+nusers="$(echo "${users}" | wc -l)"
+if [ "${nusers}" = 1 ]; then
+  USERNAME="${users}"
+else
+  USERNAME="$(logname)"
+fi
+sudo -u "${USERNAME}" echo "If no error, then USERNAME is valid" >& /dev/null \
+  || { echo "$(ERRORPREFIX)could not get the user name" >&2; exit 1; }
+
+[ "$(whoami)" = "root" ] \
+  || { echo "$(ERRORPREFIX)this script must be run with 'sudo'." >&2; exit 1; }
+
+mainDir="$(pwd)"
+LOGDIR="${mainDir}/lyx-tester-logs"
+if [ ! -d "${LOGDIR}" ]; then
+  sudo -u "${USERNAME}" mkdir "${LOGDIR}"
+fi
+
+exec > >(tee -a "${LOGDIR}/$( basename "$0" ).log")
+exec 2> >(tee -a "${LOGDIR}/$( basename "$0" ).log")
+exec 3>> "${LOGDIR}/lyx-tester_EXTRAS.log"
+
+date
+
+# For some errors, we exit. For others (non-fatal) we continue but at the end
+# report that something went wrong (i.e. mainRet != 0).
+mainRet=0
+
+# Main advantage is that it downloads/installs TeX Live at same time as
+# cloning/building LyX.
+parallel=1
+
+numCores=$( cat /proc/cpuinfo | grep processor | wc -l )
+
+# Number of seconds until each ctest times out.
+# The longest one is MergedManuals_xhtml and took 3935 seconds on AWS basic.
+CTEST_TIMEOUT=4000
+
+# enable Multiverse to install foiltex for testing examples/Foils.lyx.
+# it's possible this is already enabled after a fresh install,
+# (if for Ubuntu install we clicked the third-party checkbox I think)
+perl -pi -e 'next if /-backports/; s/^# (deb [^ ]+ [^ -]+ multiverse)$/$1/' /etc/apt/sources.list \
+    || { echo "$(ERRORPREFIX)perl failed to add multiverse" >&2; exit 1; }
+#
+# The following is for build-dep lyx and build-dep r-cran-digest
+#
+# This chunk is shared by lyx-tester/lyx-tester, lyx-tester/vbox_prep.sh, master.sgk, vboxBigInstall.sh.
+# Needed for "apt-get build-dep".
+if [ ${ubuntu_ver_num} -ge 2404 ]; then
+  # Don't really need to sub the entry for security, but easy to just keep as is.
+  # use '$' so that this command can be run multiple times and will only make the sub once.
+  sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources || { echo "$(ERRORPREFIX) failed to add source for universe (needed for build-dep)" >&2; exit 1; }
+else
+  sudo perl -pi -e 'next if /-backports/; s/^# (deb-src [^ ]+ [^ -]+ universe)$/$1/' /etc/apt/sources.list || { echo "$(ERRORPREFIX)perl failed to add source for universe (needed for build-dep)" >&2; exit 1; }
+fi
+sudo apt-get --yes update > apt-get-update.log 2>&1 || { echo "$(WARNINGPREFIX)apt-get update failed after universe src and multiverse adds." >&2; }
+
+
+echo "$(ECHOPREFIX)installing pre-reqs for install-tl-ubuntu..."
+apt-get --yes install git >&3 2>&1
+
+if [ -z "${ITL_BRANCH}" ]; then
+  maybeBranch=""
+else
+  maybeBranch="--branch ${ITL_BRANCH}"
+fi
+sudo -u ${USERNAME} git clone ${maybeBranch} "https://github.com/scottkosty/install-tl-ubuntu.git" install-tl-ubuntu.git >&3 2>&1 \
+  || { echo "$(ERRORPREFIX)could not git clone install-tl-ubuntu" >&2; exit 1; }
+
+(
+  if dpkg -s texlive-local > /dev/null 2>&1; then
+    echo "$(ECHOPREFIX)texlive-local already installed, skipping equivs."
+  else
+    cd ./install-tl-ubuntu.git &&
+      ./install-tl-ubuntu --only-apt-and-dpkg --hebrew --log-dir "${LOGDIR}" ${ITL_OPTIONS} ||
+      { echo "$(ERRORPREFIX)install-tl-ubuntu --only-apt-and-dpkg failed." >&2; exit 1; }
+  fi
+)
+
+function install_main_deps() {
+  if [ "${autotests}" = "1" ]; then
+    # xvkbd is not needed because LyX includes it but I would like to test
+    # the system install so that we can one day remove it from LyX sources.
+    # The Italian packages are needed for Tomasso's tests.
+    autotestDeps="libxaw7-dev libxtst-dev pcregrep wmctrl xvkbd \
+                 firefox-locale-it language-pack-it language-pack-it-base"
+  else
+    autotestDeps=''
+  fi
+
+  #     r-base for Sweave/knitr
+  #     ghostcript for ps2pdf
+  #     foiltex for the examples/Foils.lyx testing (we enabled Multiverse for this)
+  #     gnumeric (for an example I think and maybe also for tex2lyx (40 MB)
+  #     noweb for Literate.lyx and noweb2lyx.lyx
+  #     the following fonts are helpful for Japanese with ps2pdf:
+  #     fonts-ipafont-mincho fonts-takao-mincho fonts-ipafont-nonfree-jisx0208 fonts-ipaexfont-mincho
+  #     the following fonts are used for exporting Farsi docs with XeTeX
+  #     fonts-freefarsi
+  #     perl-tk is for 'tlmgr --gui'
+  #     clang is now used by default by lyxbuild
+  #     libc++abi-dev is for testing compilation with -stdlib=libc++
+  #     libtry-tiny-perl is for Kornel's URL tests (which are not run by default)
+  #     doxygen is for "make doxydoc"
+  #     the following fonts are for exporting zh_CN docs with XeTeX system fonts:
+  #     fonts-wqy-microhei
+  #     the following fonts are for Korean splash:
+  #     fonts-nanum
+  #     python3-polib is needed for updating layouttranslations ("make layouttranslations1")
+  #     the following are for future tests of Arabic docs. See LyX hash 36b9b973.
+  #     note that it is necessary to remove the woff files which is done below
+  #     fonts-sil-scheherazade
+  #     libxml2-utils for xmllint for the xhtml tests
+  #     libfontconfig1-dev is needed for newest Qt, so with -fontconfig switch fonts work
+  #     python3-pygments is for minted
+  #     the following are for compilation of supported-languages.lyx.
+  #     fonts-noto-core is a large (30 MB) package, needed for Ethiopic and Devanagari.
+  #     comparepdf is searched for by 'cmake' for ams-import tests
+  #     libfile-slurp-perl is needed for 5 tests: BATCH_outline-beamer, \
+  #         BATCH_vcs-info, BATCH_AMS-import, BATCH_SAVE-as, BATCH_compare-test
+  #     The following are for building with Qt6:
+  #         qt6-base-dev libqt6opengl6-dev qmake6 qmake6-bin libqt6opengl6-dev qmake6 qmake6-bin qt6-base-dev qt6-svg-dev qt6-wayland
+
+
+  #     The following are useful if we decide to not rely on TL fonts for system fonts (used for, e.g., XeTeX).
+  #
+  #     Neeeded for: DEFAULTOUTPUT_export/export/latex/languages/supported-languages_polyglossia-XeTeX_pdf4_systemF
+  #       fonts-ipafont fonts-hosny-amiri fonts-baekmuk
+  #     couldn't find a simple Ubuntu package replacement for: Monomakh
+  #     or can copy just this one:
+  #       /usr/share/texlive/texmf-dist/fonts/opentype/public/fonts-churchslavonic/MonomakhUnicode.otf
+  #     it's here: texlive-fonts-extra, but that is a large dependency (the .deb is 509 MB).
+  #
+  # Without TL font link, this fixes compilation for: export/export/latex/CJK/en-de-el-ru-ko_utf8_pdf4_systemF
+  # 'fonts-unfonts-extra' provides these fonts:
+  #     UnJamoBatang
+  #     UnJamoDotum
+  #     UnTaza
+  #
+  # Without TL font link, this fixes compilation for many ja documents:
+  # fonts-ipaexfont
+
+
+  apt-get -y install --no-install-recommends r-base ghostscript imagemagick \
+    foiltex gnumeric noweb ${autotestDeps} \
+    fonts-ipafont-mincho fonts-takao-mincho fonts-ipafont-nonfree-jisx0208 fonts-ipaexfont-mincho \
+    fonts-freefarsi \
+    perl-tk \
+    clang \
+    libc++abi-dev \
+    libtry-tiny-perl \
+    doxygen \
+    fonts-wqy-microhei \
+    fonts-nanum \
+    fonts-sil-scheherazade \
+    libxml2-utils \
+    libfontconfig1-dev \
+    python3-polib \
+    python3-pygments \
+    python3-pygments \
+    gnuplot-nox \
+    fonts-noto-core \
+    comparepdf \
+    libfile-slurp-perl \
+    qt6-base-dev libqt6opengl6-dev qmake6 qmake6-bin libqt6opengl6-dev qmake6 qmake6-bin qt6-base-dev qt6-svg-dev qt6-wayland \
+    fonts-ipafont fonts-hosny-amiri fonts-baekmuk fonts-unfonts-extra fonts-ipaexfont \
+    >&3 2>&3 \
+    || { echo "$(ERRORPREFIX)"install of r-base or a LyX test dependency failed. \
+         PPA might be updating and causing dependency version mismatches. >&2; exit 1; }
+
+  echo "$(ECHOPREFIX)Running 'build-dep r-cran-digest'..."
+  apt-get -y build-dep r-cran-digest >&3 2>&1 \
+    || echo "$(WARNINGPREFIX)"build-dep r-cran-digest failed >&2
+  echo "$(ECHOPREFIX)Running 'build-dep r-cran-digest'... done."
+
+  echo "$(ECHOPREFIX)installing LyX pre-reqs..."
+  qtlibs=''
+  if [ ${QT_FROM} = "ubuntu" ]; then
+    # if building Qt from source, we do not want these to be used accidentally.
+    qtlibs='libqt5svg5-dev'
+  fi
+  # One could alternatively use autotools instead of CMake.
+  # We don't need 'hunspell' (1MB) but it is included to test building with support for it.
+  # If you take it out, edit the CMake build flags.
+  # libqt5x11extras5-dev is needed for CMake to detect that X11 is used when using Qt 5 (needed for keytests).
+  # librsvg2-bin is for converting SVG to PNG and PDF (needed since we use svg in manuals). Could use inkscape instead. See configure.py for more details. This sets up the e.g. SVG -> PDF (graphics) converter (SVG -> pdf6).
+  apt-get --yes build-dep --no-install-recommends lyx >&3 2>&1 \
+    || echo "$(WARNINGPREFIX)build-dep lyx failed. Source package is probably not available." >&2
+  apt-get --yes install --no-install-recommends cmake hunspell libhunspell-dev libqt5x11extras5-dev librsvg2-bin ${qtlibs} >&3 2>&1 \
+    && echo "$(ECHOPREFIX)installing LyX pre-reqs successful." \
+    || echo "$(WARNINGPREFIX)LyX pre-reqs failed." >&2
+
+}
+# Placement of this function call is after install-tl-ubuntu equivs because we don't want Ubuntu bringing
+# in any texlive packages that these depend on.
+#
+# Install LyX auxiliaries before LyX's configure so that it will find them.
+#
+# This chunk also goes before install-tl-ubuntu so that when we create
+# a symlink to Ubuntu's TeX dir in install-tl-ubuntu, it's not dangling
+# (e.g. chmod will not give an error). Not strictly necessary though.
+install_main_deps
+if [ "${ONLY_DEPS}" = "1" ]; then
+  exit 0
+fi
+
+# remove the woff files from installation of package fonts-sil-scheherazade
+# since dvipdfmx does not support them:
+# http://tex.stackexchange.com/questions/330195/how-to-set-up-the-font-scheherazade-for-use-with-xelatex
+rm -rf /usr/share/fonts/woff
+
+# set the policies for ImageMagick so that it allows more conversions. This is
+# necessary for many of the tests because included graphics need to be
+# converted to various formats depending on the engine that is used (e.g.,
+# latex, pdflatex).
+sed -i 's/rights="none" pattern="PS"/rights="read|write" pattern="PS"/' /etc/ImageMagick-6/policy.xml &&
+sed -i 's/rights="none" pattern="EPS"/rights="read|write" pattern="EPS"/' /etc/ImageMagick-6/policy.xml &&
+sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/' /etc/ImageMagick-6/policy.xml
+
+# Create personal library. That way, don't need "sudo" to install packages.
+# (https://stackoverflow.com/a/43283085/1376404)
+# On Ubuntu 19.10, this creates the following directory:
+#   ~/R/x86_64-pc-linux-gnu-library/3.6
+# alternative:
+#R -e 'dir.create(path = Sys.getenv("R_LIBS_USER"), showWarnings = FALSE, recursive = TRUE)'
+R_maj_dot_min="$(apt-cache policy r-base | grep -oP '(?<=Candidate: )\d\.\d')"
+sudo -u ${USERNAME} mkdir -p "/home/${USERNAME}/R/x86_64-pc-linux-gnu-library/${R_maj_dot_min}"
+# warn=2 turns warnings into errors (this causes a non-zero exit if there are
+# failed installs of packages)
+sudo -u ${USERNAME} R -e "options(warn=2); options(repos= 'http://lib.stat.cmu.edu/R/CRAN/'); install.packages('knitr')" >&3 2>&3 \
+  || { echo "$(WARNINGPREFIX)knitr install failed." >&2; }
+
+if [ -d "ChineseFonts" ]; then
+  echo "$(ECHOPREFIX)installing Chinese Fonts."
+  ZH='--usr-fonts ChineseFonts/xetex --truetype-dir ChineseFonts/pdftex'
+else
+  echo "$(ECHOPREFIX)not installing Chinese Fonts."
+  ZH=''
+fi
+
+echo "$(ECHOPREFIX)forking install-tl-ubuntu."
+( cd ./install-tl-ubuntu.git && ./install-tl-ubuntu --more-tex ${ZH} --hebrew --log-dir "${LOGDIR}" --no-apt-or-dpkg ${ITL_OPTIONS} ) &
+pid_tl_ubuntu=$!
+echo "$(ECHOPREFIX)pid_tl_ubuntu is ${pid_tl_ubuntu}"
+
+TLRET=0
+if [ "$parallel" != "1" ]; then
+  echo "$(ECHOPREFIX)waiting for install-tl-ubuntu to finish (not in parallel)..."
+  wait ${pid_tl_ubuntu} &&
+    echo "$(ECHOPREFIX)$(date +%H:%M): install-tl-ubuntu successful." \
+    || { echo "$(ERRORPREFIX)$(date +%H:%M): install-tl-ubuntu failed." >&2; TLRET=1; mainRet=1; }
+fi
+
+
+sudo -u ${USERNAME} mkdir -p "/home/${USERNAME}/lyxbuilds/master" || { echo "$(ERRORPREFIX)mkdir failed." >&2; exit 1; }
+sudo -u ${USERNAME} mkdir -p "/home/${USERNAME}/lyxbuilds/master-gcc" || { echo "$(ERRORPREFIX)mkdir failed." >&2; exit 1; }
+echo "$(ECHOPREFIX)starting child process git clone and then lyxbuild..."
+LYX_DIR="/home/${USERNAME}/lyxbuilds/master/repo"
+LYX_DIR_GCC="/home/${USERNAME}/lyxbuilds/master-gcc/repo"
+# TODO make these two options of lyx-tester
+LYXDEV=0 # set to 1 if you want to fetch features with write access and have the ssh key to do so.
+if [ "${QT_FROM}" = "git" ]; then
+  echo "$(ECHOPREFIX)building Qt 5 stable branch from git..."
+  ./CreateQt5 > "${LOGDIR}/CreateQt5.log" 2>&1
+  if [ "$?" = "0" ]; then
+    maybeQtDirOption='--qt-build-dir="/usr/BUILD/BuildQt5-dev"'
+  else
+    echo "$(WARNINGPREFIX)could not build Qt 5 (will try to proceed with apt packages instead)." >&2
+    maybeQtDirOption=''
+    apt-get --yes install --no-install-recommends "${qtlibs}"
+  fi
+else
+  maybeQtDirOption=''
+fi
+
+# TODO: For some reason, a git clone of LyX often fails. I thus took it out of the
+# subprocess. Perhaps that will help? Perhaps an environment variables issue?
+# update: taking it out of the subprocess did not help. Put it back in if there's an
+# advantage to it.
+#
+# similar code in install-tl-ubuntu
+timesToTry=5
+timesTried=0
+fail=0
+success=0
+while (( timesTried != timesToTry )); do
+    timesTried=$(( timesTried + 1 ))
+
+    # For some reason this fails in vbox when run in the script, but succeeds if I do the clone
+    # manually. I didn't figure out the root reason.
+    # Instead, now we clone from a mirror, then retarget the remote and re-pull.
+    # lyx_git_repo="git://git.lyx.org/lyx"
+    #
+    # todo: check if there is a resume feature to "git clone". When I last checked, there was
+    #       no such straight-forward feature.
+    #
+    # The mirror is also ~2x faster.
+    # TODO: use Yuriy's instead, which is more up to date:
+    # https://github.com/magistere/lyx2
+    lyx_git_repo="https://github.com/cburschka/lyx"
+
+    echo -e "$(ECHOPREFIX)attempting to clone LyX for time number ${timesTried}... using the following command:\n git clone \"${lyx_git_repo}\""
+    # temporary debugging of why git clone often fails.
+    # env > "/home/${USERNAME}/Desktop/env-before-git-clone-of-lyx.log"
+    # sudo -u "${USERNAME}" env > "/home/${USERNAME}/Desktop/env-USER-before-git-clone-of-lyx.log"
+    sudo -u "${USERNAME}" git clone "${lyx_git_repo}" "${LYX_DIR}"
+    if [ "$?" != "0" ]; then
+        fail=1
+        echo "$(WARNINGPREFIX)clone failed" >&2
+    fi
+    if [ "${fail}" = 0 ]; then
+        success=1
+        break
+    else
+        (( timesTried != timesToTry )) && echo "$(ECHOPREFIX)we will wait 30s, then try to restart the clone (from scratch)." >&2
+        rm -rf "${LYX_DIR}"
+        sleep 30s
+    fi
+done
+if [ "${success}" = "1" ]; then
+    echo "$(ECHOPREFIX)LyX was successfully cloned."
+else
+    echo "$(WARNINGPREFIX)git clone of LyX failed." >&2
+fi
+
+(
+  (
+    cd "${LYX_DIR}"
+    # Now we remove the clone remote and swap in the upstream remote
+    sudo -u ${USERNAME} git remote remove origin
+    sudo -u ${USERNAME} git remote add origin "git://git.lyx.org/lyx"
+    sudo -u ${USERNAME} git fetch --all >/dev/null 2>&1 || echo "$(ERRORPREFIX)'git fetch --all' failed." >&2
+    sudo -u ${USERNAME} git branch --set-upstream-to=origin/master master >/dev/null 2>&1 || echo "$(ERRORPREFIX)'git branch --set-upstream-to=origin/master master' failed." >&2
+    sudo -u ${USERNAME} git pull > /dev/null 2>&1 || echo "$(ERRORPREFIX)'git pull' failed." >&2
+
+    # TODO make an option
+    patches_d="/home/${USERNAME}/Downloads/lyxPatches"
+    if [ -d "${patches_d}" ]; then
+      echo "git am'ing .patch files found in ${patches_d}"
+      # only local config. Needed to git am patches.
+      sudo -u ${USERNAME} git config user.name "lyx-tester"
+      sudo -u ${USERNAME} git config user.email "lyx-tester"
+      sudo -u ${USERNAME} git am "${patches_d}"/*.patch
+    fi
+
+    if [ "${LYXDEV}" = "1" ]; then
+      # note that it needs to access the ssh keys of $USER
+      sudo -u "${USERNAME}" git remote add features git@git.lyx.org:features.git
+    else
+      sudo -u ${USERNAME} git remote add features git://git.lyx.org/features.git
+    fi
+    sudo -u "${USERNAME}" git fetch features >/dev/null 2>&1 || echo "$(ERRORPREFIX)'git fetch features' failed." >&2
+  )
+  sudo -u "${USERNAME}" cp -r "${LYX_DIR}" "${LYX_DIR_GCC}" &&
+  cd "${LYX_DIR_GCC}" &&
+  # need to source /etc/environment for qt build directory (in case using git Qt source)
+  sudo -u ${USERNAME} bash -c "source /etc/environment && "${mainDir}/lyxbuild" -j${numCores} --gcc ${maybeQtDirOption}" &&
+  echo "$(ECHOPREFIX)GCC build successful." \
+    || echo "$(WARNINGPREFIX)GCC build failed." >&2
+  cd "${LYX_DIR}" &&
+  sudo -u ${USERNAME} bash -c "source /etc/environment && "${mainDir}/lyxbuild" -j${numCores} ${maybeQtDirOption}" &&
+  echo "$(ECHOPREFIX)Clang build successful."
+) &
+# This is the PID of the subshell.
+pid_lyxdevel=$!
+echo "$(ECHOPREFIX)pid_lyxdevel is $pid_lyxdevel"
+
+echo "$(ECHOPREFIX)$(date +%H:%M): waiting on lyx-devel clang and gcc builds..."
+wait ${pid_lyxdevel} &&
+  echo "$(ECHOPREFIX)$(date +%H:%M): lyx-devel git clone and lyx cmake build successful." \
+  || { echo "$(ERRORPREFIX)lyx-devel gcc build failed." >&2; mainRet=1; }
+
+if [ "${parallel}" = "1" ]; then
+  echo "$(ECHOPREFIX)$(date +%H:%M): waiting on install-tl-ubuntu..."
+  wait ${pid_tl_ubuntu} &&
+    echo "$(ECHOPREFIX)$(date +%H:%M): install-tl-ubuntu successful." \
+    || { echo "$(ERRORPREFIX)install-tl-ubuntu failed." >&2; TLRET=1; mainRet=1; }
+fi
+#
+# when I use switch-tl-to, I do not want "sudo fc-cache -fsv" to be run each time.
+# however, a couple of tests are missing fonts from Ubuntu repos, so do not
+# run for now.
+# source /path/to/install-tl-ubuntu/switches && switch-sys-fonts-to-ubuntu
+
+# Reload path, otherwise kpsewhich and texhash will not be found.
+# Also, pdflatex will not be found when doing reconfigure for tests.
+source /etc/environment
+
+# This is needed for, e.g., hollywood.cls and lyxchess.sty.
+# alternative: install LyX with make install.
+if [ "${TLRET}" = 0 ]; then
+  cd "$( kpsewhich --var-value TEXMFLOCAL )/tex/" \
+    || { echo "$(WARNINGPREFIX)kpsewhich failed." >&2; mainRet=1; }
+  ln -s "${LYX_DIR}/lib/tex" LyXTeXDir \
+    || { echo "$(WARNINGPREFIX)linking LyX tex files failed." >&2; mainRet=1; }
+  texhash >&3 2>&1 || { echo "$(ERRORPREFIX)texhash failed." >&2; mainRet=1; }
+fi
+
+if [ "${WORKAROUNDS}" = "1" ]; then
+  echo "Performing workarounds..."
+
+  echo "Making fonts needed by some of our Russian documents..."
+  # This makes it so the /ru/ texF pdf5 and dvi3 tests all pass on first run.
+  # These mktextfm commands are triggered by other tests, e.g., ru/EmbeddedObjects_pdf2,
+  # so the affected tests pass on the second run; but we might as well get things running
+  # on the first ctest run.
+  #
+  # todo: there are some ideas here for how to automate finding the needed fonts.
+  # Currently, what I do is run the corresponding export in the GUI and then look at
+  # the log (it mentions the exact font name).
+  # https://tex.stackexchange.com/questions/649259/can-i-ask-luatex-to-run-mktextfm
+  #
+  fonts_arr=(
+    # I'm not sure if all of these are (still) necessary.
+    larm1000
+    larm1200
+    lass1200
+    lasx1200
+    lasx2488
+    larm1728
+    larm2488
+    labx2488
+    #
+    # The following became necessary I think with TeX Live 2023.
+    # Intro.lyx
+    larm2074
+    larm1440
+    larm0700
+    larm0800
+    # Math.lyx
+    larm0600
+    larm0500
+    larm1095
+    larm3583
+  )
+  for f in "${fonts_arr[@]}"; do
+    echo "Making font ${f}..."
+    sudo -u ${USERNAME} /opt/texbin/mktextfm "${f}" > /dev/null 2>&1 || { echo "$(ERRORPREFIX)mktextfm failed for ${f}." >&2; mainRet=1; }
+  done &&
+  echo "Done making fonts (successful)."
+
+  # This is not about a TeX Live package.
+  echo "  workaround for Ubuntu package 'noweb'..."
+  noweb_sty_f="/usr/share/texmf/tex/plain/misc/noweb.sty"
+  if [ -f "${noweb_sty_f}" ]; then
+    if file -i "${noweb_sty_f}" | grep -v 'utf-8' >/dev/null ; then
+      echo "Workaround is still needed for package 'noweb'."
+      # This fix is merged upstream but there has been no new release
+      # https://github.com/nrnrnr/noweb/pull/12
+      TEMP_F="$( mktemp )"
+      iconv -f latin1 -t utf8 "${noweb_sty_f}" -o "${TEMP_F}" &&
+      mv -f "${TEMP_F}" "${noweb_sty_f}"
+      # fix permissions so can be read by all
+      chmod +r "${noweb_sty_f}"
+    else
+      # Even when the fix makes it into Ubuntu, maybe still keep this code in
+      # in case we want to run lyx-tester on an older Ubuntu version?
+      echo "WARNING: workaround is no longer needed for package 'noweb'." >&2
+    fi
+  else
+    echo "Warning: noweb.sty not found. Skipping workaround." >&2
+  fi
+
+  echo "Done."
+fi
+
+# We install Lilypond here because we need to make symlinks first.
+# note that Lilypond needs kpsewhich
+# Starting with 19.04, without this I get an error "kpsewhich not found",
+# perhaps because of hardcoding of the path to kpsewhich?
+# TODO Report bug/enhancement upstream?
+#      Or move this workaround to install-tl-ubuntu?
+ln -s /opt/texbin/kpsewhich /usr/bin/kpsewhich
+apt-get --yes install --no-install-recommends lilypond >&3 2>&1 \
+    || { echo "$(ERRORPREFIX)lilypond failed to install." >&2; mainRet=1; }
+# I am not sure we need this symlink anymore, but we leave it just in case
+# For example, an update of the lilypond package might trigger the same script
+# that needs this hardcoding.
+# rm /usr/bin/kpsewhich
+
+# reconfigure LyX (it was reconfigured in lyxbuild, which if run in parallel
+# probably happened before the TeX Live installation finished).
+(
+  cd "${LYX_DIR}/../user-dir"
+  sudo -u ${USERNAME} LYX_DIR="${LYX_DIR}" bash -c 'source /etc/environment && python3 -tt "${LYX_DIR}/lib/configure.py" > ../"build-logs/reconfigure_lt" 2>&1' \
+    || { echo "$(ERRORPREFIX)reconfigure failed." >&2; mainRet=1; }
+)
+# todo: The following is copied from above. Instead, do a loop?
+# Can test that this worked by running "mylyx master-gcc" and trying to compile
+# a simple document to PDF.
+(
+  cd "${LYX_DIR_GCC}/../user-dir"
+  sudo -u ${USERNAME} LYX_DIR_GCC="${LYX_DIR_GCC}" bash -c 'source /etc/environment && python3 -tt "${LYX_DIR_GCC}/lib/configure.py" > ../"build-logs/reconfigure_lt" 2>&1' \
+    || { echo "$(ERRORPREFIX)reconfigure failed for GCC." >&2; mainRet=1; }
+)
+
+# Set up polyglossia-dev for use with "switch-polyglossia-to-dev"
+# this dir location should be synced with the switch functions in switches
+polyglossia_dev_d="/home/${USERNAME}/polyglossia"
+(
+  sudo -u ${USERNAME} git clone "https://github.com/reutenauer/polyglossia" "${polyglossia_dev_d}"
+)
+
+latex_dev_d="/home/${USERNAME}/latex2e-dev"
+(
+  sudo -u ${USERNAME} git clone "https://github.com/latex3/latex2e" "${latex_dev_d}"
+  cd "${latex_dev_d}" && sudo -u ${USERNAME} git checkout "develop"
+)
+
+if [[ "$mainRet" = "0" && "${RUN_TESTS}" = "1" ]]; then
+  echo "$(ECHOPREFIX)$(date +%H:%M): running ctest..."
+  if [ -e "${mainDir}/.lyx" ]; then
+    # Force a reconfigure.
+    rm -r "${mainDir}/.lyx"
+  fi
+  # LyX will not make the dir automatically when set with an environment variable.
+  sudo -u ${USERNAME} mkdir "${mainDir}/.lyx"
+  cd "${LYX_DIR}/../CMakeBuild" || { echo "$(ERRORPREFIX)could not cd into LyX CMake build dir" >&2; mainRet=1; }
+  # TODO
+  #  tex2lyx will fail if run first because tex2lyx requires a configured user-dir. See #8539
+  #  and
+  #  http://comments.gmane.org/gmane.editors.lyx.devel/144638
+  #  As a workaround, we run first the other tests first and then the tex2lyx tests.
+  # ALTERNATIVE: run one of the export tests then run -R '(export|tex2lyx)/'.
+  echo -e "$(ECHOPREFIX)PATH is:\n$PATH" >&3
+  # But just in case the dependencies are installed on a server, we do not want to run them (unless explicitly specified by autotests).
+  # We run them first to get them out of the way (so that the user knows they can use the machine without worry of confusing keytest).
+  if [ "${autotests}" = "1" ]; then
+    # XVKBD_DELAY overrides the def_delay default of 100. Only 120 was needed in my testing, but just in case I set it to 150.
+    sudo -u ${USERNAME} bash -c "source /etc/environment && DISPLAY=:0.0 XVKBD_DELAY=150 ctest --timeout ${CTEST_TIMEOUT} -R 'keytest/' > \"${LOGDIR}/ctest_keytest.log\" 2>&1"
+    cp "${LYX_DIR}/../CMakeBuild/Testing/Temporary/LastTest.log" "${LOGDIR}/LastTest_keytest.log"
+  fi
+
+  # TODO: the following two solutions (the one commented out and the one
+  # actually used) should work in theory, but they sometimes lead to the module
+  # ctests failing. Note that the modules are not copied over to the "layouts"
+  # subdirectory of the user directory, although I'm not sure that's the root
+  # cause of the problem.
+  #
+  # alternative:
+  # We could reconfigure manually, since lyxbuild was run before some
+  # dependencies (e.g., lilypond) were installed, and since lyxbuild runs a
+  # ctest (it is now a feature of lyxbuild).
+  # ( cd Testing/.lyx/ && sudo -u ${USERNAME} LYX_DIR="${LYX_DIR}" LOGDIR="${LOGDIR}" bash -c 'source /etc/environment && python3 -tt "${LYX_DIR}/lib/configure.py" > "${LOGDIR}/reconfigure_b4_ctest.log" 2>&1' \
+  #  || { echo "$(ERRORPREFIX)reconfigure failed." >&2; mainRet=1; } )
+  #
+  # mv instead of rm incase we want to see differences in configure logs
+  mv Testing/.lyx/ /tmp/DOTlyx1 && sudo -u ${USERNAME} mkdir Testing/.lyx
+  sudo -u ${USERNAME} bash -c "source /etc/environment && ctest -R 'examples/Welcome_pdf2'"
+  ## DBG for comparing
+  #cp -r Testing/.lyx /tmp/DOTlyx2
+  # Enable needauth for knitr, Sweave, gnuplot, etc
+  sudo -u ${USERNAME} bash -c "source /etc/environment && ./prefTest.pl test"
+
+  sudo -u ${USERNAME} bash -c "source /etc/environment && ctest -j${numCores} --timeout ${CTEST_TIMEOUT} -E 'tex2lyx/|keytest/' > \"${LOGDIR}/ctest_other.log\" 2>&1"
+  cp "${LYX_DIR}/../CMakeBuild/Testing/Temporary/LastTest.log" "${LOGDIR}/LastTest_other.log"
+  sudo -u ${USERNAME} bash -c "source /etc/environment && ctest --timeout ${CTEST_TIMEOUT} -R 'tex2lyx/' > \"${LOGDIR}/ctest_tex2lyx.log\" 2>&1"
+  cp "${LYX_DIR}/../CMakeBuild/Testing/Temporary/LastTest.log" "${LOGDIR}/LastTest_tex2lyx.log"
+  # TODO test make targets. Which others?
+  echo "$(ECHOPREFIX)TODO: doyxdoc gives a lot of warnings (which I currently redirect to the log). Fix them?"
+  sudo -u ${USERNAME} make doxydoc > "${LOGDIR}/doxydoc" 2>&1 || echo "$(WARNINGPREFIX)could not build doxydoc target"
+
+
+  echo "$(ECHOPREFIX)now we will run systemF tests with polyglossia-dev" >&3
+  (
+    # do a git pull to catch any recent commits (the previous tests can take a long time to run)
+    cd "${polyglossia_dev_d}" && sudo -u ${USERNAME} git pull
+    # bring in the switch functions
+    source "${mainDir}/switches"
+    switch-polyglossia-to-dev
+    cd "${LYX_DIR}/../CMakeBuild" &&
+      sudo -u ${USERNAME} bash -c "source /etc/environment && ctest -j${numCores} --timeout ${CTEST_TIMEOUT} -R "systemF" > \"${LOGDIR}/ctest_other_poly-dev.log\" 2>&1"
+  )
+fi
+
+if [ "${mainRet}" = "0" ]; then
+  echo "$(ECHOPREFIX)$(date +%H:%M): finished (all successful)."
+else
+  echo "$(ERRORPREFIX)$(date +%H:%M): finished (not all successful). Please report warnings and errors." >&2
+fi
+
+
+chmod 666 "${LOGDIR}"/*

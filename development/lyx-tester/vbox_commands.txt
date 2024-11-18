@@ -1,0 +1,23 @@
+# This file is useful when creating a base image, and then cloning it.
+# Although none of the commands in here is needed to run lyx-tester,
+# running some preparatory commands can save time for clones.
+
+
+# For the base image, run the following:
+sudo ./install-tl-ubuntu --only-apt-and-dpkg --hebrew
+
+# Then, for clones, just need to run the following
+# To run lyx-tester, consider one of the following commands:
+
+sudo ./lyx-tester --itl-options "--no-apt-or-dpkg"
+
+sudo ./lyx-tester --itl-options "--no-apt-or-dpkg --pretest"
+
+sudo ./lyx-tester --qt-from "git" --itl-options "--no-apt-or-dpkg"
+
+sudo ./lyx-tester --itl-options "--no-apt-or-dpkg --iso /home/$USER/Desktop/texlive2018.iso"
+
+
+# To update LyX and run the ctests, do the following:
+
+mylyxcd master && git pull && git clean -xdf && git reset --hard && GITHASH="$(git rev-parse --short HEAD)" && ~/Desktop/lyx-tester/lyxbuild && cd ../CMakeBuild/ && ctest > ~/"Desktop/ctests_$(date "+%Y-%m-%d")_${GITHASH}.log"

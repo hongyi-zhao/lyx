@@ -1,0 +1,211 @@
+
+# these functions are useful for switching between dev versions
+# and stable versions of certain components.
+
+# running a function when the state is already the version
+# the function switches to should be a no-op (with a diagnostic
+# message)
+
+function switch-polyglossia-to-dev ()
+{
+
+  # Udi pointed out a potential problem:
+  #
+  #   Note that for example you don't watch the files from polyglossia installed in
+  #   "fonts/misc/xetex/fontmapping/polyglossia/"
+  #   but they rarely get updated.
+  #
+  # todo: In these functions we could at least check whether those files in the
+  #       repo are different so we are notified when we need to update them.
+
+
+  # where to archive the TL version
+  polyglossia_dev_d="/home/$(logname)/polyglossia"
+
+  # location of TL version
+  polyglossia_tl_f="$(/opt/texbin/kpsewhich polyglossia.sty)"
+  polyglossia_tl_d="$(dirname "${polyglossia_tl_f}")"
+  # check whether link or not link to see whether current is tl or dev.
+  if [ -L "${polyglossia_tl_d}" ]; then
+    echo "Link exists, so you are already using polyglossia-dev."
+    return 0
+  else
+    # overwrite polyglossia_tl since newer stable version
+    sudo mv "${polyglossia_tl_d}" "/home/$(logname)/polyglossia_tl"
+    # Use a link to poly-dev. That is, do not copy the directory. That way, we
+    # can just do a git pull.
+    sudo ln -s "${polyglossia_dev_d}/tex" "${polyglossia_tl_d}"
+    # we need to check for possibly new/removed files
+    sudo /opt/texbin/mktexlsr
+
+    \sudo -k
+  fi
+}
+
+
+function switch-polyglossia-to-stable ()
+{
+  polyglossia_stable_d="/home/$(logname)/polyglossia_tl"
+  polyglossia_tl_f="$(/opt/texbin/kpsewhich polyglossia.sty)"
+  polyglossia_tl_d="$(dirname "${polyglossia_tl_f}")"
+  if [ -L "${polyglossia_tl_d}" ]; then
+    sudo rm "${polyglossia_tl_d}"
+    sudo mv "${polyglossia_stable_d}" "${polyglossia_tl_d}"
+    sudo /opt/texbin/mktexlsr
+
+    \sudo -k
+  else
+    echo "Link does not exist, so you are already using polyglossia-stable."
+    return 0
+  fi
+}
+
+
+# useful to see what the initial state is to know whether to switch back, e.g.,
+# in a script that updates the TeX Live installation.
+function polyglossia-is-stable ()
+{
+  polyglossia_stable_d="/home/$(logname)/polyglossia_tl"
+  polyglossia_tl_f="$(/opt/texbin/kpsewhich polyglossia.sty)"
+  polyglossia_tl_d="$(dirname "${polyglossia_tl_f}")"
+  if [ -L "${polyglossia_tl_d}" ]; then
+    # 0 = no, not stable
+    echo "0"
+  else
+    # 1 = yes, stable
+    echo "1"
+  fi
+  return 0
+}
+
+
+tl_stable_bu_d="/home/$(logname)/tl-stable-binaries"
+tl_texbin_d="/opt/texbin/"
+function switch-latex-to-tl-dev ()
+{
+  if [ ! -e "${tl_stable_bu_d}" ]; then
+    mkdir "${tl_stable_bu_d}"
+  fi
+
+  # todo: how to find this more generally? could take dir of 'which pdflatex'
+  # todo: use the "real" link instead? shouldn't make a difference right?
+  # $ readlink -f /opt/texbin
+  # /usr/local/texlive/2021/bin/x86_64-linux
+  for i in "${tl_texbin_d}"/*-dev; do
+    devname="$( basename "${i}")"
+    stablename="${devname%-*}"
+    if [ $(cat "${tl_texbin_d}/${stablename}" | wc -l) = "2" ]; then
+      echo "${stablename} already points to dev"
+    else
+      echo "${stablename} was calling stable."
+      sudo mv "${tl_texbin_d}/${stablename}" "${tl_stable_bu_d}"
+      # todo: confirm this?
+      # doesn't work. Maybe pdflatex (or pdftex rather) checks the binary name calling it (?)
+      # sudo ln -s "${tl_texbin_d}/${devname}" "${tl_texbin_d}/${stablename}"
+      echo "#!/usr/bin/bash" | sudo tee "${tl_texbin_d}/${stablename}" > /dev/null
+      # need to escape " and $ but not @.
+      echo "/opt/texbin/${devname} \"\$@\"" | sudo tee -a "${tl_texbin_d}/${stablename}" > /dev/null
+      sudo chmod +x "${tl_texbin_d}/${stablename}"
+      echo "  ${stablename} now pointing to dev."
+
+      \sudo -k
+    fi
+  done
+}
+
+
+function switch-latex-to-tl-stable ()
+{
+  for i in "${tl_texbin_d}"/*-dev; do
+    devname="$( basename "${i}")"
+    stablename="${devname%-*}"
+    # The file should contain just a shebang line and one line if it
+    # is pointing to dev. Otherwise should be a link.
+    if [ $(cat "${tl_texbin_d}/${stablename}" | wc -l) = "2" ]; then
+      echo "${stablename} was calling dev."
+      if [ ! -e "${tl_stable_bu_d}/${stablename}" ]; then
+        echo "  restoring stable."
+        sudo rm "${tl_texbin_d}/${stablename}"
+        sudo cp -d "${tl_stable_bu_d}/${stablename}" "${tl_texbin_d}/${stablename}"
+
+        \sudo -k
+      else
+        echo "ERROR: the stable backup file does not exist: ${tl_stable_bu_d}/${stablename}"
+      fi
+    else
+      echo "${stablename} is already stable version."
+    fi
+  done
+}
+
+
+function switch-gcc-to ()
+{
+  sudo update-alternatives --set gcc "/usr/bin/gcc-$1"
+  sudo update-alternatives --set g++ "/usr/bin/g++-$1"
+  sudo update-alternatives --set gfortran "/usr/bin/gfortran-$1"
+
+  \sudo -k
+}
+_switch_gcc_to()
+{
+  local cur
+
+  cur=${COMP_WORDS[COMP_CWORD]}
+
+  if [ "$COMP_CWORD" == "1" ]; then
+    gcc_vers="$(ls /usr/bin/gcc-* | grep -o -P '(?<=gcc-)\d+(?=$)')"
+    COMPREPLY=( $( compgen -W '${gcc_vers}' -- $cur ) )
+  fi
+}
+complete -F _switch_gcc_to ${filenames:-} switch-gcc-to
+
+
+function switch-clang-to ()
+{
+  sudo update-alternatives --set clang "/usr/bin/clang-$1"
+  sudo update-alternatives --set clang++ "/usr/bin/clang++-$1"
+  # I don't think Clang has a (built-in) fortran
+
+  \sudo -k
+}
+_switch_clang_to()
+{
+  local cur
+
+  cur=${COMP_WORDS[COMP_CWORD]}
+
+  if [ "$COMP_CWORD" == "1" ]; then
+    clang_vers="$(ls /usr/bin/clang-* | grep -o -P '(?<=clang-)\d+(?=$)')"
+    COMPREPLY=( $( compgen -W '${clang_vers}' -- $cur ) )
+  fi
+}
+complete -F _switch_clang_to ${filenames:-} switch-clang-to
+
+
+function gcc-apt-get-install ()
+{
+  # todo: completion?
+
+  # approximate size taken up by installing:
+  # gcc:      ~423 MB
+  # g++:      ~220 MB
+  # gfortran: ~200 MB
+  #
+  sudo apt-get install \
+  "gcc-$1" \
+  "g++-$1" \
+  "gfortran-$1"
+
+  \sudo -k
+}
+
+
+function clang-apt-get-install ()
+{
+  # don't need to separately install "clang++-$1".
+  # approximate size taken up by installing: # 722 MB
+  sudo apt-get install "clang-$1"
+
+  \sudo -k
+}

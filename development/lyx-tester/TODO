@@ -1,0 +1,25 @@
+lyx-tester:
+- Test again on Amazon EC2. Here is some old commented out code:
+# The Amazon EC2 basic (400 MB of RAM) fails at linking stage if this flag is
+# on when building and LyX will run faster without debug symbols anyway.
+# Alternative:
+#     You could leave this alone and change -DLYX_RELEASE to 'ON'. AWS will
+#     also be able to build in this case. However, I think it's better to have
+#     ASSERTs turned on.
+#sed -i 's/-DLYX_DEBUG=ON/-DLYX_DEBUG=OFF/' lyxbuild >&2 \
+#    || { echo "ERROR: could not replace with sed" >&2; mainRet=1 ;}
+
+- Options:
+  argument for autotests
+  logdir into an option
+  runTests (lyx-tester might want to be used just to install
+        all prereqs and prep for tests or a complete system)
+  numCores
+
+ssh-lyx-tester:
+# We might want to transfer a key in order to test feature branches
+# scp -i "${key}" id_rsa ubuntu@${server}:/home/ubuntu/.ssh/ >/dev/null 2>&1 \
+#     || { echo "ERROR: could not scp the ssh key over." >&2; exit 1; }
+
+mylyxcd:
+# sanity checks: only 1 arg.

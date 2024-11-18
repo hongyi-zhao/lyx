@@ -1,0 +1,7 @@
+These are good ideas when debugging lyx-tester:
+
+run with no parallel
+run with TeX Live .iso
+do not do an apt-get update or dist-upgrade
+try to make it so an internet connection is not needed
+Either run all from ssh or run all manually (remember the bug of not exporting DISPLAY)

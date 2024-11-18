@@ -1,0 +1,780 @@
+#!/usr/bin/env bash
+
+
+# File: lyxbuild
+
+# Run the following command for usage and description:
+# ./lyxbuild --help
+
+
+# Copyright 2013, Scott Kostyshak
+# Copyright 2013, Kornel Benko
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+set -o nounset
+
+function checkTerm() {
+  # check if the column is 0 and if not start a new line (useful bc of the progress bar).
+  # based on code from: http://stackoverflow.com/questions/2575037/how-to-get-the-cursor-position-in-bash
+  exec < /dev/tty
+  oldstty=$(stty -g)
+  stty raw -echo min 0
+  # on my system, the following line can be replaced by the line below it
+  echo -en "\033[6n" > /dev/tty
+  # tput u7 > /dev/tty    # when TERM=xterm (and relatives)
+  IFS=';' read -r -d R -a pos
+  stty $oldstty
+  # change from one-based to zero based so they work with: tput cup $row $col
+  row=$((${pos[0]:2} - 1))    # strip off the esc-[
+  col=$((${pos[1]} - 1))
+  if [ "${col}" = "0" ]; then
+    exit
+  else
+    echo "\n"
+  fi
+}
+
+function ECHOPREFIX() {
+  if [[ "$-" =~ i ]]; then
+    exit
+  else
+    echo -e "$(checkTerm)$( basename "$0" ): "
+  fi
+}
+
+function ERRORPREFIX() {
+  echo "$(ECHOPREFIX)ERROR: "
+}
+
+function WARNINGPREFIX() {
+  echo "$(ECHOPREFIX)WARNING: "
+}
+
+
+ARGS=$( getopt -o "j:ahr:vu:p:q:fogx" -l "jobs:,automake,help,profile:,version,user-dir:,patches-dir:,qt-build-dir:,qt5,patch-old,gcc,enable-export-tests" \
+      -n "$( basename "$0" )" -- "$@" )
+# If bad arguments, exit (getopt will have already written the error to STDERR).
+[ "$?" = "0" ] || exit 1
+
+eval set -- "$ARGS"
+
+automake=0
+help=0
+version=0
+proFile=
+njobs=1
+# clang is default
+# setting --gcc changes clang to 0.
+clang=1
+userUserDir=
+patchesDir=
+qtBuildDir=
+# for cmake:
+qt_version='QT6'
+# for autotools:
+configure_options='--enable-qt6'
+patch_old=0
+# 1 means enable it depending on if we are in a bisect.
+always_enable_export_tests=1
+
+while true
+do
+  case "$1" in
+  -j|--jobs)  njobs="$2"
+      if [[ $2 =~ ^[0-9]+$ ]]; then
+        njobs="$2"
+      else
+        echo "$(ERRORPREFIX)the argument to $1 must be a positive number." >&2
+        exit 1
+      fi
+      shift 2
+      ;;
+  -a|--automake)  automake=1
+      shift 1
+      ;;
+  -f|--qt5)  qt_version='QT5'
+      configure_options='--enable-qt5'
+      shift 1
+      ;;
+  -u|--user-dir)
+      if [ -d "$2" ]; then
+        userUserDir=$( readlink -f "$2" )
+      else
+        echo "$(ERRORPREFIX)the argument to $1 must be a folder that exists." >&2
+        exit 1
+      fi
+      shift 2
+      ;;
+  -g|--gcc)  clang=0
+      shift 1
+      ;;
+  -h|--help)  help=1
+      shift 1
+      ;;
+  -v|--version)  version=1
+      shift 1
+      ;;
+  -p|--patches-dir)
+      if [ -d "$2" ]; then
+        patchesDir=$( readlink -f "$2" )
+      else
+        echo "$(ERRORPREFIX)the argument to $1 must be a folder that exists." >&2
+        exit 1
+      fi
+      shift 2
+      ;;
+  -q|--qt-build-dir)
+      if [ -d "$2" ]; then
+        qtBuildDir=$( readlink -f "$2" )
+      else
+        echo "$(ERRORPREFIX)the argument to $1 must be a folder that exists." >&2
+        exit 1
+      fi
+      if [ ! -d "$2/qtbase/bin" ]; then
+        # simple check that the build directory is valid
+        echo "$(ERRORPREFIX)the argument to $1 must contain the subdirectory qtbase/bin" >&2
+        exit 1
+      fi
+      shift 2
+      ;;
+  -r|--profile)
+      if [ -f "$2" -a ! -w "$2" ]; then
+        echo "$(ERRORPREFIX)the file $2 is not writable" >&2
+        exit 1
+      elif [ ! -w "$( dirname "$2" )" ]; then
+        echo "$(ERRORPREFIX)the directory of $2 is not writable" >&2
+        exit 1
+      else
+        proFile="$( readlink -f "$2" )"
+      fi
+      shift 2
+      ;;
+  -o|--patch-old)  patch_old=1
+      shift 1
+      ;;
+  -x|--enable-export-tests)
+      # TODO: sanity check the possible values of the argument.
+      always_enable_export_tests=1
+      shift 1
+      ;;
+  --)
+      shift 1
+      break;;
+  *)
+      echo -e "$(ERRORPREFIX)the getopt command must be out of sync. Please report this."\\n\
+          "The following flag is not recognized: $1" >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [ "$#" != "0" ]; then
+  echo "$(ERRORPREFIX)the following arguments are not recognized: $@" >&2
+  exit 1
+fi
+
+if [ "${help}" = "1" ]; then
+  echo -e "
+    USAGE
+    lyxbuild [OPTIONS]
+
+    DESCRIPTION
+    lyxbuild builds LyX from a git checkout. CMake (default) or Automake can be
+    used and logs of each step in the build process are stored. A separate user
+    directory is set up in the parent folder. One sensible directory configuration
+    is to have something like ~/lyxbuilds/master/repo. Then, lyxbuild will create
+    ~/lyxbuilds/master/build-logs and ~/lyxbuilds/master/user-dir. To run this
+    LyX build, copy the functions 'mylyx' and 'mylyxcd' into your .bashrc (or
+    source it). You can then enter 'mylyx master' to run this build of the above
+    example. 'mylyx' finds the CMake or Automake binary and runs it with the
+    correct user-dir. 'mylyxcd' changes to the Git repo of the specified build.
+    They come with tab completion.
+
+    OPTIONS
+    -j N, --jobs N              \e[00;36m number of jobs to pass to make. Default is 1.                           \e[00m
+    -a, --automake              \e[00;36m use Automake instead of CMake.                                          \e[00m
+    -c, --clang                 \e[00;36m compile with Ubuntu's default location of clang.                        \e[00m
+    -f, --qt5                   \e[00;36m build with Qt 5.                                                        \e[00m
+    -p DIR, --patches-dir DIR   \e[00;36m path to dir containing patches to apply                                 \e[00m
+    -o, --patch-old             \e[00;36m apply needed patches to build old commits on new systems                \e[00m
+    -q DIR, --qt-build-dir DIR  \e[00;36m path to dir the build of Qt 5 to prefix to PATH                         \e[00m
+    -r FILE, --profile FILE     \e[00;36m path to (new or existing) file to append profiling info.                \e[00m
+    -h, --help                  \e[00;36m display this help output and exit.                                      \e[00m
+    -u DIR, --user-dir DIR      \e[00;36m the user-dir from which to copy.                                        \e[00m
+    -v, --version               \e[00;36m display version and contact info.                                       \e[00m
+"
+  exit 0
+fi
+
+if [ "${version}" = "1" ]; then
+  echo -e "\\nlyxbuild\\nVersion 0.3dev\\nAuthors: Scott Kostyshak, Kornel Benko\\nContact: skostysh@princeton.edu"
+  exit 0
+fi
+
+# automake's analog to CMake's -DLYX_STDLIB_DEBUG=ON
+configure_options="${configure_options} --enable-stdlib-debug=yes"
+
+if [ -n "${qtBuildDir}" ]; then
+  # Should I remove the qt5-stable PATH? I do not want it to be found if something is not found in
+  # qt5-dev (I would prefer to force an error). That would be invasive and fragile though. Maybe
+  # better to check that all of qt5-dev is found.
+  echo "export PATH=${qtBuildDir}/qtbase/bin:${PATH}"
+  export PATH="${qtBuildDir}/qtbase/bin:${PATH}"
+  if [ "${automake}" = "1" ]; then
+    export MYQTDIR="${qtBuildDir}/qtbase"
+    configure_options="${configure_options} --with-qt-dir=$MYQTDIR"
+  fi
+fi
+
+# lyxbuild should only be run in the LyX source directory
+# Otherwise, if it is accidentally run in a different dir with Git, "git clean"
+# could remove files unexpectedly.
+if [ ! -f 'lyx.1in' ]; then
+  echo "$(ERRORPREFIX)Root of LyX source directory not detected (no file 'lyx.1in')" >&2
+  exit 1
+fi
+
+# if not in a git directory, this will fail.
+echo "$(ECHOPREFIX)running git clean..."
+git clean -xdf > /dev/null 2>&1 \
+  || { echo "$(ERRORPREFIX)failed to run git clean. The git directory is required for now." >&2; exit 1; }
+
+if [ -n "${patchesDir}" ]; then
+  echo "$(ECHOPREFIX)applying patches..."
+  for patch in ${patchesDir}/*; do
+    # gitHash="$(head -n 1 "${patch}" | sed 's/From \([^ ]*\).*/\1/')"
+    # TODO checking subject line is weak. User might amend the patch it locally and not copy to the patches folder. On the other hand, this behavior could be desired.
+    subjectLine=$(head -n 4 "${patch}" | tail -n 1 | sed 's/Subject: \[PATCH[^\]*\] //')
+    # TODO change for 2.0.x...
+    if git log origin/master..master | grep "${subjectLine}"; then
+      echo "$(ECHOPREFIX)patch already applied, skipping ${patch}."
+    else
+      git am "${patch}" || { echo "$(ERRORPREFIX)failed to apply $(basename "${patch}"). Running git am --abort and exiting." >&2; git am --abort; exit 1; }
+    fi
+  done
+fi
+
+
+# https://stackoverflow.com/questions/70861523/check-if-git-bisect-is-active-in-a-script-in-a-robist-stable-way
+if git bisect log > /dev/null 2>&1; then
+  echo "$(ECHOPREFIX)detected git bisect in progress"
+  bisect=1
+else
+  bisect=0
+fi
+
+
+if [ "${bisect}" = 1 ]; then
+  # might as well just set automatically so I don't have to remember.
+  patch_old=1
+fi
+
+
+# It is empty if not on a named branch.
+# (https://stackoverflow.com/questions/6245570/how-do-i-get-the-current-branch-name-in-git)
+current_branch="$( git branch --show-current )"
+
+if [ "${current_branch}" = "master" ]; then
+  # copied from lyxrm_final_stages
+  if grep -R '\\origin unavailable' lib/doc lib/examples lib/templates; then
+    echo "ERROR: found instance(s) of \\origin unavailable"
+    echo "need to clean these up for Windows build. See the following for more information:"
+    echo "https://www.mail-archive.com/search?l=mid&q=ndao0s%24vvb%242%40ger.gmane.org"
+    # e.g., Message-ID:<20230105150956.b4a2vhy2lefb7sek@gary>
+    # (e.g., koma-book.bib is not found in the KOMA-Script_Book.lyx tests.
+    echo "We also use \\origin for ctests to figure out where to copy file dependencies from."
+    exit 1
+  fi
+fi
+
+
+if [ "${patch_old}" = "1" ]; then
+  # e.g., on 2.3.0 it will correctly compile with Qt5 (we did not have support
+  # for Qt6 at this point).
+  #
+  # "AUTO" is a reasonable choice. But sometimes want more control
+  # (e.g., a certain commit doesn't compile with the AUTO's choice).
+  qt_version="QT5"
+  echo "$(ECHOPREFIX)Compiling with Qt ${qt_version}..."
+
+  if [ "${bisect}" = "1" ]; then
+    hash_orig="$( git rev-parse HEAD )"
+  fi
+
+  echo "$(ECHOPREFIX)cherry-picking potentially needed fixes for compiling this older commit..."
+
+  # TODO: make an array of commits and loop through them. If they are not an
+  # ancestor, apply. However, need to give multiple commits for branches (e.g.,
+  # 2.3.x, 2.4.x, master)
+
+  cmake_major="$( cmake -E capabilities | jq .version.major )"
+  cmake_minor="$( cmake -E capabilities | jq .version.minor )"
+  # Criteria: CMake version 3.18 or greater (i.e., Ubuntu 21.04).
+  # This fix is not needed for CMake 3.13, but not sure for 3.14 <= x < 3.18.
+  if [ "${cmake_major}" -ge "3" ] && [ "${cmake_minor}" -ge "18" ] &&
+     # for now, enable only for 2.3.1 and before AND before about same time on master.
+     # This fix can be extended.
+     ! git merge-base --is-ancestor 2.3.1 HEAD &&
+     ! git merge-base --is-ancestor 305d449a HEAD; then
+    echo "applying commits needed for newer CMake versions"
+    # not sure all of these are needed.
+    # --keep-redundant-commits causes "git cherry pick" to succeed even if
+    # the cherry-pick leads to an empty change (otherwise non-zero exit).
+    if ! git merge-base --is-ancestor "1a440494" HEAD; then
+      git cherry-pick -x --keep-redundant-commits --strategy=recursive -X theirs 1a440494
+    fi
+    if ! git merge-base --is-ancestor "889d10cd" HEAD; then
+      git cherry-pick -x --keep-redundant-commits --strategy=recursive -X theirs 889d10cd
+    fi
+    if ! git merge-base --is-ancestor "80b3adc4" HEAD; then
+      git cherry-pick -x --keep-redundant-commits --strategy=recursive -X theirs 80b3adc4
+    fi
+    git checkout 2.3.6 CMakeLists.txt &&
+    git commit -m "CMakeLists.txt from 2.3.6" &&
+    git cherry-pick -x --keep-redundant-commits 7b44280da4fc015a4a930c311cc6073cebacf738
+  fi
+
+
+  if ! git merge-base --is-ancestor "51cc8aa9" HEAD; then
+    git cherry-pick -x --keep-redundant-commits --strategy=recursive -X theirs 51cc8aa9
+  fi
+  if ! git merge-base --is-ancestor "1a440494" HEAD; then
+    git cherry-pick -x --keep-redundant-commits 1a440494
+  fi
+
+  # TODO: loop!
+  if ! git merge-base --is-ancestor "b73ab025" HEAD; then
+    # TODO: add "-X theirs" to all (and centralize options?)
+    # this particular instance of "-X theirs" is needed for b6cb557.
+    git cherry-pick --keep-redundant-commits -x -X theirs "b73ab025"
+  fi
+
+  if ! git merge-base --is-ancestor "1ef1808c" HEAD; then
+    git cherry-pick --keep-redundant-commits -x -X theirs "1ef1808c"
+  fi
+
+  if ! git merge-base --is-ancestor "9649e80c" HEAD; then
+    git cherry-pick --keep-redundant-commits -x -X theirs "9649e80c"
+  fi
+
+  if ! git merge-base --is-ancestor "9715d350" HEAD; then
+    git cherry-pick --keep-redundant-commits -x -X theirs "9715d350"
+  fi
+
+  if ! git merge-base --is-ancestor  "8c4d6bbb" HEAD; then
+    git cherry-pick --keep-redundant-commits -x -X theirs "8c4d6bbb"
+  fi
+
+  if ! git merge-base --is-ancestor  "6874c86c" HEAD; then
+    git cherry-pick --keep-redundant-commits -x -X theirs "6874c86c"
+  fi
+
+  # EXPIRE:
+  # The following is not strictly (because we do not run the cmake dev flags if
+  # --patch-old) necessary and it sync not apply cleanly in many cases.
+  #if ! git merge-base --is-ancestor  "8d79860e" HEAD; then
+  #  git cherry-pick --keep-redundant-commits -x -X theirs "8d79860e"
+  #fi
+
+  # if 2.3.0 < HEAD < 2.3.x, ...
+  if git merge-base --is-ancestor 2.3.0 HEAD &&
+     ! git merge-base --is-ancestor 2.3.x HEAD; then
+       # Needed because of Python fixes.
+       echo "checking out 2.3.x's configure and lyx2lyx scripts"
+       git checkout origin/2.3.x "lib/configure.py" "lib/lyx2lyx/" "lib/scripts/layout2layout.py"
+  fi
+
+  # Newer compiler versions are more strict
+  WERROR=0
+  # LyX 2.2.0 fails to compile on Ubuntu 19.04 with CXX11. The warning
+  # starts with the following:
+  #   undefined reference to `boost::re_detail_106000::perl_matcher...
+  # (An alternative would be to backport some commits)
+  USE_CXX11="OFF"
+
+else
+  USE_CXX11="ON"
+  # enable WERROR after some fixes on master.
+  # 2.3.x fails with WERROR=1 for example.
+  #
+  # TODO: I'm not actually sure which commit fixed it for Ubuntu 21.10.
+  # In the future, need to condition on Qt version and on gcc version.
+  # We really only want to turn this on anyway when compiling
+  # master or when bisecting when the warning first started occurring.
+  warning_fix_commit="874ae71f"
+  if git merge-base --is-ancestor "${warning_fix_commit}" HEAD; then
+    WERROR=1
+  else
+    WERROR=0
+  fi
+fi
+
+
+echo "$(ECHOPREFIX)removing previous build logs..."
+[ -d ../build-logs ] && rm -rf ../build-logs
+mkdir ../build-logs
+
+# Start timing here for profiling.
+begin_chain="$(date +%s)"
+gitRepoDIR="$( readlink -f ./ )"
+
+# We want to do this for autotools also so mylyx() doesn't run an old cmake build rather than a new autotools build.
+[ -d ../CMakeBuild ] && { echo "$(ECHOPREFIX)removing previous CMake build" && rm -rf ../CMakeBuild ;}
+
+echo "$(ECHOPREFIX)updating layouts in LyX's lib..."
+python3 development/tools/updatelayouts.py
+
+
+if [ "${clang}" = "1" ]; then
+  export CC="clang"
+  # TODO: add option to build with libc++ :
+  # export CXX="clang++ -stdlib=libc++"
+  export CXX="clang++"
+else
+  # didn't use to specify this "else" because GCC
+  # was default, but the system default might not
+  # be GCC so it's best to be explicit.
+  export CC="gcc"
+  export CXX="g++"
+fi
+
+
+if [ "${automake}" = "1" ]; then
+
+  if [ "${WERROR}" = "1" ]; then
+    # see "Some influential environment variables" in ./configure --help
+    export CXXFLAGS="-Werror"
+  fi
+
+  echo "$(ECHOPREFIX)running autogen..."
+  ./autogen.sh > ../build-logs/autogen 2>&1 \
+    || { echo "$(ERRORPREFIX)running autogen.sh" >&2; exit 1; }
+
+  echo "$(ECHOPREFIX)running configure..."
+  # echo "configure options are: ${configure_options}"
+  ./configure ${configure_options} > ../build-logs/configure 2>&1 \
+    || { echo "$(ERRORPREFIX)running configure" >&2; exit 1; }
+else
+  # this check needs to be done before cd'ing to build dir (or need to cd back)
+  # only compile with Enchant on Ubuntu >= 20.04 if we have the fix that
+  # supports Enchant 2
+  ENCHANT_FLAG="ON"
+  ubuntu_ver="$( lsb_release -sr )"
+  ubuntu_ver_yr="${ubuntu_ver:0:2}"
+  if [ "${ubuntu_ver_yr}" -ge "20" ]; then
+    enchant_commit="f1694db49681451f9b947f25238f8032769799f8"
+    if ! git merge-base --is-ancestor "${enchant_commit}" HEAD; then
+      echo "CMake flags: Not compiling with Enchant."
+      ENCHANT_FLAG="OFF"
+    fi
+  fi
+
+  HUNSPELL_FLAG="ON"
+  # could condition on CMake version.
+  # This one cherry-pick's clean, but we might also need to cherry-pick the one
+  # this one is based on and that does not cherry-pick clean.
+  hunspell_commit="cf980435b12e697b90508924cf0c82dd3c1c0b36"
+  if ! git merge-base --is-ancestor "${hunspell_commit}" HEAD; then
+      echo "CMake flags: Not compiling with Hunspell."
+    HUNSPELL_FLAG="OFF"
+  fi
+
+  # this commit is not the one that fixed it, it is just known to work.
+  if git merge-base --is-ancestor "3aab9ad2" HEAD; then
+    # -Werror=dev turns CMake warnings into errors, but not all warnings. For
+    # example, cannot turn warnings about unused flags into errors:
+    # https://stackoverflow.com/questions/42684572/how-to-make-cmake-exit-non-0-in-response-to-warning-manually-specified-variable
+    #
+    # -Wdev has the following documentation:
+    # Enable developer warnings.
+    # Enable warnings that are meant for the author of the CMakeLists.txt files.
+    #
+    cmake_Werror_flags='-Wdev -Werror=dev'
+  else
+    cmake_Werror_flags='-Wno-dev -Wno-error=dev'
+  fi
+  # for --patch-old, just ignore warnings:
+  if [ "${patch_old}" = "1" ]; then
+    cmake_Werror_flags='-Wno-dev -Wno-error=dev'
+  fi
+
+
+  echo "$(ECHOPREFIX)creating \"CMakeBuild\" dir and running cmake..."
+  mkdir ../CMakeBuild
+  cd ../CMakeBuild
+
+
+  if [ "${WERROR}" = "1" ]; then
+    # should be a semi-colon separated list (if more than one option).
+    CPPFLAGS="-Werror"
+    if [ "${clang}" = "0" ]; then
+      # (https://stackoverflow.com/questions/5188267/checking-the-gcc-version-in-a-makefile)
+      # (https://stackoverflow.com/a/17947005)
+      gcc_version="$( gcc -dumpfullversion -dumpversion | sed -e 's/\.\([0-9][0-9]\)/\1/g' -e 's/\.\([0-9]\)/0\1/g' -e 's/^[0-9]\{3,4\}$/&00/')"
+      if [ "${gcc_version}" -ge "130000" ]; then
+        # turn all warnings into errors except for one:
+        #
+        # 'dangling-reference' is starting with GCC 13.
+        # In LyX, we get it in a few places and are not sure if they are
+        # false-positives, or if it's worth it to fix them.
+        CPPFLAGS+=";-Wno-error=dangling-reference"
+      fi
+    fi
+  else
+    CPPFLAGS=""
+  fi
+  #
+  # Should be a semi-colon separated list (if more than one option).
+  # The following naive Bash append works well even if CPPFLAGS is empty,
+  # i.e., ";-O3" is processed well.
+  CPPFLAGS_FAST="${CPPFLAGS};-O3;-march=native"
+
+  if [ "${always_enable_export_tests}" = "1" ]; then
+    ctest_flags="ON"
+  else
+    if [ "${bisect}" = "1" ]; then
+      # This flag just controls whether cmake configures the tests,
+      # which can take e.g. a minute for the export tests.
+      # This flag does not control whether the tests are actually run.
+      ctest_flags="OFF"
+    else
+      ctest_flags="ON"
+    fi
+  fi
+
+  cmake_flags=(
+    # TODO what about /usr/local/git_branch ?
+    -DCMAKE_INSTALL_PREFIX=/usr/local
+    -DLYX_DEBUG=ON -DLYX_RELEASE=OFF -DLYX_CPACK=ON
+    # set to OFF so binary now has name "lyx" instead of e.g. "lyx2.3".
+    # I like this so that if I install, all my scripts can just call "lyx"
+    # todo: but might be easy to make a separate 'lyx' binary that just
+    # points to one lyx2.3 or other.
+    -DLYX_PROGRAM_SUFFIX=OFF
+    -DLYX_LOCALVERSIONING=ON
+    # note, these all depend on the option -DLYX_CPACK=ON
+    # (otherwise unrecognized)
+    -DCPACK_BINARY_DEB:BOOL=ON
+    # requires "rpmbuild" binary from Ubuntu "rpm" package.
+    -DCPACK_BINARY_RPM:BOOL=OFF
+    -DCPACK_BINARY_NSIS:BOOL=OFF -DCPACK_BINARY_STGZ:BOOL=OFF
+    # set to ON for "make package" to create a tar file (of the *binaries*)
+    # (not sure if useful)
+    -DCPACK_BINARY_TGZ:BOOL=OFF
+    -DCPACK_BINARY_TBZ2:BOOL=OFF
+    -DCPACK_BINARY_TZ:BOOL=OFF
+    # These control behavior of "make package_source"
+    -DCPACK_SOURCE_TGZ:BOOL=ON
+    -DCPACK_SOURCE_TBZ2:BOOL=OFF
+    -DCPACK_SOURCE_TZ:BOOL=OFF
+    -DCPACK_SOURCE_ZIP:BOOL=OFF -DLYX_EXTERNAL_BOOST=OFF
+    -DLYX_HUNSPELL=${HUNSPELL_FLAG}
+    # if LYX_EXTERNAL_HUNSPELL=ON and LYX_DEBUG_GLIBC=ON LyX will crash when
+    # correcting a word with hunspell as spellchecker.
+    # See d9e0a842 and bda9e38a.
+    # Note that if we mistakenly turn both on, CMake catches it during the
+    # 'cmake' command.
+    # TODO: Before Ubuntu 21.10, I would set EXTERNAL_HUNSPELL to OFF
+    # and STDLIB_DEBUG=OFF to ON. This now causes LyX to crash when
+    # correcting a word.
+    -DLYX_EXTERNAL_HUNSPELL=${HUNSPELL_FLAG}
+    -DLYX_ENCHANT=${ENCHANT_FLAG}
+    -DLYX_EXTERNAL_Z=ON
+    -DLYX_EXTERNAL_DTL=ON
+    -DLYX_EXTERNAL_ICONV=ON
+    -DLYX_NLS=ON
+    -DLYX_ENABLE_URLTESTS=OFF
+    -DLYX_ENABLE_EXPORT_TESTS=${ctest_flags}
+    -DLYX_ENABLE_KEYTESTS=OFF
+    -DLYX_PROFILE=ON
+    -DLYX_USE_QT=${qt_version} -DLYX_CXX_FLAGS_EXTRA="${CPPFLAGS}"
+    # Compile with STL debug code.
+    # For one particular use case, see:
+    #   https://www.lyx.org/trac/ticket/11204
+    # see https://www.lyx.org/trac/ticket/11777#comment:10
+    #  -DLYX_DEBUG_GLIBC=ON
+    # see d9e0a842
+    # STDLIB_DEBUG=ON is possibly helpful for getting better backtraces
+    #   (https://www.lyx.org/trac/ticket/12226#comment:28)
+    -DLYX_STDLIB_DEBUG=OFF
+    -DLYX_DEBUG_GLIBC=OFF
+    -DLYX_DEBUG_GLIBC_PEDANTIC=OFF
+    #-DLYX_DEBUG_SANITIZE="ADDRESS"
+    # TODO: enable only for GCC? Clang currently gives output that
+    #       I'm not sure how to fix and not sure if it's a real issue.
+    #-DLYX_DEBUG_SANITIZE="UNSPECIFIED"
+  )
+
+  cmake_flags_fast=(
+    -DCMAKE_INSTALL_PREFIX=/usr/local
+    -DLYX_DEBUG=OFF -DLYX_RELEASE=ON -DLYX_CPACK=OFF
+    -DLYX_PROGRAM_SUFFIX=OFF
+    -DLYX_LOCALVERSIONING=ON
+    -DLYX_EXTERNAL_BOOST=OFF
+    -DLYX_HUNSPELL=${HUNSPELL_FLAG}
+    -DLYX_EXTERNAL_HUNSPELL=${HUNSPELL_FLAG}
+    -DLYX_ENCHANT=${ENCHANT_FLAG}
+    -DLYX_EXTERNAL_Z=ON
+    -DLYX_EXTERNAL_DTL=ON
+    -DLYX_EXTERNAL_ICONV=ON
+    -DLYX_NLS=ON
+    -DLYX_ENABLE_URLTESTS=OFF
+    -DLYX_ENABLE_EXPORT_TESTS=${ctest_flags}
+    -DLYX_ENABLE_KEYTESTS=OFF
+    -DLYX_PROFILE=OFF
+    -DLYX_USE_QT=${qt_version} -DLYX_CXX_FLAGS_EXTRA="${CPPFLAGS_FAST}"
+    -DLYX_STDLIB_DEBUG=OFF
+    -DLYX_DEBUG_GLIBC=OFF
+    -DLYX_DEBUG_GLIBC_PEDANTIC=OFF
+  )
+
+  cmake ${cmake_Werror_flags} "${gitRepoDIR}/" ${cmake_flags[@]} > ../build-logs/cmake 2>&1 \
+    || { echo "$(ERRORPREFIX)running cmake" >&2; exit 1; }
+fi
+
+echo "$(ECHOPREFIX)running make..."
+echo "$(ECHOPREFIX)building with ${njobs} core(s)" > ../build-logs/make
+make -j${njobs} >> ../build-logs/make 2>&1
+make_ret=$?
+if [ "${make_ret}" != 0 ]; then
+  echo "$(ERRORPREFIX)running make" >&2
+  cd "${gitRepoDIR}"
+  if [ "${bisect}" = "1" ] && [ "${patch_old}" = "1" ]; then
+    # The following is helpful when we are bisecting compilation success.
+    # todo: but it might be annoying when we are not, because we might want to
+    #       cd and then manually run 'make' to see the error, but because of
+    #       this it could cause a different error.
+    #
+    # restore so that "git bisect good/bad" works.
+    echo "$(ECHOPREFIX)reseting and checking out so that good/bad works..."
+    git reset --hard
+    git checkout "${hash_orig}"
+  fi
+  exit 1
+fi
+end_chain=$(date +%s)
+if [ "${patch_old}" != "1" ]; then
+  # extra checks in make log.
+  #
+  # Check for warnings from msgmerge (see e.g., the LyX commit 46aedb4e).
+  # msgmerge does not seem to have an option to convert warnings to errors
+  # (--strict does not do it). We could instead propose to write a wrapper script
+  # for msgmerge that checks for this output (i.e., upstream this check to theLyX
+  # build scripts).
+  if grep "warning: internationalized messages should not contain" ../build-logs/make; then
+    echo "$(ERRORPREFIX)invalid string(s) in po file(s). See grepped lines just above." >&2
+    exit 1
+  fi
+fi
+if [ "${automake}" = "0" ]; then
+  # Can be any test. We have to run some test though, so that the ctest user
+  # directory is configured so that prefTest (see below) can be run.
+  ctest -R "examples/Welcome_pdf2"
+  # Enable needauth for knitr, Sweave, gnuplot, etc for ctests.
+  # This enables it only for the ctest user directory.
+  ./prefTest.pl test
+fi
+
+DIFF=$(( end_chain - begin_chain ))
+cd "${gitRepoDIR}"
+
+compname=$( uname -n )
+commitinfo=$( git describe )
+
+MASTER_DIR=$( readlink -f ../ )
+LYX_USER_DIR="${MASTER_DIR}/user-dir"
+
+[ -d "${LYX_USER_DIR}" ] && rm -r "${LYX_USER_DIR}"
+mkdir "${LYX_USER_DIR}"
+
+if [ "${automake}" = "1" ]; then
+  echo "$(ECHOPREFIX)checking out 'po/'..."
+  git checkout "po/" ||
+    echo "$(ERRORPREFIX)checkout of 'po/' failed" >&2
+fi
+
+if [ -n "${proFile}" ]; then
+  if [ -f "${proFile}" ]; then
+    echo "${compname} ${commitinfo} ${njobs} ${DIFF} ${automake}" >> "${proFile}"
+  else
+    echo "compname commitinfo njobs DIFF automake" > "${proFile}"
+    echo "${compname} ${commitinfo} ${njobs} ${DIFF} ${automake}" >> "${proFile}"
+  fi
+fi
+
+cd "${LYX_USER_DIR}"
+if [ -n "${userUserDir}" ]; then
+  echo "$(ECHOPREFIX)copying user-dir..."
+  cp -r "${userUserDir}"/* ./
+  # LyX does not currently allow ~ in session files,
+  # so need to substitute the user name in.
+  sed -i "s/\/home\/[^/]*/\/home\/${USER}/g" session
+  #
+  # resolve lnx files
+  # Because many services (like Dropbox) do not support links,
+  # can use a manually-implemented link. A .lnx file is just
+  # a plain-text file with one line that is the path to
+  # a different file.
+  # Here, we convert that to an actual symbolic link.
+  # TODO: allow to use .lnx files besides just layouts ? e.g., preferences?
+  if [ -d "layouts" ]; then
+    shopt -s nullglob
+    for lnx in layouts/*.lnx; do
+      sed -i "s/~/\/home\/${USER}/g" "${lnx}"
+      pathtofile="$( cat "${lnx}" )"
+      if [ -e "${pathtofile}" ]; then
+        ln -s "${pathtofile}" "${lnx%.*}"
+      fi
+    done
+    shopt -u nullglob
+  fi
+fi
+
+# Just for convenience (of not having to configure when starting LyX and of having preferences)
+echo "$(ECHOPREFIX)reconfiguring..."
+# LyX did not have perfect Python3 support for a while, so we use Python2 for
+# older commits.
+# This commit is conservative (could make it older).
+# The actual commit has nothing to do with Python3, we just use it
+# since it has been tested to work with Python3.
+cd "${gitRepoDIR}"
+python3_commit="af7ffc7dfa00297e58d332d57f4ead76265cdda3"
+if git merge-base --is-ancestor "${python3_commit}" HEAD; then
+  PYTHON_EXEC="python3"
+else
+  PYTHON_EXEC="python2"
+fi
+# TODO: expire the above. "python2" is no longer available Ubuntu releases
+#       starting with 23.04.
+PYTHON_EXEC="python3"
+
+cd "${LYX_USER_DIR}"
+${PYTHON_EXEC} -tt "${gitRepoDIR}/lib/configure.py" > ../build-logs/reconfigure 2>&1 \
+  || { echo "$(WARNINGPREFIX)reconfigure failed." >&2; exit 1; }
+
+LYX_USER_DIR_NOAUTH="${LYX_USER_DIR}-noauth"
+[ -d "${LYX_USER_DIR_NOAUTH}" ] && rm -r "${LYX_USER_DIR_NOAUTH}"
+cp -r "${LYX_USER_DIR}" "${LYX_USER_DIR_NOAUTH}"
+echo "\\use_converter_needauth false" >> "${LYX_USER_DIR_NOAUTH}"/preferences
+
+cd "${gitRepoDIR}"
+if [ "${bisect}" = "1" ] && [ "${patch_old}" = "1" ]; then
+  # restore so that "git bisect good/bad" works.
+  echo "$(ECHOPREFIX)checking out original bisect commit, before patches..."
+  git reset --hard
+  git checkout "${hash_orig}"
+fi
+echo "$(ECHOPREFIX)done."

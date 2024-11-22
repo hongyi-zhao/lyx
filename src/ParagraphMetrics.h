@@ -41,7 +41,7 @@ public:
 	///
 	Row const & getRow(pos_type pos, bool boundary) const;
 	///
-	size_t pos2row(pos_type pos) const;
+	size_t getRowIndex(pos_type pos, bool boundary) const;
 
 	/// TextMetrics::redoParagraph updates this
 	Dimension const & dim() const { return dim_; }

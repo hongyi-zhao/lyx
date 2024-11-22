@@ -3429,20 +3429,10 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 
 	LBUFERR(!pm.rows().empty());
 	y -= pm.rows()[0].ascent();
-#if 1
-	// FIXME: document this mess
-	size_t rend;
-	if (sl.pos() > 0 && dit.depth() == 1) {
-		int pos = sl.pos();
-		if (pos && dit.boundary())
-			--pos;
-//		lyxerr << "coordOffset: boundary:" << dit.boundary() << " depth:" << dit.depth() << " pos:" << pos << " sl.pos:" << sl.pos() << endl;
-		rend = pm.pos2row(pos);
-	} else
-		rend = pm.pos2row(sl.pos());
-#else
-	size_t rend = pm.pos2row(sl.pos());
-#endif
+
+	// Take boundary into account if cursor is in main text.
+	bool const has_boundary = dit.depth() == 1 && dit.boundary();
+	size_t const rend = pm.getRowIndex(sl.pos(), has_boundary);
 	for (size_t rit = 0; rit != rend; ++rit)
 		y += pm.rows()[rit].height();
 	y += pm.rows()[rend].ascent();
@@ -3450,13 +3440,12 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 	TextMetrics const & bottom_tm = textMetrics(dit.bottom().text());
 
 	// Make relative position from the nested inset now bufferview absolute.
-	int xx = bottom_tm.cursorX(dit.bottom(), dit.boundary() && dit.depth() == 1);
+	int xx = bottom_tm.cursorX(dit.bottom(), has_boundary);
 	x += xx;
 
 	// In the RTL case place the nested inset at the left of the cursor in
 	// the outer paragraph
-	bool boundary_1 = dit.boundary() && 1 == dit.depth();
-	bool rtl = bottom_tm.isRTL(dit.bottom(), boundary_1);
+	bool rtl = bottom_tm.isRTL(dit.bottom(), has_boundary);
 	if (rtl)
 		x -= lastw;
 

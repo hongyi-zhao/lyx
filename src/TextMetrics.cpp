@@ -1762,13 +1762,10 @@ int TextMetrics::cursorY(CursorSlice const & sl, bool boundary) const
 
 	int h = 0;
 	h -= parMetrics(0).rows()[0].ascent();
-	for (pit_type pit = 0; pit < sl.pit(); ++pit) {
+	for (pit_type pit = 0; pit < sl.pit(); ++pit)
 		h += parMetrics(pit).height();
-	}
-	int pos = sl.pos();
-	if (pos && boundary)
-		--pos;
-	size_t const rend = pm.pos2row(pos);
+
+	size_t const rend = pm.getRowIndex(sl.pos(), boundary);
 	for (size_t rit = 0; rit != rend; ++rit)
 		h += pm.rows()[rit].height();
 	h += pm.rows()[rend].ascent();

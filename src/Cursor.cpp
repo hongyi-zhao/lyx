@@ -1412,11 +1412,7 @@ bool Cursor::atFirstOrLastRow(bool up)
 	TextMetrics const & tm = bv_->textMetrics(text());
 	ParagraphMetrics const & pm = tm.parMetrics(pit());
 
-	int row;
-	if (pos() && boundary())
-		row = pm.pos2row(pos() - 1);
-	else
-		row = pm.pos2row(pos());
+	int const row = pm.getRowIndex(pos(), boundary());
 
 	if (up) {
 		if (pit() == 0 && row == 0)
@@ -2196,11 +2192,7 @@ bool Cursor::upDownInText(bool up)
 	// first get the current line
 	TextMetrics & tm = bv_->textMetrics(text());
 	ParagraphMetrics const & pm = tm.parMetrics(pit());
-	int row;
-	if (pos() && boundary())
-		row = pm.pos2row(pos() - 1);
-	else
-		row = pm.pos2row(pos());
+	int const row = pm.getRowIndex(pos(), boundary());
 
 	if (atFirstOrLastRow(up)) {
 		// Is there a place for the cursor to go ? If yes, we

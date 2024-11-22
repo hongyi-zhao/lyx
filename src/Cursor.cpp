@@ -1288,7 +1288,9 @@ bool Cursor::posVisToNewRow(bool movingLeft)
 	// if moving left in an LTR paragraph or moving right in an
 	// RTL one, move to previous row
 	if (par_is_LTR == movingLeft) {
-		if (row.pos() == 0) { // we're at first row in paragraph
+		if (row.start_boundary())
+			boundary(true);
+		else if (row.pos() == 0) { // we're at first row in paragraph
 			if (pit() == 0) // no previous paragraph! don't move
 				return false;
 			// move to last pos in previous par

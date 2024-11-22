@@ -65,7 +65,7 @@ public:
 		return docstring();
 	}
 	///
-	int rowFlags() const override { return BreakAfter | Flush; }
+	int rowFlags() const override { return BreakAfter | Flush | NoEndBoundary; }
 	///
 	bool nextnoindent() const { return params_.kind == InsetSeparatorParams::PLAIN; }
 private:

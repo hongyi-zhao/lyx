@@ -525,9 +525,6 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	*/
 	int const bottom_display_margin = mi.base.bv->zoomedPixels(6);
 	int top_display_margin = bottom_display_margin;
-	// at start of paragraph, add an empty line
-	if (mi.vmode)
-		top_display_margin += theFontMetrics(mi.base.font).maxHeight() + 2;
 
 	int const ind = indent(*mi.base.bv);
 	mi.extrawidth = ind;
@@ -1029,9 +1026,9 @@ int InsetMathHull::rowFlags() const
 	case hullMultline:
 	case hullGather:
 		if (buffer().params().is_math_indent)
-			return Display | AlignLeft;
+			return AlwaysBreakBefore | Display | AlignLeft;
 		else
-			return Display;
+			return AlwaysBreakBefore | Display;
 	}
 	// avoid warning
 	return Display;

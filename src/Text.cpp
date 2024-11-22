@@ -3054,29 +3054,16 @@ bool Text::cursorBackward(Cursor & cur)
 	// Tell BufferView to test for FitCursor in any case!
 	cur.screenUpdateFlags(Update::FitCursor);
 
+	// if on right side of a row boundary (at row start), skip it,
+	// i.e. set boundary to true, i.e. go only logically left
+	if (!cur.boundary()
+	     && cur.textRow().pos() == cur.pos()
+	     && cur.textRow().start_boundary()) {
+		return setCursor(cur, cur.pit(), cur.pos(), true, true);
+	}
+
 	// not at paragraph start?
 	if (cur.pos() > 0) {
-		// if on right side of boundary (i.e. not at paragraph end, but line end)
-		// -> skip it, i.e. set boundary to true, i.e. go only logically left
-		// there are some exceptions to ignore this: lineseps, newlines, spaces
-#if 0
-		// some effectless debug code to see the values in the debugger
-		bool bound = cur.boundary();
-		int rowpos = cur.textRow().pos();
-		int pos = cur.pos();
-		bool sep = cur.paragraph().isSeparator(cur.pos() - 1);
-		bool newline = cur.paragraph().isNewline(cur.pos() - 1);
-		bool linesep = cur.paragraph().isLineSeparator(cur.pos() - 1);
-#endif
-		if (!cur.boundary() &&
-				cur.textRow().pos() == cur.pos() &&
-				!cur.paragraph().isLineSeparator(cur.pos() - 1) &&
-				!cur.paragraph().isNewline(cur.pos() - 1) &&
-				!cur.paragraph().isEnvSeparator(cur.pos() - 1) &&
-				!cur.paragraph().isSeparator(cur.pos() - 1)) {
-			return setCursor(cur, cur.pit(), cur.pos(), true, true);
-		}
-
 		// go left and try to enter inset
 		if (checkAndActivateInset(cur, false))
 			return false;
@@ -3143,33 +3130,14 @@ bool Text::cursorForward(Cursor & cur)
 
 		// next position is left of boundary,
 		// but go to next line for special cases like space, newline, linesep
-#if 0
-		// some effectless debug code to see the values in the debugger
-		int endpos = cur.textRow().endpos();
-		int lastpos = cur.lastpos();
-		int pos = cur.pos();
-		bool linesep = cur.paragraph().isLineSeparator(cur.pos());
-		bool newline = cur.paragraph().isNewline(cur.pos());
-		bool sep = cur.paragraph().isSeparator(cur.pos());
-		if (cur.pos() != cur.lastpos()) {
-			bool linesep2 = cur.paragraph().isLineSeparator(cur.pos()+1);
-			bool newline2 = cur.paragraph().isNewline(cur.pos()+1);
-			bool sep2 = cur.paragraph().isSeparator(cur.pos()+1);
-		}
-#endif
 		if (cur.textRow().endpos() == cur.pos() + 1) {
 			if (cur.paragraph().isEnvSeparator(cur.pos()) &&
 			    cur.pos() + 1 == cur.lastpos() &&
 			    cur.pit() != cur.lastpit()) {
 				// move to next paragraph
 				return setCursor(cur, cur.pit() + 1, 0, true, false);
-			} else if (cur.textRow().endpos() != cur.lastpos() &&
-				   !cur.paragraph().isNewline(cur.pos()) &&
-				   !cur.paragraph().isEnvSeparator(cur.pos()) &&
-				   !cur.paragraph().isLineSeparator(cur.pos()) &&
-				   !cur.paragraph().isSeparator(cur.pos())) {
+			} else if (cur.textRow().end_boundary())
 				return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
-			}
 		}
 
 		// in front of RTL boundary? Stay on this side of the boundary because:

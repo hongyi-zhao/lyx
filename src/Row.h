@@ -212,6 +212,10 @@ public:
 	///
 	pos_type endpos() const { return end_; }
 	///
+	void start_boundary(bool b) { start_boundary_ = b; }
+	///
+	bool start_boundary() const { return start_boundary_; }
+	///
 	void end_boundary(bool b) { end_boundary_ = b; }
 	///
 	bool end_boundary() const { return end_boundary_; }
@@ -373,6 +377,8 @@ private:
 	pos_type pos_ = 0;
 	/// one behind last pos covered by this row
 	pos_type end_ = 0;
+	// Is there a boundary at the start of the row (display inset...)
+	bool start_boundary_ = false;
 	// Is there a boundary at the end of the row (display inset...)
 	bool end_boundary_ = false;
 	// Shall the row be flushed when it is supposed to be justified?

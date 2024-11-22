@@ -105,6 +105,7 @@ public:
 	/// The context to resolve macros
 	MacroContext const & macrocontext;
 	/// Are we at the start of a paragraph (vertical mode)?
+	/// This is not used anymore, but could be useful
 	bool vmode;
 	/// if true, do not expand insets to max width artificially
 	bool tight_insets;

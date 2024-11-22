@@ -95,6 +95,10 @@ size_t ParagraphMetrics::getRowIndex(pos_type pos, bool boundary) const
 {
 	LBUFERR(!rows().empty());
 
+	// This makes a difference when the first row is empty (e.g. before display math)
+	if (pos == 0 && boundary)
+		return 0;
+
 	// If boundary is set we should return the row on which
 	// the character before is inside.
 	if (pos > 0 && boundary)

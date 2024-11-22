@@ -138,8 +138,10 @@ public:
 	 * This information cannot be taken from the layout object, because
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
+	 * When \c ignore_contents is true, alignment properties related
+	 * to insets in paragraph are not taken into account.
 	 */
-	int leftMargin(pit_type pit, pos_type pos) const;
+	int leftMargin(pit_type pit, pos_type pos, bool ignore_contents  = false) const;
 	/// Return the left beginning of a row which is not the first one.
 	/// This is the left margin when there is no indentation.
 	int leftMargin(pit_type pit) const;

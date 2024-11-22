@@ -44,9 +44,9 @@ InsetNewline::InsetNewline() : Inset(nullptr)
 int InsetNewline::rowFlags() const
 {
 	if (params_.kind == InsetNewlineParams::LINEBREAK)
-		return AlwaysBreakAfter;
+		return AlwaysBreakAfter | NoEndBoundary;
 	else
-	    return AlwaysBreakAfter | Flush;
+	    return AlwaysBreakAfter | NoEndBoundary | Flush;
 }
 
 

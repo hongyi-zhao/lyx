@@ -1432,8 +1432,7 @@ void TextMetrics::setRowHeight(Row & row) const
 // x is an absolute screen coord
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
-pos_type TextMetrics::getPosNearX(Row const & row, int & x,
-				  bool & boundary) const
+pair<pos_type, bool> TextMetrics::getPosNearX(Row const & row, int & x) const
 {
 	//LYXERR0("getPosNearX(" << x << ") row=" << row);
 	/// For the main Text, it is possible that this pit is not
@@ -1446,82 +1445,12 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	int const offset = bv_->horizScrollOffset(text_, row.pit(), row.pos());
 	x += offset;
 
-	pos_type pos = row.pos();
-	boundary = false;
-	if (row.empty())
-		x = row.left_margin;
-	else if (x <= row.left_margin) {
-		pos = row.front().left_pos();
-		x = row.left_margin;
-	} else if (x >= row.width()) {
-		pos = row.back().right_pos();
-		x = row.width();
-	} else {
-		double w = row.left_margin;
-		Row::const_iterator cit = row.begin();
-		Row::const_iterator cend = row.end();
-		for ( ; cit != cend; ++cit) {
-			if (w <= x &&  w + cit->full_width() > x) {
-				int x_offset = int(x - w);
-				pos = cit->x2pos(x_offset);
-				x = int(x_offset + w);
-				break;
-			}
-			w += cit->full_width();
-		}
-		if (cit == row.end()) {
-			pos = row.back().right_pos();
-			x = row.width();
-		}
-		/** This tests for the case where the cursor is placed
-		 * just before a font direction change. See comment on
-		 * the boundary_ member in DocIterator.h to understand
-		 * how boundary helps here.
-		 */
-		else if (pos == cit->endpos
-		         && ((!cit->isRTL() && cit + 1 != row.end()
-		              && (cit + 1)->isRTL())
-		             || (cit->isRTL() && cit != row.begin()
-		                 && !(cit - 1)->isRTL())))
-			boundary = true;
-	}
-
-	if (row.empty())
-		boundary = row.end_boundary();
-	/** This tests for the case where the cursor is set at the end
-	 * of a row which has been broken due something else than a
-	 * separator (a display inset or a forced breaking of the
-	 * row). We know that there is a separator when the end of the
-	 * row is larger than the end of its last element.
-	 */
-	else if (pos == row.back().endpos && row.back().endpos == row.endpos()) {
-		Inset const * inset = row.back().inset;
-		if (inset && (inset->lyxCode() == NEWLINE_CODE
-		              || inset->lyxCode() == SEPARATOR_CODE))
-			pos = row.back().pos;
-		else
-			boundary = row.end_boundary();
-	}
+	auto [pos, boundary] = row.x2pos(x);
 
 	x += xo - offset;
 	//LYXERR0("getPosNearX ==> pos=" << pos << ", boundary=" << boundary);
 
-	return pos;
-}
-
-
-pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
-{
-	// We play safe and use parMetrics(pit) to make sure the
-	// ParagraphMetrics will be redone and OK to use if needed.
-	// Otherwise we would use an empty ParagraphMetrics in
-	// upDownInText() while in selection mode.
-	ParagraphMetrics const & pm = parMetrics(pit);
-
-	LBUFERR(row < int(pm.rows().size()));
-	bool bound = false;
-	Row const & r = pm.rows()[row];
-	return getPosNearX(r, x, bound);
+	return make_pair(pos, boundary);
 }
 
 
@@ -1645,8 +1574,8 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 
 	if (!e) {
 		// No inset, set position in the text
-		bool bound = false; // is modified by getPosNearX
-		cur.pos() = getPosNearX(row, x, bound);
+		auto [pos, bound] = getPosNearX(row, x);
+		cur.pos() = pos;
 		cur.boundary(bound);
 		cur.setCurrentFont();
 		cur.setTargetX(x);
@@ -1668,8 +1597,9 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	if (cur.text() == text_ && cur.pos() == e->pos) {
 		// non-editable inset, set cursor after the inset if x is
 		// nearer to that position (bug 9628)
-		bool bound = false; // is modified by getPosNearX
-		cur.pos() = getPosNearX(row, x, bound);
+		// No inset, set position in the text
+		auto [pos, bound] = getPosNearX(row, x);
+		cur.pos() = pos;
 		cur.boundary(bound);
 		cur.setCurrentFont();
 		cur.setTargetX(x);
@@ -1681,13 +1611,13 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 }
 
 
-void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const y)
+void TextMetrics::setCursorFromCoordinates(Cursor & cur, int x, int const y)
 {
 	LASSERT(text_ == cur.text(), return);
 	pit_type const pit = getPitNearY(y);
 	LASSERT(pit != -1, return);
 
-	ParagraphMetrics const & pm = par_metrics_[pit];
+	ParagraphMetrics const & pm = parMetrics(pit);
 
 	int yy = pm.position() - pm.rows().front().ascent();
 	LYXERR(Debug::PAINTING, "x: " << x << " y: " << y <<
@@ -1706,9 +1636,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 
 	LYXERR(Debug::PAINTING, "row " << r << " from pos: " << row.pos());
 
-	bool bound = false;
-	int xx = x;
-	pos_type const pos = getPosNearX(row, xx, bound);
+	auto [pos, bound] = getPosNearX(row, x);
 
 	LYXERR(Debug::PAINTING, "setting cursor pit: " << pit << " pos: " << pos);
 

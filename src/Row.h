@@ -91,14 +91,14 @@ public:
 		 * \param i in the row element.
 		 */
 		double pos2x(pos_type const i) const;
-		/** Return character position that is the closest to
-		 *  pixel position \param x. The value \param x is
-		 *  adjusted to the actual pixel position.
+		/** Return character position that is the closest to pixel
+		 *  position \param x. The value \param x is adjusted to the
+		 *  actual pixel position.
 		*/
 		pos_type x2pos(int &x) const;
 		/** Break the element in two if possible, so that its width is less
 		 * than the required values.
-		 * \return true if something has been done ; false if this is
+		 * \return true if something has been done; false if this is
 		 * not needed or not possible.
 		 * \param width: maximum width of the row.
 		 * \param next_width: available width on next rows.
@@ -251,6 +251,12 @@ public:
 	// elements.  \param w is the total amount of extra width for the row to be
 	// distributed among expanders.  \return false if the justification fails.
 	bool setExtraWidth(int w);
+
+	/** Return character position and boundary value that are the
+	 *  closest to pixel position \param x. The value \param x is
+	 *  adjusted to the actual pixel position.
+	 */
+	std::pair<pos_type, bool> x2pos(int & x) const;
 
 	///
 	void add(pos_type pos, Inset const * ins, Dimension const & dim,

@@ -1330,12 +1330,13 @@ void Cursor::posVisToRowExtremity(bool left)
 	LYXERR(Debug::RTL, "entering extremity: " << pit() << "," << pos() << ","
 		<< (boundary() ? 1 : 0));
 
+	// FIXME: no need for metrics here!
 	TextMetrics const & tm = bv_->textMetrics(text());
 	// Looking for extremities is like clicking on the left or the
 	// right of the row.
 	int x = tm.origin().x + (left ? 0 : textRow().width());
-	bool b = false;
-	pos() = tm.getPosNearX(textRow(), x, b);
+	auto [p, b] = tm.getPosNearX(textRow(), x);
+	pos() = p;
 	boundary(b);
 
 	LYXERR(Debug::RTL, "leaving extremity: " << pit() << "," << pos() << ","
@@ -2286,9 +2287,9 @@ bool Cursor::upDownInText(bool up)
 		}
 
 		Row const & real_next_row = tm.parMetrics(pit()).rows()[next_row];
-		bool bound = false;
-		top().pos() = tm.getPosNearX(real_next_row, xo, bound);
-		boundary(bound);
+		auto [b, p] = tm.getPosNearX(real_next_row, xo);
+		pos() = p;
+		boundary(b);
 		// When selection==false, this is done by TextMetrics::editXY
 		setCurrentFont();
 

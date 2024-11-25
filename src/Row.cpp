@@ -415,6 +415,70 @@ bool Row::setExtraWidth(int w)
 }
 
 
+pair<pos_type, bool> Row::x2pos(int & x) const
+{
+	pos_type retpos = pos();
+	bool boundary = false;
+	if (empty())
+		x = left_margin;
+	else if (x <= left_margin) {
+		retpos = front().left_pos();
+		x = left_margin;
+	} else if (x >= width()) {
+		retpos = back().right_pos();
+		x = width();
+	} else {
+		double w = left_margin;
+		const_iterator cit = begin();
+		const_iterator cend = end();
+		for ( ; cit != cend; ++cit) {
+			if (w <= x &&  w + cit->full_width() > x) {
+				int x_offset = int(x - w);
+				retpos = cit->x2pos(x_offset);
+				x = int(x_offset + w);
+				break;
+			}
+			w += cit->full_width();
+		}
+		if (cit == end()) {
+			retpos = back().right_pos();
+			x = width();
+		}
+		/** This tests for the case where the cursor is placed
+		 * just before a font direction change. See comment on
+		 * the boundary_ member in DocIterator.h to understand
+		 * how boundary helps here.
+		 */
+		else if (retpos == cit->endpos
+		         && ((!cit->isRTL() && cit + 1 != end()
+		              && (cit + 1)->isRTL())
+		             || (cit->isRTL() && cit != begin()
+		                 && !(cit - 1)->isRTL())))
+			boundary = true;
+	}
+
+	if (empty())
+		boundary = end_boundary();
+	/** This tests for the case where the cursor is set at the end
+	 * of a row which has been broken due something else than a
+	 * separator (a display inset or a forced breaking of the
+	 * row). We know that there is a separator when the end of the
+	 * row is larger than the end of its last element.
+	 */
+	else if (retpos == back().endpos && back().endpos == endpos()) {
+		// FIXME: need a row flag here to say that cursor cannot be at the end
+		Inset const * inset = back().inset;
+		if (inset && (inset->lyxCode() == NEWLINE_CODE
+		              || inset->lyxCode() == SEPARATOR_CODE))
+			retpos = back().pos;
+		else
+			boundary = end_boundary();
+	}
+
+	return make_pair(retpos, boundary);
+}
+
+
 bool Row::sameString(Font const & f, Change const & ch) const
 {
 	if (elements_.empty())

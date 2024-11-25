@@ -469,3 +469,4 @@ End
 
 
 Input theorems-case.inc
+Input theorems-refprefix.inc

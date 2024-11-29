@@ -125,10 +125,9 @@ void RowPainter::paintInset(Row::Element const & e) const
 	pi_.selected = pi_selected;
 
 #ifdef DEBUG_METRICS
-	Dimension const & dim = pi_.base.bv->coordCache().insets().dim(e.inset);
-	int const x2 = x1 + dim.wid;
-	int const y1 = yo_ + dim.des;
-	int const y2 = yo_ - dim.asc;
+	int const x2 = x1 + e.dim.wid;
+	int const y1 = yo_ + e.dim.des;
+	int const y2 = yo_ - e.dim.asc;
 	pi_.pain.line(x1, y1, x1, y2, Color_green);
 	pi_.pain.line(x1, y1, x2, y1, Color_green);
 	pi_.pain.line(x2, y1, x2, y2, Color_green);

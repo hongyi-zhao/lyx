@@ -753,8 +753,9 @@ void Row::reverseRTL()
 		reverse(elements_.begin(), elements_.end());
 }
 
+
 Row::const_iterator const
-Row::findElement(pos_type const pos, bool const boundary, double & x) const
+Row::findElementHelper(pos_type const pos, bool const boundary, double & x) const
 {
 	/**
 	 * When boundary is true, position i is in the row element (pos, endpos)
@@ -800,6 +801,21 @@ Row::findElement(pos_type const pos, bool const boundary, double & x) const
 		--cit;
 
 	return cit;
+}
+
+
+Row::const_iterator const Row::findElement(pos_type const pos, bool const boundary) const
+{
+	double dummy;
+	return findElementHelper(pos, boundary, dummy);
+}
+
+
+double Row::pos2x(pos_type const pos, bool const boundary) const
+{
+	double x;
+	findElementHelper(pos, boundary, x);
+	return x;
 }
 
 

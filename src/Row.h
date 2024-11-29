@@ -257,6 +257,10 @@ public:
 	 *  adjusted to the actual pixel position.
 	 */
 	std::pair<pos_type, bool> x2pos(int & x) const;
+	/** Return the pixel position that corresponds to the position and
+	 * boundary.
+	 */
+	double pos2x(pos_type const pos, bool const boundary) const;
 
 	///
 	void add(pos_type pos, Inset const * ins, Dimension const & dim,
@@ -331,8 +335,8 @@ public:
 	///
 	void needsChangeBar(bool ncb) { changebar_ = ncb; }
 
-	/// Find row element that contains \c pos, and compute x offset.
-	const_iterator const findElement(pos_type pos, bool boundary, double & x) const;
+	/// Find row element that contains \c pos.
+	const_iterator const findElement(pos_type pos, bool boundary) const;
 
 	friend std::ostream & operator<<(std::ostream & os, Row const & row);
 
@@ -371,6 +375,9 @@ private:
 	 * row.
 	 */
 	bool sameString(Font const & f, Change const & ch) const;
+
+	/// Find row element that contains \c pos, and compute x offset.
+	const_iterator const findElementHelper(pos_type pos, bool boundary, double & x) const;
 
 	///
 	Elements elements_;

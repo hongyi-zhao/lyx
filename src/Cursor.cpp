@@ -1197,8 +1197,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const
 	right_pos = -1;
 
 	Row const & row = textRow();
-	double dummy = 0;
-	Row::const_iterator cit = row.findElement(pos(), boundary(), dummy);
+	Row::const_iterator cit = row.findElement(pos(), boundary());
 	// Handle the case of empty row
 	if (cit == row.end()) {
 		if (row.isRTL())
@@ -2551,6 +2550,8 @@ void Cursor::checkBufferStructure()
 void Cursor::moveToClosestEdge(int const x, bool const edit)
 {
 	if (Inset const * inset = nextInset()) {
+		// This is only used in mathed.
+		LATTEST(inset->asInsetMath());
 		// stay in front of insets for which we want to open the dialog
 		// (e.g. InsetMathSpace).
 		if (edit && (inset->hasSettings() || !inset->contextMenuName().empty()))

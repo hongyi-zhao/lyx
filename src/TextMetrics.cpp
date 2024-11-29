@@ -1691,12 +1691,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	if (pm.rows().empty())
 		return 0;
 	Row const & row = pm.getRow(sl.pos(), boundary);
-	pos_type const pos = sl.pos();
-
-	double x = 0;
-	row.findElement(pos, boundary, x);
-	return int(x);
-
+	return row.pos2x(sl.pos(), boundary);
 }
 
 

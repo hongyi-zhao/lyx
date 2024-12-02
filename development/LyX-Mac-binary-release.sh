@@ -390,7 +390,7 @@ DMGNAME="${LyxBase}${LyXGitCommitHash:+-}${LyXGitCommitHash}"
 DMGSIZE="550m"
 
 # Check for existing SDKs
-SDKs=$(echo ${DEVELOPER_SDKS}/MacOSX1[01]*sdk)
+SDKs=$(echo ${DEVELOPER_SDKS}/MacOSX1[0-9]*sdk)
 case $SDKs in
 *${SDKROOT}*)
 	;;

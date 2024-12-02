@@ -129,6 +129,8 @@ public:
 	///
 	bool boundary() const { return boundary_; }
 	///
+	bool & boundary() { return boundary_; }
+	///
 	void boundary(bool b) { boundary_ = b; }
 
 	// the two methods below have been inlined out because of

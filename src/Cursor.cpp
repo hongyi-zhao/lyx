@@ -2286,9 +2286,7 @@ bool Cursor::upDownInText(bool up)
 		}
 
 		Row const & real_next_row = tm.parMetrics(pit()).rows()[next_row];
-		auto [b, p] = tm.getPosNearX(real_next_row, xo);
-		pos() = p;
-		boundary(b);
+		tie(pos(), boundary()) = tm.getPosNearX(real_next_row, xo);
 		// When selection==false, this is done by TextMetrics::editXY
 		setCurrentFont();
 

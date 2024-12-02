@@ -1797,8 +1797,9 @@ bool GuiView::event(QEvent * e)
 			// We need to update metrics here to avoid a crash (#12786)
 			theBufferList().changed(true);
 			refillToolbars();
+			return QMainWindow::event(e);
 		}
-		return QMainWindow::event(e);
+		return true;
 	}
 #else
 	// Pre 6.8: OS-dependent

@@ -183,8 +183,11 @@ def gather_files(curfile, incfiles, lyx2lyx):
             file = match.group(3).strip(b'"')
             if file.startswith(b"bibtotoc,"):
                 file = file[9:]
+            ext = os.path.splitext(file)[-1]
+            if ext != b'.bst':
+                file = file + b'.bst'
             if not os.path.isabs(file):
-                file = os.path.join(curdir, file + b'.bst')
+                file = os.path.join(curdir, file)
             if os.path.exists(file):
                 incfiles.append(abspath(file))
             i += 1
@@ -196,10 +199,12 @@ def gather_files(curfile, incfiles, lyx2lyx):
             bibfiles = match.group(3).strip(b'"').split(b',')
             j = 0
             while j < len(bibfiles):
-                if os.path.isabs(bibfiles[j]):
-                    file = bibfiles[j] + b'.bib'
-                else:
-                    file = os.path.join(curdir, bibfiles[j] + b'.bib')
+                file = bibfiles[j]
+                ext = os.path.splitext(file)[-1]
+                if ext != b'.bib':
+                    file = file + b'.bib'
+                if not os.path.isabs(file):
+                    file = os.path.join(curdir, file)
                 if os.path.exists(file):
                     incfiles.append(abspath(file))
                 j += 1

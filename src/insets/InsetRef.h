@@ -75,6 +75,8 @@ public:
 	///
 	void updateBuffer(ParIterator const & it, UpdateType, bool const deleted = false) override;
 	///
+	void updateStatistics(Statistics & stats) const override;
+	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype, TocBackend & backend) const override;
 	///

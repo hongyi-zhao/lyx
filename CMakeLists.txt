@@ -4,8 +4,11 @@
 # Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
 # Copyright (c) 2008-2024 Kornel Benko, <Kornel.Benko@berlin.de>
 
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.10)
 
+if (POLICY CMP0177)
+  cmake_policy(SET CMP0177 NEW)
+endif()
 set(LYX_PROJECT LyX)
 # Instruct cmake to not use gnu extensions,
 # this prevents the mix of '-std=c++*' and '-std=gnu++*' flags

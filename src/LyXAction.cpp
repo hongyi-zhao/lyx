@@ -4099,11 +4099,10 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_TEXTSTYLE_APPLY
  * \li Action: Apply last used text properties.
- * \li Syntax: textstyle-apply [<NUM>]
- * \li Params: <NUM>: number of the selection in the internal freefonts stack to be applied.
  * \li Notion: These properties are stored via #LFUN_TEXTSTYLE_UPDATE, which is
                automatically triggered when using Text Style dialog.
- * \li Syntax: textstyle-apply
+ * \li Syntax: textstyle-apply [<NUM>]
+ * \li Params: <NUM>: number of the selection in the internal freefonts stack to be applied.
  * \li Origin: leeming, 12 Mar 2003
  * \endvar
  */
@@ -4118,7 +4117,7 @@ void LyXAction::init()
                             toggleall.\n
                             Use lyx -dbg action for exact syntax of text-style
                             dialog parameters. The code is expecting numerical parameters, 
-			    so that one needs to use e.g. "series 1" instead of "series bold".
+                            so that one needs to use e.g. "series 1" instead of "series bold".
  * \li Sample: textstyle-update series 1
  * \li Origin: leeming, 12 Mar 2003
  * \endvar

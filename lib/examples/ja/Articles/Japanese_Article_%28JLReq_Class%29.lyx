@@ -539,6 +539,7 @@ LaTeXプリアンブル
 \end_layout
 
 \begin_layout JLReq Setup
+
 sidenote_type=symbol
 \end_layout
 
@@ -2340,7 +2341,22 @@ appendix_
 \end_inset
 
 に変えることによって，
-本文部分／後付け／付録に関する設定に変えることができます．
+本文部分／後付け／付録に関する設定に変えることができます（これらは
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "l7n"
+arg   "Japanese Book (JLReq Class)"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+でのみ使用することができます）．
 \end_layout
 
 \begin_layout Itemize

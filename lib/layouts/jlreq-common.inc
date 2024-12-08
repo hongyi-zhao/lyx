@@ -1,104 +1,104 @@
 # Japanese jlreq textclass definition file.
-# Author : Koji Yokota (yokota6@gmail.com)
+# Author : Koji Yokota (yokota@lyx.org)
 #
 # This class internally loads following packages:
-# Any time:			 	l3keys2e, lmodern
-# With non-LuaLaTeX:	everyhook
-# With LuaLaTeX:		luatexja, luatexja-adjust
+# Any time:          l3keys2e, lmodern
+# With non-LuaLaTeX: everyhook
+# With LuaLaTeX:     luatexja, luatexja-adjust
 
 Format 107
 
 Style Part
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the part"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the part"
+		InsertCotext 1
 	EndArgument
 End
 
 Style Part*
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the part"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the part"
+		InsertCotext 1
 	EndArgument
 End
 
 Style Chapter
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the chapter"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the chapter"
+		InsertCotext 1
 	EndArgument
 	TocLevel 0
 End
 
 Style Chapter*
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the chapter"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the chapter"
+		InsertCotext 1
 	EndArgument
 End
 
 Style Section
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the section"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the section"
+		InsertCotext 1
 	EndArgument
 	TocLevel 1
 End
 
 Style Section*
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the section"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the section"
+		InsertCotext 1
 	EndArgument
 End
 
 Style Subsection
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the subsection"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the subsection"
+		InsertCotext 1
 	EndArgument
 	TocLevel 2
 End
 
 Style Subsection*
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the subsection"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the subsection"
+		InsertCotext 1
 	EndArgument
 End
 
 Style Subsubsection
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the subsubsection"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the subsubsection"
+		InsertCotext 1
 	EndArgument
 	TocLevel 3
 End
 
 Style Subsubsection*
 	Argument post:1
-		LabelString		"Subtitle|u"
-		Tooltip			"Subtitle of the subsubsection"
-		InsertCotext	1
+		LabelString  "Subtitle|u"
+		Tooltip      "Subtitle of the subsubsection"
+		InsertCotext 1
 	EndArgument
 End
 
 Style Abstract_over_Columns
-	CopyStyle			Abstract
-	InTitle               		1
-	LabelString			"Abstract"
-	Category			FrontMatter
-	LatexType			Command
-	LatexName			jlreqabstract
+	CopyStyle            Abstract
+	InTitle              1
+	LabelString          "Abstract"
+	Category             FrontMatter
+	LatexType            Command
+	LatexName            jlreqabstract
 	Preamble
 		\newcommand{\jlreqabstract}[1]{%
 		\begin{abstract}%
@@ -109,39 +109,39 @@ Style Abstract_over_Columns
 End
 
 Style JLReq_Setup
-	InPreamble			1
-	LatexType			Command
-	LatexName			jlreqsetup
-	Category			FrontMatter
-	LabelType			Static
-	LabelString			"JLReq Setup"
-	LabelSep			"M"
-	LeftMargin			"MMMMMMM"
+	InPreamble           1
+	LatexType            Command
+	LatexName            jlreqsetup
+	Category             FrontMatter
+	LabelType            Static
+	LabelString          "JLReq Setup"
+	LabelSep             "M"
+	LeftMargin           "MMMMMMM"
 	Font
-		Family			Typewriter
-		Size			Small
+		Family       Typewriter
+		Size         Small
 	EndFont
 	LabelFont
-		Color			eolmarker
-		Family			Sans
+		Color        eolmarker
+		Family       Sans
 	EndFont
-	ParagraphGroup		1
-	PassThru			1
-	HTMLTag				!--
+	ParagraphGroup       1
+	PassThru             1
+	HTMLTag              !--
 End
 
 InsetLayout Flex:Endnote
-	LyxType				custom
-	LatexType			Command
-	LatexName			endnote
-	Counter				footnote
-	Decoration			Classic
-	LabelString			"Endnote"
-	ForcePlain			1
-	BgColor				background
+	LyxType              custom
+	LatexType            Command
+	LatexName            endnote
+	Counter              footnote
+	Decoration           Classic
+	LabelString          "Endnote"
+	ForcePlain           1
+	BgColor              background
 	ResetsFont true
-	HTMLLabel			\arabic{footnote}
-	HTMLInnerTag        div
+	HTMLLabel            \arabic{footnote}
+	HTMLInnerTag         div
 	HTMLStyle
 		span.flex_endnote_label {
 			vertical-align: super;
@@ -165,18 +165,18 @@ InsetLayout Flex:Endnote
 			padding: 1em;
 		}
 	EndHTMLStyle
-	AddToToc              footnote
-	IsTocCaption          true
-	DocBookTag            footnote
-	DocBookTagType        inline
+	AddToToc             footnote
+	IsTocCaption         true
+	DocBookTag           footnote
+	DocBookTagType       inline
 End
 
 InsetLayout Flex:Sidenote
-	CopyStyle			Flex:Endnote
-	LatexName			sidenote
-	LabelString			"Sidenote"
-	HTMLLabel			\arabic{footnote}
-	HTMLInnerTag        div
+	CopyStyle            Flex:Endnote
+	LatexName            sidenote
+	LabelString          "Sidenote"
+	HTMLLabel            \arabic{footnote}
+	HTMLInnerTag         div
 	HTMLStyle
 		span.flex_sidenote_label {
 			vertical-align: super;
@@ -201,21 +201,21 @@ InsetLayout Flex:Sidenote
 		}
 	EndHTMLStyle
 	Argument post:1
-		LabelString		"Note"
-		MenuString		"Endnote contents"
-		Tooltip			"Contents of the sidenote. Only makes sense when \jlreqsetup{sidenote_type=symbol} is specified in the preamble."
-		Mandatory		0
-		LeftDelim		{
-		RightDelim		}
+		LabelString  "Note"
+		MenuString   "Endnote contents"
+		Tooltip      "Contents of the sidenote. Only makes sense when \jlreqsetup{sidenote_type=symbol} is specified in the preamble."
+		Mandatory    0
+		LeftDelim    {
+		RightDelim   }
 	EndArgument
 End
 
 InsetLayout Flex:Warichu
-	CopyStyle			Flex:Endnote
-	LatexName			warichu
-	LabelString			"Warichu"
-	HTMLLabel			\arabic{footnote}
-	HTMLInnerTag        div
+	CopyStyle            Flex:Endnote
+	LatexName            warichu
+	LabelString          "Warichu"
+	HTMLLabel            \arabic{footnote}
+	HTMLInnerTag         div
 	HTMLStyle
 		span.flex_warichu_label {
 			vertical-align: super;
@@ -242,17 +242,17 @@ InsetLayout Flex:Warichu
 End
 
 InsetLayout Flex:Warichu*
-	CopyStyle			Flex:Warichu
-	LatexName			warichu*
-	LabelString			"Warichu*"
-	PassThru			1
-	MultiPar			1
-	ParbreakIgnored		1
+	CopyStyle            Flex:Warichu
+	LatexName            warichu*
+	LabelString          "Warichu*"
+	PassThru             1
+	MultiPar             1
+	ParbreakIgnored      1
 	Font
-		Family			Typewriter
+	        Family       Typewriter
 	EndFont
-	HTMLLabel			\arabic{footnote}
-	HTMLInnerTag        div
+	HTMLLabel            \arabic{footnote}
+	HTMLInnerTag         div
 	HTMLStyle
 		span.flex_warichu__label {
 			vertical-align: super;
@@ -279,36 +279,36 @@ InsetLayout Flex:Warichu*
 End
 
 InsetLayout Flex:Tatechuyoko
-	LatexType			Command
-	LyxType				charstyle
-	LatexName			tatechuyoko*
-	LabelString			"Tatechuyoko"
-	Decoration			Conglomerate
+	LatexType            Command
+	LyxType              charstyle
+	LatexName            tatechuyoko*
+	LabelString          "Tatechuyoko"
+	Decoration           Conglomerate
 End
 
 InsetLayout Flex:Jidori
-	CopyStyle			Flex:Tatechuyoko
-	LatexName			jidori
-	LabelString			"Jidori"
+	CopyStyle            Flex:Tatechuyoko
+	LatexName            jidori
+	LabelString          "Jidori"
 	Argument 1
-		LabelString		"Length"
-		MenuString		"Jidori Length|L"
-		Tooltip			"Length of Jidori. Contents is fit to this length."
-		Mandatory		1
-		AutoInsert		1
+		LabelString  "Length"
+		MenuString   "Jidori Length|L"
+		Tooltip      "Length of Jidori. Contents is fit to this length."
+		Mandatory    1
+		AutoInsert   1
 	EndArgument
 End
 
 InsetLayout Flex:Akigumi
-	CopyStyle			Flex:Tatechuyoko
-	LatexName			akigumi
-	LabelString			"Akigumi"
-	MenuString			"Akigumi (LuaLaTeX)"
+	CopyStyle            Flex:Tatechuyoko
+	LatexName            akigumi
+	LabelString          "Akigumi"
+	MenuString           "Akigumi (LuaLaTeX)"
 	Argument 1
-		LabelString		"Char Space"
-		MenuString		"Char Space|D"
-		Tooltip			"Distance between chars is set to this length."
-		Mandatory		1
-		AutoInsert		1
+		LabelString  "Char Space"
+		MenuString   "Char Space|D"
+		Tooltip      "Distance between chars is set to this length."
+		Mandatory    1
+		AutoInsert   1
 	EndArgument
 End

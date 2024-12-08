@@ -20,3 +20,43 @@ Input jlreq-common.inc
 ClassOptions
 	Other	book
 End
+
+Style Front_Matter
+	Category             Structure
+	LatexType            Command
+	LatexName            frontmatter
+	KeepEmpty            1
+	ResetArgs            1
+	Margin               First_Dynamic
+	NextNoIndent         1
+	ParSkip              0
+	TopSep               2.5
+	BottomSep            0.5
+	ParSep               0
+	Align                Center
+	LabelType            Static
+	LabelBottomSep       0
+	LeftMargin           M
+	LabelString          "--- Front Matter ---"
+
+	Font
+	  Family             Sans
+	  Series             Bold
+	  Size               Largest
+	  Color              textlabel1
+	EndFont
+End
+
+Style Main_Matter
+	CopyStyle            Front_Matter
+	Category             Structure
+	LatexName            mainmatter
+	LabelString          "--- Main Matter ---"
+End
+
+Style Back_Matter
+	CopyStyle            Front_Matter
+	Category             Structure
+	LatexName            backmatter
+	LabelString          "--- Back Matter ---"
+End

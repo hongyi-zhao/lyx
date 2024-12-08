@@ -635,7 +635,7 @@ def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
     path, LATEX = checkProg('a Latex2e program', ['latex $$i', 'latex2e $$i'])
     #-----------------------------------------------------------------
-    path, PLATEX = checkProg('pLaTeX, the Japanese LaTeX', ['platex $$i'])
+    path, PLATEX = checkProg('pLaTeX, the Japanese LaTeX', ['uplatex $$i', 'platex $$i'])
     if PLATEX:
         # check if PLATEX is pLaTeX2e
         writeToFile('chklatex.ltx', r'\nonstopmode\makeatletter\@@end')

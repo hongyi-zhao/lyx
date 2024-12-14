@@ -34,7 +34,16 @@
 \float_alignment class
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -56,6 +65,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \index 索引
@@ -95,55 +105,49 @@
 
 \begin_layout Section*
 \SpecialChar LyX
-を使うために最初に知っておくべきことがら
+を使う上でとくに知っておくべき大切なこと
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-は優秀な取扱説明書を同梱していますので、これをお使いください！
-まずは
+には，
+すばらしい取扱説明書が同梱されています —
+—
+ これをお使いください！
+まずメニューの
 \family sans
 ヘルプ\SpecialChar menuseparator
 はじめの一歩
 \family default
-から始めてください。
-これは、各取扱説明書を簡潔に紹介しています。
-つぎに
+を開くと，
+取扱説明書類の簡潔な紹介があります．それから
 \family sans
 ヘルプ\SpecialChar menuseparator
 入門篇
 \family default
-をお読みになれば、\SpecialChar LyX
-の使い方を学ぶことができます。
-
+を読んで，
+\SpecialChar LyX
+の使い方を学んでください．
 \end_layout
 
 \begin_layout Enumerate
+私たちは，
 \SpecialChar LyX
-は、われわれが「文書プロセッサ」と呼ぶところのものです。
-設計思想として、通常のワードプロセッサとは異なっています—
+を「文書プロセッサ」と呼んでいます．これは—
 —
-すなわち文書の執筆を容易にすることを優先しているのです。
-しかしながら、その違いはわずかですので、恐れることはありません。
-取扱説明書を読めば、すべてあきらかになるでしょう。
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-説明書を読んでくださいともう言いましたっけ。
-
-\end_layout
-
-\end_inset
-
-
+文書の執筆が容易になるように—
+—
+設計思想が，
+通常のワードプロセッサと異なっています．しかしながら，
+わずかな違いですので，
+恐れるまでもありません．取扱説明書を参照すれば，
+すべてお分かりになるでしょう．
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-の出力は素晴らしい出来映えです！
-ご覧になりたければ、
+の出力は素晴らしいのです！
+メニューから
 \family sans
 文書\SpecialChar menuseparator
 [PDF
@@ -156,47 +160,59 @@ status collapsed
 
 を表示
 \family default
-を選択してみてください。
+を選択するか，
+ツールバーボタンの
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
 
+を押して，
+ご自身で確かめてみてください．
 \end_layout
 
 \begin_layout Enumerate
-なによりも、\SpecialChar LyX
+なによりも，
+\SpecialChar LyX
 は（ほとんど）すべての\SpecialChar LaTeX
-の機能を実現することができます。
-さらに、\SpecialChar LyX
+の機能を実現することができます．さらに，
+\SpecialChar LyX
 は\SpecialChar LaTeX
-ファイルをインポートすることもできます。
-熟練したLa\SpecialChar TeX
-ユーザーの方々は、
+ファイルを読み込むこともできます．熟練したLa\SpecialChar TeX
+ユーザーの方々は，
+
 \emph on
 入門篇
 \emph default
-の他の部分はざっと飛ばし読みしてけっこうですので、その「\SpecialChar LaTeX
+の他の部分にはざっと目を通した上で，
+同篇の「\SpecialChar LaTeX
 ユーザーのための\SpecialChar LyX
-」という章を読んでください（その他の方々へ：
+」という節を読んでください（その他の方々へ：
 \SpecialChar LyX
 を使うのに\SpecialChar LaTeX
-を知っている必要はありませんので、ご安心ください）。
-
+を知っている必要はありませんので，
+ご安心ください）．
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-は、英語以外の言語を読み書きする方に適した機能をたくさん備えています。
-くわえて、キー割当てやツールバー、その他多くの特徴が、たいへん自由に設定可能です。
-詳しくは、
+は，
+英語以外の言語を読み書きする方のための機能を多く備えています．それだけでなく，
+キー割当てやツールバー，
+その他多くの特徴が，
+たいへん自由に設定可能です．詳しくは，
+
 \family sans
 ヘルプ\SpecialChar menuseparator
 カスタマイズ篇
 \family default
-をご覧ください。
-
+をご覧ください．
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-のホームページは、
+のホームページは，
+
 \begin_inset Flex URL
 status collapsed
 
@@ -207,11 +223,12 @@ https://www.lyx.org/WebJa.Home
 
 \end_inset
 
-にあります。
+にあります．\SpecialChar LyX
+の情報を収集したり，
 \SpecialChar LyX
-の情報を収集したり、\SpecialChar LyX
-メーリングリストに加入したり、\SpecialChar LyX
-のグラフィカル・ツアーを見てみるなど
+メーリングリストに加入したり，
+\SpecialChar LyX
+のグラフィカル・ツアーを見てみるなど（
 \begin_inset Flex URL
 status collapsed
 
@@ -222,8 +239,8 @@ https://www.lyx.org/WebJa.Walkthrough
 
 \end_inset
 
-、さまざまなことを提供しています。
-
+），
+さまざまなことが提供されています．
 \end_layout
 
 \begin_layout Enumerate
@@ -233,7 +250,7 @@ Linuxユーザーへの注釈：
 
 \series default
 \SpecialChar LaTeX
-頒布版の
+頒布の
 \family sans
 \SpecialChar TeX
 
@@ -242,14 +259,14 @@ Linuxユーザーへの注釈：
 
 Live
 \family default
-用の言語パッケージが導入済みかどうかチェックしてください．もしないと，
+用の言語パッケージが導入済みかどうかチェックしてください．もしない場合は，
 \SpecialChar LaTeX
-エラーが発生します．
+エラーが発生することになります．
 \begin_inset Newline newline
 \end_inset
 
 例えば，
-Linux頒布版
+Linux頒布の
 \family sans
 (K,X)Ubuntu
 \family default
@@ -258,15 +275,16 @@ Linux頒布版
 Debian
 \family default
 では，
-ドイツ語用のパッケージ名は「
+ドイツ語用のパッケージ名は
 \family typewriter
 texlive-lang-german
 \family default
-」です．
+です．
 \begin_inset Newline newline
 \end_inset
 
-言語パッケージの導入後\SpecialChar LyX
+言語パッケージの導入後，
+\SpecialChar LyX
 メニューから
 \family sans
 ツール

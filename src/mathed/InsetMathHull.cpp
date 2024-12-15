@@ -883,7 +883,8 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 	if (lsize != "normalsize" && !prefixIs(lsize, "error"))
 		setfont += from_ascii("\\" + lsize + '\n');
 
-	docstring const snippet = macro_preamble + setfont + latexString(*this) + endfont;
+	docstring const snippet = macro_preamble + setfont
+		+ trim(latexString(*this), "\n") + endfont;
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
 	preview_->addPreview(snippet, *buffer, forexport);
 }

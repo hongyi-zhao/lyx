@@ -258,8 +258,13 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
         tmp.write(b"""
 \\usepackage[%s,tightpage]{preview}
 \\makeatletter
-\\g@addto@macro\\preview{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}\\color{lyxfg}}
-\\g@addto@macro\\endpreview{\\endgroup}
+\\ifdefined\\AddToHook
+  \\AddToHook{env/preview/before}{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}\\color{lyxfg}}
+  \\AddToHook{env/preview/after}{\\endgroup}
+\\else
+  \\g@addto@macro\\preview{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}\\color{lyxfg}}
+  \\g@addto@macro\\endpreview{\\endgroup}
+\\fi
 \\let\\pr@set@pagerightoffset\\@empty
 \\ifx\\pagerightoffset\\@undefined\\else
   \\def\\pr@set@pagerightoffset{\\ifnum\\pagedirection=1

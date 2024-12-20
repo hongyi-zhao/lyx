@@ -205,8 +205,7 @@ precisely (see the description of --enable-build-type for the default
 values):
 
   o --enable-cxx-mode=VALUE can be used to select a C++ standard, for
-    example --enable-cxx-mode=11. The default is to try C++17, C++14, and
-    C++11, in this order.
+    example --enable-cxx-mode=20. The default is C++17.
 
   o --enable-optimization=VALUE enables you to set optimization to a
     higher level than the default, for example --enable-optimization=-O3.

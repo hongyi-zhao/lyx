@@ -38,4 +38,10 @@ if (open(FI, $input)) {
     }
   }
 }
+if ($depth > 0) {
+  for (my $i = $depth-1; $i >= 0; $i--) {
+    print "Missing \\end_$stack[$i]\n";
+  }
+  exit(-3);
+}
 exit(0);

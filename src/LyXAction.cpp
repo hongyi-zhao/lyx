@@ -1579,6 +1579,14 @@ void LyXAction::init()
  */
 		{ LFUN_ENVIRONMENT_SPLIT, "environment-split", Noop, Layout },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_ERRORS_SHOW
+ * \li Action: Shows export error dialog if errors exist.
+ * \li Syntax: errors-show
+ * \li Origin: spitz, 31 Dec 2024
+ * \endvar
+ */
+		{ LFUN_ERRORS_SHOW, "errors-show", NoBuffer, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_ERT_INSERT

@@ -2673,6 +2673,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
+	case LFUN_ERRORS_SHOW: {
+		enable = buf && (!buf->errorList(d.last_export_format).empty()
+				 || !buf->masterBuffer()->errorList(d.last_export_format).empty());
+		break;
+	}
+
 	case LFUN_COMMAND_EXECUTE:
 	case LFUN_MESSAGE:
 	case LFUN_MENU_OPEN:
@@ -4913,6 +4919,13 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				showDialog("prefs", sdata);
 			} else
 				showDialog(name, sdata);
+			break;
+		}
+
+		case LFUN_ERRORS_SHOW: {
+			// We guess it's from master if the single buffer list is empty
+			bool const from_master = bv->buffer().errorList(d.last_export_format).empty();
+			errors(d.last_export_format, from_master);
 			break;
 		}
 

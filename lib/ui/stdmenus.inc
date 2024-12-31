@@ -575,6 +575,7 @@ Menuset
 		Submenu "Change Tracking|C" "document_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log|L" "dialog-show latexlog"
+		Item "Processing Errors|r" "errors-show"
 		Item "Start Appendix Here|x" "appendix"
 		Separator
 		ViewFormats

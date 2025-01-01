@@ -1589,6 +1589,14 @@ void LyXAction::init()
 		{ LFUN_ERRORS_SHOW, "errors-show", NoBuffer, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_ERROR_NEXT
+ * \li Action: Moves the cursor to the beginning of next LaTeX error.
+ * \li Syntax: error-next
+ * \endvar
+ */
+		{ LFUN_ERROR_NEXT, "error-next", ReadOnly, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_ERT_INSERT
  * \li Action: Inserts an ERT inset.
  * \li Syntax: ert-insert

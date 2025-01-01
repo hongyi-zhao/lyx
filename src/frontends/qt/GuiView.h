@@ -177,6 +177,9 @@ public:
 	void updateTocItem(std::string const &, DocIterator const &) override;
 	//@}
 
+	/// move to next error
+	bool nextError(std::string const &, bool from_master = false, bool testonly = false);
+
 	///
 	TocModels & tocModels();
 

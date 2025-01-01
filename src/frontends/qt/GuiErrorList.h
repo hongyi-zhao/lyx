@@ -50,8 +50,8 @@ private:
 	///
 	bool canApply() const override { return true; }
 
-	/// goto this error in the parent bv. Returns success.
-	bool goTo(int item);
+	/// goto this error in the parent bv.
+	void goTo(int item);
 	///
 	ErrorList const & errorList() const;
 private:

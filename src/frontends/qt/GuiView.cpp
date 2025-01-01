@@ -2192,6 +2192,35 @@ void GuiView::errors(string const & error_type, bool from_master)
 }
 
 
+bool GuiView::nextError(string const & error_type, bool from_master, bool testonly)
+{
+	BufferView const * const bv = currentBufferView();
+	if (!bv)
+		return false;
+
+	Buffer const & buf = from_master
+			? *(bv->buffer().masterBuffer())
+			: bv->buffer();
+
+	ErrorList const & el = buf.errorList(error_type);
+
+	if (el.empty())
+		return false;
+
+	for (auto const & err : el) {
+		if (TexRow::isNone(err.start) || TexRow::getDocIteratorsFromEntries(err.start, err.end, buf).first <= bv->cursor())
+			continue;
+		if (!testonly) {
+			DispatchResult dr;
+			dispatch(TexRow::goToFunc(err.start, err.end), dr);
+		}
+		return true;
+	}
+
+	return false;
+}
+
+
 void GuiView::updateTocItem(string const & type, DocIterator const & dit)
 {
 	d.toc_models_.updateItem(toqstr(type), dit);
@@ -2676,6 +2705,18 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_ERRORS_SHOW: {
 		enable = buf && (!buf->errorList(d.last_export_format).empty()
 				 || !buf->masterBuffer()->errorList(d.last_export_format).empty());
+		break;
+	}
+
+	case LFUN_ERROR_NEXT: {
+		if (!buf || (buf->errorList(d.last_export_format).empty()
+			     && buf->masterBuffer()->errorList(d.last_export_format).empty())) {
+			enable = false;
+			break;
+		}
+		// We guess it's from master if the single buffer list is empty
+		bool const from_master = currentBufferView()->buffer().errorList(d.last_export_format).empty();
+		enable = nextError(d.last_export_format, from_master, true);
 		break;
 	}
 
@@ -4926,6 +4967,16 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// We guess it's from master if the single buffer list is empty
 			bool const from_master = bv->buffer().errorList(d.last_export_format).empty();
 			errors(d.last_export_format, from_master);
+			break;
+		}
+
+		case LFUN_ERROR_NEXT: {
+			// We guess it's from master if the single buffer list is empty
+			bool const from_master = bv->buffer().errorList(d.last_export_format).empty();
+			if (nextError(d.last_export_format, from_master)) {
+				dr.forceBufferUpdate();
+				dr.screenUpdate(Update::Force);
+			}
 			break;
 		}
 

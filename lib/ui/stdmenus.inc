@@ -605,6 +605,7 @@ Menuset
 #
 	Menu "navigate"
 		Submenu "Bookmarks|B" "navigate_bookmarks"
+		Item "Next Error|E" "error-next"
 		Item "Next Note|N" "note-next"
 		Item "Next Change|C" "change-next"
 		Item "Next Cross-Reference|R" "reference-next"

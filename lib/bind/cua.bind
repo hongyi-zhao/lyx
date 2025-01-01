@@ -129,6 +129,7 @@ Format 5
 \bind "S-F6"			"tab-group-previous"
 \bind "C-F6"			"buffer-next"
 \bind "C-S-F6"			"buffer-previous"
+\bind "C-g"			"error-next"
 \bind "F7"			"dialog-show spellchecker"
 \bind "S-F7"			"thesaurus-entry"
 

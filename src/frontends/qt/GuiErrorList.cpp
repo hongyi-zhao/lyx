@@ -161,22 +161,21 @@ bool GuiErrorList::initialiseParams(string const & sdata)
 }
 
 
-bool GuiErrorList::goTo(int item)
+void GuiErrorList::goTo(int item)
 {
 	ErrorItem const & err = errorList()[item];
 	if (TexRow::isNone(err.start))
-		return false;
+		return;
 
 	Buffer const * errbuf = err.buffer ? err.buffer : buf_;
 
 	if (&buffer() != errbuf) {
 		if (!theBufferList().isLoaded(errbuf))
-			return false;
+			return;
 		FuncRequest fr(LFUN_BUFFER_SWITCH, errbuf->absFileName());
 		dispatch(fr);
 	}
 	dispatch(TexRow::goToFunc(err.start, err.end));
-	return true;
 }
 
 

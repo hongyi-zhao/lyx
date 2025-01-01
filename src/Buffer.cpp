@@ -407,9 +407,9 @@ public:
 
 	///Binding LaTeX lines with buffer positions.
 	//Common routine for LaTeX and Reference errors listing.
-        void traverseErrors(TeXErrors::Errors::const_iterator err,
-		TeXErrors::Errors::const_iterator end,
-		ErrorList & errorList) const;
+	void traverseErrors(TeXErrors::Errors::const_iterator err,
+			    TeXErrors::Errors::const_iterator end,
+			    ErrorList & errorList) const;
 };
 
 

@@ -351,6 +351,15 @@ export/examples/Language_Support/Writing_Armenian_(dvi|dvi3_texF|pdf|pdf2|pdf3|p
 # https://github.com/latex3/hyperref/issues/248#issuecomment-1961868947
 export/export/latex/unicodesymbols/008-greek-and-coptic_utf8x_pdf2
 
+# The churchslavon package on CTAN is outdated. After the next release, we
+# should be able to uninvert. Currently, we get:
+#
+# LaTeX.cpp (867): Log line: ! Undefined control sequence.
+# LaTeX.cpp (1156): line: 29 Desc: Undefined control sequence.
+# Text:  \define@boolkey
+#                     {churchslavonic}[churchslavonic@]{babelshorthands}[false]{}
+export/export/latex/languages/supported-languages_polyglossia-XeTeX_pdf4_systemF
+
 
 # ================================================
 Sublabel: externalissues

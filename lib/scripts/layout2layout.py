@@ -562,15 +562,15 @@ def convert(lines, end_format):
             match = re_Format.match(lines[i])
             if match:
                 formatline = i
-                format_ = int(match.group(4))
-                if 1 < format_ < end_format:
-                    lines[i] = b"Format %d" % (format_ + 1)
+                format = int(match.group(4))
+                if 1 < format < end_format:
+                    lines[i] = b"Format %d" % (format + 1)
                     only_comment = 0
-                elif format_ == end_format:
+                elif format == end_format:
                     # nothing to do
-                    return format_
+                    return format
                 else:
-                    error(f'Cannot convert file format {format_} to {end_format}')
+                    error(f'Cannot convert file format {format} to {end_format}')
             else:
                 lines.insert(i, b"Format 2")
                 only_comment = 0

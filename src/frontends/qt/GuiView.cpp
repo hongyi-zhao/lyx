@@ -2172,7 +2172,7 @@ void GuiView::disconnectBufferView()
 }
 
 
-void GuiView::errors(string const & error_type, bool from_master)
+void GuiView::errors(string const & error_type, bool from_master, int const item)
 {
 	BufferView const * const bv = currentBufferView();
 	if (!bv)
@@ -2188,15 +2188,18 @@ void GuiView::errors(string const & error_type, bool from_master)
 	string err = error_type;
 	if (from_master)
 		err = "from_master|" + error_type;
+	if (item != -1)
+		err += "@" + convert<string>(item);
 	showDialog("errorlist", err);
 }
 
 
-bool GuiView::nextError(string const & error_type, bool from_master, bool testonly)
+int GuiView::nextError(string const & error_type, bool from_master,
+		       bool navigateto, bool atcursor)
 {
 	BufferView const * const bv = currentBufferView();
 	if (!bv)
-		return false;
+		return -1;
 
 	Buffer const & buf = from_master
 			? *(bv->buffer().masterBuffer())
@@ -2205,19 +2208,24 @@ bool GuiView::nextError(string const & error_type, bool from_master, bool teston
 	ErrorList const & el = buf.errorList(error_type);
 
 	if (el.empty())
-		return false;
+		return -1;
 
+	int item = 0;
 	for (auto const & err : el) {
-		if (TexRow::isNone(err.start) || TexRow::getDocIteratorsFromEntries(err.start, err.end, buf).first <= bv->cursor())
+		if (TexRow::isNone(err.start)
+		    || (atcursor && TexRow::getDocIteratorsFromEntries(err.start, err.end, buf).first < bv->cursor())
+		    || (!atcursor && TexRow::getDocIteratorsFromEntries(err.start, err.end, buf).first <= bv->cursor())) {
+			++item;
 			continue;
-		if (!testonly) {
+		}
+		if (navigateto) {
 			DispatchResult dr;
 			dispatch(TexRow::goToFunc(err.start, err.end), dr);
 		}
-		return true;
+		return item;
 	}
 
-	return false;
+	return -1;
 }
 
 
@@ -2716,7 +2724,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		}
 		// We guess it's from master if the single buffer list is empty
 		bool const from_master = currentBufferView()->buffer().errorList(d.last_export_format).empty();
-		enable = nextError(d.last_export_format, from_master, true);
+		enable = nextError(d.last_export_format, from_master) != -1;
 		break;
 	}
 
@@ -4966,14 +4974,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_ERRORS_SHOW: {
 			// We guess it's from master if the single buffer list is empty
 			bool const from_master = bv->buffer().errorList(d.last_export_format).empty();
-			errors(d.last_export_format, from_master);
+			errors(d.last_export_format, from_master, nextError(d.last_export_format, from_master, false, true));
 			break;
 		}
 
 		case LFUN_ERROR_NEXT: {
 			// We guess it's from master if the single buffer list is empty
 			bool const from_master = bv->buffer().errorList(d.last_export_format).empty();
-			if (nextError(d.last_export_format, from_master)) {
+			if (nextError(d.last_export_format, from_master, true) != -1) {
 				dr.forceBufferUpdate();
 				dr.screenUpdate(Update::Force);
 			}

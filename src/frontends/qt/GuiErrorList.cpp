@@ -24,6 +24,7 @@
 #include "Text.h"
 #include "TexRow.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -125,7 +126,7 @@ void GuiErrorList::paramsToDialog()
 	ErrorList::const_iterator const en = el.end();
 	for (; it != en; ++it)
 		errorsLW->addItem(toqstr(it->error));
-	errorsLW->setCurrentRow(0);
+	errorsLW->setCurrentRow(item_);
 	showAnywayPB->setEnabled(
 		lyx::getStatus(FuncRequest(LFUN_BUFFER_VIEW_CACHE)).enabled());
 }
@@ -149,6 +150,12 @@ bool GuiErrorList::initialiseParams(string const & sdata)
 	string error_type = sdata;
 	if (from_master_)
 		error_type = split(sdata, '|');
+	if (contains(error_type, "@")) {
+		string tmp;
+		string const s = split(error_type, tmp, '@');
+		error_type = tmp;
+		item_ = convert<int>(s);
+	}
 	error_type_ = error_type;
 	buf_ = from_master_ ?
 		bufferview()->buffer().masterBuffer()

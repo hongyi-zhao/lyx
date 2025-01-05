@@ -65,6 +65,8 @@ private:
 	docstring name_;
 	///
 	bool from_master_;
+	///
+	int item_ = 0;
 };
 
 } // namespace frontend

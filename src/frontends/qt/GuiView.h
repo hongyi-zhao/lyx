@@ -172,13 +172,20 @@ public:
 	void resetAutosaveTimers() override;
 	// shows an error list
 	// if from_master is true, show master's error list
-	void errors(std::string const &, bool from_master = false) override;
+	void errors(std::string const &, bool from_master = false,
+		    int const item = -1) override;
 	void structureChanged() override;
 	void updateTocItem(std::string const &, DocIterator const &) override;
 	//@}
 
-	/// move to next error
-	bool nextError(std::string const &, bool from_master = false, bool testonly = false);
+	/** Find the next error from current cursor position.
+	 *  \return the error item position in the error list
+	 *  with \param navigateto the cursor moves to the error
+	 *  with \param atcursor the error at current cursor position
+	 *  is considered as well, otherwise only those who follow.
+	 */
+	int nextError(std::string const & error_type, bool from_master = false,
+		      bool navigateto = false, bool atcursor = false);
 
 	///
 	TocModels & tocModels();

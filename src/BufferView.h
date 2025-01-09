@@ -45,7 +45,6 @@ class InsetMathNest;
 class Length;
 class MathData;
 class MathRow;
-class ParagraphMetrics;
 class Point;
 class Text;
 class TextMetrics;
@@ -322,8 +321,6 @@ public:
 	///
 	TextMetrics const & textMetrics(Text const * t) const;
 	TextMetrics & textMetrics(Text const * t);
-	///
-	ParagraphMetrics const & parMetrics(Text const *, pit_type) const;
 
 	///
 	CoordCache & coordCache();

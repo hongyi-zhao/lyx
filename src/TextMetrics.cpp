@@ -163,14 +163,25 @@ void TextMetrics::setRowChanged(pit_type pit, pos_type pos)
 }
 
 
-ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
+Dimension const & TextMetrics::dim(pit_type pit) const
 {
-	ParMetricsCache::iterator pmc_it = par_metrics_.find(pit);
+	auto pmc_it = par_metrics_.find(pit);
+	if (pmc_it == par_metrics_.end()) {
+		static Dimension empty_dim;
+		return empty_dim;
+	} else
+		return pmc_it->second.dim();
+}
+
+
+ParagraphMetrics & TextMetrics::parMetrics(pit_type pit)
+{
+	auto pmc_it = par_metrics_.find(pit);
 	if (pmc_it == par_metrics_.end()) {
 		pmc_it = par_metrics_.insert(
 			make_pair(pit, ParagraphMetrics(text_->getPar(pit)))).first;
 	}
-	if (pmc_it->second.rows().empty() && redo)
+	if (pmc_it->second.rows().empty())
 		redoParagraph(pit);
 	return pmc_it->second;
 }
@@ -178,13 +189,7 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 
 ParagraphMetrics const & TextMetrics::parMetrics(pit_type pit) const
 {
-	return const_cast<TextMetrics *>(this)->parMetrics(pit, true);
-}
-
-
-ParagraphMetrics & TextMetrics::parMetrics(pit_type pit)
-{
-	return parMetrics(pit, true);
+	return const_cast<TextMetrics *>(this)->parMetrics(pit);
 }
 
 
@@ -484,9 +489,8 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 {
 	Paragraph & par = text_->getPar(pit);
-	// IMPORTANT NOTE: We pass 'false' explicitly in order to not call
-	// redoParagraph() recursively inside parMetrics.
-	Dimension old_dim = parMetrics(pit, false).dim();
+	// This gets the dimension if it exists and an empty one otherwise.
+	Dimension old_dim = dim(pit);
 	ParagraphMetrics & pm = par_metrics_[pit];
 	pm.reset(par);
 
@@ -1511,8 +1515,7 @@ pit_type TextMetrics::getPitNearY(int y)
 }
 
 
-Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
-	bool assert_in_view, bool up)
+Row const & TextMetrics::getRowNearY(int & y, pit_type pit)
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
@@ -1525,48 +1528,21 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 		if (yy + rit->height() > y)
 			break;
 
-	if (assert_in_view) {
-		if (!up && yy + rit->height() > y) {
-			if (rit != pm.rows().begin()) {
-				y = yy;
-				--rit;
-			} else if (pit != 0) {
-				--pit;
-				newParMetricsUp();
-				ParagraphMetrics const & pm2 = par_metrics_[pit];
-				rit = pm2.rows().end();
-				--rit;
-				y = yy;
-			}
-		} else if (up && yy != y) {
-			if (rit != rlast) {
-				y = yy + rit->height();
-				++rit;
-			} else if (pit < int(text_->paragraphs().size()) - 1) {
-				++pit;
-				newParMetricsDown();
-				ParagraphMetrics const & pm2 = par_metrics_[pit];
-				rit = pm2.rows().begin();
-				y = pm2.position();
-			}
-		}
-	}
 	return *rit;
 }
 
 
 // x,y are absolute screen coordinates
 // sets cursor recursively descending into nested editable insets
-Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
-	bool assert_in_view, bool up)
+Inset * TextMetrics::editXY(Cursor & cur, int x, int y)
 {
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		LYXERR0("TextMetrics::editXY(cur, " << x << ", " << y << ")");
 		cur.bv().coordCache().dump();
 	}
-	pit_type pit = getPitNearY(y);
+	pit_type const pit = getPitNearY(y);
 	LASSERT(pit != -1, return 0);
-	Row const & row = getPitAndRowNearY(y, pit, assert_in_view, up);
+	Row const & row = getRowNearY(y, pit);
 	cur.pit() = pit;
 
 	// Do we cover an inset?

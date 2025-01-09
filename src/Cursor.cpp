@@ -772,7 +772,11 @@ bool Cursor::getStatus(FuncRequest const & cmd, FuncStatus & status) const
 
 void Cursor::saveBeforeDispatchPosXY()
 {
-	getPos(beforeDispatchPosX_, beforeDispatchPosY_);
+	// FIXME: it is known that the case where the position is not
+	// known exist, in particular with previews. The question is
+	// whether not saving the cursor position is bad in these cases.
+	if (bv().hasPosition(*this))
+		getPos(beforeDispatchPosX_, beforeDispatchPosY_);
 }
 
 

@@ -431,8 +431,7 @@ void GuiCompleter::updatePopup(Cursor const & cur)
 void GuiCompleter::asyncUpdatePopup()
 {
 	Cursor cur = gui_->bufferView().cursor();
-	if (!cur.inset().completionSupported(cur)
-		  || !cur.bv().paragraphVisible(cur)) {
+	if (!cur.inset().completionSupported(cur) || !cur.bv().caretInView()) {
 		popupVisible_ = false;
 		return;
 	}

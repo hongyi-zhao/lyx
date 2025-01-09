@@ -3455,7 +3455,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 
 Point BufferView::getPos(DocIterator const & dit) const
 {
-	if (!paragraphVisible(dit))
+	if (!hasPosition(dit))
 		return Point(-1, -1);
 
 	CursorSlice const & bot = dit.bottom();
@@ -3468,12 +3468,12 @@ Point BufferView::getPos(DocIterator const & dit) const
 }
 
 
-bool BufferView::paragraphVisible(DocIterator const & dit) const
+bool BufferView::hasPosition(DocIterator const & dit) const
 {
 	CursorSlice const & bot = dit.bottom();
 	TextMetrics const & tm = textMetrics(bot.text());
 
-	return tm.contains(bot.pit());
+	return tm.contains(bot.pit()) && tm.parMetrics(bot.pit()).hasPosition();
 }
 
 
@@ -3585,7 +3585,7 @@ frontend::CaretGeometry const &  BufferView::caretGeometry() const
 
 bool BufferView::caretInView() const
 {
-	if (!paragraphVisible(cursor()))
+	if (!hasPosition(cursor()))
 		return false;
 	Point p;
 	Dimension dim;

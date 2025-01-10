@@ -1587,35 +1587,15 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y)
 }
 
 
-void TextMetrics::setCursorFromCoordinates(Cursor & cur, int x, int const y)
+void TextMetrics::setCursorFromCoordinates(Cursor & cur, int x, int y)
 {
 	LASSERT(text_ == cur.text(), return);
+
 	pit_type const pit = getPitNearY(y);
 	LASSERT(pit != -1, return);
 
-	ParagraphMetrics const & pm = parMetrics(pit);
-
-	int yy = pm.position() - pm.rows().front().ascent();
-	LYXERR(Debug::PAINTING, "x: " << x << " y: " << y <<
-		" pit: " << pit << " yy: " << yy);
-
-	int r = 0;
-	LBUFERR(pm.rows().size());
-	for (; r < int(pm.rows().size()) - 1; ++r) {
-		Row const & row = pm.rows()[r];
-		if (yy + row.height() > y)
-			break;
-		yy += row.height();
-	}
-
-	Row const & row = pm.rows()[r];
-
-	LYXERR(Debug::PAINTING, "row " << r << " from pos: " << row.pos());
-
+	Row const & row = getRowNearY(y, pit);
 	auto [pos, bound] = getPosNearX(row, x);
-
-	LYXERR(Debug::PAINTING, "setting cursor pit: " << pit << " pos: " << pos);
-
 	text_->setCursor(cur, pit, pos, true, bound);
 	// remember new position.
 	cur.setTargetX();

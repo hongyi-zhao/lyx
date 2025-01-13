@@ -184,37 +184,33 @@ private:
 	int parBottomSpacing(pit_type pit) const;
 
 	// Helper function for the other checkInsetHit method.
-	InsetList::Element * checkInsetHit(pit_type pit, int x, int y);
+	Row::Element const * checkInsetHit(Row const & row, int x) const;
 
+	/// Returns the paragraph number closest to screen y-coordinate.
+	/// This method uses the paragraph metrics to locate the
+	/// paragraph. The y-coordinate is allowed to be off-screen and
+	/// the metrics will be automatically updated if needed. This is
+	/// the reason why we need a non const BufferView.
+	/// FIXME: check whether this is still needed
+	pit_type getPitNearY(int y);
 
-// Temporary public:
+	/// returns the row near the specified y-coordinate in a given paragraph
+	/// (relative to the screen).
+	Row const * getRowNearY(int & y);
+
 public:
 	/// returns the position near the specified x-coordinate of the row.
 	/// x is an absolute screen coord, it is set to the real beginning
 	/// of this column. This takes in account horizontal cursor row scrolling.
 	std::pair<pos_type, bool> getPosNearX(Row const & row, int & x) const;
 
-	/// returns the row near the specified y-coordinate in a given paragraph
-	/// (relative to the screen).
-	Row const & getRowNearY(int & y, pit_type pit);
-
-	/// returns the paragraph number closest to screen y-coordinate.
-	/// This method uses the BufferView CoordCache to locate the
-	/// paragraph. The y-coodinate is allowed to be off-screen and
-	/// the CoordCache will be automatically updated if needed. This is
-	/// the reason why we need a non const BufferView.
-	pit_type getPitNearY(int y);
-
-	/// sets cursor recursively descending into nested editable insets
-	/**
+	/** sets cursor recursively descending into nested editable insets
 	\return the inset pointer if x,y is covering that inset
 	\param x,y are absolute screen coordinates.
 	\retval inset is null if the cursor is positioned over normal
 	       text in the current Text object. Otherwise it is the inset
 	       that the cursor points to, like for Inset::editXY.
 	*/
-	/// FIXME: cleanup to use BufferView::getCoveringInset() and
-	/// setCursorFromCoordinates() instead of checkInsetHit().
 	Inset * editXY(Cursor & cur, int x, int y);
 
 	/// sets cursor only within this Text.

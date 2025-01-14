@@ -1257,6 +1257,8 @@ docstring Application::mathIcon(docstring const & c)
 
 void Application::applyPrefs()
 {
+	if (!guiApp)
+		return;
 	if (lyxrc.ui_style != "default")
 		lyx::frontend::GuiApplication::setStyle(toqstr(lyxrc.ui_style));
 #if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)

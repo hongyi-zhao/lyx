@@ -382,6 +382,10 @@ if [ "${patch_old}" = "1" ]; then
     git cherry-pick --keep-redundant-commits -x -X theirs "6874c86c"
   fi
 
+  if ! git merge-base --is-ancestor  "527d3d66" HEAD; then
+    git cherry-pick --keep-redundant-commits -x -X theirs "527d3d66"
+  fi
+
   # EXPIRE:
   # The following is not strictly (because we do not run the cmake dev flags if
   # --patch-old) necessary and it sync not apply cleanly in many cases.

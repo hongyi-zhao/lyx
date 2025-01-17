@@ -259,7 +259,8 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 \\usepackage[%s,tightpage]{preview}
 \\makeatletter
 \\ifdefined\\AddToHook
-  \\AddToHook{env/preview/before}{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}\\color{lyxfg}}
+  \\AddToHook{env/preview/before}{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}}
+  \\g@addto@macro\\preview{\\color{lyxfg}}
   \\AddToHook{env/preview/after}{\\endgroup}
 \\else
   \\g@addto@macro\\preview{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}\\color{lyxfg}}

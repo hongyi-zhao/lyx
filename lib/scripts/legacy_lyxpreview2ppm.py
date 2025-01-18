@@ -260,12 +260,12 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 \\makeatletter
 \\ifdefined\\AddToHook
   \\AddToHook{env/preview/before}{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}}
-  \\g@addto@macro\\preview{\\color{lyxfg}}
   \\AddToHook{env/preview/after}{\\endgroup}
 \\else
-  \\g@addto@macro\\preview{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}\\color{lyxfg}}
+  \\g@addto@macro\\preview{\\leavevmode\\begingroup\\color{lyxbg}\\special{background \\current@color}\\special{ps::clippath fill}}
   \\g@addto@macro\\endpreview{\\endgroup}
 \\fi
+\\g@addto@macro\\preview{\\color{lyxfg}}
 \\let\\pr@set@pagerightoffset\\@empty
 \\ifx\\pagerightoffset\\@undefined\\else
   \\def\\pr@set@pagerightoffset{\\ifnum\\pagedirection=1

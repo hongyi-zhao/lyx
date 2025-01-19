@@ -1877,11 +1877,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 }
 
 
-void GuiDocument::onClosing(int const id)
+void GuiDocument::checkOnClosing()
 {
-	if (!guiApp || !guiApp->currentView()
-	    || guiApp->currentView()->id() != id
-	    || !bc().policy().buttonStatus(ButtonPolicy::RESTORE))
+	if (!bc().policy().buttonStatus(ButtonPolicy::RESTORE))
 		// nothing to do
 		return;
 
@@ -1891,6 +1889,23 @@ void GuiDocument::onClosing(int const id)
 			1, 1, _("&Apply"), _("&Dismiss Changes"));
 	if (ret == 0)
 		slotOK();
+}
+
+
+void GuiDocument::onClosing(int const id)
+{
+	if (guiApp && guiApp->currentView()
+	    && guiApp->currentView()->id() == id)
+		// Warn with unapplied changes
+		checkOnClosing();
+}
+
+
+void GuiDocument::closeEvent(QCloseEvent * e)
+{
+	// Warn with unapplied changes
+	checkOnClosing();
+	GuiDialog::closeEvent(e);
 }
 
 
@@ -5655,6 +5670,13 @@ void GuiDocument::setOutputSync(bool on)
 
 bool GuiDocument::eventFilter(QObject * sender, QEvent * event)
 {
+	if (event->type() == QEvent::KeyPress) {
+		QKeyEvent * key = static_cast<QKeyEvent *>(event);
+		if ((key->key() == Qt::Key_Escape)) {
+			// Warn with unapplied changes
+			checkOnClosing();
+		}
+	}
 	if (event->type() == QEvent::ApplicationPaletteChange) {
 		// mode switch: colors need to be updated
 		// and the highlighting redone

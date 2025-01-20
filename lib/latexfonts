@@ -1300,7 +1300,6 @@ Font libertinusmath
 	GuiName          "Libertinus Math"
 	Family           math
 	Package          libertinust1math
-	Provides         amssymb,amsfonts
 EndFont
 
 Font minion-ntxm

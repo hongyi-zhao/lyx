@@ -91,7 +91,7 @@ struct MathSymbol {
 
 QPixmap getSelectedPixmap(QPixmap pixmap, QSize const icon_size)
 {
-	QPalette palette = QPalette();
+	QPalette palette = guiApp->style()->standardPalette();
 	QColor text_color = (guiApp->isInDarkMode())
 			? palette.color(QPalette::Active, QPalette::WindowText)
 			: Qt::black;

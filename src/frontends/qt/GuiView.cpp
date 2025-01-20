@@ -1818,6 +1818,7 @@ bool GuiView::event(QEvent * e)
 	case QEvent::StyleChange: {
 		// We need to update metrics here to avoid a crash (#12786)
 		theBufferList().changed(true);
+		refillToolbars();
 		return QMainWindow::event(e);
 	}
 #endif

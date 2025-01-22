@@ -646,7 +646,12 @@ QPixmap prepareForDarkMode(QPixmap pixmap)
 
 	// create a layer with black text turned to QPalette::WindowText
 	QPixmap black_overlay(pixmap.size());
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 	QColor text_color = theGuiApp()->style()->standardPalette().color(QPalette::Active, QPalette::WindowText);
+#else
+	QPalette palette = QPalette();
+	QColor text_color = palette.color(QPalette::Active, QPalette::WindowText);
+#endif
 	black_overlay.fill(text_color);
 	black_overlay.setMask(pixmap.createMaskFromColor(Qt::black, Qt::MaskOutColor));
 

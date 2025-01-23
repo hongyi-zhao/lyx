@@ -16,6 +16,7 @@ liblyxfrontends_a_SOURCES = \
 	FontLoader.h \
 	FontMetrics.h \
 	Delegates.h \
+	InputMethod.h \
 	KeyModifier.h \
 	KeySymbol.h \
 	NullPainter.h \

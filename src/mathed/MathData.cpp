@@ -30,9 +30,11 @@
 #include "Cursor.h"
 #include "Dimension.h"
 
+#include "mathed/InsetMathChar.h"
 #include "mathed/InsetMathUnknown.h"
 
 #include "frontends/FontMetrics.h"
+#include "frontends/InputMethod.h"
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
@@ -295,6 +297,24 @@ bool MathData::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 		}
 		if (i + 1 == espos)
 			mrow.push_back(MathRow::Element(mi, MathRow::END_SEL));
+	}
+
+	// insert virtual preedit
+	bool const has_preedit = !bv->inputMethod()->preeditString().empty() &&
+	        cur.inMathed() && &cur.cell() == this &&
+	        cur.inset().currentMode() == Inset::TEXT_MODE;
+	docstring const preedit_str = bv->inputMethod()->preeditString();
+
+	if (has_preedit) {
+		for (size_t i = 0 ; i < preedit_str.size(); ++i) {
+			MathRow::Element e(mi, MathRow::INSET, MC_ORD);
+			e.inset = new InsetMathChar(buffer_, *preedit_str.substr(i, 1).c_str());
+			e.im = bv->inputMethod();
+			e.char_format_index = bv->inputMethod()->charFormatIndex(i);
+
+			mrow.insert(cur.pos() + i + 1, e);
+			has_contents = true;
+		}
 	}
 	return has_contents;
 }

@@ -22,6 +22,7 @@
 #include "Language.h"
 
 #include "frontends/FontMetrics.h"
+#include "frontends/InputMethod.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
@@ -76,7 +77,7 @@ double Row::Element::pos2x(pos_type const i) const
 
 	double w = 0;
 	//handle first the two bounds of the element
-	if (i == endpos && type != VIRTUAL)
+	if (i == endpos && type != VIRTUAL && type != PREEDIT)
 		w = isRTL() ? 0 : full_width();
 	else if (i == pos || type != STRING)
 		w = isRTL() ? full_width() : 0;
@@ -101,6 +102,7 @@ pos_type Row::Element::x2pos(int &x) const
 		break;
 	}
 	case VIRTUAL:
+	case PREEDIT:
 		// those elements are actually empty (but they have a width)
 		i = 0;
 		x = isRTL() ? int(full_width()) : 0;
@@ -126,8 +128,12 @@ pos_type Row::Element::x2pos(int &x) const
 bool Row::Element::splitAt(int const width, int next_width, SplitType split_type,
                            Row::Elements & tail)
 {
-	// Not a string or already OK.
-	if (type != STRING || (dim.wid > 0 && dim.wid < width))
+	bool const wrap_any =
+	        type != PREEDIT ? !font.language()->wordWrap() : lang_wrap_any;
+
+	// Not a string nor a preedit string, or already OK.
+	if ((type != STRING && type != PREEDIT) ||
+	        ((type == STRING || type == PREEDIT) && dim.wid > 0 && dim.wid < width))
 		return false;
 
 	FontMetrics const & fm = theFontMetrics(font);
@@ -140,7 +146,6 @@ bool Row::Element::splitAt(int const width, int next_width, SplitType split_type
 		return false;
 	}
 
-	bool const wrap_any = !font.language()->wordWrap();
 	FontMetrics::Breaks breaks = fm.breakString(str, width, next_width,
                                                 isRTL(), wrap_any || split_type == FORCE);
 
@@ -155,24 +160,44 @@ bool Row::Element::splitAt(int const width, int next_width, SplitType split_type
 		return false;
 	}
 
-	Element first_e(STRING, pos, font, change);
+	// type is STRING or PREEDIT
+	Element first_e(type, pos, font, change);
+
 	// should next element eventually replace *this?
 	bool first = true;
 	docstring::size_type i = 0;
 	for (FontMetrics::Break const & brk : breaks) {
-		Element e(STRING, pos + i, font, change);
-		e.str = str.substr(i, brk.len);
-		e.endpos = e.pos + brk.len;
-		e.dim.wid = brk.wid;
-		e.nspc_wid = brk.nspc_wid;
-		e.row_flags = CanBreakInside | BreakAfter;
-		if (first) {
-			// this element eventually goes to *this
-			e.row_flags |= row_flags & ~AfterFlags;
-			first_e = e;
-			first = false;
-		} else
-			tail.push_back(e);
+		if (type == PREEDIT) {
+			Element e(type, pos, font, change);
+			e.str = str.substr(i, brk.len);
+			e.endpos = e.pos;
+			e.dim.wid = brk.wid;
+			e.nspc_wid = brk.nspc_wid;
+			e.row_flags = CanBreakInside | BreakAfter;
+			e.im = im;
+			e.char_format_index = char_format_index;
+			if (first) {
+				// this element eventually goes to *this
+				e.row_flags |= row_flags & ~AfterFlags;
+				first_e = e;
+				first = false;
+			} else
+				tail.push_back(e);
+		} else {
+			Element e(type, pos + i, font, change);
+			e.str = str.substr(i, brk.len);
+			e.endpos = e.pos + brk.len;
+			e.dim.wid = brk.wid;
+			e.nspc_wid = brk.nspc_wid;
+			e.row_flags = CanBreakInside | BreakAfter;
+			if (first) {
+				// this element eventually goes to *this
+				e.row_flags |= row_flags & ~AfterFlags;
+				first_e = e;
+				first = false;
+			} else
+				tail.push_back(e);
+		}
 		i += brk.len;
 	}
 
@@ -310,6 +335,9 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 		break;
 	case Row::VIRTUAL:
 		os << "VIRTUAL: `" << to_utf8(e.str) << "', ";
+		break;
+	case Row::PREEDIT:
+		os << "PREEDIT: `" << to_utf8(e.str) << "', ";
 		break;
 	case Row::INSET:
 		os << "INSET: " << to_utf8(e.inset->layoutName()) << ", ";
@@ -532,7 +560,7 @@ void Row::add(pos_type const pos, char_type const c,
 
 
 void Row::addVirtual(pos_type const pos, docstring const & s,
-		     Font const & f, Change const & ch)
+             Font const & f, Change const & ch)
 {
 	finalizeLast();
 	Element e(VIRTUAL, pos, f, ch);
@@ -544,6 +572,25 @@ void Row::addVirtual(pos_type const pos, docstring const & s,
 	int const prev_row_flags = elements_.empty() ? Inline : elements_.back().row_flags;
 	int const can_inherit = AfterFlags & ~AlwaysBreakAfter;
 	e.row_flags = (prev_row_flags & can_inherit) | NoBreakBefore;
+	elements_.push_back(e);
+	finalizeLast();
+}
+
+
+void Row::addPreedit(pos_type const pos, docstring const & s, Font const & f,
+                     frontend::InputMethod * im, pos_type const char_format_index,
+                     Change const & ch)
+{
+	finalizeLast();
+	Element e(PREEDIT, pos, f, ch);
+	e.str = s;
+	e.im = im;
+	e.dim.wid = im->horizontalAdvance(s, char_format_index);
+	dim_.wid += e.dim.wid;
+	e.endpos = pos;
+	e.char_format_index = char_format_index;
+	e.lang_wrap_any = im->canWrapAnywhere(char_format_index);
+	e.row_flags = CanBreakInside | CanBreakBefore | CanBreakAfter;
 	elements_.push_back(e);
 	finalizeLast();
 }

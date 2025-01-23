@@ -20,7 +20,7 @@ else()
 	add_library(mathed ${library_type} ${_allinone_files})
 endif()
 set_target_properties(mathed PROPERTIES FOLDER "applications/LyX" QT_NO_UNICODE_DEFINES TRUE)
-qt_use_modules(mathed Core)
+qt_use_modules(mathed Core Gui)
 
 lyx_add_gcc_pch(mathed)
 

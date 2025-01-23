@@ -29,6 +29,7 @@ namespace support { class FileName; }
 namespace frontend { struct CaretGeometry; }
 namespace frontend { class Painter; }
 namespace frontend { class GuiBufferViewDelegate; }
+namespace frontend { class InputMethod; }
 
 class Buffer;
 class Change;
@@ -255,6 +256,9 @@ public:
 	void setInlineCompletion(Cursor const & cur, DocIterator const & pos,
 		docstring const & completion, size_t uniqueChars = 0);
 
+	void setInputMethod(frontend::InputMethod * im);
+	frontend::InputMethod * inputMethod() const;
+
 	/// translate and insert a character, using the correct keymap.
 	void translateAndInsert(char_type c, Text * t, Cursor & cur);
 
@@ -342,8 +346,8 @@ public:
 	bool caretInView() const;
 	/// get the position and height of the caret
 	void caretPosAndDim(Point & p, Dimension & dim) const;
-	/// compute the shape of the caret
-	void buildCaretGeometry(bool complet);
+	/// compute the shape of the caret with coordinate shift parameter
+	void buildCaretGeometry(bool complet, Point shift = {});
 	/// the shape of the caret
 	frontend::CaretGeometry const & caretGeometry() const;
 

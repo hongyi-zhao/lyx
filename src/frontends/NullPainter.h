@@ -66,6 +66,9 @@ public:
 
 	/// draw a string
 	void text(int, int, docstring const &, FontInfo const &, Direction const = Auto) override {}
+	/// draw a string with input method
+	void text(int, int, docstring const &, InputMethod const *, pos_type const,
+	          Direction const = Auto) override {}
 
 	/// draw a char
 	void text(int, int, char_type, FontInfo const &, Direction const = Auto) override {}
@@ -95,10 +98,6 @@ public:
 	/// draw a string and enclose it inside a button frame
 	void buttonText(int, int, docstring const &,
 	                FontInfo const &, Color, Color, int) override {}
-
-	/// draw a character of a preedit string for cjk support.
-	int preeditText(int, int, char_type, FontInfo const &,
-	                preedit_style) override { return 0; }
 
 	/// start monochrome painting mode, i.e. map every color a shade of \c blend.
 	void enterMonochromeMode(Color const &) override {}

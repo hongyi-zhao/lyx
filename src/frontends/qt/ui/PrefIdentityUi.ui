@@ -62,6 +62,9 @@
          <property name="toolTip">
           <string>Initials of your name</string>
          </property>
+         <property name="inputMethodHints">
+          <set>Qt::InputMethodHint::ImhPreferLatin</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -81,6 +84,9 @@
        <property name="toolTip">
         <string>Your E-mail address</string>
        </property>
+       <property name="inputMethodHints">
+        <set>Qt::InputMethodHint::ImhEmailCharactersOnly|Qt::InputMethodHint::ImhNoPredictiveText|Qt::InputMethodHint::ImhPreferLowercase</set>
+       </property>
       </widget>
      </item>
     </layout>
@@ -88,10 +94,10 @@
    <item row="1" column="0">
     <spacer>
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
+      <enum>QSizePolicy::Policy::Expanding</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>

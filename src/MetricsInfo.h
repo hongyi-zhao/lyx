@@ -28,6 +28,7 @@
 namespace lyx {
 
 namespace frontend { class Painter; }
+namespace frontend { class InputMethod; }
 class BufferView;
 class Length;
 class MacroContext;
@@ -123,9 +124,12 @@ public:
 	///
 	PainterInfo(BufferView * bv, frontend::Painter & pain);
 	///
-	void draw(int x, int y, char_type c);
+	void draw(int x, int y, char_type c,
+	          frontend::InputMethod const * im = nullptr,
+	          pos_type const char_format_index = 0);
 	///
 	void draw(int x, int y, docstring const & str);
+
 	/// Determines the background color based on the
 	/// selection state, the background color inherited from the parent inset
 	/// and the inset's own background color (if one is specified).

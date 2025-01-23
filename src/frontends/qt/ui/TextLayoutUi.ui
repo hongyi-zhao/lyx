@@ -66,6 +66,9 @@
         <property name="toolTip">
          <string>Number of lines</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+        </property>
        </widget>
       </item>
       <item row="0" column="3">
@@ -208,6 +211,9 @@
         <property name="toolTip">
          <string/>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -220,6 +226,9 @@
         </property>
         <property name="toolTip">
          <string/>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
         </property>
        </widget>
       </item>
@@ -292,6 +301,9 @@
         <property name="toolTip">
          <string/>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
        </widget>
       </item>
       <item row="3" column="2">
@@ -301,6 +313,9 @@
         </property>
         <property name="toolTip">
          <string/>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
         </property>
        </widget>
       </item>

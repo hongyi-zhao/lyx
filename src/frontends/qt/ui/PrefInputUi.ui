@@ -236,6 +236,9 @@
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+          </property>
           <property name="editable">
            <bool>false</bool>
           </property>

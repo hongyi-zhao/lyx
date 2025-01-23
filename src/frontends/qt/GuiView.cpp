@@ -24,6 +24,7 @@
 #include "GuiClickableLabel.h"
 #include "GuiCompleter.h"
 #include "GuiFontMetrics.h"
+#include "GuiInputMethod.h"
 #include "GuiKeySymbol.h"
 #include "GuiToc.h"
 #include "GuiToolbar.h"
@@ -1219,7 +1220,7 @@ void GuiView::setFocus()
 
 void GuiView::setFocus(Qt::FocusReason reason)
 {
-	LYXERR(Debug::DEBUG, "GuiView::setFocus()" << this << " reason = " << reason);
+	LYXERR(Debug::DEBUG, "GuiView::setFocus(): " << this << " reason = " << reason);
 	QMainWindow::setFocus(reason);
 }
 
@@ -1236,7 +1237,7 @@ bool GuiView::hasFocus() const
 
 void GuiView::focusInEvent(QFocusEvent * e)
 {
-	LYXERR(Debug::DEBUG, "GuiView::focusInEvent()" << this);
+	LYXERR(Debug::DEBUG, "GuiView::focusInEvent(): " << this << " reason = " << e->reason());
 	QMainWindow::focusInEvent(e);
 	// Make sure guiApp points to the correct view.
 	guiApp->setCurrentView(this);
@@ -4463,6 +4464,7 @@ void GuiView::dispatchToBufferView(FuncRequest const & cmd, DispatchResult & dr)
 			updateCompletion(bv->cursor(), false, true);
 		else
 			updateCompletion(bv->cursor(), false, false);
+		bv->inputMethod()->toggleInputMethodAcceptance();
 	}
 
 	dr = bv->cursor().result();

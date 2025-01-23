@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>362</width>
-    <height>287</height>
+    <height>316</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,6 +43,9 @@
         </property>
         <property name="toolTip">
          <string>Choose a particular paper size, or set your own with &quot;Custom&quot;</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
         </property>
         <property name="maxVisibleItems">
          <number>20</number>
@@ -86,10 +89,17 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="lyx::frontend::LengthCombo" name="paperheightUnitCO"/>
+       <widget class="lyx::frontend::LengthCombo" name="paperheightUnitCO">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="paperwidthL">
@@ -115,10 +125,17 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="lyx::frontend::LengthCombo" name="paperwidthUnitCO"/>
+       <widget class="lyx::frontend::LengthCombo" name="paperwidthUnitCO">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_3">
@@ -185,6 +202,9 @@
         </property>
         <property name="toolTip">
          <string>Style used for the page header and footer</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
         </property>
        </widget>
       </item>

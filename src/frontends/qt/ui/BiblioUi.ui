@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>534</width>
-    <height>482</height>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -63,6 +63,9 @@
          <widget class="QComboBox" name="citeEngineCO">
           <property name="toolTip">
            <string>A selection of different style format approaches (such as natbib) that respectively provide support for specific citation and bibliography styles. Expand to get more information.</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhLatinOnly</set>
           </property>
          </widget>
         </item>
@@ -133,6 +136,9 @@
           <property name="toolTip">
            <string>Here you can enter further options of the bibliography package</string>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
+          </property>
          </widget>
         </item>
        </layout>
@@ -162,6 +168,9 @@
          <widget class="QComboBox" name="biblatexCbxCO">
           <property name="toolTip">
            <string>The style that determines the layout of the citations</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhLatinOnly</set>
           </property>
           <property name="editable">
            <bool>true</bool>
@@ -230,6 +239,9 @@
           <property name="toolTip">
            <string>The style that determines the layout of the biblatex-generated bibliography</string>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhLatinOnly</set>
+          </property>
           <property name="editable">
            <bool>true</bool>
           </property>
@@ -279,6 +291,9 @@
           </property>
           <property name="toolTip">
            <string>Here, you can define a BibTeX style that is suggested in the BibTeX dialog by default</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhLatinOnly</set>
           </property>
           <property name="editable">
            <bool>true</bool>
@@ -399,6 +414,9 @@
           <property name="toolTip">
            <string>Select a processor</string>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhLatinOnly</set>
+          </property>
          </widget>
         </item>
        </layout>
@@ -438,6 +456,9 @@
           </property>
           <property name="toolTip">
            <string>Define options such as --min-crossrefs (see the documentation of BibTeX)</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
           </property>
          </widget>
         </item>

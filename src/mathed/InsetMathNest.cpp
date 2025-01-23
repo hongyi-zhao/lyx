@@ -58,6 +58,7 @@
 
 #include "frontends/Application.h"
 #include "frontends/Clipboard.h"
+#include "frontends/InputMethod.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
@@ -172,7 +173,7 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 //		<< " asc: " << ascent() << "  des: " << descent()
 //		<< " ar.asc: " << ar.ascent() << " ar.des: " << ar.descent() << endl;
 	// move cursor visually into empty cells ("blue rectangles");
-	if (ar.empty()) {
+	if (ar.empty() && bv.inputMethod()->preeditString().empty()) {
 		Dimension const dim = coord_cache.getArrays().dim(&ar);
 		x += dim.wid / 3;
 	}
@@ -1339,6 +1340,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.message(_("entered math text mode (textrm)"));
 		}
 #endif
+		cur.bv().inputMethod()->toggleInputMethodAcceptance();
 		break;
 	}
 

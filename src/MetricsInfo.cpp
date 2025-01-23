@@ -167,9 +167,13 @@ PainterInfo::PainterInfo(BufferView * bv, lyx::frontend::Painter & painter)
 }
 
 
-void PainterInfo::draw(int x, int y, char_type c)
+void PainterInfo::draw(int x, int y, char_type c, frontend::InputMethod const * im,
+                       pos_type const char_format_index)
 {
-	pain.text(x, y, c, base.font);
+	if (im == nullptr)
+		pain.text(x, y, c, base.font);
+	else
+		pain.text(x, y, c, im, char_format_index);
 }
 
 

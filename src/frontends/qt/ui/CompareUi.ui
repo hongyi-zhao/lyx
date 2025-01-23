@@ -144,6 +144,9 @@
        <property name="toolTip">
         <string>Specify the original version of the document here (comparison source)</string>
        </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhPreferLatin</set>
+       </property>
        <property name="editable">
         <bool>true</bool>
        </property>
@@ -179,6 +182,9 @@
        </property>
        <property name="toolTip">
         <string>Specify the modified version of the document here (comparison target)</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhPreferLatin</set>
        </property>
        <property name="editable">
         <bool>true</bool>

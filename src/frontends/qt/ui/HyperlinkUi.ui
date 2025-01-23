@@ -60,6 +60,9 @@
          <property name="toolTip">
           <string>URL</string>
          </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhDigitsOnly|Qt::ImhUrlCharactersOnly</set>
+         </property>
         </widget>
        </item>
        <item>

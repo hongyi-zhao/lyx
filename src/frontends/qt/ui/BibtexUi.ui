@@ -294,6 +294,9 @@
         <property name="toolTip">
          <string>Choose a style file</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhLatinOnly</set>
+        </property>
         <property name="editable">
          <bool>true</bool>
         </property>
@@ -411,6 +414,9 @@
          <widget class="QLineEdit" name="biblatexOptsLE">
           <property name="toolTip">
            <string>Options to the biblatex bibliography command. See the biblatex manual for details.</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
           </property>
          </widget>
         </item>

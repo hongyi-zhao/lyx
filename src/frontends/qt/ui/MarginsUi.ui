@@ -253,12 +253,18 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly</set>
+           </property>
           </widget>
          </item>
          <item>
-          <widget class="lyx::frontend::LengthCombo" name="topUnit" native="true">
+          <widget class="lyx::frontend::LengthCombo" name="topUnit">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
            </property>
           </widget>
          </item>
@@ -286,15 +292,21 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly</set>
+           </property>
            <property name="text">
             <string/>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="lyx::frontend::LengthCombo" name="bottomUnit" native="true">
+          <widget class="lyx::frontend::LengthCombo" name="bottomUnit">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
            </property>
           </widget>
          </item>
@@ -322,12 +334,18 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly</set>
+           </property>
           </widget>
          </item>
          <item>
-          <widget class="lyx::frontend::LengthCombo" name="innerUnit" native="true">
+          <widget class="lyx::frontend::LengthCombo" name="innerUnit">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
            </property>
           </widget>
          </item>
@@ -355,12 +373,18 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly</set>
+           </property>
           </widget>
          </item>
          <item>
-          <widget class="lyx::frontend::LengthCombo" name="outerUnit" native="true">
+          <widget class="lyx::frontend::LengthCombo" name="outerUnit">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
            </property>
           </widget>
          </item>
@@ -388,12 +412,18 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly</set>
+           </property>
           </widget>
          </item>
          <item>
-          <widget class="lyx::frontend::LengthCombo" name="headsepUnit" native="true">
+          <widget class="lyx::frontend::LengthCombo" name="headsepUnit">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
            </property>
           </widget>
          </item>
@@ -421,12 +451,18 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly</set>
+           </property>
           </widget>
          </item>
          <item>
-          <widget class="lyx::frontend::LengthCombo" name="headheightUnit" native="true">
+          <widget class="lyx::frontend::LengthCombo" name="headheightUnit">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
            </property>
           </widget>
          </item>
@@ -454,12 +490,18 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly</set>
+           </property>
           </widget>
          </item>
          <item>
-          <widget class="lyx::frontend::LengthCombo" name="footskipUnit" native="true">
+          <widget class="lyx::frontend::LengthCombo" name="footskipUnit">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
            </property>
           </widget>
          </item>
@@ -487,12 +529,18 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly</set>
+           </property>
           </widget>
          </item>
          <item>
-          <widget class="lyx::frontend::LengthCombo" name="columnsepUnit" native="true">
+          <widget class="lyx::frontend::LengthCombo" name="columnsepUnit">
            <property name="enabled">
             <bool>false</bool>
+           </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
            </property>
           </widget>
          </item>
@@ -507,7 +555,7 @@
  <customwidgets>
   <customwidget>
    <class>lyx::frontend::LengthCombo</class>
-   <extends>QWidget</extends>
+   <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
   </customwidget>
  </customwidgets>

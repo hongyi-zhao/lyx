@@ -19,6 +19,7 @@
 #include "LayoutEnums.h"
 #include "ParagraphMetrics.h"
 
+#include "frontends/InputMethod.h"
 #include "support/types.h"
 
 #include <map>
@@ -155,6 +156,7 @@ public:
 	int rightMargin(ParagraphMetrics const & pm) const;
 	int rightMargin(pit_type const pit) const;
 
+	int maxWidth() { return max_width_; }
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 
@@ -247,6 +249,9 @@ private:
 	/// The text contents (the model).
 	/// \todo FIXME: this should be const.
 	Text * text_;
+
+	/// The input method instance
+	frontend::InputMethod * im_;
 
 	/// A map from paragraph index number to paragraph metrics
 	typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;

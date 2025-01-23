@@ -2463,6 +2463,11 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	       << lyxaction.getActionName(func.action()) << "]["
 	       << d->keyseq.print(KeySequence::Portable) << ']');
 
+	// The preedit mode should avoid intervening multi-stroke commands
+	command_phase_ = func.action() == LFUN_COMMAND_PREFIX;
+
+	Q_EMIT acceptsInputMethod();
+
 	// already here we know if it any point in going further
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>531</width>
+    <width>579</width>
     <height>381</height>
    </rect>
   </property>
@@ -31,10 +31,17 @@
         <property name="toolTip">
          <string>Width value</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="lyx::frontend::LengthCombo" name="widthUnitsLC"/>
+       <widget class="lyx::frontend::LengthCombo" name="widthUnitsLC">
+        <property name="inputMethodHints">
+         <set>Qt::ImhLatinOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QCheckBox" name="heightCB">
@@ -127,6 +134,9 @@
         </property>
         <property name="toolTip">
          <string>Height value</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
         </property>
        </widget>
       </item>
@@ -377,6 +387,9 @@
         <property name="enabled">
          <bool>false</bool>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
        </widget>
       </item>
       <item row="2" column="2">
@@ -384,12 +397,18 @@
         <property name="enabled">
          <bool>false</bool>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
        </widget>
       </item>
       <item row="3" column="2">
        <widget class="lyx::frontend::LengthCombo" name="shadowsizeUnitsLC">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
         </property>
        </widget>
       </item>

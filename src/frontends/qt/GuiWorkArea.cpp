@@ -72,6 +72,7 @@
 #include <QToolTip>
 #include <QMenuBar>
 
+#include <array>
 #include <cmath>
 #include <iostream>
 
@@ -189,8 +190,13 @@ double GuiWorkArea::pixelRatio() const
 void GuiWorkArea::init()
 {
 	// Setup the signals
-	connect(&d->caret_timeout_, SIGNAL(timeout()),
-		this, SLOT(toggleCaret()));
+	connect(&d->caret_timeout_, SIGNAL(timeout()), this, SLOT(toggleCaret()));
+	connect(this, &GuiWorkArea::preeditChanged,
+	        d->im_, &GuiInputMethod::processPreedit);
+	connect(d->im_, &GuiInputMethod::preeditProcessed,
+	        this, &GuiWorkArea::flagPreedit);
+	connect(d->im_, &GuiInputMethod::queryProcessed,
+	        this, &GuiWorkArea::receiveIMQueryResponse);
 
 	// This connection is closed at the same time as this is destroyed.
 	d->synthetic_mouse_event_.timeout.timeout.connect([this](){
@@ -204,6 +210,7 @@ void GuiWorkArea::init()
 	setMouseTracking(true);
 	setMinimumSize(100, 70);
 	setFrameStyle(QFrame::NoFrame);
+	setInputMethodHints(Qt::ImhNone);
 	updateWindowTitle();
 
 	d->updateCursorShape();
@@ -219,14 +226,6 @@ void GuiWorkArea::init()
 	// Enables input methods for asian languages.
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
-
-	// Initialize d->im_cursor_rect_
-	Point point;
-	Dimension dim;
-	d->buffer_view_->caretPosAndDim(point, dim);
-	int cur_x = point.x - dim.width();
-	int cur_y = point.y + dim.height();
-	d->im_cursor_rect_ = QRectF(cur_x, (cur_y - dim.height()) , 1, dim.height() );
 }
 
 
@@ -254,6 +253,7 @@ void GuiWorkArea::setBuffer(Buffer & buffer)
 {
 	delete d->buffer_view_;
 	d->buffer_view_ = new BufferView(buffer);
+	setInputMethod();
 	buffer.workAreaManager().add(this);
 
 	// HACK: Prevents an additional redraw when the scrollbar pops up
@@ -266,6 +266,21 @@ void GuiWorkArea::setBuffer(Buffer & buffer)
 		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	QTimer::singleShot(50, this, SLOT(fixVerticalScrollBar()));
 	Q_EMIT bufferViewChanged();
+}
+
+
+void GuiWorkArea::setInputMethod()
+{
+	d->im_ = new GuiInputMethod(this);
+
+	// Notify BufferView about the input method so that TextMetics can know it
+	d->buffer_view_->setInputMethod(d->im_);
+}
+
+
+GuiInputMethod * GuiWorkArea::inputMethod()
+{
+	return d->im_;
 }
 
 
@@ -436,6 +451,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 		completer_->updateVisibility(false, false);
 		lyx_view_->updateDialogs();
 		lyx_view_->updateStatusBar();
+		p->inputMethod()->toggleInputMethodAcceptance();
 	}
 
 	// GUI tweaks except with mouse motion with no button pressed.
@@ -545,6 +561,12 @@ void GuiWorkArea::Private::hideCaret()
  */
 void GuiWorkArea::Private::drawCaret(QPainter & painter, int horiz_offset) const
 {
+	drawCaret(painter, horiz_offset, 0);
+}
+
+void GuiWorkArea::Private::drawCaret(QPainter & painter, int horiz_offset,
+                                     int vert_offset) const
+{
 	if (buffer_view_->caretGeometry().shapes.empty())
 		return;
 
@@ -556,10 +578,10 @@ void GuiWorkArea::Private::drawCaret(QPainter & painter, int horiz_offset) const
 		QPainterPath path;
 		for (Point const & p : shape) {
 			if (first) {
-				path.moveTo(p.x - horiz_offset, p.y);
+				path.moveTo(p.x - horiz_offset, p.y - vert_offset);
 				first = false;
 			} else
-				path.lineTo(p.x - horiz_offset, p.y);
+				path.lineTo(p.x - horiz_offset, p.y - vert_offset);
 		}
 		painter.fillPath(path, color);
 	}
@@ -1129,6 +1151,22 @@ void GuiWorkArea::queryInputItemGeometry()
 			", height() = " << d->item_rect_.height() <<
 			" -> " << d->sys_im_->inputItemRectangle().height()
 	);
+
+	d->item_rect_  = d->sys_im_->inputItemRectangle();
+
+#if defined(Q_OS_LINUX) && QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	const QPointF origin(0,0);
+	QPointF global_coord = mapToGlobal(origin);
+	QTransform qt;
+	qt.translate(global_coord.x(), global_coord.y());
+	LYXERR(
+	   Debug::DEBUG,
+	   "item_trans_ is aquired: dx() = " <<
+	            d->item_trans_.dx() << " -> " << qt.dx() <<
+	            ", dy() = " << d->item_trans_.dy() << " -> " << qt.dy()
+	);
+	d->item_trans_ = qt;
+#else
 	LYXERR(
 	   Debug::DEBUG,
 	   "item_trans_ is aquired: dx() = " << d->item_trans_.dx() <<
@@ -1136,9 +1174,8 @@ void GuiWorkArea::queryInputItemGeometry()
 	   ", dy() = " << d->item_trans_.dy() <<
 	   " -> " << d->sys_im_->inputItemTransform().dy()
 	);
-
-	d->item_rect_  = d->sys_im_->inputItemRectangle();
 	d->item_trans_ = d->sys_im_->inputItemTransform();
+#endif
 
 	// save coordinates of the base working area for later use necessary to
 	// creat new GuiViews
@@ -1225,197 +1262,6 @@ void GuiWorkArea::resetInputItemGeometry(bool is_new_view)
 }
 
 
-//#define DEBUG_PREEDIT
-
-void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
-{
-#ifdef DEBUG_PREEDIT
-	// check the language that current input method uses
-	QLocale::Language lang = sys_im_->locale().language();
-	if (lang != im_lang_) {
-		LYXERR0("QLocale = " << QLocale::languageToString(lang));
-		im_lang_ = lang;
-	}
-#endif
-
-	// Chinese IM may want cursor position even when preedit string is empty
-	// such a case is handled below
-	if (preedit_string_.empty() && sys_im_->locale().language() != QLocale::Chinese)
-		return;
-
-	// lower margin of the preedit area to separate the candidate window
-	// report to IM the height of preedit rectangle larger than the actual by
-	// preedit_lower_margin so that the conversion suggestion window does not
-	// hide the underline of the preedit text
-	int preedit_lower_margin = 1;
-
-	Point point;
-	Dimension dim;
-	buffer_view_->caretPosAndDim(point, dim);
-	int cur_x = point.x - dim.width();
-	int cur_y = point.y + dim.height();
-
-	if (preedit_string_.empty()) {
-		// Chinese input methods may exit here just obtaining im_cursor_rect
-		im_cursor_rect_ =
-			QRectF(cur_x, cur_y - dim.height(), 1, dim.height() + preedit_lower_margin);
-		sys_im_->update(Qt::ImCursorRectangle);
-		return;
-	}
-
-	// reset item transformation since it can go wrong after the item gets
-	// lost and regains focus or after a new tab (dis)appears etc.
-	p->resetInputItemGeometry();
-
-	// FIXME: shall we use real_current_font here? (see #10478)
-	FontInfo const font = buffer_view_->cursor().getFont().fontInfo();
-	FontMetrics const & fm = theFontMetrics(font);
-
-	// force fulldraw to remove previous paint remaining on screen
-    // FIXME: This is costly to do
-	buffer_view_->processUpdateFlags(Update::ForceDraw);
-
-	// get attributes of input method cursor.
-	// cursor_pos : cursor position in preedit string.
-	size_t cursor_pos = 0;
-
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-	bool cursor_is_visible = false;
-#endif
-
-	for (auto const & attr : preedit_attr_) {
-		if (attr.type == QInputMethodEvent::Cursor) {
-			// in the completing mode, cursor_pos comes after the selected
-			// snippet in Qt 5
-			// in Qt 6, it comes at the head of the selected snippet
-			cursor_pos = size_t(attr.start);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-			cursor_is_visible = attr.length != 0;
-#endif
-			break;
-		}
-	}
-
-	size_t const preedit_length = preedit_string_.length();
-
-	// get position of selection in input method.
-	// FIXME: isn't there a simpler way to do this?
-	// rStart : cursor position in selected string in IM.
-	size_t rStart = 0;
-	// rLength : selected string length in IM.
-	size_t rLength = 0;
-
-	for (auto const & attr : preedit_attr_) {
-		if (attr.type == QInputMethodEvent::TextFormat) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-			if (attr.start <= int(cursor_pos)
-				&& int(cursor_pos) < attr.start + attr.length) {
-				// we are in the completing mode
-				// (selecting the right chars from candidates)
-				rStart = size_t(attr.start);
-				rLength = size_t(attr.length);
-				if (!cursor_is_visible)
-					cursor_pos += rLength;
-				break;
-			}
-#else
-			if (attr.start < int(cursor_pos)
-				&& int(cursor_pos) <= attr.start + attr.length) {
-				// we are in the completing mode
-				// (selecting the right chars from candidates)
-				rStart = size_t(attr.start);
-				rLength = size_t(attr.length);
-				break;
-			}
-#endif
-		}
-	}
-	if (rStart == 0 && rLength == preedit_length) {
-		// we are in the composing mode (typing) as we didn't break above
-		rStart = cursor_pos;
-		rLength = 0;
-	}
-
-	int const text_width = p->viewport()->width() - buffer_view_->rightMargin()
-			- buffer_view_->leftMargin();
-	Painter::preedit_style ps;
-	// Most often there would be only one line:
-	preedit_lines_ = 1;
-	for (size_t pos = 0; pos != preedit_length; ++pos) {
-		char_type const typed_char = preedit_string_[pos];
-		// reset preedit string style
-		ps = Painter::preedit_default;
-
-		// if we reached the right extremity of the screen, go to next line.
-		if (cur_x + fm.width(typed_char) > p->viewport()->width() - buffer_view_->rightMargin()) {
-			cur_x = buffer_view_->leftMargin();
-			cur_y += dim.height() + 1;
-			++preedit_lines_;
-		}
-		// preedit strings are displayed with dashed underline
-		// and partial strings are displayed white on black indicating
-		// that we are in selecting mode in the input method.
-		// FIXME: rLength == preedit_length is not a changing condition
-		// FIXME: should be put out of the loop.
-		if (pos >= rStart
-			&& pos < rStart + rLength
-			&& !(cursor_pos < rLength && rLength == preedit_length)) {
-			ps = Painter::preedit_selecting;
-		}
-
-		if (pos == cursor_pos && rLength == 0) {
-			ps = Painter::preedit_cursor;
-		}
-
-		// draw one character and update cur_x.
-		cur_x += pain.preeditText(cur_x, cur_y, typed_char, font, ps);
-	}
-
-	// the selection candidate window follows the position of Qt::ImCursorRectangle
-	// so we set it here in preparation for InputMethodQuery.
-	if(rLength > 0) {
-		// candidate selection mode
-		div_t mod_cur, mod_anc;
-		// width of preedit string in pixels
-		int preedit_width = fm.width(preedit_string_);
-		// calculate for modular so that its remainder and quotient become horizontal
-		// and vertical adjustment factor respectively
-		// FIXME: divider should be (text_width - font width of the end-of-line character)
-		//        however, since it's very rare that preedit becomes so long that it goes over
-		//        more than two lines, current error of position is more or less negligible
-		mod_cur	= div(text_width + cur_x - (preedit_width - fm.width(preedit_string_.substr(0, rStart))),
-				text_width);
-		mod_anc = div(text_width + cur_x - (preedit_width - fm.width(preedit_string_.substr(0, rStart + rLength))),
-				text_width);
-		// Obtain cursor and anchor rectangles to bind starting and ending points of selection.
-		// Since the remainder of div moves from positive to negative as the line becomes longer
-		// while its quotient repeats zero twice, we need to take it into account by conditioning.
-		if (mod_cur.rem >= 0)
-			im_cursor_rect_ = QRectF(mod_cur.rem,
-					(cur_y - dim.height()) + (dim.height() + 1) * (mod_cur.quot - 1), 1,
-					dim.height() + preedit_lower_margin);
-		else
-			im_cursor_rect_ = QRectF(text_width + mod_cur.rem,
-					(cur_y - dim.height()) + (dim.height() + 1) * (mod_cur.quot - 2), 1,
-					dim.height() + preedit_lower_margin);
-		if (mod_anc.rem >= 0)
-			im_anchor_rect_ = QRectF(mod_anc.rem,
-					point.y + (dim.height() + 1) * (mod_anc.quot - 1), 1,
-					dim.height() + preedit_lower_margin );
-		else
-			im_anchor_rect_ = QRectF(text_width + mod_anc.rem,
-					point.y + (dim.height() + 1) * (mod_anc.quot - 2), 1,
-					dim.height() + preedit_lower_margin );
-	} else {
-		im_cursor_rect_ =	QRectF(point.x, point.y, 1, dim.height() + preedit_lower_margin);
-		im_anchor_rect_ = im_cursor_rect_;
-	}
-	// Urge platform input method to make inputMethodQuery to check the values
-	// set above
-	sys_im_->update(Qt::ImQueryInput);
-}
-
-
 void GuiWorkArea::Private::resetScreen()
 {
 	if (use_backingstore_) {
@@ -1478,17 +1324,18 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 	d->buffer_view_->draw(pain, d->caret_visible_);
 
-	// The preedit text, if needed
-	d->paintPreeditText(pain);
-
-	// and the caret
+	// draw the caret
 	// FIXME: the code would be a little bit simpler if caret geometry
 	// was updated unconditionally. Some profiling is required to see
 	// how expensive this is (especially when idle).
-	if (d->caret_visible_) {
+	if ((d->im_->preeditString().empty() && d->caret_visible_) ||
+	        (!d->im_->preeditString().empty() && d->im_->isCaretVisible())) {
 		if (d->needs_caret_geometry_update_)
 			d->updateCaretGeometry();
-		d->drawCaret(pain, d->buffer_view_->horizScrollOffset());
+		d->drawCaret(pain,
+		             d->buffer_view_->horizScrollOffset()
+		             - d->im_->preeditCaretOffset()[0],
+		             - d->im_->preeditCaretOffset()[1]);
 	}
 
 	d->updateScreen(ev->rect());
@@ -1497,87 +1344,26 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 }
 
 
-void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
+void GuiWorkArea::inputMethodEvent(QInputMethodEvent * ev)
 {
-	LYXERR(Debug::KEY, "preeditString: " << e->preeditString()
-		   << " commitString: " << e->commitString());
-
-	if (!e->commitString().isEmpty()) {
-		FuncRequest cmd;
-		// take care of commit string assigned to a shortcut
-		// e.g. quotation mark on international keyboard
-		KeySequence keyseq;
-		for (QChar const & ch : e->commitString()) {
-			KeySymbol keysym;
-			keysym.init(ch.unicode());
-			keyseq.addkey(keysym, NoModifier);
-		}
-		cmd = theTopLevelKeymap().getBinding(keyseq);
-
-		if (cmd == FuncRequest::noaction || cmd == FuncRequest::unknown
-		    || cmd.action() == LFUN_SELF_INSERT)
-			// insert the processed text in the document (handles undo)
-			cmd = FuncRequest(LFUN_SELF_INSERT, qstring_to_ucs4(e->commitString()));
-
-		cmd.setOrigin(FuncRequest::KEYBOARD);
-		dispatch(cmd);
-		// FIXME: this is supposed to remove traces from preedit
-		// string. Can we avoid calling it explicitly?
-		d->buffer_view_->updateMetrics();
-	}
-
-	// Hide the caret during the test transformation.
-	if (e->preeditString().isEmpty())
-		startBlinkingCaret();
-	else
-		stopBlinkingCaret();
-
-	if (d->preedit_string_.empty() && e->preeditString().isEmpty()) {
-		// Nothing to do
-		e->accept();
-		return;
-	}
-
-	// The preedit text and its attributes will be used in paintPreeditText
-	d->preedit_string_ = qstring_to_ucs4(e->preeditString());
-	d->preedit_attr_ = e->attributes();
-
-
-	// redraw area of preedit string.
-	// int height = d->caret_->dim.height();
-	// int cur_y = d->caret_->y;
-	// viewport()->update(0, cur_y, viewport()->width(),
-	// 	(height + 1) * d->preedit_lines_);
-	viewport()->update();
-
-	if (d->preedit_string_.empty()) {
-		d->preedit_lines_ = 1;
-		e->accept();
-		return;
-	}
-
-	// Don't forget to accept the event!
-	e->accept();
+    Q_EMIT preeditChanged(ev);
 }
 
 
 QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 {
-	LYXERR(Debug::INFO, "incoming InputMethodQuery Value: 0x" << std::hex << query << std::dec);
-	switch (query) {
-	// this is the CJK-specific composition window position and
-	// the context menu position when the menu key is pressed.
-	case Qt::ImCursorRectangle: {
-		return QVariant(d->im_cursor_rect_);
-		break;
+	// ask a query
+	d->im_->processQuery(query);
+
+	// wait for the response and return
+	clock_t start = clock();
+	while (!d->im_query_responded_) {
+		// time out in one second
+		if ((clock() - start)/CLOCKS_PER_SEC >= 1) break;
 	}
-	case Qt::ImAnchorRectangle: {
-		return QVariant(d->im_anchor_rect_);
-		break;
-	}
-	default:
-		return QWidget::inputMethodQuery(query);
-	}
+	d->im_query_responded_ = false;
+
+	return d->im_query_response_;
 }
 
 
@@ -1618,6 +1404,19 @@ void GuiWorkArea::setDialogMode(bool mode)
 	d->dialog_mode_ = mode;
 }
 
+
+void GuiWorkArea::flagPreedit(QInputMethodEvent* ev)
+{
+	d->buffer_view_->processUpdateFlags(Update::Force);
+	ev->accept();
+}
+
+
+void GuiWorkArea::receiveIMQueryResponse(QVariant response) {
+	d->im_query_response_ = response;
+	// notify the response
+	d->im_query_responded_ = true;
+}
 
 GuiCompleter & GuiWorkArea::completer()
 {

@@ -29,6 +29,8 @@ class MathData;
 class MetricsInfo;
 class PainterInfo;
 
+namespace frontend { class InputMethod; }
+
 enum class marker_type : int;
 
 /*
@@ -79,6 +81,11 @@ public:
 		docstring compl_text;
 		// the number of characters forming the unique part.
 		size_t compl_unique_to;
+		// Input method instance. Null pointer if Element is not preedit.
+		frontend::InputMethod * im = nullptr;
+		// Index in the char format vector the style of which is applied to
+		// the corresponding segment of the preedit
+		size_t char_format_index;
 
 		// type is BEGIN, END
 		MathData const * ar;
@@ -109,6 +116,8 @@ public:
 	void push_back(Element const & e) { elements_.push_back(e); }
 	//
 	Element & back() { return elements_.back(); }
+	//
+	void insert(size_t pos, Element const & e) { elements_.insert(elements_.begin() + pos, e); }
 
 	// create the math row by unwinding all macros in the MathData and
 	// compute the spacings.

@@ -27,6 +27,8 @@
 
 namespace lyx {
 
+namespace frontend { class InputMethod; }
+
 class DocIterator;
 class Inset;
 
@@ -47,6 +49,8 @@ public:
 		 * correspond to any paragraph contents
 		 */
 		VIRTUAL,
+		// a variant of VIRTUAL used by preedit strings of input methods
+		PREEDIT,
 		// An inset
 		INSET,
 		// Some spacing described by its width, not a string
@@ -113,8 +117,10 @@ public:
 
 		//
 		bool isRTL() const { return font.isVisibleRightToLeft(); }
-		// This is true for virtual elements.
-		bool isVirtual() const { return type == VIRTUAL; }
+		// This is true for virtual or preedit elements.
+		bool isVirtual() const { return type == VIRTUAL || type == PREEDIT; }
+		// This is true for preedit elements.
+		bool isPreedit() const { return type == PREEDIT; }
 
 		// Returns the position on left side of the element.
 		pos_type left_pos() const { return isRTL() ? endpos : pos; };
@@ -143,6 +149,13 @@ public:
 		docstring str;
 		//
 		Font font;
+		// Input method instance. Null pointer if Element is not preedit.
+		frontend::InputMethod * im = nullptr;
+		// Index in the char format vector the style of which is applied to
+		// the corresponding segment of the preedit
+		pos_type char_format_index;
+		// The input method language allows to wrap at any place
+		bool lang_wrap_any = false;
 		//
 		Change change;
 		// is it possible to add contents to this element?
@@ -264,13 +277,17 @@ public:
 
 	///
 	void add(pos_type pos, Inset const * ins, Dimension const & dim,
-		 Font const & f, Change const & ch);
+	         Font const & f, Change const & ch);
 	///
 	void add(pos_type pos, char_type const c,
 	         Font const & f, Change const & ch);
 	///
 	void addVirtual(pos_type pos, docstring const & s,
-			Font const & f, Change const & ch);
+	                Font const & f, Change const & ch);
+	///
+	void addPreedit(pos_type const pos, docstring const & s, Font const & f,
+	                frontend::InputMethod * im, pos_type char_format_index,
+	                Change const & ch);
 	///
 	void addSpace(pos_type pos, int width, Font const & f, Change const & ch);
 	///

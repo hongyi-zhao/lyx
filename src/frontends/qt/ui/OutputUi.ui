@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>579</width>
+    <width>618</width>
     <height>465</height>
    </rect>
   </property>
@@ -109,6 +109,9 @@
          <widget class="QComboBox" name="defaultFormatCO">
           <property name="toolTip">
            <string>Specify the default output format (for view/update)</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
           </property>
          </widget>
         </item>
@@ -219,6 +222,9 @@
                 <property name="toolTip">
                  <string>Custom LaTeX preamble macro</string>
                 </property>
+                <property name="inputMethodHints">
+                 <set>Qt::ImhPreferLatin</set>
+                </property>
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -287,6 +293,9 @@
               </property>
               <property name="toolTip">
                <string>Format to use for math output.</string>
+              </property>
+              <property name="inputMethodHints">
+               <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
               </property>
               <item>
                <property name="text">
@@ -419,6 +428,9 @@
                 <property name="toolTip">
                  <string>Format to use for math output.</string>
                 </property>
+                <property name="inputMethodHints">
+                 <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+                </property>
                 <item>
                  <property name="text">
                   <string>HTML</string>
@@ -479,6 +491,9 @@
                 <property name="toolTip">
                  <string>Format to use for math output.</string>
                 </property>
+                <property name="inputMethodHints">
+                 <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+                </property>
                 <item>
                  <property name="text">
                   <string>MathML 3 (default)</string>
@@ -536,6 +551,9 @@
               </property>
               <property name="toolTip">
                <string>Namespace prefix to use for MathML formulae. For instance, with the &lt;code&gt;m&lt;/code&gt; prefix, the MathML tags will be output like &lt;code&gt;m:math&lt;/code&gt;.</string>
+              </property>
+              <property name="inputMethodHints">
+               <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
               </property>
               <item>
                <property name="text">

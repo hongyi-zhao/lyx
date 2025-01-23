@@ -1,78 +1,85 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>IndicesUi</class>
- <widget class="QWidget" name="IndicesUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="IndicesUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>401</width>
-    <height>340</height>
+    <height>354</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" colspan="2" >
-    <widget class="QGroupBox" name="indexGB" >
-     <property name="toolTip" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QGroupBox" name="indexGB">
+     <property name="toolTip">
       <string>Here you can define an alternative index processor and specify its options.</string>
      </property>
-     <property name="title" >
+     <property name="title">
       <string>Index Generation</string>
      </property>
-     <property name="flat" >
+     <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2" >
-      <item row="0" column="0" >
-       <layout class="QHBoxLayout" name="horizontalLayout" >
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="indexLA" >
-          <property name="text" >
+         <widget class="QLabel" name="indexLA">
+          <property name="text">
            <string>&amp;Processor:</string>
           </property>
-          <property name="buddy" >
+          <property name="buddy">
            <cstring>indexCO</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="indexCO" >
-          <property name="toolTip" >
+         <widget class="QComboBox" name="indexCO">
+          <property name="toolTip">
            <string>Select a processor</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
           </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item row="1" column="0" >
-       <layout class="QHBoxLayout" name="horizontalLayout_2" >
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QLabel" name="indexOptionsLA" >
-          <property name="text" >
+         <widget class="QLabel" name="indexOptionsLA">
+          <property name="text">
            <string>&amp;Options:</string>
           </property>
-          <property name="buddy" >
+          <property name="buddy">
            <cstring>indexOptionsLE</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="indexOptionsLE" >
-          <property name="toolTip" >
+         <widget class="QLineEdit" name="indexOptionsLE">
+          <property name="toolTip">
            <string>Define program options of the selected processor.</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
           </property>
          </widget>
         </item>
        </layout>
       </item>
-      <item rowspan="2" row="0" column="1" >
-       <spacer name="horizontalSpacer" >
-        <property name="orientation" >
+      <item row="0" column="1" rowspan="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>183</width>
           <height>20</height>
@@ -83,121 +90,115 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QCheckBox" name="multipleIndicesCB" >
-     <property name="toolTip" >
+   <item row="1" column="0">
+    <widget class="QCheckBox" name="multipleIndicesCB">
+     <property name="toolTip">
       <string>Check if you need multiple indexes (e.g., an Index of Names)</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>&amp;Use multiple indexes</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="Line" name="line" >
-     <property name="orientation" >
+   <item row="2" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <property name="margin" >
-      <number>0</number>
-     </property>
+   <item row="3" column="0" colspan="2">
+    <layout class="QHBoxLayout">
      <item>
-      <widget class="QLabel" name="newIndexLA" >
-       <property name="text" >
+      <widget class="QLabel" name="newIndexLA">
+       <property name="text">
         <string>&amp;New:[[index]]</string>
        </property>
-       <property name="buddy" >
+       <property name="buddy">
         <cstring>newIndexLE</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="newIndexLE" >
-       <property name="toolTip" >
-        <string>Enter the name of the desired index (e.g. "Index of Names") and hit "Add"</string>
+      <widget class="QLineEdit" name="newIndexLE">
+       <property name="toolTip">
+        <string>Enter the name of the desired index (e.g. &quot;Index of Names&quot;) and hit &quot;Add&quot;</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="addIndexPB" >
-       <property name="toolTip" >
+      <widget class="QPushButton" name="addIndexPB">
+       <property name="toolTip">
         <string>Add a new index to the list</string>
        </property>
-       <property name="text" >
+       <property name="text">
         <string>&amp;Add</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="availableLA" >
-     <property name="text" >
+   <item row="4" column="0">
+    <widget class="QLabel" name="availableLA">
+     <property name="text">
       <string>A&amp;vailable Indexes:</string>
      </property>
-     <property name="buddy" >
+     <property name="buddy">
       <cstring>indicesTW</cstring>
      </property>
     </widget>
    </item>
-   <item rowspan="4" row="5" column="0" >
+   <item row="5" column="0" rowspan="4">
     <widget class="QTreeWidget" name="indicesTW">
      <property name="rootIsDecorated">
       <bool>false</bool>
      </property>
      <column>
-      <property name="text" >
+      <property name="text">
        <string>1</string>
       </property>
      </column>
     </widget>
    </item>
-   <item row="5" column="1" >
-    <widget class="QPushButton" name="removePB" >
-     <property name="toolTip" >
+   <item row="5" column="1">
+    <widget class="QPushButton" name="removePB">
+     <property name="toolTip">
       <string>Remove the selected index</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>&amp;Remove</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="1" >
-    <widget class="QPushButton" name="renamePB" >
-     <property name="toolTip" >
+   <item row="6" column="1">
+    <widget class="QPushButton" name="renamePB">
+     <property name="toolTip">
       <string>Rename the selected index</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>R&amp;ename...</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="1" >
-    <widget class="QPushButton" name="colorPB" >
-     <property name="toolTip" >
+   <item row="7" column="1">
+    <widget class="QPushButton" name="colorPB">
+     <property name="toolTip">
       <string>Define or change button color</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>Alter Co&amp;lor...</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="1" >
+   <item row="8" column="1">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>121</height>
@@ -208,7 +209,7 @@
   </layout>
  </widget>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

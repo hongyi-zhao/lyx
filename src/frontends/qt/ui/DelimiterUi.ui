@@ -93,6 +93,9 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhLatinOnly</set>
+         </property>
         </widget>
        </item>
        <item>

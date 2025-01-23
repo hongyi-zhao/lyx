@@ -13,6 +13,7 @@
 #define WORKAREA_PRIVATE_H
 
 #include "FuncRequest.h"
+#include "GuiInputMethod.h"
 
 #include "support/FileName.h"
 #include "support/Timeout.h"
@@ -91,14 +92,14 @@ struct GuiWorkArea::Private
 	 * has been horizontal scrolling in current row
 	 */
 	void drawCaret(QPainter & painter, int horiz_offset) const;
+	/// virtual preedits can require vertical offset when contines to next row
+	void drawCaret(QPainter & painter, int horiz_offset, int vert_offset) const;
 	/// Set the range and value of the scrollbar and connect to its valueChanged
 	/// signal.
 	void updateScrollbar();
 	/// Change the cursor when the mouse hovers over a clickable inset
 	void updateCursorShape();
 
-	/// Restore coordinate transformation information
-	void resetInputItemTransform();
 	/// Paint preedit text provided by the platform input method
 	void paintPreeditText(GuiPainter & pain);
 
@@ -136,16 +137,20 @@ struct GuiWorkArea::Private
 	///
 	bool need_resize_ = false;
 
-	/// provides access to the platform input method
+	/// an instance of GuiInputMethod class
+	GuiInputMethod * im_ = nullptr;
+	/// system input method
 	QInputMethod * sys_im_ = QGuiApplication::inputMethod();
+	/// response to input method query
+	QVariant im_query_response_;
+	/// whether input method query is responded
+	bool im_query_responded_ = false;
 	/// the current preedit text of the input method
 	docstring preedit_string_;
 	/// Number of lines used by preedit text
 	int preedit_lines_ = 1;
 	/// the attributes of the preedit text
 	QList<QInputMethodEvent::Attribute> preedit_attr_;
-	QRectF im_cursor_rect_;
-	QRectF im_anchor_rect_;
 	/// geometry of the input item
 	QRectF item_rect_;
 	/// transformation from input item coordinates to the working area
@@ -153,7 +158,7 @@ struct GuiWorkArea::Private
 	/// whether item_rect_ and item_trans need to be reset
 	bool item_geom_needs_reset_ = false;
 	/// for debug
-	QLocale::Language im_lang_ = QLocale::AnyLanguage;
+	//QLocale::Language im_lang_ = QLocale::AnyLanguage;
 
 	/// Ratio between physical pixels and device-independent pixels
 	/// We save the last used value to detect changes of the

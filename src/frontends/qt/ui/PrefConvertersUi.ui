@@ -98,10 +98,18 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QLineEdit" name="converterED"/>
+           <widget class="QLineEdit" name="converterED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhPreferLatin</set>
+            </property>
+           </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="converterFlagED"/>
+           <widget class="QLineEdit" name="converterFlagED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhPreferLatin</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -198,6 +206,9 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+            </property>
            </widget>
           </item>
          </layout>
@@ -236,6 +247,9 @@
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
             </property>
            </widget>
           </item>
@@ -377,7 +391,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="maxAgeLE"/>
+         <widget class="QLineEdit" name="maxAgeLE">
+          <property name="inputMethodHints">
+           <set>Qt::ImhDigitsOnly</set>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

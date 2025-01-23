@@ -107,8 +107,8 @@ int numberOfHfills(Row const & row, ParagraphMetrics const & pm,
 
 
 TextMetrics::TextMetrics(BufferView * bv, Text * text)
-	: bv_(bv), text_(text), dim_(bv_->workWidth(), 10, 10),
-	  max_width_(dim_.wid), tight_(false)
+    : bv_(bv), text_(text), im_(bv_->inputMethod()),
+      dim_(bv_->workWidth(), 10, 10), max_width_(dim_.wid), tight_(false)
 {}
 
 
@@ -677,6 +677,9 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	pm.dim().asc += pm.rows().front().ascent();
 	pm.dim().des -= pm.rows().front().ascent();
 
+	// Tell the input method about pm
+	im_->setParagraphMetrics(pm);
+
 	changed |= old_dim.height() != pm.dim().height();
 
 	return changed;
@@ -943,6 +946,7 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 	row.pit(pit);
 	Paragraph const & par = text_->getPar(pit);
 	Buffer const & buf = text_->inset().buffer();
+	Cursor & cur = bv_->cursor();
 	BookmarksSection::BookmarkPosList bpl =
 		theSession().bookmarks().bookmarksInPar(buf.fileName(), par.id());
 
@@ -954,6 +958,8 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 	pos_type ic_pos = -1;
 	if (ic_it.inTexted() && ic_it.text() == text_ && ic_it.pit() == pit)
 		ic_pos = ic_it.pos();
+
+	docstring & preedit = im_->preeditString();
 
 	// Now we iterate through until we reach the right margin
 	// or the end of the par, then build a representation of the row.
@@ -972,8 +978,25 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 					row.addVirtual(i, docstring(1, ch), f, Change());
 				}
 
+		// the target is on the cursor and there are preedits to fill in
+		if (!preedit.empty() && i == cur.pos() && pit == cur.pit()) {
+
+			// the inset has a paragraph and the location matches
+			if (cur.inTexted() && &par.inInset() == &cur.paragraph().inInset()) {
+
+				// loop for differently presented segments of preedit string
+				// note that a sequence of preedit segments should have the
+				// same position since they have zero length
+				for (size_type j=0; j < im_->segmentSize(); j++) {
+					row.addPreedit(
+					    i, preedit.substr(im_->segmentStart(j), im_->segmentLength(j)),
+					    *fi, im_, (pos_type)j, Change());
+				}
+			}
+		}
+
 		// The stopping condition is here so that the display of a
-		// bookmark can take place at paragraph start too.
+		// bookmark or virtual preedits can take place at paragraph start too.
 		if (i >= end)
 			break;
 
@@ -1121,13 +1144,13 @@ bool operator==(flexible_const_iterator<T> const & t1,
 	return t1.cit_ == t2.cit_ && t1.pile_.empty() && t2.pile_.empty();
 }
 
-
-Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl)
+Row newRow(TextMetrics const & tm, pit_type pit, pos_type pos, bool is_rtl,
+           size_type shift = 0)
 {
 	Row nrow;
 	nrow.pit(pit);
 	nrow.pos(pos);
-	nrow.left_margin = tm.leftMargin(pit, pos);
+	nrow.left_margin = tm.leftMargin(pit, pos + shift);
 	nrow.right_margin = tm.rightMargin(pit);
 	nrow.setRTL(is_rtl);
 	if (is_rtl)
@@ -1180,7 +1203,11 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 	RowList rows;
 	bool const is_rtl = text_->isRTL(bigrow.pit());
 	bool const end_label = text_->getEndLabel(bigrow.pit()) != END_LABEL_NO_LABEL;
-	int const next_width = max_width_ - leftMargin(bigrow.pit(), bigrow.endpos())
+	pos_type const bigrow_endpos =
+	        !bigrow.empty() && bigrow.back().type == Row::PREEDIT ?
+	            bigrow.endpos() + im_->preeditString().length() :
+	            bigrow.endpos();
+	int const next_width = max_width_ - leftMargin(bigrow.pit(), bigrow_endpos)
 		- rightMargin(bigrow.pit());
 
 	int width = 0;
@@ -1212,7 +1239,17 @@ RowList TextMetrics::breakParagraph(Row const & bigrow) const
 				cleanupRow(rows.back(), false);
 			}
 			pos_type pos = rows.empty() ? 0 : rows.back().endpos();
-			rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
+			if (!rows.empty() && !rows.back().empty() &&
+			        rows.back().back().type == Row::PREEDIT) {
+				rows.push_back(
+				            newRow(
+				                *this, bigrow.pit(), pos, is_rtl,
+				                rows.back().back().str.length()
+				                )
+				            );
+			} else {
+				rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
+			}
 			// the width available for the row.
 			width = max_width_ - rows.back().right_margin;
 		}

@@ -49,6 +49,9 @@
        <property name="toolTip">
         <string>Select the index that shall be printed at this place of the document.</string>
        </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+       </property>
       </widget>
      </item>
     </layout>

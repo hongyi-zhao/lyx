@@ -14,6 +14,7 @@
 
 #include "InsetMath.h"
 #include "MathData.h"
+#include "Row.h"
 
 #include <map>
 
@@ -136,6 +137,9 @@ public:
 
 	///
 	bool confirmDeletion() const override { return nargs() > 0; }
+	/// interpret \p c and insert the result at the current position of
+	/// of \p cur. Return whether the cursor should stay in the formula.
+	bool interpretChar(Cursor & cur, char_type c);
 
 protected:
 	///
@@ -161,9 +165,6 @@ protected:
 	void handleNest(Cursor & cur, MathAtom const & nest);
 	void handleNest(Cursor & cur, MathAtom const & nest, docstring const & arg);
 
-	/// interpret \p c and insert the result at the current position of
-	/// of \p cur. Return whether the cursor should stay in the formula.
-	bool interpretChar(Cursor & cur, char_type c);
 	///
 	bool script(Cursor & cur, bool);
 	bool script(Cursor & cur, bool, docstring const & save_selection);

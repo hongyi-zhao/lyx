@@ -65,6 +65,9 @@
          <property name="toolTip">
           <string>Filename</string>
          </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhPreferLatin</set>
+         </property>
         </widget>
        </item>
        <item row="0" column="0">
@@ -151,6 +154,9 @@
             <property name="toolTip">
              <string>Available templates</string>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhLatinOnly</set>
+            </property>
            </widget>
           </item>
          </layout>
@@ -203,7 +209,11 @@
            <number>6</number>
           </property>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="extraED"/>
+           <widget class="QLineEdit" name="extraED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhPreferLatin</set>
+            </property>
+           </widget>
           </item>
           <item row="0" column="1">
            <widget class="QLabel" name="optionLA">
@@ -216,7 +226,11 @@
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QComboBox" name="extraFormatCO"/>
+           <widget class="QComboBox" name="extraFormatCO">
+            <property name="inputMethodHints">
+             <set>Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="0" column="0">
            <widget class="QLabel" name="formatLA">
@@ -290,6 +304,9 @@
             </property>
             <property name="toolTip">
              <string>Percentage to scale by in LyX</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
             </property>
            </widget>
           </item>
@@ -412,6 +429,9 @@
               <property name="toolTip">
                <string>Angle to rotate image by</string>
               </property>
+              <property name="inputMethodHints">
+               <set>Qt::ImhDigitsOnly</set>
+              </property>
               <property name="text">
                <string/>
               </property>
@@ -480,10 +500,18 @@
            <number>6</number>
           </property>
           <item row="1" column="2">
-           <widget class="lyx::frontend::LengthCombo" name="heightUnitCO"/>
+           <widget class="lyx::frontend::LengthCombo" name="heightUnitCO">
+            <property name="inputMethodHints">
+             <set>Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="0" column="2">
-           <widget class="lyx::frontend::LengthCombo" name="widthUnitCO"/>
+           <widget class="lyx::frontend::LengthCombo" name="widthUnitCO">
+            <property name="inputMethodHints">
+             <set>Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="heightED">
@@ -492,6 +520,9 @@
             </property>
             <property name="toolTip">
              <string>Height of image in output</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
             </property>
            </widget>
           </item>
@@ -502,6 +533,9 @@
             </property>
             <property name="toolTip">
              <string>Width of image in output</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
             </property>
            </widget>
           </item>
@@ -592,7 +626,11 @@
            </widget>
           </item>
           <item row="2" column="3">
-           <widget class="QLineEdit" name="ytED"/>
+           <widget class="QLineEdit" name="ytED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="1">
            <widget class="QLabel" name="xLA">
@@ -626,6 +664,9 @@
             <property name="toolTip">
              <string/>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
            </widget>
           </item>
           <item row="0" column="2">
@@ -642,7 +683,11 @@
            </spacer>
           </item>
           <item row="3" column="3">
-           <widget class="QLineEdit" name="ybED"/>
+           <widget class="QLineEdit" name="ybED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="3">
            <widget class="QLabel" name="yLA">
@@ -652,19 +697,39 @@
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="xrED"/>
+           <widget class="QLineEdit" name="xrED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="2" column="2">
-           <widget class="lyx::frontend::LengthCombo" name="xrUnitCO"/>
+           <widget class="lyx::frontend::LengthCombo" name="xrUnitCO">
+            <property name="inputMethodHints">
+             <set>Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="2" column="4">
-           <widget class="lyx::frontend::LengthCombo" name="ytUnitCO"/>
+           <widget class="lyx::frontend::LengthCombo" name="ytUnitCO">
+            <property name="inputMethodHints">
+             <set>Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="3" column="2">
-           <widget class="lyx::frontend::LengthCombo" name="xlUnitCO"/>
+           <widget class="lyx::frontend::LengthCombo" name="xlUnitCO">
+            <property name="inputMethodHints">
+             <set>Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="3" column="4">
-           <widget class="lyx::frontend::LengthCombo" name="ybUnitCO"/>
+           <widget class="lyx::frontend::LengthCombo" name="ybUnitCO">
+            <property name="inputMethodHints">
+             <set>Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

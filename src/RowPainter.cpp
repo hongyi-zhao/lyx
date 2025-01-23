@@ -254,7 +254,10 @@ void RowPainter::paintStringAndSel(Row::Element const & e) const
 	bool const all_sel = (e.pos >= row_.sel_beg && e.endpos < row_.sel_end)
 		|| pi_.selected;
 
-	if (all_sel || e.change.changed()) {
+	if (e.type == Row::PREEDIT) {
+		// the case of the preedit element
+		pi_.pain.text(int(x_), yo_, e.str, e.im, e.char_format_index);
+	} else if (all_sel || e.change.changed()) {
 		Font copy = e.font;
 		Color const col = e.change.changed() ? e.change.color()
 		                                     : Color_selectiontext;
@@ -566,6 +569,7 @@ void RowPainter::paintText()
 		switch (e.type) {
 		case Row::STRING:
 		case Row::VIRTUAL:
+		case Row::PREEDIT:
 			paintStringAndSel(e);
 
 			// Paint the spelling marks if enabled.
@@ -626,8 +630,8 @@ void RowPainter::paintSelection() const
 			|| pi_.selected;
 		// all the text selected?
 		bool const all_sel = (e.pos >= row_.sel_beg && e.endpos < row_.sel_end)
-		    || (e.isVirtual() && e.pos == row_.endpos() && row_.end_margin_sel)
-		    || pi_.selected;
+		        || (e.isVirtual() && e.pos == row_.endpos() && row_.end_margin_sel)
+		        || pi_.selected;
 
 		if (all_sel) {
 			// the 3rd argument is written like that to avoid rounding issues

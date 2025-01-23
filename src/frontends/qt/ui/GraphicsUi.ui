@@ -101,10 +101,18 @@
            <number>6</number>
           </property>
           <item row="1" column="2">
-           <widget class="lyx::frontend::LengthCombo" name="widthUnit"/>
+           <widget class="lyx::frontend::LengthCombo" name="widthUnit">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="2" column="2">
-           <widget class="lyx::frontend::LengthCombo" name="heightUnit"/>
+           <widget class="lyx::frontend::LengthCombo" name="heightUnit">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="Width">
@@ -119,6 +127,9 @@
             </property>
             <property name="toolTip">
              <string>Width of image in output</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
             </property>
            </widget>
           </item>
@@ -136,7 +147,11 @@
            </spacer>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="Scale"/>
+           <widget class="QLineEdit" name="Scale">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="2" column="1">
            <widget class="QLineEdit" name="Height">
@@ -151,6 +166,9 @@
             </property>
             <property name="toolTip">
              <string>Height of image in output</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
             </property>
            </widget>
           </item>
@@ -268,6 +286,9 @@
             <property name="toolTip">
              <string>Angle to rotate image by</string>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
            </widget>
           </item>
           <item row="0" column="0">
@@ -303,6 +324,9 @@
         <widget class="QLineEdit" name="filename">
          <property name="toolTip">
           <string>File name of image</string>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhPreferLatin</set>
          </property>
         </widget>
        </item>
@@ -395,32 +419,63 @@
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QLineEdit" name="rtX"/>
+           <widget class="QLineEdit" name="rtX">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="3" column="4">
-           <widget class="QLineEdit" name="rtY"/>
+           <widget class="QLineEdit" name="rtY">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="4">
-           <widget class="QLineEdit" name="lbY"/>
+           <widget class="QLineEdit" name="lbY">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="lbX">
             <property name="toolTip">
              <string/>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
            </widget>
           </item>
           <item row="1" column="2">
-           <widget class="QComboBox" name="lbXunit"/>
+           <widget class="QComboBox" name="lbXunit">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="3" column="2">
-           <widget class="QComboBox" name="rtXunit"/>
+           <widget class="QComboBox" name="rtXunit">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="3" column="5">
-           <widget class="QComboBox" name="rtYunit"/>
+           <widget class="QComboBox" name="rtYunit">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="5">
-           <widget class="QComboBox" name="lbYunit"/>
+           <widget class="QComboBox" name="lbYunit">
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="2" column="0" colspan="6">
            <widget class="QLabel" name="rtL">
@@ -555,6 +610,9 @@
             <property name="toolTip">
              <string>Percentage to scale by in LyX (1 to 1000)</string>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly</set>
+            </property>
            </widget>
           </item>
           <item row="0" column="0">
@@ -633,6 +691,9 @@
          <property name="toolTip">
           <string>Additional LaTeX options</string>
          </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhPreferLatin</set>
+         </property>
         </widget>
        </item>
        <item row="4" column="0" colspan="3">
@@ -708,6 +769,9 @@
            <widget class="QComboBox" name="groupCO">
             <property name="toolTip">
              <string>Select an existing group for the current graphics.</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhPreferLatin</set>
             </property>
             <property name="editable">
              <bool>false</bool>

@@ -44,6 +44,9 @@
      <property name="toolTip">
       <string>The bibliography key</string>
      </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
     </widget>
    </item>
    <item row="1" column="0">
@@ -75,6 +78,9 @@
        <property name="toolTip">
         <string>The label as it appears in the document</string>
        </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhPreferLatin</set>
+       </property>
       </widget>
      </item>
      <item>
@@ -94,6 +100,9 @@
       <widget class="QLineEdit" name="yearED">
        <property name="toolTip">
         <string>The year with &quot;Author (Year)&quot; citations (without parentheses).</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhPreferNumbers</set>
        </property>
       </widget>
      </item>

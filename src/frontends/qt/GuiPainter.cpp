@@ -18,6 +18,7 @@
 #include "GuiFontLoader.h"
 #include "GuiFontMetrics.h"
 #include "GuiImage.h"
+#include "GuiInputMethod.h"
 #include "qt_helpers.h"
 
 #include "Font.h"
@@ -289,6 +290,13 @@ void GuiPainter::text(int x, int y, char_type c, FontInfo const & f, Direction c
 }
 
 
+void GuiPainter::text(int x, int y, char_type c, InputMethod const * im,
+                      pos_type const char_format_index, Direction const dir)
+{
+	text(x, y, docstring(1, c), im, char_format_index, dir);
+}
+
+
 void GuiPainter::text(int x, int y, docstring const & s, FontInfo const & f, Direction const dir)
 {
 	text(x, y, s, f, dir, 0.0, 0.0);
@@ -344,6 +352,34 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	//	<< " at " << x << "," << y);
 }
 
+
+void GuiPainter::text(int x, int y, docstring const & s,
+                      InputMethod const * im,
+                      pos_type const char_format_index, Direction const dir)
+{
+	if (s.empty())
+		return;
+
+	QString str = toqstr(s);
+
+	if (dir == Auto) setLayoutDirection(Qt::LayoutDirectionAuto);
+	else if (dir == RtL) setLayoutDirection(Qt::RightToLeft);
+	else setLayoutDirection(Qt::LeftToRight);
+	GuiInputMethod const * gim = dynamic_cast<GuiInputMethod const *>(im);
+	setPen(gim->charFormat(char_format_index).foreground().color());
+	setBackgroundMode(Qt::OpaqueMode);
+	setBackground(gim->charFormat(char_format_index).background());
+	setFont(gim->charFormat(char_format_index).font());
+
+	LYXERR(Debug::GUI, "Drawing preedit segment " << char_format_index <<
+	       ": fg = " <<
+	       gim->charFormat(char_format_index).foreground().color().name() <<
+	       " bg = " <<
+	       gim->charFormat(char_format_index).background().color().name());
+
+	drawText(x, y, str);
+	setBackgroundMode(Qt::TransparentMode);
+}
 
 void GuiPainter::text(int x, int y, docstring const & str, Font const & f,
                       double const wordspacing, double const tw)
@@ -444,39 +480,6 @@ void GuiPainter::buttonText(int x, int baseline, docstring const & s,
 			      ascent + descent, back);
 	rectangle(x + d, baseline - ascent, width - offset, ascent + descent, frame);
 	text(x + offset, baseline, s, font);
-}
-
-
-int GuiPainter::preeditText(int x, int y, char_type c,
-	FontInfo const & font, preedit_style style)
-{
-	FontInfo temp_font = font;
-	FontMetrics const & fm = theFontMetrics(font);
-	int ascent = fm.maxAscent();
-	int descent = fm.maxDescent();
-	int height = ascent + descent;
-	int width = fm.width(c);
-
-	switch (style) {
-		case preedit_default:
-			// default unselecting mode.
-			fillRectangle(x, y - height + 1, width, height, Color_background);
-			dashedUnderline(font, x, y - descent + 1, width);
-			break;
-		case preedit_selecting:
-			// We are in selecting mode: white text on black background.
-			fillRectangle(x, y - height + 1, width, height, Color_darkgray);
-			temp_font.setColor(Color_white);
-			break;
-		case preedit_cursor:
-			// The character comes with a cursor.
-			fillRectangle(x, y - height + 1, width, height, Color_background);
-			underline(font, x, y - descent + 1, width);
-			break;
-	}
-	text(x, y - descent + 1, c, temp_font);
-
-	return width;
 }
 
 

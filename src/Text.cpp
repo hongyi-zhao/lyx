@@ -4245,6 +4245,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (cur.bv().checkDepm(dummy, cur))
 				cur.forceBufferUpdate();
 		}
+		cur.bv().inputMethod()->toggleInputMethodAcceptance();
 		break;
 	}
 
@@ -4271,6 +4272,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (cur.bv().checkDepm(dummy, cur))
 				cur.forceBufferUpdate();
 		}
+		cur.bv().inputMethod()->toggleInputMethodAcceptance();
 		break;
 	}
 
@@ -4361,6 +4363,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 		}
 
+		cur.bv().inputMethod()->toggleInputMethodAcceptance();
 		break;
 	}
 
@@ -5748,6 +5751,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				delete macro;
 				mathDispatch(cur,FuncRequest(LFUN_MATH_MODE));
 			}
+			cur.bv().inputMethod()->toggleInputMethodAcceptance();
 		} else
 			// The argument is meaningful
 			// We replace cmd with LFUN_MATH_INSERT because LFUN_MATH_MODE

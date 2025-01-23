@@ -26,6 +26,8 @@ namespace graphics { class Image; }
 
 namespace frontend {
 
+class InputMethod;
+
 /**
  * Painter - A painter class to encapsulate all graphics parameters and operations
  *
@@ -140,11 +142,17 @@ public:
 	/// draw a string at position x, y (y is the baseline).
 	virtual void text(int x, int y, docstring const & str, FontInfo const & f,
 	                  Direction const dir = Auto) = 0;
+	/// draw a string at position x, y (y is the baseline) using input method.
+	virtual void text(int x, int y, docstring const & str,
+	                  InputMethod const * im, pos_type const char_format_index,
+	                  Direction const dir = Auto) = 0;
 
 	/// draw a char at position x, y (y is the baseline)
 	virtual void text(int x, int y, char_type c, FontInfo const & f,
 	                  Direction const dir = Auto) = 0;
-
+	/// draw a char at position x, y (y is the baseline) using input method
+	virtual void text(int, int, char_type, InputMethod const *,
+	                  pos_type const, Direction const = Auto) {};
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is enforced by the \c Font.
 	 */
@@ -181,10 +189,6 @@ public:
 	/// draw a string and enclose it inside a button frame
 	virtual void buttonText(int x, int baseline, docstring const & s,
 		FontInfo const & font, Color back, Color frame, int offset) = 0;
-
-	/// draw a character of a preedit string for cjk support.
-	virtual int preeditText(int x, int y,
-		char_type c, FontInfo const & f, preedit_style style) = 0;
 
 	/// start monochrome painting mode, i.e. map every color a shade of \c blend.
 	virtual void enterMonochromeMode(Color const & blend) = 0;

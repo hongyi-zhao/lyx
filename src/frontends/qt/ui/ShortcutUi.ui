@@ -32,6 +32,9 @@
      <property name="toolTip">
       <string>Enter LyX function or command sequence</string>
      </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
      <property name="text">
       <string/>
      </property>

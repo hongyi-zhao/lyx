@@ -26,6 +26,9 @@
    </item>
    <item row="0" column="1">
     <widget class="QComboBox" name="formatsCB">
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
      <property name="editable">
       <bool>true</bool>
      </property>
@@ -102,7 +105,11 @@
     </widget>
    </item>
    <item row="4" column="1" colspan="2">
-    <widget class="QLineEdit" name="formatED"/>
+    <widget class="QLineEdit" name="formatED">
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="extensionsLA">
@@ -115,7 +122,11 @@
     </widget>
    </item>
    <item row="5" column="1" colspan="2">
-    <widget class="QLineEdit" name="extensionsED"/>
+    <widget class="QLineEdit" name="extensionsED">
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="mimeLA">
@@ -128,7 +139,11 @@
     </widget>
    </item>
    <item row="6" column="1" colspan="2">
-    <widget class="QLineEdit" name="mimeED"/>
+    <widget class="QLineEdit" name="mimeED">
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="shortcutLA">
@@ -141,7 +156,11 @@
     </widget>
    </item>
    <item row="7" column="1" colspan="2">
-    <widget class="QLineEdit" name="shortcutED"/>
+    <widget class="QLineEdit" name="shortcutED">
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="8" column="0">
     <widget class="QLabel" name="editorLA">
@@ -161,7 +180,11 @@
     </widget>
    </item>
    <item row="8" column="2" colspan="2">
-    <widget class="QLineEdit" name="editorED"/>
+    <widget class="QLineEdit" name="editorED">
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="9" column="0">
     <widget class="QLabel" name="viewerLA">
@@ -181,7 +204,11 @@
     </widget>
    </item>
    <item row="9" column="2" colspan="2">
-    <widget class="QLineEdit" name="viewerED"/>
+    <widget class="QLineEdit" name="viewerED">
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="10" column="0">
     <widget class="QLabel" name="label">
@@ -194,7 +221,11 @@
     </widget>
    </item>
    <item row="10" column="1" colspan="2">
-    <widget class="QLineEdit" name="copierED"/>
+    <widget class="QLineEdit" name="copierED">
+     <property name="inputMethodHints">
+      <set>Qt::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="11" column="0" colspan="5">
     <widget class="QGroupBox" name="defaultFormatGB">
@@ -239,6 +270,9 @@
         <property name="toolTip">
          <string>The default output format for documents using non-TeX fonts</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+        </property>
        </widget>
       </item>
       <item row="0" column="6">
@@ -259,12 +293,18 @@
         <property name="toolTip">
          <string>This is the default output format for LyX documents, except for DocBook classes, documents that use non-TeX fonts and Japanese documents</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+        </property>
        </widget>
       </item>
       <item row="0" column="5">
        <widget class="QComboBox" name="defaultPlatexFormatCB">
         <property name="toolTip">
          <string>The default output format for Japanese documents (using pLaTeX)</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
         </property>
        </widget>
       </item>

@@ -23,7 +23,7 @@
       </sizepolicy>
      </property>
      <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
+      <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
      </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
@@ -102,7 +102,7 @@
      <item row="1" column="2" colspan="2">
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -120,13 +120,16 @@
        <property name="toolTip">
         <string/>
        </property>
+       <property name="inputMethodHints">
+        <set>Qt::InputMethodHint::ImhFormattedNumbersOnly</set>
+       </property>
        <property name="text">
         <string/>
        </property>
       </widget>
      </item>
      <item row="2" column="2">
-      <widget class="lyx::frontend::LengthCombo" name="MathIndentLengthCO">
+      <widget class="lyx::frontend::LengthCombo" name="MathIndentLengthCO" native="true">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -144,7 +147,7 @@
      <item row="2" column="3">
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -196,7 +199,7 @@
      <item>
       <spacer name="horizontalSpacer_1">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -213,7 +216,7 @@
  <customwidgets>
   <customwidget>
    <class>lyx::frontend::LengthCombo</class>
-   <extends>QComboBox</extends>
+   <extends>QWidget</extends>
    <header>LengthCombo.h</header>
   </customwidget>
  </customwidgets>

@@ -149,7 +149,15 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << std::endl;
+	draw(pi, x, y, nullptr, 0);
+}
+
+
+void InsetMathChar::draw(PainterInfo & pi, int x, int y,
+                         frontend::InputMethod const * im,
+                         pos_type const char_format_index) const
+{
+	// lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << std::endl;
 	if (isMathFont(pi.base.fontname)) {
 		if (subst_) {
 			// If the char has a substitute, draw the replacement symbol
@@ -163,8 +171,8 @@ void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 		} else if (!isASCII(char_) && Encodings::unicodeCharInfo(char_).isUnicodeSymbol()) {
 			Changer dummy1 = pi.base.changeFontSet("mathnormal");
 			Changer dummy2 = Encodings::isMathAlpha(char_)
-					? noChange()
-					: pi.base.font.changeShape(UP_SHAPE);
+			        ? noChange()
+			        : pi.base.font.changeShape(UP_SHAPE);
 			pi.draw(x, y, char_);
 			return;
 		}
@@ -173,7 +181,7 @@ void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 	if (pi.base.fontname == "mathnormal") {
 		x += max(-theFontMetrics(pi.base.font).lbearing(char_), 0);
 	}
-	pi.draw(x, y, char_);
+	pi.draw(x, y, char_, im, char_format_index);
 }
 
 
@@ -187,7 +195,7 @@ void InsetMathChar::metricsT(TextMetricsInfo const &, Dimension & dim) const
 
 void InsetMathChar::drawT(TextPainter & pain, int x, int y) const
 {
-	//lyxerr << "drawing text '" << char_ << "' code: " << code_ << endl;
+	//LYXERR0("drawing text '" << to_string(char_) << "' code: " << char_);
 	pain.draw(x, y, char_);
 }
 

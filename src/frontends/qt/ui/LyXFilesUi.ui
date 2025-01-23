@@ -115,6 +115,9 @@
    </item>
    <item row="2" column="0">
     <widget class="QTreeWidget" name="filesLW">
+     <property name="inputMethodHints">
+      <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+     </property>
      <property name="rootIsDecorated">
       <bool>true</bool>
      </property>

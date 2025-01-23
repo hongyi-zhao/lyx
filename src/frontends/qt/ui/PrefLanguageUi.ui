@@ -99,6 +99,9 @@
         <property name="toolTip">
          <string>Enter the command to load a custom language package (default: \usepackage{babel})</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhPreferLatin</set>
+        </property>
        </widget>
       </item>
       <item row="1" column="0">
@@ -116,6 +119,9 @@
         <property name="toolTip">
          <string>The LaTeX command that starts a switch to a different language. The placeholder $$lang is replaced by the actual language name.</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhPreferLatin</set>
+        </property>
        </widget>
       </item>
       <item row="2" column="0">
@@ -132,6 +138,9 @@
        <widget class="QLineEdit" name="endCommandED">
         <property name="toolTip">
          <string>The LaTeX command that ends a switch to a different language.  The placeholder $$lang is replaced by the actual language name.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhPreferLatin</set>
         </property>
        </widget>
       </item>
@@ -317,6 +326,9 @@
         <property name="toolTip">
          <string>Insert a custom decimal separator here</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhPreferLatin</set>
+        </property>
         <property name="inputMask">
          <string/>
         </property>
@@ -359,6 +371,9 @@
        <widget class="QComboBox" name="defaultLengthUnitCO">
         <property name="toolTip">
          <string>Select the default length unit for LyX dialogs</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
         </property>
        </widget>
       </item>

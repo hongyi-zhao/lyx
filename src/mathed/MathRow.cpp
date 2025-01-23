@@ -342,7 +342,10 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 				                      g.dim.width(), g.dim.height(), Color_error);
 				LYXERR0("Unset Buffer member in " << insetName(e.inset->lyxCode()));
 			}
-			e.inset->draw(pi, x + e.before, y);
+			if (e.im == nullptr)
+				e.inset->draw(pi, x + e.before, y);
+			else
+				e.inset->draw(pi, x + e.before, y, e.im, e.char_format_index);
 			g.pos = {x, y};
 			g.dim.wid += e.before + e.after;
 			drawMarkers(pi, e, x, y);

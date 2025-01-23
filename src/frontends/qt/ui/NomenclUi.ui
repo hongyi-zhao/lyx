@@ -103,6 +103,9 @@
          <property name="toolTip">
           <string>Insert additional options of the nomencl package here</string>
          </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhPreferLatin</set>
+         </property>
         </widget>
        </item>
       </layout>

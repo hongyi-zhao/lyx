@@ -156,6 +156,9 @@
             <property name="toolTip">
              <string>Define search pattern (see UserGuide for syntax)</string>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhPreferLatin</set>
+            </property>
            </widget>
           </item>
          </layout>
@@ -248,10 +251,17 @@
           <property name="toolTip">
            <string>Limit the width of the text in the work area to the specified length</string>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhFormattedNumbersOnly</set>
+          </property>
          </widget>
         </item>
         <item>
-         <widget class="lyx::frontend::LengthCombo" name="screenWidthUnitCO"/>
+         <widget class="lyx::frontend::LengthCombo" name="screenWidthUnitCO">
+          <property name="inputMethodHints">
+           <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="horizontalSpacer_2">

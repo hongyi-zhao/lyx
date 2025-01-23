@@ -52,11 +52,14 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::InputMethodHint::ImhPreferLatin</set>
+          </property>
           <property name="editable">
            <bool>true</bool>
           </property>
           <property name="sizeAdjustPolicy">
-           <enum>QComboBox::AdjustToContents</enum>
+           <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
           </property>
          </widget>
         </item>
@@ -88,11 +91,14 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::InputMethodHint::ImhPreferLatin</set>
+          </property>
           <property name="editable">
            <bool>true</bool>
           </property>
           <property name="sizeAdjustPolicy">
-           <enum>QComboBox::AdjustToContents</enum>
+           <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
           </property>
          </widget>
         </item>
@@ -115,6 +121,9 @@
         <property name="toolTip">
          <string/>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::InputMethodHint::ImhPreferLatin</set>
+        </property>
        </widget>
       </item>
       <item row="1" column="0">
@@ -128,7 +137,11 @@
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QLineEdit" name="printerPaperSizeED"/>
+       <widget class="QLineEdit" name="printerPaperSizeED">
+        <property name="inputMethodHints">
+         <set>Qt::InputMethodHint::ImhPreferLatin</set>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="printerPaperSizeLA">
@@ -141,7 +154,11 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QLineEdit" name="printerLandscapeED"/>
+       <widget class="QLineEdit" name="printerLandscapeED">
+        <property name="inputMethodHints">
+         <set>Qt::InputMethodHint::ImhPreferLatin</set>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="printerLandscapeLA">
@@ -234,7 +251,7 @@
    <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>

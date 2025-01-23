@@ -262,6 +262,9 @@ struct BufferView::Private
 	///
 	size_t inlineCompletionUniqueChars_;
 
+	/// an instance of the input method
+	frontend::InputMethod * im_ = nullptr;
+
 	/// keyboard mapping object.
 	Intl intl_;
 
@@ -3392,7 +3395,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 		int yy = 0;
 
 		// get relative position inside sl.inset()
-		sl.inset().cursorPos(*this, sl, dit.boundary() && (i + 1 == dit.depth()), xx, yy);
+		sl.inset().cursorPos(*this, sl, (dit.boundary() || !d->im_->preeditString().empty()) && (i + 1 == dit.depth()), xx, yy);
 
 		// Make relative position inside of the edited inset relative to sl.inset()
 		x += xx;
@@ -3423,7 +3426,11 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 	y -= pm.rows()[0].ascent();
 
 	// Take boundary into account if cursor is in main text.
-	bool const has_boundary = dit.depth() == 1 && dit.boundary();
+	// To set coords of preedit strings at the starting point in the first row,
+	// they are treated as being on boundary at any time here. Note that preedit
+	// strings are virtual with zero width but can occupy several rows on screen.
+	bool const has_boundary = dit.depth() == 1 &&
+	        (dit.boundary() || !d->im_->preeditString().empty());
 	size_t const rend = pm.getRowIndex(sl.pos(), has_boundary);
 	for (size_t rit = 0; rit != rend; ++rit)
 		y += pm.rows()[rit].height();
@@ -3495,11 +3502,14 @@ void BufferView::caretPosAndDim(Point & p, Dimension & dim) const
 }
 
 
-void BufferView::buildCaretGeometry(bool complet)
+void BufferView::buildCaretGeometry(bool complet, Point shift)
 {
-	Point p;
+	Point p, origP;
 	Dimension dim;
-	caretPosAndDim(p, dim);
+	caretPosAndDim(origP, dim);
+
+	p.x = origP.x + shift.x;
+	p.y = origP.y + shift.y;
 
 	Cursor const & cur = d->cursor_;
 	Font const & realfont = cur.real_current_font;
@@ -3984,6 +3994,19 @@ void BufferView::setInlineCompletion(Cursor const & cur, DocIterator const & pos
 		else
 			cur.screenUpdateFlags(cur.result().screenUpdate() | Update::Force);
 	}
+}
+
+
+void BufferView::setInputMethod(frontend::InputMethod * im)
+{
+	LYXERR(Debug::DEBUG, "setInputMethod: Address of im_: " << im);
+	d->im_ = im;
+}
+
+
+frontend::InputMethod * BufferView::inputMethod() const
+{
+	return d->im_;
 }
 
 

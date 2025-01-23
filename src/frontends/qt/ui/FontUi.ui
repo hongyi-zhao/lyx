@@ -63,6 +63,9 @@
          <property name="toolTip">
           <string/>
          </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhDigitsOnly</set>
+         </property>
         </widget>
        </item>
        <item>
@@ -100,6 +103,9 @@
          <property name="toolTip">
           <string>Specify the font encoding (e.g., T1).</string>
          </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhPreferLatin</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -120,6 +126,9 @@
         <widget class="lyx::frontend::CategorizedCombo" name="fontsRomanCO">
          <property name="toolTip">
           <string>Select the roman (serif) typeface. To filter the list of fonts, just start typing while the list is expanded.</string>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
          </property>
         </widget>
        </item>
@@ -193,6 +202,9 @@
            <property name="toolTip">
             <string>Here you can insert additional options (as provided by the font package)</string>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhPreferLatin</set>
+           </property>
           </widget>
          </item>
         </layout>
@@ -215,6 +227,9 @@
         <widget class="lyx::frontend::CategorizedCombo" name="fontsSansCO">
          <property name="toolTip">
           <string>Select the Sans Serif (grotesque) typeface. To filter the list of fonts, just start typing while the list is expanded.</string>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
          </property>
         </widget>
        </item>
@@ -301,6 +316,9 @@
            <property name="toolTip">
             <string>Here you can insert additional options (as provided by the font package)</string>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhPreferLatin</set>
+           </property>
           </widget>
          </item>
         </layout>
@@ -323,6 +341,9 @@
         <widget class="lyx::frontend::CategorizedCombo" name="fontsTypewriterCO">
          <property name="toolTip">
           <string>Select the typewriter (monospaced) typeface. To filter the list of fonts, just start typing while the list is expanded.</string>
+         </property>
+         <property name="inputMethodHints">
+          <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
          </property>
         </widget>
        </item>
@@ -409,6 +430,9 @@
            <property name="toolTip">
             <string>Here you can insert additional options (as provided by the font package)</string>
            </property>
+           <property name="inputMethodHints">
+            <set>Qt::ImhPreferLatin</set>
+           </property>
           </widget>
          </item>
         </layout>
@@ -446,6 +470,9 @@
       <widget class="QLineEdit" name="cjkFontLE">
        <property name="toolTip">
         <string>Input the font to be used for Chinese, Japanese or Korean (CJK) script</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhPreferLatin</set>
        </property>
       </widget>
      </item>

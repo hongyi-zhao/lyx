@@ -52,6 +52,9 @@
         <property name="toolTip">
          <string>Horizontal alignment per column (l,c,r)</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+        </property>
        </widget>
       </item>
       <item row="0" column="0">
@@ -120,6 +123,9 @@
        <widget class="QComboBox" name="decorationCO">
         <property name="toolTip">
          <string>decoration type / matrix border</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
         </property>
        </widget>
       </item>

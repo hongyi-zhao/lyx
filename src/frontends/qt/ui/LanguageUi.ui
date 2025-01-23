@@ -165,6 +165,9 @@
        <property name="toolTip">
         <string>Enter the command to load the language package (default: \usepackage{babel})</string>
        </property>
+       <property name="inputMethodHints">
+        <set>Qt::InputMethodHint::ImhPreferLatin</set>
+       </property>
       </widget>
      </item>
      <item>

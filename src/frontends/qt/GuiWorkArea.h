@@ -33,6 +33,7 @@ class KeySymbol;
 namespace frontend {
 
 class GuiCompleter;
+class GuiInputMethod;
 class GuiView;
 
 class GuiWorkArea : public QAbstractScrollArea, public WorkArea
@@ -53,6 +54,10 @@ public:
 	void setBuffer(Buffer &);
 	///
 	void setGuiView(GuiView &);
+	///
+	void setInputMethod();
+	///
+	GuiInputMethod * inputMethod();
 	///
 	void setFullScreen(bool full_screen);
 	/// is GuiView in fullscreen mode?
@@ -108,6 +113,8 @@ Q_SIGNALS:
 	void bufferViewChanged();
 	/// send key event to CompressorProxy
 	void compressKeySym(KeySymbol const & sym, KeyModifier mod, bool isAutoRepeat);
+	///
+	void preeditChanged(QInputMethodEvent * ev);
 
 private Q_SLOTS:
 	/// Scroll the BufferView.
@@ -125,6 +132,9 @@ private Q_SLOTS:
 	void close() override;
 	/// Slot to restore proper scrollbar behaviour.
 	void fixVerticalScrollBar();
+
+	void flagPreedit(QInputMethodEvent* ev);
+	void receiveIMQueryResponse(QVariant);
 
 private:
 	/// Update window titles of all users.

@@ -65,6 +65,9 @@
        </property>
        <item row="1" column="1">
         <widget class="QComboBox" name="screenSansCO">
+         <property name="inputMethodHints">
+          <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+         </property>
          <property name="maxVisibleItems">
           <number>20</number>
          </property>
@@ -117,6 +120,9 @@
        </item>
        <item row="0" column="1">
         <widget class="QComboBox" name="screenRomanCO">
+         <property name="inputMethodHints">
+          <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+         </property>
          <property name="maxVisibleItems">
           <number>20</number>
          </property>
@@ -157,6 +163,9 @@
        </item>
        <item row="2" column="1">
         <widget class="QComboBox" name="screenTypewriterCO">
+         <property name="inputMethodHints">
+          <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+         </property>
          <property name="maxVisibleItems">
           <number>20</number>
          </property>
@@ -262,31 +271,67 @@
        <number>6</number>
       </property>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="screenTinyED"/>
+       <widget class="QLineEdit" name="screenTinyED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="4" column="3">
-       <widget class="QLineEdit" name="screenHugerED"/>
+       <widget class="QLineEdit" name="screenHugerED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="screenSmallestED"/>
+       <widget class="QLineEdit" name="screenSmallestED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="screenSmallerED"/>
+       <widget class="QLineEdit" name="screenSmallerED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QLineEdit" name="screenSmallED"/>
+       <widget class="QLineEdit" name="screenSmallED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QLineEdit" name="screenNormalED"/>
+       <widget class="QLineEdit" name="screenNormalED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QLineEdit" name="screenLargeED"/>
+       <widget class="QLineEdit" name="screenLargeED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QLineEdit" name="screenLargerED"/>
+       <widget class="QLineEdit" name="screenLargerED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="2" column="3">
-       <widget class="QLineEdit" name="screenLargestED"/>
+       <widget class="QLineEdit" name="screenLargestED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="0" column="2">
        <widget class="QLabel" name="screenLargeLA">
@@ -319,7 +364,11 @@
        </widget>
       </item>
       <item row="3" column="3">
-       <widget class="QLineEdit" name="screenHugeED"/>
+       <widget class="QLineEdit" name="screenHugeED">
+        <property name="inputMethodHints">
+         <set>Qt::ImhFormattedNumbersOnly</set>
+        </property>
+       </widget>
       </item>
       <item row="3" column="2">
        <widget class="QLabel" name="screenHugeLA">

@@ -75,13 +75,20 @@
               <property name="toolTip">
                <string>Optional vertical offset</string>
               </property>
+              <property name="inputMethodHints">
+               <set>Qt::ImhFormattedNumbersOnly</set>
+              </property>
               <property name="text">
                <string/>
               </property>
              </widget>
             </item>
             <item row="0" column="2">
-             <widget class="lyx::frontend::LengthCombo" name="multirowOffsetUnitLC"/>
+             <widget class="lyx::frontend::LengthCombo" name="multirowOffsetUnitLC">
+              <property name="inputMethodHints">
+               <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -185,10 +192,18 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="tabularWidthED"/>
+           <widget class="QLineEdit" name="tabularWidthED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="0" column="2">
-           <widget class="lyx::frontend::LengthCombo" name="tabularWidthUnitLC"/>
+           <widget class="lyx::frontend::LengthCombo" name="tabularWidthUnitLC">
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="TableAlignLA">
@@ -420,13 +435,20 @@
                 <property name="toolTip">
                  <string>Custom width of the column</string>
                 </property>
+                <property name="inputMethodHints">
+                 <set>Qt::ImhFormattedNumbersOnly</set>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="lyx::frontend::LengthCombo" name="columnWidthUnitLC"/>
+               <widget class="lyx::frontend::LengthCombo" name="columnWidthUnitLC">
+                <property name="inputMethodHints">
+                 <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -535,6 +557,9 @@
               </property>
               <property name="whatsThis">
                <string/>
+              </property>
+              <property name="inputMethodHints">
+               <set>Qt::ImhPreferLatin</set>
               </property>
              </widget>
             </item>
@@ -1172,10 +1197,18 @@
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="QLineEdit" name="topspaceED"/>
+           <widget class="QLineEdit" name="topspaceED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="0" column="3">
-           <widget class="lyx::frontend::LengthCombo" name="topspaceUnitLC"/>
+           <widget class="lyx::frontend::LengthCombo" name="topspaceUnitLC">
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="0" column="1">
            <widget class="QComboBox" name="topspaceCO">
@@ -1216,10 +1249,18 @@
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="lyx::frontend::LengthCombo" name="bottomspaceUnitLC"/>
+           <widget class="lyx::frontend::LengthCombo" name="bottomspaceUnitLC">
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="2">
-           <widget class="QLineEdit" name="bottomspaceED"/>
+           <widget class="QLineEdit" name="bottomspaceED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="bottomspaceLA">
@@ -1232,7 +1273,11 @@
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="QLineEdit" name="interlinespaceED"/>
+           <widget class="QLineEdit" name="interlinespaceED">
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly</set>
+            </property>
+           </widget>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="interlinespaceLA">
@@ -1264,7 +1309,11 @@
            </widget>
           </item>
           <item row="2" column="3">
-           <widget class="lyx::frontend::LengthCombo" name="interlinespaceUnitLC"/>
+           <widget class="lyx::frontend::LengthCombo" name="interlinespaceUnitLC">
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -1604,6 +1653,9 @@
        <property name="toolTip">
         <string>Current row position</string>
        </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
+       </property>
       </widget>
      </item>
      <item>
@@ -1625,6 +1677,9 @@
        </property>
        <property name="toolTip">
         <string>Current column position</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
        </property>
       </widget>
      </item>

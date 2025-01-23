@@ -14,12 +14,6 @@
    <string/>
   </property>
   <layout class="QGridLayout">
-   <property name="margin" stdset="0">
-    <number>9</number>
-   </property>
-   <property name="spacing">
-    <number>6</number>
-   </property>
    <item row="12" column="0" colspan="3">
     <widget class="QLabel" name="label">
      <property name="text">
@@ -45,6 +39,9 @@
      <property name="toolTip">
       <string>Specify those directories which should be prepended to the PATH environment variable. Use the OS native format.</string>
      </property>
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
     </widget>
    </item>
    <item row="11" column="0">
@@ -61,6 +58,9 @@
     <widget class="QLineEdit" name="texinputsPrefixED">
      <property name="toolTip">
       <string>Specify those directories which should be prepended to the TEXINPUTS environment variable. Use the OS native format.</string>
+     </property>
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -85,7 +85,11 @@
     </widget>
    </item>
    <item row="6" column="1">
-    <widget class="QLineEdit" name="thesaurusDirED"/>
+    <widget class="QLineEdit" name="thesaurusDirED">
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="5" column="2">
     <widget class="QPushButton" name="tempDirPB">
@@ -98,7 +102,11 @@
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="QLineEdit" name="tempDirED"/>
+    <widget class="QLineEdit" name="tempDirED">
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="tempDirLA">
@@ -121,7 +129,11 @@
     </widget>
    </item>
    <item row="4" column="1">
-    <widget class="QLineEdit" name="lyxserverDirED"/>
+    <widget class="QLineEdit" name="lyxserverDirED">
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="lyxserverDirLA">
@@ -148,6 +160,9 @@
      <property name="toolTip">
       <string>If a path is specified here, all backups of LyX files will be stored there. If no path is given, backups will be stored alongside the original document. This requires 'Backup original documents when saving' in Look &amp; Feel &gt; Document Handling to be checked.</string>
      </property>
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
     </widget>
    </item>
    <item row="3" column="0">
@@ -171,7 +186,11 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QLineEdit" name="exampleDirED"/>
+    <widget class="QLineEdit" name="exampleDirED">
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="exampleDirLA">
@@ -194,7 +213,11 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QLineEdit" name="templateDirED"/>
+    <widget class="QLineEdit" name="templateDirED">
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="templateDirLA">
@@ -217,7 +240,11 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QLineEdit" name="workingDirED"/>
+    <widget class="QLineEdit" name="workingDirED">
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="workingDirLA">
@@ -240,7 +267,11 @@
     </widget>
    </item>
    <item row="8" column="1">
-    <widget class="QLineEdit" name="hunspellDirED"/>
+    <widget class="QLineEdit" name="hunspellDirED">
+     <property name="inputMethodHints">
+      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+     </property>
+    </widget>
    </item>
    <item row="8" column="2">
     <widget class="QPushButton" name="hunspellDirPB">

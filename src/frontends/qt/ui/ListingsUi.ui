@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>753</width>
+    <width>840</width>
     <height>397</height>
    </rect>
   </property>
@@ -70,6 +70,9 @@
            <widget class="QLineEdit" name="placementLE">
             <property name="toolTip">
              <string>Specify placement (htbp) for floating listings</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
             </property>
            </widget>
           </item>
@@ -140,6 +143,9 @@
             </property>
             <property name="statusTip">
              <string/>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly</set>
             </property>
             <property name="text">
              <string/>
@@ -352,6 +358,9 @@
             <property name="toolTip">
              <string>Select the programming language</string>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+            </property>
            </widget>
           </item>
           <item row="1" column="0">
@@ -368,6 +377,9 @@
            <widget class="QComboBox" name="dialectCO">
             <property name="toolTip">
              <string>Select the dialect of the programming language, if available</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
             </property>
            </widget>
           </item>
@@ -401,6 +413,9 @@
             <property name="toolTip">
              <string>The first line to be printed</string>
             </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly</set>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -426,6 +441,9 @@
            <widget class="QLineEdit" name="lastlineLE">
             <property name="toolTip">
              <string>The last line to be printed</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhFormattedNumbersOnly</set>
             </property>
             <property name="text">
              <string/>

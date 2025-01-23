@@ -43,6 +43,9 @@
        <property name="toolTip">
         <string>Optional paper size flag (-paper) for some DVI viewers</string>
        </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhPreferLatin</set>
+       </property>
       </widget>
      </item>
     </layout>
@@ -98,7 +101,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="latexBibtexCO"/>
+         <widget class="QComboBox" name="latexBibtexCO">
+          <property name="inputMethodHints">
+           <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="latexBibtexOptionsLA">
@@ -115,6 +122,9 @@
           <property name="toolTip">
            <string>BibTeX command and options</string>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -128,7 +138,11 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QComboBox" name="latexJBibtexCO"/>
+         <widget class="QComboBox" name="latexJBibtexCO">
+          <property name="inputMethodHints">
+           <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="latexJBibtexOptionsLA">
@@ -144,6 +158,9 @@
          <widget class="QLineEdit" name="latexJBibtexED">
           <property name="toolTip">
            <string>Specific BibTeX command and options for pLaTeX (Japanese)</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
           </property>
          </widget>
         </item>
@@ -200,7 +217,11 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="latexIndexCO"/>
+         <widget class="QComboBox" name="latexIndexCO">
+          <property name="inputMethodHints">
+           <set>Qt::ImhFormattedNumbersOnly|Qt::ImhLatinOnly</set>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="latexIndexOptionsLA">
@@ -216,6 +237,9 @@
          <widget class="QLineEdit" name="latexIndexED">
           <property name="toolTip">
            <string>Index command and options (makeindex, xindy)</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
           </property>
          </widget>
         </item>
@@ -233,6 +257,9 @@
          <widget class="QLineEdit" name="latexJIndexED">
           <property name="toolTip">
            <string>Specific index command and options for pLaTeX (Japanese)</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
           </property>
          </widget>
         </item>
@@ -270,12 +297,18 @@
           <property name="toolTip">
            <string>Command and options for nomencl (usually makeindex)</string>
           </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
+          </property>
          </widget>
         </item>
         <item row="1" column="1">
          <widget class="QLineEdit" name="latexChecktexED">
           <property name="toolTip">
            <string>CheckTeX start options and flags</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhPreferLatin</set>
           </property>
          </widget>
         </item>

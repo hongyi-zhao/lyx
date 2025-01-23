@@ -94,6 +94,7 @@ SOURCEFILES = \
 	GuiIndex.cpp \
 	GuiIndices.cpp \
 	GuiInfo.cpp \
+	GuiInputMethod.cpp \
 	GuiKeySymbol.cpp \
 	GuiLabel.cpp \
 	GuiLine.cpp \
@@ -209,6 +210,7 @@ MOCHEADER = \
 	GuiIndex.h \
 	GuiIndices.h \
 	GuiInfo.h \
+	GuiInputMethod.h \
 	GuiLabel.h \
 	GuiLine.h \
 	GuiListings.h \

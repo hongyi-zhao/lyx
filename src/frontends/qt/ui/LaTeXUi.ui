@@ -26,6 +26,9 @@
    </item>
    <item row="2" column="2">
     <widget class="QComboBox" name="psdriverCO">
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+     </property>
      <property name="duplicatesEnabled">
       <bool>false</bool>
      </property>
@@ -91,6 +94,9 @@
      <layout class="QGridLayout">
       <item row="0" column="0">
        <widget class="lyx::frontend::CategorizedCombo" name="classCO">
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+        </property>
         <property name="maxVisibleItems">
          <number>20</number>
         </property>
@@ -184,6 +190,9 @@
         <property name="toolTip">
          <string>The options that are predefined in the layout file. Click to the left to select/deselect.</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhPreferLatin</set>
+        </property>
         <property name="readOnly">
          <bool>true</bool>
         </property>
@@ -200,7 +209,11 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="optionsLE"/>
+       <widget class="QLineEdit" name="optionsLE">
+        <property name="inputMethodHints">
+         <set>Qt::ImhPreferLatin</set>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

@@ -228,6 +228,13 @@ public:
 	void stopLongOperation() override;
 	/// A started long operation is still in progress ?
 	bool longOperationStarted() override;
+
+	/// if within the command key sequence after a command prefix
+	bool isInCommandMode() { return command_phase_; }
+
+Q_SIGNALS:
+	///
+	void acceptsInputMethod();
 private Q_SLOTS:
 	///
 	void execBatchCommands();
@@ -275,6 +282,7 @@ private:
 	/// events
 	GuiView * current_view_;
 
+	bool command_phase_;
 	///
 	struct Private;
 	Private * const d;

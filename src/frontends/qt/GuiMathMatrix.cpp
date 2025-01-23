@@ -88,7 +88,7 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(columnsSB, SIGNAL(valueChanged(int)),
 		this, SLOT(columnsChanged(int)) );
-	connect(valignCO, SIGNAL(highlighted(QString)),
+	connect(valignCO, SIGNAL(highlighted(int)),
 		this, SLOT(change_adaptor()));
 	connect(halignED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));

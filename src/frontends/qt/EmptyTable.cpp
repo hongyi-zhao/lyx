@@ -33,6 +33,9 @@ EmptyTable::EmptyTable(QWidget * parent, int rows, int columns)
 	setFocusPolicy(Qt::NoFocus);
 	setEditTriggers(QAbstractItemView::NoEditTriggers);
 	adjustMinCellSize();
+	// The style-hinted colors have too less contrast
+	// particularly in dark mode (#13146)
+	setStyleSheet("QTableWidget {gridline-color: grey;}");
 }
 
 

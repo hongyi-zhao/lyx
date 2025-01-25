@@ -790,7 +790,7 @@ void GuiInputMethod::processQuery(Qt::InputMethodQuery query)
 
 // Returns enum Qt::InputMethodQuery constant from its value.
 // This is for debugging purpose only.
-docstring GuiInputMethod::inputMethodQueryFlagsAsString(long int query) const
+docstring GuiInputMethod::inputMethodQueryFlagsAsString(unsigned long int query) const
 {
 	docstring str;
 	switch (query) {

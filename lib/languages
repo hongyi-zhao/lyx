@@ -984,7 +984,7 @@ Language japanese
 	Requires         japanese
 	FontEncoding     ASCII
 	DateFormats      "yyyy年M月d日|yyyy/MM/dd|yy/MM/dd"
-	QuoteStyle       cjk
+	QuoteStyle       english
 End
 
 # uses CJK package

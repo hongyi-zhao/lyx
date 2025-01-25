@@ -161,7 +161,7 @@ private:
 	PreeditRow getCaretInfo(const bool real_boundary, const bool virtual_boundary);
 
 	/// Returns enum Qt::InputMethodQuery constant from its value
-	docstring inputMethodQueryFlagsAsString(long int query) const;
+	docstring inputMethodQueryFlagsAsString(unsigned long int query) const;
 
 	struct Private;
 	Private * const d;

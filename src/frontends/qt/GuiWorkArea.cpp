@@ -72,7 +72,7 @@
 #include <QToolTip>
 #include <QMenuBar>
 
-#include <array>
+#include <array> //Needed for Windows (preeditCaretOffset())
 #include <cmath>
 #include <iostream>
 

@@ -85,7 +85,7 @@ public:
 		frontend::InputMethod * im = nullptr;
 		// Index in the char format vector the style of which is applied to
 		// the corresponding segment of the preedit
-		size_t char_format_index;
+		size_t char_format_index = 0;
 
 		// type is BEGIN, END
 		MathData const * ar;

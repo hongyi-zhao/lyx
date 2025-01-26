@@ -153,7 +153,7 @@ public:
 		frontend::InputMethod * im = nullptr;
 		// Index in the char format vector the style of which is applied to
 		// the corresponding segment of the preedit
-		pos_type char_format_index;
+		pos_type char_format_index = 0;
 		// The input method language allows to wrap at any place
 		bool lang_wrap_any = false;
 		//

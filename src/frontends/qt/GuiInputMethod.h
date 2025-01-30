@@ -67,7 +67,8 @@ public:
 
 	struct InputMethodState {
 		bool      enabled_;
-		bool      edit_mode_;
+		bool      preediting_; // either in edit or completing mode
+		bool      edit_mode_;  // i.e. not completing mode
 		QRectF    cursor_rect_;
 		QRectF    anchor_rect_;
 		docstring surrounding_text_;

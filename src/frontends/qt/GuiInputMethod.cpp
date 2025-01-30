@@ -94,6 +94,7 @@ GuiInputMethod::GuiInputMethod(GuiWorkArea *parent)
 	d->im_state_.enabled_ = true;
 	d->buffer_view_ = &d->work_area_->bufferView();
 	d->cur_ = &d->buffer_view_->cursor();
+	d->im_state_.preediting_ = false;
 
 	LYXERR(Debug::DEBUG, "GuiInputMethod: Address of parent: " << parent);
 	LYXERR(Debug::DEBUG, "GuiInputMethod: Address of buffer_view_: " <<
@@ -180,7 +181,7 @@ void GuiInputMethod::processPreedit(QInputMethodEvent* ev)
 	}
 
 	// if selected
-	if (d->cur_->selection()) {
+	if (d->cur_->selection() && !ev->preeditString().isEmpty()) {
 		d->has_selection_ = true;
 		d->cur_->beginUndoGroup();
 		d->cur_->recordUndoSelection();
@@ -188,11 +189,12 @@ void GuiInputMethod::processPreedit(QInputMethodEvent* ev)
 		d->cur_->endUndoGroup();
 	}
 
-		// if preedit is cancelled
+	// if preedit is cancelled
 	if (ev->preeditString().isEmpty() && ev->commitString().isEmpty() &&
-	        d->has_selection_) {
+	        d->has_selection_ && d->im_state_.preediting_ == true) {
 		d->cur_->undoAction();
 		d->has_selection_ = false;
+		d->im_state_.preediting_ = false;
 	}
 
 	d->preedit_str_ = qstring_to_ucs4(ev->preeditString());
@@ -234,6 +236,9 @@ void GuiInputMethod::processPreedit(QInputMethodEvent* ev)
 	// the input method
 	// FIXME: is there a benefit to cache this?
 	setSurroundingText(*d->cur_);
+
+	// if preedit string is not empty, we are still working on it
+	d->im_state_.preediting_ = d->preedit_str_.empty() ? false : true;
 
 	// notify the completion to both im and app itself
 	Q_EMIT inputMethodStateChanged(Qt::ImQueryInput);
@@ -938,7 +943,8 @@ Point GuiInputMethod::initializeCaretCoords(pos_type const cur_row_idx,
 
 	// reset item transformation since it gets wrong after the item get
 	// lost and regain focus.
-	d->work_area_->resetInputItemGeometry();
+	if (!d->preedit_str_.empty())
+		d->work_area_->resetInputItemGeometry();
 
 	Point point;
 	// get dimension of the non-virtual caret

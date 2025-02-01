@@ -31,11 +31,12 @@ else:
     from getopt import getopt
 
 # Pre-compiled regular expressions.
-re_lyxfile = re.compile(br"\.lyx$")
+re_lyxfile = re.compile(r"\.lyx$")
 re_input = re.compile(b'^(.*)\\\\(input|include){(\\s*)(.+)(\\s*)}.*$')
 re_ertinput = re.compile(b'^(input|include)({)(\\s*)(.+)(\\s*)}.*$')
 re_package = re.compile(b'^(.*)\\\\(usepackage){(\\s*)(.+)(\\s*)}.*$')
 re_class = re.compile(b'^(\\\\)(textclass)(\\s+)(.+)\\s*$')
+re_latexclass = re.compile(b'^(.*)\\\\(DeclareLaTeXClass)\\[(\\s*)(.+)(\\s*)\\].*$')
 re_norecur = re.compile(b'^(.*)\\\\(verbatiminput|lstinputlisting|includegraphics\\[*.*\\]*){(\\s*)(.+)(\\s*)}.*$')
 re_ertnorecur = re.compile(b'^(verbatiminput|lstinputlisting|includegraphics\\[*.*\\]*)({)(\\s*)(.+)(\\s*)}.*$')
 re_filename = re.compile(b'^(\\s*)(filename)(\\s+)(.+)\\s*$')
@@ -68,12 +69,12 @@ def tostr(message):
 
 
 def gzopen(file):
-    input = open(file.decode('utf-8'), 'rb')
+    input = open(file, 'rb')
     magicnum = input.read(2)
     input.close()
     if magicnum == b"\x1f\x8b":
-        return gzip.open(file.decode('utf-8'))
-    return open(file.decode('utf-8'), 'rb')
+        return gzip.open(file)
+    return open(file, 'rb')
 
 
 def find_exe(candidates, extlist, path):
@@ -106,7 +107,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
             # code page. So, we resort to running lyx2lyx on a copy.
             tmp = NamedTemporaryFile(delete=False)
             tmp.close()
-            copyfile(curfile.decode('utf-8'), tmp.name)
+            copyfile(curfile, tmp.name)
             try:
                 l2l_stdout = subprocess.check_output([PYTHON_BIN, lyx2lyx, tmp.name])
             except subprocess.CalledProcessError:
@@ -134,7 +135,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
     while i < len(lines):
         # Gather used files.
         recursive = True
-        extlist = [b'']
+        extlist = ['']
         match = re_filename.match(lines[i])
         if not match:
             if maybe_in_ert:
@@ -143,20 +144,35 @@ def gather_files(curfile, incfiles, lyx2lyx):
                 match = re_input.match(lines[i])
             if not match:
                 match = re_package.match(lines[i])
-                extlist = [b'.sty']
+                extlist = ['.sty']
                 if not match:
                     match = re_class.match(lines[i])
-                    extlist = [b'.cls']
-                    if not match:
+                    if match:
+                        extlist = ['.cls']
+                        file = tostr(match.group(4).strip(b'"'))
+                        local_layout = os.path.join(curdir, file) + '.layout'
+                        if os.path.exists(local_layout):
+                            if not abspath(local_layout) in incfiles:
+                                incfiles.append(abspath(local_layout))
+                                f = gzopen(local_layout)
+                                l = f.readlines()
+                                f.close()
+                                j = 0
+                                while j < len(l):
+                                    match = re_latexclass.match(l[j])
+                                    if match:
+                                        break
+                                    j += 1
+                    else:
                         if maybe_in_ert:
                             match = re_ertnorecur.match(lines[i])
                         else:
                             match = re_norecur.match(lines[i])
-                        extlist = [b'', b'.eps', b'.pdf', b'.png', b'.jpg']
+                        extlist = ['', '.eps', '.pdf', '.png', '.jpg']
                         recursive = False
         maybe_in_ert = is_lyxfile and lines[i] == b"\\backslash"
         if match:
-            file = match.group(4).strip(b'"')
+            file = tostr(match.group(4).strip(b'"'))
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file)
             file_exists = False
@@ -180,12 +196,12 @@ def gather_files(curfile, incfiles, lyx2lyx):
         # Gather bibtex *.bst files.
         match = re_options.match(lines[i])
         if match:
-            file = match.group(3).strip(b'"')
-            if file.startswith(b"bibtotoc,"):
+            file = tostr(match.group(3).strip(b'"'))
+            if file.startswith("bibtotoc,"):
                 file = file[9:]
             ext = os.path.splitext(file)[-1]
-            if ext != b'.bst':
-                file = file + b'.bst'
+            if ext != '.bst':
+                file = file + '.bst'
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file)
             if os.path.exists(file):
@@ -199,10 +215,10 @@ def gather_files(curfile, incfiles, lyx2lyx):
             bibfiles = match.group(3).strip(b'"').split(b',')
             j = 0
             while j < len(bibfiles):
-                file = bibfiles[j]
+                file = tostr(bibfiles[j])
                 ext = os.path.splitext(file)[-1]
-                if ext != b'.bib':
-                    file = file + b'.bib'
+                if ext != '.bib':
+                    file = file + '.bib'
                 if not os.path.isabs(file):
                     file = os.path.join(curdir, file)
                 if os.path.exists(file):
@@ -297,27 +313,31 @@ def main(args):
             if not os.path.isdir(outdir):
                 error('Error: "%s" is not a directory.' % outdir)
 
-    lyxfile = argv[0]
+    if running_on_windows:
+        lyxfile = tostr(argv[0])
+    else:
+        lyxfile = argv[0]
+
     if not os.path.exists(lyxfile):
-        error('File "%s" not found.' % tostr(lyxfile))
+        error('File "{lyxfile}" not found.')
 
     # Check that it actually is a LyX document
     input = gzopen(lyxfile)
     line = input.readline()
     input.close()
     if not (line and line.startswith(b'#LyX')):
-        error('File "%s" is not a LyX document.' % tostr(lyxfile))
+        error('File "{lyxfile}" is not a LyX document.')
 
     if makezip:
         import zipfile
     else:
         import tarfile
 
-    ar_ext = b".tar.gz"
+    ar_ext = ".tar.gz"
     if makezip:
-        ar_ext = b".zip"
+        ar_ext = ".zip"
 
-    ar_name = re_lyxfile.sub(ar_ext, abspath(lyxfile)).decode('utf-8')
+    ar_name = re_lyxfile.sub(ar_ext, abspath(lyxfile))
     if outdir:
         ar_name = os.path.join(abspath(outdir), os.path.basename(ar_name))
 
@@ -332,7 +352,7 @@ def main(args):
     gather_files(lyxfile, incfiles, lyx2lyx)
 
     # Find the topmost dir common to all files
-    path_sep = os.path.sep.encode('utf-8')
+    path_sep = os.path.sep
     if len(incfiles) > 1:
         topdir = os.path.commonprefix(incfiles)
         # As os.path.commonprefix() works on a character by character basis,
@@ -344,7 +364,7 @@ def main(args):
     # Remove the prefix common to all paths in the list
     i = 0
     while i < len(incfiles):
-        incfiles[i] = incfiles[i].replace(topdir, b'', 1)
+        incfiles[i] = incfiles[i].replace(topdir, '', 1)
         i += 1
 
     # Remove duplicates and sort the list
@@ -359,12 +379,12 @@ def main(args):
         if makezip:
             zip = zipfile.ZipFile(ar_name, "w", zipfile.ZIP_DEFLATED)
             for file in incfiles:
-                zip.write(file.decode('utf-8'))
+                zip.write(file)
             zip.close()
         else:
             tar = tarfile.open(ar_name, "w:gz")
             for file in incfiles:
-                tar.add(file.decode('utf-8'))
+                tar.add(file)
             tar.close()
     except:
         error('Failed to create LyX archive "%s"' % ar_name)

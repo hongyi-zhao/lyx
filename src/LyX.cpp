@@ -907,7 +907,7 @@ bool LyX::init()
 		// Add the directory containing the dt2dv and dv2dt executables to the path
 		FileName dtldir;
 		if (!package().build_support().empty()) {
-			// dtl executables should be in the same dir ar tex2lyx
+			// dtl executables should be in the same dir as tex2lyx
 			dtldir = package().binary_dir();
 		}
 		else {

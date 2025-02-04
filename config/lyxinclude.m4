@@ -556,6 +556,7 @@ AC_DEFUN([LYX_CHECK_CALLSTACK_PRINTING],
                lyx_cv_callstack_printing=$enableval, lyx_cv_callstack_printing=yes)
 
 if test x"$lyx_cv_callstack_printing" = xyes; then
+  AS_UNSET([lyx_cv_callstack_printing])
   AC_CACHE_CHECK([whether printing callstack is possible],
 		 [lyx_cv_callstack_printing],
   [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
@@ -567,7 +568,7 @@ if test x"$lyx_cv_callstack_printing" = xyes; then
 	  backtrace_symbols(array, size);
 	  int status = 0;
 	  abi::__cxa_demangle("abcd", 0, 0, &status);
-  ]])],[],[lyx_cv_callstack_printing=no])])
+  ]])],[lyx_cv_callstack_printing=yes],[lyx_cv_callstack_printing=no])])
 fi
 if test x"$lyx_cv_callstack_printing" = xyes; then
   AC_DEFINE([LYX_CALLSTACK_PRINTING], 1,

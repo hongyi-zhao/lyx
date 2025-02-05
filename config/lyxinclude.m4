@@ -553,10 +553,9 @@ dnl        necessary APIs are available to print callstacks.
 AC_DEFUN([LYX_CHECK_CALLSTACK_PRINTING],
 [AC_ARG_ENABLE([callstack-printing],
                [AS_HELP_STRING([--disable-callstack-printing],[do not print a callstack when crashing])],
-               lyx_cv_callstack_printing=$enableval, lyx_cv_callstack_printing=yes)
+               lyx_callstack_printing=$enableval, lyx_callstack_printing=yes)
 
-if test x"$lyx_cv_callstack_printing" = xyes; then
-  AS_UNSET([lyx_cv_callstack_printing])
+if test x"$lyx_callstack_printing" = xyes; then
   AC_CACHE_CHECK([whether printing callstack is possible],
 		 [lyx_cv_callstack_printing],
   [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[

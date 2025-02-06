@@ -503,7 +503,6 @@ if(LYX_BUNDLE)
 		configure_file("${CMAKE_CURRENT_SOURCE_DIR}/development/MacOSX/Info.plist.in" "${CMAKE_CURRENT_BINARY_DIR}/Info.plist")
 
 		set(LYX_BUILD_BUNDLE MACOSX_BUNDLE)
-		set(LYX_DATA_SUBDIR ${LYX_BUNDLE_NAME}.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
 
 		# Variables used by CPack
 		set(CPACK_BUNDLE_NAME ${LYX_BUNDLE_NAME})
@@ -586,6 +585,8 @@ endif()
 
 if (WIN32)
 	set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
+elsif(APPLE)
+	set(LYX_DATA_SUBDIR ${LYX_BUNDLE_NAME}.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
 else()
 	set(LYX_DATA_SUBDIR "share/${_lyx}/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
 endif()

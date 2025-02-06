@@ -682,7 +682,7 @@ MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
 						// Nothing to do: unicode_alphanum_variants only has
 						// the code point, not the full XML/HTML entity.
 					} else if (within_entity && c == ';') { // End of entity.
-						if (buf.starts_with('x')) {
+						if (support::prefixIs(buf, 'x')) {
 							// An HTML entity is typically &#x3B1;, but
 							// unicode_alpha_num_variants has 0x3B1.
 							buf.insert(0, from_ascii("0"));

@@ -26,6 +26,8 @@
 #include "support/textutils.h"
 #include "support/unique_ptr.h"
 
+#include <string.h>// for strcomp
+
 using namespace std;
 
 namespace lyx {

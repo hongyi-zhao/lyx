@@ -248,7 +248,7 @@ void InsetMathChar::mathmlize(MathMLStream & ms) const
 	case '>': entity = "&gt;"; break;
 	case '&': entity = "&amp;"; break;
 	case '-':
-		if (ms.version() == MathMLStream::mathmlCore) {
+		if (ms.version() == MathMLVersion::mathmlCore) {
 			// − U+2212 MINUS SIGN
 			entity = "&#x2212;";
 		}
@@ -262,7 +262,7 @@ void InsetMathChar::mathmlize(MathMLStream & ms) const
 
 	if (ms.inText()) {
 		if (entity.empty())
-			ms << char_;
+			ms << StartRespectFont() << char_ << StopRespectFont();
 		else
 			ms << from_ascii(entity);
 		return;
@@ -279,7 +279,7 @@ void InsetMathChar::mathmlize(MathMLStream & ms) const
 		(isAlphaASCII(char_) || Encodings::isMathAlpha(char_))
 			? "mi" : "mo";
 	ms << MTagInline(type, std::string(type) == "mo" ? "stretchy='false'" : "")
-	   << char_type(char_)
+	   << StartRespectFont() << char_type(char_) << StopRespectFont()
 	   << ETagInline(type);
 }
 

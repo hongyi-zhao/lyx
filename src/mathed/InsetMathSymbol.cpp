@@ -161,11 +161,16 @@ void InsetMathSymbol::mathmlize(MathMLStream & ms) const
 	// FIXME We may need to do more interesting things
 	// with MathMLtype.
 	ms << MTagInline(sym_->MathMLtype());
-	if (sym_->xmlname == "x")
+	if (sym_->xmlname == "x") {
 		// unknown so far
 		ms << name();
-	else
+	} else if (strcmp(sym_->MathMLtype(), "mi") == 0) {
+		// If it's a character or a Greek letter (i.e. "mi"), map to a font.
+		ms << StartRespectFont() << sym_->xmlname << StopRespectFont();
+	} else {
+		// Operators do not have font variants.
 		ms << sym_->xmlname;
+	}
 	ms << ETagInline(sym_->MathMLtype());
 }
 

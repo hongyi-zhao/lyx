@@ -34,6 +34,9 @@ bool createInsetMath_fromDialogStr(docstring const &, MathData &);
 typedef std::map<docstring, latexkeys> MathWordList;
 MathWordList const & mathedWordList();
 
+typedef std::map<docstring, UnicodeVariants> MathVariantList;
+MathVariantList const & mathedVariantList();
+
 } // namespace lyx
 
 #endif

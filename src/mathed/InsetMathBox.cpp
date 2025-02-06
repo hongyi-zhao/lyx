@@ -406,9 +406,9 @@ void InsetMathBoxed::infoize(odocstream & os) const
 
 void InsetMathBoxed::mathmlize(MathMLStream & ms) const
 {
-	ms << MTag("mrow", "class='boxed'");
-	ms << cell(0);
-	ms << ETag("mrow");
+	ms << MTag("mrow", "class='boxed'")
+	   << cell(0)
+	   << ETag("mrow");
 }
 
 

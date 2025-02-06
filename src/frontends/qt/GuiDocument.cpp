@@ -4110,7 +4110,7 @@ void GuiDocument::applyView()
 	int mathmlversion = outputModule->mathmlverCB->currentIndex();
 	if (mathmlversion == -1)
 		mathmlversion = 0;
-	auto const mv = static_cast<MathMLStream::MathMLVersion>(mathmlversion);
+	auto const mv = static_cast<MathMLVersion>(mathmlversion);
 	bp_.docbook_mathml_version = mv;
 
 	bp_.save_transient_properties =

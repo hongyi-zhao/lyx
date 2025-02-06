@@ -110,9 +110,17 @@ void InsetMathBoldSymbol::write(TeXMathStream & os) const
 
 void InsetMathBoldSymbol::mathmlize(MathMLStream & ms) const
 {
-	ms << MTagInline("mstyle", "mathvariant='bold'")
-	   << cell(0)
-	   << ETagInline("mstyle");
+	if (ms.version() == MathMLVersion::mathmlCore) {
+		// All three kinds have the same meaning (and are recognised in
+		// MathFontInfo::fromMacro).
+		MathFontInfo old_font = ms.fontInfo().mergeWith(MathFontInfo::fromMacro(from_ascii("boldsymbol")));
+		ms << cell(0);
+		ms.fontInfo() = old_font;
+	} else {
+		ms << MTagInline("mstyle", "mathvariant='bold'")
+		   << cell(0)
+		   << ETagInline("mstyle");
+	}
 }
 
 

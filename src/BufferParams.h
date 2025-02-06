@@ -629,7 +629,7 @@ public:
 	MathMLNameSpacePrefix docbook_mathml_prefix;
 
 	/// what version of MathML to use for DocBook output (likely different from the version used for XHTML)
-	MathMLStream::MathMLVersion docbook_mathml_version;
+	MathMLVersion docbook_mathml_version;
 
 	/// allow the LaTeX backend to run external programs
 	bool shell_escape;

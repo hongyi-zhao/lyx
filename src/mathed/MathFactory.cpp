@@ -88,6 +88,7 @@ bool has_math_fonts;
 namespace {
 
 MathWordList theMathWordList;
+MathVariantList theMathVariantList;
 
 
 bool isMathFontAvailable(string & name)
@@ -346,6 +347,85 @@ void initSymbols()
 }
 
 
+void initVariantSymbols()
+{
+	FileName const filename = libFileSearch(string(), "unicode_alphanum_variants");
+	LYXERR(Debug::MATHED, "read variant symbols from " << filename);
+	if (filename.empty()) {
+		lyxerr << "Could not find variant symbols file" << endl;
+		return;
+	}
+
+	ifstream fs(filename.toFilesystemEncoding().c_str());
+	// limit the size of strings we read to avoid memory problems
+	fs >> setw(65636);
+	string line;
+	while (getline(fs, line)) {
+		if (line.empty() || line[0] == '#')
+			continue;
+
+		// Split the line along spaces.
+		std::string character, bold, italic, bold_italic, script, bold_script,
+			fraktur, bold_fraktur, double_struck, sans, bold_sans, italic_sans,
+			bold_italic_sans, monospace;
+		line = split(line, character, ' ');
+		line = split(line, bold, ' ');
+		line = split(line, italic, ' ');
+		line = split(line, bold_italic, ' ');
+		line = split(line, script, ' ');
+		line = split(line, bold_script, ' ');
+		line = split(line, fraktur, ' ');
+		line = split(line, bold_fraktur, ' ');
+		line = split(line, double_struck, ' ');
+		line = split(line, sans, ' ');
+		line = split(line, bold_sans, ' ');
+		line = split(line, italic_sans, ' ');
+		line = split(line, bold_italic_sans, ' ');
+		line = split(line, monospace, ' ');
+
+		// Deal with the special case of "": it means that there is no mapping.
+		if (character == "\"\"") continue;
+		if (bold == "\"\"") bold = "";
+		if (italic == "\"\"") italic = "";
+		if (bold_italic == "\"\"") bold_italic = "";
+		if (script == "\"\"") script = "";
+		if (bold_script == "\"\"") bold_script = "";
+		if (fraktur == "\"\"") fraktur = "";
+		if (bold_fraktur == "\"\"") bold_fraktur = "";
+		if (double_struck == "\"\"") double_struck = "";
+		if (sans == "\"\"") sans = "";
+		if (bold_sans == "\"\"") bold_sans = "";
+		if (italic_sans == "\"\"") italic_sans = "";
+		if (bold_italic_sans == "\"\"") bold_italic_sans = "";
+		if (monospace == "\"\"") monospace = "";
+
+		// Build the object, converting from ASCII std::string to actual docstring.
+		UnicodeVariants tmp;
+		tmp.character = from_ascii(character);
+		tmp.bold = from_ascii(bold);
+		tmp.italic = from_ascii(italic);
+		tmp.bold_italic = from_ascii(bold_italic);
+		tmp.script = from_ascii(script);
+		tmp.bold_script = from_ascii(bold_script);
+		tmp.fraktur = from_ascii(fraktur);
+		tmp.bold_fraktur = from_ascii(bold_fraktur);
+		tmp.double_struck = from_ascii(double_struck);
+		tmp.sans = from_ascii(sans);
+		tmp.bold_sans = from_ascii(bold_sans);
+		tmp.italic_sans = from_ascii(italic_sans);
+		tmp.bold_italic_sans = from_ascii(bold_italic_sans);
+		tmp.monospace = from_ascii(monospace);
+
+		// Insert the new mappings if the character hasn't had previous mappings.
+		if (theMathVariantList.find(tmp.character) != theMathVariantList.end())
+			LYXERR(Debug::MATHED, "readVariantSymbols: symbol " << to_utf8(tmp.character)
+				<< " already exists.");
+		else
+			theMathVariantList[tmp.character] = tmp;
+	}
+}
+
+
 bool isSpecialChar(docstring const & name)
 {
 	if (name.size() != 1)
@@ -366,6 +446,12 @@ MathWordList const & mathedWordList()
 }
 
 
+MathVariantList const & mathedVariantList()
+{
+	return theMathVariantList;
+}
+
+
 void initMath()
 {
 	static bool initialized = false;
@@ -373,6 +459,7 @@ void initMath()
 		initialized = true;
 		initParser();
 		initSymbols();
+		initVariantSymbols();
 	}
 }
 

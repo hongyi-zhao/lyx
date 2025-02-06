@@ -2432,7 +2432,7 @@ void InsetMathHull::docbook(XMLStream & xs, OutputParams const & runparams) cons
 	}
 
 	odocstringstream osmath;
-	MathMLStream ms(osmath, mathmlNamespacePrefix, MathMLStream::mathml3);
+	MathMLStream ms(osmath, mathmlNamespacePrefix, MathMLVersion::mathml3);
 
 	// Output the MathML subtree.
 	// TeX transcription. Avoid MTag/ETag so that there are no extraneous spaces.
@@ -2665,9 +2665,9 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 
 	// FIXME Eventually we would like to do this inset by inset.
 	if (mathtype == BufferParams::MathML3 || mathtype == BufferParams::MathMLCore) {
-		MathMLStream::MathMLVersion mathml_version = MathMLStream::mathmlCore;
+		MathMLVersion mathml_version = MathMLVersion::mathmlCore;
 		if (mathtype == BufferParams::MathML3)
-			mathml_version = MathMLStream::mathml3;
+			mathml_version = MathMLVersion::mathml3;
 
 		odocstringstream os;
 		MathMLStream ms(os, "", mathml_version);

@@ -27,12 +27,306 @@
 #include <cstring>
 #include <FontInfo.h>
 
+#include "support/lstrings.h"
+
 using namespace std;
 
 namespace lyx {
 
 
 //////////////////////////////////////////////////////////////////////
+
+
+MathFontInfo MathFontInfo::mergeWith(const MathFontInfo& other)
+{
+	MathFontInfo old = *this;
+
+	if (other.family_ != family_ && other.family_ != MATH_INHERIT_FAMILY) {
+		family_ = other.family_;
+	}
+	if (other.series_ != series_ && other.series_ != MATH_INHERIT_SERIES) {
+		series_ = other.series_;
+	}
+	if (other.shape_ != shape_ && other.shape_ != MATH_INHERIT_SHAPE) {
+		shape_ = other.shape_;
+	}
+
+	return old;
+}
+
+
+void MathFontInfo::replaceBy(const MathFontInfo& other)
+{
+	*this = other;
+}
+
+
+MathFontInfo MathFontInfo::fromMacro(const docstring& tag)
+{
+	MathFontInfo font;
+	if (tag == "mathnormal" || tag == "mathrm"
+			|| tag == "text" || tag == "textnormal"
+			|| tag == "textrm" || tag == "textup"
+			|| tag == "textmd")
+		font.shape_ = MATH_UP_SHAPE;
+	else if (tag == "frak" || tag == "mathfrak")
+		font.family_ = MATH_FRAKTUR_FAMILY;
+	else if (tag == "mathbf" || tag == "textbf"
+			|| tag == "boldsymbol" || tag == "bm" || tag == "hm")
+		font.series_ = MATH_BOLD_SERIES;
+	else if (tag == "mathbb" || tag == "mathbbm"
+			 || tag == "mathds")
+		font.family_ = MATH_DOUBLE_STRUCK_FAMILY;
+	else if (tag == "mathcal")
+		font.family_ = MATH_SCRIPT_FAMILY;
+	else if (tag == "mathit" || tag == "textsl"
+			 || tag == "emph" || tag == "textit")
+		font.shape_ = MATH_ITALIC_SHAPE;
+	else if (tag == "mathsf" || tag == "textsf")
+		font.family_ = MATH_SANS_FAMILY;
+	else if (tag == "mathtt" || tag == "texttt")
+		font.family_ = MATH_MONOSPACE_FAMILY;
+	else if (tag == "textipa" || tag == "textsc" || tag == "noun")
+		font.family_ = MATH_SMALL_CAPS;
+	// Otherwise, the tag is not recognised, use the default font.
+
+	return font;
+}
+
+
+std::string MathFontInfo::toMathMLMathVariant(MathMLVersion mathml_version) const
+{
+	return mathml_version == MathMLVersion::mathml3 ?
+		toMathVariantForMathML3() : toMathVariantForMathMLCore();
+}
+
+
+std::string MathFontInfo::toMathVariantForMathML3() const
+{
+	// mathvariant is the way MathML 3 encodes fonts.
+	// Not all combinations are supported. Official list:
+	// https://www.w3.org/TR/MathML3/chapter3.html#presm.commatt
+	// "initial", "tailed", "looped", and "stretched" are not implemented,
+	// as they are only useful for Arabic characters (for which LyX has no
+	// support right now).
+	switch (family_) {
+	case MATH_MONOSPACE_FAMILY:
+		return "monospace";
+	case MATH_DOUBLE_STRUCK_FAMILY:
+		return "double-struck";
+	case MATH_FRAKTUR_FAMILY:
+		return series_ == MATH_BOLD_SERIES ? "bold-fraktur" : "fraktur";
+	case MATH_SCRIPT_FAMILY:
+		return series_ == MATH_BOLD_SERIES ? "bold-script" : "script";
+	case MATH_SANS_FAMILY:
+		if (series_ == MATH_BOLD_SERIES) {
+			return shape_ == MATH_UP_SHAPE ? "bold-sans-serif" : "sans-serif-bold-italic";
+		}
+		return shape_ == MATH_UP_SHAPE ? "sans-serif" : "sans-serif-italic";
+	case MATH_NORMAL_FAMILY:
+	case MATH_INHERIT_FAMILY: // Only consider the other two attributes.
+		if (series_ == MATH_BOLD_SERIES) {
+			return shape_ == MATH_UP_SHAPE ? "bold" : "bold-italic";
+		}
+		return shape_ == MATH_UP_SHAPE ? "normal" : "italic";
+	case MATH_SMALL_CAPS:
+		// No valid value to return.
+		return "";
+	}
+
+	// Better safe than sorry.
+	LYXERR(Debug::MATHED,
+		"Unexpected case in MathFontInfo::toMathVariantForMathML3: family_ = " << family_
+			<< ", series = " << series_ << ", shape = " << shape_);
+	return "";
+}
+
+
+std::string MathFontInfo::toMathVariantForMathMLCore() const
+{
+	return shape_ == MATH_UP_SHAPE ? "normal" : "";
+}
+
+
+std::string MathFontInfo::toHTMLSpanClass() const
+{
+	std::string span_class;
+	switch (family_) {
+	case MATH_INHERIT_FAMILY:
+	case MATH_NORMAL_FAMILY:
+		break;
+	case MATH_FRAKTUR_FAMILY:
+		span_class = "fraktur";
+		break;
+	case MATH_SANS_FAMILY:
+		span_class = "sans";
+		break;
+	case MATH_MONOSPACE_FAMILY:
+		span_class = "monospace";
+		break;
+	case MATH_DOUBLE_STRUCK_FAMILY:
+		// This style does not exist in HTML and cannot be implemented in CSS.
+		break;
+	case MATH_SCRIPT_FAMILY:
+		span_class = "script";
+		break;
+	case MATH_SMALL_CAPS:
+		span_class = "noun";
+		break;
+	}
+	// Explicitly match the cases with an empty output. This ensures that we catch at runtime
+	// invalid values for the enum while keeping compile-time warnings.
+	if (span_class.empty() && (family_ == MATH_INHERIT_FAMILY || family_ == MATH_NORMAL_FAMILY || family_ == MATH_DOUBLE_STRUCK_FAMILY)) {
+		LYXERR(Debug::MATHED,
+			"Unexpected case in MathFontInfo::toHTMLSpanClass: family_ = " << family_
+				<< ", series = " << series_ << ", shape = " << shape_);
+	}
+
+	if (series_ == MATH_BOLD_SERIES) {
+		if (!span_class.empty()) span_class += "-";
+		span_class += "bold";
+	}
+
+	if (shape_ == MATH_ITALIC_SHAPE) {
+		if (!span_class.empty()) span_class += "-";
+		span_class += "italic";
+	}
+
+	return span_class;
+}
+
+
+docstring MathFontInfo::convertCharacterToUnicodeEntityWithFont(const docstring & c, bool in_text) const
+{
+	if (c.size() <= 1) {
+		return c;
+	}
+	// Otherwise, it's an entity, like 0x1d44e (as a hexadecimal number).
+	return from_ascii("&#") + convertCharacterToUnicodeWithFont(c, in_text) + from_ascii(";");
+}
+
+
+docstring MathFontInfo::convertCharacterToUnicodeWithFont(const docstring & c, bool in_text) const
+{
+	MathVariantList const & mvl = mathedVariantList();
+
+	// If this character is unknown, exit early.
+	const auto it = mvl.find(support::ascii_lowercase(c));
+	if (it == mvl.end()) {
+		return c;
+	}
+
+	// Check for the best variant. Heuristically:
+	// - First check the font type: normal, script, fraktur, etc. This is the
+    //   most constraining factor.
+	// - Second, check for shape and series.
+	// If the variant for one factor does not exist, ignore it and continue
+    // the search. Hence, we store the copies of family, shape, and series.
+	UnicodeVariants const & variants = it->second;
+
+	MathFontFamily family = family_;
+	MathFontSeries series = series_;
+	MathFontShape shape = shape_;
+
+	if (family == MATH_INHERIT_FAMILY) {
+		family = MATH_NORMAL_FAMILY;
+	}
+	if (series == MATH_INHERIT_SERIES) {
+		series = MATH_MEDIUM_SERIES;
+	}
+	if (shape == MATH_INHERIT_SHAPE) {
+		shape = in_text ? MATH_UP_SHAPE : MATH_ITALIC_SHAPE;
+	}
+
+	if (family == MATH_MONOSPACE_FAMILY) {
+		if (!variants.monospace.empty()) return variants.monospace;
+		family = MATH_NORMAL_FAMILY;
+	}
+
+	if (family == MATH_DOUBLE_STRUCK_FAMILY) {
+		if (!variants.double_struck.empty()) return variants.double_struck;
+		family = MATH_NORMAL_FAMILY;
+	}
+
+	if (family == MATH_FRAKTUR_FAMILY) {
+		if (series == MATH_BOLD_SERIES) {
+			if (!variants.bold_fraktur.empty()) return variants.bold_fraktur;
+			series = MATH_MEDIUM_SERIES;
+		}
+
+		if (series == MATH_MEDIUM_SERIES) {
+			if (!variants.fraktur.empty()) return variants.fraktur;
+		}
+
+		family = MATH_NORMAL_FAMILY;
+	}
+
+	if (family == MATH_SCRIPT_FAMILY) {
+		if (series == MATH_BOLD_SERIES) {
+			if (!variants.bold_script.empty()) return variants.bold_script;
+			series = MATH_MEDIUM_SERIES;
+		}
+
+		if (series == MATH_MEDIUM_SERIES) {
+			if (!variants.script.empty()) return variants.script;
+		}
+
+		family = MATH_NORMAL_FAMILY;
+	}
+
+	if (family == MATH_SANS_FAMILY) {
+		if (series == MATH_BOLD_SERIES) {
+			if (shape == MATH_UP_SHAPE) {
+				if (!variants.bold_sans.empty()) return variants.bold_sans;
+			} else {
+				if (!variants.bold_italic_sans.empty()) return variants.bold_italic_sans;
+			}
+			series = MATH_MEDIUM_SERIES;
+		}
+
+		if (series == MATH_MEDIUM_SERIES) {
+			if (shape == MATH_UP_SHAPE) {
+				if (!variants.sans.empty()) return variants.sans;
+			} else {
+				if (!variants.italic_sans.empty()) return variants.italic_sans;
+			}
+		}
+
+		family = MATH_NORMAL_FAMILY;
+	}
+
+	if (family != MATH_NORMAL_FAMILY) {
+		LYXERR(Debug::MATHED,
+				"Unexpected case in MathFontInfo::convertCharacterToUnicodeWithFont"
+				<<"(c = " << to_ascii(c) << ", in_text = " << in_text << "), unrecognised family: "
+				<< "family_ = " << family_ << ", series = " << series_ << ", shape = " << shape_);
+		// Continue processing to return a value that matches the other constraints.
+	}
+
+	if (series == MATH_BOLD_SERIES) {
+		if (shape == MATH_UP_SHAPE) {
+			if (!variants.bold.empty()) return variants.bold;
+		} else {
+			if (!variants.bold_italic.empty()) return variants.bold_italic;
+		}
+		series = MATH_MEDIUM_SERIES;
+	}
+
+	if (series == MATH_MEDIUM_SERIES) {
+		if (shape == MATH_UP_SHAPE) {
+			if (!variants.character.empty()) return variants.character;
+		} else {
+			if (!variants.italic.empty()) return variants.italic;
+		}
+	}
+
+	// The previous cases should have matched, unless this code is not up to date.
+	LYXERR(Debug::MATHED,
+			"Unexpected case in MathFontInfo::convertCharacterToUnicodeWithFont"
+			<<"(c = " << c << ", in_text = " << in_text << "), unrecognised series/shape: "
+			<< "family_ = " << family_ << ", series = " << series_ << ", shape = " << shape_);
+	return variants.character;
+}
 
 
 NormalStream & operator<<(NormalStream & ns, MathAtom const & at)
@@ -357,7 +651,68 @@ MathMLStream & operator<<(MathMLStream & ms, MathData const & ar)
 MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
 {
 	ms.beforeText();
-	ms.os_ << s;
+	if (!ms.respect_font_) {
+		// Ignore fonts for now. This is especially useful for tags.
+		ms.os_ << s;
+	} else {
+		// Only care about fonts if they are currently enabled.
+		if (ms.version() == MathMLVersion::mathmlCore) {
+			// New case: MathML uses Unicode characters to indicate fonts.
+			// If possible, avoid doing the mapping: it involves looking up a hash
+			// table and doing a lot of conditions *per character*
+			bool needs_no_mapping =
+				(ms.current_font_.family() == MathFontInfo::MathFontFamily::MATH_INHERIT_FAMILY ||
+					ms.current_font_.family() == MathFontInfo::MathFontFamily::MATH_NORMAL_FAMILY) &&
+				(ms.current_font_.series() == MathFontInfo::MathFontSeries::MATH_INHERIT_SERIES ||
+					ms.current_font_.series() == MathFontInfo::MathFontSeries::MATH_MEDIUM_SERIES) &&
+				(ms.current_font_.shape() == MathFontInfo::MathFontShape::MATH_INHERIT_SHAPE ||
+					(ms.in_mtext_ && ms.current_font_.shape() == MathFontInfo::MathFontShape::MATH_UP_SHAPE) ||
+					(!ms.in_mtext_ && ms.current_font_.shape() == MathFontInfo::MathFontShape::MATH_ITALIC_SHAPE));
+			if (needs_no_mapping) {
+				ms.os_ << s;
+			} else {
+				// Perform the conversion character per character (which might
+				// mean consume a complete Greek entity!).
+				docstring buf;
+				bool within_entity = false;
+				for (const char_type c : s) {
+					if (!within_entity && c == '&') { // New entity.
+						within_entity = true;
+					} else if (within_entity && c == '#') { // Still new entity.
+						// Nothing to do: unicode_alphanum_variants only has
+						// the code point, not the full XML/HTML entity.
+					} else if (within_entity && c == ';') { // End of entity.
+						if (buf.starts_with('x')) {
+							// An HTML entity is typically &#x3B1;, but
+							// unicode_alpha_num_variants has 0x3B1.
+							buf.insert(0, from_ascii("0"));
+						}
+						ms.os_ << ms.current_font_.convertCharacterToUnicodeEntityWithFont(buf, ms.inText());
+						buf.clear();
+						within_entity = false;
+					} else if (within_entity) { // Within new entity.
+						buf += c;
+					} else {
+						buf = docstring(c, 1);
+						ms.os_ << ms.current_font_.convertCharacterToUnicodeEntityWithFont(buf, ms.inText());
+						buf.clear();
+					}
+
+					if (!within_entity && !buf.empty()) {
+						lyxerr << "Assertion failed in MathLMStream::operator<<(docstring): not reading an entity "
+						       << "while the buffer is not empty (" << buf << ")";
+					}
+				}
+				if (!buf.empty()) {
+					lyxerr << "Assertion failed in MathLMStream::operator<<(docstring): the buffer is not empty (" << buf << ")";
+					ms.os_ << ms.current_font_.convertCharacterToUnicodeEntityWithFont(buf, ms.inText());
+				}
+			}
+		} else {
+			// Old case (MathML3): MathML uses mathvariant to indicate fonts.
+			ms.os_ << s;
+		}
+	}
 	return ms;
 }
 
@@ -444,6 +799,20 @@ MathMLStream & operator<<(MathMLStream & ms, CTag const & t)
     if (!t.attr_.empty())
         ms.os_ << " " << from_utf8(t.attr_);
     ms.os_ << "/>";
+	return ms;
+}
+
+
+MathMLStream & operator<<(MathMLStream & ms, StartRespectFont)
+{
+	ms.respect_font_ = true;
+	return ms;
+}
+
+
+MathMLStream & operator<<(MathMLStream & ms, StopRespectFont)
+{
+	ms.respect_font_ = false;
 	return ms;
 }
 

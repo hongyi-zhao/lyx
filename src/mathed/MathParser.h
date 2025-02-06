@@ -67,6 +67,40 @@ public:
 };
 
 
+///
+class UnicodeVariants {
+public:
+	/// Unicode base character (Latin/Greek letter, number).
+	docstring character;
+	/// The same Unicode character, in bold.
+	docstring bold;
+	/// The same Unicode character, in italic.
+	docstring italic;
+	/// The same Unicode character, in bold italic.
+	docstring bold_italic;
+	/// The same Unicode character, in script.
+	docstring script;
+	/// The same Unicode character, in bold script.
+	docstring bold_script;
+	/// The same Unicode character, in fraktur.
+	docstring fraktur;
+	/// The same Unicode character, in bold fraktur.
+	docstring bold_fraktur;
+	/// The same Unicode character, double-struck.
+	docstring double_struck;
+	/// The same Unicode character, in sans-serif.
+	docstring sans;
+	/// The same Unicode character, in bold sans-serif.
+	docstring bold_sans;
+	/// The same Unicode character, in italic sans-serif.
+	docstring italic_sans;
+	/// The same Unicode character, in bold italic sans-serif.
+	docstring bold_italic_sans;
+	/// The same Unicode character, in monospace.
+	docstring monospace;
+};
+
+
 /// check whether this is a well-known (La)TeX macro or primitive
 latexkeys const * in_word_set(docstring const & str);
 

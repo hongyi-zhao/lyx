@@ -240,9 +240,6 @@ Style BackMatter
 	Size            Small
 	Color           latex
   EndFont
-  Argument 1
-	LabelString	"First Page"
-  EndArgument
   Category          Structure
 End
 

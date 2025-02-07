@@ -69,7 +69,7 @@ if(LYX_BUNDLE)
     if(APPLE)
         # fixup_bundle invalidates the codesign, so the app must be signed again.
         add_custom_target(sign_install WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}
-          COMMAND /usr/bin/codesign --deep --force --sign "${CPACK_BUNDLE_APPLE_CERT_APP}" "LyX2.4.app" VERBATIM)
+          COMMAND /usr/bin/codesign --deep --force --sign "${CPACK_BUNDLE_APPLE_CERT_APP}" "LyX${LYX_VERSION}.app" VERBATIM)
     endif()
 
     if (APPLE AND LYX_DMG)

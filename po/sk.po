@@ -3,13 +3,13 @@
 #
 # Zdenko Podobný <zdpo@mailbox.sk>, 2003, 2006.
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2024.
+# Kornel Benko <kornel@lyx.org>, 2009-2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-01-06 23:09+0100\n"
-"PO-Revision-Date: 2025-01-06 22:17+0000\n"
+"POT-Creation-Date: 2025-02-07 13:54+0100\n"
+"PO-Revision-Date: 2025-02-07 13:15+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -7881,7 +7881,7 @@ msgstr "Prílohy"
 #: lib/layouts/simplecv.layout:199 lib/layouts/stdstruct.inc:63
 #: lib/layouts/svcommon.inc:626 lib/layouts/svcommon.inc:662
 msgid "BackMatter"
-msgstr "Záverečná časť"
+msgstr "Príves"
 
 #: lib/layouts/IEEEtran.layout:367
 msgid "Peer Review Title"
@@ -17496,6 +17496,78 @@ msgstr "Viditeľný text"
 #: lib/layouts/slides.layout:241
 msgid "<Visible Text Follows>"
 msgstr "<Viditeľný text nasleduje>"
+
+#: lib/layouts/sn-jnl.layout:3 lib/examples/Articles:0
+msgid "Springer Nature Journals"
+msgstr "Springer Prírodné Denníky"
+
+#: lib/layouts/sn-jnl.layout:60 lib/layouts/sn-jnl.layout:74
+msgid "Affiliation Nr."
+msgstr "Príslušenstvo č."
+
+#: lib/layouts/sn-jnl.layout:64
+msgid "Author (Corresp.)"
+msgstr "Autora (korešp.)"
+
+#: lib/layouts/sn-jnl.layout:67
+msgid "Author (Corr.):"
+msgstr "Kor.-Autor:"
+
+#: lib/layouts/sn-jnl.layout:78
+msgid "Affiliation (Corresp.)"
+msgstr "Príslušenstvo (Koa.-Autor)"
+
+#: lib/layouts/sn-jnl.layout:89
+msgid "Equal Contribution"
+msgstr "Rovnaký príspevok"
+
+#: lib/layouts/sn-jnl.layout:138
+msgid "Classification"
+msgstr "Klasifikácia"
+
+#: lib/layouts/sn-jnl.layout:140
+msgid "Classification:"
+msgstr "Klasifikácia:"
+
+#: lib/layouts/sn-jnl.layout:143
+msgid "Classification System"
+msgstr "Klasifikačný systém"
+
+#: lib/layouts/sn-jnl.layout:144
+msgid "E.g., MSC, PACS, or JEL"
+msgstr "Napr., MSC, PACS, alebo JEL"
+
+#: lib/layouts/sn-jnl.layout:175 lib/layouts/sn-jnl.layout:178
+msgid "Organization"
+msgstr "Organizácia"
+
+#: lib/layouts/sn-jnl.layout:181 lib/layouts/sn-jnl.layout:184
+msgid "Org. Address"
+msgstr "Org. Adresa"
+
+#: lib/layouts/sn-jnl.layout:199
+msgid "Post Code"
+msgstr "Poštové smerovacie číslo"
+
+#: lib/layouts/sn-jnl.layout:202
+msgid "Postcode"
+msgstr "Poštové smerovacie číslo"
+
+#: lib/layouts/sn-jnl.layout:236
+msgid "----------- Begin Backmatter ----------"
+msgstr "----------- Začiatok prívesu ----------"
+
+#: lib/layouts/sn-jnl.layout:244
+msgid "First Page"
+msgstr "Prvá strana"
+
+#: lib/layouts/sn-jnl.layout:249
+msgid "Backmatter heading"
+msgstr "Nadpis (prívesu)"
+
+#: lib/layouts/sn-jnl.layout:280
+msgid "Appendix \\Alph{appendix}"
+msgstr "Príloha \\Alph{appendix}"
 
 #: lib/layouts/soul.module:2
 msgid "Hyphenatable Text Markup (Soul)"
@@ -39405,9 +39477,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Dscr"
 #~ msgstr "Opis"
-
-#~ msgid "Postcode"
-#~ msgstr "Poštové smerovacie číslo"
 
 #~ msgid "DocBook Article (SGML)"
 #~ msgstr "DocBook článok (SGML)"

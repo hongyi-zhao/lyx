@@ -1,14 +1,11 @@
-#LyX 2.5 created this file. For more info see https://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/templates/Articles/
+\origin /systemlyxdir/examples/Articles/
 \textclass sn-jnl
 \begin_preamble
-% work around bug in class
-\AtBeginDocument{\let\cline\cmidrule}
-
 % we use this for the code examples
 \usepackage{program,algorithmicx,algpseudocode}
 \end_preamble

@@ -31,7 +31,6 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/os_win32.cpp
 	${TOP_SRC_DIR}/src/support/os_unix.cpp
 	${TOP_SRC_DIR}/src/support/os_cygwin.cpp
-	${TOP_SRC_DIR}/src/support/os_os2.C
 	${TOP_SRC_DIR}/src/support/gettext.cpp)
 if(NOT STD_STRING_USES_COW)
 	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/trivstring.cpp)

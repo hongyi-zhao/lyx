@@ -2142,7 +2142,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 
 // FIXME This will likely need some work.
-char const * latexkeys::MathMLtype() const
+std::string latexkeys::mathml_type() const
 {
 	// Consider as identifier (mml:mi): ordinary and alphabetical characters.
 	if (extra == "mathord" || extra == "mathalpha")

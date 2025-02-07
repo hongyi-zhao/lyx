@@ -585,7 +585,7 @@ endif()
 
 if (WIN32)
 	set(LYX_DATA_SUBDIR "Resources/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)
-elsif(APPLE)
+elseif(APPLE)
 	set(LYX_DATA_SUBDIR ${LYX_BUNDLE_NAME}.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
 else()
 	set(LYX_DATA_SUBDIR "share/${_lyx}/" CACHE STRING "Subdirectory for all lyx-system-data" FORCE)

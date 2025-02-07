@@ -30,6 +30,7 @@
 #include "support/TempFile.h"
 #include "Encoding.h"
 
+#include <algorithm>
 #include <sstream>
 #include <regex>
 #include <iostream>
@@ -127,13 +128,9 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 			break;
 	}
 
-//	// Implement the special case of \and: split the current item.
-//	if (os.str() == "\\and" || os.str() == "\\and ") {
-//		auto lay = getLayout();
-//	}
-
 	// Try to recognise some commands to have a nicer DocBook output.
 	bool output_as_comment = true;
+	docstring os_trimmed = trim(os.str());
 
 	// First step: some commands have a direct mapping to DocBook, mostly because the mapping is simply text or
 	// an XML entity.
@@ -142,8 +139,6 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 	//  recognised should simply be put in comments: have a list of elements that are either already recognised or are
 	//  not yet recognised? Global transformations like \string should then come first.)
 	{
-		docstring os_trimmed = trim(os.str());
-
 		// Rewrite \"u to \"{u}.
 		static regex const regNoBraces(R"(^\\\W\w)");
 		if (regex_search(to_utf8(os_trimmed), regNoBraces)) {
@@ -192,6 +187,43 @@ void InsetERT::docbook(XMLStream & xs, OutputParams const & runparams) const
 			} else {
 				break;
 			}
+		}
+	}
+
+	// Third step: maybe this is XML, after all.
+	// Reminder: &lt; is <, &gt; is >.
+	if (prefixIs(os_trimmed, from_ascii("&lt;")) &&
+			suffixIs(os_trimmed, from_ascii("&gt;"))) {
+		// To avoid false positives, ensure that the contents are only full XML tags, like:
+		// `<revhistory>`. This means that, in some cases, the user might expect this case
+		// to be triggered, but we decline to output it as raw XML to avoid errors. For
+		// instance: ERT[<revhistory] ERT[>]. It's quite unlikely for LaTeX code to have
+		// exactly the same number of < and >, but well-formed XML always does. This check
+		// does not enforce that the full ERT contains a valid XML excerpt: there might be
+		// a tag opening without a closing, like: ERT[<revhistory>] ERT[</revhistory>].
+		auto count_substrings = [&os_trimmed](const docstring & substring) -> int {
+			// Hypothesis: no overlapping sequence. This is perfectly fine for this use case.
+		    int occurrences = 0;
+		    std::string::size_type pos = 0;
+		    while ((pos = os_trimmed.find(substring, pos)) != std::string::npos) {
+		        ++occurrences;
+		        pos += substring.length();
+		    }
+			return occurrences;
+		};
+		const int num_open_tags = count_substrings(from_ascii("&lt;"));
+		const int num_close_tags = count_substrings(from_ascii("&gt;"));
+
+		if (num_close_tags == num_open_tags) {
+			// Decide this ERT is close enough to well-formed XML: unescape
+			// XML elements and output the string as-is (to avoid that
+			// XMLStream escapes the characters again).
+			xs << XMLStream::ESCAPE_NONE
+			   << subst(subst(subst(os.str(),
+					from_ascii("&lt;"), from_ascii("<")),
+					from_ascii("&gt;"), from_ascii(">")),
+					from_ascii("&amp;"), from_ascii("&"));
+			output_as_comment = false;
 		}
 	}
 

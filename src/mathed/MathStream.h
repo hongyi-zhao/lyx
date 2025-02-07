@@ -410,10 +410,10 @@ private:
 class MTag {
 public:
 	///
-	MTag(char const * const tag, std::string const & attr = std::string())
+	MTag(const std::string & tag, const std::string & attr = std::string())
 		: tag_(tag), attr_(attr) {}
 	///
-	char const * const tag_;
+	std::string tag_;
 	///
 	std::string attr_;
 };
@@ -422,10 +422,10 @@ public:
 class MTagInline {
 public:
 	///
-	MTagInline(char const * const tag, std::string const & attr = std::string())
+	MTagInline(const std::string & tag, const std::string & attr = std::string())
 	        : tag_(tag), attr_(attr) {}
 	///
-	char const * const tag_;
+	std::string tag_;
 	///
 	std::string attr_;
 };
@@ -435,9 +435,9 @@ public:
 class ETag {
 public:
 	///
-	explicit ETag(char const * const tag) : tag_(tag) {}
+	explicit ETag(const std::string & tag) : tag_(tag) {}
 	///
-	char const * const tag_;
+	std::string tag_;
 };
 
 
@@ -445,9 +445,9 @@ public:
 class ETagInline {
 public:
 	///
-	explicit ETagInline(char const * const tag) : tag_(tag) {}
+	explicit ETagInline(const std::string & tag) : tag_(tag) {}
 	///
-	char const * const tag_;
+	std::string tag_;
 };
 
 
@@ -455,10 +455,10 @@ public:
 class CTag {
 public:
 	///
-	CTag(char const * const tag, std::string const & attr = "")
+	CTag(const std::string & tag, std::string const & attr = "")
             : tag_(tag), attr_(attr) {}
 	///
-	char const * const tag_;
+	std::string tag_;
     ///
     std::string attr_;
 };

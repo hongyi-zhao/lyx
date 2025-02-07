@@ -372,7 +372,8 @@ dist_articleexamples_DATA = \
 	examples/Articles/Astronomy_%26_Astrophysics.lyx \
 	examples/Articles/American_Astronomical_Society_%28AASTeX_v._6.3.1%29.lyx \
 	examples/Articles/American_Chemical_Society_%28ACS%29.lyx \
-	examples/Articles/American_Mathematical_Society_%28AMS%29.lyx
+	examples/Articles/American_Mathematical_Society_%28AMS%29.lyx \
+	examples/Articles/Springer_Nature_Journals.lyx
 
 articlechessexamplesdir = $(pkgdatadir)/examples/Articles/Chess
 dist_articlechessexamples_DATA = \
@@ -2638,6 +2639,7 @@ dist_layouts_DATA =\
 	layouts/singlecol.layout \
 	layouts/singlecol-new.layout \
 	layouts/slides.layout \
+	layouts/sn-jnl.layout \
 	layouts/soul.module \
 	layouts/spie.layout \
 	layouts/stdciteformats.inc \
@@ -2791,7 +2793,8 @@ dist_articletemplates_DATA = \
 	templates/Articles/R_Journal.lyx \
 	templates/Articles/REVTeX_%28V._4%29.lyx \
 	templates/Articles/REVTeX_%28V._4.1%29.lyx \
-	templates/Articles/Springers_Global_Journal_Template_%28V._3%29.lyx
+	templates/Articles/Springers_Global_Journal_Template_%28V._3%29.lyx \
+	templates/Articles/Springer_Nature_Journals.lyx
 
 arpresentationtemplatesdir = $(pkgdatadir)/templates/ar/Presentations
 dist_arpresentationtemplates_DATA = \

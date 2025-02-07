@@ -5424,6 +5424,64 @@ cv
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
+name "sn-jnl"
+
+\end_inset
+
+Springer Nature Journals
+\end_layout
+
+\begin_layout Description
+Found:
+ 
+\begin_inset Info
+type  "textclass"
+arg   "sn-jnl"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+WWW:
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.springernature.com/gp/authors/campaigns/latex-author-support
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Notes:
+ The 
+\family sans
+Springer Nature Journals (sn-jnl)
+\family default
+ class is the new class provided by 
+\emph on
+Springer Nature
+\emph default
+ suitable for publication in a 
+\emph on
+Springer Nature
+\emph default
+ journal.
+ The class conforms to Springer Nature technical requirements.
+ The \SpecialChar LaTeX
+ authoring template is inclusive of all research disciplines and provides key placeholders for policy requirements.
+ Due to the universal nature of the template you are expected to read the submission guidelines and policies of the journal you are preparing your submission for and should defer to journal-level instructions.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
 name "svglobal"
 
 \end_inset
@@ -5471,8 +5529,8 @@ Notes:
 \family sans
 Svglobal
 \family default
- is a format suitable for publication in a Springer journal for which a specific style is not provided;
- i.
+ is an (outdated) format suitable for publication in a Springer journal for which a specific style is not provided;
+ e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -5509,6 +5567,22 @@ sv<journal>.layout
 global
 \family default
  extra documentclass option which is included in the class defaults.
+ Note that this class has been mostly superseded by the 
+\family sans
+Springer Nature
+\family default
+ class (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sn-jnl"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection

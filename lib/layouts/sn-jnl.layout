@@ -1,0 +1,288 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{Springer Nature Journals}
+#  \DeclareCategory{Articles}
+# textclass definition file for Springer Nature class (sn-jnl.cls)
+#
+# Author: Corrado Mencar <corrado.mencar@uniba.it>
+#         Jürgen Spitzmüller <spitz@lyx.org>
+# 
+# Adapted from svglobal3.layout
+#
+# see https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v11 for class files
+
+Format 104
+
+# General textclass parameters
+Input article.layout
+
+Sides	2
+
+# These are preloaded by the class
+Provides hyperref 1
+Provides wrapfig 1
+Provides rotating 1
+Provides geometry 1
+
+Requires amsmath
+Requires booktabs
+
+TableStyle Formal_with_Footline
+
+
+Counter theorem
+End
+
+Counter example
+End
+
+Counter remark
+End
+
+Counter definition
+End
+
+Counter appendix
+End
+
+
+#
+# Tweaks of Inherited Layouts
+#
+
+Style Title
+	Argument 1
+  		LabelString	"Short Title"
+	EndArgument
+End
+
+Style Author
+	Argument 1
+  		LabelString	"Affiliation Nr."
+	EndArgument
+End
+
+Style Author_(Corresp.)
+	CopyStyle		Author
+	LatexName		author*
+	LabelString		"Author (Corr.):"
+End
+
+Style Affiliation
+	CopyStyle		Author
+	LatexName		affil
+	Argument 1
+		LabelString	"Affiliation Nr."
+	EndArgument
+End
+
+Style Affiliation_(Corresp.)
+	CopyStyle		Affiliation
+	LatexName		affil*
+End
+
+Style E-Mail
+	CopyStyle		Author
+	LatexName		email
+	ResetArgs               1
+End
+
+Style "Equal Contribution"
+	CopyStyle		Author
+	LatexName		equalcont
+	ResetArgs               1
+End
+
+Style Abstract
+	Margin			Static
+	LatexType		command
+	LatexName		abstract
+	Category		FrontMatter
+	NextNoIndent            1
+	LeftMargin		MMM
+	RightMargin		MMM
+	#ParIndent		MM
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0
+	Align			Block
+	AlignPossible           Block
+	LabelType		Centered
+	LabelString		Abstract
+	LabelBottomSep          0.5
+	Font
+	  Size			Small
+	EndFont
+	LabelFont
+	  Series		Bold
+	  Size			Large
+	EndFont
+	InTitle			1
+End
+
+Style Keywords
+    CopyStyle       Abstract
+    Margin          Dynamic
+    LeftMargin	    "Keywords::xx"
+    LabelSep        xx
+    LatexType       command
+    LatexName       keywords
+    LabelType       Static
+    LabelString     Keywords:
+    LabelFont
+        Size Small
+    EndFont
+    InTitle         1
+End
+
+Style Classification
+    CopyStyle       Keywords
+    LabelString     "Classification:"
+    LatexName       pacs
+    Argument 1
+      LabelString	"Classification System"
+      Tooltip		"E.g., MSC, PACS, or JEL"
+    EndArgument
+End
+
+
+#
+# Tags in titling
+#
+
+InsetLayout Flex:First_Name
+    LyxType         custom
+    LatexType       command
+    LatexName       fnm
+    Font
+        Color       textlabel1
+    EndFont
+    LabelString     "First Name"
+End
+
+InsetLayout Flex:Surname
+    CopyStyle       Flex:First_Name
+    LatexName       sur
+    LabelString     "Surname"
+End
+
+InsetLayout Flex:Department
+    CopyStyle       Flex:First_Name
+    LatexName	    orgdiv
+    LabelString	    Department
+End
+
+InsetLayout Flex:Organization
+    CopyStyle       Flex:First_Name
+    LatexName       orgname
+    LabelString	    Organization
+End
+
+InsetLayout Flex:Org._Address
+    CopyStyle       Flex:First_Name
+    LatexName       orgaddress
+    LabelString	    "Org. Address"
+End
+
+InsetLayout Flex:Street
+    CopyStyle       Flex:First_Name
+    LatexName       street
+    LabelString	    Street
+End
+
+InsetLayout Flex:City
+    CopyStyle       Flex:First_Name
+    LatexName       city
+    LabelString	    City
+End
+
+InsetLayout Flex:Post_Code
+    CopyStyle       Flex:First_Name
+    LatexName       postcode
+    LabelString	    Postcode
+End
+
+InsetLayout Flex:State
+    CopyStyle       Flex:First_Name
+    LatexName       state
+    LabelString	    State
+End
+
+InsetLayout Flex:Country
+    CopyStyle       Flex:First_Name
+    LatexName       country
+    LabelString	    Country
+End
+
+
+#
+# Backmatter
+#
+
+Style BackMatter
+  KeepEmpty         1
+  LatexType         Command
+  LatexName         backmatter
+  Margin            First_Dynamic
+  NextNoIndent      1
+  ParSkip           0
+  TopSep            2
+  BottomSep         0.5
+  ParSep            0
+  Align             Center
+  LabelType         Static
+  LabelBottomSep    0
+  LeftMargin        MMMMM
+  LabelString       "----------- Begin Backmatter ----------"
+  LabelFont 
+	Family          typewriter
+	Series          Medium
+	Size            Small
+	Color           latex
+  EndFont
+  Argument 1
+	LabelString	"First Page"
+  EndArgument
+  Category          Structure
+End
+
+Style "Backmatter heading"
+    Category    BackMatter
+    LatexType   command
+    LatexName   bmhead
+    Font
+        Series Bold
+    EndFont
+    NextNoIndent    1
+End
+
+Style Appendices
+  Margin	Dynamic
+  LatexType	Environment
+  LatexName	appendices
+  Category	BackMatter
+  KeepEmpty	1
+  ParSkip	0.4
+  Align		Block
+  LabelSep	xx
+  LabelType	Static
+  LabelString	"Appendices"
+  LabelFont
+    Series	Bold
+    Color	textlabel2
+  EndFont
+End
+
+Style Appendix
+  CopyStyle	Section
+  Category	BackMatter
+  LabelCounter  appendix
+  LabelString	"Appendix \Alph{appendix}"
+  Argument 1
+    LabelString	"Short Title"
+    Tooltip	"Short title for the appendix"
+    InsertCotext 1
+  EndArgument
+End
+
+

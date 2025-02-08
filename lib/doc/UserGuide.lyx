@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 631
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -157,10 +157,12 @@ logicalmkup
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \author -1162675398 "Tobias Hilbricht" hilbricht@linopus.de
 \author -712698321 "Jürgen Spitzmüller"
 \author -584632292 "Richard Kimberly Heck"
 \author 5863208 "ab"
+\author 1075283030 "Thibaut"
 \end_header
 
 \begin_body
@@ -2749,7 +2751,18 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-Word completion|see
+Word completion
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+|
+\end_layout
+
+\end_inset
+
+see
 \begin_inset ERT
 status collapsed
 
@@ -3073,11 +3086,22 @@ Down
 
 \family sans
 Tab
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Tab"
-description "Tabulator key"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Tab
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+Tabulator key
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3146,11 +3170,22 @@ Tab
 
 \family sans
 Esc
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Esc"
-description "Escape key"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Esc
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+Escape key
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3205,11 +3240,22 @@ Ctrl
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Ctrl"
-description "Control key"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Ctrl
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+Control key
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3277,11 +3323,22 @@ Shift
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Shift"
-description "Shift key"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Shift
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+Shift key
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3307,11 +3364,22 @@ Alt
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Alt"
-description "Alt or Meta key"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Alt
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+Alt or Meta key
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -9646,12 +9714,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9664,6 +9734,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9687,6 +9758,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -18503,6 +18575,138 @@ Export\SpecialChar menuseparator
 LyXHTML
 \family default
 .
+\change_inserted 1075283030 1738976031
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 1075283030 1738976049
+DocBook
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1738976031
+File formats
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1738976038
+DocBook
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1738976042
+DocBook
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1738976174
+This file type has the extension 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+.
+\family default
+xml
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is typically not suited for direct consumption;
+ instead,
+ DocBook documents should be processed with a suitable toolchain such as the DocBook StyleSheets or DocBook xslTNG.
+ It does not itself contain images and the like but only links to them.
+ When \SpecialChar LyX
+ produces DocBook,
+ it also generates corresponding images in formats suitable for the purpose.
+ For the math output,
+ you can choose in the menu 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Output
+\family default
+ between different formats.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1738976181
+DocBook output remains 
+\begin_inset Quotes eld
+\end_inset
+
+under development
+\begin_inset Quotes erd
+\end_inset
+
+,
+ and not all \SpecialChar LyX
+ features are supported yet.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1738976809
+You can export your document as an XHTML file using the menu item 
+\family sans
+File\SpecialChar menuseparator
+Export\SpecialChar menuseparator
+
+\family default
+DocBook
+\begin_inset space ~
+\end_inset
+
+5.
+ You can add raw XML in your DocBook documents using \SpecialChar TeX
+ Code (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBook-raw"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -37100,11 +37304,47 @@ If the characters |
 
 should appear in nomenclature entries containing \SpecialChar TeX
  code they need to be escaped by adding a percent character in front of them.
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "%@, %|, %!, %\""
-description "Special characters in nomenclature context which need to be escaped by `\\%'"
-literal "true"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%@,
+ %|,
+ %!,
+ %"
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+Special characters in nomenclature context which need to be escaped by `
+\backslash
+%'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -37160,11 +37400,22 @@ if
  Suppose you have nomenclature entries for the symbols 
 \emph on
 a
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "a"
-description "dummy entry for the character ``a''"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+a
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+dummy entry for the character ``a''
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -37175,12 +37426,56 @@ literal "false"
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-prefix "sigma"
-symbol "$\\sigma$"
-description "dummy entry for the character \\textsf{sigma}"
-literal "true"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sigma
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+$
+\backslash
+sigma$
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+dummy entry for the character 
+\backslash
+textsf{sigma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -39885,6 +40180,84 @@ Roman{page}
 \end_inset
 
 
+\change_inserted 1075283030 1738975469
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 1075283030 1738975518
+Raw XML for DocBook output
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1738975497
+DocBook
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1075283030 1738975500
+Raw XML
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:DocBook-raw"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1075283030 1738975983
+\SpecialChar TeX
+ Code boxes can also be used in conjunction with DocBook output.
+ Some common cases are natively recognised,
+ like some encodings of special characters (for instance,
+ 
+\family typewriter
+
+\backslash
+"u
+\family default
+ for ü),
+ which are then converted to valid DocBook.
+ If these boxes contain raw XML,
+ it will also be output as-is in all modes (DocBook,
+ HTML,
+ LaTeX,
+ etc.);
+ raw XML is recognised as a series of XML tags (with an equal number of 
+\family typewriter
+<
+\family default
+ and 
+\family typewriter
+>
+\family default
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -39899,7 +40272,7 @@ name "sec:Customized-Page-Headers"
 \begin_inset Index idx
 range none
 pageformat default
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Document
@@ -44001,12 +44374,30 @@ LyX format of the special \SpecialChar LyX
 \end_layout
 
 \begin_layout Description
-DocBook text file with code in the language SGML that is used for the markup language 
+DocBook
+\change_inserted 1075283030 1738975076
+
+\begin_inset space ~
+\end_inset
+
+5
+\change_unchanged
+ text file with code in the language 
+\change_deleted 1075283030 1738975082
+SG
+\change_inserted 1075283030 1738975082
+X
+\change_unchanged
+ML that is used for the markup language 
 \family typewriter
 DocBook
+\change_deleted 1075283030 1738975084
+
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 1075283030 1738975084
 DocBook
 \begin_inset space ~
 \end_inset
@@ -44014,6 +44405,8 @@ DocBook
 (XML) text file with code in the language XML that is used for the markup language 
 \family typewriter
 DocBook
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -56608,9 +57001,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.tug.org/texinfohtml/dvips.html
-\backslash
-#Option-details
+https://www.tug.org/texinfohtml/dvips.html#Option-details
 \end_layout
 
 \end_inset

@@ -5681,14 +5681,26 @@ void Buffer::Impl::fileExternallyModified(bool const exists)
 	// Dirty buffers must be visible at all times.
 	if (wa_ && wa_->unhide(owner_)) {
 		wa_->updateTitles();
-		if (!exists) {
-			lyx_clean = false;
-			frontend::Alert::warning(
-				_("File deleted from disk"),
-				bformat(_("The file\n  %1$s\n"
-					   "has been deleted from disk!"),
-					from_utf8(filename.absFileName())));
-		}
+
+		if (exists)
+			return;
+		//Essentially the same problem as in FileMonitorGuard::refresh.
+		//'exists' is not reliable marker of file removal here, e.g.
+		//file overwrite often causes short-term removal, see #12819.
+		std::this_thread::sleep_for(200ms);
+		FileName refreshf (filename.absFileName());
+		//Only double check with delay will trigger warning
+		if(refreshf.exists())
+			return;
+
+		lyx_clean = false;
+		wa_->updateTitles();
+		frontend::Alert::warning(
+			_("File deleted from disk"),
+			bformat(_("The file\n  %1$s\n"
+				   "has been deleted from disk!\n"
+				   "It will be marked as modified now."),
+				from_utf8(filename.absFileName())));
 	}
 	else
 		// Unable to unhide the buffer (e.g. no GUI or not current View)

@@ -70,6 +70,7 @@
 # 	"Algorithm" "演算法"
 # 	"Assumption" "假設"
 # 	"Axiom" "公理"
+#	"Chart" "圖表"
 # 	"Case" "案例"
 # 	"Claim" "聲明"
 # 	"Conclusion" "結論"
@@ -81,11 +82,17 @@
 # 	"Example" "範例"
 # 	"Exercise" "練習"
 # 	"Fact" "事實"
+#	"Graph[[mathematical]]" "圖形"
 # 	"Lemma" "引理"
 # 	"List of Algorithms" "演算法目錄"
-# 	"List of Tableaux" "Tableaux 目錄"
+#	"List of Charts" "圖表列表"
+#	"List of Graphs[[mathematical]]" "圖形列表"
+#	"Listings[[List of Listings]]" "程式碼列表 清單"
+#	"List of Tableaux" "表格列表"
+#	"Nomenclature[[output]]" "術語表"
 # 	"Notation" "記號"
 # 	"Note" "註記"
+#	"Notes[[Endnotes]]" "附註"
 # 	"Problem" "問題"
 # 	"Proof" "證明"
 # 	"Property" "性質"
@@ -94,8 +101,10 @@
 # 	"Remark" "備註"
 # 	"Solution" "解法"
 # 	"Summary" "摘要"
-# 	"Tableau" "Tableau"
+#	"Tableau" "表格"
 # 	"Theorem" "定理"
+#	"page[[nomencl]]" "頁"
+#	"see equation[[nomencl]]" "參見公式"
 #
 #  4. GuiSymbols.cpp 的內容，會顯示在 符號 內，符號名稱可以用原文。
 #  5. BufferView.cpp 的內容，會顯示在 LyX 的最底端的狀態列, 或是輸出訊息。
@@ -8845,11 +8854,11 @@ msgstr "圖表(Chart)"
 
 #: lib/layouts/achemso.layout:234 lib/layouts/achemso.layout:246
 msgid "Chart"
-msgstr "圖表(Chart)"
+msgstr "圖表"
 
 #: lib/layouts/achemso.layout:240
 msgid "List of Charts"
-msgstr "圖表(Charts) 目錄"
+msgstr "圖表列表"
 
 #: lib/layouts/achemso.layout:254
 #, fuzzy
@@ -8858,11 +8867,11 @@ msgstr "圖片(Graph)"
 
 #: lib/layouts/achemso.layout:260 lib/layouts/achemso.layout:272
 msgid "Graph[[mathematical]]"
-msgstr "圖片(Graph)"
+msgstr "圖形"
 
 #: lib/layouts/achemso.layout:266
 msgid "List of Graphs[[mathematical]]"
-msgstr "圖片(Graphs) 目錄"
+msgstr "圖形列表"
 
 #: lib/layouts/achemso.layout:302
 msgid "SupplementalInfo"
@@ -12525,9 +12534,8 @@ msgstr "尾註"
 #: lib/layouts/endnotes.module:32 lib/layouts/endnotes.module:35
 #: lib/layouts/foottoend.module:20 lib/layouts/foottoend.module:23
 #: lib/layouts/memoir.layout:326 lib/layouts/memoir.layout:329
-#, fuzzy
 msgid "Notes[[Endnotes]]"
-msgstr "尾註(Endnote)"
+msgstr "附註"
 
 #: lib/layouts/enotez.module:2
 #, fuzzy
@@ -15508,11 +15516,11 @@ msgstr "Tableau"
 
 #: lib/layouts/linguistics.module:600
 msgid "Tableau"
-msgstr "Tableau"
+msgstr "表格"
 
 #: lib/layouts/linguistics.module:605
 msgid "List of Tableaux"
-msgstr "Tableaux 目錄"
+msgstr "表格列表"
 
 #: lib/layouts/linguistics.module:608
 #, fuzzy
@@ -18183,7 +18191,7 @@ msgstr "程式碼列表 清單"
 #: lib/layouts/stdinsets.inc:321 lib/layouts/stdinsets.inc:327
 #: src/insets/InsetTOC.cpp:77
 msgid "List of Listings"
-msgstr "程式碼列表 清單"
+msgstr "程式碼列表"
 
 #: lib/layouts/stdinsets.inc:355 src/frontends/qt/GuiDocument.cpp:1840
 #: src/frontends/qt/GuiDocument.cpp:5067
@@ -18227,15 +18235,15 @@ msgstr "預覽"
 
 #: lib/layouts/stdinsets.inc:794 lib/layouts/stdinsets.inc:802
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "參見公式"
 
 #: lib/layouts/stdinsets.inc:795 lib/layouts/stdinsets.inc:803
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "頁"
 
 #: lib/layouts/stdinsets.inc:796 lib/layouts/stdinsets.inc:804
 msgid "Nomenclature[[output]]"
-msgstr "術語"
+msgstr "術語表"
 
 #: lib/layouts/stdlayouts.inc:94 src/insets/InsetInclude.cpp:424
 #, fuzzy

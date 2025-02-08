@@ -65,7 +65,7 @@ public:
 	///
 	docstring const xmlname() const;
 	///
-	char const * MathMLtype() const;
+	std::string mathml_type() const;
 	///
 	latexkeys const * symbol() const { return sym_; }
 	///

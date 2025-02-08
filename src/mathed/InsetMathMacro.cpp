@@ -1318,7 +1318,7 @@ void InsetMathMacro::mathmlize(MathMLStream & ms) const
 	if (d->macro_) {
 		docstring const xmlname = d->macro_->xmlname();
 		if (!xmlname.empty()) {
-			char const * type = d->macro_->MathMLtype();
+			const std::string type = d->macro_->mathml_type();
 			ms << MTagInline(type) << xmlname << ETagInline(type);
 			return;
 		}

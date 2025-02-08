@@ -9714,14 +9714,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9734,7 +9732,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9758,7 +9755,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -18599,10 +18595,14 @@ status open
 
 \change_inserted 1075283030 1738976038
 DocBook
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -18618,6 +18618,8 @@ status collapsed
 
 \change_inserted 1075283030 1738976042
 DocBook
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -18677,7 +18679,11 @@ under development
 \begin_layout Standard
 
 \change_inserted 1075283030 1738976809
-You can export your document as an XHTML file using the menu item 
+You can export your document as an X
+\change_deleted 5863208 1739017671
+HT
+\change_inserted 1075283030 1738976809
+ML file using the menu item 
 \family sans
 File\SpecialChar menuseparator
 Export\SpecialChar menuseparator

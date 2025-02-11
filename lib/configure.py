@@ -797,7 +797,7 @@ def checkFormatEntries(dtl_tools):
     #  rc_entry = [ r'\ps_command "%%"' ])
     checkViewer('a Postscript previewer',
                 ['kghostview', 'okular', 'qpdfview --unique',
-                 'evince', 'xreader',
+                 'evince', 'papers', 'xreader',
                  'gv', 'ghostview -swap', 'gsview64', 'gsview32'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"	"image/x-eps"
 \Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"	""
@@ -808,7 +808,7 @@ def checkFormatEntries(dtl_tools):
     # the MIME type is set for pdf6, because that one needs to be autodetectable by libmime
     checkViewer('a PDF previewer',
                 ['pdfview', 'kpdf', 'okular', 'qpdfview --unique',
-                 'evince', 'xreader', 'kghostview', 'xpdf', 'SumatraPDF',
+                 'evince', 'papers', 'xreader', 'kghostview', 'xpdf', 'SumatraPDF',
                  'acrobat', 'acroread', 'mupdf', 'Skim.app',
                  'gv', 'ghostview', 'AcroRd32', 'gsview64', 'gsview32'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"	""

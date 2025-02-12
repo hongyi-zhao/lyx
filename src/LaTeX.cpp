@@ -75,8 +75,7 @@ void TeXErrors::insertError(int line, docstring const & error_desc,
 			    docstring const & error_text,
 			    string const & child_name)
 {
-	Error newerr(line, error_desc, error_text, child_name);
-	errors.push_back(newerr);
+	errors.emplace_back(line, error_desc, error_text, child_name);
 }
 
 
@@ -84,8 +83,7 @@ void TeXErrors::insertRef(int line, docstring const & error_desc,
 			    docstring const & error_text,
 			    string const & child_name)
 {
-	Error newerr(line, error_desc, error_text, child_name);
-	undef_ref.push_back(newerr);
+	undef_ref.emplace_back(line, error_desc, error_text, child_name);
 }
 
 

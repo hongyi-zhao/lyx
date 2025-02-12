@@ -1384,6 +1384,14 @@ contributors = [
                  "31 October 2005",
                  "Dutch translation coordinator"),
 
+     contributor("Corrado Mencar",
+                 "corrado.mencar () uniba ! it",
+                 "GPL",
+                 "Fwd: [cmencar/lyx-sn] Include in LyX distribution? (Issue #2)",
+                 "msg223615",
+                 "11 February 2025",
+                 "Springer Nature support"),
+
      contributor("Siegfried Meunier-Guttin-Cluzel",
                  "meunier () coria ! fr",
                  "GPL",

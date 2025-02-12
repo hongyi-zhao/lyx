@@ -222,8 +222,7 @@ void ModuleList::addLayoutModule(string const & modname,
 	vector<string> const & pkgs, vector<string> const & req,
 	vector<string> const & exc, string const & catgy, bool const local)
 {
-	LyXModule lm(modname, filename, description, pkgs, req, exc, catgy, local);
-	modlist_.push_back(lm);
+	modlist_.emplace_back(modname, filename, description, pkgs, req, exc, catgy, local);
 }
 
 

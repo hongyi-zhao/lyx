@@ -566,13 +566,13 @@ void Row::addVirtual(pos_type const pos, docstring const & s,
 	Element e(VIRTUAL, pos, f, ch);
 	e.str = s;
 	e.dim.wid = theFontMetrics(f).width(s);
-	dim_.wid += e.dim.wid;
 	e.endpos = pos;
 	// Copy after* flags from previous elements, forbid break before element
 	int const prev_row_flags = elements_.empty() ? Inline : elements_.back().row_flags;
 	int const can_inherit = AfterFlags & ~AlwaysBreakAfter;
 	e.row_flags = (prev_row_flags & can_inherit) | NoBreakBefore;
 	elements_.push_back(e);
+	dim_.wid += e.dim.wid;
 	finalizeLast();
 }
 
@@ -586,12 +586,12 @@ void Row::addPreedit(pos_type const pos, docstring const & s, Font const & f,
 	e.str = s;
 	e.im = im;
 	e.dim.wid = im->horizontalAdvance(s, char_format_index);
-	dim_.wid += e.dim.wid;
 	e.endpos = pos;
 	e.char_format_index = char_format_index;
 	e.lang_wrap_any = im->canWrapAnywhere(char_format_index);
 	e.row_flags = CanBreakInside | CanBreakBefore | CanBreakAfter;
 	elements_.push_back(e);
+	dim_.wid += e.dim.wid;
 	finalizeLast();
 }
 
@@ -621,8 +621,8 @@ void Row::addMarginSpace(pos_type const pos, int const width,
 
 void Row::push_back(Row::Element const & e)
 {
-	dim_.wid += e.dim.wid;
 	elements_.push_back(e);
+	dim_.wid += e.dim.wid;
 }
 
 

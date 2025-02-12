@@ -282,7 +282,7 @@ private:
 	/// events
 	GuiView * current_view_;
 
-	bool command_phase_;
+	bool command_phase_ = false;
 	///
 	struct Private;
 	Private * const d;

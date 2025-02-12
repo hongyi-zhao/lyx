@@ -770,8 +770,9 @@ void GuiInputMethod::processQuery(Qt::InputMethodQuery query)
 	}
 	// hints for input method on expected input
 	case Qt::ImHints: {
-		LYXERR(Debug::DEBUG, msg << "0x" << std::hex <<
-		       d->work_area_->inputMethodHints());
+		LYXERR(Debug::DEBUG, msg << "0x" << std::hex
+		                         << d->work_area_->inputMethodHints()
+		                         << std::dec);
 		Q_EMIT queryProcessed((qlonglong)d->work_area_->inputMethodHints());
 		break;
 	}

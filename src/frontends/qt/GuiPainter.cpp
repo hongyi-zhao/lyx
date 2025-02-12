@@ -366,6 +366,7 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	else if (dir == RtL) setLayoutDirection(Qt::RightToLeft);
 	else setLayoutDirection(Qt::LeftToRight);
 	GuiInputMethod const * gim = dynamic_cast<GuiInputMethod const *>(im);
+	LATTEST(gim);
 	setPen(gim->charFormat(char_format_index).foreground().color());
 	setBackgroundMode(Qt::OpaqueMode);
 	setBackground(gim->charFormat(char_format_index).background());

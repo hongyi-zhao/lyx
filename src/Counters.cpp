@@ -116,8 +116,7 @@ bool Counter::read(Lexer & lex)
 				lex.next();
 				docstring const key = lex.getDocString();
 				lex.next();
-				docstring const value = lex.getDocString();
-				ref_formats_[key] = value;
+				ref_formats_[key] = lex.getDocString();
 				// LYXERR0("refformat: " << key << " => " << value);
 				break;
 			}

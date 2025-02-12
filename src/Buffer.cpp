@@ -555,7 +555,10 @@ Buffer::~Buffer()
 			if (theBufferList().isLoaded(child)) {
 				if (theBufferList().isOthersChild(this, child))
 					child->setParent(nullptr);
-				else
+				else if (child->isFullyLoaded())
+					// only release children if we are not currently
+					// loading them; otherwise we might get dangling
+					// pointers (#13151)
 					theBufferList().release(child);
 			}
 		}

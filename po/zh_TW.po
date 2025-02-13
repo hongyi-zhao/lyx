@@ -71,7 +71,7 @@
 # 	"Assumption" "假設"
 # 	"Axiom" "公理"
 #	"Chart" "圖表"
-# 	"Case" "案例"
+#	"Case" "案例"
 # 	"Claim" "聲明"
 # 	"Conclusion" "結論"
 # 	"Condition" "條件"
@@ -84,11 +84,13 @@
 # 	"Fact" "事實"
 #	"Graph[[mathematical]]" "圖形"
 # 	"Lemma" "引理"
-# 	"List of Algorithms" "演算法目錄"
+#	"List of Algorithms" "演算法列表"
 #	"List of Charts" "圖表列表"
 #	"List of Graphs[[mathematical]]" "圖形列表"
 #	"Listings[[List of Listings]]" "程式碼列表 清單"
+#	"List of Schemes" "方案列表"
 #	"List of Tableaux" "表格列表"
+#	"Listing" "程式碼"
 #	"Nomenclature[[output]]" "術語表"
 # 	"Notation" "記號"
 # 	"Note" "註記"
@@ -100,7 +102,7 @@
 # 	"Question" "問題"
 # 	"Remark" "備註"
 # 	"Solution" "解法"
-# 	"Summary" "摘要"
+#	"Summary" "總結"
 #	"Tableau" "表格"
 # 	"Theorem" "定理"
 #	"page[[nomencl]]" "頁"
@@ -2945,7 +2947,7 @@ msgstr ""
 #: lib/layouts/stdinsets.inc:404 src/insets/InsetCaption.cpp:423
 #: src/insets/InsetListings.cpp:609 src/insets/InsetListings.cpp:610
 msgid "Listing"
-msgstr "程式碼列表"
+msgstr "程式碼"
 
 #: src/frontends/qt/ui/ListingsUi.ui:24
 msgid "&Main Settings"
@@ -7604,7 +7606,7 @@ msgstr "解法 \\thesolution."
 #: lib/layouts/theorems-ams-extended.module:307
 #: lib/layouts/theorems-counters-extended-bytype.inc:31 lib/examples/Articles:0
 msgid "Summary"
-msgstr "摘要"
+msgstr "總結"
 
 #: lib/layouts/AEA.layout:345 lib/layouts/elsart.layout:528
 #, fuzzy
@@ -8845,7 +8847,7 @@ msgstr "方案"
 
 #: lib/layouts/achemso.layout:216
 msgid "List of Schemes"
-msgstr "方案 目錄"
+msgstr "方案列表"
 
 #: lib/layouts/achemso.layout:230
 #, fuzzy
@@ -9812,7 +9814,7 @@ msgstr ""
 #: lib/layouts/algorithm2e.module:26 lib/layouts/powerdot.layout:603
 #: lib/layouts/revtex4-x.inc:319 lib/layouts/stdfloats.inc:50
 msgid "List of Algorithms"
-msgstr "演算法目錄"
+msgstr "演算法列表"
 
 #: lib/layouts/algorithm2e.module:31 lib/layouts/powerdot.layout:607
 #: lib/layouts/revtex4-x.inc:323 lib/layouts/sciposter.layout:100

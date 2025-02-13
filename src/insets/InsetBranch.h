@@ -53,7 +53,7 @@ public:
 	///
 	static void string2params(std::string const &, InsetBranchParams &);
 	///
-	docstring branch() const { return params_.branch; }
+	docstring const & branch() const { return params_.branch; }
 	///
 	void rename(docstring const & newname) { params_.branch = newname; }
 	///

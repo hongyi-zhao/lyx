@@ -398,8 +398,7 @@ bool readTranslations(Lexer & lex, Language::TranslationMap & trans)
 		string const key = lex.getString();
 		if (!lex.next(true))
 			return false;
-		docstring const val = lex.getDocString();
-		trans[key] = val;
+		trans[key] = lex.getDocString();
 	}
 	return true;
 }

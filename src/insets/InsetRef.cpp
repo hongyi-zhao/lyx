@@ -314,8 +314,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	else {
 		InsetCommandParams p(REF_CODE, cmd);
 		bool const use_nolink = hyper_on && getParam("nolink") == "true";
-		docstring const ref = getParam("reference");
-		p["reference"] = ref;
+		p["reference"] = getParam("reference");
 		os << p.getCommand(rp, use_nolink);
 	}
 

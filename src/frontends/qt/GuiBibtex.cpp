@@ -194,9 +194,8 @@ void GuiBibtex::selUpdated()
 				fenc = cached_file_encodings_[key->text()];
 			else
 				cached_file_encodings_[key->text()] = fenc;
-			docstring const enc = qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(fenc);
 			if (!key->text().isEmpty() && !fenc.isEmpty() && fenc != "general")
-				nfe.push_back(enc);
+				nfe.push_back(qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(fenc));
 		}
 	}
 	selectionManager->update();

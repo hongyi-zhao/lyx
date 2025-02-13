@@ -152,7 +152,6 @@ void LastOpenedSection::write(ostream & os) const
 
 void LastOpenedSection::add(FileName const & file, bool active)
 {
-	LastOpenedFile lof(file, active);
 	// check if file is already recorded (this can happen
 	// with multiple buffer views). We do only record each
 	// file once, since we cannot restore multiple views
@@ -163,7 +162,7 @@ void LastOpenedSection::add(FileName const & file, bool active)
 		if (last.file_name == file)
 			return;
 	}
-	lastopened.push_back(lof);
+	lastopened.emplace_back(file, active);
 }
 
 

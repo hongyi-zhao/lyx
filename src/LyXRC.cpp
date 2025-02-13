@@ -367,7 +367,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			if (lexrc.next()) {
 				string const kmap(os::internal_path(lexrc.getString()));
 				if (!libFileSearch("kbd", kmap, "kmap").empty()
-					  || kmap.empty()) {
+				    || kmap.empty()) {
 					primary_kbmap = kmap;
 				} else {
 					lexrc.printError("LyX: Keymap `$$Token' not found");
@@ -958,16 +958,14 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_VIEWER_ALTERNATIVES:  {
 			string format, command;
 			if ((lexrc >> format) && lexrc.next(true)) {
-				command  = lexrc.getString();
-				viewer_alternatives[format].insert(command);
+				viewer_alternatives[format].insert(lexrc.getString());
 			}
 			break;
 		}
 		case RC_EDITOR_ALTERNATIVES:  {
 			string format, command;
 			if ((lexrc >> format) && lexrc.next(true)) {
-				command  = lexrc.getString();
-				editor_alternatives[format].insert(command);
+				editor_alternatives[format].insert(lexrc.getString());
 			}
 			break;
 		}

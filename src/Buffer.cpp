@@ -2924,7 +2924,6 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		dr.dispatched(false);
 		return;
 	}
-	string const argument = to_utf8(func.argument());
 	// We'll set this back to false if need be.
 	bool dispatched = true;
 	// This handles undo groups automagically
@@ -2942,8 +2941,9 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		string const format = (argument.empty() || argument == "default") ?
-			params().getDefaultOutputFormat() : argument;
+		string const & arg = to_utf8(func.argument());
+		string const format = (arg.empty() || arg == "default") ?
+			params().getDefaultOutputFormat() : arg;
 		ExportStatus const status = doExport(format, false);
 		dr.setError(status != ExportSuccess);
 		if (status != ExportSuccess)
@@ -2962,7 +2962,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 	case LFUN_BUFFER_EXPORT_CUSTOM: {
 		string format_name;
-		string command = split(argument, format_name, ' ');
+		string command = split(to_utf8(func.argument()), format_name, ' ');
 		Format const * format = theFormats().getFormat(format_name);
 		if (!format) {
 			lyxerr << "Format \"" << format_name
@@ -3966,11 +3966,10 @@ void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_mast
 	for (Inset const & it : inset()) {
 		if (it.lyxCode() == BRANCH_CODE) {
 			InsetBranch const & br = static_cast<InsetBranch const &>(it);
-			docstring const name = br.branch();
-			if (!from_master && !params().branchlist().find(name))
-				result.push_back(name);
-			else if (from_master && !masterBuffer()->params().branchlist().find(name))
-				result.push_back(name);
+			if (!from_master && !params().branchlist().find(br.branch()))
+				result.push_back(br.branch());
+			else if (from_master && !masterBuffer()->params().branchlist().find(br.branch()))
+				result.push_back(br.branch());
 			continue;
 		}
 		if (it.lyxCode() == INCLUDE_CODE) {

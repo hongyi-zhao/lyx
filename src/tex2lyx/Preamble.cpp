@@ -3094,14 +3094,12 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					if (!tex_name.empty())
 						filename = tex_name;
 				}
-				string outname;
 				if (makeAbsPath(filename, path).exists())
 					fix_child_filename(filename);
 				else
 					warning_message("Warning: Could not find included file '"
 							+ filename + "'.");
-				outname = changeExtension(filename, "lyx");
-				h_includeonlys.push_back(outname);
+				h_includeonlys.push_back(changeExtension(filename, "lyx"));
 			}
 			continue;
 		}

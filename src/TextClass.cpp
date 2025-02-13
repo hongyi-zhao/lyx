@@ -495,11 +495,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 
 		case TC_DEFAULTSTYLE:
-			if (lexrc.next()) {
-				docstring const name = from_utf8(subst(lexrc.getString(),
-							  '_', ' '));
-				defaultlayout_ = name;
-			}
+			if (lexrc.next())
+				defaultlayout_ = from_utf8(subst(lexrc.getString(), '_', ' '));
 			break;
 
 		case TC_MODIFYSTYLE:

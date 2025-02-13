@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-02-08 16:15+0100\n"
-"PO-Revision-Date: 2025-02-08 15:23+0000\n"
+"POT-Creation-Date: 2025-02-13 10:15+0100\n"
+"PO-Revision-Date: 2025-02-13 09:36+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -28322,6 +28322,17 @@ msgstr "Chybný formát dokumentu"
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s skončil neočakávane, čo znamená, že je pravdepodobne poškodený."
+
+#: src/Buffer.cpp:1259
+#, c-format
+msgid ""
+"The converted version of %1$s to current LyX format ended unexpectedly, "
+"which means that it is probably corrupted.\n"
+"You can find the converted file at %2$s while LyX is running."
+msgstr ""
+"Konvertovaná verzia %1$s na aktuálny formát LyX sa neočakávane skončila, čo "
+"znamená, že je pravdepodobne poškodený.\n"
+"Pokiaľ LyX beží môžete násť skonvertovaný súbor na %2$s."
 
 #: src/Buffer.cpp:1321
 #, c-format

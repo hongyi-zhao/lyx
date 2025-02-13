@@ -3966,10 +3966,11 @@ void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_mast
 	for (Inset const & it : inset()) {
 		if (it.lyxCode() == BRANCH_CODE) {
 			InsetBranch const & br = static_cast<InsetBranch const &>(it);
-			if (!from_master && !params().branchlist().find(br.branch()))
-				result.push_back(br.branch());
-			else if (from_master && !masterBuffer()->params().branchlist().find(br.branch()))
-				result.push_back(br.branch());
+			docstring const & branch = br.branch();
+			if (!from_master && !params().branchlist().find(branch))
+				result.push_back(branch);
+			else if (from_master && !masterBuffer()->params().branchlist().find(branch))
+				result.push_back(branch);
 			continue;
 		}
 		if (it.lyxCode() == INCLUDE_CODE) {

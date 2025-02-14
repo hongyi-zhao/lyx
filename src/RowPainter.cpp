@@ -128,10 +128,10 @@ void RowPainter::paintInset(Row::Element const & e) const
 	int const x2 = x1 + e.dim.wid;
 	int const y1 = yo_ + e.dim.des;
 	int const y2 = yo_ - e.dim.asc;
-	pi_.pain.line(x1, y1, x1, y2, Color_green);
-	pi_.pain.line(x1, y1, x2, y1, Color_green);
-	pi_.pain.line(x2, y1, x2, y2, Color_green);
-	pi_.pain.line(x1, y2, x2, y2, Color_green);
+	pi_.pain.line(x1, y1, x1, y2, Color_Green);
+	pi_.pain.line(x1, y1, x2, y1, Color_Green);
+	pi_.pain.line(x2, y1, x2, y2, Color_Green);
+	pi_.pain.line(x1, y2, x2, y2, Color_Green);
 #endif
 }
 

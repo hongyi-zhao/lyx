@@ -444,6 +444,7 @@ PreviewLoader::Impl::preview(docstring const & latex_snippet) const
 		// Schedule refresh of all previews on zoom or color changes.
 		// The previews are regenerated only after the zoom factor
 		// has not been changed for about 1 second.
+		font_scaling_factor_ = fs;
 		fg_color_ = fg;
 		bg_color_ = bg;
 		delay_refresh_->start(1000);

@@ -3815,22 +3815,26 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	}
 
 	// If a caret has to be painted, mark its text row as dirty to
-	//make sure that it will be repainted on next redraw.
+	// make sure that it will be repainted on next redraw.
 	/* FIXME: investigate whether this can be avoided when the cursor did not
 	 * move at all
 	 */
 	if (paint_caret) {
 		Cursor cur(d->cursor_);
 		while (cur.depth() > 1) {
-			if (!cur.inTexted())
-				break;
-			TextMetrics const & tm = textMetrics(cur.text());
-			if (d->caret_geometry_.left >= tm.origin().x
-				&& d->caret_geometry_.right <= tm.origin().x + tm.dim().width())
-				break;
+			if (cur.inTexted()) {
+				TextMetrics const & tm = textMetrics(cur.text());
+				if (d->caret_geometry_.left >= tm.origin().x
+				    && d->caret_geometry_.right <= tm.origin().x + tm.dim().width())
+					break;
+			}
 			cur.pop();
 		}
-		cur.textRow().changed(true);
+		TextMetrics const & tm = textMetrics(cur.text());
+		if (tm.contains(cur.pit())) {
+			ParagraphMetrics const & pm = tm.parMetrics(cur.pit());
+			pm.getRow(cur.pos(), cur.boundary()).changed(true);
+		}
 	}
 }
 

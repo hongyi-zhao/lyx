@@ -263,8 +263,7 @@ void CiteEnginesList::addCiteEngine(string const & cename,
 	string const & citeframework, vector<string> const & dbs,
 	string const & description, vector<string> const & pkgs)
 {
-	LyXCiteEngine ce(cename, filename, cets, citeframework, dbs, description, pkgs);
-	englist_.push_back(ce);
+	englist_.emplace_back(cename, filename, cets, citeframework, dbs, description, pkgs);
 }
 
 

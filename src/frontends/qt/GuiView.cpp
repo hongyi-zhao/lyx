@@ -4849,8 +4849,10 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_TOOLBAR_SET: {
-			if (GuiToolbar * t = toolbar(cmd.getArg(0)))
-				t->setState(cmd.getArg(1));
+			string const name = cmd.getArg(0);
+			string const state = cmd.getArg(1);
+			if (GuiToolbar * t = toolbar(name))
+				t->setState(state);
 			break;
 		}
 

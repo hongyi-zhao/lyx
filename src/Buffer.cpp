@@ -2941,7 +2941,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		string const & arg = to_utf8(func.argument());
+		string const arg = to_utf8(func.argument());
 		string const format = (arg.empty() || arg == "default") ?
 			params().getDefaultOutputFormat() : arg;
 		ExportStatus const status = doExport(format, false);

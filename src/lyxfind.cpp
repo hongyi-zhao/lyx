@@ -3684,7 +3684,7 @@ void MatchStringAdv::CreateRegexp(FindAndReplaceOptions const & opt, string cons
 
 static void modifyRegexForMatchWord(string &t)
 {
-	string s("");
+	string s;
 	regex wordre("(\\\\)*((\\.|\\\\b))");
 	size_t lastpos = 0;
 	smatch sub;
@@ -3701,8 +3701,7 @@ static void modifyRegexForMatchWord(string &t)
 		lastpos = sub.position(2) + sub.length(2);
 	}
 	if (lastpos == 0) {
-		s = "\\b" + t + "\\b";
-		t = s;
+		t = "\\b" + t + "\\b";
 		return;
 	}
 	else if (lastpos < t.length())

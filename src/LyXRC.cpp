@@ -958,14 +958,16 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_VIEWER_ALTERNATIVES:  {
 			string format, command;
 			if ((lexrc >> format) && lexrc.next(true)) {
-				viewer_alternatives[format].insert(lexrc.getString());
+				command  = lexrc.getString();
+				viewer_alternatives[format].insert(command);
 			}
 			break;
 		}
 		case RC_EDITOR_ALTERNATIVES:  {
 			string format, command;
 			if ((lexrc >> format) && lexrc.next(true)) {
-				editor_alternatives[format].insert(lexrc.getString());
+				command  = lexrc.getString();
+				editor_alternatives[format].insert(command);
 			}
 			break;
 		}

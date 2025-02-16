@@ -12,8 +12,7 @@
 #ifndef LYX_CHANGER_H
 #define LYX_CHANGER_H
 
-#include "support/unique_ptr.h"
-
+#include <memory>
 
 namespace lyx {
 
@@ -21,7 +20,7 @@ struct Revertible {
 	virtual ~Revertible() = default;
 };
 
-using Changer = unique_ptr<Revertible>;
+using Changer = std::unique_ptr<Revertible>;
 
 
 /// A RefChanger records the current value of \param ref, allowing to
@@ -54,14 +53,14 @@ private:
 
 
 template <typename X>
-using RefChanger = unique_ptr<RevertibleRef<X>>;
+using RefChanger = std::unique_ptr<RevertibleRef<X>>;
 
 
 /// Saves the value of \param ref in a movable object
 template <typename X>
 inline RefChanger<X> make_save(X & ref)
 {
-	return make_unique<RevertibleRef<X>>(ref);
+	return std::make_unique<RevertibleRef<X>>(ref);
 }
 
 inline Changer noChange()

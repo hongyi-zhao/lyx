@@ -17,7 +17,6 @@
 #include "ExternalTemplate.h"
 
 #include "support/FileName.h"
-#include "support/unique_ptr.h"
 
 
 namespace lyx {
@@ -182,7 +181,7 @@ private:
 	/// The current params
 	InsetExternalParams params_;
 	/// The thing that actually draws the image on LyX's screen.
-	mutable unique_ptr<RenderBase> renderer_;
+	mutable std::unique_ptr<RenderBase> renderer_;
 	/// changes color of the button when mouse enters/leaves this inset
 	mutable std::map<BufferView const *, bool> mouse_hover_;
 };

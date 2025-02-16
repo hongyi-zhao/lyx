@@ -113,7 +113,6 @@ liblyxsupport_a_SOURCES = \
 	Timeout.cpp \
 	Timeout.h \
 	types.h \
-	unique_ptr.h \
 	userinfo.cpp \
 	userinfo.h \
 	unicode.cpp \

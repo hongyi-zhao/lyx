@@ -60,7 +60,6 @@
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
 #include "support/TempFile.h"
-#include "support/unique_ptr.h"
 
 #include "frontends/alert.h"
 #include "frontends/Clipboard.h"

@@ -16,7 +16,6 @@
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lassert.h"
-#include "support/unique_ptr.h"
 #include "support/weighted_btree.h"
 
 #include <QThreadStorage>

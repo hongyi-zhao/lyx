@@ -209,16 +209,6 @@ check_cxx_source_compiles(
 	"
 lyx_cv_prog_clang)
 
-check_cxx_source_compiles(
-  "
-  #include <memory>
-  using std::make_unique;
-  int main() {
-    return(0);
-  }
-  "
-HAVE_DEF_MAKE_UNIQUE)
-
 if (ENCHANT_FOUND)
   set(CMAKE_REQUIRED_INCLUDES ${ENCHANT_INCLUDE_DIR})
   set(CMAKE_REQUIRED_LIBRARIES ${ENCHANT_LIBRARY})

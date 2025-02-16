@@ -13,7 +13,8 @@
 #define LYX_TEXSTREAM_H
 
 #include "support/docstream.h"
-#include "support/unique_ptr.h"
+
+#include <memory>
 
 namespace lyx {
 
@@ -37,7 +38,7 @@ public:
 	///
 	TexRow & texrow() { return *texrow_; }
 	///
-	unique_ptr<TexRow> releaseTexRow();
+	std::unique_ptr<TexRow> releaseTexRow();
 	///
 	void put(char_type const & c);
 	///
@@ -46,7 +47,7 @@ private:
 	///
 	odocstream & os_;
 	///
-	unique_ptr<TexRow> texrow_;
+	std::unique_ptr<TexRow> texrow_;
 };
 
 ///

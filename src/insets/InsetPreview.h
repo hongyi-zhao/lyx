@@ -14,7 +14,6 @@
 
 #include "InsetText.h"
 
-#include "support/unique_ptr.h"
 
 
 namespace lyx {
@@ -83,7 +82,7 @@ protected:
 	void preparePreview(DocIterator const & pos) const;
 
 	///
-	unique_ptr<RenderPreview> preview_;
+	std::unique_ptr<RenderPreview> preview_;
 
 };
 

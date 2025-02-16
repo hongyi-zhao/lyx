@@ -15,9 +15,6 @@
 
 #include "InsetCommand.h"
 
-#include "support/unique_ptr.h"
-
-
 namespace lyx {
 
 class Buffer;
@@ -163,7 +160,7 @@ private:
 	docstring const include_label;
 
 	/// The pointer never changes although *preview_'s contents may.
-	unique_ptr<RenderMonitoredPreview> const preview_;
+	std::unique_ptr<RenderMonitoredPreview> const preview_;
 
 	///
 	mutable bool failedtoload_;

@@ -18,7 +18,6 @@
 
 #include "Box.h"
 
-#include "support/unique_ptr.h"
 
 #include <map>
 
@@ -171,8 +170,9 @@ protected:
 	Inset * editXY(Cursor & cur, int x, int y) override;
 	///
 	mutable CollapseStatus status_;
-        ///
-        unique_ptr<support::TempFile> tempfile_;
+	///
+	std::unique_ptr<support::TempFile> tempfile_;
+
 private:
 	///
 	Dimension dimensionCollapsed(BufferView const & bv) const;

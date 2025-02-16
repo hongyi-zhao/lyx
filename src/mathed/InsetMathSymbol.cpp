@@ -24,7 +24,6 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/textutils.h"
-#include "support/unique_ptr.h"
 
 using namespace std;
 

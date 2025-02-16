@@ -21,7 +21,6 @@
 #include "support/lstrings.h"
 #include "support/Messages.h"
 #include "support/unicode.h"
-#include "support/unique_ptr.h"
 
 // getpid(), getppid()
 #ifdef HAVE_SYS_TYPES_H

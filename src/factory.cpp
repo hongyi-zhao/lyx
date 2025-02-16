@@ -66,7 +66,6 @@
 #include "support/ExceptionMessage.h"
 #include "support/Lexer.h"
 #include "support/lstrings.h"
-#include "support/unique_ptr.h"
 
 #include <sstream>
 

@@ -12,6 +12,7 @@
 #ifndef MATH_ATOM_H
 #define MATH_ATOM_H
 
+#include <memory>
 
 /**
 Wrapper for InsetMath * with copy-semantics
@@ -40,7 +41,6 @@ Andre'
 
 */
 
-#include "support/unique_ptr.h"
 
 namespace lyx {
 

@@ -16,7 +16,6 @@
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/qstring_helpers.h"
-#include "support/unique_ptr.h"
 
 #include <QFile>
 #include <QStringList>
@@ -59,7 +58,7 @@ FileSystemWatcher::getGuard(FileName const & filename)
 //static
 FileMonitorPtr FileSystemWatcher::monitor(FileName const & filename)
 {
-	return lyx::make_unique<FileMonitor>(instance().getGuard(filename));
+	return make_unique<FileMonitor>(instance().getGuard(filename));
 }
 
 
@@ -67,7 +66,7 @@ FileMonitorPtr FileSystemWatcher::monitor(FileName const & filename)
 ActiveFileMonitorPtr FileSystemWatcher::activeMonitor(FileName const & filename,
                                                       int interval)
 {
-	return lyx::make_unique<ActiveFileMonitor>(instance().getGuard(filename),
+	return make_unique<ActiveFileMonitor>(instance().getGuard(filename),
 	                                      filename, interval);
 }
 

@@ -15,7 +15,6 @@
 #include "graphics/GraphicsParams.h"
 
 #include "support/Length.h"
-#include "support/unique_ptr.h"
 
 #include <any>
 #include <functional>
@@ -120,7 +119,7 @@ public:
  */
 class TransformCommand {
 public:
-	typedef unique_ptr<TransformCommand const> ptr_type;
+	typedef std::unique_ptr<TransformCommand const> ptr_type;
 	virtual ~TransformCommand() {}
 
 	/// The string from the External Template that we seek to replace.
@@ -199,7 +198,7 @@ private:
  */
 class TransformOption {
 public:
-	typedef unique_ptr<TransformOption const> ptr_type;
+	typedef std::unique_ptr<TransformOption const> ptr_type;
 	virtual ~TransformOption() {}
 
 	/// The string from the External Template that we seek to replace.

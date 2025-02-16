@@ -60,7 +60,6 @@
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
-#include "support/unique_ptr.h"
 
 #include <csignal>
 #include <iostream>

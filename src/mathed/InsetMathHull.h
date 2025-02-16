@@ -17,7 +17,6 @@
 #include "DocIterator.h"
 #include "OutputEnums.h"
 
-#include "support/unique_ptr.h"
 
 
 namespace lyx {
@@ -270,7 +269,7 @@ private:
 	///
 	std::vector<InsetLabel *> label_;
 	///
-	unique_ptr<RenderPreview> preview_;
+	std::unique_ptr<RenderPreview> preview_;
 	///
 	DocIterator docit_;
 //

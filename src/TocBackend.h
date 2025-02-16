@@ -21,9 +21,6 @@
 #include "Toc.h"
 #include "TocBuilder.h"
 
-#include "support/unique_ptr.h"
-
-
 namespace lyx {
 
 class Buffer;

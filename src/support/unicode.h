@@ -15,9 +15,9 @@
 #define LYX_SUPPORT_UNICODE_H
 
 #include "support/docstring.h"
-#include "support/unique_ptr.h"
 
 #include <cstddef>
+#include <memory>
 #include <vector>
 
 
@@ -52,7 +52,7 @@ class IconvProcessor
 	std::string const tocode_;
 	std::string const fromcode_;
 	struct Handler;
-	unique_ptr<Handler> h_;
+	std::unique_ptr<Handler> h_;
 public:
 	IconvProcessor(std::string tocode, std::string fromcode);
 	/// convert any data from \c fromcode to \c tocode unicode format.

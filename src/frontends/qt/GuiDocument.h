@@ -40,7 +40,6 @@
 #include "ui_PreambleUi.h"
 #include "ui_TextLayoutUi.h"
 
-#include "support/unique_ptr.h"
 
 #include <QStandardItemModel>
 #include <QStyledItemDelegate>
@@ -426,7 +425,7 @@ private:
 	typedef std::map<BufferId, std::pair<int,int> > Coords;
 	Coords preamble_coords_;
 	BufferId current_id_;
-	unique_ptr<support::TempFile> tempfile_;
+	std::unique_ptr<support::TempFile> tempfile_;
 	/// LaTeX syntax highlighter
 	LaTeXHighlighter * highlighter_;
 
@@ -465,7 +464,7 @@ private Q_SLOTS:
 private:
 	BufferId current_id_;
 	bool validated_;
-	unique_ptr<support::TempFile> tempfile_;
+	std::unique_ptr<support::TempFile> tempfile_;
 };
 
 

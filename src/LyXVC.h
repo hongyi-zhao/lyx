@@ -13,8 +13,8 @@
 #define LYX_VC_H
 
 #include "support/docstring.h"
-#include "support/unique_ptr.h"
 
+#include <memory>
 
 namespace lyx {
 
@@ -190,7 +190,7 @@ private:
 	Buffer * owner_;
 
 	///
-	unique_ptr<VCS> vcs_;
+	std::unique_ptr<VCS> vcs_;
 };
 
 

@@ -146,7 +146,7 @@ shared_ptr<Toc> TocBackend::toc(string const & type)
 
 TocBuilder & TocBackend::builder(string const & type)
 {
-	auto p = lyx::make_unique<TocBuilder>(toc(type));
+	auto p = make_unique<TocBuilder>(toc(type));
 	return * builders_.insert(make_pair(type, std::move(p))).first->second;
 }
 

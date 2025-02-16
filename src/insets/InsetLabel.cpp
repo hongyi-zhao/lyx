@@ -226,22 +226,21 @@ void InsetLabel::addToToc(DocIterator const & cpit, bool output_active,
 
 	// We put both active and inactive labels to the outliner
 	shared_ptr<Toc> toc = backend.toc("label");
-	TocItem toc_item = TocItem(cpit, 0, screen_label_, output_active);
-	toc_item.prettyStr(formatted_counter_);
-	toc->push_back(toc_item);
+	toc->emplace_back(cpit, 0, screen_label_, output_active);
+	toc->back().prettyStr(formatted_counter_);
 	// The refs get assigned only to the active label. If no active one exists,
 	// assign the (BROKEN) refs to the first inactive one.
 	if (buffer().insetLabel(label, true) == this || !buffer().activeLabel(label)) {
 		for (auto const & p : buffer().references(label)) {
 			DocIterator const ref_pit(p.second);
 			if (p.first->lyxCode() == MATH_REF_CODE)
-				toc->push_back(TocItem(ref_pit, 1,
+				toc->emplace_back(ref_pit, 1,
 						p.first->asInsetMath()->asRefInset()->screenLabel(),
-						output_active));
+						output_active);
 			else
-				toc->push_back(TocItem(ref_pit, 1,
+				toc->emplace_back(ref_pit, 1,
 						static_cast<InsetRef *>(p.first)->getTOCString(),
-						static_cast<InsetRef *>(p.first)->outputActive()));
+						static_cast<InsetRef *>(p.first)->outputActive());
 		}
 	}
 }

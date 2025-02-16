@@ -158,9 +158,9 @@ string const Font::latexSize() const
 
 /// Writes the changes from this font to orgfont in .lyx format in file
 void Font::lyxWriteChanges(Font const & orgfont,
-			      ostream & os) const
+			      ostream & ret_os) const
 {
-	os << "\n";
+	ostringstream os;
 	if (orgfont.fontInfo().family() != bits_.family())
 		os << "\\family " << LyXFamilyNames[bits_.family()] << "\n";
 	if (orgfont.fontInfo().series() != bits_.series())
@@ -219,6 +219,9 @@ void Font::lyxWriteChanges(Font const & orgfont,
 		else
 			os << "\\lang unknown\n";
 	}
+
+    if (!os.str().empty())
+        ret_os << "\n" << os.str();
 }
 
 

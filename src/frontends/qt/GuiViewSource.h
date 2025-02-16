@@ -88,7 +88,7 @@ private:
 	std::string view_format_;
 	/// TexRow information from the last source view. If TexRow is unavailable
 	/// for the last format then texrow_ is null.
-	unique_ptr<TexRow> texrow_;
+	std::unique_ptr<TexRow> texrow_;
 };
 
 

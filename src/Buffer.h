@@ -15,12 +15,12 @@
 #include "FuncCode.h"
 #include "OutputEnums.h"
 
-#include "support/unique_ptr.h"
 #include "support/docstring.h"
 #include "support/types.h"
 
-#include <map>
 #include <list>
+#include <map>
+#include <memory>
 #include <set>
 #include <vector>
 
@@ -639,7 +639,7 @@ public:
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
 	/// returns nullptr if Id to Row conversion is unsupported
-	unique_ptr<TexRow> getSourceCode(odocstream & os,
+	std::unique_ptr<TexRow> getSourceCode(odocstream & os,
 			std::string const & format, pit_type par_begin,
 			pit_type par_end, OutputWhat output, bool master) const;
 

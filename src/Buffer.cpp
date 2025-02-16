@@ -132,6 +132,8 @@ typedef map<string, bool> DepClean;
 
 // Information about labels and their associated refs
 struct LabelInfo {
+	LabelInfo(docstring const & l, InsetLabel const * il, bool act)
+		: label(l), inset(il), active(act) {}
 	/// label string
 	docstring label;
 	/// label inset
@@ -4098,11 +4100,7 @@ void Buffer::addReference(docstring const & label, Inset * inset, ParIterator it
 void Buffer::setInsetLabel(docstring const & label, InsetLabel const * il,
 			   bool const active)
 {
-	LabelInfo linfo;
-	linfo.label = label;
-	linfo.inset = il;
-	linfo.active = active;
-	masterBuffer()->d->label_cache_.push_back(linfo);
+	masterBuffer()->d->label_cache_.emplace_back(label, il, active);
 }
 
 

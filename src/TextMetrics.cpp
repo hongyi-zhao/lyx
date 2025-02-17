@@ -108,7 +108,7 @@ int numberOfHfills(Row const & row, ParagraphMetrics const & pm,
 
 TextMetrics::TextMetrics(BufferView * bv, Text * text)
     : bv_(bv), text_(text), im_(bv_->inputMethod()),
-      dim_(bv_->workWidth(), 10, 10), max_width_(dim_.wid), tight_(false)
+      dim_(bv_->workWidth(), 10, 10), max_width_(dim_.wid)
 {}
 
 

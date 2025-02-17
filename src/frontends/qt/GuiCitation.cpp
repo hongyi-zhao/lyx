@@ -966,12 +966,8 @@ void GuiCitation::filterByEntryType(BiblioInfo const & bi,
 	if (entry_type.empty())
 		return;
 
-	vector<docstring>::iterator it = keyVector.begin();
-	vector<docstring>::iterator end = keyVector.end();
-
 	vector<docstring> result;
-	for (; it != end; ++it) {
-		docstring const key = *it;
+	for (auto const & key : keyVector) {
 		BiblioInfo::const_iterator cit = bi.find(key);
 		if (cit == bi.end())
 			continue;
@@ -1029,19 +1025,17 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 		return vector<docstring>();
 	}
 
-	vector<docstring>::const_iterator it = keys_to_search.begin();
-	vector<docstring>::const_iterator end = keys_to_search.end();
-	for (; it != end; ++it ) {
-		BiblioInfo::const_iterator info = bi.find(*it);
+	for (auto const & key : keys_to_search) {
+		BiblioInfo::const_iterator info = bi.find(key);
 		if (info == bi.end())
 			continue;
 
 		BibTeXInfo const & kvm = info->second;
 		string sdata;
 		if (only_keys)
-			sdata = to_utf8(*it);
+			sdata = to_utf8(key);
 		else if (field.empty())
-			sdata = to_utf8(*it) + ' ' + to_utf8(kvm.allData());
+			sdata = to_utf8(key) + ' ' + to_utf8(kvm.allData());
 		else
 			sdata = to_utf8(kvm[field]);
 
@@ -1050,7 +1044,7 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 
 		try {
 			if (regex_search(sdata, reg_exp))
-				foundKeys.push_back(*it);
+				foundKeys.push_back(key);
 		}
 		catch (regex_error const & e) {
 			LYXERR(Debug::GUI, e.what());

@@ -40,7 +40,7 @@ class TextMetrics
 	void operator=(TextMetrics const &);
 public:
 	/// Default constructor (only here for STL containers).
-	TextMetrics() : bv_(0), text_(0), max_width_(0), tight_(false) {}
+	TextMetrics() {}
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
 
@@ -244,23 +244,23 @@ public:
 private:
 
 	/// The BufferView owner.
-	BufferView * bv_;
+	BufferView * bv_ = nullptr;
 
 	/// The text contents (the model).
 	/// \todo FIXME: this should be const.
-	Text * text_;
+	Text * text_ = nullptr;
 
 	/// The input method instance
-	frontend::InputMethod * im_;
+	frontend::InputMethod * im_ = nullptr;
 
 	/// A map from paragraph index number to paragraph metrics
 	typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;
 	///
 	mutable ParMetricsCache par_metrics_;
 	Dimension dim_;
-	int max_width_;
+	int max_width_ = 0;
 	/// if true, do not expand insets to max width artificially
-	bool tight_;
+	bool tight_ = false;
 	mutable Point origin_;
 
 // temporary public:

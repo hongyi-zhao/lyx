@@ -632,7 +632,8 @@ bool TocWidget::isAncestor(QModelIndex const & ancestor,
 			return false;
 		mi = mi.parent();
 	}
-	return false;
+	// unreachable
+	// return false;
 }
 
 
@@ -644,7 +645,8 @@ QModelIndex TocWidget::getAncestor(QModelIndex const & descendant) const
 			return mi;
 		mi = mi.parent();
 	}
-	return mi;
+	// unreachable
+	// return mi;
 }
 
 

@@ -3393,13 +3393,7 @@ void GuiDocument::updateCiteStyles(vector<string> const & engs, CiteEngineType c
 
 void GuiDocument::updateEngineType(string const & items, CiteEngineType const & sel)
 {
-	engine_types_.clear();
-
-	for (int n = 0; !token(items, '|', n).empty(); ++n) {
-		string style = token(items, '|', n);
-		engine_types_.push_back(style);
-	}
-
+	engine_types_ = getVectorFromString(items, "|");
 	updateCiteStyles(engine_types_, sel);
 }
 

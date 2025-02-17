@@ -2688,13 +2688,10 @@ void Menus::read(Lexer & lex)
 		case md_menu: {
 			lex.next(true);
 			QString const name = toqstr(lex.getDocString());
-			if (d->hasMenu(name))
-				d->getMenu(name).read(lex);
-			else {
-				MenuDefinition menu(name);
-				menu.read(lex);
-				d->menulist_.push_back(menu);
-			}
+			// Create a menu if it does not exist
+			if (!d->hasMenu(name))
+				d->menulist_.emplace_back(name);
+			d->getMenu(name).read(lex);
 			break;
 		}
 		case md_endmenuset:

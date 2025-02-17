@@ -1169,12 +1169,12 @@ docstring convertDelimToXMLEscape(docstring const & name)
 		else if (c == '}')
 			return from_ascii("&#125;");
 	}
+
 	MathWordList const & words = mathedWordList();
 	MathWordList::const_iterator it = words.find(name);
-	if (it != words.end()) {
-		docstring const escape = it->second.xmlname;
-		return escape;
-	}
+	if (it != words.end())
+		return it->second.xmlname;
+
 	LYXERR0("Unable to find `" << name <<"' in the mathWordList.");
 	return name;
 }

@@ -526,8 +526,7 @@ void l_getline(istream & is, string & str)
 template <class T>
 string const write_attribute(string const & name, T const & t)
 {
-	string const s = tostr(t);
-	return s.empty() ? s : " " + name + "=\"" + s + "\"";
+	return write_attribute(name, tostr(t));
 }
 
 template <>
@@ -540,7 +539,7 @@ string const write_attribute(string const & name, string const & t)
 template <>
 string const write_attribute(string const & name, docstring const & t)
 {
-	return t.empty() ? string() : " " + name + "=\"" + to_utf8(t) + "\"";
+	return write_attribute(name, to_utf8(t));
 }
 
 

@@ -251,11 +251,13 @@ void SpellcheckerWidget::Private::updateView()
 	ui.replaceAllPB->setEnabled(can_replace);
 }
 
+
 DocIterator const SpellcheckerWidget::Private::cursor() const
 {
 	BufferView * bv = gv_->documentBufferView();
 	return bv ? bv->cursor() : DocIterator();
 }
+
 
 bool SpellcheckerWidget::Private::continueFromBeginning()
 {
@@ -291,10 +293,12 @@ bool SpellcheckerWidget::Private::continueFromBeginning()
 	return true;
 }
 
+
 bool SpellcheckerWidget::Private::isCurrentBuffer(DocIterator const & cursor) const
 {
 	return start_.buffer() == cursor.buffer();
 }
+
 
 bool SpellcheckerWidget::Private::atLastPos(DocIterator const & cursor) const
 {
@@ -304,17 +308,18 @@ bool SpellcheckerWidget::Private::atLastPos(DocIterator const & cursor) const
 		(valid_end && isCurrentBuffer(cursor) && cursor >= end_));
 }
 
+
 bool SpellcheckerWidget::Private::isWrapAround(DocIterator const & cursor) const
 {
 	return wrap_around_ && isCurrentBuffer(cursor) && start_ < cursor;
 }
 
+
 void SpellcheckerWidget::Private::fixPositionsIfBroken()
 {
-	DocIterator const current_ = cursor();
-	if (!isCurrentBuffer(current_)) {
+	if (!isCurrentBuffer(cursor())) {
 		LYXERR(Debug::GUI, "wrong document of current cursor position " << start_);
-		start_ = current_;
+		start_ = cursor();
 		begin_ = DocIterator();
 		end_   = DocIterator();
 	}
@@ -328,6 +333,7 @@ void SpellcheckerWidget::Private::fixPositionsIfBroken()
 	if (end_.fixIfBroken())
 		LYXERR(Debug::GUI, "broken selection end position fixed " << end_);
 }
+
 
 void SpellcheckerWidget::Private::hide() const
 {
@@ -346,6 +352,7 @@ void SpellcheckerWidget::Private::hide() const
 		}
 	}
 }
+
 
 void SpellcheckerWidget::Private::forward()
 {

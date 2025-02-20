@@ -19,6 +19,7 @@
 #include <config.h>
 
 #include "tex2lyx.h"
+#include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "output_xhtml.h"
@@ -53,6 +54,15 @@ namespace Alert {
 
 bool verbose = false;
 LyXRC lyxrc;
+
+
+// Make linker happy
+
+LaTeXColors & theLaTeXColors()
+{
+	LaTeXColors * lc = new LaTeXColors;
+	return * lc;
+}
 
 
 //

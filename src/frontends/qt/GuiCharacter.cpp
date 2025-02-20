@@ -15,14 +15,14 @@
 
 #include "GuiCharacter.h"
 
+#include "CategorizedCombo.h"
+
 #include "GuiApplication.h"
 #include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Color.h"
-#include "ColorCache.h"
 #include "ColorSet.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
@@ -103,32 +103,6 @@ static QList<BarPair> strikeData()
 }
 
 
-static QList<ColorCode> colorData()
-{
-	QList<ColorCode> colors;
-	colors << Color_black;
-	colors << Color_blue;
-	colors << Color_brown;
-	colors << Color_cyan;
-	colors << Color_darkgray;
-	colors << Color_gray;
-	colors << Color_green;
-	colors << Color_lightgray;
-	colors << Color_lime;
-	colors << Color_magenta;
-	colors << Color_olive;
-	colors << Color_orange;
-	colors << Color_pink;
-	colors << Color_purple;
-	colors << Color_red;
-	colors << Color_teal;
-	colors << Color_violet;
-	colors << Color_white;
-	colors << Color_yellow;
-	return colors;
-}
-
-
 static QList<SeriesPair> seriesData()
 {
 	QList<SeriesPair> series;
@@ -182,27 +156,8 @@ void fillCombo(QComboBox * combo, QList<T> const & list)
 		combo->addItem(cit->first);
 }
 
-template<typename T>
-void fillComboColor(QComboBox * combo, QList<T> const & list)
-{
-	// at first add the 2 colors "No change" and "No color"
-	combo->addItem(qt_("No change"), "ignore");
-	combo->addItem(qt_("Default"), "inherit");
-	combo->addItem(qt_("(Without)[[color]]"), "none");
-	// now add the real colors
-	QPixmap coloritem(32, 32);
-	QColor color;
-	QList<ColorCode>::const_iterator cit = list.begin();
-	for (; cit != list.end(); ++cit) {
-		QString const lyxname = toqstr(lcolor.getLyXName(*cit));
-		QString const guiname = toqstr(translateIfPossible(lcolor.getGUIName(*cit)));
-		color = QColor(guiApp->colorCache().get(*cit, false));
-		coloritem.fill(color);
-		combo->addItem(QIcon(coloritem), guiname, lyxname);
-	}
-}
-
 } // namespace
+
 
 GuiCharacter::GuiCharacter(GuiView & lv)
 	: GuiDialog(lv, "character", qt_("Text Properties")),
@@ -234,8 +189,6 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	size   = sizeData();
 	bar    = barData();
 	strike = strikeData();
-	color  = colorData();
-	sort(color.begin(), color.end(), ColorSorter);
 
 	language = languageData();
 	language.prepend(LanguagePair(qt_("Default"), "reset"));
@@ -247,8 +200,10 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	fillCombo(shapeCO, shape);
 	fillCombo(ulineCO, bar);
 	fillCombo(strikeCO, strike);
-	fillComboColor(colorCO, color);
+	fillComboColor();
 	fillCombo(langCO, language);
+
+	colorCO->setToolTip(qt_("You can also directly type on the list to filter on color names."));
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelAutoReadOnlyPolicy);
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
@@ -439,6 +394,35 @@ void GuiCharacter::change_adaptor()
 }
 
 
+void GuiCharacter::fillComboColor()
+{
+	// at first add the 2 colors "No change" and "No color"
+	colorCO->addItemSort(QString("ignore"), qt_("No change"),
+			   QString(), QString(),
+			   false, false, false, true, true);
+	colorCO->addItemSort(QString("none"), qt_("Default"),
+			   QString(), QString(),
+			   false, false, false, true, true);
+	colorCO->addItemSort(QString("inherit"), qt_("(Without)[[color]]"),
+			   QString(), QString(),
+			   false, false, false, true, true);
+	// now add the real colors
+	for (auto const & lc : theLaTeXColors().getLaTeXColors()) {
+		QString const lyxname = toqstr(lc.first);
+		QString const guiname = toqstr(translateIfPossible(lc.second.guiname()));
+		QString const category = toqstr(translateIfPossible(lc.second.category()));
+		QString const plaincategory = toqstr(lc.second.category());
+		QString const color = toqstr(lc.second.hexname());
+		colorCO->addItemSort(lyxname,
+				   guiname,
+				   category,
+				   QString(),
+				   false, true, false, true, false,
+				   color);
+	}
+}
+
+
 void GuiCharacter::checkRestoreDefaults()
 {
 	if (familyCO->currentIndex() == -1 || seriesCO->currentIndex() == -1
@@ -459,7 +443,7 @@ void GuiCharacter::checkRestoreDefaults()
 		|| setMarkupState(nospellcheckCB->checkState()) != FONT_OFF
 		|| bar[ulineCO->currentIndex()].second != INHERIT
 		|| strike[strikeCO->currentIndex()].second != INHERIT
-		|| lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())) != Color_inherit
+		|| lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString()), false) != Color_inherit
 		|| languages.getLanguage(fromqstr(language[langCO->currentIndex()].second)) != reset_language);
 
 	resetnochange_->setEnabled(
@@ -472,7 +456,7 @@ void GuiCharacter::checkRestoreDefaults()
 		|| setMarkupState(nospellcheckCB->checkState()) != FONT_IGNORE
 		|| bar[ulineCO->currentIndex()].second != IGNORE
 		|| strike[strikeCO->currentIndex()].second != IGNORE
-		|| lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())) != Color_ignore
+		|| lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString()), false) != Color_ignore
 		|| languages.getLanguage(fromqstr(language[langCO->currentIndex()].second)) != ignore_language);
 }
 
@@ -615,7 +599,7 @@ void GuiCharacter::paramsToDialog(Font const & font)
 	sizeCO->setCurrentIndex(findPos2nd(size, fi.size()));
 	ulineCO->setCurrentIndex(findPos2nd(bar, getBar(fi)));
 	strikeCO->setCurrentIndex(findPos2nd(strike, getStrike(fi)));
-	colorCO->setCurrentIndex(colorCO->findData(toqstr(lcolor.getLyXName(fi.color()))));
+	colorCO->set(toqstr(lcolor.getLyXName(fi.color())));
 	emphCB->setCheckState(getMarkupState(fi.emph()));
 	nounCB->setCheckState(getMarkupState(fi.noun()));
 	nospellcheckCB->setCheckState(getMarkupState(fi.nospellcheck()));
@@ -642,7 +626,7 @@ void GuiCharacter::applyView()
 	fi.setNoSpellcheck(setMarkupState(nospellcheckCB->checkState()));
 	setBar(fi, bar[ulineCO->currentIndex()].second);
 	setStrike(fi, strike[strikeCO->currentIndex()].second);
-	fi.setColor(lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())));
+	setLyXColor(fromqstr(colorCO->getData(colorCO->currentIndex())), fi);
 
 	font_.setLanguage(languages.getLanguage(
 		fromqstr(language[langCO->currentIndex()].second)));

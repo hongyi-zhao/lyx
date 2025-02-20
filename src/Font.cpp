@@ -20,6 +20,7 @@
 #include "ColorSet.h"
 #include "Encoding.h"
 #include "Language.h"
+#include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "output_latex.h"
@@ -816,31 +817,17 @@ void Font::validate(LaTeXFeatures & features) const
 		features.require("ulem");
 		LYXERR(Debug::OUTFILE, "Wavy underline enabled. Font: " << to_utf8(stateText()));
 	}
-	switch (bits_.color()) {
-		case Color_none:
-		case Color_inherit:
-		case Color_ignore:
-			// probably we should put here all interface colors used for
-			// font displaying! For now I just add this ones I know of (Jug)
-		case Color_latex:
-		case Color_notelabel:
-			break;
-		case Color_brown:
-		case Color_darkgray:
-		case Color_gray:
-		case Color_lightgray:
-		case Color_lime:
-		case Color_olive:
-		case Color_orange:
-		case Color_pink:
-		case Color_purple:
-		case Color_teal:
-		case Color_violet:
+	string const col = lcolor.getLyXName(bits_.color());
+	if (theLaTeXColors().isLaTeXColor(col)) {
+		LaTeXColor const lc = theLaTeXColors().getLaTeXColor(col);
+		for (auto const & r : lc.req())
+			features.require(r);
+		features.require("color");
+		if (!lc.model().empty()) {
 			features.require("xcolor");
-			break;
-		default:
-			features.require("color");
-			LYXERR(Debug::OUTFILE, "Color enabled. Font: " << to_utf8(stateText()));
+			features.require("xcolor:" + lc.model());
+		}
+		LYXERR(Debug::OUTFILE, "Color enabled. Font: " << to_utf8(stateText()));
 	}
 
 	// FIXME: Do something for background and soul package?

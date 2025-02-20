@@ -620,6 +620,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_lineno              = "false";
 	h_use_refstyle            = false;
 	h_use_minted              = false;
+	h_use_xcolor_svgnames     = false;
 	h_use_packages["amsmath"]    = "1";
 	h_use_packages["amssymb"]    = "0";
 	h_use_packages["cancel"]     = "0";
@@ -1917,6 +1918,21 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (name == "changebar")
 		h_output_changes = "true";
+
+	else if (name == "xcolor") {
+		vector<string>::iterator it =
+			find(options.begin(), options.end(), "svgnames");
+		if (it != options.end()) {
+			h_use_xcolor_svgnames = true;
+			options.erase(it);
+		}
+		it = find(options.begin(), options.end(), "x11names");
+		if (it != options.end())
+			options.erase(it);
+		it = find(options.begin(), options.end(), "dvipsnames");
+		if (it != options.end())
+			options.erase(it);
+	}
 
 	else if (!in_lyx_preamble) {
 		if (options.empty())

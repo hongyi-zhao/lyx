@@ -28,6 +28,7 @@ class Formats;
 class FuncRequest;
 class FuncStatus;
 class KeyMap;
+class LaTeXColors;
 class LaTeXFonts;
 class Messages;
 class Mover;
@@ -149,6 +150,7 @@ private:
 	friend Movers & theSystemMovers();
 	friend frontend::Application * theApp();
 	friend Session & theSession();
+	friend LaTeXColors & theLaTeXColors();
 	friend LaTeXFonts & theLaTeXFonts();
 	friend CmdDef & theTopLevelCmdDef();
 	friend SpellChecker * theSpellChecker();

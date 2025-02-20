@@ -214,6 +214,8 @@ liblyxcore_a_SOURCES = \
 	Language.h \
 	LaTeX.cpp \
 	LaTeX.h \
+	LaTeXColors.cpp \
+	LaTeXColors.h \
 	LaTeXFeatures.cpp \
 	LaTeXFeatures.h \
 	LaTeXFonts.cpp \

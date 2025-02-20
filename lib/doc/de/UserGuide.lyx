@@ -9302,12 +9302,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9320,7 +9318,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9346,7 +9343,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -16403,100 +16399,13 @@ Farbe
 Haupttext
 \family default
  eingestellt ist,
- können Sie zwischen 
-\family sans
-Schwarz
-\family default
-,
- 
-\family sans
-Weiß
-\family default
-,
- 
-\family sans
-Rot
-\family default
-,
- 
-\family sans
-Grün
-\family default
-,
- 
-\family sans
-Blau
-\family default
-,
- 
-\family sans
-Cyan
-\family default
-,
- 
-\family sans
-Magenta
-\family default
-,
- 
-\family sans
-Gelb
-\family default
-,
- 
-\family sans
-Braun
-\family default
-,
- 
-\family sans
-Dunkelgrau
-\family default
-,
- 
-\family sans
-Grau
-\family default
-,
- 
-\family sans
-Hellgrau
-\family default
-,
- 
-\family sans
-Limette
-\family default
-,
- 
-\family sans
-Orange
-\family default
-,
- 
-\family sans
-Olivgrün
-\family default
-,
- 
-\family sans
-Pink
-\family default
-,
- 
-\family sans
-Purpur
-\family default
-,
- 
-\family sans
-Teal
-\family default
- und 
-\family sans
-Violett
-\family default
- wählen.
+ können Sie aus mehr als 750 vordefinierten Farben aus verschiedenen Farbschemata (\SpecialChar LaTeX
+-Basisfarben,
+ DVIPS-Farben,
+ SVG-Farben und X11-Farben) wählen.
+ Um eine bestimmte Farbe in der langen Liste zu finden,
+ können Sie dort suchen,
+ indem Sie einen Suchausdruck eintippen während die Liste offen ist.
 \end_layout
 
 \begin_layout Labeling
@@ -50299,7 +50208,7 @@ color{Farbname}
 \end_layout
 
 \begin_layout Standard
-Der Farbname kann nur einer dieser Namen sein:
+Der Farbname kann von Haus aus einer dieser Namen sein:
  
 \series bold
 black
@@ -50339,7 +50248,14 @@ white
 \series bold
 yellow
 \series default
- solange man keine eigene Farbe definiert hat (siehe den Abschnitt 
+.
+ Wenn Sie das Paket 
+\family typewriter
+xcolor
+\family default
+ mir einem entsprechenden Farbschema geladen haben,
+ können Sie auch jede weitere vordefinierte Farbe dieses Schemas verwenden.
+ Außerdem können Sie eine eigene Farbe definieren (siehe den Abschnitt 
 \emph on
 Farbige Tabellen
 \emph default

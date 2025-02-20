@@ -1163,16 +1163,53 @@ string const LaTeXFeatures::getColorOptions() const
 	// for more info see Bufferparams.cpp
 
 	// [x]color.sty
-	if (mustProvide("color") || mustProvide("xcolor")) {
+	string clashdefs;
+	if (isRequired("xcolor:svgnames")) {
+		// Handle clashing x11colors
+		for (auto const & cc : theLaTeXColors().getSVGClashColors()) {
+			if (lcolor.getFromLyXName(cc.first, false) != Color_none) {
+				string const nlatex = "DVIPS" + theLaTeXColors().getLaTeXColor(cc.first).latex();
+				lcolor.setLaTeXName(cc.first, nlatex);
+				clashdefs += "\\DefineNamedColor{named}{" + nlatex + "}{cmyk}{" + cc.second + "}\n";
+			}
+		}
+	}
+	vector<string> models;
+	if (isRequired("xcolor:dvipsnames"))
+		models.push_back("dvipsnames");
+	if (isRequired("xcolor:svgnames"))
+		models.push_back("svgnames");
+	if (isRequired("xcolor:x11names"))
+		models.push_back("x11names");
+	if ((mustProvide("color") && !isRequired("xcolor") && !isProvided("xcolor"))
+	    || mustProvide("xcolor")) {
 		string const package =
-			(mustProvide("xcolor") ? "xcolor" : "color");
+			(isRequired("xcolor") ? "xcolor" : "color");
 		if (params_.graphics_driver == "default"
-			|| params_.graphics_driver == "none")
-			colors << "\\usepackage{" << package << "}\n";
-		else
+			|| params_.graphics_driver == "none") {
+			string const opts = models.empty()
+					? string()
+					: "[" + getStringFromVector(models) + "]";
+			colors << "\\usepackage" << opts << "{" << package << "}\n";
+		} else {
+			string const opts = models.empty()
+					? string()
+					: "," + getStringFromVector(models);
 			colors << "\\usepackage["
 				 << params_.graphics_driver
+				 << opts
 				 << "]{" << package << "}\n";
+		}
+		colors << clashdefs;
+	} else if (!models.empty()) {
+		// If xcolors is leoaded by a class/package, we still
+		// need to load the requested models
+		colors << "\\AtBeginDocument{\\SetKeys[xcolor]{"
+		       << getStringFromVector(models)
+		       << "}";
+		if (!clashdefs.empty())
+			colors << "\n" << clashdefs;
+		colors << "}\n";
 	}
 
 	// the following 3 color commands must be set after color

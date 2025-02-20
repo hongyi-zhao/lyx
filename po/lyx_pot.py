@@ -514,6 +514,32 @@ def latexfonts_l10n(input_files, output, base):
     out.close()
 
 
+def latexcolors_l10n(input_files, output, base):
+    '''Generate pot file from lib/latexcolors'''
+    out = io.open(output, 'w', encoding='utf_8', newline='\n')
+    GuiName = re.compile(r'^[^#]*GuiName\s+(.*)', re.IGNORECASE)
+    CategoryName = re.compile(r'^\s*Category\s+(.*\S)\s*$', re.IGNORECASE)
+
+    for src in input_files:
+        descStartLine = -1
+        descLines = []
+        lineno = 0
+        for line in io.open(src, encoding='utf_8').readlines():
+            lineno += 1
+            res = GuiName.search(line)
+            if res != None:
+                string = res.group(1)
+                writeString(out, src, base, lineno, string)
+                continue
+            res = CategoryName.search(line)
+            if res != None:
+                string = res.group(1)
+                writeString(out, src, base, lineno, string)
+                continue
+
+    out.close()
+
+
 def external_l10n(input_files, output, base):
     '''Generate pot file from lib/xtemplates'''
     output = io.open(output, 'w', encoding='utf_8', newline='\n')
@@ -690,6 +716,7 @@ where
         layouttranslations: create lib/layouttranslations from po/*.po and lib/layouts/*
         qt: qt ui files
         languages: file lib/languages
+        latexcolors: file lib/latexcolors
         latexfonts: file lib/latexfonts
         encodings: file lib/encodings
         external: external templates files
@@ -719,7 +746,7 @@ if __name__ == '__main__':
         elif opt in ['-s', '--src_file']:
             input_files = [f.strip() for f in io.open(value, encoding='utf_8')]
 
-    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt', 'languages', 'latexfonts', 'encodings', 'external', 'formats', 'examples_templates', 'tabletemplates'] or output is None:
+    if input_type not in ['ui', 'layouts', 'layouttranslations', 'qt', 'languages', 'latexcolors', 'latexfonts', 'encodings', 'external', 'formats', 'examples_templates', 'tabletemplates'] or output is None:
         print('Wrong input type or output filename.')
         sys.exit(1)
 
@@ -734,6 +761,8 @@ if __name__ == '__main__':
 
     if input_type == 'ui':
         ui_l10n(input_files, output, base)
+    elif input_type == 'latexcolors':
+        latexcolors_l10n(input_files, output, base)
     elif input_type == 'latexfonts':
         latexfonts_l10n(input_files, output, base)
     elif input_type == 'layouts':

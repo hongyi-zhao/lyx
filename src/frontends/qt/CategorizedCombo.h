@@ -47,7 +47,8 @@ public:
 	void addItemSort(QString const & item, QString const & guiname,
 			 QString const & category, QString const & tooltip,
 			 bool sorted, bool sortedByCat, bool sortCats,
-			 bool available, bool nocategories = false);
+			 bool available, bool nocategories = false,
+			 QString color = QString());
 	///
 	QString getData(int row) const;
 	///
@@ -61,6 +62,8 @@ public:
 	bool eventFilter(QObject * o, QEvent * e) override;
 	///
 	QString const & filter() const;
+	///
+	void setColorIcon(int const i, QString const color);
 
 private Q_SLOTS:
 	///

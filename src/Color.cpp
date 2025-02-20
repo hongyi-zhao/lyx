@@ -528,13 +528,15 @@ void ColorSet::addColor(ColorCode c, string const & lyxname)
 }
 
 
-ColorCode ColorSet::getFromLyXName(string const & lyxname) const
+ColorCode ColorSet::getFromLyXName(string const & lyxname,
+				   bool const warn_not_found) const
 {
 	string const lcname = ascii_lowercase(lyxname);
 	Transform::const_iterator it = lyxcolors.find(lcname);
 	if (it == lyxcolors.end()) {
-		LYXERR0("ColorSet::getFromLyXName: Unknown color \""
-		       << lyxname << '"');
+		if (warn_not_found)
+			LYXERR0("ColorSet::getFromLyXName: Unknown color \""
+			       << lyxname << '"');
 		return Color_none;
 	}
 
@@ -542,12 +544,14 @@ ColorCode ColorSet::getFromLyXName(string const & lyxname) const
 }
 
 
-ColorCode ColorSet::getFromLaTeXName(string const & latexname) const
+ColorCode ColorSet::getFromLaTeXName(string const & latexname,
+				     bool const warn_not_found) const
 {
 	Transform::const_iterator it = latexcolors.find(latexname);
 	if (it == latexcolors.end()) {
-		lyxerr << "ColorSet::getFromLaTeXName: Unknown color \""
-		       << latexname << '"' << endl;
+		if (warn_not_found)
+			lyxerr << "ColorSet::getFromLaTeXName: Unknown color \""
+			       << latexname << '"' << endl;
 		return Color_none;
 	}
 

@@ -92,6 +92,8 @@ private:
 	void setBar(FontInfo & fi, FontDeco val);
 	///
 	void setStrike(FontInfo & fi, FontDeco val);
+	///
+	void fillComboColor();
 
 	QList<FamilyPair> family;
 	QList<SeriesPair> series;
@@ -99,7 +101,6 @@ private:
 	QList<SizePair>   size;
 	QList<BarPair>    bar;
 	QList<BarPair>    strike;
-	QList<ColorCode> color;
 	QList<LanguagePair> language;
 
 	///

@@ -51,6 +51,8 @@ public:
 	///
 	bool minted() const { return h_use_minted; }
 	///
+	bool svgnames() const { return h_use_xcolor_svgnames; }
+	///
 	std::string nomenclOpts() const { return h_nomencl_options; }
 	/// The document language
 	std::string docLanguage() const { return h_language; }
@@ -259,6 +261,7 @@ private:
 	bool h_use_refstyle;
 	bool h_use_minted;
 	std::string h_nomencl_options;
+	bool h_use_xcolor_svgnames;
 
 	/*!
 	 * Add package \p name with options \p options to used_packages.

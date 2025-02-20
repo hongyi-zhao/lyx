@@ -52,6 +52,8 @@ public:
 private:
 	Inset * clone() const override;
 	///
+	void initLaTeXColor(std::string const & col) const;
+	///
 	bool oldstyle_;
 	/// Our color. Only valid LaTeX colors are allowed.
 	docstring color_;

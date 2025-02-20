@@ -24,6 +24,7 @@
 
 #include <ostream>
 
+using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
@@ -39,7 +40,9 @@ InsetMathColor::InsetMathColor(Buffer * buf, bool oldstyle,
 		docstring const & color)
 	: InsetMathNest(buf, 1), oldstyle_(oldstyle), color_(color),
 	  current_mode_(UNDECIDED_MODE)
-{}
+{
+	initLaTeXColor(to_ascii(color_));
+}
 
 
 Inset * InsetMathColor::clone() const
@@ -63,7 +66,7 @@ void InsetMathColor::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy = pi.base.changeEnsureMath(current_mode_);
 
 	ColorCode origcol = pi.base.font.color();
-	pi.base.font.setColor(lcolor.getFromLaTeXName(to_utf8(color_)));
+	pi.base.font.setColor(lcolor.getFromLaTeXName(to_utf8(color_), false));
 	cell(0).draw(pi, x, y);
 	pi.base.font.setColor(origcol);
 }
@@ -80,23 +83,16 @@ void InsetMathColor::validate(LaTeXFeatures & features) const
 {
 	InsetMathNest::validate(features);
 	if (!normalcolor(color_)) {
-		switch (lcolor.getFromLaTeXName(to_utf8(color_))) {
-			case Color_brown:
-			case Color_darkgray:
-			case Color_gray:
-			case Color_lightgray:
-			case Color_lime:
-			case Color_olive:
-			case Color_orange:
-			case Color_pink:
-			case Color_purple:
-			case Color_teal:
-			case Color_violet:
+		string const col = theLaTeXColors().getFromLaTeXColor(to_utf8(color_));
+		if (theLaTeXColors().isLaTeXColor(col)) {
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(col);
+			for (auto const & r : lc.req())
+				features.require(r);
+			features.require("color");
+			if (!lc.model().empty()) {
 				features.require("xcolor");
-				break;
-			default:
-				features.require("color");
-				break;
+				features.require("xcolor:" + lc.model());
+			}
 		}
 	}
 }
@@ -158,6 +154,20 @@ void InsetMathColor::normalize(NormalStream & os) const
 void InsetMathColor::infoize(odocstream & os) const
 {
 	os << bformat(_("Color: %1$s"), color_);
+}
+
+void InsetMathColor::initLaTeXColor(string const & col) const
+{
+	ColorCode cc = lcolor.getFromLaTeXName(col, false);
+	if (cc != Color_none)
+		return;
+	string const lyxname = theLaTeXColors().getFromLaTeXColor(col);
+	if (!lyxname.empty()) {
+		LaTeXColor const lc = theLaTeXColors().getLaTeXColor(lyxname);
+		lcolor.setColor(lyxname, lc.hexname());
+		lcolor.setLaTeXName(lyxname, lc.latex());
+		lcolor.setGUIName(lyxname, to_ascii(lc.guiname()));
+	}
 }
 
 

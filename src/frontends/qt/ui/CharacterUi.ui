@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>545</width>
-    <height>428</height>
+    <height>374</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -150,6 +150,29 @@
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
          <layout class="QGridLayout" name="gridLayout_3">
+          <item row="2" column="1">
+           <widget class="QComboBox" name="strikeCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Strike-through text</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="ulineLA">
+            <property name="text">
+             <string>U&amp;nderlining:</string>
+            </property>
+            <property name="buddy">
+             <cstring>ulineCO</cstring>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="colorLA">
             <property name="enabled">
@@ -167,38 +190,12 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="colorCO">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+           <widget class="lyx::frontend::CategorizedCombo" name="colorCO">
+            <property name="inputMethodHints">
+             <set>Qt::InputMethodHint::ImhDigitsOnly|Qt::InputMethodHint::ImhLatinOnly</set>
             </property>
-            <property name="toolTip">
-             <string>Font color</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="ulineLA">
-            <property name="text">
-             <string>U&amp;nderlining:</string>
-            </property>
-            <property name="buddy">
-             <cstring>ulineCO</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QComboBox" name="ulineCO">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="toolTip">
-             <string>Underlining of text</string>
+            <property name="maxVisibleItems">
+             <number>20</number>
             </property>
            </widget>
           </item>
@@ -212,8 +209,8 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QComboBox" name="strikeCO">
+          <item row="1" column="1">
+           <widget class="QComboBox" name="ulineCO">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -221,7 +218,7 @@
              </sizepolicy>
             </property>
             <property name="toolTip">
-             <string>Strike-through text</string>
+             <string>Underlining of text</string>
             </property>
            </widget>
           </item>
@@ -329,33 +326,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QDialogButtonBox" name="buttonBox">
-       <property name="standardButtons">
-        <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset|QDialogButtonBox::RestoreDefaults</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <spacer>
@@ -385,13 +356,45 @@
      </item>
     </layout>
    </item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::StandardButton::Apply|QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok|QDialogButtonBox::StandardButton::Reset|QDialogButtonBox::StandardButton::RestoreDefaults</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>lyx::frontend::CategorizedCombo</class>
+   <extends>QComboBox</extends>
+   <header>CategorizedCombo.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>familyCO</tabstop>
   <tabstop>seriesCO</tabstop>
   <tabstop>shapeCO</tabstop>
-  <tabstop>colorCO</tabstop>
   <tabstop>langCO</tabstop>
  </tabstops>
  <includes>

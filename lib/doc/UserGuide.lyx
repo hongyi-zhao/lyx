@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 631
+\lyxformat 632
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2756,7 +2756,6 @@ Word completion
 status collapsed
 
 \begin_layout Plain Layout
-
 |
 \end_layout
 
@@ -2767,7 +2766,6 @@ see
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -2778,7 +2776,6 @@ Input completion
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -8094,7 +8091,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 #
@@ -8124,7 +8120,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 Alph{enumi}.
@@ -8156,7 +8151,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 bfseries{
@@ -8184,7 +8178,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 emph{
@@ -8330,7 +8323,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 arabic{enumi}.
@@ -8442,7 +8434,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 start=4
 \end_layout
 
@@ -8513,7 +8504,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 nolistsep
 \end_layout
 
@@ -8595,7 +8585,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 labelindent=
 \backslash
 parindent,
@@ -8700,7 +8689,6 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-
 labelindent=0pt,
  labelsep=1cm,
  font=
@@ -17145,6 +17133,8 @@ text
 \family default
  is used,
  you can select 
+\change_deleted -712698321 1740035527
+
 \family sans
 Black
 \family default
@@ -17237,7 +17227,21 @@ Teal
 \family sans
 Violet
 \family default
- text.
+ text
+\change_inserted -712698321 1740035670
+from more than 750 predefined colors as defined by different color schemes (\SpecialChar LaTeX
+ base colors,
+ DVIPS colors,
+ SVG colors,
+ and X11 colors)
+\change_unchanged
+.
+
+\change_inserted -712698321 1740035725
+ To find your way through that long list,
+ you can search colors in this dropdown simply by typing while the list is open.
+\change_unchanged
+
 \begin_inset Index idx
 range none
 pageformat default
@@ -19477,7 +19481,6 @@ En una frase
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 nobreakdash
@@ -32424,7 +32427,6 @@ Here is an example URL:
 status open
 
 \begin_layout Plain Layout
-
 https://www.lyx.org
 \end_layout
 
@@ -33060,7 +33062,6 @@ literal "false"
 status open
 
 \begin_layout Plain Layout
-
 https://en.wikipedia.org/wiki/ASCII#Character_set
 \end_layout
 
@@ -33450,7 +33451,6 @@ literal "true"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/BibTeX/Programs
 \end_layout
 
@@ -35976,7 +35976,6 @@ module
 \end_layout
 
 \begin_layout Verbatim
-
 (markup-locref :open "
 \backslash
 IndexDef{" :close "}" :attr "IndexDef")
@@ -36063,7 +36062,6 @@ literal "true"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ctan.org/topic/index
 \end_layout
 
@@ -37318,7 +37316,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 %@,
  %|,
  %!,
@@ -37336,7 +37333,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 Special characters in nomenclature context which need to be escaped by `
 \backslash
 %'
@@ -37450,7 +37446,6 @@ sigma
 status collapsed
 
 \begin_layout Plain Layout
-
 $
 \backslash
 sigma$
@@ -37467,7 +37462,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 dummy entry for the character 
 \backslash
 textsf{sigma}
@@ -39019,7 +39013,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 newcommand{
 \backslash
@@ -39027,7 +39020,6 @@ question}[1]{#1}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 newcommand{
@@ -39056,7 +39048,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 newcommand{
 \backslash
@@ -39064,7 +39055,6 @@ question}[1]{}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 newcommand{
@@ -39708,7 +39698,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fbox{
 \end_layout
@@ -39720,7 +39709,6 @@ framed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -40017,7 +40005,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 pagestyle{fancy}
 \end_layout
@@ -40052,7 +40039,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 rightmark
@@ -40096,7 +40082,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 leftmark
 \end_layout
@@ -40120,7 +40105,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 thepage
@@ -40177,7 +40161,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 Roman{page}
@@ -41127,7 +41110,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 pagestyle{headings}
 \end_layout
@@ -41456,7 +41438,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 rotatebox[origin=r]{-60}{
 \end_layout
@@ -41493,7 +41474,6 @@ with rotated
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -41504,7 +41484,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 rotatebox[origin=lb]{60}{
@@ -41521,7 +41500,6 @@ rotatebox[origin=lb]{60}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -41585,7 +41563,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fboxrule 1mm 
 \backslash
@@ -41600,7 +41577,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{cyan}{magenta}{
 \end_layout
@@ -41613,7 +41589,6 @@ This is text within a colored,
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -42523,7 +42498,6 @@ All spell-checker dictionaries supported by \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/trac/export/HEAD/dictionaries/dicts/
 \end_layout
 
@@ -42931,7 +42905,6 @@ updated thesaurus dictionaries,
 status open
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/trac/browser/dictionaries/thes/
 \end_layout
 
@@ -48767,7 +48740,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -52748,7 +52720,17 @@ yellow
 \series bold
 color name
 \series default
- unless you have defined your own color (see the section 
+ unless you have defined your own color
+\change_inserted -712698321 1740035890
+ or make sure the 
+\family typewriter
+\color blue
+xcolor
+\family default
+\color inherit
+ package is loaded with the option which defines the scheme your desired named color is in
+\change_unchanged
+ (see the section 
 \emph on
 Colored Tables
 \emph default
@@ -57006,7 +56988,6 @@ dvips
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.tug.org/texinfohtml/dvips.html#Option-details
 \end_layout
 
@@ -58384,7 +58365,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/Credits
 \end_layout
 
@@ -58491,7 +58471,6 @@ The \SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ctan.org/topic
 \end_layout
 
@@ -58518,7 +58497,6 @@ The \SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-
 https://texfaq.org/
 \end_layout
 
@@ -58558,7 +58536,6 @@ Bib\SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
@@ -58598,7 +58575,6 @@ Bib\SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
@@ -58661,7 +58637,6 @@ biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \end_layout
 
@@ -58724,7 +58699,6 @@ biber
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf
 \end_layout
 
@@ -58763,7 +58737,6 @@ makeindex
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
 \end_layout
 
@@ -58802,7 +58775,6 @@ makeindex
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
@@ -58841,7 +58813,6 @@ xindex
 status open
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/indexing/xindex/doc/xindex-doc.pdf
 \end_layout
 
@@ -58880,7 +58851,6 @@ xindy
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.xindy.org/documentation.html
 \end_layout
 
@@ -58916,7 +58886,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ams.org/publications/authors/tex/amslatex
 \end_layout
 
@@ -58979,7 +58948,6 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf
 \end_layout
 
@@ -59042,7 +59010,6 @@ enumitem
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
@@ -59105,7 +59072,6 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
@@ -59168,7 +59134,6 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf
 \end_layout
 
@@ -59231,7 +59196,6 @@ microtype
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf
 \end_layout
 
@@ -59294,7 +59258,6 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
@@ -59357,7 +59320,6 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/prettyref/prettyref.pdf
 \end_layout
 
@@ -59420,7 +59382,6 @@ refstyle
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
@@ -59456,7 +59417,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Arabic
 \end_layout
 
@@ -59492,7 +59452,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Armenian
 \end_layout
 
@@ -59528,7 +59487,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Cyrillic
 \end_layout
 
@@ -59564,7 +59522,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Farsi
 \end_layout
 
@@ -59600,7 +59557,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Hebrew
 \end_layout
 
@@ -59636,7 +59592,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Japanese
 \end_layout
 
@@ -59655,7 +59610,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 let
 \backslash
@@ -59665,7 +59619,6 @@ bibname
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -59724,7 +59677,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand*{
 \backslash
@@ -59732,7 +59684,6 @@ pagedeclaration}[1]{
 \end_layout
 
 \begin_layout Plain Layout
-
  
 \backslash
 unskip,

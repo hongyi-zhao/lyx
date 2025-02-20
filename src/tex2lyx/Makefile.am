@@ -100,6 +100,7 @@ LYX_OBJS = \
 	../Floating.o \
 	../FontInfo.o \
 	../LaTeXPackages.o \
+	../LaTeXColors.o \
 	../Layout.o \
 	../LayoutFile.o \
 	../LayoutModuleList.o \

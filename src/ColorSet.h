@@ -90,9 +90,11 @@ public:
 	std::string const getLyXName(ColorCode c) const;
 
 	/// \returns the ColorCode associated with the LyX name.
-	ColorCode getFromLyXName(std::string const & lyxname) const;
+	ColorCode getFromLyXName(std::string const & lyxname,
+				 bool warn_not_found = true) const;
 	/// \returns the ColorCode associated with the LaTeX name.
-	ColorCode getFromLaTeXName(std::string const & latexname) const;
+	ColorCode getFromLaTeXName(std::string const & latexname,
+				   bool warn_not_found = true) const;
 
 private:
 	///

@@ -1,0 +1,4571 @@
+##########################################################################
+#
+# LaTeX (color and xcolor) colors natively supported by LyX.
+#
+# Syntax:
+#
+# Color <name>
+#	LaTeXName          <latex name>
+#	SVGClash           <0|1>
+#	CMYK               "<CMYK Value>"
+#	GuiName            "<Gui Name>"
+#	HexName            <hex color value>
+#	ColorModel         <color model, e.g. svgnames>
+#	Category           "Color Category"
+#	Requires           <package>
+# EndColor
+#
+#
+# NOTES:
+#
+# * Adding a new color results in a FILE FORMAT CHANGE. So if a new color
+#   is added for the LyX distribution, the according changes need to be
+#   done.
+# * Give hex values without preceding '#' as this is a comment character
+#   in the context of this definition file.
+# * There are some color name clashes between dvipsnames and svgnames
+#   (with different color definitions), and the latter overwrite the
+#   former. In this case, we set "SVGClash 1" and specify the CMYK value.
+#   LyX will then define and use a fallback dvipsname color via
+#   \DefineNamedColor{named}{DVIPS<LaTeXName>}{cmyk}{<CMYK Value>}
+# * xcolor only needs to be explicitly required if no ColorModel is
+#   specified (i.e., for base colors). In the other cases it will
+#   be required anyway.
+#   
+#
+##########################################################################
+
+#
+# Base colors
+#
+
+Color black
+	LaTeXName	black
+	GuiName		Black
+	HexName		000000
+	Category	"LaTeX Base Colors"
+EndColor
+
+Color white
+	LaTeXName	white
+	GuiName		White
+	HexName		ffffff
+	Category	"LaTeX Base Colors"
+EndColor
+
+Color blue
+	LaTeXName	blue
+	GuiName		Blue
+	HexName		0000ff
+	Category	"LaTeX Base Colors"
+EndColor
+
+Color brown
+	LaTeXName	brown
+	GuiName		Brown
+	HexName		bf8040
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color cyan
+	LaTeXName	cyan
+	GuiName		Cyan
+	HexName		00ffff
+	Category	"LaTeX Base Colors"
+EndColor
+
+Color darkgray
+	LaTeXName	darkgray
+	GuiName		"Dark gray"
+	HexName		404040
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color gray
+	LaTeXName	gray
+	GuiName		Gray
+	HexName		808080
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color green
+	LaTeXName	green
+	GuiName		Green
+	HexName		00ff00
+	Category	"LaTeX Base Colors"
+EndColor
+
+Color lightgray
+	LaTeXName	lightgray
+	GuiName		"Light gray"
+	HexName		bfbfbf
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color lime
+	LaTeXName	lime
+	GuiName		Lime
+	HexName		bfff00
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color magenta
+	LaTeXName	magenta
+	GuiName		Magenta
+	HexName		ff00ff
+	Category	"LaTeX Base Colors"
+EndColor
+
+Color olive
+	LaTeXName	olive
+	GuiName		Olive
+	HexName		808000
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color orange
+	LaTeXName	orange
+	GuiName		Orange
+	HexName		ff8000
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color pink
+	LaTeXName	pink
+	GuiName		Pink
+	HexName		ffbfbf
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color purple
+	LaTeXName	purple
+	GuiName		Purple
+	HexName		bf0040
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color red
+	LaTeXName	red
+	GuiName		Red
+	HexName		ff0000
+	Category	"LaTeX Base Colors"
+EndColor
+
+Color teal
+	LaTeXName	teal
+	GuiName		Teal
+	HexName		008080
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color violet
+	LaTeXName	violet
+	GuiName		Violet
+	HexName		800080
+	Category	"LaTeX Base Colors"
+	Requires	xcolor
+EndColor
+
+Color yellow
+	LaTeXName	yellow
+	GuiName		Yellow
+	HexName		ffff00
+	Category	"LaTeX Base Colors"
+EndColor
+
+
+#
+# DVIPS Names
+#
+
+Color DVIPS:Apricot
+	LaTeXName	Apricot
+	GuiName		Apricot
+	HexName		FBB982
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Aquamarine
+	LaTeXName	Aquamarine
+	SVGClash	1
+	CMYK		"0.82,0,0.30,0"
+	GuiName		Aquamarine
+	HexName		00B5BE
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Bittersweet
+	LaTeXName	Bittersweet
+	GuiName		Bittersweet
+	HexName		C04F17
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Black
+	LaTeXName	Black
+	GuiName		Black
+	HexName		221E1F
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Blue
+	LaTeXName	Blue
+	SVGClash	1
+	CMYK		"1,1,0,0"
+	GuiName		Blue
+	HexName		2D2F92
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:BlueGreen
+	LaTeXName	BlueGreen
+	GuiName		BlueGreen
+	HexName		00B3B8
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:BlueViolet
+	LaTeXName	BlueViolet
+	GuiName		BlueViolet
+	HexName		473992
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:BrickRed
+	LaTeXName	BrickRed
+	GuiName		BrickRed
+	HexName		B6321C
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Brown
+	LaTeXName	Brown
+	SVGClash	1
+	CMYK		"0,0.81,1,0.60"
+	GuiName		Brown
+	HexName		792500
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:BurntOrange
+	LaTeXName	BurntOrange
+	GuiName		BurntOrange
+	HexName		F7921D
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:CadetBlue
+	LaTeXName	CadetBlue
+	SVGClash	1
+	CMYK		"0.62,0.57,0.23,0"
+	GuiName		CadetBlue
+	HexName		74729A
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:CarnationPink
+	LaTeXName	CarnationPink
+	GuiName		CarnationPink
+	HexName		F282B4
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Cerulean
+	LaTeXName	Cerulean
+	GuiName		Cerulean
+	HexName		00A2E3
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:CornflowerBlue
+	LaTeXName	CornflowerBlue
+	SVGClash	1
+	CMYK		"0.65,0.13,0,0"
+	GuiName		CornflowerBlue
+	HexName		41B0E4
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Cyan
+	LaTeXName	Cyan
+	SVGClash	1
+	CMYK		"1,0,0,0"
+	GuiName		Cyan
+	HexName		00AEEF
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Dandelion
+	LaTeXName	Dandelion
+	GuiName		Dandelion
+	HexName		FDBC42
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:DarkOrchid
+	LaTeXName	DarkOrchid
+	SVGClash	1
+	CMYK		"0.40,0.80,0.20,0"
+	GuiName		DarkOrchid
+	HexName		A4538A
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Emerald
+	LaTeXName	Emerald
+	GuiName		Emerald
+	HexName		00A99D
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:ForestGreen
+	LaTeXName	ForestGreen
+	SVGClash	1
+	CMYK		"0.91,0,0.88,0.12"
+	GuiName		ForestGreen
+	HexName		009B55
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Fuchsia
+	LaTeXName	Fuchsia
+	SVGClash	1
+	CMYK		"0.47,0.91,0,0.08"
+	GuiName		Fuchsia
+	HexName		8C368C
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Goldenrod
+	LaTeXName	Goldenrod
+	SVGClash	1
+	CMYK		"0,0.10,0.84,0"
+	GuiName		Goldenrod
+	HexName		FFDF42
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Gray
+	LaTeXName	Gray
+	SVGClash	1
+	CMYK		"0,0,0,0.50"
+	GuiName		Gray
+	HexName		949698
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Green
+	LaTeXName	Green
+	SVGClash	1
+	CMYK		"1,0,1,0"
+	GuiName		Green
+	HexName		00A64F
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:GreenYellow
+	LaTeXName	GreenYellow
+	SVGClash	1
+	CMYK		"0.15,0,0.69,0"
+	GuiName		GreenYellow
+	HexName		DFE674
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:JungleGreen
+	LaTeXName	JungleGreen
+	GuiName		JungleGreen
+	HexName		00A99A
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Lavender
+	LaTeXName	Lavender
+	SVGClash	1
+	CMYK		"0,0.48,0,0"
+	GuiName		Lavender
+	HexName		F49EC4
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:LimeGreen
+	LaTeXName	LimeGreen
+	SVGClash	1
+	CMYK		"1,0,1,0"
+	GuiName		LimeGreen
+	HexName		8DC73E
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Magenta
+	LaTeXName	Magenta
+	SVGClash	1
+	CMYK		"0,1,0,0"
+	GuiName		Magenta
+	HexName		EC008C
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Mahogany
+	LaTeXName	Mahogany
+	GuiName		Mahogany
+	HexName		A9341F
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Maroon
+	LaTeXName	Maroon
+	SVGClash	1
+	CMYK		"0,0.87,0.68,0.32"
+	GuiName		Maroon
+	HexName		AF3235
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Melon
+	LaTeXName	Melon
+	GuiName		Melon
+	HexName		F89E7B
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:MidnightBlue
+	LaTeXName	MidnightBlue
+	SVGClash	1
+	CMYK		"0.98,0.13,0,0.43"
+	GuiName		MidnightBlue
+	HexName		006795
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Mulberry
+	LaTeXName	Mulberry
+	GuiName		Mulberry
+	HexName		A93C93
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:NavyBlue
+	LaTeXName	NavyBlue
+	SVGClash	1
+	CMYK		"0.94,0.54,0,0"
+	GuiName		NavyBlue
+	HexName		006EB8
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:OliveGreen
+	LaTeXName	OliveGreen
+	GuiName		OliveGreen
+	HexName		3C8031
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Orange
+	LaTeXName	Orange
+	SVGClash	1
+	CMYK		"0,0.61,0.87,0"
+	GuiName		Orange
+	HexName		F58137
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:OrangeRed
+	LaTeXName	OrangeRed
+	SVGClash	1
+	CMYK		"0,1,0.50,0"
+	GuiName		OrangeRed
+	HexName		ED135A
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Orchid
+	LaTeXName	Orchid
+	SVGClash	1
+	CMYK		"0.32,0.64,0,0"
+	GuiName		Orchid
+	HexName		AF72B0
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Peach
+	LaTeXName	Peach
+	GuiName		Peach
+	HexName		F7965A
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Periwinkle
+	LaTeXName	Periwinkle
+	GuiName		Periwinkle
+	HexName		7977B8
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:PineGreen
+	LaTeXName	PineGreen
+	GuiName		PineGreen
+	HexName		008B72
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Plum
+	LaTeXName	Plum
+	SVGClash	1
+	CMYK		"0.50,1,0,0"
+	GuiName		Plum
+	HexName		92268F
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:ProcessBlue
+	LaTeXName	ProcessBlue
+	GuiName		ProcessBlue
+	HexName		00B0F0
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Purple
+	LaTeXName	Purple
+	SVGClash	1
+	CMYK		"0.45,0.86,0,0"
+	GuiName		Purple
+	HexName		99479B
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:RawSienna
+	LaTeXName	RawSienna
+	GuiName		RawSienna
+	HexName		974006
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Red
+	LaTeXName	Red
+	SVGClash	1
+	CMYK		"0,1,1,0"
+	GuiName		Red
+	HexName		ED1B23
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:RedOrange
+	LaTeXName	RedOrange
+	GuiName		RedOrange
+	HexName		F26035
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:RedViolet
+	LaTeXName	RedViolet
+	GuiName		RedViolet
+	HexName		A1246B
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Rhodamine
+	LaTeXName	Rhodamine
+	GuiName		Rhodamine
+	HexName		EF559F
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:RoyalBlue
+	LaTeXName	RoyalBlue
+	SVGClash	1
+	CMYK		"1,0.50,0,0"
+	GuiName		RoyalBlue
+	HexName		0071BC
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:RoyalPurple
+	LaTeXName	RoyalPurple
+	GuiName		RoyalPurple
+	HexName		613F99
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:RubineRed
+	LaTeXName	RubineRed
+	GuiName		RubineRed
+	HexName		ED017D
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Salmon
+	LaTeXName	Salmon
+	SVGClash	1
+	CMYK		"0,0.53,0.38,0"
+	GuiName		Salmon
+	HexName		F69289
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:SeaGreen
+	LaTeXName	SeaGreen
+	SVGClash	1
+	CMYK		"0.69,0,0.50,0"
+	GuiName		SeaGreen
+	HexName		3FBC9D
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Sepia
+	LaTeXName	Sepia
+	GuiName		Sepia
+	HexName		671800
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:SkyBlue
+	LaTeXName	SkyBlue
+	SVGClash	1
+	CMYK		"0.62,0,0.12,0"
+	GuiName		SkyBlue
+	HexName		46C5DD
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:SpringGreen
+	LaTeXName	SpringGreen
+	SVGClash	1
+	CMYK		"0.26,0,0.76,0"
+	GuiName		SpringGreen
+	HexName		C6DC67
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Tan
+	LaTeXName	Tan
+	SVGClash	1
+	CMYK		"0.14,0.42,0.56,0"
+	GuiName		Tan
+	HexName		DA9D76
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:TealBlue
+	LaTeXName	TealBlue
+	GuiName		TealBlue
+	HexName		00AEB3
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Thistle
+	LaTeXName	Thistle
+	SVGClash	1
+	CMYK		"0.12,0.59,0,0"
+	GuiName		Thistle
+	HexName		D883B7
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Turquoise
+	LaTeXName	Turquoise
+	SVGClash	1
+	CMYK		"0.85,0,0.20,0"
+	GuiName		Turquoise
+	HexName		00B4CE
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Violet
+	LaTeXName	Violet
+	SVGClash	1
+	CMYK		"0.79,0.88,0,0"
+	GuiName		Violet
+	HexName		58429B
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:VioletRed
+	LaTeXName	VioletRed
+	SVGClash	1
+	CMYK		"0,0.81,0,0"
+	GuiName		VioletRed
+	HexName		EF58A0
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:White
+	LaTeXName	White
+	GuiName		White
+	HexName		FFFFFF
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:WildStrawberry
+	LaTeXName	WildStrawberry
+	GuiName		WildStrawberry
+	HexName		EE2967
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:Yellow
+	LaTeXName	Yellow
+	SVGClash	1
+	CMYK		"0,0,1,0"
+	GuiName		Yellow
+	HexName		FFF200
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:YellowGreen
+	LaTeXName	YellowGreen
+	SVGClash	1
+	CMYK		"0.44,0,0.74,0"
+	GuiName		YellowGreen
+	HexName		98CC70
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+Color DVIPS:YellowOrange
+	LaTeXName	YellowOrange
+	GuiName		YellowOrange
+	HexName		FAA21A
+	ColorModel	dvipsnames
+	Category	"DVIPS Names"
+EndColor
+
+
+#
+# SVG Names
+#
+
+Color SVG:AliceBlue
+	LaTeXName	AliceBlue
+	GuiName		AliceBlue
+	HexName		EFF7FF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:AntiqueWhite
+	LaTeXName	AntiqueWhite
+	GuiName		AntiqueWhite
+	HexName		F9EAD7
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Aqua
+	LaTeXName	Aqua
+	GuiName		Aqua
+	HexName		00FFFF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Aquamarine
+	LaTeXName	Aquamarine
+	GuiName		Aquamarine
+	HexName		7EFFD3
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Azure
+	LaTeXName	Azure
+	GuiName		Azure
+	HexName		EFFFFF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Beige
+	LaTeXName	Beige
+	GuiName		Beige
+	HexName		F4F4DC
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Bisque
+	LaTeXName	Bisque
+	GuiName		Bisque
+	HexName		FFE3C4
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Black
+	LaTeXName	Black
+	GuiName		Black
+	HexName		000000
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:BlanchedAlmond
+	LaTeXName	BlanchedAlmond
+	GuiName		BlanchedAlmond
+	HexName		FFEACD
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Blue
+	LaTeXName	Blue
+	GuiName		Blue
+	HexName		0000FF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:BlueViolet
+	LaTeXName	BlueViolet
+	GuiName		BlueViolet
+	HexName		892BE2
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Brown
+	LaTeXName	Brown
+	GuiName		Brown
+	HexName		A52A2A
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:BurlyWood
+	LaTeXName	BurlyWood
+	GuiName		BurlyWood
+	HexName		DDB787
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:CadetBlue
+	LaTeXName	CadetBlue
+	GuiName		CadetBlue
+	HexName		5E9EA0
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Chartreuse
+	LaTeXName	Chartreuse
+	GuiName		Chartreuse
+	HexName		7EFF00
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Chocolate
+	LaTeXName	Chocolate
+	GuiName		Chocolate
+	HexName		D2681D
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Coral
+	LaTeXName	Coral
+	GuiName		Coral
+	HexName		FF7E4F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:CornflowerBlue
+	LaTeXName	CornflowerBlue
+	GuiName		CornflowerBlue
+	HexName		6395ED
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Cornsilk
+	LaTeXName	Cornsilk
+	GuiName		Cornsilk
+	HexName		FFF7DC
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Crimson
+	LaTeXName	Crimson
+	GuiName		Crimson
+	HexName		DC143B
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Cyan
+	LaTeXName	Cyan
+	GuiName		Cyan
+	HexName		00FFFF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkBlue
+	LaTeXName	DarkBlue
+	GuiName		DarkBlue
+	HexName		00008A
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkCyan
+	LaTeXName	DarkCyan
+	GuiName		DarkCyan
+	HexName		008A8A
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkGoldenrod
+	LaTeXName	DarkGoldenrod
+	GuiName		DarkGoldenrod
+	HexName		B7850B
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkGray
+	LaTeXName	DarkGray
+	GuiName		DarkGray
+	HexName		A9A9A9
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkGreen
+	LaTeXName	DarkGreen
+	GuiName		DarkGreen
+	HexName		006300
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+# Duplicate to SVG:DarkGray
+# Color SVG:DarkGrey
+# 	LaTeXName	DarkGrey
+# 	GuiName		DarkGrey
+# 	HexName		A9A9A9
+# 	ColorModel	svgnames
+# 	Category	"SVG Names"
+# EndColor
+
+Color SVG:DarkKhaki
+	LaTeXName	DarkKhaki
+	GuiName		DarkKhaki
+	HexName		BCB66B
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkMagenta
+	LaTeXName	DarkMagenta
+	GuiName		DarkMagenta
+	HexName		8A008A
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkOliveGreen
+	LaTeXName	DarkOliveGreen
+	GuiName		DarkOliveGreen
+	HexName		546B2F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkOrange
+	LaTeXName	DarkOrange
+	GuiName		DarkOrange
+	HexName		FF8C00
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkOrchid
+	LaTeXName	DarkOrchid
+	GuiName		DarkOrchid
+	HexName		9931CC
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkRed
+	LaTeXName	DarkRed
+	GuiName		DarkRed
+	HexName		8A0000
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkSalmon
+	LaTeXName	DarkSalmon
+	GuiName		DarkSalmon
+	HexName		E8967A
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkSeaGreen
+	LaTeXName	DarkSeaGreen
+	GuiName		DarkSeaGreen
+	HexName		8EBB8E
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkSlateBlue
+	LaTeXName	DarkSlateBlue
+	GuiName		DarkSlateBlue
+	HexName		483D8A
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkSlateGray
+	LaTeXName	DarkSlateGray
+	GuiName		DarkSlateGray
+	HexName		2F4F4F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+# Duplicate to SVG:DarkSlateGray
+# Color SVG:DarkSlateGrey
+# 	LaTeXName	DarkSlateGrey
+# 	GuiName		DarkSlateGrey
+# 	HexName		2F4F4F
+# 	ColorModel	svgnames
+# 	Category	"SVG Names"
+# EndColor
+
+Color SVG:DarkTurquoise
+	LaTeXName	DarkTurquoise
+	GuiName		DarkTurquoise
+	HexName		00CED1
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DarkViolet
+	LaTeXName	DarkViolet
+	GuiName		DarkViolet
+	HexName		9300D3
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DeepPink
+	LaTeXName	DeepPink
+	GuiName		DeepPink
+	HexName		FF1492
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DeepSkyBlue
+	LaTeXName	DeepSkyBlue
+	GuiName		DeepSkyBlue
+	HexName		00BFFF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:DimGray
+	LaTeXName	DimGray
+	GuiName		DimGray
+	HexName		686868
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+# Duplicate to SVG:DimGray
+# Color SVG:DimGrey
+# 	LaTeXName	DimGrey
+# 	GuiName		DimGrey
+# 	HexName		686868
+# 	ColorModel	svgnames
+# 	Category	"SVG Names"
+# EndColor
+
+Color SVG:DodgerBlue
+	LaTeXName	DodgerBlue
+	GuiName		DodgerBlue
+	HexName		1D90FF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:FireBrick
+	LaTeXName	FireBrick
+	GuiName		FireBrick
+	HexName		B12121
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:FloralWhite
+	LaTeXName	FloralWhite
+	GuiName		FloralWhite
+	HexName		FFF9EF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:ForestGreen
+	LaTeXName	ForestGreen
+	GuiName		ForestGreen
+	HexName		218A21
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Fuchsia
+	LaTeXName	Fuchsia
+	GuiName		Fuchsia
+	HexName		FF00FF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Gainsboro
+	LaTeXName	Gainsboro
+	GuiName		Gainsboro
+	HexName		DCDCDC
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:GhostWhite
+	LaTeXName	GhostWhite
+	GuiName		GhostWhite
+	HexName		F7F7FF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Gold
+	LaTeXName	Gold
+	GuiName		Gold
+	HexName		FFD700
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Goldenrod
+	LaTeXName	Goldenrod
+	GuiName		Goldenrod
+	HexName		DAA51F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Gray
+	LaTeXName	Gray
+	GuiName		Gray
+	HexName		7F7F7F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Green
+	LaTeXName	Green
+	GuiName		Green
+	HexName		007F00
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:GreenYellow
+	LaTeXName	GreenYellow
+	GuiName		GreenYellow
+	HexName		ADFF2F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+# Duplicate to SVG:Gray
+# Color SVG:Grey
+# 	LaTeXName	Grey
+# 	GuiName		Grey
+# 	HexName		7F7F7F
+# 	ColorModel	svgnames
+# 	Category	"SVG Names"
+# EndColor
+
+Color SVG:Honeydew
+	LaTeXName	Honeydew
+	GuiName		Honeydew
+	HexName		EFFFEF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:HotPink
+	LaTeXName	HotPink
+	GuiName		HotPink
+	HexName		FF68B3
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:IndianRed
+	LaTeXName	IndianRed
+	GuiName		IndianRed
+	HexName		CD5B5B
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Indigo
+	LaTeXName	Indigo
+	GuiName		Indigo
+	HexName		4A0082
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Ivory
+	LaTeXName	Ivory
+	GuiName		Ivory
+	HexName		FFFFEF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Khaki
+	LaTeXName	Khaki
+	GuiName		Khaki
+	HexName		EFE58C
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Lavender
+	LaTeXName	Lavender
+	GuiName		Lavender
+	HexName		E5E5F9
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LavenderBlush
+	LaTeXName	LavenderBlush
+	GuiName		LavenderBlush
+	HexName		FFEFF4
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LawnGreen
+	LaTeXName	LawnGreen
+	GuiName		LawnGreen
+	HexName		7CFC00
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LemonChiffon
+	LaTeXName	LemonChiffon
+	GuiName		LemonChiffon
+	HexName		FFF9CD
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightBlue
+	LaTeXName	LightBlue
+	GuiName		LightBlue
+	HexName		ADD8E5
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightCoral
+	LaTeXName	LightCoral
+	GuiName		LightCoral
+	HexName		EF7F7F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightCyan
+	LaTeXName	LightCyan
+	GuiName		LightCyan
+	HexName		E0FFFF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightGoldenrod
+	LaTeXName	LightGoldenrod
+	GuiName		LightGoldenrod
+	HexName		EDDD82
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightGoldenrodYellow
+	LaTeXName	LightGoldenrodYellow
+	GuiName		LightGoldenrodYellow
+	HexName		F9F9D2
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightGray
+	LaTeXName	LightGray
+	GuiName		LightGray
+	HexName		D3D3D3
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightGreen
+	LaTeXName	LightGreen
+	GuiName		LightGreen
+	HexName		90ED90
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+# Duplicate to SVG:LightGray
+# Color SVG:LightGrey
+# 	LaTeXName	LightGrey
+# 	GuiName		LightGrey
+# 	HexName		D3D3D3
+# 	ColorModel	svgnames
+# 	Category	"SVG Names"
+# EndColor
+
+Color SVG:LightPink
+	LaTeXName	LightPink
+	GuiName		LightPink
+	HexName		FFB5C0
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightSalmon
+	LaTeXName	LightSalmon
+	GuiName		LightSalmon
+	HexName		FFA07A
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightSeaGreen
+	LaTeXName	LightSeaGreen
+	GuiName		LightSeaGreen
+	HexName		1FB1AA
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightSkyBlue
+	LaTeXName	LightSkyBlue
+	GuiName		LightSkyBlue
+	HexName		87CEF9
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightSlateBlue
+	LaTeXName	LightSlateBlue
+	GuiName		LightSlateBlue
+	HexName		8470FF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightSlateGray
+	LaTeXName	LightSlateGray
+	GuiName		LightSlateGray
+	HexName		778799
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+# Duplicate to SVG:LightSlateGray
+# Color SVG:LightSlateGrey
+# 	LaTeXName	LightSlateGrey
+# 	GuiName		LightSlateGrey
+# 	HexName		778799
+# 	ColorModel	svgnames
+# 	Category	"SVG Names"
+# EndColor
+
+Color SVG:LightSteelBlue
+	LaTeXName	LightSteelBlue
+	GuiName		LightSteelBlue
+	HexName		AFC4DD
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LightYellow
+	LaTeXName	LightYellow
+	GuiName		LightYellow
+	HexName		FFFFE0
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Lime
+	LaTeXName	Lime
+	GuiName		Lime
+	HexName		00FF00
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:LimeGreen
+	LaTeXName	LimeGreen
+	GuiName		LimeGreen
+	HexName		31CD31
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Linen
+	LaTeXName	Linen
+	GuiName		Linen
+	HexName		F9EFE5
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Magenta
+	LaTeXName	Magenta
+	GuiName		Magenta
+	HexName		FF00FF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Maroon
+	LaTeXName	Maroon
+	GuiName		Maroon
+	HexName		7F0000
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumAquamarine
+	LaTeXName	MediumAquamarine
+	GuiName		MediumAquamarine
+	HexName		66CDAA
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumBlue
+	LaTeXName	MediumBlue
+	GuiName		MediumBlue
+	HexName		0000CD
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumOrchid
+	LaTeXName	MediumOrchid
+	GuiName		MediumOrchid
+	HexName		BA54D3
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumPurple
+	LaTeXName	MediumPurple
+	GuiName		MediumPurple
+	HexName		9270DB
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumSeaGreen
+	LaTeXName	MediumSeaGreen
+	GuiName		MediumSeaGreen
+	HexName		3BB271
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumSlateBlue
+	LaTeXName	MediumSlateBlue
+	GuiName		MediumSlateBlue
+	HexName		7B68ED
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumSpringGreen
+	LaTeXName	MediumSpringGreen
+	GuiName		MediumSpringGreen
+	HexName		00F99A
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumTurquoise
+	LaTeXName	MediumTurquoise
+	GuiName		MediumTurquoise
+	HexName		48D1CC
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MediumVioletRed
+	LaTeXName	MediumVioletRed
+	GuiName		MediumVioletRed
+	HexName		C61584
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MidnightBlue
+	LaTeXName	MidnightBlue
+	GuiName		MidnightBlue
+	HexName		181870
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MintCream
+	LaTeXName	MintCream
+	GuiName		MintCream
+	HexName		F4FFF9
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:MistyRose
+	LaTeXName	MistyRose
+	GuiName		MistyRose
+	HexName		FFE3E1
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Moccasin
+	LaTeXName	Moccasin
+	GuiName		Moccasin
+	HexName		FFE3B5
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:NavajoWhite
+	LaTeXName	NavajoWhite
+	GuiName		NavajoWhite
+	HexName		FFDDAD
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+# Duplicate to SVG:NavyBlue
+# Color SVG:Navy
+# 	LaTeXName	Navy
+# 	GuiName		Navy
+# 	HexName		00007F
+# 	ColorModel	svgnames
+# 	Category	"SVG Names"
+# EndColor
+
+Color SVG:NavyBlue
+	LaTeXName	NavyBlue
+	GuiName		NavyBlue
+	HexName		00007F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:OldLace
+	LaTeXName	OldLace
+	GuiName		OldLace
+	HexName		FCF4E5
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Olive
+	LaTeXName	Olive
+	GuiName		Olive
+	HexName		7F7F00
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:OliveDrab
+	LaTeXName	OliveDrab
+	GuiName		OliveDrab
+	HexName		6B8D22
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Orange
+	LaTeXName	Orange
+	GuiName		Orange
+	HexName		FFA500
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:OrangeRed
+	LaTeXName	OrangeRed
+	GuiName		OrangeRed
+	HexName		FF4400
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Orchid
+	LaTeXName	Orchid
+	GuiName		Orchid
+	HexName		DA70D6
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:PaleGoldenrod
+	LaTeXName	PaleGoldenrod
+	GuiName		PaleGoldenrod
+	HexName		EDE8AA
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:PaleGreen
+	LaTeXName	PaleGreen
+	GuiName		PaleGreen
+	HexName		97FB97
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:PaleTurquoise
+	LaTeXName	PaleTurquoise
+	GuiName		PaleTurquoise
+	HexName		AFEDED
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:PaleVioletRed
+	LaTeXName	PaleVioletRed
+	GuiName		PaleVioletRed
+	HexName		DB7092
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:PapayaWhip
+	LaTeXName	PapayaWhip
+	GuiName		PapayaWhip
+	HexName		FFEED4
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:PeachPuff
+	LaTeXName	PeachPuff
+	GuiName		PeachPuff
+	HexName		FFDAB8
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Peru
+	LaTeXName	Peru
+	GuiName		Peru
+	HexName		CD843F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Pink
+	LaTeXName	Pink
+	GuiName		Pink
+	HexName		FFBFCA
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Plum
+	LaTeXName	Plum
+	GuiName		Plum
+	HexName		DDA0DD
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:PowderBlue
+	LaTeXName	PowderBlue
+	GuiName		PowderBlue
+	HexName		AFE0E5
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Purple
+	LaTeXName	Purple
+	GuiName		Purple
+	HexName		7F007F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Red
+	LaTeXName	Red
+	GuiName		Red
+	HexName		FF0000
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:RosyBrown
+	LaTeXName	RosyBrown
+	GuiName		RosyBrown
+	HexName		BB8E8E
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:RoyalBlue
+	LaTeXName	RoyalBlue
+	GuiName		RoyalBlue
+	HexName		4169e1
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:SaddleBrown
+	LaTeXName	SaddleBrown
+	GuiName		SaddleBrown
+	HexName		8A4413
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Salmon
+	LaTeXName	Salmon
+	GuiName		Salmon
+	HexName		F97F72
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:SandyBrown
+	LaTeXName	SandyBrown
+	GuiName		SandyBrown
+	HexName		F3A45F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:SeaGreen
+	LaTeXName	SeaGreen
+	GuiName		SeaGreen
+	HexName		2D8A56
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Seashell
+	LaTeXName	Seashell
+	GuiName		Seashell
+	HexName		FFF4ED
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Sienna
+	LaTeXName	Sienna
+	GuiName		Sienna
+	HexName		A0512C
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Silver
+	LaTeXName	Silver
+	GuiName		Silver
+	HexName		BFBFBF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:SkyBlue
+	LaTeXName	SkyBlue
+	GuiName		SkyBlue
+	HexName		87CEEA
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:SlateBlue
+	LaTeXName	SlateBlue
+	GuiName		SlateBlue
+	HexName		6959CD
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:SlateGray
+	LaTeXName	SlateGray
+	GuiName		SlateGray
+	HexName		707F90
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+# Duplicate to SVG:SlateGray
+# Color SVG:SlateGrey
+# 	LaTeXName	SlateGrey
+# 	GuiName		SlateGrey
+# 	HexName		707F90
+# 	ColorModel	svgnames
+# 	Category	"SVG Names"
+# EndColor
+
+Color SVG:Snow
+	LaTeXName	Snow
+	GuiName		Snow
+	HexName		FFF9F9
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:SpringGreen
+	LaTeXName	SpringGreen
+	GuiName		SpringGreen
+	HexName		00FF7E
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:SteelBlue
+	LaTeXName	SteelBlue
+	GuiName		SteelBlue
+	HexName		4682B3
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Tan
+	LaTeXName	Tan
+	GuiName		Tan
+	HexName		D2B38C
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Teal
+	LaTeXName	Teal
+	GuiName		Teal
+	HexName		007F7F
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Thistle
+	LaTeXName	Thistle
+	GuiName		Thistle
+	HexName		D8BFD8
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Tomato
+	LaTeXName	Tomato
+	GuiName		Tomato
+	HexName		FF6347
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Turquoise
+	LaTeXName	Turquoise
+	GuiName		Turquoise
+	HexName		3FE0CF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Violet
+	LaTeXName	Violet
+	GuiName		Violet
+	HexName		ED82ED
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:VioletRed
+	LaTeXName	VioletRed
+	GuiName		VioletRed
+	HexName		D01F90
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Wheat
+	LaTeXName	Wheat
+	GuiName		Wheat
+	HexName		F4DDB2
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:White
+	LaTeXName	White
+	GuiName		White
+	HexName		FFFFFF
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:WhiteSmoke
+	LaTeXName	WhiteSmoke
+	GuiName		WhiteSmoke
+	HexName		F4F4F4
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:Yellow
+	LaTeXName	Yellow
+	GuiName		Yellow
+	HexName		FFFF00
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+Color SVG:YellowGreen
+	LaTeXName	YellowGreen
+	GuiName		YellowGreen
+	HexName		9ACD30
+	ColorModel	svgnames
+	Category	"SVG Names"
+EndColor
+
+
+#
+# X11 Names
+#
+
+Color X11:AntiqueWhite1
+	LaTeXName	AntiqueWhite1
+	GuiName		AntiqueWhite1
+	HexName		FFEFDB
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:AntiqueWhite2
+	LaTeXName	AntiqueWhite2
+	GuiName		AntiqueWhite2
+	HexName		EEDFCC
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:AntiqueWhite3
+	LaTeXName	AntiqueWhite3
+	GuiName		AntiqueWhite3
+	HexName		CDC0B0
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:AntiqueWhite4
+	LaTeXName	AntiqueWhite4
+	GuiName		AntiqueWhite4
+	HexName		8B8378
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Aquamarine1
+	LaTeXName	Aquamarine1
+	GuiName		Aquamarine1
+	HexName		7FFFD4
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Aquamarine2
+	LaTeXName	Aquamarine2
+	GuiName		Aquamarine2
+	HexName		76EEC6
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Aquamarine3
+	LaTeXName	Aquamarine3
+	GuiName		Aquamarine3
+	HexName		66cdab
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Aquamarine4
+	LaTeXName	Aquamarine4
+	GuiName		Aquamarine4
+	HexName		458B74
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Azure1
+	LaTeXName	Azure1
+	GuiName		Azure1
+	HexName		F0FFFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Azure2
+	LaTeXName	Azure2
+	GuiName		Azure2
+	HexName		E0EEEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Azure3
+	LaTeXName	Azure3
+	GuiName		Azure3
+	HexName		C1CDCD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Azure4
+	LaTeXName	Azure4
+	GuiName		Azure4
+	HexName		838B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Bisque1
+	LaTeXName	Bisque1
+	GuiName		Bisque1
+	HexName		FFE4C4
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Bisque2
+	LaTeXName	Bisque2
+	GuiName		Bisque2
+	HexName		EED5B7
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Bisque3
+	LaTeXName	Bisque3
+	GuiName		Bisque3
+	HexName		CDB79E
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Bisque4
+	LaTeXName	Bisque4
+	GuiName		Bisque4
+	HexName		8B7D6B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Blue1
+	LaTeXName	Blue1
+	GuiName		Blue1
+	HexName		0000FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Blue2
+	LaTeXName	Blue2
+	GuiName		Blue2
+	HexName		0000EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Blue3
+	LaTeXName	Blue3
+	GuiName		Blue3
+	HexName		0000cd
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Blue4
+	LaTeXName	Blue4
+	GuiName		Blue4
+	HexName		00008B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Brown1
+	LaTeXName	Brown1
+	GuiName		Brown1
+	HexName		FF4040
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Brown2
+	LaTeXName	Brown2
+	GuiName		Brown2
+	HexName		EE3B3B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Brown3
+	LaTeXName	Brown3
+	GuiName		Brown3
+	HexName		CD3333
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Brown4
+	LaTeXName	Brown4
+	GuiName		Brown4
+	HexName		8B2323
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Burlywood1
+	LaTeXName	Burlywood1
+	GuiName		Burlywood1
+	HexName		FFD39B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Burlywood2
+	LaTeXName	Burlywood2
+	GuiName		Burlywood2
+	HexName		EEC591
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Burlywood3
+	LaTeXName	Burlywood3
+	GuiName		Burlywood3
+	HexName		CDAA7D
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Burlywood4
+	LaTeXName	Burlywood4
+	GuiName		Burlywood4
+	HexName		8B7355
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:CadetBlue1
+	LaTeXName	CadetBlue1
+	GuiName		CadetBlue1
+	HexName		98F5FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:CadetBlue2
+	LaTeXName	CadetBlue2
+	GuiName		CadetBlue2
+	HexName		8EE5EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:CadetBlue3
+	LaTeXName	CadetBlue3
+	GuiName		CadetBlue3
+	HexName		7AC5CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:CadetBlue4
+	LaTeXName	CadetBlue4
+	GuiName		CadetBlue4
+	HexName		53868B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Chartreuse1
+	LaTeXName	Chartreuse1
+	GuiName		Chartreuse1
+	HexName		7FFF00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Chartreuse2
+	LaTeXName	Chartreuse2
+	GuiName		Chartreuse2
+	HexName		76EE00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Chartreuse3
+	LaTeXName	Chartreuse3
+	GuiName		Chartreuse3
+	HexName		66CD00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Chartreuse4
+	LaTeXName	Chartreuse4
+	GuiName		Chartreuse4
+	HexName		458B00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Chocolate1
+	LaTeXName	Chocolate1
+	GuiName		Chocolate1
+	HexName		FF7F24
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Chocolate2
+	LaTeXName	Chocolate2
+	GuiName		Chocolate2
+	HexName		EE7621
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Chocolate3
+	LaTeXName	Chocolate3
+	GuiName		Chocolate3
+	HexName		CD661D
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Chocolate4
+	LaTeXName	Chocolate4
+	GuiName		Chocolate4
+	HexName		894413
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Coral1
+	LaTeXName	Coral1
+	GuiName		Coral1
+	HexName		FF7256
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Coral2
+	LaTeXName	Coral2
+	GuiName		Coral2
+	HexName		EE6A50
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Coral3
+	LaTeXName	Coral3
+	GuiName		Coral3
+	HexName		CD5B45
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Coral4
+	LaTeXName	Coral4
+	GuiName		Coral4
+	HexName		8B3E2F
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Cornsilk1
+	LaTeXName	Cornsilk1
+	GuiName		Cornsilk1
+	HexName		FFF8DC
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Cornsilk2
+	LaTeXName	Cornsilk2
+	GuiName		Cornsilk2
+	HexName		EEE8CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Cornsilk3
+	LaTeXName	Cornsilk3
+	GuiName		Cornsilk3
+	HexName		CDC8B1
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Cornsilk4
+	LaTeXName	Cornsilk4
+	GuiName		Cornsilk4
+	HexName		8B8878
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Cyan1
+	LaTeXName	Cyan1
+	GuiName		Cyan1
+	HexName		00FFFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Cyan2
+	LaTeXName	Cyan2
+	GuiName		Cyan2
+	HexName		00EEEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Cyan3
+	LaTeXName	Cyan3
+	GuiName		Cyan3
+	HexName		00CDCD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Cyan4
+	LaTeXName	Cyan4
+	GuiName		Cyan4
+	HexName		008B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkGoldenrod1
+	LaTeXName	DarkGoldenrod1
+	GuiName		DarkGoldenrod1
+	HexName		FFB90F
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkGoldenrod2
+	LaTeXName	DarkGoldenrod2
+	GuiName		DarkGoldenrod2
+	HexName		EEAD0E
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkGoldenrod3
+	LaTeXName	DarkGoldenrod3
+	GuiName		DarkGoldenrod3
+	HexName		CD950C
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkGoldenrod4
+	LaTeXName	DarkGoldenrod4
+	GuiName		DarkGoldenrod4
+	HexName		8B6508
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOliveGreen1
+	LaTeXName	DarkOliveGreen1
+	GuiName		DarkOliveGreen1
+	HexName		CAFF70
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOliveGreen2
+	LaTeXName	DarkOliveGreen2
+	GuiName		DarkOliveGreen2
+	HexName		BCEE68
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOliveGreen3
+	LaTeXName	DarkOliveGreen3
+	GuiName		DarkOliveGreen3
+	HexName		A2CD5A
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOliveGreen4
+	LaTeXName	DarkOliveGreen4
+	GuiName		DarkOliveGreen4
+	HexName		6E8B3D
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOrange1
+	LaTeXName	DarkOrange1
+	GuiName		DarkOrange1
+	HexName		FF7F00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOrange2
+	LaTeXName	DarkOrange2
+	GuiName		DarkOrange2
+	HexName		EE7600
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOrange3
+	LaTeXName	DarkOrange3
+	GuiName		DarkOrange3
+	HexName		CD6600
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOrange4
+	LaTeXName	DarkOrange4
+	GuiName		DarkOrange4
+	HexName		8B4500
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOrchid1
+	LaTeXName	DarkOrchid1
+	GuiName		DarkOrchid1
+	HexName		BF3EFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOrchid2
+	LaTeXName	DarkOrchid2
+	GuiName		DarkOrchid2
+	HexName		B23AEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOrchid3
+	LaTeXName	DarkOrchid3
+	GuiName		DarkOrchid3
+	HexName		9A32CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkOrchid4
+	LaTeXName	DarkOrchid4
+	GuiName		DarkOrchid4
+	HexName		68228B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkSeaGreen1
+	LaTeXName	DarkSeaGreen1
+	GuiName		DarkSeaGreen1
+	HexName		C1FFC1
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkSeaGreen2
+	LaTeXName	DarkSeaGreen2
+	GuiName		DarkSeaGreen2
+	HexName		B4EEB4
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkSeaGreen3
+	LaTeXName	DarkSeaGreen3
+	GuiName		DarkSeaGreen3
+	HexName		9BCD9B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkSeaGreen4
+	LaTeXName	DarkSeaGreen4
+	GuiName		DarkSeaGreen4
+	HexName		698B69
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkSlateGray1
+	LaTeXName	DarkSlateGray1
+	GuiName		DarkSlateGray1
+	HexName		97FFFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkSlateGray2
+	LaTeXName	DarkSlateGray2
+	GuiName		DarkSlateGray2
+	HexName		8DEEEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkSlateGray3
+	LaTeXName	DarkSlateGray3
+	GuiName		DarkSlateGray3
+	HexName		79CDCD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DarkSlateGray4
+	LaTeXName	DarkSlateGray4
+	GuiName		DarkSlateGray4
+	HexName		528B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DeepPink1
+	LaTeXName	DeepPink1
+	GuiName		DeepPink1
+	HexName		FF1493
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DeepPink2
+	LaTeXName	DeepPink2
+	GuiName		DeepPink2
+	HexName		EE1289
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DeepPink3
+	LaTeXName	DeepPink3
+	GuiName		DeepPink3
+	HexName		CD1076
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DeepPink4
+	LaTeXName	DeepPink4
+	GuiName		DeepPink4
+	HexName		8B0A50
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DeepSkyBlue1
+	LaTeXName	DeepSkyBlue1
+	GuiName		DeepSkyBlue1
+	HexName		00BFFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DeepSkyBlue2
+	LaTeXName	DeepSkyBlue2
+	GuiName		DeepSkyBlue2
+	HexName		00B2EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DeepSkyBlue3
+	LaTeXName	DeepSkyBlue3
+	GuiName		DeepSkyBlue3
+	HexName		009ACD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DeepSkyBlue4
+	LaTeXName	DeepSkyBlue4
+	GuiName		DeepSkyBlue4
+	HexName		00688B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DodgerBlue1
+	LaTeXName	DodgerBlue1
+	GuiName		DodgerBlue1
+	HexName		1E90FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DodgerBlue2
+	LaTeXName	DodgerBlue2
+	GuiName		DodgerBlue2
+	HexName		1C86EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DodgerBlue3
+	LaTeXName	DodgerBlue3
+	GuiName		DodgerBlue3
+	HexName		1874CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:DodgerBlue4
+	LaTeXName	DodgerBlue4
+	GuiName		DodgerBlue4
+	HexName		104E8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Firebrick1
+	LaTeXName	Firebrick1
+	GuiName		Firebrick1
+	HexName		FF3030
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Firebrick2
+	LaTeXName	Firebrick2
+	GuiName		Firebrick2
+	HexName		EE2C2C
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Firebrick3
+	LaTeXName	Firebrick3
+	GuiName		Firebrick3
+	HexName		CD2626
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Firebrick4
+	LaTeXName	Firebrick4
+	GuiName		Firebrick4
+	HexName		8B1A1A
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Gold1
+	LaTeXName	Gold1
+	GuiName		Gold1
+	HexName		FFD700
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Gold2
+	LaTeXName	Gold2
+	GuiName		Gold2
+	HexName		EEC900
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Gold3
+	LaTeXName	Gold3
+	GuiName		Gold3
+	HexName		CDAD00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Gold4
+	LaTeXName	Gold4
+	GuiName		Gold4
+	HexName		8B7500
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Goldenrod1
+	LaTeXName	Goldenrod1
+	GuiName		Goldenrod1
+	HexName		FFC125
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Goldenrod2
+	LaTeXName	Goldenrod2
+	GuiName		Goldenrod2
+	HexName		EEB422
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Goldenrod3
+	LaTeXName	Goldenrod3
+	GuiName		Goldenrod3
+	HexName		CD9B1D
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Goldenrod4
+	LaTeXName	Goldenrod4
+	GuiName		Goldenrod4
+	HexName		8B6914
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Green1
+	LaTeXName	Green1
+	GuiName		Green1
+	HexName		00FF00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Green2
+	LaTeXName	Green2
+	GuiName		Green2
+	HexName		00EE00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Green3
+	LaTeXName	Green3
+	GuiName		Green3
+	HexName		00CD00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Green4
+	LaTeXName	Green4
+	GuiName		Green4
+	HexName		008B00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Honeydew1
+	LaTeXName	Honeydew1
+	GuiName		Honeydew1
+	HexName		F0FFF0
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Honeydew2
+	LaTeXName	Honeydew2
+	GuiName		Honeydew2
+	HexName		E0EEE0
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Honeydew3
+	LaTeXName	Honeydew3
+	GuiName		Honeydew3
+	HexName		C1CDC1
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Honeydew4
+	LaTeXName	Honeydew4
+	GuiName		Honeydew4
+	HexName		838B83
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:HotPink1
+	LaTeXName	HotPink1
+	GuiName		HotPink1
+	HexName		FF6EB4
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:HotPink2
+	LaTeXName	HotPink2
+	GuiName		HotPink2
+	HexName		EE6AA7
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:HotPink3
+	LaTeXName	HotPink3
+	GuiName		HotPink3
+	HexName		CD6090
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:HotPink4
+	LaTeXName	HotPink4
+	GuiName		HotPink4
+	HexName		8B3A62
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:IndianRed1
+	LaTeXName	IndianRed1
+	GuiName		IndianRed1
+	HexName		FF6A6A
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:IndianRed2
+	LaTeXName	IndianRed2
+	GuiName		IndianRed2
+	HexName		EE6363
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:IndianRed3
+	LaTeXName	IndianRed3
+	GuiName		IndianRed3
+	HexName		CD5555
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:IndianRed4
+	LaTeXName	IndianRed4
+	GuiName		IndianRed4
+	HexName		8B3A3A
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Ivory1
+	LaTeXName	Ivory1
+	GuiName		Ivory1
+	HexName		FFFFF0
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Ivory2
+	LaTeXName	Ivory2
+	GuiName		Ivory2
+	HexName		EEEEE0
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Ivory3
+	LaTeXName	Ivory3
+	GuiName		Ivory3
+	HexName		CDCDC1
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Ivory4
+	LaTeXName	Ivory4
+	GuiName		Ivory4
+	HexName		8B8B83
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Khaki1
+	LaTeXName	Khaki1
+	GuiName		Khaki1
+	HexName		FFF68F
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Khaki2
+	LaTeXName	Khaki2
+	GuiName		Khaki2
+	HexName		EEE685
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Khaki3
+	LaTeXName	Khaki3
+	GuiName		Khaki3
+	HexName		CDC673
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Khaki4
+	LaTeXName	Khaki4
+	GuiName		Khaki4
+	HexName		8B864E
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LavenderBlush1
+	LaTeXName	LavenderBlush1
+	GuiName		LavenderBlush1
+	HexName		FFF0F5
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LavenderBlush2
+	LaTeXName	LavenderBlush2
+	GuiName		LavenderBlush2
+	HexName		EEE0E5
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LavenderBlush3
+	LaTeXName	LavenderBlush3
+	GuiName		LavenderBlush3
+	HexName		CDC1C5
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LavenderBlush4
+	LaTeXName	LavenderBlush4
+	GuiName		LavenderBlush4
+	HexName		8B8386
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LemonChiffon1
+	LaTeXName	LemonChiffon1
+	GuiName		LemonChiffon1
+	HexName		FFFACD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LemonChiffon2
+	LaTeXName	LemonChiffon2
+	GuiName		LemonChiffon2
+	HexName		EEE9BF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LemonChiffon3
+	LaTeXName	LemonChiffon3
+	GuiName		LemonChiffon3
+	HexName		CDC9A5
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LemonChiffon4
+	LaTeXName	LemonChiffon4
+	GuiName		LemonChiffon4
+	HexName		8B8970
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightBlue1
+	LaTeXName	LightBlue1
+	GuiName		LightBlue1
+	HexName		BFEFFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightBlue2
+	LaTeXName	LightBlue2
+	GuiName		LightBlue2
+	HexName		B2DFEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightBlue3
+	LaTeXName	LightBlue3
+	GuiName		LightBlue3
+	HexName		9AC0CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightBlue4
+	LaTeXName	LightBlue4
+	GuiName		LightBlue4
+	HexName		68838B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightCyan1
+	LaTeXName	LightCyan1
+	GuiName		LightCyan1
+	HexName		E0FFFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightCyan2
+	LaTeXName	LightCyan2
+	GuiName		LightCyan2
+	HexName		D1EEEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightCyan3
+	LaTeXName	LightCyan3
+	GuiName		LightCyan3
+	HexName		B4CDCD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightCyan4
+	LaTeXName	LightCyan4
+	GuiName		LightCyan4
+	HexName		7A8B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightGoldenrod1
+	LaTeXName	LightGoldenrod1
+	GuiName		LightGoldenrod1
+	HexName		FFEC8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightGoldenrod2
+	LaTeXName	LightGoldenrod2
+	GuiName		LightGoldenrod2
+	HexName		EEDC82
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightGoldenrod3
+	LaTeXName	LightGoldenrod3
+	GuiName		LightGoldenrod3
+	HexName		CDBE70
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightGoldenrod4
+	LaTeXName	LightGoldenrod4
+	GuiName		LightGoldenrod4
+	HexName		8B814C
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightPink1
+	LaTeXName	LightPink1
+	GuiName		LightPink1
+	HexName		FFAEB9
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightPink2
+	LaTeXName	LightPink2
+	GuiName		LightPink2
+	HexName		EEA2AD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightPink3
+	LaTeXName	LightPink3
+	GuiName		LightPink3
+	HexName		CD8C95
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightPink4
+	LaTeXName	LightPink4
+	GuiName		LightPink4
+	HexName		8B5F65
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSalmon1
+	LaTeXName	LightSalmon1
+	GuiName		LightSalmon1
+	HexName		FFA07A
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSalmon2
+	LaTeXName	LightSalmon2
+	GuiName		LightSalmon2
+	HexName		EE9572
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSalmon3
+	LaTeXName	LightSalmon3
+	GuiName		LightSalmon3
+	HexName		CD8162
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSalmon4
+	LaTeXName	LightSalmon4
+	GuiName		LightSalmon4
+	HexName		8B5742
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSkyBlue1
+	LaTeXName	LightSkyBlue1
+	GuiName		LightSkyBlue1
+	HexName		B0E2FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSkyBlue2
+	LaTeXName	LightSkyBlue2
+	GuiName		LightSkyBlue2
+	HexName		A4D3EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSkyBlue3
+	LaTeXName	LightSkyBlue3
+	GuiName		LightSkyBlue3
+	HexName		8DB6CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSkyBlue4
+	LaTeXName	LightSkyBlue4
+	GuiName		LightSkyBlue4
+	HexName		607B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSteelBlue1
+	LaTeXName	LightSteelBlue1
+	GuiName		LightSteelBlue1
+	HexName		CAE1FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSteelBlue2
+	LaTeXName	LightSteelBlue2
+	GuiName		LightSteelBlue2
+	HexName		BCD2EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSteelBlue3
+	LaTeXName	LightSteelBlue3
+	GuiName		LightSteelBlue3
+	HexName		A2B5CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightSteelBlue4
+	LaTeXName	LightSteelBlue4
+	GuiName		LightSteelBlue4
+	HexName		6E7B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightYellow1
+	LaTeXName	LightYellow1
+	GuiName		LightYellow1
+	HexName		FFFFE0
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightYellow2
+	LaTeXName	LightYellow2
+	GuiName		LightYellow2
+	HexName		EEEED1
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightYellow3
+	LaTeXName	LightYellow3
+	GuiName		LightYellow3
+	HexName		CDCDB4
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:LightYellow4
+	LaTeXName	LightYellow4
+	GuiName		LightYellow4
+	HexName		8B8B7A
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Magenta1
+	LaTeXName	Magenta1
+	GuiName		Magenta1
+	HexName		FF00FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Magenta2
+	LaTeXName	Magenta2
+	GuiName		Magenta2
+	HexName		EE00EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Magenta3
+	LaTeXName	Magenta3
+	GuiName		Magenta3
+	HexName		CD00CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Magenta4
+	LaTeXName	Magenta4
+	GuiName		Magenta4
+	HexName		8B008B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Maroon1
+	LaTeXName	Maroon1
+	GuiName		Maroon1
+	HexName		FF34B3
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Maroon2
+	LaTeXName	Maroon2
+	GuiName		Maroon2
+	HexName		EE30A7
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Maroon3
+	LaTeXName	Maroon3
+	GuiName		Maroon3
+	HexName		CD2990
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Maroon4
+	LaTeXName	Maroon4
+	GuiName		Maroon4
+	HexName		8B1C62
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MediumOrchid1
+	LaTeXName	MediumOrchid1
+	GuiName		MediumOrchid1
+	HexName		E066FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MediumOrchid2
+	LaTeXName	MediumOrchid2
+	GuiName		MediumOrchid2
+	HexName		D15FEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MediumOrchid3
+	LaTeXName	MediumOrchid3
+	GuiName		MediumOrchid3
+	HexName		B452CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MediumOrchid4
+	LaTeXName	MediumOrchid4
+	GuiName		MediumOrchid4
+	HexName		7A378B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MediumPurple1
+	LaTeXName	MediumPurple1
+	GuiName		MediumPurple1
+	HexName		AB82FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MediumPurple2
+	LaTeXName	MediumPurple2
+	GuiName		MediumPurple2
+	HexName		9F79EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MediumPurple3
+	LaTeXName	MediumPurple3
+	GuiName		MediumPurple3
+	HexName		8968CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MediumPurple4
+	LaTeXName	MediumPurple4
+	GuiName		MediumPurple4
+	HexName		5D478B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MistyRose1
+	LaTeXName	MistyRose1
+	GuiName		MistyRose1
+	HexName		FFE4E1
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MistyRose2
+	LaTeXName	MistyRose2
+	GuiName		MistyRose2
+	HexName		EED5D2
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MistyRose3
+	LaTeXName	MistyRose3
+	GuiName		MistyRose3
+	HexName		CDB7B5
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:MistyRose4
+	LaTeXName	MistyRose4
+	GuiName		MistyRose4
+	HexName		8B7D7B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:NavajoWhite1
+	LaTeXName	NavajoWhite1
+	GuiName		NavajoWhite1
+	HexName		FFDEAD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:NavajoWhite2
+	LaTeXName	NavajoWhite2
+	GuiName		NavajoWhite2
+	HexName		EECFA1
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:NavajoWhite3
+	LaTeXName	NavajoWhite3
+	GuiName		NavajoWhite3
+	HexName		CDB38B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:NavajoWhite4
+	LaTeXName	NavajoWhite4
+	GuiName		NavajoWhite4
+	HexName		8B795E
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:OliveDrab1
+	LaTeXName	OliveDrab1
+	GuiName		OliveDrab1
+	HexName		C0FF3E
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:OliveDrab2
+	LaTeXName	OliveDrab2
+	GuiName		OliveDrab2
+	HexName		B3EE3A
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:OliveDrab3
+	LaTeXName	OliveDrab3
+	GuiName		OliveDrab3
+	HexName		9ACD32
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:OliveDrab4
+	LaTeXName	OliveDrab4
+	GuiName		OliveDrab4
+	HexName		698B22
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Orange1
+	LaTeXName	Orange1
+	GuiName		Orange1
+	HexName		FFA500
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Orange2
+	LaTeXName	Orange2
+	GuiName		Orange2
+	HexName		EE9A00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Orange3
+	LaTeXName	Orange3
+	GuiName		Orange3
+	HexName		CD8500
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Orange4
+	LaTeXName	Orange4
+	GuiName		Orange4
+	HexName		8B5A00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:OrangeRed1
+	LaTeXName	OrangeRed1
+	GuiName		OrangeRed1
+	HexName		FF4500
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:OrangeRed2
+	LaTeXName	OrangeRed2
+	GuiName		OrangeRed2
+	HexName		EE4000
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:OrangeRed3
+	LaTeXName	OrangeRed3
+	GuiName		OrangeRed3
+	HexName		CD3700
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:OrangeRed4
+	LaTeXName	OrangeRed4
+	GuiName		OrangeRed4
+	HexName		8B2500
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Orchid1
+	LaTeXName	Orchid1
+	GuiName		Orchid1
+	HexName		FF83FA
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Orchid2
+	LaTeXName	Orchid2
+	GuiName		Orchid2
+	HexName		EE7AE9
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Orchid3
+	LaTeXName	Orchid3
+	GuiName		Orchid3
+	HexName		CD69C9
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Orchid4
+	LaTeXName	Orchid4
+	GuiName		Orchid4
+	HexName		8B4789
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleGreen1
+	LaTeXName	PaleGreen1
+	GuiName		PaleGreen1
+	HexName		9AFF9A
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleGreen2
+	LaTeXName	PaleGreen2
+	GuiName		PaleGreen2
+	HexName		90EE90
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleGreen3
+	LaTeXName	PaleGreen3
+	GuiName		PaleGreen3
+	HexName		7CCD7C
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleGreen4
+	LaTeXName	PaleGreen4
+	GuiName		PaleGreen4
+	HexName		548B54
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleTurquoise1
+	LaTeXName	PaleTurquoise1
+	GuiName		PaleTurquoise1
+	HexName		BBFFFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleTurquoise2
+	LaTeXName	PaleTurquoise2
+	GuiName		PaleTurquoise2
+	HexName		AEEEEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleTurquoise3
+	LaTeXName	PaleTurquoise3
+	GuiName		PaleTurquoise3
+	HexName		96CDCD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleTurquoise4
+	LaTeXName	PaleTurquoise4
+	GuiName		PaleTurquoise4
+	HexName		668B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleVioletRed1
+	LaTeXName	PaleVioletRed1
+	GuiName		PaleVioletRed1
+	HexName		FF82AB
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleVioletRed2
+	LaTeXName	PaleVioletRed2
+	GuiName		PaleVioletRed2
+	HexName		EE799F
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleVioletRed3
+	LaTeXName	PaleVioletRed3
+	GuiName		PaleVioletRed3
+	HexName		CD6889
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PaleVioletRed4
+	LaTeXName	PaleVioletRed4
+	GuiName		PaleVioletRed4
+	HexName		8B475D
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PeachPuff1
+	LaTeXName	PeachPuff1
+	GuiName		PeachPuff1
+	HexName		FFDAB9
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PeachPuff2
+	LaTeXName	PeachPuff2
+	GuiName		PeachPuff2
+	HexName		EECBAD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PeachPuff3
+	LaTeXName	PeachPuff3
+	GuiName		PeachPuff3
+	HexName		CDAF95
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:PeachPuff4
+	LaTeXName	PeachPuff4
+	GuiName		PeachPuff4
+	HexName		8B7765
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Pink1
+	LaTeXName	Pink1
+	GuiName		Pink1
+	HexName		FFB5C5
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Pink2
+	LaTeXName	Pink2
+	GuiName		Pink2
+	HexName		EEA9B8
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Pink3
+	LaTeXName	Pink3
+	GuiName		Pink3
+	HexName		CD919E
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Pink4
+	LaTeXName	Pink4
+	GuiName		Pink4
+	HexName		8B636C
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Plum1
+	LaTeXName	Plum1
+	GuiName		Plum1
+	HexName		FFBBFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Plum2
+	LaTeXName	Plum2
+	GuiName		Plum2
+	HexName		EEAEEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Plum3
+	LaTeXName	Plum3
+	GuiName		Plum3
+	HexName		CD96CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Plum4
+	LaTeXName	Plum4
+	GuiName		Plum4
+	HexName		8B668B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Purple1
+	LaTeXName	Purple1
+	GuiName		Purple1
+	HexName		9B30FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Purple2
+	LaTeXName	Purple2
+	GuiName		Purple2
+	HexName		912CEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Purple3
+	LaTeXName	Purple3
+	GuiName		Purple3
+	HexName		7D26CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Purple4
+	LaTeXName	Purple4
+	GuiName		Purple4
+	HexName		551A8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Red1
+	LaTeXName	Red1
+	GuiName		Red1
+	HexName		FF0000
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Red2
+	LaTeXName	Red2
+	GuiName		Red2
+	HexName		EE0000
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Red3
+	LaTeXName	Red3
+	GuiName		Red3
+	HexName		CD0000
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Red4
+	LaTeXName	Red4
+	GuiName		Red4
+	HexName		8B0000
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:RosyBrown1
+	LaTeXName	RosyBrown1
+	GuiName		RosyBrown1
+	HexName		FFC1C1
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:RosyBrown2
+	LaTeXName	RosyBrown2
+	GuiName		RosyBrown2
+	HexName		EEB4B4
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:RosyBrown3
+	LaTeXName	RosyBrown3
+	GuiName		RosyBrown3
+	HexName		CD9B9B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:RosyBrown4
+	LaTeXName	RosyBrown4
+	GuiName		RosyBrown4
+	HexName		8B6969
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:RoyalBlue1
+	LaTeXName	RoyalBlue1
+	GuiName		RoyalBlue1
+	HexName		4876FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:RoyalBlue2
+	LaTeXName	RoyalBlue2
+	GuiName		RoyalBlue2
+	HexName		436EEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:RoyalBlue3
+	LaTeXName	RoyalBlue3
+	GuiName		RoyalBlue3
+	HexName		3A5FCD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:RoyalBlue4
+	LaTeXName	RoyalBlue4
+	GuiName		RoyalBlue4
+	HexName		27408B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Salmon1
+	LaTeXName	Salmon1
+	GuiName		Salmon1
+	HexName		FF8C69
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Salmon2
+	LaTeXName	Salmon2
+	GuiName		Salmon2
+	HexName		EE8262
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Salmon3
+	LaTeXName	Salmon3
+	GuiName		Salmon3
+	HexName		CD7054
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Salmon4
+	LaTeXName	Salmon4
+	GuiName		Salmon4
+	HexName		8B4C39
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SeaGreen1
+	LaTeXName	SeaGreen1
+	GuiName		SeaGreen1
+	HexName		54FF9F
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SeaGreen2
+	LaTeXName	SeaGreen2
+	GuiName		SeaGreen2
+	HexName		4EEE94
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SeaGreen3
+	LaTeXName	SeaGreen3
+	GuiName		SeaGreen3
+	HexName		43CD80
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SeaGreen4
+	LaTeXName	SeaGreen4
+	GuiName		SeaGreen4
+	HexName		2E8B57
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Seashell1
+	LaTeXName	Seashell1
+	GuiName		Seashell1
+	HexName		FFF5EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Seashell2
+	LaTeXName	Seashell2
+	GuiName		Seashell2
+	HexName		EEE5DE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Seashell3
+	LaTeXName	Seashell3
+	GuiName		Seashell3
+	HexName		CDC5BF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Seashell4
+	LaTeXName	Seashell4
+	GuiName		Seashell4
+	HexName		8B8682
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Sienna1
+	LaTeXName	Sienna1
+	GuiName		Sienna1
+	HexName		FF8247
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Sienna2
+	LaTeXName	Sienna2
+	GuiName		Sienna2
+	HexName		EE7942
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Sienna3
+	LaTeXName	Sienna3
+	GuiName		Sienna3
+	HexName		CD6839
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Sienna4
+	LaTeXName	Sienna4
+	GuiName		Sienna4
+	HexName		8B4726
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SkyBlue1
+	LaTeXName	SkyBlue1
+	GuiName		SkyBlue1
+	HexName		87CEFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SkyBlue2
+	LaTeXName	SkyBlue2
+	GuiName		SkyBlue2
+	HexName		7EC0EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SkyBlue3
+	LaTeXName	SkyBlue3
+	GuiName		SkyBlue3
+	HexName		6CA6CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SkyBlue4
+	LaTeXName	SkyBlue4
+	GuiName		SkyBlue4
+	HexName		4A708B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SlateBlue1
+	LaTeXName	SlateBlue1
+	GuiName		SlateBlue1
+	HexName		836FFF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SlateBlue2
+	LaTeXName	SlateBlue2
+	GuiName		SlateBlue2
+	HexName		7A67EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SlateBlue3
+	LaTeXName	SlateBlue3
+	GuiName		SlateBlue3
+	HexName		6959CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SlateBlue4
+	LaTeXName	SlateBlue4
+	GuiName		SlateBlue4
+	HexName		473C8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SlateGray1
+	LaTeXName	SlateGray1
+	GuiName		SlateGray1
+	HexName		C6E2FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SlateGray2
+	LaTeXName	SlateGray2
+	GuiName		SlateGray2
+	HexName		B9D3EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SlateGray3
+	LaTeXName	SlateGray3
+	GuiName		SlateGray3
+	HexName		9FB6CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SlateGray4
+	LaTeXName	SlateGray4
+	GuiName		SlateGray4
+	HexName		6C7B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Snow1
+	LaTeXName	Snow1
+	GuiName		Snow1
+	HexName		FFFAFA
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Snow2
+	LaTeXName	Snow2
+	GuiName		Snow2
+	HexName		EEE9E9
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Snow3
+	LaTeXName	Snow3
+	GuiName		Snow3
+	HexName		CDC9C9
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Snow4
+	LaTeXName	Snow4
+	GuiName		Snow4
+	HexName		8B8989
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SpringGreen1
+	LaTeXName	SpringGreen1
+	GuiName		SpringGreen1
+	HexName		00FF7F
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SpringGreen2
+	LaTeXName	SpringGreen2
+	GuiName		SpringGreen2
+	HexName		00EE76
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SpringGreen3
+	LaTeXName	SpringGreen3
+	GuiName		SpringGreen3
+	HexName		00CD66
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SpringGreen4
+	LaTeXName	SpringGreen4
+	GuiName		SpringGreen4
+	HexName		008B45
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SteelBlue1
+	LaTeXName	SteelBlue1
+	GuiName		SteelBlue1
+	HexName		63B8FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SteelBlue2
+	LaTeXName	SteelBlue2
+	GuiName		SteelBlue2
+	HexName		5CACEE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SteelBlue3
+	LaTeXName	SteelBlue3
+	GuiName		SteelBlue3
+	HexName		4F94CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:SteelBlue4
+	LaTeXName	SteelBlue4
+	GuiName		SteelBlue4
+	HexName		36648B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Tan1
+	LaTeXName	Tan1
+	GuiName		Tan1
+	HexName		9ACD30
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Tan2
+	LaTeXName	Tan2
+	GuiName		Tan2
+	HexName		EE9A49
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Tan3
+	LaTeXName	Tan3
+	GuiName		Tan3
+	HexName		CD853F
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Tan4
+	LaTeXName	Tan4
+	GuiName		Tan4
+	HexName		8B5A2B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Thistle1
+	LaTeXName	Thistle1
+	GuiName		Thistle1
+	HexName		FFE1FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Thistle2
+	LaTeXName	Thistle2
+	GuiName		Thistle2
+	HexName		EED2EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Thistle3
+	LaTeXName	Thistle3
+	GuiName		Thistle3
+	HexName		CDB5CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Thistle4
+	LaTeXName	Thistle4
+	GuiName		Thistle4
+	HexName		8B7B8B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Tomato1
+	LaTeXName	Tomato1
+	GuiName		Tomato1
+	HexName		FF6347
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Tomato2
+	LaTeXName	Tomato2
+	GuiName		Tomato2
+	HexName		EE5C42
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Tomato3
+	LaTeXName	Tomato3
+	GuiName		Tomato3
+	HexName		CD4F39
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Tomato4
+	LaTeXName	Tomato4
+	GuiName		Tomato4
+	HexName		8B3626
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Turquoise1
+	LaTeXName	Turquoise1
+	GuiName		Turquoise1
+	HexName		00F5FF
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Turquoise2
+	LaTeXName	Turquoise2
+	GuiName		Turquoise2
+	HexName		00E5EE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Turquoise3
+	LaTeXName	Turquoise3
+	GuiName		Turquoise3
+	HexName		00C5CD
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Turquoise4
+	LaTeXName	Turquoise4
+	GuiName		Turquoise4
+	HexName		00868B
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:VioletRed1
+	LaTeXName	VioletRed1
+	GuiName		VioletRed1
+	HexName		FF3E96
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:VioletRed2
+	LaTeXName	VioletRed2
+	GuiName		VioletRed2
+	HexName		EE3A8C
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:VioletRed3
+	LaTeXName	VioletRed3
+	GuiName		VioletRed3
+	HexName		CD3278
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:VioletRed4
+	LaTeXName	VioletRed4
+	GuiName		VioletRed4
+	HexName		8B2252
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Wheat1
+	LaTeXName	Wheat1
+	GuiName		Wheat1
+	HexName		FFE7BA
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Wheat2
+	LaTeXName	Wheat2
+	GuiName		Wheat2
+	HexName		EED8AE
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Wheat3
+	LaTeXName	Wheat3
+	GuiName		Wheat3
+	HexName		CDBA96
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Wheat4
+	LaTeXName	Wheat4
+	GuiName		Wheat4
+	HexName		8B7E66
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Yellow1
+	LaTeXName	Yellow1
+	GuiName		Yellow1
+	HexName		FFFF00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Yellow2
+	LaTeXName	Yellow2
+	GuiName		Yellow2
+	HexName		EEEE00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Yellow3
+	LaTeXName	Yellow3
+	GuiName		Yellow3
+	HexName		CDCD00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Yellow4
+	LaTeXName	Yellow4
+	GuiName		Yellow4
+	HexName		8B8B00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Gray0
+	LaTeXName	Gray0
+	GuiName		Gray0
+	HexName		bebebe
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Green0
+	LaTeXName	Green0
+	GuiName		Green0
+	HexName		00ff00
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+# Duplicate to X11:Gray0
+# Color X11:Grey0
+# 	LaTeXName	Grey0
+# 	GuiName		Grey0
+# 	HexName		bebebe
+# 	ColorModel	x11names
+# 	Category	"X11 Names"
+# EndColor
+
+Color X11:Maroon0
+	LaTeXName	Maroon0
+	GuiName		Maroon0
+	HexName		b03060
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+
+Color X11:Purple0
+	LaTeXName	Purple0
+	GuiName		Purple0
+	HexName		a020f0
+	ColorModel	x11names
+	Category	"X11 Names"
+EndColor
+

@@ -17,6 +17,7 @@
 #include "FontInfo.h"
 
 #include "ColorSet.h"
+#include "LaTeXColors.h"
 #include "LyXRC.h"
 
 #include "support/convert.h"
@@ -717,7 +718,16 @@ FontState setLyXMisc(string const & siz)
 /// Sets color after LyX text format
 void setLyXColor(string const & col, FontInfo & f)
 {
-	f.setColor(lcolor.getFromLyXName(col));
+	ColorCode cc = lcolor.getFromLyXName(col, false);
+	if (cc == Color_none && theLaTeXColors().isLaTeXColor(col)) {
+		LaTeXColor const lc = theLaTeXColors().getLaTeXColor(col);
+		string const lyxname = lc.name();
+		lcolor.setColor(lyxname, lc.hexname());
+		lcolor.setLaTeXName(lyxname, lc.latex());
+		lcolor.setGUIName(lyxname, to_ascii(lc.guiname()));
+		cc = lcolor.getFromLyXName(lyxname);
+	}
+	f.setColor(cc);
 }
 
 

@@ -36,6 +36,7 @@
 #include "HunspellChecker.h"
 #include "KeyMap.h"
 #include "Language.h"
+#include "LaTeXColors.h"
 #include "LaTeXFonts.h"
 #include "LayoutFile.h"
 #include "LyXAction.h"
@@ -138,13 +139,14 @@ void showFileError(string const & error)
 /// The main application class private implementation.
 struct LyX::Impl {
 	Impl()
-		: latexfonts_(nullptr), spell_checker_(nullptr),
+		: latexcolors_(nullptr), latexfonts_(nullptr), spell_checker_(nullptr),
 		  apple_spell_checker_(nullptr), aspell_checker_(nullptr),
 		  enchant_checker_(nullptr), hunspell_checker_(nullptr)
 	{}
 
 	~Impl()
 	{
+		delete latexcolors_;
 		delete latexfonts_;
 		delete apple_spell_checker_;
 		delete aspell_checker_;
@@ -192,6 +194,8 @@ struct LyX::Impl {
 	/// the parsed command line batch command if any
 	vector<string> batch_commands;
 
+	///
+	LaTeXColors * latexcolors_;
 	///
 	LaTeXFonts * latexfonts_;
 
@@ -1594,6 +1598,15 @@ Session & theSession()
 {
 	LAPPERR(singleton_);
 	return *singleton_->pimpl_->session_.get();
+}
+
+
+LaTeXColors & theLaTeXColors()
+{
+	LAPPERR(singleton_);
+	if (!singleton_->pimpl_->latexcolors_)
+		singleton_->pimpl_->latexcolors_ = new LaTeXColors;
+	return *singleton_->pimpl_->latexcolors_;
 }
 
 

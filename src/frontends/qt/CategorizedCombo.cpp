@@ -86,16 +86,18 @@ public:
 struct CategorizedCombo::Private
 {
 	Private(CategorizedCombo * parent) : p(parent),
-		// set the model with four columns
+		// set the model with five columns
 		// 1st: translated item names
 		// 2nd: raw names
 		// 3rd: category
 		// 4th: availability (bool)
-		model_(new QStandardItemModel(0, 4, p)),
+		// 5th: color
+		model_(new QStandardItemModel(0, 5, p)),
 		filterModel_(new CCFilterModel(p)),
 		lastSel_(-1),
 		CCItemDelegate_(new CCItemDelegate(parent)),
-		visibleCategories_(0), inShowPopup_(false)
+		visibleCategories_(0), inShowPopup_(false),
+		has_colors_(false)
 	{
 		filterModel_->setSourceModel(model_);
 	}
@@ -113,6 +115,7 @@ struct CategorizedCombo::Private
 	 * 2nd column: raw item name,
 	 * 3rd column: category,
 	 * 4th column: availability
+	 * 5th column: color
 	**/
 	QStandardItemModel * model_;
 	/// the proxy model filtering \c model_
@@ -127,12 +130,20 @@ struct CategorizedCombo::Private
 	unsigned visibleCategories_;
 	///
 	bool inShowPopup_;
+	///
+	bool has_colors_;
 };
 
 
 static QString categoryCC(QAbstractItemModel const & model, int row)
 {
 	return model.data(model.index(row, 2), Qt::DisplayRole).toString();
+}
+
+
+static QString colorCC(QAbstractItemModel const & model, int row)
+{
+	return model.data(model.index(row, 4), Qt::DisplayRole).toString();
 }
 
 
@@ -151,6 +162,7 @@ void CCItemDelegate::paint(QPainter * painter, QStyleOptionViewItem const & opti
 	painter->fillRect(opt.rect, opt.palette.color(QPalette::Base));
 
 	QString cat = categoryCC(*index.model(), index.row());
+	QString col = colorCC(*index.model(), index.row());
 
 	// not the same as in the previous line?
 	if (cc_->d->visibleCategories_ > 0
@@ -199,6 +211,9 @@ void CCItemDelegate::drawDisplay(QPainter * painter, QStyleOptionViewItem const 
 
 	QTextFrameFormat fmt = doc.rootFrame()->frameFormat();
 	fmt.setMargin(0);
+	if (cc_->d->has_colors_)
+		fmt.setLeftMargin (34);
+		
 	doc.rootFrame()->setFrameFormat(fmt);
 
 	painter->translate(opt.rect.x() + 5,
@@ -337,7 +352,8 @@ CategorizedCombo::CategorizedCombo(QWidget * parent)
 }
 
 
-CategorizedCombo::~CategorizedCombo() {
+CategorizedCombo::~CategorizedCombo()
+{
 	delete d;
 }
 
@@ -467,10 +483,27 @@ bool CategorizedCombo::set(QString const & item, bool const report_missing)
 }
 
 
+void CategorizedCombo::setColorIcon(int const i, QString const color)
+{
+	if (color.isEmpty())
+		return;
+
+	QPixmap pixmap(32, 20);
+	QColor col(color);
+	pixmap.fill(col);
+	QPainter painter(&pixmap);
+	QRect pixmapRect = QRect(0, 0, 31, 19);
+	painter.drawPixmap(pixmapRect.x(), pixmapRect.y(), pixmap);
+	painter.drawRect(pixmapRect);
+
+	setItemIcon(i, QIcon(pixmap));
+}
+
+
 void CategorizedCombo::addItemSort(QString const & item, QString const & guiname,
 				   QString const & category, QString const & tooltip,
 				   bool sorted, bool sortedByCat, bool sortCats,
-				   bool available, bool nocategories)
+				   bool available, bool nocategories, QString const color)
 {
 	QString titem = available ? guiname
 				  : toqstr(bformat(_("Unavailable: %1$s"),
@@ -486,11 +519,16 @@ void CategorizedCombo::addItemSort(QString const & item, QString const & guiname
 	row.append(new QStandardItem(item));
 	row.append(new QStandardItem(qcat));
 	row.append(new QStandardItem(available));
+	if (!color.isEmpty()) {
+		row.append(new QStandardItem(color));
+		d->has_colors_ = true;
+	}
 
 	// the first entry is easy
 	int const end = d->model_->rowCount();
 	if (end == 0) {
 		d->model_->appendRow(row);
+		setColorIcon(0, color);
 		return;
 	}
 
@@ -515,6 +553,7 @@ void CategorizedCombo::addItemSort(QString const & item, QString const & guiname
 			d->model_->insertRow(i, row);
 		} else
 			d->model_->appendRow(row);
+		setColorIcon(i, color);
 		return;
 	}
 
@@ -530,6 +569,7 @@ void CategorizedCombo::addItemSort(QString const & item, QString const & guiname
 	}
 
 	d->model_->insertRow(i, row);
+	setColorIcon(i, color);
 }
 
 

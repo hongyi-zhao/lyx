@@ -406,6 +406,20 @@ void GuiCharacter::fillComboColor()
 	colorCO->addItemSort(QString("inherit"), qt_("(Without)[[color]]"),
 			   QString(), QString(),
 			   false, false, false, true, true);
+	// custom colors
+	for (auto const & lc : buffer().masterParams().custom_colors) {
+		QString const lyxname = toqstr(lc.first);
+		QString const guiname = toqstr(lc.first);
+		QString const category = qt_("Custom Colors");
+		QString const plaincategory = toqstr("custom");
+		QString const color = toqstr(lc.second);
+		colorCO->addItemSort(lyxname,
+				   guiname,
+				   category,
+				   QString(),
+				   false, true, false, true, false,
+				   color);
+	}
 	// now add the real colors
 	for (auto const & lc : theLaTeXColors().getLaTeXColors()) {
 		QString const lyxname = toqstr(lc.first);

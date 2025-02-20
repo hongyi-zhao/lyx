@@ -695,34 +695,37 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		char_type comma = replaceCommaInBraces(parameters);
 		// Get float placement, language, caption, and
 		// label, then remove the relative options if minted.
-		vector<docstring> opts =
-			getVectorFromString(parameters, from_ascii(","), false);
+		vector<docstring> opts = getVectorFromString(parameters, from_ascii(","), false);
 		vector<docstring> latexed_opts;
-		for (size_t i = 0; i < opts.size(); ++i) {
+		size_t i = 0;
+		while (i < opts.size()) {
 			// Restore replaced commas
 			opts[i] = subst(opts[i], comma, ',');
+			// remove options that we support
 			if (use_minted && prefixIs(opts[i], from_ascii("float"))) {
 				if (prefixIs(opts[i], from_ascii("float=")))
 					placement = opts[i].substr(6);
-				opts.erase(opts.begin() + i--);
+				opts.erase(opts.begin() + i);
 			} else if (use_minted && prefixIs(opts[i], from_ascii("language="))) {
 				language = opts[i].substr(9);
-				opts.erase(opts.begin() + i--);
+				opts.erase(opts.begin() + i);
 			} else if (prefixIs(opts[i], from_ascii("caption="))) {
 				caption = opts[i].substr(8);
 				caption = params().prepareCommand(runparams, stripOuterBraces(caption),
 								  ParamInfo::HANDLING_LATEXIFY);
-				opts.erase(opts.begin() + i--);
+				opts.erase(opts.begin() + i);
 				if (!use_minted)
 					latexed_opts.push_back(from_ascii("caption={") + caption + "}");
 			} else if (prefixIs(opts[i], from_ascii("label="))) {
 				label = opts[i].substr(6);
 				label = params().prepareCommand(runparams, stripOuterBraces(label),
 								ParamInfo::HANDLING_ESCAPE);
-				opts.erase(opts.begin() + i--);
+				opts.erase(opts.begin() + i);
 				if (!use_minted)
 					latexed_opts.push_back(from_ascii("label={") + label + "}");
-			}
+			} else
+				++i;
+
 			if (use_minted && !label.empty()) {
 				if (isfloat || !caption.empty())
 					label = stripOuterBraces(label);

@@ -207,18 +207,20 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	if (use_minted && (isfloat || contains(param_string, "language="))) {
 		// Get float placement and/or language of the code,
 		// then remove the relative options.
-		vector<string> opts =
-			getVectorFromString(param_string, ",", false);
-		for (size_t i = 0; i < opts.size(); ++i) {
+		vector<string> opts = getVectorFromString(param_string, ",", false);
+		size_t i = 0;
+		// remove options that we handle
+		while (i < opts.size()) {
 			if (prefixIs(opts[i], "float")) {
 				if (prefixIs(opts[i], "float="))
 					float_placement = opts[i].substr(6);
-				opts.erase(opts.begin() + int(i--));
+				opts.erase(opts.begin() + i);
 			}
 			else if (prefixIs(opts[i], "language=")) {
 				minted_language = opts[i].substr(9);
-				opts.erase(opts.begin() + int(i--));
-			}
+				opts.erase(opts.begin() + i);
+			} else
+				++i;
 		}
 		param_string = getStringFromVector(opts, ",");
 	}

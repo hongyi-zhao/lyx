@@ -95,6 +95,8 @@ public:
 	/// \returns the ColorCode associated with the LaTeX name.
 	ColorCode getFromLaTeXName(std::string const & latexname,
 				   bool warn_not_found = true) const;
+	/// Check whether a color exists
+	bool isKnownLyXName(std::string const & lyxname) const;
 
 private:
 	///

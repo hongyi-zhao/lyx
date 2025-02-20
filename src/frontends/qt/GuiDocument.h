@@ -186,6 +186,11 @@ private Q_SLOTS:
 	void bookmarksopenChanged(bool);
 	void changeTrackingChanged(bool);
 	void updateLanguageOptions();
+	void addCustomColor();
+	void removeCustomColor();
+	void renameCustomColor();
+	void alterCustomColor();
+	void toggleCustomColor(QTreeWidgetItem *, int);
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();
@@ -356,6 +361,10 @@ private:
 	///
 	void checkOnClosing();
 	///
+	void updateCustomColors();
+	///
+	bool checkColorUnique(QString const &);
+	///
 	BufferParams bp_;
 	/// Store buffer filename for the case we switch with
 	/// unapplied changes.
@@ -366,6 +375,8 @@ private:
 	std::map<docstring, docstring> changedBranches_;
 	///
 	std::list<std::string> includeonlys_;
+	///
+	std::map<QString, QString> custom_colors_;
 	///
 	bool biblioChanged_;
 	/// Track if a non-module document param changed

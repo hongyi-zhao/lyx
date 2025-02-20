@@ -544,6 +544,17 @@ ColorCode ColorSet::getFromLyXName(string const & lyxname,
 }
 
 
+bool ColorSet::isKnownLyXName(string const & lyxname) const
+{
+	string const lcname = ascii_lowercase(lyxname);
+	Transform::const_iterator it = lyxcolors.find(lcname);
+	if (it == lyxcolors.end())
+		return false;
+
+	return true;
+}
+
+
 ColorCode ColorSet::getFromLaTeXName(string const & latexname,
 				     bool const warn_not_found) const
 {

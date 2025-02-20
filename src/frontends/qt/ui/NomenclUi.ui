@@ -69,7 +69,7 @@
      <item>
       <widget class="QCheckBox" name="pageRefCB">
        <property name="toolTip">
-        <string>The phrase &quot;, see page x&quot; is appended to every entry in the nomenclature where x is the number of the page number on which the corresponding nomenclature is used</string>
+        <string>The phrase &quot;, see page x&quot; is appended to every entry in the nomenclature where x is the number of the page on which the corresponding nomenclature is used</string>
        </property>
        <property name="text">
         <string>Add &amp;page references</string>

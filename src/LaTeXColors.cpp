@@ -199,14 +199,26 @@ LaTeXColor LaTeXColors::getLaTeXColor(string const & name)
 	return texcolormap_[name];
 }
 
-bool LaTeXColors::isLaTeXColor(string const & name)
+bool LaTeXColors::isLaTeXColor(string const & lyxname)
 {
 	if (texcolormap_.empty())
 		readLaTeXColors();
-	if (texcolormap_.find(name) == texcolormap_.end()) {
+	if (texcolormap_.find(lyxname) == texcolormap_.end()) {
 		return false;
 	}
 	return true;
+}
+
+
+bool LaTeXColors::isRealLaTeXColor(string const & latexname)
+{
+	if (texcolormap_.empty())
+		readLaTeXColors();
+	for (auto const & lc : texcolormap_) {
+		if (lc.second.latex() == latexname)
+			return true;
+	}
+	return false;
 }
 
 

@@ -1212,7 +1212,7 @@ string const LaTeXFeatures::getColorOptions() const
 		colors << "}\n";
 	}
 
-	// the following 3 color commands must be set after color
+	// the following color commands must be set after color
 	// is loaded and before pdfpages, therefore add the command
 	// here define the set color
 	if (mustProvide("pagecolor")) {
@@ -1241,6 +1241,15 @@ string const LaTeXFeatures::getColorOptions() const
 		colors << "\\definecolor{shadecolor}{rgb}{";
 		colors << outputLaTeXColor(params_.boxbgcolor) << "}\n";
 		// this color is automatically used by the LaTeX-package "framed"
+	}
+
+	// user-defined custom colors
+	for (auto const & cc : params_.custom_colors) {
+		colors << "\\definecolor{"
+		       << cc.first
+		       << "}{rgb}{"
+		       << outputLaTeXColor(lyx::rgbFromHexName(cc.second))
+		       << "}\n";
 	}
 
 	return colors.str();

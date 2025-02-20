@@ -306,6 +306,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	UndoElementStack & stack)
 {
 	if (!group_level_) {
+		LATTEST(false);
 		LYXERR0("There is no group open (creating one)");
 		++group_id_;
 	}

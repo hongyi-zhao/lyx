@@ -78,6 +78,7 @@
 #include <QFontDatabase>
 #include <QHeaderView>
 #include <QPixmap>
+#include <QRegularExpressionValidator>
 #include <QScrollBar>
 #include <QTextBoundaryFinder>
 #include <QTextCursor>
@@ -1384,6 +1385,22 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(changeBoxBackgroundColor()));
 	connect(colorModule->delBoxBackgroundTB, SIGNAL(clicked()),
 		this, SLOT(deleteBoxBackgroundColor()));
+	connect(colorModule->addColorPB, SIGNAL(clicked()),
+		this, SLOT(addCustomColor()));
+	connect(colorModule->removeColorPB, SIGNAL(clicked()),
+		this, SLOT(removeCustomColor()));
+	connect(colorModule->renameColorPB, SIGNAL(clicked()),
+		this, SLOT(renameCustomColor()));
+	connect(colorModule->alterColorPB, SIGNAL(clicked()),
+		this, SLOT(alterCustomColor()));
+	connect(colorModule->customColorsTW, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
+		this, SLOT(toggleCustomColor(QTreeWidgetItem *, int)));
+	colorModule->customColorsTW->setColumnCount(2);
+	colorModule->customColorsTW->headerItem()->setText(0, qt_("Name"));
+	colorModule->customColorsTW->headerItem()->setText(1, qt_("Color"));
+	colorModule->customColorsTW->setSortingEnabled(true);
+	QRegularExpression ascii_re("[A-Za-z0-9]+");
+	colorModule->newColorLE->setValidator(new QRegularExpressionValidator(ascii_re, colorModule->newColorLE));
 
 
 	// change tracking
@@ -3857,6 +3874,9 @@ void GuiDocument::applyView()
 	}
 	bp_.boxbgcolor = set_boxbgcolor;
 	bp_.isboxbgcolor = is_boxbgcolor;
+	bp_.custom_colors.clear();
+	for (auto const & cc : custom_colors_)
+		bp_.custom_colors[fromqstr(cc.first)] = fromqstr(cc.second);
 
 	// numbering
 	if (bp_.documentClass().hasTocLevels()) {
@@ -4440,6 +4460,10 @@ void GuiDocument::paramsToDialog()
 		colorFrameStyleSheet(rgb2qcolor(bp_.boxbgcolor)));
 	set_boxbgcolor = bp_.boxbgcolor;
 	is_boxbgcolor = bp_.isboxbgcolor;
+	custom_colors_.clear();
+	for (auto const & cc : bp_.custom_colors)
+		custom_colors_[toqstr(cc.first)] = toqstr(cc.second);
+	updateCustomColors();
 
 	// numbering
 	int const min_toclevel = documentClass().min_toclevel();
@@ -5659,6 +5683,152 @@ void GuiDocument::setOutputSync(bool on)
 	outputModule->synccustomCB->setEnabled(on);
 	outputModule->synccustomLA->setEnabled(on);
 	change_adaptor();
+}
+
+
+void GuiDocument::updateCustomColors()
+{
+	// store the selected index
+	QTreeWidgetItem * item = colorModule->customColorsTW->currentItem();
+	QString sel_color;
+	if (item != 0)
+		sel_color = item->text(0);
+
+	colorModule->customColorsTW->clear();
+
+	map<QString, QString>::const_iterator it = custom_colors_.begin();
+	map<QString, QString>::const_iterator const end = custom_colors_.end();
+	for (; it != end; ++it) {
+		QTreeWidgetItem * newItem =
+			new QTreeWidgetItem(colorModule->customColorsTW);
+
+		QString const cname = it->first;
+		newItem->setText(0, cname);
+
+		QColor const itemcolor(it->second);
+		if (itemcolor.isValid()) {
+			QPixmap coloritem(30, 10);
+			coloritem.fill(itemcolor);
+			newItem->setIcon(1, QIcon(coloritem));
+		}
+		// restore selected color
+		if (cname == sel_color) {
+			colorModule->customColorsTW->setCurrentItem(newItem);
+			newItem->setSelected(true);
+		}
+	}
+	colorModule->customColorsTW->resizeColumnToContents(0);
+
+	change_adaptor();
+}
+
+
+bool GuiDocument::checkColorUnique(QString const & col)
+{
+	if (lcolor.isKnownLyXName(fromqstr(col))
+	    || theLaTeXColors().isRealLaTeXColor(fromqstr(col))) {
+		Alert::error(_("Color naming failed"),
+			     bformat(_("The color name `%1$s' is already taken."),
+				     qstring_to_ucs4(col)));
+		return false;
+	}
+	return true;
+}
+
+
+void GuiDocument::addCustomColor()
+{
+	QString const new_color = colorModule->newColorLE->text();
+	if (!new_color.isEmpty()) {
+		if (!checkColorUnique(new_color))
+			return;
+		custom_colors_[new_color] = toqstr("#ffbfbf");
+		colorModule->newColorLE->clear();
+		updateCustomColors();
+	}
+}
+
+
+void GuiDocument::removeCustomColor()
+{
+	QTreeWidgetItem * selItem = colorModule->customColorsTW->currentItem();
+	QString sel_color;
+	if (selItem != 0)
+		sel_color = selItem->text(0);
+	if (!sel_color.isEmpty()) {
+		for (auto it = custom_colors_.begin(); it != custom_colors_.end();)
+		{
+			if (it->first == sel_color) {
+				it = custom_colors_.erase(it);
+				break;
+			}
+			++it;
+		}
+		colorModule->newColorLE->clear();
+		updateCustomColors();
+	}
+}
+
+
+void GuiDocument::renameCustomColor()
+{
+	QTreeWidgetItem * selItem = colorModule->customColorsTW->currentItem();
+	QString sel_color;
+	if (selItem != 0)
+		sel_color = selItem->text(0);
+	if (!sel_color.isEmpty()) {
+		docstring nname;
+		QString const oldname = sel_color;
+		if (Alert::askForText(nname, _("Enter new color name"), qstring_to_ucs4(oldname))) {
+			QString const newname = toqstr(nname);
+			if (newname.isEmpty() || oldname == newname)
+				return;
+			if (!checkColorUnique(newname))
+				return;
+			if (newname.contains(QRegularExpression("[^[:ascii:]]")) || newname.contains(" ")) {
+				Alert::error(_("Renaming failed"),
+				      _("The color could not be renamed "
+					"since the new name consists of non-ASCII characters or blanks."));
+				return;
+			}
+			map<QString, QString>::iterator const it = custom_colors_.find(oldname);
+			if (it != custom_colors_.end()) {
+				std::swap(custom_colors_[newname], it->second);
+				custom_colors_.erase(it);
+			}
+			
+			colorModule->newColorLE->clear();
+			updateCustomColors();
+		}
+	}
+}
+
+
+void GuiDocument::alterCustomColor()
+{
+	toggleCustomColor(colorModule->customColorsTW->currentItem(), 0);
+}
+
+
+void GuiDocument::toggleCustomColor(QTreeWidgetItem * item, int)
+{
+	if (item == 0)
+		return;
+
+	QString sel_color = item->text(0);
+	if (sel_color.isEmpty())
+		return;
+
+	docstring current_index = qstring_to_ucs4(sel_color);
+	QColor const initial(item->text(1));
+	QColor ncol = GuiDialog::getColor(initial, this);
+	if (!ncol.isValid())
+		return;
+
+	// add the color to the indiceslist
+	custom_colors_[sel_color] = ncol.name();
+	colorModule->newColorLE->clear();
+	updateCustomColors();
 }
 
 

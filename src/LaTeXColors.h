@@ -82,7 +82,9 @@ public:
 	/// Get a specific LaTeXColor \p name
 	LaTeXColor getLaTeXColor(std::string const & name);
 	///
-	bool isLaTeXColor(std::string const & name);
+	bool isLaTeXColor(std::string const & lyxname);
+	///
+	bool isRealLaTeXColor(std::string const & latexname);
 	///
 	std::string getFromLaTeXColor(std::string const & latexname);
 	///

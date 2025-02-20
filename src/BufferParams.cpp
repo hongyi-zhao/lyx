@@ -1139,6 +1139,15 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		boxbgcolor = lyx::rgbFromHexName(color);
 		lcolor.setColor("boxbgcolor@" + filename.absFileName(), color);
 		isboxbgcolor = true;
+	} else if (token == "\\customcolor") {
+		string name;
+		lex >> name;;
+		string value;
+		lex >> value;
+		custom_colors[name] = "#" + value;
+		lcolor.setColor(name, "#" + value);
+		lcolor.setLaTeXName(name, name);
+		lcolor.setGUIName(name, name);
 	} else if (token == "\\paperwidth") {
 		lex >> paperwidth;
 	} else if (token == "\\paperheight") {
@@ -1501,6 +1510,12 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "\\notefontcolor " << lyx::X11hexname(notefontcolor) << '\n';
 	if (isboxbgcolor)
 		os << "\\boxbgcolor " << lyx::X11hexname(boxbgcolor) << '\n';
+	for (auto const & cc : custom_colors) {
+		os << "\\customcolor "
+		   << cc.first
+		   << " " << ltrim(cc.second, "#")
+		   << "\n";
+	}
 
 	for (auto const & br : branchlist()) {
 		os << "\\branch " << to_utf8(br.branch())

@@ -17237,9 +17237,26 @@ from more than 750 predefined colors as defined by different color schemes (\Spe
 \change_unchanged
 .
 
-\change_inserted -712698321 1740035725
+\change_inserted -712698321 1740064151
  To find your way through that long list,
  you can search colors in this dropdown simply by typing while the list is open.
+\begin_inset Newline newline
+\end_inset
+
+If none of the provided colors suits you,
+ you can define additional custom colors in the document settings dialog,
+ which will then appear in this list as well (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Colors"
+
+\end_inset
+
+).
 \change_unchanged
 
 \begin_inset Index idx
@@ -52441,6 +52458,16 @@ European
 \end_layout
 
 \begin_layout Section
+
+\change_inserted -712698321 1740064062
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Colors"
+
+\end_inset
+
+
+\change_unchanged
 Colors
 \begin_inset Index idx
 range none
@@ -52563,7 +52590,21 @@ boxes
 \family default
  (default:
  red).
- The button 
+ 
+\change_inserted -712698321 1740063782
+Also,
+ you can define custom colors which will then be available in the text style dialog.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1740063880
+Main text,
+ page and boxes colors
+\end_layout
+
+\begin_layout Standard
+The button 
 \family sans
 Reset
 \family default
@@ -52818,8 +52859,40 @@ out notes
 note_fontcolor
 \end_layout
 
+\begin_layout Subsection
+
+\change_inserted -712698321 1740063896
+Custom colors
+\end_layout
+
 \begin_layout Standard
-To see how to define and use custom colors,
+
+\change_inserted -712698321 1740063989
+To define custom colors,
+ add a name consisting only of ASCII characters and no blanks (such as 
+\emph on
+mycolor
+\emph default
+).
+ Then you can set the color it should use.
+ You will be warned if the name is already taken for colors in other contexts.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1740064041
+Note that if you rename or delete colors,
+ \SpecialChar LyX
+ will not check if this color is used anywhere in the document and not rename it there,
+ so you might get errors on undefined colors afterwards.
+\end_layout
+
+\begin_layout Standard
+To see how to define and use custom colors
+\change_inserted -712698321 1740063847
+ in other contexts
+\change_unchanged
+,
  see section 
 \emph on
 Colored

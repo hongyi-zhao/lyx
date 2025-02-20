@@ -20,12 +20,13 @@
 import re
 
 # Uncomment only what you need to import, please (lyx2lyx_tools):
-#    convert_info_insets, get_ert, hex2ratio, insert_to_preamble,
+#    convert_info_insets, get_ert, insert_to_preamble,
 #    length_in_bp, lyx2verbatim,
 #    revert_flex_inset, revert_flex_inset, revert_font_attrs,
 #    str2bool
 from lyx2lyx_tools import (
     add_to_preamble,
+    hex2ratio,
     latex_length,
     lyx2latex,
     put_cmd_in_ert,
@@ -1668,6 +1669,63 @@ def revert_textcolor(document):
              options]
         )
 
+def revert_custom_colors(document):
+    "reverts custom colors to TeX code"
+
+    cols = []
+    defs = []
+    while True:
+        i = find_token(document.header, "\\customcolor", 0)
+        if i == -1:
+            break
+        value = get_value(document.header, "\\customcolor", i).split()
+        del document.header[i]
+        colorname = value[0]
+        cols.append(colorname)
+        colorcode = "#" + value[1]
+        red = hex2ratio(colorcode[1:3])
+        green = hex2ratio(colorcode[3:5])
+        blue = hex2ratio(colorcode[5:7])
+        defs.append("\\definecolor{" + colorname + "}{rgb}{" + red + "," + green + "," + blue + "}")
+        i += 1
+
+    if len(defs) == 0:
+        return
+
+    df = "\n".join(defs)
+    add_to_preamble(
+        document,
+        [
+            "% To set the background color",
+            "\\@ifundefined{definecolor}{\\usepackage{color}}{}",
+            df
+        ],
+    )
+    i = 0
+    j = 0
+    while True:
+        i = find_token(document.body, "\\color ", i)
+        if i == -1:
+            break
+        else:
+            for color in list(cols):
+                if document.body[i] == "\\color " + color:
+                    # find the next \\color and/or the next \\end_layout
+                    j = find_token(document.body, "\\color", i + 1)
+                    k = find_token(document.body, "\\end_layout", i + 1)
+                    if j == -1 and k != -1:
+                        j = k + 1
+                    # output TeX code
+                    # first output the closing brace
+                    if k < j:
+                        document.body[k:k] = put_cmd_in_ert("}")
+                    else:
+                        document.body[j:j] = put_cmd_in_ert("}")
+                    # now output the \textcolor command
+                    document.body[i : i + 1] = put_cmd_in_ert("\\textcolor{" + color + "}{")
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1690,7 +1748,7 @@ convert = [
 
 
 revert = [
-    [631, [revert_textcolor]],
+    [631, [revert_textcolor, revert_custom_colors]],
     [630, [revert_mathml_version]],
     [629, [revert_new_polyglossia_languages, revert_new_babel_languages]],
     [628, [revert_langopts]],

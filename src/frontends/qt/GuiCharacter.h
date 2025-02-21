@@ -92,8 +92,6 @@ private:
 	void setBar(FontInfo & fi, FontDeco val);
 	///
 	void setStrike(FontInfo & fi, FontDeco val);
-	///
-	void fillComboColor();
 
 	QList<FamilyPair> family;
 	QList<SeriesPair> series;
@@ -111,6 +109,8 @@ private:
 	bool noun_;
 	///
 	bool nospellcheck_;
+	///
+	std::map<std::string, std::string> custom_colors_cache_;
 
 	///
 	QAction * resetdefault_ = new QAction(this);

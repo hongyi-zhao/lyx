@@ -190,7 +190,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="lyx::frontend::CategorizedCombo" name="colorCO">
+           <widget class="lyx::frontend::ColorsCombo" name="colorCO">
             <property name="inputMethodHints">
              <set>Qt::InputMethodHint::ImhDigitsOnly|Qt::InputMethodHint::ImhLatinOnly</set>
             </property>
@@ -386,9 +386,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>lyx::frontend::CategorizedCombo</class>
+   <class>lyx::frontend::ColorsCombo</class>
    <extends>QComboBox</extends>
-   <header>CategorizedCombo.h</header>
+   <header>ColorsCombo.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

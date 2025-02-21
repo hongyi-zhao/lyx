@@ -48,6 +48,7 @@ SOURCEFILES = \
 	BulletsModule.cpp \
 	ButtonController.cpp \
 	CategorizedCombo.cpp \
+	ColorsCombo.cpp \
 	ColorCache.cpp \
 	CustomizedWidgets.cpp \
 	DialogView.cpp \
@@ -172,6 +173,7 @@ MOCHEADER = \
 	Action.h \
 	BulletsModule.h \
 	CategorizedCombo.h \
+	ColorsCombo.h \
 	CustomizedWidgets.h \
 	DialogView.h \
 	DockView.h \

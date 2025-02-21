@@ -18,6 +18,7 @@
 #define LYX_CATEGORIZEDCOMBO_H
 
 #include <QComboBox>
+#include <QStandardItemModel>
 
 
 namespace lyx {
@@ -47,8 +48,7 @@ public:
 	void addItemSort(QString const & item, QString const & guiname,
 			 QString const & category, QString const & tooltip,
 			 bool sorted, bool sortedByCat, bool sortCats,
-			 bool available, bool nocategories = false,
-			 QString color = QString());
+			 bool available, bool nocategories = false);
 	///
 	QString getData(int row) const;
 	///
@@ -63,7 +63,9 @@ public:
 	///
 	QString const & filter() const;
 	///
-	void setColorIcon(int const i, QString const color);
+	QStandardItemModel * model();
+	///
+	void setLeftMargin(int const);
 
 private Q_SLOTS:
 	///
@@ -77,6 +79,8 @@ private:
 	Private * const d;
 	///
 	int lastCurrentIndex_;
+	///
+	int left_margin_ = -1;
 };
 
 

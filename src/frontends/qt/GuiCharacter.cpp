@@ -15,7 +15,7 @@
 
 #include "GuiCharacter.h"
 
-#include "CategorizedCombo.h"
+#include "ColorsCombo.h"
 
 #include "GuiApplication.h"
 #include "qt_helpers.h"
@@ -28,8 +28,6 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "Paragraph.h"
-
-#include "support/gettext.h"
 
 #include <QAbstractItemModel>
 #include <QPushButton>
@@ -200,8 +198,11 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	fillCombo(shapeCO, shape);
 	fillCombo(ulineCO, bar);
 	fillCombo(strikeCO, strike);
-	fillComboColor();
 	fillCombo(langCO, language);
+	colorCO->hasIgnore(true);
+	colorCO->hasInherit(true);
+	colorCO->setBufferParams(buffer().masterParams());
+	custom_colors_cache_ = buffer().masterParams().custom_colors;
 
 	colorCO->setToolTip(qt_("You can also directly type on the list to filter on color names."));
 
@@ -394,48 +395,6 @@ void GuiCharacter::change_adaptor()
 }
 
 
-void GuiCharacter::fillComboColor()
-{
-	// at first add the 2 colors "No change" and "No color"
-	colorCO->addItemSort(QString("ignore"), qt_("No change"),
-			   QString(), QString(),
-			   false, false, false, true, true);
-	colorCO->addItemSort(QString("none"), qt_("Default"),
-			   QString(), QString(),
-			   false, false, false, true, true);
-	colorCO->addItemSort(QString("inherit"), qt_("(Without)[[color]]"),
-			   QString(), QString(),
-			   false, false, false, true, true);
-	// custom colors
-	for (auto const & lc : buffer().masterParams().custom_colors) {
-		QString const lyxname = toqstr(lc.first);
-		QString const guiname = toqstr(lc.first);
-		QString const category = qt_("Custom Colors");
-		QString const plaincategory = toqstr("custom");
-		QString const color = toqstr(lc.second);
-		colorCO->addItemSort(lyxname,
-				   guiname,
-				   category,
-				   QString(),
-				   false, true, false, true, false,
-				   color);
-	}
-	// now add the real colors
-	for (auto const & lc : theLaTeXColors().getLaTeXColors()) {
-		QString const lyxname = toqstr(lc.first);
-		QString const guiname = toqstr(translateIfPossible(lc.second.guiname()));
-		QString const category = toqstr(translateIfPossible(lc.second.category()));
-		QString const plaincategory = toqstr(lc.second.category());
-		QString const color = toqstr(lc.second.hexname());
-		colorCO->addItemSort(lyxname,
-				   guiname,
-				   category,
-				   QString(),
-				   false, true, false, true, false,
-				   color);
-	}
-}
-
 
 void GuiCharacter::checkRestoreDefaults()
 {
@@ -527,6 +486,12 @@ void GuiCharacter::updateContents()
 	// If we use the buffer language, display "Default"
 	if (font_.language() == buffer().params().language)
 		font_.setLanguage(reset_language);
+
+	// Update custom colors if needed
+	if (custom_colors_cache_ != buffer().masterParams().custom_colors) {
+		colorCO->setBufferParams(buffer().masterParams());
+		custom_colors_cache_ = buffer().masterParams().custom_colors;
+	}
 
 	paramsToDialog(font_);
 

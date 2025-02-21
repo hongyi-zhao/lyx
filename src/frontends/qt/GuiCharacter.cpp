@@ -201,7 +201,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	fillCombo(langCO, language);
 	colorCO->hasIgnore(true);
 	colorCO->hasInherit(true);
-	colorCO->setBufferParams(buffer().masterParams());
+	colorCO->setCustomColors(buffer().masterParams().custom_colors);
 	custom_colors_cache_ = buffer().masterParams().custom_colors;
 
 	colorCO->setToolTip(qt_("You can also directly type on the list to filter on color names."));
@@ -489,7 +489,7 @@ void GuiCharacter::updateContents()
 
 	// Update custom colors if needed
 	if (custom_colors_cache_ != buffer().masterParams().custom_colors) {
-		colorCO->setBufferParams(buffer().masterParams());
+		colorCO->setCustomColors(buffer().masterParams().custom_colors);
 		custom_colors_cache_ = buffer().masterParams().custom_colors;
 	}
 

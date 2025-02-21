@@ -470,7 +470,7 @@
         <item>
          <widget class="QLineEdit" name="newColorLE">
           <property name="toolTip">
-           <string>Enter the name of the desired color (only ASCII characters ans no space allowed) and hit &quot;Add&quot;</string>
+           <string>Enter the name of the desired color (only ASCII characters and no space allowed) and hit &quot;Add&quot;</string>
           </property>
          </widget>
         </item>

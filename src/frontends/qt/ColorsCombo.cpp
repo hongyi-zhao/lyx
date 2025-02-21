@@ -28,7 +28,6 @@ namespace frontend {
 
 ColorsCombo::ColorsCombo(QWidget * parent)
 	: CategorizedCombo(parent),
-	  params_(BufferParams()),
 	  has_ignore_(false), has_inherit_(false)
 {
 	setLeftMargin(32);
@@ -99,9 +98,9 @@ void ColorsCombo::addItemSort(QString const & item, QString const & guiname,
 }
 
 
-void ColorsCombo::setBufferParams(BufferParams const params)
+void ColorsCombo::setCustomColors(std::map<std::string, std::string> const custom_colors)
 {
-	params_ = params;
+	custom_colors_ = custom_colors;
 	fillComboColor();
 }
 
@@ -119,7 +118,7 @@ void ColorsCombo::fillComboColor()
 		addItemSort(QString("inherit"), qt_("(Without)[[color]]"),
 			    QString());
 	// now custom colors
-	for (auto const & lc : params_.custom_colors) {
+	for (auto const & lc : custom_colors_) {
 		QString const lyxname = toqstr(lc.first);
 		QString const guiname = toqstr(lc.first);
 		QString const category = qt_("Custom Colors");

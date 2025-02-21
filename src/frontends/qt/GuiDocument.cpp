@@ -5745,6 +5745,16 @@ void GuiDocument::addCustomColor()
 		custom_colors_[new_color] = toqstr("#ffbfbf");
 		colorModule->newColorLE->clear();
 		updateCustomColors();
+		// select new color
+		QList<QTreeWidgetItem *> twis =
+				colorModule->customColorsTW->findItems(new_color, Qt::MatchExactly);
+		if (!twis.empty()) {
+			QTreeWidgetItem * item = twis.first();
+			colorModule->customColorsTW->setCurrentItem(item);
+			item->setSelected(true);
+		}
+		// and open color dialog
+		alterCustomColor();
 	}
 }
 

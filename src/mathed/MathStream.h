@@ -13,7 +13,6 @@
 #define MATH_MATHSTREAM_H
 
 #include "InsetMath.h"
-#include "FontInfo.h"
 
 #include "TexRow.h"
 #include "texstream.h"

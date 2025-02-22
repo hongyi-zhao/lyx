@@ -13,7 +13,6 @@ foreach(_f insets/InsetLayout.cpp CiteEnginesList.cpp Color.cpp Counters.cpp Flo
 endforeach()
 
 include_directories(${TOP_SRC_DIR}/src/support/tests)
-include_directories(${TOP_SRC_DIR}/src/tex2lyx)
 
 add_executable(check_layout ${check_layout_SOURCES})
 

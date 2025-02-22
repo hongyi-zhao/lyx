@@ -440,9 +440,9 @@ bool checkModule(string const & name, bool command)
 	if (found_module.empty()) {
 		// take one of the second row
 		if (!potential_modules.empty())
-			found_module = potential_modules.front();  
+			found_module = potential_modules.front();
 	}
-		
+
 	if (!found_module.empty()) {
 		vector<string> v;
 		LayoutModuleList mods;
@@ -1157,7 +1157,7 @@ int TeX2LyXApp::run()
 	easyParse();
 
 	if (argc_ <= 1)
-		error_message("Not enough arguments.");
+		error_with_message("Not enough arguments.");
 
 	try {
 		init_package(internal_path(os::utf8_argv(0)),

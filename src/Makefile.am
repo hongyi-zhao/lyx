@@ -696,7 +696,8 @@ check_layout_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
 	tests/boost.cpp \
 	tests/check_layout.cpp \
-	tests/dummy_functions.cpp
+	tests/dummy_functions.cpp \
+	tests/dummy4checklayout.cpp
 check_layout_LYX_OBJS = \
 	insets/InsetLayout.o \
 	support/Lexer.o \

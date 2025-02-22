@@ -18,7 +18,7 @@
 
 #include <config.h>
 
-#include "tex2lyx.h"
+#include "../tex2lyx/tex2lyx.h"
 #include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"

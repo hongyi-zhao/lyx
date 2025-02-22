@@ -953,14 +953,10 @@ int Buffer::readHeader(Lexer & lex)
 	params().pdfoptions().clear();
 	params().document_metadata.clear();
 	params().indiceslist().clear();
-	params().backgroundcolor = lyx::rgbFromHexName("#ffffff");
-	params().isbackgroundcolor = false;
-	params().fontcolor = RGBColor(0, 0, 0);
-	params().isfontcolor = false;
-	params().notefontcolor = RGBColor(0xCC, 0xCC, 0xCC);
-	params().isnotefontcolor = false;
-	params().boxbgcolor = RGBColor(0xFF, 0, 0);
-	params().isboxbgcolor = false;
+	params().backgroundcolor = "none";
+	params().fontcolor = "none";
+	params().notefontcolor = "lightgray";
+	params().boxbgcolor = "red";
 	params().html_latex_start.clear();
 	params().html_latex_end.clear();
 	params().html_math_img_scale = 1.0;
@@ -2306,17 +2302,17 @@ Buffer::ExportStatus Buffer::writeLyXHTMLSource(odocstream & os,
 		if (!styles.empty())
 			css << "/* Layout-provided Styles */\n" << styles << '\n';
 
-		bool const needfg = params().fontcolor != RGBColor(0, 0, 0);
-		bool const needbg = params().backgroundcolor != RGBColor(0xFF, 0xFF, 0xFF);
+		bool const needfg = params().fontcolor != "none";
+		bool const needbg = params().backgroundcolor != "none";
 		if (needfg || needbg) {
 				css << "\nbody {\n";
 				if (needfg)
 				   css << "  color: "
-					    << from_ascii(X11hexname(params().fontcolor))
+					    << from_ascii(lcolor.getX11HexName(params().fontcolor))
 					    << ";\n";
 				if (needbg)
 				   css << "  background-color: "
-					    << from_ascii(X11hexname(params().backgroundcolor))
+					    << from_ascii(lcolor.getX11HexName(params().backgroundcolor))
 					    << ";\n";
 				css << "}\n";
 		}

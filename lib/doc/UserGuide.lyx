@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 632
+\lyxformat 633
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -121,7 +121,11 @@ logicalmkup
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\notefontcolor #0000ff
+\customcolor lyxnotefontcolor 0000ff
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lyxnotefontcolor
+\boxbgcolor red
 \branch Question
 \selected 1
 \filename_suffix 0
@@ -52580,7 +52584,13 @@ out notes
 Page
 \family default
  (default:
- white) and for 
+ 
+\change_deleted -712698321 1740227093
+white
+\change_inserted -712698321 1740227095
+none
+\change_unchanged
+) and for 
 \family sans
 Shaded
 \begin_inset space ~
@@ -52591,27 +52601,40 @@ boxes
  (default:
  red).
  
-\change_inserted -712698321 1740063782
+\change_inserted -712698321 1740227484
 Also,
- you can define custom colors which will then be available in the text style dialog.
+ you can define custom colors which will then be available in all document-related color selections in \SpecialChar LyX
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ text style dialog or in this very dialog here).
 \end_layout
 
 \begin_layout Subsection
 
-\change_inserted -712698321 1740063880
+\change_inserted -712698321 1740227191
 Main text,
- page and boxes colors
+ page,
+ notes and boxes colors
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740227585
 The button 
 \family sans
 Reset
 \family default
  sets the color back to the default.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740227613
 Clicking any button showing 
 \family sans
 Default
@@ -52622,6 +52645,42 @@ Change
 \family default
  opens a dialog enabling you to choose from a selection of colors or from a color-picker or to specify a color using HSL or RGB values.
  In the dialog you can add any color to the custom colors to select them later more quickly.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1740227751
+You can select from an extensive list of predefined colors for each element.
+ Main text and page color furthermore provide a 
+\begin_inset Quotes eld
+\end_inset
+
+Default
+\begin_inset Quotes erd
+\end_inset
+
+ setting (which is 
+\begin_inset Quotes eld
+\end_inset
+
+no color
+\begin_inset Quotes erd
+\end_inset
+
+ in effect),
+ the other two indicate which color the default is.
+ If you look for a specific color in this rather long list,
+ you can simply type to search while the list is expanded.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1740227791
+If none of the predefined colors suit you,
+ you can define a custom color as documented in the next section,
+ which will then be available in the list as well.
 \end_layout
 
 \begin_layout Standard
@@ -52691,11 +52750,19 @@ Page
 \begin_inset space ~
 \end_inset
 
-Code after a forced page break:
+Code
+\change_deleted -712698321 1740227950
+ after a forced page break
+\change_unchanged
+:
 \end_layout
 
 \begin_layout Itemize
-For the page color:
+For the page color
+\change_inserted -712698321 1740227948
+ (after a forced page break)
+\change_unchanged
+:
 \begin_inset Newline newline
 \end_inset
 
@@ -52719,6 +52786,13 @@ color{color name}
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1740227986
+You can use any color which is listed in the dialog (including the custom colors) with these commands.
+ Note,
+ however,
+ that some colors require
+\change_deleted -712698321 1740227990
 You are restricted to one of 
 \series bold
 black
@@ -52762,15 +52836,34 @@ yellow
 color name
 \series default
  unless you have defined your own color
-\change_inserted -712698321 1740035890
- or make sure the 
+\change_inserted -712698321 1740228138
+ the 
 \family typewriter
 \color blue
 xcolor
 \family default
 \color inherit
- package is loaded with the option which defines the scheme your desired named color is in
-\change_unchanged
+ package to be loaded with the option which defines the scheme your desired named color is in (
+\family typewriter
+dvipsnames
+\family default
+,
+ 
+\family typewriter
+svgnames
+\family default
+,
+ or 
+\family typewriter
+x11names
+\family default
+;
+ see the 
+\family typewriter
+xcolor
+\family default
+ manual for details)
+\change_deleted -712698321 1740228042
  (see the section 
 \emph on
 Colored Tables
@@ -52783,7 +52876,9 @@ Embedded
 
 Objects
 \emph default
- Manual).
+ Manual)
+\change_unchanged
+.
 \begin_inset Newline newline
 \end_inset
 

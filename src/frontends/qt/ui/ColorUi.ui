@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>414</width>
-    <height>542</height>
+    <height>560</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -20,10 +20,7 @@
    <string/>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
-   <item row="0" column="0" rowspan="2" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout"/>
-   </item>
-   <item row="1" column="1">
+   <item row="0" column="0">
     <widget class="QGroupBox" name="fontcolorGB">
      <property name="title">
       <string>Font Colors</string>
@@ -34,46 +31,7 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="2">
-         <widget class="QPushButton" name="fontColorPB">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Click to change the color</string>
-          </property>
-          <property name="text">
-           <string>&amp;Change...</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5">
-         <spacer>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="noteFontColorLA">
-          <property name="text">
-           <string>Greyed-out notes:</string>
-          </property>
-          <property name="buddy">
-           <cstring>fontColorPB</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
+        <item row="1" column="2">
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -91,112 +49,45 @@
           <property name="text">
            <string>Main text:</string>
           </property>
-          <property name="buddy">
-           <cstring>fontColorPB</cstring>
-          </property>
          </widget>
         </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="noteFontColorPB">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Click to change the color</string>
-          </property>
+        <item row="1" column="0">
+         <widget class="QLabel" name="noteFontColorLA">
           <property name="text">
-           <string>C&amp;hange...</string>
+           <string>Greyed-out notes:</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="4">
-         <widget class="QToolButton" name="delNoteFontColorTB">
-          <property name="minimumSize">
-           <size>
-            <width>23</width>
-            <height>23</height>
-           </size>
+        <item row="0" column="2">
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="toolTip">
-           <string>Revert the color to the default</string>
-          </property>
-          <property name="text">
-           <string>R&amp;eset</string>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextOnly</enum>
-          </property>
-          <property name="arrowType">
-           <enum>Qt::LeftArrow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QToolButton" name="delFontColorTB">
-          <property name="minimumSize">
-           <size>
-            <width>23</width>
-            <height>23</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Revert the color to the default</string>
-          </property>
-          <property name="text">
-           <string>&amp;Reset</string>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextOnly</enum>
-          </property>
-          <property name="arrowType">
-           <enum>Qt::LeftArrow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QFrame" name="mainTextCF">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
-            <height>0</height>
+            <height>20</height>
            </size>
           </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <widget class="lyx::frontend::ColorsCombo" name="textColorCO">
+          <property name="inputMethodHints">
+           <set>Qt::InputMethodHint::ImhDigitsOnly|Qt::InputMethodHint::ImhLatinOnly</set>
           </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+          <property name="maxVisibleItems">
+           <number>20</number>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QFrame" name="noteFontCF">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <widget class="lyx::frontend::ColorsCombo" name="noteColorCO">
+          <property name="inputMethodHints">
+           <set>Qt::InputMethodHint::ImhDigitsOnly|Qt::InputMethodHint::ImhLatinOnly</set>
           </property>
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+          <property name="maxVisibleItems">
+           <number>20</number>
           </property>
          </widget>
         </item>
@@ -205,7 +96,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="1" column="0">
     <widget class="QGroupBox" name="backgroundGB">
      <property name="title">
       <string>Background Colors</string>
@@ -221,44 +112,6 @@
           <property name="text">
            <string>Shaded boxes:</string>
           </property>
-          <property name="buddy">
-           <cstring>backgroundPB</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
-         <spacer>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="4">
-         <widget class="QToolButton" name="delBoxBackgroundTB">
-          <property name="minimumSize">
-           <size>
-            <width>23</width>
-            <height>23</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Revert the color to the default</string>
-          </property>
-          <property name="text">
-           <string>Rese&amp;t</string>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonStyle::ToolButtonTextOnly</enum>
-          </property>
-          <property name="arrowType">
-           <enum>Qt::ArrowType::LeftArrow</enum>
-          </property>
          </widget>
         </item>
         <item row="0" column="0">
@@ -266,12 +119,9 @@
           <property name="text">
            <string>Page:</string>
           </property>
-          <property name="buddy">
-           <cstring>backgroundPB</cstring>
-          </property>
          </widget>
         </item>
-        <item row="0" column="5">
+        <item row="1" column="2">
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -285,100 +135,35 @@
          </spacer>
         </item>
         <item row="0" column="2">
-         <widget class="QPushButton" name="backgroundPB">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="toolTip">
-           <string>Click to change the color</string>
-          </property>
-          <property name="text">
-           <string>Ch&amp;ange...</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QToolButton" name="delBackgroundTB">
-          <property name="minimumSize">
-           <size>
-            <width>23</width>
-            <height>23</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Revert the color to the default</string>
-          </property>
-          <property name="text">
-           <string>Re&amp;set</string>
-          </property>
-          <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonStyle::ToolButtonTextOnly</enum>
-          </property>
-          <property name="arrowType">
-           <enum>Qt::ArrowType::LeftArrow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="boxBackgroundPB">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Click to change the color</string>
-          </property>
-          <property name="text">
-           <string>Chan&amp;ge...</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QFrame" name="pageBackgroundCF">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
-            <height>0</height>
+            <height>20</height>
            </size>
           </property>
-          <property name="frameShape">
-           <enum>QFrame::Shape::Box</enum>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <widget class="lyx::frontend::ColorsCombo" name="pageColorCO">
+          <property name="inputMethodHints">
+           <set>Qt::InputMethodHint::ImhDigitsOnly|Qt::InputMethodHint::ImhLatinOnly</set>
           </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Plain</enum>
+          <property name="maxVisibleItems">
+           <number>20</number>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QFrame" name="boxBackgroundCF">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <widget class="lyx::frontend::ColorsCombo" name="shadedColorCO">
+          <property name="inputMethodHints">
+           <set>Qt::InputMethodHint::ImhDigitsOnly|Qt::InputMethodHint::ImhLatinOnly</set>
           </property>
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Shape::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Shadow::Plain</enum>
+          <property name="maxVisibleItems">
+           <number>20</number>
           </property>
          </widget>
         </item>
@@ -387,7 +172,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="2" column="0">
     <widget class="QGroupBox" name="customColorsGB">
      <property name="title">
       <string>Custom Colors</string>
@@ -499,7 +284,7 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="3" column="0">
     <spacer name="spacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -515,6 +300,13 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>lyx::frontend::ColorsCombo</class>
+   <extends>QComboBox</extends>
+   <header>ColorsCombo.h</header>
+  </customwidget>
+ </customwidgets>
  <includes>
   <include location="local">qt_i18n.h</include>
  </includes>

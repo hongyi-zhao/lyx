@@ -81,6 +81,10 @@ public:
 	std::string const getX11HexName(ColorCode c, bool const darkmode = false) const;
 
 	/// Get the X11 hexname of \c color.
+	std::string const getX11HexName(std::string const & lyxname,
+					bool const darkmode = false) const;
+
+	/// Get the X11 hexname of \c color.
 	std::pair<std::string, std::string> const getAllX11HexNames(ColorCode c) const;
 
 	/// Get the LaTeX name of \c color.

@@ -53,6 +53,8 @@ public:
 	///
 	bool svgnames() const { return h_use_xcolor_svgnames; }
 	///
+	std::map<std::string, std::string> customColors() { return h_custom_colors; }
+	///
 	std::string nomenclOpts() const { return h_nomencl_options; }
 	/// The document language
 	std::string docLanguage() const { return h_language; }
@@ -165,6 +167,7 @@ private:
 	std::string h_boxbgcolor;
 	std::string h_cite_engine;
 	std::string h_cite_engine_type;
+	std::map<std::string, std::string> h_custom_colors;
 	std::string h_color;
 	std::string h_defskip;
 	bool h_dynamic_quotes;

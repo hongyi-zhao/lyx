@@ -46,8 +46,6 @@ private:
 	bool checkWidgets(bool readonly) const override;
 	//@}
 
-	/// Fill the color combos
-	void fillComboColor(QComboBox * combo, bool const is_background);
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items
@@ -61,7 +59,7 @@ private:
 	///
 	QStringList gui_names_spec_;
 	///
-	QList<ColorCode> color_codes_;
+	std::map<std::string, std::string> custom_colors_cache_;
 };
 
 } // namespace frontend

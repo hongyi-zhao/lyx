@@ -189,9 +189,146 @@ const char * const known_basic_colors[] = {"black", "blue", "brown", "cyan",
 	"darkgray", "gray", "green", "lightgray", "lime", "magenta", "orange", "olive",
 	"pink",	"purple", "red", "teal", "violet", "white", "yellow", 0};
 
-const char * const known_basic_color_codes[] = {"#000000", "#0000ff", "#964B00", "#00ffff",
-	"#a9a9a9", "#808080", "#00ff00", "#d3d3d3", "#bfff00", "#ff00ff", "#ff7f00", "#808000",
-	"#ffc0cb", "#800080", "#ff0000", "#008080", "#8f00ff", "#ffffff", "#ffff00", 0};
+/// LaTeX names for (xcolor) colors beyond the base ones
+char const * const known_textcolors[] = { "Apricot", "Aquamarine", "Bittersweet", "Black",
+"Blue", "BlueGreen", "BlueViolet", "BrickRed", "Brown", "BurntOrange", "CadetBlue", "CarnationPink",
+"Cerulean", "CornflowerBlue", "Cyan", "Dandelion", "DarkOrchid", "Emerald", "ForestGreen", "Fuchsia",
+"Goldenrod", "Gray", "Green", "GreenYellow", "JungleGreen", "Lavender", "LimeGreen", "Magenta",
+"Mahogany", "Maroon", "Melon", "MidnightBlue", "Mulberry", "NavyBlue", "OliveGreen", "Orange", "OrangeRed",
+"Orchid", "Peach", "Periwinkle", "PineGreen", "Plum", "ProcessBlue", "Purple", "RawSienna", "Red", "RedOrange",
+"RedViolet", "Rhodamine", "RoyalBlue", "RoyalPurple", "RubineRed", "Salmon", "SeaGreen", "Sepia", "SkyBlue",
+"SpringGreen", "Tan", "TealBlue", "Thistle", "Turquoise", "Violet", "VioletRed", "White", "WildStrawberry",
+"Yellow", "YellowGreen", "YellowOrange", "AntiqueWhite1", "AntiqueWhite2", "AntiqueWhite3", "AntiqueWhite4", "Aquamarine1",
+"Aquamarine2", "Aquamarine3", "Aquamarine4", "Azure1", "Azure2", "Azure3", "Azure4", "Bisque1", "Bisque2", "Bisque3", "Bisque4",
+"Blue1", "Blue2", "Blue3", "Blue4", "Brown1", "Brown2", "Brown3", "Brown4", "Burlywood1", "Burlywood2", "Burlywood3", "Burlywood4",
+"CadetBlue1", "CadetBlue2", "CadetBlue3", "CadetBlue4", "Chartreuse1", "Chartreuse2", "Chartreuse3", "Chartreuse4", "Chocolate1",
+"Chocolate2", "Chocolate3", "Chocolate4", "Coral1", "Coral2", "Coral3", "Coral4", "Cornsilk1", "Cornsilk2", "Cornsilk3", "Cornsilk4",
+"Cyan1", "Cyan2", "Cyan3", "Cyan4", "DarkGoldenrod1", "DarkGoldenrod2", "DarkGoldenrod3", "DarkGoldenrod4", "DarkOliveGreen1",
+"DarkOliveGreen2", "DarkOliveGreen3", "DarkOliveGreen4", "DarkOrange1", "DarkOrange2", "DarkOrange3", "DarkOrange4", "DarkOrchid1",
+"DarkOrchid2", "DarkOrchid3", "DarkOrchid4", "DarkSeaGreen1", "DarkSeaGreen2", "DarkSeaGreen3", "DarkSeaGreen4", "DarkSlateGray1",
+"DarkSlateGray2", "DarkSlateGray3", "DarkSlateGray4", "DeepPink1", "DeepPink2", "DeepPink3", "DeepPink4", "DeepSkyBlue1", "DeepSkyBlue2",
+"DeepSkyBlue3", "DeepSkyBlue4", "DodgerBlue1", "DodgerBlue2", "DodgerBlue3", "DodgerBlue4", "Firebrick1", "Firebrick2", "Firebrick3",
+"Firebrick4", "Gold1", "Gold2", "Gold3", "Gold4", "Goldenrod1", "Goldenrod2", "Goldenrod3", "Goldenrod4", "Green1", "Green2", "Green3",
+"Green4", "Honeydew1", "Honeydew2", "Honeydew3", "Honeydew4", "HotPink1", "HotPink2", "HotPink3", "HotPink4", "IndianRed1", "IndianRed2",
+"IndianRed3", "IndianRed4", "Ivory1", "Ivory2", "Ivory3", "Ivory4", "Khaki1", "Khaki2", "Khaki3", "Khaki4", "LavenderBlush1", "LavenderBlush2",
+"LavenderBlush3", "LavenderBlush4", "LemonChiffon1", "LemonChiffon2", "LemonChiffon3", "LemonChiffon4", "LightBlue1", "LightBlue2", "LightBlue3",
+"LightBlue4", "LightCyan1", "LightCyan2", "LightCyan3", "LightCyan4", "LightGoldenrod1", "LightGoldenrod2", "LightGoldenrod3", "LightGoldenrod4",
+"LightPink1", "LightPink2", "LightPink3", "LightPink4", "LightSalmon1", "LightSalmon2", "LightSalmon3", "LightSalmon4", "LightSkyBlue1",
+"LightSkyBlue2", "LightSkyBlue3", "LightSkyBlue4", "LightSteelBlue1", "LightSteelBlue2", "LightSteelBlue3", "LightSteelBlue4", "LightYellow1",
+"LightYellow2", "LightYellow3", "LightYellow4", "Magenta1", "Magenta2", "Magenta3", "Magenta4", "Maroon1", "Maroon2", "Maroon3", "Maroon4",
+"MediumOrchid1", "MediumOrchid2", "MediumOrchid3", "MediumOrchid4", "MediumPurple1", "MediumPurple2", "MediumPurple3", "MediumPurple4", "MistyRose1",
+"MistyRose2", "MistyRose3", "MistyRose4", "NavajoWhite1", "NavajoWhite2", "NavajoWhite3", "NavajoWhite4", "OliveDrab1", "OliveDrab2", "OliveDrab3",
+"OliveDrab4", "Orange1", "Orange2", "Orange3", "Orange4", "OrangeRed1", "OrangeRed2", "OrangeRed3", "OrangeRed4", "Orchid1", "Orchid2", "Orchid3",
+"Orchid4", "PaleGreen1", "PaleGreen2", "PaleGreen3", "PaleGreen4", "PaleTurquoise1", "PaleTurquoise2", "PaleTurquoise3", "PaleTurquoise4",
+"PaleVioletRed1", "PaleVioletRed2", "PaleVioletRed3", "PaleVioletRed4", "PeachPuff1", "PeachPuff2", "PeachPuff3", "PeachPuff4", "Pink1",
+"Pink2", "Pink3", "Pink4", "Plum1", "Plum2", "Plum3", "Plum4", "Purple1", "Purple2", "Purple3", "Purple4", "Red1", "Red2", "Red3", "Red4",
+"RosyBrown1", "RosyBrown2", "RosyBrown3", "RosyBrown4", "RoyalBlue1", "RoyalBlue2", "RoyalBlue3", "RoyalBlue4", "Salmon1", "Salmon2",
+"Salmon3", "Salmon4", "SeaGreen1", "SeaGreen2", "SeaGreen3", "SeaGreen4", "Seashell1", "Seashell2", "Seashell3", "Seashell4", "Sienna1",
+"Sienna2", "Sienna3", "Sienna4", "SkyBlue1", "SkyBlue2", "SkyBlue3", "SkyBlue4", "SlateBlue1", "SlateBlue2", "SlateBlue3", "SlateBlue4",
+"SlateGray1", "SlateGray2", "SlateGray3", "SlateGray4", "Snow1", "Snow2", "Snow3", "Snow4", "SpringGreen1", "SpringGreen2", "SpringGreen3",
+"SpringGreen4", "SteelBlue1", "SteelBlue2", "SteelBlue3", "SteelBlue4", "Tan1", "Tan2", "Tan3", "Tan4", "Thistle1", "Thistle2", "Thistle3",
+"Thistle4", "Tomato1", "Tomato2", "Tomato3", "Tomato4", "Turquoise1", "Turquoise2", "Turquoise3", "Turquoise4", "VioletRed1", "VioletRed2",
+"VioletRed3", "VioletRed4", "Wheat1", "Wheat2", "Wheat3", "Wheat4", "Yellow1", "Yellow2", "Yellow3", "Yellow4", "Gray0", "Grey0", "Green0", "Maroon0",
+"Purple0", 0};
+
+/// LyX names for (xcolor) colors beyond the base ones (except svgnames)
+char const * const known_coded_textcolors[] = { "dvips:apricot", "dvips:aquamarine",
+"dvips:bittersweet", "dvips:black", "dvips:blue", "dvips:bluegreen", "dvips:blueviolet",
+"dvips:brickred", "dvips:brown", "dvips:burntorange", "dvips:cadetblue", "dvips:carnationpink",
+"dvips:cerulean", "dvips:cornflowerblue", "dvips:cyan", "dvips:dandelion", "dvips:darkorchid",
+"dvips:emerald", "dvips:forestgreen", "dvips:fuchsia", "dvips:goldenrod", "dvips:gray", "dvips:green",
+"dvips:greenyellow", "dvips:junglegreen", "dvips:lavender", "dvips:limegreen", "dvips:magenta",
+"dvips:mahogany", "dvips:maroon", "dvips:melon", "dvips:midnightblue", "dvips:mulberry", "dvips:navyblue",
+"dvips:olivegreen", "dvips:orange", "dvips:orangered", "dvips:orchid", "dvips:peach", "dvips:periwinkle",
+"dvips:pinegreen", "dvips:plum", "dvips:processblue", "dvips:purple", "dvips:rawsienna", "dvips:red",
+"dvips:redorange", "dvips:redviolet", "dvips:rhodamine", "dvips:royalblue", "dvips:royalpurple",
+"dvips:rubinered", "dvips:salmon", "dvips:seagreen", "dvips:sepia", "dvips:skyblue", "dvips:springgreen",
+"dvips:tan", "dvips:tealblue", "dvips:thistle", "dvips:turquoise", "dvips:violet", "dvips:violetred",
+"dvips:white", "dvips:wildstrawberry", "dvips:yellow", "dvips:yellowgreen", "dvips:yelloworange",
+"x11:antiquewhite1", "x11:antiquewhite2", "x11:antiquewhite3", "x11:antiquewhite4", "x11:aquamarine1",
+"x11:aquamarine2", "x11:aquamarine3", "x11:aquamarine4", "x11:azure1", "x11:azure2", "x11:azure3", "x11:azure4", "x11:bisque1",
+"x11:bisque2", "x11:bisque3", "x11:bisque4", "x11:blue1", "x11:blue2", "x11:blue3", "x11:blue4", "x11:brown1", "x11:brown2",
+"x11:brown3", "x11:brown4", "x11:burlywood1", "x11:burlywood2", "x11:burlywood3", "x11:burlywood4", "x11:cadetblue1", "x11:cadetblue2",
+"x11:cadetblue3", "x11:cadetblue4", "x11:chartreuse1", "x11:chartreuse2", "x11:chartreuse3", "x11:chartreuse4", "x11:chocolate1",
+"x11:chocolate2", "x11:chocolate3", "x11:chocolate4", "x11:coral1", "x11:coral2", "x11:coral3", "x11:coral4", "x11:cornsilk1",
+"x11:cornsilk2", "x11:cornsilk3", "x11:cornsilk4", "x11:cyan1", "x11:cyan2", "x11:cyan3", "x11:cyan4", "x11:darkgoldenrod1",
+"x11:darkgoldenrod2", "x11:darkgoldenrod3", "x11:darkgoldenrod4", "x11:darkolivegreen1", "x11:darkolivegreen2", "x11:darkolivegreen3",
+"x11:darkolivegreen4", "x11:darkorange1", "x11:darkorange2", "x11:darkorange3", "x11:darkorange4", "x11:darkorchid1", "x11:darkorchid2",
+"x11:darkorchid3", "x11:darkorchid4", "x11:darkseagreen1", "x11:darkseagreen2", "x11:darkseagreen3", "x11:darkseagreen4",
+"x11:darkslategray1", "x11:darkslategray2", "x11:darkslategray3", "x11:darkslategray4", "x11:deeppink1", "x11:deeppink2", "x11:deeppink3",
+"x11:deeppink4", "x11:deepskyblue1", "x11:deepskyblue2", "x11:deepskyblue3", "x11:deepskyblue4", "x11:dodgerblue1", "x11:dodgerblue2",
+"x11:dodgerblue3", "x11:dodgerblue4", "x11:firebrick1", "x11:firebrick2", "x11:firebrick3", "x11:firebrick4", "x11:gold1", "x11:gold2",
+"x11:gold3", "x11:gold4", "x11:goldenrod1", "x11:goldenrod2", "x11:goldenrod3", "x11:goldenrod4", "x11:green1", "x11:green2", "x11:green3",
+"x11:green4", "x11:honeydew1", "x11:honeydew2", "x11:honeydew3", "x11:honeydew4", "x11:hotpink1", "x11:hotpink2", "x11:hotpink3", "x11:hotpink4",
+"x11:indianred1", "x11:indianred2", "x11:indianred3", "x11:indianred4", "x11:ivory1", "x11:ivory2", "x11:ivory3", "x11:ivory4", "x11:khaki1",
+"x11:khaki2", "x11:khaki3", "x11:khaki4", "x11:lavenderblush1", "x11:lavenderblush2", "x11:lavenderblush3", "x11:lavenderblush4", "x11:lemonchiffon1",
+"x11:lemonchiffon2", "x11:lemonchiffon3", "x11:lemonchiffon4", "x11:lightblue1", "x11:lightblue2", "x11:lightblue3", "x11:lightblue4",
+"x11:lightcyan1", "x11:lightcyan2", "x11:lightcyan3", "x11:lightcyan4", "x11:lightgoldenrod1", "x11:lightgoldenrod2", "x11:lightgoldenrod3",
+"x11:lightgoldenrod4", "x11:lightpink1", "x11:lightpink2", "x11:lightpink3", "x11:lightpink4", "x11:lightsalmon1", "x11:lightsalmon2",
+"x11:lightsalmon3", "x11:lightsalmon4", "x11:lightskyblue1", "x11:lightskyblue2", "x11:lightskyblue3", "x11:lightskyblue4", "x11:lightsteelblue1",
+"x11:lightsteelblue2", "x11:lightsteelblue3", "x11:lightsteelblue4", "x11:lightyellow1", "x11:lightyellow2", "x11:lightyellow3",
+"x11:lightyellow4", "x11:magenta1", "x11:magenta2", "x11:magenta3", "x11:magenta4", "x11:maroon1", "x11:maroon2", "x11:maroon3", "x11:maroon4",
+"x11:mediumorchid1", "x11:mediumorchid2", "x11:mediumorchid3", "x11:mediumorchid4", "x11:mediumpurple1", "x11:mediumpurple2", "x11:mediumpurple3",
+"x11:mediumpurple4", "x11:mistyrose1", "x11:mistyrose2", "x11:mistyrose3", "x11:mistyrose4", "x11:navajowhite1", "x11:navajowhite2",
+"x11:navajowhite3", "x11:navajowhite4", "x11:olivedrab1", "x11:olivedrab2", "x11:olivedrab3", "x11:olivedrab4", "x11:orange1", "x11:orange2",
+"x11:orange3", "x11:orange4", "x11:orangered1", "x11:orangered2", "x11:orangered3", "x11:orangered4", "x11:orchid1", "x11:orchid2",
+"x11:orchid3", "x11:orchid4", "x11:palegreen1", "x11:palegreen2", "x11:palegreen3", "x11:palegreen4", "x11:paleturquoise1", "x11:paleturquoise2",
+"x11:paleturquoise3", "x11:paleturquoise4", "x11:palevioletred1", "x11:palevioletred2", "x11:palevioletred3", "x11:palevioletred4",
+"x11:peachpuff1", "x11:peachpuff2", "x11:peachpuff3", "x11:peachpuff4", "x11:pink1", "x11:pink2", "x11:pink3", "x11:pink4", "x11:plum1",
+"x11:plum2", "x11:plum3", "x11:plum4", "x11:purple1", "x11:purple2", "x11:purple3", "x11:purple4", "x11:red1", "x11:red2", "x11:red3",
+"x11:red4", "x11:rosybrown1", "x11:rosybrown2", "x11:rosybrown3", "x11:rosybrown4", "x11:royalblue1", "x11:royalblue2", "x11:royalblue3",
+"x11:royalblue4", "x11:salmon1", "x11:salmon2", "x11:salmon3", "x11:salmon4", "x11:seagreen1", "x11:seagreen2", "x11:seagreen3", "x11:seagreen4",
+"x11:seashell1", "x11:seashell2", "x11:seashell3", "x11:seashell4", "x11:sienna1", "x11:sienna2", "x11:sienna3", "x11:sienna4", "x11:skyblue1",
+"x11:skyblue2", "x11:skyblue3", "x11:skyblue4", "x11:slateblue1", "x11:slateblue2", "x11:slateblue3", "x11:slateblue4", "x11:slategray1",
+"x11:slategray2", "x11:slategray3", "x11:slategray4", "x11:snow1", "x11:snow2", "x11:snow3", "x11:snow4", "x11:springgreen1", "x11:springgreen2",
+"x11:springgreen3", "x11:springgreen4", "x11:steelblue1", "x11:steelblue2", "x11:steelblue3", "x11:steelblue4", "x11:tan1", "x11:tan2", "x11:tan3",
+"x11:tan4", "x11:thistle1", "x11:thistle2", "x11:thistle3", "x11:thistle4", "x11:tomato1", "x11:tomato2", "x11:tomato3", "x11:tomato4",
+"x11:turquoise1", "x11:turquoise2", "x11:turquoise3", "x11:turquoise4", "x11:violetred1", "x11:violetred2", "x11:violetred3", "x11:violetred4",
+"x11:wheat1", "x11:wheat2", "x11:wheat3", "x11:wheat4", "x11:yellow1", "x11:yellow2", "x11:yellow3", "x11:yellow4", "x11:gray0", "x11:gray0", "x11:green0",
+"x11:maroon0", "x11:purple0", 0};
+
+/// LaTeX names for (xcolor) colors beyond the base ones (svgnames)
+char const * const known_svgnames_textcolors[] = { "AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige",
+"Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse",
+"Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenrod",
+"DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "DarkOrange", "DarkOrchid", "DarkRed",
+"DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue",
+"DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold",
+"Goldenrod", "Gray", "Grey", "Green", "GreenYellow", "Honeydew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender",
+"LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenrod",
+"LightGoldenrodYellow", "LightGray", "LightGray", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue",
+"LightSlateBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon",
+"MediumAquamarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen",
+"MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "NavyBlue",
+"OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenrod", "PaleGreen", "PaleTurquoise",
+"PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue",
+"SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "Seashell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow",
+"SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "VioletRed", "Wheat", "White",
+"WhiteSmoke", "Yellow", "YellowGreen", 0 };
+
+/// LyX names for (xcolor) colors beyond the base ones (svgnames)
+char const * const known_coded_svgnames_textcolors[] = { "svg:aliceblue",
+"svg:antiquewhite", "svg:aqua", "svg:aquamarine", "svg:azure", "svg:beige", "svg:bisque", "svg:black",
+"svg:blanchedalmond", "svg:blue", "svg:blueviolet", "svg:brown", "svg:burlywood", "svg:cadetblue", "svg:chartreuse",
+"svg:chocolate", "svg:coral", "svg:cornflowerblue", "svg:cornsilk", "svg:crimson", "svg:cyan", "svg:darkblue",
+"svg:darkcyan", "svg:darkgoldenrod", "svg:darkgray", "svg:darkgray", "svg:darkgreen", "svg:darkkhaki", "svg:darkmagenta",
+"svg:darkolivegreen", "svg:darkorange", "svg:darkorchid", "svg:darkred", "svg:darksalmon", "svg:darkseagreen",
+"svg:darkslateblue", "svg:darkslategray", "svg:darkslategray", "svg:darkturquoise", "svg:darkviolet", "svg:deeppink", "svg:deepskyblue",
+"svg:dimgray", "svg:dimgray", "svg:dodgerblue", "svg:firebrick", "svg:floralwhite", "svg:forestgreen", "svg:fuchsia", "svg:gainsboro",
+"svg:ghostwhite", "svg:gold", "svg:goldenrod", "svg:gray", "svg:gray", "svg:green", "svg:greenyellow", "svg:honeydew", "svg:hotpink",
+"svg:indianred", "svg:indigo", "svg:ivory", "svg:khaki", "svg:lavender", "svg:lavenderblush", "svg:lawngreen",
+"svg:lemonchiffon", "svg:lightblue", "svg:lightcoral", "svg:lightcyan", "svg:lightgoldenrod", "svg:lightgoldenrodyellow",
+"svg:lightgray", "svg:lightgray", "svg:lightgreen", "svg:lightpink", "svg:lightsalmon", "svg:lightseagreen", "svg:lightskyblue",
+"svg:lightslateblue", "svg:lightslategray", "svg:lightslategray", "svg:lightsteelblue", "svg:lightyellow", "svg:lime", "svg:limegreen",
+"svg:linen", "svg:magenta", "svg:maroon", "svg:mediumaquamarine", "svg:mediumblue", "svg:mediumorchid", "svg:mediumpurple",
+"svg:mediumseagreen", "svg:mediumslateblue", "svg:mediumspringgreen", "svg:mediumturquoise", "svg:mediumvioletred", "svg:midnightblue",
+"svg:mintcream", "svg:mistyrose", "svg:moccasin", "svg:navajowhite", "svg:navyblue", "svg:navyblue", "svg:oldlace", "svg:olive", "svg:olivedrab",
+"svg:orange", "svg:orangered", "svg:orchid", "svg:palegoldenrod", "svg:palegreen", "svg:paleturquoise", "svg:palevioletred",
+"svg:papayawhip", "svg:peachpuff", "svg:peru", "svg:pink", "svg:plum", "svg:powderblue", "svg:purple", "svg:red", "svg:rosybrown",
+"svg:royalblue", "svg:saddlebrown", "svg:salmon", "svg:sandybrown", "svg:seagreen", "svg:seashell", "svg:sienna", "svg:silver",
+"svg:skyblue", "svg:slateblue", "svg:slategray", "svg:slategray", "svg:snow", "svg:springgreen", "svg:steelblue", "svg:tan", "svg:teal", "svg:thistle",
+"svg:tomato", "svg:turquoise", "svg:violet", "svg:violetred", "svg:wheat", "svg:white", "svg:whitesmoke", "svg:yellow",
+"svg:yellowgreen", 0 };
 
 /// conditional commands with three arguments like \@ifundefined{}{}{}
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
@@ -2139,6 +2276,9 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 		os << "\\lineno_options " << h_lineno_options << '\n';
 	if (!h_nomencl_options.empty())
 		os << "\\nomencl_options " << h_nomencl_options << '\n';
+	for (map<string, string>::const_iterator it = h_custom_colors.begin();
+	     it != h_custom_colors.end(); ++it)
+		os << "\\customcolor " << it->first << ' ' << it->second << '\n';
 	if (!h_fontcolor.empty())
 		os << "\\fontcolor " << h_fontcolor << '\n';
 	if (!h_notefontcolor.empty())
@@ -2482,10 +2622,18 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const space =
 				(p.hasOpt() ? p.getOpt() : string());
 			string argument = p.getArg('{', '}');
+			char const * const * where = 0;
 			// check the case that a standard color is used
 			if (space.empty() && is_known(argument, known_basic_colors)) {
-				h_fontcolor = rgbcolor2code(argument);
+				h_fontcolor = argument;
 				registerAutomaticallyLoadedPackage("color");
+			// With xcolor, svgnames colors get priority with clashing names
+			} else if (svgnames() && (where = is_known(argument, known_svgnames_textcolors))) {
+				h_fontcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
+				registerAutomaticallyLoadedPackage("xcolor");
+			} else if ((where = is_known(argument, known_textcolors))) {
+				h_fontcolor = known_coded_textcolors[where - known_textcolors];
+				registerAutomaticallyLoadedPackage("xcolor");
 			} else if (space.empty() && argument == "document_fontcolor")
 				registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's document_fontcolor is defined
@@ -2504,9 +2652,17 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 		if (t.cs() == "pagecolor") {
 			string argument = p.getArg('{', '}');
+			char const * const * where = 0;
 			// check the case that a standard color is used
 			if (is_known(argument, known_basic_colors)) {
-				h_backgroundcolor = rgbcolor2code(argument);
+				h_backgroundcolor = argument;
+			// With xcolor, svgnames colors get priority with clashing names
+			} else if (svgnames() && (where = is_known(argument, known_svgnames_textcolors))) {
+				h_backgroundcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
+				registerAutomaticallyLoadedPackage("xcolor");
+			} else if ((where = is_known(argument, known_textcolors))) {
+				h_backgroundcolor = known_coded_textcolors[where - known_textcolors];
+				registerAutomaticallyLoadedPackage("xcolor");
 			} else if (argument == "page_backgroundcolor")
 				registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's page_backgroundcolor is defined
@@ -3042,22 +3198,84 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const color = p.getArg('{', '}');
 			string const space = p.getArg('{', '}');
 			string const value = p.getArg('{', '}');
-			if (color == "document_fontcolor" && space == "rgb") {
+			if (space == "rgb") {
+				if (color == "document_fontcolor")
+					h_fontcolor = color;
+				else if (color == "note_fontcolor")
+					h_notefontcolor = color;
+				else if (color == "page_backgroundcolor")
+					h_backgroundcolor = color;
+				else if (color == "shadecolor")
+					h_boxbgcolor = color;
 				RGBColor c(RGBColorFromLaTeX(value));
-				h_fontcolor = X11hexname(c);
-			} else if (color == "note_fontcolor" && space == "rgb") {
-				RGBColor c(RGBColorFromLaTeX(value));
-				h_notefontcolor = X11hexname(c);
-			} else if (color == "page_backgroundcolor" && space == "rgb") {
-				RGBColor c(RGBColorFromLaTeX(value));
-				h_backgroundcolor = X11hexname(c);
-			} else if (color == "shadecolor" && space == "rgb") {
-				RGBColor c(RGBColorFromLaTeX(value));
-				h_boxbgcolor = X11hexname(c);
+				h_custom_colors[color] = ltrim(X11hexname(c), "#");
 			} else {
 				h_preamble << "\\definecolor{" << color
 				           << "}{" << space << "}{" << value
 				           << '}';
+			}
+			continue;
+		}
+
+		if (t.cs() == "colorlet") {
+			string const color1 = p.getArg('{', '}');
+			string const color2 = p.getArg('{', '}');
+			char const * const * where = 0;
+			if (color1 == "document_fontcolor") {
+				// check the case that a standard color is used
+				if (is_known(color2, known_basic_colors)) {
+					h_fontcolor = color2;
+				// With xcolor, svgnames colors get priority with clashing names
+				} else if (svgnames() && (where = is_known(color2, known_svgnames_textcolors))) {
+					h_fontcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
+					registerAutomaticallyLoadedPackage("xcolor");
+				} else if ((where = is_known(color2, known_textcolors))) {
+					h_fontcolor = known_coded_textcolors[where - known_textcolors];
+					registerAutomaticallyLoadedPackage("xcolor");
+				} else if (h_custom_colors.find(color2) != h_custom_colors.end())
+					h_fontcolor = color2;
+			} else if (color1 == "note_fontcolor") {
+				// check the case that a standard color is used
+				if (is_known(color2, known_basic_colors)) {
+					h_notefontcolor = color2;
+				// With xcolor, svgnames colors get priority with clashing names
+				} else if (svgnames() && (where = is_known(color2, known_svgnames_textcolors))) {
+					h_notefontcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
+					registerAutomaticallyLoadedPackage("xcolor");
+				} else if ((where = is_known(color2, known_textcolors))) {
+					h_notefontcolor = known_coded_textcolors[where - known_textcolors];
+					registerAutomaticallyLoadedPackage("xcolor");
+				} else if (h_custom_colors.find(color2) != h_custom_colors.end())
+					h_notefontcolor = color2;
+			} else if (color1 == "page_backgroundcolor") {
+				// check the case that a standard color is used
+				if (is_known(color2, known_basic_colors)) {
+					h_backgroundcolor = color2;
+				// With xcolor, svgnames colors get priority with clashing names
+				} else if (svgnames() && (where = is_known(color2, known_svgnames_textcolors))) {
+					h_backgroundcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
+					registerAutomaticallyLoadedPackage("xcolor");
+				} else if ((where = is_known(color2, known_textcolors))) {
+					h_backgroundcolor = known_coded_textcolors[where - known_textcolors];
+					registerAutomaticallyLoadedPackage("xcolor");
+				} else if (h_custom_colors.find(color2) != h_custom_colors.end())
+					h_backgroundcolor = color2;
+			} else if (color1 == "shadecolor") {
+				// check the case that a standard color is used
+				if (is_known(color2, known_basic_colors)) {
+					h_boxbgcolor = color2;
+				// With xcolor, svgnames colors get priority with clashing names
+				} else if (svgnames() && (where = is_known(color2, known_svgnames_textcolors))) {
+					h_boxbgcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
+					registerAutomaticallyLoadedPackage("xcolor");
+				} else if ((where = is_known(color2, known_textcolors))) {
+					h_boxbgcolor = known_coded_textcolors[where - known_textcolors];
+					registerAutomaticallyLoadedPackage("xcolor");
+				} else if (h_custom_colors.find(color2) != h_custom_colors.end())
+					h_boxbgcolor = color2;
+			} else {
+				h_preamble << "\\colorlet{" << color1
+				           << "}{" << color2 << '}';
 			}
 			continue;
 		}
@@ -3299,19 +3517,6 @@ string Preamble::polyglossia2lyx(string const & language)
 	if (where)
 		return coded_polyglossia_languages[where - polyglossia_languages];
 	return language;
-}
-
-
-string rgbcolor2code(string const & name)
-{
-	char const * const * where = is_known(name, known_basic_colors);
-	if (where) {
-		// "red", "green" etc
-		return known_basic_color_codes[where - known_basic_colors];
-	}
-	// "255,0,0", "0,255,0" etc
-	RGBColor c(RGBColorFromLaTeX(name));
-	return X11hexname(c);
 }
 
 // }])

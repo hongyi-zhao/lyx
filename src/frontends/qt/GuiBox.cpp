@@ -15,18 +15,18 @@
 
 #include "GuiBox.h"
 
-#include "GuiApplication.h"
-#include "ColorCache.h"
-#include "ColorSet.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+
+#include "ColorsCombo.h"
+
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
 #include "insets/InsetBox.h"
 
-#include "support/gettext.h"
 #include "support/Length.h"
-#include "support/lstrings.h"
 
 #include <QComboBox>
 #include <QLineEdit>
@@ -72,32 +72,6 @@ static QStringList boxGuiSpecialLengthNames()
 }
 
 
-static QList<ColorCode> colors()
-{
-	QList<ColorCode> colors;
-	colors << Color_black;
-	colors << Color_white;
-	colors << Color_blue;
-	colors << Color_brown;
-	colors << Color_cyan;
-	colors << Color_darkgray;
-	colors << Color_gray;
-	colors << Color_green;
-	colors << Color_lightgray;
-	colors << Color_lime;
-	colors << Color_magenta;
-	colors << Color_olive;
-	colors << Color_orange;
-	colors << Color_pink;
-	colors << Color_purple;
-	colors << Color_red;
-	colors << Color_teal;
-	colors << Color_violet;
-	colors << Color_yellow;
-	return colors;
-}
-
-
 GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
@@ -138,6 +112,11 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 	connect(backgroundColorCO, SIGNAL(currentIndexChanged(int)),
 		this, SIGNAL(changed()));
 
+	// frame color has "default" as default value, background has "none"
+	frameColorCO->setDefaultValue("default");
+	frameColorCO->setToolTip(qt_("You can also directly type on the list to filter on color names."));
+	backgroundColorCO->setToolTip(qt_("You can also directly type on the list to filter on color names."));
+
 	heightED->setValidator(unsignedLengthValidator(heightED));
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	thicknessED->setValidator(unsignedLengthValidator(thicknessED));
@@ -151,35 +130,7 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 	addCheckedWidget(separationED, separationLA);
 	addCheckedWidget(shadowsizeED, shadowsizeLA);
 
-	// the background can be uncolored while the frame cannot
-	color_codes_ = colors();
-	sort(color_codes_.begin(), color_codes_.end(), ColorSorter);
-	fillComboColor(backgroundColorCO, true);
-	fillComboColor(frameColorCO, false);
-
 	initDialog();
-}
-
-
-void GuiBox::fillComboColor(QComboBox * combo, bool const is_background)
-{
-	combo->clear();
-	QPixmap coloritem(32, 32);
-	QColor color;
-	// condition on the two possible types
-	if (is_background)
-		combo->addItem(toqstr(translateIfPossible(lcolor.getGUIName(Color_none))),
-			       toqstr(lcolor.getLaTeXName(Color_none)));
-	else
-		combo->addItem(qt_("Default"), toqstr("default"));
-	QList<ColorCode>::const_iterator cit = color_codes_.begin();
-	for (; cit != color_codes_.end(); ++cit) {
-		QString const latexname = toqstr(lcolor.getLaTeXName(*cit));
-		QString const guiname = toqstr(translateIfPossible(lcolor.getGUIName(*cit)));
-		color = guiApp->colorCache().get(*cit, false);
-		coloritem.fill(color);
-		combo->addItem(QIcon(coloritem), guiname, latexname);
-	}
 }
 
 
@@ -274,6 +225,9 @@ void GuiBox::paramsToDialog(Inset const * inset)
 {
 	InsetBox const * box = static_cast<InsetBox const *>(inset);
 	InsetBoxParams const & params = box->params();
+	custom_colors_cache_ = inset->buffer().masterParams().custom_colors;
+	frameColorCO->setCustomColors(custom_colors_cache_);
+	backgroundColorCO->setCustomColors(custom_colors_cache_);
 	QString type = toqstr(params.type);
 	if (type == "Framed") {
 		pagebreakCB->setChecked(true);
@@ -377,8 +331,8 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	lengthToWidgets(shadowsizeED, shadowsizeUnitsLC,
 		(params.shadowsize).asString(), default_unit);
 	// set color
-	frameColorCO->setCurrentIndex(frameColorCO->findData(toqstr(params.framecolor)));
-	backgroundColorCO->setCurrentIndex(backgroundColorCO->findData(toqstr(params.backgroundcolor)));
+	frameColorCO->set(toqstr(params.framecolor));
+	backgroundColorCO->set(toqstr(params.backgroundcolor));
 }
 
 
@@ -462,12 +416,12 @@ docstring GuiBox::dialogToParams() const
 		params.shadowsize = Length("4pt");
 	if (frameColorCO->isEnabled())
 		params.framecolor =
-			fromqstr(frameColorCO->itemData(frameColorCO->currentIndex()).toString());
+			fromqstr(frameColorCO->getData(frameColorCO->currentIndex()));
 	else
 		params.framecolor = "foreground";
 	if (backgroundColorCO->isEnabled())
 		params.backgroundcolor =
-			fromqstr(backgroundColorCO->itemData(backgroundColorCO->currentIndex()).toString());
+			fromqstr(backgroundColorCO->getData(backgroundColorCO->currentIndex()));
 	else
 		params.backgroundcolor = "none";
 

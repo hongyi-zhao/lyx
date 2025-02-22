@@ -50139,41 +50139,52 @@ Hier können Sie die Schriftfarbe für den Haupttext (Voreinstellung:
  für Grauschrift-Notizen (Voreinstellung:
  hellgrau),
  die Hintergrundfarbe für die Seiten (Voreinstellung:
- weiß) und für Schattierte
+ keine) und für Schattierte
 \begin_inset space ~
 \end_inset
 
 Boxen (Voreinstellung:
  rot) ändern.
  Außerdem können Sie benutzerdefinierte Farben bestimmen,
- die dann im Textstil-Dialog ausgewählt werden können.
+ die dann allen dokumentbezogenen Farbeinstellungen (bspw.
+ im Textstil-Dialog oder auch hier i Dokument-Dialog) ausgewählt werden können.
 \end_layout
 
 \begin_layout Subsection
 Farben für Haupttext,
+ Hintergrund,
  Grauschrift und Boxen
 \end_layout
 
 \begin_layout Standard
-Der Kopf 
-\family sans
-Zurücksetzen
-\family default
- setzt die Farbe zurück auf die Voreinstellung.
+Sie können für jedes Element aus einer langen Liste vordefinierter Farben auswählen.
+ Für den Haupttext und den Seitenhintergrund wird überdies eine Option 
+\begin_inset Quotes gld
+\end_inset
+
+Standard
+\begin_inset Quotes grd
+\end_inset
+
+ angeboten (was effektiv 
+\begin_inset Quotes gld
+\end_inset
+
+keine Farbe
+\begin_inset Quotes grd
+\end_inset
+
+ bedeutet),
+ die anderen beiden Elemente zeigen an,
+ welche Farbe die Voreinstellung ist.
+ Wenn Sie in der langen Liste nach einer bestimmten Farbe suchen,
+ können Sie einfach einen Suchausdruck eintippen während die Liste ausgeklappt ist.
 \end_layout
 
 \begin_layout Standard
-Durch Klicken auf entweder 
-\family sans
-Standard
-\family default
- oder 
-\family sans
-Änderung
-\family default
- wird ein Dialog geöffnet,
- in dem man eine Farbe per Klick oder per Angabe von HSL oder RGB Werten auswählen kann.
- Im Dialog kann man jede Farbe zu den benutzerdefinierten Farben hinzufügen um sie später schneller auswählen zu können.
+Sollte keine der vordefinierten Farben nach Ihrem Wunsch sein,
+ können Sie eine benutzerdefinierte Farbe anlegen (wie im nächsten Abschnitt dokumentiert),
+ die im Folgenden dann ebenfalls in der Liste erscheint.
 \end_layout
 
 \begin_layout Standard
@@ -50217,11 +50228,11 @@ nolink "false"
 \begin_layout Standard
 Sie können die Schriftfarbe des Haupttextes und die Seiten-Hintergrundfarbe für jede Seite ihres Dokuments anpassen,
  indem Sie diese Befehle als \SpecialChar TeX
--Code nach einem manuellen Seitenumbruch einfügen:
+-Code einfügen:
 \end_layout
 
 \begin_layout Itemize
-Für die Seitenfarbe:
+Für die Seitenfarbe (nach einem manuellen Seitenumbruch):
 \begin_inset Newline newline
 \end_inset
 
@@ -50245,66 +50256,32 @@ color{Farbname}
 \end_layout
 
 \begin_layout Standard
-Der Farbname kann von Haus aus einer dieser Namen sein:
- 
-\series bold
-black
-\series default
-,
- 
-\series bold
-blue
-\series default
-,
- 
-\series bold
-cyan
-\series default
-,
- 
-\series bold
-green
-\series default
-,
- 
-\series bold
-magenta
-\series default
-,
- 
-\series bold
-red
-\series default
-,
- 
-\series bold
-white
-\series default
-,
- 
-\series bold
-yellow
-\series default
-.
- Wenn Sie das Paket 
+Der Farbname kann jede Farbe sein,
+ die im Dialog aufgelistet ist (inklusive der benutzerdefinierten).
+ Beachten Sie aber,
+ dass einige Farben das Paket 
 \family typewriter
 xcolor
 \family default
- mir einem entsprechenden Farbschema geladen haben,
- können Sie auch jede weitere vordefinierte Farbe dieses Schemas verwenden.
- Außerdem können Sie eine eigene Farbe definieren (siehe den Abschnitt 
-\emph on
-Farbige Tabellen
-\emph default
- des 
-\emph on
-Eingebettete
-\begin_inset space ~
-\end_inset
-
-Objekte
-\emph default
- Handbuchs).
+ mit einem entsprechenden Farbschema als Option verlangen (
+\family typewriter
+dvipsnames
+\family default
+,
+ 
+\family typewriter
+svgnames
+\family default
+ oder 
+\family typewriter
+x11names
+\family default
+;
+ bitte konsultieren Sie die Dokumentation von 
+\family typewriter
+xcolor
+\family default
+ für Einzelheiten).
 \end_layout
 
 \begin_layout Standard

@@ -20,7 +20,6 @@
 #include "BufferView.h"
 #include "ColorSet.h"
 #include "Cursor.h"
-#include "DispatchResult.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
@@ -32,7 +31,6 @@
 #include "TextClass.h"
 
 #include "support/debug.h"
-#include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/Lexer.h"
@@ -165,7 +163,7 @@ void InsetBox::setButtonLabel()
 
 	// set the frame color for the inset if the type is Boxed
 	if (btype == Boxed)
-		setFrameColor(lcolor.getFromLaTeXName(getFrameColor(true)));
+		setFrameColor(lcolor.getFromLyXName(getFrameColor(true)));
 	else
 		setFrameColor(Color_collapsibleframe);
 }
@@ -221,9 +219,6 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 		return getLayout().bgcolor();
 
 	if (params_.type == "Shaded") {
-		if (!buffer().params().isboxbgcolor)
-			return getLayout().bgcolor();
-
 		ColorCode c = lcolor.getFromLyXName("boxbgcolor@" + buffer().fileName().absFileName());
 		if (c == Color_none)
 			return getLayout().bgcolor();
@@ -231,7 +226,7 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 	}
 
 	if (params_.backgroundcolor != "none")
-		return lcolor.getFromLaTeXName(params_.backgroundcolor);
+		return lcolor.getFromLyXName(getBackgroundColor(true));
 
 	return getLayout().bgcolor();
 }
@@ -824,10 +819,18 @@ void InsetBox::validate(LaTeXFeatures & features) const
 		features.require("calc");
 		features.require("fancybox");
 		break;
-	case Shaded:
-		features.require("color");
+	case Shaded: {
+		features.require("xcolor");
+		if (theLaTeXColors().isLaTeXColor(buffer().params().boxbgcolor)) {
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(buffer().params().boxbgcolor);
+			for (auto const & r : lc.req())
+				features.require(r);
+			if (!lc.model().empty())
+				features.require("xcolor:" + lc.model());
+		}
 		features.require("framed");
 		break;
+	}
 	}
 	InsetCollapsible::validate(features);
 }
@@ -879,21 +882,44 @@ void InsetBox::string2params(string const & in, InsetBoxParams & params)
 }
 
 
+void InsetBox::registerLyXColor(string const & value) const
+{
+	if (!lcolor.isKnownLyXName(value)) {
+		if (theLaTeXColors().isLaTeXColor(value)) {
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(value);
+			string const lyxname = lc.name();
+			lcolor.setColor(lyxname, lc.hexname());
+			lcolor.setLaTeXName(lyxname, lc.latex());
+			lcolor.setGUIName(lyxname, to_ascii(lc.guiname()));
+		}
+	}
+}
+
+
 string const InsetBox::getFrameColor(bool const gui) const
 {
 	if (params_.framecolor == "default")
 		return gui ? "foreground" : "black";
-	return params_.framecolor;
+	
+	registerLyXColor(params_.framecolor);
+	if (!lcolor.isKnownLyXName(params_.framecolor))
+		return gui ? "foreground" : "black";
+	return gui ? params_.framecolor
+		   : lcolor.getLaTeXName(lcolor.getFromLyXName(params_.framecolor));
 }
 
 
-string const InsetBox::getBackgroundColor() const
+string const InsetBox::getBackgroundColor(bool const gui) const
 {
 	if (params_.backgroundcolor == "none")
-		return buffer().params().isbackgroundcolor
-				? "page_backgroundcolor"
-				: "white";
-	return params_.backgroundcolor;
+		return (gui) ? "white"
+			     : "page_backgroundcolor";
+	registerLyXColor(params_.backgroundcolor);
+	if (!lcolor.isKnownLyXName(params_.backgroundcolor))
+		return (gui) ? "white"
+			     : "page_backgroundcolor";
+	return gui ? params_.backgroundcolor
+		   : lcolor.getLaTeXName(lcolor.getFromLyXName(params_.backgroundcolor));
 }
 
 

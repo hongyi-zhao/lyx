@@ -395,6 +395,12 @@ string const ColorSet::getX11HexName(ColorCode c, bool const darkmode) const
 }
 
 
+string const ColorSet::getX11HexName(string const & lyxname, bool const darkmode) const
+{
+	return getX11HexName(getFromLyXName(lyxname), darkmode);
+}
+
+
 pair<string, string> const ColorSet::getAllX11HexNames(ColorCode c) const
 {
 	InfoTab::const_iterator it = infotab.find(c);

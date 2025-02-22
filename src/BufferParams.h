@@ -16,7 +16,6 @@
 #define BUFFERPARAMS_H
 
 #include "Citation.h"
-#include "ColorCode.h"
 #include "DocumentClassPtr.h"
 #include "LayoutModuleList.h"
 #include "paper.h"
@@ -129,6 +128,9 @@ public:
 	/// Convenience function for display: like math_number, but
 	/// DEFAULT is replaced by the best guess we have.
 	MathNumber getMathNumber() const;
+
+	// Register a used color
+	void registerLyXColor(std::string const &, std::string const &);
 
 	/** Whether paragraphs are separated by using a indent like in
 	 *  articles or by using a little skip like in letters.
@@ -421,21 +423,13 @@ public:
 	///
 	std::string tablestyle;
 	///
-	RGBColor backgroundcolor;
+	std::string backgroundcolor;
 	///
-	bool isbackgroundcolor;
+	std::string fontcolor;
 	///
-	RGBColor fontcolor;
+	std::string notefontcolor;
 	///
-	bool isfontcolor;
-	///
-	RGBColor notefontcolor;
-	///
-	bool isnotefontcolor;
-	///
-	RGBColor boxbgcolor;
-	///
-	bool isboxbgcolor;
+	std::string boxbgcolor;
 	///
 	std::map<std::string, std::string> custom_colors;
 	/// \param index should lie in the range 0 <= \c index <= 3.

@@ -462,16 +462,12 @@ BufferParams::BufferParams()
 	suppress_date = false;
 	justification = true;
 	// no color is the default (white)
-	backgroundcolor = lyx::rgbFromHexName("#ffffff");
-	isbackgroundcolor = false;
+	backgroundcolor = "none";
 	// no color is the default (black)
-	fontcolor = lyx::rgbFromHexName("#000000");
-	isfontcolor = false;
+	fontcolor = "none";
 	// light gray is the default font color for greyed-out notes
-	notefontcolor = lyx::rgbFromHexName("#cccccc");
-	isnotefontcolor = false;
-	boxbgcolor = lyx::rgbFromHexName("#ff0000");
-	isboxbgcolor = false;
+	notefontcolor = "lightgray";
+	boxbgcolor = "red";
 	compressed = lyxrc.save_compressed;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
@@ -751,6 +747,24 @@ BufferParams::MathNumber BufferParams::getMathNumber() const
 		return LEFT;
 	else
 		return RIGHT;
+}
+
+void BufferParams::registerLyXColor(string const & col, string const & value)
+{
+	if (!lcolor.isKnownLyXName(value)) {
+		if (theLaTeXColors().isLaTeXColor(value)) {
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(value);
+			string const lyxname = lc.name();
+			lcolor.setColor(lyxname, lc.hexname());
+			lcolor.setLaTeXName(lyxname, lc.latex());
+			lcolor.setGUIName(lyxname, to_ascii(lc.guiname()));
+		} else if (custom_colors.find(value) != custom_colors.end()) {
+			lcolor.setColor(value, custom_colors[value]);
+			lcolor.setLaTeXName(value, value);
+		}
+	}
+	if (!lcolor.isKnownLyXName(col))
+		lcolor.setColor(col, lcolor.getX11HexName(value));
 }
 
 
@@ -1117,28 +1131,25 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		orientation = paperorientationtranslator().find(orient);
 	} else if (token == "\\backgroundcolor") {
 		lex.eatLine();
-		backgroundcolor = lyx::rgbFromHexName(lex.getString());
-		isbackgroundcolor = true;
+		backgroundcolor = lex.getString();
+		registerLyXColor("backgroundcolor", backgroundcolor);
 	} else if (token == "\\fontcolor") {
 		lex.eatLine();
-		fontcolor = lyx::rgbFromHexName(lex.getString());
-		isfontcolor = true;
+		fontcolor = lex.getString();
+		registerLyXColor("fontcolor", fontcolor);
 	} else if (token == "\\notefontcolor") {
 		lex.eatLine();
-		string color = lex.getString();
-		notefontcolor = lyx::rgbFromHexName(color);
-		lcolor.setColor("notefontcolor", color);
-		lcolor.setLaTeXName("notefontcolor", "note_fontcolor");
-		lcolor.setGUIName("notefontcolor", N_("greyedout inset text"));
+		notefontcolor = lex.getString();
+		registerLyXColor("notefontcolor", notefontcolor);
 		// set a local name for the painter
-		lcolor.setColor("notefontcolor@" + filename.absFileName(), color);
-		isnotefontcolor = true;
+		lcolor.setColor("notefontcolor@" + filename.absFileName(),
+				lcolor.getX11HexName(notefontcolor));
 	} else if (token == "\\boxbgcolor") {
 		lex.eatLine();
-		string color = lex.getString();
-		boxbgcolor = lyx::rgbFromHexName(color);
-		lcolor.setColor("boxbgcolor@" + filename.absFileName(), color);
-		isboxbgcolor = true;
+		boxbgcolor = lex.getString();
+		registerLyXColor("boxbgcolor", boxbgcolor);
+		lcolor.setColor("boxbgcolor@" + filename.absFileName(),
+				lcolor.getX11HexName(boxbgcolor));
 	} else if (token == "\\customcolor") {
 		string name;
 		lex >> name;;
@@ -1502,20 +1513,16 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	if (!nomencl_opts.empty())
 		os << "\\nomencl_options " << nomencl_opts << '\n';
 
-	if (isbackgroundcolor)
-		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
-	if (isfontcolor)
-		os << "\\fontcolor " << lyx::X11hexname(fontcolor) << '\n';
-	if (isnotefontcolor)
-		os << "\\notefontcolor " << lyx::X11hexname(notefontcolor) << '\n';
-	if (isboxbgcolor)
-		os << "\\boxbgcolor " << lyx::X11hexname(boxbgcolor) << '\n';
 	for (auto const & cc : custom_colors) {
 		os << "\\customcolor "
 		   << cc.first
 		   << " " << ltrim(cc.second, "#")
 		   << "\n";
 	}
+	os << "\\backgroundcolor " << backgroundcolor << '\n';
+	os << "\\fontcolor " << fontcolor << '\n';
+	os << "\\notefontcolor " << notefontcolor << '\n';
+	os << "\\boxbgcolor " << boxbgcolor << '\n';
 
 	for (auto const & br : branchlist()) {
 		os << "\\branch " << to_utf8(br.branch())
@@ -2192,20 +2199,34 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	// only output when the background color is not default
-	if (isbackgroundcolor) {
+	if (backgroundcolor != "none") {
 		// only require color here, the background color will be defined
 		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
 		// package pdfpages
-		features.require("color");
+		if (theLaTeXColors().isLaTeXColor(backgroundcolor)) {
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(backgroundcolor);
+			for (auto const & r : lc.req())
+				features.require(r);
+			features.require("xcolor");
+			if (!lc.model().empty())
+				features.require("xcolor:" + lc.model());
+		}
 		features.require("pagecolor");
 	}
 
 	// only output when the font color is not default
-	if (isfontcolor) {
+	if (fontcolor != "none") {
 		// only require color here, the font color will be defined
 		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
 		// package pdfpages
-		features.require("color");
+		if (theLaTeXColors().isLaTeXColor(fontcolor)) {
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(fontcolor);
+			for (auto const & r : lc.req())
+				features.require(r);
+			features.require("xcolor");
+			if (!lc.model().empty())
+				features.require("xcolor:" + lc.model());
+		}
 		features.require("fontcolor");
 	}
 

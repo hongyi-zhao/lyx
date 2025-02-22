@@ -15,6 +15,7 @@
 
 #include "BulletsModule.h"
 #include "CategorizedCombo.h"
+#include "ColorsCombo.h"
 #include "FancyLineEdit.h"
 #include "GuiApplication.h"
 #include "GuiBranches.h"
@@ -87,18 +88,6 @@
 #include <vector>
 
 
-// a style sheet for color frame widgets
-static inline QString colorFrameStyleSheet(QColor const & bgColor)
-{
-	if (bgColor.isValid()) {
-		QString rc = QLatin1String("background-color:");
-		rc += bgColor.name();
-		return rc;
-	}
-	return QString();
-}
-
-
 using namespace std;
 using namespace lyx::support;
 
@@ -157,14 +146,6 @@ enum EncodingSets {
 	custom = 2
 };
 
-lyx::RGBColor set_backgroundcolor;
-bool is_backgroundcolor;
-lyx::RGBColor set_fontcolor;
-bool is_fontcolor;
-lyx::RGBColor set_notefontcolor;
-bool is_notefontcolor;
-lyx::RGBColor set_boxbgcolor;
-bool is_boxbgcolor;
 bool forced_fontspec_activation;
 
 } // anonymous namespace
@@ -1369,22 +1350,14 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	// color
 	colorModule = new UiWidget<Ui::ColorUi>(this);
-	connect(colorModule->fontColorPB, SIGNAL(clicked()),
-		this, SLOT(changeFontColor()));
-	connect(colorModule->delFontColorTB, SIGNAL(clicked()),
-		this, SLOT(deleteFontColor()));
-	connect(colorModule->noteFontColorPB, SIGNAL(clicked()),
-		this, SLOT(changeNoteFontColor()));
-	connect(colorModule->delNoteFontColorTB, SIGNAL(clicked()),
-		this, SLOT(deleteNoteFontColor()));
-	connect(colorModule->backgroundPB, SIGNAL(clicked()),
-		this, SLOT(changeBackgroundColor()));
-	connect(colorModule->delBackgroundTB, SIGNAL(clicked()),
-		this, SLOT(deleteBackgroundColor()));
-	connect(colorModule->boxBackgroundPB, SIGNAL(clicked()),
-		this, SLOT(changeBoxBackgroundColor()));
-	connect(colorModule->delBoxBackgroundTB, SIGNAL(clicked()),
-		this, SLOT(deleteBoxBackgroundColor()));
+	connect(colorModule->textColorCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(colorModule->shadedColorCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(colorModule->textColorCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(colorModule->noteColorCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 	connect(colorModule->addColorPB, SIGNAL(clicked()),
 		this, SLOT(addCustomColor()));
 	connect(colorModule->removeColorPB, SIGNAL(clicked()),
@@ -1395,6 +1368,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(alterCustomColor()));
 	connect(colorModule->customColorsTW, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
 		this, SLOT(toggleCustomColor(QTreeWidgetItem *, int)));
+	colorModule->textColorCO->setCustomColors(buffer().masterParams().custom_colors);
+	colorModule->pageColorCO->setCustomColors(buffer().masterParams().custom_colors);
+	colorModule->noteColorCO->setCustomColors(buffer().masterParams().custom_colors);
+	colorModule->shadedColorCO->setCustomColors(buffer().masterParams().custom_colors);
+	colorModule->noteColorCO->setDefaultColor("lightgrey");
+	colorModule->shadedColorCO->setDefaultColor("red");
+	
 	colorModule->customColorsTW->setColumnCount(2);
 	colorModule->customColorsTW->headerItem()->setText(0, qt_("Name"));
 	colorModule->customColorsTW->headerItem()->setText(1, qt_("Color"));
@@ -2411,114 +2391,6 @@ void GuiDocument::setCustomMargins(bool cb_checked)
 	marginsModule->headsepLE->setToolTip(tooltip);
 	marginsModule->footskipLE->setToolTip(tooltip);
 	marginsModule->columnsepLE->setToolTip(tooltip);
-}
-
-
-void GuiDocument::changeBackgroundColor()
-{
-	QColor const & newColor = getColor(rgb2qcolor(set_backgroundcolor));
-	if (!newColor.isValid())
-		return;
-	// set the color
-	colorModule->pageBackgroundCF->setVisible(true);
-	colorModule->pageBackgroundCF->setStyleSheet(
-		colorFrameStyleSheet(newColor));
-	// save color
-	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
-	is_backgroundcolor = true;
-	change_adaptor();
-}
-
-
-void GuiDocument::deleteBackgroundColor()
-{
-	// set the color back to default by setting an empty StyleSheet
-	colorModule->pageBackgroundCF->setStyleSheet(QLatin1String(""));
-	colorModule->pageBackgroundCF->setVisible(false);
-	// save default color (white)
-	set_backgroundcolor = rgbFromHexName("#ffffff");
-	is_backgroundcolor = false;
-	change_adaptor();
-}
-
-
-void GuiDocument::changeFontColor()
-{
-	QColor const & newColor = getColor(rgb2qcolor(set_fontcolor));
-	if (!newColor.isValid())
-		return;
-	//  set the color
-	colorModule->mainTextCF->setVisible(true);
-	colorModule->mainTextCF->setStyleSheet(
-		colorFrameStyleSheet(newColor));
-	// save color
-	set_fontcolor = rgbFromHexName(fromqstr(newColor.name()));
-	is_fontcolor = true;
-	change_adaptor();
-}
-
-
-void GuiDocument::deleteFontColor()
-{
-	// set the button color back to default by setting an empty StyleSheet
-	colorModule->mainTextCF->setStyleSheet(QLatin1String(""));
-	colorModule->mainTextCF->setVisible(false);
-	// save default color (black)
-	set_fontcolor = rgbFromHexName("#000000");
-	is_fontcolor = false;
-	change_adaptor();
-}
-
-
-void GuiDocument::changeNoteFontColor()
-{
-	QColor const & newColor = getColor(rgb2qcolor(set_notefontcolor));
-	if (!newColor.isValid())
-		return;
-	// set the color
-	colorModule->noteFontCF->setStyleSheet(
-		colorFrameStyleSheet(newColor));
-	// save color
-	set_notefontcolor = rgbFromHexName(fromqstr(newColor.name()));
-	is_notefontcolor = true;
-	change_adaptor();
-}
-
-
-void GuiDocument::deleteNoteFontColor()
-{
-	// set the color back to pref
-	theApp()->getRgbColor(Color_greyedouttext, set_notefontcolor);
-	colorModule->noteFontCF->setStyleSheet(
-		colorFrameStyleSheet(rgb2qcolor(set_notefontcolor)));
-	is_notefontcolor = false;
-	change_adaptor();
-}
-
-
-void GuiDocument::changeBoxBackgroundColor()
-{
-	QColor const & newColor = getColor(rgb2qcolor(set_boxbgcolor));
-	if (!newColor.isValid())
-		return;
-	// set the color
-	colorModule->boxBackgroundCF->setStyleSheet(
-		colorFrameStyleSheet(newColor));
-	// save color
-	set_boxbgcolor = rgbFromHexName(fromqstr(newColor.name()));
-	is_boxbgcolor = true;
-	change_adaptor();
-}
-
-
-void GuiDocument::deleteBoxBackgroundColor()
-{
-	// set the color back to pref
-	theApp()->getRgbColor(Color_shadedbg, set_boxbgcolor);
-	colorModule->boxBackgroundCF->setStyleSheet(
-		colorFrameStyleSheet(rgb2qcolor(set_boxbgcolor)));
-	is_boxbgcolor = false;
-	change_adaptor();
 }
 
 
@@ -3862,19 +3734,10 @@ void GuiDocument::applyView()
 	}
 
 	//color
-	bp_.backgroundcolor = set_backgroundcolor;
-	bp_.isbackgroundcolor = is_backgroundcolor;
-	bp_.fontcolor = set_fontcolor;
-	bp_.isfontcolor = is_fontcolor;
-	bp_.notefontcolor = set_notefontcolor;
-	bp_.isnotefontcolor = is_notefontcolor;
-	if (is_notefontcolor) {
-		// Set information used in statusbar (#12130)
-		lcolor.setColor("notefontcolor", lyx::X11hexname(set_notefontcolor));
-		lcolor.setGUIName("notefontcolor", N_("greyedout inset text"));
-	}
-	bp_.boxbgcolor = set_boxbgcolor;
-	bp_.isboxbgcolor = is_boxbgcolor;
+	bp_.backgroundcolor = fromqstr(colorModule->pageColorCO->getData(colorModule->pageColorCO->currentIndex()));
+	bp_.fontcolor = fromqstr(colorModule->textColorCO->getData(colorModule->textColorCO->currentIndex()));
+	bp_.notefontcolor = fromqstr(colorModule->noteColorCO->getData(colorModule->noteColorCO->currentIndex()));
+	bp_.boxbgcolor = fromqstr(colorModule->shadedColorCO->getData(colorModule->shadedColorCO->currentIndex()));
 	bp_.custom_colors.clear();
 	for (auto const & cc : custom_colors_)
 		bp_.custom_colors[fromqstr(cc.first)] = fromqstr(cc.second);
@@ -4434,37 +4297,14 @@ void GuiDocument::paramsToDialog()
 	updateLanguageOptions();
 
 	//color
-	if (bp_.isfontcolor) {
-		colorModule->mainTextCF->setStyleSheet(
-			colorFrameStyleSheet(rgb2qcolor(bp_.fontcolor)));
-		colorModule->mainTextCF->setVisible(true);
-	} else
-		colorModule->mainTextCF->setVisible(false);
-	set_fontcolor = bp_.fontcolor;
-	is_fontcolor = bp_.isfontcolor;
-
-	colorModule->noteFontCF->setStyleSheet(
-		colorFrameStyleSheet(rgb2qcolor(bp_.notefontcolor)));
-	set_notefontcolor = bp_.notefontcolor;
-	is_notefontcolor = bp_.isnotefontcolor;
-
-	if (bp_.isbackgroundcolor) {
-		colorModule->pageBackgroundCF->setStyleSheet(
-			colorFrameStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
-		colorModule->pageBackgroundCF->setVisible(true);
-	} else
-		colorModule->pageBackgroundCF->setVisible(false);
-	set_backgroundcolor = bp_.backgroundcolor;
-	is_backgroundcolor = bp_.isbackgroundcolor;
-
-	colorModule->boxBackgroundCF->setStyleSheet(
-		colorFrameStyleSheet(rgb2qcolor(bp_.boxbgcolor)));
-	set_boxbgcolor = bp_.boxbgcolor;
-	is_boxbgcolor = bp_.isboxbgcolor;
 	custom_colors_.clear();
 	for (auto const & cc : bp_.custom_colors)
 		custom_colors_[toqstr(cc.first)] = toqstr(cc.second);
 	updateCustomColors();
+	colorModule->textColorCO->set(toqstr(bp_.fontcolor));
+	colorModule->noteColorCO->set(toqstr(bp_.notefontcolor));
+	colorModule->pageColorCO->set(toqstr(bp_.backgroundcolor));
+	colorModule->shadedColorCO->set(toqstr(bp_.boxbgcolor));
 
 	// numbering
 	int const min_toclevel = documentClass().min_toclevel();
@@ -5697,6 +5537,8 @@ void GuiDocument::updateCustomColors()
 
 	colorModule->customColorsTW->clear();
 
+	std::map<std::string, std::string> ccs;
+
 	map<QString, QString>::const_iterator it = custom_colors_.begin();
 	map<QString, QString>::const_iterator const end = custom_colors_.end();
 	for (; it != end; ++it) {
@@ -5717,8 +5559,14 @@ void GuiDocument::updateCustomColors()
 			colorModule->customColorsTW->setCurrentItem(newItem);
 			newItem->setSelected(true);
 		}
+		ccs[fromqstr(cname)] = fromqstr(it->second);
 	}
 	colorModule->customColorsTW->resizeColumnToContents(0);
+
+	colorModule->textColorCO->setCustomColors(ccs);
+	colorModule->noteColorCO->setCustomColors(ccs);
+	colorModule->pageColorCO->setCustomColors(ccs);
+	colorModule->shadedColorCO->setCustomColors(ccs);
 
 	change_adaptor();
 }

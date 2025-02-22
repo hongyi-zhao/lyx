@@ -335,9 +335,18 @@ void InsetNote::validate(LaTeXFeatures & features) const
 			// Only do the requires
 			features.useInsetLayout(getLayout());
 		break;
-	case InsetNoteParams::Greyedout:
+	case InsetNoteParams::Greyedout: {
+		features.require("xcolor");
+		if (theLaTeXColors().isLaTeXColor(buffer().params().notefontcolor)) {
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(buffer().params().notefontcolor);
+			for (auto const & r : lc.req())
+				features.require(r);
+			if (!lc.model().empty())
+				features.require("xcolor:" + lc.model());
+		}
 		InsetCollapsible::validate(features);
 		break;
+	}
 	case InsetNoteParams::Note:
 		// Showing previews in this inset may require stuff
 		if (features.runparams().for_preview)
@@ -360,8 +369,7 @@ bool InsetNote::allowSpellCheck() const
 FontInfo InsetNote::getFont() const
 {
 	FontInfo font = getLayout().font();
-	if (params_.type == InsetNoteParams::Greyedout
-	    && buffer().params().isnotefontcolor) {
+	if (params_.type == InsetNoteParams::Greyedout) {
 		ColorCode c = lcolor.getFromLyXName("notefontcolor");
 		if (c != Color_none)
 			font.setColor(c);

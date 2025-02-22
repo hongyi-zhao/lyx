@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.5
-\lyxformat 632
+\lyxformat 633
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -91,9 +91,13 @@
 \use_refstyle 0
 \use_minted 0
 \use_lineno false
-\notefontcolor #0000ff
-\backgroundcolor #ff5500
-\boxbgcolor #ffff00
+\customcolor document_fontcolor aaff00
+\customcolor note_fontcolor 0000ff
+\customcolor page_backgroundcolor ff5500
+\customcolor shadecolor ffff00
+\notefontcolor note_fontcolor
+\backgroundcolor page_backgroundcolor
+\boxbgcolor shadecolor
 \index Index
 \shortcut idx
 \color #008000
@@ -1868,37 +1872,9 @@ Custom Colors
 
 \begin_layout Standard
 test 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{darkgreen}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
+\color darkgreen
 dark green
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
+\color inherit
  test
 \end_layout
 

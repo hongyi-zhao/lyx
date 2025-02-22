@@ -242,7 +242,7 @@ varwidth
 \papersides 2
 \paperpagestyle default
 \tablestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -251,6 +251,7 @@ varwidth
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -17882,10 +17883,14 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230805
 The following color names are predefined:
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230805
 
 \family sans
 red
@@ -17926,6 +17931,8 @@ white
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230805
 \begin_inset VSpace medskip
 \end_inset
 
@@ -17933,16 +17940,22 @@ white
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230805
 If you add the option
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230805
 
 \series bold
 dvipsnames
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230805
 to the document class options in the document settings,
  you can additionally use further 61
 \begin_inset space ~
@@ -17961,8 +17974,56 @@ nolink "false"
 
 \end_inset
 
+
+\change_unchanged
 .
- One of these colors,
+ 
+\change_inserted -712698321 1740231575
+You can principally use all colors which are listed in the diverse color selection widgets (e.g.,
+ in the 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+ dialog,
+ the \SpecialChar LaTeX
+ name of these colors which you need to pass to the commands are most easily accessible in the 
+\family typewriter
+xcolor
+\family default
+ manual).
+ Note,
+ however,
+ that some colors colors require the 
+\family typewriter
+xcolor
+\family default
+ package to be loaded with the option which defines the scheme your desired named color is in (
+\family typewriter
+dvipsnames
+\family default
+,
+ 
+\family typewriter
+svgnames
+\family default
+,
+ or 
+\family typewriter
+x11names
+\family default
+;
+ see the 
+\family typewriter
+xcolor
+\family default
+ manual for details).
+ 
+\change_unchanged
+One of these colors,
  
 \family sans
 Maroon
@@ -17984,17 +18045,35 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740231021
 \begin_inset VSpace medskip
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-You can also define your own color with the command
+You can also define your own color 
+\change_inserted -712698321 1740230992
+in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Colors\SpecialChar menuseparator
+Custom Colors
+\family default
+ and use that.
+\change_deleted -712698321 1740230946
+with the command
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230946
 
 \series bold
 
@@ -18003,11 +18082,15 @@ definecolor{color name}{color model}{color values}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230946
 The color model can be
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\change_deleted -712698321 1740230946
 cmyk:
  cyan,
  magenta,
@@ -18017,6 +18100,8 @@ cmyk:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\change_deleted -712698321 1740230946
 rgb:
  red,
  green blue
@@ -18024,14 +18109,20 @@ rgb:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\change_deleted -712698321 1740230946
 gray gray
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230946
 and the color values are comma separated numbers between 0 and 1 describing the factor for the corresponding color of the color model.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230946
 You can e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -18049,6 +18140,8 @@ darkgreen
 
 \begin_layout Standard
 
+\change_deleted -712698321 1740230946
+
 \series bold
 
 \backslash
@@ -18059,6 +18152,8 @@ definecolor{darkgreen}{cmyk}{0.5,
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740230946
 and the color "
 \emph on
 lightgray
@@ -18068,16 +18163,24 @@ lightgray
 
 \begin_layout Standard
 
+\change_deleted -712698321 1740230946
+
 \series bold
 
 \backslash
 definecolor{lightgray}{gray}{0.8}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740231023
 \begin_inset VSpace medskip
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -38454,7 +38557,9 @@ This is colored text within a colored,
 
 \begin_layout Standard
 If you need another color than the predefined ones,
- you can define your own color as described in section
+ you
+\change_deleted -712698321 1740244776
+ can define your own color as described in section
 \begin_inset space ~
 \end_inset
 
@@ -38467,10 +38572,25 @@ nolink "false"
 \end_inset
 
 .
- To use your own color you must typeset the box by using TeX code:
+ 
+\change_inserted -712698321 1740244787
+can define your own color in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Colors\SpecialChar menuseparator
+Custom Colors
+\family default
+ and use that.
+ 
+\change_deleted -712698321 1740244798
+To use your own color you must typeset the box by using TeX code:
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740244798
 Colored boxes without frame are created with the command 
 \series bold
 
@@ -38483,6 +38603,8 @@ colorbox
 
 \begin_layout Standard
 
+\change_deleted -712698321 1740244798
+
 \series bold
 
 \backslash
@@ -38490,6 +38612,8 @@ colorbox{color}{box content}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740244798
 The box content can also be a box and colored boxes can also be within other boxes.
  To have e.
 \begin_inset space \thinspace{}
@@ -38505,6 +38629,8 @@ a darkgreen background for a word,
 
 \begin_layout Standard
 
+\change_deleted -712698321 1740244798
+
 \series bold
 
 \backslash
@@ -38512,6 +38638,8 @@ colorbox{darkgreen}{
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740244798
 before the word in \SpecialChar TeX
  Code.
  After the word insert a closing brace 
@@ -38535,6 +38663,8 @@ This is the result:
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740244798
 This is a line where the word 
 \begin_inset ERT
 status collapsed
@@ -38571,6 +38701,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1740244798
 Framed,
  colored boxes are created with the command 
 \series bold
@@ -38584,10 +38716,14 @@ fcolorbox
 
 \begin_layout Standard
 
+\change_deleted -712698321 1740244798
+
 \series bold
 
 \backslash
 fcolorbox{frame color}{box color}{box content}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

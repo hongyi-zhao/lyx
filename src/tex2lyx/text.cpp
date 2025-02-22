@@ -4472,8 +4472,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					context.check_layout(os);
 					os << "\n\\color inherit\n";
 					preamble.registerAutomaticallyLoadedPackage("xcolor");
+			// custom colors
+			} else if (preamble.customColors().find(color) != preamble.customColors().end()) {
+				context.check_layout(os);
+				os << "\n\\color " << color << "\n";
+				parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+				context.check_layout(os);
+				os << "\n\\color inherit\n";
+				preamble.registerAutomaticallyLoadedPackage("color");
 			} else
-				// custom defined colors
+				// remaining (unknown) colors
 				output_ert_inset(os, t.asInput() + "{" + color + "}", context);
 			continue;
 		}

@@ -7,6 +7,14 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2025-02-22 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 633: 
+	 1. \fontcolor, \backgroundcolor, \notefontcolor"
+	    and \boxbgcolor now take a lyxcolor as a (string) value, no longer
+	    a color hexname.
+	 2. The framecolor and backgroundcolor parameter of InsetBox can
+	    take all supported latexcolors and cusom colors as argument.
+
 2025-02-20 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 632:
 	  1. Add support for xcolor named colors in text style.

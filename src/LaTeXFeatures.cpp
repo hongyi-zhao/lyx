@@ -1215,34 +1215,6 @@ string const LaTeXFeatures::getColorOptions() const
 	// the following color commands must be set after color
 	// is loaded and before pdfpages, therefore add the command
 	// here define the set color
-	if (mustProvide("pagecolor")) {
-		colors << "\\definecolor{page_backgroundcolor}{rgb}{";
-		colors << outputLaTeXColor(params_.backgroundcolor) << "}\n";
-		// set the page color
-		colors << "\\pagecolor{page_backgroundcolor}\n";
-	}
-
-	if (mustProvide("fontcolor")) {
-		colors << "\\definecolor{document_fontcolor}{rgb}{";
-		colors << outputLaTeXColor(params_.fontcolor) << "}\n";
-		// set the color
-		colors << "\\color{document_fontcolor}\n";
-	}
-
-	if (mustProvide("lyxgreyedout")) {
-		colors << "\\definecolor{note_fontcolor}{rgb}{";
-		colors << outputLaTeXColor(params_.notefontcolor) << "}\n";
-		// the color will be set together with the definition of
-		// the lyxgreyedout environment (see lyxgreyedout_def)
-	}
-
-	// color for shaded boxes
-	if (isRequired("framed") && mustProvide("color")) {
-		colors << "\\definecolor{shadecolor}{rgb}{";
-		colors << outputLaTeXColor(params_.boxbgcolor) << "}\n";
-		// this color is automatically used by the LaTeX-package "framed"
-	}
-
 	// user-defined custom colors
 	for (auto const & cc : params_.custom_colors) {
 		colors << "\\definecolor{"
@@ -1252,7 +1224,51 @@ string const LaTeXFeatures::getColorOptions() const
 		       << "}\n";
 	}
 
+	if (mustProvide("pagecolor") && !getColorValue(params_.backgroundcolor).empty()) {
+		colors << "\\colorlet{page_backgroundcolor}{";
+		colors << getColorValue(params_.backgroundcolor) << "}\n";
+		// set the page color
+		colors << "\\pagecolor{page_backgroundcolor}\n";
+	}
+
+	if (mustProvide("fontcolor") && !getColorValue(params_.fontcolor).empty()) {
+		colors << "\\colorlet{document_fontcolor}{";
+		colors << getColorValue(params_.fontcolor) << "}\n";
+		// set the color
+		colors << "\\color{document_fontcolor}\n";
+	}
+
+	if (mustProvide("lyxgreyedout") && !getColorValue(params_.notefontcolor).empty()) {
+		colors << "\\colorlet{note_fontcolor}{";
+		colors << getColorValue(params_.notefontcolor) << "}\n";
+		// the color will be set together with the definition of
+		// the lyxgreyedout environment (see lyxgreyedout_def)
+	}
+
+	// color for shaded boxes
+	if (isRequired("framed") && mustProvide("xcolor")
+	     && !getColorValue(params_.boxbgcolor).empty()) {
+		colors << "\\colorlet{shadecolor}{";
+		colors << getColorValue(params_.boxbgcolor) << "}\n";
+		// this color is automatically used by the LaTeX-package "framed"
+	}
+
 	return colors.str();
+}
+
+
+string const LaTeXFeatures::getColorValue(string const & col) const
+{
+	if (col == "none")
+		return string();
+
+	if (theLaTeXColors().isLaTeXColor(col)) {
+		LaTeXColor const lc = theLaTeXColors().getLaTeXColor(col);
+		return lc.latex();
+	} else if (params_.custom_colors.find(col) != params_.custom_colors.end()) {
+		return col;
+	}
+	return string();
 }
 
 

@@ -160,14 +160,6 @@ private Q_SLOTS:
 	void updateEngineDependends();
 	void updateModuleInfo();
 	void modulesChanged();
-	void changeBackgroundColor();
-	void deleteBackgroundColor();
-	void changeFontColor();
-	void deleteFontColor();
-	void changeNoteFontColor();
-	void deleteNoteFontColor();
-	void changeBoxBackgroundColor();
-	void deleteBoxBackgroundColor();
 	void languageChanged(int);
 	void osFontsChanged(bool);
 	void encodingSwitched(int);

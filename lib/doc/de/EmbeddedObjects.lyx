@@ -222,6 +222,7 @@ varwidth
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
 \notefontcolor #0000ff
@@ -18184,98 +18185,44 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-Folgende Farbnamen sind vordefiniert:
-\end_layout
-
-\begin_layout Standard
-
+Sie können prinzipiell alle Farben verwenden,
+ die in den diversen Farbauswahl-Werkzeugen (bspw.
+ im 
 \family sans
-red
+Textstil
 \family default
-,
- 
-\family sans
-green
+-Dialog) aufgeführt sind (die \SpecialChar LaTeX
+-Namen dieser Farben,
+ die Sie an die Befehle übergeben müssen,
+ finden Sie in Dokumentation von 
+\family typewriter
+xcolor
 \family default
-,
- 
-\family sans
-yellow
+ zusammengestellt).
+ Beachten Sie aber,
+ dass einige Farben das Paket 
+\family typewriter
+xcolor
 \family default
-,
- 
-\family sans
-blue
-\family default
-,
- 
-\family sans
-cyan
-\family default
-,
- 
-\family sans
-magenta
-\family default
-,
- 
-\family sans
-black
-\family default
- und 
-\family sans
-white
-\begin_inset Newline newline
-\end_inset
-
-(
-\family default
-rot,
- grün,
- gelb,
- blau,
- türkis,
- purpurrot,
- schwarz und weiß)
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Wenn Sie die Option
-\end_layout
-
-\begin_layout Standard
-
-\series bold
+ mit einem entsprechenden Farbschema als Option verlangen (
+\family typewriter
 dvipsnames
-\end_layout
-
-\begin_layout Standard
-zu den Dokumentklassenoptionen in den Dokumenteinstellungen hinzufügen,
- können Sie zusätzlich weitere 61
-\begin_inset space ~
-\end_inset
-
-Farben verwenden.
- Diese Farben sind in Anhang
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "kap:Liste-der-dvips-Farbnamen"
-nolink "false"
-
-\end_inset
-
- aufgelistet.
+\family default
+,
+ 
+\family typewriter
+svgnames
+\family default
+ oder 
+\family typewriter
+x11names
+\family default
+;
+ bitte konsultieren Sie die Dokumentation von 
+\family typewriter
+xcolor
+\family default
+ für Einzelheiten).
  Eine dieser Farben,
  
 \family sans
@@ -18298,108 +18245,14 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sie können auch eigene Farben definieren:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-definecolor{Farbname}{Farbmodell}{Farbwerte}
-\end_layout
-
-\begin_layout Standard
-Das Farbmodell kann eins der folgenden sein:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-cmyk:
- cyan,
- magenta,
- yellow,
- black
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-rgb:
- red,
- green blue
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-gray:
- gray
-\end_layout
-
-\begin_layout Standard
-und die Farbwerte sind durch Kommata getrennte Zahlen zwischen 0 und 1,
- die die entsprechende Farbe für das Farbmodell beschreiben.
-\end_layout
-
-\begin_layout Standard
-Im \SpecialChar LaTeX
--Vorspann können Sie zum Beispiel die Farbe 
-\emph on
-
-\begin_inset Quotes gld
-\end_inset
-
-dunkelgruen
-\emph default
-
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
-
-\emph on
-hellgrau
-\emph default
-
-\begin_inset Quotes grd
-\end_inset
-
- folgendermaßen definieren:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-definecolor{dunkelgruen}{cmyk}{0.5,
- 0,
- 1,
- 0.5}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-definecolor{hellgrau}{gray}{0.8}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
+Sie können in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Farben\SpecialChar menuseparator
+Benutzerdefinierte Farben
+\family default
+ auch eigene Farben definieren und verwenden.
 \end_layout
 
 \begin_layout Standard
@@ -38867,123 +38720,14 @@ Dies ist farbiger Text in einer farbigen,
 
 \begin_layout Standard
 Falls sie andere als die voreingestellten Farben benötigen,
- können Ihre eigenen Farben definieren,
- wie in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:Farbige-Tabellen"
-nolink "false"
-
-\end_inset
-
- beschrieben.
- Um selbstdefinierte Farben zu verwenden,
- muss die Box mittels TeX-Code gesetzt werden:
-\end_layout
-
-\begin_layout Standard
-Farbige Boxen ohne Rahmen werden mit dem Befehl 
-\series bold
-
-\backslash
-colorbox
-\series default
- erzeugt.
- Er hat folgendes Schema:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-colorbox{Farbe}{Boxinhalt}
-\end_layout
-
-\begin_layout Standard
-Der Boxinhalt kann auch eine Box sein,
- und farbige Boxen können in anderen Boxen sein.
- Um zum Beispiel ein Wort auf einem dunkelgrünen Hintergrund zu drucken,
- fügen sie den \SpecialChar TeX
--Code-Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-colorbox{dunkelgruen}{
-\end_layout
-
-\begin_layout Standard
-vor dem Wort ein.
- Hinter dem Wort fügen Sie 
-\series bold
-
-\begin_inset Quotes gld
-\end_inset
-
-}
-\series default
-
-\begin_inset Quotes grd
-\end_inset
-
- als \SpecialChar TeX
--Code ein.
- Hier ist das Ergebnis:
-\end_layout
-
-\begin_layout Standard
-In dieser Zeile hat 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-colorbox{dunkelgruen}{
-\end_layout
-
-\end_inset
-
-Achtung!
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- einen dunkelgrünen Hintergrund.
-\end_layout
-
-\begin_layout Standard
-Farbige Boxen mit Rahmen werden mit dem Befehl
-\series bold
- 
-\backslash
-fcolorbox
-\series default
- erzeugt.
- Er hat folgendes Schema:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-fcolorbox{Rahmenfarbe}{Boxfarbe}{Boxinhalt}
+ können Sie in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Farben\SpecialChar menuseparator
+Benutzerdefinierte Farben
+\family default
+ eigene Farben definieren und verwenden.
 \end_layout
 
 \begin_layout Section

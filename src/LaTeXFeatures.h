@@ -192,6 +192,8 @@ private:
 	///
 	void useLayout(docstring const &, int);
 	///
+	std::string const getColorValue(std::string const &) const;
+	///
 	std::list<docstring> usedLayouts_;
 	///
 	std::list<docstring> usedInsetLayouts_;

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>579</width>
-    <height>381</height>
+    <height>397</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -434,19 +434,6 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="2" column="2">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="backgroundColorLA">
         <property name="text">
@@ -454,6 +441,16 @@
         </property>
         <property name="buddy">
          <cstring>backgroundColorCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="lyx::frontend::ColorsCombo" name="frameColorCO">
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+        </property>
+        <property name="maxVisibleItems">
+         <number>20</number>
         </property>
        </widget>
       </item>
@@ -467,11 +464,28 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1" colspan="2">
-       <widget class="QComboBox" name="backgroundColorCO"/>
+      <item row="2" column="1">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
-      <item row="0" column="1" colspan="2">
-       <widget class="QComboBox" name="frameColorCO"/>
+      <item row="1" column="1">
+       <widget class="lyx::frontend::ColorsCombo" name="backgroundColorCO">
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+        </property>
+        <property name="maxVisibleItems">
+         <number>20</number>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -479,6 +493,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>lyx::frontend::ColorsCombo</class>
+   <extends>QComboBox</extends>
+   <header>ColorsCombo.h</header>
+  </customwidget>
   <customwidget>
    <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>

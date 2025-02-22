@@ -46,6 +46,8 @@ public:
 	void hasInherit(bool const b) { has_inherit_ = b; }
 	/// Flag a color as default. This will also omit the "none" entry
 	void setDefaultColor(std::string const & col) { default_color_ = toqstr(col); }
+	/// Set the value of the default entry. Preset is "none"
+	void setDefaultValue(std::string const & val) { default_value_ = toqstr(val); }
 
 private:
 	///
@@ -60,6 +62,8 @@ private:
 	bool has_inherit_;
 	///
 	QString default_color_;
+	///
+	QString default_value_;
 };
 
 

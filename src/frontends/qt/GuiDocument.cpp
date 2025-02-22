@@ -1399,6 +1399,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	colorModule->customColorsTW->headerItem()->setText(0, qt_("Name"));
 	colorModule->customColorsTW->headerItem()->setText(1, qt_("Color"));
 	colorModule->customColorsTW->setSortingEnabled(true);
+	colorModule->customColorsTW->setToolTip(qt_("Double-click on an item to change its color"));
 	QRegularExpression ascii_re("[A-Za-z0-9]+");
 	colorModule->newColorLE->setValidator(new QRegularExpressionValidator(ascii_re, colorModule->newColorLE));
 

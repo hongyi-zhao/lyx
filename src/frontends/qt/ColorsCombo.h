@@ -13,7 +13,7 @@
 #define LYX_COLORSCOMBO_H
 
 #include "CategorizedCombo.h"
-#include "BufferParams.h"
+#include "support/qstring_helpers.h"
 
 #include <QComboBox>
 
@@ -44,6 +44,8 @@ public:
 	void hasIgnore(bool const b) { has_ignore_ = b; }
 	/// Add "inherit" color entry?
 	void hasInherit(bool const b) { has_inherit_ = b; }
+	/// Flag a color as default. This will also omit the "none" entry
+	void setDefaultColor(std::string const & col) { default_color_ = toqstr(col); }
 
 private:
 	///
@@ -56,6 +58,8 @@ private:
 	bool has_ignore_;
 	///
 	bool has_inherit_;
+	///
+	QString default_color_;
 };
 
 

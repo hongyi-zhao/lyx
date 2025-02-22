@@ -14,6 +14,7 @@
 #include "LaTeXColors.h"
 
 #include "support/gettext.h"
+#include "support/lstrings.h"
 #include "qt_helpers.h"
 
 #include "support/qstring_helpers.h"
@@ -59,7 +60,10 @@ void ColorsCombo::setColorIcon(int const i, QString const color)
 void ColorsCombo::addItemSort(QString const & item, QString const & guiname,
 			      QString const & category, QString const color)
 {
-	QString titem = guiname;
+	QString titem = (item != default_color_)
+			? guiname
+			: toqstr(bformat(_("%1$s (= Default[[color]])"),
+					 qstring_to_ucs4(guiname)));;
 
 	QList<QStandardItem *> row;
 	QStandardItem * gui = new QStandardItem(titem);
@@ -112,8 +116,9 @@ void ColorsCombo::fillComboColor()
 	if (has_ignore_)
 		addItemSort(QString("ignore"), qt_("No change"),
 			    QString());
-	addItemSort(QString("none"), qt_("Default"),
-		    QString());
+	if (default_color_.isEmpty())
+		addItemSort(QString("none"), qt_("Default"),
+			    QString());
 	if (has_inherit_)
 		addItemSort(QString("inherit"), qt_("(Without)[[color]]"),
 			    QString());

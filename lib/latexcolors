@@ -965,7 +965,7 @@ EndColor
 
 Color SVG:Crimson
 	LaTeXName	Crimson
-	GuiName		Crimson
+	GuiName		Crimson[[color]]
 	HexName		DC143B
 	ColorModel	svgnames
 	Category	"SVG Names"

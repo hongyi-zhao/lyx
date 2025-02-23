@@ -462,6 +462,211 @@ string process_keyval_opt(vector<string> & options, string const & name)
 	return "";
 }
 
+
+string const tripleToString(double const a, double const b, double const c)
+{
+	return convert<string>(a) + ", " + convert<string>(b) + ", " + convert<string>(c);
+}
+
+
+string convert_color_value(string const & model, string const & value) 
+{
+	// we attempt to convert color values to rgb
+	// for the formulae, cf. the xcolor manual
+	if (model == "rgb")
+		// already have it
+		return value;
+	vector<string> invals = getVectorFromString(value);
+	if (model == "RGB") {
+		if (invals.size() != 3 || !isStrInt(invals[0])
+		    || !isStrInt(invals[1]) || !isStrInt(invals[2])) {
+			LYXERR0("Ignoring wrong RGB color value: " << value);
+			return string();
+		}
+		// r = R / 255
+		// g = G / 255
+		// b = B / 255
+		double const r = convert<double>(invals[0]) / 255.0;
+		double const g = convert<double>(invals[1]) / 255.0;
+		double const b =  convert<double>(invals[2]) / 255.0;
+		return tripleToString(r, g, b);
+	}
+	if (model == "cmyk") {
+		if (invals.size() != 4 || !isStrDbl(invals[0]) || !isStrDbl(invals[1])
+		    || !isStrDbl(invals[2]) || !isStrDbl(invals[3])) {
+			LYXERR0("Ignoring wrong cmyk color value: " << value);
+			return string();
+		}
+		// r = (1 - c) * (1 - k)
+		// g = (1 - m) * (1 - k)
+		// b = (1 - y) * (1 - k)
+		double const c = convert<double>(invals[0]);
+		double const m = convert<double>(invals[1]);
+		double const y = convert<double>(invals[2]);
+		double const k = convert<double>(invals[3]);
+		double const r = (1.0-c) * (1.0-k);
+		double const g = (1.0-m) * (1.0-k);
+		double const b = (1.0-y) * (1.0-k);
+		return tripleToString(r, g, b);
+	}
+	if (model == "cmy") {
+		if (invals.size() != 3 || !isStrDbl(invals[0]) || !isStrDbl(invals[1])
+		    || !isStrDbl(invals[2])) {
+			LYXERR0("Ignoring wrong cmy color value: " << value);
+			return string();
+		}
+		// r = (1 - c)
+		// g = (1 - m)
+		// b = (1 - y)
+		double const c = convert<double>(invals[0]);
+		double const m = convert<double>(invals[1]);
+		double const y = convert<double>(invals[2]);
+		return tripleToString(1 - c, 1 - m, 1 - y);
+	}
+	if (model == "gray") {
+		// we only have a single value, which is
+		// always r = g = b
+		if (!isStrDbl(value)) {
+			LYXERR0("Ignoring wrong gray color value: " << value);
+			return string();
+		}
+		ostringstream os;
+		os << value
+		   << ", "
+		   << value
+		   << ", "
+		   << value;
+		return os.str();
+	}
+	if (model == "Gray") {
+		// r = g = b = (gray / 15)
+		if (!isStrDbl(value)) {
+			LYXERR0("Ignoring wrong Gray color value: " << value);
+			return string();
+		}
+		double const gv = convert<double>(value);
+		double const r = gv / 15.0;
+		double const g = gv / 15.0;
+		double const b = gv / 15.0;
+		return tripleToString(r, g, b);
+	}
+	if (model == "hsb") {
+		// more complex formula
+		// see xcolor manual
+		if (invals.size() != 3 || !isStrDbl(invals[0]) || !isStrDbl(invals[1])
+		    || !isStrDbl(invals[2])) {
+			LYXERR0("Ignoring wrong hsb color value: " << value);
+			return string();
+		}
+		double const h = convert<double>(invals[0]);
+		double const s = convert<double>(invals[1]);
+		double const b = convert<double>(invals[2]);
+		int i = (int)(h * 6);
+		double f = h * 6 - i;
+
+		double f1 = 0.0, f2 = 0.0, f3 = 0.0;
+		switch (i) {
+			case 0:
+				f1 = 0.0;
+				f2 = 1.0 - f;
+				f3 = 1.0;
+				break;
+			case 1:
+				f1 = f;
+				f2 = 0.0;
+				f3 = 1.0;
+				break;
+			case 2:
+				f1 = 1.0;
+				f2 = 0.0;
+				f3 = 1.0 - f;
+				break;
+			case 3:
+				f1 = 1.0;
+				f2 = f;
+				f3 = 0.0;
+				break;
+			case 4:
+				f1 = 1.0 - f;
+				f2 = 1.0;
+				f3 = 0.0;
+				break;
+			case 5:
+				f1 = 0.0;
+				f2 = 1.0;
+				f3 = f;
+				break;
+			case 6:
+				f1 = 0.0;
+				f2 = 1.0;
+				f3 = 1.0;
+				break;
+			default:
+				LYXERR0("Something went wrong when converting from hsb to rgb. Input was: " << value);
+				return string();
+		}
+		return tripleToString((b * (h - s * f1)), (b * (s - s * f2)), (b * (b - s * f3)));
+	}
+	if (model == "HSB") {
+		// same as hsb * 240
+		if (invals.size() != 3 || !isStrInt(invals[0]) || !isStrInt(invals[1])
+		    || !isStrInt(invals[2])) {
+			LYXERR0("Ignoring wrong HSB color value: " << value);
+			return string();
+		}
+		double const h = convert<double>(invals[0]) / 240;
+		double const s = convert<double>(invals[1]) / 240;
+		double const b = convert<double>(invals[2]) / 240;
+		int i = (int)(h * 6);
+		double f = h * 6 - i;
+
+		double f1 = 0.0, f2 = 0.0, f3 = 0.0;
+		switch (i) {
+			case 0:
+				f1 = 0.0;
+				f2 = 1.0 - f;
+				f3 = 1.0;
+				break;
+			case 1:
+				f1 = f;
+				f2 = 0.0;
+				f3 = 1.0;
+				break;
+			case 2:
+				f1 = 1.0;
+				f2 = 0.0;
+				f3 = 1.0 - f;
+				break;
+			case 3:
+				f1 = 1.0;
+				f2 = f;
+				f3 = 0.0;
+				break;
+			case 4:
+				f1 = 1.0 - f;
+				f2 = 1.0;
+				f3 = 0.0;
+				break;
+			case 5:
+				f1 = 0.0;
+				f2 = 1.0;
+				f3 = f;
+				break;
+			case 6:
+				f1 = 0.0;
+				f2 = 1.0;
+				f3 = 1.0;
+				break;
+			default:
+				LYXERR0("Something went wrong when converting from HSB to rgb. Input was: " << value);
+				return string();
+		}
+		return tripleToString((b * (h - s * f1)), (b * (s - s * f2)), (b * (b - s * f3)));
+	}
+	// TODO: Hsb, tHsb, wave
+	return string();
+}
+
 } // anonymous namespace
 
 
@@ -3217,7 +3422,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const color = p.getArg('{', '}');
 			string const space = p.getArg('{', '}');
 			string const value = p.getArg('{', '}');
-			if (space == "rgb") {
+			// try to convert value to rgb
+			string const conv_value = convert_color_value(space, value);
+			if (!conv_value.empty() || space == "HTML") {
 				if (color == "document_fontcolor")
 					h_fontcolor = color;
 				else if (color == "note_fontcolor")
@@ -3226,8 +3433,14 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					h_backgroundcolor = color;
 				else if (color == "shadecolor")
 					h_boxbgcolor = color;
-				RGBColor c(RGBColorFromLaTeX(value));
-				h_custom_colors[color] = ltrim(X11hexname(c), "#");
+				if (space == "HTML")
+					// here we already have the (hex) value we want
+					h_custom_colors[color] = value;
+				else {
+					// convert from rgb to hex
+					RGBColor c(RGBColorFromLaTeX(conv_value));
+					h_custom_colors[color] = ltrim(X11hexname(c), "#");
+				}
 			} else {
 				h_preamble << "\\definecolor{" << color
 				           << "}{" << space << "}{" << value

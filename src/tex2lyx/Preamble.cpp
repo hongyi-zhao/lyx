@@ -185,9 +185,14 @@ const char * const known_if_commands[] = {"if", "ifarydshln", "ifbraket",
 "ifcancel", "ifcolortbl", "ifeurosym", "ifmarginnote", "ifmmode", "ifpdf",
 "ifsidecap", "ifupgreek", 0};
 
-const char * const known_basic_colors[] = {"black", "blue", "brown", "cyan",
-	"darkgray", "gray", "green", "lightgray", "lime", "magenta", "orange", "olive",
-	"pink",	"purple", "red", "teal", "violet", "white", "yellow", 0};
+/// LaTeX names for basic colors
+const char * const known_basic_colors[] = {"black", "blue", "cyan",
+	"green", "magenta", "red", "white", "yellow", 0};
+
+/// LaTeX names for additional basic colors provided by xcolor
+const char * const known_basic_xcolors[] = {"brown", "darkgray", "gray",
+	"lightgray", "lime", "orange", "olive", "pink", "purple",
+	"teal", "violet", 0};
 
 /// LaTeX names for (xcolor) colors beyond the base ones
 char const * const known_textcolors[] = { "Apricot", "Aquamarine", "Bittersweet", "Black",
@@ -621,6 +626,14 @@ void Preamble::setTextClass(string const & tclass, TeX2LyXDocClass & tc)
 		error_message("Could not read layout file for textclass \"" + h_textclass + "\".");
 		exit(EXIT_FAILURE);
 	}
+}
+
+
+bool Preamble::isCustomColor(string const & col) const
+{
+	if (h_custom_colors.find(col) != h_custom_colors.end())
+		return true;
+	return false;
 }
 
 
@@ -2627,6 +2640,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (space.empty() && is_known(argument, known_basic_colors)) {
 				h_fontcolor = argument;
 				registerAutomaticallyLoadedPackage("color");
+			} else if (space.empty() && is_known(argument, known_basic_xcolors)) {
+				h_fontcolor = argument;
+				registerAutomaticallyLoadedPackage("xcolor");
 			// With xcolor, svgnames colors get priority with clashing names
 			} else if (svgnames() && (where = is_known(argument, known_svgnames_textcolors))) {
 				h_fontcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
@@ -2656,6 +2672,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// check the case that a standard color is used
 			if (is_known(argument, known_basic_colors)) {
 				h_backgroundcolor = argument;
+			} else if (is_known(argument, known_basic_xcolors)) {
+				h_backgroundcolor = argument;
+				registerAutomaticallyLoadedPackage("xcolor");
 			// With xcolor, svgnames colors get priority with clashing names
 			} else if (svgnames() && (where = is_known(argument, known_svgnames_textcolors))) {
 				h_backgroundcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
@@ -3225,6 +3244,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				// check the case that a standard color is used
 				if (is_known(color2, known_basic_colors)) {
 					h_fontcolor = color2;
+				} else if (is_known(color2, known_basic_xcolors)) {
+					h_fontcolor = color2;
+					registerAutomaticallyLoadedPackage("xcolor");
 				// With xcolor, svgnames colors get priority with clashing names
 				} else if (svgnames() && (where = is_known(color2, known_svgnames_textcolors))) {
 					h_fontcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
@@ -3232,12 +3254,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				} else if ((where = is_known(color2, known_textcolors))) {
 					h_fontcolor = known_coded_textcolors[where - known_textcolors];
 					registerAutomaticallyLoadedPackage("xcolor");
-				} else if (h_custom_colors.find(color2) != h_custom_colors.end())
+				} else if (isCustomColor(color2))
 					h_fontcolor = color2;
 			} else if (color1 == "note_fontcolor") {
 				// check the case that a standard color is used
 				if (is_known(color2, known_basic_colors)) {
 					h_notefontcolor = color2;
+				} else if (is_known(color2, known_basic_xcolors)) {
+					h_notefontcolor = color2;
+					registerAutomaticallyLoadedPackage("xcolor");
 				// With xcolor, svgnames colors get priority with clashing names
 				} else if (svgnames() && (where = is_known(color2, known_svgnames_textcolors))) {
 					h_notefontcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
@@ -3245,12 +3270,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				} else if ((where = is_known(color2, known_textcolors))) {
 					h_notefontcolor = known_coded_textcolors[where - known_textcolors];
 					registerAutomaticallyLoadedPackage("xcolor");
-				} else if (h_custom_colors.find(color2) != h_custom_colors.end())
+				} else if (isCustomColor(color2))
 					h_notefontcolor = color2;
 			} else if (color1 == "page_backgroundcolor") {
 				// check the case that a standard color is used
 				if (is_known(color2, known_basic_colors)) {
 					h_backgroundcolor = color2;
+				} else if (is_known(color2, known_basic_xcolors)) {
+					h_backgroundcolor = color2;
+					registerAutomaticallyLoadedPackage("xcolor");
 				// With xcolor, svgnames colors get priority with clashing names
 				} else if (svgnames() && (where = is_known(color2, known_svgnames_textcolors))) {
 					h_backgroundcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
@@ -3258,12 +3286,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				} else if ((where = is_known(color2, known_textcolors))) {
 					h_backgroundcolor = known_coded_textcolors[where - known_textcolors];
 					registerAutomaticallyLoadedPackage("xcolor");
-				} else if (h_custom_colors.find(color2) != h_custom_colors.end())
+				} else if (isCustomColor(color2))
 					h_backgroundcolor = color2;
 			} else if (color1 == "shadecolor") {
 				// check the case that a standard color is used
 				if (is_known(color2, known_basic_colors)) {
 					h_boxbgcolor = color2;
+				} else if (is_known(color2, known_basic_xcolors)) {
+					h_boxbgcolor = color2;
+					registerAutomaticallyLoadedPackage("xcolor");
 				// With xcolor, svgnames colors get priority with clashing names
 				} else if (svgnames() && (where = is_known(color2, known_svgnames_textcolors))) {
 					h_boxbgcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
@@ -3271,7 +3302,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				} else if ((where = is_known(color2, known_textcolors))) {
 					h_boxbgcolor = known_coded_textcolors[where - known_textcolors];
 					registerAutomaticallyLoadedPackage("xcolor");
-				} else if (h_custom_colors.find(color2) != h_custom_colors.end())
+				} else if (isCustomColor(color2))
 					h_boxbgcolor = color2;
 			} else {
 				h_preamble << "\\colorlet{" << color1

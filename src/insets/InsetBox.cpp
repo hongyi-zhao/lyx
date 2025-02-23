@@ -799,8 +799,17 @@ void InsetBox::validate(LaTeXFeatures & features) const
 	BoxType btype = boxtranslator().find(params_.type);
 	switch (btype) {
 	case Frameless:
-		if (params_.backgroundcolor != "none")
-			features.require("xcolor");
+		if (params_.backgroundcolor != "none") {
+			if (theLaTeXColors().isLaTeXColor(params_.backgroundcolor)) {
+				LaTeXColor const lc = theLaTeXColors().getLaTeXColor(params_.backgroundcolor);
+				for (auto const & r : lc.req())
+					features.require(r);
+				features.require("xcolor");
+				if (!lc.model().empty())
+					features.require("xcolor:" + lc.model());
+			} else
+				features.require("color");
+		}
 		break;
 	case Framed:
 		features.require("calc");
@@ -808,9 +817,29 @@ void InsetBox::validate(LaTeXFeatures & features) const
 		break;
 	case Boxed:
 		features.require("calc");
-		if (useFColorBox())
-			// \fcolorbox is provided by [x]color
-			features.require("xcolor");
+		if (useFColorBox()) {
+			bool need_xcolor = false;
+			if (theLaTeXColors().isLaTeXColor(params_.backgroundcolor)) {
+				LaTeXColor const lc = theLaTeXColors().getLaTeXColor(params_.backgroundcolor);
+				for (auto const & r : lc.req())
+					features.require(r);
+				features.require("xcolor");
+				need_xcolor = true;
+				if (!lc.model().empty())
+					features.require("xcolor:" + lc.model());
+			}
+			if (theLaTeXColors().isLaTeXColor(params_.framecolor)) {
+				LaTeXColor const lc = theLaTeXColors().getLaTeXColor(params_.framecolor);
+				for (auto const & r : lc.req())
+					features.require(r);
+				features.require("xcolor");
+				need_xcolor = true;
+				if (!lc.model().empty())
+					features.require("xcolor:" + lc.model());
+			}
+			if (!need_xcolor)
+				features.require("color");
+		}
 		break;
 	case ovalbox:
 	case Ovalbox:

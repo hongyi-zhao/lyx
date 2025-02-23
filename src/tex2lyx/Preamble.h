@@ -53,7 +53,7 @@ public:
 	///
 	bool svgnames() const { return h_use_xcolor_svgnames; }
 	///
-	std::map<std::string, std::string> customColors() { return h_custom_colors; }
+	bool isCustomColor(std::string const & col) const;
 	///
 	std::string nomenclOpts() const { return h_nomencl_options; }
 	/// The document language

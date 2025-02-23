@@ -1872,9 +1872,37 @@ Custom Colors
 
 \begin_layout Standard
 test 
-\color darkgreen
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{darkgreen}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
 dark green
-\color inherit
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
  test
 \end_layout
 

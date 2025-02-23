@@ -299,6 +299,15 @@ char const * const known_text_font_shapes[] = { "textit", "textsl", "textsc",
 char const * const known_coded_font_shapes[] = { "italic", "slanted",
 "smallcaps", "up", 0};
 
+/// LaTeX names for basic colors
+const char * const known_basic_colors[] = {"black", "blue", "cyan",
+	"green", "magenta", "red", "white", "yellow", 0};
+
+/// LaTeX names for additional basic colors provided by xcolor
+const char * const known_basic_xcolors[] = {"brown", "darkgray", "gray",
+	"lightgray", "lime", "orange", "olive", "pink", "purple",
+	"teal", "violet", 0};
+
 /// LaTeX names for (xcolor) colors beyond the base ones
 char const * const known_textcolors[] = { "Apricot", "Aquamarine", "Bittersweet", "Black",
 "Blue", "BlueGreen", "BlueViolet", "BrickRed", "Brown", "BurntOrange", "CadetBlue", "CarnationPink",
@@ -1271,10 +1280,41 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		shadowsize = "4pt";
 	string framecolor = "black";
 	string backgroundcolor = "none";
-	if (!frame_color.empty())
-		framecolor = frame_color;
-	if (!background_color.empty())
-		backgroundcolor = background_color;
+	char const * const * where = 0;
+	if (!frame_color.empty()) {
+		// check the case that a standard color is used
+		if (is_known(frame_color, known_basic_colors)) {
+			framecolor = frame_color;
+		} else if (is_known(frame_color, known_basic_xcolors)) {
+			framecolor = frame_color;
+			preamble.registerAutomaticallyLoadedPackage("xcolor");
+		// With xcolor, svgnames colors get priority with clashing names
+		} else if (preamble.svgnames() && (where = is_known(frame_color, known_svgnames_textcolors))) {
+			framecolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
+			preamble.registerAutomaticallyLoadedPackage("xcolor");
+		} else if ((where = is_known(frame_color, known_textcolors))) {
+			framecolor = known_coded_textcolors[where - known_textcolors];
+			preamble.registerAutomaticallyLoadedPackage("xcolor");
+		} else if (preamble.isCustomColor(frame_color))
+			framecolor = frame_color;
+	}
+	if (!background_color.empty()) {
+		// check the case that a standard color is used
+		if (is_known(background_color, known_basic_colors)) {
+			backgroundcolor = background_color;
+		} else if (is_known(frame_color, known_basic_xcolors)) {
+			backgroundcolor = background_color;
+			preamble.registerAutomaticallyLoadedPackage("xcolor");
+		// With xcolor, svgnames colors get priority with clashing names
+		} else if (preamble.svgnames() && (where = is_known(background_color, known_svgnames_textcolors))) {
+			backgroundcolor = known_coded_svgnames_textcolors[where - known_svgnames_textcolors];
+			preamble.registerAutomaticallyLoadedPackage("xcolor");
+		} else if ((where = is_known(background_color, known_textcolors))) {
+			backgroundcolor = known_coded_textcolors[where - known_textcolors];
+			preamble.registerAutomaticallyLoadedPackage("xcolor");
+		} else if (preamble.isCustomColor(background_color))
+			backgroundcolor = background_color;
+	}
 	// if there is a color box around the \begin statements have not yet been parsed
 	// so do this now
 	if (!frame_color.empty() || !background_color.empty()) {
@@ -4428,19 +4468,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// scheme is \textcolor{color name}{text}
 			string const color = p.verbatim_item();
 			// we support the predefined colors of the color  and the xcolor package
-			if (color == "black" || color == "blue" || color == "cyan"
-				|| color == "green" || color == "magenta" || color == "red"
-				|| color == "white" || color == "yellow") {
+			if (is_known(color, known_basic_colors)) {
 					context.check_layout(os);
 					os << "\n\\color " << color << "\n";
 					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 					context.check_layout(os);
 					os << "\n\\color inherit\n";
 					preamble.registerAutomaticallyLoadedPackage("color");
-			} else if (color == "brown" || color == "darkgray" || color == "gray"
-				|| color == "lightgray" || color == "lime" || color == "olive"
-				|| color == "orange" || color == "pink" || color == "purple"
-				|| color == "teal" || color == "violet") {
+			} else if (is_known(color, known_basic_xcolors)) {
 					context.check_layout(os);
 					os << "\n\\color " << color << "\n";
 					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
@@ -4473,7 +4508,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << "\n\\color inherit\n";
 					preamble.registerAutomaticallyLoadedPackage("xcolor");
 			// custom colors
-			} else if (preamble.customColors().find(color) != preamble.customColors().end()) {
+			} else if (preamble.isCustomColor(color)) {
 				context.check_layout(os);
 				os << "\n\\color " << color << "\n";
 				parse_text_snippet(p, os, FLAG_ITEM, outer, context);

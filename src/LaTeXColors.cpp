@@ -173,7 +173,7 @@ void LaTeXColors::readLaTeXColors()
 		if (!lex)
 			break;
 
-		texcolormap_[c.name()] = c;
+		texcolormap_.push_back(make_pair(c.name(), c));
 	}
 }
 
@@ -192,21 +192,23 @@ LaTeXColor LaTeXColors::getLaTeXColor(string const & name)
 		return LaTeXColor();
 	if (texcolormap_.empty())
 		readLaTeXColors();
-	if (texcolormap_.find(name) == texcolormap_.end()) {
-		LYXERR0("LaTeXColors::getLaTeXColor: color '" << name << "' not found!");
-		return LaTeXColor();
+	for (auto const & lc : texcolormap_) {
+		if (lc.first == name)
+			return lc.second;
 	}
-	return texcolormap_[name];
+	LYXERR0("LaTeXColors::getLaTeXColor: color '" << name << "' not found!");
+	return LaTeXColor();
 }
 
 bool LaTeXColors::isLaTeXColor(string const & lyxname)
 {
 	if (texcolormap_.empty())
 		readLaTeXColors();
-	if (texcolormap_.find(lyxname) == texcolormap_.end()) {
-		return false;
+	for (auto const & lc : texcolormap_) {
+		if (lc.first == lyxname)
+			return true;
 	}
-	return true;
+	return false;
 }
 
 

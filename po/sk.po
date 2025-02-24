@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-02-13 10:15+0100\n"
-"PO-Revision-Date: 2025-02-13 09:36+0000\n"
+"POT-Creation-Date: 2025-02-24 10:44+0100\n"
+"PO-Revision-Date: 2025-02-24 15:25+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -719,10 +719,11 @@ msgstr "(&De)aktivovať"
 msgid "Add a new branch to the list"
 msgstr "Pridajte novú vetvu do listiny"
 
-#: src/frontends/qt/ui/BranchesUi.ui:116 src/frontends/qt/ui/CitationUi.ui:146
-#: src/frontends/qt/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:479
+#: src/CutAndPaste.cpp:458 src/frontends/qt/ui/BranchesUi.ui:119
+#: src/frontends/qt/ui/CitationUi.ui:146 src/frontends/qt/ui/ColorUi.ui:483
+#: src/frontends/qt/ui/IndicesUi.ui:135
 msgid "&Add"
-msgstr "Pr&idať"
+msgstr "&Pridať"
 
 #: src/frontends/qt/ui/BranchesUi.ui:123
 msgid "Define or change background color"
@@ -1190,15 +1191,6 @@ msgstr "Každý a&utor"
 msgid "Font Colors"
 msgstr "Farby písma"
 
-#: src/frontends/qt/ui/ColorUi.ui:45 src/frontends/qt/ui/ColorUi.ui:107
-#: src/frontends/qt/ui/ColorUi.ui:295 src/frontends/qt/ui/ColorUi.ui:333
-msgid "Click to change the color"
-msgstr "Kliknite na zmenu farby"
-
-#: src/frontends/qt/ui/ColorUi.ui:48
-msgid "&Change..."
-msgstr "&Vymeniť…"
-
 #: src/frontends/qt/ui/ColorUi.ui:68
 msgid "Greyed-out notes:"
 msgstr "Zosivelé poznámky:"
@@ -1206,15 +1198,6 @@ msgstr "Zosivelé poznámky:"
 #: src/frontends/qt/ui/ColorUi.ui:91
 msgid "Main text:"
 msgstr "Hlavný text:"
-
-#: src/frontends/qt/ui/ColorUi.ui:110
-msgid "C&hange..."
-msgstr "V&ymeniť…"
-
-#: src/frontends/qt/ui/ColorUi.ui:123 src/frontends/qt/ui/ColorUi.ui:145
-#: src/frontends/qt/ui/ColorUi.ui:250 src/frontends/qt/ui/ColorUi.ui:311
-msgid "Revert the color to the default"
-msgstr "Návrat farby na štandard"
 
 #: src/frontends/qt/ui/ColorUi.ui:210
 msgid "Background Colors"
@@ -1227,18 +1210,6 @@ msgstr "Tieňované rámiky:"
 #: src/frontends/qt/ui/ColorUi.ui:266 lib/layouts/europecv.layout:188
 msgid "Page:"
 msgstr "Strana:"
-
-#: src/frontends/qt/ui/ColorUi.ui:298
-msgid "Ch&ange..."
-msgstr "Vy&meniť…"
-
-#: src/frontends/qt/ui/ColorUi.ui:314
-msgid "Re&set"
-msgstr "O&bnoviť"
-
-#: src/frontends/qt/ui/ColorUi.ui:336
-msgid "Chan&ge..."
-msgstr "Vym&eniť…"
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:23
 msgid "Compare Revisions"
@@ -2538,6 +2509,14 @@ msgstr "&Dostupné registre:"
 msgid "1"
 msgstr "1"
 
+#: src/frontends/qt/ui/ColorUi.ui:413
+msgid "Remove the selected color"
+msgstr "Zmazať vybranú farbu"
+
+#: src/frontends/qt/ui/ColorUi.ui:423
+msgid "Rename the selected color"
+msgstr "Premenovať označenú farbu"
+
 #: src/frontends/qt/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "Odstrániť označený register"
@@ -2553,6 +2532,26 @@ msgstr "P&remenuj…"
 #: src/frontends/qt/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "Určiť alebo zmeniť farbu tlačidla"
+
+#: src/frontends/qt/ui/ColorUi.ui:463
+msgid "&New:[[color]]"
+msgstr "Nov&á:"
+
+#: src/frontends/qt/ui/ColorUi.ui:473
+msgid ""
+"Enter the name of the desired color (only ASCII characters and no space "
+"allowed) and hit \"Add\""
+msgstr ""
+"Vložte meno želanej farby (len ASCII znaky a bez medzier) a stlačte "
+"\"Pridať\""
+
+#: src/frontends/qt/ui/ColorUi.ui:480
+msgid "Add a new color to the list"
+msgstr "Pridajte novú farbu do listiny"
+
+#: src/frontends/qt/ui/ColorUi.ui:492
+msgid "A&vailable Custom Colors:"
+msgstr "Do&stupné vlastné farby:"
 
 #: src/frontends/qt/ui/InfoUi.ui:25
 msgid "Infor&mation Type:"
@@ -3312,11 +3311,11 @@ msgstr "Pridať odkazy na &rovnice"
 #: src/frontends/qt/ui/NomenclUi.ui:72
 msgid ""
 "The phrase \", see page x\" is appended to every entry in the nomenclature "
-"where x is the number of the page number on which the corresponding "
-"nomenclature is used"
+"where x is the number of the page on which the corresponding nomenclature is "
+"used"
 msgstr ""
 "Fráza „pozri stranu x“ je pripojená ku každému záznamu v nomenklatúre, kde x "
-"je číslo čísla strany, na ktorej sa používa zodpovedajúca nomenklatúra"
+"je číslo strany, na ktorej sa používa zodpovedajúca nomenklatúra"
 
 #: src/frontends/qt/ui/NomenclUi.ui:75
 msgid "Add &page references"
@@ -8027,6 +8026,10 @@ msgstr "Voliteľná fotka do životopisu"
 #: src/mathed/InsetMathMacroTemplate.cpp:482
 msgid "Name"
 msgstr "Meno"
+
+#: src/frontends/qt/GuiDocument.cpp:1402
+msgid "Double-click on an item to change its color"
+msgstr "Dvojitým kliknutím na položku môžete zmeniť jej farbu"
 
 #: lib/layouts/IEEEtran.layout:437 lib/layouts/IEEEtran.layout:454
 #: lib/layouts/sigplanconf.layout:165
@@ -19282,6 +19285,440 @@ msgstr "Max. šírka"
 msgid "Maximum width (default: \\linewidth)"
 msgstr "Maximálna šírka (štandard: \\linewidth)"
 
+#: lib/latexcolors:44 lib/latexcolors:219 lib/latexcolors:872
+msgid "Black"
+msgstr "Čierna"
+
+#: lib/latexcolors:46 lib/latexcolors:53 lib/latexcolors:60 lib/latexcolors:67
+#: lib/latexcolors:75 lib/latexcolors:82 lib/latexcolors:90 lib/latexcolors:98
+#: lib/latexcolors:105 lib/latexcolors:113 lib/latexcolors:121
+#: lib/latexcolors:128 lib/latexcolors:136 lib/latexcolors:144
+#: lib/latexcolors:152 lib/latexcolors:160 lib/latexcolors:167
+#: lib/latexcolors:175 lib/latexcolors:183
+msgid "LaTeX Base Colors"
+msgstr "Základné farby LaTeXu"
+
+#: lib/latexcolors:51 lib/latexcolors:767 lib/latexcolors:2000
+msgid "White"
+msgstr "Biela"
+
+#: lib/latexcolors:58 lib/latexcolors:229 lib/latexcolors:888
+msgid "Blue"
+msgstr "Modrá"
+
+#: lib/latexcolors:65 lib/latexcolors:263 lib/latexcolors:904
+msgid "Brown"
+msgstr "Hnedá"
+
+#: lib/latexcolors:73 lib/latexcolors:317 lib/latexcolors:976
+msgid "Cyan"
+msgstr "Azúrová (Cyan)"
+
+#: lib/latexcolors:80
+msgid "Dark gray"
+msgstr "Tmavošedá"
+
+#: lib/latexcolors:88 lib/latexcolors:383 lib/latexcolors:1243
+msgid "Gray"
+msgstr "Šedá"
+
+#: lib/latexcolors:96 lib/latexcolors:393 lib/latexcolors:1251
+msgid "Green"
+msgstr "Zelená"
+
+#: lib/latexcolors:103
+msgid "Light gray"
+msgstr "Svetlošedá"
+
+#: lib/latexcolors:111 lib/latexcolors:1494
+msgid "Lime"
+msgstr "Limetková"
+
+#: lib/latexcolors:119 lib/latexcolors:441 lib/latexcolors:1518
+msgid "Magenta"
+msgstr "Purpurová"
+
+#: lib/latexcolors:126 lib/latexcolors:1671
+msgid "Olive"
+msgstr "OlivoZelená (Olive)"
+
+#: lib/latexcolors:134 lib/latexcolors:513 lib/latexcolors:1687
+msgid "Orange"
+msgstr "Oranžová"
+
+#: lib/latexcolors:142 lib/latexcolors:1767
+msgid "Pink"
+msgstr "Ružová"
+
+#: lib/latexcolors:150 lib/latexcolors:585 lib/latexcolors:1791
+msgid "Purple"
+msgstr "Purpurová (Purple)"
+
+#: lib/latexcolors:158 lib/latexcolors:603 lib/latexcolors:1799
+msgid "Red"
+msgstr "Červená"
+
+#: lib/latexcolors:165 lib/latexcolors:1944
+msgid "Teal"
+msgstr "Tyrkysová (Teal)"
+
+#: lib/latexcolors:173 lib/latexcolors:749 lib/latexcolors:1976
+msgid "Violet"
+msgstr "Fialová"
+
+#: lib/latexcolors:181 lib/latexcolors:785 lib/latexcolors:2016
+msgid "Yellow"
+msgstr "Žltá"
+
+#: lib/latexcolors:193
+msgid "Apricot"
+msgstr "Marhuľová (Apricot)"
+
+#: lib/latexcolors:196 lib/latexcolors:206 lib/latexcolors:214
+#: lib/latexcolors:222 lib/latexcolors:232 lib/latexcolors:240
+#: lib/latexcolors:248 lib/latexcolors:256 lib/latexcolors:266
+#: lib/latexcolors:274 lib/latexcolors:284 lib/latexcolors:292
+#: lib/latexcolors:300 lib/latexcolors:310 lib/latexcolors:320
+#: lib/latexcolors:328 lib/latexcolors:338 lib/latexcolors:346
+#: lib/latexcolors:356 lib/latexcolors:366 lib/latexcolors:376
+#: lib/latexcolors:386 lib/latexcolors:396 lib/latexcolors:406
+#: lib/latexcolors:414 lib/latexcolors:424 lib/latexcolors:434
+#: lib/latexcolors:444 lib/latexcolors:452 lib/latexcolors:462
+#: lib/latexcolors:470 lib/latexcolors:480 lib/latexcolors:488
+#: lib/latexcolors:498 lib/latexcolors:506 lib/latexcolors:516
+#: lib/latexcolors:526 lib/latexcolors:536 lib/latexcolors:544
+#: lib/latexcolors:552 lib/latexcolors:560 lib/latexcolors:570
+#: lib/latexcolors:578 lib/latexcolors:588 lib/latexcolors:596
+#: lib/latexcolors:606 lib/latexcolors:614 lib/latexcolors:622
+#: lib/latexcolors:630 lib/latexcolors:640 lib/latexcolors:648
+#: lib/latexcolors:656 lib/latexcolors:666 lib/latexcolors:676
+#: lib/latexcolors:684 lib/latexcolors:694 lib/latexcolors:704
+#: lib/latexcolors:714 lib/latexcolors:722 lib/latexcolors:732
+#: lib/latexcolors:742 lib/latexcolors:752 lib/latexcolors:762
+#: lib/latexcolors:770 lib/latexcolors:778 lib/latexcolors:788
+#: lib/latexcolors:798 lib/latexcolors:806
+msgid "DVIPS Names"
+msgstr "Názvy pre DVIPS"
+
+#: lib/latexcolors:203 lib/latexcolors:840
+msgid "Aquamarine"
+msgstr "Akvamarínová (Aquamarine)"
+
+#: lib/latexcolors:211
+msgid "Bittersweet"
+msgstr "Horkosladká (Bittersweet)"
+
+#: lib/latexcolors:237
+msgid "BlueGreen"
+msgstr "ModroZelená (BlueGreen)"
+
+#: lib/latexcolors:245 lib/latexcolors:896
+msgid "BlueViolet"
+msgstr "ModroFialová (BlueViolet)"
+
+#: lib/latexcolors:253
+msgid "BrickRed"
+msgstr "TehlovoČervená (BrickRed)"
+
+#: lib/latexcolors:271
+msgid "BurntOrange"
+msgstr "Pálená Oranžová (BurntOrange)"
+
+#: lib/latexcolors:281 lib/latexcolors:920
+msgid "CadetBlue"
+msgstr "KadetoModrá (CadetBlue)"
+
+#: lib/latexcolors:289
+msgid "CarnationPink"
+msgstr "KarafiátovoRužová (CarnationPink)"
+
+#: lib/latexcolors:297
+msgid "Cerulean"
+msgstr "NebeskoModrá (Cerulean)"
+
+#: lib/latexcolors:307 lib/latexcolors:952
+msgid "CornflowerBlue"
+msgstr "NevädzoModrá (CornflowerBlue)"
+
+#: lib/latexcolors:325
+msgid "Dandelion"
+msgstr "Púpavová (Dandelion)"
+
+#: lib/latexcolors:335 lib/latexcolors:1065
+msgid "DarkOrchid"
+msgstr "TmavoOrchideová (DarkOrchid)"
+
+#: lib/latexcolors:343
+msgid "Emerald"
+msgstr "SmaragdoZelená (Emerald)"
+
+#: lib/latexcolors:353 lib/latexcolors:1195
+msgid "ForestGreen"
+msgstr "LesnoZelená (ForestGreen)"
+
+#: lib/latexcolors:363 lib/latexcolors:1203
+msgid "Fuchsia"
+msgstr "Fuchsiová (Fuchsia)"
+
+#: lib/latexcolors:373 lib/latexcolors:1235
+msgid "Goldenrod"
+msgstr "Zlatobyľová (Goldenrod)"
+
+#: lib/latexcolors:403 lib/latexcolors:1259
+msgid "GreenYellow"
+msgstr "ZelenoŽltá (GreenYellow)"
+
+#: lib/latexcolors:411
+msgid "JungleGreen"
+msgstr "DžungloZelená (JungleGreen)"
+
+#: lib/latexcolors:421 lib/latexcolors:1324
+msgid "Lavender"
+msgstr "Levanduľová (Lavender)"
+
+#: lib/latexcolors:431 lib/latexcolors:1502
+msgid "LimeGreen"
+msgstr "LimetkovoZelená (LimeGreen)"
+
+#: lib/latexcolors:449
+msgid "Mahogany"
+msgstr "Mahagónová (Mahogany)"
+
+#: lib/latexcolors:459 lib/latexcolors:1526
+msgid "Maroon"
+msgstr "Gaštanová (Maroon)"
+
+#: lib/latexcolors:467
+msgid "Melon"
+msgstr "Melónová (Melon)"
+
+#: lib/latexcolors:477 lib/latexcolors:1606
+msgid "MidnightBlue"
+msgstr "PolnočnáModrá (MidnightBlue)"
+
+#: lib/latexcolors:485
+msgid "Mulberry"
+msgstr "TmavoFialová (Mulberry)"
+
+#: lib/latexcolors:495 lib/latexcolors:1655
+msgid "NavyBlue"
+msgstr "NámorníckoModrá (NavyBlue)"
+
+#: lib/latexcolors:503
+msgid "OliveGreen"
+msgstr "OlivoZelená (OliveGreen)"
+
+#: lib/latexcolors:523 lib/latexcolors:1695
+msgid "OrangeRed"
+msgstr "OranžovoČervená (OrangeRed)"
+
+#: lib/latexcolors:533 lib/latexcolors:1703
+msgid "Orchid"
+msgstr "Orchideová (Orchid)"
+
+#: lib/latexcolors:541
+msgid "Peach"
+msgstr "Broskyňová (Peach)"
+
+#: lib/latexcolors:549
+msgid "Periwinkle"
+msgstr "Brčálová (Periwinkle)"
+
+#: lib/latexcolors:557
+msgid "PineGreen"
+msgstr "BorovicovoZelená (PineGreen)"
+
+#: lib/latexcolors:567 lib/latexcolors:1775
+msgid "Plum"
+msgstr "Slivková (Plum)"
+
+#: lib/latexcolors:575
+msgid "ProcessBlue"
+msgstr "ProcesneModrá (ProcessBlue)"
+
+#: lib/latexcolors:593
+msgid "RawSienna"
+msgstr "SurovejSieny (RawSienna)"
+
+#: lib/latexcolors:611
+msgid "RedOrange"
+msgstr "ČervenoOranžová (RedOrange)"
+
+#: lib/latexcolors:619
+msgid "RedViolet"
+msgstr "ČervenoFialová (RedViolet)"
+
+#: lib/latexcolors:627
+msgid "Rhodamine"
+msgstr "Rebarborská (Rhodamine)"
+
+#: lib/latexcolors:637 lib/latexcolors:1815
+msgid "RoyalBlue"
+msgstr "KráľovskoModrá (RoyalBlue)"
+
+#: lib/latexcolors:645
+msgid "RoyalPurple"
+msgstr "KráľovskoPurpurová (RoyalPurple)"
+
+#: lib/latexcolors:653
+msgid "RubineRed"
+msgstr "RubínovoČervená (RubineRed)"
+
+#: lib/latexcolors:663 lib/latexcolors:1831
+msgid "Salmon"
+msgstr "Lososová (Salmon)"
+
+#: lib/latexcolors:673 lib/latexcolors:1847
+msgid "SeaGreen"
+msgstr "MorskoZelená SeaGreen)"
+
+#: lib/latexcolors:681
+msgid "Sepia"
+msgstr "Sépiová (Sepia)"
+
+#: lib/latexcolors:691 lib/latexcolors:1879
+msgid "SkyBlue"
+msgstr "NebeskoModrá (SkyBlue)"
+
+#: lib/latexcolors:701 lib/latexcolors:1920
+msgid "SpringGreen"
+msgstr "JarnoZelená (SpringGreen)"
+
+#: lib/latexcolors:711 lib/latexcolors:1936
+msgid "Tan"
+msgstr "SvetloHnedá (Tan)"
+
+#: lib/latexcolors:719
+msgid "TealBlue"
+msgstr "TyrkysovoModrá (TealBlue)"
+
+#: lib/latexcolors:729 lib/latexcolors:1952
+msgid "Thistle"
+msgstr "Bodliaková (Thistle)"
+
+#: lib/latexcolors:739 lib/latexcolors:1968
+msgid "Turquoise"
+msgstr "Tyrkysová (Turquoise)"
+
+#: lib/latexcolors:759 lib/latexcolors:1984
+msgid "VioletRed"
+msgstr "FialovoČervená (VioletRed)"
+
+#: lib/latexcolors:775
+msgid "WildStrawberry"
+msgstr "LesnejJahody (WildStrawberry)"
+
+#: lib/latexcolors:795 lib/latexcolors:2024
+msgid "YellowGreen"
+msgstr "ŽltoZelená (YellowGreen)"
+
+#: lib/latexcolors:803
+msgid "YellowOrange"
+msgstr "ŽltoOranžová (YellowOrange)"
+
+#: lib/latexcolors:816
+msgid "AliceBlue"
+msgstr "Alice-Modrá (AliceBlue)"
+
+#: lib/latexcolors:819 lib/latexcolors:827 lib/latexcolors:835
+#: lib/latexcolors:843 lib/latexcolors:851 lib/latexcolors:859
+#: lib/latexcolors:867 lib/latexcolors:875 lib/latexcolors:883
+#: lib/latexcolors:891 lib/latexcolors:899 lib/latexcolors:907
+#: lib/latexcolors:915 lib/latexcolors:923 lib/latexcolors:931
+#: lib/latexcolors:939 lib/latexcolors:947 lib/latexcolors:955
+#: lib/latexcolors:963 lib/latexcolors:971 lib/latexcolors:979
+#: lib/latexcolors:987 lib/latexcolors:995 lib/latexcolors:1003
+#: lib/latexcolors:1011 lib/latexcolors:1019 lib/latexcolors:1036
+#: lib/latexcolors:1044 lib/latexcolors:1052 lib/latexcolors:1060
+#: lib/latexcolors:1068 lib/latexcolors:1076 lib/latexcolors:1084
+#: lib/latexcolors:1092 lib/latexcolors:1100 lib/latexcolors:1108
+#: lib/latexcolors:1125 lib/latexcolors:1133 lib/latexcolors:1141
+#: lib/latexcolors:1149 lib/latexcolors:1157 lib/latexcolors:1174
+#: lib/latexcolors:1182 lib/latexcolors:1190 lib/latexcolors:1198
+#: lib/latexcolors:1206 lib/latexcolors:1214 lib/latexcolors:1222
+#: lib/latexcolors:1230 lib/latexcolors:1238 lib/latexcolors:1246
+#: lib/latexcolors:1254 lib/latexcolors:1262 lib/latexcolors:1279
+#: lib/latexcolors:1287 lib/latexcolors:1295 lib/latexcolors:1303
+#: lib/latexcolors:1311 lib/latexcolors:1319 lib/latexcolors:1327
+#: lib/latexcolors:1335 lib/latexcolors:1343 lib/latexcolors:1351
+#: lib/latexcolors:1359 lib/latexcolors:1367 lib/latexcolors:1375
+#: lib/latexcolors:1383 lib/latexcolors:1391 lib/latexcolors:1399
+#: lib/latexcolors:1407 lib/latexcolors:1424 lib/latexcolors:1432
+#: lib/latexcolors:1440 lib/latexcolors:1448 lib/latexcolors:1456
+#: lib/latexcolors:1464 lib/latexcolors:1481 lib/latexcolors:1489
+#: lib/latexcolors:1497 lib/latexcolors:1505 lib/latexcolors:1513
+#: lib/latexcolors:1521 lib/latexcolors:1529 lib/latexcolors:1537
+#: lib/latexcolors:1545 lib/latexcolors:1553 lib/latexcolors:1561
+#: lib/latexcolors:1569 lib/latexcolors:1577 lib/latexcolors:1585
+#: lib/latexcolors:1593 lib/latexcolors:1601 lib/latexcolors:1609
+#: lib/latexcolors:1617 lib/latexcolors:1625 lib/latexcolors:1633
+#: lib/latexcolors:1641 lib/latexcolors:1658 lib/latexcolors:1666
+#: lib/latexcolors:1674 lib/latexcolors:1682 lib/latexcolors:1690
+#: lib/latexcolors:1698 lib/latexcolors:1706 lib/latexcolors:1714
+#: lib/latexcolors:1722 lib/latexcolors:1730 lib/latexcolors:1738
+#: lib/latexcolors:1746 lib/latexcolors:1754 lib/latexcolors:1762
+#: lib/latexcolors:1770 lib/latexcolors:1778 lib/latexcolors:1786
+#: lib/latexcolors:1794 lib/latexcolors:1802 lib/latexcolors:1810
+#: lib/latexcolors:1818 lib/latexcolors:1826 lib/latexcolors:1834
+#: lib/latexcolors:1842 lib/latexcolors:1850 lib/latexcolors:1858
+#: lib/latexcolors:1866 lib/latexcolors:1874 lib/latexcolors:1882
+#: lib/latexcolors:1890 lib/latexcolors:1898 lib/latexcolors:1915
+#: lib/latexcolors:1923 lib/latexcolors:1931 lib/latexcolors:1939
+#: lib/latexcolors:1947 lib/latexcolors:1955 lib/latexcolors:1963
+#: lib/latexcolors:1971 lib/latexcolors:1979 lib/latexcolors:1987
+#: lib/latexcolors:1995 lib/latexcolors:2003 lib/latexcolors:2011
+#: lib/latexcolors:2019 lib/latexcolors:2027
+msgid "SVG Names"
+msgstr "SVG-mená"
+
+#: lib/latexcolors:824
+msgid "AntiqueWhite"
+msgstr "Starožitná Biela (AntiqueWhite)"
+
+#: lib/latexcolors:832
+msgid "Aqua"
+msgstr "Aqua"
+
+#: lib/latexcolors:848
+msgid "Azure"
+msgstr "Azúrová (Azure)"
+
+#: lib/latexcolors:856
+msgid "Beige"
+msgstr "Béžová (Beige)"
+
+#: lib/latexcolors:864
+msgid "Bisque"
+msgstr "ParadajkovoKrémová (Bisque)"
+
+#: lib/latexcolors:880
+msgid "BlanchedAlmond"
+msgstr "MandľovoBiela (BlanchedAlmond)"
+
+#: lib/latexcolors:912
+msgid "BurlyWood"
+msgstr "HruboHnedá (BurlyWood)"
+
+#: lib/latexcolors:928
+msgid "Chartreuse"
+msgstr "Chartreuse"
+
+#: lib/latexcolors:936
+msgid "Chocolate"
+msgstr "ČokoládovoHnedá (Chocolate)"
+
+#: lib/latexcolors:944
+msgid "Coral"
+msgstr "Koralová (Coral)"
+
+#: lib/latexcolors:960
+msgid "Cornsilk"
+msgstr "Kukuričná (Cornsilk)"
+
+#: lib/latexcolors:968
+msgid "Crimson[[color]]"
+msgstr "Karmínová (Crimson)"
+
 #: lib/languages:139 src/FontInfo.cpp:45 src/FontInfo.cpp:48
 #: src/FontInfo.cpp:52 src/FontInfo.cpp:57 src/FontInfo.cpp:60
 msgid "Ignore"
@@ -19772,11 +20209,1728 @@ msgstr "Bitstream Charter (PSNFSS)"
 
 #: lib/latexfonts:141
 msgid "Crimson (Cochineal)"
-msgstr "Crimson (Cochineal)"
+msgstr "Karmínová (Košenová) (Crimson Cochineal)"
 
 #: lib/latexfonts:150
 msgid "Crimson"
-msgstr "Crimson"
+msgstr "Karmínová (Crimson)"
+
+#: lib/latexcolors:984
+msgid "DarkBlue"
+msgstr "TmavoModrá (DarkBlue)"
+
+#: lib/latexcolors:992
+msgid "DarkCyan"
+msgstr "TmavoAzúrová (DarkCyan)"
+
+#: lib/latexcolors:1000
+msgid "DarkGoldenrod"
+msgstr "Tmavá Zlatobyľová (DarkGoldenrod)"
+
+#: lib/latexcolors:1008
+msgid "DarkGray"
+msgstr "TmavoŠedá (DarkGray)"
+
+#: lib/latexcolors:1016
+msgid "DarkGreen"
+msgstr "TmavoZelená (DarkGreen)"
+
+#: lib/latexcolors:1033
+msgid "DarkKhaki"
+msgstr "Kaki (DarkKhaki)"
+
+#: lib/latexcolors:1041
+msgid "DarkMagenta"
+msgstr "TmavoPurpurová (DarkMagenta)"
+
+#: lib/latexcolors:1049
+msgid "DarkOliveGreen"
+msgstr "Tmavá OlivoZelená (DarkOliveGreen)"
+
+#: lib/latexcolors:1057
+msgid "DarkOrange"
+msgstr "TmavoOranžová (DarkOrange)"
+
+#: lib/latexcolors:1073
+msgid "DarkRed"
+msgstr "TmavoCervená (DarkRed)"
+
+#: lib/latexcolors:1081
+msgid "DarkSalmon"
+msgstr "TmavoLososová (DarkSalmon)"
+
+#: lib/latexcolors:1089
+msgid "DarkSeaGreen"
+msgstr "Tmavá MorskoZelená (DarkSeaGreen)"
+
+#: lib/latexcolors:1097
+msgid "DarkSlateBlue"
+msgstr "Tmavá BridlicoModrá (DarkSlateBlue)"
+
+#: lib/latexcolors:1105
+msgid "DarkSlateGray"
+msgstr "Tmavá BridlicoŠedá (DarkSlateGray)"
+
+#: lib/latexcolors:1122
+msgid "DarkTurquoise"
+msgstr "Tmavotyrkysová (DarkTurquoise)"
+
+#: lib/latexcolors:1130
+msgid "DarkViolet"
+msgstr "TmavoFialová (DarkViolet)"
+
+#: lib/latexcolors:1138
+msgid "DeepPink"
+msgstr "SýtoRužová (DeepPink)"
+
+#: lib/latexcolors:1146
+msgid "DeepSkyBlue"
+msgstr "Sýta NebeskoModrá (DeepSkyBlue)"
+
+#: lib/latexcolors:1154
+msgid "DimGray"
+msgstr "MatnoŠedá (DimGray)"
+
+#: lib/latexcolors:1171
+msgid "DodgerBlue"
+msgstr "Doger-Modrá (DodgerBlue)"
+
+#: lib/latexcolors:1179
+msgid "FireBrick"
+msgstr "Tehlová (FireBrick)"
+
+#: lib/latexcolors:1187
+msgid "FloralWhite"
+msgstr "KvetinovoBiela (FloralWhite)"
+
+#: lib/latexcolors:1211
+msgid "Gainsboro"
+msgstr "Gainsboro"
+
+#: lib/latexcolors:1219
+msgid "GhostWhite"
+msgstr "DuchoBiela (GhostWhite)"
+
+#: lib/latexcolors:1227
+msgid "Gold"
+msgstr "Zlatá (Gold)"
+
+#: lib/latexcolors:1276
+msgid "Honeydew"
+msgstr "Medová (Honeydew)"
+
+#: lib/latexcolors:1284
+msgid "HotPink"
+msgstr "SvetloRužová (HotPink)"
+
+#: lib/latexcolors:1292
+msgid "IndianRed"
+msgstr "IndickoČervená (IndianRed)"
+
+#: lib/latexcolors:1300
+msgid "Indigo"
+msgstr "Indigová (Indigo)"
+
+#: lib/latexcolors:1308
+msgid "Ivory"
+msgstr "Slonovej Kosti (Ivory)"
+
+#: lib/latexcolors:1316
+msgid "Khaki"
+msgstr "Kaki svetlá (Khaki)"
+
+#: lib/latexcolors:1332
+msgid "LavenderBlush"
+msgstr "Levanduľovo-červená (LavenderBlush)"
+
+#: lib/latexcolors:1340
+msgid "LawnGreen"
+msgstr "TrávnikoZelená (LawnGreen)"
+
+#: lib/latexcolors:1348
+msgid "LemonChiffon"
+msgstr "CitrónovoŠifónová (LemonChiffon)"
+
+#: lib/latexcolors:1356
+msgid "LightBlue"
+msgstr "SvetloModrá (LightBlue)"
+
+#: lib/latexcolors:1364
+msgid "LightCoral"
+msgstr "SvetloKoralová (LightCoral)"
+
+#: lib/latexcolors:1372
+msgid "LightCyan"
+msgstr "SvetloAzúrová (LightCyan)"
+
+#: lib/latexcolors:1380
+msgid "LightGoldenrod"
+msgstr "Svetlá Zlatobyľová (LightGoldenrod)"
+
+#: lib/latexcolors:1388
+msgid "LightGoldenrodYellow"
+msgstr "Svetlá ZlatobyľoŽltá (LightGoldenrodYellow)"
+
+#: lib/latexcolors:1396
+msgid "LightGray"
+msgstr "SvetloŠedá (LightGray)"
+
+#: lib/latexcolors:1404
+msgid "LightGreen"
+msgstr "SvetloZelená (LightGreen)"
+
+#: lib/latexcolors:1421
+msgid "LightPink"
+msgstr "SvetloRužová (LightPink)"
+
+#: lib/latexcolors:1429
+msgid "LightSalmon"
+msgstr "SvetloLososová (LightSalmon)"
+
+#: lib/latexcolors:1437
+msgid "LightSeaGreen"
+msgstr "Svetlá MorskoZelená (LightSeaGreen)"
+
+#: lib/latexcolors:1445
+msgid "LightSkyBlue"
+msgstr "Svetlá NebeskoModrá (LightSkyBlue)"
+
+#: lib/latexcolors:1453
+msgid "LightSlateBlue"
+msgstr "Svetlá BridlicovoModrá (LightSlateBlue)"
+
+#: lib/latexcolors:1461
+msgid "LightSlateGray"
+msgstr "Svetlá BridlicovoŠedá (LightSlateGray)"
+
+#: lib/latexcolors:1478
+msgid "LightSteelBlue"
+msgstr "Svetlá OceľovoModrá (LightSteelBlue)"
+
+#: lib/latexcolors:1486
+msgid "LightYellow"
+msgstr "SvetloŽltá (LightYellow)"
+
+#: lib/latexcolors:1510
+msgid "Linen"
+msgstr "Ľanová (Linen)"
+
+#: lib/latexcolors:1534
+msgid "MediumAquamarine"
+msgstr "StredneAkvamarínová (MediumAquamarine)"
+
+#: lib/latexcolors:1542
+msgid "MediumBlue"
+msgstr "StredneModrá (MediumBlue)"
+
+#: lib/latexcolors:1550
+msgid "MediumOrchid"
+msgstr "StredneOrchideová (MediumOrchid)"
+
+#: lib/latexcolors:1558
+msgid "MediumPurple"
+msgstr "StrednePurpurová (MediumPurple)"
+
+#: lib/latexcolors:1566
+msgid "MediumSeaGreen"
+msgstr "Stredná MorskoZelená (MediumSeaGreen)"
+
+#: lib/latexcolors:1574
+msgid "MediumSlateBlue"
+msgstr "Stredná BridlicovoModrá (MediumSlateBlue)"
+
+#: lib/latexcolors:1582
+msgid "MediumSpringGreen"
+msgstr "Stredná JarnoZelená (MediumSpringGreen)"
+
+#: lib/latexcolors:1590
+msgid "MediumTurquoise"
+msgstr "Stredná tyrkysová (MediumTurquoise)"
+
+#: lib/latexcolors:1598
+msgid "MediumVioletRed"
+msgstr "Stredná FialovoČervená (MediumVioletRed)"
+
+#: lib/latexcolors:1614
+msgid "MintCream"
+msgstr "Krémová pepermintová (MintCream)"
+
+#: lib/latexcolors:1622
+msgid "MistyRose"
+msgstr "StaroRužová (MistyRose)"
+
+#: lib/latexcolors:1630
+msgid "Moccasin"
+msgstr "Mokasínová (Moccasin)"
+
+#: lib/latexcolors:1638
+msgid "NavajoWhite"
+msgstr "NavajoBiela (NavajoWhite)"
+
+#: lib/latexcolors:1663
+msgid "OldLace"
+msgstr "StaroZlatá (OldLace)"
+
+#: lib/latexcolors:1679
+msgid "OliveDrab"
+msgstr "OlivoŠedoHnedá (OliveDrab)"
+
+#: lib/latexcolors:1711
+msgid "PaleGoldenrod"
+msgstr "Bledá Zlatobyľová (PaleGoldenrod)"
+
+#: lib/latexcolors:1719
+msgid "PaleGreen"
+msgstr "BledoZelená (PaleGreen)"
+
+#: lib/latexcolors:1727
+msgid "PaleTurquoise"
+msgstr "BledoTyrkysová (PaleTurquoise)"
+
+#: lib/latexcolors:1735
+msgid "PaleVioletRed"
+msgstr "Bledá FialovoČervená (PaleVioletRed)"
+
+#: lib/latexcolors:1743
+msgid "PapayaWhip"
+msgstr "PapájoKrémová (PapayaWhip)"
+
+#: lib/latexcolors:1751
+msgid "PeachPuff"
+msgstr "Broskyňová (PeachPuff)"
+
+#: lib/latexcolors:1759
+msgid "Peru"
+msgstr "Peru"
+
+#: lib/latexcolors:1783
+msgid "PowderBlue"
+msgstr "PráškovoModrá (PowderBlue)"
+
+#: lib/latexcolors:1807
+msgid "RosyBrown"
+msgstr "RužovoHnedá (RosyBrown)"
+
+#: lib/latexcolors:1823
+msgid "SaddleBrown"
+msgstr "SedlovoHnedá (SaddleBrown)"
+
+#: lib/latexcolors:1839
+msgid "SandyBrown"
+msgstr "PiesovoHnedá (SandyBrown"
+
+#: lib/latexcolors:1855
+msgid "Seashell"
+msgstr "Lasturová (Seashell)"
+
+#: lib/latexcolors:1863
+msgid "Sienna"
+msgstr "Sienna"
+
+#: lib/latexcolors:1871
+msgid "Silver"
+msgstr "Strieborná (Silver)"
+
+#: lib/latexcolors:1887
+msgid "SlateBlue"
+msgstr "BridlicoModrá (SlateBlue)"
+
+#: lib/latexcolors:1895
+msgid "SlateGray"
+msgstr "BridlicoŠedá (SlateGray)"
+
+#: lib/latexcolors:1912
+msgid "Snow"
+msgstr "Snehová (Snow)"
+
+#: lib/latexcolors:1928
+msgid "SteelBlue"
+msgstr "OceľovoModrá (SteelBlue)"
+
+#: lib/latexcolors:1960
+msgid "Tomato"
+msgstr "Paradajková (Tomato)"
+
+#: lib/latexcolors:1992
+msgid "Wheat"
+msgstr "Pšeničná (Wheat)"
+
+#: lib/latexcolors:2008
+msgid "WhiteSmoke"
+msgstr "DymovoBiela (WhiteSmoke)"
+
+#: lib/latexcolors:2037
+msgid "AntiqueWhite1"
+msgstr "Starožitná Biela 1 (AntiqueWhite1)"
+
+#: lib/latexcolors:2040 lib/latexcolors:2048 lib/latexcolors:2056
+#: lib/latexcolors:2064 lib/latexcolors:2072 lib/latexcolors:2080
+#: lib/latexcolors:2088 lib/latexcolors:2096 lib/latexcolors:2104
+#: lib/latexcolors:2112 lib/latexcolors:2120 lib/latexcolors:2128
+#: lib/latexcolors:2136 lib/latexcolors:2144 lib/latexcolors:2152
+#: lib/latexcolors:2160 lib/latexcolors:2168 lib/latexcolors:2176
+#: lib/latexcolors:2184 lib/latexcolors:2192 lib/latexcolors:2200
+#: lib/latexcolors:2208 lib/latexcolors:2216 lib/latexcolors:2224
+#: lib/latexcolors:2232 lib/latexcolors:2240 lib/latexcolors:2248
+#: lib/latexcolors:2256 lib/latexcolors:2264 lib/latexcolors:2272
+#: lib/latexcolors:2280 lib/latexcolors:2288 lib/latexcolors:2296
+#: lib/latexcolors:2304 lib/latexcolors:2312 lib/latexcolors:2320
+#: lib/latexcolors:2328 lib/latexcolors:2336 lib/latexcolors:2344
+#: lib/latexcolors:2352 lib/latexcolors:2360 lib/latexcolors:2368
+#: lib/latexcolors:2376 lib/latexcolors:2384 lib/latexcolors:2392
+#: lib/latexcolors:2400 lib/latexcolors:2408 lib/latexcolors:2416
+#: lib/latexcolors:2424 lib/latexcolors:2432 lib/latexcolors:2440
+#: lib/latexcolors:2448 lib/latexcolors:2456 lib/latexcolors:2464
+#: lib/latexcolors:2472 lib/latexcolors:2480 lib/latexcolors:2488
+#: lib/latexcolors:2496 lib/latexcolors:2504 lib/latexcolors:2512
+#: lib/latexcolors:2520 lib/latexcolors:2528 lib/latexcolors:2536
+#: lib/latexcolors:2544 lib/latexcolors:2552 lib/latexcolors:2560
+#: lib/latexcolors:2568 lib/latexcolors:2576 lib/latexcolors:2584
+#: lib/latexcolors:2592 lib/latexcolors:2600 lib/latexcolors:2608
+#: lib/latexcolors:2616 lib/latexcolors:2624 lib/latexcolors:2632
+#: lib/latexcolors:2640 lib/latexcolors:2648 lib/latexcolors:2656
+#: lib/latexcolors:2664 lib/latexcolors:2672 lib/latexcolors:2680
+#: lib/latexcolors:2688 lib/latexcolors:2696 lib/latexcolors:2704
+#: lib/latexcolors:2712 lib/latexcolors:2720 lib/latexcolors:2728
+#: lib/latexcolors:2736 lib/latexcolors:2744 lib/latexcolors:2752
+#: lib/latexcolors:2760 lib/latexcolors:2768 lib/latexcolors:2776
+#: lib/latexcolors:2784 lib/latexcolors:2792 lib/latexcolors:2800
+#: lib/latexcolors:2808 lib/latexcolors:2816 lib/latexcolors:2824
+#: lib/latexcolors:2832 lib/latexcolors:2840 lib/latexcolors:2848
+#: lib/latexcolors:2856 lib/latexcolors:2864 lib/latexcolors:2872
+#: lib/latexcolors:2880 lib/latexcolors:2888 lib/latexcolors:2896
+#: lib/latexcolors:2904 lib/latexcolors:2912 lib/latexcolors:2920
+#: lib/latexcolors:2928 lib/latexcolors:2936 lib/latexcolors:2944
+#: lib/latexcolors:2952 lib/latexcolors:2960 lib/latexcolors:2968
+#: lib/latexcolors:2976 lib/latexcolors:2984 lib/latexcolors:2992
+#: lib/latexcolors:3000 lib/latexcolors:3008 lib/latexcolors:3016
+#: lib/latexcolors:3024 lib/latexcolors:3032 lib/latexcolors:3040
+#: lib/latexcolors:3048 lib/latexcolors:3056 lib/latexcolors:3064
+#: lib/latexcolors:3072 lib/latexcolors:3080 lib/latexcolors:3088
+#: lib/latexcolors:3096 lib/latexcolors:3104 lib/latexcolors:3112
+#: lib/latexcolors:3120 lib/latexcolors:3128 lib/latexcolors:3136
+#: lib/latexcolors:3144 lib/latexcolors:3152 lib/latexcolors:3160
+#: lib/latexcolors:3168 lib/latexcolors:3176 lib/latexcolors:3184
+#: lib/latexcolors:3192 lib/latexcolors:3200 lib/latexcolors:3208
+#: lib/latexcolors:3216 lib/latexcolors:3224 lib/latexcolors:3232
+#: lib/latexcolors:3240 lib/latexcolors:3248 lib/latexcolors:3256
+#: lib/latexcolors:3264 lib/latexcolors:3272 lib/latexcolors:3280
+#: lib/latexcolors:3288 lib/latexcolors:3296 lib/latexcolors:3304
+#: lib/latexcolors:3312 lib/latexcolors:3320 lib/latexcolors:3328
+#: lib/latexcolors:3336 lib/latexcolors:3344 lib/latexcolors:3352
+#: lib/latexcolors:3360 lib/latexcolors:3368 lib/latexcolors:3376
+#: lib/latexcolors:3384 lib/latexcolors:3392 lib/latexcolors:3400
+#: lib/latexcolors:3408 lib/latexcolors:3416 lib/latexcolors:3424
+#: lib/latexcolors:3432 lib/latexcolors:3440 lib/latexcolors:3448
+#: lib/latexcolors:3456 lib/latexcolors:3464 lib/latexcolors:3472
+#: lib/latexcolors:3480 lib/latexcolors:3488 lib/latexcolors:3496
+#: lib/latexcolors:3504 lib/latexcolors:3512 lib/latexcolors:3520
+#: lib/latexcolors:3528 lib/latexcolors:3536 lib/latexcolors:3544
+#: lib/latexcolors:3552 lib/latexcolors:3560 lib/latexcolors:3568
+#: lib/latexcolors:3576 lib/latexcolors:3584 lib/latexcolors:3592
+#: lib/latexcolors:3600 lib/latexcolors:3608 lib/latexcolors:3616
+#: lib/latexcolors:3624 lib/latexcolors:3632 lib/latexcolors:3640
+#: lib/latexcolors:3648 lib/latexcolors:3656 lib/latexcolors:3664
+#: lib/latexcolors:3672 lib/latexcolors:3680 lib/latexcolors:3688
+#: lib/latexcolors:3696 lib/latexcolors:3704 lib/latexcolors:3712
+#: lib/latexcolors:3720 lib/latexcolors:3728 lib/latexcolors:3736
+#: lib/latexcolors:3744 lib/latexcolors:3752 lib/latexcolors:3760
+#: lib/latexcolors:3768 lib/latexcolors:3776 lib/latexcolors:3784
+#: lib/latexcolors:3792 lib/latexcolors:3800 lib/latexcolors:3808
+#: lib/latexcolors:3816 lib/latexcolors:3824 lib/latexcolors:3832
+#: lib/latexcolors:3840 lib/latexcolors:3848 lib/latexcolors:3856
+#: lib/latexcolors:3864 lib/latexcolors:3872 lib/latexcolors:3880
+#: lib/latexcolors:3888 lib/latexcolors:3896 lib/latexcolors:3904
+#: lib/latexcolors:3912 lib/latexcolors:3920 lib/latexcolors:3928
+#: lib/latexcolors:3936 lib/latexcolors:3944 lib/latexcolors:3952
+#: lib/latexcolors:3960 lib/latexcolors:3968 lib/latexcolors:3976
+#: lib/latexcolors:3984 lib/latexcolors:3992 lib/latexcolors:4000
+#: lib/latexcolors:4008 lib/latexcolors:4016 lib/latexcolors:4024
+#: lib/latexcolors:4032 lib/latexcolors:4040 lib/latexcolors:4048
+#: lib/latexcolors:4056 lib/latexcolors:4064 lib/latexcolors:4072
+#: lib/latexcolors:4080 lib/latexcolors:4088 lib/latexcolors:4096
+#: lib/latexcolors:4104 lib/latexcolors:4112 lib/latexcolors:4120
+#: lib/latexcolors:4128 lib/latexcolors:4136 lib/latexcolors:4144
+#: lib/latexcolors:4152 lib/latexcolors:4160 lib/latexcolors:4168
+#: lib/latexcolors:4176 lib/latexcolors:4184 lib/latexcolors:4192
+#: lib/latexcolors:4200 lib/latexcolors:4208 lib/latexcolors:4216
+#: lib/latexcolors:4224 lib/latexcolors:4232 lib/latexcolors:4240
+#: lib/latexcolors:4248 lib/latexcolors:4256 lib/latexcolors:4264
+#: lib/latexcolors:4272 lib/latexcolors:4280 lib/latexcolors:4288
+#: lib/latexcolors:4296 lib/latexcolors:4304 lib/latexcolors:4312
+#: lib/latexcolors:4320 lib/latexcolors:4328 lib/latexcolors:4336
+#: lib/latexcolors:4344 lib/latexcolors:4352 lib/latexcolors:4360
+#: lib/latexcolors:4368 lib/latexcolors:4376 lib/latexcolors:4384
+#: lib/latexcolors:4392 lib/latexcolors:4400 lib/latexcolors:4408
+#: lib/latexcolors:4416 lib/latexcolors:4424 lib/latexcolors:4432
+#: lib/latexcolors:4440 lib/latexcolors:4448 lib/latexcolors:4456
+#: lib/latexcolors:4464 lib/latexcolors:4472 lib/latexcolors:4480
+#: lib/latexcolors:4488 lib/latexcolors:4496 lib/latexcolors:4504
+#: lib/latexcolors:4512 lib/latexcolors:4520 lib/latexcolors:4528
+#: lib/latexcolors:4536 lib/latexcolors:4544 lib/latexcolors:4561
+#: lib/latexcolors:4569
+msgid "X11 Names"
+msgstr "X11 mená"
+
+#: lib/latexcolors:2045
+msgid "AntiqueWhite2"
+msgstr "Starožitná Biela 2 (AntiqueWhite2)"
+
+#: lib/latexcolors:2053
+msgid "AntiqueWhite3"
+msgstr "Starožitná Biela 3 (AntiqueWhite3)"
+
+#: lib/latexcolors:2061
+msgid "AntiqueWhite4"
+msgstr "Starožitná Biela 4 (AntiqueWhite4)"
+
+#: lib/latexcolors:2069
+msgid "Aquamarine1"
+msgstr "Akvamarín 1 (Aquamarine1)"
+
+#: lib/latexcolors:2077
+msgid "Aquamarine2"
+msgstr "Akvamarín 2 (Aquamarine2)"
+
+#: lib/latexcolors:2085
+msgid "Aquamarine3"
+msgstr "Akvamarín 3 (Aquamarine3)"
+
+#: lib/latexcolors:2093
+msgid "Aquamarine4"
+msgstr "Akvamarín 4 (Aquamarine4)"
+
+#: lib/latexcolors:2101
+msgid "Azure1"
+msgstr "Azúrová 1 (Azure1)"
+
+#: lib/latexcolors:2109
+msgid "Azure2"
+msgstr "Azúrová 2 (Azure2)"
+
+#: lib/latexcolors:2117
+msgid "Azure3"
+msgstr "Azúrová 3 (Azure3)"
+
+#: lib/latexcolors:2125
+msgid "Azure4"
+msgstr "Azúrová 4 (Azure4)"
+
+#: lib/latexcolors:2133
+msgid "Bisque1"
+msgstr "ParadajkovoKrémová 1 (Bisque1)"
+
+#: lib/latexcolors:2141
+msgid "Bisque2"
+msgstr "ParadajkovoKrémová 2 (Bisque2)"
+
+#: lib/latexcolors:2149
+msgid "Bisque3"
+msgstr "ParadajkovoKrémová 3 (Bisque3)"
+
+#: lib/latexcolors:2157
+msgid "Bisque4"
+msgstr "ParadajkovoKrémová 4 (Bisque4)"
+
+#: lib/latexcolors:2165
+msgid "Blue1"
+msgstr "Modrá 1 (Blue1)"
+
+#: lib/latexcolors:2173
+msgid "Blue2"
+msgstr "Modrá 2 (Blue2)"
+
+#: lib/latexcolors:2181
+msgid "Blue3"
+msgstr "Modrá 3 (Blue3)"
+
+#: lib/latexcolors:2189
+msgid "Blue4"
+msgstr "Modrá 4 (Blue4)"
+
+#: lib/latexcolors:2197
+msgid "Brown1"
+msgstr "Hnedá 1 (Brown1)"
+
+#: lib/latexcolors:2205
+msgid "Brown2"
+msgstr "Hnedá 2 (Brown2)"
+
+#: lib/latexcolors:2213
+msgid "Brown3"
+msgstr "Hnedá 3 (Brown3)"
+
+#: lib/latexcolors:2221
+msgid "Brown4"
+msgstr "Hnedá 4 (Brown4)"
+
+#: lib/latexcolors:2229
+msgid "Burlywood1"
+msgstr "HruboHnedá 1 (Burlywood1)"
+
+#: lib/latexcolors:2237
+msgid "Burlywood2"
+msgstr "HruboHnedá 2 (Burlywood2)"
+
+#: lib/latexcolors:2245
+msgid "Burlywood3"
+msgstr "HruboHnedá 3 (Burlywood3)"
+
+#: lib/latexcolors:2253
+msgid "Burlywood4"
+msgstr "HruboHnedá 4 (Burlywood4)"
+
+#: lib/latexcolors:2261
+msgid "CadetBlue1"
+msgstr "KadetoModrá 1 (CadetBlue1)"
+
+#: lib/latexcolors:2269
+msgid "CadetBlue2"
+msgstr "KadetoModrá 2 (CadetBlue2)"
+
+#: lib/latexcolors:2277
+msgid "CadetBlue3"
+msgstr "KadetoModrá 3 (CadetBlue3)"
+
+#: lib/latexcolors:2285
+msgid "CadetBlue4"
+msgstr "KadetoModrá 4 (CadetBlue4)"
+
+#: lib/latexcolors:2293
+msgid "Chartreuse1"
+msgstr "Chartreuse1"
+
+#: lib/latexcolors:2301
+msgid "Chartreuse2"
+msgstr "Chartreuse2"
+
+#: lib/latexcolors:2309
+msgid "Chartreuse3"
+msgstr "Chartreuse3"
+
+#: lib/latexcolors:2317
+msgid "Chartreuse4"
+msgstr "Chartreuse4"
+
+#: lib/latexcolors:2325
+msgid "Chocolate1"
+msgstr "Čokoládová hnedá 1 (Chocolate1)"
+
+#: lib/latexcolors:2333
+msgid "Chocolate2"
+msgstr "Čokoládová hnedá 2 (Chocolate2)"
+
+#: lib/latexcolors:2341
+msgid "Chocolate3"
+msgstr "Čokoládová hnedá 3 (Chocolate3)"
+
+#: lib/latexcolors:2349
+msgid "Chocolate4"
+msgstr "Čokoládová hnedá 4 (Chocolate4)"
+
+#: lib/latexcolors:2357
+msgid "Coral1"
+msgstr "Koralová 1 (Coral1)"
+
+#: lib/latexcolors:2365
+msgid "Coral2"
+msgstr "Koralová 2 (Coral2)"
+
+#: lib/latexcolors:2373
+msgid "Coral3"
+msgstr "Koralová 3 (Coral3)"
+
+#: lib/latexcolors:2381
+msgid "Coral4"
+msgstr "Koralová 4 (Coral4)"
+
+#: lib/latexcolors:2389
+msgid "Cornsilk1"
+msgstr "Kukuričná 1 (Cornsilk1)"
+
+#: lib/latexcolors:2397
+msgid "Cornsilk2"
+msgstr "Kukuričná 2(Cornsilk2)"
+
+#: lib/latexcolors:2405
+msgid "Cornsilk3"
+msgstr "Kukuričná 3 (Cornsilk3)"
+
+#: lib/latexcolors:2413
+msgid "Cornsilk4"
+msgstr "Kukuričná 4 (Cornsilk4)"
+
+#: lib/latexcolors:2421
+msgid "Cyan1"
+msgstr "Azúrová 1 (Cyan1)"
+
+#: lib/latexcolors:2429
+msgid "Cyan2"
+msgstr "Azúrová 2 (Cyan2)"
+
+#: lib/latexcolors:2437
+msgid "Cyan3"
+msgstr "Azúrová 3 (Cyan3)"
+
+#: lib/latexcolors:2445
+msgid "Cyan4"
+msgstr "Azúrová 4 (Cyan4)"
+
+#: lib/latexcolors:2453
+msgid "DarkGoldenrod1"
+msgstr "Tmavá Zlatobyľová 1 (DarkGoldenrod1)"
+
+#: lib/latexcolors:2461
+msgid "DarkGoldenrod2"
+msgstr "Tmavá Zlatobyľová 2 (DarkGoldenrod2)"
+
+#: lib/latexcolors:2469
+msgid "DarkGoldenrod3"
+msgstr "Tmavá Zlatobyľová 3 (DarkGoldenrod3)"
+
+#: lib/latexcolors:2477
+msgid "DarkGoldenrod4"
+msgstr "Tmavá Zlatobyľová 4 (DarkGoldenrod4)"
+
+#: lib/latexcolors:2485
+msgid "DarkOliveGreen1"
+msgstr "Tmavá OlivoZelená 1 (DarkOliveGreen1)"
+
+#: lib/latexcolors:2493
+msgid "DarkOliveGreen2"
+msgstr "Tmavá OlivoZelená 2 (DarkOliveGreen2)"
+
+#: lib/latexcolors:2501
+msgid "DarkOliveGreen3"
+msgstr "Tmavá OlivoZelená 3 (DarkOliveGreen3)"
+
+#: lib/latexcolors:2509
+msgid "DarkOliveGreen4"
+msgstr "Tmavá OlivoZelená 4 (DarkOliveGreen4)"
+
+#: lib/latexcolors:2517
+msgid "DarkOrange1"
+msgstr "TmavoOranžová 1 (DarkOrange1)"
+
+#: lib/latexcolors:2525
+msgid "DarkOrange2"
+msgstr "TmavoOranžová 2 (DarkOrange2)"
+
+#: lib/latexcolors:2533
+msgid "DarkOrange3"
+msgstr "TmavoOranžová 3 (DarkOrange3)"
+
+#: lib/latexcolors:2541
+msgid "DarkOrange4"
+msgstr "TmavoOranžová 4 (DarkOrange4)"
+
+#: lib/latexcolors:2549
+msgid "DarkOrchid1"
+msgstr "TmavoOrchideová 1 (DarkOrchid1)"
+
+#: lib/latexcolors:2557
+msgid "DarkOrchid2"
+msgstr "TmavoOrchchideová 2 (DarkOrchid2)"
+
+#: lib/latexcolors:2565
+msgid "DarkOrchid3"
+msgstr "TmavoOrchchideová 3 (DarkOrchid3)"
+
+#: lib/latexcolors:2573
+msgid "DarkOrchid4"
+msgstr "TmavoOrchchideová 4 (DarkOrchid4)"
+
+#: lib/latexcolors:2581
+msgid "DarkSeaGreen1"
+msgstr "Tmavá MorskoZelená 1 (DarkSeaGreen1)"
+
+#: lib/latexcolors:2589
+msgid "DarkSeaGreen2"
+msgstr "Tmavá MorskoZelená 2 (DarkSeaGreen2)"
+
+#: lib/latexcolors:2597
+msgid "DarkSeaGreen3"
+msgstr "Tmavá MorskoZelená 3 (DarkSeaGreen3)"
+
+#: lib/latexcolors:2605
+msgid "DarkSeaGreen4"
+msgstr "Tmavá MorskoZelená 4 (DarkSeaGreen4)"
+
+#: lib/latexcolors:2613
+msgid "DarkSlateGray1"
+msgstr "Tmavá BridlicoŠedá 1 (DarkSlateGray1)"
+
+#: lib/latexcolors:2621
+msgid "DarkSlateGray2"
+msgstr "Tmavá BridlicoŠedá 2 (DarkSlateGray2)"
+
+#: lib/latexcolors:2629
+msgid "DarkSlateGray3"
+msgstr "Tmavá BridlicoŠedá 3 (DarkSlateGray3)"
+
+#: lib/latexcolors:2637
+msgid "DarkSlateGray4"
+msgstr "Tmavá BridlicoŠedá 4 (DarkSlateGray4)"
+
+#: lib/latexcolors:2645
+msgid "DeepPink1"
+msgstr "SýtoRužová 1 (DeepPink1)"
+
+#: lib/latexcolors:2653
+msgid "DeepPink2"
+msgstr "SýtoRužová 2 (DeepPink2)"
+
+#: lib/latexcolors:2661
+msgid "DeepPink3"
+msgstr "SýtoRužová 3 (DeepPink3)"
+
+#: lib/latexcolors:2669
+msgid "DeepPink4"
+msgstr "SýtoRužová 4 (DeepPink4)"
+
+#: lib/latexcolors:2677
+msgid "DeepSkyBlue1"
+msgstr "Sýta NebeskoModrá 1 (DeepSkyBlue1)"
+
+#: lib/latexcolors:2685
+msgid "DeepSkyBlue2"
+msgstr "Sýta NebeskoModrá 2 (DeepSkyBlue2)"
+
+#: lib/latexcolors:2693
+msgid "DeepSkyBlue3"
+msgstr "Sýta NebeskoModrá 3 (DeepSkyBlue3)"
+
+#: lib/latexcolors:2701
+msgid "DeepSkyBlue4"
+msgstr "Sýta NebeskoModrá 4 (DeepSkyBlue4)"
+
+#: lib/latexcolors:2709
+msgid "DodgerBlue1"
+msgstr "Dodger-Modrá 1 (DodgerBlue1)"
+
+#: lib/latexcolors:2717
+msgid "DodgerBlue2"
+msgstr "Dodger-Modrá 2 (DodgerBlue2)"
+
+#: lib/latexcolors:2725
+msgid "DodgerBlue3"
+msgstr "Dodger-Modrá 3 (DodgerBlue3)"
+
+#: lib/latexcolors:2733
+msgid "DodgerBlue4"
+msgstr "Dodger-Modrá 4 (DodgerBlue4)"
+
+#: lib/latexcolors:2741
+msgid "Firebrick1"
+msgstr "Tehlová 1 (Firebrick1)"
+
+#: lib/latexcolors:2749
+msgid "Firebrick2"
+msgstr "Tehlová 2 (Firebrick2)"
+
+#: lib/latexcolors:2757
+msgid "Firebrick3"
+msgstr "Tehlová 3 (Firebrick3)"
+
+#: lib/latexcolors:2765
+msgid "Firebrick4"
+msgstr "Tehlová 4 (Firebrick4)"
+
+#: lib/latexcolors:2773
+msgid "Gold1"
+msgstr "Zlatá 1 (Gold1)"
+
+#: lib/latexcolors:2781
+msgid "Gold2"
+msgstr "Zlatá 2 (Gold2)"
+
+#: lib/latexcolors:2789
+msgid "Gold3"
+msgstr "Zlatá 3 (Gold3)"
+
+#: lib/latexcolors:2797
+msgid "Gold4"
+msgstr "Zlatá 4 (Gold4)"
+
+#: lib/latexcolors:2805
+msgid "Goldenrod1"
+msgstr "Zlatobyľová 1 (Goldenrod1)"
+
+#: lib/latexcolors:2813
+msgid "Goldenrod2"
+msgstr "Zlatobyľová 2 (Goldenrod2)"
+
+#: lib/latexcolors:2821
+msgid "Goldenrod3"
+msgstr "Zlatobyľová 3 (Goldenrod3)"
+
+#: lib/latexcolors:2829
+msgid "Goldenrod4"
+msgstr "Zlatobyľová 4 (Goldenrod4)"
+
+#: lib/latexcolors:2837
+msgid "Green1"
+msgstr "Zelená 1 (Green1)"
+
+#: lib/latexcolors:2845
+msgid "Green2"
+msgstr "Zelená 2 (Green2)"
+
+#: lib/latexcolors:2853
+msgid "Green3"
+msgstr "Zelená 3 (Green3)"
+
+#: lib/latexcolors:2861
+msgid "Green4"
+msgstr "Zelená 4 (Green4)"
+
+#: lib/latexcolors:2869
+msgid "Honeydew1"
+msgstr "Medová 1 (Honeydew1)"
+
+#: lib/latexcolors:2877
+msgid "Honeydew2"
+msgstr "Medová 2 (Honeydew2)"
+
+#: lib/latexcolors:2885
+msgid "Honeydew3"
+msgstr "Medová 3 (Honeydew3)"
+
+#: lib/latexcolors:2893
+msgid "Honeydew4"
+msgstr "Medová 4 (Honeydew4)"
+
+#: lib/latexcolors:2901
+msgid "HotPink1"
+msgstr "SvetloRužová 1 (HotPink1)"
+
+#: lib/latexcolors:2909
+msgid "HotPink2"
+msgstr "SvetloRužová 2 (HotPink2)"
+
+#: lib/latexcolors:2917
+msgid "HotPink3"
+msgstr "SvetloRužová 3 (HotPink3)"
+
+#: lib/latexcolors:2925
+msgid "HotPink4"
+msgstr "SvetloRužová 4 (HotPink4)"
+
+#: lib/latexcolors:2933
+msgid "IndianRed1"
+msgstr "IndickoČervená 1 (IndianRed1)"
+
+#: lib/latexcolors:2941
+msgid "IndianRed2"
+msgstr "IndickoČervená 2 (IndianRed2)"
+
+#: lib/latexcolors:2949
+msgid "IndianRed3"
+msgstr "IndickoČervená 3 (IndianRed3)"
+
+#: lib/latexcolors:2957
+msgid "IndianRed4"
+msgstr "IndickoČervená 4 (IndianRed4)"
+
+#: lib/latexcolors:2965
+msgid "Ivory1"
+msgstr "Slonovej Kosti 1 (Ivory1)"
+
+#: lib/latexcolors:2973
+msgid "Ivory2"
+msgstr "Slonovej Kosti 2 (Ivory2)"
+
+#: lib/latexcolors:2981
+msgid "Ivory3"
+msgstr "Slonovej Kosti 3 (Ivory3)"
+
+#: lib/latexcolors:2989
+msgid "Ivory4"
+msgstr "Slonovej Kosti 4 (Ivory4)"
+
+#: lib/latexcolors:2997
+msgid "Khaki1"
+msgstr "Kaki svetlá 1 (Khaki1)"
+
+#: lib/latexcolors:3005
+msgid "Khaki2"
+msgstr "Kaki svetlá 2 (Khaki2)"
+
+#: lib/latexcolors:3013
+msgid "Khaki3"
+msgstr "Kaki svetlá 3 (Khaki3)"
+
+#: lib/latexcolors:3021
+msgid "Khaki4"
+msgstr "Kaki svetlá 4 (Khaki4)"
+
+#: lib/latexcolors:3029
+msgid "LavenderBlush1"
+msgstr "KvetoLevanduľová 1 (LavenderBlush1)"
+
+#: lib/latexcolors:3037
+msgid "LavenderBlush2"
+msgstr "KvetoLevanduľová 2 (LavenderBlush2)"
+
+#: lib/latexcolors:3045
+msgid "LavenderBlush3"
+msgstr "KvetoLevanduľová 3 (LavenderBlush3)"
+
+#: lib/latexcolors:3053
+msgid "LavenderBlush4"
+msgstr "KvetoLevanduľová 4 (LavenderBlush4)"
+
+#: lib/latexcolors:3061
+msgid "LemonChiffon1"
+msgstr "CitrónovoŠifónová 1 (LemonChiffon1)"
+
+#: lib/latexcolors:3069
+msgid "LemonChiffon2"
+msgstr "CitrónovoŠifónová 2 (LemonChiffon2)"
+
+#: lib/latexcolors:3077
+msgid "LemonChiffon3"
+msgstr "CitrónovoŠifónová 3 (LemonChiffon3)"
+
+#: lib/latexcolors:3085
+msgid "LemonChiffon4"
+msgstr "CitrónovoŠifónová 4 (LemonChiffon4)"
+
+#: lib/latexcolors:3093
+msgid "LightBlue1"
+msgstr "SvetloModrá 1 (LightBlue1)"
+
+#: lib/latexcolors:3101
+msgid "LightBlue2"
+msgstr "SvetloModrá 2 (LightBlue2)"
+
+#: lib/latexcolors:3109
+msgid "LightBlue3"
+msgstr "SvetloModrá 3 (LightBlue3)"
+
+#: lib/latexcolors:3117
+msgid "LightBlue4"
+msgstr "SvetloModrá 4 (LightBlue4)"
+
+#: lib/latexcolors:3125
+msgid "LightCyan1"
+msgstr "SvetloAzúrová 1 (LightCyan1)"
+
+#: lib/latexcolors:3133
+msgid "LightCyan2"
+msgstr "SvetloAzúrová 2 (LightCyan2)"
+
+#: lib/latexcolors:3141
+msgid "LightCyan3"
+msgstr "SvetloAzúrová 3 (LightCyan3)"
+
+#: lib/latexcolors:3149
+msgid "LightCyan4"
+msgstr "SvetloAzúrová 4 (LightCyan4)"
+
+#: lib/latexcolors:3157
+msgid "LightGoldenrod1"
+msgstr "Svetlá Zlatobyľová 1 (LightGoldenrod1)"
+
+#: lib/latexcolors:3165
+msgid "LightGoldenrod2"
+msgstr "Svetlá Zlatobyľová 2 (LightGoldenrod2)"
+
+#: lib/latexcolors:3173
+msgid "LightGoldenrod3"
+msgstr "Svetlá Zlatobyľová 3 (LightGoldenrod3)"
+
+#: lib/latexcolors:3181
+msgid "LightGoldenrod4"
+msgstr "Svetlá Zlatobyľová 4 (LightGoldenrod4)"
+
+#: lib/latexcolors:3189
+msgid "LightPink1"
+msgstr "SvetloRužová 1 (LightPink1)"
+
+#: lib/latexcolors:3197
+msgid "LightPink2"
+msgstr "SvetloRužová 2 (LightPink2)"
+
+#: lib/latexcolors:3205
+msgid "LightPink3"
+msgstr "SvetloRužová 3 (LightPink3)"
+
+#: lib/latexcolors:3213
+msgid "LightPink4"
+msgstr "SvetloRužová 4 (LightPink4)"
+
+#: lib/latexcolors:3221
+msgid "LightSalmon1"
+msgstr "Lososová svetlá 1 (LightSalmon1)"
+
+#: lib/latexcolors:3229
+msgid "LightSalmon2"
+msgstr "Lososová svetlá 2 (LightSalmon2)"
+
+#: lib/latexcolors:3237
+msgid "LightSalmon3"
+msgstr "Lososová svetlá 3 (LightSalmon3)"
+
+#: lib/latexcolors:3245
+msgid "LightSalmon4"
+msgstr "Lososová svetlá 4 LightSalmon4)"
+
+#: lib/latexcolors:3253
+msgid "LightSkyBlue1"
+msgstr "Svetlá NebeskoModrá 1 (LightSkyBlue1)"
+
+#: lib/latexcolors:3261
+msgid "LightSkyBlue2"
+msgstr "Svetlá NebeskoModrá 2 (LightSkyBlue2)"
+
+#: lib/latexcolors:3269
+msgid "LightSkyBlue3"
+msgstr "Svetlá NebeskoModrá 3 (LightSkyBlue3)"
+
+#: lib/latexcolors:3277
+msgid "LightSkyBlue4"
+msgstr "Svetlá NebeskoModrá 4 (LightSkyBlue4)"
+
+#: lib/latexcolors:3285
+msgid "LightSteelBlue1"
+msgstr "Svetlá OceľovoModrá 1 (LightSteelBlue1)"
+
+#: lib/latexcolors:3293
+msgid "LightSteelBlue2"
+msgstr "Svetlá OceľovoModrá 2 (LightSteelBlue2)"
+
+#: lib/latexcolors:3301
+msgid "LightSteelBlue3"
+msgstr "Svetlá OceľovoModrá 3 (LightSteelBlue3)"
+
+#: lib/latexcolors:3309
+msgid "LightSteelBlue4"
+msgstr "Svetlá OceľovoModrá 4 (LightSteelBlue4)"
+
+#: lib/latexcolors:3317
+msgid "LightYellow1"
+msgstr "SvetloŽltá 1 (LightYellow1)"
+
+#: lib/latexcolors:3325
+msgid "LightYellow2"
+msgstr "SvetloŽltá 2 (LightYellow2)"
+
+#: lib/latexcolors:3333
+msgid "LightYellow3"
+msgstr "SvetloŽltá 3 (LightYellow3)"
+
+#: lib/latexcolors:3341
+msgid "LightYellow4"
+msgstr "SvetloŽltá 4 (LightYellow4)"
+
+#: lib/latexcolors:3349
+msgid "Magenta1"
+msgstr "Purpurová 1 (Magenta1)"
+
+#: lib/latexcolors:3357
+msgid "Magenta2"
+msgstr "Purpurová 2 (Magenta2)"
+
+#: lib/latexcolors:3365
+msgid "Magenta3"
+msgstr "Purpurová 3 (Magenta3)"
+
+#: lib/latexcolors:3373
+msgid "Magenta4"
+msgstr "Purpurová 4 (Magenta4)"
+
+#: lib/latexcolors:3381
+msgid "Maroon1"
+msgstr "Gaštanová 1 (Maroon1)"
+
+#: lib/latexcolors:3389
+msgid "Maroon2"
+msgstr "Gaštanová 2 (Maroon2)"
+
+#: lib/latexcolors:3397
+msgid "Maroon3"
+msgstr "Gaštanová 3 (Maroon3)"
+
+#: lib/latexcolors:3405
+msgid "Maroon4"
+msgstr "Gaštanová 4 (Maroon4)"
+
+#: lib/latexcolors:3413
+msgid "MediumOrchid1"
+msgstr "StredneOrchideová 1 (MediumOrchid1)"
+
+#: lib/latexcolors:3421
+msgid "MediumOrchid2"
+msgstr "StredneOrchideová 2 (MediumOrchid2)"
+
+#: lib/latexcolors:3429
+msgid "MediumOrchid3"
+msgstr "StredneOrichdeová 3 (MediumOrchid3)"
+
+#: lib/latexcolors:3437
+msgid "MediumOrchid4"
+msgstr "StredneOrchideová 4 (MediumOrchid4)"
+
+#: lib/latexcolors:3445
+msgid "MediumPurple1"
+msgstr "StrednePurpurová 1 (MediumPurple1)"
+
+#: lib/latexcolors:3453
+msgid "MediumPurple2"
+msgstr "StrednePurpurová 2 (MediumPurple2)"
+
+#: lib/latexcolors:3461
+msgid "MediumPurple3"
+msgstr "StrednePurpurová 3 (MediumPurple3)"
+
+#: lib/latexcolors:3469
+msgid "MediumPurple4"
+msgstr "StrednePurpurová 4 (MediumPurple4)"
+
+#: lib/latexcolors:3477
+msgid "MistyRose1"
+msgstr "StaroRužová 1 (MistyRose1)"
+
+#: lib/latexcolors:3485
+msgid "MistyRose2"
+msgstr "StaroRužová 2 (MistyRose2)"
+
+#: lib/latexcolors:3493
+msgid "MistyRose3"
+msgstr "StaroRužová 3 (MistyRose3)"
+
+#: lib/latexcolors:3501
+msgid "MistyRose4"
+msgstr "StaroRužová 4 (MistyRose4)"
+
+#: lib/latexcolors:3509
+msgid "NavajoWhite1"
+msgstr "NavajoBiela 1 (NavajoWhite1)"
+
+#: lib/latexcolors:3517
+msgid "NavajoWhite2"
+msgstr "NavajoBiela 2 (NavajoWhite2)"
+
+#: lib/latexcolors:3525
+msgid "NavajoWhite3"
+msgstr "NavajoBiela 3 (NavajoWhite3)"
+
+#: lib/latexcolors:3533
+msgid "NavajoWhite4"
+msgstr "NavajoBiela 4 (NavajoWhite4)"
+
+#: lib/latexcolors:3541
+msgid "OliveDrab1"
+msgstr "OlivoŠedoHnedá 1 (OliveDrab1)"
+
+#: lib/latexcolors:3549
+msgid "OliveDrab2"
+msgstr "OlivoŠedoHnedá 2 (OliveDrab2)"
+
+#: lib/latexcolors:3557
+msgid "OliveDrab3"
+msgstr "OlivoŠedoHnedá 3 (OliveDrab3)"
+
+#: lib/latexcolors:3565
+msgid "OliveDrab4"
+msgstr "OlivoŠedoHnedá 4 (OliveDrab4)"
+
+#: lib/latexcolors:3573
+msgid "Orange1"
+msgstr "Oranžová 1 (Orange1)"
+
+#: lib/latexcolors:3581
+msgid "Orange2"
+msgstr "Oranžová 2 (Orange2)"
+
+#: lib/latexcolors:3589
+msgid "Orange3"
+msgstr "Oranžová 3 (Orange3)"
+
+#: lib/latexcolors:3597
+msgid "Orange4"
+msgstr "Oranžová 4 (Orange4)"
+
+#: lib/latexcolors:3605
+msgid "OrangeRed1"
+msgstr "OranžovoČervená 1 (OrangeRed1)"
+
+#: lib/latexcolors:3613
+msgid "OrangeRed2"
+msgstr "OranžovoČervená 2 (OrangeRed2)"
+
+#: lib/latexcolors:3621
+msgid "OrangeRed3"
+msgstr "OranžovoČervená 3 (OrangeRed3)"
+
+#: lib/latexcolors:3629
+msgid "OrangeRed4"
+msgstr "OranžovoČervená 4 (OrangeRed4)"
+
+#: lib/latexcolors:3637
+msgid "Orchid1"
+msgstr "Orchideová 1 (Orchid1)"
+
+#: lib/latexcolors:3645
+msgid "Orchid2"
+msgstr "Orchideová 2 (Orchid2)"
+
+#: lib/latexcolors:3653
+msgid "Orchid3"
+msgstr "Orchideová 3 (Orchid3)"
+
+#: lib/latexcolors:3661
+msgid "Orchid4"
+msgstr "Orchideová 4 (Orchid4)"
+
+#: lib/latexcolors:3669
+msgid "PaleGreen1"
+msgstr "BledoZelená 1 (PaleGreen1)"
+
+#: lib/latexcolors:3677
+msgid "PaleGreen2"
+msgstr "BledoZelená 2 (PaleGreen2)"
+
+#: lib/latexcolors:3685
+msgid "PaleGreen3"
+msgstr "BledoZelená 3 (PaleGreen3)"
+
+#: lib/latexcolors:3693
+msgid "PaleGreen4"
+msgstr "BledoZelená 4 (PaleGreen4)"
+
+#: lib/latexcolors:3701
+msgid "PaleTurquoise1"
+msgstr "Bledá Tyrkysová 1 (PaleTurquoise1)"
+
+#: lib/latexcolors:3709
+msgid "PaleTurquoise2"
+msgstr "Bledá Tyrkysová 2 (PaleTurquoise2)"
+
+#: lib/latexcolors:3717
+msgid "PaleTurquoise3"
+msgstr "Bledá Tyrkysová 3 (PaleTurquoise3)"
+
+#: lib/latexcolors:3725
+msgid "PaleTurquoise4"
+msgstr "Bledá Tyrkysová 4 (PaleTurquoise4)"
+
+#: lib/latexcolors:3733
+msgid "PaleVioletRed1"
+msgstr "Bledá FialovoČervená 1 (PaleVioletRed1)"
+
+#: lib/latexcolors:3741
+msgid "PaleVioletRed2"
+msgstr "Bledá FialovoČervená 2 (PaleVioletRed2)"
+
+#: lib/latexcolors:3749
+msgid "PaleVioletRed3"
+msgstr "Bledá FialovoČervená 3 (PaleVioletRed3)"
+
+#: lib/latexcolors:3757
+msgid "PaleVioletRed4"
+msgstr "Bledá FialovoČervená 4 (PaleVioletRed4)"
+
+#: lib/latexcolors:3765
+msgid "PeachPuff1"
+msgstr "Broskyňová 1 (PeachPuff1)"
+
+#: lib/latexcolors:3773
+msgid "PeachPuff2"
+msgstr "Broskyňová 2 (PeachPuff2)"
+
+#: lib/latexcolors:3781
+msgid "PeachPuff3"
+msgstr "Broskyňová 3 (PeachPuff3)"
+
+#: lib/latexcolors:3789
+msgid "PeachPuff4"
+msgstr "Broskyňová 4 (PeachPuff4)"
+
+#: lib/latexcolors:3797
+msgid "Pink1"
+msgstr "Ružová 1 (Pink1)"
+
+#: lib/latexcolors:3805
+msgid "Pink2"
+msgstr "Ružová 2 (Pink2)"
+
+#: lib/latexcolors:3813
+msgid "Pink3"
+msgstr "Ružová 3 (Pink3)"
+
+#: lib/latexcolors:3821
+msgid "Pink4"
+msgstr "Ružová 4 (Pink4)"
+
+#: lib/latexcolors:3829
+msgid "Plum1"
+msgstr "Slivková 1 (Plum1)"
+
+#: lib/latexcolors:3837
+msgid "Plum2"
+msgstr "Slivková 2 (Plum2)"
+
+#: lib/latexcolors:3845
+msgid "Plum3"
+msgstr "Slivková 3 (Plum3)"
+
+#: lib/latexcolors:3853
+msgid "Plum4"
+msgstr "Slivková 4 (Plum4)"
+
+#: lib/latexcolors:3861
+msgid "Purple1"
+msgstr "Purpurová 1 (Purple1)"
+
+#: lib/latexcolors:3869
+msgid "Purple2"
+msgstr "Purpurová 2 (Purple2)"
+
+#: lib/latexcolors:3877
+msgid "Purple3"
+msgstr "Purpurová 3 (Purple3)"
+
+#: lib/latexcolors:3885
+msgid "Purple4"
+msgstr "Purpurová 4 (Purple4)"
+
+#: lib/latexcolors:3893
+msgid "Red1"
+msgstr "Červená 1 (Red1)"
+
+#: lib/latexcolors:3901
+msgid "Red2"
+msgstr "Červená 2 (Red2)"
+
+#: lib/latexcolors:3909
+msgid "Red3"
+msgstr "Červená 3 (Red3)"
+
+#: lib/latexcolors:3917
+msgid "Red4"
+msgstr "Červená 4 (Red4)"
+
+#: lib/latexcolors:3925
+msgid "RosyBrown1"
+msgstr "RužovoHnedá 1 (RosyBrown1)"
+
+#: lib/latexcolors:3933
+msgid "RosyBrown2"
+msgstr "RužovoHnedá 2 (RosyBrown2)"
+
+#: lib/latexcolors:3941
+msgid "RosyBrown3"
+msgstr "RužovoHnedá 3 (RosyBrown3)"
+
+#: lib/latexcolors:3949
+msgid "RosyBrown4"
+msgstr "RužovoHnedá 4 (RosyBrown4)"
+
+#: lib/latexcolors:3957
+msgid "RoyalBlue1"
+msgstr "KráľovskoModrá 1 (RoyalBlue1)"
+
+#: lib/latexcolors:3965
+msgid "RoyalBlue2"
+msgstr "KráľovskoModrá 2 (RoyalBlue2)"
+
+#: lib/latexcolors:3973
+msgid "RoyalBlue3"
+msgstr "KráľovskoModrá 3 (RoyalBlue3)"
+
+#: lib/latexcolors:3981
+msgid "RoyalBlue4"
+msgstr "KráľovskoModrá 4 (RoyalBlue4)"
+
+#: lib/latexcolors:3989
+msgid "Salmon1"
+msgstr "Lososová 1 (Salmon1)"
+
+#: lib/latexcolors:3997
+msgid "Salmon2"
+msgstr "Lososová 2 (Salmon2)"
+
+#: lib/latexcolors:4005
+msgid "Salmon3"
+msgstr "Lososová 3 (Salmon3)"
+
+#: lib/latexcolors:4013
+msgid "Salmon4"
+msgstr "Lososová 4 (Salmon4)"
+
+#: lib/latexcolors:4021
+msgid "SeaGreen1"
+msgstr "MorskoZelená 1 (SeaGreen1)"
+
+#: lib/latexcolors:4029
+msgid "SeaGreen2"
+msgstr "MorskoZelená 2 (SeaGreen2)"
+
+#: lib/latexcolors:4037
+msgid "SeaGreen3"
+msgstr "MorskoZelená 3 (SeaGreen3)"
+
+#: lib/latexcolors:4045
+msgid "SeaGreen4"
+msgstr "MorskoZelená 4 (SeaGreen4)"
+
+#: lib/latexcolors:4053
+msgid "Seashell1"
+msgstr "Lasturová 1 (Seashell1)"
+
+#: lib/latexcolors:4061
+msgid "Seashell2"
+msgstr "Lasturová 2 (Seashell2)"
+
+#: lib/latexcolors:4069
+msgid "Seashell3"
+msgstr "Lasturová 3 (Seashell3)"
+
+#: lib/latexcolors:4077
+msgid "Seashell4"
+msgstr "Lasturová 4 (Seashell4)"
+
+#: lib/latexcolors:4085
+msgid "Sienna1"
+msgstr "Sienna 1 (Sienna1)"
+
+#: lib/latexcolors:4093
+msgid "Sienna2"
+msgstr "Sienna 2 (Sienna2)"
+
+#: lib/latexcolors:4101
+msgid "Sienna3"
+msgstr "Sienna 3 (Sienna3)"
+
+#: lib/latexcolors:4109
+msgid "Sienna4"
+msgstr "Sienna 4 (Sienna4)"
+
+#: lib/latexcolors:4117
+msgid "SkyBlue1"
+msgstr "NebeskoModrá 1 (SkyBlue1)"
+
+#: lib/latexcolors:4125
+msgid "SkyBlue2"
+msgstr "NebeskoModrá 2 (SkyBlue2)"
+
+#: lib/latexcolors:4133
+msgid "SkyBlue3"
+msgstr "NebeskoModrá 3 (SkyBlue3)"
+
+#: lib/latexcolors:4141
+msgid "SkyBlue4"
+msgstr "NebeskoModrá 4 (SkyBlue4)"
+
+#: lib/latexcolors:4149
+msgid "SlateBlue1"
+msgstr "BridlicoModrá 1 (SlateBlue1)"
+
+#: lib/latexcolors:4157
+msgid "SlateBlue2"
+msgstr "BridlicoModrá 2 (SlateBlue2)"
+
+#: lib/latexcolors:4165
+msgid "SlateBlue3"
+msgstr "BridlicoModrá 3 (SlateBlue3)"
+
+#: lib/latexcolors:4173
+msgid "SlateBlue4"
+msgstr "BridlicoModrá 4 (SlateBlue4)"
+
+#: lib/latexcolors:4181
+msgid "SlateGray1"
+msgstr "BridlicoŠedá 1 (SlateGray1)"
+
+#: lib/latexcolors:4189
+msgid "SlateGray2"
+msgstr "BridlicoŠedá 2 (SlateGray2)"
+
+#: lib/latexcolors:4197
+msgid "SlateGray3"
+msgstr "BridlicoŠedá 3 (SlateGray3)"
+
+#: lib/latexcolors:4205
+msgid "SlateGray4"
+msgstr "BridlicoŠedá 4 (SlateGray4)"
+
+#: lib/latexcolors:4213
+msgid "Snow1"
+msgstr "Snehová 1 (Snow1)"
+
+#: lib/latexcolors:4221
+msgid "Snow2"
+msgstr "Snehová 2 (Snow2)"
+
+#: lib/latexcolors:4229
+msgid "Snow3"
+msgstr "Snehová 3 (Snow3)"
+
+#: lib/latexcolors:4237
+msgid "Snow4"
+msgstr "Snehová 4 (Snow4)"
+
+#: lib/latexcolors:4245
+msgid "SpringGreen1"
+msgstr "JarnoZelená 1 (SpringGreen1)"
+
+#: lib/latexcolors:4253
+msgid "SpringGreen2"
+msgstr "JarnoZelená 2 (SpringGreen2)"
+
+#: lib/latexcolors:4261
+msgid "SpringGreen3"
+msgstr "JarnoZelená 3 (SpringGreen3)"
+
+#: lib/latexcolors:4269
+msgid "SpringGreen4"
+msgstr "JarnoZelená 4 (SpringGreen4)"
+
+#: lib/latexcolors:4277
+msgid "SteelBlue1"
+msgstr "OceľovoModrá 1 (SteelBlue1)"
+
+#: lib/latexcolors:4285
+msgid "SteelBlue2"
+msgstr "OceľovoModrá 2 (SteelBlue2)"
+
+#: lib/latexcolors:4293
+msgid "SteelBlue3"
+msgstr "OceľovoModrá 3 (SteelBlue3)"
+
+#: lib/latexcolors:4301
+msgid "SteelBlue4"
+msgstr "OceľovoModrá 4 (SteelBlue4)"
+
+#: lib/latexcolors:4309
+msgid "Tan1"
+msgstr "SvetloHnedá 1 (Tan1)"
+
+#: lib/latexcolors:4317
+msgid "Tan2"
+msgstr "SvetloHnedá 2 (Tan2)"
+
+#: lib/latexcolors:4325
+msgid "Tan3"
+msgstr "SvetloHnedá 3 (Tan3)"
+
+#: lib/latexcolors:4333
+msgid "Tan4"
+msgstr "SvetloHnedá 4 (Tan4)"
+
+#: lib/latexcolors:4341
+msgid "Thistle1"
+msgstr "Bodliaková 1 (Thistle1)"
+
+#: lib/latexcolors:4349
+msgid "Thistle2"
+msgstr "Bodliaková 2 (Thistle2)"
+
+#: lib/latexcolors:4357
+msgid "Thistle3"
+msgstr "Bodliaková 3 (Thistle3)"
+
+#: lib/latexcolors:4365
+msgid "Thistle4"
+msgstr "Bodliaková 4 (Thistle4)"
+
+#: lib/latexcolors:4373
+msgid "Tomato1"
+msgstr "Paradajková 1 (Tomato1)"
+
+#: lib/latexcolors:4381
+msgid "Tomato2"
+msgstr "Paradajková 2 (Tomato2)"
+
+#: lib/latexcolors:4389
+msgid "Tomato3"
+msgstr "Paradajková 3 (Tomato3)"
+
+#: lib/latexcolors:4397
+msgid "Tomato4"
+msgstr "Paradajková 4 (Tomato4)"
+
+#: lib/latexcolors:4405
+msgid "Turquoise1"
+msgstr "Tyrkysová 1 (Turquoise1)"
+
+#: lib/latexcolors:4413
+msgid "Turquoise2"
+msgstr "Tyrkysová 2 (Turquoise2)"
+
+#: lib/latexcolors:4421
+msgid "Turquoise3"
+msgstr "Tyrkysová 3 (Turquoise3)"
+
+#: lib/latexcolors:4429
+msgid "Turquoise4"
+msgstr "Tyrkysová 4 (Turquoise4)"
+
+#: lib/latexcolors:4437
+msgid "VioletRed1"
+msgstr "FialovoČervená 1 (VioletRed1)"
+
+#: lib/latexcolors:4445
+msgid "VioletRed2"
+msgstr "FialovoČervená 2 (VioletRed2)"
+
+#: lib/latexcolors:4453
+msgid "VioletRed3"
+msgstr "FialovoČervená 3 (VioletRed3)"
+
+#: lib/latexcolors:4461
+msgid "VioletRed4"
+msgstr "FialovoČervená 4 (VioletRed4)"
+
+#: lib/latexcolors:4469
+msgid "Wheat1"
+msgstr "Pšeničná 1 (Wheat1)"
+
+#: lib/latexcolors:4477
+msgid "Wheat2"
+msgstr "Pšeničná 2 (Wheat2)"
+
+#: lib/latexcolors:4485
+msgid "Wheat3"
+msgstr "Pšeničná 3 (Wheat3)"
+
+#: lib/latexcolors:4493
+msgid "Wheat4"
+msgstr "Pšeničná 4 (Wheat4)"
+
+#: lib/latexcolors:4501
+msgid "Yellow1"
+msgstr "Žltá 1 (Yellow1)"
+
+#: lib/latexcolors:4509
+msgid "Yellow2"
+msgstr "Žltá 2 (Yellow2)"
+
+#: lib/latexcolors:4517
+msgid "Yellow3"
+msgstr "Žltá 3 (Yellow3)"
+
+#: lib/latexcolors:4525
+msgid "Yellow4"
+msgstr "Žltá 4 (Yellow4)"
+
+#: lib/latexcolors:4533
+msgid "Gray0"
+msgstr "Šedá 0 (Gray0)"
+
+#: lib/latexcolors:4541
+msgid "Green0"
+msgstr "Zelená 0 (Green0)"
+
+#: lib/latexcolors:4558
+msgid "Maroon0"
+msgstr "Gaštanová 0 (Maroon0)"
+
+#: lib/latexcolors:4566
+msgid "Purple0"
+msgstr "Purpurová 0 (Purple0)"
 
 #: lib/latexfonts:156
 msgid "Computer Modern Roman"
@@ -19784,19 +21938,19 @@ msgstr "Computer Modern Roman"
 
 #: lib/latexfonts:164
 msgid "Crimson Pro"
-msgstr "Crimson Pro"
+msgstr "Karmínová Pro (Crimson Pro)"
 
 #: lib/latexfonts:175
 msgid "Crimson Pro (Medium)"
-msgstr "Crimson Pro (stredné)"
+msgstr "Karmínová Pro (stredná) (Crimson Pro Medium)"
 
 #: lib/latexfonts:186
 msgid "Crimson Pro (Light)"
-msgstr "Crimson Pro (svetlé)"
+msgstr "Karmínová Pro (svetlá) (Crimson Pro Light)"
 
 #: lib/latexfonts:197
 msgid "Crimson Pro (Extralight)"
-msgstr "Crimson Pro (extra svetlé)"
+msgstr "Karmínová Pro (extra svetlá) (Crimson Pro Extralight)"
 
 #: lib/latexfonts:208
 msgid "DejaVu Serif"
@@ -20177,9 +22331,9 @@ msgid "TX Typewriter"
 msgstr "TX strojopisné"
 
 # Times Roman (New TX)
-#: lib/latexfonts:1237
+#: lib/latexfonts:1244
 msgid "Crimson (New TX)"
-msgstr "Crimson (New TX)"
+msgstr "Karmínová (New TX) (Crimson New TX)"
 
 # euler virtual math fonts
 #: lib/latexfonts:1245
@@ -29481,7 +31635,7 @@ msgstr "svetlošedá"
 
 #: src/Color.cpp:253
 msgid "lime"
-msgstr "svetlozelená"
+msgstr "limetková"
 
 #: src/Color.cpp:254
 msgid "magenta"
@@ -29501,7 +31655,7 @@ msgstr "ružová"
 
 #: src/Color.cpp:258
 msgid "purple"
-msgstr "nachová"
+msgstr "fialová 3"
 
 #: src/Color.cpp:259
 msgid "red"
@@ -32195,6 +34349,11 @@ msgstr "Nedostupné: %1$s"
 msgid "Uncategorized"
 msgstr "Nie kategorizované"
 
+#: src/frontends/qt/ColorsCombo.cpp:65
+#, c-format
+msgid "%1$s (= Default[[color]])"
+msgstr "%1$s (= Štandardná)"
+
 #: src/frontends/qt/FileDialog.cpp:207
 msgid "Directories"
 msgstr "Adresáre"
@@ -32439,6 +34598,10 @@ msgstr "Obnoviť"
 msgid "Open"
 msgstr "Otvoriť"
 
+#: src/frontends/qt/GuiApplication.cpp:782
+msgid "Select Color"
+msgstr "Výber farieb"
+
 #: src/frontends/qt/GuiApplication.cpp:1286
 msgid "Nothing to do"
 msgstr "Nie je čo robiť"
@@ -32645,6 +34808,14 @@ msgstr ""
 #: src/frontends/qt/GuiBibitem.cpp:60
 msgid "Author &Names:"
 msgstr "&Mená autorov:"
+
+#: src/frontends/qt/GuiBibitem.cpp:64
+msgid ""
+"Insert the author name(s) for the author-number reference here. If you use "
+"an abbreviated list (with `et al.'), the full list can go below."
+msgstr ""
+"Vložte sem meno autora/autorov pre referenciu na číslo autora. Keď užívate "
+"stručný zoznam (s 'a kol.'), úplný zoznam môže byť uvedený nižšie."
 
 #: src/frontends/qt/GuiBibitem.cpp:62
 msgid ""
@@ -32946,9 +35117,17 @@ msgstr "S /"
 msgid "(Without)[[color]]"
 msgstr "(Bez)"
 
+#: src/frontends/qt/ColorsCombo.cpp:129 src/frontends/qt/ui/ColorUi.ui:393
+msgid "Custom Colors"
+msgstr "Vlastné farby"
+
 #: src/frontends/qt/GuiCharacter.cpp:208
 msgid "Text Properties"
 msgstr "Vlastnosti textu"
+
+#: src/frontends/qt/GuiCharacter.cpp:206
+msgid "You can also directly type on the list to filter on color names."
+msgstr "Môžete tiež priamo písať do zoznamu a filtrovať názvy farieb."
 
 #: src/frontends/qt/GuiCharacter.cpp:274
 msgid "Reset All To &Default"
@@ -33946,6 +36125,27 @@ msgstr "<b>Meno modulu:</b> <i>%1</i> (%2)"
 #: src/frontends/qt/GuiDocument.cpp:5373
 msgid "<b>Note:</b> Some requirements for this module are missing!"
 msgstr "<b>Poznámka:</b> Niektoré predpoklady pre tento modul chýbajú!"
+
+#: src/frontends/qt/GuiDocument.cpp:5730
+msgid "Color naming failed"
+msgstr "Menovanie farby zlyhalo"
+
+#: src/frontends/qt/GuiDocument.cpp:5731
+#, c-format
+msgid "The color name `%1$s' is already taken."
+msgstr "Meno farby '%1$s' je už použité."
+
+#: src/frontends/qt/GuiDocument.cpp:5782
+msgid "Enter new color name"
+msgstr "Zadajte meno novej farby"
+
+#: src/frontends/qt/GuiDocument.cpp:5790
+msgid ""
+"The color could not be renamed since the new name consists of non-ASCII "
+"characters or blanks."
+msgstr ""
+"Farba sa nedala premenovať lebo nové meno obsahuje aj medzery alebo nie-"
+"ASCII znaky."
 
 #: src/frontends/qt/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
@@ -39139,6 +41339,27 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Click to change the color"
+#~ msgstr "Kliknite na zmenu farby"
+
+#~ msgid "&Change..."
+#~ msgstr "&Vymeniť…"
+
+#~ msgid "C&hange..."
+#~ msgstr "V&ymeniť…"
+
+#~ msgid "Revert the color to the default"
+#~ msgstr "Návrat farby na štandard"
+
+#~ msgid "Ch&ange..."
+#~ msgstr "Vy&meniť…"
+
+#~ msgid "Re&set"
+#~ msgstr "O&bnoviť"
+
+#~ msgid "Chan&ge..."
+#~ msgstr "Vym&eniť…"
+
 #~ msgid "First Page"
 #~ msgstr "Prvá strana"
 
@@ -40783,62 +43004,11 @@ msgstr "Neznámy používateľ"
 #~ msgid "Standard Code"
 #~ msgstr "Štandardný Kód"
 
-#~ msgid "Black"
-#~ msgstr "Čierna"
-
-#~ msgid "Blue"
-#~ msgstr "Modrá"
-
-#~ msgid "Brown"
-#~ msgstr "Hnedá"
-
-#~ msgid "Cyan"
-#~ msgstr "Zelenomodrá"
-
 #~ msgid "Darkgray"
 #~ msgstr "Tmavošedá"
 
-#~ msgid "Gray"
-#~ msgstr "Šedá"
-
-#~ msgid "Green"
-#~ msgstr "Zelená"
-
 #~ msgid "Lightgray"
 #~ msgstr "Svetlošedá"
-
-#~ msgid "Lime"
-#~ msgstr "Svetlozelená"
-
-#~ msgid "Magenta"
-#~ msgstr "Purpurová"
-
-#~ msgid "Olive"
-#~ msgstr "Olivová"
-
-#~ msgid "Orange"
-#~ msgstr "Oranžová"
-
-#~ msgid "Pink"
-#~ msgstr "Ružová"
-
-#~ msgid "Purple"
-#~ msgstr "Nachová"
-
-#~ msgid "Red"
-#~ msgstr "Červená"
-
-#~ msgid "Teal"
-#~ msgstr "Smaragdovozelená"
-
-#~ msgid "Violet"
-#~ msgstr "Fialová"
-
-#~ msgid "White"
-#~ msgstr "Biela"
-
-#~ msgid "Yellow"
-#~ msgstr "Žltá"
 
 #~ msgid "Unknown document class"
 #~ msgstr "Neznáma trieda dokumentu"
@@ -44719,3 +46889,11 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "LaTeX Output Options"
 #~ msgstr "Výstupné LaTeX-voľby"
+
+#~ msgid ""
+#~ "The phrase \", see page x\" is appended to every entry in the nomenclature "
+#~ "where x is the number of the page number on which the corresponding "
+#~ "nomenclature is used"
+#~ msgstr ""
+#~ "Fráza „pozri stranu x“ je pripojená ku každému záznamu v nomenklatúre, kde x "
+#~ "je číslo čísla strany, na ktorej sa používa zodpovedajúca nomenklatúra"

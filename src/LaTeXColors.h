@@ -76,7 +76,7 @@ private:
 class LaTeXColors {
 public:
 	///
-	typedef std::map<std::string, LaTeXColor> TexColorMap;
+	typedef std::vector<std::pair<std::string, LaTeXColor>> TexColorMap;
 	/// Get all LaTeXColors
 	TexColorMap getLaTeXColors();
 	/// Get a specific LaTeXColor \p name

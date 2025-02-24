@@ -64,7 +64,7 @@ void ColorsCombo::addItemSort(QString const & item, QString const & guiname,
 	QString titem = (item != default_color_)
 			? guiname
 			: toqstr(bformat(_("%1$s (= Default[[color]])"),
-					 qstring_to_ucs4(guiname)));;
+					 qstring_to_ucs4(guiname)));
 
 	QList<QStandardItem *> row;
 	QStandardItem * gui = new QStandardItem(titem);
@@ -85,18 +85,15 @@ void ColorsCombo::addItemSort(QString const & item, QString const & guiname,
 
 	// find category
 	int i = 0;
-	// Sort categories alphabetically, uncategorized at the end.
-	while (i < end && model()->item(i, 2)->text() != category)
+	// sort categories alphabetically
+	while (i < end && model()->item(i, 2)->text() != category
+	       && model()->item(i, 2)->text() != qt_("Uncategorized"))
 		++i;
 
-	// find row to insert the item, after the separator if it exists
-	if (i < end) {
-		// find alphabetic position, unavailable at the end
-		while (i != end
-		       && (model()->item(i, 0)->text().localeAwareCompare(titem) < 0)
-		       && (model()->item(i, 2)->text() == category))
-			++i;
-	}
+	// jump to the end of the category group to sort in order
+	// specified in input
+	while (i < end && model()->item(i, 2)->text() == category)
+		++i;
 
 	model()->insertRow(i, row);
 	setColorIcon(i, color);
@@ -128,7 +125,6 @@ void ColorsCombo::fillComboColor()
 		QString const lyxname = toqstr(lc.first);
 		QString const guiname = toqstr(lc.first);
 		QString const category = qt_("Custom Colors");
-		QString const plaincategory = toqstr("custom");
 		QString const color = toqstr(lc.second);
 		addItemSort(lyxname,
 			    guiname,
@@ -140,7 +136,6 @@ void ColorsCombo::fillComboColor()
 		QString const lyxname = toqstr(lc.first);
 		QString const guiname = toqstr(translateIfPossible(lc.second.guiname()));
 		QString const category = toqstr(translateIfPossible(lc.second.category()));
-		QString const plaincategory = toqstr(lc.second.category());
 		QString const color = toqstr(lc.second.hexname());
 		addItemSort(lyxname,
 			    guiname,

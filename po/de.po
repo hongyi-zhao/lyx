@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2025-02-23 20:54+0100\n"
-"PO-Revision-Date: 2025-02-24 08:41+0100\n"
+"PO-Revision-Date: 2025-02-24 15:11+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -21454,7 +21454,7 @@ msgstr "Khaki 3 (Khaki3)"
 
 #: lib/latexcolors:3021
 msgid "Khaki4"
-msgstr "Khaki 41 (Khaki4)"
+msgstr "Khaki 4 (Khaki4)"
 
 #: lib/latexcolors:3029
 msgid "LavenderBlush1"

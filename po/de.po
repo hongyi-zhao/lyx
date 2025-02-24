@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-02-23 14:50+0100\n"
-"PO-Revision-Date: 2025-02-23 14:59+0100\n"
+"POT-Creation-Date: 2025-02-23 20:54+0100\n"
+"PO-Revision-Date: 2025-02-24 08:41+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1357,8 +1357,8 @@ msgid ""
 "Enter the name of the desired color (only ASCII characters and no space "
 "allowed) and hit \"Add\""
 msgstr ""
-"Geben Sie den gewünschten Farbnamen ein (erlaubt sind nur ASCII-Zeichen und ke"
-"ine Leerzeichen) und drücken Sie \"Hinzufügen\"."
+"Geben Sie den gewünschten Farbnamen ein (erlaubt sind nur ASCII-Zeichen und "
+"keine Leerzeichen) und drücken Sie \"Hinzufügen\"."
 
 #: src/frontends/qt/ui/ColorUi.ui:265
 msgid "Add a new color to the list"
@@ -20073,6 +20073,2157 @@ msgstr "Vietnamesisch"
 msgid "Welsh"
 msgstr "Walisisch"
 
+#: lib/latexcolors:44 lib/latexcolors:219 lib/latexcolors:872
+msgid "Black"
+msgstr "Schwarz"
+
+#: lib/latexcolors:46 lib/latexcolors:53 lib/latexcolors:60 lib/latexcolors:67
+#: lib/latexcolors:75 lib/latexcolors:82 lib/latexcolors:90 lib/latexcolors:98
+#: lib/latexcolors:105 lib/latexcolors:113 lib/latexcolors:121
+#: lib/latexcolors:128 lib/latexcolors:136 lib/latexcolors:144
+#: lib/latexcolors:152 lib/latexcolors:160 lib/latexcolors:167
+#: lib/latexcolors:175 lib/latexcolors:183
+msgid "LaTeX Base Colors"
+msgstr "LaTeX-Grundfarben"
+
+#: lib/latexcolors:51 lib/latexcolors:767 lib/latexcolors:2000
+msgid "White"
+msgstr "Weiß"
+
+#: lib/latexcolors:58 lib/latexcolors:229 lib/latexcolors:888
+msgid "Blue"
+msgstr "Blau"
+
+#: lib/latexcolors:65 lib/latexcolors:263 lib/latexcolors:904
+msgid "Brown"
+msgstr "Braun"
+
+#: lib/latexcolors:73 lib/latexcolors:317 lib/latexcolors:976
+msgid "Cyan"
+msgstr "Zyanblau (Cyan)"
+
+#: lib/latexcolors:80
+msgid "Dark gray"
+msgstr "Dunkelgrau"
+
+#: lib/latexcolors:88 lib/latexcolors:383 lib/latexcolors:1243
+msgid "Gray"
+msgstr "Grau"
+
+#: lib/latexcolors:96 lib/latexcolors:393 lib/latexcolors:1251
+msgid "Green"
+msgstr "Grün"
+
+#: lib/latexcolors:103
+msgid "Light gray"
+msgstr "Hellgrau"
+
+#: lib/latexcolors:111 lib/latexcolors:1494
+msgid "Lime"
+msgstr "Limette"
+
+#: lib/latexcolors:119 lib/latexcolors:441 lib/latexcolors:1518
+msgid "Magenta"
+msgstr "Magenta"
+
+#: lib/latexcolors:126 lib/latexcolors:1671
+msgid "Olive"
+msgstr "Olivgrün"
+
+#: lib/latexcolors:134 lib/latexcolors:513 lib/latexcolors:1687
+msgid "Orange"
+msgstr "Orange"
+
+#: lib/latexcolors:142 lib/latexcolors:1767
+msgid "Pink"
+msgstr "Rosa (Pink)"
+
+#: lib/latexcolors:150 lib/latexcolors:585 lib/latexcolors:1791
+msgid "Purple"
+msgstr "Purpur (Purple)"
+
+#: lib/latexcolors:158 lib/latexcolors:603 lib/latexcolors:1799
+msgid "Red"
+msgstr "Rot"
+
+#: lib/latexcolors:165 lib/latexcolors:1944
+msgid "Teal"
+msgstr "Türkis"
+
+#: lib/latexcolors:173 lib/latexcolors:749 lib/latexcolors:1976
+msgid "Violet"
+msgstr "Violett"
+
+#: lib/latexcolors:181 lib/latexcolors:785 lib/latexcolors:2016
+msgid "Yellow"
+msgstr "Gelb"
+
+#: lib/latexcolors:193
+msgid "Apricot"
+msgstr "Apricot"
+
+#: lib/latexcolors:196 lib/latexcolors:206 lib/latexcolors:214
+#: lib/latexcolors:222 lib/latexcolors:232 lib/latexcolors:240
+#: lib/latexcolors:248 lib/latexcolors:256 lib/latexcolors:266
+#: lib/latexcolors:274 lib/latexcolors:284 lib/latexcolors:292
+#: lib/latexcolors:300 lib/latexcolors:310 lib/latexcolors:320
+#: lib/latexcolors:328 lib/latexcolors:338 lib/latexcolors:346
+#: lib/latexcolors:356 lib/latexcolors:366 lib/latexcolors:376
+#: lib/latexcolors:386 lib/latexcolors:396 lib/latexcolors:406
+#: lib/latexcolors:414 lib/latexcolors:424 lib/latexcolors:434
+#: lib/latexcolors:444 lib/latexcolors:452 lib/latexcolors:462
+#: lib/latexcolors:470 lib/latexcolors:480 lib/latexcolors:488
+#: lib/latexcolors:498 lib/latexcolors:506 lib/latexcolors:516
+#: lib/latexcolors:526 lib/latexcolors:536 lib/latexcolors:544
+#: lib/latexcolors:552 lib/latexcolors:560 lib/latexcolors:570
+#: lib/latexcolors:578 lib/latexcolors:588 lib/latexcolors:596
+#: lib/latexcolors:606 lib/latexcolors:614 lib/latexcolors:622
+#: lib/latexcolors:630 lib/latexcolors:640 lib/latexcolors:648
+#: lib/latexcolors:656 lib/latexcolors:666 lib/latexcolors:676
+#: lib/latexcolors:684 lib/latexcolors:694 lib/latexcolors:704
+#: lib/latexcolors:714 lib/latexcolors:722 lib/latexcolors:732
+#: lib/latexcolors:742 lib/latexcolors:752 lib/latexcolors:762
+#: lib/latexcolors:770 lib/latexcolors:778 lib/latexcolors:788
+#: lib/latexcolors:798 lib/latexcolors:806
+msgid "DVIPS Names"
+msgstr "DVIPS-Namen"
+
+#: lib/latexcolors:203 lib/latexcolors:840
+msgid "Aquamarine"
+msgstr "Aquamarinblau (Aquamarine)"
+
+#: lib/latexcolors:211
+msgid "Bittersweet"
+msgstr "Bittersüß (Bittersweet)"
+
+#: lib/latexcolors:237
+msgid "BlueGreen"
+msgstr "Blaugrün (BlueGreen)"
+
+#: lib/latexcolors:245 lib/latexcolors:896
+msgid "BlueViolet"
+msgstr "Blauviolett (BlueViolet)"
+
+#: lib/latexcolors:253
+msgid "BrickRed"
+msgstr "Ziegelrot (BrickRed)"
+
+#: lib/latexcolors:271
+msgid "BurntOrange"
+msgstr "Gebranntes Orange (BurntOrange)"
+
+#: lib/latexcolors:281 lib/latexcolors:920
+msgid "CadetBlue"
+msgstr "Kadettenblau (CadetBlue)"
+
+#: lib/latexcolors:289
+msgid "CarnationPink"
+msgstr "Zartrosa (CarnationPink)"
+
+#: lib/latexcolors:297
+msgid "Cerulean"
+msgstr "Himmelblau (Cerulean)"
+
+#: lib/latexcolors:307 lib/latexcolors:952
+msgid "CornflowerBlue"
+msgstr "Kornblumenblau (CornflowerBlue)"
+
+#: lib/latexcolors:325
+msgid "Dandelion"
+msgstr "Dandelion"
+
+#: lib/latexcolors:335 lib/latexcolors:1065
+msgid "DarkOrchid"
+msgstr "Dunkle Orchideenfarbe (DarkOrchid)"
+
+#: lib/latexcolors:343
+msgid "Emerald"
+msgstr "Smaragdgrün (Emerald)"
+
+#: lib/latexcolors:353 lib/latexcolors:1195
+msgid "ForestGreen"
+msgstr "Waldgrün (ForestGreen)"
+
+#: lib/latexcolors:363 lib/latexcolors:1203
+msgid "Fuchsia"
+msgstr "Fuchsia"
+
+#: lib/latexcolors:373 lib/latexcolors:1235
+msgid "Goldenrod"
+msgstr "Goldrute (Goldenrod)"
+
+#: lib/latexcolors:403 lib/latexcolors:1259
+msgid "GreenYellow"
+msgstr "Grüngelb (GreenYellow)"
+
+#: lib/latexcolors:411
+msgid "JungleGreen"
+msgstr "Dschungelgrün (JungleGreen)"
+
+#: lib/latexcolors:421 lib/latexcolors:1324
+msgid "Lavender"
+msgstr "Lavendel"
+
+#: lib/latexcolors:431 lib/latexcolors:1502
+msgid "LimeGreen"
+msgstr "Lindgrün (LimeGreen)"
+
+#: lib/latexcolors:449
+msgid "Mahogany"
+msgstr "Mahagoni (Mahogany)"
+
+#: lib/latexcolors:459 lib/latexcolors:1526
+msgid "Maroon"
+msgstr "Kastanienbraun (Maroon)"
+
+#: lib/latexcolors:467
+msgid "Melon"
+msgstr "Melone"
+
+#: lib/latexcolors:477 lib/latexcolors:1606
+msgid "MidnightBlue"
+msgstr "Nachtblau (MidnightBlue)"
+
+#: lib/latexcolors:485
+msgid "Mulberry"
+msgstr "Dunkelviolett (Mulberry)"
+
+#: lib/latexcolors:495 lib/latexcolors:1655
+msgid "NavyBlue"
+msgstr "Marineblau (NavyBlue)"
+
+#: lib/latexcolors:503
+msgid "OliveGreen"
+msgstr "Olivgrün (OliveGreen)"
+
+#: lib/latexcolors:523 lib/latexcolors:1695
+msgid "OrangeRed"
+msgstr "Orange rot (OrangeRed)"
+
+#: lib/latexcolors:533 lib/latexcolors:1703
+msgid "Orchid"
+msgstr "Orchidee (Orchid)"
+
+#: lib/latexcolors:541
+msgid "Peach"
+msgstr "Pfirsich (Peach)"
+
+#: lib/latexcolors:549
+msgid "Periwinkle"
+msgstr "Immergrün (Periwinkle)"
+
+#: lib/latexcolors:557
+msgid "PineGreen"
+msgstr "Piniengrün (PineGreen)"
+
+#: lib/latexcolors:567 lib/latexcolors:1775
+msgid "Plum"
+msgstr "Pflaumenblau (Plum)"
+
+#: lib/latexcolors:575
+msgid "ProcessBlue"
+msgstr "Prozessblau (ProcessBlue)"
+
+#: lib/latexcolors:593
+msgid "RawSienna"
+msgstr "Rohe Siena (Raw Sienna)"
+
+#: lib/latexcolors:611
+msgid "RedOrange"
+msgstr "Rotorange (RedOrange)"
+
+#: lib/latexcolors:619
+msgid "RedViolet"
+msgstr "Rotviolett (RedViolet)"
+
+#: lib/latexcolors:627
+msgid "Rhodamine"
+msgstr "Rhabarber (Rhodamine)"
+
+#: lib/latexcolors:637 lib/latexcolors:1815
+msgid "RoyalBlue"
+msgstr "Königsblau (RoyalBlue)"
+
+#: lib/latexcolors:645
+msgid "RoyalPurple"
+msgstr "Königspurpur (RoyalPurple)"
+
+#: lib/latexcolors:653
+msgid "RubineRed"
+msgstr "Rubinrot (RubineRed)"
+
+#: lib/latexcolors:663 lib/latexcolors:1831
+msgid "Salmon"
+msgstr "Lachs (Salmon)"
+
+#: lib/latexcolors:673 lib/latexcolors:1847
+msgid "SeaGreen"
+msgstr "Meergrün (SeaGreen)"
+
+#: lib/latexcolors:681
+msgid "Sepia"
+msgstr "Sepia"
+
+#: lib/latexcolors:691 lib/latexcolors:1879
+msgid "SkyBlue"
+msgstr "Himmelblau (SkyBlue)"
+
+#: lib/latexcolors:701 lib/latexcolors:1920
+msgid "SpringGreen"
+msgstr "Frühlingsgrün (SpringGreen)"
+
+#: lib/latexcolors:711 lib/latexcolors:1936
+msgid "Tan"
+msgstr "Hellbraun (Tan)"
+
+#: lib/latexcolors:719
+msgid "TealBlue"
+msgstr "Blaugrün-Blau (TealBlue)"
+
+#: lib/latexcolors:729 lib/latexcolors:1952
+msgid "Thistle"
+msgstr "Distel (Thistle)"
+
+#: lib/latexcolors:739 lib/latexcolors:1968
+msgid "Turquoise"
+msgstr "Türkis (Turquoise)"
+
+#: lib/latexcolors:759 lib/latexcolors:1984
+msgid "VioletRed"
+msgstr "Violett-Rot (VioletRed)"
+
+#: lib/latexcolors:775
+msgid "WildStrawberry"
+msgstr "Walderdbeere (WildStrawberry)"
+
+#: lib/latexcolors:795 lib/latexcolors:2024
+msgid "YellowGreen"
+msgstr "Gelbgrün (YellowGreen)"
+
+#: lib/latexcolors:803
+msgid "YellowOrange"
+msgstr "Gelborange (YellowOrange)"
+
+#: lib/latexcolors:816
+msgid "AliceBlue"
+msgstr "Aliceblau (AliceBlue)"
+
+#: lib/latexcolors:819 lib/latexcolors:827 lib/latexcolors:835
+#: lib/latexcolors:843 lib/latexcolors:851 lib/latexcolors:859
+#: lib/latexcolors:867 lib/latexcolors:875 lib/latexcolors:883
+#: lib/latexcolors:891 lib/latexcolors:899 lib/latexcolors:907
+#: lib/latexcolors:915 lib/latexcolors:923 lib/latexcolors:931
+#: lib/latexcolors:939 lib/latexcolors:947 lib/latexcolors:955
+#: lib/latexcolors:963 lib/latexcolors:971 lib/latexcolors:979
+#: lib/latexcolors:987 lib/latexcolors:995 lib/latexcolors:1003
+#: lib/latexcolors:1011 lib/latexcolors:1019 lib/latexcolors:1036
+#: lib/latexcolors:1044 lib/latexcolors:1052 lib/latexcolors:1060
+#: lib/latexcolors:1068 lib/latexcolors:1076 lib/latexcolors:1084
+#: lib/latexcolors:1092 lib/latexcolors:1100 lib/latexcolors:1108
+#: lib/latexcolors:1125 lib/latexcolors:1133 lib/latexcolors:1141
+#: lib/latexcolors:1149 lib/latexcolors:1157 lib/latexcolors:1174
+#: lib/latexcolors:1182 lib/latexcolors:1190 lib/latexcolors:1198
+#: lib/latexcolors:1206 lib/latexcolors:1214 lib/latexcolors:1222
+#: lib/latexcolors:1230 lib/latexcolors:1238 lib/latexcolors:1246
+#: lib/latexcolors:1254 lib/latexcolors:1262 lib/latexcolors:1279
+#: lib/latexcolors:1287 lib/latexcolors:1295 lib/latexcolors:1303
+#: lib/latexcolors:1311 lib/latexcolors:1319 lib/latexcolors:1327
+#: lib/latexcolors:1335 lib/latexcolors:1343 lib/latexcolors:1351
+#: lib/latexcolors:1359 lib/latexcolors:1367 lib/latexcolors:1375
+#: lib/latexcolors:1383 lib/latexcolors:1391 lib/latexcolors:1399
+#: lib/latexcolors:1407 lib/latexcolors:1424 lib/latexcolors:1432
+#: lib/latexcolors:1440 lib/latexcolors:1448 lib/latexcolors:1456
+#: lib/latexcolors:1464 lib/latexcolors:1481 lib/latexcolors:1489
+#: lib/latexcolors:1497 lib/latexcolors:1505 lib/latexcolors:1513
+#: lib/latexcolors:1521 lib/latexcolors:1529 lib/latexcolors:1537
+#: lib/latexcolors:1545 lib/latexcolors:1553 lib/latexcolors:1561
+#: lib/latexcolors:1569 lib/latexcolors:1577 lib/latexcolors:1585
+#: lib/latexcolors:1593 lib/latexcolors:1601 lib/latexcolors:1609
+#: lib/latexcolors:1617 lib/latexcolors:1625 lib/latexcolors:1633
+#: lib/latexcolors:1641 lib/latexcolors:1658 lib/latexcolors:1666
+#: lib/latexcolors:1674 lib/latexcolors:1682 lib/latexcolors:1690
+#: lib/latexcolors:1698 lib/latexcolors:1706 lib/latexcolors:1714
+#: lib/latexcolors:1722 lib/latexcolors:1730 lib/latexcolors:1738
+#: lib/latexcolors:1746 lib/latexcolors:1754 lib/latexcolors:1762
+#: lib/latexcolors:1770 lib/latexcolors:1778 lib/latexcolors:1786
+#: lib/latexcolors:1794 lib/latexcolors:1802 lib/latexcolors:1810
+#: lib/latexcolors:1818 lib/latexcolors:1826 lib/latexcolors:1834
+#: lib/latexcolors:1842 lib/latexcolors:1850 lib/latexcolors:1858
+#: lib/latexcolors:1866 lib/latexcolors:1874 lib/latexcolors:1882
+#: lib/latexcolors:1890 lib/latexcolors:1898 lib/latexcolors:1915
+#: lib/latexcolors:1923 lib/latexcolors:1931 lib/latexcolors:1939
+#: lib/latexcolors:1947 lib/latexcolors:1955 lib/latexcolors:1963
+#: lib/latexcolors:1971 lib/latexcolors:1979 lib/latexcolors:1987
+#: lib/latexcolors:1995 lib/latexcolors:2003 lib/latexcolors:2011
+#: lib/latexcolors:2019 lib/latexcolors:2027
+msgid "SVG Names"
+msgstr "SVG-Namen"
+
+#: lib/latexcolors:824
+msgid "AntiqueWhite"
+msgstr "Antikes Weiß (AntiqueWhite)"
+
+#: lib/latexcolors:832
+msgid "Aqua"
+msgstr "Aqua"
+
+#: lib/latexcolors:848
+msgid "Azure"
+msgstr "Azurblau (Azure)"
+
+#: lib/latexcolors:856
+msgid "Beige"
+msgstr "Beige"
+
+#: lib/latexcolors:864
+msgid "Bisque"
+msgstr "Tomatencreme (Bisque)"
+
+#: lib/latexcolors:880
+msgid "BlanchedAlmond"
+msgstr "Mandelweiß (BlanchedAlmond)"
+
+#: lib/latexcolors:912
+msgid "BurlyWood"
+msgstr "Grobes Braun (BurlyWood)"
+
+#: lib/latexcolors:928
+msgid "Chartreuse"
+msgstr "Chartreusegrün (Chartreuse)"
+
+#: lib/latexcolors:936
+msgid "Chocolate"
+msgstr "Schokolade (Chocolate)"
+
+#: lib/latexcolors:944
+msgid "Coral"
+msgstr "Koralle (Coral)"
+
+#: lib/latexcolors:960
+msgid "Cornsilk"
+msgstr "Mais (Cornsilk)"
+
+#: lib/latexcolors:968
+msgid "Crimson[[color]]"
+msgstr "Karmesinrot (Crimson)"
+
+#: lib/latexcolors:984
+msgid "DarkBlue"
+msgstr "Dunkelblau (DarkBlue)"
+
+#: lib/latexcolors:992
+msgid "DarkCyan"
+msgstr "Dunkles Zyanblau (DarkCyan)"
+
+#: lib/latexcolors:1000
+msgid "DarkGoldenrod"
+msgstr "Dunkle Goldrute (DarkGoldenrod)"
+
+#: lib/latexcolors:1008
+msgid "DarkGray"
+msgstr "Dunkelgrau (DarkGray)"
+
+#: lib/latexcolors:1016
+msgid "DarkGreen"
+msgstr "Dunkelgrün (DarkGreen)"
+
+#: lib/latexcolors:1033
+msgid "DarkKhaki"
+msgstr "Dunkles Khaki (DarkKhaki)"
+
+#: lib/latexcolors:1041
+msgid "DarkMagenta"
+msgstr "Dunkles Magenta (DarkMagenta)"
+
+#: lib/latexcolors:1049
+msgid "DarkOliveGreen"
+msgstr "Dunkles Olivgrün (DarkOliveGreen)"
+
+#: lib/latexcolors:1057
+msgid "DarkOrange"
+msgstr "Dunkles Orange (DarkOrange)"
+
+#: lib/latexcolors:1073
+msgid "DarkRed"
+msgstr "Dunkelrot (DarkRed)"
+
+#: lib/latexcolors:1081
+msgid "DarkSalmon"
+msgstr "Dunkler Lachs (DarkSalmon)"
+
+#: lib/latexcolors:1089
+msgid "DarkSeaGreen"
+msgstr "Dunkles Meergrün (DarkSeaGreen)"
+
+#: lib/latexcolors:1097
+msgid "DarkSlateBlue"
+msgstr "Dunkles Schieferblau (DarkSlateBlue)"
+
+#: lib/latexcolors:1105
+msgid "DarkSlateGray"
+msgstr "Dunkles Schiefergrau (DarkSlateGray)"
+
+#: lib/latexcolors:1122
+msgid "DarkTurquoise"
+msgstr "Dunkles Türkis (DarkTurquoise)"
+
+#: lib/latexcolors:1130
+msgid "DarkViolet"
+msgstr "Dunkelviolett (DarkViolet)"
+
+#: lib/latexcolors:1138
+msgid "DeepPink"
+msgstr "Tiefrosa (DeepPink)"
+
+#: lib/latexcolors:1146
+msgid "DeepSkyBlue"
+msgstr "Tiefes Himmelblau (DeepSkyBlue)"
+
+#: lib/latexcolors:1154
+msgid "DimGray"
+msgstr "Mattes Grau (DimGray)"
+
+#: lib/latexcolors:1171
+msgid "DodgerBlue"
+msgstr "Dodger-Blau (DodgerBlue)"
+
+#: lib/latexcolors:1179
+msgid "FireBrick"
+msgstr "Ziegelfarbe (FireBrick)"
+
+#: lib/latexcolors:1187
+msgid "FloralWhite"
+msgstr "Blütenweiß (FloralWhite)"
+
+#: lib/latexcolors:1211
+msgid "Gainsboro"
+msgstr "Gainsboro"
+
+#: lib/latexcolors:1219
+msgid "GhostWhite"
+msgstr "Geisterweiß (GhostWhite)"
+
+#: lib/latexcolors:1227
+msgid "Gold"
+msgstr "Gold"
+
+#: lib/latexcolors:1276
+msgid "Honeydew"
+msgstr "Honigmelone (Honeydew)"
+
+#: lib/latexcolors:1284
+msgid "HotPink"
+msgstr "Leuchtrosa (HotPink)"
+
+#: lib/latexcolors:1292
+msgid "IndianRed"
+msgstr "Indisch Rot (IndianRed)"
+
+#: lib/latexcolors:1300
+msgid "Indigo"
+msgstr "Indigo"
+
+#: lib/latexcolors:1308
+msgid "Ivory"
+msgstr "Elfenbein (Ivory)"
+
+#: lib/latexcolors:1316
+msgid "Khaki"
+msgstr "Khaki"
+
+#: lib/latexcolors:1332
+msgid "LavenderBlush"
+msgstr "Lavendelblüte (LavenderBlush)"
+
+#: lib/latexcolors:1340
+msgid "LawnGreen"
+msgstr "Rasengrün (LawnGreen)"
+
+#: lib/latexcolors:1348
+msgid "LemonChiffon"
+msgstr "Chiffongelb (LemonChiffon)"
+
+#: lib/latexcolors:1356
+msgid "LightBlue"
+msgstr "Hellblau (LightBlue)"
+
+#: lib/latexcolors:1364
+msgid "LightCoral"
+msgstr "Helles Korallenrot (LightCoral)"
+
+#: lib/latexcolors:1372
+msgid "LightCyan"
+msgstr "Helles Zyanblau (LightCyan)"
+
+#: lib/latexcolors:1380
+msgid "LightGoldenrod"
+msgstr "Helle Goldrute (LightGoldenrod)"
+
+#: lib/latexcolors:1388
+msgid "LightGoldenrodYellow"
+msgstr "Helles Goldrutengelb (LightGoldenrodYellow)"
+
+#: lib/latexcolors:1396
+msgid "LightGray"
+msgstr "Hellgrau (LightGray)"
+
+#: lib/latexcolors:1404
+msgid "LightGreen"
+msgstr "Hellgrün (LightGreen)"
+
+#: lib/latexcolors:1421
+msgid "LightPink"
+msgstr "Hellrosa (LightPink)"
+
+#: lib/latexcolors:1429
+msgid "LightSalmon"
+msgstr "Heller Lachs (LightSalmon)"
+
+#: lib/latexcolors:1437
+msgid "LightSeaGreen"
+msgstr "Helles Meergrün (LightSeaGreen)"
+
+#: lib/latexcolors:1445
+msgid "LightSkyBlue"
+msgstr "Helles Himmelblau (LightSkyBlue)"
+
+#: lib/latexcolors:1453
+msgid "LightSlateBlue"
+msgstr "Helles Schieferblau (LightSlateBlue)"
+
+#: lib/latexcolors:1461
+msgid "LightSlateGray"
+msgstr "Helles Schiefergrau (LightSlateGray)"
+
+#: lib/latexcolors:1478
+msgid "LightSteelBlue"
+msgstr "Helles Stahlblau (LightSteelBlue)"
+
+#: lib/latexcolors:1486
+msgid "LightYellow"
+msgstr "Hellgelb (LightYellow)"
+
+#: lib/latexcolors:1510
+msgid "Linen"
+msgstr "Leinen (Linen)"
+
+#: lib/latexcolors:1534
+msgid "MediumAquamarine"
+msgstr "Mittleres Aquamarinblau (MediumAquamarine)"
+
+#: lib/latexcolors:1542
+msgid "MediumBlue"
+msgstr "Mittelblau (MediumBlue)"
+
+#: lib/latexcolors:1550
+msgid "MediumOrchid"
+msgstr "Mittlere Orchideenfarbe (MediumOrchid)"
+
+#: lib/latexcolors:1558
+msgid "MediumPurple"
+msgstr "Mittelpurpur (MediumPurple)"
+
+#: lib/latexcolors:1566
+msgid "MediumSeaGreen"
+msgstr "Mittleres Meergrün (MediumSeaGreen)"
+
+#: lib/latexcolors:1574
+msgid "MediumSlateBlue"
+msgstr "Mittleres Schieferblau (MediumSlateBlue)"
+
+#: lib/latexcolors:1582
+msgid "MediumSpringGreen"
+msgstr "Mittleres Frühlingsgrün (MediumSpringGreen)"
+
+#: lib/latexcolors:1590
+msgid "MediumTurquoise"
+msgstr "Mitteltürkis (MediumTurquoise)"
+
+#: lib/latexcolors:1598
+msgid "MediumVioletRed"
+msgstr "Mittleres Violettrot (MediumVioletRed)"
+
+#: lib/latexcolors:1614
+msgid "MintCream"
+msgstr "Cremig Pfefferminz (MintCream)"
+
+#: lib/latexcolors:1622
+msgid "MistyRose"
+msgstr "Altrosa (MistyRose)"
+
+#: lib/latexcolors:1630
+msgid "Moccasin"
+msgstr "Mokassin (Moccasin)"
+
+#: lib/latexcolors:1638
+msgid "NavajoWhite"
+msgstr "Navajoweiß (NavajoWhite)"
+
+#: lib/latexcolors:1663
+msgid "OldLace"
+msgstr "Altgold (OldLace)"
+
+#: lib/latexcolors:1679
+msgid "OliveDrab"
+msgstr "Olivfarbiges Graubraun (OliveDrab)"
+
+#: lib/latexcolors:1711
+msgid "PaleGoldenrod"
+msgstr "Blasse Goldrute (PaleGoldenrod)"
+
+#: lib/latexcolors:1719
+msgid "PaleGreen"
+msgstr "Blassgrün (PaleGreen)"
+
+#: lib/latexcolors:1727
+msgid "PaleTurquoise"
+msgstr "Blasstürkis (PaleTurquoise)"
+
+#: lib/latexcolors:1735
+msgid "PaleVioletRed"
+msgstr "Blasses Violettrot (PaleVioletRed)"
+
+#: lib/latexcolors:1743
+msgid "PapayaWhip"
+msgstr "Cremiges Papaya (PapayaWhip)"
+
+#: lib/latexcolors:1751
+msgid "PeachPuff"
+msgstr "Pfirsich (PeachPuff)"
+
+#: lib/latexcolors:1759
+msgid "Peru"
+msgstr "Peru"
+
+#: lib/latexcolors:1783
+msgid "PowderBlue"
+msgstr "Taubenblau (PowderBlue)"
+
+#: lib/latexcolors:1807
+msgid "RosyBrown"
+msgstr "Rosiges Braun (RosyBrown)"
+
+#: lib/latexcolors:1823
+msgid "SaddleBrown"
+msgstr "Sattelbraun (SaddleBrown)"
+
+#: lib/latexcolors:1839
+msgid "SandyBrown"
+msgstr "Sandbraun (SandyBrown)"
+
+#: lib/latexcolors:1855
+msgid "Seashell"
+msgstr "Muschel (Seashell)"
+
+#: lib/latexcolors:1863
+msgid "Sienna"
+msgstr "Siena (Sienna)"
+
+#: lib/latexcolors:1871
+msgid "Silver"
+msgstr "Silber (Silver)"
+
+#: lib/latexcolors:1887
+msgid "SlateBlue"
+msgstr "Schieferblau (SlateBlue)"
+
+#: lib/latexcolors:1895
+msgid "SlateGray"
+msgstr "Schiefergrau (SlateGray)"
+
+#: lib/latexcolors:1912
+msgid "Snow"
+msgstr "Schneeweiß (Snow)"
+
+#: lib/latexcolors:1928
+msgid "SteelBlue"
+msgstr "Stahlblau (SteelBlue1)"
+
+#: lib/latexcolors:1960
+msgid "Tomato"
+msgstr "Tomatenrot (Tomato)"
+
+#: lib/latexcolors:1992
+msgid "Wheat"
+msgstr "Weizen (Wheat)"
+
+#: lib/latexcolors:2008
+msgid "WhiteSmoke"
+msgstr "Rauchiges Weiß (WhiteSmoke)"
+
+#: lib/latexcolors:2037
+msgid "AntiqueWhite1"
+msgstr "Antikes Weiß 1 (AntiqueWhite1)"
+
+#: lib/latexcolors:2040 lib/latexcolors:2048 lib/latexcolors:2056
+#: lib/latexcolors:2064 lib/latexcolors:2072 lib/latexcolors:2080
+#: lib/latexcolors:2088 lib/latexcolors:2096 lib/latexcolors:2104
+#: lib/latexcolors:2112 lib/latexcolors:2120 lib/latexcolors:2128
+#: lib/latexcolors:2136 lib/latexcolors:2144 lib/latexcolors:2152
+#: lib/latexcolors:2160 lib/latexcolors:2168 lib/latexcolors:2176
+#: lib/latexcolors:2184 lib/latexcolors:2192 lib/latexcolors:2200
+#: lib/latexcolors:2208 lib/latexcolors:2216 lib/latexcolors:2224
+#: lib/latexcolors:2232 lib/latexcolors:2240 lib/latexcolors:2248
+#: lib/latexcolors:2256 lib/latexcolors:2264 lib/latexcolors:2272
+#: lib/latexcolors:2280 lib/latexcolors:2288 lib/latexcolors:2296
+#: lib/latexcolors:2304 lib/latexcolors:2312 lib/latexcolors:2320
+#: lib/latexcolors:2328 lib/latexcolors:2336 lib/latexcolors:2344
+#: lib/latexcolors:2352 lib/latexcolors:2360 lib/latexcolors:2368
+#: lib/latexcolors:2376 lib/latexcolors:2384 lib/latexcolors:2392
+#: lib/latexcolors:2400 lib/latexcolors:2408 lib/latexcolors:2416
+#: lib/latexcolors:2424 lib/latexcolors:2432 lib/latexcolors:2440
+#: lib/latexcolors:2448 lib/latexcolors:2456 lib/latexcolors:2464
+#: lib/latexcolors:2472 lib/latexcolors:2480 lib/latexcolors:2488
+#: lib/latexcolors:2496 lib/latexcolors:2504 lib/latexcolors:2512
+#: lib/latexcolors:2520 lib/latexcolors:2528 lib/latexcolors:2536
+#: lib/latexcolors:2544 lib/latexcolors:2552 lib/latexcolors:2560
+#: lib/latexcolors:2568 lib/latexcolors:2576 lib/latexcolors:2584
+#: lib/latexcolors:2592 lib/latexcolors:2600 lib/latexcolors:2608
+#: lib/latexcolors:2616 lib/latexcolors:2624 lib/latexcolors:2632
+#: lib/latexcolors:2640 lib/latexcolors:2648 lib/latexcolors:2656
+#: lib/latexcolors:2664 lib/latexcolors:2672 lib/latexcolors:2680
+#: lib/latexcolors:2688 lib/latexcolors:2696 lib/latexcolors:2704
+#: lib/latexcolors:2712 lib/latexcolors:2720 lib/latexcolors:2728
+#: lib/latexcolors:2736 lib/latexcolors:2744 lib/latexcolors:2752
+#: lib/latexcolors:2760 lib/latexcolors:2768 lib/latexcolors:2776
+#: lib/latexcolors:2784 lib/latexcolors:2792 lib/latexcolors:2800
+#: lib/latexcolors:2808 lib/latexcolors:2816 lib/latexcolors:2824
+#: lib/latexcolors:2832 lib/latexcolors:2840 lib/latexcolors:2848
+#: lib/latexcolors:2856 lib/latexcolors:2864 lib/latexcolors:2872
+#: lib/latexcolors:2880 lib/latexcolors:2888 lib/latexcolors:2896
+#: lib/latexcolors:2904 lib/latexcolors:2912 lib/latexcolors:2920
+#: lib/latexcolors:2928 lib/latexcolors:2936 lib/latexcolors:2944
+#: lib/latexcolors:2952 lib/latexcolors:2960 lib/latexcolors:2968
+#: lib/latexcolors:2976 lib/latexcolors:2984 lib/latexcolors:2992
+#: lib/latexcolors:3000 lib/latexcolors:3008 lib/latexcolors:3016
+#: lib/latexcolors:3024 lib/latexcolors:3032 lib/latexcolors:3040
+#: lib/latexcolors:3048 lib/latexcolors:3056 lib/latexcolors:3064
+#: lib/latexcolors:3072 lib/latexcolors:3080 lib/latexcolors:3088
+#: lib/latexcolors:3096 lib/latexcolors:3104 lib/latexcolors:3112
+#: lib/latexcolors:3120 lib/latexcolors:3128 lib/latexcolors:3136
+#: lib/latexcolors:3144 lib/latexcolors:3152 lib/latexcolors:3160
+#: lib/latexcolors:3168 lib/latexcolors:3176 lib/latexcolors:3184
+#: lib/latexcolors:3192 lib/latexcolors:3200 lib/latexcolors:3208
+#: lib/latexcolors:3216 lib/latexcolors:3224 lib/latexcolors:3232
+#: lib/latexcolors:3240 lib/latexcolors:3248 lib/latexcolors:3256
+#: lib/latexcolors:3264 lib/latexcolors:3272 lib/latexcolors:3280
+#: lib/latexcolors:3288 lib/latexcolors:3296 lib/latexcolors:3304
+#: lib/latexcolors:3312 lib/latexcolors:3320 lib/latexcolors:3328
+#: lib/latexcolors:3336 lib/latexcolors:3344 lib/latexcolors:3352
+#: lib/latexcolors:3360 lib/latexcolors:3368 lib/latexcolors:3376
+#: lib/latexcolors:3384 lib/latexcolors:3392 lib/latexcolors:3400
+#: lib/latexcolors:3408 lib/latexcolors:3416 lib/latexcolors:3424
+#: lib/latexcolors:3432 lib/latexcolors:3440 lib/latexcolors:3448
+#: lib/latexcolors:3456 lib/latexcolors:3464 lib/latexcolors:3472
+#: lib/latexcolors:3480 lib/latexcolors:3488 lib/latexcolors:3496
+#: lib/latexcolors:3504 lib/latexcolors:3512 lib/latexcolors:3520
+#: lib/latexcolors:3528 lib/latexcolors:3536 lib/latexcolors:3544
+#: lib/latexcolors:3552 lib/latexcolors:3560 lib/latexcolors:3568
+#: lib/latexcolors:3576 lib/latexcolors:3584 lib/latexcolors:3592
+#: lib/latexcolors:3600 lib/latexcolors:3608 lib/latexcolors:3616
+#: lib/latexcolors:3624 lib/latexcolors:3632 lib/latexcolors:3640
+#: lib/latexcolors:3648 lib/latexcolors:3656 lib/latexcolors:3664
+#: lib/latexcolors:3672 lib/latexcolors:3680 lib/latexcolors:3688
+#: lib/latexcolors:3696 lib/latexcolors:3704 lib/latexcolors:3712
+#: lib/latexcolors:3720 lib/latexcolors:3728 lib/latexcolors:3736
+#: lib/latexcolors:3744 lib/latexcolors:3752 lib/latexcolors:3760
+#: lib/latexcolors:3768 lib/latexcolors:3776 lib/latexcolors:3784
+#: lib/latexcolors:3792 lib/latexcolors:3800 lib/latexcolors:3808
+#: lib/latexcolors:3816 lib/latexcolors:3824 lib/latexcolors:3832
+#: lib/latexcolors:3840 lib/latexcolors:3848 lib/latexcolors:3856
+#: lib/latexcolors:3864 lib/latexcolors:3872 lib/latexcolors:3880
+#: lib/latexcolors:3888 lib/latexcolors:3896 lib/latexcolors:3904
+#: lib/latexcolors:3912 lib/latexcolors:3920 lib/latexcolors:3928
+#: lib/latexcolors:3936 lib/latexcolors:3944 lib/latexcolors:3952
+#: lib/latexcolors:3960 lib/latexcolors:3968 lib/latexcolors:3976
+#: lib/latexcolors:3984 lib/latexcolors:3992 lib/latexcolors:4000
+#: lib/latexcolors:4008 lib/latexcolors:4016 lib/latexcolors:4024
+#: lib/latexcolors:4032 lib/latexcolors:4040 lib/latexcolors:4048
+#: lib/latexcolors:4056 lib/latexcolors:4064 lib/latexcolors:4072
+#: lib/latexcolors:4080 lib/latexcolors:4088 lib/latexcolors:4096
+#: lib/latexcolors:4104 lib/latexcolors:4112 lib/latexcolors:4120
+#: lib/latexcolors:4128 lib/latexcolors:4136 lib/latexcolors:4144
+#: lib/latexcolors:4152 lib/latexcolors:4160 lib/latexcolors:4168
+#: lib/latexcolors:4176 lib/latexcolors:4184 lib/latexcolors:4192
+#: lib/latexcolors:4200 lib/latexcolors:4208 lib/latexcolors:4216
+#: lib/latexcolors:4224 lib/latexcolors:4232 lib/latexcolors:4240
+#: lib/latexcolors:4248 lib/latexcolors:4256 lib/latexcolors:4264
+#: lib/latexcolors:4272 lib/latexcolors:4280 lib/latexcolors:4288
+#: lib/latexcolors:4296 lib/latexcolors:4304 lib/latexcolors:4312
+#: lib/latexcolors:4320 lib/latexcolors:4328 lib/latexcolors:4336
+#: lib/latexcolors:4344 lib/latexcolors:4352 lib/latexcolors:4360
+#: lib/latexcolors:4368 lib/latexcolors:4376 lib/latexcolors:4384
+#: lib/latexcolors:4392 lib/latexcolors:4400 lib/latexcolors:4408
+#: lib/latexcolors:4416 lib/latexcolors:4424 lib/latexcolors:4432
+#: lib/latexcolors:4440 lib/latexcolors:4448 lib/latexcolors:4456
+#: lib/latexcolors:4464 lib/latexcolors:4472 lib/latexcolors:4480
+#: lib/latexcolors:4488 lib/latexcolors:4496 lib/latexcolors:4504
+#: lib/latexcolors:4512 lib/latexcolors:4520 lib/latexcolors:4528
+#: lib/latexcolors:4536 lib/latexcolors:4544 lib/latexcolors:4561
+#: lib/latexcolors:4569
+msgid "X11 Names"
+msgstr "X11-Namen"
+
+#: lib/latexcolors:2045
+msgid "AntiqueWhite2"
+msgstr "Antikes Weiß 2 (AntiqueWhite2)"
+
+#: lib/latexcolors:2053
+msgid "AntiqueWhite3"
+msgstr "Antikes Weiß 3 (AntiqueWhite3)"
+
+#: lib/latexcolors:2061
+msgid "AntiqueWhite4"
+msgstr "Antikes Weiß 4 (AntiqueWhite4)"
+
+#: lib/latexcolors:2069
+msgid "Aquamarine1"
+msgstr "Aquamarinblau 1 (Aquamarine1)"
+
+#: lib/latexcolors:2077
+msgid "Aquamarine2"
+msgstr "Aquamarinblau 2 (Aquamarine2)"
+
+#: lib/latexcolors:2085
+msgid "Aquamarine3"
+msgstr "Aquamarinblau 3 (Aquamarine3)"
+
+#: lib/latexcolors:2093
+msgid "Aquamarine4"
+msgstr "Aquamarinblau 4 (Aquamarine4)"
+
+#: lib/latexcolors:2101
+msgid "Azure1"
+msgstr "Azurblau 1 (Azure1)"
+
+#: lib/latexcolors:2109
+msgid "Azure2"
+msgstr "Azurblau 2 (Azure2)"
+
+#: lib/latexcolors:2117
+msgid "Azure3"
+msgstr "Azurblau 3 (Azure3)"
+
+#: lib/latexcolors:2125
+msgid "Azure4"
+msgstr "Azurblau 4 (Azure4)"
+
+#: lib/latexcolors:2133
+msgid "Bisque1"
+msgstr "Tomatencreme 1 (Bisque1)"
+
+#: lib/latexcolors:2141
+msgid "Bisque2"
+msgstr "Tomatencreme 2 (Bisque2)"
+
+#: lib/latexcolors:2149
+msgid "Bisque3"
+msgstr "Tomatencreme 3 (Bisque3)"
+
+#: lib/latexcolors:2157
+msgid "Bisque4"
+msgstr "Tomatencreme 4 (Bisque4)"
+
+#: lib/latexcolors:2165
+msgid "Blue1"
+msgstr "Blau 1 (Blue1)"
+
+#: lib/latexcolors:2173
+msgid "Blue2"
+msgstr "Blau 2 (Blue2)"
+
+#: lib/latexcolors:2181
+msgid "Blue3"
+msgstr "Blau 3 (Blue3)"
+
+#: lib/latexcolors:2189
+msgid "Blue4"
+msgstr "Blau 4 (Blue4)"
+
+#: lib/latexcolors:2197
+msgid "Brown1"
+msgstr "Braun 1 (Brown1)"
+
+#: lib/latexcolors:2205
+msgid "Brown2"
+msgstr "Braun 2 (Brown2)"
+
+#: lib/latexcolors:2213
+msgid "Brown3"
+msgstr "Braun 3 (Brown3)"
+
+#: lib/latexcolors:2221
+msgid "Brown4"
+msgstr "Braun 4 (Brown4)"
+
+#: lib/latexcolors:2229
+msgid "Burlywood1"
+msgstr "Grobes Braun 1 (Burlywood1)"
+
+#: lib/latexcolors:2237
+msgid "Burlywood2"
+msgstr "Grobes Braun 2 (Burlywood2)"
+
+#: lib/latexcolors:2245
+msgid "Burlywood3"
+msgstr "Grobes Braun 3 (Burlywood3)"
+
+#: lib/latexcolors:2253
+msgid "Burlywood4"
+msgstr "Grobes Braun 4 (Burlywood4)"
+
+#: lib/latexcolors:2261
+msgid "CadetBlue1"
+msgstr "Kadettenblau 1 (CadetBlue1)"
+
+#: lib/latexcolors:2269
+msgid "CadetBlue2"
+msgstr "Kadettenblau 2 (CadetBlue2)"
+
+#: lib/latexcolors:2277
+msgid "CadetBlue3"
+msgstr "Kadettenblau 3 (CadetBlue3)"
+
+#: lib/latexcolors:2285
+msgid "CadetBlue4"
+msgstr "Kadettenblau 4 (CadetBlue4)"
+
+#: lib/latexcolors:2293
+msgid "Chartreuse1"
+msgstr "Chartreusegrün 1 (Chartreuse1)"
+
+#: lib/latexcolors:2301
+msgid "Chartreuse2"
+msgstr "Chartreusegrün 2 (Chartreuse2)"
+
+#: lib/latexcolors:2309
+msgid "Chartreuse3"
+msgstr "Chartreusegrün 3 (Chartreuse3)"
+
+#: lib/latexcolors:2317
+msgid "Chartreuse4"
+msgstr "Chartreusegrün 4 (Chartreuse4)"
+
+#: lib/latexcolors:2325
+msgid "Chocolate1"
+msgstr "Schokolade 1 (Chocolate1)"
+
+#: lib/latexcolors:2333
+msgid "Chocolate2"
+msgstr "Schokolade 2 (Chocolate2)"
+
+#: lib/latexcolors:2341
+msgid "Chocolate3"
+msgstr "Schokolade 3 (Chocolate3)"
+
+#: lib/latexcolors:2349
+msgid "Chocolate4"
+msgstr "Schokolade 4 (Chocolate4)"
+
+#: lib/latexcolors:2357
+msgid "Coral1"
+msgstr "Koralle 1 (Coral1)"
+
+#: lib/latexcolors:2365
+msgid "Coral2"
+msgstr "Koralle 2 (Coral2)"
+
+#: lib/latexcolors:2373
+msgid "Coral3"
+msgstr "Koralle 3 (Coral3)"
+
+#: lib/latexcolors:2381
+msgid "Coral4"
+msgstr "Koralle 4 (Coral4)"
+
+#: lib/latexcolors:2389
+msgid "Cornsilk1"
+msgstr "Mais 1 (Cornsilk1)"
+
+#: lib/latexcolors:2397
+msgid "Cornsilk2"
+msgstr "Mais 2 (Cornsilk2)"
+
+#: lib/latexcolors:2405
+msgid "Cornsilk3"
+msgstr "Mais 3 (Cornsilk3)"
+
+#: lib/latexcolors:2413
+msgid "Cornsilk4"
+msgstr "Mais 4 (Cornsilk4)"
+
+#: lib/latexcolors:2421
+msgid "Cyan1"
+msgstr "Zyanblau 1 (Cyan1)"
+
+#: lib/latexcolors:2429
+msgid "Cyan2"
+msgstr "Zyanblau 2 (Cyan2)"
+
+#: lib/latexcolors:2437
+msgid "Cyan3"
+msgstr "Zyanblau 3 (Cyan3)"
+
+#: lib/latexcolors:2445
+msgid "Cyan4"
+msgstr "Zyanblau 4 (Cyan4)"
+
+#: lib/latexcolors:2453
+msgid "DarkGoldenrod1"
+msgstr "Dunkle Goldrute 1 (DarkGoldenrod1)"
+
+#: lib/latexcolors:2461
+msgid "DarkGoldenrod2"
+msgstr "Dunkle Goldrute 2 (DarkGoldenrod2)"
+
+#: lib/latexcolors:2469
+msgid "DarkGoldenrod3"
+msgstr "Dunkle Goldrute 3 (DarkGoldenrod3)"
+
+#: lib/latexcolors:2477
+msgid "DarkGoldenrod4"
+msgstr "Dunkle Goldrute 4 (DarkGoldenrod4)"
+
+#: lib/latexcolors:2485
+msgid "DarkOliveGreen1"
+msgstr "Dunkles Olivgrün 1 (DarkOliveGreen1)"
+
+#: lib/latexcolors:2493
+msgid "DarkOliveGreen2"
+msgstr "Dunkles Olivgrün 2 (DarkOliveGreen2)"
+
+#: lib/latexcolors:2501
+msgid "DarkOliveGreen3"
+msgstr "Dunkles Olivgrün 3 (DarkOliveGreen3)"
+
+#: lib/latexcolors:2509
+msgid "DarkOliveGreen4"
+msgstr "Dunkles Olivgrün 4 (DarkOliveGreen4)"
+
+#: lib/latexcolors:2517
+msgid "DarkOrange1"
+msgstr "Dunkles Orange 1 (DarkOrange1)"
+
+#: lib/latexcolors:2525
+msgid "DarkOrange2"
+msgstr "Dunkles Orange 2 (DarkOrange2)"
+
+#: lib/latexcolors:2533
+msgid "DarkOrange3"
+msgstr "Dunkles Orange 3 (DarkOrange3)"
+
+#: lib/latexcolors:2541
+msgid "DarkOrange4"
+msgstr "Dunkles Orange 4 (DarkOrange4)"
+
+#: lib/latexcolors:2549
+msgid "DarkOrchid1"
+msgstr "Dunkle Orchideenfarbe 1 (DarkOrchid1)"
+
+#: lib/latexcolors:2557
+msgid "DarkOrchid2"
+msgstr "Dunkle Orchideenfarbe 2 (DarkOrchid2)"
+
+#: lib/latexcolors:2565
+msgid "DarkOrchid3"
+msgstr "Dunkle Orchideenfarbe 3 (DarkOrchid3)"
+
+#: lib/latexcolors:2573
+msgid "DarkOrchid4"
+msgstr "Dunkle Orchideenfarbe 4 (DarkOrchid4)"
+
+#: lib/latexcolors:2581
+msgid "DarkSeaGreen1"
+msgstr "Dunkles Meergrün 1 (DarkSeaGreen1)"
+
+#: lib/latexcolors:2589
+msgid "DarkSeaGreen2"
+msgstr "Dunkles Meergrün 2 (DarkSeaGreen2)"
+
+#: lib/latexcolors:2597
+msgid "DarkSeaGreen3"
+msgstr "Dunkles Meergrün 3 (DarkSeaGreen3)"
+
+#: lib/latexcolors:2605
+msgid "DarkSeaGreen4"
+msgstr "Dunkles Meergrün 4 (DarkSeaGreen4)"
+
+#: lib/latexcolors:2613
+msgid "DarkSlateGray1"
+msgstr "Dunkles Schiefergrau 1 (DarkSlateGray1)"
+
+#: lib/latexcolors:2621
+msgid "DarkSlateGray2"
+msgstr "Dunkles Schiefergrau 2 (DarkSlateGray2)"
+
+#: lib/latexcolors:2629
+msgid "DarkSlateGray3"
+msgstr "Dunkles Schiefergrau 3 (DarkSlateGray3)"
+
+#: lib/latexcolors:2637
+msgid "DarkSlateGray4"
+msgstr "Dunkles Schiefergrau 4 (DarkSlateGray4)"
+
+#: lib/latexcolors:2645
+msgid "DeepPink1"
+msgstr "Tiefrosa 1 (DeepPink1)"
+
+#: lib/latexcolors:2653
+msgid "DeepPink2"
+msgstr "Tiefrosa 2 (DeepPink2)"
+
+#: lib/latexcolors:2661
+msgid "DeepPink3"
+msgstr "Tiefrosa 3 (DeepPink3)"
+
+#: lib/latexcolors:2669
+msgid "DeepPink4"
+msgstr "Tiefrosa 4 (DeepPink4)"
+
+#: lib/latexcolors:2677
+msgid "DeepSkyBlue1"
+msgstr "Tiefes Himmelblau 1 (DeepSkyBlue1)"
+
+#: lib/latexcolors:2685
+msgid "DeepSkyBlue2"
+msgstr "Tiefes Himmelblau 2 (DeepSkyBlue2)"
+
+#: lib/latexcolors:2693
+msgid "DeepSkyBlue3"
+msgstr "Tiefes Himmelblau 3 (DeepSkyBlue3)"
+
+#: lib/latexcolors:2701
+msgid "DeepSkyBlue4"
+msgstr "Tiefes Himmelblau 4 (DeepSkyBlue4)"
+
+#: lib/latexcolors:2709
+msgid "DodgerBlue1"
+msgstr "Dodger-Blau 1 (DodgerBlue1)"
+
+#: lib/latexcolors:2717
+msgid "DodgerBlue2"
+msgstr "Dodger-Blau 2 (DodgerBlue2)"
+
+#: lib/latexcolors:2725
+msgid "DodgerBlue3"
+msgstr "Dodger-Blau 3 (DodgerBlue3)"
+
+#: lib/latexcolors:2733
+msgid "DodgerBlue4"
+msgstr "Dodger-Blau 4 (DodgerBlue4)"
+
+#: lib/latexcolors:2741
+msgid "Firebrick1"
+msgstr "Ziegelfarbe 1 (Firebrick1)"
+
+#: lib/latexcolors:2749
+msgid "Firebrick2"
+msgstr "Ziegelfarbe 2 (Firebrick2)"
+
+#: lib/latexcolors:2757
+msgid "Firebrick3"
+msgstr "Ziegelfarbe 3 (Firebrick3)"
+
+#: lib/latexcolors:2765
+msgid "Firebrick4"
+msgstr "Ziegelfarbe 4 (Firebrick4)"
+
+#: lib/latexcolors:2773
+msgid "Gold1"
+msgstr "Gold 1 (Gold1)"
+
+#: lib/latexcolors:2781
+msgid "Gold2"
+msgstr "Gold 2 (Gold2)"
+
+#: lib/latexcolors:2789
+msgid "Gold3"
+msgstr "Gold 3 (Gold3)"
+
+#: lib/latexcolors:2797
+msgid "Gold4"
+msgstr "Gold 4 (Gold4)"
+
+#: lib/latexcolors:2805
+msgid "Goldenrod1"
+msgstr "Goldrute 1 (Goldenrod1)"
+
+#: lib/latexcolors:2813
+msgid "Goldenrod2"
+msgstr "Goldrute 2 (Goldenrod2)"
+
+#: lib/latexcolors:2821
+msgid "Goldenrod3"
+msgstr "Goldrute 3 (Goldenrod3)"
+
+#: lib/latexcolors:2829
+msgid "Goldenrod4"
+msgstr "Goldrute 4 (Goldenrod4)"
+
+#: lib/latexcolors:2837
+msgid "Green1"
+msgstr "Grün 1 (Green1)"
+
+#: lib/latexcolors:2845
+msgid "Green2"
+msgstr "Grün 2 (Green2)"
+
+#: lib/latexcolors:2853
+msgid "Green3"
+msgstr "Grün 3 (Green3)"
+
+#: lib/latexcolors:2861
+msgid "Green4"
+msgstr "Grün 4  (Green4)"
+
+#: lib/latexcolors:2869
+msgid "Honeydew1"
+msgstr "Honigmelone 1 (Honeydew1)"
+
+#: lib/latexcolors:2877
+msgid "Honeydew2"
+msgstr "Honigmelone 2 (Honeydew2)"
+
+#: lib/latexcolors:2885
+msgid "Honeydew3"
+msgstr "Honigmelone 3 (Honeydew3)"
+
+#: lib/latexcolors:2893
+msgid "Honeydew4"
+msgstr "Honigmelone 41 (Honeydew4)"
+
+#: lib/latexcolors:2901
+msgid "HotPink1"
+msgstr "Leuchtrosa 1 (HotPink1)"
+
+#: lib/latexcolors:2909
+msgid "HotPink2"
+msgstr "Leuchtrosa 2 (HotPink2)"
+
+#: lib/latexcolors:2917
+msgid "HotPink3"
+msgstr "Leuchtrosa 3 (HotPink3)"
+
+#: lib/latexcolors:2925
+msgid "HotPink4"
+msgstr "Leuchtrosa 4 (HotPink4)"
+
+#: lib/latexcolors:2933
+msgid "IndianRed1"
+msgstr "Indisch Rot 1 (IndianRed1)"
+
+#: lib/latexcolors:2941
+msgid "IndianRed2"
+msgstr "Indisch Rot 2 (IndianRed2)"
+
+#: lib/latexcolors:2949
+msgid "IndianRed3"
+msgstr "Indisch Rot 3 (IndianRed3)"
+
+#: lib/latexcolors:2957
+msgid "IndianRed4"
+msgstr "Indisch Rot 4 (IndianRed4)"
+
+#: lib/latexcolors:2965
+msgid "Ivory1"
+msgstr "Elfenbein 1 (Ivory1)"
+
+#: lib/latexcolors:2973
+msgid "Ivory2"
+msgstr "Elfenbein 2 (Ivory2)"
+
+#: lib/latexcolors:2981
+msgid "Ivory3"
+msgstr "Elfenbein 3 (Ivory3)"
+
+#: lib/latexcolors:2989
+msgid "Ivory4"
+msgstr "Elfenbein 4 (Ivory4)"
+
+#: lib/latexcolors:2997
+msgid "Khaki1"
+msgstr "Khaki 1 (Khaki1)"
+
+#: lib/latexcolors:3005
+msgid "Khaki2"
+msgstr "Khaki 2 (Khaki2)"
+
+#: lib/latexcolors:3013
+msgid "Khaki3"
+msgstr "Khaki 3 (Khaki3)"
+
+#: lib/latexcolors:3021
+msgid "Khaki4"
+msgstr "Khaki 41 (Khaki4)"
+
+#: lib/latexcolors:3029
+msgid "LavenderBlush1"
+msgstr "Lavendelblüte 1 (LavenderBlush1)"
+
+#: lib/latexcolors:3037
+msgid "LavenderBlush2"
+msgstr "Lavendelblüte 2 (LavenderBlush2)"
+
+#: lib/latexcolors:3045
+msgid "LavenderBlush3"
+msgstr "Lavendelblüte 3 (LavenderBlush3)"
+
+#: lib/latexcolors:3053
+msgid "LavenderBlush4"
+msgstr "Lavendelblüte 4 (LavenderBlush4)"
+
+#: lib/latexcolors:3061
+msgid "LemonChiffon1"
+msgstr "Chiffongelb 1 (LemonChiffon1)"
+
+#: lib/latexcolors:3069
+msgid "LemonChiffon2"
+msgstr "Chiffongelb 2 (LemonChiffon2)"
+
+#: lib/latexcolors:3077
+msgid "LemonChiffon3"
+msgstr "Chiffongelb 3 (LemonChiffon3)"
+
+#: lib/latexcolors:3085
+msgid "LemonChiffon4"
+msgstr "Chiffongelb 4 (LemonChiffon4)"
+
+#: lib/latexcolors:3093
+msgid "LightBlue1"
+msgstr "Hellblau 1 (LightBlue1)"
+
+#: lib/latexcolors:3101
+msgid "LightBlue2"
+msgstr "Hellblau 2 (LightBlue2)"
+
+#: lib/latexcolors:3109
+msgid "LightBlue3"
+msgstr "Hellblau 3 (LightBlue3)"
+
+#: lib/latexcolors:3117
+msgid "LightBlue4"
+msgstr "Hellblau 4 (LightBlue4)"
+
+#: lib/latexcolors:3125
+msgid "LightCyan1"
+msgstr "Helles Zyanblau 1 (LightCyan1)"
+
+#: lib/latexcolors:3133
+msgid "LightCyan2"
+msgstr "Helles Zyanblau 2 (LightCyan2)"
+
+#: lib/latexcolors:3141
+msgid "LightCyan3"
+msgstr "Helles Zyanblau 3 (LightCyan3)"
+
+#: lib/latexcolors:3149
+msgid "LightCyan4"
+msgstr "Helles Zyanblau 4 (LightCyan4)"
+
+#: lib/latexcolors:3157
+msgid "LightGoldenrod1"
+msgstr "Helle Goldrute 1 (LightGoldenrod1)"
+
+#: lib/latexcolors:3165
+msgid "LightGoldenrod2"
+msgstr "Helle Goldrute 2 (LightGoldenrod2)"
+
+#: lib/latexcolors:3173
+msgid "LightGoldenrod3"
+msgstr "Helle Goldrute 3 (LightGoldenrod3)"
+
+#: lib/latexcolors:3181
+msgid "LightGoldenrod4"
+msgstr "Helle Goldrute 4 (LightGoldenrod4)"
+
+#: lib/latexcolors:3189
+msgid "LightPink1"
+msgstr "Hellrosa 1 (LightPink1)"
+
+#: lib/latexcolors:3197
+msgid "LightPink2"
+msgstr "Hellrosa 2 (LightPink2)"
+
+#: lib/latexcolors:3205
+msgid "LightPink3"
+msgstr "Hellrosa 3 (LightPink3)"
+
+#: lib/latexcolors:3213
+msgid "LightPink4"
+msgstr "Hellrosa 4 (LightPink4)"
+
+#: lib/latexcolors:3221
+msgid "LightSalmon1"
+msgstr "Heller Lachs 1 (LightSalmon1)"
+
+#: lib/latexcolors:3229
+msgid "LightSalmon2"
+msgstr "Heller Lachs 2 (LightSalmon2)"
+
+#: lib/latexcolors:3237
+msgid "LightSalmon3"
+msgstr "Heller Lachs 3 (LightSalmon3)"
+
+#: lib/latexcolors:3245
+msgid "LightSalmon4"
+msgstr "Heller Lachs 4 (LightSalmon4)"
+
+#: lib/latexcolors:3253
+msgid "LightSkyBlue1"
+msgstr "Helles Himmelblau 1 (LightSkyBlue1)"
+
+#: lib/latexcolors:3261
+msgid "LightSkyBlue2"
+msgstr "Helles Himmelblau 2 (LightSkyBlue2)"
+
+#: lib/latexcolors:3269
+msgid "LightSkyBlue3"
+msgstr "Helles Himmelblau 3 (LightSkyBlue3)"
+
+#: lib/latexcolors:3277
+msgid "LightSkyBlue4"
+msgstr "Helles Himmelblau 4 (LightSkyBlue4)"
+
+#: lib/latexcolors:3285
+msgid "LightSteelBlue1"
+msgstr "Helles Stahlblau 1 (LightSteelBlue1)"
+
+#: lib/latexcolors:3293
+msgid "LightSteelBlue2"
+msgstr "Helles Stahlblau 2 (LightSteelBlue2)"
+
+#: lib/latexcolors:3301
+msgid "LightSteelBlue3"
+msgstr "Helles Stahlblau 3 (LightSteelBlue3)"
+
+#: lib/latexcolors:3309
+msgid "LightSteelBlue4"
+msgstr "Helles Stahlblau 4 (LightSteelBlue4)"
+
+#: lib/latexcolors:3317
+msgid "LightYellow1"
+msgstr "Hellgelb 1 (LightYellow1)"
+
+#: lib/latexcolors:3325
+msgid "LightYellow2"
+msgstr "Hellgelb 2 (LightYellow2)"
+
+#: lib/latexcolors:3333
+msgid "LightYellow3"
+msgstr "Hellgelb 3 (LightYellow3)"
+
+#: lib/latexcolors:3341
+msgid "LightYellow4"
+msgstr "Hellgelb 4 (LightYellow4)"
+
+#: lib/latexcolors:3349
+msgid "Magenta1"
+msgstr "Magenta 1 (Magenta1)"
+
+#: lib/latexcolors:3357
+msgid "Magenta2"
+msgstr "Magenta 2 (Magenta2)"
+
+#: lib/latexcolors:3365
+msgid "Magenta3"
+msgstr "Magenta 3 (Magenta3)"
+
+#: lib/latexcolors:3373
+msgid "Magenta4"
+msgstr "Magenta 4 (Magenta4)"
+
+#: lib/latexcolors:3381
+msgid "Maroon1"
+msgstr "Kastanienbraun 1 (Maroon1)"
+
+#: lib/latexcolors:3389
+msgid "Maroon2"
+msgstr "Kastanienbraun 2 (Maroon2)"
+
+#: lib/latexcolors:3397
+msgid "Maroon3"
+msgstr "Kastanienbraun 3 (Maroon3)"
+
+#: lib/latexcolors:3405
+msgid "Maroon4"
+msgstr "Kastanienbraun 4 (Maroon4)"
+
+#: lib/latexcolors:3413
+msgid "MediumOrchid1"
+msgstr "Mittlere Orchideenfarbe 1 (MediumOrchid1)"
+
+#: lib/latexcolors:3421
+msgid "MediumOrchid2"
+msgstr "Mittlere Orchideenfarbe 2 (MediumOrchid2)"
+
+#: lib/latexcolors:3429
+msgid "MediumOrchid3"
+msgstr "Mittlere Orchideenfarbe 3 (MediumOrchid3)"
+
+#: lib/latexcolors:3437
+msgid "MediumOrchid4"
+msgstr "Mittlere Orchideenfarbe 4 (MediumOrchid4)"
+
+#: lib/latexcolors:3445
+msgid "MediumPurple1"
+msgstr "Mittelpurpur 1 (MediumPurple1)"
+
+#: lib/latexcolors:3453
+msgid "MediumPurple2"
+msgstr "Mittelpurpur 2 (MediumPurple2)"
+
+#: lib/latexcolors:3461
+msgid "MediumPurple3"
+msgstr "Mittelpurpur 3 (MediumPurple3)"
+
+#: lib/latexcolors:3469
+msgid "MediumPurple4"
+msgstr "Mittelpurpur 4 (MediumPurple4)"
+
+#: lib/latexcolors:3477
+msgid "MistyRose1"
+msgstr "Altrosa 1 (MistyRose1)"
+
+#: lib/latexcolors:3485
+msgid "MistyRose2"
+msgstr "Altrosa 2 (MistyRose2)"
+
+#: lib/latexcolors:3493
+msgid "MistyRose3"
+msgstr "Altrosa 3 (MistyRose3)"
+
+#: lib/latexcolors:3501
+msgid "MistyRose4"
+msgstr "Altrosa 4 (MistyRose4)"
+
+#: lib/latexcolors:3509
+msgid "NavajoWhite1"
+msgstr "Navajoweiß 1 (NavajoWhite1)"
+
+#: lib/latexcolors:3517
+msgid "NavajoWhite2"
+msgstr "Navajoweiß 2 (NavajoWhite2)"
+
+#: lib/latexcolors:3525
+msgid "NavajoWhite3"
+msgstr "Navajoweiß 3 (NavajoWhite3)"
+
+#: lib/latexcolors:3533
+msgid "NavajoWhite4"
+msgstr "Navajoweiß 4 (NavajoWhite4)"
+
+#: lib/latexcolors:3541
+msgid "OliveDrab1"
+msgstr "Olivfarbiges Graubraun 1 (OliveDrab1)"
+
+#: lib/latexcolors:3549
+msgid "OliveDrab2"
+msgstr "Olivfarbiges Graubraun 2 (OliveDrab2)"
+
+#: lib/latexcolors:3557
+msgid "OliveDrab3"
+msgstr "Olivfarbiges Graubraun 3 (OliveDrab3)"
+
+#: lib/latexcolors:3565
+msgid "OliveDrab4"
+msgstr "Olivfarbiges Graubraun 4 (OliveDrab4)"
+
+#: lib/latexcolors:3573
+msgid "Orange1"
+msgstr "Orange 1 (Orange1)"
+
+#: lib/latexcolors:3581
+msgid "Orange2"
+msgstr "Orange 2 (Orange2)"
+
+#: lib/latexcolors:3589
+msgid "Orange3"
+msgstr "Orange 3 (Orange3)"
+
+#: lib/latexcolors:3597
+msgid "Orange4"
+msgstr "Orange 4 (Orange4)"
+
+#: lib/latexcolors:3605
+msgid "OrangeRed1"
+msgstr "Orange rot 1 (OrangeRed1)"
+
+#: lib/latexcolors:3613
+msgid "OrangeRed2"
+msgstr "Orange rot 2 (OrangeRed2)"
+
+#: lib/latexcolors:3621
+msgid "OrangeRed3"
+msgstr "Orange rot 3 (OrangeRed3)"
+
+#: lib/latexcolors:3629
+msgid "OrangeRed4"
+msgstr "Orange rot 4 (OrangeRed4)"
+
+#: lib/latexcolors:3637
+msgid "Orchid1"
+msgstr "Orchidee 1 (Orchid1)"
+
+#: lib/latexcolors:3645
+msgid "Orchid2"
+msgstr "Orchidee 2 (Orchid2)"
+
+#: lib/latexcolors:3653
+msgid "Orchid3"
+msgstr "Orchidee 3 (Orchid3)"
+
+#: lib/latexcolors:3661
+msgid "Orchid4"
+msgstr "Orchidee 4 (Orchid4)"
+
+#: lib/latexcolors:3669
+msgid "PaleGreen1"
+msgstr "Blassgrün 1 (PaleGreen1)"
+
+#: lib/latexcolors:3677
+msgid "PaleGreen2"
+msgstr "Blassgrün 2 (PaleGreen2)"
+
+#: lib/latexcolors:3685
+msgid "PaleGreen3"
+msgstr "Blassgrün 3 (PaleGreen3)"
+
+#: lib/latexcolors:3693
+msgid "PaleGreen4"
+msgstr "Blassgrün 4 (PaleGreen4)"
+
+#: lib/latexcolors:3701
+msgid "PaleTurquoise1"
+msgstr "Blasstürkis 1 (PaleTurquoise1)"
+
+#: lib/latexcolors:3709
+msgid "PaleTurquoise2"
+msgstr "Blasstürkis 2 (PaleTurquoise2)"
+
+#: lib/latexcolors:3717
+msgid "PaleTurquoise3"
+msgstr "Blasstürkis 3 (PaleTurquoise3)"
+
+#: lib/latexcolors:3725
+msgid "PaleTurquoise4"
+msgstr "Blasstürkis 4 (PaleTurquoise4)"
+
+#: lib/latexcolors:3733
+msgid "PaleVioletRed1"
+msgstr "Blasses Violettrot 1 (PaleVioletRed1)"
+
+#: lib/latexcolors:3741
+msgid "PaleVioletRed2"
+msgstr "Blasses Violettrot 2 (PaleVioletRed2)"
+
+#: lib/latexcolors:3749
+msgid "PaleVioletRed3"
+msgstr "Blasses Violettrot 3 (PaleVioletRed3)"
+
+#: lib/latexcolors:3757
+msgid "PaleVioletRed4"
+msgstr "Blasses Violettrot 4 (PaleVioletRed4)"
+
+#: lib/latexcolors:3765
+msgid "PeachPuff1"
+msgstr "Pfirsich 1 (PeachPuff1)"
+
+#: lib/latexcolors:3773
+msgid "PeachPuff2"
+msgstr "Pfirsich 2 (PeachPuff2)"
+
+#: lib/latexcolors:3781
+msgid "PeachPuff3"
+msgstr "Pfirsich 3 (PeachPuff3)"
+
+#: lib/latexcolors:3789
+msgid "PeachPuff4"
+msgstr "Pfirsich 4 (PeachPuff4)"
+
+#: lib/latexcolors:3797
+msgid "Pink1"
+msgstr "Rosa 1 (Pink1)"
+
+#: lib/latexcolors:3805
+msgid "Pink2"
+msgstr "Rosa 2 (Pink2)"
+
+#: lib/latexcolors:3813
+msgid "Pink3"
+msgstr "Rosa 3 (Pink3)"
+
+#: lib/latexcolors:3821
+msgid "Pink4"
+msgstr "Rosa 4 (Pink4)"
+
+#: lib/latexcolors:3829
+msgid "Plum1"
+msgstr "Pflaumenblau 1 (Plum1)"
+
+#: lib/latexcolors:3837
+msgid "Plum2"
+msgstr "Pflaumenblau 2 (Plum2)"
+
+#: lib/latexcolors:3845
+msgid "Plum3"
+msgstr "Pflaumenblau 3 (Plum3)"
+
+#: lib/latexcolors:3853
+msgid "Plum4"
+msgstr "Pflaumenblau 4 (Plum4)"
+
+#: lib/latexcolors:3861
+msgid "Purple1"
+msgstr "Purpur 1 (Purple1)"
+
+#: lib/latexcolors:3869
+msgid "Purple2"
+msgstr "Purpur 2 (Purple2)"
+
+#: lib/latexcolors:3877
+msgid "Purple3"
+msgstr "Purpur 3 (Purple3)"
+
+#: lib/latexcolors:3885
+msgid "Purple4"
+msgstr "Purpur 4 (Purple4)"
+
+#: lib/latexcolors:3893
+msgid "Red1"
+msgstr "Rot 1 (Red1)"
+
+#: lib/latexcolors:3901
+msgid "Red2"
+msgstr "Rot 2 (Red2)"
+
+#: lib/latexcolors:3909
+msgid "Red3"
+msgstr "Rot 3 (Red3)"
+
+#: lib/latexcolors:3917
+msgid "Red4"
+msgstr "Rot 4 (Red4)"
+
+#: lib/latexcolors:3925
+msgid "RosyBrown1"
+msgstr "Rosiges Braun 1 (RosyBrown1)"
+
+#: lib/latexcolors:3933
+msgid "RosyBrown2"
+msgstr "Rosiges Braun 2 (RosyBrown2)"
+
+#: lib/latexcolors:3941
+msgid "RosyBrown3"
+msgstr "Rosiges Braun 3 (RosyBrown3)"
+
+#: lib/latexcolors:3949
+msgid "RosyBrown4"
+msgstr "Rosiges Braun 4 (RosyBrown4)"
+
+#: lib/latexcolors:3957
+msgid "RoyalBlue1"
+msgstr "Königsblau 1 (RoyalBlue1)"
+
+#: lib/latexcolors:3965
+msgid "RoyalBlue2"
+msgstr "Königsblau 2 (RoyalBlue2)"
+
+#: lib/latexcolors:3973
+msgid "RoyalBlue3"
+msgstr "Königsblau 3 (RoyalBlue3)"
+
+#: lib/latexcolors:3981
+msgid "RoyalBlue4"
+msgstr "Königsblau 4 (RoyalBlue4)"
+
+#: lib/latexcolors:3989
+msgid "Salmon1"
+msgstr "Lachs 1 (Salmon1)"
+
+#: lib/latexcolors:3997
+msgid "Salmon2"
+msgstr "Lachs 2 (Salmon2)"
+
+#: lib/latexcolors:4005
+msgid "Salmon3"
+msgstr "Lachs 3 (Salmon3)"
+
+#: lib/latexcolors:4013
+msgid "Salmon4"
+msgstr "Lachs 4 (Salmon4)"
+
+#: lib/latexcolors:4021
+msgid "SeaGreen1"
+msgstr "Meergrün 1 (SeaGreen1)"
+
+#: lib/latexcolors:4029
+msgid "SeaGreen2"
+msgstr "Meergrün 2 (SeaGreen2)"
+
+#: lib/latexcolors:4037
+msgid "SeaGreen3"
+msgstr "Meergrün 3 (SeaGreen3)"
+
+#: lib/latexcolors:4045
+msgid "SeaGreen4"
+msgstr "Meergrün 4 (SeaGreen4)"
+
+#: lib/latexcolors:4053
+msgid "Seashell1"
+msgstr "Muschel 1 (Seashell1)"
+
+#: lib/latexcolors:4061
+msgid "Seashell2"
+msgstr "Muschel 2 (Seashell2)"
+
+#: lib/latexcolors:4069
+msgid "Seashell3"
+msgstr "Muschel 3 (Seashell3)"
+
+#: lib/latexcolors:4077
+msgid "Seashell4"
+msgstr "Muschel 4 (Seashell4)"
+
+#: lib/latexcolors:4085
+msgid "Sienna1"
+msgstr "Siena 1 (Sienna1)"
+
+#: lib/latexcolors:4093
+msgid "Sienna2"
+msgstr "Siena 2 (Sienna2)"
+
+#: lib/latexcolors:4101
+msgid "Sienna3"
+msgstr "Siena 3 (Sienna3)"
+
+#: lib/latexcolors:4109
+msgid "Sienna4"
+msgstr "Siena 4 (Sienna4)"
+
+#: lib/latexcolors:4117
+msgid "SkyBlue1"
+msgstr "Himmelblau 1 (SkyBlue1)"
+
+#: lib/latexcolors:4125
+msgid "SkyBlue2"
+msgstr "Himmelblau 2 (SkyBlue2)"
+
+#: lib/latexcolors:4133
+msgid "SkyBlue3"
+msgstr "Himmelblau 3 (SkyBlue3)"
+
+#: lib/latexcolors:4141
+msgid "SkyBlue4"
+msgstr "Himmelblau 4 (SkyBlue4)"
+
+#: lib/latexcolors:4149
+msgid "SlateBlue1"
+msgstr "Schieferblau 1 (SlateBlue1)"
+
+#: lib/latexcolors:4157
+msgid "SlateBlue2"
+msgstr "Schieferblau 2 (SlateBlue2)"
+
+#: lib/latexcolors:4165
+msgid "SlateBlue3"
+msgstr "Schieferblau 3 (SlateBlue3)"
+
+#: lib/latexcolors:4173
+msgid "SlateBlue4"
+msgstr "Schieferblau 4 (SlateBlue4)"
+
+#: lib/latexcolors:4181
+msgid "SlateGray1"
+msgstr "Schiefergrau 1 (SlateGray1)"
+
+#: lib/latexcolors:4189
+msgid "SlateGray2"
+msgstr "Schiefergrau 2 (SlateGray2)"
+
+#: lib/latexcolors:4197
+msgid "SlateGray3"
+msgstr "Schiefergrau 3 (SlateGray3)"
+
+#: lib/latexcolors:4205
+msgid "SlateGray4"
+msgstr "Schiefergrau 4 (SlateGray4)"
+
+#: lib/latexcolors:4213
+msgid "Snow1"
+msgstr "Schneeweiß 1 (Snow1)"
+
+#: lib/latexcolors:4221
+msgid "Snow2"
+msgstr "Schneeweiß 2 (Snow2)"
+
+#: lib/latexcolors:4229
+msgid "Snow3"
+msgstr "Schneeweiß 3 (Snow3)"
+
+#: lib/latexcolors:4237
+msgid "Snow4"
+msgstr "Schneeweiß 4 (Snow4)"
+
+#: lib/latexcolors:4245
+msgid "SpringGreen1"
+msgstr "Frühlingsgrün 1 (SpringGreen1)"
+
+#: lib/latexcolors:4253
+msgid "SpringGreen2"
+msgstr "Frühlingsgrün 2 (SpringGreen2)"
+
+#: lib/latexcolors:4261
+msgid "SpringGreen3"
+msgstr "Frühlingsgrün 3 (SpringGreen3)"
+
+#: lib/latexcolors:4269
+msgid "SpringGreen4"
+msgstr "Frühlingsgrün 4 (SpringGreen4)"
+
+#: lib/latexcolors:4277
+msgid "SteelBlue1"
+msgstr "Stahlblau 1 (SteelBlue1)"
+
+#: lib/latexcolors:4285
+msgid "SteelBlue2"
+msgstr "Stahlblau 2 (SteelBlue2)"
+
+#: lib/latexcolors:4293
+msgid "SteelBlue3"
+msgstr "Stahlblau 3 (SteelBlue3)"
+
+#: lib/latexcolors:4301
+msgid "SteelBlue4"
+msgstr "Stahlblau 4 (SteelBlue4)"
+
+#: lib/latexcolors:4309
+msgid "Tan1"
+msgstr "Hellbraun 1 (Tan1)"
+
+#: lib/latexcolors:4317
+msgid "Tan2"
+msgstr "Hellbraun 2 (Tan2)"
+
+#: lib/latexcolors:4325
+msgid "Tan3"
+msgstr "Hellbraun 3 (Tan3)"
+
+#: lib/latexcolors:4333
+msgid "Tan4"
+msgstr "Hellbraun 4 (Tan4)"
+
+#: lib/latexcolors:4341
+msgid "Thistle1"
+msgstr "Distel 1 (Thistle1)"
+
+#: lib/latexcolors:4349
+msgid "Thistle2"
+msgstr "Distel 2 (Thistle2)"
+
+#: lib/latexcolors:4357
+msgid "Thistle3"
+msgstr "Distel 3 (Thistle3)"
+
+#: lib/latexcolors:4365
+msgid "Thistle4"
+msgstr "Distel 4 (Thistle4)"
+
+#: lib/latexcolors:4373
+msgid "Tomato1"
+msgstr "Tomatenrot 1 (Tomato1)"
+
+#: lib/latexcolors:4381
+msgid "Tomato2"
+msgstr "Tomatenrot 2 (Tomato2)"
+
+#: lib/latexcolors:4389
+msgid "Tomato3"
+msgstr "Tomatenrot 3 (Tomato3)"
+
+#: lib/latexcolors:4397
+msgid "Tomato4"
+msgstr "Tomatenrot 4 (Tomato4)"
+
+#: lib/latexcolors:4405
+msgid "Turquoise1"
+msgstr "Türkis 1 (Turquoise1)"
+
+#: lib/latexcolors:4413
+msgid "Turquoise2"
+msgstr "Türkis 2 (Turquoise2)"
+
+#: lib/latexcolors:4421
+msgid "Turquoise3"
+msgstr "Türkis 3 (Turquoise3)"
+
+#: lib/latexcolors:4429
+msgid "Turquoise4"
+msgstr "Türkis 4 (Turquoise4)"
+
+#: lib/latexcolors:4437
+msgid "VioletRed1"
+msgstr "Violett-Rot 1 (VioletRed1)"
+
+#: lib/latexcolors:4445
+msgid "VioletRed2"
+msgstr "Violett-Rot 2 (VioletRed2)"
+
+#: lib/latexcolors:4453
+msgid "VioletRed3"
+msgstr "Violett-Rot 3 (VioletRed3)"
+
+#: lib/latexcolors:4461
+msgid "VioletRed4"
+msgstr "Violett-Rot 4 (VioletRed4)"
+
+#: lib/latexcolors:4469
+msgid "Wheat1"
+msgstr "Weizen 1 (Wheat1)"
+
+#: lib/latexcolors:4477
+msgid "Wheat2"
+msgstr "Weizen 2 (Wheat2)"
+
+#: lib/latexcolors:4485
+msgid "Wheat3"
+msgstr "Weizen 3 (Wheat3)"
+
+#: lib/latexcolors:4493
+msgid "Wheat4"
+msgstr "Weizen 4 (Wheat4)"
+
+#: lib/latexcolors:4501
+msgid "Yellow1"
+msgstr "Gelb 1 (Yellow1)"
+
+#: lib/latexcolors:4509
+msgid "Yellow2"
+msgstr "Gelb 2 (Yellow2)"
+
+#: lib/latexcolors:4517
+msgid "Yellow3"
+msgstr "Gelb 3 (Yellow3)"
+
+#: lib/latexcolors:4525
+msgid "Yellow4"
+msgstr "Gelb 4 (Yellow4)"
+
+#: lib/latexcolors:4533
+msgid "Gray0"
+msgstr "Grau 0 (Gray0)"
+
+#: lib/latexcolors:4541
+msgid "Green0"
+msgstr "Grün 0 (Green0)"
+
+#: lib/latexcolors:4558
+msgid "Maroon0"
+msgstr "Kastanienbraun 0 (Maroon0)"
+
+#: lib/latexcolors:4566
+msgid "Purple0"
+msgstr "Purpur 0 (Purple0)"
+
 #: lib/latexfonts:94
 msgid "AE (Almost European)"
 msgstr "AE (Almost European)"
@@ -29818,7 +31969,7 @@ msgstr "Braun"
 
 #: src/Color.cpp:248
 msgid "cyan"
-msgstr "Cyan"
+msgstr "Zyanblau (Cyan)"
 
 #: src/Color.cpp:249
 msgid "darkgray"
@@ -29854,11 +32005,11 @@ msgstr "Orange"
 
 #: src/Color.cpp:257
 msgid "pink"
-msgstr "Pink"
+msgstr "Rosa (Pink)"
 
 #: src/Color.cpp:258
 msgid "purple"
-msgstr "Purpur"
+msgstr "Purpur (purple)"
 
 #: src/Color.cpp:259
 msgid "red"
@@ -34497,8 +36648,8 @@ msgid ""
 "The color could not be renamed since the new name consists of non-ASCII "
 "characters or blanks."
 msgstr ""
-"Die Farbe konnte nicht umbenannt werden, weil der neue Name nicht nur aus ASCI"
-"I-Zeichen besteht oder ein Leerzeichen enthält."
+"Die Farbe konnte nicht umbenannt werden, weil der neue Name nicht nur aus "
+"ASCII-Zeichen besteht oder ein Leerzeichen enthält."
 
 #: src/frontends/qt/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
@@ -41866,9 +44017,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Collate copies"
 #~ msgstr "Kopien sortieren"
 
-#~ msgid "&Collate"
-#~ msgstr "&Sortieren"
-
 #~ msgid "Send output to the printer"
 #~ msgstr "Auf dem Drucker ausgeben"
 
@@ -42078,63 +44226,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "PostScript files (*.ps)"
 #~ msgstr "PostScript-Dateien (*.ps)"
-
-#~ msgid "Black"
-#~ msgstr "Schwarz"
-
-#~ msgid "Blue"
-#~ msgstr "Blau"
-
-#~ msgid "Brown"
-#~ msgstr "Braun"
-
-#~ msgid "Cyan"
-#~ msgstr "Cyan"
-
-#~ msgid "Darkgray"
-#~ msgstr "Dunkelgrau"
-
-#~ msgid "Gray"
-#~ msgstr "Grau"
-
-#~ msgid "Green"
-#~ msgstr "Grün"
-
-#~ msgid "Lightgray"
-#~ msgstr "Hellgrau"
-
-#~ msgid "Lime"
-#~ msgstr "Limette"
-
-#~ msgid "Magenta"
-#~ msgstr "Magenta"
-
-#~ msgid "Olive"
-#~ msgstr "Olivgrün"
-
-#~ msgid "Orange"
-#~ msgstr "Orange"
-
-#~ msgid "Pink"
-#~ msgstr "Pink"
-
-#~ msgid "Purple"
-#~ msgstr "Purpur"
-
-#~ msgid "Red"
-#~ msgstr "Rot"
-
-#~ msgid "Teal"
-#~ msgstr "Türkis"
-
-#~ msgid "Violet"
-#~ msgstr "Violett"
-
-#~ msgid "White"
-#~ msgstr "Weiß"
-
-#~ msgid "Yellow"
-#~ msgstr "Gelb"
 
 #~ msgid "Inner box -- needed for fixed width & line breaks"
 #~ msgstr "Innere Box -- benötigt für feste Breite & Zeilenumbrüche"
@@ -43573,9 +45664,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Thin space"
 #~ msgstr "Halbes Leerzeichen"
 
-#~ msgid "Medium space"
-#~ msgstr "Mittlerer Abstand"
-
 #~ msgid "Thick space"
 #~ msgstr "Großer Abstand"
 
@@ -44053,9 +46141,6 @@ msgstr "Unbekannter Benutzer"
 #~ "Aiksaurus hat den folgenden Fehler gemeldet:\n"
 #~ "\n"
 #~ "%1$s."
-
-#~ msgid "Indices"
-#~ msgstr "Indexe"
 
 #~ msgid "You cannot paste into a multicell selection."
 #~ msgstr "Sie können nicht in eine Auswahl mehrerer Zellen einfügen."

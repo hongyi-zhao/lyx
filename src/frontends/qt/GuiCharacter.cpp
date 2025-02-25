@@ -204,8 +204,6 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	colorCO->setCustomColors(buffer().masterParams().custom_colors);
 	custom_colors_cache_ = buffer().masterParams().custom_colors;
 
-	colorCO->setToolTip(qt_("You can also directly type on the list to filter on color names."));
-
 	bc().setPolicy(ButtonPolicy::OkApplyCancelAutoReadOnlyPolicy);
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
 	bc().setApply(buttonBox->button(QDialogButtonBox::Apply));

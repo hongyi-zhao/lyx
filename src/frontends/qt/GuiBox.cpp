@@ -114,8 +114,6 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 
 	// frame color has "default" as default value, background has "none"
 	frameColorCO->setDefaultValue("default");
-	frameColorCO->setToolTip(qt_("You can also directly type on the list to filter on color names."));
-	backgroundColorCO->setToolTip(qt_("You can also directly type on the list to filter on color names."));
 
 	heightED->setValidator(unsignedLengthValidator(heightED));
 	widthED->setValidator(unsignedLengthValidator(widthED));

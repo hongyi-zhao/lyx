@@ -34,6 +34,7 @@ ColorsCombo::ColorsCombo(QWidget * parent)
 {
 	setLeftMargin(32);
 	fillComboColor();
+	setToolTip(qt_("Type on the list to filter on color names."));
 }
 
 

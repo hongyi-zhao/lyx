@@ -56,8 +56,8 @@ LaTeXColors::TexColorMap LaTeXColors::getLaTeXColors()
 	return(texcolormap_);
 }
 
-LaTeXColor LaTeXColors::getLaTeXColor(string const & name)
+LaTeXColor LaTeXColors::getLaTeXColor(string const & /* name */)
 {
-	return texcolormap_[name];
+	return LaTeXColor();
 }
 } // namespace lyx

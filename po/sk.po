@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-02-24 10:44+0100\n"
-"PO-Revision-Date: 2025-02-24 15:25+0000\n"
+"POT-Creation-Date: 2025-02-25 13:28+0100\n"
+"PO-Revision-Date: 2025-02-25 12:34+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slovak <kornel@lyx.org>\n"
+"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20908,22 +20908,6 @@ msgstr "Tmavá OlivoZelená 3 (DarkOliveGreen3)"
 msgid "DarkOliveGreen4"
 msgstr "Tmavá OlivoZelená 4 (DarkOliveGreen4)"
 
-#: lib/latexcolors:2517
-msgid "DarkOrange1"
-msgstr "TmavoOranžová 1 (DarkOrange1)"
-
-#: lib/latexcolors:2525
-msgid "DarkOrange2"
-msgstr "TmavoOranžová 2 (DarkOrange2)"
-
-#: lib/latexcolors:2533
-msgid "DarkOrange3"
-msgstr "TmavoOranžová 3 (DarkOrange3)"
-
-#: lib/latexcolors:2541
-msgid "DarkOrange4"
-msgstr "TmavoOranžová 4 (DarkOrange4)"
-
 #: lib/latexcolors:2549
 msgid "DarkOrchid1"
 msgstr "TmavoOrchideová 1 (DarkOrchid1)"
@@ -34349,6 +34333,11 @@ msgstr "Nedostupné: %1$s"
 msgid "Uncategorized"
 msgstr "Nie kategorizované"
 
+#: src/frontends/qt/ColorsCombo.cpp:37
+msgid "Type on the list to filter on color names."
+msgstr ""
+"Môžete tiež priamo písať do zoznamu ak chcete filtrovať s názvami farieb."
+
 #: src/frontends/qt/ColorsCombo.cpp:65
 #, c-format
 msgid "%1$s (= Default[[color]])"
@@ -35124,10 +35113,6 @@ msgstr "Vlastné farby"
 #: src/frontends/qt/GuiCharacter.cpp:208
 msgid "Text Properties"
 msgstr "Vlastnosti textu"
-
-#: src/frontends/qt/GuiCharacter.cpp:206
-msgid "You can also directly type on the list to filter on color names."
-msgstr "Môžete tiež priamo písať do zoznamu a filtrovať názvy farieb."
 
 #: src/frontends/qt/GuiCharacter.cpp:274
 msgid "Reset All To &Default"
@@ -41339,6 +41324,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "DarkOrange1"
+#~ msgstr "TmavoOranžová 1 (DarkOrange1)"
+
+#~ msgid "DarkOrange2"
+#~ msgstr "TmavoOranžová 2 (DarkOrange2)"
+
+#~ msgid "DarkOrange3"
+#~ msgstr "TmavoOranžová 3 (DarkOrange3)"
+
+#~ msgid "DarkOrange4"
+#~ msgstr "TmavoOranžová 4 (DarkOrange4)"
+
 #~ msgid "Click to change the color"
 #~ msgstr "Kliknite na zmenu farby"
 
@@ -46897,3 +46894,6 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Fráza „pozri stranu x“ je pripojená ku každému záznamu v nomenklatúre, kde x "
 #~ "je číslo čísla strany, na ktorej sa používa zodpovedajúca nomenklatúra"
+
+#~ msgid "You can also directly type on the list to filter on color names."
+#~ msgstr "Môžete tiež priamo písať do zoznamu a filtrovať názvy farieb."

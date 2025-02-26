@@ -63,7 +63,12 @@ QPalette::ColorRole role(ColorCode col)
 void ColorCache::init()
 {
 	for (int col = 0; col <= Color_ignore; ++col) {
-		lcolors_[col] = QColor(lcolor.getX11HexName(ColorCode(col), isDarkMode()).c_str());
+		// light-mode color
+		lcolors_[col].first =
+		    QColor(lcolor.getX11HexName(ColorCode(col), false).c_str());
+		// dark-mode color
+		lcolors_[col].second =
+		     QColor(lcolor.getX11HexName(ColorCode(col), true).c_str());
 	}
 
 	initialized_ = true;
@@ -80,6 +85,18 @@ QColor ColorCache::get(Color const & color) const
 /// get the given color
 QColor ColorCache::get(Color const & color, bool syscolors) const
 {
+	bool const dark_mode = isDarkMode();
+
+	if (dark_mode)
+		return getAll(color, syscolors).second;
+	else
+		return getAll(color, syscolors).first;
+}
+
+
+/// get the given color
+std::pair<QColor, QColor> ColorCache::getAll(Color const & color, bool syscolors) const
+{
 	if (!initialized_)
 		const_cast<ColorCache *>(this)->init();
 	if (color <= Color_ignore && color.mergeColor == Color_ignore) {
@@ -92,22 +109,28 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 			if (cr == QPalette::Base && c == white)
 				return lcolors_[color.baseColor];
 			else
-				return c;
+				return {c, c};
 		} else
 			return lcolors_[color.baseColor];
 	}
 	if (color.mergeColor != Color_ignore) {
 		// FIXME: This would ideally be done in the Color class, but
 		// that means that we'd have to use the Qt code in the core.
-		QColor base_color = get(color.baseColor, syscolors).toRgb();
-		QColor merge_color = get(color.mergeColor, syscolors).toRgb();
-		return QColor(
-			(base_color.red() + merge_color.red()) / 2,
-			(base_color.green() + merge_color.green()) / 2,
-			(base_color.blue() + merge_color.blue()) / 2);
+		std::pair<QColor, QColor> base_colors = getAll(color.baseColor, syscolors);
+		std::pair<QColor, QColor> merge_colors = getAll(color.mergeColor, syscolors);
+		return {QColor(
+		            (base_colors.first.toRgb().red() + merge_colors.first.toRgb().red()) / 2,
+		            (base_colors.first.toRgb().green() + merge_colors.first.toRgb().green()) / 2,
+		            (base_colors.first.toRgb().blue() + merge_colors.first.toRgb().blue()) / 2),
+		    QColor(
+		            (base_colors.first.toRgb().red() + merge_colors.first.toRgb().red()) / 2,
+		            (base_colors.first.toRgb().green() + merge_colors.first.toRgb().green()) / 2,
+		            (base_colors.first.toRgb().blue() + merge_colors.first.toRgb().blue()) / 2),
+		};
 	}
 	// used by branches
-	return QColor(lcolor.getX11HexName(color.baseColor, isDarkMode()).c_str());
+	return {QColor(lcolor.getX11HexName(color.baseColor, false).c_str()),
+		    QColor(lcolor.getX11HexName(color.baseColor, true).c_str())};
 }
 
 

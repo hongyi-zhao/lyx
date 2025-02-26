@@ -138,6 +138,7 @@ logicalmkup
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author -1900975149 "Koji Yokota" yokota@lyx.org
 \author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
 \end_header
@@ -154,7 +155,7 @@ Customizing \SpecialChar LyX
 by the \SpecialChar LyX
  Team
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 If you have comments or error corrections,
@@ -905,6 +906,45 @@ nolink "false"
 \end_inset
 
 .
+\change_inserted -1900975149 1740527245
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -1900975149 1740531616
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -1900975149 1740527263
+themes/
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ Contains files with the extension 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -1900975149 1740527460
+.theme
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ that define color themes.
+ A color theme is a set of colors that defines a color of each component of a document view in \SpecialChar LyX
+.
+ It does not affect output of the document itself.
 \end_layout
 
 \begin_layout Labeling

@@ -184,7 +184,7 @@ def checkUpgrade():
 def createDirectories():
     ''' Create the build directories if necessary '''
     for dir in ['bind', 'clipart', 'doc', 'examples', 'images', 'kbd',
-        'layouts', 'scripts', 'templates', 'ui' ]:
+        'layouts', 'scripts', 'templates', 'themes', 'ui' ]:
         if not os.path.isdir( dir ):
             try:
                 os.mkdir( dir)

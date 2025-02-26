@@ -36,6 +36,9 @@ public:
 	/// get the given color
 	QColor get(Color const & color, bool use_system_colors) const;
 
+	/// get the given color
+	std::pair<QColor, QColor> getAll(Color const & color, bool use_system_colors) const;
+
 	/// is this color replaced when LyXRC::use_system_color is true?
 	bool isSystem(ColorCode color) const;
 
@@ -52,7 +55,7 @@ private:
 	///
 	void init();
 	///
-	QColor lcolors_[Color_ignore + 1];
+	std::pair<QColor, QColor> lcolors_[Color_ignore + 1];
 	///
 	bool initialized_;
 	///

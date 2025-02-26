@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-02-25 13:28+0100\n"
-"PO-Revision-Date: 2025-02-25 12:34+0000\n"
+"POT-Creation-Date: 2025-02-26 18:48+0100\n"
+"PO-Revision-Date: 2025-02-26 18:07+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
+"Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3866,29 +3866,61 @@ msgstr "Nájsť v preambule"
 msgid "&Find"
 msgstr "Ná&jsť"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:60
-msgid "Change the selected color"
-msgstr "Zmeniť označenú farbu"
+#: src/frontends/qt/ui/PrefColorsUi.ui:39
+msgid "Apply changed color immediately"
+msgstr "Okamžite použiť zmenenú tému farieb"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:63
-msgid "A&lter..."
-msgstr "Z&meniť…"
+#: src/frontends/qt/ui/PrefColorsUi.ui:42
+msgid "Update &immediately"
+msgstr "O&kamžite použiť"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:70
 msgid "Reset the selected color to its original value"
 msgstr "Nastaviť vybranú farbu na pôvodnú hodnotu"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:73
-msgid "Restore &Default"
-msgstr "Vrátiť na &Predvolené"
+#: src/frontends/qt/ui/PrefColorsUi.ui:254
+msgid "&Restore Default"
+msgstr "&Vrátiť na Predvolené"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:302
+msgid "Enter a color name to search"
+msgstr "Zadajte meno farby, ktorú chcete vyhľadať"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:308
+msgid "Search color"
+msgstr "Hľadaná farba"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:318
+msgid "Search backward"
+msgstr "Hľadať dozadu"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:321
+msgid "<-"
+msgstr "<-"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:343
+msgid "Search forward"
+msgstr "Hľadať dopredu"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:346
+msgid "->"
+msgstr "->"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:402
+msgid "Light"
+msgstr "Svetlá"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:429
+msgid "Dark"
+msgstr "Tmavá"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:80
 msgid "Reset all colors to their original value"
 msgstr "Vrátiť všetky farby na pôvodné hodnoty"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:83
-msgid "Restore A&ll"
-msgstr "Obnoviť &všetko"
+#: src/frontends/qt/ui/PrefColorsUi.ui:244
+msgid "Restore &All"
+msgstr "O&bnoviť všetko"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:105
 msgid "Use the color scheme of your Operating System/Desktop Environment"
@@ -3898,6 +3930,50 @@ msgstr ""
 #: src/frontends/qt/ui/PrefColorsUi.ui:108
 msgid "&Use system colors"
 msgstr "Použiť farby &systému"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:73
+msgid "Load preset color theme"
+msgstr "Načítať prednastavený motív farieb"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:76
+msgid "    Load Theme"
+msgstr "    Načítať tému"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:83
+msgid "Save current color setting as a color theme"
+msgstr "Uložte aktuálne nastavenie farieb ako tému farieb"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:86
+msgid "&Save Theme..."
+msgstr "U&ložiť tému…"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:104
+msgid "<="
+msgstr "<="
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:123
+msgid "=>"
+msgstr "=>"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:147
+msgid "Change the selected light-mode color"
+msgstr "Zmeňte zvolenú farbu svetelného režimu"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:150
+msgid "Alter &Light Color..."
+msgstr "&Zmeniť svetlú farbu…"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:202
+msgid "Re&move Theme..."
+msgstr "Z&mazať tému…"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:231
+msgid "Change the selected dark-mode color"
+msgstr "Zmeňte zvolenú farbu tmavého režimu"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:234
+msgid "Alter &Dark Color..."
+msgstr "Zm&eniť tmavú farbu…"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -19298,77 +19374,77 @@ msgstr "Čierna"
 msgid "LaTeX Base Colors"
 msgstr "Základné farby LaTeXu"
 
-#: lib/latexcolors:51 lib/latexcolors:767 lib/latexcolors:2000
+#: lib/latexcolors:77 lib/latexcolors:213 lib/latexcolors:977
 msgid "White"
-msgstr "Biela"
+msgstr "Biela (White)"
 
-#: lib/latexcolors:58 lib/latexcolors:229 lib/latexcolors:888
+#: lib/latexcolors:145 lib/latexcolors:595 lib/latexcolors:1650
 msgid "Blue"
-msgstr "Modrá"
+msgstr "Modrá (Blue)"
 
-#: lib/latexcolors:65 lib/latexcolors:263 lib/latexcolors:904
+#: lib/latexcolors:91 lib/latexcolors:795 lib/latexcolors:1201
 msgid "Brown"
-msgstr "Hnedá"
+msgstr "Hnedá (Brown)"
 
 #: lib/latexcolors:73 lib/latexcolors:317 lib/latexcolors:976
 msgid "Cyan"
 msgstr "Azúrová (Cyan)"
 
-#: lib/latexcolors:80
+#: lib/latexcolors:53
 msgid "Dark gray"
-msgstr "Tmavošedá"
+msgstr "Tmavošedá (Dark gray)"
 
-#: lib/latexcolors:88 lib/latexcolors:383 lib/latexcolors:1243
+#: lib/latexcolors:61 lib/latexcolors:205 lib/latexcolors:894
 msgid "Gray"
-msgstr "Šedá"
+msgstr "Šedá (Gray)"
 
-#: lib/latexcolors:96 lib/latexcolors:393 lib/latexcolors:1251
+#: lib/latexcolors:175 lib/latexcolors:703 lib/latexcolors:1954
 msgid "Green"
-msgstr "Zelená"
+msgstr "Zelená (Green)"
 
-#: lib/latexcolors:103
+#: lib/latexcolors:69
 msgid "Light gray"
-msgstr "Svetlošedá"
+msgstr "Svetlošedá (Light gray)"
 
-#: lib/latexcolors:111 lib/latexcolors:1494
+#: lib/latexcolors:167 lib/latexcolors:1922
 msgid "Lime"
-msgstr "Limetková"
+msgstr "Limetková (Lime)"
 
-#: lib/latexcolors:119 lib/latexcolors:441 lib/latexcolors:1518
+#: lib/latexcolors:122 lib/latexcolors:397 lib/latexcolors:1433
 msgid "Magenta"
-msgstr "Purpurová"
+msgstr "Purpurová (Magenta)"
 
 #: lib/latexcolors:126 lib/latexcolors:1671
 msgid "Olive"
 msgstr "OlivoZelená (Olive)"
 
-#: lib/latexcolors:134 lib/latexcolors:513 lib/latexcolors:1687
+#: lib/latexcolors:99 lib/latexcolors:283 lib/latexcolors:1137
 msgid "Orange"
-msgstr "Oranžová"
+msgstr "Oranžová (Orange)"
 
-#: lib/latexcolors:142 lib/latexcolors:1767
+#: lib/latexcolors:114 lib/latexcolors:1401
 msgid "Pink"
-msgstr "Ružová"
+msgstr "Ružová (Pink)"
 
 #: lib/latexcolors:150 lib/latexcolors:585 lib/latexcolors:1791
 msgid "Purple"
 msgstr "Purpurová (Purple)"
 
-#: lib/latexcolors:158 lib/latexcolors:603 lib/latexcolors:1799
+#: lib/latexcolors:107 lib/latexcolors:343 lib/latexcolors:1249
 msgid "Red"
-msgstr "Červená"
+msgstr "Červená (Red)"
 
 #: lib/latexcolors:165 lib/latexcolors:1944
 msgid "Teal"
 msgstr "Tyrkysová (Teal)"
 
-#: lib/latexcolors:173 lib/latexcolors:749 lib/latexcolors:1976
+#: lib/latexcolors:129 lib/latexcolors:511 lib/latexcolors:1489
 msgid "Violet"
-msgstr "Fialová"
+msgstr "Fialová (Violet)"
 
-#: lib/latexcolors:181 lib/latexcolors:785 lib/latexcolors:2016
+#: lib/latexcolors:84 lib/latexcolors:223 lib/latexcolors:1113
 msgid "Yellow"
-msgstr "Žltá"
+msgstr "Žltá (Yellow)"
 
 #: lib/latexcolors:193
 msgid "Apricot"
@@ -20848,9 +20924,9 @@ msgstr "Koralová 4 (Coral4)"
 msgid "Cornsilk1"
 msgstr "Kukuričná 1 (Cornsilk1)"
 
-#: lib/latexcolors:2397
+#: lib/latexcolors:2288
 msgid "Cornsilk2"
-msgstr "Kukuričná 2(Cornsilk2)"
+msgstr "Kukuričná 2 (Cornsilk2)"
 
 #: lib/latexcolors:2405
 msgid "Cornsilk3"
@@ -20912,17 +20988,17 @@ msgstr "Tmavá OlivoZelená 4 (DarkOliveGreen4)"
 msgid "DarkOrchid1"
 msgstr "TmavoOrchideová 1 (DarkOrchid1)"
 
-#: lib/latexcolors:2557
+#: lib/latexcolors:4416
 msgid "DarkOrchid2"
-msgstr "TmavoOrchchideová 2 (DarkOrchid2)"
+msgstr "TmavoOrchideová 2 (DarkOrchid2)"
 
-#: lib/latexcolors:2565
+#: lib/latexcolors:4424
 msgid "DarkOrchid3"
-msgstr "TmavoOrchchideová 3 (DarkOrchid3)"
+msgstr "TmavoOrchideová 3 (DarkOrchid3)"
 
-#: lib/latexcolors:2573
+#: lib/latexcolors:4432
 msgid "DarkOrchid4"
-msgstr "TmavoOrchchideová 4 (DarkOrchid4)"
+msgstr "TmavoOrchideová 4 (DarkOrchid4)"
 
 #: lib/latexcolors:2581
 msgid "DarkSeaGreen1"
@@ -36980,6 +37056,49 @@ msgstr "Prí&kaz:"
 msgid "Screen Fonts"
 msgstr "Písma obrazovky"
 
+#: src/frontends/qt/GuiPrefs.cpp:1305
+msgid "Name the color theme"
+msgstr "Pomenujte motív farieb"
+
+#: src/frontends/qt/GuiPrefs.cpp:1306
+msgid "What is the name of the new color theme to be saved?"
+msgstr "Aký je názov nového motívu farieb, ktorý sa má uložiť?"
+
+#: src/frontends/qt/GuiPrefs.cpp:1307
+msgid "New theme name"
+msgstr "Nový názov témy"
+
+#: src/frontends/qt/GuiPrefs.cpp:1392
+msgid "Select a user theme"
+msgstr "Vyberte tému používateľa"
+
+#: src/frontends/qt/GuiPrefs.cpp:1393
+msgid ""
+"Please select a user theme to remove from the dropdown menu \"Load Theme\"."
+msgstr ""
+"Vyberte motív farieb používateľa, ktorý chcete odstrániť z rozbaľovacej "
+"ponuky „Načítať motív“."
+
+#: src/frontends/qt/GuiPrefs.cpp:1414
+msgid "Not a user theme"
+msgstr "To nie je téma používateľa"
+
+#: src/frontends/qt/GuiPrefs.cpp:1415
+msgid "The selected theme is a system theme. It cannot be removed."
+msgstr "Vybraná téma je systémová téma. Nedá sa odstrániť."
+
+#: src/frontends/qt/GuiPrefs.cpp:1425
+msgid "Are you sure?"
+msgstr "Ste si istý?"
+
+#: src/frontends/qt/GuiPrefs.cpp:1426
+msgid "Do you really want to remove the theme \""
+msgstr "Naozaj chcete odstrániť tému \""
+
+#: src/frontends/qt/GuiPrefs.cpp:1427
+msgid "\"?"
+msgstr "\"?"
+
 #: src/frontends/qt/GuiPrefs.cpp:1277
 msgid "Paths"
 msgstr "Cesty"
@@ -41323,6 +41442,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "A&lter..."
+#~ msgstr "Z&meniť…"
+
+#~ msgid "Restore &Default"
+#~ msgstr "Vrátiť na &Predvolené"
 
 #~ msgid "DarkOrange1"
 #~ msgstr "TmavoOranžová 1 (DarkOrange1)"
@@ -46897,3 +47022,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "You can also directly type on the list to filter on color names."
 #~ msgstr "Môžete tiež priamo písať do zoznamu a filtrovať názvy farieb."
+
+#~ msgid "Change the selected color"
+#~ msgstr "Zmeniť označenú farbu"
+
+#~ msgid "Restore A&ll"
+#~ msgstr "Obnoviť &všetko"

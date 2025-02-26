@@ -941,12 +941,12 @@ string const InsetBox::getFrameColor(bool const gui) const
 string const InsetBox::getBackgroundColor(bool const gui) const
 {
 	if (params_.backgroundcolor == "none")
-		return (gui) ? "white"
-			     : "page_backgroundcolor";
+		return (gui) ? "page_backgroundcolor"
+			     : "white";
 	registerLyXColor(params_.backgroundcolor);
 	if (!lcolor.isKnownLyXName(params_.backgroundcolor))
-		return (gui) ? "white"
-			     : "page_backgroundcolor";
+		return (gui) ? "page_backgroundcolor"
+			     : "white";
 	return gui ? params_.backgroundcolor
 		   : lcolor.getLaTeXName(lcolor.getFromLyXName(params_.backgroundcolor));
 }

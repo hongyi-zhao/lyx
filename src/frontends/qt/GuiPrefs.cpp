@@ -71,6 +71,7 @@
 #include <QStyleHints>
 #endif
 #include <QPainter>
+#include <QShortcut>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QValidator>
@@ -1031,6 +1032,19 @@ PrefColors::PrefColors(GuiPreferences * form)
 	newcolors_.resize(lcolors_.size());
 
 	undo_stack_ = new QUndoStack(this);
+	QShortcut* sc_undo = new QShortcut(QKeySequence(QKeySequence::Undo), this);
+	QShortcut* sc_redo = new QShortcut(QKeySequence(QKeySequence::Redo), this);
+	QShortcut* sc_search =
+	        new QShortcut(QKeySequence(QKeySequence::Find), this);
+	QShortcut* sc_search_forward =
+	        new QShortcut(QKeySequence(QKeySequence::FindNext), this);
+	QShortcut* sc_search_backward =
+	        new QShortcut(QKeySequence(QKeySequence::FindPrevious), this);
+#if !defined(Q_OS_MAC)
+	// give a shortcut to the combobox
+	QShortcut* sc_load_theme =
+	        new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_L), this);
+#endif
 
 	initializeLoadThemeCO();
 
@@ -1064,11 +1078,22 @@ PrefColors::PrefColors(GuiPreferences * form)
 	        this, SLOT(removeTheme()));
 	connect(saveThemePB, SIGNAL(clicked()),
 	        this, SLOT(saveTheme()));
+#if !defined(Q_OS_MAC)
+	connect(sc_load_theme, SIGNAL(activated()), loadThemeCO, SLOT(setFocus()));
+#endif
+	connect(sc_search, SIGNAL(activated()),
+	        searchStringEdit, SLOT(setFocus()));
+	connect(sc_search_forward, SIGNAL(activated()),
+	        this, SLOT(searchNextColorItem()));
+	connect(sc_search_backward, SIGNAL(activated()),
+	        this, SLOT(searchPreviousColorItem()));
+	connect(sc_redo, SIGNAL(activated()), undo_stack_, SLOT(redo()));
+	connect(sc_undo, SIGNAL(activated()), undo_stack_, SLOT(undo()));
 	connect(searchBackwardPB, SIGNAL(clicked()),
 	        this, SLOT(searchPreviousColorItem()));
 	connect(searchForwardPB, SIGNAL(clicked()),
 	        this, SLOT(searchNextColorItem()));
-	connect(searchStringEdit, SIGNAL(editingFinished()),
+	connect(searchStringEdit, SIGNAL(returnPressed()),
 	        this, SLOT(searchNextColorItem()));
 	connect(syscolorsCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
@@ -4136,7 +4161,6 @@ SetColor::SetColor(const int row, bool dark_mode, const QColor & new_color,
       new_color_(new_color), old_color_(old_color), newcolors_(new_color_list),
       parent_(color_module)
 {
-	LYXERR0("constructor");
 	setText(QString("Color %1 is changed to %2 (light) and %3 (dark)")
 	        .arg(lcolors_[row_]).arg(newcolors_[row_].first)
 	        .arg(newcolors_[row_].second));

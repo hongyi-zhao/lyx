@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-02-26 18:48+0100\n"
-"PO-Revision-Date: 2025-02-26 18:07+0000\n"
+"POT-Creation-Date: 2025-02-27 15:29+0100\n"
+"PO-Revision-Date: 2025-02-27 14:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3908,11 +3908,11 @@ msgstr "->"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:402
 msgid "Light"
-msgstr "Svetlá"
+msgstr "Svetlý"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:429
 msgid "Dark"
-msgstr "Tmavá"
+msgstr "Tmavý"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:80
 msgid "Reset all colors to their original value"
@@ -19361,9 +19361,9 @@ msgstr "Max. šírka"
 msgid "Maximum width (default: \\linewidth)"
 msgstr "Maximálna šírka (štandard: \\linewidth)"
 
-#: lib/latexcolors:44 lib/latexcolors:219 lib/latexcolors:872
+#: lib/latexcolors:46 lib/latexcolors:195 lib/latexcolors:818
 msgid "Black"
-msgstr "Čierna"
+msgstr "Čierna (Black)"
 
 #: lib/latexcolors:46 lib/latexcolors:53 lib/latexcolors:60 lib/latexcolors:67
 #: lib/latexcolors:75 lib/latexcolors:82 lib/latexcolors:90 lib/latexcolors:98
@@ -20591,9 +20591,9 @@ msgstr "RužovoHnedá (RosyBrown)"
 msgid "SaddleBrown"
 msgstr "SedlovoHnedá (SaddleBrown)"
 
-#: lib/latexcolors:1839
+#: lib/latexcolors:1313
 msgid "SandyBrown"
-msgstr "PiesovoHnedá (SandyBrown"
+msgstr "PieskovoHnedá (SandyBrown)"
 
 #: lib/latexcolors:1855
 msgid "Seashell"

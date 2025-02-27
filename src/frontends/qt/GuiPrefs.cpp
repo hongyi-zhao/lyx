@@ -1042,44 +1042,55 @@ PrefColors::PrefColors(GuiPreferences * form)
 	        new QShortcut(QKeySequence(QKeySequence::FindPrevious), this);
 #if !defined(Q_OS_MAC)
 	// give a shortcut to the combobox
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	QShortcut* sc_load_theme =
 	        new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_L), this);
-#endif
+#else
+	QShortcut* sc_load_theme =
+	        new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_L), this);
+#endif // QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#endif // !defined(Q_OS_MAC)
 
 	initializeLoadThemeCO();
 
 	// End initialization
 
 	connect(autoapplyCB, SIGNAL(toggled(bool)),
-		this, SLOT(changeAutoapply()));
+	        this, SLOT(changeAutoapply()));
 	connect(colorChangePB, SIGNAL(clicked(bool)),
-		this, SLOT(changeLightColor()));
+	        this, SLOT(changeLightColor()));
 	connect(colorDarkChangePB, SIGNAL(clicked(bool)),
-		this, SLOT(changeDarkColor()));
+	        this, SLOT(changeDarkColor()));
 	connect(colorResetPB, SIGNAL(clicked()),
-		this, SLOT(resetColor()));
+	        this, SLOT(resetColor()));
 	connect(colorResetAllPB, SIGNAL(clicked()),
-		this, SLOT(resetAllColor()));
+	        this, SLOT(resetAllColor()));
+	connect(exportPB, SIGNAL(clicked()),
+	        this, SLOT(exportThemeInterface()));
+	connect(importPB, SIGNAL(clicked()),
+	        this, SLOT(importThemeInterface()));
 	connect(loadThemeCO, SIGNAL(activated(int)),
-	        this, SLOT(loadTheme(int)));
+	        this, SLOT(loadThemeInterface(int)));
 	connect(lyxObjectsLW, SIGNAL(focusChanged()),
-		this, SLOT(changeFocus()));
+	        this, SLOT(changeFocus()));
 	connect(lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)),
-		this, SLOT(changeColor()));
+	        this, SLOT(changeColor()));
 	connect(lyxObjectsLW, SIGNAL(itemSelectionChanged()),
-		this, SLOT(changeLyxObjectsSelection()));
+	        this, SLOT(changeLyxObjectsSelection()));
 	connect(lyxObjectsLW,
 	        SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
 	        this, SLOT(moveCurrentItem(QListWidgetItem*,QListWidgetItem*)));
 	connect(lyxObjectsLW, SIGNAL(itemPressed(QListWidgetItem*)),
 	        this, SLOT(pressCurrentItem(QListWidgetItem*)));
-	connect(redoColorPB, SIGNAL(clicked()), undo_stack_, SLOT(redo()));
+	connect(redoColorPB, SIGNAL(clicked()),
+	        undo_stack_, SLOT(redo()));
 	connect(removeThemePB, SIGNAL(clicked()),
 	        this, SLOT(removeTheme()));
 	connect(saveThemePB, SIGNAL(clicked()),
-	        this, SLOT(saveTheme()));
+	        this, SLOT(saveThemeInterface()));
 #if !defined(Q_OS_MAC)
-	connect(sc_load_theme, SIGNAL(activated()), loadThemeCO, SLOT(setFocus()));
+	connect(sc_load_theme, SIGNAL(activated()),
+	        loadThemeCO, SLOT(setFocus()));
 #endif
 	connect(sc_search, SIGNAL(activated()),
 	        searchStringEdit, SLOT(setFocus()));
@@ -1087,8 +1098,10 @@ PrefColors::PrefColors(GuiPreferences * form)
 	        this, SLOT(searchNextColorItem()));
 	connect(sc_search_backward, SIGNAL(activated()),
 	        this, SLOT(searchPreviousColorItem()));
-	connect(sc_redo, SIGNAL(activated()), undo_stack_, SLOT(redo()));
-	connect(sc_undo, SIGNAL(activated()), undo_stack_, SLOT(undo()));
+	connect(sc_redo, SIGNAL(activated()),
+	        undo_stack_, SLOT(redo()));
+	connect(sc_undo, SIGNAL(activated()),
+	        undo_stack_, SLOT(undo()));
 	connect(searchBackwardPB, SIGNAL(clicked()),
 	        this, SLOT(searchPreviousColorItem()));
 	connect(searchForwardPB, SIGNAL(clicked()),
@@ -1096,10 +1109,11 @@ PrefColors::PrefColors(GuiPreferences * form)
 	connect(searchStringEdit, SIGNAL(returnPressed()),
 	        this, SLOT(searchNextColorItem()));
 	connect(syscolorsCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
+	        this, SIGNAL(changed()));
 	connect(syscolorsCB, SIGNAL(toggled(bool)),
-		this, SLOT(changeSysColor()));
-	connect(undoColorPB, SIGNAL(clicked()), undo_stack_, SLOT(undo()));
+	        this, SLOT(changeSysColor()));
+	connect(undoColorPB, SIGNAL(clicked()),
+	        undo_stack_, SLOT(undo()));
 }
 
 
@@ -1298,29 +1312,68 @@ void PrefColors::setDisabledResets()
 }
 
 
-void PrefColors::saveTheme()
+void PrefColors::exportThemeInterface()
 {
+	if (themeNameInterface(true))
+		return;
+
+	// ask for directory to export
+	QString home_dir = toqstr(package().get_home_dir().absFileName());
+	FileDialog dialog("Export a color theme");
+	FileDialog::Result result =
+	        dialog.save((home_dir == "") ? "/" : home_dir, {"*.theme", "*.*"},
+	                    theme_file_name_);
+	QString file_path;
+	if (result.first == FileDialog::Chosen)
+		file_path = result.second;
+
+	saveTheme(file_path);
+
+	return;
+}
+
+
+void PrefColors::saveThemeInterface()
+{
+	if (themeNameInterface(false))
+		return;
+
+	QString file_path = toqstr(package().user_support().absFileName())
+	        + "/themes/" + theme_file_name_;
+	saveTheme(file_path);
+
+	return;
+}
+
+
+bool PrefColors::themeNameInterface(bool exporting)
+{
+	QString prompt = exporting ?
+	            qt_("What is the name of the color theme to export?") :
+	            qt_("What is the name of the new color theme to save?");
 	bool ok;
-	QString theme_name =
+	theme_name_ =
 	        QInputDialog::getText(this, qt_("Name the color theme"),
-	                qt_("What is the name of the new color theme to be saved?"),
-	                QLineEdit::Normal, qt_("New theme name"), &ok);
-	QString file_name;
-	if (ok && !theme_name.isEmpty()) {
+	                              prompt, QLineEdit::Normal,
+	                              (theme_name_ == "") ? qt_("New theme name") : theme_name_, &ok);
+
+	if (ok && !theme_name_.isEmpty()) {
 		// Makefile cannot handle spaces in filenames directly
 		// so replace it with an underscore same as other places
-		file_name = theme_name;
-		file_name.replace(' ', '_');
-		file_name += ".theme";
+		theme_file_name_ = theme_name_;
+		theme_file_name_.replace(' ', '_');
+		theme_file_name_ += ".theme";
 	} else {
 		activatePrefsWindow(form_);
-		return;
+		return true;
 	}
 
-	QString full_path = toqstr(package().user_support().absFileName())
-	        + "/themes/" + file_name;
+	return false;
+}
 
-	QFile file_to_save(full_path);
+void PrefColors::saveTheme(QString file_path)
+{
+	QFile file_to_save(file_path);
 	if (file_to_save.exists()) {
 		QMessageBox msgBox;
 		msgBox.setIcon(QMessageBox::Warning);
@@ -1333,11 +1386,11 @@ void PrefColors::saveTheme()
 		      return;
 	}
 
-	ofstream ofs(fromqstr(full_path));
+	ofstream ofs(fromqstr(file_path));
 
 	ofs << "#\n" <<
 	       "#   This is a definition file of a color theme \"" <<
-	            fromqstr(theme_name) << "\" of LyX\n" <<
+	            fromqstr(theme_name_) << "\" of LyX\n" <<
 	       "#\n" <<
 	       "#   Author: " << form_->rc().user_name <<
 	                " (" << form_->rc().user_email << ")\n" <<
@@ -1357,11 +1410,33 @@ void PrefColors::saveTheme()
 }
 
 
-void PrefColors::loadTheme(int index)
+void PrefColors::importThemeInterface()
 {
-	QString filename = loadThemeCO->itemData(index).toString();
+	QString home_dir = toqstr(package().get_home_dir().absFileName());
+	FileDialog dialog("Import a color theme");
+	FileDialog::Result result =
+	        dialog.open((home_dir == "") ? "/" : home_dir, {"*.theme", "*.*"});
+	QString file_path;
+	if (result.first == FileDialog::Chosen)
+		file_path = result.second;
+	else
+		return;
 
-	form_->rc().read(FileName(fromqstr(filename)), true);
+	loadTheme(FileName(fromqstr(file_path)));
+
+	return;
+}
+
+
+void PrefColors::loadThemeInterface(int index)
+{
+	loadTheme(FileName(fromqstr(loadThemeCO->itemData(index).toString())));
+}
+
+
+void PrefColors::loadTheme(FileName filename)
+{
+	form_->rc().read(filename, true);
 	for (size_type row = 0; row < lcolors_.size(); ++row) {
 		newcolors_[size_t(row)] =
 		    {QString(lcolor.getX11HexName(lcolors_[row], false).c_str()),

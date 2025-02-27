@@ -60,33 +60,7 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="3">
-    <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0">
-     <item row="4" column="6">
-      <widget class="QComboBox" name="loadThemeCO">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip">
-        <string>Load preset color theme</string>
-       </property>
-       <property name="placeholderText">
-        <string>    Load Theme</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="6">
-      <widget class="QPushButton" name="saveThemePB">
-       <property name="toolTip">
-        <string>Save current color setting as a color theme</string>
-       </property>
-       <property name="text">
-        <string>&amp;Save Theme...</string>
-       </property>
-      </widget>
-     </item>
+    <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0">
      <item row="0" column="2">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">
@@ -135,6 +109,59 @@
        </item>
       </layout>
      </item>
+     <item row="4" column="6">
+      <widget class="QPushButton" name="colorResetAllPB">
+       <property name="toolTip">
+        <string>Reset all colors to their original value</string>
+       </property>
+       <property name="text">
+        <string>Restore &amp;All</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="6">
+      <spacer name="vsRightMiddleBelow">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="0" rowspan="12" colspan="6">
+      <widget class="lyx::frontend::ColorListWidget" name="lyxObjectsLW">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="6">
+      <widget class="QPushButton" name="saveThemePB">
+       <property name="toolTip">
+        <string>Save current color setting as a color theme</string>
+       </property>
+       <property name="text">
+        <string>&amp;Save Theme...</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="6">
+      <widget class="QPushButton" name="importPB">
+       <property name="text">
+        <string>Import...</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="6">
       <widget class="QPushButton" name="colorChangePB">
        <property name="sizePolicy">
@@ -150,123 +177,6 @@
         <string>Alter &amp;Light Color...</string>
        </property>
       </widget>
-     </item>
-     <item row="0" column="5">
-      <spacer name="hsTitleRight">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Policy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>13</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="0" rowspan="8" colspan="6">
-      <widget class="lyx::frontend::ColorListWidget" name="lyxObjectsLW">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="6">
-      <spacer name="vsRightMiddle">
-       <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Policy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>32</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="6" column="6">
-      <widget class="QPushButton" name="removeThemePB">
-       <property name="text">
-        <string>Re&amp;move Theme...</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <spacer name="hsTitleCenter">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Policy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>30</width>
-         <height>13</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="6">
-      <widget class="QPushButton" name="colorDarkChangePB">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip">
-        <string>Change the selected dark-mode color</string>
-       </property>
-       <property name="text">
-        <string>Alter &amp;Dark Color...</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="6">
-      <widget class="QPushButton" name="colorResetAllPB">
-       <property name="toolTip">
-        <string>Reset all colors to their original value</string>
-       </property>
-       <property name="text">
-        <string>Restore &amp;All</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="6">
-      <widget class="QPushButton" name="colorResetPB">
-       <property name="toolTip">
-        <string>Reset the selected color to its original value</string>
-       </property>
-       <property name="text">
-        <string>&amp;Restore Default</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <spacer name="hsTitleLeft">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
      <item row="0" column="4">
       <layout class="QHBoxLayout" name="searchLayout">
@@ -358,18 +268,38 @@
        </item>
       </layout>
      </item>
-     <item row="7" column="6">
-      <spacer name="vsRightBottom">
+     <item row="2" column="6">
+      <widget class="QPushButton" name="colorResetPB">
+       <property name="toolTip">
+        <string>Reset the selected color to its original value</string>
+       </property>
+       <property name="text">
+        <string>&amp;Restore Theme</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <spacer name="hsTitleCenter">
        <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Policy::Maximum</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>20</width>
-         <height>40</height>
+         <width>30</width>
+         <height>13</height>
         </size>
        </property>
       </spacer>
+     </item>
+     <item row="10" column="6">
+      <widget class="QPushButton" name="exportPB">
+       <property name="text">
+        <string>Export...</string>
+       </property>
+      </widget>
      </item>
      <item row="0" column="0">
       <layout class="QGridLayout" name="labelLayout">
@@ -450,6 +380,103 @@
        </item>
       </layout>
      </item>
+     <item row="3" column="6">
+      <spacer name="vsRightMiddle">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Policy::Maximum</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>32</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="6">
+      <widget class="QPushButton" name="colorDarkChangePB">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Change the selected dark-mode color</string>
+       </property>
+       <property name="text">
+        <string>Alter &amp;Dark Color...</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="5">
+      <spacer name="hsTitleRight">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Policy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>13</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="9" column="6">
+      <spacer name="vsRightBottom">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="1">
+      <spacer name="hsTitleLeft">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="8" column="6">
+      <widget class="QPushButton" name="removeThemePB">
+       <property name="text">
+        <string>Re&amp;move Theme...</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="6">
+      <widget class="QComboBox" name="loadThemeCO">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Load preset color theme</string>
+       </property>
+       <property name="placeholderText">
+        <string>    Load Theme</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -472,7 +499,6 @@
   <tabstop>loadThemeCO</tabstop>
   <tabstop>saveThemePB</tabstop>
   <tabstop>removeThemePB</tabstop>
-  <tabstop>colorResetAllPB</tabstop>
   <tabstop>syscolorsCB</tabstop>
   <tabstop>autoapplyCB</tabstop>
   <tabstop>undoColorPB</tabstop>

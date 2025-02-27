@@ -267,9 +267,11 @@ private Q_SLOTS:
 		      QString const & old_color);
 	bool isDefaultColor(int const row, std::pair<QString, QString> const & color);
 	void setDisabledResets();
-	void saveTheme();
-	void loadTheme(int index);
+	void saveThemeInterface();
+	void loadThemeInterface(int index);
 	void removeTheme();
+	void exportThemeInterface();
+	void importThemeInterface();
 
 	void moveCurrentItem(QListWidgetItem *cur = nullptr,
 	                     QListWidgetItem *prev = nullptr);
@@ -296,6 +298,12 @@ private:
 	///
 	void initializeLoadThemeCO();
 	///
+	void saveTheme(QString file_path);
+	///
+	void loadTheme(support::FileName filename);
+	///
+	bool themeNameInterface(bool exporting);
+	///
 	std::vector<ColorCode> lcolors_;
 	///
 	std::vector<std::pair<QString, QString>> curcolors_;
@@ -311,7 +319,8 @@ private:
 	int const spacer_width_ = 6;
 
 	bool autoapply_ = false;
-
+	QString theme_name_ = "";
+	QString theme_file_name_;
 	QUndoStack * undo_stack_;
 
 	friend class SetColor;

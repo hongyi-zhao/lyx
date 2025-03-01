@@ -7,6 +7,33 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2025-02-28 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 634: Support for colortbl
+	1. New buffer parmams:
+	   * \table_bordercolor => \arrayrulecolor{<latex color from value>}
+	   * \table_alt_row_colors_start (1),
+	   * \table_odd_row_color (2),
+	   * \table_even_row_color (3)
+	     => \rowcolors{<1>}{<latex color from 2>}{<latex color from 3>}
+	2. New table params:
+	   a.) features:
+	       * borderColor="<lyxname>" => \arrayrulecolor{<latex color from value>}
+	       * startAltRowColors="<int>" (1)
+	       * oddRowsColor="<lyxname>" (2)
+	       * evenRowsColor="<lyxname>" (3)
+	         => \rowcolors{<1>}{<latex color from 2>}{<latex color from 3>}
+	   b.) cell: color=<lyxname> => \cellcolor{<latex color from value>}
+	   c.) row:
+	       * color=<lyxname> (1)
+	       * colorleftoverhang=<tex code> (2)
+	       * colorrightoverhang=<tex code> (3)
+	       => \cellcolor{<latex color from value>}[<2>][<3>]
+	   d.) column:
+	       * color=<lyxname> (1)
+	       * colorleftoverhang=<tex code> (2)
+	       * colorrightoverhang=<tex code> (3)
+	       => >{\rowcolor{<latex color from value>}[<2>][<3>]}
+
 2025-02-22 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 633: 
 	 1. \fontcolor, \backgroundcolor, \notefontcolor"

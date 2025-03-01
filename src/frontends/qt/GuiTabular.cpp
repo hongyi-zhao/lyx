@@ -67,6 +67,24 @@ GuiTabular::GuiTabular(QWidget * parent)
 	bottomspaceUnitLC->setCurrentItem(Length::defaultUnit());
 	interlinespaceUnitLC->setCurrentItem(Length::defaultUnit());
 
+	QString const overhangToolTip(qt_("Adjust the horizontal overhang of the coloring here if needed."));
+	columnColorLeftOHED->setPlaceholderText(qt_("Default"));
+	columnColorRightOHED->setPlaceholderText(qt_("Default"));
+	rowColorLeftOHED->setPlaceholderText(qt_("Default"));
+	rowColorRightOHED->setPlaceholderText(qt_("Default"));
+	columnColorLeftOHED->setToolTip(overhangToolTip);
+	columnColorRightOHED->setToolTip(overhangToolTip);
+	rowColorLeftOHED->setToolTip(overhangToolTip);
+	rowColorRightOHED->setToolTip(overhangToolTip);
+	borderColorCO->setDefaultValue("default");
+	columnColorCO->setDefaultValue("default");
+	cellColorCO->setDefaultValue("default");
+	oddRowColorCO->setDefaultValue("default");
+	oddRowColorCO->hasNone(true);
+	evenRowColorCO->setDefaultValue("default");
+	evenRowColorCO->hasNone(true);
+	rowColorCO->setDefaultValue("default");
+
 	connect(topspaceCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(checkEnabled()));
 	connect(bottomspaceCO, SIGNAL(currentIndexChanged(int)),
@@ -108,6 +126,29 @@ GuiTabular::GuiTabular(QWidget * parent)
 	connect(multirowOffsetED, SIGNAL(textEdited(const QString &)),
 		this, SLOT(checkEnabled()));
 	connect(multirowOffsetUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SLOT(checkEnabled()));
+
+	connect(cellColorCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
+	connect(rowColorCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
+	connect(columnColorCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
+	connect(oddRowColorCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
+	connect(evenRowColorCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
+	connect(borderColorCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(checkEnabled()));
+	connect(columnColorLeftOHED, SIGNAL(textEdited(const QString &)),
+		this, SLOT(checkEnabled()));
+	connect(columnColorRightOHED, SIGNAL(textEdited(const QString &)),
+		this, SLOT(checkEnabled()));
+	connect(rowColorLeftOHED, SIGNAL(textEdited(const QString &)),
+		this, SLOT(checkEnabled()));
+	connect(rowColorRightOHED, SIGNAL(textEdited(const QString &)),
+		this, SLOT(checkEnabled()));
+	connect(firstColoredRowSB, SIGNAL(valueChanged(int)),
 		this, SLOT(checkEnabled()));
 	connect(newpageCB, SIGNAL(clicked()),
 		this, SLOT(checkEnabled()));
@@ -699,6 +740,29 @@ set<string> const GuiTabular::getTabFeatures() const
 		addParam(res, Tabular::SET_ROTATE_CELL, cell_angle);
 	else
 		addParam(res, Tabular::UNSET_ROTATE_CELL, cell_angle);
+	// colors
+	addParam(res, Tabular::SET_CELL_COLOR,
+		 fromqstr(cellColorCO->getData(cellColorCO->currentIndex())));
+	addParam(res, Tabular::SET_COLUMN_COLOR,
+		 fromqstr(columnColorCO->getData(columnColorCO->currentIndex())));
+	addParam(res, Tabular::SET_COLUMN_COLOR_LEFT_OVERHANG,
+		 fromqstr(columnColorLeftOHED->text()));
+	addParam(res, Tabular::SET_COLUMN_COLOR_RIGHT_OVERHANG,
+		 fromqstr(columnColorRightOHED->text()));
+	addParam(res, Tabular::SET_ROW_COLOR,
+		 fromqstr(rowColorCO->getData(rowColorCO->currentIndex())));
+	addParam(res, Tabular::SET_ROW_COLOR_LEFT_OVERHANG,
+		 fromqstr(rowColorLeftOHED->text()));
+	addParam(res, Tabular::SET_ROW_COLOR_RIGHT_OVERHANG,
+		 fromqstr(rowColorRightOHED->text()));
+	addParam(res, Tabular::SET_BORDER_COLOR,
+		 fromqstr(borderColorCO->getData(borderColorCO->currentIndex())));
+	addParam(res, Tabular::SET_ODD_ROW_COLOR,
+		 fromqstr(oddRowColorCO->getData(oddRowColorCO->currentIndex())));
+	addParam(res, Tabular::SET_EVEN_ROW_COLOR,
+		 fromqstr(evenRowColorCO->getData(evenRowColorCO->currentIndex())));
+	addParam(res, Tabular::SET_ALT_ROW_COLOR_START,
+		 convert<string>(firstColoredRowSB->value()));
 	//
 	if (longTabularCB->isChecked())
 		addParam(res, Tabular::SET_LONGTABULAR);
@@ -848,6 +912,14 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	InsetTabular const * itab = static_cast<InsetTabular const *>(inset);
 	// Copy Tabular of current inset.
 	Tabular const & tabular = itab->tabular;
+
+	custom_colors_cache_ = itab->buffer().masterParams().custom_colors;
+	borderColorCO->setCustomColors(custom_colors_cache_);
+	cellColorCO->setCustomColors(custom_colors_cache_);
+	columnColorCO->setCustomColors(custom_colors_cache_);
+	rowColorCO->setCustomColors(custom_colors_cache_);
+	evenRowColorCO->setCustomColors(custom_colors_cache_);
+	oddRowColorCO->setCustomColors(custom_colors_cache_);
 
 	BufferView const * bv = guiApp->currentView()->currentBufferView();
 	size_t const cell = bv->cursor().idx();
@@ -1122,6 +1194,25 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		break;
 	}
 	TableAlignCO->setCurrentIndex(tableValign);
+
+	// Colors
+	cellColorCO->set(toqstr(tabular.cellInfo(cell).color.empty()
+				? "default" : tabular.cellInfo(cell).color));
+	columnColorCO->set(toqstr(tabular.column_info[col].color.empty()
+				? "default" : tabular.column_info[col].color));
+	rowColorCO->set(toqstr(tabular.row_info[row].color.empty()
+			       ? "default" : tabular.row_info[row].color));
+	columnColorLeftOHED->setText(toqstr(tabular.column_info[col].lcoloh));
+	columnColorRightOHED->setText(toqstr(tabular.column_info[col].rcoloh));
+	rowColorLeftOHED->setText(toqstr(tabular.row_info[row].lcoloh));
+	rowColorRightOHED->setText(toqstr(tabular.row_info[row].rcoloh));
+	borderColorCO->set(toqstr(tabular.border_color.empty()
+				  ? "default" : tabular.border_color));
+	oddRowColorCO->set(toqstr(tabular.odd_row_color.empty()
+				  ? "default" : tabular.odd_row_color));
+	evenRowColorCO->set(toqstr(tabular.even_row_color.empty()
+				  ? "default" : tabular.even_row_color));
+	firstColoredRowSB->setValue(tabular.alt_row_colors_start);
 
 	if (!tabular.is_long_tabular) {
 		headerStatusCB->setChecked(false);

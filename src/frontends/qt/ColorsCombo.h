@@ -44,6 +44,8 @@ public:
 	void hasIgnore(bool const b) { has_ignore_ = b; }
 	/// Add "inherit" color entry?
 	void hasInherit(bool const b) { has_inherit_ = b; }
+	/// Add dedicated "none" color entry if default_value_ != "none"
+	void hasNone(bool const b) { has_none_ = b; }
 	/// Flag a color as default. This will also omit the "none" entry
 	void setDefaultColor(std::string const & col) { default_color_ = toqstr(col); }
 	/// Set the value of the default entry. Preset is "none"
@@ -60,6 +62,8 @@ private:
 	bool has_ignore_;
 	///
 	bool has_inherit_;
+	///
+	bool has_none_;
 	///
 	QString default_color_;
 	///

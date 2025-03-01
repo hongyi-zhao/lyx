@@ -468,6 +468,10 @@ BufferParams::BufferParams()
 	// light gray is the default font color for greyed-out notes
 	notefontcolor = "lightgray";
 	boxbgcolor = "red";
+	table_border_color = "default";
+	table_odd_row_color = "default";
+	table_even_row_color = "default";
+	table_alt_row_colors_start = 1;
 	compressed = lyxrc.save_compressed;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
@@ -1150,6 +1154,23 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		registerLyXColor("boxbgcolor", boxbgcolor);
 		lcolor.setColor("boxbgcolor@" + filename.absFileName(),
 				lcolor.getX11HexName(boxbgcolor));
+	} else if (token == "\\table_border_color") {
+		lex.eatLine();
+		table_border_color = lex.getString();
+		if (table_border_color != "default")
+			registerLyXColor("table_border_color", table_border_color);
+	} else if (token == "\\table_odd_row_color") {
+		lex.eatLine();
+		table_odd_row_color = lex.getString();
+		if (table_odd_row_color != "default")
+			registerLyXColor("table_odd_row_color", table_odd_row_color);
+	} else if (token == "\\table_even_row_color") {
+		lex.eatLine();
+		table_even_row_color = lex.getString();
+		if (table_even_row_color != "default")
+			registerLyXColor("table_even_row_color", table_even_row_color);
+	} else if (token == "\\table_alt_row_colors_start") {
+		lex >> table_alt_row_colors_start;
 	} else if (token == "\\customcolor") {
 		string name;
 		lex >> name;;
@@ -1523,6 +1544,10 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	os << "\\fontcolor " << fontcolor << '\n';
 	os << "\\notefontcolor " << notefontcolor << '\n';
 	os << "\\boxbgcolor " << boxbgcolor << '\n';
+	os << "\\table_border_color " << table_border_color << '\n';
+	os << "\\table_odd_row_color " << table_odd_row_color << '\n';
+	os << "\\table_even_row_color " << table_even_row_color << '\n';
+	os << "\\table_alt_row_colors_start " << table_alt_row_colors_start << '\n';
 
 	for (auto const & br : branchlist()) {
 		os << "\\branch " << to_utf8(br.branch())
@@ -2344,6 +2369,28 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// we decided therefore to load color always before babel, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg144349.html
 	os << from_ascii(features.getColorOptions());
+
+	// colortbl afterwards
+	if (features.mustProvide("colortbl"))
+		os << "\\usepackage{colortbl}\n";
+	// and colortbl features:
+	// table border color
+	if (table_border_color != "default")
+		os << "\\arrayrulecolor{"
+			  << lcolor.getLaTeXName(lcolor.getFromLyXName(table_border_color)) << "}\n";
+
+	// alternating row colors
+	if (table_odd_row_color != "default" || table_even_row_color != "default") {
+		string const odd_rc = (table_odd_row_color == "default")
+				? string()
+				: lcolor.getLaTeXName(lcolor.getFromLyXName(table_odd_row_color));
+		string const even_rc = (table_even_row_color == "default")
+				? string()
+				: lcolor.getLaTeXName(lcolor.getFromLyXName(table_even_row_color));
+		os << "\\rowcolors{"
+			  << table_alt_row_colors_start
+			  << "}{" << odd_rc << "}{" << even_rc << "}\n";
+	}
 
 	// If we use hyperref, jurabib, japanese or varioref,
 	// we have to call babel before

@@ -30,7 +30,7 @@ namespace frontend {
 ColorsCombo::ColorsCombo(QWidget * parent)
 	: CategorizedCombo(parent),
 	  has_ignore_(false), has_inherit_(false),
-	  default_value_("none")
+	  has_none_(false), default_value_("none")
 {
 	setLeftMargin(32);
 	fillComboColor();
@@ -117,6 +117,9 @@ void ColorsCombo::fillComboColor()
 			    QString());
 	if (default_color_.isEmpty())
 		addItemSort(default_value_, qt_("Default"),
+			    QString());
+	if (has_none_ && default_value_ != "none")
+		addItemSort("none", qt_("None[[color]]"),
 			    QString());
 	if (has_inherit_)
 		addItemSort(QString("inherit"), qt_("(Without)[[color]]"),

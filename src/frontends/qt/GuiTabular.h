@@ -82,6 +82,8 @@ private:
 	docstring decimal_sep_;
 	///
 	std::set<std::string> features_;
+	///
+	std::map<std::string, std::string> custom_colors_cache_;
 };
 
 } // namespace frontend

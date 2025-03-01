@@ -1498,8 +1498,8 @@ void PrefColors::removeTheme()
 	QMessageBox msgBox(this);
 	msgBox.setIcon(QMessageBox::Warning);
 	msgBox.setWindowTitle(qt_("Are you sure?"));
-	msgBox.setText(qt_("Do you really want to remove the theme \"") +
-	               theme_name + qt_("\"?"));
+	msgBox.setText(toqstr(bformat(_("Do you really want to remove the theme \"%1$s\"?"),
+				      qstring_to_ucs4(theme_name))));
 	msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 	msgBox.setDefaultButton(QMessageBox::No);
 

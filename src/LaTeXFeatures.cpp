@@ -1181,6 +1181,8 @@ string const LaTeXFeatures::getColorOptions() const
 		models.push_back("svgnames");
 	if (isRequired("xcolor:x11names"))
 		models.push_back("x11names");
+	if (isRequired("xcolor:table"))
+		models.push_back("table");
 	if ((mustProvide("color") && !isRequired("xcolor") && !isProvided("xcolor"))
 	    || mustProvide("xcolor")) {
 		string const package =

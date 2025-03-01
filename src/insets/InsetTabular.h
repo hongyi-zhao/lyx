@@ -16,7 +16,6 @@
  */
 
 // Things to think of when designing the new tabular support:
-// - color support (colortbl, color)
 // - decimal alignment (dcloumn)
 // - custom lines (hhline)
 // - column styles
@@ -69,6 +68,8 @@ public:
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const override;
 	///
+	ColorCode backgroundColor(PainterInfo const & pi) const override;
+	///
 	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
 	///
 	void toggleVarWidth(bool vw) { isVarwidth = vw; }
@@ -79,7 +80,13 @@ public:
 	///
 	void toggleCaptionRow(bool m) { isCaptionRow = m; }
 	///
+	void setMRRows(int i) { mr_rows = i; }
+	///
+	void setWidth(int i) { width = i; }
+	///
 	void setContentAlignment(LyXAlignment al) { contentAlign = al; }
+	///
+	void setBackgroundColor(std::string const col) { background_color = col; }
 	/// writes the contents of the cell as a string, optionally
 	/// descending into insets
 	docstring asString(bool intoInsets = true);
@@ -92,6 +99,8 @@ public:
 				  UpdateType utype, TocBackend & backend) const override;
 	///
 	void metrics(MetricsInfo &, Dimension &) const override;
+	///
+	void draw(PainterInfo & pi, int x, int y) const override;
 	/// Can the cell contain several paragraphs?
 	bool allowMultiPar() const override { return !isMultiRow && (!isMultiColumn || isFixedWidth); }
 	///
@@ -135,11 +144,16 @@ private:
 	bool isMultiColumn;
 	///
 	bool isMultiRow;
-	// FIXME: For the next two items the thoughts from the comment above also apply.
+	///
+	int mr_rows;
+	///
+	int width;
 	///
 	bool isCaptionRow;
 	///
 	LyXAlignment contentAlign;
+	///
+	std::string background_color;
 	/// should paragraph indentation be omitted in any case?
 	bool neverIndent() const override { return true; }
 	///
@@ -354,6 +368,28 @@ public:
 		///
 		TOGGLE_ALL_LINES,
 		///
+		SET_CELL_COLOR,
+		///
+		SET_COLUMN_COLOR,
+		///
+		SET_COLUMN_COLOR_LEFT_OVERHANG,
+		///
+		SET_COLUMN_COLOR_RIGHT_OVERHANG,
+		///
+		SET_ROW_COLOR,
+		///
+		SET_ROW_COLOR_LEFT_OVERHANG,
+		///
+		SET_ROW_COLOR_RIGHT_OVERHANG,
+		///
+		SET_BORDER_COLOR,
+		///
+		SET_ODD_ROW_COLOR,
+		///
+		SET_EVEN_ROW_COLOR,
+		///
+		SET_ALT_ROW_COLOR_START,
+		///
 		LAST_ACTION
 	};
 	///
@@ -549,6 +585,26 @@ public:
 	///
 	bool setMROffset(Cursor &, idx_type, Length const &);
 	///
+	void setCellColor(idx_type cell, std::string const & color);
+	///
+	std::string cellColor(idx_type cell) const;
+	///
+	void setColumnColor(col_type column, std::string const & color);
+	///
+	std::string columnColor(col_type column) const;
+	///
+	void setRowColor(row_type row, std::string const & color);
+	///
+	void setBorderColor(std::string const & color);
+	///
+	void setOddRowColor(std::string const & color);
+	///
+	void setEvenRowColor(std::string const & color);
+	///
+	void setAltRowColorStart(int const);
+	///
+	std::string rowColor(row_type row) const;
+	///
 	void setAlignSpecial(idx_type cell, docstring const & special,
 			     Feature what);
 	///
@@ -599,7 +655,13 @@ public:
 	///
 	idx_type getLastRow(bool const ct = false) const;
 	///
+	int realRowNumber(row_type row, bool const ct = false) const;
+	///
+	row_type getStartMultiRow(row_type row, col_type col) const;
+	///
 	idx_type numberOfCellsInRow(row_type row) const;
+	///
+	void registerLyXColor(std::string const & value) const;
 	///
 	void write(std::ostream &) const;
 	///
@@ -631,6 +693,8 @@ public:
 	bool isPartOfMultiColumn(row_type row, col_type column) const;
 	///
 	bool isPartOfMultiRow(row_type row, col_type column) const;
+	///
+	bool isEndOfMultiRow(row_type row, col_type column) const;
 	///
 	bool isMultiRow(idx_type cell) const;
 	///
@@ -778,6 +842,8 @@ public:
 		///
 		docstring align_special;
 		///
+		std::string color;
+		///
 		Length p_width; // this is only set for multicolumn!!!
 		///
 		std::shared_ptr<InsetTableCell> inset;
@@ -826,6 +892,12 @@ public:
 		/// caption
 		bool caption;
 		///
+		std::string color;
+		///
+		std::string lcoloh;
+		///
+		std::string rcoloh;
+		///
 		Change change;
 	};
 	///
@@ -850,6 +922,12 @@ public:
 		docstring decimal_point;
 		///
 		bool varwidth;
+		///
+		std::string color;
+		///
+		std::string lcoloh;
+		///
+		std::string rcoloh;
 		///
 		Change change;
 	};
@@ -908,6 +986,14 @@ public:
 	ltType endfoot;
 	/// endlastfoot data
 	ltType endlastfoot;
+	///
+	std::string border_color;
+	///
+	std::string odd_row_color;
+	///
+	std::string even_row_color;
+	///
+	int alt_row_colors_start = 1;
 
 	///
 	void init(Buffer *, row_type rows_arg,
@@ -931,6 +1017,8 @@ public:
 	///
 	void TeXRow(otexstream &, row_type const row, OutputParams const &,
 	            std::list<col_type> const &, std::list<col_type> const &) const;
+	///
+	std::string getBorderColor() const;
 
 	/// change associated Buffer
 	void setBuffer(Buffer & buffer);
@@ -1001,6 +1089,16 @@ private:
 	///
 	void TeXLongtableHeaderFooter(otexstream &, OutputParams const &, std::list<col_type> const &,
 	                              std::list<col_type> const &) const;
+
+	///
+	// color helper functions
+	///
+	///
+	std::string getOddRowColor() const;
+	///
+	std::string getEvenRowColor() const;
+	///
+	int getAltRowColorsStart() const;
 
 }; // Tabular
 

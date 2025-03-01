@@ -22,6 +22,7 @@
 #include "GuiIndices.h"
 #include "GuiView.h"
 #include "GuiSelectionManager.h"
+#include "InsetIterator.h"
 #include "Validator.h"
 
 #include "LayoutFile.h"
@@ -32,7 +33,6 @@
 #include "BufferView.h"
 #include "CiteEnginesList.h"
 #include "Color.h"
-#include "ColorCache.h"
 #include "Converter.h"
 #include "Cursor.h"
 #include "Encoding.h"
@@ -57,6 +57,7 @@
 #include "VSpace.h"
 
 #include "insets/InsetListingsParams.h"
+#include "insets/InsetTabular.h"
 #include "insets/InsetQuotes.h"
 
 #include "support/debug.h"
@@ -1358,6 +1359,14 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(colorModule->noteColorCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(colorModule->oddRowColorCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(colorModule->evenRowColorCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(colorModule->borderColorCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(colorModule->firstColoredRowSB, SIGNAL(valueChanged(int)),
+		this, SLOT(change_adaptor()));
 	connect(colorModule->addColorPB, SIGNAL(clicked()),
 		this, SLOT(addCustomColor()));
 	connect(colorModule->removeColorPB, SIGNAL(clicked()),
@@ -1372,8 +1381,14 @@ GuiDocument::GuiDocument(GuiView & lv)
 	colorModule->pageColorCO->setCustomColors(buffer().masterParams().custom_colors);
 	colorModule->noteColorCO->setCustomColors(buffer().masterParams().custom_colors);
 	colorModule->shadedColorCO->setCustomColors(buffer().masterParams().custom_colors);
+	colorModule->oddRowColorCO->setCustomColors(buffer().masterParams().custom_colors);
+	colorModule->evenRowColorCO->setCustomColors(buffer().masterParams().custom_colors);
+	colorModule->borderColorCO->setCustomColors(buffer().masterParams().custom_colors);
 	colorModule->noteColorCO->setDefaultColor("lightgrey");
 	colorModule->shadedColorCO->setDefaultColor("red");
+	colorModule->oddRowColorCO->setDefaultValue("default");
+	colorModule->evenRowColorCO->setDefaultValue("default");
+	colorModule->borderColorCO->setDefaultValue("default");
 	
 	colorModule->customColorsTW->setColumnCount(2);
 	colorModule->customColorsTW->headerItem()->setText(0, qt_("Name"));
@@ -3738,6 +3753,10 @@ void GuiDocument::applyView()
 	bp_.fontcolor = fromqstr(colorModule->textColorCO->getData(colorModule->textColorCO->currentIndex()));
 	bp_.notefontcolor = fromqstr(colorModule->noteColorCO->getData(colorModule->noteColorCO->currentIndex()));
 	bp_.boxbgcolor = fromqstr(colorModule->shadedColorCO->getData(colorModule->shadedColorCO->currentIndex()));
+	bp_.table_odd_row_color = fromqstr(colorModule->oddRowColorCO->getData(colorModule->oddRowColorCO->currentIndex()));
+	bp_.table_even_row_color = fromqstr(colorModule->evenRowColorCO->getData(colorModule->evenRowColorCO->currentIndex()));
+	bp_.table_alt_row_colors_start = colorModule->firstColoredRowSB->value();
+	bp_.table_border_color = fromqstr(colorModule->borderColorCO->getData(colorModule->borderColorCO->currentIndex()));
 	bp_.custom_colors.clear();
 	for (auto const & cc : custom_colors_)
 		bp_.custom_colors[fromqstr(cc.first)] = fromqstr(cc.second);
@@ -4305,6 +4324,10 @@ void GuiDocument::paramsToDialog()
 	colorModule->noteColorCO->set(toqstr(bp_.notefontcolor));
 	colorModule->pageColorCO->set(toqstr(bp_.backgroundcolor));
 	colorModule->shadedColorCO->set(toqstr(bp_.boxbgcolor));
+	colorModule->borderColorCO->set(toqstr(bp_.table_border_color));
+	colorModule->oddRowColorCO->set(toqstr(bp_.table_odd_row_color));
+	colorModule->evenRowColorCO->set(toqstr(bp_.table_even_row_color));
+	colorModule->firstColoredRowSB->setValue(bp_.table_alt_row_colors_start);
 
 	// numbering
 	int const min_toclevel = documentClass().min_toclevel();
@@ -5304,6 +5327,15 @@ void GuiDocument::dispatchParams()
 			dispatch(FuncRequest(LFUN_SET_COLOR, str));
 		}
 	}
+
+	// update the tables
+	for (InsetIterator it = begin(buffer().inset()); it; ++it) {
+		if (it->lyxCode() == TABULAR_CODE) {
+			InsetTabular * table = it->asInsetTabular();
+			if (table)
+				table->tabular.updateIndexes();
+		}
+	}
 	// FIXME LFUN
 	// If we used an LFUN, we would not need these two lines:
 	BufferView * bv = const_cast<BufferView *>(bufferview());
@@ -5567,6 +5599,9 @@ void GuiDocument::updateCustomColors()
 	colorModule->noteColorCO->setCustomColors(ccs);
 	colorModule->pageColorCO->setCustomColors(ccs);
 	colorModule->shadedColorCO->setCustomColors(ccs);
+	colorModule->oddRowColorCO->setCustomColors(ccs);
+	colorModule->evenRowColorCO->setCustomColors(ccs);
+	colorModule->borderColorCO->setCustomColors(ccs);
 
 	change_adaptor();
 }

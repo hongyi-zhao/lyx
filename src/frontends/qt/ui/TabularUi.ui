@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>726</width>
-    <height>585</height>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <property name="sizeGripEnabled" stdset="0">
    <bool>false</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout_11">
+  <layout class="QGridLayout" name="gridLayout_13">
    <item row="0" column="0">
     <widget class="QTabWidget" name="TabWidget">
      <property name="toolTip">
@@ -1189,7 +1189,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="topspaceLA">
             <property name="text">
-             <string>T&amp;op of row:</string>
+             <string>To&amp;p of row:</string>
             </property>
             <property name="buddy">
              <cstring>topspaceCO</cstring>
@@ -1330,6 +1330,275 @@
           </size>
          </property>
         </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Colors">
+      <attribute name="title">
+       <string>C&amp;olors</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_14">
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="gridLayout_12">
+         <item row="1" column="1">
+          <widget class="lyx::frontend::ColorsCombo" name="columnColorCO">
+           <property name="inputMethodHints">
+            <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QLabel" name="columnColorRightOHLA">
+           <property name="text">
+            <string>Ri&amp;ght Overhang:</string>
+           </property>
+           <property name="buddy">
+            <cstring>columnColorRightOHED</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QLineEdit" name="rowColorLeftOHED"/>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLineEdit" name="columnColorLeftOHED"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="columnColorLA">
+           <property name="text">
+            <string>Col&amp;umn color:</string>
+           </property>
+           <property name="buddy">
+            <cstring>columnColorCO</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="lyx::frontend::ColorsCombo" name="rowColorCO">
+           <property name="inputMethodHints">
+            <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="5">
+          <widget class="QLineEdit" name="rowColorRightOHED"/>
+         </item>
+         <item row="2" column="4">
+          <widget class="QLabel" name="rowColorRightOHLA">
+           <property name="text">
+            <string>Right Overhan&amp;g:</string>
+           </property>
+           <property name="buddy">
+            <cstring>rowColorRightOHED</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="rowColorLeftOHLA">
+           <property name="text">
+            <string>Left Over&amp;hang:</string>
+           </property>
+           <property name="buddy">
+            <cstring>rowColorLeftOHED</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="rowColorLA">
+           <property name="text">
+            <string>Ro&amp;w color:</string>
+           </property>
+           <property name="buddy">
+            <cstring>rowColorCO</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QLineEdit" name="columnColorRightOHED"/>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="columnColorLeftOHLA">
+           <property name="text">
+            <string>Left O&amp;verhang:</string>
+           </property>
+           <property name="buddy">
+            <cstring>columnColorLeftOHED</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="lyx::frontend::ColorsCombo" name="cellColorCO">
+           <property name="inputMethodHints">
+            <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="cellColorLA">
+           <property name="text">
+            <string>C&amp;ell color:</string>
+           </property>
+           <property name="buddy">
+            <cstring>cellColorCO</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="lyx::frontend::ColorsCombo" name="borderColorCO">
+           <property name="inputMethodHints">
+            <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="borderColorLA">
+           <property name="text">
+            <string>&amp;Border color:</string>
+           </property>
+           <property name="buddy">
+            <cstring>borderColorCO</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="6">
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0">
+        <widget class="QGroupBox" name="rowColorsGB">
+         <property name="title">
+          <string>Alternati&amp;ng row colors</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QGridLayout" name="gridLayout_11">
+            <item row="0" column="0">
+             <widget class="QLabel" name="oddRowColorLA">
+              <property name="text">
+               <string>O&amp;dd rows:</string>
+              </property>
+              <property name="buddy">
+               <cstring>oddRowColorCO</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="lyx::frontend::ColorsCombo" name="oddRowColorCO">
+              <property name="inputMethodHints">
+               <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+              </property>
+              <property name="maxVisibleItems">
+               <number>20</number>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="evenRowColorLA">
+              <property name="text">
+               <string>&amp;Even rows:</string>
+              </property>
+              <property name="buddy">
+               <cstring>evenRowColorCO</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="lyx::frontend::ColorsCombo" name="evenRowColorCO">
+              <property name="inputMethodHints">
+               <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+              </property>
+              <property name="maxVisibleItems">
+               <number>20</number>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>477</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLabel" name="firstColoredRowLA">
+              <property name="text">
+               <string>&amp;Start with row:</string>
+              </property>
+              <property name="buddy">
+               <cstring>firstColoredRowSB</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="firstColoredRowSB">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>477</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -1704,6 +1973,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>lyx::frontend::ColorsCombo</class>
+   <extends>QComboBox</extends>
+   <header>ColorsCombo.h</header>
+  </customwidget>
   <customwidget>
    <class>lyx::frontend::LengthCombo</class>
    <extends>QComboBox</extends>

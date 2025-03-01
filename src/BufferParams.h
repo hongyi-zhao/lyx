@@ -431,6 +431,14 @@ public:
 	///
 	std::string boxbgcolor;
 	///
+	std::string table_border_color;
+	///
+	std::string table_odd_row_color;
+	///
+	std::string table_even_row_color;
+	///
+	int table_alt_row_colors_start;
+	///
 	std::map<std::string, std::string> custom_colors;
 	/// \param index should lie in the range 0 <= \c index <= 3.
 	Bullet & temp_bullet(size_type index);

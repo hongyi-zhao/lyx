@@ -9302,12 +9302,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -9320,7 +9318,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -9346,7 +9343,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -25982,6 +25978,24 @@ Umschalt
 \family default
  plus den Pfeiltasten funktioniert wie gewohnt.
  Man kann auch ganze Tabellen kopieren indem man die Auswahl außerhalb der Tabelle beginnt.
+\end_layout
+
+\begin_layout Subsection
+Farben
+\end_layout
+
+\begin_layout Standard
+Sie können hier die Hintergrundfarbe für einzelne Zellen,
+ ganze Zeilen oder Spalten sowie die Farbe für die Rahmenlinien einstellen.
+ Bitte konsultieren Sie das Handbuch 
+\emph on
+Eingebettete Objekte
+\emph default
+ (Abschnitt 
+\emph on
+Farbige Tabellen
+\emph default
+) für Einzelheiten und Anwendungsbeispiele.
 \end_layout
 
 \begin_layout Section
@@ -50134,20 +50148,42 @@ Grauschrift-Notizen
 \end_layout
 
 \begin_layout Standard
-Hier können Sie die Schriftfarbe für den Haupttext (Voreinstellung:
- schwarz),
- für Grauschrift-Notizen (Voreinstellung:
- hellgrau),
- die Hintergrundfarbe für die Seiten (Voreinstellung:
- keine) und für Schattierte
-\begin_inset space ~
-\end_inset
+Hier können Sie die Farbe verschiedener Elemente des Dokuments einstellen.
+ Die Einstellungen sind global für das ganze Dokument,
+ es sei denn,
+ sie werden in den entsprechenden Elementeinstellungen individuell für einzelne Elemente angepasst:
+\end_layout
 
-Boxen (Voreinstellung:
- rot) ändern.
- Außerdem können Sie benutzerdefinierte Farben bestimmen,
+\begin_layout Itemize
+Die Schriftfarbe für den Haupttext (Voreinstellung:
+ schwarz) und für Grauschrift-Notizen (Voreinstellung:
+ hellgrau),
+\end_layout
+
+\begin_layout Itemize
+die Hintergrundfarbe für die Seiten (Voreinstellung:
+ keine) und für schattierte Boxen (Voreinstellung:
+ rot),
+\end_layout
+
+\begin_layout Itemize
+die Farbe der Rahmenlinien von Tabellen
+\end_layout
+
+\begin_layout Itemize
+sowie zwei Farben,
+ mit dem die geraden bzw.
+ ungeraden Zeilen von Tabellen abwechselnd eingefärbt werden.
+\end_layout
+
+\begin_layout Standard
+Außerdem können Sie benutzerdefinierte Farben bestimmen,
  die dann allen dokumentbezogenen Farbeinstellungen (bspw.
- im Textstil-Dialog oder auch hier i Dokument-Dialog) ausgewählt werden können.
+ im Textstil-Dialog oder auch hier im Dokument-Dialog) ausgewählt werden können.
+\end_layout
+
+\begin_layout Standard
+Wir beschreiben all diese Möglichkeiten nun etwas genauer.
 \end_layout
 
 \begin_layout Subsection
@@ -50183,7 +50219,7 @@ keine Farbe
 
 \begin_layout Standard
 Sollte keine der vordefinierten Farben nach Ihrem Wunsch sein,
- können Sie eine benutzerdefinierte Farbe anlegen (wie im nächsten Abschnitt dokumentiert),
+ können Sie eine benutzerdefinierte Farbe anlegen (wie im übernächsten Abschnitt dokumentiert),
  die im Folgenden dann ebenfalls in der Liste erscheint.
 \end_layout
 
@@ -50331,6 +50367,59 @@ Für die Schriftfarbe der Grauschrift-Notizen:
 
 \series bold
 note_fontcolor
+\end_layout
+
+\begin_layout Subsection
+Farben für Tabellen
+\end_layout
+
+\begin_layout Standard
+Tabellenfarben (für Zellen,
+ Zeilen,
+ Spalten und Rahmenlinien) können für einzelne Tabellen im Einstellungsdialog für Tabellen bestimmt werden.
+ Hier nun können Sie einige Einstellungen vornehmen,
+ die für alle Tabellen des Dokuments gelten,
+ sofern Sie in den Tabelleneinstellungen keine spezifischen Farben bestimmt haben.
+ Diese sind:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Tabellen-Rahmenlinienfarbe:
+
+\family default
+ wie der Name sagt
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Alternierend gefärbte Tabellenzeilen:
+
+\family default
+ Wenn Sie hier Farben auswählen,
+ werden die Tabellen diese automatisch als Hintergrundfarbe für gerade bzw.
+ ungerade Zeilen verwenden,
+ beginnend bei der Zeile die in 
+\family sans
+Beginne bei Zeile
+\family default
+ angegeben wurde.
+ So können Sie leicht Tabellen im beliebten 
+\begin_inset Quotes gld
+\end_inset
+
+Zebra-Stil
+\begin_inset Quotes grd
+\end_inset
+
+ produzieren.
+\end_layout
+
+\begin_layout Standard
+Wie in den anderen Farbeinstellungen auch können Sie entweder aus der Liste vordefinierter Farben auswählen oder eine benutzerdefinierte Farbe anlegen (siehe nächsten Abschnitt),
+ die dann ebenfalls in der Liste zur Auswahl angeboten wird.
 \end_layout
 
 \begin_layout Subsection

@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 634
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -53,20 +53,6 @@
 
 % beschleunigt die Berechnung von langen Tabellen
 \setcounter{LTchunksize}{100}
-
-% wird bei farbigen Tabellen benutzt
-\@ifundefined{textcolor}
- {\usepackage{color}}{}
-\definecolor{dunkelgruen}{cmyk}{0.5, 0, 1, 0.5}
-\definecolor{hellgrau}{gray}{0.8}
-
-% testen ob paket colortbl installiert ist
-% wird für farbige Tabellenzellen benutzt
-\newboolean{colortbl}
-\IfFileExists{colortbl.sty}
- {\usepackage{colortbl}
-  \setboolean{colortbl}{true}}
- {\setboolean{colortbl}{false}}
 
 % wird benutzt, um Tabellenzellen zu vergrößern
 \@ifundefined{extrarowheight}
@@ -184,6 +170,8 @@ varwidth
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -225,7 +213,15 @@ varwidth
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\notefontcolor #0000ff
+\customcolor lyxnotefontcolor 0000ff
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lyxnotefontcolor
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
@@ -251,6 +247,7 @@ varwidth
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -2521,6 +2518,28 @@ Hier können Sie auch zusätzliche Abstände für Zeilen festlegen,
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "uab:Zeilenabstand"
+nolink "false"
+
+\end_inset
+
+ beschrieben.
+\end_layout
+
+\begin_layout Description
+Farben Hier können Sie die Farben der Tabelle anpassen.
+ Sie können Hintergrundfarben für einzelne Zellen,
+ ganze Zeilen oder Spalten und die Farbe der Rahmenlinien ändern.
+ Genaueres ist in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Farbige-Tabellen"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
 
 \end_inset
@@ -5768,7 +5787,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 addtocounter{table}{-1}
 \end_layout
@@ -5986,7 +6004,6 @@ columnwidth
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -6255,7 +6272,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -6271,7 +6287,6 @@ fill}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 addtocounter{table}{-1}
@@ -7680,7 +7695,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -8020,7 +8034,6 @@ asd
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -11460,7 +11473,6 @@ patri,
 status open
 
 \begin_layout Plain Layout
-
 & 111
 \backslash
 
@@ -11471,7 +11483,6 @@ newpage
 \end_layout
 
 \begin_layout Plain Layout
-
 &
 \end_layout
 
@@ -13513,7 +13524,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -13656,7 +13666,6 @@ i
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -13855,7 +13864,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifdiagbox
 \end_layout
@@ -13914,7 +13922,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox{
 \end_layout
@@ -13926,7 +13933,6 @@ Name
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -13937,7 +13943,6 @@ Parameter
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -14137,7 +14142,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox{
 \end_layout
@@ -14149,7 +14153,6 @@ Heim
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14160,7 +14163,6 @@ Ergebnis
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14171,7 +14173,6 @@ Auswärts
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -14360,7 +14361,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox{
 \end_layout
@@ -14372,7 +14372,6 @@ Heim
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14383,7 +14382,6 @@ Ergebnis
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14394,7 +14392,6 @@ Auswärts
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -14441,7 +14438,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox[dir=NE]{
 \end_layout
@@ -14453,7 +14449,6 @@ Heim
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14464,7 +14459,6 @@ Ergebnis
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14475,7 +14469,6 @@ Auswärts
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -14641,7 +14634,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox[dir=SW]{
 \end_layout
@@ -14653,7 +14645,6 @@ Heim
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14664,7 +14655,6 @@ Ergebnis
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14675,7 +14665,6 @@ Auswärts
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -14722,7 +14711,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox[dir=SE]{
 \end_layout
@@ -14734,7 +14722,6 @@ Heim
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14745,7 +14732,6 @@ Ergebnis
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14756,7 +14742,6 @@ Auswärts
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -14858,7 +14843,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox{
 \end_layout
@@ -14870,7 +14854,6 @@ Name
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -14881,7 +14864,6 @@ Parameter
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -15006,7 +14988,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 newlength{
 \backslash
@@ -15014,7 +14995,6 @@ diagtest}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -15099,7 +15079,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox[width=
 \backslash
@@ -15113,7 +15092,6 @@ A
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -15124,7 +15102,6 @@ B
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -15197,7 +15174,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox{
 \end_layout
@@ -15209,7 +15185,6 @@ A
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -15220,7 +15195,6 @@ B
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -15310,7 +15284,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox[width=3cm]{
 \end_layout
@@ -15322,7 +15295,6 @@ A
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -15333,7 +15305,6 @@ B
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -15459,7 +15430,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 diagbox[width=3cm,height=1.4cm]{
 \end_layout
@@ -15471,7 +15441,6 @@ A
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 
@@ -15486,7 +15455,6 @@ B
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -15497,7 +15465,6 @@ C
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 
@@ -15512,7 +15479,6 @@ D
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -15566,7 +15532,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else
 \end_layout
@@ -15606,7 +15571,6 @@ diagbox
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi
@@ -16590,7 +16554,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 morecmidrules
 \end_layout
@@ -16602,7 +16565,6 @@ morecmidrules
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 cmidrule{2-4}
@@ -16772,7 +16734,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 morecmidrules
 \end_layout
@@ -16784,7 +16745,6 @@ morecmidrules
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 cmidrule[2pt](l{7pt}){3-4}
@@ -17118,7 +17078,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raisebox{0.85
 \backslash
@@ -17254,7 +17213,6 @@ i
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -17518,7 +17476,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raisebox{-0.32
 \backslash
@@ -17654,7 +17611,6 @@ i
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -17826,7 +17782,8 @@ farbige
 \end_layout
 
 \begin_layout Subsection
-Farbige Zellen
+Individuell gefärbte Zellen,
+ ZEilen und Spalten
 \begin_inset Index idx
 range none
 pageformat default
@@ -17869,24 +17826,7 @@ name "tab:Farbige-Tabelle-ohne"
 
 \end_inset
 
-Farbige Tabelle,
- ohne Paket 
-\series bold
-colortbl
-\series default
-
-\begin_inset Argument 1
-status collapsed
-
-\begin_layout Plain Layout
-Tabelle ohne 
-\family typewriter
-colortbl
-\end_layout
-
-\end_inset
-
-
+Tabelle mit farbigem Text
 \end_layout
 
 \end_inset
@@ -18053,7 +17993,9 @@ type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-) wie es in Tabelle
+),
+ so wie Sie es auch außerhalb von Tabellen machen wurden.
+ Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -18065,13 +18007,31 @@ nolink "false"
 
 \end_inset
 
- gemacht wurde.
- In anderen Fällen müssen Sie das \SpecialChar LaTeX
+ zeigt dafür ein Beispiel.
+ In anderen Fällen passen Sie die Farben entweder in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Farben
+\family default
+ an (für einige Farbeinstellungen,
+ die dann für alle Tabellen im Dokument gelten),
+ oder im Dialog 
+\family sans
+Tabelleneinstellungen
+\family default
+ (Abschnitt 
+\family sans
+Farben
+\family default
+) für die Einstellungen,
+ die nur spezifische Tabellen betreffen.
+ Diese Einstellungen verwenden im Hintergrund (und erfordern somit) das \SpecialChar LaTeX
 -Paket 
 \series bold
 colortbl
 \series default
- benutzen.
+.
 \begin_inset Index idx
 range none
 pageformat default
@@ -18098,136 +18058,18 @@ colortbl
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifcolortbl
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Der folgende Teil wird nur gedruckt,
- wenn das \SpecialChar LaTeX
--Paket 
-\series bold
-colortbl
-\series default
- installiert ist.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Um farbige Tabellen zu erzeugen,
- muss 
-\series bold
-colortbl
-\series default
- im \SpecialChar LaTeX
--Vorspann geladen werden:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{colortbl}
-\end_layout
-
-\begin_layout Standard
-Die Farbe einer Spalte ändert man dann mit dem Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-columncolor{Farbname}
-\end_layout
-
-\begin_layout Standard
-innerhalb des Befehls 
-\series bold
->{}
-\series default
-.
- Mehr über den Befehl 
-\series bold
->{}
-\series default
- finden Sie im Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "uab:Mehrfachspalten-Berechnungen"
-nolink "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 Sie können prinzipiell alle Farben verwenden,
  die in den diversen Farbauswahl-Werkzeugen (bspw.
  im 
 \family sans
 Textstil
 \family default
--Dialog) aufgeführt sind (die \SpecialChar LaTeX
--Namen dieser Farben,
- die Sie an die Befehle übergeben müssen,
- finden Sie in Dokumentation von 
-\family typewriter
-xcolor
-\family default
- zusammengestellt).
- Beachten Sie aber,
- dass einige Farben das Paket 
-\family typewriter
-xcolor
-\family default
- mit einem entsprechenden Farbschema als Option verlangen (
-\family typewriter
-dvipsnames
-\family default
-,
- 
-\family typewriter
-svgnames
-\family default
- oder 
-\family typewriter
-x11names
-\family default
-;
- bitte konsultieren Sie die Dokumentation von 
-\family typewriter
-xcolor
-\family default
- für Einzelheiten).
+-Dialog) aufgeführt sind.
  Eine dieser Farben,
  
-\family sans
-Maroon
-\family default
+\emph on
+Kastanienbraun
+\emph default
 ,
  wird als Beispiel in Tabelle
 \begin_inset space ~
@@ -18242,68 +18084,31 @@ nolink "false"
 \end_inset
 
  verwendet.
-\end_layout
-
-\begin_layout Standard
-Sie können in 
+ Falls Ihnen keine der angebotenen Farben zusagt,
+ können Sie in 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Farben\SpecialChar menuseparator
 Benutzerdefinierte Farben
 \family default
- auch eigene Farben definieren und verwenden.
+ auch eigene Farben definieren und anschließend verwenden.
 \end_layout
 
-\begin_layout Standard
-Linien werden mit dem Befehl
+\begin_layout Itemize
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lightning$
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
+\end_inset
 
-\series bold
 
-\backslash
-rowcolor{Farbname}
-\end_layout
-
-\begin_layout Standard
-gefärbt,
- Zellen mit dem Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-cellcolor{Farbname}
-\end_layout
-
-\begin_layout Standard
-Beide Befehle werden am Anfang einer Zelle als \SpecialChar TeX
--Code eingegeben.
-\end_layout
-
-\begin_layout Standard
-Um nur Text zu färben,
- verwenden Sie den 
-\family sans
-Textstil
-\family default
--Dialog.
- Wenn die Zelle aber \SpecialChar TeX
--Code zum Färben enthält,
- 
-\emph on
-markieren Sie nur den Text
-\emph default
-,
- sonst werden Sie \SpecialChar LaTeX
--Fehler erzeugen.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -18322,14 +18127,8 @@ Achtung:
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Tabelle
+Es ist leicht,
+ eine Tabelle wie Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -18341,69 +18140,46 @@ nolink "false"
 
 \end_inset
 
- wurde folgendermaßen erstellt:
- die erste Spalte soll 
+ zu erstellen:
+ die erste Spalte soll dunkelgrün werden,
+ also wählen Sie 
 \emph on
-
-\begin_inset Quotes gld
-\end_inset
-
-dunkelgruen
+Dunkelgrün (DarkGreen)
 \emph default
-
-\begin_inset Quotes grd
-\end_inset
-
- werden,
- also müssen Sie ins 
+ aus der Auswahl für 
 \family sans
-LaTeX-Argument
+Spaltenfarbe
 \family default
- der Zellen der ersten Spalte den Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
->{
-\backslash
-columncolor{dunkelgruen}
-\backslash
-centering}c
-\end_layout
-
-\begin_layout Standard
-schreiben.
- Die erste Zeile soll türkis hinterlegt sein,
- deshalb wurde der \SpecialChar TeX
--Code-Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-rowcolor{cyan}
-\end_layout
-
-\begin_layout Standard
-in die erste Zelle der ersten Zeile eingefügt.
- Diese Farbe ersetzt die Spaltenfarbe.
- Die letzte Zelle der letzten Zeile soll kastanienbraun hinterlegt werden,
- Das wird mit folgendem Befehl erreicht:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-cellcolor{Maroon}
-\end_layout
-
-\begin_layout Standard
-Die Buchstaben färben Sie wie oben beschrieben mit dem 
+ in 
+\family sans
+Tabelleneinstellungen
+\family default
+ (der Cursor muss dabei in der entsprechenden Spalte sein).
+ Die erste Zeile soll zyanblau hinterlegt sein,
+ als wählen wir 
+\emph on
+Zyanblau (Cyan)
+\emph default
+ bei 
+\family sans
+Zeilenfarbe
+\family default
+.
+ Bachten Sie,
+ dass siese Farbe die Spaltenfarbe in der ersten Zeile überschreibt.
+ Die letzte Zelle der letzten Zeile soll kastanienbraun hinterlegt werden.
+ Sie ahnen es schon:
+ Wir wählen hierfür 
+\emph on
+Kastanienbraun (Maroon)
+\emph default
+ bei 
+\family sans
+Zellenfarbe
+\family default
+ aus.
+ Zellenfarben überschreiben sowohl Spalten- als auch Zeilenfarben.
+ Die Buchstaben färben Sie wie oben beschrieben mit dem 
 \family sans
 Textstil
 \family default
@@ -18428,23 +18204,11 @@ name "tab:Eine-mit-colortbl"
 
 \end_inset
 
-Eine mit dem Paket 
-\series bold
-colortbl
-\series default
+Eine in den 
+\family sans
+Tabelleneinstellungen
+\family default
  gefärbte Tabelle
-\begin_inset Argument 1
-status collapsed
-
-\begin_layout Plain Layout
-Tabelle mit 
-\family typewriter
-colortbl
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -18457,26 +18221,14 @@ colortbl
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" special=">{\columncolor{dunkelgruen}\centering}c">
+<column alignment="center" valignment="top" color="svg:darkgreen">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
-<row>
+<row color="cyan">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-rowcolor{cyan}
-\end_layout
-
-\end_inset
-
 
 \color magenta
 a
@@ -18565,22 +18317,10 @@ h
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" color="dvips:maroon" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-cellcolor{Maroon}
-\end_layout
-
-\end_inset
-
 
 \color green
 i
@@ -18601,65 +18341,8 @@ i
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-else
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Der folgende Teil wird gedruckt,
- wenn das \SpecialChar LaTeX
--Paket 
-\series bold
-colortbl
-\series default
- nicht installiert ist:
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sie müssen das \SpecialChar LaTeX
--Paket 
-\series bold
-colortbl
-\series default
- installiert haben um den Inhalt dieses Abschnitts zu sehen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fi
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
-Farbige Zeilen
+Abwechselnd gefärbte Zeilen
 \begin_inset Index idx
 range none
 pageformat default
@@ -18685,158 +18368,72 @@ Tabellenzeilen
 \end_layout
 
 \begin_layout Standard
-Für den Fall dass jede zweite Tabellenzeile gefärbt werden soll,
- gibt es eine Alternative zur im vorhergehenden Abschnitt beschriebenen Methode:
- Man lädt das \SpecialChar LaTeX
--Paket 
-\series bold
-xcolor
-\series default
-
-\begin_inset Index idx
-range none
-pageformat default
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--Pakete
-\begin_inset IndexMacro subentry
-status open
-
-\begin_layout Plain Layout
-xcolor
-\end_layout
-
+Falls Sie eine Tabelle möchten,
+ die abwechselnd gefärbte Zeilen hat (
+\begin_inset Quotes gld
 \end_inset
 
-
-\end_layout
-
+Zebra-Stil
+\begin_inset Quotes grd
 \end_inset
 
- im \SpecialChar LaTeX
--Vorspann mit dem Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage[table]{xcolor}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-xcolor
-\series default
- lädt automatisch auch das \SpecialChar LaTeX
--Paket 
-\series bold
-colortbl
-\series default
-
-\begin_inset Index idx
-range none
-pageformat default
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--Pakete
-\begin_inset IndexMacro subentry
-status open
-
-\begin_layout Plain Layout
-colortbl
-\end_layout
-
+),
+ müssen Sie hierfür nicht jede Zeile einzeln einfärben (und dann möglicherweise wieder umfärben,
+ wenn Sie neue Zeilen dazwischen einfügen).
+ Wählen Sie einfach eine Farbe für die geraden und die ungeraden Zeilen unter 
+\family sans
+Alternierend gefärbte Zeilen
+\family default
+ entweder in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Farben
+\family default
+ an (falls Sie diese Färbung für alle Tabellen im Dokument möchten),
+ oder im Dialog 
+\family sans
+Tabelleneinstellungen
+\family default
+ (falls es nur spezifische Tabellen betreffen soll).
+ Die Zahl unter 
+\family sans
+Beginne bei Zeile
+\family default
+ legt fest,
+ wo die alternierende Färbung beginnt.
+ Beachten Sie,
+ dass 
+\begin_inset Quotes gld
 \end_inset
 
-
-\end_layout
-
+gerade
+\begin_inset Quotes grd
 \end_inset
 
-,
- so dass 
-\series bold
-colortbl
-\series default
- in Ihrer \SpecialChar LaTeX
--Distribution installiert sein muss,
- ansonsten bekommt man \SpecialChar LaTeX
--Fehler.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifcolortbl
-\end_layout
-
+ und 
+\begin_inset Quotes gld
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Der folgende Teil wird nur gedruckt,
- wenn das \SpecialChar LaTeX
--Paket 
-\series bold
-colortbl
-\series default
- installiert ist.
-\end_layout
-
+ungerade
+\begin_inset Quotes grd
 \end_inset
 
+ sich immer auf die Gesamttabelle bezieht.
+ Falls Sie von Zeile 2 beginnen,
+ verwendet diese Zeile also trotzdem die 
+\begin_inset Quotes gld
+\end_inset
 
+gerade
+\begin_inset Quotes grd
+\end_inset
+
+ Farbe.
 \end_layout
 
 \begin_layout Standard
-Die Tabellenzeilen werden mit dem Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-rowcolors[Befehle]{Zeilennummer}{ungerade Zeilenfarbe}{gerade Zeilenfarbe}
-\end_layout
-
-\begin_layout Standard
-eingefärbt,
- der entweder in den \SpecialChar LaTeX
--Vorspann oder als \SpecialChar TeX
--Code vor der ersten zu färbenden Tabelle eingefügt wird.
- Zeilennummer ist die Nummer der ersten Zeile,
- die entsprechend der ungeraden Zeilenfarbe gefärbt werden soll.
- Befehle können zusätzliche Befehle sein,
- die vor jeder Tabellenzeile ausgeführt werden.
- So führt zum Beispiel der Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-rowcolors{1}{white}{lightgray}
-\end_layout
-
-\begin_layout Standard
-zum Farbschema von Tabelle
+Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -18848,22 +18445,9 @@ nolink "false"
 
 \end_inset
 
-.
- Der Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-rowcolors[
-\backslash
-hline]{1}{lightgray}{cyan}
-\end_layout
-
-\begin_layout Standard
-führt zum Farbschema von Tabelle
+ zeigt ein Beispiel mit weißen ungeraden und hellgrauen geraden Zeilen,
+ wobei die Färbung bei der ersten Zeile beginnt.
+ Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -18875,45 +18459,9 @@ nolink "false"
 
 \end_inset
 
-.
- Wenn ungerade Zeilenfarbe und/oder gerade Zeilenfarbe nicht angegeben werden,
- wird keine Farbe verwendet,
- so dass der Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-rowcolors{1}{}{}
-\end_layout
-
-\begin_layout Standard
-alle Farben löscht.
- 
-\series bold
-
-\backslash
-rowcolors
-\series default
- beeinflusst alle diesem Befehl folgenden Tabellen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-rowcolors{1}{white}{lightgray}
-\end_layout
-
-\end_inset
-
-
+ hat Zeilen in unterschiedlichen (Himmels-)Blautönen eingefärbt,
+ allerdings beginnt die automatische Färbung erst bei der zweiten Zeile.
+ Die erste (Kopf-)Zeile verwendet ein noch dunkleres Blau.
 \end_layout
 
 \begin_layout Standard
@@ -18934,7 +18482,8 @@ name "tab:Tabelle-rowcolors"
 
 \end_inset
 
-Tabelle bei der jede zweite Zeile grau gefärbt ist.
+Tabelle,
+ bei der jede zweite Zeile grau gefärbt ist.
 \end_layout
 
 \end_inset
@@ -18946,7 +18495,7 @@ Tabelle bei der jede zweite Zeile grau gefärbt ist.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features oddRowsColor="white" evenRowsColor="lightgray" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -19071,24 +18620,6 @@ Z
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-rowcolors[
-\backslash
-hline]{1}{lightgray}{cyan}
 \end_layout
 
 \end_inset
@@ -19114,7 +18645,7 @@ name "tab:Tabelle-rowcolors-2"
 
 \end_inset
 
-Tabelle bei der jede zweite Zeile cyan gefärbt ist und bei der sich eine Linie zwischen jeder Zeile befindet.
+Tabelle mit blauen Zebrastreifen und einer individuell gefärbten Kopfzeile.
 \end_layout
 
 \end_inset
@@ -19126,15 +18657,17 @@ Tabelle bei der jede zweite Zeile cyan gefärbt ist und bei der sich eine Linie 
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features oddRowsColor="svg:lightskyblue" evenRowsColor="svg:deepskyblue" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<row>
+<row color="svg:midnightblue">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\color white
 X
 \end_layout
 
@@ -19144,6 +18677,8 @@ X
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\color white
 Y
 \end_layout
 
@@ -19153,6 +18688,8 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\color white
 Z
 \end_layout
 
@@ -19259,86 +18796,9 @@ Z
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-rowcolors{1}{}{}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-schaltet die Färbung aus
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-else
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Der folgende Teil wird gedruckt,
- wenn das \SpecialChar LaTeX
--Paket 
-\series bold
-colortbl
-\series default
- nicht installiert ist:
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Sie müssen das \SpecialChar LaTeX
--Paket 
-\series bold
-colortbl
-\series default
- installiert haben um den Inhalt dieses Abschnitts zu sehen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fi
-\end_layout
-
-\end_inset
-
-
+Die Zebrastreifen können durch individuelle Zellen-,
+ Spalten- und Zeilenfarben jederzeit überschrieben werden.
+ Sie können zusätzlich natrlich auch Rahmenlinien verwenden (auch wenn das in gewisser Weise den Sinn der alternierenden Zeilenfarben etwas konterkariert).
 \end_layout
 
 \begin_layout Subsection
@@ -19365,6 +18825,229 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Um die Rahmenlinien von Tabellen in einer anderen Farbe als dem voreingestellten Schwarz auszugeben,
+ können Sie entweder in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Farben
+\family default
+ an (falls Sie diese Färbung für alle Tabellen im Dokument möchten),
+ oder im Dialog 
+\family sans
+Tabelleneinstellungen
+\family default
+ (falls es nur spezifische Tabellen betreffen soll) eine andere Farbe auswählen.
+ Für Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Tabelle-Rahmenfarben"
+
+\end_inset
+
+ haben wir 
+\emph on
+Limette
+\emph default
+ als 
+\family sans
+Rahmenfarbe
+\family default
+ in den 
+\family sans
+Tabelleneinstellungen
+\family default
+ ausgewählt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Tabelle-Rahmenfarben"
+
+\end_inset
+
+Tabelle mit limettenfarbigen Linien.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features borderColor="lime" oddRowsColor="default" evenRowsColor="default" startAltRowColors="2" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row color="default">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Z
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Abgefahrenes-Zeug"
+
+\end_inset
+
+Abgefahrenes Zeug
+\end_layout
+
+\begin_layout Standard
+Wenn Sie \SpecialChar TeX
+-Code verwenden,
+ können Sie noch ausgefallenere (aber visuell wohl eher zweifelhafte) Farbeinstellungen vornehmen.
+ Sie können einzelne Linien in Tabellen in sehr bizarrer Weise einfärben.
+ Wir zeigen im Folgenden einiges davon nur um zu demonstrieren,
+ dass es geht.
+ Sollten Sie wirklich erwägen etwas in diese Richtung in Ihren Dokumenten zu verwenden,
+ denken Sie noch einmal darüber nach!
 \end_layout
 
 \begin_layout Standard
@@ -19397,7 +19080,6 @@ pt gesetzt.
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -19505,7 +19187,7 @@ Tabelle mit farbigen vertikalen Linien
 <column alignment="center" valignment="top" special="Wc">
 <column alignment="center" valignment="top" special="WcW">
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -19523,7 +19205,7 @@ sd
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -19534,7 +19216,7 @@ sd
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -19552,7 +19234,7 @@ sd
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -19563,7 +19245,7 @@ sd
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -19581,7 +19263,7 @@ sd
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -19675,7 +19357,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 let
 \backslash
@@ -19686,7 +19367,6 @@ hline
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -19694,7 +19374,6 @@ hline}
 \end_layout
 
 \begin_layout Plain Layout
-
  {
 \backslash
 arrayrulecolor{red}
@@ -20012,7 +19691,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -20031,7 +19709,6 @@ myHlineC}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -20197,7 +19874,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 
 \backslash
@@ -20288,7 +19964,6 @@ Y
 status open
 
 \begin_layout Plain Layout
-
 
 \backslash
 arrayrulecolor{black}
@@ -20419,7 +20094,6 @@ arrayrulecolor{black}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 
@@ -20512,7 +20186,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 arrayrulecolor{black}
 \end_layout
@@ -20577,7 +20250,6 @@ B
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 
@@ -20837,7 +20509,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 
 \backslash
@@ -20864,7 +20535,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 multicolumn{1}{!{
 \backslash
@@ -20880,7 +20550,6 @@ Y
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -20936,7 +20605,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 multicolumn{1}{c|}{
 \end_layout
@@ -20948,7 +20616,6 @@ multicolumn{1}{c|}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -20968,7 +20635,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 multicolumn{1}{c!{
 \backslash
@@ -20984,7 +20650,6 @@ Y
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21005,7 +20670,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 arrayrulecolor{black}
@@ -21072,7 +20736,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 
 \backslash
@@ -21099,7 +20762,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 multicolumn{1}{|c!{
 \backslash
@@ -21115,7 +20777,6 @@ vline}}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21134,7 +20795,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multicolumn{1}{c!{
@@ -21151,7 +20811,6 @@ vline}}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21170,7 +20829,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multicolumn{1}{c!{
@@ -21187,7 +20845,6 @@ vline}}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21206,7 +20863,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multicolumn{1}{c!{
@@ -21223,7 +20879,6 @@ vline}}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21242,7 +20897,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multicolumn{1}{c!{
@@ -21259,7 +20913,6 @@ vline}}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21279,7 +20932,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 multicolumn{1}{c!{
 \backslash
@@ -21295,7 +20947,6 @@ vline}}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21315,7 +20966,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 multicolumn{1}{c|}{
 \end_layout
@@ -21327,7 +20977,6 @@ multicolumn{1}{c|}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21348,7 +20997,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 arrayrulecolor{black}
@@ -21433,7 +21081,6 @@ B
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -22887,7 +22534,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 strut 
 \end_layout
@@ -22912,7 +22558,6 @@ Groß,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 strut 
@@ -22939,7 +22584,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 strut 
 \end_layout
@@ -22965,7 +22609,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 strut 
 \end_layout
@@ -22989,7 +22632,6 @@ Riesig
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 strut 
@@ -24353,7 +23995,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -24502,7 +24143,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -24605,7 +24245,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 let
 \backslash
@@ -24616,7 +24255,6 @@ hline
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -24624,7 +24262,6 @@ hline}
 \end_layout
 
 \begin_layout Plain Layout
-
  {
 \backslash
 noalign{
@@ -24635,7 +24272,6 @@ arrayrulewidth 1.5pt}
 \end_layout
 
 \begin_layout Plain Layout
-
   
 \backslash
 myHline
@@ -24788,7 +24424,6 @@ sd
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -25044,7 +24679,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifarydshln
 \end_layout
@@ -25210,7 +24844,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 hdashline 
 \end_layout
@@ -25268,7 +24901,6 @@ o
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 cdashline{4-5}
@@ -25576,6 +25208,19 @@ nolink "false"
 \end_inset
 
  verdeutlicht.
+ Wie im Fall der in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Abgefahrenes-Zeug"
+
+\end_inset
+
+ diskutieren ausgefallenen Rahmenlinienfarben ermuntern wir Sie nicht,
+ derartig bizarre (und wohl auch sehr ablenkende) Farbeinstellungen in Ihren Dokumenten zu verwenden.
 \end_layout
 
 \begin_layout Standard
@@ -25583,7 +25228,6 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -25612,7 +25256,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 dashgapcolor{green}
 \end_layout
@@ -25638,7 +25281,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 let
 \backslash
@@ -25649,7 +25291,6 @@ hdashline
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -25657,7 +25298,6 @@ hdashline}
 \end_layout
 
 \begin_layout Plain Layout
-
  {
 \backslash
 arrayrulecolor{red}
@@ -25689,7 +25329,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 let
 \backslash
@@ -25700,7 +25339,6 @@ cdashline
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -25708,7 +25346,6 @@ cdashline}[1]
 \end_layout
 
 \begin_layout Plain Layout
-
  {
 \backslash
 arrayrulecolor{yellow}
@@ -25765,7 +25402,7 @@ Farbige Tabelle mit gestrichelten Linien
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt" special=">{\columncolor{dunkelgruen}\centering}c">
+<column alignment="center" valignment="top" width="0pt" color="svg:darkgreen">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt" special=":c">
 <column alignment="center" valignment="top">
@@ -25874,7 +25511,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 hdashline 
 \end_layout
@@ -25886,7 +25522,6 @@ hdashline
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 rowcolor{Gray}
@@ -25945,7 +25580,6 @@ o
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 cdashline{4-5}
@@ -26032,22 +25666,10 @@ w
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" color="dvips:maroon" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-cellcolor{Maroon}
-\end_layout
-
-\end_inset
-
 
 \color green
 i
@@ -26073,7 +25695,6 @@ i
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -26104,7 +25725,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -26134,7 +25754,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 nodashgapcolor
 \end_layout
@@ -26159,7 +25778,6 @@ zurücksetzen auf Standardwert
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -26523,7 +26141,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else
 \end_layout
@@ -26563,7 +26180,6 @@ arydshln
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi
@@ -30702,7 +30318,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 captionsetup[figure]{labelfont={tt},
  textfont=it,
@@ -30786,7 +30401,6 @@ Dies ist ein Beispiel einer Beschriftung,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 captionsetup[figure]{labelfont={bf,sf},
@@ -31527,7 +31141,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifsidecap
 \end_layout
@@ -32228,7 +31841,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 FigBesBeg 
 \end_layout
@@ -32286,7 +31898,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 FigBesEnd
 \end_layout
@@ -32301,7 +31912,6 @@ FigBesEnd
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 TabBesBeg 
@@ -32553,7 +32163,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 TabBesEnd
 \end_layout
@@ -32569,7 +32178,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 FigBesBeg 
 \end_layout
@@ -32584,7 +32192,6 @@ FigBesBeg
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 sidecaptionvpos{figure}{c}
@@ -32640,7 +32247,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 FigBesEnd
 \end_layout
@@ -32655,7 +32261,6 @@ FigBesEnd
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 TabBesBeg[5]
@@ -32919,7 +32524,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 TabBesEnd
 \end_layout
@@ -32934,7 +32538,6 @@ TabBesEnd
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 else
@@ -32976,7 +32579,6 @@ sidecap
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi
@@ -33209,13 +32811,11 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewenvironment{lyxgreyedout}
 \end_layout
 
 \begin_layout Plain Layout
-
 {
 \backslash
 textcolor[gray]{0.4}
@@ -33245,13 +32845,11 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewenvironment{lyxgreyedout}
 \end_layout
 
 \begin_layout Plain Layout
-
 {
 \backslash
 textcolor{blue}
@@ -33441,13 +33039,11 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 newcounter{MyRepeatFoot}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 setcounter{MyRepeatFoot}{
@@ -33615,7 +33211,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 footnotemark{}
 \end_layout
@@ -33636,7 +33231,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 footnotetext{
 \end_layout
@@ -33648,7 +33242,6 @@ Fußnote außerhalb der Minipage.
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -33735,7 +33328,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 footnotemark[
 \backslash
@@ -33768,7 +33360,6 @@ Hier ist eine weitere wiederholte Fußnote:
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 footnotemark[
@@ -33856,7 +33447,6 @@ roman{footnote}}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -33997,7 +33587,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -34087,7 +33676,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 numberwithin{footnote}{chapter}
 \end_layout
@@ -34121,7 +33709,6 @@ Kapitel.Fußnote
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -34981,7 +34568,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 reversemarginpar 
 \end_layout
@@ -35041,7 +34627,6 @@ als \SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 normalmarginpar 
@@ -35175,7 +34760,6 @@ Bemerkung:
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 ifmarginnote
@@ -35339,7 +34923,6 @@ cm von ihrer Originalposition nach oben versetzt.
 status collapsed
 
 \begin_layout Plain Layout
-
 [-1.5cm]
 \end_layout
 
@@ -35398,7 +34981,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand*{
 \backslash
@@ -35408,7 +34990,6 @@ centering}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand*{
@@ -35460,7 +35041,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand*{
 \backslash
@@ -35470,7 +35050,6 @@ raggedleft}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand*{
@@ -35616,7 +35195,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 let
 \backslash
@@ -35627,7 +35205,6 @@ marginpar
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -35637,7 +35214,6 @@ myMarginpar{%
 \end_layout
 
 \begin_layout Plain Layout
-
    
 \backslash
 textsf{
@@ -35648,7 +35224,6 @@ underbar{Achtung!}}}%
 \end_layout
 
 \begin_layout Plain Layout
-
    
 \backslash
 vspace{1.5mm}
@@ -35675,7 +35250,6 @@ Dies ist eine Randnotiz mit einer definierten Überschrift.
 status collapsed
 
 \begin_layout Plain Layout
-
 [-1.5cm]
 \end_layout
 
@@ -35686,7 +35260,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -35716,7 +35289,6 @@ Das Format wurde nur für dieses Beispiel geändert.
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 else
@@ -35758,7 +35330,6 @@ marginnote
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi
@@ -37320,7 +36891,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 cornersize*{1.5cm}
 \end_layout
@@ -37378,7 +36948,6 @@ cm
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 cornersize{0.5}
@@ -37487,7 +37056,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \end_layout
@@ -37534,7 +37102,6 @@ Box auf dunkelgrünem Hintergrund.
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 definecolor{shadecolor}{rgb}{1,0,0}
@@ -38104,7 +37671,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 -
 \end_layout
@@ -38337,7 +37903,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raisebox{
 \backslash
@@ -38359,7 +37924,6 @@ provokant
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -38384,7 +37948,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raisebox{-
 \backslash
@@ -38406,7 +37969,6 @@ provokant
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -38422,7 +37984,6 @@ Dies ist eine Zeile,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 raisebox{0.5cm}{
@@ -38443,7 +38004,6 @@ testen
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -38479,7 +38039,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raisebox{-
 \backslash
@@ -38501,7 +38060,6 @@ provokant
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -38522,7 +38080,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raisebox{0.5cm}[0pt]{
 \end_layout
@@ -38542,7 +38099,6 @@ testen
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -41124,7 +40680,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifpicinpar
 \end_layout
@@ -41156,7 +40711,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 begin{window}[2,c,{
 \end_layout
@@ -41178,12 +40732,10 @@ begin{window}[2,c,{
 status collapsed
 
 \begin_layout Plain Layout
-
 },]
 \end_layout
 
 \begin_layout Plain Layout
-
 {}
 \end_layout
 
@@ -41202,7 +40754,6 @@ It was in the spring of the year 1894 that all London was interested,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 footnotemark{}
@@ -41226,7 +40777,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 end{window}
 \end_layout
@@ -41242,7 +40792,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 footnotetext{
 \end_layout
@@ -41254,7 +40803,6 @@ Fußnote des Absatzes mit fixem Objekt.
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -41389,7 +40937,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else
 \end_layout
@@ -41430,7 +40977,6 @@ picinpar
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi
@@ -41590,7 +41136,6 @@ Hier sind einige Beispiele:
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 iflettrine
@@ -41857,7 +41402,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -41935,7 +41479,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else
 \end_layout
@@ -41976,7 +41519,6 @@ lettrine
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi
@@ -43071,7 +42613,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 textvisiblespace 
 \end_layout
@@ -43662,7 +43203,6 @@ inline true
 status open
 
 \begin_layout Plain Layout
-
 int a=5;
 \end_layout
 
@@ -43792,7 +43332,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -43811,17 +43350,14 @@ Gleitendes Programm-Listing
 \end_layout
 
 \begin_layout Plain Layout
-
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
-
     'Dies ist eine Python-Funktion'
 \end_layout
 
 \begin_layout Plain Layout
-
     pass
 \end_layout
 
@@ -44096,48 +43632,39 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
-
     'Dies ist eine Python-Funktion'
 \end_layout
 
 \begin_layout Plain Layout
-
     pass
 \end_layout
 
 \begin_layout Plain Layout
-
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
-
 'Sonderzeichen:
  Tschüß'
 \end_layout
 
 \begin_layout Plain Layout
-
 pass
 \end_layout
 
 \begin_layout Plain Layout
-
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
-
 'Dies ist eine Python-Funktion'
 \end_layout
 
 \begin_layout Plain Layout
-
 pass
 \end_layout
 
@@ -44378,7 +43905,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -44391,12 +43917,10 @@ Programm-Listing mit einer Formel
 \end_layout
 
 \begin_layout Plain Layout
-
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
-
     # $
 \backslash
 prod_{n=1}^{
@@ -44409,7 +43933,6 @@ frac{1}{x^{2}}$
 \end_layout
 
 \begin_layout Plain Layout
-
     pass
 \end_layout
 
@@ -45850,7 +45373,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -45862,7 +45384,6 @@ white
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -45873,7 +45394,6 @@ Farbe
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -45893,7 +45413,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -45905,7 +45424,6 @@ white
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -45916,7 +45434,6 @@ Farbe
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -45936,7 +45453,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -45948,7 +45464,6 @@ white
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -45959,7 +45474,6 @@ Farbe
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -45979,7 +45493,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -45991,7 +45504,6 @@ white
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46002,7 +45514,6 @@ Farbe
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46024,7 +45535,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46036,7 +45546,6 @@ Apricot
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46057,7 +45566,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46077,7 +45585,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46089,7 +45596,6 @@ Aquamarine
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46110,7 +45616,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46130,7 +45635,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46142,7 +45646,6 @@ Bittersweet
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46163,7 +45666,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46183,7 +45685,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46195,7 +45696,6 @@ BlueGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46216,7 +45716,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46238,7 +45737,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46250,7 +45748,6 @@ BlueViolet
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46271,7 +45768,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46291,7 +45787,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46303,7 +45798,6 @@ BrickRed
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46324,7 +45818,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46344,7 +45837,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46356,7 +45848,6 @@ Brown
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46377,7 +45868,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46397,7 +45887,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46409,7 +45898,6 @@ BurntOrange
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46430,7 +45918,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46452,7 +45939,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46464,7 +45950,6 @@ CadetBlue
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46485,7 +45970,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46505,7 +45989,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46517,7 +46000,6 @@ CarnationPink
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46538,7 +46020,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46558,7 +46039,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46570,7 +46050,6 @@ Cerulean
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46591,7 +46070,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46611,7 +46089,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46623,7 +46100,6 @@ CornflowerBlue
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46644,7 +46120,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46666,7 +46141,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46678,7 +46152,6 @@ Dandelion
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46699,7 +46172,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46719,7 +46191,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46731,7 +46202,6 @@ DarkOrchid
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46752,7 +46222,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46772,7 +46241,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46784,7 +46252,6 @@ Emerald
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46805,7 +46272,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46825,7 +46291,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46837,7 +46302,6 @@ ForestGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46858,7 +46322,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46880,7 +46343,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46892,7 +46354,6 @@ Fuchsia
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46913,7 +46374,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46933,7 +46393,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46945,7 +46404,6 @@ Goldenrod
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -46966,7 +46424,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -46986,7 +46443,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -46998,7 +46454,6 @@ Gray
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47019,7 +46474,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47039,7 +46493,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47051,7 +46504,6 @@ GreenYellow
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47072,7 +46524,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47094,7 +46545,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47106,7 +46556,6 @@ JungleGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47127,7 +46576,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47147,7 +46595,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47159,7 +46606,6 @@ Lavender
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47180,7 +46626,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47200,7 +46645,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47212,7 +46656,6 @@ LimeGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47233,7 +46676,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47253,7 +46695,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47265,7 +46706,6 @@ Mahogany
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47286,7 +46726,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47308,7 +46747,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47320,7 +46758,6 @@ Mahogany
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47341,7 +46778,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47361,7 +46797,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47373,7 +46808,6 @@ Maroon
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47394,7 +46828,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47414,7 +46847,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47426,7 +46858,6 @@ Melon
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47447,7 +46878,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47467,7 +46897,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47479,7 +46908,6 @@ MidnightBlue
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47500,7 +46928,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47522,7 +46949,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47534,7 +46960,6 @@ Mulberry
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47555,7 +46980,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47575,7 +46999,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47587,7 +47010,6 @@ NavyBlue
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47608,7 +47030,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47628,7 +47049,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47640,7 +47060,6 @@ OliveGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47661,7 +47080,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47681,7 +47099,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47693,7 +47110,6 @@ Orange
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47714,7 +47130,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47736,7 +47151,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47748,7 +47162,6 @@ OrangeRed
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47769,7 +47182,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47789,7 +47201,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47801,7 +47212,6 @@ Orchid
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47822,7 +47232,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47842,7 +47251,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47854,7 +47262,6 @@ Peach
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47875,7 +47282,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47895,7 +47301,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47907,7 +47312,6 @@ Periwinkle
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47928,7 +47332,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -47950,7 +47353,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -47962,7 +47364,6 @@ PineGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -47983,7 +47384,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48003,7 +47403,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48015,7 +47414,6 @@ Plum
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48036,7 +47434,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48056,7 +47453,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48068,7 +47464,6 @@ ProcessBlue
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48089,7 +47484,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48109,7 +47503,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48121,7 +47514,6 @@ Purple
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48142,7 +47534,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48164,7 +47555,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48176,7 +47566,6 @@ RawSienna
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48197,7 +47586,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48217,7 +47605,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48229,7 +47616,6 @@ RedOrange
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48250,7 +47636,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48270,7 +47655,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48282,7 +47666,6 @@ RedViolet
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48303,7 +47686,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48323,7 +47705,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48335,7 +47716,6 @@ Rhodamine
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48356,7 +47736,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48378,7 +47757,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48390,7 +47768,6 @@ RoyalBlue
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48411,7 +47788,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48431,7 +47807,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48443,7 +47818,6 @@ RoyalPurple
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48464,7 +47838,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48484,7 +47857,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48496,7 +47868,6 @@ RubineRed
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48517,7 +47888,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48537,7 +47907,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48549,7 +47918,6 @@ Salmon
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48570,7 +47938,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48592,7 +47959,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48604,7 +47970,6 @@ SeaGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48625,7 +47990,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48645,7 +48009,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48657,7 +48020,6 @@ Sepia
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48678,7 +48040,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48698,7 +48059,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48710,7 +48070,6 @@ SkyBlue
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48731,7 +48090,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48751,7 +48109,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48763,7 +48120,6 @@ SpringGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48784,7 +48140,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48806,7 +48161,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48818,7 +48172,6 @@ Tan
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48839,7 +48192,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48859,7 +48211,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48871,7 +48222,6 @@ TealBlue
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48892,7 +48242,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48912,7 +48261,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48924,7 +48272,6 @@ Thistle
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48945,7 +48292,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -48965,7 +48311,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -48977,7 +48322,6 @@ Turquoise
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -48998,7 +48342,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -49020,7 +48363,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -49032,7 +48374,6 @@ Violet
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -49053,7 +48394,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -49073,7 +48413,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -49085,7 +48424,6 @@ VioletRed
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -49106,7 +48444,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -49126,7 +48463,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -49138,7 +48474,6 @@ WildStrawberry
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -49159,7 +48494,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -49179,7 +48513,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -49191,7 +48524,6 @@ YellowGreen
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -49212,7 +48544,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -49234,7 +48565,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{black}{
 \end_layout
@@ -49246,7 +48576,6 @@ YellowOrange
 status collapsed
 
 \begin_layout Plain Layout
-
 }{
 \end_layout
 
@@ -49267,7 +48596,6 @@ W
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 

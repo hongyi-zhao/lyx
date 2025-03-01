@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
+    <width>586</width>
     <height>439</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
    <item row="3" column="2">
     <spacer name="hsBottomRight">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -78,7 +78,7 @@
           <string>&lt;=</string>
          </property>
          <property name="icon">
-          <iconset theme="QIcon::ThemeIcon::EditUndo"/>
+          <iconset theme="QIcon::EditUndo"/>
          </property>
          <property name="iconSize">
           <size>
@@ -97,7 +97,7 @@
           <string>=&gt;</string>
          </property>
          <property name="icon">
-          <iconset theme="QIcon::ThemeIcon::EditRedo"/>
+          <iconset theme="QIcon::EditRedo"/>
          </property>
          <property name="iconSize">
           <size>
@@ -122,7 +122,7 @@
      <item row="5" column="6">
       <spacer name="vsRightMiddleBelow">
        <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -141,7 +141,7 @@
         </sizepolicy>
        </property>
        <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+        <enum>Qt::ScrollBarAsNeeded</enum>
        </property>
       </widget>
      </item>
@@ -212,7 +212,7 @@
           <string>Enter a color name to search</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
          <property name="placeholderText">
           <string>Search color</string>
@@ -231,7 +231,7 @@
           <string>&lt;-</string>
          </property>
          <property name="icon">
-          <iconset theme="QIcon::ThemeIcon::GoPrevious"/>
+          <iconset theme="QIcon::GoPrevious"/>
          </property>
          <property name="iconSize">
           <size>
@@ -256,7 +256,7 @@
           <string>-&gt;</string>
          </property>
          <property name="icon">
-          <iconset theme="QIcon::ThemeIcon::GoNext"/>
+          <iconset theme="QIcon::GoNext"/>
          </property>
          <property name="iconSize">
           <size>
@@ -281,10 +281,10 @@
      <item row="0" column="3">
       <spacer name="hsTitleCenter">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeType">
-        <enum>QSizePolicy::Policy::Maximum</enum>
+        <enum>QSizePolicy::Maximum</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -332,7 +332,7 @@
           <string>Light</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -359,7 +359,7 @@
           <string>Dark</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -374,7 +374,7 @@
           <string>Mode</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -383,10 +383,10 @@
      <item row="3" column="6">
       <spacer name="vsRightMiddle">
        <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="sizeType">
-        <enum>QSizePolicy::Policy::Maximum</enum>
+        <enum>QSizePolicy::Maximum</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -415,10 +415,10 @@
      <item row="0" column="5">
       <spacer name="hsTitleRight">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeType">
-        <enum>QSizePolicy::Policy::Fixed</enum>
+        <enum>QSizePolicy::Fixed</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -431,7 +431,7 @@
      <item row="9" column="6">
       <spacer name="vsRightBottom">
        <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -444,7 +444,7 @@
      <item row="0" column="1">
       <spacer name="hsTitleLeft">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -473,7 +473,7 @@
         <string>Load preset color theme</string>
        </property>
        <property name="placeholderText">
-        <string>    Load Theme</string>
+        <string>Load Theme</string>
        </property>
       </widget>
      </item>

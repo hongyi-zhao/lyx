@@ -23,6 +23,7 @@
 #include "InsetTabular.h"
 
 #include "Author.h"
+#include "ColorSet.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -60,7 +61,6 @@
 #include "support/Changer.h"
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
@@ -213,6 +213,17 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_TABULAR_WIDTH, "set-tabular-width", true },
 	{ Tabular::SET_INNER_LINES, "set-inner-lines", false },
 	{ Tabular::TOGGLE_INNER_LINES, "toggle-inner-lines", false },
+	{ Tabular::SET_CELL_COLOR, "set-cell-color", true },
+	{ Tabular::SET_COLUMN_COLOR, "set-column-color", true },
+	{ Tabular::SET_COLUMN_COLOR_LEFT_OVERHANG, "set-column-color-left-overhang", true },
+	{ Tabular::SET_COLUMN_COLOR_RIGHT_OVERHANG, "set-column-color-right-overhang", true },
+	{ Tabular::SET_ROW_COLOR, "set-row-color", true },
+	{ Tabular::SET_ROW_COLOR_LEFT_OVERHANG, "set-row-color-left-overhang", true },
+	{ Tabular::SET_ROW_COLOR_RIGHT_OVERHANG, "set-row-color-right-overhang", true },
+	{ Tabular::SET_BORDER_COLOR, "set-border-color", true },
+	{ Tabular::SET_ODD_ROW_COLOR, "set-odd-row-color", true },
+	{ Tabular::SET_EVEN_ROW_COLOR, "set-even-row-color", true },
+	{ Tabular::SET_ALT_ROW_COLOR_START, "set-alt-row-color-start", true },
 	{ Tabular::LAST_ACTION, "", false }
 };
 
@@ -660,6 +671,7 @@ Tabular::CellData::CellData(Buffer * buf)
 	  bottom_line_ltrimmed(false),
 	  usebox(BOX_NONE),
 	  rotate(0),
+	  color("default"),
 	  inset(new InsetTableCell(buf))
 {
 	inset->setBuffer(*buf);
@@ -688,6 +700,7 @@ Tabular::CellData::CellData(CellData const & cs)
 	  usebox(cs.usebox),
 	  rotate(cs.rotate),
 	  align_special(cs.align_special),
+	  color(cs.color),
 	  p_width(cs.p_width),
 	  inset(static_cast<InsetTableCell *>(cs.inset->clone()))
 {
@@ -718,6 +731,7 @@ Tabular::CellData & Tabular::CellData::operator=(CellData const & cs)
 	usebox = cs.usebox;
 	rotate = cs.rotate;
 	align_special = cs.align_special;
+	color = cs.color;
 	p_width = cs.p_width;
 	inset.reset(static_cast<InsetTableCell *>(cs.inset->clone()));
 	return *this;
@@ -735,6 +749,7 @@ Tabular::RowData::RowData()
 	  endlastfoot(false),
 	  newpage(false),
 	  caption(false),
+	  color("default"),
 	  change(Change())
 {}
 
@@ -744,6 +759,7 @@ Tabular::ColumnData::ColumnData()
 	  valignment(LYX_VALIGN_TOP),
 	  width(0),
 	  varwidth(false),
+	  color("default"),
 	  change(Change())
 {
 }
@@ -788,6 +804,10 @@ void Tabular::init(Buffer * buf, row_type rows_arg,
 	tabular_width = Length();
 	longtabular_alignment = LYX_LONGTABULAR_ALIGN_CENTER;
 	rotate = 0;
+	border_color = "default";
+	odd_row_color = "default";
+	even_row_color = "default";
+	alt_row_colors_start = 0;
 	use_booktabs = false;
 	// set silly default lines
 	for (row_type r = 0; r < nrows(); ++r)
@@ -1067,6 +1087,7 @@ void Tabular::updateIndexes()
 	rowofcell.resize(numberofcells);
 	columnofcell.resize(numberofcells);
 	idx_type i = 0;
+	int mr_rows = 1;
 	// reset column and row of cells and update their width, alignment, caption, and ct status
 	for (row_type row = 0; row < nrows(); ++row) {
 		for (col_type column = 0; column < ncols(); ++column) {
@@ -1085,11 +1106,41 @@ void Tabular::updateIndexes()
 			setFixedWidth(row, column);
 			if (isPartOfMultiRow(row, column)) {
 				cell_info[row][column].inset->toggleMultiRow(true);
+				++mr_rows;
+				if (isEndOfMultiRow(row, column)) {
+					cell_info[getStartMultiRow(row, column)][column].inset->setMRRows(mr_rows);
+					mr_rows = 1;
+				}
 				continue;
 			}
 			cell_info[row][column].inset->toggleMultiRow(false);
 			cell_info[row][column].inset->setContentAlignment(
 				getAlignment(cellIndex(row, column)));
+			vector<string> colors;
+			// cell color precedes
+			colors.push_back(cell_info[row][column].color);
+			// then row color,
+			colors.push_back(row_info[row].color);
+			// column color
+			colors.push_back(column_info[column].color);
+			// and, finally, auto row color
+			int const realrow = realRowNumber(row);
+			if (realrow % 2 == 0) {
+				// even row
+				if (getAltRowColorsStart() <= realrow && getEvenRowColor() != "none"
+				     && getEvenRowColor() != "default" && !getEvenRowColor().empty())
+					colors.push_back(getEvenRowColor());
+			} else {
+				// odd row
+				if (getAltRowColorsStart() <= realrow && getOddRowColor() != "none"
+				    && getOddRowColor() != "default" && !getOddRowColor().empty())
+					colors.push_back(getOddRowColor());
+			}
+			for (auto const & color : colors)
+				if (color != "default" && lcolor.isKnownLyXName(color)) {
+					cell_info[row][column].inset->setBackgroundColor(color);
+					break;
+				}
 			if (buffer().params().track_changes) {
 				if (row_info[row].change.changed())
 					cell_info[row][column].inset->setChange(row_info[row].change);
@@ -1541,6 +1592,74 @@ void Tabular::setAlignSpecial(idx_type cell, docstring const & special,
 }
 
 
+void Tabular::setCellColor(idx_type cell, std::string const & color)
+{
+	registerLyXColor(color);
+	cellInfo(cell).color = color;
+	updateIndexes();
+}
+
+std::string Tabular::cellColor(idx_type cell) const
+{
+	return cellInfo(cell).color;
+}
+
+void Tabular::setColumnColor(col_type column, std::string const & color)
+{
+	registerLyXColor(color);
+	column_info[column].color = color;
+	updateIndexes();
+}
+
+std::string Tabular::columnColor(col_type column) const
+{
+	return column_info[column].color;
+}
+
+void Tabular::setRowColor(row_type row, std::string const & color)
+{
+	registerLyXColor(color);
+	row_info[row].color = color;
+	updateIndexes();
+}
+
+std::string Tabular::rowColor(row_type r) const
+{
+	return row_info[r].color;
+}
+
+
+void Tabular::setBorderColor(std::string const & color)
+{
+	registerLyXColor(color);
+	border_color = color;
+	updateIndexes();
+}
+
+
+void Tabular::setOddRowColor(std::string const & color)
+{
+	registerLyXColor(color);
+	odd_row_color = color;
+	updateIndexes();
+}
+
+
+void Tabular::setEvenRowColor(std::string const & color)
+{
+	registerLyXColor(color);
+	even_row_color = color;
+	updateIndexes();
+}
+
+
+void Tabular::setAltRowColorStart(int const i)
+{
+	alt_row_colors_start = i;
+	updateIndexes();
+}
+
+
 void Tabular::setTopLine(idx_type i, bool line)
 {
 	cellInfo(i).top_line = line;
@@ -1818,6 +1937,33 @@ row_type Tabular::getLastRow(bool const ct) const
 }
 
 
+int Tabular::realRowNumber(row_type row, bool const ct) const
+{
+	row_type r = 0;
+	// first row is 1 (not 0) for our purpose
+	int res = 1;
+	// exclude deleted rows if ct == true
+	while (r < nrows() && row != r) {
+		if (!ct || row_info[r].change.deleted())
+			++res;
+		++r;
+	}
+	return res;
+}
+
+
+row_type Tabular::getStartMultiRow(row_type row, col_type col) const
+{
+	if (cell_info[row][col].multirow == CELL_BEGIN_OF_MULTIROW)
+		return row;
+	if (cell_info[row][col].multirow != CELL_PART_OF_MULTIROW)
+		return 0;
+	while (row > 0 && cell_info[row][col].multirow != CELL_BEGIN_OF_MULTIROW)
+		--row;
+	return row;
+}
+
+
 row_type Tabular::cellRow(idx_type cell) const
 {
 	if (cell >= numberofcells)
@@ -1838,6 +1984,23 @@ col_type Tabular::cellColumn(idx_type cell) const
 }
 
 
+void Tabular::registerLyXColor(string const & value) const
+{
+	if (value == "default" || value == "none")
+		return;
+
+	if (!lcolor.isKnownLyXName(value)) {
+		if (theLaTeXColors().isLaTeXColor(value)) {
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(value);
+			string const lyxname = lc.name();
+			lcolor.setColor(lyxname, lc.hexname());
+			lcolor.setLaTeXName(lyxname, lc.latex());
+			lcolor.setGUIName(lyxname, to_ascii(lc.guiname()));
+		}
+	}
+}
+
+
 void Tabular::write(ostream & os) const
 {
 	// header line
@@ -1846,10 +2009,14 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("rows", nrows())
 	   << write_attribute("columns", ncols())
 	   << ">\n";
-	// global longtable options
+	// global options
 	os << "<features"
 	   << write_attribute("rotate", rotate)
 	   << write_attribute("booktabs", use_booktabs)
+	   << write_attribute("borderColor", border_color)
+	   << write_attribute("oddRowsColor", odd_row_color)
+	   << write_attribute("evenRowsColor", even_row_color)
+	   << write_attribute("startAltRowColors", alt_row_colors_start)
 	   << write_attribute("islongtable", is_long_tabular)
 	   << write_attribute("firstHeadTopDL", endfirsthead.topDL)
 	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
@@ -1877,6 +2044,9 @@ void Tabular::write(ostream & os) const
 		   << write_attribute("valignment", column_info[c].valignment)
 		   << write_attribute("width", column_info[c].p_width.asString())
 		   << write_attribute("varwidth", column_info[c].varwidth)
+		   << write_attribute("color", column_info[c].color)
+		   << write_attribute("colorleftoverhang", column_info[c].lcoloh)
+		   << write_attribute("colorrightoverhang", column_info[c].rcoloh)
 		   << write_attribute("special", column_info[c].align_special)
 		   << ">\n";
 	}
@@ -1902,6 +2072,9 @@ void Tabular::write(ostream & os) const
 		   << write_attribute("endlastfoot", row_info[r].endlastfoot)
 		   << write_attribute("newpage", row_info[r].newpage)
 		   << write_attribute("caption", row_info[r].caption)
+		   << write_attribute("color", row_info[r].color)
+		   << write_attribute("colorleftoverhang", row_info[r].lcoloh)
+		   << write_attribute("colorrightoverhang", row_info[r].rcoloh)
 		   << ">\n";
 		for (col_type c = 0; c < ncols(); ++c) {
 			os << "<cell"
@@ -1918,6 +2091,7 @@ void Tabular::write(ostream & os) const
 			   << write_attribute("bottomlinertrim", cell_info[r][c].bottom_line_rtrimmed)
 			   << write_attribute("leftline", cell_info[r][c].left_line)
 			   << write_attribute("rightline", cell_info[r][c].right_line)
+			   << write_attribute("color", cell_info[r][c].color)
 			   << write_attribute("rotate", cell_info[r][c].rotate)
 			   << write_attribute("usebox", cell_info[r][c].usebox)
 			   << write_attribute("width", cell_info[r][c].p_width)
@@ -1967,6 +2141,13 @@ void Tabular::read(Lexer & lex)
 	}
 	getTokenValue(line, "rotate", rotate);
 	getTokenValue(line, "booktabs", use_booktabs);
+	getTokenValue(line, "borderColor", border_color);
+	registerLyXColor(border_color);
+	getTokenValue(line, "oddRowsColor", odd_row_color);
+	registerLyXColor(odd_row_color);
+	getTokenValue(line, "evenRowsColor", even_row_color);
+	registerLyXColor(even_row_color);
+	getTokenValue(line, "startAltRowColors", alt_row_colors_start);
 	getTokenValue(line, "islongtable", is_long_tabular);
 	getTokenValue(line, "tabularvalignment", tabular_valignment);
 	getTokenValue(line, "tabularwidth", tabular_width);
@@ -1995,6 +2176,10 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "width", column_info[c].p_width);
 		getTokenValue(line, "special", column_info[c].align_special);
 		getTokenValue(line, "varwidth", column_info[c].varwidth);
+		getTokenValue(line, "color", column_info[c].color);
+		registerLyXColor(column_info[c].color);
+		getTokenValue(line, "colorleftoverhang", column_info[c].lcoloh);
+		getTokenValue(line, "colorrightoverhang", column_info[c].rcoloh);
 		getTokenValue(line, "change", column_info[c].change, buffer().params());
 	}
 
@@ -2018,6 +2203,10 @@ void Tabular::read(Lexer & lex)
 		getTokenValue(line, "newpage", row_info[i].newpage);
 		getTokenValue(line, "caption", row_info[i].caption);
 		getTokenValue(line, "change", row_info[i].change, buffer().params());
+		getTokenValue(line, "color", row_info[i].color);
+		registerLyXColor(row_info[i].color);
+		getTokenValue(line, "colorleftoverhang", row_info[i].lcoloh);
+		getTokenValue(line, "colorrightoverhang", row_info[i].rcoloh);
 		for (col_type j = 0; j < ncols(); ++j) {
 			l_getline(is, line);
 			if (!prefixIs(line, "<cell")) {
@@ -2039,6 +2228,8 @@ void Tabular::read(Lexer & lex)
 			getTokenValue(line, "bottomlinertrim", cell_info[i][j].bottom_line_rtrimmed);
 			getTokenValue(line, "leftline", cell_info[i][j].left_line);
 			getTokenValue(line, "rightline", cell_info[i][j].right_line);
+			getTokenValue(line, "color", cell_info[i][j].color);
+			registerLyXColor(cell_info[i][j].color);
 			getTokenValue(line, "rotate", cell_info[i][j].rotate);
 			getTokenValue(line, "usebox", cell_info[i][j].usebox);
 			getTokenValue(line, "width", cell_info[i][j].p_width);
@@ -2604,6 +2795,52 @@ bool Tabular::isPartOfMultiRow(row_type row, col_type column) const
 }
 
 
+bool Tabular::isEndOfMultiRow(row_type row, col_type column) const
+{
+	LASSERT(row < nrows(), return false);
+	LASSERT(column < ncols(), return false);
+	if (cell_info[row][column].multirow != CELL_PART_OF_MULTIROW)
+		return false;
+	if (row == getLastRow(!buffer().params().output_changes))
+		return true;
+	return (cell_info[row + 1][column].multirow != CELL_PART_OF_MULTIROW);
+}
+
+
+string Tabular::getBorderColor() const
+{
+	if (border_color.empty() || border_color == "default")
+		return buffer().masterParams().table_border_color;
+	return border_color;
+}
+
+
+string Tabular::getOddRowColor() const
+{
+	if (odd_row_color == "default")
+		return buffer().masterParams().table_odd_row_color == "none"
+				? string()
+				: buffer().masterParams().table_odd_row_color;
+	return odd_row_color;
+}
+
+string Tabular::getEvenRowColor() const
+{
+	if (even_row_color == "default")
+		return buffer().masterParams().table_even_row_color == "none"
+				? string()
+				: buffer().masterParams().table_even_row_color;
+	return even_row_color;
+}
+
+int Tabular::getAltRowColorsStart() const
+{
+	if (odd_row_color == "default" && even_row_color == "default")
+		return buffer().masterParams().table_alt_row_colors_start;
+	return alt_row_colors_start;
+}
+
+
 void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> const & columns,
 			  list<col_type> const & logical_columns) const
 {
@@ -2867,6 +3104,12 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		&& leftLine(cellIndex(r, nextcol));
 	bool coldouble = colright && nextcolleft;
 	bool celldouble = rightLine(cell) && nextcellleft;
+	bool const cell_colored = cellInfo(cell).color != "default"
+			&& lcolor.isKnownLyXName(cellInfo(cell).color);
+	bool const column_colored = column_info[c].color != "default"
+			&& lcolor.isKnownLyXName(column_info[c].color);
+	bool const row_colored = row_info[r].color != "default"
+			&& lcolor.isKnownLyXName(row_info[r].color);
 
 	ismulticol = (isMultiColumn(cell)
 		      || (c == 0 && colleft != leftLine(cell))
@@ -2890,6 +3133,19 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		if (column_info[col].alignment == LYX_ALIGN_DECIMAL)
 			++latexcolspan;
 
+	if (!ismulticol && cell_colored)
+		os << "\\cellcolor{" << lcolor.getLaTeXName(lcolor.getFromLyXName(cellInfo(cell).color)) << "}";
+	string colcolopts;
+	if (!column_info[c].rcoloh.empty()) {
+		if (column_info[c].lcoloh.empty())
+			colcolopts = "[\\tabcolsep][" + column_info[c].rcoloh + "]";
+		else
+			colcolopts = "[" + column_info[c].lcoloh + "][" + column_info[c].rcoloh + "]";
+	} else if (!column_info[c].lcoloh.empty())
+		colcolopts = "[" + column_info[c].lcoloh + "]";
+	string const colcolor = column_colored
+			? "\\columncolor{" + lcolor.getLaTeXName(lcolor.getFromLyXName(column_info[c].color)) + "}" + colcolopts
+			: string();
 	if (ismulticol) {
 		os << "\\multicolumn{" << latexcolspan << "}{";
 		if (((bidi && c == getLastCellInRow(cellRow(0)) && rightLine(cell))
@@ -2901,16 +3157,19 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		if (!cellInfo(cell).align_special.empty()) {
 			os << cellInfo(cell).align_special;
 		} else {
+			string mcolcolor = colcolor;
+			if (cell_colored)
+				mcolcolor = "\\cellcolor{" + lcolor.getLaTeXName(lcolor.getFromLyXName(cellInfo(cell).color)) + "}";
 			if (!getPWidth(cell).zero()) {
 				switch (align) {
 				case LYX_ALIGN_LEFT:
-					os << ">{\\raggedright}";
+					os << ">{" << mcolcolor << "\\raggedright}";
 					break;
 				case LYX_ALIGN_RIGHT:
-					os << ">{\\raggedleft}";
+					os << ">{" << mcolcolor << "\\raggedleft}";
 					break;
 				case LYX_ALIGN_CENTER:
-					os << ">{\\centering}";
+					os << ">{" << mcolcolor << "\\centering}";
 					break;
 				default:
 					break;
@@ -2931,9 +3190,13 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 				   << '}';
 			} else {
 				if ((getRotateCell(cell) == 0 && useBox(cell) == BOX_VARWIDTH
-				     && align == LYX_ALIGN_LEFT))
+				     && align == LYX_ALIGN_LEFT)) {
+					if (!colcolor.empty())
+						os << ">{" << mcolcolor << "}";
 					os << "V{\\linewidth}";
-				else {
+				} else {
+					if (!colcolor.empty())
+						os << ">{" << mcolcolor << "}";
 					switch (align) {
 					case LYX_ALIGN_LEFT:
 						os << 'l';
@@ -2956,9 +3219,11 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 		os << "}{";
 	} // end if ismulticol
 
-	// we only need code for the first multirow cell
+	// we only need code for the first multirow cell normally,
+	// with colored cells, we need it in the last one, though
 	ismultirow = isMultiRow(cell);
-	if (ismultirow) {
+	bool const has_color = cell_colored || row_colored;
+	if (ismultirow && !has_color) {
 		os << "\\multirow{" << rowSpan(cell) << "}{";
 		if (!getPWidth(cell).zero())
 			os << from_ascii(getPWidth(cell).asLatexString());
@@ -3179,6 +3444,8 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	}
 	bool ismulticol = false;
 	bool ismultirow = false;
+	bool const row_colored = row_info[row].color != "default"
+			&& lcolor.isKnownLyXName(row_info[row].color);
 
 	// The bidi package (loaded by polyglossia with XeTeX) reverses RTL table columns
 	// Luabibdi (used by LuaTeX) behaves like classic
@@ -3190,20 +3457,71 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	idx_type lastcell =
 		bidi_rtl ? getFirstCellInRow(row, ct) : getLastCellInRow(row, ct);
 
+	// \\rowcolor preceded columncolor
+	if (row_colored) {
+		string rowcolopts;
+		if (!row_info[row].rcoloh.empty()) {
+			if (row_info[row].lcoloh.empty())
+				rowcolopts = "[\\tabcolsep][" + row_info[row].rcoloh + "]";
+			else
+				rowcolopts = "[" + row_info[row].lcoloh + "][" + row_info[row].rcoloh + "]";
+		} else if (!row_info[row].lcoloh.empty())
+			rowcolopts = "[" + row_info[row].lcoloh + "]";
+		os << "\\rowcolor{" << lcolor.getLaTeXName(lcolor.getFromLyXName(row_info[row].color)) << "}"
+		   << rowcolopts;
+	}
+
 	for (auto const & c : columns) {
 		if (isPartOfMultiColumn(row, c))
 			continue;
 
 		idx_type cell = cellIndex(row, c);
 
-		if (isPartOfMultiRow(row, c)
-		    && column_info[c].alignment != LYX_ALIGN_DECIMAL) {
-			if (cell != lastcell)
-				os << " & ";
-			continue;
+		bool const cell_colored = cellInfo(cell).color != "default"
+			&& lcolor.isKnownLyXName(cellInfo(cell).color);
+		bool color_last_multirow = false;
+
+		if (isMultiRow(cell) && column_info[c].alignment != LYX_ALIGN_DECIMAL) {
+			row_type bmr = getStartMultiRow(row, c);
+			bool const mrow_colored = row_info[bmr].color != "default"
+				&& lcolor.isKnownLyXName(row_info[bmr].color);
+			bool const mrow_has_colors = cell_colored || mrow_colored;
+			if (mrow_has_colors) {
+				if (cell_colored)
+					os << "\\cellcolor{" << lcolor.getLaTeXName(lcolor.getFromLyXName(cellInfo(cell).color)) << "}";
+				else if (mrow_colored && cell != getFirstCellInRow(row, c))
+					os << "\\cellcolor{" << lcolor.getLaTeXName(lcolor.getFromLyXName(row_info[bmr].color)) << "}";
+				if (isEndOfMultiRow(row, c)) {
+					color_last_multirow = true;
+					// with colored cells, we this in the last row of the multirow,
+					// shifted upwards
+					os << "\\multirow{-" << rowSpan(cell) << "}{";
+					if (!getPWidth(cell).zero())
+						os << from_ascii(getPWidth(cell).asLatexString());
+					else {
+						if (column_info[c].varwidth)
+							// this inherits varwidth size
+							os << "=";
+						else
+							// we need to set a default value
+							os << "*";
+					}
+					os << "}";
+					if (!getMROffset(cell).zero())
+						os << "[" << from_ascii(getMROffset(cell).asLatexString()) << "]";
+					os << "{";
+				}
+			}
+			if ((!color_last_multirow && isPartOfMultiRow(row, c))
+			    || (mrow_has_colors && !isEndOfMultiRow(row, c))) {
+				if (cell != lastcell)
+					os << " & ";
+				continue;
+			}
 		}
 
-		TeXCellPreamble(os, cell, ismulticol, ismultirow, bidi_rtl);
+		if (!color_last_multirow)
+			TeXCellPreamble(os, cell, ismulticol, ismultirow, bidi_rtl);
 		InsetTableCell const * inset = cellInset(cell);
 
 		Paragraph const & par = inset->paragraphs().front();
@@ -3235,7 +3553,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 				    ? OutputParams::PLAIN
 				    : OutputParams::ALIGNED;
 
-		if (getAlignment(cell) == LYX_ALIGN_DECIMAL) {
+		if (!color_last_multirow && getAlignment(cell) == LYX_ALIGN_DECIMAL) {
 			// copy cell and split in 2
 			InsetTableCell head = InsetTableCell(*cellInset(cell));
 			head.setBuffer(const_cast<Buffer &>(buffer()));
@@ -3274,7 +3592,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 				it.latex(os, runparams);
 				break;
 			}
-		} else if (!isPartOfMultiRow(row, c)) {
+		} else if (color_last_multirow || !isPartOfMultiRow(row, c)) {
 			if (!runparams.nice)
 				os.texrow().start(par.id(), 0);
 			if (isMultiRow(cell) && !LaTeXFeatures::isAvailableAtLeastFrom("multirow", 2021, 1, 29))
@@ -3284,6 +3602,9 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 
 		runparams.encoding = newrp.encoding;
 		if (rtl)
+			os << '}';
+
+		if (color_last_multirow)
 			os << '}';
 
 		TeXCellPostamble(os, cell, ismulticol, ismultirow);
@@ -3373,6 +3694,31 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 		logical_columns.push_back(cl);
 	}
 
+	bool have_local_alt_row_colors = false;
+	// switch on alternating row colors if requested
+	if ((getOddRowColor() != "default" || getEvenRowColor() != "default")
+	    && (!getOddRowColor().empty() && !getEvenRowColor().empty())
+	    && (odd_row_color != "default" || even_row_color != "default")) {
+		have_local_alt_row_colors = true;
+		string const orc = getOddRowColor() == "none"
+				? string()
+				: lcolor.getLaTeXName(lcolor.getFromLyXName(getOddRowColor()));
+		string const erc = getEvenRowColor() == "none"
+				? string()
+				: lcolor.getLaTeXName(lcolor.getFromLyXName(getEvenRowColor()));
+		os << "\\rowcolors{" << getAltRowColorsStart() << "}{" << orc << "}{" << erc << "}\n";
+	}
+
+	bool have_local_border_colors = false;
+	// set border color if requested
+	if ((getBorderColor() != "default" && getBorderColor() != "none")
+	     || (!border_color.empty() && border_color != "default")) {
+		have_local_border_colors = true;
+		os << "\\arrayrulecolor{"
+		   << lcolor.getLaTeXName(lcolor.getFromLyXName(getBorderColor()))
+		    << "}\n";
+	}
+
 	// If we use \cline or \cmidrule, we need to locally de-activate
 	// the - character when using languages that activate it (e.g., Czech, Slovak).
 	bool deactivate_chars = false;
@@ -3457,6 +3803,17 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 		os << "@{\\extracolsep{\\fill}}";
 
 	for (auto const & c : columns) {
+		string colcolopts;
+		if (!column_info[c].rcoloh.empty()) {
+			if (column_info[c].lcoloh.empty())
+				colcolopts = "[\\tabcolsep][" + column_info[c].rcoloh + "]";
+			else
+				colcolopts = "[" + column_info[c].lcoloh + "][" + column_info[c].rcoloh + "]";
+		} else if (!column_info[c].lcoloh.empty())
+			colcolopts = "[" + column_info[c].lcoloh + "]";
+		string const colcolor = (column_info[c].color != "default" && lcolor.isKnownLyXName(column_info[c].color))
+				? "\\columncolor{" + lcolor.getLaTeXName(lcolor.getFromLyXName(column_info[c].color)) + "}" + colcolopts
+				: string();
 		if ((bidi_rtl && columnRightLine(c)) || (!bidi_rtl && columnLeftLine(c)))
 			os << '|';
 		if (!column_info[c].align_special.empty()) {
@@ -3466,24 +3823,26 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 				bool decimal = false;
 				switch (column_info[c].alignment) {
 				case LYX_ALIGN_LEFT:
-					os << ">{\\raggedright}";
+					os << ">{" << colcolor << "\\raggedright}";
 					break;
 				case LYX_ALIGN_RIGHT:
-					os << ">{\\raggedleft}";
+					os << ">{" << colcolor << "\\raggedleft}";
 					break;
 				case LYX_ALIGN_CENTER:
-					os << ">{\\centering}";
+					os << ">{" << colcolor << "\\centering}";
 					break;
 				case LYX_ALIGN_NONE:
 				case LYX_ALIGN_BLOCK:
 				case LYX_ALIGN_LAYOUT:
 				case LYX_ALIGN_SPECIAL:
+					if (!colcolor.empty())
+						os << ">{" << colcolor << "}";
 					break;
 				case LYX_ALIGN_DECIMAL: {
 					if (bidi_rtl)
-						os << ">{\\raggedright}";
+						os << ">{" << colcolor << "\\raggedright}";
 					else
-						os << ">{\\raggedleft}";
+						os << ">{" << colcolor << "\\raggedleft}";
 					decimal = true;
 					break;
 				}
@@ -3528,25 +3887,31 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			} else if (column_info[c].varwidth) {
 				switch (column_info[c].alignment) {
 				case LYX_ALIGN_LEFT:
-					os << ">{\\raggedright\\arraybackslash}";
+					os << ">{" << colcolor << "\\raggedright\\arraybackslash}";
 					break;
 				case LYX_ALIGN_RIGHT:
-					os << ">{\\raggedleft\\arraybackslash}";
+					os << ">{" << colcolor << "\\raggedleft\\arraybackslash}";
 					break;
 				case LYX_ALIGN_CENTER:
-					os << ">{\\centering\\arraybackslash}";
+					os << ">{" << colcolor << "\\centering\\arraybackslash}";
 					break;
 				case LYX_ALIGN_NONE:
 				case LYX_ALIGN_BLOCK:
 				case LYX_ALIGN_LAYOUT:
 				case LYX_ALIGN_SPECIAL:
 				case LYX_ALIGN_DECIMAL:
+					if (!colcolor.empty())
+						os << ">{" << colcolor << "}";
 					break;
 				}
 				os << 'X';
-			} else if (isVTypeColumn(c))
+			} else if (isVTypeColumn(c)) {
+				if (!colcolor.empty())
+					os << ">{" << colcolor << "}";
 				os << "V{\\linewidth}";
-			else {
+			} else {
+				if (!colcolor.empty())
+					os << ">{" << colcolor << "}";
 				switch (column_info[c].alignment) {
 				case LYX_ALIGN_LEFT:
 					os << 'l';
@@ -3555,7 +3920,18 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 					os << 'r';
 					break;
 				case LYX_ALIGN_DECIMAL:
-					os << "r@{\\extracolsep{0pt}" << column_info[c].decimal_point << "}l";
+					os << "r@{\\extracolsep{0pt}"
+					   << column_info[c].decimal_point
+					   << "}";
+					if (!colcolor.empty()) {
+						os << ">{\\columncolor{" + lcolor.getLaTeXName(lcolor.getFromLyXName(column_info[c].color)) + "}[0pt]";
+						if (column_info[c].rcoloh.empty())
+							os << "[\\tabcolsep]";
+						else
+							os << "[" << column_info[c].rcoloh << "]";
+						os << "}";
+					}
+					os << "l";
 					break;
 				default:
 					os << 'c';
@@ -3605,6 +3981,32 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	if (deactivate_chars)
 		// close the group
 		os << "\n\\endgroup\n";
+
+	// switch off alternating row colors if needed
+	if (have_local_alt_row_colors) {
+		int const outer_alt_row_start = buffer().masterParams().table_alt_row_colors_start;
+		string outer_odd_rc = buffer().masterParams().table_odd_row_color;
+		string outer_even_rc = buffer().masterParams().table_even_row_color;
+		outer_odd_rc = (outer_odd_rc == "default")
+				? string()
+				: lcolor.getLaTeXName(lcolor.getFromLyXName(outer_odd_rc));
+		outer_even_rc = (outer_even_rc == "default")
+				? string()
+				: lcolor.getLaTeXName(lcolor.getFromLyXName(outer_even_rc));
+		os << "\\rowcolors{"
+		   << outer_alt_row_start
+		   << "}{" << outer_odd_rc
+		   << "}{" << outer_even_rc << "}\n";
+	}
+
+	// switch off border color if needed
+	if (have_local_border_colors) {
+		string outer_border_col = buffer().masterParams().table_border_color;
+		outer_border_col = (outer_border_col == "default")
+				? "black"
+				: lcolor.getLaTeXName(lcolor.getFromLyXName(outer_border_col));
+		os << "\\arrayrulecolor{" << outer_border_col << "}\n";
+	}
 
 	if (rotate != 0) {
 		if (is_long_tabular)
@@ -4284,6 +4686,7 @@ void Tabular::validate(LaTeXFeatures & features) const
 		else
 			features.require("tabularx");
 	}
+	vector<string> used_colors;
 	for (idx_type cell = 0; cell < numberofcells; ++cell) {
 		if (isMultiRow(cell))
 			features.require("multirow");
@@ -4303,8 +4706,49 @@ void Tabular::validate(LaTeXFeatures & features) const
 		else if (!isValidRow(cellRow(cell)))
 			features.saveNoteEnv("longtable");
 
+		if (cellColor(cell) != "default")
+			used_colors.push_back(cellColor(cell));
+
 		cellInset(cell)->validate(features);
 		features.saveNoteEnv(string());
+	}
+	for (row_type row = 0; row < nrows(); ++row) {
+		if (rowColor(row) != "default")
+			used_colors.push_back(rowColor(row));
+	}
+	for (col_type col = 0; col < ncols(); ++col) {
+		if (columnColor(col) != "default")
+			used_colors.push_back(columnColor(col));
+	}
+	if (getOddRowColor() != "default" || getEvenRowColor() != "default") {
+		if (!features.isAvailableAtLeastFrom("colortbl", 2022, 6, 20)) {
+			// previous to this colortbl version, the feature
+			// was part of xcolor
+			features.require("xcolor");
+			features.require("xcolor:table");
+		}
+		if (getOddRowColor() != "none" && getOddRowColor() != "default")
+			used_colors.push_back(getOddRowColor());
+		if (getEvenRowColor() != "none" && getEvenRowColor() != "default")
+			used_colors.push_back(getEvenRowColor());
+	}
+	if (getBorderColor() != "none" && getBorderColor() != "default")
+		used_colors.push_back(getBorderColor());
+
+
+	if (!used_colors.empty())
+		features.require("colortbl");
+	
+	for (auto const & col : used_colors) {
+		if (!theLaTeXColors().isLaTeXColor(col))
+			continue;
+		LaTeXColor const lc = theLaTeXColors().getLaTeXColor(col);
+		for (auto const & r : lc.req())
+			features.require(r);
+		if (!lc.model().empty()) {
+			features.require("xcolor");
+			features.require("xcolor:" + lc.model());
+		}
 	}
 }
 
@@ -4350,7 +4794,7 @@ bool Tabular::hasNewlines(idx_type cell) const
 
 InsetTableCell::InsetTableCell(Buffer * buf)
 	: InsetText(buf, InsetText::PlainLayout), isFixedWidth(false), isVarwidth(false),
-	  isMultiColumn(false), isMultiRow(false), isCaptionRow(false),
+	  isMultiColumn(false), isMultiRow(false), mr_rows(1), isCaptionRow(false),
 	  contentAlign(LYX_ALIGN_CENTER)
 {}
 
@@ -4363,6 +4807,15 @@ bool InsetTableCell::allowParagraphCustomization(idx_type) const
 bool InsetTableCell::forceLocalFontSwitch() const
 {
 	return true;
+}
+
+
+ColorCode InsetTableCell::backgroundColor(PainterInfo const & pi) const
+{
+	if (background_color != "none" && lcolor.isKnownLyXName(background_color))
+		return lcolor.getFromLyXName(background_color);
+
+	return InsetText::backgroundColor(pi);
 }
 
 
@@ -4453,6 +4906,42 @@ void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc += topOffset(mi.base.bv);
 	dim.des += bottomOffset(mi.base.bv);
 	dim.wid += horiz_offset;
+}
+
+
+void InsetTableCell::draw(PainterInfo & pi, int x, int y) const
+{
+	if (background_color == "none" || !lcolor.isKnownLyXName(background_color))
+		return InsetText::draw(pi, x, y);
+
+	// special case for colored cells, where we need to fill out
+	// the whole space
+	TextMetrics & tm = pi.base.bv->textMetrics(&text());
+
+	// FIXME: This calculation is ugly, but we do not seem to
+	// have the proper cell dimensions avaliable here.
+	int const w = width;
+	int const h = mr_rows * (tm.height() + 2 * topOffset(pi.base.bv) + bottomOffset(pi.base.bv) + Painter::thin_line);
+	int const yframe = y - mr_rows * (tm.ascent()) - mr_rows * (Painter::thin_line) - topOffset(pi.base.bv);
+	int const xframe = x - (w - tm.width()) / 2 + leftOffset(pi.base.bv);
+	bool change_drawn = false;
+	if (pi.full_repaint)
+		pi.pain.fillRectangle(xframe, yframe, w, h,
+			pi.backgroundColor(this));
+
+	{
+		Changer dummy = changeVar(pi.background_color,
+		                            pi.backgroundColor(this, false));
+		// The change tracking cue must not be inherited
+		Changer dummy2 = changeVar(pi.change, Change());
+		tm.draw(pi, x + leftOffset(pi.base.bv), y);
+	}
+
+	if (canPaintChange(*pi.base.bv) && (!change_drawn || pi.change.deleted()))
+		// Do not draw the change tracking cue if already done by RowPainter and
+		// do not draw the cue for INSERTED if the information is already in the
+		// color of the frame
+		pi.change.paintCue(pi, xframe, yframe, xframe + w, yframe + h);
 }
 
 
@@ -4706,6 +5195,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	// with xtabular (possibly multiple times, so the call is recursive).
 	if (tabular.updateColumnWidths(mi) && tabular.hasVarwidthColumn())
 		metrics(mi, dim);
+
 	dim.asc = tabular.rowAscent(0) - tabular.offsetVAlignment();
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
@@ -4792,6 +5282,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			drawCellLines(pi, nx, yy, r, idx);
 			nx += tabular.cellWidth(idx);
 			pi.selected = original_selection_state;
+			tabular.cell_info[r][c].inset->setWidth(tabular.cellWidth(tabular.cellIndex(r, c)));
 		}
 
 		if (r + 1 < tabular.nrows())
@@ -4897,6 +5388,9 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 
 	// Colour the frame if rows/columns are added or deleted
 	Color colour = Color_tabularline;
+	if (tabular.getBorderColor() != "default" && tabular.getBorderColor() != "none"
+	    && lcolor.isKnownLyXName(tabular.getBorderColor()))
+		colour = lcolor.getFromLyXName(tabular.getBorderColor());
 	if (tabular.column_info[col].change.changed()
 	    || tabular.row_info[row].change.changed())
 		colour = tabular.cellInset(cell)->paragraphs().front().lookupChange(0).color();
@@ -5684,6 +6178,17 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 		case Tabular::SET_TOP_SPACE:
 		case Tabular::SET_BOTTOM_SPACE:
 		case Tabular::SET_INTERLINE_SPACE:
+		case Tabular::SET_CELL_COLOR:
+		case Tabular::SET_COLUMN_COLOR:
+		case Tabular::SET_ROW_COLOR:
+		case Tabular::SET_COLUMN_COLOR_LEFT_OVERHANG:
+		case Tabular::SET_COLUMN_COLOR_RIGHT_OVERHANG:
+		case Tabular::SET_ROW_COLOR_LEFT_OVERHANG:
+		case Tabular::SET_ROW_COLOR_RIGHT_OVERHANG:
+		case Tabular::SET_BORDER_COLOR:
+		case Tabular::SET_ODD_ROW_COLOR:
+		case Tabular::SET_EVEN_ROW_COLOR:
+		case Tabular::SET_ALT_ROW_COLOR_START:
 			status.clear();
 			return true;
 
@@ -7406,6 +7911,58 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::SET_DECIMAL_POINT:
 		for (col_type c = sel_col_start; c <= sel_col_end; ++c)
 			tabular.column_info[c].decimal_point = from_utf8(value);
+		break;
+
+	case Tabular::SET_CELL_COLOR:
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+			for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+				tabular.setCellColor(tabular.cellIndex(r, c), value);
+		break;
+
+	case Tabular::SET_COLUMN_COLOR:
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			tabular.setColumnColor(c, value);
+		break;
+
+	case Tabular::SET_ROW_COLOR:
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+			tabular.setRowColor(r, value);
+		break;
+
+	case Tabular::SET_COLUMN_COLOR_LEFT_OVERHANG:
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			tabular.column_info[c].lcoloh = value;
+		break;
+
+	case Tabular::SET_COLUMN_COLOR_RIGHT_OVERHANG:
+		for (col_type c = sel_col_start; c <= sel_col_end; ++c)
+			tabular.column_info[c].rcoloh = value;
+		break;
+
+	case Tabular::SET_ROW_COLOR_LEFT_OVERHANG:
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+			tabular.row_info[r].lcoloh = value;
+		break;
+
+	case Tabular::SET_ROW_COLOR_RIGHT_OVERHANG:
+		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
+			tabular.row_info[r].rcoloh = value;
+		break;
+
+	case Tabular::SET_BORDER_COLOR:
+		tabular.setBorderColor(value);
+		break;
+
+	case Tabular::SET_ODD_ROW_COLOR:
+		tabular.setOddRowColor(value);
+		break;
+
+	case Tabular::SET_EVEN_ROW_COLOR:
+		tabular.setEvenRowColor(value);
+		break;
+
+	case Tabular::SET_ALT_ROW_COLOR_START:
+		tabular.setAltRowColorStart(convert<int>(value));
 		break;
 
 	// dummy stuff just to avoid warnings

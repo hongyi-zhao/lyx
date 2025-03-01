@@ -1769,9 +1769,9 @@ def revert_doc_col(document, color, default_value, xcolor, x11, svg, dvips):
             del document.header[i]
             return
         # check whether it is a color also otherwise used
-        color_used = find_token(document.body, "\\color " + value, i) != -1 \
-        or find_token(document.body, "framecolor \"" + value, i) \
-        or find_token(document.body, "backgroundcolor \"" + value, i)
+        color_used = find_token(document.body, "\\color " + value) != -1 \
+        or find_token(document.body, "framecolor \"" + value) != -1 \
+        or find_token(document.body, "backgroundcolor \"" + value) != -1
         # check whether it is a known latexcolor
         if value in list(xcolor_names):
             if color_used == False and value.find(":") != -1:
@@ -1935,6 +1935,565 @@ def revert_colorbox(document):
         i += 13
 
 
+def revert_colortbl(document):
+    """Revert colortbl features to TeX code."""
+
+    # save some variables
+    handledcolors = []
+    xcolor = False
+    colortbl = False
+    x11 = False
+    svg = False
+    dvips = False
+    tables = False
+    preamble = []
+
+    # Start with the global settings
+    gbordercol = ""
+    goddrowcol = ""
+    gevenrowcol = ""
+    galtrowstart = ""
+    bordercolor_tex = "black"
+    i = find_token(document.header, "\\table_border_color", 0)
+    if i == -1:
+        gbordercol == "default"
+    else:
+        gbordercol = get_value(document.header, "\\table_border_color", i)
+        del document.header[i]
+        # check whether it is a color also otherwise used
+        color_used = find_token(document.body, "\\color " + gbordercol) != -1 \
+        or find_token(document.body, "framecolor \"" + gbordercol) \
+        or find_token(document.body, "backgroundcolor \"" + gbordercol)
+        if color_used == True:
+            handledcolors.append(gbordercol)
+        # check whether it is a known latexcolor only used here
+        for color in list(xcolor_names):
+            if gbordercol == color.lower():
+                if color_used == False and color.find(":") != -1:
+                    xcolor = True
+                    x11 = color.find("X11:") != -1
+                    svg = color.find("SVG:") != -1
+                    dvips = color.find("DVIPS:") != -1
+        # if not there is nothing more to do (customcolors will
+        # be reverted later on)
+        else:
+            # No need to check again for this later
+            handledcolors.append(gbordercol)
+
+        # Add preamble code
+        if gbordercol != "default":
+            bordercolor_tex = gbordercol
+            for color in list(xcolor_names):
+                if gbordercol == color.lower():
+                   bordercolor_tex = color.split(":")[1]
+            preamble.append("\\arrayrulecolor{%s}" % bordercolor_tex)
+            colortbl = True
+
+    goddrowcolor_tex = ""
+    i = find_token(document.header, "\\table_odd_row_color", 0)
+    if i == -1:
+        goddrowcol == "default"
+    else:
+        goddrowcol = get_value(document.header, "\\table_odd_row_color", i)
+        del document.header[i]
+        if goddrowcol not in handledcolors:
+            # check whether it is a color also otherwise used
+            color_used = find_token(document.body, "\\color " + goddrowcol) != -1 \
+            or find_token(document.body, "framecolor \"" + goddrowcol) != -1 \
+            or find_token(document.body, "backgroundcolor \"" + goddrowcol) != -1
+            if color_used == True:
+                handledcolors.append(goddrowcol)
+            # check whether it is a known latexcolor only used here
+            for color in list(xcolor_names):
+                if goddrowcol == color.lower():
+                    if color_used == False and color.find(":") != -1:
+                        xcolor = True
+                        x11 |= color.find("X11:") != -1
+                        svg |= color.find("SVG:") != -1
+                        dvips |= color.find("DVIPS:") != -1
+            # if not there is nothing more to do (customcolors will
+            # be reverted later on)
+            else:
+                # No need to check again for this later
+                handledcolors.append(goddrowcol)
+
+        # get LaTeX color name
+        if goddrowcol != "default":
+            goddrowcolor_tex = goddrowcol
+            for color in list(xcolor_names):
+                if goddrowcol == color.lower():
+                    goddrowcolor_tex = color.split(":")[1]
+
+    gevenrowcolor_tex = ""
+    i = find_token(document.header, "\\table_even_row_color", 0)
+    if i == -1:
+        gevenrowcol == "default"
+    else:
+        gevenrowcol = get_value(document.header, "\\table_even_row_color", i)
+        del document.header[i]
+        if gevenrowcol not in handledcolors:
+            # check whether it is a color also otherwise used
+            color_used = find_token(document.body, "\\color " + gevenrowcol) != -1 \
+            or find_token(document.body, "framecolor \"" + gevenrowcol) != -1 \
+            or find_token(document.body, "backgroundcolor \"" + gevenrowcol) != -1
+            if color_used == True:
+                handledcolors.append(gevenrowcol)
+            # check whether it is a known latexcolor only used here
+            for color in list(xcolor_names):
+                if gevenrowcol == color.lower():
+                    if color_used == False and color.find(":") != -1:
+                        xcolor = True
+                        x11 |= color.find("X11:") != -1
+                        svg |= color.find("SVG:") != -1
+                        dvips |= color.find("DVIPS:") != -1
+            # if not there is nothing more to do (customcolors will
+            # be reverted later on)
+            else:
+                # No need to check again for this later
+                handledcolors.append(gevenrowcol)
+
+        # get LaTeX color name
+        if gevenrowcol != "default":
+            gevenrowcolor_tex = gevenrowcol
+            for color in list(xcolor_names):
+                if gevenrowcol == color.lower():
+                    gevenrowcolor_tex = color.split(":")[1]
+
+    i = find_token(document.header, "\\table_alt_row_colors_start", 0)
+    if i == -1:
+        galtrowstart == "1"
+    else:
+        galtrowstart = get_value(document.header, "\\table_alt_row_colors_start", i)
+        del document.header[i]
+
+
+    # Add preamble code
+    if goddrowcolor_tex != "" or gevenrowcolor_tex != "":
+        preamble.append("\\rowcolors{%s}{%s}{%s}" % (galtrowstart, goddrowcolor_tex, gevenrowcolor_tex))
+        colortbl = True
+        tables = True
+
+    # now that we have the global settings, handle the tables
+    # in the body that use them
+    i = 0
+    re1 = re.compile(r"^<features borderColor=\"([^\"]+)\".*$", re.IGNORECASE)
+    while True:
+        i = find_re(document.body, re1, i)
+        if i == -1:
+            break
+
+        m = re1.match(document.body[i])
+        if not m:
+            document.warning("malformed table header: %s" % document.body[i])
+            continue
+        bcval = m.group(1)
+        # remove
+        document.body[i] = document.body[i].replace(' borderColor="' + bcval + '"', "")
+        if bcval == "default" or bcval == gbordercol:
+            # default or global value; nothing more to do
+            continue
+
+        if bcval not in handledcolors:
+            # check whether it is a color also otherwise used
+            color_used = find_token(document.body, "\\color " + bcval) != -1 \
+            or find_token(document.body, "framecolor \"" + bcval) != -1 \
+            or find_token(document.body, "backgroundcolor \"" + bcval) != -1
+            if color_used == True:
+                handledcolors.append(bcval)
+            # check whether it is a known latexcolor only used here
+            for color in list(xcolor_names):
+                if bcval == color.lower():
+                    if color_used == False and color.find(":") != -1:
+                        xcolor = True
+                        x11 |= color.find("X11:") != -1
+                        svg |= color.find("SVG:") != -1
+                        dvips |= color.find("DVIPS:") != -1
+            # if not there is nothing more to do
+            # (customcolors will be reverted later on)
+            else:
+                # No need to check again for this later
+                handledcolors.append(bcval)
+
+        # Add ERT
+        lay = get_containing_layout(document.body, i)
+        if lay == False:
+            document.warning("Table has not layout!")
+            i += 1
+            continue
+        endlay = find_end_of_layout(document.body, lay)
+        if enday == False:
+            document.warning("Table has not endlayout!")
+            i += 1
+            continue      
+        # get LaTeX color name
+        bcval_tex = bcval
+        for color in list(xcolor_names):
+            if bcval == color.lower():
+               bcval_tex = color.split(":")[1]
+        begcmd = put_cmd_in_ert("\\arrayrulecolor{%s}" % bcval_tex)
+        endcmd = put_cmd_in_ert("\\arrayrulecolor{%s}" % bordercolor_tex)
+        document.body[endlay+1 : endlay+1] = endcmd
+        document.body[lay : lay] = begcmd
+        colortbl = True
+
+    # rowcolors
+    i = 0
+    re1 = re.compile(r"^<features .*startAltRowColors=\"([^\"]+)\".*$", re.IGNORECASE)
+    re2 = re.compile(r"^<features .*oddRowsColor=\"([^\"]+)\".*$", re.IGNORECASE)
+    re3 = re.compile(r"^<features .*evenRowsColor=\"([^\"]+)\".*$", re.IGNORECASE)
+    while True:
+        startarc = "1"
+        orc = "default"
+        erc = "default"
+        have_startarc = False
+        have_orc = False
+        have_erc = False
+        l = find_re(document.body, re1, i)
+        if l != -1:
+            i = l
+            have_startarc = True
+            m = re1.match(document.body[l])
+            if not m:
+                document.warning("malformed table header: %s" % document.body[l])
+            else:
+                startarc = m.group(1)
+            # remove from table header
+            document.body[l] = document.body[l].replace(' startAltRowColors="' + startarc + '"', "")
+        j = -1
+        if l != -1:
+            j = find_re(document.body, re2, i, i)
+        else:
+            j = find_re(document.body, re2, i)
+        if j != -1:
+            i = j
+            l = j
+            have_orc = True
+            m = re2.match(document.body[j])
+            if not m:
+                document.warning("malformed table header: %s" % document.body[j])
+            else:
+                orc = m.group(1)
+            # remove from table header
+            document.body[j] = document.body[j].replace(' oddRowsColor="' + orc + '"', "")
+        k = -1
+        if l != -1:
+            k = find_re(document.body, re3, i, i)
+        else:
+            k = find_re(document.body, re3, i)
+        if k != -1:
+            i = k
+            have_erc = True
+            m = re3.match(document.body[k])
+            if not m:
+                document.warning("malformed table header: %s" % document.body[k])
+            else:
+                erc = m.group(1)
+            # remove from table header
+            document.body[k] = document.body[k].replace(' evenRowsColor="' + erc + '"', "")
+        if have_startarc == False and have_orc == False and have_erc == False:
+            # nothing (left)
+            break
+
+        if startarc == galtrowstart and (erc == "default" or erc == goddrowcol) \
+        and (orc == "default" or orc == gevenrowcol):
+            # default or global value; nothing more to do
+            i += 1
+            continue
+
+        altrowfonts = [erc, orc]
+        for arf in altrowfonts:
+            if arf not in handledcolors:
+                # check whether it is a color also otherwise used
+                color_used = find_token(document.body, "\\color " + arf) != -1 \
+                or find_token(document.body, "framecolor \"" + arf) != -1 \
+                or find_token(document.body, "backgroundcolor \"" + arf) != -1
+                if color_used == True:
+                    handledcolors.append(arf)
+                # check whether it is a known latexcolor only used here
+                for color in list(xcolor_names):
+                    if arf == color.lower():
+                        if color_used == False and color.find(":") != -1:
+                            xcolor = True
+                            x11 |= color.find("X11:") != -1
+                            svg |= color.find("SVG:") != -1
+                            dvips |= color.find("DVIPS:") != -1
+                # if not there is nothing more to do
+                # (customcolors will be reverted later on)
+                else:
+                    # No need to check again for this later
+                    handledcolors.append(arf)
+
+        # Add ERT
+        lay = get_containing_layout(document.body, i)
+        if lay == False:
+            document.warning("Table has not layout!")
+            i += 1
+            continue
+        endlay = find_end_of_layout(document.body, lay)
+        if enday == False:
+            document.warning("Table has not endlayout!")
+            i += 1
+            continue      
+        # get LaTeX color names
+        orc_tex = orc
+        erc_tex = erc
+        for color in list(xcolor_names):
+            if orc == color.lower():
+               orc_tex = color.split(":")[1]
+            elif erc== color.lower():
+               erc_tex = color.split(":")[1]
+        begcmd = put_cmd_in_ert("\\rowcolors{%s}{%s}{%s}" % (startarc, orc_tex, erc_tex))
+        endcmd = put_cmd_in_ert("\\rowcolors{%s}{%s}{%s}" % (galtrowstart, goddrowcolor_tex, gevenrowcolor_tex))
+        document.body[endlay+1 : endlay+1] = endcmd
+        document.body[lay : lay] = begcmd
+        colortbl = True
+
+    # Next, we handle cellcolors in table
+    i = 0
+    re1 = re.compile(r"^<cell .*color=\"([^\"]+)\".*$", re.IGNORECASE)
+    while True:
+        i = find_re(document.body, re1, i)
+        if i == -1:
+            break
+
+        m = re1.match(document.body[i])
+        if not m:
+            document.warning("malformed cell header: %s" % document.body[i])
+            continue
+        ccval = m.group(1)
+        # remove
+        document.body[i] = document.body[i].replace(' color="' + ccval + '"', "")
+        if ccval == "default":
+            # default; nothing more to do
+            continue
+
+        if ccval not in handledcolors:
+            # check whether it is a color also otherwise used
+            color_used = find_token(document.body, "\\color " + ccval) != -1 \
+            or find_token(document.body, "framecolor \"" + ccval) != -1 \
+            or find_token(document.body, "backgroundcolor \"" + ccval) != -1
+            if color_used == True:
+                handledcolors.append(ccval)
+            # check whether it is a known latexcolor only used here
+            for color in list(xcolor_names):
+                if ccval == color.lower():
+                    if color_used == False and color.find(":") != -1:
+                        xcolor = True
+                        x11 |= color.find("X11:") != -1
+                        svg |= color.find("SVG:") != -1
+                        dvips |= color.find("DVIPS:") != -1
+            # if not there is nothing more to do
+            # (customcolors will be reverted later on)
+            else:
+                # No need to check again for this later
+                handledcolors.append(ccval)
+
+        # Add ERT
+        lay = find_token(document.body, "\\begin_layout Plain Layout", i)
+        if lay == False:
+            document.warning("Table cell has not layout!")
+            i += 1
+            continue
+        # get LaTeX color name
+        ccval_tex = ccval
+        for color in list(xcolor_names):
+            if ccval == color.lower():
+               ccval_tex = color.split(":")[1]
+        cmd = put_cmd_in_ert("\\cellcolor{%s}" % ccval_tex)
+        document.body[lay+1 : lay+1] = cmd
+        colortbl = True
+
+    # rowcolor in tables
+    i = 0
+    re1 = re.compile(r"^<row .*color=\"([^\"]+)\".*$", re.IGNORECASE)
+    re_lo = re.compile(r"^<row .*colorleftoverhang=\"([^\"]+)\".*$", re.IGNORECASE)
+    re_ro = re.compile(r"^<row .*colorrightoverhang=\"([^\"]+)\".*$", re.IGNORECASE)
+    while True:
+        i = find_re(document.body, re1, i)
+        if i == -1:
+            break
+
+        m = re1.match(document.body[i])
+        if not m:
+            document.warning("malformed row header: %s" % document.body[i])
+            continue
+        rcval = m.group(1)
+        # left overhang value
+        clo = ""
+        j = find_re(document.body, re_lo, i, i)
+        if j != -1:
+            m = re_lo.match(document.body[j])
+            if m:
+                clo = "[" + m.group(1) + "]"
+                # remove
+                document.body[j] = document.body[j].replace(' colorleftoverhang="' + m.group(1) + '"', "")
+        # right overhang value
+        cro = ""
+        k = find_re(document.body, re_ro, i, i)
+        if k != -1:
+            m = re_ro.match(document.body[k])
+            if m:
+                cro = "[" + m.group(1) + "]"
+                if clo == "":
+                    clo = "[]"
+                # remove
+                document.body[j] = document.body[j].replace(' colorrightoverhang="' + m.group(1) + '"', "")
+        # remove
+        document.body[i] = document.body[i].replace(' color="' + rcval + '"', "")
+        if rcval == "default":
+            # default; nothing more to do
+            continue
+
+        if rcval not in handledcolors:
+            # check whether it is a color also otherwise used
+            color_used = find_token(document.body, "\\color " + rcval) != -1 \
+            or find_token(document.body, "framecolor \"" + rcval) != -1 \
+            or find_token(document.body, "backgroundcolor \"" + rcval) != -1
+            if color_used == True:
+                handledcolors.append(rcval)
+            # check whether it is a known latexcolor only used here
+            for color in list(xcolor_names):
+                if rcval == color.lower():
+                    if color_used == False and color.find(":") != -1:
+                        xcolor = True
+                        x11 |= color.find("X11:") != -1
+                        svg |= color.find("SVG:") != -1
+                        dvips |= color.find("DVIPS:") != -1
+            # if not there is nothing more to do
+            # (customcolors will be reverted later on)
+            else:
+                # No need to check again for this later
+                handledcolors.append(rcval)
+
+        # Add ERT
+        lay = find_token(document.body, "\\begin_layout Plain Layout", i)
+        if lay == -1:
+            document.warning("Table row has no layout!")
+            i += 1
+            continue
+        # get LaTeX color name
+        rcval_tex = rcval
+        for color in list(xcolor_names):
+            if rcval == color.lower():
+               rcval_tex = color.split(":")[1]
+        cmd = put_cmd_in_ert("\\rowcolor{%s}%s%s" % (rcval_tex, clo, cro))
+        document.body[lay+1 : lay+1] = cmd
+        colortbl = True
+
+    # and finally, columncolor
+    i = 0
+    re1 = re.compile(r"^<column .*color=\"([^\"]+)\".*$", re.IGNORECASE)
+    re2 = re.compile(r"^<column .*special=\"([^\"]+)\".*$", re.IGNORECASE)
+    re3 = re.compile(r"^<column .*decimal_point=\"([^\"]+)\".*$", re.IGNORECASE)
+    re_lo = re.compile(r"^<column .*colorleftoverhang=\"([^\"]+)\".*$", re.IGNORECASE)
+    re_ro = re.compile(r"^<column .*colorrightoverhang=\"([^\"]+)\".*$", re.IGNORECASE)
+    while True:
+        i = find_re(document.body, re1, i)
+        if i == -1:
+            break
+
+        m = re1.match(document.body[i])
+        if not m:
+            document.warning("malformed column header: %s" % document.body[i])
+            continue
+        ccval = m.group(1)
+        # remove
+        document.body[i] = document.body[i].replace(' color="' + ccval + '"', "")
+        # left overhang value
+        clo = ""
+        j = find_re(document.body, re_lo, i, i)
+        if j != -1:
+            m = re_lo.match(document.body[j])
+            if m:
+                clo = "[" + m.group(1) + "]"
+                # remove
+                document.body[j] = document.body[j].replace(' colorleftoverhang="' + m.group(1) + '"', "")
+        # right overhang value
+        cro = ""
+        k = find_re(document.body, re_ro, i, i)
+        if k != -1:
+            m = re_ro.match(document.body[k])
+            if m:
+                cro = "[" + m.group(1) + "]"
+                if clo == "":
+                    clo = "[]"
+                # remove
+                document.body[j] = document.body[j].replace(' colorrightoverhang="' + m.group(1) + '"', "")
+
+        if ccval == "default" or find_re(document.body, re2, i, i) != -1:
+            # default or special entry; nothing more to do
+            continue
+
+        if ccval not in handledcolors:
+            # check whether it is a color also otherwise used
+            color_used = find_token(document.body, "\\color " + ccval) != -1 \
+            or find_token(document.body, "framecolor \"" + ccval) != -1 \
+            or find_token(document.body, "backgroundcolor \"" + ccval) != -1
+            if color_used == True:
+                handledcolors.append(ccval)
+            # check whether it is a known latexcolor only used here
+            for color in list(xcolor_names):
+                if ccval == color.lower():
+                    if color_used == False and color.find(":") != -1:
+                        xcolor = True
+                        x11 |= color.find("X11:") != -1
+                        svg |= color.find("SVG:") != -1
+                        dvips |= color.find("DVIPS:") != -1
+            # if not there is nothing more to do
+            # (customcolors will be reverted later on)
+            else:
+                # No need to check again for this later
+                handledcolors.append(ccval)
+
+        # Add value to special header
+        # get LaTeX color name
+        ccval_tex = ccval
+        for color in list(xcolor_names):
+            if ccval == color.lower():
+               ccval_tex = color.split(":")[1]
+        cmd = ""
+        if find_substring(document.body, 'alignment="decimal"', i, i):
+            decpoint = "."
+            dp = find_re(document.body, re2, i, i)
+            if dp != -1:
+                m = re2.match(document.body[dp])
+                if m:
+                    decpoint = m.group(1)
+            scmd = ">{\\columncolor{%s}%s%s}" % (ccval_tex, clo, cro)
+            scmd2 = ">{\\columncolor{%s}[0pt][\\tabcolsep]}" % ccval_tex
+            cmd = " special=\"" + scmd + "r@{\extracolsep{0pt}" + decpoint + "}" + scmd2 + "l\">"
+        else:
+            cmd = " special=\">{\\columncolor{%s}%s%s}\">" % (ccval_tex, clo, cro)
+        document.body[i] = document.body[i][:-1] + cmd
+        colortbl = True
+
+    # To conclude, the preamble stuff
+    if xcolor == True:
+        document.warning("xcolor")
+        opts = []
+        if x11 == True:
+            opts.append("x11names")
+        if svg == True:
+            opts.append("svgnames")
+        if dvips == True:
+            opts.append("dvipsnames")
+        if tables == True:
+            opts.append("table")
+        options = "\\SetKeys[xcolor]{" + ",".join(opts) + "}"
+        add_to_preamble(
+            document,
+            ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}",
+             options]
+        )
+    if colortbl == True:
+        add_to_preamble(
+            document,
+            ["\\usepackage{colortbl}"]
+        )
+    if len(preamble) > 0:
+        add_to_preamble(document, preamble)
+ 
+
 ##
 # Conversion hub
 #
@@ -1953,11 +2512,13 @@ convert = [
     [630, []],
     [631, [convert_mathml_version]],
     [632, []],
-    [633, [convert_doc_colors]]
+    [633, [convert_doc_colors]],
+    [634, []]
 ]
 
 
 revert = [
+    [633, [revert_colortbl]],
     [632, [revert_doc_colors, revert_colorbox]],
     [631, [revert_textcolor, revert_custom_colors]],
     [630, [revert_mathml_version]],

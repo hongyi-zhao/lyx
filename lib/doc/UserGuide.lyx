@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 633
+\lyxformat 634
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -126,6 +126,10 @@ logicalmkup
 \fontcolor none
 \notefontcolor lyxnotefontcolor
 \boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch Question
 \selected 1
 \filename_suffix 0
@@ -26588,6 +26592,33 @@ Shift
 \family default
  plus the arrow keys works as usual.
  You can also copy and paste the entire table as a single unit by starting the selection from outside the table.
+\change_inserted -712698321 1740816072
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1740816077
+Colors
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1740816278
+You can set the background color of individual cells,
+ whole rows or columns,
+ and the color of the table borders (rules) in the table settings dialog.
+ Please refer to the 
+\emph on
+Embedded Object
+\emph default
+ manual (section 
+\emph on
+Colored Tables
+\emph default
+) for details and examples.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -52564,13 +52595,27 @@ Greyed-out notes
 \end_layout
 
 \begin_layout Standard
-Here you can alter the font color for the 
+Here you can alter 
+\change_inserted -712698321 1740814702
+the color of several elements of the document which then apply globally (unless otherwise set in the individual settings dialog):
+\end_layout
+
+\begin_layout Itemize
+the font color for the 
 \family sans
 Main text
 \family default
  (default:
- black),
- for 
+ black)
+\change_inserted -712698321 1740814664
+ and 
+\change_unchanged
+,
+
+\change_deleted -712698321 1740814632
+ 
+\change_unchanged
+for 
 \family sans
 Greyed
 \begin_inset space ~
@@ -52579,15 +52624,28 @@ Greyed
 out notes
 \family default
  (default:
- light grey)for the background color for the 
+ light grey)
+\change_deleted -712698321 1740814641
+for
+\change_inserted -712698321 1740814641
+,
+
+\change_deleted -712698321 1740814642
+ 
+\change_inserted -712698321 1740814643
+
+\end_layout
+
+\begin_layout Itemize
+the background color for the 
 \family sans
 Page
 \family default
  (default:
  
-\change_deleted -712698321 1740227093
+\change_deleted -712698321 1740814642
 white
-\change_inserted -712698321 1740227095
+\change_inserted -712698321 1740814620
 none
 \change_unchanged
 ) and for 
@@ -52599,9 +52657,32 @@ Shaded
 boxes
 \family default
  (default:
- red).
+ red)
+\change_inserted -712698321 1740814723
+,
+\change_deleted -712698321 1740814722
+.
  
-\change_inserted -712698321 1740227484
+\change_inserted -712698321 1740814725
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1740814746
+the color of table borders,
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1740814835
+and two colors which will be used for the background of odd and even table rows,
+ respectively.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1740814852
 Also,
  you can define custom colors which will then be available in all document-related color selections in \SpecialChar LyX
  (e.
@@ -52610,6 +52691,12 @@ Also,
 
 g.,
  text style dialog or in this very dialog here).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1740814873
+These possibilities will now be described in turn.
 \end_layout
 
 \begin_layout Subsection
@@ -52677,9 +52764,9 @@ no color
 
 \begin_layout Standard
 
-\change_inserted -712698321 1740227791
+\change_inserted -712698321 1740815559
 If none of the predefined colors suit you,
- you can define a custom color as documented in the next section,
+ you can define a custom color as documented in the section that follows the next,
  which will then be available in the list as well.
 \end_layout
 
@@ -52952,6 +53039,69 @@ out notes
 
 \series bold
 note_fontcolor
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1740815111
+Table colors
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1740815231
+Table colors (cells,
+ rows,
+ columns,
+ and borders) can be set for individual tables in the Table settings dialog.
+ Here you can define some settings which apply for all tables of the document if not otherwise specified in the table settings dialog.
+ These are:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1740815271
+
+\family sans
+Table border color
+\family default
+:
+ as the name says
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1740815499
+
+\family sans
+Alternating table row colors
+\family default
+:
+ If colors are selected here,
+ the tables will automatically use these for the odd or even rows,
+ respectively,
+ starting from the row that is specified at 
+\family sans
+Start with row
+\family default
+.
+ This lets you easily generate tables in the popular 
+\begin_inset Quotes eld
+\end_inset
+
+zebra-striped
+\begin_inset Quotes erd
+\end_inset
+
+ style.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1740815538
+As in all other color settings,
+ you can select from the list of predefined colors,
+ but also define a custom color (see below) which will appear in the selection then as well.
 \end_layout
 
 \begin_layout Subsection

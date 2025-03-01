@@ -957,6 +957,10 @@ int Buffer::readHeader(Lexer & lex)
 	params().fontcolor = "none";
 	params().notefontcolor = "lightgray";
 	params().boxbgcolor = "red";
+	params().table_border_color = "default";
+	params().table_odd_row_color = "default";
+	params().table_even_row_color = "default";
+	params().table_alt_row_colors_start = 1;
 	params().html_latex_start.clear();
 	params().html_latex_end.clear();
 	params().html_math_img_scale = 1.0;

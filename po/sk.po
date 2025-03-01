@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-02-27 15:29+0100\n"
-"PO-Revision-Date: 2025-02-27 14:31+0000\n"
+"POT-Creation-Date: 2025-03-01 13:24+0100\n"
+"PO-Revision-Date: 2025-03-01 12:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1175,6 +1175,22 @@ msgstr ""
 msgid "Force upcas&ing"
 msgstr "Vynútiť v&eľké písmo"
 
+#: src/frontends/qt/ui/ColorUi.ui:39
+msgid "Alternati&ng table row colors"
+msgstr "Str&iedajúce sa farby riadkov tabuľky"
+
+#: src/frontends/qt/ui/ColorUi.ui:47 src/frontends/qt/ui/TabularUi.ui:1514
+msgid "O&dd rows:"
+msgstr "&Nepárne riadky:"
+
+#: src/frontends/qt/ui/ColorUi.ui:67 src/frontends/qt/ui/TabularUi.ui:1534
+msgid "&Even rows:"
+msgstr "Párn&e riadky:"
+
+#: src/frontends/qt/ui/ColorUi.ui:104 src/frontends/qt/ui/TabularUi.ui:1571
+msgid "&Start with row:"
+msgstr "Z&ačnite riadkom:"
+
 #: src/frontends/qt/ui/CitationUi.ui:408 src/frontends/qt/GuiCitation.cpp:347
 msgid ""
 "Always list all authors (rather than using \"et al.\"), if the current "
@@ -1194,6 +1210,10 @@ msgstr "Farby písma"
 #: src/frontends/qt/ui/ColorUi.ui:68
 msgid "Greyed-out notes:"
 msgstr "Zosivelé poznámky:"
+
+#: src/frontends/qt/ui/ColorUi.ui:418
+msgid "Table &border color:"
+msgstr "&Farba okraja tabuľky:"
 
 #: src/frontends/qt/ui/ColorUi.ui:91
 msgid "Main text:"
@@ -3878,9 +3898,13 @@ msgstr "O&kamžite použiť"
 msgid "Reset the selected color to its original value"
 msgstr "Nastaviť vybranú farbu na pôvodnú hodnotu"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:254
-msgid "&Restore Default"
-msgstr "&Vrátiť na Predvolené"
+#: src/frontends/qt/ui/PrefColorsUi.ui:277
+msgid "&Restore Theme"
+msgstr "Ob&noviť tému"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:300
+msgid "Export..."
+msgstr "Exportovať…"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:302
 msgid "Enter a color name to search"
@@ -3935,9 +3959,9 @@ msgstr "Použiť farby &systému"
 msgid "Load preset color theme"
 msgstr "Načítať prednastavený motív farieb"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:76
-msgid "    Load Theme"
-msgstr "    Načítať tému"
+#: src/frontends/qt/ui/PrefColorsUi.ui:476
+msgid "Load Theme"
+msgstr "Načítať tému"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:83
 msgid "Save current color setting as a color theme"
@@ -3946,6 +3970,10 @@ msgstr "Uložte aktuálne nastavenie farieb ako tému farieb"
 #: src/frontends/qt/ui/PrefColorsUi.ui:86
 msgid "&Save Theme..."
 msgstr "U&ložiť tému…"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:161
+msgid "Import..."
+msgstr "Importovať…"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:104
 msgid "<="
@@ -5993,8 +6021,8 @@ msgstr "&Formálny"
 msgid "Additional Space"
 msgstr "Dodatočná medzera"
 
-#: src/frontends/qt/ui/TabularUi.ui:1183
-msgid "T&op of row:"
+#: src/frontends/qt/ui/TabularUi.ui:1192
+msgid "To&p of row:"
 msgstr "Vr&ch riadku:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1243
@@ -6004,6 +6032,46 @@ msgstr "S&podok riadku:"
 #: src/frontends/qt/ui/TabularUi.ui:1256
 msgid "Bet&ween rows:"
 msgstr "&Medzi riadkami:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1338
+msgid "C&olors"
+msgstr "Fa&rby"
+
+#: src/frontends/qt/ui/TabularUi.ui:1356
+msgid "Ri&ght Overhang:"
+msgstr "&Pravý previs:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1372
+msgid "Col&umn color:"
+msgstr "Farba stĺp&ca:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1395
+msgid "Right Overhan&g:"
+msgstr "Pravý previ&s:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1405
+msgid "Left Over&hang:"
+msgstr "Ľav&ý previs:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1415
+msgid "Ro&w color:"
+msgstr "Far&ba riadku:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1428
+msgid "Left O&verhang:"
+msgstr "&Ľavý previs:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1448
+msgid "C&ell color:"
+msgstr "&Farba bunky:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1468
+msgid "&Border color:"
+msgstr "Farba& okraja:"
+
+#: src/frontends/qt/ui/TabularUi.ui:1506
+msgid "Alternati&ng row colors"
+msgstr "Strie&danie farieb riadkov"
 
 #: src/frontends/qt/ui/TabularUi.ui:1305
 msgid "&Multi-Page Table"
@@ -35146,6 +35214,10 @@ msgstr "Zmazané dňa %1"
 msgid "No change"
 msgstr "Bez zmeny"
 
+#: src/frontends/qt/ColorsCombo.cpp:122
+msgid "None[[color]]"
+msgstr "Žiadna"
+
 #: src/frontends/qt/GuiCharacter.cpp:55
 msgid "Small Caps"
 msgstr "Malé kapitálky"
@@ -37056,13 +37128,17 @@ msgstr "Prí&kaz:"
 msgid "Screen Fonts"
 msgstr "Písma obrazovky"
 
+#: src/frontends/qt/GuiPrefs.cpp:1352
+msgid "What is the name of the color theme to export?"
+msgstr "Aký je názov motívu farieb na uloženie?"
+
+#: src/frontends/qt/GuiPrefs.cpp:1353
+msgid "What is the name of the new color theme to save?"
+msgstr "Aký je názov nového motívu farieb na uloženie?"
+
 #: src/frontends/qt/GuiPrefs.cpp:1305
 msgid "Name the color theme"
 msgstr "Pomenujte motív farieb"
-
-#: src/frontends/qt/GuiPrefs.cpp:1306
-msgid "What is the name of the new color theme to be saved?"
-msgstr "Aký je názov nového motívu farieb, ktorý sa má uložiť?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1307
 msgid "New theme name"
@@ -37091,13 +37167,10 @@ msgstr "Vybraná téma je systémová téma. Nedá sa odstrániť."
 msgid "Are you sure?"
 msgstr "Ste si istý?"
 
-#: src/frontends/qt/GuiPrefs.cpp:1426
-msgid "Do you really want to remove the theme \""
-msgstr "Naozaj chcete odstrániť tému \""
-
-#: src/frontends/qt/GuiPrefs.cpp:1427
-msgid "\"?"
-msgstr "\"?"
+#: src/frontends/qt/GuiPrefs.cpp:1501
+#, c-format
+msgid "Do you really want to remove the theme \"%1$s\"?"
+msgstr "Naozaj chcete tému \"%1$s\" odstrániť?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1277
 msgid "Paths"
@@ -37836,6 +37909,10 @@ msgstr "<p>LaTeX kód: %1</p"
 #: src/frontends/qt/GuiSymbols.cpp:288
 msgid "Symbols"
 msgstr "Symboly"
+
+#: src/frontends/qt/GuiTabular.cpp:70
+msgid "Adjust the horizontal overhang of the coloring here if needed."
+msgstr "V prípade potreby tu upravte vodorovný presah sfarbenia."
 
 #: src/frontends/qt/GuiTabular.h:48
 msgid "Tabular Settings"
@@ -41442,6 +41519,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "&Restore Default"
+#~ msgstr "&Vrátiť na Predvolené"
 
 #~ msgid "A&lter..."
 #~ msgstr "Z&meniť…"
@@ -47028,3 +47108,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Restore A&ll"
 #~ msgstr "Obnoviť &všetko"
+
+#~ msgid "What is the name of the new color theme to be saved?"
+#~ msgstr "Aký je názov nového motívu farieb, ktorý sa má uložiť?"

@@ -78,7 +78,7 @@
           <string>&lt;=</string>
          </property>
          <property name="icon">
-          <iconset theme="QIcon::EditUndo"/>
+          <iconset theme="QIcon::ThemeIcon::EditUndo"/>
          </property>
          <property name="iconSize">
           <size>
@@ -97,7 +97,7 @@
           <string>=&gt;</string>
          </property>
          <property name="icon">
-          <iconset theme="QIcon::EditRedo"/>
+          <iconset theme="QIcon::ThemeIcon::EditRedo"/>
          </property>
          <property name="iconSize">
           <size>
@@ -205,7 +205,7 @@
          </property>
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>10</pointsize>
           </font>
          </property>
          <property name="toolTip">
@@ -228,10 +228,10 @@
           <string>Search backward</string>
          </property>
          <property name="text">
-          <string>&lt;-</string>
+          <string>&lt;</string>
          </property>
          <property name="icon">
-          <iconset theme="QIcon::GoPrevious"/>
+          <iconset theme="QIcon::ThemeIcon::GoPrevious"/>
          </property>
          <property name="iconSize">
           <size>
@@ -253,10 +253,10 @@
           <string>Search forward</string>
          </property>
          <property name="text">
-          <string>-&gt;</string>
+          <string>&gt;</string>
          </property>
          <property name="icon">
-          <iconset theme="QIcon::GoNext"/>
+          <iconset theme="QIcon::ThemeIcon::GoNext"/>
          </property>
          <property name="iconSize">
           <size>

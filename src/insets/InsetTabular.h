@@ -107,6 +107,8 @@ public:
 	bool canPaintChange(BufferView const &) const override { return false; }
 	/// This assures we never output \maketitle in table cells
 	bool isInTitle() const override { return true; }
+	///
+	void setChange(Change const & change) override;
 private:
 	///
 	InsetTableCell() = delete;
@@ -154,6 +156,8 @@ private:
 	LyXAlignment contentAlign;
 	///
 	std::string background_color;
+	///
+	bool isDeleted;
 	/// should paragraph indentation be omitted in any case?
 	bool neverIndent() const override { return true; }
 	///

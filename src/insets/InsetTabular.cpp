@@ -4795,7 +4795,7 @@ bool Tabular::hasNewlines(idx_type cell) const
 InsetTableCell::InsetTableCell(Buffer * buf)
 	: InsetText(buf, InsetText::PlainLayout), isFixedWidth(false), isVarwidth(false),
 	  isMultiColumn(false), isMultiRow(false), mr_rows(1), isCaptionRow(false),
-	  contentAlign(LYX_ALIGN_CENTER)
+	  contentAlign(LYX_ALIGN_CENTER), isDeleted(false)
 {}
 
 bool InsetTableCell::allowParagraphCustomization(idx_type) const
@@ -4819,9 +4819,23 @@ ColorCode InsetTableCell::backgroundColor(PainterInfo const & pi) const
 }
 
 
+void InsetTableCell::setChange(Change const & change)
+{
+	// Mark cell deleted
+	isDeleted = change.deleted();
+
+	InsetText::setChange(change);
+}
+
+
 bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
+	if (isDeleted) {
+		status.message(from_utf8(N_("This portion of the document is deleted.")));
+		status.setEnabled(false);
+		return true;
+	}
 	bool enabled = true;
 	switch (cmd.action()) {
 	case LFUN_INSET_SPLIT:
@@ -4911,15 +4925,17 @@ void InsetTableCell::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetTableCell::draw(PainterInfo & pi, int x, int y) const
 {
-	if (background_color == "none" || !lcolor.isKnownLyXName(background_color))
+	// We have a specific draw method for the case when we
+	// need to draw on the whole cell rectangle
+	// (= colored cells or deleted cells)
+	// In the other cases we use InsetText::draw()
+	if ((background_color == "none" || !lcolor.isKnownLyXName(background_color))
+	    && !pi.change.deleted())
 		return InsetText::draw(pi, x, y);
 
-	// special case for colored cells, where we need to fill out
-	// the whole space
 	TextMetrics & tm = pi.base.bv->textMetrics(&text());
-
 	// FIXME: This calculation is ugly, but we do not seem to
-	// have the proper cell dimensions avaliable here.
+	// have the proper cell dimensions available here.
 	int const w = width;
 	int const h = mr_rows * (tm.height() + 2 * topOffset(pi.base.bv) + bottomOffset(pi.base.bv) + Painter::thin_line);
 	int const yframe = y - mr_rows * (tm.ascent()) - mr_rows * (Painter::thin_line) - topOffset(pi.base.bv);
@@ -4937,10 +4953,9 @@ void InsetTableCell::draw(PainterInfo & pi, int x, int y) const
 		tm.draw(pi, x + leftOffset(pi.base.bv), y);
 	}
 
-	if (canPaintChange(*pi.base.bv) && (!change_drawn || pi.change.deleted()))
-		// Do not draw the change tracking cue if already done by RowPainter and
-		// do not draw the cue for INSERTED if the information is already in the
-		// color of the frame
+	// Strike through the cell if deleted and not already handled by
+	// RowPainter.
+	if (!change_drawn || pi.change.deleted())
 		pi.change.paintCue(pi, xframe, yframe, xframe + w, yframe + h);
 }
 
@@ -6084,6 +6099,34 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.screenUpdateFlags(Update::Force);
 				cur.forceBufferUpdate();
 			}
+			break;
+		} else if (ct && tabular.row_info[tabular.cellRow(cur.idx())].change.deleted()) {
+			// whole row marked deleted
+			row_type r = tabular.cellRow(cur.idx());
+			if (act == LFUN_CHANGE_ACCEPT)
+				tabular.deleteRow(r, true);
+			else
+				tabular.row_info[r].change.setUnchanged();
+			tabular.updateIndexes();
+			// cursor might be invalid
+			cur.fixIfBroken();
+			// change bar might need to be redrawn
+			cur.screenUpdateFlags(Update::Force);
+			cur.forceBufferUpdate();
+			break;
+		} else if (ct && tabular.column_info[tabular.cellColumn(cur.idx())].change.deleted()) {
+			// whole column marked deleted
+			col_type c = tabular.cellColumn(cur.idx());
+			if (act == LFUN_CHANGE_ACCEPT)
+				tabular.deleteColumn(c, true);
+			else
+				tabular.column_info[c].change.setUnchanged();
+			tabular.updateIndexes();
+			// cursor might be invalid
+			cur.fixIfBroken();
+			// change bar might need to be redrawn
+			cur.screenUpdateFlags(Update::Force);
+			cur.forceBufferUpdate();
 			break;
 		} else {
 			cell(cur.idx())->dispatch(cur, cmd);

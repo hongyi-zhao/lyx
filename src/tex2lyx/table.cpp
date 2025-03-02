@@ -1377,8 +1377,15 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					}
 					// how many cells?
 					parse.get_token();
+					string nrows = parse.verbatim_item();
+					// account for negative nrows value
+					bool negative = false;
+					if (support::prefixIs(nrows, "-")) {
+						negative = true;
+						nrows = support::ltrim(nrows, "-");
+					}
 					size_t const ncells =
-						convert<unsigned int>(parse.verbatim_item());
+						convert<unsigned int>(nrows);
 					// We do not support the bigstrut arg yet.
 					if (parse.hasOpt()) {
 						string const bs = parse.getArg('[', ']');
@@ -1397,12 +1404,20 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 	
 					if (width != "*" && width != "=")
 						colinfo[col].width = width;
+					
+					row_type mrow = row;
+					if (negative) {
+						if (ncells > row + 1)
+							mrow = 0;
+						else
+							mrow = row + 1 - ncells;
+					}
 					if (!vmove.empty())
-						cellinfo[row][col].mroffset = vmove;
-					cellinfo[row][col].multi = CELL_BEGIN_OF_MULTIROW;
+						cellinfo[mrow][col].mroffset = vmove;
+					cellinfo[mrow][col].multi = CELL_BEGIN_OF_MULTIROW;
 					cellinfo[row][col].leftlines  = colinfo[col].leftlines;
 					cellinfo[row][col].rightlines = colinfo[col].rightlines;
-					cellinfo[row][col].mrxnum = ncells - 1;
+					cellinfo[mrow][col].mrxnum = ncells - 1;
 	
 					ostringstream os2;
 					parse.get_token();// skip {
@@ -1410,16 +1425,20 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 								cellinfo, colinfo,
 								row, col);
 					parse.get_token();// skip }
-					if (!cellinfo[row][col].content.empty()) {
-						// This may or may not work in LaTeX,
-						// but it does not work in LyX.
-						// FIXME: Handle it correctly!
-						warning_message("Moving cell content '"
-								+ cells[cell]
-								+ "' into a multirow cell. "
-								  "This will probably not work.");
+					if (negative)
+						cellinfo[mrow][col].content = os2.str();
+					else {
+						if (!cellinfo[mrow][col].content.empty()) {
+							// This may or may not work in LaTeX,
+							// but it does not work in LyX.
+							// FIXME: Handle it correctly!
+							warning_message("Moving cell content '"
+									+ cells[cell]
+									+ "' into a multirow cell. "
+									  "This will probably not work.");
+						}
+						cellinfo[mrow][col].content += os2.str();
 					}
-					cellinfo[row][col].content += os2.str();
 				} else if (parse.next_token().cs() == "multicolumn") {
 					// how many cells?
 					parse.get_token();
@@ -1580,7 +1599,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 			    !cellinfo[row][col].special.empty())
 				cellinfo[row][col].multi = CELL_BEGIN_OF_MULTICOLUMN;
 			// Add multirow dummy cells
-			if (row > 1 && (cellinfo[row - 1][col].multi == CELL_PART_OF_MULTIROW
+			if (row > 0 && (cellinfo[row - 1][col].multi == CELL_PART_OF_MULTIROW
 					|| cellinfo[row - 1][col].multi == CELL_BEGIN_OF_MULTIROW)
 				    && cellinfo[row - 1][col].mrxnum > 0) {
 				// add dummy cells for multirow
@@ -1624,7 +1643,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 					s++;
 				if (s < cellinfo[row].size() &&
 				    cellinfo[s][col].multi != CELL_BEGIN_OF_MULTIROW)
-					cellinfo[row][col].bottomline = rowinfo[row].bottomline;
+					cellinfo[row][col].bottomline = rowinfo[s - 1].bottomline;
 				if (row > 0 && cellinfo[row - 1][col].multi == CELL_NORMAL)
 					cellinfo[row][col].topline = rowinfo[row].topline;
 			}

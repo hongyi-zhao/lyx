@@ -374,7 +374,8 @@ FontInfo InsetNote::getFont() const
 		if (c != Color_none)
 			font.setColor(c);
 		// This is the local color (not overridden by other documents)
-		ColorCode lc = lcolor.getFromLyXName("notefontcolor@" + buffer().fileName().absFileName());
+		// the color might not yet be initialized for new documents
+		ColorCode lc = lcolor.getFromLyXName("notefontcolor@" + buffer().fileName().absFileName(), false);
 		if (lc != Color_none)
 			font.setPaintColor(lc);
 	}

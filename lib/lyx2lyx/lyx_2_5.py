@@ -2461,7 +2461,7 @@ def revert_colortbl(document):
                     decpoint = m.group(1)
             scmd = ">{\\columncolor{%s}%s%s}" % (ccval_tex, clo, cro)
             scmd2 = ">{\\columncolor{%s}[0pt][\\tabcolsep]}" % ccval_tex
-            cmd = " special=\"" + scmd + "r@{\extracolsep{0pt}" + decpoint + "}" + scmd2 + "l\">"
+            cmd = " special=\"" + scmd + "r@{\\extracolsep{0pt}" + decpoint + "}" + scmd2 + "l\">"
         else:
             cmd = " special=\">{\\columncolor{%s}%s%s}\">" % (ccval_tex, clo, cro)
         document.body[i] = document.body[i][:-1] + cmd

@@ -11,7 +11,7 @@
 
 
 
-\color[rgb]{0,0,0}
+
 
 \usepackage{ifpdf}% part of the hyperref bundle
 \ifpdf % if pdflatex is used
@@ -96,6 +96,7 @@
 \customcolor note_fontcolor 0000ff
 \customcolor page_backgroundcolor ff5500
 \customcolor shadecolor ffff00
+\fontcolor document_fontcolor
 \notefontcolor note_fontcolor
 \backgroundcolor page_backgroundcolor
 \boxbgcolor shadecolor

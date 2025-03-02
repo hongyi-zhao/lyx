@@ -219,7 +219,9 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 		return getLayout().bgcolor();
 
 	if (params_.type == "Shaded") {
-		ColorCode c = lcolor.getFromLyXName("boxbgcolor@" + buffer().fileName().absFileName());
+		// This is the local color (not overridden by other documents)
+		// the color might not yet be initialized for new documents
+		ColorCode c = lcolor.getFromLyXName("boxbgcolor@" + buffer().fileName().absFileName(), false);
 		if (c == Color_none)
 			return getLayout().bgcolor();
 		return c;

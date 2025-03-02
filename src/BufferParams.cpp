@@ -1152,6 +1152,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex.eatLine();
 		boxbgcolor = lex.getString();
 		registerLyXColor("boxbgcolor", boxbgcolor);
+		// set a local name for the painter
 		lcolor.setColor("boxbgcolor@" + filename.absFileName(),
 				lcolor.getX11HexName(boxbgcolor));
 	} else if (token == "\\table_border_color") {

@@ -58,6 +58,12 @@ public:
 	char decimal_point;
 	/// V column type
 	bool vcolumn;
+	///
+	string color;
+	///
+	string lcoloh;
+	///
+	string rcoloh;
 };
 
 
@@ -105,6 +111,12 @@ public:
 	bool caption;
 	/// row for a newpage
 	bool newpage;
+	///
+	string color;
+	///
+	string lcoloh;
+	///
+	string rcoloh;
 };
 
 
@@ -165,6 +177,8 @@ public:
 	string mroffset;
 	/// number of further multirows
 	int mrxnum;
+	/// color
+	string color;
 };
 
 
@@ -448,8 +462,7 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 			case '>': {
 				// text before the next column
 				string const s = trimSpaceAndEol(p.verbatim_item());
-				if (next.special.empty() &&
-				    next.align == 'n') {
+				if (next.special.empty() && next.align == 'n') {
 					// Maybe this can be converted to a
 					// horizontal alignment setting for
 					// fixed width columns
@@ -459,7 +472,22 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 						next.align = 'l';
 					else if (s == "\\centering" || s == "\\centering\\arraybackslash")
 						next.align = 'c';
-					else
+					else if (support::prefixIs(s, "\\columncolor{")) {
+						Parser ccparse(s);
+						ccparse.get_token();
+						string const color = ccparse.getArg('{', '}');
+						string const lyxcolor = preamble.getLyXColor(color);
+						if (!lyxcolor.empty())
+							next.color = lyxcolor;
+						if (ccparse.hasOpt()) {
+							string const opt = ccparse.getArg('[', ']');
+							next.lcoloh = opt;
+						}
+						if (ccparse.hasOpt()) {
+							string const opt = ccparse.getArg('[', ']');
+							next.rcoloh = opt;
+						}
+					} else
 						next.special = ">{" + s + '}';
 				} else
 					next.special += ">{" + s + '}';
@@ -1275,8 +1303,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		// split into cells
 		vector<string> cells;
 		split(lines[row], cells, TAB);
-		for (size_t col = 0, cell = 0; cell < cells.size();
-		     ++col, ++cell) {
+		for (size_t col = 0, cell = 0; cell < cells.size(); ++col, ++cell) {
 			//warning_message("cell content: '" + cells[cell]);
 			if (col >= colinfo.size()) {
 				// This does not work in LaTeX
@@ -1284,194 +1311,244 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				continue;
 			}
 			string cellcont = cells[cell];
-			// For decimal cells, ass the content of the second one to the first one
+			// For decimal cells, add the content of the second one to the first one
 			// of a pair.
 			if (colinfo[col].decimal_point != '\0' && colinfo[col].align == 'd' && cell < cells.size() - 1)
 				cellcont += colinfo[col].decimal_point + cells[cell + 1];
 			Parser parse(cellcont);
 			parse.skip_spaces();
 			//cells[cell] << "'\n";
-			if (parse.next_token().cs() == "multirow") {
-				// We do not support the vpos arg yet.
-				if (parse.hasOpt()) {
-					string const vpos = parse.getArg('[', ']');
-					parse.skip_spaces(true);
-					warning_message("Ignoring multirow's vpos arg '"
-					     + vpos + "'!");
-				}
-				// how many cells?
-				parse.get_token();
-				size_t const ncells =
-					convert<unsigned int>(parse.verbatim_item());
-				// We do not support the bigstrut arg yet.
-				if (parse.hasOpt()) {
-					string const bs = parse.getArg('[', ']');
-					parse.skip_spaces(true);
-					warning_message("Ignoring multirow's bigstrut arg '"
-					     + bs + "'!");
-				}
-				// the width argument
-				string const width = parse.getArg('{', '}');
-				// the vmove arg
-				string vmove;
-				if (parse.hasOpt()) {
-					vmove = parse.getArg('[', ']');
-					parse.skip_spaces(true);
-				}
-
-				if (width != "*" && width != "=")
-					colinfo[col].width = width;
-				if (!vmove.empty())
-					cellinfo[row][col].mroffset = vmove;
-				cellinfo[row][col].multi = CELL_BEGIN_OF_MULTIROW;
-				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
-				cellinfo[row][col].rightlines = colinfo[col].rightlines;
-				cellinfo[row][col].mrxnum = ncells - 1;
-
-				ostringstream os2;
-				parse.get_token();// skip {
-				parse_cell_content(os2, parse, FLAG_BRACE_LAST, newcontext,
-							cellinfo, colinfo,
-							row, col);
-				parse.get_token();// skip }
-				if (!cellinfo[row][col].content.empty()) {
-					// This may or may not work in LaTeX,
-					// but it does not work in LyX.
-					// FIXME: Handle it correctly!
-					warning_message("Moving cell content '"
-							+ cells[cell]
-							+ "' into a multirow cell. "
-							  "This will probably not work.");
-				}
-				cellinfo[row][col].content += os2.str();
-			} else if (parse.next_token().cs() == "multicolumn") {
-				// how many cells?
-				parse.get_token();
-				size_t const ncells =
-					convert<unsigned int>(parse.verbatim_item());
-
-				// special cell properties alignment
-				vector<ColInfo> t;
-				handle_colalign(parse, t, ColInfo());
-				parse.skip_spaces(true);
-				ColInfo & ci = t.front();
-
-				// The logic of LyX for multicolumn vertical
-				// lines is too complicated to reproduce it
-				// here (see LyXTabular::TeXCellPreamble()).
-				// Therefore we simply put everything in the
-				// special field.
-				ci2special(ci);
-
-				cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
-				cellinfo[row][col].align      = ci.align;
-				cellinfo[row][col].special    = ci.special;
-				cellinfo[row][col].leftlines  = ci.leftlines;
-				cellinfo[row][col].rightlines = ci.rightlines;
-				ostringstream os2;
-				parse.get_token();// skip {
-				parse_cell_content(os2, parse, FLAG_BRACE_LAST, newcontext,
-							cellinfo, colinfo,
-							row, col);
-				parse.get_token();// skip }
-				if (!cellinfo[row][col].content.empty()) {
-					// This may or may not work in LaTeX,
-					// but it does not work in LyX.
-					// FIXME: Handle it correctly!
-					warning_message("Moving cell content '"
-							+ cells[cell]
-							+ "' into a multicolumn cell. "
-							  "This will probably not work.");
-				}
-				cellinfo[row][col].content += os2.str();
-
-				// add dummy cells for multicol
-				for (size_t i = 0; i < ncells - 1; ++i) {
-					++col;
-					if (col >= colinfo.size()) {
-						warning_message("The cell '"
-							+ cells[cell]
-							+ "' specifies "
-							+ convert<string>(ncells)
-							+ " columns while the table has only "
-							+ convert<string>(colinfo.size())
-							+ " columns!"
-							+ " Therefore the surplus columns will be ignored.");
-						break;
+			while (parse.good()) {
+				if (parse.next_token().cs() == "cellcolor") {
+					parse.pushPosition();
+					parse.get_token();
+					string const color = parse.getArg('{', '}');
+					string const lyxcolor = preamble.getLyXColor(color);
+					if (!lyxcolor.empty())
+						cellinfo[row][col].color = lyxcolor;
+					else {
+						// no known color, output TeX code
+						parse.popPosition();
+						ostringstream os2;
+						parse_cell_content(os2, parse, FLAG_CELL, newcontext,
+									cellinfo, colinfo,
+									row, col);
+						cellinfo[row][col].leftlines  = colinfo[col].leftlines;
+						cellinfo[row][col].rightlines = colinfo[col].rightlines;
+						cellinfo[row][col].align      = colinfo[col].align;
+						cellinfo[row][col].content += os2.str();
 					}
-					cellinfo[row][col].multi = CELL_PART_OF_MULTICOLUMN;
-					cellinfo[row][col].align = 'c';
 				}
-
-			} else if (col == 0 && colinfo.size() > 1 &&
-			           is_long_tabular &&
-			           parse.next_token().cs() == "caption") {
-				// longtable caption support in LyX is a hack:
-				// Captions require a row of their own with
-				// the caption flag set to true, having only
-				// one multicolumn cell. The contents of that
-				// cell must contain exactly one caption inset
-				// and nothing else.
-				// Fortunately, the caption flag is only needed
-				// for tables with more than one column.
-				rowinfo[row].caption = true;
-				for (size_t c = 1; c < cells.size(); ++c) {
-					if (!cells[c].empty()) {
+				else if (parse.next_token().cs() == "rowcolor") {
+					parse.pushPosition();
+					parse.get_token();
+					string const color = parse.getArg('{', '}');
+					string const lyxcolor = preamble.getLyXColor(color);
+					if (!lyxcolor.empty()) {
+						rowinfo[row].color = lyxcolor;
+						if (parse.hasOpt()) {
+							string const opt = parse.getArg('[', ']');
+							rowinfo[row].lcoloh = opt;
+						}
+						if (parse.hasOpt()) {
+							string const opt = parse.getArg('[', ']');
+							rowinfo[row].rcoloh = opt;
+						}
+					} else {
+						// no known color, output TeX code
+						parse.popPosition();
+						ostringstream os2;
+						parse_cell_content(os2, parse, FLAG_CELL, newcontext,
+									cellinfo, colinfo,
+									row, col);
+						cellinfo[row][col].leftlines  = colinfo[col].leftlines;
+						cellinfo[row][col].rightlines = colinfo[col].rightlines;
+						cellinfo[row][col].align      = colinfo[col].align;
+						cellinfo[row][col].content += os2.str();
+					}
+				}
+				else if (parse.next_token().cs() == "multirow") {
+					// We do not support the vpos arg yet.
+					if (parse.hasOpt()) {
+						string const vpos = parse.getArg('[', ']');
+						parse.skip_spaces(true);
+						warning_message("Ignoring multirow's vpos arg '"
+						     + vpos + "'!");
+					}
+					// how many cells?
+					parse.get_token();
+					size_t const ncells =
+						convert<unsigned int>(parse.verbatim_item());
+					// We do not support the bigstrut arg yet.
+					if (parse.hasOpt()) {
+						string const bs = parse.getArg('[', ']');
+						parse.skip_spaces(true);
+						warning_message("Ignoring multirow's bigstrut arg '"
+						     + bs + "'!");
+					}
+					// the width argument
+					string const width = parse.getArg('{', '}');
+					// the vmove arg
+					string vmove;
+					if (parse.hasOpt()) {
+						vmove = parse.getArg('[', ']');
+						parse.skip_spaces(true);
+					}
+	
+					if (width != "*" && width != "=")
+						colinfo[col].width = width;
+					if (!vmove.empty())
+						cellinfo[row][col].mroffset = vmove;
+					cellinfo[row][col].multi = CELL_BEGIN_OF_MULTIROW;
+					cellinfo[row][col].leftlines  = colinfo[col].leftlines;
+					cellinfo[row][col].rightlines = colinfo[col].rightlines;
+					cellinfo[row][col].mrxnum = ncells - 1;
+	
+					ostringstream os2;
+					parse.get_token();// skip {
+					parse_cell_content(os2, parse, FLAG_BRACE_LAST, newcontext,
+								cellinfo, colinfo,
+								row, col);
+					parse.get_token();// skip }
+					if (!cellinfo[row][col].content.empty()) {
+						// This may or may not work in LaTeX,
+						// but it does not work in LyX.
+						// FIXME: Handle it correctly!
 						warning_message("Moving cell content '"
-						     + cells[c]
-						     + "' into the caption cell. "
-						       "This will probably not work.");
-						cells[0] += cells[c];
+								+ cells[cell]
+								+ "' into a multirow cell. "
+								  "This will probably not work.");
 					}
-				}
-				cells.resize(1);
-				cellinfo[row][col].align      = colinfo[col].align;
-				cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
-				ostringstream os2;
-				parse_text_in_inset(parse, os2, FLAG_CELL, false, newcontext);
-				cellinfo[row][col].content += os2.str();
-				// add dummy multicolumn cells
-				for (size_t c = 1; c < colinfo.size(); ++c)
-					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
-			} else if (col == 0 && colinfo.size() > 1 &&
-			           is_long_tabular &&
-			           parse.next_token().cs() == "caption") {
-				// longtable caption support in LyX is a hack:
-				// Captions require a row of their own with
-				// the caption flag set to true, having only
-				// one multicolumn cell. The contents of that
-				// cell must contain exactly one caption inset
-				// and nothing else.
-				// Fortunately, the caption flag is only needed
-				// for tables with more than one column.
-				rowinfo[row].caption = true;
-				for (size_t c = 1; c < cells.size(); ++c) {
-					if (!cells[c].empty()) {
+					cellinfo[row][col].content += os2.str();
+				} else if (parse.next_token().cs() == "multicolumn") {
+					// how many cells?
+					parse.get_token();
+					size_t const ncells =
+						convert<unsigned int>(parse.verbatim_item());
+	
+					// special cell properties alignment
+					vector<ColInfo> t;
+					handle_colalign(parse, t, ColInfo());
+					parse.skip_spaces(true);
+					ColInfo & ci = t.front();
+	
+					// The logic of LyX for multicolumn vertical
+					// lines is too complicated to reproduce it
+					// here (see LyXTabular::TeXCellPreamble()).
+					// Therefore we simply put everything in the
+					// special field.
+					ci2special(ci);
+	
+					cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
+					cellinfo[row][col].align      = ci.align;
+					cellinfo[row][col].special    = ci.special;
+					cellinfo[row][col].leftlines  = ci.leftlines;
+					cellinfo[row][col].rightlines = ci.rightlines;
+					ostringstream os2;
+					parse.get_token();// skip {
+					parse_cell_content(os2, parse, FLAG_BRACE_LAST, newcontext,
+								cellinfo, colinfo,
+								row, col);
+					parse.get_token();// skip }
+					if (!cellinfo[row][col].content.empty()) {
+						// This may or may not work in LaTeX,
+						// but it does not work in LyX.
+						// FIXME: Handle it correctly!
 						warning_message("Moving cell content '"
-						     + cells[c]
-						     + "' into the caption cell. "
-							"This will probably not work.");
-						cells[0] += cells[c];
+								+ cells[cell]
+								+ "' into a multicolumn cell. "
+								  "This will probably not work.");
 					}
+					cellinfo[row][col].content += os2.str();
+	
+					// add dummy cells for multicol
+					for (size_t i = 0; i < ncells - 1; ++i) {
+						++col;
+						if (col >= colinfo.size()) {
+							warning_message("The cell '"
+								+ cells[cell]
+								+ "' specifies "
+								+ convert<string>(ncells)
+								+ " columns while the table has only "
+								+ convert<string>(colinfo.size())
+								+ " columns!"
+								+ " Therefore the surplus columns will be ignored.");
+							break;
+						}
+						cellinfo[row][col].multi = CELL_PART_OF_MULTICOLUMN;
+						cellinfo[row][col].align = 'c';
+					}
+	
+				} else if (col == 0 && colinfo.size() > 1 &&
+					   is_long_tabular &&
+					   parse.next_token().cs() == "caption") {
+					// longtable caption support in LyX is a hack:
+					// Captions require a row of their own with
+					// the caption flag set to true, having only
+					// one multicolumn cell. The contents of that
+					// cell must contain exactly one caption inset
+					// and nothing else.
+					// Fortunately, the caption flag is only needed
+					// for tables with more than one column.
+					rowinfo[row].caption = true;
+					for (size_t c = 1; c < cells.size(); ++c) {
+						if (!cells[c].empty()) {
+							warning_message("Moving cell content '"
+							     + cells[c]
+							     + "' into the caption cell. "
+							       "This will probably not work.");
+							cells[0] += cells[c];
+						}
+					}
+					cells.resize(1);
+					cellinfo[row][col].align      = colinfo[col].align;
+					cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
+					ostringstream os2;
+					parse_text_in_inset(parse, os2, FLAG_CELL, false, newcontext);
+					cellinfo[row][col].content += os2.str();
+					// add dummy multicolumn cells
+					for (size_t c = 1; c < colinfo.size(); ++c)
+						cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
+				} else if (col == 0 && colinfo.size() > 1 &&
+					   is_long_tabular &&
+					   parse.next_token().cs() == "caption") {
+					// longtable caption support in LyX is a hack:
+					// Captions require a row of their own with
+					// the caption flag set to true, having only
+					// one multicolumn cell. The contents of that
+					// cell must contain exactly one caption inset
+					// and nothing else.
+					// Fortunately, the caption flag is only needed
+					// for tables with more than one column.
+					rowinfo[row].caption = true;
+					for (size_t c = 1; c < cells.size(); ++c) {
+						if (!cells[c].empty()) {
+							warning_message("Moving cell content '"
+							     + cells[c]
+							     + "' into the caption cell. "
+								"This will probably not work.");
+							cells[0] += cells[c];
+						}
+					}
+					cells.resize(1);
+					cellinfo[row][col].align      = colinfo[col].align;
+					cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
+					ostringstream os2;
+					parse_text_in_inset(parse, os2, FLAG_CELL, false, newcontext);
+					cellinfo[row][col].content += os2.str();
+					// add dummy multicolumn cells
+					for (size_t c = 1; c < colinfo.size(); ++c)
+						cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
+				} else {
+					ostringstream os2;
+					parse_cell_content(os2, parse, FLAG_CELL, newcontext,
+								cellinfo, colinfo,
+								row, col);
+					cellinfo[row][col].leftlines  = colinfo[col].leftlines;
+					cellinfo[row][col].rightlines = colinfo[col].rightlines;
+					cellinfo[row][col].align      = colinfo[col].align;
+					cellinfo[row][col].content += os2.str();
 				}
-				cells.resize(1);
-				cellinfo[row][col].align      = colinfo[col].align;
-				cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
-				ostringstream os2;
-				parse_text_in_inset(parse, os2, FLAG_CELL, false, newcontext);
-				cellinfo[row][col].content += os2.str();
-				// add dummy multicolumn cells
-				for (size_t c = 1; c < colinfo.size(); ++c)
-					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
-			} else {
-				ostringstream os2;
-				parse_cell_content(os2, parse, FLAG_CELL, newcontext,
-							cellinfo, colinfo,
-							row, col);
-				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
-				cellinfo[row][col].rightlines = colinfo[col].rightlines;
-				cellinfo[row][col].align      = colinfo[col].align;
-				cellinfo[row][col].content += os2.str();
 			}
 		}
 
@@ -1575,6 +1652,10 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 	os << "<features"
 	   << write_attribute("rotate", context.tablerotation)
 	   << write_attribute("booktabs", booktabs)
+	   << write_attribute("borderColor", context.current_table_bordercolor)
+	   << write_attribute("oddRowsColor", context.current_table_odd_row_color)
+	   << write_attribute("evenRowsColor", context.current_table_even_row_color)
+	   << write_attribute("startAltRowColors", context.current_table_alt_row_colors_start)
 	   << write_attribute("islongtable", is_long_tabular);
 	if (is_long_tabular) {
 		os << write_attribute("firstHeadTopDL", endfirsthead.topDL)
@@ -1605,6 +1686,9 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 		os << " valignment=\""
 		   << verbose_valign(col.valign) << "\""
 		   << write_attribute("width", translate_len(col.width))
+		   << write_attribute("color", col.color)
+		   << write_attribute("colorleftoverhang", col.lcoloh)
+		   << write_attribute("colorrightoverhang", col.rcoloh)
 		   << write_attribute("special", col.special)
 		   << write_attribute("varwidth", col.varwidth)
 		   << ">\n";
@@ -1626,6 +1710,9 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				      rowinfo[row].type == LT_LASTFOOT)
 		   << write_attribute("newpage", rowinfo[row].newpage)
 		   << write_attribute("caption", rowinfo[row].caption)
+		   << write_attribute("color", rowinfo[row].color)
+		   << write_attribute("colorleftoverhang", rowinfo[row].lcoloh)
+		   << write_attribute("colorrightoverhang", rowinfo[row].rcoloh)
 		   << ">\n";
 		for (size_t col = 0; col < colinfo.size(); ++col) {
 			CellInfo const & cell = cellinfo[row][col];
@@ -1652,6 +1739,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 			   << write_attribute("bottomlinertrim", cell.bottomline_rtrim)
 			   << write_attribute("leftline", cell.leftlines > 0)
 			   << write_attribute("rightline", cell.rightlines > 0)
+			   << write_attribute("color", cell.color)
 			   << write_attribute("rotate", cell.rotate)
 			   << write_attribute("mroffset", cell.mroffset);
 			//warning_message("\nrow: " + row + " col: " + col);

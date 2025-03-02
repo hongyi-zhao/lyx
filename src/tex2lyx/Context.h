@@ -180,6 +180,15 @@ public:
 	bool in_table_cell;
 	///
 	char cell_align;
+	///
+	std::string current_table_bordercolor;
+	///
+	std::string current_table_odd_row_color;
+	///
+	std::string current_table_even_row_color;
+	///
+	int current_table_alt_row_colors_start = 0;
+	
 
 private:
 	void begin_layout(std::ostream & os, Layout const * const & l);

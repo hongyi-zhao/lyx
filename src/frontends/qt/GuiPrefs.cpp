@@ -1044,7 +1044,7 @@ PrefColors::PrefColors(GuiPreferences * form)
 	// give a shortcut to the combobox
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	QShortcut* sc_load_theme =
-	        new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_L), this);
+	        new QShortcut(QKeySequence(tr("Ctrl+l")), this);
 #else
 	QShortcut* sc_load_theme =
 	        new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_L), this);

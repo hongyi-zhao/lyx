@@ -116,7 +116,7 @@ foreach(_sd "examples" "templates")
   lyx_install("data" ${TOP_SRC_DIR}/lib ${_sd}/*   *    . *)
 endforeach()
 
-foreach(_sd "kbd" "layouts" "themes" "ui" ".")
+foreach(_sd "kbd" "layouts" "ui" ".")
   lyx_install("data" ${TOP_SRC_DIR}/lib ${_sd}     *    .  )
 endforeach()
 

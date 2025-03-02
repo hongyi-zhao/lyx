@@ -778,525 +778,770 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	string result;
 	FileName const & filepath = filename.onlyPath();
 
-	if (token == "\\textclass") {
-		lex.next();
-		string const classname = lex.getString();
-		// if there exists a local layout file, ignore the system one
-		// NOTE: in this case, the textclass (.cls file) is assumed to
-		// be available.
-		string tcp;
-		LayoutFileList & bcl = LayoutFileList::get();
-		if (!filepath.empty()) {
-			// If classname is an absolute path, the document is
-			// using a local layout file which could not be accessed
-			// by a relative path. In this case the path is correct
-			// even if the document was moved to a different
-			// location. However, we will have a problem if the
-			// document was generated on a different platform.
-			bool isabsolute = FileName::isAbsolute(classname);
-			string const classpath = onlyPath(classname);
-			string const path = isabsolute ? classpath
-				: FileName(addPath(filepath.absFileName(),
-						classpath)).realPath();
-			string const oldpath = isabsolute ? string()
-				: FileName(addPath(origin, classpath)).realPath();
-			tcp = bcl.addLocalLayout(onlyFileName(classname), path, oldpath);
+	while (true) {
+		if (token == "\\textclass") {
+			lex.next();
+			string const classname = lex.getString();
+			// if there exists a local layout file, ignore the system one
+			// NOTE: in this case, the textclass (.cls file) is assumed to
+			// be available.
+			string tcp;
+			LayoutFileList & bcl = LayoutFileList::get();
+			if (!filepath.empty()) {
+				// If classname is an absolute path, the document is
+				// using a local layout file which could not be accessed
+				// by a relative path. In this case the path is correct
+				// even if the document was moved to a different
+				// location. However, we will have a problem if the
+				// document was generated on a different platform.
+				bool isabsolute = FileName::isAbsolute(classname);
+				string const classpath = onlyPath(classname);
+				string const path = isabsolute ? classpath
+					: FileName(addPath(filepath.absFileName(),
+							classpath)).realPath();
+				string const oldpath = isabsolute ? string()
+					: FileName(addPath(origin, classpath)).realPath();
+				tcp = bcl.addLocalLayout(onlyFileName(classname), path, oldpath);
+			}
+			// that returns non-empty if a "local" layout file is found.
+			if (!tcp.empty()) {
+				result = to_utf8(makeRelPath(from_utf8(onlyPath(tcp)),
+							from_utf8(filepath.absFileName())));
+				if (result.empty())
+					result = ".";
+				setBaseClass(onlyFileName(tcp));
+			} else
+				setBaseClass(onlyFileName(classname));
+			// We assume that a tex class exists for local or unknown
+			// layouts so this warning, will only be given for system layouts.
+			if (!baseClass()->isTeXClassAvailable()) {
+				docstring const desc =
+					translateIfPossible(from_utf8(baseClass()->description()));
+				docstring const prereqs =
+					from_utf8(baseClass()->prerequisites());
+				docstring const msg =
+					bformat(_("The selected document class\n"
+							 "\t%1$s\n"
+							 "requires external files that are not available.\n"
+							 "The document class can still be used, but the\n"
+							 "document cannot be compiled until the following\n"
+							 "prerequisites are installed:\n"
+							 "\t%2$s\n"
+							 "See section 3.1.2.2 (Class Availability) of the\n"
+							 "User's Guide for more information."), desc, prereqs);
+				frontend::Alert::warning(_("Document class not available"),
+					       msg, true);
+			}
+			break;
 		}
-		// that returns non-empty if a "local" layout file is found.
-		if (!tcp.empty()) {
-			result = to_utf8(makeRelPath(from_utf8(onlyPath(tcp)),
-						from_utf8(filepath.absFileName())));
-			if (result.empty())
-				result = ".";
-			setBaseClass(onlyFileName(tcp));
-		} else
-			setBaseClass(onlyFileName(classname));
-		// We assume that a tex class exists for local or unknown
-		// layouts so this warning, will only be given for system layouts.
-		if (!baseClass()->isTeXClassAvailable()) {
-			docstring const desc =
-				translateIfPossible(from_utf8(baseClass()->description()));
-			docstring const prereqs =
-				from_utf8(baseClass()->prerequisites());
-			docstring const msg =
-				bformat(_("The selected document class\n"
-						 "\t%1$s\n"
-						 "requires external files that are not available.\n"
-						 "The document class can still be used, but the\n"
-						 "document cannot be compiled until the following\n"
-						 "prerequisites are installed:\n"
-						 "\t%2$s\n"
-						 "See section 3.1.2.2 (Class Availability) of the\n"
-						 "User's Guide for more information."), desc, prereqs);
-			frontend::Alert::warning(_("Document class not available"),
-				       msg, true);
+		if (token == "\\save_transient_properties") {
+			lex >> save_transient_properties;
+			break;
 		}
-	} else if (token == "\\save_transient_properties") {
-		lex >> save_transient_properties;
-	} else if (token == "\\origin") {
-		lex.eatLine();
-		origin = lex.getString();
-		string const sysdirprefix = "/systemlyxdir/";
-		if (prefixIs(origin, sysdirprefix)) {
-			string docsys;
-			if (inSystemDir(filepath, docsys))
-				origin.replace(0, sysdirprefix.length() - 1, docsys);
+		if (token == "\\origin") {
+			lex.eatLine();
+			origin = lex.getString();
+			string const sysdirprefix = "/systemlyxdir/";
+			if (prefixIs(origin, sysdirprefix)) {
+				string docsys;
+				if (inSystemDir(filepath, docsys))
+					origin.replace(0, sysdirprefix.length() - 1, docsys);
+				else
+					origin.replace(0, sysdirprefix.length() - 1,
+						package().system_support().absFileName());
+			}
+			break;
+		}
+		if (token == "\\begin_metadata") {
+			readDocumentMetadata(lex);
+			break;
+		}
+		if (token == "\\begin_preamble") {
+			readPreamble(lex);
+			break;
+		}
+		if (token == "\\begin_local_layout") {
+			readLocalLayout(lex, false);
+			break;
+		}
+		if (token == "\\begin_forced_local_layout") {
+			readLocalLayout(lex, true);
+			break;
+		}
+		if (token == "\\begin_modules") {
+			readModules(lex);
+			break;
+		}
+		if (token == "\\begin_removed_modules") {
+			readRemovedModules(lex);
+			break;
+		}
+		if (token == "\\begin_includeonly") {
+			readIncludeonly(lex);
+			break;
+		}
+		if (token == "\\maintain_unincluded_children") {
+			string tmp;
+			lex >> tmp;
+			if (tmp == "no")
+				maintain_unincluded_children = CM_None;
+			else if (tmp == "mostly")
+				maintain_unincluded_children = CM_Mostly;
+			else if (tmp == "strict")
+				maintain_unincluded_children = CM_Strict;
+			break;
+		}
+		if (token == "\\options") {
+			lex.eatLine();
+			options = lex.getString();
+			break;
+		}
+		if (token == "\\use_default_options") {
+			lex >> use_default_options;
+			break;
+		}
+		if (token == "\\master") {
+			lex.eatLine();
+			master = lex.getString();
+			if (!filepath.empty() && FileName::isAbsolute(origin)) {
+				bool const isabs = FileName::isAbsolute(master);
+				FileName const abspath(isabs ? master : origin + master);
+				bool const moved = filepath != FileName(origin);
+				if (moved && abspath.exists()) {
+					docstring const path = isabs
+						? from_utf8(master)
+						: from_utf8(abspath.realPath());
+					docstring const refpath =
+						from_utf8(filepath.absFileName());
+					master = to_utf8(makeRelPath(path, refpath));
+				}
+			}
+			break;
+		}
+		if (token == "\\suppress_date") {
+			lex >> suppress_date;
+			break;
+		}
+		if (token == "\\justification") {
+			lex >> justification;
+			break;
+		}
+		if (token == "\\language") {
+			readLanguage(lex);
+			break;
+		}
+		if (token == "\\language_package") {
+			lex.eatLine();
+			lang_package = lex.getString();
+			break;
+		}
+		if (token == "\\language_options_babel") {
+			string lang;
+			lex >> lang;
+			lex.eatLine();
+			string const opts = lex.getString();
+			lang_options_babel_[lang] = trim(opts, "\"");
+			break;
+		}
+		if (token == "\\language_options_polyglossia") {
+			string lang;
+			lex >> lang;
+			lex.eatLine();
+			string const opts = lex.getString();
+			lang_options_polyglossia_[lang] = trim(opts, "\"");
+			break;
+		}
+		if (token == "\\inputencoding") {
+			lex >> inputenc;
+			break;
+		}
+		if (token == "\\graphics") {
+			readGraphicsDriver(lex);
+			break;
+		}
+		if (token == "\\default_output_format") {
+			lex >> default_output_format;
+			break;
+		}
+		if (token == "\\bibtex_command") {
+			lex.eatLine();
+			bibtex_command = lex.getString();
+			break;
+		}
+		if (token == "\\index_command") {
+			lex.eatLine();
+			index_command = lex.getString();
+			break;
+		}
+		if (token == "\\fontencoding") {
+			lex.eatLine();
+			fontenc = lex.getString();
+			break;
+		}
+		if (token == "\\font_roman") {
+			lex >> fonts_roman[0];
+			lex >> fonts_roman[1];
+			break;
+		}
+		if (token == "\\font_sans") {
+			lex >> fonts_sans[0];
+			lex >> fonts_sans[1];
+			break;
+		}
+		if (token == "\\font_typewriter") {
+			lex >> fonts_typewriter[0];
+			lex >> fonts_typewriter[1];
+			break;
+		}
+		if (token == "\\font_math") {
+			lex >> fonts_math[0];
+			lex >> fonts_math[1];
+			break;
+		}
+		if (token == "\\font_default_family") {
+			lex >> fonts_default_family;
+			break;
+		}
+		if (token == "\\use_non_tex_fonts") {
+			lex >> useNonTeXFonts;
+			break;
+		}
+		if (token == "\\font_sc") {
+			lex >> fonts_expert_sc;
+			break;
+		}
+		if (token == "\\font_roman_osf") {
+			lex >> fonts_roman_osf;
+			break;
+		}
+		if (token == "\\font_sans_osf") {
+			lex >> fonts_sans_osf;
+			break;
+		}
+		if (token == "\\font_typewriter_osf") {
+			lex >> fonts_typewriter_osf;
+			break;
+		}
+		if (token == "\\font_roman_opts") {
+			lex >> font_roman_opts;
+			break;
+		}
+		if (token == "\\font_sf_scale") {
+			lex >> fonts_sans_scale[0];
+			lex >> fonts_sans_scale[1];
+			break;
+		}
+		if (token == "\\font_sans_opts") {
+			lex >> font_sans_opts;
+			break;
+		}
+		if (token == "\\font_tt_scale") {
+			lex >> fonts_typewriter_scale[0];
+			lex >> fonts_typewriter_scale[1];
+			break;
+		}
+		if (token == "\\font_typewriter_opts") {
+			lex >> font_typewriter_opts;
+			break;
+		}
+		if (token == "\\font_cjk") {
+			lex >> fonts_cjk;
+			break;
+		}
+		if (token == "\\use_microtype") {
+			lex >> use_microtype;
+			break;
+		}
+		if (token == "\\use_dash_ligatures") {
+			lex >> use_dash_ligatures;
+			break;
+		}
+		if (token == "\\paragraph_separation") {
+			string parsep;
+			lex >> parsep;
+			paragraph_separation = parseptranslator().find(parsep);
+			break;
+		}
+		if (token == "\\paragraph_indentation") {
+			lex.next();
+			string parindent = lex.getString();
+			if (parindent == "default")
+				pimpl_->parindent = Length();
 			else
-				origin.replace(0, sysdirprefix.length() - 1,
-					package().system_support().absFileName());
+				pimpl_->parindent = Length(parindent);
+			break;
 		}
-	} else if (token == "\\begin_metadata") {
-		readDocumentMetadata(lex);
-	} else if (token == "\\begin_preamble") {
-		readPreamble(lex);
-	} else if (token == "\\begin_local_layout") {
-		readLocalLayout(lex, false);
-	} else if (token == "\\begin_forced_local_layout") {
-		readLocalLayout(lex, true);
-	} else if (token == "\\begin_modules") {
-		readModules(lex);
-	} else if (token == "\\begin_removed_modules") {
-		readRemovedModules(lex);
-	} else if (token == "\\begin_includeonly") {
-		readIncludeonly(lex);
-	} else if (token == "\\maintain_unincluded_children") {
-		string tmp;
-		lex >> tmp;
-		if (tmp == "no")
-			maintain_unincluded_children = CM_None;
-		else if (tmp == "mostly")
-			maintain_unincluded_children = CM_Mostly;
-		else if (tmp == "strict")
-			maintain_unincluded_children = CM_Strict;
-	} else if (token == "\\options") {
-		lex.eatLine();
-		options = lex.getString();
-	} else if (token == "\\use_default_options") {
-		lex >> use_default_options;
-	} else if (token == "\\master") {
-		lex.eatLine();
-		master = lex.getString();
-		if (!filepath.empty() && FileName::isAbsolute(origin)) {
-			bool const isabs = FileName::isAbsolute(master);
-			FileName const abspath(isabs ? master : origin + master);
-			bool const moved = filepath != FileName(origin);
-			if (moved && abspath.exists()) {
-				docstring const path = isabs
-					? from_utf8(master)
-					: from_utf8(abspath.realPath());
-				docstring const refpath =
-					from_utf8(filepath.absFileName());
-				master = to_utf8(makeRelPath(path, refpath));
-			}
-		}
-	} else if (token == "\\suppress_date") {
-		lex >> suppress_date;
-	} else if (token == "\\justification") {
-		lex >> justification;
-	} else if (token == "\\language") {
-		readLanguage(lex);
-	} else if (token == "\\language_package") {
-		lex.eatLine();
-		lang_package = lex.getString();
-	} else if (token == "\\language_options_babel") {
-		string lang;
-		lex >> lang;
-		lex.eatLine();
-		string const opts = lex.getString();
-		lang_options_babel_[lang] = trim(opts, "\"");
-	} else if (token == "\\language_options_polyglossia") {
-		string lang;
-		lex >> lang;
-		lex.eatLine();
-		string const opts = lex.getString();
-		lang_options_polyglossia_[lang] = trim(opts, "\"");
-	} else if (token == "\\inputencoding") {
-		lex >> inputenc;
-	} else if (token == "\\graphics") {
-		readGraphicsDriver(lex);
-	} else if (token == "\\default_output_format") {
-		lex >> default_output_format;
-	} else if (token == "\\bibtex_command") {
-		lex.eatLine();
-		bibtex_command = lex.getString();
-	} else if (token == "\\index_command") {
-		lex.eatLine();
-		index_command = lex.getString();
-	} else if (token == "\\fontencoding") {
-		lex.eatLine();
-		fontenc = lex.getString();
-	} else if (token == "\\font_roman") {
-		lex >> fonts_roman[0];
-		lex >> fonts_roman[1];
-	} else if (token == "\\font_sans") {
-		lex >> fonts_sans[0];
-		lex >> fonts_sans[1];
-	} else if (token == "\\font_typewriter") {
-		lex >> fonts_typewriter[0];
-		lex >> fonts_typewriter[1];
-	} else if (token == "\\font_math") {
-		lex >> fonts_math[0];
-		lex >> fonts_math[1];
-	} else if (token == "\\font_default_family") {
-		lex >> fonts_default_family;
-	} else if (token == "\\use_non_tex_fonts") {
-		lex >> useNonTeXFonts;
-	} else if (token == "\\font_sc") {
-		lex >> fonts_expert_sc;
-	} else if (token == "\\font_roman_osf") {
-		lex >> fonts_roman_osf;
-	} else if (token == "\\font_sans_osf") {
-		lex >> fonts_sans_osf;
-	} else if (token == "\\font_typewriter_osf") {
-		lex >> fonts_typewriter_osf;
-	} else if (token == "\\font_roman_opts") {
-		lex >> font_roman_opts;
-	} else if (token == "\\font_sf_scale") {
-		lex >> fonts_sans_scale[0];
-		lex >> fonts_sans_scale[1];
-	} else if (token == "\\font_sans_opts") {
-		lex >> font_sans_opts;
-	} else if (token == "\\font_tt_scale") {
-		lex >> fonts_typewriter_scale[0];
-		lex >> fonts_typewriter_scale[1];
-	} else if (token == "\\font_typewriter_opts") {
-		lex >> font_typewriter_opts;
-	} else if (token == "\\font_cjk") {
-		lex >> fonts_cjk;
-	} else if (token == "\\use_microtype") {
-		lex >> use_microtype;
-	} else if (token == "\\use_dash_ligatures") {
-		lex >> use_dash_ligatures;
-	} else if (token == "\\paragraph_separation") {
-		string parsep;
-		lex >> parsep;
-		paragraph_separation = parseptranslator().find(parsep);
-	} else if (token == "\\paragraph_indentation") {
-		lex.next();
-		string parindent = lex.getString();
-		if (parindent == "default")
-			pimpl_->parindent = Length();
-		else
-			pimpl_->parindent = Length(parindent);
-	} else if (token == "\\defskip") {
-		lex.next();
-		string const defskip = lex.getString();
-		pimpl_->defskip = VSpace(defskip);
-		if (pimpl_->defskip.kind() == VSpace::DEFSKIP)
-			// that is invalid
-			pimpl_->defskip = VSpace(VSpace::MEDSKIP);
-	} else if (token == "\\is_math_indent") {
-		lex >> is_math_indent;
-	} else if (token == "\\math_indentation") {
-		lex.next();
-		string mathindent = lex.getString();
-		if (mathindent == "default")
-			pimpl_->mathindent = Length();
-		else
-			pimpl_->mathindent = Length(mathindent);
-	} else if (token == "\\math_numbering_side") {
-		string tmp;
-		lex >> tmp;
-		if (tmp == "left")
-			math_numbering_side = LEFT;
-		else if (tmp == "right")
-			math_numbering_side = RIGHT;
-		else
-			math_numbering_side = DEFAULT;
-	} else if (token == "\\quotes_style") {
-		string qstyle;
-		lex >> qstyle;
-		quotes_style = quotesstyletranslator().find(qstyle);
-	} else if (token == "\\dynamic_quotes") {
-		lex >> dynamic_quotes;
-	} else if (token == "\\papersize") {
-		string ppsize;
-		lex >> ppsize;
-		papersize = papersizetranslator().find(ppsize);
-	} else if (token == "\\use_geometry") {
-		lex >> use_geometry;
-	} else if (token == "\\use_package") {
-		string package;
-		int use;
-		lex >> package;
-		lex >> use;
-		use_package(package, packagetranslator().find(use));
-	} else if (token == "\\cite_engine") {
-		lex.eatLine();
-		cite_engine_ = lex.getString();
-	} else if (token == "\\cite_engine_type") {
-		string engine_type;
-		lex >> engine_type;
-		cite_engine_type_ = theCiteEnginesList.getType(engine_type);
-	} else if (token == "\\biblio_style") {
-		lex.eatLine();
-		biblio_style = lex.getString();
-	} else if (token == "\\biblio_options") {
-		lex.eatLine();
-		biblio_opts = trim(lex.getString());
-	} else if (token == "\\biblatex_bibstyle") {
-		lex.eatLine();
-		biblatex_bibstyle = trim(lex.getString());
-	} else if (token == "\\biblatex_citestyle") {
-		lex.eatLine();
-		biblatex_citestyle = trim(lex.getString());
-	} else if (token == "\\use_bibtopic") {
-		lex >> use_bibtopic;
-	} else if (token == "\\multibib") {
-		lex >> multibib;
-	} else if (token == "\\use_indices") {
-		lex >> use_indices;
-	} else if (token == "\\tracking_changes") {
-		lex >> track_changes;
-	} else if (token == "\\output_changes") {
-		lex >> output_changes;
-	} else if (token == "\\change_bars") {
-		lex >> change_bars;
-	} else if (token == "\\postpone_fragile_content") {
-		lex >> postpone_fragile_content;
-	} else if (token == "\\branch") {
-		lex.eatLine();
-		docstring branch = lex.getDocString();
-		branchlist().add(branch);
-		while (true) {
+		if (token == "\\defskip") {
 			lex.next();
-			string const tok = lex.getString();
-			if (tok == "\\end_branch")
-				break;
-			Branch * branch_ptr = branchlist().find(branch);
-			if (tok == "\\selected") {
-				lex.next();
-				if (branch_ptr)
-					branch_ptr->setSelected(lex.getInteger());
-			}
-			if (tok == "\\filename_suffix") {
-				lex.next();
-				if (branch_ptr)
-					branch_ptr->setFileNameSuffix(lex.getInteger());
-			}
-			if (tok == "\\color") {
-				lex.eatLine();
-				vector<string> const colors = getVectorFromString(lex.getString(), " ");
-				string const lmcolor = colors.front();
-				string dmcolor;
-				if (colors.size() > 1)
-					dmcolor = colors.back();
-				if (branch_ptr)
-					branch_ptr->setColors(lmcolor, dmcolor);
-			}
+			string const defskip = lex.getString();
+			pimpl_->defskip = VSpace(defskip);
+			if (pimpl_->defskip.kind() == VSpace::DEFSKIP)
+				// that is invalid
+				pimpl_->defskip = VSpace(VSpace::MEDSKIP);
+			break;
 		}
-	} else if (token == "\\index") {
-		lex.eatLine();
-		docstring index = lex.getDocString();
-		docstring shortcut;
-		indiceslist().add(index);
-		while (true) {
+		if (token == "\\is_math_indent") {
+			lex >> is_math_indent;
+			break;
+		}
+		if (token == "\\math_indentation") {
 			lex.next();
-			string const tok = lex.getString();
-			if (tok == "\\end_index")
-				break;
-			Index * index_ptr = indiceslist().find(index);
-			if (tok == "\\shortcut") {
+			string mathindent = lex.getString();
+			if (mathindent == "default")
+				pimpl_->mathindent = Length();
+			else
+				pimpl_->mathindent = Length(mathindent);
+			break;
+		}
+		if (token == "\\math_numbering_side") {
+			string tmp;
+			lex >> tmp;
+			if (tmp == "left")
+				math_numbering_side = LEFT;
+			else if (tmp == "right")
+				math_numbering_side = RIGHT;
+			else
+				math_numbering_side = DEFAULT;
+			break;
+		}
+		if (token == "\\quotes_style") {
+			string qstyle;
+			lex >> qstyle;
+			quotes_style = quotesstyletranslator().find(qstyle);
+			break;
+		}
+		if (token == "\\dynamic_quotes") {
+			lex >> dynamic_quotes;
+			break;
+		}
+		if (token == "\\papersize") {
+			string ppsize;
+			lex >> ppsize;
+			papersize = papersizetranslator().find(ppsize);
+			break;
+		}
+		if (token == "\\use_geometry") {
+			lex >> use_geometry;
+			break;
+		}
+		if (token == "\\use_package") {
+			string package;
+			int use;
+			lex >> package;
+			lex >> use;
+			use_package(package, packagetranslator().find(use));
+			break;
+		}
+		if (token == "\\cite_engine") {
+			lex.eatLine();
+			cite_engine_ = lex.getString();
+			break;
+		}
+		if (token == "\\cite_engine_type") {
+			string engine_type;
+			lex >> engine_type;
+			cite_engine_type_ = theCiteEnginesList.getType(engine_type);
+			break;
+		}
+		if (token == "\\biblio_style") {
+			lex.eatLine();
+			biblio_style = lex.getString();
+			break;
+		}
+		if (token == "\\biblio_options") {
+			lex.eatLine();
+			biblio_opts = trim(lex.getString());
+			break;
+		}
+		if (token == "\\biblatex_bibstyle") {
+			lex.eatLine();
+			biblatex_bibstyle = trim(lex.getString());
+			break;
+		}
+		if (token == "\\biblatex_citestyle") {
+			lex.eatLine();
+			biblatex_citestyle = trim(lex.getString());
+			break;
+		}
+		if (token == "\\use_bibtopic") {
+			lex >> use_bibtopic;
+			break;
+		}
+		if (token == "\\multibib") {
+			lex >> multibib;
+			break;
+		}
+		if (token == "\\use_indices") {
+			lex >> use_indices;
+			break;
+		}
+		if (token == "\\tracking_changes") {
+			lex >> track_changes;
+			break;
+		}
+		if (token == "\\output_changes") {
+			lex >> output_changes;
+			break;
+		}
+		if (token == "\\change_bars") {
+			lex >> change_bars;
+			break;
+		}
+		if (token == "\\postpone_fragile_content") {
+			lex >> postpone_fragile_content;
+			break;
+		}
+		if (token == "\\branch") {
+			lex.eatLine();
+			docstring branch = lex.getDocString();
+			branchlist().add(branch);
+			while (true) {
 				lex.next();
-				shortcut = lex.getDocString();
-				if (index_ptr)
-					index_ptr->setShortcut(shortcut);
+				string const tok = lex.getString();
+				if (tok == "\\end_branch")
+					break;
+				Branch * branch_ptr = branchlist().find(branch);
+				if (tok == "\\selected") {
+					lex.next();
+					if (branch_ptr)
+						branch_ptr->setSelected(lex.getInteger());
+				}
+				if (tok == "\\filename_suffix") {
+					lex.next();
+					if (branch_ptr)
+						branch_ptr->setFileNameSuffix(lex.getInteger());
+				}
+				if (tok == "\\color") {
+					lex.eatLine();
+					vector<string> const colors = getVectorFromString(lex.getString(), " ");
+					string const lmcolor = colors.front();
+					string dmcolor;
+					if (colors.size() > 1)
+						dmcolor = colors.back();
+					if (branch_ptr)
+						branch_ptr->setColors(lmcolor, dmcolor);
+				}
 			}
-			if (tok == "\\color") {
-				lex.eatLine();
-				string color = lex.getString();
-				if (index_ptr)
-					index_ptr->setColor(color);
-				// Update also the Color table:
-				if (color == "none")
-					color = lcolor.getX11HexName(Color_background);
-				// FIXME UNICODE
-				if (!shortcut.empty())
-					lcolor.setColor(to_utf8(shortcut)+ "@" + filename.absFileName(), color);
+			break;
+		}
+		if (token == "\\index") {
+			lex.eatLine();
+			docstring index = lex.getDocString();
+			docstring shortcut;
+			indiceslist().add(index);
+			while (true) {
+				lex.next();
+				string const tok = lex.getString();
+				if (tok == "\\end_index")
+					break;
+				Index * index_ptr = indiceslist().find(index);
+				if (tok == "\\shortcut") {
+					lex.next();
+					shortcut = lex.getDocString();
+					if (index_ptr)
+						index_ptr->setShortcut(shortcut);
+				}
+				if (tok == "\\color") {
+					lex.eatLine();
+					string color = lex.getString();
+					if (index_ptr)
+						index_ptr->setColor(color);
+					// Update also the Color table:
+					if (color == "none")
+						color = lcolor.getX11HexName(Color_background);
+					// FIXME UNICODE
+					if (!shortcut.empty())
+						lcolor.setColor(to_utf8(shortcut)+ "@" + filename.absFileName(), color);
+				}
 			}
+			break;
 		}
-	} else if (token == "\\spellchecker_ignore") {
-		lex.eatLine();
-		docstring wl = lex.getDocString();
-		docstring language;
-		docstring word = split(wl, language, ' ');
-		Language const * lang = languages.getLanguage(to_ascii(language));
-		if (lang)
-			spellignore().push_back(WordLangTuple(word, lang));
-	} else if (token == "\\author") {
-		lex.eatLine();
-		istringstream ss(lex.getString());
-		Author a;
-		ss >> a;
-		addAuthor(a);
-	} else if (token == "\\paperorientation") {
-		string orient;
-		lex >> orient;
-		orientation = paperorientationtranslator().find(orient);
-	} else if (token == "\\backgroundcolor") {
-		lex.eatLine();
-		backgroundcolor = lex.getString();
-		registerLyXColor("backgroundcolor", backgroundcolor);
-	} else if (token == "\\fontcolor") {
-		lex.eatLine();
-		fontcolor = lex.getString();
-		registerLyXColor("fontcolor", fontcolor);
-	} else if (token == "\\notefontcolor") {
-		lex.eatLine();
-		notefontcolor = lex.getString();
-		registerLyXColor("notefontcolor", notefontcolor);
-		// set a local name for the painter
-		lcolor.setColor("notefontcolor@" + filename.absFileName(),
-				lcolor.getX11HexName(notefontcolor));
-	} else if (token == "\\boxbgcolor") {
-		lex.eatLine();
-		boxbgcolor = lex.getString();
-		registerLyXColor("boxbgcolor", boxbgcolor);
-		// set a local name for the painter
-		lcolor.setColor("boxbgcolor@" + filename.absFileName(),
-				lcolor.getX11HexName(boxbgcolor));
-	} else if (token == "\\table_border_color") {
-		lex.eatLine();
-		table_border_color = lex.getString();
-		if (table_border_color != "default")
-			registerLyXColor("table_border_color", table_border_color);
-	} else if (token == "\\table_odd_row_color") {
-		lex.eatLine();
-		table_odd_row_color = lex.getString();
-		if (table_odd_row_color != "default")
-			registerLyXColor("table_odd_row_color", table_odd_row_color);
-	} else if (token == "\\table_even_row_color") {
-		lex.eatLine();
-		table_even_row_color = lex.getString();
-		if (table_even_row_color != "default")
-			registerLyXColor("table_even_row_color", table_even_row_color);
-	} else if (token == "\\table_alt_row_colors_start") {
-		lex >> table_alt_row_colors_start;
-	} else if (token == "\\customcolor") {
-		string name;
-		lex >> name;;
-		string value;
-		lex >> value;
-		custom_colors[name] = "#" + value;
-		lcolor.setColor(name, "#" + value);
-		lcolor.setLaTeXName(name, name);
-		lcolor.setGUIName(name, name);
-	} else if (token == "\\paperwidth") {
-		lex >> paperwidth;
-	} else if (token == "\\paperheight") {
-		lex >> paperheight;
-	} else if (token == "\\leftmargin") {
-		lex >> leftmargin;
-	} else if (token == "\\topmargin") {
-		lex >> topmargin;
-	} else if (token == "\\rightmargin") {
-		lex >> rightmargin;
-	} else if (token == "\\bottommargin") {
-		lex >> bottommargin;
-	} else if (token == "\\headheight") {
-		lex >> headheight;
-	} else if (token == "\\headsep") {
-		lex >> headsep;
-	} else if (token == "\\footskip") {
-		lex >> footskip;
-	} else if (token == "\\columnsep") {
-		lex >> columnsep;
-	} else if (token == "\\paperfontsize") {
-		lex >> fontsize;
-	} else if (token == "\\papercolumns") {
-		lex >> columns;
-	} else if (token == "\\listings_params") {
-		string par;
-		lex >> par;
-		listings_params = InsetListingsParams(par).params();
-	} else if (token == "\\papersides") {
-		int psides;
-		lex >> psides;
-		sides = sidestranslator().find(psides);
-	} else if (token == "\\paperpagestyle") {
-		lex >> pagestyle;
-	} else if (token == "\\tablestyle") {
-		lex >> tablestyle;
-	} else if (token == "\\bullet") {
-		readBullets(lex);
-	} else if (token == "\\bulletLaTeX") {
-		readBulletsLaTeX(lex);
-	} else if (token == "\\secnumdepth") {
-		lex >> secnumdepth;
-	} else if (token == "\\tocdepth") {
-		lex >> tocdepth;
-	} else if (token == "\\spacing") {
-		string nspacing;
-		lex >> nspacing;
-		string tmp_val;
-		if (nspacing == "other") {
-			lex >> tmp_val;
+		if (token == "\\spellchecker_ignore") {
+			lex.eatLine();
+			docstring wl = lex.getDocString();
+			docstring language;
+			docstring word = split(wl, language, ' ');
+			Language const * lang = languages.getLanguage(to_ascii(language));
+			if (lang)
+				spellignore().push_back(WordLangTuple(word, lang));
+			break;
 		}
-		spacing().set(spacetranslator().find(nspacing), tmp_val);
-	} else if (token == "\\float_placement") {
-		lex >> float_placement;
-	} else if (token == "\\float_alignment") {
-		lex >> float_alignment;
-
-	} else if (prefixIs(token, "\\pdf_") || token == "\\use_hyperref") {
-		string toktmp = pdfoptions().readToken(lex, token);
-		if (!toktmp.empty()) {
-			lyxerr << "PDFOptions::readToken(): Unknown token: " <<
-				toktmp << endl;
-			return toktmp;
+		if (token == "\\author") {
+			lex.eatLine();
+			istringstream ss(lex.getString());
+			Author a;
+			ss >> a;
+			addAuthor(a);
+			break;
 		}
-	} else if (token == "\\html_math_output") {
-		int temp;
-		lex >> temp;
-		html_math_output = static_cast<MathOutput>(temp);
-	} else if (token == "\\html_be_strict") {
-		lex >> html_be_strict;
-	} else if (token == "\\html_css_as_file") {
-		lex >> html_css_as_file;
-	} else if (token == "\\html_math_img_scale") {
-		lex >> html_math_img_scale;
-	} else if (token == "\\html_latex_start") {
-		lex.eatLine();
-		html_latex_start = lex.getString();
-	} else if (token == "\\html_latex_end") {
-		lex.eatLine();
-		html_latex_end = lex.getString();
-	} else if (token == "\\docbook_table_output") {
-		int temp;
-		lex >> temp;
-		docbook_table_output = static_cast<TableOutput>(temp);
-	} else if (token == "\\docbook_mathml_prefix") {
-		int temp;
-		lex >> temp;
-		docbook_mathml_prefix = static_cast<MathMLNameSpacePrefix>(temp);
-	} else if (token == "\\docbook_mathml_version") {
-		int temp;
-		lex >> temp;
-		docbook_mathml_version = static_cast<MathMLVersion>(temp);
-	} else if (token == "\\output_sync") {
-		lex >> output_sync;
-	} else if (token == "\\output_sync_macro") {
-		lex >> output_sync_macro;
-	} else if (token == "\\use_refstyle") {
-		lex >> use_refstyle;
-	} else if (token == "\\use_formatted_ref") {
-		lex >> use_formatted_ref;
-	} else if (token == "\\use_minted") {
-		lex >> use_minted;
-	} else if (token == "\\nomencl_options") {
-		lex.eatLine();
-		nomencl_opts = trim(lex.getString());
-	} else if (token == "\\use_lineno") {
-		lex >> use_lineno;
-	} else if (token == "\\lineno_options") {
-		lex.eatLine();
-		lineno_opts = trim(lex.getString());
-	} else {
+		if (token == "\\paperorientation") {
+			string orient;
+			lex >> orient;
+			orientation = paperorientationtranslator().find(orient);
+			break;
+		}
+		if (token == "\\backgroundcolor") {
+			lex.eatLine();
+			backgroundcolor = lex.getString();
+			registerLyXColor("backgroundcolor", backgroundcolor);
+			break;
+		}
+		if (token == "\\fontcolor") {
+			lex.eatLine();
+			fontcolor = lex.getString();
+			registerLyXColor("fontcolor", fontcolor);
+			break;
+		}
+		if (token == "\\notefontcolor") {
+			lex.eatLine();
+			notefontcolor = lex.getString();
+			registerLyXColor("notefontcolor", notefontcolor);
+			// set a local name for the painter
+			lcolor.setColor("notefontcolor@" + filename.absFileName(),
+					lcolor.getX11HexName(notefontcolor));
+			break;
+		}
+		if (token == "\\boxbgcolor") {
+			lex.eatLine();
+			boxbgcolor = lex.getString();
+			registerLyXColor("boxbgcolor", boxbgcolor);
+			// set a local name for the painter
+			lcolor.setColor("boxbgcolor@" + filename.absFileName(),
+					lcolor.getX11HexName(boxbgcolor));
+			break;
+		}
+		if (token == "\\table_border_color") {
+			lex.eatLine();
+			table_border_color = lex.getString();
+			if (table_border_color != "default")
+				registerLyXColor("table_border_color", table_border_color);
+			break;
+		}
+		if (token == "\\table_odd_row_color") {
+			lex.eatLine();
+			table_odd_row_color = lex.getString();
+			if (table_odd_row_color != "default")
+				registerLyXColor("table_odd_row_color", table_odd_row_color);
+			break;
+		}
+		if (token == "\\table_even_row_color") {
+			lex.eatLine();
+			table_even_row_color = lex.getString();
+			if (table_even_row_color != "default")
+				registerLyXColor("table_even_row_color", table_even_row_color);
+			break;
+		}
+		if (token == "\\table_alt_row_colors_start") {
+			lex >> table_alt_row_colors_start;
+			break;
+		}
+		if (token == "\\customcolor") {
+			string name;
+			lex >> name;;
+			string value;
+			lex >> value;
+			custom_colors[name] = "#" + value;
+			lcolor.setColor(name, "#" + value);
+			lcolor.setLaTeXName(name, name);
+			lcolor.setGUIName(name, name);
+			break;
+		}
+		if (token == "\\paperwidth") {
+			lex >> paperwidth;
+			break;
+		}
+		if (token == "\\paperheight") {
+			lex >> paperheight;
+			break;
+		}
+		if (token == "\\leftmargin") {
+			lex >> leftmargin;
+			break;
+		}
+		if (token == "\\topmargin") {
+			lex >> topmargin;
+			break;
+		}
+		if (token == "\\rightmargin") {
+			lex >> rightmargin;
+			break;
+		}
+		if (token == "\\bottommargin") {
+			lex >> bottommargin;
+			break;
+		}
+		if (token == "\\headheight") {
+			lex >> headheight;
+			break;
+		}
+		if (token == "\\headsep") {
+			lex >> headsep;
+			break;
+		}
+		if (token == "\\footskip") {
+			lex >> footskip;
+			break;
+		}
+		if (token == "\\columnsep") {
+			lex >> columnsep;
+			break;
+		}
+		if (token == "\\paperfontsize") {
+			lex >> fontsize;
+			break;
+		}
+		if (token == "\\papercolumns") {
+			lex >> columns;
+			break;
+		}
+		if (token == "\\listings_params") {
+			string par;
+			lex >> par;
+			listings_params = InsetListingsParams(par).params();
+			break;
+		}
+		if (token == "\\papersides") {
+			int psides;
+			lex >> psides;
+			sides = sidestranslator().find(psides);
+			break;
+		}
+		if (token == "\\paperpagestyle") {
+			lex >> pagestyle;
+			break;
+		}
+		if (token == "\\tablestyle") {
+			lex >> tablestyle;
+			break;
+		}
+		if (token == "\\bullet") {
+			readBullets(lex);
+			break;
+		}
+		if (token == "\\bulletLaTeX") {
+			readBulletsLaTeX(lex);
+			break;
+		}
+		if (token == "\\secnumdepth") {
+			lex >> secnumdepth;
+			break;
+		}
+		if (token == "\\tocdepth") {
+			lex >> tocdepth;
+			break;
+		}
+		if (token == "\\spacing") {
+			string nspacing;
+			lex >> nspacing;
+			string tmp_val;
+			if (nspacing == "other") {
+				lex >> tmp_val;
+			}
+			spacing().set(spacetranslator().find(nspacing), tmp_val);
+			break;
+		}
+		if (token == "\\float_placement") {
+			lex >> float_placement;
+			break;
+		}
+		if (token == "\\float_alignment") {
+			lex >> float_alignment;
+			break;
+	
+		}
+		if (prefixIs(token, "\\pdf_") || token == "\\use_hyperref") {
+			string toktmp = pdfoptions().readToken(lex, token);
+			if (!toktmp.empty()) {
+				lyxerr << "PDFOptions::readToken(): Unknown token: " <<
+					toktmp << endl;
+				return toktmp;
+			}
+			break;
+		}
+		if (token == "\\html_math_output") {
+			int temp;
+			lex >> temp;
+			html_math_output = static_cast<MathOutput>(temp);
+			break;
+		}
+		if (token == "\\html_be_strict") {
+			lex >> html_be_strict;
+			break;
+		}
+		if (token == "\\html_css_as_file") {
+			lex >> html_css_as_file;
+			break;
+		}
+		if (token == "\\html_math_img_scale") {
+			lex >> html_math_img_scale;
+			break;
+		}
+		if (token == "\\html_latex_start") {
+			lex.eatLine();
+			html_latex_start = lex.getString();
+			break;
+		}
+		if (token == "\\html_latex_end") {
+			lex.eatLine();
+			html_latex_end = lex.getString();
+			break;
+		}
+		if (token == "\\docbook_table_output") {
+			int temp;
+			lex >> temp;
+			docbook_table_output = static_cast<TableOutput>(temp);
+			break;
+		}
+		if (token == "\\docbook_mathml_prefix") {
+			int temp;
+			lex >> temp;
+			docbook_mathml_prefix = static_cast<MathMLNameSpacePrefix>(temp);
+			break;
+		}
+		if (token == "\\docbook_mathml_version") {
+			int temp;
+			lex >> temp;
+			docbook_mathml_version = static_cast<MathMLVersion>(temp);
+			break;
+		}
+		if (token == "\\output_sync") {
+			lex >> output_sync;
+			break;
+		}
+		if (token == "\\output_sync_macro") {
+			lex >> output_sync_macro;
+			break;
+		}
+		if (token == "\\use_refstyle") {
+			lex >> use_refstyle;
+			break;
+		}
+		if (token == "\\use_formatted_ref") {
+			lex >> use_formatted_ref;
+			break;
+		}
+		if (token == "\\use_minted") {
+			lex >> use_minted;
+			break;
+		}
+		if (token == "\\nomencl_options") {
+			lex.eatLine();
+			nomencl_opts = trim(lex.getString());
+			break;
+		}
+		if (token == "\\use_lineno") {
+			lex >> use_lineno;
+			break;
+		}
+		if (token == "\\lineno_options") {
+			lex.eatLine();
+			lineno_opts = trim(lex.getString());
+			break;
+		}
 		lyxerr << "BufferParams::readToken(): Unknown token: " <<
 			token << endl;
 		return token;
 	}
-
 	return result;
 }
 

@@ -472,9 +472,6 @@
        <property name="toolTip">
         <string>Load preset color theme</string>
        </property>
-       <property name="placeholderText">
-        <string>Load Theme</string>
-       </property>
       </widget>
      </item>
     </layout>

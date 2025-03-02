@@ -101,7 +101,7 @@ void ColorsCombo::addItemSort(QString const & item, QString const & guiname,
 }
 
 
-void ColorsCombo::setCustomColors(std::map<std::string, std::string> const custom_colors)
+void ColorsCombo::setCustomColors(std::map<std::string, std::string> const & custom_colors)
 {
 	custom_colors_ = custom_colors;
 	fillComboColor();

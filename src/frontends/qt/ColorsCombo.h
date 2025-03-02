@@ -39,7 +39,7 @@ public:
 	void addItemSort(QString const & item, QString const & guiname,
 			 QString const & category, QString color = QString());
 	/// Set BufferParams to access custom colors
-	void setCustomColors(std::map<std::string, std::string> const custom_colors);
+	void setCustomColors(std::map<std::string, std::string> const & custom_colors);
 	/// Add "ignore" color entry?
 	void hasIgnore(bool const b) { has_ignore_ = b; }
 	/// Add "inherit" color entry?

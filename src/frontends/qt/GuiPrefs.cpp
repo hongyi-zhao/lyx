@@ -1514,6 +1514,11 @@ void PrefColors::initializeLoadThemeCO()
 {
 	// initialize "load themes" dropdown menu
 
+ //move to PrefColorsUi.ui:loadThemeCO->PlaceholderText once we support at least Qt 5.15
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
+        loadThemeCO->setPlaceholderText(lyx::qt_("Load Theme", nullptr));
+#endif
+
 	const QIcon & sys_theme_icon= QIcon(toqstr(package().system_support().absFileName() + "images/oxygen/float-insert_figure.svgz"));
 	const QIcon & usr_theme_icon= QIcon(toqstr(package().system_support().absFileName() + "images/oxygen/change-accept.svgz"));
 

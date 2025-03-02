@@ -1302,7 +1302,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		// check the case that a standard color is used
 		if (is_known(background_color, known_basic_colors)) {
 			backgroundcolor = background_color;
-		} else if (is_known(frame_color, known_basic_xcolors)) {
+		} else if (is_known(background_color, known_basic_xcolors)) {
 			backgroundcolor = background_color;
 			preamble.registerAutomaticallyLoadedPackage("xcolor");
 		// With xcolor, svgnames colors get priority with clashing names

@@ -1,6 +1,6 @@
 
 	Localization/Translation FAQ
-                (2007-2018)
+                (2007-2025)
 
     by Ran Rutenberg, Pavel Sanda, Michael Gerz
 
@@ -53,6 +53,15 @@ line. It is recommended that you take a look at another .po file - that way you
 can get an idea of what to do. If you are using a specialized po editor
 then you will see in it the untranslated strings and a place to write your
 translation for them.
+
+There are large chunks of strings which actually do not need to be translated,
+typically coming from layouts of specific journals, e.g. specific strings from 
+lib/layouts/AEA.layout presenting the style of American Economic Association
+are unlikely to be ever written in localized form. Or vast set of very
+specific colors probaly does not need translations either...
+In such case you can just "translate" the string by repeating the english
+original as translated string so stats of your language show real number of
+reviewed strings.
 
 
 4) WHAT SHOULD I DO WITH THE '&', '|', '$, '%' {} AND [[]] CHARACTERS?

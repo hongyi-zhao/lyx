@@ -513,7 +513,7 @@ Translation fi
 	"Nomenclature[[output]]" "Termistö"
 	"Notation" "Merkintätapa"
 	"Note" "Muistiinpano"
-	"Notes[[Endnotes]]" "Notes"
+	"Notes[[Endnotes]]" "Muistiinpanot"
 	"Problem" "Ongelma"
 	"Proof" "Todistus"
 	"Property" "Ominaisuus"
@@ -525,8 +525,8 @@ Translation fi
 	"Summary" "Yhteenveto"
 	"Tableau" "Taulu"
 	"Theorem" "Lause"
-	"page[[nomencl]]" "page"
-	"see equation[[nomencl]]" "see equation"
+	"page[[nomencl]]" "sivu"
+	"see equation[[nomencl]]" "katso yhtälö"
 End
 
 Translation fr

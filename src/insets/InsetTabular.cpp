@@ -4793,9 +4793,7 @@ bool Tabular::hasNewlines(idx_type cell) const
 /////////////////////////////////////////////////////////////////////
 
 InsetTableCell::InsetTableCell(Buffer * buf)
-	: InsetText(buf, InsetText::PlainLayout), isFixedWidth(false), isVarwidth(false),
-	  isMultiColumn(false), isMultiRow(false), mr_rows(1), isCaptionRow(false),
-	  contentAlign(LYX_ALIGN_CENTER), isDeleted(false)
+	: InsetText(buf, InsetText::PlainLayout)
 {}
 
 bool InsetTableCell::allowParagraphCustomization(idx_type) const

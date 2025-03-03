@@ -12380,9 +12380,8 @@ msgstr "Yläreunamuistiinpano"
 #: lib/layouts/endnotes.module:32 lib/layouts/endnotes.module:35
 #: lib/layouts/foottoend.module:20 lib/layouts/foottoend.module:23
 #: lib/layouts/memoir.layout:326 lib/layouts/memoir.layout:329
-#, fuzzy
 msgid "Notes[[Endnotes]]"
-msgstr "muistiinpano"
+msgstr "Muistiinpanot"
 
 #: lib/layouts/enotez.module:2
 #, fuzzy
@@ -17992,11 +17991,11 @@ msgstr "Esikatselu"
 
 #: lib/layouts/stdinsets.inc:794 lib/layouts/stdinsets.inc:802
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "katso yhtälö"
 
 #: lib/layouts/stdinsets.inc:795 lib/layouts/stdinsets.inc:803
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "sivu"
 
 #: lib/layouts/stdinsets.inc:796 lib/layouts/stdinsets.inc:804
 msgid "Nomenclature[[output]]"

@@ -1001,6 +1001,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_spacing                 = "single";
 	h_save_transient_properties = "true";
 	h_suppress_date           = "false";
+	h_table_alt_row_colors_start = 0;
 	h_textclass               = "article";
 	h_tocdepth                = "3";
 	h_tracking_changes        = "false";

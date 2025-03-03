@@ -118,9 +118,9 @@ by Qt itself (notably \fB-platform\fR, \fB-style\fR, \fB-geometry\fR, \fB-sessio
 \fB-display\fR, etc). Please consult Qt documentation for further details, e.g.:
 .br
 
-https://doc.qt.io/qt-5/qapplication.html#QApplication
+https://doc.qt.io/qt-6/qapplication.html#QApplication
 .br
-https://doc.qt.io/qt-5/qguiapplication.html#supported-command-line-options
+https://doc.qt.io/qt-6/qguiapplication.html#supported-command-line-options
 .br
 
 .SH ENVIRONMENT
@@ -168,30 +168,56 @@ this environment variable, which relieves the need of using the \-f switch.
 Allowed values are either "\fBall\fR", "\fBmain\fR" or "\fBnone\fR", with
 same meaning as for the \-f switch.
 .SH FILES
-.nf
 .ta \w'\fILIBDIR\fR/lyxrc.in  'u
+\fILIBDIR\fR
+is the system defaults directory. This was at the build time @real_pkgdatadir@.
+Most settings can be modified by user by following structure from system 
+defaults in: ~/.lyx/
+
+Most important files/directories:
+.nf
+
 ~/.lyx/preferences      Personal configuration file
 ~/.lyx/lyxrc.defaults   Personal autodetected configuration file
-\fILIBDIR\fR/lyxrc.dist  System wide configuration file
-\fILIBDIR\fR/configure.py  Updates \fBLyX\fR if config has changed
-\fILIBDIR\fR/bind/      Keybindings
-\fILIBDIR\fR/clipart/   Clipart pictures
-\fILIBDIR\fR/doc/       Documentation in \fBLyX\fR format.
-\fILIBDIR\fR/examples/  Example documents
-\fILIBDIR\fR/images/    Images used as icons or in popups
-\fILIBDIR\fR/kbd/       Keyboard mappings
-\fILIBDIR\fR/layouts/   Layout descriptions
-\fILIBDIR\fR/templates/ Templates for documents
-\fILIBDIR\fR/tex/       Extra TeX files
+~/.lyx/*.dict           User-saved words from continuous spell-check
+~/.lyx/session          Automatically generated session settings
+~/.lyx/cache/           Document images converted for preview in editing window
+
+
+\fILIBDIR\fR/bind/        Keybindings
+\fILIBDIR\fR/citeengines/ Definitions for various citation tools
+\fILIBDIR\fR/doc/         Documentation in \fBLyX\fR format
+\fILIBDIR\fR/examples/    Example documents
+\fILIBDIR\fR/images/      Images used as icons or in popups
+\fILIBDIR\fR/kbd/         Keyboard mappings
+\fILIBDIR\fR/layouts/     Layout descriptions
+\fILIBDIR\fR/lyx2lyx/     Scripts for converting between major versions of .lyx files
+\fILIBDIR\fR/scripts/     Conversion scripts used in background
+\fILIBDIR\fR/templates/   Templates for documents
+\fILIBDIR\fR/ui/          Menus, context menus
+\fILIBDIR\fR/xtemplates/  Templates for conversion from external tools
+
+\fILIBDIR\fR/configure.py   Updates \fBLyX\fR if systen configuration has changed
+\fILIBDIR\fR/autocorrect    Database for autocorrection substitutions
+\fILIBDIR\fR/languages      Supported languages and associated definitions
+\fILIBDIR\fR/latexfonts     Internally supported fonts for typesetting
+\fILIBDIR\fR/layouttranslations Translations missing in LaTeX for typesetting 
+\fILIBDIR\fR/symbols        Symbols supported by mathed, xHTML/DocBook
+\fILIBDIR\fR/unicodesymbols Unicode -> LaTeX commands database
+
+\fILIBDIR\fR/RELEASE-NOTES  Important changes for major \fBLyX\fR release
+
+
 .sp
 .fi
 
-.I LIBDIR
-is the system directory. This was at build time @real_pkgdatadir@.
 .SH SEE ALSO
 tex2lyx@version_suffix@(1), latex(1).
 
-Full documentation in either native \fBLyX\fR or postscript format.
+Full documentation is in LyX manuals in either native \fBLyX\fR 
+format or can be exported to PDF. Some versions can also be directly
+downloaded from https://wiki.lyx.org/LyX/Manuals.
+
 .SH BUGS/LIMITATIONS
 There are still some bugs in \fBLyX\fR. To report one, read if
 possible the Introduction found under the Help menu in LyX. You'll
@@ -205,4 +231,4 @@ Don't forget to mention which version you are having problems with!
 files. Consult the \fBtex2lyx@version_suffix@\fR documentation.
 
 .SH AUTHORS
-LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2023 LyX Team
+LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2025 LyX Team

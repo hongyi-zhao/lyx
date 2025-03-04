@@ -1346,7 +1346,7 @@ Buffer::ReadStatus Buffer::parseLyXFormat(Lexer & lex,
 
 	// LyX formats 217 and earlier were written as 2.17. This corresponds
 	// to files from LyX versions < 1.1.6.3. We just remove the dot in
-	// these cases. See also: www.lyx.org/trac/changeset/1313.
+	// these cases. See also: www.lyx.org/trac/changeset/716cd578ae .
 	size_t dot = tmp_format.find_first_of(".,");
 	if (dot != string::npos)
 		tmp_format.erase(dot, 1);

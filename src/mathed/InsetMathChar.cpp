@@ -116,7 +116,14 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = theFontMetrics(mi.base.font).dimension(char_);
 		kerning_ = 0;
 	} else if (!isASCII(char_) && Encodings::unicodeCharInfo(char_).isUnicodeSymbol()) {
-		Changer dummy1 = mi.base.changeFontSet("mathnormal");
+		bool special_font = (f == "mathbb" ||
+				     f == "mathds" ||
+				     f == "mathfrak" ||
+				     f == "mathcal" ||
+				     f == "mathscr");
+		Changer dummy1 = special_font
+				? mi.base.changeFontSet("mathnormal")
+				: noChange();
 		Changer dummy2 = Encodings::isMathAlpha(char_)
 				? noChange()
 				: mi.base.font.changeShape(UP_SHAPE);
@@ -169,7 +176,14 @@ void InsetMathChar::draw(PainterInfo & pi, int x, int y,
 			pi.draw(x, y, char_);
 			return;
 		} else if (!isASCII(char_) && Encodings::unicodeCharInfo(char_).isUnicodeSymbol()) {
-			Changer dummy1 = pi.base.changeFontSet("mathnormal");
+			bool special_font = (pi.base.fontname == "mathbb" ||
+					     pi.base.fontname == "mathds" ||
+					     pi.base.fontname == "mathfrak" ||
+					     pi.base.fontname == "mathcal" ||
+					     pi.base.fontname == "mathscr");
+			Changer dummy1 = special_font
+				? pi.base.changeFontSet("mathnormal")
+				: noChange();
 			Changer dummy2 = Encodings::isMathAlpha(char_)
 			        ? noChange()
 			        : pi.base.font.changeShape(UP_SHAPE);

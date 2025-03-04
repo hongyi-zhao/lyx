@@ -13,7 +13,6 @@
 #define OUTPUT_PLAINTEXT_H
 
 #include "support/docstring.h"
-#include "support/types.h"
 
 #include <climits>
 

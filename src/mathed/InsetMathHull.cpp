@@ -331,6 +331,9 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active,
 	if (first == nrows())
 		// no equation
 		return;
+
+	// Reassure Coverity Scan that we have at least one row.
+	LATTEST(nrows() > 0);
 	row_type last = nrows() - 1;
 	for (; last != 0; --last)
 		if (numbered(last))

@@ -657,8 +657,8 @@ void InsetMathMacroTemplate::removeArguments(Cursor & cur,
 		InsetMathMacroArgument * arg = static_cast<InsetMathMacroArgument*>(it.nextInset());
 		int n = arg->number() - 1;
 		if (from <= n && n <= to) {
-			int cellSlice = cur.find(it.cell());
-			if (cellSlice != -1 && cur[cellSlice].pos() > it.pos())
+			size_type cellSlice = cur.find(it.cell());
+			if (cellSlice != lyx::npos && cur[cellSlice].pos() > it.pos())
 				--cur[cellSlice].pos();
 
 			it.cell().erase(it.pos());
@@ -927,10 +927,10 @@ void InsetMathMacroTemplate::removeParameter(Cursor & cur,
 			cells_.erase(cells_.begin() + optIdx(pos));
 
 			// fix cursor
-			int macroSlice = cur.find(this);
-			if (macroSlice != -1) {
+			size_type macroSlice = cur.find(this);
+			if (macroSlice != lyx::npos) {
 				if (cur[macroSlice].idx() == optIdx(pos)) {
-					cur.cutOff(macroSlice);
+					cur.resize(macroSlice + 1);
 					cur[macroSlice].idx() = 1;
 					cur[macroSlice].pos() = 0;
 				} else if (cur[macroSlice].idx() > optIdx(pos))
@@ -956,8 +956,8 @@ void InsetMathMacroTemplate::makeOptional(Cursor & cur,
 		++optionals_;
 		cells_.insert(cells_.begin() + optIdx(optionals_ - 1), optionalValues_[optionals_ - 1]);
 		// fix cursor
-		int macroSlice = cur.find(this);
-		if (macroSlice != -1 && cur[macroSlice].idx() >= optIdx(optionals_ - 1))
+		size_type macroSlice = cur.find(this);
+		if (macroSlice != lyx::npos && cur[macroSlice].idx() >= optIdx(optionals_ - 1))
 			++cur[macroSlice].idx();
 
 		// fix macro instances
@@ -980,12 +980,12 @@ void InsetMathMacroTemplate::makeNonOptional(Cursor & cur,
 		cells_.erase(cells_.begin() + optIdx(optionals_));
 
 		// fix cursor
-		int macroSlice = cur.find(this);
-		if (macroSlice != -1) {
+		size_type macroSlice = cur.find(this);
+		if (macroSlice != lyx::npos) {
 			if (cur[macroSlice].idx() > optIdx(optionals_))
 				--cur[macroSlice].idx();
 			else if (cur[macroSlice].idx() == optIdx(optionals_)) {
-				cur.cutOff(macroSlice);
+				cur.resize(macroSlice + 1);
 				cur[macroSlice].idx() = optIdx(optionals_);
 				cur[macroSlice].pos() = 0;
 			}

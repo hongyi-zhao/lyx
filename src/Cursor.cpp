@@ -197,11 +197,11 @@ void CursorData::setCursorSelectionTo(DocIterator dit)
 		// otherwise the cursor is already normal
 		if (i == anchor_.depth())
 			// dit is a proper extension of the anchor_
-			dit.cutOff(i - 1);
+			dit.resize(i);
 		else if (i + 1 < dit.depth()) {
 			// one has dit[i] != anchor_[i] but either dit[i-1] == anchor_[i-1]
 			// or i == 0. Remove excess.
-			dit.cutOff(i);
+			dit.resize(i + 1);
 			if (dit[i] > anchor_[i])
 				// place dit after the inset it was in
 				++dit.pos();
@@ -2448,7 +2448,7 @@ bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur)
 	// but stop if the inset claims the cursor to be invalid now
 	for (size_type j = i; j < old.depth(); ++j) {
 		Cursor inset_pos = old;
-		inset_pos.cutOff(j);
+		inset_pos.resize(j + 1);
 		if (old[j].inset().notifyCursorLeaves(inset_pos, cur))
 			return true;
 	}

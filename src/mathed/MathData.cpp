@@ -519,9 +519,9 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 		    && oldDisplayMode == InsetMathMacro::DISPLAY_UNFOLDED) {
 			// put cursor in front of macro
 			if (cur) {
-				int macroSlice = cur->find(macroInset);
-				if (macroSlice != -1)
-					cur->cutOff(macroSlice - 1);
+				size_type macroSlice = cur->find(macroInset);
+				if (macroSlice != lyx::npos)
+					cur->resize(macroSlice);
 			}
 		}
 
@@ -579,16 +579,16 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 		macroInset->detachArguments(detachedArgs, false);
 
 	// find cursor slice
-	int curMacroSlice = -1;
+	size_type curMacroSlice = lyx::npos;
 	if (cur)
 		curMacroSlice = cur->find(macroInset);
-	idx_type curMacroIdx = -1;
-	pos_type curMacroPos = -1;
+	idx_type curMacroIdx = lyx::npos;
+	pos_type curMacroPos = lyx::npos;
 	vector<CursorSlice> argSlices;
-	if (curMacroSlice != -1) {
+	if (curMacroSlice != lyx::npos) {
 		curMacroPos = (*cur)[curMacroSlice].pos();
 		curMacroIdx = (*cur)[curMacroSlice].idx();
-		cur->cutOff(curMacroSlice, argSlices);
+		cur->resize(curMacroSlice + 1, argSlices);
 		cur->pop_back();
 	}
 
@@ -643,7 +643,7 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 		p += optarg.size();
 
 		// cursor in macro?
-		if (curMacroSlice == -1)
+		if (curMacroSlice == lyx::npos)
 			continue;
 
 		// cursor in optional argument of macro?
@@ -670,7 +670,7 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 			insert(p, MathAtom(new InsetMathBrace(buffer_, arg)));
 
 		// cursor in macro?
-		if (curMacroSlice == -1)
+		if (curMacroSlice == lyx::npos)
 			continue;
 
 		// cursor in j-th argument of macro?
@@ -693,7 +693,7 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 
 
 void MathData::attachMacroParameters(Cursor * cur,
-	const size_type macroPos, const size_type macroNumArgs,
+	const pos_type macroPos, const size_type macroNumArgs,
 	const int macroOptionals, const bool fromInitToNormalMode,
 	const bool interactiveInit, const size_t appetite)
 {
@@ -706,11 +706,11 @@ void MathData::attachMacroParameters(Cursor * cur,
 	MathAtom scriptToPutAround;
 
 	// find cursor slice again of this MathData
-	int thisSlice = -1;
+	size_type thisSlice = lyx::npos;
 	if (cur)
 		thisSlice = cur->find(*this);
-	int thisPos = -1;
-	if (thisSlice != -1)
+	pos_type thisPos = lyx::npos;
+	if (thisSlice != lyx::npos)
 		thisPos = (*cur)[thisSlice].pos();
 
 	// find arguments behind the macro
@@ -740,7 +740,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 		operator[](macroPos) = scriptToPutAround;
 
 		// go into the script inset nucleus
-		if (cur && thisPos == int(macroPos))
+		if (cur && thisPos == macroPos)
 			cur->append(0, 0);
 
 		// get pointer to "deep" copied macro inset
@@ -752,20 +752,22 @@ void MathData::attachMacroParameters(Cursor * cur,
 	erase(macroPos + 1, p);
 
 	// cursor outside this MathData?
-	if (thisSlice == -1)
+	if (thisSlice == lyx::npos)
 		return;
 
 	// fix cursor if right of p
-	if (thisPos >= int(p))
+	if (thisPos >= p)
 		(*cur)[thisSlice].pos() -= p - (macroPos + 1);
 
 	// was the macro inset just inserted interactively and was now folded
 	// and the cursor is just behind?
-	if ((*cur)[thisSlice].pos() == int(macroPos + 1)
+	// FIXME: MathData::pos_type is unsigned, whereas lyx::pos_type is signed.
+	//        This is not good.
+	if ((*cur)[thisSlice].pos() == lyx::pos_type(macroPos + 1)
 	    && interactiveInit
 	    && fromInitToNormalMode
 	    && macroInset->arity() > 0
-	    && thisSlice + 1 == int(cur->depth())) {
+	    && thisSlice + 1 == cur->depth()) {
 		// then enter it if the cursor was just behind
 		(*cur)[thisSlice].pos() = macroPos;
 		cur->push_back(CursorSlice(*macroInset));
@@ -777,7 +779,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 void MathData::collectOptionalParameters(Cursor * cur,
 	const size_type numOptionalParams, vector<MathData> & params,
 	size_t & pos, MathAtom & scriptToPutAround,
-	const pos_type macroPos, const int thisPos, const int thisSlice)
+	const pos_type macroPos, const pos_type thisPos, const size_type thisSlice)
 {
 	Buffer * buf = cur ? cur->buffer() : 0;
 	// insert optional arguments?
@@ -833,11 +835,11 @@ void MathData::collectOptionalParameters(Cursor * cur,
 		// place cursor in optional argument of macro
 		// Note: The two expressions on the first line are equivalent
 		// (see caller), but making this explicit pleases coverity.
-		if (cur && thisSlice != -1
-		    && thisPos >= int(pos) && thisPos <= int(right)) {
-			int paramPos = max(0, thisPos - int(pos) - 1);
+		if (cur && thisSlice != lyx::npos
+		    && thisPos >= pos && thisPos <= right) {
+			int paramPos = max(0, int(thisPos - pos - 1));
 			vector<CursorSlice> x;
-			cur->cutOff(thisSlice, x);
+			cur->resize(thisSlice + 1, x);
 			(*cur)[thisSlice].pos() = macroPos;
 			if (brace) {
 				paramPos = x[0].pos();
@@ -858,7 +860,7 @@ void MathData::collectOptionalParameters(Cursor * cur,
 void MathData::collectParameters(Cursor * cur,
 	const size_type numParams, vector<MathData> & params,
 	size_t & pos, MathAtom & scriptToPutAround,
-	const pos_type macroPos, const int thisPos, const int thisSlice,
+	const pos_type macroPos, const pos_type thisPos, const size_type thisSlice,
 	const size_t appetite)
 {
 	size_t startSize = params.size();
@@ -875,9 +877,8 @@ void MathData::collectParameters(Cursor * cur,
 		int argPos = 0;
 		// Note: The two expressions on the first line are equivalent
 		// (see caller), but making this explicit pleases coverity.
-		if (cur && thisSlice != -1
-			&& thisPos == int(pos))
-			cur->cutOff(thisSlice, argSlices);
+		if (cur && thisSlice != lyx::npos && thisPos == pos)
+			cur->resize(thisSlice + 1, argSlices);
 
 		// which kind of parameter is it? In {}? With index x^n?
 		InsetMathBrace const * brace = cell->asBraceInset();
@@ -886,7 +887,7 @@ void MathData::collectParameters(Cursor * cur,
 			params.push_back(brace->cell(0));
 
 			// cursor inside of the brace or just in front of?
-			if (thisPos == int(pos) && !argSlices.empty()) {
+			if (thisPos == pos && !argSlices.empty()) {
 				argPos = argSlices[0].pos();
 				argSlices.erase(argSlices.begin());
 			}
@@ -904,7 +905,7 @@ void MathData::collectParameters(Cursor * cur,
 			scriptToPutAround = cell;
 
 			// this should only happen after loading, so make cursor handling simple
-			if (thisPos >= int(macroPos) && thisPos <= int(macroPos + numParams)) {
+			if (thisPos >= macroPos && thisPos <= macroPos + numParams) {
 				argSlices.clear();
 				if (cur)
 					cur->append(0, 0);
@@ -920,7 +921,7 @@ void MathData::collectParameters(Cursor * cur,
 		// Note: The first two expressions on the first line are
 		// equivalent (see caller), but making this explicit pleases
 		// coverity.
-		if (cur && thisSlice != -1 && thisPos == int(pos)) {
+		if (cur && thisSlice != lyx::npos && thisPos == pos) {
 			cur->append(params.size() - 1, argPos);
 			cur->append(argSlices);
 			(*cur)[thisSlice].pos() = macroPos;

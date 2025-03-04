@@ -670,36 +670,31 @@ void DocIterator::leaveInset(Inset const & inset)
 }
 
 
-int DocIterator::find(MathData const & cell) const
+size_type DocIterator::find(MathData const & cell) const
 {
 	for (size_t l = 0; l != slices_.size(); ++l) {
 		if (slices_[l].asInsetMath() && &slices_[l].cell() == &cell)
 			return l;
 	}
-	return -1;
+	return lyx::npos;
 }
 
 
-int DocIterator::find(Inset const * inset) const
+size_type DocIterator::find(Inset const * inset) const
 {
 	for (size_t l = 0; l != slices_.size(); ++l) {
 		if (&slices_[l].inset() == inset)
 			return l;
 	}
-	return -1;
+	return lyx::npos;
 }
 
 
-void DocIterator::cutOff(int above, vector<CursorSlice> & cut)
+void DocIterator::resize(size_type count, vector<CursorSlice> & cut)
 {
-	cut = vector<CursorSlice>(slices_.begin() + above + 1, slices_.end());
-	slices_.resize(above + 1);
-}
-
-
-void DocIterator::cutOff(int above)
-{
-	slices_.resize(above + 1);
+	LASSERT(count <= depth(), return);
+	cut = vector<CursorSlice>(slices_.begin() + count, slices_.end());
+	slices_.resize(count);
 }
 
 

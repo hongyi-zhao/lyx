@@ -1078,9 +1078,10 @@ void Tabular::updateIndexes()
 			if (!isPartOfMultiColumn(row, column)
 				&& !isPartOfMultiRow(row, column))
 				++numberofcells;
-			if (isPartOfMultiRow(row, column))
+			if (isPartOfMultiRow(row, column)) {
+				LATTEST(row > 0);
 				cell_info[row][column].cellno = cell_info[row - 1][column].cellno;
-			else
+			} else
 				cell_info[row][column].cellno = numberofcells - 1;
 		}
 
@@ -5088,16 +5089,18 @@ void InsetTabular::read(Lexer & lex)
 }
 
 
-int InsetTabular::rowFromY(Cursor & cur, int y) const
+int InsetTabular::rowFromY(Cursor & cur, int const y) const
 {
 	// top y coordinate of tabular
 	int h = yo(cur.bv()) - tabular.rowAscent(0) + tabular.offsetVAlignment();
-	row_type r = 0;
-	for (; r < tabular.nrows() && y > h; ++r)
-		h += tabular.rowAscent(r) + tabular.rowDescent(r)
+	for (row_type r = 0; r < tabular.nrows(); ++r) {
+		int const rh = tabular.rowAscent(r) + tabular.rowDescent(r)
 			+ tabular.interRowSpace(r);
-
-	return r - 1;
+		if (y <= h + rh)
+			return r;
+		h += rh;
+	}
+	return tabular.nrows() - 1;
 }
 
 
@@ -5105,10 +5108,12 @@ int InsetTabular::columnFromX(Cursor & cur, int x) const
 {
 	// left x coordinate of tabular
 	int w = xo(cur.bv()) + ADD_TO_TABULAR_WIDTH;
-	col_type c = 0;
-	for (; c < tabular.ncols() && x > w; ++c)
+	for (col_type c = 0; c < tabular.ncols(); ++c) {
+		if (x <= w + tabular.cellWidth(c))
+			return c;
 		w += tabular.cellWidth(c);
-	return c - 1;
+	}
+	return tabular.ncols() - 1;
 }
 
 

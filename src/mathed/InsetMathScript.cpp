@@ -716,9 +716,9 @@ bool InsetMathScript::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 		// it does not necessarily point to us anymore. But we
 		// should be on top of the cursor old.
 		Cursor insetCur = old;
-		int scriptSlice	= insetCur.find(this);
-		LASSERT(scriptSlice != -1, /**/);
-		insetCur.cutOff(scriptSlice);
+		size_type scriptSlice	= insetCur.find(this);
+		LASSERT(scriptSlice != lyx::npos, /**/);
+		insetCur.resize(scriptSlice + 1);
 		insetCur.recordUndoInset();
 
 		// Let the script inset commit suicide. This is

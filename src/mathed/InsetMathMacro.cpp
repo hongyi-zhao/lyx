@@ -1112,11 +1112,11 @@ bool InsetMathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 		if (unfolded_name != d->name_) {
 			// The macro name was changed
 			Cursor inset_cursor = old;
-			int macroSlice = inset_cursor.find(this);
+			size_type macroSlice = inset_cursor.find(this);
 			// returning true means the cursor is "now" invalid,
 			// which it was.
-			LASSERT(macroSlice != -1, return true);
-			inset_cursor.cutOff(macroSlice);
+			LASSERT(macroSlice != lyx::npos, return true);
+			inset_cursor.resize(macroSlice + 1);
 			inset_cursor.recordUndoInset();
 			inset_cursor.pop();
 			inset_cursor.cell().erase(inset_cursor.pos());

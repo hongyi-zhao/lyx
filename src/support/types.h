@@ -81,6 +81,9 @@ namespace lyx {
 
 #endif
 
+	/// a 'not found' value
+	inline const size_type npos = static_cast<size_type>(-1);
+
 	///
 	enum word_location {
 		/// the word around the cursor, only if the cursor is

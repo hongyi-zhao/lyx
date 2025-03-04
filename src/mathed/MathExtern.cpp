@@ -77,8 +77,6 @@ static char const * function_names[] = {
 	"tan", "tanh", "Pr", nullptr
 };
 
-static size_t const npos = lyx::docstring::npos;
-
 // define a function for tests
 typedef bool TestItemFunc(MathAtom const &);
 
@@ -1075,7 +1073,7 @@ namespace {
 		size_t n = str.size();
 		while (i < n) {
 			i = str.find_first_of("{}", i+1);
-			if (i == npos)
+			if (i == string::npos)
 				return i;
 			if (str[i] == '{')
 				++count;
@@ -1084,7 +1082,7 @@ namespace {
 			if (count == 0)
 				return i;
 		}
-		return npos;
+		return string::npos;
 	}
 
 	size_t get_matching_brace_back(string const & str, size_t i)
@@ -1092,7 +1090,7 @@ namespace {
 		int count = 1;
 		while (i > 0) {
 			i = str.find_last_of("{}", i-1);
-			if (i == npos)
+			if (i == string::npos)
 				return i;
 			if (str[i] == '}')
 				++count;
@@ -1101,7 +1099,7 @@ namespace {
 			if (count == 0)
 				return i;
 		}
-		return npos;
+		return string::npos;
 	}
 
 	MathData pipeThroughMaxima(docstring const &, MathData const & ar)
@@ -1127,7 +1125,7 @@ namespace {
 			out = captureOutput("maxima", to_utf8(full));
 
 			// leave loop if expression syntax is probably ok
-			if (out.find("Incorrect syntax") == npos)
+			if (out.find("Incorrect syntax") == string::npos)
 				break;
 
 			// search line with "Incorrect syntax"
@@ -1135,7 +1133,7 @@ namespace {
 			string line;
 			while (is) {
 				getline(is, line);
-				if (line.find("Incorrect syntax") != npos)
+				if (line.find("Incorrect syntax") != string::npos)
 					break;
 			}
 
@@ -1144,7 +1142,7 @@ namespace {
 			getline(is, line);
 			size_t pos = line.find('^');
 			lyxerr << "found caret at pos: '" << pos << "'" << endl;
-			if (pos == npos || pos < 4)
+			if (pos == string::npos || pos < 4)
 				break; // caret position not found
 			pos -= 4; // skip the "tex(" part
 			if (expr[pos] == '*')
@@ -1161,13 +1159,13 @@ namespace {
 
 		// Ugly code that tries to make the result prettier
 		size_t i = out.find("\\mathchoice");
-		while (i != npos) {
+		while (i != string::npos) {
 			size_t j = get_matching_brace(out, i + 12);
 			size_t k = get_matching_brace(out, j + 1);
 			k = get_matching_brace(out, k + 1);
 			k = get_matching_brace(out, k + 1);
 			string mid = out.substr(i + 13, j - i - 13);
-			if (mid.find("\\over") != npos)
+			if (mid.find("\\over") != string::npos)
 				mid = '{' + mid + '}';
 			out = out.substr(0, i)
 				+ mid
@@ -1177,12 +1175,12 @@ namespace {
 		}
 
 		i = out.find("\\over");
-		while (i != npos) {
+		while (i != string::npos) {
 			size_t j = get_matching_brace_back(out, i - 1);
-			if (j == npos || j == 0)
+			if (j == string::npos || j == 0)
 				break;
 			size_t k = get_matching_brace(out, i + 5);
-			if (k == npos || k + 1 == out.size())
+			if (k == string::npos || k + 1 == out.size())
 				break;
 			out = out.substr(0, j - 1)
 				+ "\\frac"
@@ -1383,7 +1381,7 @@ namespace {
 		size_t const len = macro.length();
 		size_t i = out.find(macro);
 
-		while (i != npos) {
+		while (i != string::npos) {
 			size_t const j = get_matching_brace(out, i + len);
 			string const name = out.substr(i + len, j - i - len);
 			out = out.substr(0, i)

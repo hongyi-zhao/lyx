@@ -3010,7 +3010,7 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 	Inset * inset = front ? cur.nextInset() : cur.prevInset();
 	if (!inset || !inset->editable())
 		return false;
-	if (cur.selection() && cur.realAnchor().find(inset) == -1)
+	if (cur.selection() && cur.realAnchor().find(inset) == lyx::npos)
 		return false;
 	/*
 	 * Apparently, when entering an inset we are expected to be positioned
@@ -3038,7 +3038,7 @@ bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool mo
 	Inset * inset = par.isInset(cur.pos()) ? par.getInset(cur.pos()) : nullptr;
 	if (!inset || !inset->editable())
 		return false;
-	if (cur.selection() && cur.realAnchor().find(inset) == -1)
+	if (cur.selection() && cur.realAnchor().find(inset) == lyx::npos)
 		return false;
 	inset->edit(cur, movingForward,
 		movingLeft ? Inset::ENTRY_DIRECTION_RIGHT : Inset::ENTRY_DIRECTION_LEFT);

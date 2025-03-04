@@ -4938,7 +4938,6 @@ void InsetTableCell::draw(PainterInfo & pi, int x, int y) const
 	int const h = mr_rows * (tm.height() + 2 * topOffset(pi.base.bv) + bottomOffset(pi.base.bv) + Painter::thin_line);
 	int const yframe = y - mr_rows * (tm.ascent()) - mr_rows * (Painter::thin_line) - topOffset(pi.base.bv);
 	int const xframe = x - (w - tm.width()) / 2 + leftOffset(pi.base.bv);
-	bool change_drawn = false;
 	if (pi.full_repaint)
 		pi.pain.fillRectangle(xframe, yframe, w, h,
 			pi.backgroundColor(this));
@@ -4953,7 +4952,7 @@ void InsetTableCell::draw(PainterInfo & pi, int x, int y) const
 
 	// Strike through the cell if deleted and not already handled by
 	// RowPainter.
-	if (!change_drawn || pi.change.deleted())
+	if (pi.change.deleted())
 		pi.change.paintCue(pi, xframe, yframe, xframe + w, yframe + h);
 }
 

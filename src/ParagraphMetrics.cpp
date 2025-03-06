@@ -104,8 +104,8 @@ size_t ParagraphMetrics::getRowIndex(pos_type pos, bool boundary) const
 	if (pos > 0 && boundary)
 		--pos;
 
-	RowList::const_iterator rit = rows_.end();
-	RowList::const_iterator const begin = rows_.begin();
+	Rows::const_iterator rit = rows_.end();
+	Rows::const_iterator const begin = rows_.begin();
 
 	for (--rit; rit != begin && rit->pos() > pos; --rit)
 		;

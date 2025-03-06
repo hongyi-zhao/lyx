@@ -1198,9 +1198,9 @@ bool needsRowBreak(int f1, int f2)
 }
 
 
-RowList TextMetrics::breakParagraph(Row const & bigrow) const
+Rows TextMetrics::breakParagraph(Row const & bigrow) const
 {
-	RowList rows;
+	Rows rows;
 	bool const is_rtl = text_->isRTL(bigrow.pit());
 	bool const end_label = text_->getEndLabel(bigrow.pit()) != END_LABEL_NO_LABEL;
 	pos_type const bigrow_endpos =
@@ -1560,8 +1560,8 @@ Row const * TextMetrics::getRowNearY(int & y)
 
 	int yy = pm.top();
 	LBUFERR(!pm.rows().empty());
-	RowList::const_iterator rit = pm.rows().begin();
-	RowList::const_iterator rlast = pm.rows().end();
+	Rows::const_iterator rit = pm.rows().begin();
+	Rows::const_iterator rlast = pm.rows().end();
 	--rlast;
 	for (; rit != rlast; yy += rit->height(), ++rit)
 		if (yy + rit->height() > y)

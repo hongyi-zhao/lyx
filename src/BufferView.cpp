@@ -3792,10 +3792,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 
 	// Normalize anchor for next time (in case updateMetrics did not do it yet)
 	// FIXME: is this useful?
-	pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
-	pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
-	for (pit_type pit = firstpm.first; pit <= lastpm.first; ++pit) {
-		ParagraphMetrics const & pm = tm.parMetrics(pit);
+	for (auto const & [pit, pm] : tm) {
 		if (pm.bottom() > 0) {
 			if (d->anchor_pit_ != pit
 			    || d->anchor_ypos_ != pm.position())

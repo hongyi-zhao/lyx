@@ -20,10 +20,19 @@
 #include "Dimension.h"
 #include "Row.h"
 
+#include <vector>
+
 namespace lyx {
 
 class BufferView;
 class Paragraph;
+
+/**
+ * Each paragraph is broken up into a number of rows on the screen.
+ * This is a list of such on-screen rows, ordered from the top row
+ * downwards.
+ */
+typedef std::vector<Row> Rows;
 
 /// Helper class for paragraph metrics.
 class ParagraphMetrics {
@@ -55,9 +64,9 @@ public:
 	/// descend of paragraph below baseline
 	int descent() const { return dim_.descent(); }
 	/// Text updates the rows using this access point
-	RowList & rows() { return rows_; }
+	Rows & rows() { return rows_; }
 	/// The painter and others use this
-	RowList const & rows() const { return rows_; }
+	Rows const & rows() const { return rows_; }
 	///
 	int rightMargin(BufferView const & bv) const;
 	///
@@ -89,7 +98,7 @@ private:
 	///
 	int id_ = -1;
 	///
-	mutable RowList rows_;
+	mutable Rows rows_;
 	/// cached dimensions of paragraph
 	Dimension dim_;
 	///

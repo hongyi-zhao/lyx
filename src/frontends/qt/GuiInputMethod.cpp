@@ -67,7 +67,7 @@ struct GuiInputMethod::Private
 
 	InputMethodState im_state_;
 
-	RowList::iterator rows_;
+	Rows::iterator rows_;
 	size_type rows_size_;
 
 	pos_type * cur_pos_ptr_ = nullptr;

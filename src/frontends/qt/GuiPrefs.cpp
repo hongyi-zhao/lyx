@@ -1338,9 +1338,11 @@ void PrefColors::saveThemeInterface()
 	if (themeNameInterface(false))
 		return;
 
-	QString file_path = toqstr(package().user_support().absFileName())
-	        + "/themes/" + theme_file_name_;
-	saveTheme(file_path);
+	std::string file_path =
+	        addName(
+	            addPath(package().user_support().absFileName(), "themes"),
+	            fromqstr(theme_file_name_));
+	saveTheme(toqstr(file_path));
 
 	return;
 }
@@ -1477,10 +1479,11 @@ void PrefColors::removeTheme()
 	QString theme_filename = theme_name;
 	theme_filename = theme_filename.replace(' ', '_') + ".theme";
 
-	const QString theme_path =
-	        toqstr(package().user_support().absFileName()) +
-	        "themes/" + theme_filename;
-	QFile file(theme_path);
+	const std::string theme_path =
+	        addName(
+	            addPath(package().user_support().absFileName(), "themes"),
+	            fromqstr(theme_filename));
+	QFile file(toqstr(theme_path));
 
 	// if file doesn't exist in a user directory, it is a system theme
 	if (!file.exists()) {
@@ -1519,8 +1522,12 @@ void PrefColors::initializeLoadThemeCO()
         loadThemeCO->setPlaceholderText(lyx::qt_("Load Theme", nullptr));
 #endif
 
-	const QIcon & sys_theme_icon= QIcon(toqstr(package().system_support().absFileName() + "images/oxygen/float-insert_figure.svgz"));
-	const QIcon & usr_theme_icon= QIcon(toqstr(package().system_support().absFileName() + "images/oxygen/change-accept.svgz"));
+	const QIcon & sys_theme_icon =
+	        QIcon(toqstr(addPathName(package().system_support().absFileName(),
+	                                 "images/oxygen/float-insert_figure.svgz")));
+	const QIcon & usr_theme_icon =
+	        QIcon(toqstr(addPathName(package().system_support().absFileName(),
+	                                 "images/oxygen/change-accept.svgz")));
 
 	// note that std::map sorts its entries
 	// key is the theme's GUI name
@@ -1528,8 +1535,10 @@ void PrefColors::initializeLoadThemeCO()
 	std::map <QString, std::pair<QString, bool>> themes;
 	FileName sys_theme_dir;
 	FileName usr_theme_dir;
-	sys_theme_dir.set((package().system_support().absFileName() + "themes").c_str());
-	usr_theme_dir.set((package().user_support().absFileName() + "themes").c_str());
+	sys_theme_dir.set(addName(package().system_support().absFileName(),
+	                          "themes").c_str());
+	usr_theme_dir.set(addName(package().user_support().absFileName(),
+	                          "themes").c_str());
 	const FileNameList sys_theme_files = sys_theme_dir.dirList("theme");
 	const FileNameList usr_theme_files = usr_theme_dir.dirList("theme");
 	for (const FileName & file : sys_theme_files) {
@@ -3289,7 +3298,7 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(screenWidthLE, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenWidthUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)), 
+	connect(screenWidthUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SIGNAL(changed()));
 }
 
@@ -3326,8 +3335,8 @@ void PrefEdit::applyRC(LyXRC & rc) const
 	rc.cursor_width = cursorWidthSB->value();
 	rc.citation_search = citationSearchCB->isChecked();
 	rc.citation_search_pattern = fromqstr(citationSearchLE->text());
-	rc.screen_width = Length(widgetsToLength(screenWidthLE, screenWidthUnitCO)); 
-	rc.screen_limit = screenLimitCB->isChecked(); 
+	rc.screen_width = Length(widgetsToLength(screenWidthLE, screenWidthUnitCO));
+	rc.screen_limit = screenLimitCB->isChecked();
 }
 
 
@@ -4185,7 +4194,7 @@ QString GuiPreferences::browseLibFile(QString const & dir,
 	guilyxfiles_->passParams(fromqstr(dir));
 	guilyxfiles_->selectItem(name);
 	guilyxfiles_->exec();
-	
+
 	activatePrefsWindow(this);
 
 	QString const result = uifile_;

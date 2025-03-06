@@ -44,6 +44,14 @@ public:
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
 
+	/// A map from paragraph index number to paragraph metrics
+	typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;
+
+	///
+	ParMetricsCache::const_iterator begin() const { return par_metrics_.begin(); }
+	///
+	ParMetricsCache::const_iterator end() const { return par_metrics_.end(); }
+
 	///
 	bool contains(pit_type pit) const;
 	///
@@ -171,7 +179,7 @@ private:
 	Row tokenizeParagraph(pit_type pit) const;
 
 	// Break the row produced by tokenizeParagraph() into a list of rows.
-	RowList breakParagraph(Row const & row) const;
+	Rows breakParagraph(Row const & row) const;
 
 	// Expands the alignment of row \param row in paragraph \param par
 	LyXAlignment getAlign(Paragraph const & par, Row const & row) const;
@@ -253,9 +261,7 @@ private:
 	/// The input method instance
 	frontend::InputMethod * im_ = nullptr;
 
-	/// A map from paragraph index number to paragraph metrics
-	typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;
-	///
+	/// FIXME: This can be changed even when TextMetrics is const
 	mutable ParMetricsCache par_metrics_;
 	Dimension dim_;
 	int max_width_ = 0;

@@ -25,7 +25,7 @@ and name it after your language. German would be for example de.po and Polish
 pl.po. This file is generated in the "po" directory of the source tree during
 the compilation.
 
-There are basically two source trees you can start to work with - trunk
+There are basically two source trees you can start to work with - master
 (development version) and branch (stable version). Unless the development
 version is shortly before release it is better to start your translating
 work on the stable version. If you have no idea how to get those trees you
@@ -37,10 +37,10 @@ can follow https://www.lyx.org/HowToUseGIT page.
 PO files can be edited with any text editor available for your system (e.g.
 Vim, jEdit etc.). Yet another option is to use a specialized editor for .po
 files. You can e.g. use the editor "Poedit", Linux users can
-additionally use e.g. "Lokalize". Using these editors usually makes things easier
-as they have many tools to assist the translator.
-If you use Poedit, please uncheck in its settings the option to break lines after
-80 characters.
+additionally use e.g. "Lokalize". Using these editors usually makes things 
+easier as they have many tools to assist the translator.
+If you use Poedit, please uncheck in its settings the option to break lines 
+after 80 characters.
 
 
 3) WHAT DO I NEED TO TRANSLATE?
@@ -78,10 +78,10 @@ menu.
 
 Note that, in the case of '|', if more than one character follows, this means
 that LyX will try each of them in turn and use the first one that is not yet
-used by another entry in the menu. That way, you can define alternative shortcuts
-in the case one works in one context only, and another one only in another. You
-can use this possibility also in translations, but please use it only if no
-single shortcut that fits could be found.
+used by another entry in the menu. That way, you can define alternative
+shortcuts in the case one works in one context only, and another one only in
+another. You can use this possibility also in translations, but please use it
+only if no single shortcut that fits could be found.
 
 Note also that there are already used global shortcuts (such as p k x c m s a)
 and you should avoid using these characters for first-level menu shortcuts.

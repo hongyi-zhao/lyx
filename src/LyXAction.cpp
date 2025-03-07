@@ -2716,6 +2716,8 @@ void LyXAction::init()
 	       master-buffer-forall statistics \n
 	       Activate the branch named "Solutions" in buffers: \n
 	       master-buffer-forall branch-activate Solutions \n
+	       Trick to open all hidden buffers (last lfun can be any no-op buffer lfun): \n
+	       master-buffer-forall font-state \n
  * \li Origin: spitz, 31 Dec 2019
  * \endvar
  */

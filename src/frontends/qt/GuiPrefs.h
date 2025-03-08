@@ -23,6 +23,7 @@
 #include "LyXRC.h"
 #include "Mover.h"
 
+#include "support/types.h"
 #include "ui_PrefsUi.h"
 
 #include "ui_PrefOutputUi.h"
@@ -46,6 +47,7 @@
 
 #include <string>
 #include <vector>
+#include <QtWidgets/qmenu.h>
 #include <QUndoCommand>
 
 
@@ -55,6 +57,10 @@ namespace frontend {
 
 class GuiLyXFiles;
 class PrefModule;
+
+typedef std::pair<QColor, QColor> ColorPair;
+typedef std::pair<QString, QString> ColorNamePair;
+typedef std::vector<ColorNamePair> ColorNamePairs;
 
 class GuiPreferences : public GuiDialog, public Ui::PrefsUi
 {
@@ -96,7 +102,7 @@ public:
 	QString browse(QString const & file, QString const & title);
 
 	/// set a color
-	void setColor(ColorCode col, std::pair<QString, QString> const & hex);
+	void setColor(ColorCode col, ColorNamePair const & hex);
 
 	LyXRC & rc() { return rc_; }
 	Converters & converters() { return converters_; }
@@ -246,6 +252,7 @@ public Q_SLOTS:
 class PrefColors : public PrefModule, public Ui::PrefColorsUi
 {
 	Q_OBJECT
+
 public:
 	PrefColors(GuiPreferences * form);
 
@@ -256,26 +263,27 @@ private Q_SLOTS:
 	void changeLightColor(){ changeColor(false); }
 	void changeDarkColor() { changeColor(true);  }
 	void changeColor();
+	void changeColor(int const row, int const column);
 	void resetColor();
 	void resetAllColor();
+	void redrawColorTable();
 	void changeSysColor();
 	void changeLyxObjectsSelection();
 	void changeAutoapply();
-	bool setColor(int const row, std::pair<QColor, QColor> const & new_colors,
-		      std::pair<QString, QString> const & old_colors);
+	bool setColor(int const row, ColorPair const & new_colors,
+	              ColorNamePair const & old_colors);
 	bool setColor(int const row, bool const dark_mode, QColor const & new_color,
-		      QString const & old_color);
-	bool isDefaultColor(int const row, std::pair<QString, QString> const & color);
+	              QString const & old_color);
+	bool isDefaultColor(int const row, ColorNamePair const & color);
 	void setDisabledResets();
+	void openThemeMenu();
 	void saveThemeInterface();
-	void loadThemeInterface(int index);
+	void loadThemeInterface(QListWidgetItem* item);
 	void removeTheme();
 	void exportThemeInterface();
 	void importThemeInterface();
 
-	void moveCurrentItem(QListWidgetItem *cur = nullptr,
-	                     QListWidgetItem *prev = nullptr);
-	void pressCurrentItem(QListWidgetItem * item = nullptr);
+	void pressCurrentItem(QTableWidgetItem * item = nullptr);
 	void changeFocus();
 
 	void searchColorItem(bool backward_direction);
@@ -286,42 +294,49 @@ private:
 	///
 	void changeColor(bool const dark_color);
 	///
-	std::pair<QColor, QColor> getDefaultColorsByRow(int const row);
+	ColorPair getDefaultColorsByRow(int const row);
 	///
-	QIcon constructIcon(std::pair<QColor, QColor> const colors,
-	                    bool const selected = false);
+	void setIcons(size_type row, ColorPair colors);
 	///
-	QIcon updateIconColor(int const row, QColor const color,
-	                      bool const dark_mode, bool const selected);
+	void setIcon(size_type row, bool const dark_mode, QColor color);
 	///
 	void updateAllIcons();
 	///
-	void initializeLoadThemeCO();
+	void initializeThemesLW();
+	///
+	void initializeThemeMenu();
 	///
 	void saveTheme(QString file_path);
 	///
 	void loadTheme(support::FileName filename);
 	///
-	bool themeNameInterface(bool exporting);
+	bool askThemeName(bool porting);
 	///
+	bool wantToOverwrite();
+	///
+	ColorPair toqcolor(ColorNamePair);
+
 	std::vector<ColorCode> lcolors_;
-	///
-	std::vector<std::pair<QString, QString>> curcolors_;
-	///
-	std::vector<std::pair<QString, QString>> newcolors_;
-	///
-	QList<QListWidgetItem *> items_found_;
-	QList<QListWidgetItem *>::iterator it_;
+	ColorNamePairs curcolors_;
+	ColorNamePairs newcolors_;
+
+	QList<QTableWidgetItem *> items_found_;
+	QList<QTableWidgetItem *>::iterator it_;
 	QString search_string_;
 
-	int const icon_width_  = 24;
-	int const icon_height_ = 12;
-	int const spacer_width_ = 6;
+	int const icon_width_  = 36;
+	int const icon_height_ = 18;
 
 	bool autoapply_ = false;
-	QString theme_name_ = "";
-	QString theme_file_name_;
 	QUndoStack * undo_stack_;
+
+	QMenu theme_menu_;
+	std::vector<bool> isSysThemes_;
+	std::vector<QString> theme_fullpaths_;
+	/// holds currently selected theme
+	QString theme_name_ = "";
+	/// holds filename of currently selected theme
+	QString theme_filename_;
 
 	friend class SetColor;
 };
@@ -617,7 +632,7 @@ class SetColor : public PrefColors, public QUndoCommand
 public:
 	SetColor(const int row, bool dark_mode, const QColor & new_color,
 	         QString old_color,
-	         std::vector<std::pair<QString, QString>> & new_color_list,
+	         ColorNamePairs & new_color_list,
 	         const bool autoapply, PrefColors* color_module,
 	         QUndoCommand* uc_parent = nullptr);
 	~SetColor(){};
@@ -632,7 +647,7 @@ private:
 	const bool dark_mode_;
 	QColor new_color_;
 	QString old_color_;
-	std::vector<std::pair<QString, QString>> & newcolors_;
+	ColorNamePairs & newcolors_;
 	PrefColors* parent_;
 };
 

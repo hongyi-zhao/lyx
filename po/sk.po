@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-01 13:24+0100\n"
-"PO-Revision-Date: 2025-03-01 12:59+0000\n"
+"POT-Creation-Date: 2025-03-08 16:02+0100\n"
+"PO-Revision-Date: 2025-03-08 16:27+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Language: sk_SK\n"
 "X-Source-Language: en_US\n"
@@ -3894,18 +3894,6 @@ msgstr "Okamžite použiť zmenenú tému farieb"
 msgid "Update &immediately"
 msgstr "O&kamžite použiť"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:70
-msgid "Reset the selected color to its original value"
-msgstr "Nastaviť vybranú farbu na pôvodnú hodnotu"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:277
-msgid "&Restore Theme"
-msgstr "Ob&noviť tému"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:300
-msgid "Export..."
-msgstr "Exportovať…"
-
 #: src/frontends/qt/ui/PrefColorsUi.ui:302
 msgid "Enter a color name to search"
 msgstr "Zadajte meno farby, ktorú chcete vyhľadať"
@@ -3918,7 +3906,7 @@ msgstr "Hľadaná farba"
 msgid "Search backward"
 msgstr "Hľadať dozadu"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:321
+#: src/frontends/qt/ui/PrefColorsUi.ui:75
 msgid "<-"
 msgstr "<-"
 
@@ -3926,9 +3914,25 @@ msgstr "<-"
 msgid "Search forward"
 msgstr "Hľadať dopredu"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:346
+#: src/frontends/qt/ui/PrefColorsUi.ui:100
 msgid "->"
 msgstr "->"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:142
+msgid "&Color Settings:"
+msgstr "Nastavenie &farieb:"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:237
+msgid "Remove a selected color theme"
+msgstr "Zmazať jednu vybranú tému farieb"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:240
+msgid "-"
+msgstr "-"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:250
+msgid "Other menus to handle themes"
+msgstr "Ďalšie ponuky na spracovanie tém"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:402
 msgid "Light"
@@ -3938,13 +3942,33 @@ msgstr "Svetlý"
 msgid "Dark"
 msgstr "Tmavý"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:80
-msgid "Reset all colors to their original value"
-msgstr "Vrátiť všetky farby na pôvodné hodnoty"
+#: src/frontends/qt/GuiPrefs.cpp:1029
+msgid "Color name"
+msgstr "Názov farby"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:244
-msgid "Restore &All"
-msgstr "O&bnoviť všetko"
+#: src/frontends/qt/GuiPrefs.cpp:1061
+msgid "Reset current light/dark colors to default"
+msgstr "Resetovať aktuálne svetlé/tmavé farby na predvolené"
+
+#: src/frontends/qt/GuiPrefs.cpp:1068
+msgid "Reset all colors to default"
+msgstr "Návrat všetky farby na štandard"
+
+#: src/frontends/qt/GuiPrefs.cpp:1075
+msgid "Find Previous"
+msgstr "Hľadať predošle"
+
+#: src/frontends/qt/GuiPrefs.cpp:1082
+msgid "Find Next"
+msgstr "Hľadať ďalšie"
+
+#: src/frontends/qt/GuiPrefs.cpp:1368
+msgid "Export a color theme"
+msgstr "Exportovať tému farieb"
+
+#: src/frontends/qt/GuiPrefs.cpp:1404
+msgid "What is the name of the color theme?"
+msgstr "Aký je názov témy farieb?"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:105
 msgid "Use the color scheme of your Operating System/Desktop Environment"
@@ -3955,26 +3979,6 @@ msgstr ""
 msgid "&Use system colors"
 msgstr "Použiť farby &systému"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:73
-msgid "Load preset color theme"
-msgstr "Načítať prednastavený motív farieb"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:476
-msgid "Load Theme"
-msgstr "Načítať tému"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:83
-msgid "Save current color setting as a color theme"
-msgstr "Uložte aktuálne nastavenie farieb ako tému farieb"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:86
-msgid "&Save Theme..."
-msgstr "U&ložiť tému…"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:161
-msgid "Import..."
-msgstr "Importovať…"
-
 #: src/frontends/qt/ui/PrefColorsUi.ui:104
 msgid "<="
 msgstr "<="
@@ -3983,25 +3987,21 @@ msgstr "<="
 msgid "=>"
 msgstr "=>"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:147
-msgid "Change the selected light-mode color"
-msgstr "Zmeňte zvolenú farbu svetelného režimu"
+#: src/frontends/qt/ui/PrefColorsUi.ui:374
+msgid "Revert selected to theme colors"
+msgstr "Vrátiť vybrané na farby témy"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:150
-msgid "Alter &Light Color..."
-msgstr "&Zmeniť svetlú farbu…"
+#: src/frontends/qt/ui/PrefColorsUi.ui:377
+msgid "R"
+msgstr "V"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:202
-msgid "Re&move Theme..."
-msgstr "Z&mazať tému…"
+#: src/frontends/qt/ui/PrefColorsUi.ui:390
+msgid "Reset all colors to theme"
+msgstr "Vrátiť všetko na farby témy"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:231
-msgid "Change the selected dark-mode color"
-msgstr "Zmeňte zvolenú farbu tmavého režimu"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:234
-msgid "Alter &Dark Color..."
-msgstr "Zm&eniť tmavú farbu…"
+#: src/frontends/qt/ui/PrefColorsUi.ui:393
+msgid "A"
+msgstr "Š"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -6352,6 +6352,18 @@ msgstr "Aktualizovať navigačný strom"
 #: src/frontends/qt/ui/TocUi.ui:161
 msgid "..."
 msgstr "…"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:260
+msgid "Add the current color set as a theme"
+msgstr "Pridajte aktuálnu sadu farieb ako tému"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:263
+msgid "+"
+msgstr "+"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:302
+msgid "&Themes:"
+msgstr "&Témy:"
 
 #: src/frontends/qt/ui/TocUi.ui:98
 msgid "Decrease nesting depth of selected item"
@@ -37128,32 +37140,39 @@ msgstr "Prí&kaz:"
 msgid "Screen Fonts"
 msgstr "Písma obrazovky"
 
-#: src/frontends/qt/GuiPrefs.cpp:1352
-msgid "What is the name of the color theme to export?"
-msgstr "Aký je názov motívu farieb na uloženie?"
-
-#: src/frontends/qt/GuiPrefs.cpp:1353
+#: src/frontends/qt/GuiPrefs.cpp:1405
 msgid "What is the name of the new color theme to save?"
-msgstr "Aký je názov nového motívu farieb na uloženie?"
+msgstr "Aký je názov nového tému farieb na uloženie?"
 
-#: src/frontends/qt/GuiPrefs.cpp:1305
+#: src/frontends/qt/GuiPrefs.cpp:1408
 msgid "Name the color theme"
-msgstr "Pomenujte motív farieb"
+msgstr "Pomenujte tému farieb"
 
 #: src/frontends/qt/GuiPrefs.cpp:1307
 msgid "New theme name"
 msgstr "Nový názov témy"
 
+#: src/frontends/qt/GuiPrefs.cpp:1431
+msgid "A user color theme with the same name exists."
+msgstr "Používateľská farebná téma s rovnakým názvom už existuje."
+
+#: src/frontends/qt/GuiPrefs.cpp:1432
+msgid "Do you want to overwrite?"
+msgstr "Chcete to prepísať?"
+
+#: src/frontends/qt/GuiPrefs.cpp:1472
+msgid "Import a color theme"
+msgstr "Importovať farebnú tému"
+
 #: src/frontends/qt/GuiPrefs.cpp:1392
 msgid "Select a user theme"
 msgstr "Vyberte tému používateľa"
 
-#: src/frontends/qt/GuiPrefs.cpp:1393
-msgid ""
-"Please select a user theme to remove from the dropdown menu \"Load Theme\"."
+#: src/frontends/qt/GuiPrefs.cpp:1550
+msgid "Please select a user theme to remove from the \"Themes\" list menu."
 msgstr ""
-"Vyberte motív farieb používateľa, ktorý chcete odstrániť z rozbaľovacej "
-"ponuky „Načítať motív“."
+"Vyberte tému farieb používateľa, ktorú chcete odstrániť z rozbaľovacej "
+"ponuky \"Témy\"."
 
 #: src/frontends/qt/GuiPrefs.cpp:1414
 msgid "Not a user theme"
@@ -37171,6 +37190,14 @@ msgstr "Ste si istý?"
 #, c-format
 msgid "Do you really want to remove the theme \"%1$s\"?"
 msgstr "Naozaj chcete tému \"%1$s\" odstrániť?"
+
+#: src/frontends/qt/GuiPrefs.cpp:1652
+msgid "&Export..."
+msgstr "&Exportovať…"
+
+#: src/frontends/qt/GuiPrefs.cpp:1653
+msgid "&Import..."
+msgstr "&Importovať…"
 
 #: src/frontends/qt/GuiPrefs.cpp:1277
 msgid "Paths"
@@ -41519,6 +41546,36 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Reset the selected color to its original value"
+#~ msgstr "Nastaviť vybranú farbu na pôvodnú hodnotu"
+
+#~ msgid "&Restore Theme"
+#~ msgstr "Ob&noviť tému"
+
+#~ msgid "Restore &All"
+#~ msgstr "O&bnoviť všetko"
+
+#~ msgid "Load Theme"
+#~ msgstr "Načítať tému"
+
+#~ msgid "&Save Theme..."
+#~ msgstr "U&ložiť tému…"
+
+#~ msgid "Change the selected light-mode color"
+#~ msgstr "Zmeňte zvolenú farbu svetlého režimu"
+
+#~ msgid "Alter &Light Color..."
+#~ msgstr "&Zmeniť svetlú farbu…"
+
+#~ msgid "Re&move Theme..."
+#~ msgstr "Z&mazať tému…"
+
+#~ msgid "Change the selected dark-mode color"
+#~ msgstr "Zmeňte zvolenú farbu tmavého režimu"
+
+#~ msgid "Alter &Dark Color..."
+#~ msgstr "Zm&eniť tmavú farbu…"
 
 #~ msgid "&Restore Default"
 #~ msgstr "&Vrátiť na Predvolené"
@@ -47111,3 +47168,30 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "What is the name of the new color theme to be saved?"
 #~ msgstr "Aký je názov nového motívu farieb, ktorý sa má uložiť?"
+
+#~ msgid "Export..."
+#~ msgstr "Exportovať…"
+
+#~ msgid "<"
+#~ msgstr "<"
+
+#~ msgid "Reset all colors to their original value"
+#~ msgstr "Vrátiť všetky farby na pôvodné hodnoty"
+
+#~ msgid "Load preset color theme"
+#~ msgstr "Načítať prednastavený motív farieb"
+
+#~ msgid "Save current color setting as a color theme"
+#~ msgstr "Uložte aktuálne nastavenie farieb ako tému farieb"
+
+#~ msgid "Import..."
+#~ msgstr "Importovať…"
+
+#~ msgid "What is the name of the color theme to export?"
+#~ msgstr "Aký je názov motívu farieb na uloženie?"
+
+#~ msgid ""
+#~ "Please select a user theme to remove from the dropdown menu \"Load Theme\"."
+#~ msgstr ""
+#~ "Vyberte motív farieb používateľa, ktorý chcete odstrániť z rozbaľovacej "
+#~ "ponuky „Načítať motív“."

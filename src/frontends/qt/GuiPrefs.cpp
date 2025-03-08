@@ -22,6 +22,7 @@
 #include "GuiLyXFiles.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
+#include "version.h"
 #include "Validator.h"
 
 #include "Author.h"
@@ -58,6 +59,7 @@
 #include <QAbstractItemModel>
 #include <QCheckBox>
 #include <QFile>
+#include <QFileInfo>
 #include <QFontDatabase>
 #include <QHeaderView>
 #include <QInputDialog>
@@ -993,7 +995,7 @@ PrefColors::PrefColors(GuiPreferences * form)
 	// FIXME: all of this initialization should be put into the controller.
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg113301.html
 	// for some discussion of why that is not trivial.
-	QPixmap icon(32, 32);
+	QPixmap icon(icon_width_, icon_height_);
 	for (int i = 0; i < Color_ignore; ++i) {
 		ColorCode lc = static_cast<ColorCode>(i);
 		if (lc == Color_none
@@ -1022,16 +1024,65 @@ PrefColors::PrefColors(GuiPreferences * form)
 		lcolors_.push_back(lc);
 	}
 	sort(lcolors_.begin(), lcolors_.end(), ColorSorter);
-	vector<ColorCode>::const_iterator cit = lcolors_.begin();
-	vector<ColorCode>::const_iterator const end = lcolors_.end();
-	for (; cit != end; ++cit) {
-		(void) new QListWidgetItem(QIcon(icon),
-			toqstr(lcolor.getGUIName(*cit)), lyxObjectsLW);
+	colorsTW->setRowCount(lcolors_.size());
+	colorsTW->setHorizontalHeaderLabels({qt_("Light"), qt_("Dark"),
+	                                     qt_("Color name")});
+	for (size_type row=0; row!=lcolors_.size(); ++row) {
+		colorsTW->setItem(row, 0, new QTableWidgetItem(icon, ""));
+		colorsTW->setItem(row, 1, new QTableWidgetItem(icon, ""));
+		QTableWidgetItem* txtItem = new QTableWidgetItem(toqstr(lcolor.getGUIName(lcolors_[row])));
+		txtItem->setFlags(~QFlags(Qt::ItemIsEditable));
+		colorsTW->setItem(row, 2, txtItem);
 	}
 	curcolors_.resize(lcolors_.size());
 	newcolors_.resize(lcolors_.size());
 
 	undo_stack_ = new QUndoStack(this);
+
+	// set up tool icons
+	const QIcon undoIcon =
+	        QIcon(QPixmap(toqstr(
+	                          addPathName(package().system_support().absFileName(),
+	                                      "images/undo.svgz"))));
+	QAction* undoAct = new QAction(undoIcon, qt_("Undo"), this);
+	undoColorPB->setDefaultAction(undoAct);
+
+	const QIcon redoIcon =
+	        QIcon(QPixmap(toqstr(
+	                          addPathName(package().system_support().absFileName(),
+	                                      "images/redo.svgz"))));
+	QAction* redoAct = new QAction(redoIcon, qt_("Redo"), this);
+	redoColorPB->setDefaultAction(redoAct);
+
+	const QIcon resetIcon =
+	        QIcon(QPixmap(toqstr(
+	                          addPathName(package().system_support().absFileName(),
+	                                      "images/reload.svgz"))));
+	QAction* resetAct = new QAction(resetIcon, qt_("Reset current light/dark colors to default"), this);
+	colorResetPB->setDefaultAction(resetAct);
+
+	const QIcon resetAllIcon =
+	        QIcon(QPixmap(toqstr(
+	                          addPathName(package().system_support().absFileName(),
+	                                      "images/buffer-close.svgz"))));
+	QAction* resetAllAct = new QAction(resetAllIcon, qt_("Reset all colors to default"), this);
+	colorResetAllPB->setDefaultAction(resetAllAct);
+
+	const QIcon findPreviousIcon =
+	        QIcon(QPixmap(toqstr(
+	                          addPathName(package().system_support().absFileName(),
+	                                      "images/bookmark-goto_0.svgz"))));
+	QAction* findPreviousAct = new QAction(findPreviousIcon, qt_("Find Previous"), this);
+	searchBackwardPB->setDefaultAction(findPreviousAct);
+
+	const QIcon findNextIcon =
+	        QIcon(QPixmap(toqstr(
+	                          addPathName(package().system_support().absFileName(),
+	                                      "images/bookmark-goto.svgz"))));
+	QAction* findNextAct = new QAction(findNextIcon, qt_("Find Next"), this);
+	searchForwardPB->setDefaultAction(findNextAct);
+
+	// setup shortcuts
 	QShortcut* sc_undo = new QShortcut(QKeySequence(QKeySequence::Undo), this);
 	QShortcut* sc_redo = new QShortcut(QKeySequence(QKeySequence::Redo), this);
 	QShortcut* sc_search =
@@ -1040,58 +1091,36 @@ PrefColors::PrefColors(GuiPreferences * form)
 	        new QShortcut(QKeySequence(QKeySequence::FindNext), this);
 	QShortcut* sc_search_backward =
 	        new QShortcut(QKeySequence(QKeySequence::FindPrevious), this);
-#if !defined(Q_OS_MAC)
-	// give a shortcut to the combobox
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	QShortcut* sc_load_theme =
-	        new QShortcut(QKeySequence(tr("Ctrl+l")), this);
-#else
-	QShortcut* sc_load_theme =
-	        new QShortcut(QKeySequence(Qt::CTRL | Qt::Key_L), this);
-#endif // QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#endif // !defined(Q_OS_MAC)
 
-	initializeLoadThemeCO();
+	initializeThemesLW();
+	initializeThemeMenu();
 
 	// End initialization
 
 	connect(autoapplyCB, SIGNAL(toggled(bool)),
 	        this, SLOT(changeAutoapply()));
-	connect(colorChangePB, SIGNAL(clicked(bool)),
-	        this, SLOT(changeLightColor()));
-	connect(colorDarkChangePB, SIGNAL(clicked(bool)),
-	        this, SLOT(changeDarkColor()));
-	connect(colorResetPB, SIGNAL(clicked()),
-	        this, SLOT(resetColor()));
-	connect(colorResetAllPB, SIGNAL(clicked()),
-	        this, SLOT(resetAllColor()));
-	connect(exportPB, SIGNAL(clicked()),
-	        this, SLOT(exportThemeInterface()));
-	connect(importPB, SIGNAL(clicked()),
-	        this, SLOT(importThemeInterface()));
-	connect(loadThemeCO, SIGNAL(activated(int)),
-	        this, SLOT(loadThemeInterface(int)));
-	connect(lyxObjectsLW, SIGNAL(focusChanged()),
-	        this, SLOT(changeFocus()));
-	connect(lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)),
+	connect(colorsTW, SIGNAL(cellClicked(int,int)),
+	        this, SLOT(changeColor(int,int)));
+	connect(colorsTW, SIGNAL(itemActivated(QTableWidgetItem*)),
 	        this, SLOT(changeColor()));
-	connect(lyxObjectsLW, SIGNAL(itemSelectionChanged()),
+	connect(colorsTW, SIGNAL(itemSelectionChanged()),
 	        this, SLOT(changeLyxObjectsSelection()));
-	connect(lyxObjectsLW,
-	        SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
-	        this, SLOT(moveCurrentItem(QListWidgetItem*,QListWidgetItem*)));
-	connect(lyxObjectsLW, SIGNAL(itemPressed(QListWidgetItem*)),
-	        this, SLOT(pressCurrentItem(QListWidgetItem*)));
-	connect(redoColorPB, SIGNAL(clicked()),
+	connect(colorsTW, SIGNAL(itemPressed(QTableWidgetItem*)),
+	        this, SLOT(pressCurrentItem(QTableWidgetItem*)));
+	connect(findNextAct, SIGNAL(triggered()),
+	        this, SLOT(searchNextColorItem()));
+	connect(findPreviousAct, SIGNAL(triggered()),
+	        this, SLOT(searchPreviousColorItem()));
+	connect(redoAct, SIGNAL(triggered()),
 	        undo_stack_, SLOT(redo()));
 	connect(removeThemePB, SIGNAL(clicked()),
 	        this, SLOT(removeTheme()));
+	connect(resetAct, SIGNAL(triggered()),
+	        this, SLOT(resetColor()));
+	connect(resetAllAct, SIGNAL(triggered()),
+	        this, SLOT(resetAllColor()));
 	connect(saveThemePB, SIGNAL(clicked()),
 	        this, SLOT(saveThemeInterface()));
-#if !defined(Q_OS_MAC)
-	connect(sc_load_theme, SIGNAL(activated()),
-	        loadThemeCO, SLOT(setFocus()));
-#endif
 	connect(sc_search, SIGNAL(activated()),
 	        searchStringEdit, SLOT(setFocus()));
 	connect(sc_search_forward, SIGNAL(activated()),
@@ -1102,17 +1131,17 @@ PrefColors::PrefColors(GuiPreferences * form)
 	        undo_stack_, SLOT(redo()));
 	connect(sc_undo, SIGNAL(activated()),
 	        undo_stack_, SLOT(undo()));
-	connect(searchBackwardPB, SIGNAL(clicked()),
-	        this, SLOT(searchPreviousColorItem()));
-	connect(searchForwardPB, SIGNAL(clicked()),
-	        this, SLOT(searchNextColorItem()));
 	connect(searchStringEdit, SIGNAL(returnPressed()),
 	        this, SLOT(searchNextColorItem()));
 	connect(syscolorsCB, SIGNAL(toggled(bool)),
 	        this, SIGNAL(changed()));
 	connect(syscolorsCB, SIGNAL(toggled(bool)),
 	        this, SLOT(changeSysColor()));
-	connect(undoColorPB, SIGNAL(clicked()),
+	connect(themesMenuPB, SIGNAL(clicked()),
+	        this, SLOT(openThemeMenu()));
+	connect(themesLW, SIGNAL(itemClicked(QListWidgetItem*)),
+	        this, SLOT(loadThemeInterface(QListWidgetItem*)));
+	connect(undoAct, SIGNAL(triggered()),
 	        undo_stack_, SLOT(undo()));
 }
 
@@ -1134,10 +1163,9 @@ void PrefColors::applyRC(LyXRC & rc) const
 void PrefColors::updateRC(LyXRC const & rc)
 {
 	for (size_type i = 0; i < lcolors_.size(); ++i) {
-		std::pair<QColor, QColor> colors =
+		ColorPair colors =
 		        guiApp->colorCache().getAll(lcolors_[i], false);
-		lyxObjectsLW->setIconSize(QSize(2*icon_width_ + spacer_width_, icon_height_));
-		lyxObjectsLW->item(int(i))->setIcon(constructIcon(colors));
+		setIcons(i, colors);
 		newcolors_[i].first  = curcolors_[i].first  = colors.first.name();
 		newcolors_[i].second = curcolors_[i].second = colors.second.name();
 	}
@@ -1156,7 +1184,7 @@ void PrefColors::changeColor()
 
 void PrefColors::changeColor(bool const dark_mode)
 {
-	int const row = lyxObjectsLW->currentRow();
+	int const row = colorsTW->currentRow();
 
 	// just to be sure
 	if (row < 0)
@@ -1178,60 +1206,79 @@ void PrefColors::changeColor(bool const dark_mode)
 }
 
 
-QIcon PrefColors::constructIcon(std::pair<QColor, QColor> colors,
-                                bool const selected)
+void PrefColors::changeColor(int const row, int const column)
 {
-	QPixmap joined_coloritem(2*icon_width_ + spacer_width_, icon_height_);
-	QPixmap light_coloritem(icon_width_, icon_height_);
-	QPixmap dark_coloritem(icon_width_,  icon_height_);
-	QPixmap spacer(spacer_width_, icon_height_);
+	if (column >= 2) return;
 
-	light_coloritem.fill(colors.first);
-	dark_coloritem.fill(colors.second);
-	const QPalette::ColorGroup & cg = lyxObjectsLW->currentColorGroup();
-	if (selected)
-		spacer.fill(lyxObjectsLW->palette().color(cg, QPalette::Highlight));
-	else
-		spacer.fill(lyxObjectsLW->palette().color(cg, QPalette::Base));
-	// construc a concatenated icon
-	QPainter pnt(&joined_coloritem);
-	pnt.drawPixmap(0, 0, light_coloritem);
-	pnt.drawPixmap(icon_width_, 0, spacer);
-	pnt.drawPixmap(icon_width_ + spacer_width_, 0, dark_coloritem);
+	QString color;
+	if (column == 0)
+		color = newcolors_[size_t(row)].first;
+	else // column == 1
+		color = newcolors_[size_t(row)].second;
 
-	return QIcon(joined_coloritem);
+	QColor const c = form_->getColor(QColor(color));
+
+	if (setColor(row, column, c, color)) {
+		setDisabledResets();
+		// emit signal
+		changed();
+	}
 }
 
 
-QIcon PrefColors::updateIconColor(int const row, QColor const color,
-                                  bool const dark_mode, bool const selected)
+void PrefColors::setIcon(size_type row, bool const dark_mode, QColor color)
 {
-	if (dark_mode)
-		return constructIcon({QColor(newcolors_[row].first), color}, selected);
-	else
-		return constructIcon({color, QColor(newcolors_[row].second)}, selected);
+	QPixmap coloritem(icon_width_, icon_height_);
+	coloritem.fill(color);
+	QTableWidgetItem* item = new QTableWidgetItem(QIcon(coloritem), "");
+	colorsTW->setItem(row, (int)dark_mode, item);
+}
+
+
+void PrefColors::setIcons(size_type row, ColorPair colors)
+{
+	setIcon(row, false, colors.first);
+	setIcon(row, true, colors.second);
 }
 
 
 void PrefColors::updateAllIcons()
 {
 	for (size_type row = 0; row < lcolors_.size(); ++row) {
-		QListWidgetItem * cur_item = lyxObjectsLW->item(row);
-		cur_item->setIcon(constructIcon(newcolors_[row], cur_item->isSelected()));
+		setIcons(row, toqcolor(newcolors_[row]));
+	}
+}
+
+
+void PrefColors::redrawColorTable()
+{
+	colorsTW->clearContents();
+	for (size_type row=0; row!=lcolors_.size(); ++row) {
+		QPixmap coloritem(icon_width_, icon_height_);
+		coloritem.fill(newcolors_[row].first);
+		colorsTW->setItem(row, 0, new QTableWidgetItem(coloritem, ""));
+
+		coloritem.fill(newcolors_[row].second);
+		colorsTW->setItem(row, 1, new QTableWidgetItem(coloritem, ""));
+
+		QTableWidgetItem* txtItem =
+		        new QTableWidgetItem(toqstr(lcolor.getGUIName(lcolors_[row])));
+		txtItem->setFlags(~QFlags(Qt::ItemIsEditable));
+		colorsTW->setItem(row, 2, txtItem);
 	}
 }
 
 
 void PrefColors::resetColor()
 {
-	int const row = lyxObjectsLW->currentRow();
+	int const row = colorsTW->currentRow();
 
 	// just to be sure
 	if (row < 0)
 		return;
 
-	std::pair<QString, QString> const colors = newcolors_[size_t(row)];
-	std::pair<QColor, QColor> const c = getDefaultColorsByRow(row);
+	ColorNamePair const colors = newcolors_[size_t(row)];
+	ColorPair const c = getDefaultColorsByRow(row);
 
 	if (setColor(row, c, colors)) {
 		setDisabledResets();
@@ -1247,9 +1294,9 @@ void PrefColors::resetAllColor()
 
 	colorResetAllPB->setDisabled(true);
 
-	for (int irow = 0, count = lyxObjectsLW->count(); irow < count; ++irow) {
-		std::pair<QString, QString> const colors = newcolors_[size_t(irow)];
-		std::pair<QColor, QColor> const c = getDefaultColorsByRow(irow);
+	for (int irow = 0, count = colorsTW->rowCount(); irow < count; ++irow) {
+		ColorNamePair const colors = newcolors_[size_t(irow)];
+		ColorPair const c = getDefaultColorsByRow(irow);
 
 		if (setColor(irow, c, colors))
 			isChanged = true;
@@ -1260,12 +1307,14 @@ void PrefColors::resetAllColor()
 		// emit signal
 		changed();
 	}
+
+	// updateAllIcons is not sufficient
+	redrawColorTable();
 }
 
 
-bool PrefColors::setColor(int const row,
-                          std::pair<QColor, QColor> const & new_colors,
-                          std::pair<QString, QString> const & old_colors)
+bool PrefColors::setColor(int const row, ColorPair const & new_colors,
+                          ColorNamePair const & old_colors)
 {
 	bool res1, res2;
 	res1 = setColor(row, false, new_colors.first,  old_colors.first);
@@ -1290,7 +1339,7 @@ bool PrefColors::setColor(int const row, bool const dark_mode,
 
 void PrefColors::setDisabledResets()
 {
-	int const row = lyxObjectsLW->currentRow();
+	int const row = colorsTW->currentRow();
 	// set disable reset buttons ...
 	if (row >= 0)
 		colorResetPB->setDisabled(isDefaultColor(row, newcolors_[size_t(row)]));
@@ -1301,7 +1350,7 @@ void PrefColors::setDisabledResets()
 	guiApp->processEvents();
 
 	// ... set disable Reset All button
-	for (int irow = 0, count = lyxObjectsLW->count(); irow < count; ++irow) {
+	for (int irow = 0, count = colorsTW->rowCount(); irow < count; ++irow) {
 		if (!isDefaultColor(irow, newcolors_[size_t(irow)])) {
 			colorResetAllPB->setDisabled(false);
 			// the break condition might hide performance issues
@@ -1314,44 +1363,45 @@ void PrefColors::setDisabledResets()
 
 void PrefColors::exportThemeInterface()
 {
-	if (themeNameInterface(true))
-		return;
-
 	// ask for directory to export
 	QString home_dir = toqstr(package().get_home_dir().absFileName());
-	FileDialog dialog("Export a color theme");
+	FileDialog dialog(qt_("Export a color theme"));
 	FileDialog::Result result =
-	        dialog.save((home_dir == "") ? "/" : home_dir, {"*.theme", "*.*"},
-	                    theme_file_name_);
+			dialog.save((home_dir == "") ? "/" : home_dir, {"*.theme", "*.*"},
+						theme_filename_);
 	QString file_path;
-	if (result.first == FileDialog::Chosen)
+	if (result.first == FileDialog::Chosen) {
 		file_path = result.second;
-
-	saveTheme(file_path);
-
-	return;
+		(saveTheme(file_path));
+	}
 }
 
 
 void PrefColors::saveThemeInterface()
 {
-	if (themeNameInterface(false))
-		return;
+	while (true) {
+		// this sets theme_filename_
+		if (!askThemeName(false))
+			break;
 
-	std::string file_path =
-	        addName(
-	            addPath(package().user_support().absFileName(), "themes"),
-	            fromqstr(theme_file_name_));
-	saveTheme(toqstr(file_path));
+		std::string file_path =
+				addName(
+					addPath(package().user_support().absFileName(), "themes"),
+					fromqstr(theme_filename_));
 
-	return;
+		QFile target_file(toqstr(file_path));
+		if (!target_file.exists() || wantToOverwrite()) {
+			saveTheme(toqstr(file_path));
+			break;
+		}
+	}
 }
 
 
-bool PrefColors::themeNameInterface(bool exporting)
+bool PrefColors::askThemeName(bool porting)
 {
-	QString prompt = exporting ?
-	            qt_("What is the name of the color theme to export?") :
+	QString prompt = porting ?
+	            qt_("What is the name of the color theme?") :
 	            qt_("What is the name of the new color theme to save?");
 	bool ok;
 	theme_name_ =
@@ -1362,35 +1412,39 @@ bool PrefColors::themeNameInterface(bool exporting)
 	if (ok && !theme_name_.isEmpty()) {
 		// Makefile cannot handle spaces in filenames directly
 		// so replace it with an underscore same as other places
-		theme_file_name_ = theme_name_;
-		theme_file_name_.replace(' ', '_');
-		theme_file_name_ += ".theme";
+		QString tmp_name = theme_name_;
+		tmp_name.replace(' ', '_');
+		theme_filename_ = tmp_name + ".theme";
 	} else {
 		activatePrefsWindow(form_);
-		return true;
+		return false;
 	}
 
-	return false;
+	return true;
 }
+
+
+bool PrefColors::wantToOverwrite()
+{
+	QMessageBox msgBox;
+	msgBox.setIcon(QMessageBox::Warning);
+	msgBox.setText(qt_("A user color theme with the same name exists."));
+	msgBox.setInformativeText(qt_("Do you want to overwrite?"));
+	msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+	msgBox.setDefaultButton(QMessageBox::No);
+	int ret = msgBox.exec();
+	if (ret == QMessageBox::No)
+		return false;
+	else
+		return true;
+}
+
 
 void PrefColors::saveTheme(QString file_path)
 {
-	QFile file_to_save(file_path);
-	if (file_to_save.exists()) {
-		QMessageBox msgBox;
-		msgBox.setIcon(QMessageBox::Warning);
-		msgBox.setText("A user color theme with the same name exists.");
-		msgBox.setInformativeText("Do you want to overwrite?");
-		msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-		msgBox.setDefaultButton(QMessageBox::No);
-		int ret = msgBox.exec();
-		if (ret == QMessageBox::No)
-		      return;
-	}
-
 	ofstream ofs(fromqstr(file_path));
 
-	ofs << "#\n" <<
+	ofs << "#LyX version: " << lyx_version << "\n#\n" <<
 	       "#   This is a definition file of a color theme \"" <<
 	            fromqstr(theme_name_) << "\" of LyX\n" <<
 	       "#\n" <<
@@ -1407,7 +1461,7 @@ void PrefColors::saveTheme(QString file_path)
 		    << fromqstr(newcolors_[i].first) << "\" \""
 		    << fromqstr(newcolors_[i].second) << "\"\n";
 	}
-	initializeLoadThemeCO();
+	initializeThemesLW();
 	activatePrefsWindow(form_);
 }
 
@@ -1415,7 +1469,7 @@ void PrefColors::saveTheme(QString file_path)
 void PrefColors::importThemeInterface()
 {
 	QString home_dir = toqstr(package().get_home_dir().absFileName());
-	FileDialog dialog("Import a color theme");
+	FileDialog dialog(qt_("Import a color theme"));
 	FileDialog::Result result =
 	        dialog.open((home_dir == "") ? "/" : home_dir, {"*.theme", "*.*"});
 	QString file_path;
@@ -1424,21 +1478,47 @@ void PrefColors::importThemeInterface()
 	else
 		return;
 
+	QFile import_file(file_path);
+	std::string target_file_path;
+
+	while (true) {
+		if (askThemeName(true)) {
+			target_file_path =
+			        addName(
+			            addPath(package().user_support().absFileName(), "themes"),
+			            fromqstr(theme_filename_));
+			QFile target_file(toqstr(target_file_path));
+			if (!target_file.exists())
+				break;
+			else if (wantToOverwrite()) {
+				target_file.remove();
+				break;
+			}
+		} else
+			return;
+	}
+
+	// copy to user theme dir
+	import_file.copy(toqstr(target_file_path));
+
+	initializeThemesLW();
 	loadTheme(FileName(fromqstr(file_path)));
 
 	return;
 }
 
 
-void PrefColors::loadThemeInterface(int index)
+void PrefColors::loadThemeInterface(QListWidgetItem* item)
 {
-	loadTheme(FileName(fromqstr(loadThemeCO->itemData(index).toString())));
+	loadTheme(FileName(fromqstr(theme_fullpaths_[themesLW->row(item)])));
+	theme_filename_ = onlyFileName(theme_fullpaths_[themesLW->row(item)]);
+	theme_name_ = removeExtension(theme_filename_).replace('_', ' ');
 }
 
 
-void PrefColors::loadTheme(FileName filename)
+void PrefColors::loadTheme(FileName fullpath)
 {
-	form_->rc().read(filename, true);
+	form_->rc().read(fullpath, true);
 	for (size_type row = 0; row < lcolors_.size(); ++row) {
 		newcolors_[size_t(row)] =
 		    {QString(lcolor.getX11HexName(lcolors_[row], false).c_str()),
@@ -1461,32 +1541,22 @@ void PrefColors::loadTheme(FileName filename)
 
 void PrefColors::removeTheme()
 {
-	const QString theme_name = loadThemeCO->currentText();
+	const QListWidgetItem* cur_item = themesLW->currentItem();
 	// if theme name is empty, urge the user to select it from the dropdown menu
-	if (theme_name.isEmpty()) {
+	if (cur_item == nullptr) {
 		QMessageBox msgBox(this);
 		msgBox.setIcon(QMessageBox::Critical);
 		msgBox.setWindowTitle(qt_("Select a user theme"));
 		msgBox.setText(qt_("Please select a user theme to remove "
-		                   "from the dropdown menu \"Load Theme\"."));
+		                   "from the \"Themes\" list menu."));
 		msgBox.setStandardButtons(QMessageBox::Ok);
 		msgBox.exec();
 		return;
 	}
-	if (theme_name.size() == 0) return;
 
-	// don't replace spaces in theme_name, only in theme_filename
-	QString theme_filename = theme_name;
-	theme_filename = theme_filename.replace(' ', '_') + ".theme";
-
-	const std::string theme_path =
-	        addName(
-	            addPath(package().user_support().absFileName(), "themes"),
-	            fromqstr(theme_filename));
-	QFile file(toqstr(theme_path));
-
-	// if file doesn't exist in a user directory, it is a system theme
-	if (!file.exists()) {
+	const int cur_row = themesLW->row(cur_item);
+	const QString theme_name = cur_item->text();
+	if (isSysThemes_[cur_row]) {
 		QMessageBox msgBox(this);
 		msgBox.setIcon(QMessageBox::Critical);
 		msgBox.setWindowTitle(qt_("Not a user theme"));
@@ -1507,20 +1577,21 @@ void PrefColors::removeTheme()
 	msgBox.setDefaultButton(QMessageBox::No);
 
 	if (msgBox.exec() == QMessageBox::Yes) {
+		QFile file(theme_fullpaths_[cur_row]);
 		file.remove();
-		initializeLoadThemeCO();
+		initializeThemesLW();
 	}
 }
 
 
-void PrefColors::initializeLoadThemeCO()
+void PrefColors::initializeThemesLW()
 {
-	// initialize "load themes" dropdown menu
-
- //move to PrefColorsUi.ui:loadThemeCO->PlaceholderText once we support at least Qt 5.15
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-        loadThemeCO->setPlaceholderText(lyx::qt_("Load Theme", nullptr));
-#endif
+	//
+	// initialize themes list widget
+	//
+	// clear dataset
+	theme_fullpaths_.clear();
+	isSysThemes_.clear();
 
 	const QIcon & sys_theme_icon =
 	        QIcon(toqstr(addPathName(package().system_support().absFileName(),
@@ -1529,10 +1600,10 @@ void PrefColors::initializeLoadThemeCO()
 	        QIcon(toqstr(addPathName(package().system_support().absFileName(),
 	                                 "images/oxygen/change-accept.svgz")));
 
-	// note that std::map sorts its entries
-	// key is the theme's GUI name
-	// value is a pair of the theme file name and whether it is a user theme
+	// key:   theme's GUI name
+	// value: pair<theme's file name, bool if a user theme>
 	std::map <QString, std::pair<QString, bool>> themes;
+
 	FileName sys_theme_dir;
 	FileName usr_theme_dir;
 	sys_theme_dir.set(addName(package().system_support().absFileName(),
@@ -1557,28 +1628,54 @@ void PrefColors::initializeLoadThemeCO()
 		// and user themes are listed even if they have the same name
 		themes.emplace(guiname + "_usr", std::make_pair(filename, true));
 	}
-	loadThemeCO->clear();
+	themesLW->clear();
+	// themes are already sorted with GUI name as std::map sorts its entries
 	for (const auto & theme : themes) {
-		if (theme.second.second)
-			loadThemeCO->addItem(usr_theme_icon,
-			                     theme.first.left(theme.first.length() - 4),
-			                     theme.second.first);
+		QListWidgetItem* item = new QListWidgetItem;
+		item->setText(theme.first.left(theme.first.length() - 4));
+		if (theme.second.second) // if the theme is a user theme
+			item->setIcon(usr_theme_icon);
 		else
-			loadThemeCO->addItem(sys_theme_icon,
-			                     theme.first.left(theme.first.length() - 4),
-			                     theme.second.first);
+			item->setIcon(sys_theme_icon);
+		themesLW->addItem(item);
+		theme_fullpaths_.push_back(theme.second.first);
+		if (theme.first.right(3) == "sys")
+			isSysThemes_.push_back(true);
+		else
+			isSysThemes_.push_back(false);
 	}
 }
 
 
-bool PrefColors::isDefaultColor(int const row, std::pair<QString, QString> const & colors)
+void PrefColors::initializeThemeMenu()
+{
+	QAction* ac_export = new QAction(qt_("&Export..."), themesMenuPB);
+	QAction* ac_import = new QAction(qt_("&Import..."), themesMenuPB);
+	theme_menu_.addAction(ac_export);
+	theme_menu_.addAction(ac_import);
+	connect(ac_export, &QAction::triggered,
+	        this, &PrefColors::exportThemeInterface);
+	connect(ac_import, &QAction::triggered,
+	        this, &PrefColors::importThemeInterface);
+}
+
+
+void PrefColors::openThemeMenu()
+{
+	QPoint pos = mapToGlobal(QPoint(themesMenuPB->x() + themesMenuPB->width(),
+	                                themesMenuPB->y()));
+	theme_menu_.exec(pos);
+}
+
+
+bool PrefColors::isDefaultColor(int const row, ColorNamePair const & colors)
 {
 	return colors.first == getDefaultColorsByRow(row).first.name() &&
 	        colors.second == getDefaultColorsByRow(row).second.name();
 }
 
 
-std::pair<QColor, QColor> PrefColors::getDefaultColorsByRow(int const row)
+ColorPair PrefColors::getDefaultColorsByRow(int const row)
 {
 	ColorSet const defaultcolor;
 	std::pair<std::string, std::string> hex_names =
@@ -1589,27 +1686,27 @@ std::pair<QColor, QColor> PrefColors::getDefaultColorsByRow(int const row)
 
 void PrefColors::changeSysColor()
 {
-	for (int row = 0 ; row < lyxObjectsLW->count() ; ++row) {
+	for (int row = 0 ; row < colorsTW->rowCount() ; ++row) {
 		// skip colors that are taken from system palette
 		bool const disable = syscolorsCB->isChecked()
 			&& guiApp->colorCache().isSystem(lcolors_[size_t(row)]);
 
-		QListWidgetItem * const item = lyxObjectsLW->item(row);
-		Qt::ItemFlags const flags = item->flags();
+		for (int column = 0 ; column < colorsTW->columnCount() ; ++column) {
+			QTableWidgetItem * const item = colorsTW->item(row, column);
+			Qt::ItemFlags const flags = item->flags();
 
-		if (disable)
-			item->setFlags(flags & ~Qt::ItemIsEnabled);
-		else
-			item->setFlags(flags | Qt::ItemIsEnabled);
+			if (disable)
+				item->setFlags(flags & ~Qt::ItemIsEnabled);
+			else
+				item->setFlags(flags | Qt::ItemIsEnabled);
+		}
 	}
 }
 
 
 void PrefColors::changeLyxObjectsSelection()
 {
-	int currentRow = lyxObjectsLW->currentRow();
-	colorChangePB->setDisabled(currentRow < 0);
-	colorDarkChangePB->setDisabled(currentRow < 0);
+	int currentRow = colorsTW->currentRow();
 
 	if (currentRow < 0)
 		colorResetPB->setDisabled(true);
@@ -1625,36 +1722,12 @@ void PrefColors::changeAutoapply()
 }
 
 
-void PrefColors::moveCurrentItem(QListWidgetItem *cur, QListWidgetItem *prev)
-{
-	// change the color of the spacer in the selected row to the selected
-	// background color and reset the color of the previously selected row
-
-	if (cur == nullptr || prev == nullptr) return;
-	QIcon prev_icon =
-	        constructIcon({QColor(newcolors_[lyxObjectsLW->row(prev)].first),
-	                       QColor(newcolors_[lyxObjectsLW->row(prev)].second)},
-	                      false);
-	QIcon cur_icon =
-	        constructIcon({QColor(newcolors_[lyxObjectsLW->row(cur)].first),
-	                       QColor(newcolors_[lyxObjectsLW->row(cur)].second)},
-	                      true);
-
-	prev->setIcon(prev_icon);
-	cur->setIcon(cur_icon);
-
-	changed();
-}
-
-void PrefColors::pressCurrentItem(QListWidgetItem * item)
+void PrefColors::pressCurrentItem(QTableWidgetItem * item)
 {
 	if (item == nullptr) return;
-	QIcon cur_icon =
-	        constructIcon({QColor(newcolors_[lyxObjectsLW->row(item)].first),
-	                       QColor(newcolors_[lyxObjectsLW->row(item)].second)},
-	                      true);
-	item->setIcon(cur_icon);
 
+	setIcons(item->row(), {QColor(newcolors_[colorsTW->row(item)].first),
+	                       QColor(newcolors_[colorsTW->row(item)].second)});
 	changed();
 }
 
@@ -1662,7 +1735,7 @@ void PrefColors::pressCurrentItem(QListWidgetItem * item)
 void PrefColors::changeFocus()
 {
 	// palette is already changed to Inactive in ColorListWidget
-	pressCurrentItem(lyxObjectsLW->currentItem());
+	pressCurrentItem(colorsTW->currentItem());
 }
 
 
@@ -1670,14 +1743,14 @@ void PrefColors::searchColorItem(bool backward_direction)
 {
 	search_string_ = searchStringEdit->text();
 	items_found_ =
-	        lyxObjectsLW->findItems(search_string_, Qt::MatchContains);
+	        colorsTW->findItems(search_string_, Qt::MatchContains);
 	if (items_found_.empty())
 		return;
 	if (backward_direction)
 		it_ = --(items_found_.end());
 	else
 		it_ = items_found_.begin();
-	lyxObjectsLW->setCurrentItem(*it_);
+	colorsTW->setCurrentItem(*it_);
 }
 
 
@@ -1689,7 +1762,7 @@ void PrefColors::searchNextColorItem()
 	else {
 		if ((++it_) == items_found_.end())
 			it_ = items_found_.begin();
-		lyxObjectsLW->setCurrentItem(*it_);
+		colorsTW->setCurrentItem(*it_);
 	}
 }
 
@@ -1704,8 +1777,14 @@ void PrefColors::searchPreviousColorItem()
 			it_ = items_found_.end() - 1;
 		else
 			--it_;
-		lyxObjectsLW->setCurrentItem(*it_);
+		colorsTW->setCurrentItem(*it_);
 	}
+}
+
+
+ColorPair PrefColors::toqcolor(ColorNamePair colors)
+{
+	return {QColor(colors.first), QColor(colors.second)};
 }
 
 
@@ -4173,7 +4252,7 @@ void GuiPreferences::dispatchParams()
 }
 
 
-void GuiPreferences::setColor(ColorCode col, std::pair<QString, QString> const & hex)
+void GuiPreferences::setColor(ColorCode col, ColorNamePair const & hex)
 {
 	colors_.push_back(lcolor.getLyXName(col) + ' ' +
 	                  fromqstr(hex.first) + ' ' + fromqstr(hex.second));
@@ -4241,8 +4320,7 @@ QString GuiPreferences::browse(QString const & file,
 
 
 SetColor::SetColor(const int row, bool dark_mode, const QColor & new_color,
-                   QString old_color,
-                   std::vector<std::pair<QString, QString>> & new_color_list,
+                   QString old_color, ColorNamePairs & new_color_list,
                    const bool autoapply, PrefColors* color_module,
                    QUndoCommand* uc_parent)
     : PrefColors(color_module->form_), QUndoCommand(uc_parent),
@@ -4270,20 +4348,20 @@ void SetColor::undo()
 
 void SetColor::setColor(QColor color)
 {
+
 	if (dark_mode_)
 		newcolors_[size_t(row_)].second = color.name();
 	else
 		newcolors_[size_t(row_)].first = color.name();
-	QListWidgetItem * lwitem = lyxObjectsLW->item(row_);
-	lwitem->setIcon(
-	      updateIconColor(row_, color, dark_mode_, lwitem->isSelected()));
+	setIcon(row_, dark_mode_, color);
 
-	setDisabledResets();
+	// LYXERR0("New color at (" << row_ << ", " << dark_mode_ << ") is now " <<
+	//         color.name() << ": " << newcolors_[size_t(row_)].first <<
+	//         ", " << newcolors_[size_t(row_)].second);
+	parent_->changeFocus();
+
 	// emit signal
 	changed();
-	// somehow this is needed to update the icon of the color list widget
-	// need to be called from the layer of PrefColors?
-	parent_->changeFocus();
 
 	if (autoapply_) {
 		parent_->form_->setColor(lcolors_[row_], newcolors_[row_]);

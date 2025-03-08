@@ -20,6 +20,8 @@
 namespace lyx {
 
 class Color;
+typedef std::pair<QColor, QColor> ColorPair;
+
 
 /**
  * Cache from Color to QColor.
@@ -37,7 +39,7 @@ public:
 	QColor get(Color const & color, bool use_system_colors) const;
 
 	/// get the given color
-	std::pair<QColor, QColor> getAll(Color const & color, bool use_system_colors) const;
+	ColorPair getAll(Color const & color, bool use_system_colors) const;
 
 	/// is this color replaced when LyXRC::use_system_color is true?
 	bool isSystem(ColorCode color) const;
@@ -55,7 +57,7 @@ private:
 	///
 	void init();
 	///
-	std::pair<QColor, QColor> lcolors_[Color_ignore + 1];
+	ColorPair lcolors_[Color_ignore + 1];
 	///
 	bool initialized_;
 	///

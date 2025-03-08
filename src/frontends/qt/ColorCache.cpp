@@ -95,7 +95,7 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 
 
 /// get the given color
-std::pair<QColor, QColor> ColorCache::getAll(Color const & color, bool syscolors) const
+ColorPair ColorCache::getAll(Color const & color, bool syscolors) const
 {
 	if (!initialized_)
 		const_cast<ColorCache *>(this)->init();
@@ -116,16 +116,15 @@ std::pair<QColor, QColor> ColorCache::getAll(Color const & color, bool syscolors
 	if (color.mergeColor != Color_ignore) {
 		// FIXME: This would ideally be done in the Color class, but
 		// that means that we'd have to use the Qt code in the core.
-		std::pair<QColor, QColor> base_colors = getAll(color.baseColor, syscolors);
-		std::pair<QColor, QColor> merge_colors = getAll(color.mergeColor, syscolors);
-		return {QColor(
-		            (base_colors.first.toRgb().red() + merge_colors.first.toRgb().red()) / 2,
-		            (base_colors.first.toRgb().green() + merge_colors.first.toRgb().green()) / 2,
-		            (base_colors.first.toRgb().blue() + merge_colors.first.toRgb().blue()) / 2),
-		    QColor(
-		            (base_colors.first.toRgb().red() + merge_colors.first.toRgb().red()) / 2,
-		            (base_colors.first.toRgb().green() + merge_colors.first.toRgb().green()) / 2,
-		            (base_colors.first.toRgb().blue() + merge_colors.first.toRgb().blue()) / 2),
+		ColorPair base_colors = getAll(color.baseColor, syscolors);
+		ColorPair merge_colors = getAll(color.mergeColor, syscolors);
+		return {
+			QColor((base_colors.first.toRgb().red() + merge_colors.first.toRgb().red()) / 2,
+			       (base_colors.first.toRgb().green() + merge_colors.first.toRgb().green()) / 2,
+			       (base_colors.first.toRgb().blue() + merge_colors.first.toRgb().blue()) / 2),
+		    QColor((base_colors.second.toRgb().red() + merge_colors.second.toRgb().red()) / 2,
+		           (base_colors.second.toRgb().green() + merge_colors.second.toRgb().green()) / 2,
+		           (base_colors.second.toRgb().blue() + merge_colors.second.toRgb().blue()) / 2),
 		};
 	}
 	// used by branches

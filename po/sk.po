@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-08 16:02+0100\n"
-"PO-Revision-Date: 2025-03-08 16:27+0000\n"
+"POT-Creation-Date: 2025-03-11 14:58+0100\n"
+"PO-Revision-Date: 2025-03-11 14:20+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -694,10 +694,11 @@ msgstr "Dostupné &vetvy:"
 msgid "Remove the selected branch"
 msgstr "Zmazať vybranú vetvu"
 
-#: src/frontends/qt/ui/BranchesUi.ui:74 src/frontends/qt/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4821 src/Buffer.cpp:4834
+#: src/Buffer.cpp:4852 src/Buffer.cpp:4865 src/frontends/qt/ui/BranchesUi.ui:74
+#: src/frontends/qt/ui/ColorUi.ui:251 src/frontends/qt/ui/IndicesUi.ui:169
+#: src/frontends/qt/ui/PrefColorsUi.ui:184
 msgid "&Remove"
-msgstr "Ods&trániť"
+msgstr "Odstr&ániť"
 
 #: src/frontends/qt/ui/BranchesUi.ui:81
 msgid "Show undefined branches used in this document."
@@ -711,7 +712,7 @@ msgstr "N&edefinované vetvy"
 msgid "Toggle the selected branch"
 msgstr "Prepnúť vybranú vetvu"
 
-#: src/frontends/qt/ui/BranchesUi.ui:103
+#: src/frontends/qt/ui/BranchesUi.ui:106
 msgid "(&De)activate"
 msgstr "(&De)aktivovať"
 
@@ -720,10 +721,10 @@ msgid "Add a new branch to the list"
 msgstr "Pridajte novú vetvu do listiny"
 
 #: src/CutAndPaste.cpp:458 src/frontends/qt/ui/BranchesUi.ui:119
-#: src/frontends/qt/ui/CitationUi.ui:146 src/frontends/qt/ui/ColorUi.ui:483
-#: src/frontends/qt/ui/IndicesUi.ui:135
+#: src/frontends/qt/ui/CitationUi.ui:146 src/frontends/qt/ui/ColorUi.ui:318
+#: src/frontends/qt/ui/IndicesUi.ui:135 src/frontends/qt/ui/PrefColorsUi.ui:207
 msgid "&Add"
-msgstr "&Pridať"
+msgstr "Pr&idať"
 
 #: src/frontends/qt/ui/BranchesUi.ui:123
 msgid "Define or change background color"
@@ -1631,10 +1632,10 @@ msgstr "Dbať aj na veľkosť písmen"
 msgid "Case &sensitive"
 msgstr "Ro&zlíš veľké/malé"
 
+#: src/frontends/qt/FindAndReplace.cpp:719
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:205
-#: src/frontends/qt/FindAndReplace.cpp:716
 msgid "Find next occurrence (Enter, backwards: Shift+Enter)"
-msgstr "Nájdi ďalší výskyt (Enter, naspäť: Shift+Enter)"
+msgstr "Nájsť ďalší výskyt (Enter, naspäť: Shift+Enter)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:208
 #: src/frontends/qt/ui/SearchUi.ui:190 src/frontends/qt/FindAndReplace.cpp:715
@@ -3894,9 +3895,17 @@ msgstr "Okamžite použiť zmenenú tému farieb"
 msgid "Update &immediately"
 msgstr "O&kamžite použiť"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:302
+#: src/frontends/qt/ui/PrefColorsUi.ui:76
+msgid "&Undo"
+msgstr "Sp&äť"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:95
+msgid "Re&do"
+msgstr "Opä&ť"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:56
 msgid "Enter a color name to search"
-msgstr "Zadajte meno farby, ktorú chcete vyhľadať"
+msgstr "Zadajte časť názvu zafarbenej vložky na vyhľadávanie"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:308
 msgid "Search color"
@@ -3906,17 +3915,17 @@ msgstr "Hľadaná farba"
 msgid "Search backward"
 msgstr "Hľadať dozadu"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:75
-msgid "<-"
-msgstr "<-"
+#: src/frontends/qt/ui/PrefColorsUi.ui:283
+msgid "Pr&evious"
+msgstr "Pr&edošlí"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:343
 msgid "Search forward"
 msgstr "Hľadať dopredu"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:100
-msgid "->"
-msgstr "->"
+#: src/frontends/qt/ui/PrefColorsUi.ui:305
+msgid "&Next"
+msgstr "Ď&alší"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:142
 msgid "&Color Settings:"
@@ -3926,41 +3935,25 @@ msgstr "Nastavenie &farieb:"
 msgid "Remove a selected color theme"
 msgstr "Zmazať jednu vybranú tému farieb"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:240
-msgid "-"
-msgstr "-"
-
 #: src/frontends/qt/ui/PrefColorsUi.ui:250
 msgid "Other menus to handle themes"
 msgstr "Ďalšie ponuky na spracovanie tém"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:402
-msgid "Light"
-msgstr "Svetlý"
+#: src/frontends/qt/ui/PrefColorsUi.ui:197
+msgid "&More..."
+msgstr "&Viac…"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:429
+#: src/frontends/qt/GuiPrefs.cpp:1028
+msgid "Light"
+msgstr "Svetlá"
+
+#: src/frontends/qt/GuiPrefs.cpp:1028
 msgid "Dark"
-msgstr "Tmavý"
+msgstr "Tmavá"
 
 #: src/frontends/qt/GuiPrefs.cpp:1029
 msgid "Color name"
-msgstr "Názov farby"
-
-#: src/frontends/qt/GuiPrefs.cpp:1061
-msgid "Reset current light/dark colors to default"
-msgstr "Resetovať aktuálne svetlé/tmavé farby na predvolené"
-
-#: src/frontends/qt/GuiPrefs.cpp:1068
-msgid "Reset all colors to default"
-msgstr "Návrat všetky farby na štandard"
-
-#: src/frontends/qt/GuiPrefs.cpp:1075
-msgid "Find Previous"
-msgstr "Hľadať predošle"
-
-#: src/frontends/qt/GuiPrefs.cpp:1082
-msgid "Find Next"
-msgstr "Hľadať ďalšie"
+msgstr "Názov zafarbenej vložky"
 
 #: src/frontends/qt/GuiPrefs.cpp:1368
 msgid "Export a color theme"
@@ -3979,29 +3972,21 @@ msgstr ""
 msgid "&Use system colors"
 msgstr "Použiť farby &systému"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:104
-msgid "<="
-msgstr "<="
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:123
-msgid "=>"
-msgstr "=>"
-
 #: src/frontends/qt/ui/PrefColorsUi.ui:374
 msgid "Revert selected to theme colors"
 msgstr "Vrátiť vybrané na farby témy"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:377
-msgid "R"
-msgstr "V"
+#: src/frontends/qt/ui/PrefColorsUi.ui:127
+msgid "Re&set"
+msgstr "O&bnoviť"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:390
 msgid "Reset all colors to theme"
 msgstr "Vrátiť všetko na farby témy"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:393
-msgid "A"
-msgstr "Š"
+#: src/frontends/qt/ui/PrefColorsUi.ui:143
+msgid "Reset A&ll"
+msgstr "Obnoviť v&šetko"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -5603,7 +5588,7 @@ msgstr "< &Nahradiť"
 
 #: src/frontends/qt/ui/SearchUi.ui:184
 msgid "Find next occurrence (Enter)"
-msgstr "Nájdi ďalší výskyt (Enter)"
+msgstr "Nájsť ďalší výskyt (Enter)"
 
 #: src/frontends/qt/ui/SearchUi.ui:228
 msgid "Treat uppercase/lowercase writing as distinct"
@@ -5715,7 +5700,7 @@ msgstr "Aktuálne slovo"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:77
 msgid "Skip this match and go to next misspelling"
-msgstr "Preskoč túto zhodu a choď k ďalšej chybe"
+msgstr "Preskočiť túto zhodu a ísť k ďalšej chybe"
 
 #: src/frontends/qt/ui/SpellcheckerUi.ui:80
 msgid "S&kip"
@@ -6356,10 +6341,6 @@ msgstr "…"
 #: src/frontends/qt/ui/PrefColorsUi.ui:260
 msgid "Add the current color set as a theme"
 msgstr "Pridajte aktuálnu sadu farieb ako tému"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:263
-msgid "+"
-msgstr "+"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:302
 msgid "&Themes:"
@@ -38107,30 +38088,30 @@ msgstr "Nemohol som zavrieť LyX, lebo LyX ešte spracováva dokumenty."
 msgid "%1$d Word"
 msgstr "%1$d slovo"
 
-#: src/frontends/qt/GuiView.cpp:1484
+#: src/frontends/qt/GuiView.cpp:1494
 #, c-format
 msgid "%1$d Words"
-msgstr "%1$d (Počet slov)"
+msgstr "%1$d slov"
 
 #: src/frontends/qt/GuiView.cpp:1489
 #, c-format
 msgid "%1$d Character"
 msgstr "%1$d znak"
 
-#: src/frontends/qt/GuiView.cpp:1491
+#: src/frontends/qt/GuiView.cpp:1502
 #, c-format
 msgid "%1$d Characters"
-msgstr "%1$d (Počet znakov)"
+msgstr "%1$d znakov"
 
 #: src/frontends/qt/GuiView.cpp:1496
 #, c-format
 msgid "%1$d Character (no Blanks)"
 msgstr "%1$d znak (bez medzier)"
 
-#: src/frontends/qt/GuiView.cpp:1498
+#: src/frontends/qt/GuiView.cpp:1509
 #, c-format
 msgid "%1$d Characters (no Blanks)"
-msgstr "%1$d (Počet znakov bez medzier)"
+msgstr "%1$d znakov (bez medzier)"
 
 #: src/frontends/qt/GuiView.cpp:1500
 msgid ", [[stats separator]]"
@@ -41547,6 +41528,24 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Reset current light/dark colors to default"
+#~ msgstr "Resetovať aktuálne svetlé/tmavé farby na predvolené"
+
+#~ msgid "Reset all colors to default"
+#~ msgstr "Návrat všetky farby na štandard"
+
+#~ msgid "Find Previous"
+#~ msgstr "Hľadať predošle"
+
+#~ msgid "Find Next"
+#~ msgstr "Hľadať ďalšie"
+
+#~ msgid "R"
+#~ msgstr "V"
+
+#~ msgid "A"
+#~ msgstr "Š"
+
 #~ msgid "Reset the selected color to its original value"
 #~ msgstr "Nastaviť vybranú farbu na pôvodnú hodnotu"
 
@@ -41612,9 +41611,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Ch&ange..."
 #~ msgstr "Vy&meniť…"
-
-#~ msgid "Re&set"
-#~ msgstr "O&bnoviť"
 
 #~ msgid "Chan&ge..."
 #~ msgstr "Vym&eniť…"
@@ -41761,7 +41757,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "C&elé slová"
 
 #~ msgid "Find next occurrence [Enter]"
-#~ msgstr "Nájdi ďalší výskyt [Enter]"
+#~ msgstr "Nájsť ďalší výskyt [Enter]"
 
 #~ msgid "S&ettings"
 #~ msgstr "Nas&tavenia"
@@ -44865,11 +44861,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "Choose one of the pre-arranged regular expressions."
 #~ msgstr "Vyberte jeden z pre-zostavených regulárnych výrazov."
 
-#~ msgid "&Next"
-#~ msgstr "Ďalší"
-
 #~ msgid "Find previous occurrence [Shift+Enter]"
-#~ msgstr "Nájdi predošlí výskyt [Shift+Enter]"
+#~ msgstr "Nájsť predošlí výskyt [Shift+Enter]"
 
 #~ msgid "&Previous"
 #~ msgstr "&Predošlí"
@@ -47171,9 +47164,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Export..."
 #~ msgstr "Exportovať…"
-
-#~ msgid "<"
-#~ msgstr "<"
 
 #~ msgid "Reset all colors to their original value"
 #~ msgstr "Vrátiť všetky farby na pôvodné hodnoty"

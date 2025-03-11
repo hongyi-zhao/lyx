@@ -66,9 +66,9 @@ public:
 	};
 
 	struct InputMethodState {
-		bool      enabled_;
-		bool      preediting_; // either in edit or completing mode
-		bool      edit_mode_;  // i.e. not completing mode
+		bool      enabled_ = true;
+		bool      preediting_ = false; // either in edit or completing mode
+		bool      edit_mode_ = true;  // i.e. not completing mode
 		QRectF    cursor_rect_;
 		QRectF    anchor_rect_;
 		docstring surrounding_text_;

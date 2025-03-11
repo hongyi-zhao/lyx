@@ -91,10 +91,8 @@ GuiInputMethod::GuiInputMethod(GuiWorkArea *parent)
 	: QObject(parent), d(new Private)
 {
 	d->work_area_ = parent;
-	d->im_state_.enabled_ = true;
 	d->buffer_view_ = &d->work_area_->bufferView();
 	d->cur_ = &d->buffer_view_->cursor();
-	d->im_state_.preediting_ = false;
 
 	LYXERR(Debug::DEBUG, "GuiInputMethod: Address of parent: " << parent);
 	LYXERR(Debug::DEBUG, "GuiInputMethod: Address of buffer_view_: " <<

@@ -70,10 +70,12 @@ FileName libFileSearch(QString const & dir, QString const & name,
 
 
 FileName imageLibFileSearch(QString & dir, QString const & name,
-				QString const & ext, search_mode mode)
+			    QString const & ext, search_mode mode,
+			    bool const dark_mode)
 {
 	string tmp = fromqstr(dir);
-	FileName fn = support::imageLibFileSearch(tmp, fromqstr(name), fromqstr(ext), mode);
+	FileName fn = support::imageLibFileSearch(tmp, fromqstr(name), fromqstr(ext),
+						  mode, dark_mode);
 	dir = toqstr(tmp);
 	return fn;
 }

@@ -141,7 +141,8 @@ i18nLibFileSearch(std::string const & dir,
 FileName const
 imageLibFileSearch(std::string & dir, std::string const & name,
 		   std::string const & ext = std::string(),
-		   search_mode mode = must_exist);
+		   search_mode mode = must_exist,
+		   bool dark_mode = false);
 
 /// How to quote a filename
 enum quote_style {

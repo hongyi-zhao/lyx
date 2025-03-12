@@ -248,9 +248,9 @@ MenuButtonBase::MenuButtonBase(GuiToolbar * bar, ToolbarItem const & item)
 	for (int i = 0; i < imagedirs.size(); ++i) {
 		QString imagedir = imagedirs.at(i);
 		FileName const fname = imageLibFileSearch(imagedir, name, "svgz,png",
-			theGuiApp()->imageSearchMode());
+			theGuiApp()->imageSearchMode(), theGuiApp()->isInDarkMode());
 		if (fname.exists()) {
-			setIcon(QIcon(getPixmap(imagedir, name, "svgz,png")));
+			setIcon(QIcon(toqstr(fname.absFileName())));
 			break;
 		}
 	}

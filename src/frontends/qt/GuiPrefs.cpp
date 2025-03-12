@@ -3081,6 +3081,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 	lastfilesSB->setMaximum(maxlastfiles);
 
 	iconSetCO->addItem(qt_("Default"), QString());
+	iconSetCO->addItem(qt_("Adwaita"), "adwaita");
 	iconSetCO->addItem(qt_("Classic"), "classic");
 	iconSetCO->addItem(qt_("Oxygen"), "oxygen");
 

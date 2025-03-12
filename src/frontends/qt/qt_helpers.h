@@ -118,7 +118,8 @@ support::FileName libFileSearch(QString const & dir, QString const & name,
 ///
 support::FileName imageLibFileSearch(QString & dir, QString const & name,
 				QString const & ext = QString(),
-				support::search_mode mode = support::must_exist);
+				support::search_mode mode = support::must_exist,
+				bool dark_mode = false);
 
 /** Build filelists of all available bst/cls/sty-files. Done through
 *  kpsewhich and an external script, saved in *Files.lst.

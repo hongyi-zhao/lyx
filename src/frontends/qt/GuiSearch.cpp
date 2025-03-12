@@ -266,7 +266,9 @@ void GuiSearchWidget::handleIndicators()
 				tip += "<li>" + qt_("Case sensitive search");
 				QPixmap spixmap = getPixmap("images/", "search-case-sensitive", "svgz,png");
 				// We render SVG directly for HiDPI scalability
-				FileName fname = imageLibFileSearch(imagedir, "search-case-sensitive", "svgz,png");
+				FileName fname = imageLibFileSearch(imagedir, "search-case-sensitive", "svgz,png",
+								    theGuiApp()->imageSearchMode(),
+								    theGuiApp()->isInDarkMode());
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
 					QSvgRenderer svgRenderer(fpath);
@@ -292,7 +294,9 @@ void GuiSearchWidget::handleIndicators()
 			if (selectionCB->isChecked()) {
 				tip += "<li>" + qt_("Search only in selection");
 				QPixmap spixmap = getPixmap("images/", "search-selection", "svgz,png");
-				FileName fname = imageLibFileSearch(imagedir, "search-selection", "svgz,png");
+				FileName fname = imageLibFileSearch(imagedir, "search-selection", "svgz,png",
+								    theGuiApp()->imageSearchMode(),
+								    theGuiApp()->isInDarkMode());
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
 					QSvgRenderer svgRenderer(fpath);
@@ -305,7 +309,9 @@ void GuiSearchWidget::handleIndicators()
 			if (instantSearchCB->isChecked()) {
 				tip += "<li>" + qt_("Search as you type");
 				QPixmap spixmap = getPixmap("images/", "search-instant", "svgz,png");
-				FileName fname = imageLibFileSearch(imagedir, "search-instant", "svgz,png");
+				FileName fname = imageLibFileSearch(imagedir, "search-instant", "svgz,png",
+								    theGuiApp()->imageSearchMode(),
+								    theGuiApp()->isInDarkMode());
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
 					QSvgRenderer svgRenderer(fpath);
@@ -318,7 +324,9 @@ void GuiSearchWidget::handleIndicators()
 			if (wrapCB->isChecked()) {
 				tip += "<li>" + qt_("Wrap search");
 				QPixmap spixmap = getPixmap("images/", "search-wrap", "svgz,png");
-				FileName fname = imageLibFileSearch(imagedir, "search-wrap", "svgz,png");
+				FileName fname = imageLibFileSearch(imagedir, "search-wrap", "svgz,png",
+								    theGuiApp()->imageSearchMode(),
+								    theGuiApp()->isInDarkMode());
 				QString fpath = toqstr(fname.absFileName());
 				if (!fpath.isEmpty()) {
 					QSvgRenderer svgRenderer(fpath);
@@ -334,7 +342,9 @@ void GuiSearchWidget::handleIndicators()
 		} else {
 			tip = qt_("Click here to change search options");
 			// We render SVG directly for HiDPI scalability
-			FileName fname = imageLibFileSearch(imagedir, "search-options", "svgz,png");
+			FileName fname = imageLibFileSearch(imagedir, "search-options", "svgz,png",
+							    theGuiApp()->imageSearchMode(),
+							    theGuiApp()->isInDarkMode());
 			QString fpath = toqstr(fname.absFileName());
 			if (!fpath.isEmpty()) {
 				QSvgRenderer svgRenderer(fpath);

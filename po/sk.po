@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-11 14:58+0100\n"
-"PO-Revision-Date: 2025-03-11 14:20+0000\n"
+"POT-Creation-Date: 2025-03-12 12:52+0100\n"
+"PO-Revision-Date: 2025-03-12 12:03+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3903,13 +3903,13 @@ msgstr "Sp&äť"
 msgid "Re&do"
 msgstr "Opä&ť"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:56
+#: src/frontends/qt/ui/PrefColorsUi.ui:264
 msgid "Enter a color name to search"
-msgstr "Zadajte časť názvu zafarbenej vložky na vyhľadávanie"
+msgstr "Zadajte časť názvu zafarbenej položky na vyhľadávanie"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:308
+#: src/frontends/qt/ui/PrefColorsUi.ui:270
 msgid "Search color"
-msgstr "Hľadaná farba"
+msgstr "Hľadaná položka"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:318
 msgid "Search backward"
@@ -37295,6 +37295,10 @@ msgstr ""
 #: src/frontends/qt/GuiPrefs.cpp:2488
 msgid "User Interface"
 msgstr "Užívateľské rozhranie"
+
+#: src/frontends/qt/GuiPrefs.cpp:3084
+msgid "Adwaita"
+msgstr "Adwaita"
 
 #: src/frontends/qt/GuiPrefs.cpp:2519
 msgid "Classic"

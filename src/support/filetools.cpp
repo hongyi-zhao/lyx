@@ -394,11 +394,16 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 
 
 FileName const imageLibFileSearch(string & dir, string const & name,
-		  string const & ext, search_mode mode)
+		  string const & ext, search_mode mode, bool const dark_mode)
 {
 	if (!lyx::lyxrc.icon_set.empty()) {
 		string const imagedir = addPath(dir, lyx::lyxrc.icon_set);
-		FileName const fn = libFileSearch(imagedir, name, ext, mode);
+		// In dark mode, try "darkmode" subdirectory first
+		string const darkimagedir = addPath(imagedir, "darkmode");
+		FileName fn = dark_mode ? libFileSearch(darkimagedir, name, ext, mode)
+					: libFileSearch(imagedir, name, ext, mode);
+		if (!fn.exists() && dark_mode)
+			fn = libFileSearch(imagedir, name, ext, mode);
 		if (fn.exists()) {
 			dir = imagedir;
 			return fn;

@@ -1337,12 +1337,16 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 	map<col_type, int> max_pwidth;
 	// collect max. variable width of column
 	map<col_type, int> max_width;
+	// record columns with align-special multicolum
+	map<col_type, bool> as_mr_col;
 
 	for(col_type c = 0; c < ncols(); ++c)
 		for(row_type r = 0; r < nrows(); ++r) {
 			idx_type const i = cellIndex(r, c);
 			if (getAlignment(i) == LYX_ALIGN_DECIMAL)
 				max_dwidth[c] = max(max_dwidth[c], cell_info[r][c].decimal_width);
+			if (!cellInfo(i).align_special.empty() && cellInfo(i).multicolumn)
+				as_mr_col[c] = true;
 			if (!getPWidth(i).zero())
 				max_pwidth[c] = max(max_pwidth[c], cell_info[r][c].width);
 			else if (!column_info[c].varwidth)
@@ -1399,6 +1403,10 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 				else if (getPWidth(i).zero() && vcolwidth > 0) {
 					if (tabularx && !column_info[c].varwidth)
 						new_width = max(new_width, cellInfo(i).width);
+					else if (tabularx && as_mr_col[c])
+						// Special case (#13158): we need to consider the width
+						// of the multicolumn as well
+						new_width = max(vcolwidth, max(new_width, column_info[c].width));
 					else if (tabularx)
 						new_width = vcolwidth;
 					else

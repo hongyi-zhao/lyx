@@ -2243,6 +2243,10 @@ dist_imagesadwaita_DATA1X = \
 	images/adwaita/view-split_vertical.svgz \
 	images/adwaita/window-close.svgz
 
+dist_imagesadwaita_DATA = \
+	images/adwaita/iconsize.png \
+	$(dist_imagesadwaita_DATA1X)
+
 imagesadwaitadarkmodedir = $(imagesdir)/adwaita/darkmode
 dist_imagesadwaitadark_DATA1X = \
 	images/adwaita/darkmode/all-changes-accept.svgz \
@@ -2464,9 +2468,7 @@ dist_imagesadwaitadark_DATA1X = \
 	images/adwaita/darkmode/view-split_vertical.svgz \
 	images/adwaita/darkmode/window-close.svgz
 
-dist_imagesadwaita_DATA = \
-	images/adwaita/iconsize.png \
-	$(dist_imagesadwaita_DATA1X) \
+dist_imagesadwaitadarkmode_DATA = \
 	$(dist_imagesadwaitadark_DATA1X)
 
 

@@ -59,7 +59,6 @@
 #include <QAbstractItemModel>
 #include <QCheckBox>
 #include <QFile>
-#include <QFileInfo>
 #include <QFontDatabase>
 #include <QHeaderView>
 #include <QInputDialog>

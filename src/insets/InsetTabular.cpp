@@ -1347,7 +1347,7 @@ bool Tabular::updateColumnWidths(MetricsInfo & mi)
 				max_dwidth[c] = max(max_dwidth[c], cell_info[r][c].decimal_width);
 			if (!cellInfo(i).align_special.empty() && cellInfo(i).multicolumn)
 				as_mr_col[c] = true;
-			if (!getPWidth(i).zero())
+			else if (!getPWidth(i).zero())
 				max_pwidth[c] = max(max_pwidth[c], cell_info[r][c].width);
 			else if (!column_info[c].varwidth)
 				max_width[c] = max(max_width[c], cell_info[r][c].width);

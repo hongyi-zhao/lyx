@@ -1026,6 +1026,7 @@ PrefColors::PrefColors(GuiPreferences * form)
 	colorsTW->setRowCount(lcolors_.size());
 	colorsTW->setHorizontalHeaderLabels({qt_("Light"), qt_("Dark"),
 	                                     qt_("Color name")});
+	colorsTW->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 	for (size_type row=0; row!=lcolors_.size(); ++row) {
 		colorsTW->setItem(row, 0, new QTableWidgetItem(icon, ""));
 		colorsTW->setItem(row, 1, new QTableWidgetItem(icon, ""));

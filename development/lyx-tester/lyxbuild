@@ -545,6 +545,11 @@ else
   # The following naive Bash append works well even if CPPFLAGS is empty,
   # i.e., ";-O3" is processed well.
   CPPFLAGS_FAST="${CPPFLAGS};-O3;-march=native"
+  #
+  # These flags aren't currently used, but might be useful for better
+  # debug builds.
+  # https://stackoverflow.com/questions/7031210/linux-perf-how-to-interpret-and-find-hotspots
+  CPPFLAGS_DEBUG="${CPPFLAGS};-ggdb;-fno-omit-frame-pointer"
 
   if [ "${always_enable_export_tests}" = "1" ]; then
     ctest_flags="ON"

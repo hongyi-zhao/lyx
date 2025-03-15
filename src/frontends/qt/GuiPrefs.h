@@ -278,7 +278,8 @@ private Q_SLOTS:
 	void setDisabledResets();
 	void openThemeMenu();
 	void saveThemeInterface();
-	void loadThemeInterface(QListWidgetItem* item);
+	void loadThemeInterface(QListWidgetItem* current_item,
+	                        QListWidgetItem* previous_item);
 	void removeTheme();
 	void exportThemeInterface();
 	void importThemeInterface();

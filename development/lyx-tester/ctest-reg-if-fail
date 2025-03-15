@@ -44,7 +44,9 @@ function add_suffix () {
 #               TODO: look into ^this when I have time.
 #               Jean-Pierre helped transition things to a new class (and file name) version.
 #
-ctest_exclude='(supported-languages_polyglossia_.*_systemF|(%28APA%29,_v._6|Astronomical).*(pdf|dvi|lyx22|lyx23)|BATCH_compare-test|BATCH_outline-beamer|BATCH_vcs-info)'
+# Springer_Nature_Journals: todo: just need to install dependencies.
+#
+ctest_exclude='(supported-languages_polyglossia_.*_systemF|(%28APA%29,_v._6|Astronomical).*(pdf|dvi|lyx22|lyx23)|BATCH_compare-test|BATCH_outline-beamer|BATCH_vcs-info|Springer_Nature_Journals)'
 # timeout of 10m.
 function ctest-reg-if-fail ()
 {

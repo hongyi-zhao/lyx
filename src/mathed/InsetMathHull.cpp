@@ -821,7 +821,12 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 				// with legacy preview and tightpage (#13120).
 				// So remove all preceding and trailing line breaks
 				// and re-add one at the end of the snippet
-				defs.insert(trim(macro_def.str(), "\n") + "\n");
+				// Convert possible DOS line endings to prevent ending
+				// up with stray "\r"s
+				defs.insert(trim(subst(macro_def.str(),
+						       from_ascii("\r\n"),
+						       from_ascii("\n")),
+						 "\n") + "\n");
 				asArray(data->definition(), ar);
 			}
 			usedMacros(ar, pos, macros, defs);

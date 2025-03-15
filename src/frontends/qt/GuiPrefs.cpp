@@ -1096,8 +1096,10 @@ PrefColors::PrefColors(GuiPreferences * form)
 	        this, SLOT(changeSysColor()));
 	connect(themesMenuPB, SIGNAL(clicked()),
 	        this, SLOT(openThemeMenu()));
-	connect(themesLW, SIGNAL(itemClicked(QListWidgetItem*)),
-	        this, SLOT(loadThemeInterface(QListWidgetItem*)));
+	connect(themesLW,
+	        SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
+	        this,
+	        SLOT(loadThemeInterface(QListWidgetItem*,QListWidgetItem*)));
 	connect(undoColorPB, SIGNAL(clicked()),
 	        undo_stack_, SLOT(undo()));
 }
@@ -1469,10 +1471,13 @@ void PrefColors::importThemeInterface()
 }
 
 
-void PrefColors::loadThemeInterface(QListWidgetItem* item)
+void PrefColors::loadThemeInterface(QListWidgetItem* current_item,
+                                    QListWidgetItem* previous_item)
 {
-	loadTheme(FileName(fromqstr(theme_fullpaths_[themesLW->row(item)])));
-	theme_filename_ = onlyFileName(theme_fullpaths_[themesLW->row(item)]);
+	Q_UNUSED(previous_item)
+
+	loadTheme(FileName(fromqstr(theme_fullpaths_[themesLW->row(current_item)])));
+	theme_filename_ = onlyFileName(theme_fullpaths_[themesLW->row(current_item)]);
 	theme_name_ = removeExtension(theme_filename_).replace('_', ' ');
 }
 

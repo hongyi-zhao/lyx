@@ -2045,6 +2045,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 	if (!language->required().empty())
 		features.require(language->required());
+
+	if (!custom_colors.empty())
+		features.require("color");
 }
 
 

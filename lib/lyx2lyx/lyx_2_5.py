@@ -38,7 +38,7 @@ from lyx2lyx_tools import (
 #    del_value, find_complete_lines, find_end_of, 
 #    find_re, find_token_backwards, find_token_exact,
 #    find_tokens,
-#    get_containing_layout, get_option_value,
+#    get_option_value,
 #    is_in_inset
 from parser_tools import (
     del_token,
@@ -48,6 +48,7 @@ from parser_tools import (
     find_substring,
     find_token,
     get_containing_inset,
+    get_containing_layout,
     get_bool_value,
     get_quoted_value,
     get_value,
@@ -2117,12 +2118,13 @@ def revert_colortbl(document):
         # Add ERT
         lay = get_containing_layout(document.body, i)
         if lay == False:
-            document.warning("Table has not layout!")
+            document.warning("Table has no layout!")
             i += 1
             continue
-        endlay = find_end_of_layout(document.body, lay)
-        if enday == False:
-            document.warning("Table has not endlayout!")
+        beglay = lay[3]
+        endlay = find_end_of_layout(document.body, beglay)
+        if endlay == False:
+            document.warning("Table has no endlayout!")
             i += 1
             continue      
         # get LaTeX color name
@@ -2132,8 +2134,8 @@ def revert_colortbl(document):
                bcval_tex = color.split(":")[1]
         begcmd = put_cmd_in_ert("\\arrayrulecolor{%s}" % bcval_tex)
         endcmd = put_cmd_in_ert("\\arrayrulecolor{%s}" % bordercolor_tex)
-        document.body[endlay+1 : endlay+1] = endcmd
-        document.body[lay : lay] = begcmd
+        document.body[endlay : endlay] = endcmd
+        document.body[beglay : beglay] = begcmd
         colortbl = True
 
     # rowcolors
@@ -2229,8 +2231,9 @@ def revert_colortbl(document):
             document.warning("Table has not layout!")
             i += 1
             continue
-        endlay = find_end_of_layout(document.body, lay)
-        if enday == False:
+        beglay = lay[3]
+        endlay = find_end_of_layout(document.body, beglay)
+        if endlay == False:
             document.warning("Table has not endlayout!")
             i += 1
             continue      
@@ -2242,10 +2245,14 @@ def revert_colortbl(document):
                orc_tex = color.split(":")[1]
             elif erc== color.lower():
                erc_tex = color.split(":")[1]
+        if orc_tex == "default":
+            orc_tex = ""
+        if erc_tex == "default":
+            erc_tex = ""
         begcmd = put_cmd_in_ert("\\rowcolors{%s}{%s}{%s}" % (startarc, orc_tex, erc_tex))
         endcmd = put_cmd_in_ert("\\rowcolors{%s}{%s}{%s}" % (galtrowstart, goddrowcolor_tex, gevenrowcolor_tex))
-        document.body[endlay+1 : endlay+1] = endcmd
-        document.body[lay : lay] = begcmd
+        document.body[endlay : endlay] = endcmd
+        document.body[beglay : beglay] = begcmd
         colortbl = True
 
     # Next, we handle cellcolors in table
@@ -2469,7 +2476,6 @@ def revert_colortbl(document):
 
     # To conclude, the preamble stuff
     if xcolor == True:
-        document.warning("xcolor")
         opts = []
         if x11 == True:
             opts.append("x11names")

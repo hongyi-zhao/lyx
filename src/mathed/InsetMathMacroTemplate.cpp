@@ -46,6 +46,7 @@
 #include "support/docstream.h"
 #include "support/Lexer.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <set>
 #include <sstream>
@@ -1316,9 +1317,7 @@ bool InsetMathMacroTemplate::validName() const
 	// valid characters?
 	if (n.size() > 1) {
 		for (char_type c : n) {
-			if (!(c >= 'a' && c <= 'z')
-			    && !(c >= 'A' && c <= 'Z')
-			    && c != '*')
+			if (!isAlphaASCII(c) && c != '*')
 				return false;
 		}
 	}
@@ -1343,8 +1342,7 @@ bool InsetMathMacroTemplate::fixNameAndCheckIfValid()
 		if (cinset) {
 			// valid character in [a-zA-Z]?
 			char_type c = cinset->getChar();
-			if ((c >= 'a' && c <= 'z')
-			    || (c >= 'A' && c <= 'Z')) {
+			if (isAlphaASCII(c)) {
 				++i;
 				continue;
 			}

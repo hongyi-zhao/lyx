@@ -12,34 +12,35 @@
 #ifndef LYX_COLORSCOMBO_H
 #define LYX_COLORSCOMBO_H
 
-#include "CategorizedCombo.h"
 #include "support/qstring_helpers.h"
 
 #include <QComboBox>
+#include <QStandardItemModel>
 
 
 namespace lyx {
 namespace frontend {
 
-class CCItemDelegate;
+class ColItemDelegate;
 
 /**
  * A combo box with categorization
  */
-class ColorsCombo : public CategorizedCombo
+class ColorsCombo : public QComboBox
 {
 	Q_OBJECT
 public:
 	ColorsCombo(QWidget * parent);
 	~ColorsCombo();
 
+	/// select an item in the combobox. Returns false if item does not exist
+	bool set(QString const & cc, bool const report_missing = true);
+	/// Reset the combobox filter.
+	void resetFilter();
 	/// Update combobox.
 	void updateCombo();
-	/// Add item to combo with optional color icon
-	void addItemSort(QString const & item, QString const & guiname,
-			 QString const & category, QString color = QString());
-	/// Set BufferParams to access custom colors
-	void setCustomColors(std::map<std::string, std::string> const & custom_colors);
+	///
+	QString getData(int row) const;
 	/// Add "ignore" color entry?
 	void hasIgnore(bool const b) { has_ignore_ = b; }
 	/// Add "inherit" color entry?
@@ -47,17 +48,28 @@ public:
 	/// Add dedicated "none" color entry if default_value_ != "none"
 	void hasNone(bool const b) { has_none_ = b; }
 	/// Flag a color as default. This will also omit the "none" entry
-	void setDefaultColor(std::string const & col) { default_color_ = toqstr(col); }
+	void setDefaultColor(std::string const & col);
 	/// Set the value of the default entry. Preset is "none"
 	void setDefaultValue(std::string const & val) { default_value_ = toqstr(val); }
+	///
+	bool isDefaultColor(QString const & guiname);
+	///
+	void showPopup() override;
+
+	///
+	bool eventFilter(QObject * o, QEvent * e) override;
+	///
+	QString const & filter() const;
+	///
+	QStandardItemModel * model();
+	///
+	void setLeftMargin(int const);
+
+private Q_SLOTS:
+	///
+	void modelChanged();
 
 private:
-	///
-	void setColorIcon(int const i, QString const color);
-	///
-	void fillComboColor();
-	///
-	std::map<std::string, std::string> custom_colors_;
 	///
 	bool has_ignore_;
 	///
@@ -68,6 +80,20 @@ private:
 	QString default_color_;
 	///
 	QString default_value_;
+	///
+	bool need_default_color_;
+	///
+	friend class ColItemDelegate;
+	///
+	struct Private;
+	///
+	Private * const d;
+	///
+	int lastCurrentIndex_;
+	///
+	int left_margin_ = -1;
+	///
+	QString last_item_;
 };
 
 

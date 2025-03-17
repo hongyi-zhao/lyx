@@ -1163,6 +1163,7 @@ string const LaTeXFeatures::getColorOptions() const
 	// for more info see Bufferparams.cpp
 
 	// [x]color.sty
+	vector<string> models;
 	string clashdefs;
 	if (isRequired("xcolor:svgnames")) {
 		// Handle clashing x11colors
@@ -1171,10 +1172,11 @@ string const LaTeXFeatures::getColorOptions() const
 				string const nlatex = "DVIPS" + theLaTeXColors().getLaTeXColor(cc.first).latex();
 				lcolor.setLaTeXName(cc.first, nlatex);
 				clashdefs += "\\DefineNamedColor{named}{" + nlatex + "}{cmyk}{" + cc.second + "}\n";
+				if (runparams_.flavor == Flavor::LaTeX || runparams_.flavor == Flavor::DviLuaTeX)
+					models.push_back("prologue");
 			}
 		}
 	}
-	vector<string> models;
 	if (isRequired("xcolor:dvipsnames"))
 		models.push_back("dvipsnames");
 	if (isRequired("xcolor:svgnames"))
@@ -1183,6 +1185,8 @@ string const LaTeXFeatures::getColorOptions() const
 		models.push_back("x11names");
 	if (isRequired("xcolor:table"))
 		models.push_back("table");
+	// remove duplicate entries
+	models.erase(unique(models.begin(), models.end()), models.end());
 	if ((mustProvide("color") && !isRequired("xcolor") && !isProvided("xcolor"))
 	    || mustProvide("xcolor")) {
 		string const package =

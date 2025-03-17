@@ -201,8 +201,6 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	fillCombo(langCO, language);
 	colorCO->hasIgnore(true);
 	colorCO->hasInherit(true);
-	colorCO->setCustomColors(buffer().masterParams().custom_colors);
-	custom_colors_cache_ = buffer().masterParams().custom_colors;
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelAutoReadOnlyPolicy);
 	bc().setOK(buttonBox->button(QDialogButtonBox::Ok));
@@ -484,12 +482,6 @@ void GuiCharacter::updateContents()
 	// If we use the buffer language, display "Default"
 	if (font_.language() == buffer().params().language)
 		font_.setLanguage(reset_language);
-
-	// Update custom colors if needed
-	if (custom_colors_cache_ != buffer().masterParams().custom_colors) {
-		colorCO->setCustomColors(buffer().masterParams().custom_colors);
-		custom_colors_cache_ = buffer().masterParams().custom_colors;
-	}
 
 	paramsToDialog(font_);
 

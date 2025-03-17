@@ -109,8 +109,6 @@ private:
 	bool noun_;
 	///
 	bool nospellcheck_;
-	///
-	std::map<std::string, std::string> custom_colors_cache_;
 
 	///
 	QAction * resetdefault_ = new QAction(this);

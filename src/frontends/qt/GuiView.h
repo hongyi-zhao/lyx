@@ -22,6 +22,7 @@
 #include <QMenu>
 #include <QSvgWidget>
 
+class QStandardItemModel;
 class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
@@ -190,6 +191,16 @@ public:
 	///
 	TocModels & tocModels();
 
+	///
+	void addColorItem(QString const & item, QString const & guiname,
+			  QString const & category = QString(),
+			  QString const color = QString(),
+			  bool custom = false, int row = -1) const;
+	///
+	QStandardItemModel * viewColorsModel();
+	///
+	void updateColorsModel() const;
+
 	/// called on timeout
 	void autoSave();
 
@@ -245,6 +256,8 @@ Q_SIGNALS:
 	void changeTrackingToggled(bool);
 	///
 	void dockWidgetVisibilityChanged();
+	///
+	void colorsModelChanged() const;
 
 public Q_SLOTS:
 	///
@@ -575,6 +588,9 @@ private:
 
 	// initial zoom for pinch gesture
 	int initialZoom_;
+
+	///
+	QStandardItemModel * colors_model_;
 };
 
 

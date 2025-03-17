@@ -913,14 +913,6 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	// Copy Tabular of current inset.
 	Tabular const & tabular = itab->tabular;
 
-	custom_colors_cache_ = itab->buffer().masterParams().custom_colors;
-	borderColorCO->setCustomColors(custom_colors_cache_);
-	cellColorCO->setCustomColors(custom_colors_cache_);
-	columnColorCO->setCustomColors(custom_colors_cache_);
-	rowColorCO->setCustomColors(custom_colors_cache_);
-	evenRowColorCO->setCustomColors(custom_colors_cache_);
-	oddRowColorCO->setCustomColors(custom_colors_cache_);
-
 	BufferView const * bv = guiApp->currentView()->currentBufferView();
 	size_t const cell = bv->cursor().idx();
 

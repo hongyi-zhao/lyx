@@ -13,7 +13,6 @@
 #ifndef GUIBOX_H
 #define GUIBOX_H
 
-#include "ColorCode.h"
 #include "InsetParamsWidget.h"
 #include "ui_BoxUi.h"
 
@@ -58,8 +57,6 @@ private:
 	QStringList ids_spec_;
 	///
 	QStringList gui_names_spec_;
-	///
-	std::map<std::string, std::string> custom_colors_cache_;
 };
 
 } // namespace frontend

@@ -1377,14 +1377,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(alterCustomColor()));
 	connect(colorModule->customColorsTW, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
 		this, SLOT(toggleCustomColor(QTreeWidgetItem *, int)));
-	colorModule->textColorCO->setCustomColors(buffer().masterParams().custom_colors);
-	colorModule->pageColorCO->setCustomColors(buffer().masterParams().custom_colors);
-	colorModule->noteColorCO->setCustomColors(buffer().masterParams().custom_colors);
-	colorModule->shadedColorCO->setCustomColors(buffer().masterParams().custom_colors);
-	colorModule->oddRowColorCO->setCustomColors(buffer().masterParams().custom_colors);
-	colorModule->evenRowColorCO->setCustomColors(buffer().masterParams().custom_colors);
-	colorModule->borderColorCO->setCustomColors(buffer().masterParams().custom_colors);
-	colorModule->noteColorCO->setDefaultColor("lightgrey");
+	colorModule->noteColorCO->setDefaultColor("lightgray");
 	colorModule->shadedColorCO->setDefaultColor("red");
 	colorModule->oddRowColorCO->setDefaultValue("default");
 	colorModule->evenRowColorCO->setDefaultValue("default");
@@ -5336,6 +5329,10 @@ void GuiDocument::dispatchParams()
 				table->tabular.updateIndexes();
 		}
 	}
+
+	// and the custom colors
+	lyxview().updateColorsModel();
+	
 	// FIXME LFUN
 	// If we used an LFUN, we would not need these two lines:
 	BufferView * bv = const_cast<BufferView *>(bufferview());
@@ -5594,14 +5591,6 @@ void GuiDocument::updateCustomColors()
 		ccs[fromqstr(cname)] = fromqstr(it->second);
 	}
 	colorModule->customColorsTW->resizeColumnToContents(0);
-
-	colorModule->textColorCO->setCustomColors(ccs);
-	colorModule->noteColorCO->setCustomColors(ccs);
-	colorModule->pageColorCO->setCustomColors(ccs);
-	colorModule->shadedColorCO->setCustomColors(ccs);
-	colorModule->oddRowColorCO->setCustomColors(ccs);
-	colorModule->evenRowColorCO->setCustomColors(ccs);
-	colorModule->borderColorCO->setCustomColors(ccs);
 
 	change_adaptor();
 }

@@ -223,9 +223,6 @@ void GuiBox::paramsToDialog(Inset const * inset)
 {
 	InsetBox const * box = static_cast<InsetBox const *>(inset);
 	InsetBoxParams const & params = box->params();
-	custom_colors_cache_ = inset->buffer().masterParams().custom_colors;
-	frameColorCO->setCustomColors(custom_colors_cache_);
-	backgroundColorCO->setCustomColors(custom_colors_cache_);
 	QString type = toqstr(params.type);
 	if (type == "Framed") {
 		pagebreakCB->setChecked(true);

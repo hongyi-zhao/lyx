@@ -108,6 +108,7 @@
 #include <QShowEvent>
 #include <QSlider>
 #include <QSplitter>
+#include <QStandardItemModel>
 #include <QStackedWidget>
 #include <QStatusBar>
 #include <QSvgRenderer>
@@ -569,7 +570,8 @@ GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
 	  command_execute_(false), minibuffer_focus_(false), word_count_enabled_(true),
 	  char_count_enabled_(true),  char_nb_count_enabled_(false),
-	  toolbarsMovable_(false), devel_mode_(false)
+	  toolbarsMovable_(false), devel_mode_(false),
+	  colors_model_(new QStandardItemModel(0, 4, this))
 {
 	connect(this, SIGNAL(bufferViewChanged()),
 	        this, SLOT(onBufferViewChanged()));
@@ -1211,6 +1213,117 @@ TocModels & GuiView::tocModels()
 }
 
 
+void GuiView::addColorItem(QString const & item, QString const & guiname,
+			   QString const & category, QString const color,
+			   bool const custom, int const r) const
+{
+	QList<QStandardItem *> row;
+	QStandardItem * gui = new QStandardItem(guiname);
+	// add color icon if applicable
+	if (!color.isEmpty()) {
+		QPixmap pixmap(32, 20);
+		QColor col(color);
+		pixmap.fill(col);
+		QPainter painter(&pixmap);
+		QRect pixmapRect = QRect(0, 0, 31, 19);
+		painter.drawPixmap(pixmapRect.x(), pixmapRect.y(), pixmap);
+		painter.drawRect(pixmapRect);
+		gui->setIcon(QIcon(pixmap));
+	}
+	row.append(gui);
+	row.append(new QStandardItem(item));
+	row.append(new QStandardItem(category));
+	row.append(new QStandardItem(custom ? QString("custom") : QString()));
+	if (!color.isEmpty())
+		row.append(new QStandardItem(color));
+
+	// specified row
+	if (r != -1) {
+		colors_model_->insertRow(r, row);
+		return;
+	}
+
+	int const end = colors_model_->rowCount();
+	// first entry
+	if (end == 0) {
+		colors_model_->appendRow(row);
+		return;
+	}
+
+	// find category
+	int i = 0;
+	// sort categories alphabetically
+	while (i < end && colors_model_->item(i, 2)->text() != category)
+		++i;
+
+	// jump to the end of the category group to sort in order
+	// specified in input
+	while (i < end && colors_model_->item(i, 2)->text() == category)
+		++i;
+
+	colors_model_->insertRow(i, row);
+}
+
+
+QStandardItemModel * GuiView::viewColorsModel()
+{
+	if (colors_model_->rowCount() > 0)
+		return colors_model_;
+
+	// at first add the general values as required
+	addColorItem("ignore", qt_("No change"));
+	addColorItem("default", qt_("Default"));
+	addColorItem("none", qt_("None[[color]]"));
+	addColorItem("inherit", qt_("(Without)[[color]]"));
+	// then custom colors
+	if (currentBufferView()) {
+		for (auto const & lc : currentBufferView()->buffer().masterParams().custom_colors) {
+			addColorItem(toqstr(lc.first),
+				     toqstr(lc.first),
+				     qt_("Custom Colors"),
+				     toqstr(lc.second),
+				     true);
+		}
+	}
+	// finally the latex colors
+	for (auto const & lc : theLaTeXColors().getLaTeXColors()) {
+		addColorItem(toqstr(lc.first),
+			     toqstr(translateIfPossible(lc.second.guiname())),
+			     toqstr(translateIfPossible(lc.second.category())),
+			     toqstr(lc.second.hexname()));
+	}
+
+	return colors_model_;
+}
+
+
+void GuiView::updateColorsModel() const
+{
+	bool changed = false;
+	// remove custom colors
+	QList<QStandardItem *> cis = colors_model_->findItems("custom", Qt::MatchExactly, 3);
+	for (qsizetype i = 0; i < cis.size(); ++i) {
+		colors_model_->removeRow(cis.at(i)->row());
+		changed = true;
+	}
+	// and add anew
+	if (currentBufferView()) {
+		int r = 4;
+		for (auto const & lc : currentBufferView()->buffer().masterParams().custom_colors) {
+			addColorItem(toqstr(lc.first),
+				     toqstr(lc.first),
+				     qt_("Custom Colors"),
+				     toqstr(lc.second),
+				     true, r);
+			++r;
+			changed = true;
+		}
+	}
+	if (changed)
+		Q_EMIT colorsModelChanged();
+}
+
+
 void GuiView::setFocus()
 {
 	LYXERR(Debug::DEBUG, "GuiView::setFocus()" << this);
@@ -1600,6 +1713,8 @@ void GuiView::onBufferViewChanged()
 	zoom_out_->setEnabled(currentBufferView()
 			      && zoom_slider_->value() > zoom_slider_->minimum());
 	d.stats_update_trigger_ = true;
+	if (!closing_)
+		updateColorsModel();
 }
 
 

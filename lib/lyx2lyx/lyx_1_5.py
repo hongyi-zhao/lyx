@@ -426,7 +426,7 @@ def revert_unicode_line(document, i, insets, spec_chars, replacement_character="
     for character in line:
         try:
             # Try to write the character
-            dummy = character.encode(document.encoding)
+            _ = character.encode(document.encoding)
             mod_line += character
             last_char = character
         except:
@@ -504,7 +504,7 @@ def revert_unicode(document):
         # Try to write the line
         try:
             # If all goes well the line is written here
-            dummy = line.encode(document.encoding)
+            _ = line.encode(document.encoding)
             i += 1
         except:
             # Error, some character(s) in the line need to be replaced
@@ -1388,7 +1388,7 @@ def revert_accent(document):
             ):
                 accent = document.body[i][j]
                 try:
-                    dummy = accent.encode(encoding_stack[-1])
+                    _ = accent.encode(encoding_stack[-1])
                 except UnicodeEncodeError:
                     # Insert the rest of the line as new line
                     if j < len(document.body[i]) - 1:
@@ -1407,7 +1407,7 @@ def revert_accent(document):
                     accented_char = inverse_accented_map[accented_char]
                 accent = document.body[i][j]
                 try:
-                    dummy = normalize("NFC", accented_char + accent).encode(encoding_stack[-1])
+                    _ = normalize("NFC", accented_char + accent).encode(encoding_stack[-1])
                 except UnicodeEncodeError:
                     # Insert the rest of the line as new line
                     if j < len(document.body[i]) - 1:

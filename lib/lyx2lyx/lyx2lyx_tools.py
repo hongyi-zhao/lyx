@@ -583,7 +583,7 @@ def hex2ratio(s):
     "Converts an RRGGBB-type hexadecimal string to a float in [0.0,1.0]"
     try:
         val = int(s, 16)
-    except:
+    except ValueError:
         val = 0
     if val != 0:
         val += 1

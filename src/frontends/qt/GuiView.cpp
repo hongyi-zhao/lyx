@@ -1302,7 +1302,7 @@ void GuiView::updateColorsModel() const
 	bool changed = false;
 	// remove custom colors
 	QList<QStandardItem *> cis = colors_model_->findItems("custom", Qt::MatchExactly, 3);
-	for (qsizetype i = 0; i < cis.size(); ++i) {
+	for (int i = 0; i < cis.size(); ++i) {
 		colors_model_->removeRow(cis.at(i)->row());
 		changed = true;
 	}

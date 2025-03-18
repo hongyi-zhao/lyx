@@ -6,6 +6,36 @@
 # the function switches to should be a no-op (with a diagnostic
 # message)
 
+
+
+# where to archive the TL version
+_polyglossia_dev_d="/home/$(logname)/polyglossia"
+
+
+_tl_stable_bu_d="/home/$(logname)/tl-stable-binaries"
+_tl_texbin_d="/opt/texbin/"
+
+
+# these functions are basically used as constants, but implemented as functions
+# to avoid expensive calculation every time a bash session is started.
+#
+function _poly-tl-d ()
+{
+  # location of TL version
+  /opt/texbin/kpsewhich polyglossia.sty | xargs dirname
+}
+#
+#
+function _poly-tl-bu-d ()
+{
+  # e.g., "TL25_2025-03-16"
+  _tl_dirname="$( basename "$( dirname "$( kpsewhich -var-value TEXMFDIST )")")"
+  # this is the dir outside of the TL tree where we store the TL polyglossia
+  # dir when we replace it with a symlink to the dev dir.
+  echo "/home/$(logname)/polyglossia_tl/${_tl_dirname}"
+}
+
+
 function switch-polyglossia-to-dev ()
 {
 
@@ -19,22 +49,23 @@ function switch-polyglossia-to-dev ()
   #       repo are different so we are notified when we need to update them.
 
 
-  # where to archive the TL version
-  polyglossia_dev_d="/home/$(logname)/polyglossia"
+  _polyglossia_tl_d="$(_poly-tl-d)"
+  _polyglossia_tl_bu_d="$( _poly-tl-bu-d )"
 
-  # location of TL version
-  polyglossia_tl_f="$(/opt/texbin/kpsewhich polyglossia.sty)"
-  polyglossia_tl_d="$(dirname "${polyglossia_tl_f}")"
   # check whether link or not link to see whether current is tl or dev.
-  if [ -L "${polyglossia_tl_d}" ]; then
+  if [ -L "${_polyglossia_tl_d}" ]; then
     echo "Link exists, so you are already using polyglossia-dev."
     return 0
   else
-    # overwrite polyglossia_tl since newer stable version
-    sudo mv "${polyglossia_tl_d}" "/home/$(logname)/polyglossia_tl"
-    # Use a link to poly-dev. That is, do not copy the directory. That way, we
-    # can just do a git pull.
-    sudo ln -s "${polyglossia_dev_d}/tex" "${polyglossia_tl_d}"
+
+    if [ -e "${_polyglossia_tl_bu_d}" ]; then
+      echo "ERROR: The polyglossia backup dir already exists: ${_polyglossia_tl_bu_d}" >&2
+      return 1
+    fi
+    sudo mv "${_polyglossia_tl_d}" "${_polyglossia_tl_bu_d}"
+    # We use a link to poly-dev. That is, we do not copy the directory. That
+    # way, we can just do a git pull.
+    sudo ln -s "${_polyglossia_dev_d}/tex" "${_polyglossia_tl_d}"
     # we need to check for possibly new/removed files
     sudo /opt/texbin/mktexlsr
 
@@ -45,12 +76,12 @@ function switch-polyglossia-to-dev ()
 
 function switch-polyglossia-to-stable ()
 {
-  polyglossia_stable_d="/home/$(logname)/polyglossia_tl"
-  polyglossia_tl_f="$(/opt/texbin/kpsewhich polyglossia.sty)"
-  polyglossia_tl_d="$(dirname "${polyglossia_tl_f}")"
-  if [ -L "${polyglossia_tl_d}" ]; then
-    sudo rm "${polyglossia_tl_d}"
-    sudo mv "${polyglossia_stable_d}" "${polyglossia_tl_d}"
+  _polyglossia_tl_d="$(_poly-tl-d)"
+  _polyglossia_tl_bu_d="$( _poly-tl-bu-d )"
+
+  if [ -L "${_polyglossia_tl_d}" ]; then
+    sudo rm "${_polyglossia_tl_d}"
+    sudo mv "${_polyglossia_tl_bu_d}" "${_polyglossia_tl_d}"
     sudo /opt/texbin/mktexlsr
 
     \sudo -k
@@ -65,10 +96,9 @@ function switch-polyglossia-to-stable ()
 # in a script that updates the TeX Live installation.
 function polyglossia-is-stable ()
 {
-  polyglossia_stable_d="/home/$(logname)/polyglossia_tl"
-  polyglossia_tl_f="$(/opt/texbin/kpsewhich polyglossia.sty)"
-  polyglossia_tl_d="$(dirname "${polyglossia_tl_f}")"
-  if [ -L "${polyglossia_tl_d}" ]; then
+  _polyglossia_tl_d="$(_poly-tl-d)"
+
+  if [ -L "${_polyglossia_tl_d}" ]; then
     # 0 = no, not stable
     echo "0"
   else
@@ -79,33 +109,31 @@ function polyglossia-is-stable ()
 }
 
 
-tl_stable_bu_d="/home/$(logname)/tl-stable-binaries"
-tl_texbin_d="/opt/texbin/"
 function switch-latex-to-tl-dev ()
 {
-  if [ ! -e "${tl_stable_bu_d}" ]; then
-    mkdir "${tl_stable_bu_d}"
+  if [ ! -e "${_tl_stable_bu_d}" ]; then
+    mkdir "${_tl_stable_bu_d}"
   fi
 
   # todo: how to find this more generally? could take dir of 'which pdflatex'
   # todo: use the "real" link instead? shouldn't make a difference right?
   # $ readlink -f /opt/texbin
   # /usr/local/texlive/2021/bin/x86_64-linux
-  for i in "${tl_texbin_d}"/*-dev; do
+  for i in "${_tl_texbin_d}"/*-dev; do
     devname="$( basename "${i}")"
     stablename="${devname%-*}"
-    if [ $(cat "${tl_texbin_d}/${stablename}" | wc -l) = "2" ]; then
+    if [ $(cat "${_tl_texbin_d}/${stablename}" | wc -l) = "2" ]; then
       echo "${stablename} already points to dev"
     else
       echo "${stablename} was calling stable."
-      sudo mv "${tl_texbin_d}/${stablename}" "${tl_stable_bu_d}"
+      sudo mv "${_tl_texbin_d}/${stablename}" "${_tl_stable_bu_d}"
       # todo: confirm this?
       # doesn't work. Maybe pdflatex (or pdftex rather) checks the binary name calling it (?)
-      # sudo ln -s "${tl_texbin_d}/${devname}" "${tl_texbin_d}/${stablename}"
-      echo "#!/usr/bin/bash" | sudo tee "${tl_texbin_d}/${stablename}" > /dev/null
+      # sudo ln -s "${_tl_texbin_d}/${devname}" "${_tl_texbin_d}/${stablename}"
+      echo "#!/usr/bin/bash" | sudo tee "${_tl_texbin_d}/${stablename}" > /dev/null
       # need to escape " and $ but not @.
-      echo "/opt/texbin/${devname} \"\$@\"" | sudo tee -a "${tl_texbin_d}/${stablename}" > /dev/null
-      sudo chmod +x "${tl_texbin_d}/${stablename}"
+      echo "/opt/texbin/${devname} \"\$@\"" | sudo tee -a "${_tl_texbin_d}/${stablename}" > /dev/null
+      sudo chmod +x "${_tl_texbin_d}/${stablename}"
       echo "  ${stablename} now pointing to dev."
 
       \sudo -k
@@ -116,21 +144,21 @@ function switch-latex-to-tl-dev ()
 
 function switch-latex-to-tl-stable ()
 {
-  for i in "${tl_texbin_d}"/*-dev; do
+  for i in "${_tl_texbin_d}"/*-dev; do
     devname="$( basename "${i}")"
     stablename="${devname%-*}"
     # The file should contain just a shebang line and one line if it
     # is pointing to dev. Otherwise should be a link.
-    if [ $(cat "${tl_texbin_d}/${stablename}" | wc -l) = "2" ]; then
+    if [ $(cat "${_tl_texbin_d}/${stablename}" | wc -l) = "2" ]; then
       echo "${stablename} was calling dev."
-      if [ ! -e "${tl_stable_bu_d}/${stablename}" ]; then
+      if [ ! -e "${_tl_stable_bu_d}/${stablename}" ]; then
         echo "  restoring stable."
-        sudo rm "${tl_texbin_d}/${stablename}"
-        sudo cp -d "${tl_stable_bu_d}/${stablename}" "${tl_texbin_d}/${stablename}"
+        sudo rm "${_tl_texbin_d}/${stablename}"
+        sudo cp -d "${_tl_stable_bu_d}/${stablename}" "${_tl_texbin_d}/${stablename}"
 
         \sudo -k
       else
-        echo "ERROR: the stable backup file does not exist: ${tl_stable_bu_d}/${stablename}"
+        echo "ERROR: the stable backup file does not exist: ${_tl_stable_bu_d}/${stablename}"
       fi
     else
       echo "${stablename} is already stable version."

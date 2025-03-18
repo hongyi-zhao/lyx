@@ -7,8 +7,8 @@
 # LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates,tabletemplates}
 # LYX_USERDIR_VER = Name of environment variable for the user directory
 # lyx       =
-# format    = lyx16x|lyx20x|lyx21x|lyx22x|lyx23x|xhtml|docbook5|epub
-# extension = 16.lyx|20.lyx|21.lyx|22.lyx|23.lyx|xhtml|xml|epub
+# format    = lyx16x|lyx20x|lyx21x|lyx22x|lyx23x|lyx24x|xhtml|docbook5|epub
+# extension = 16.lyx|20.lyx|21.lyx|22.lyx|23.lyx|24.lyx|xhtml|xml|epub
 # file      = xxx
 #
 # Script should be called like:
@@ -94,7 +94,7 @@ else()
     message(FATAL_ERROR "Export failed while converting")
   endif()
   if(extension MATCHES "\\.lyx$")
-    # Font-type not relevant for lyx16/lyx2[0123] exports
+    # Font-type not relevant for lyx16/lyx2[01234] exports
     set(result_file_base "${TempDir}/${file}")
   else()
     set(result_file_name ${file}.${extension})

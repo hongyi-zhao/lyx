@@ -31,7 +31,7 @@ export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 #
 # which makes "check_load" and "lyx2lyx" fail (lyx2lyx for < 2.3 is ignored).
 check_load/templates/Articles/Association_for_Computing_Machinery_.*
-export/templates/Articles/Association_for_Computing_Machinery_.*_lyx23
+export/templates/Articles/Association_for_Computing_Machinery_.*_lyx(23|24)
 
 # Failing LyX2LyX conversions for old versions:
 #
@@ -161,10 +161,10 @@ export/examples/ja/Modules/Linguistics.*systemF
 # "! Extra \else" and missing glyph "no ␣ in font Scheherazade":
 # (the lyx2lyx test also tests compilation after round-trip)
 export/doc/ar/UserGuide_pdf4_systemF
-export/doc/ar/UserGuide_lyx(22|23)
+export/doc/ar/UserGuide_lyx(22|23|24)
 
 #11773 lyx2lyx: language reversion nesting problems with polyglossia
-export/export/lyx2lyx/11773-language-reversion-nesting-polyglossia_lyx2[23]
+export/export/lyx2lyx/11773-language-reversion-nesting-polyglossia_lyx2[234]
 export/examples/ko/Welcome_lyx2[23]
 
 # We decided not worth spending time to look into a fix
@@ -317,7 +317,7 @@ export/export/latex/languages/uk-babel-date-missing-chars-with-ascii_pdf5_texF
 
 # Putting the following as the first line of the LaTeX file is a workaround:
 # \RequirePackage[2020-02-02]{latexrelease}
-export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29.*(dvi|pdf|lyx22|lyx23).*
+export/templates/Articles/Journal_of_the_Acoustical_Society_of_America_%28JASA%29.*(dvi|pdf|lyx22|lyx23|lyx24).*
 
 # These fail on updated TL 2020 after an update to "babel-greek" because of
 # missing symbols. I (Scott) checked the output of an older TL system and
@@ -337,12 +337,10 @@ export/export/latex/lyxbugs-resolved/6243-protect-xymatrix-in-caption_pdf5.*
 # Issue triggered by June 2022 LaTeX 2e update, it is an issue in the .cls that
 # likely will not be fixed since the cls does not appear to be maintained.
 # https://github.com/latex3/latex2e/issues/836#issuecomment-1160073486
-export/templates/Obsolete/.*American_Geophysical_Union.*_(lyx22|lyx23|pdf|dvi).*
-
-export/templates/Obsolete/.*American_Geophysical_Union.*_(lyx22|lyx23|pdf|dvi).*
+export/templates/Obsolete/.*American_Geophysical_Union.*_(lyx22|lyx23|lyx24|pdf|dvi).*
 
 # https://github.com/gsilano/EuropeCV/pull/33
-export/examples/(|es/)Curricula_Vitae/Europe_CV_(pdf.*|dvi|lyx22|lyx23)
+export/examples/(|es/)Curricula_Vitae/Europe_CV_(pdf.*|dvi|lyx22|lyx23|lyx24)
 
 # Armenian currently only works with XeTeX and LuaTeX and system fonts
 export/examples/Language_Support/Writing_Armenian_(dvi|dvi3_texF|pdf|pdf2|pdf3|pdf5_texF)

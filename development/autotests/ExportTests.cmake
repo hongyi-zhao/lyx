@@ -342,7 +342,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates lib/ta
   foreach(f ${nolang_lyx_files} ${lang_lyx_files})
     # Strip extension
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
-    foreach(_lyx_format_num 16 20 21 22 23)
+    foreach(_lyx_format_num 16 20 21 22 23 24)
       set(TestName1 "export/${libsubfolder}/${f}_lyx${_lyx_format_num}")
       string(REGEX REPLACE "[\\(\\)]" "_" TestName "${TestName1}")
       set(mytestlabel ${testlabel} "lyx2lyx" "load")

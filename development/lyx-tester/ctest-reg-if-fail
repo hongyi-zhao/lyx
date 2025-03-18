@@ -46,7 +46,7 @@ function add_suffix () {
 #
 # Springer_Nature_Journals: todo: just need to install dependencies.
 #
-ctest_exclude='(supported-languages_polyglossia_.*_systemF|(%28APA%29,_v._6|Astronomical).*(pdf|dvi|lyx22|lyx23)|BATCH_compare-test|BATCH_outline-beamer|BATCH_vcs-info|Springer_Nature_Journals)'
+ctest_exclude='(supported-languages_polyglossia_.*_systemF|(%28APA%29,_v._6|Astronomical).*(pdf|dvi|lyx22|lyx23|lyx24)|BATCH_compare-test|BATCH_outline-beamer|BATCH_vcs-info|Springer_Nature_Journals)'
 # timeout of 10m.
 function ctest-reg-if-fail ()
 {

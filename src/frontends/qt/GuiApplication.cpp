@@ -984,7 +984,7 @@ public:
 		return started_;
 	}
 	bool eventFilter(QObject *obj, QEvent *event) override {
-		LYXERR(Debug::ACTION, "Event Type: " << event->type());
+		//LYXERR(Debug::ACTION, "Event Type: " << event->type());
 		switch (event->type()) {
 		case QEvent::Show:
 		case QEvent::Hide:

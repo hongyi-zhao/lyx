@@ -1453,6 +1453,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	    && lyxaction.funcHasFlag(cmd.action(), LyXAction::NoInternal))
 		return;
 
+	// We'll set this back to false if need be.
+	bool dispatched = true;
 	buffer_.undo().beginUndoGroup();
 
 	FuncCode const act = cmd.action();
@@ -1898,8 +1900,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		FindAndReplaceOptions opt;
 		istringstream iss(to_utf8(cmd.argument()));
 		iss >> opt;
-		if (findAdv(this, opt))
+		if (findAdv(this, opt)) {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
+			cur.dispatched();
+			dispatched = true;
+		} else {
+			cur.undispatched();
+			dispatched = false;
+		}
 		break;
 	}
 
@@ -2192,8 +2200,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				how = SCROLL_TOGGLE;
 			else if (where == "visible")
 				how = SCROLL_VISIBLE;
-			else
+			else {
+				dispatched = false;
 				break;
+			}
 			showCursor(how);
 			break;
 		}
@@ -2203,8 +2213,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			scroll_step = d->scrollbarParameters_.single_step;
 		else if (scroll_type == "page")
 			scroll_step = d->scrollbarParameters_.page_step;
-		else
+		else {
+			dispatched = false;
 			break;
+		}
 
 		string const scroll_quantity = cmd.getArg(1);
 
@@ -2214,8 +2226,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			scroll(scroll_step);
 		else if (isStrInt(scroll_quantity))
 			scroll(scroll_step * convert<int>(scroll_quantity));
-		else
+		else {
+			dispatched = false;
 			break;
+		}
 
 		dr.screenUpdate(Update::ForceDraw);
 		dr.forceBufferUpdate();
@@ -2465,6 +2479,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				if (!opt1.empty())
 					LYXERR0("Discarding optional argument to citation-insert.");
 			}
+			dispatched = true;
 			break;
 		}
 		InsetCommandParams icp(CITE_CODE);
@@ -2557,6 +2572,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (cur.inTexted() && cur.selection()
 		    && cur.selectionBegin().idx() != cur.selectionEnd().idx()) {
 			buffer_.dispatch(cmd, dr);
+			dispatched = dr.dispatched();
 			break;
 		}
 		cap::copySelection(cur);
@@ -2566,10 +2582,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	default:
 		// OK, so try the Buffer itself...
 		buffer_.dispatch(cmd, dr);
+		dispatched = dr.dispatched();
 		break;
 	}
 
 	buffer_.undo().endUndoGroup();
+	dr.dispatched(dispatched);
 
 	// NOTE: The code below is copied from Cursor::dispatch. If you
 	// need to modify this, please update the other one too.

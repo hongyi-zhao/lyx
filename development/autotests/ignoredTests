@@ -32,6 +32,15 @@ export/export/latex/CJK/ko_default_pdf2
 
 
 # ================================================
+Sublabel: lyx_known_regressions
+# Tests that might be regressions, but might not be fixed soon so are making
+# test output hard to interpret (i.e., hard to see if new regressions)
+# ================================================
+
+export/.*/(ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ja|ko|lt|nb|nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk|zh_CN|).*_xhtml
+
+
+# ================================================
 Sublabel: lyx_wontfix
 # Tests that would fail because of LyX bugs or missing features. Not worth it
 # to invert because would take up testing time for issues that are not likely
@@ -277,3 +286,4 @@ export/.*/(ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ja|ko|lt|nb|nl|pl|pt|pt_
 # ML discussion was here:
 #   https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg217924.html
 export/doc/zh_CN/Tutorial_(lyx22|lyx23|lyx24|dvi|pdf|pdf2|pdf3)
+

@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -47,18 +48,24 @@ BulletsModule::BulletsModule(QWidget * parent)
 	levelLW->addItem("3");
 	levelLW->addItem("4");
 
-	// insert pixmaps
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Standard[[Bullets]]"), 0);
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Maths"), 1, "math");
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 1"), 2);
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 2"), 3);
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 3"), 4);
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 4"), 5);
+	// prepare browser
+	standardLW = new QListWidget(bulletpaneSW);
+	mathsLW = new QListWidget(bulletpaneSW);
+	dings1LW = new QListWidget(bulletpaneSW);
+	dings2LW = new QListWidget(bulletpaneSW);
+	dings3LW = new QListWidget(bulletpaneSW);
+	dings4LW = new QListWidget(bulletpaneSW);
+	setupPanel(standardLW, qt_("Standard[[Bullets]]"));
+	setupPanel(mathsLW, qt_("Maths"));
+	setupPanel(dings1LW, qt_("Dings 1"));
+	setupPanel(dings2LW, qt_("Dings 2"));
+	setupPanel(dings3LW, qt_("Dings 3"));
+	setupPanel(dings4LW, qt_("Dings 4"));
 
 	connect(levelLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(showLevel(int)));
-	connect(bulletpaneCO, SIGNAL(activated(int)), bulletpaneSW,
-		SLOT(setCurrentIndex(int)));
+	connect(bulletpaneCO, SIGNAL(activated(int)), this,
+		SLOT(setCurrentPane(int)));
 }
 
 
@@ -171,8 +178,7 @@ QPixmap getSelectedPixmap(QPixmap pixmap, QSize const icon_size)
 }
 
 
-void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
-	int const font, string const folder)
+void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname)
 {
 	connect(lw, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(bulletSelected(QListWidgetItem *)));
@@ -188,9 +194,49 @@ void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
 	lw->setSpacing(12);
 	lw->setUniformItemSizes(true);
 
+	// add bulletpanel to stackedwidget
+	bulletpaneSW->addWidget(lw);
+}
+
+
+string BulletsModule::getFolder(int const font)
+{
+	return (font == 1) ? "math" : "bullets";
+}
+
+
+QListWidget * BulletsModule::getListWidget(int const font)
+{
+	switch (font) {
+	case 0:
+		return standardLW;
+	case 1:
+		return mathsLW;
+	case 2:
+		return dings1LW;
+	case 3:
+		return dings2LW;
+	case 4:
+		return dings3LW;
+	case 5:
+		return dings4LW;
+	default:
+		return standardLW;
+	}
+}
+
+
+void BulletsModule::fillPanel(int const font)
+{
+	QListWidget * lw = getListWidget(font);
+	if (lw->count() > 0)
+		// already filled
+		return;
+
 	QSize icon_size(26, 26);
 	lw->setIconSize(icon_size);
-
+	string const folder = getFolder(font);
+    
 	// we calculate the appropriate width to fit 6 icons in a row
 	lw->setFixedWidth((6 * (icon_size.width() + lw->spacing()))
 				+ (lw->frameWidth() * 2)
@@ -206,14 +252,11 @@ void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
 		QPixmap pixmap = getPixmap("images/" + toqstr(folder) + "/", toqstr(iconname), "svgz");
 		QIcon icon(pixmap);
 		icon.addPixmap(getSelectedPixmap(pixmap, icon_size), QIcon::Selected);
-		QListWidgetItem * lwi = new QListWidgetItem(icon, QString(), 0, i);
+		QListWidgetItem * lwi = new QListWidgetItem(icon, QString(), nullptr, i);
 		lwi->setToolTip(toqstr(Bullet::bulletEntry(font, i)));
 		lwi->setSizeHint(icon_size);
 		lw->addItem(lwi);
 	}
-
-	// add bulletpanel to stackedwidget
-	bulletpaneSW->addWidget(lw);
 }
 
 
@@ -235,7 +278,7 @@ void BulletsModule::showLevel(int level)
 		current_char_ = bullets_[level].getCharacter();
 		selectItem(current_font_, current_char_, true);
 		bulletpaneCO->setCurrentIndex(current_font_);
-		bulletpaneSW->setCurrentIndex(current_font_);
+		setCurrentPane(current_font_);
 		bulletsizeCO->setEnabled(true);
 		sizeL->setEnabled(true);
 	}
@@ -294,6 +337,10 @@ void BulletsModule::selectItem(int font, int character, bool select)
 		return;
 
 	QListWidget * lw = static_cast<QListWidget *>(bulletpaneSW->widget(font));
+
+	// insert pixmaps if needed
+	fillPanel(font);
+
 	if (lw->item(character))
 		lw->item(character)->setSelected(select);
 }
@@ -321,6 +368,14 @@ void BulletsModule::on_bulletsizeCO_activated(int size)
 void BulletsModule::setBullet(int level, Bullet const & bullet)
 {
 	bullets_[level] = bullet;
+}
+
+
+void BulletsModule::setCurrentPane(int const font)
+{
+	// insert pixmaps if needed
+	fillPanel(font);
+	bulletpaneSW->setCurrentIndex(font);
 }
 
 

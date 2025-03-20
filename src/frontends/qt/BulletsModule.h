@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -28,7 +29,7 @@ class BulletsModule : public QWidget, public Ui::BulletsUi
 
 public:
 	///
-	BulletsModule(QWidget * parent = 0);
+	BulletsModule(QWidget * parent = nullptr);
 
 	/// set a bullet
 	void setBullet(int level, Bullet const & bullet);
@@ -46,16 +47,27 @@ protected Q_SLOTS:
 	void on_customLE_textEdited(const QString &);
 	void bulletSelected(QListWidgetItem *);
 	void showLevel(int);
+	void setCurrentPane(int);
 
 private:
 	void selectItem(int font, int character, bool select);
-	void setupPanel(QListWidget * lw, QString const & panelname,
-			int const font, std::string const folder = "bullets");
+	void setupPanel(QListWidget * lw, QString const & panelname);
+	void fillPanel(int const font);
+	std::string getFolder(int const font);
+	QListWidget * getListWidget(int const font);
 
 	/// store results
 	Bullet bullets_[4];
 	int current_font_;
 	int current_char_;
+
+	/// List widgets
+	QListWidget * standardLW;
+	QListWidget * mathsLW;
+	QListWidget * dings1LW;
+	QListWidget * dings2LW;
+	QListWidget * dings3LW;
+	QListWidget * dings4LW;
 };
 
 } // namespace frontend

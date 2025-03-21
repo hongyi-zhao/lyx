@@ -199,6 +199,17 @@ void GuiBranches::on_removePB_pressed()
 	if (!sel_branch.isEmpty()) {
 		branchlist_.remove(qstring_to_ucs4(sel_branch));
 		newBranchLE->clear();
+
+		QTreeWidgetItem * newSelItem = branchesTW->itemBelow(selItem);
+		if (newSelItem != 0) {
+			branchesTW->setCurrentItem(newSelItem);
+		} else {
+			// no item below, so select item above if one exists.
+			newSelItem = branchesTW->itemAbove(selItem);
+			if (newSelItem != 0)
+				branchesTW->setCurrentItem(newSelItem);
+		}
+
 		updateView();
 	}
 }

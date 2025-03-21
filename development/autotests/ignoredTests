@@ -13,7 +13,6 @@ Sublabel: problematic
 
 # problems exporting to lyx16x
 export/examples/Modules/Noweb_lyx16
-export/examples/Modules/Noweb2LyX_lyx16
 
 # Ignore MergedManuals_xhtml because the test is very time-consuming
 # and the underlying subdocuments are already tested
@@ -54,31 +53,6 @@ Sublabel: lyx_wontfix
 #
 # (currently no tests in this category, but we expect some in the future)
 
-# (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg218237.html)
-# These are old problems. One is related to a questionable nomencl change
-# which we addressed in master but not in stable, see
-# https://www.lyx.org/trac/ticket/10634#comment:2
-# The other is due to CJK quotation marks which are not supported in 2.3.
-#
-# TODO: unignore these tests after they are not used for compilation anymore
-#       (we only use "recent" lyx2lyx roundtrip to test compilation.)
-export/doc/de/UserGuide_lyx2(2|3)
-
-# perhaps related to the above de/UserGuide issue:
-# gives the following index error:
-# ERROR: CHAR: index 0 should be less than the length of the string
-# TODO: unignore these tests after they are not used for compilation anymore
-#       (we only use "recent" lyx2lyx roundtrip to test compilation.)
-export/doc/fr/EmbeddedObjects_lyx2(2|3)
-
-# (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg218252.html)
-# from Kornel:
-# Exporting to 2.3 format and exporting from the exported differ in extra lines and
-# in changed sequence of 2 lines at begin.
-#
-# $ diff doc/fr/UserGuide.23.lyx fr/UserGuide.23.23.lyx
-export/doc/fr/UserGuide_lyx2(2|3)
-
 
 # ===========================================
 Sublabel: special
@@ -100,18 +74,6 @@ export/.*/(|ar|ca|cs|da|de|en|el|es|eu|fa|fr|gl|he|hu|id|it|lt|nb||nl|pl|pt|pt_B
 export/examples/Modules/PDF_Form_(dvi.*|pdf[^25]*)
 export/examples/(|de/|fr/)Modules/PDF_Comments_dvi3_.*F
 export/examples/(|de/|fr/)Modules/PDF_Comments_pdf5_texF
-
-# jss.cls (not on CTAN)
-# "All documents need to be processed by pdflatex" [jss.pdf]
-export/templates/Articles/Journal_of_Statistical_Software_.*(dvi|dvi3_.*|pdf3?)
-
-# No dvipdf[m]
-##############
-# Beamer does not work with dvipdf[m] (wrong output or compilation errors).
-# See `texdoc beamer`.
-# TODO: Should the export do PDF (dvipdfm) be made unavailable for Beamer or
-# just a warning be given in the example or documentation?
-export/.*/(|de/|es/|fr/|ja/).*Beamer.*pdf3
 
 # Only Postscript (and ps2pdf)
 #################
@@ -156,8 +118,7 @@ export/examples/ja/Modules/Sweave.*
 # to be used with dvilua(la)tex:
 #   https://www.mail-archive.com/search?l=mid&q=20200917155146.ec1bd9f9b5d5f5936513e5dd%40yahoo.co.jp
 # These started to fail due to a "luatex" package update in the TL20 cycle.
-export/.*/(ja|zh_CN)/.*_dvi3_systemF
-export/export/latex/CJK/zh_CN-toc.*_dvi3_systemF
+export/.*/ja/.*_dvi3_systemF
 
 # CJK fails (sometimes) with Xe/LuaTeX and 8-bit fonts:
 #####
@@ -165,11 +126,6 @@ export/examples/Language_Support/Mixing_Japanese_with_other_Languages_.*(dvi3|pd
 export/.*/(ko|zh_CN)/.*(dvi3|pdf[45])_texF
 export/export/latex/CJK/zh_CN-toc_*.(dvi3|pdf[45])_texF
 export/export/latex/CJK/en-de-el-ru-ko_utf8_.*_texF
-
-# export of minted documents to 2.2.x is not guaranteed to work (and currently
-# fails for our two minted example files), as explained here:
-# https://www.mail-archive.com/search?l=mid&q=20190113085555.GA7928%40GIOVE
-export/examples/Insets/Minted.*lyx22
 
 # Subdocuments that are not expected to work as stand-alone documents:
 ##############

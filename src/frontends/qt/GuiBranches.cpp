@@ -28,6 +28,7 @@
 
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/lassert.h"
 
 #include <QKeyEvent>
 #include <QListWidget>
@@ -186,6 +187,16 @@ void GuiBranches::on_addBranchPB_pressed()
 	branchlist_.add(qstring_to_ucs4(new_branch));
 	newBranchLE->clear();
 	addBranchPB->setEnabled(false);
+
+	// need to first update the view so that the QTreeWidgetItem exists
+	// in the tree when we search for it to select it.
+	updateView();
+	// now select the newly added branch
+	QList<QTreeWidgetItem *> items_found = branchesTW->findItems(new_branch, Qt::MatchExactly);
+	LASSERT(items_found.size() == 1, return);
+	branchesTW->setCurrentItem(items_found[0]);
+
+	// and update again to show the new selection.
 	updateView();
 }
 

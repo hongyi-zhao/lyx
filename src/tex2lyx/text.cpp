@@ -4545,7 +4545,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// We uncapitalize the input in order to catch capitalized commands
 		// such as \Eqref.
 		if ((where = is_known(uncapitalize(t.cs()), known_refstyle_commands))
-		     && preamble.refstyle()) {
+		     && preamble.crossrefPackage() == "refstyle") {
 			string const cap = isCapitalized(t.cs()) ? "true" : "false";
 			string plural = "false";
 			// Catch the plural option [s]
@@ -4583,8 +4583,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// if refstyle is used, we must not convert \prettyref to a
 		// formatted reference, since that would result in a refstyle command.
 		if ((where = is_known(t.cs(), known_ref_commands))
-		     && (t.cs() != "prettyref" || !preamble.refstyle())
-		     &&	(p.next_token().asInput() != "*" || is_known(t.cs(), known_starref_commands))) {
+		     && (t.cs() != "prettyref" || preamble.crossrefPackage() == "prettyref")
+		     && (p.next_token().asInput() != "*" || is_known(t.cs(), known_starref_commands))) {
 			bool starred = false;
 			if (p.next_token().asInput() == "*") {
 				starred = true;

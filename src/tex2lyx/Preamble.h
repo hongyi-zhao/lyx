@@ -41,7 +41,7 @@ public:
 	///
 	std::string notefontcolor() const { return h_notefontcolor; }
 	///
-	bool refstyle() const { return h_use_refstyle; }
+	std::string crossrefPackage() const { return h_crossref_package; }
 	///
 	bool fontCJKSet() const { return h_font_cjk_set; }
 	///
@@ -265,7 +265,7 @@ private:
 	std::string h_use_default_options;
 	std::string h_use_hyperref;
 	std::vector<std::string> h_includeonlys;
-	bool h_use_refstyle;
+	std::string h_crossref_package;
 	bool h_use_minted;
 	std::string h_nomencl_options;
 	bool h_use_xcolor_svgnames;

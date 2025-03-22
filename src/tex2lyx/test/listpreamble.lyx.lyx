@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.5
-\lyxformat 634
+\lyxformat 635
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -67,7 +67,7 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\crossref_package prettyref
 \use_minted 0
 \use_lineno false
 \index Index

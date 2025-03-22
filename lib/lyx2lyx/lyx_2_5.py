@@ -2500,6 +2500,30 @@ def revert_colortbl(document):
         add_to_preamble(document, preamble)
  
 
+def convert_crossref_package(document):
+    "Converts \\use_refstyle to \\crossref_package"
+
+    i = find_token(document.header, "\\use_refstyle", 0)
+    if i != -1:
+        value = get_value(document.header, "\\use_refstyle", i)
+        if value == 1:
+            document.header[i] = "\\crossref_package refstyle"
+        else:
+            document.header[i] = "\\crossref_package prettyref"
+
+
+def revert_crossref_package(document):
+    "Reverts \\crossref_package to \\use_refstyle"
+
+    i = find_token(document.header, "\\crossref_package", 0)
+    if i != -1:
+        value = get_value(document.header, "\\crossref_package", i)
+        if value == "prettyref":
+            document.header[i] = "\\use_refstyle 0"
+        else:
+            document.header[i] = "\\use_refstyle 1"
+
+
 ##
 # Conversion hub
 #
@@ -2519,11 +2543,13 @@ convert = [
     [631, [convert_mathml_version]],
     [632, []],
     [633, [convert_doc_colors]],
-    [634, []]
+    [634, []],
+    [635, [convert_crossref_package]]
 ]
 
 
 revert = [
+    [634, [revert_crossref_package]],
     [633, [revert_colortbl]],
     [632, [revert_doc_colors, revert_colorbox]],
     [631, [revert_textcolor, revert_custom_colors]],

@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 634
+\lyxformat 635
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -117,7 +117,7 @@ logicalmkup
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
@@ -51121,10 +51121,134 @@ Embedded
 Objects
 \emph default
  manual.
+\change_inserted -712698321 1742640894
+
 \end_layout
 
 \begin_layout Standard
-There is also an option to suppress the date and one to use the \SpecialChar LaTeX
+
+\change_inserted -712698321 1742641130
+In the 
+\family sans
+Formatted cross-references
+\family default
+ section,
+ you can specify which \SpecialChar LaTeX
+ packages should be used to produce formatted cross-references (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g,
+ 
+\series bold
+refstyle,
+
+\series default
+ 
+\series bold
+prettyref,
+ varioref
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742640894
+\SpecialChar LaTeX
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742640894
+prettyref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742640894
+\SpecialChar LaTeX
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742640894
+refstyle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+;
+ see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Cross-References"
+nolink "false"
+
+\end_inset
+
+).
+ Also you can select whether cross-references should be rendered in formatted form or not in the \SpecialChar LyX
+ workarea.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1742641143
+Finally,
+ 
+\change_deleted -712698321 1742641143
+T
+\change_inserted -712698321 1742641143
+t
+\change_unchanged
+here is 
+\change_deleted -712698321 1742641151
+also 
+\change_unchanged
+an option to suppress the 
+\change_inserted -712698321 1742641171
+(otherwise automatically inserted) 
+\change_unchanged
+date
+\change_inserted -712698321 1742641157
+ in the title.
+
+\change_unchanged
+ 
+\change_deleted -712698321 1742640892
+and one to use the \SpecialChar LaTeX
 -package 
 \series bold
 refstyle
@@ -51193,6 +51317,8 @@ nolink "false"
 \end_inset
 
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

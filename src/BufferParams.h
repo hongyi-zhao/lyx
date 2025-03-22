@@ -641,8 +641,8 @@ public:
 	bool output_sync;
 	/// custom LaTeX macro from user instead our own
 	std::string output_sync_macro;
-	/// use refstyle? or prettyref?
-	bool use_refstyle;
+	/// crossref package
+	std::string xref_package;
 	/// use formatted references in the workarea?
 	bool use_formatted_ref;
 	/// use minted? or listings?

@@ -1662,7 +1662,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(browseMaster()));
 	connect(latexModule->suppressDateCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(latexModule->refstyleCB, SIGNAL(clicked()),
+	connect(latexModule->xrefPackageCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->refFormattedCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
@@ -1671,6 +1671,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 		latexModule->optionsLE));
 	latexModule->childDocLE->setValidator(new NoNewLineValidator(
 		latexModule->childDocLE));
+
+	latexModule->xrefPackageCO->addItem(qt_("Prettyref and varioref"), toqstr("prettyref"));
+	latexModule->xrefPackageCO->addItem(qt_("Refstyle and varioref"), toqstr("refstyle"));
 
 	// postscript drivers
 	for (int n = 0; tex_graphics[n][0]; ++n) {
@@ -3612,7 +3615,8 @@ void GuiDocument::applyView()
 
 	// date
 	bp_.suppress_date = latexModule->suppressDateCB->isChecked();
-	bp_.use_refstyle  = latexModule->refstyleCB->isChecked();
+	bp_.xref_package = fromqstr(latexModule->xrefPackageCO->itemData(
+				latexModule->xrefPackageCO->currentIndex()).toString());
 	bp_.use_formatted_ref  = latexModule->refFormattedCB->isChecked();
 
 	// biblio
@@ -4161,7 +4165,8 @@ void GuiDocument::paramsToDialog()
 
 	// date
 	latexModule->suppressDateCB->setChecked(bp_.suppress_date);
-	latexModule->refstyleCB->setChecked(bp_.use_refstyle);
+	latexModule->xrefPackageCO->setCurrentIndex(
+		latexModule->xrefPackageCO->findData(toqstr(bp_.xref_package)));
 	latexModule->refFormattedCB->setChecked(bp_.use_formatted_ref);
 
 	// biblio

@@ -164,7 +164,7 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 	else if (arg == "toggle-caps")
 		pstring = "caps";
 	if (!pstring.empty()) {
-		status.setEnabled(buffer().params().use_refstyle &&
+		status.setEnabled(buffer().params().xref_package == "refstyle" &&
 			params().getCmdName() == "formatted");
 		bool const isSet = (getParam(pstring) == "true");
 		status.setOnOff(isSet);
@@ -267,7 +267,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	if (rp.inulemcmd > 0)
 		os << "\\mbox{";
 
-	if (buffer().masterParams().use_refstyle && cmd == "eqref") {
+	if (buffer().masterParams().xref_package == "refstyle" && cmd == "eqref") {
 		// we advertise this as printing "(n)", so we'll do that, at least
 		// for refstyle, since refstlye's own \eqref prints, by default,
 		// "equation n". if one wants \eqref, one can get it by using a
@@ -283,7 +283,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		docstring prefix;
 		bool const use_caps     = getParam("caps") == "true";
 		bool const use_plural   = getParam("plural") == "true";
-		bool const use_refstyle = buffer().masterParams().use_refstyle;
+		bool const use_refstyle = buffer().masterParams().xref_package == "refstyle";
 		docstring const fcmd =
 			getFormattedCmd(data, label, prefix, use_refstyle, use_caps);
 		os << fcmd;
@@ -366,9 +366,9 @@ void InsetRef::docbook(XMLStream & xs, OutputParams const &) const
 			if (cmd == "formatted") {
 				// A formatted reference may have many parameters. Generate all of them as roles, the only
 				// way arbitrary parameters can be passed into DocBook.
-				if (buffer().params().use_refstyle && getParam("caps") == "true")
+				if (buffer().params().xref_package == "refstyle" && getParam("caps") == "true")
 					role += " refstyle-caps";
-				if (buffer().params().use_refstyle && getParam("plural") == "true")
+				if (buffer().params().xref_package == "refstyle" && getParam("plural") == "true")
 					role += " refstyle-plural";
 			}
 		} else if (cmd == "eqref") {
@@ -411,7 +411,7 @@ docstring InsetRef::displayString(docstring const & ref, string const & cmd,
 			display_string = '(' + value + ')';
 		else if (cmd == "formatted") {
 			display_string = il->formattedCounter();
-			if (buffer().params().use_refstyle && getParam("caps") == "true")
+			if (buffer().params().xref_package == "refstyle" && getParam("caps") == "true")
 				capitalize(display_string);
 			// it is hard to see what to do about plurals...
 		}
@@ -605,7 +605,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		docstring const data = getEscapedLabel(features.runparams());
 		docstring label;
 		docstring prefix;
-		bool const use_refstyle = buffer().masterParams().use_refstyle;
+		bool const use_refstyle = buffer().masterParams().xref_package == "refstyle";
 		bool const use_caps   = getParam("caps") == "true";
 		docstring const fcmd =
 			getFormattedCmd(data, label, prefix, use_refstyle, use_caps);
@@ -625,7 +625,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 			if (prefix == "chap")
 				features.addPreambleSnippet(from_ascii("\\let\\pr@chap=\\pr@cha"));
 		}
-	} else if (cmd == "eqref" && !buffer().params().use_refstyle)
+	} else if (cmd == "eqref" && buffer().params().xref_package != "refstyle")
 		// with refstyle, we simply output "(\ref{label})"
 		features.require("amsmath");
 	else if (cmd == "nameref")

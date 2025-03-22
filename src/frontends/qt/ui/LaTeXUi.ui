@@ -6,84 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>446</width>
-    <height>431</height>
+    <width>550</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="2" column="0">
-    <widget class="QLabel" name="psdriverL">
-     <property name="text">
-      <string>&amp;Graphics driver:</string>
-     </property>
-     <property name="buddy">
-      <cstring>psdriverCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QComboBox" name="psdriverCO">
-     <property name="inputMethodHints">
-      <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
-     </property>
-     <property name="duplicatesEnabled">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="4">
-    <widget class="QCheckBox" name="refstyleCB">
-     <property name="text">
-      <string>&amp;Use refstyle (not prettyref) for cross-references</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>2</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="0" colspan="4">
-    <widget class="QCheckBox" name="suppressDateCB">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>&amp;Suppress default date on front page</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="3">
-    <spacer name="horizontalSpacer_1">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>261</width>
-       <height>22</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="0" colspan="4">
+   <item row="0" column="0" colspan="3">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Document &amp;Class</string>
@@ -121,52 +52,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="4">
-    <widget class="QGroupBox" name="childDocGB">
-     <property name="toolTip">
-      <string>Select if the current document is included to a master file</string>
-     </property>
-     <property name="statusTip">
-      <string/>
-     </property>
-     <property name="title">
-      <string>Select de&amp;fault master document</string>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="childDocLA">
-        <property name="text">
-         <string>&amp;Master:</string>
-        </property>
-        <property name="buddy">
-         <cstring>childDocLE</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="childDocPB">
-        <property name="text">
-         <string>&amp;Browse...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="childDocLE">
-        <property name="toolTip">
-         <string>Enter the name of the default master document</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="4">
+   <item row="1" column="0" colspan="3">
     <widget class="QGroupBox" name="optionsGB">
      <property name="title">
       <string>Class Options</string>
@@ -218,15 +104,161 @@
      </layout>
     </widget>
    </item>
-   <item row="6" column="0" colspan="4">
-    <widget class="QCheckBox" name="refFormattedCB">
-     <property name="toolTip">
-      <string>Attempt to display formatted cross-references as they would appear in the output, e.g., as &quot;Theorem 1&quot; rather than just as the label.</string>
-     </property>
+   <item row="2" column="0">
+    <widget class="QLabel" name="psdriverL">
      <property name="text">
-      <string>Format cross-references in the &amp;work area</string>
+      <string>&amp;Graphics driver:</string>
+     </property>
+     <property name="buddy">
+      <cstring>psdriverCO</cstring>
      </property>
     </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="psdriverCO">
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+     </property>
+     <property name="duplicatesEnabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <spacer name="horizontalSpacer_1">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>261</width>
+       <height>22</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QGroupBox" name="childDocGB">
+     <property name="toolTip">
+      <string>Select if the current document is included to a master file</string>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="title">
+      <string>Select de&amp;fault master document</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="childDocLA">
+        <property name="text">
+         <string>&amp;Master:</string>
+        </property>
+        <property name="buddy">
+         <cstring>childDocLE</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="childDocPB">
+        <property name="text">
+         <string>&amp;Browse...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="childDocLE">
+        <property name="toolTip">
+         <string>Enter the name of the default master document</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3">
+    <widget class="QGroupBox" name="xrefGB">
+     <property name="title">
+      <string>Formatted cross-references</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="xrefPackageLA">
+          <property name="text">
+           <string>&amp;Format packages:</string>
+          </property>
+          <property name="buddy">
+           <cstring>xrefPackageCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="xrefPackageCO"/>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="refFormattedCB">
+        <property name="toolTip">
+         <string>Attempt to display formatted cross-references as they would appear in the output, e.g., as &quot;Theorem 1&quot; rather than just as the label.</string>
+        </property>
+        <property name="text">
+         <string>Format cross-references in the &amp;work area</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QCheckBox" name="suppressDateCB">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>&amp;Suppress default date on front page</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>2</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
@@ -248,7 +280,6 @@
   <tabstop>childDocLE</tabstop>
   <tabstop>childDocPB</tabstop>
   <tabstop>suppressDateCB</tabstop>
-  <tabstop>refstyleCB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

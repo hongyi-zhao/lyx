@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2025-03-22 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 635:  Rename buffer param \use_refstyle to \crossref_package
+	  that takes a string ("prettyref" or "refstyle") rather than a boolean value.
+	  This is in preparation for additional options.
+
 2025-02-28 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 634: Support for colortbl
 	1. New buffer parmams:

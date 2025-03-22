@@ -209,7 +209,7 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 		LYXERR0("LaTeX output may be wrong!");
 	}
 	bool const use_refstyle =
-		buffer_ && buffer().params().use_refstyle;
+		buffer_ && buffer().params().xref_package == "refstyle";
 
 	if (commandname() == "vref" || commandname() == "vpageref")
 		features.require("varioref");
@@ -302,7 +302,7 @@ void InsetMathRef::write(TeXMathStream & os) const
 		return;
 	}
 	bool const use_refstyle =
-		buffer_ && buffer().params().use_refstyle;
+		buffer_ && buffer().params().xref_package == "refstyle";
 	bool special_case =  cmd == "formatted" ||
 			cmd == "labelonly" ||
 			(cmd == "eqref" && use_refstyle);

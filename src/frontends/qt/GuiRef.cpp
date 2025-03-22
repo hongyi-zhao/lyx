@@ -140,7 +140,7 @@ void GuiRef::enableBoxes()
 	    typeCO->itemData(typeCO->currentIndex()).toString();
 	bool const isFormatted = (reftype == "formatted");
 	bool const isLabelOnly = (reftype == "labelonly");
-	bool const usingRefStyle = buffer().params().use_refstyle;
+	bool const usingRefStyle = buffer().params().xref_package == "refstyle";
 	bool const intext = bufferview()->cursor().inTexted();
 	bool const hyper_on = buffer().params().pdfoptions().use_hyperref;
 	pluralCB->setEnabled(intext && isFormatted && usingRefStyle);

@@ -109,6 +109,8 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(nolinkCB, SIGNAL(clicked()),
 		this, SLOT(changed_adaptor()));
+	connect(refOptionsLE, SIGNAL(textChanged(QString)),
+		this, SLOT(changed_adaptor()));
 
 	enableBoxes();
 
@@ -137,17 +139,28 @@ void GuiRef::enableView(bool enable)
 void GuiRef::enableBoxes()
 {
 	QString const reftype =
-	    typeCO->itemData(typeCO->currentIndex()).toString();
+		typeCO->itemData(typeCO->currentIndex()).toString();
+	bool const use_refstyle = buffer().params().xref_package == "refstyle";
+	bool const use_cleveref = buffer().params().xref_package == "cleveref";
+	bool const use_zref = buffer().params().xref_package == "zref";
 	bool const isFormatted = (reftype == "formatted");
 	bool const isLabelOnly = (reftype == "labelonly");
-	bool const usingRefStyle = buffer().params().xref_package == "refstyle";
-	bool const intext = bufferview()->cursor().inTexted();
 	bool const hyper_on = buffer().params().pdfoptions().use_hyperref;
-	pluralCB->setEnabled(intext && isFormatted && usingRefStyle);
-	capsCB->setEnabled(intext && isFormatted && usingRefStyle);
+	bool const cleveref_nameref = use_cleveref && reftype == "nameref"
+			&& (!hyper_on || nolinkCB->isChecked());
+	bool const zref_clever = use_zref && (reftype == "vref" || reftype == "vpageref");
+	bool const allow_plural = use_refstyle || cleveref_nameref;
+	bool const allow_caps = use_refstyle || use_cleveref || use_zref;
+	bool const allow_nohyper = !isLabelOnly && (!isFormatted || use_cleveref || use_zref);
+	bool const intext = bufferview()->cursor().inTexted();
+	pluralCB->setEnabled(intext && (isFormatted || cleveref_nameref) && allow_plural);
+	capsCB->setEnabled(intext && (isFormatted || cleveref_nameref || zref_clever) && allow_caps);
 	noprefixCB->setEnabled(intext && isLabelOnly);
 	// disabling of hyperlinks not supported by formatted references
-	nolinkCB->setEnabled(hyper_on && intext && !isFormatted && !isLabelOnly);
+	nolinkCB->setEnabled(hyper_on && intext && allow_nohyper);
+	// options only supported by zref currently
+	refOptionsLE->setEnabled(use_zref && (isFormatted || zref_clever));
+	refOptionsLA->setEnabled(use_zref && (isFormatted || zref_clever));
 }
 
 
@@ -342,6 +355,7 @@ void GuiRef::updateContents()
 	capsCB->setChecked(params_["caps"] == "true");
 	noprefixCB->setChecked(params_["noprefix"] == "true");
 	nolinkCB->setChecked(params_["nolink"] == "true");
+	refOptionsLE->setText(toqstr(params_["options"]));
 
 	// insert buffer list
 	bufferCO->clear();
@@ -386,6 +400,7 @@ void GuiRef::applyView()
 	      from_ascii("true") : from_ascii("false");
 	params_["nolink"] = nolinkCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
+	params_["options"] = qstring_to_ucs4(refOptionsLE->text());
 	restored_buffer_ = bufferCO->currentIndex();
 }
 

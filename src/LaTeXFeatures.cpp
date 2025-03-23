@@ -1072,6 +1072,8 @@ char const * simplefeatures[] = {
 	"varioref",
 	"prettyref",
 	"refstyle",
+	"zref-clever",
+	"zref-vario",
 	/*For a successful cooperation of the `wrapfig' package with the
 	  `float' package you should load the `wrapfig' package *after*
 	  the `float' package. See the caption package documentation

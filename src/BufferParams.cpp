@@ -3026,6 +3026,14 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << '\n';
 	}
 
+	// cleveref needs to be loaded very late as well
+	if (features.mustProvide("cleveref")) {
+		os << "\\usepackage";
+		if (!lyxrc.language_global_options && !language_options.str().empty())
+			os << "[" << language_options.str() << "]";
+		os << "{cleveref}\n";
+	}
+
 	// Since menukeys uses catoptions, which does some heavy changes on key-value options,
 	// it is recommended to load menukeys as the last package (even after hyperref)
 	if (features.isRequired("menukeys"))

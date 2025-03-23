@@ -216,6 +216,8 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 	else if (commandname() == "formatted") {
 		if (use_refstyle)
 			features.require("refstyle");
+		else if (buffer().masterParams().xref_package == "cleveref")
+			features.require("cleveref");
 		else
 			features.require("prettyref");
 	}
@@ -359,7 +361,7 @@ void InsetMathRef::write(TeXMathStream & os) const
 			docstring label;
 			docstring prefix;
 			docstring const fcmd =
-				InsetRef::getFormattedCmd(ref, label, prefix, true);
+				InsetRef::getFormattedCmd(ref, label, prefix, buffer().params().xref_package);
 			os << fcmd;
 			//if (plural)
 			//	os << "[s]";

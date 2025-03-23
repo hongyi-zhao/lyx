@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>435</width>
-    <height>539</height>
+    <height>592</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,33 +16,7 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="2" column="0">
-    <widget class="QTreeWidget" name="refsTW">
-     <property name="columnCount">
-      <number>2</number>
-     </property>
-     <attribute name="headerDefaultSectionSize">
-      <number>200</number>
-     </attribute>
-     <attribute name="headerStretchLastSection">
-      <bool>true</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>Label</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Reference counter value</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_4"/>
-   </item>
+  <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
@@ -111,6 +85,39 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Available &amp;Labels:</string>
+     </property>
+     <property name="buddy">
+      <cstring>refsTW</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QTreeWidget" name="refsTW">
+     <property name="columnCount">
+      <number>2</number>
+     </property>
+     <attribute name="headerDefaultSectionSize">
+      <number>200</number>
+     </attribute>
+     <attribute name="headerStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Label</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Reference counter value</string>
+      </property>
+     </column>
+    </widget>
+   </item>
    <item row="3" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
@@ -169,16 +176,6 @@
       </spacer>
      </item>
     </layout>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Available &amp;Labels:</string>
-     </property>
-     <property name="buddy">
-      <cstring>refsTW</cstring>
-     </property>
-    </widget>
    </item>
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -290,7 +287,83 @@
      </item>
     </layout>
    </item>
-   <item row="8" column="0">
+   <item row="6" column="0">
+    <widget class="QGroupBox" name="refOptionsGB">
+     <property name="title">
+      <string>Options</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout9">
+        <item>
+         <widget class="QCheckBox" name="pluralCB">
+          <property name="toolTip">
+           <string>Use plural form of formatted reference. (Works only for formatted references, and only if you are using refstyle.)</string>
+          </property>
+          <property name="text">
+           <string>&amp;Plural</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="capsCB">
+          <property name="toolTip">
+           <string>Use capitalized form of formatted reference. (Works only for formatted references, and only if you are using refstyle.)</string>
+          </property>
+          <property name="text">
+           <string>&amp;Capitalized</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="noprefixCB">
+          <property name="toolTip">
+           <string>Do not output part of label before &quot;:&quot;</string>
+          </property>
+          <property name="text">
+           <string>No Prefi&amp;x</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="nolinkCB">
+          <property name="text">
+           <string>No H&amp;yperlink</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="refOptionsLA">
+        <property name="text">
+         <string>&amp;Custom:</string>
+        </property>
+        <property name="buddy">
+         <cstring>refOptionsLE</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="refOptionsLE"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="7" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
@@ -313,60 +386,6 @@
         <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
        </property>
       </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="6" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout9">
-     <item>
-      <widget class="QCheckBox" name="pluralCB">
-       <property name="toolTip">
-        <string>Use plural form of formatted reference. (Works only for formatted references, and only if you are using refstyle.)</string>
-       </property>
-       <property name="text">
-        <string>Plural</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="capsCB">
-       <property name="toolTip">
-        <string>Use capitalized form of formatted reference. (Works only for formatted references, and only if you are using refstyle.)</string>
-       </property>
-       <property name="text">
-        <string>Capitalized</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="noprefixCB">
-       <property name="toolTip">
-        <string>Do not output part of label before &quot;:&quot;</string>
-       </property>
-       <property name="text">
-        <string>No Prefix</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="nolinkCB">
-       <property name="text">
-        <string>No Hyperlink</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
     </layout>
    </item>

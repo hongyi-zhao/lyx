@@ -78,6 +78,7 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 		param_info_.add("caps", ParamInfo::LYX_INTERNAL);
 		param_info_.add("noprefix", ParamInfo::LYX_INTERNAL);
 		param_info_.add("nolink", ParamInfo::LYX_INTERNAL);
+		param_info_.add("options", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -202,11 +203,20 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 // label, thus: \prettyref{pfx:suffix}.
 //
 docstring InsetRef::getFormattedCmd(docstring const & ref,
-	docstring & label, docstring & prefix, bool use_refstyle,
+	docstring & label, docstring & prefix, string const xref_package,
 	bool use_caps)
 {
-	static docstring const defcmd = from_ascii("\\ref");
-	static docstring const prtcmd = from_ascii("\\prettyref");
+	docstring defcmd = from_ascii("\\ref");
+	docstring prtcmd = from_ascii("\\prettyref");
+	if (xref_package == "cleveref") {
+		docstring const crefcmd = use_caps ? from_ascii("\\Cref") : from_ascii("\\cref");
+		defcmd = crefcmd;
+		prtcmd = crefcmd;
+	} else if  (xref_package == "zref") {
+		defcmd = from_ascii("\\zcref");
+		prtcmd = from_ascii("\\zcref");
+	}
+
 
 	label = split(ref, prefix, ':');
 
@@ -220,12 +230,12 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 
 	if (prefix.empty()) {
 		// we have ":xxxx"
-		LYXERR0("Label `" << ref << "' contains nothign before `:'.");
+		LYXERR0("Label `" << ref << "' contains nothing before `:'.");
 		label = ref;
 		return defcmd;
 	}
 
-	if (!use_refstyle) {
+	if (xref_package != "refstyle") {
 		// \prettyref uses the whole label
 		label = ref;
 		return prtcmd;
@@ -263,6 +273,11 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	string const & cmd = getCmdName();
 	docstring const & data = getEscapedLabel(rp);
 	bool const hyper_on = buffer().masterParams().pdfoptions().use_hyperref;
+	bool const use_nolink = hyper_on && getParam("nolink") == "true";
+	bool const use_caps   = getParam("caps") == "true";
+	bool const use_plural = getParam("plural") == "true";
+	bool const use_cleveref = buffer().masterParams().xref_package == "cleveref";
+	bool const use_zref = buffer().masterParams().xref_package == "zref";
 
 	if (rp.inulemcmd > 0)
 		os << "\\mbox{";
@@ -272,31 +287,43 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		// for refstyle, since refstlye's own \eqref prints, by default,
 		// "equation n". if one wants \eqref, one can get it by using a
 		// formatted label in this case.
-		bool const use_nolink = hyper_on && getParam("nolink") == "true";
 		os << '(' << from_ascii("\\ref")   +
 			// no hyperlink version?
 			(use_nolink ? from_utf8("*") : from_utf8("")) +
 			from_ascii("{") << data << from_ascii("})");
-	}
-	else if (cmd == "formatted") {
+	} else if (cmd == "formatted") {
 		docstring label;
 		docstring prefix;
-		bool const use_caps     = getParam("caps") == "true";
-		bool const use_plural   = getParam("plural") == "true";
-		bool const use_refstyle = buffer().masterParams().xref_package == "refstyle";
 		docstring const fcmd =
-			getFormattedCmd(data, label, prefix, use_refstyle, use_caps);
+			getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps);
 		os << fcmd;
-		if (use_refstyle && use_plural)
+		if ((use_cleveref || use_zref) && use_nolink)
+			os << "*";
+		if (buffer().masterParams().xref_package == "refstyle" && use_plural)
 			os << "[s]";
+		else if (use_zref) {
+			docstring opts = getParam("options");
+			if (use_caps) {
+				if (!opts.empty())
+					opts +=", ";
+				opts += "S";
+			}
+			if (!opts.empty())
+				os << "[" << opts << "]";
+		}
 		if (contains(label, ' '))
 			// refstyle bug: labels with blanks need to be grouped
 			// otherwise the blanks will be gobbled
 			os << "{{" << label << "}}";
 		else
 			os << '{' << label << '}';
-	}
-	else if (cmd == "labelonly") {
+	} else if (cmd == "nameref" && use_cleveref && (use_nolink || !hyper_on)) {
+		docstring const crefcmd = use_caps ? from_ascii("Cref") : from_ascii("cref");
+		os << "\\name" << crefcmd;
+		if (use_plural)
+			os << "s";
+		os << '{' << data << '}';
+	} else if (cmd == "labelonly") {
 		docstring const & ref = getParam("reference");
 		if (getParam("noprefix") != "true")
 			os << ref;
@@ -310,8 +337,20 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 				os << suffix;
 			}
 		}
-	}
-	else {
+	} else if ((cmd == "vref" || cmd == "vpageref") && use_zref) {
+		os << "\\z" << cmd;
+		if (use_nolink)
+			os << "*";
+		docstring opts = getParam("options");
+		if (use_caps) {
+			if (!opts.empty())
+				opts +=", ";
+			opts += "S";
+		}
+		if (!opts.empty())
+			os << "[" << opts << "]";
+		os << '{' << data << '}';
+	} else {
 		InsetCommandParams p(REF_CODE, cmd);
 		bool const use_nolink = hyper_on && getParam("nolink") == "true";
 		p["reference"] = getParam("reference");
@@ -599,17 +638,19 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 void InsetRef::validate(LaTeXFeatures & features) const
 {
 	string const & cmd = getCmdName();
-	if (cmd == "vref" || cmd == "vpageref")
-		features.require("varioref");
-	else if (cmd == "formatted") {
+	if (cmd == "vref" || cmd == "vpageref") {
+		if (buffer().masterParams().xref_package == "zref")
+			features.require("zref-vario");
+		else
+			features.require("varioref");
+	} else if (cmd == "formatted") {
 		docstring const data = getEscapedLabel(features.runparams());
 		docstring label;
 		docstring prefix;
-		bool const use_refstyle = buffer().masterParams().xref_package == "refstyle";
 		bool const use_caps   = getParam("caps") == "true";
 		docstring const fcmd =
-			getFormattedCmd(data, label, prefix, use_refstyle, use_caps);
-		if (use_refstyle) {
+			getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps);
+		if (buffer().masterParams().xref_package == "refstyle") {
 			features.require("refstyle");
 			if (prefix == "cha")
 				features.addPreambleSnippet(from_ascii("\\let\\charef=\\chapref"));
@@ -618,6 +659,10 @@ void InsetRef::validate(LaTeXFeatures & features) const
 						fcmd + "[1]{\\ref{" + prefix + ":#1}}}";
 				features.addPreambleSnippet(lcmd);
 			}
+		} else if (buffer().masterParams().xref_package == "cleveref") {
+			features.require("cleveref");
+		} else if (buffer().masterParams().xref_package == "zref") {
+			features.require("zref-clever");
 		} else {
 			features.require("prettyref");
 			// prettyref uses "cha" for chapters, so we provide a kind of
@@ -628,8 +673,14 @@ void InsetRef::validate(LaTeXFeatures & features) const
 	} else if (cmd == "eqref" && buffer().params().xref_package != "refstyle")
 		// with refstyle, we simply output "(\ref{label})"
 		features.require("amsmath");
-	else if (cmd == "nameref")
-		features.require("nameref");
+	else if (cmd == "nameref") {
+		bool const nr_clever = !buffer().masterParams().pdfoptions().use_hyperref
+			|| getParam("nolink") == "true";
+		if (buffer().masterParams().xref_package == "cleveref" && nr_clever)
+			features.require("cleveref");
+		else
+			features.require("nameref");
+	}
 }
 
 bool InsetRef::forceLTR(OutputParams const & rp) const

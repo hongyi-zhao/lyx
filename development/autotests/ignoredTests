@@ -36,8 +36,6 @@ Sublabel: lyx_known_regressions
 # test output hard to interpret (i.e., hard to see if new regressions)
 # ================================================
 
-export/.*/(ar|ca|cs|da|de|el|es|eu|fa|fr|gl|he|hu|id|it|ja|ko|lt|nb|nl|pl|pt|pt_BR|pt_PT|ro|ru|sk|sl|sr|sv|uk|zh_CN|).*_xhtml
-
 
 # ================================================
 Sublabel: lyx_wontfix

@@ -352,7 +352,7 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 
 /// packages that are automatically skipped if loaded by LyX
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
-"amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color", "colortbl",
+"amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "cleveref", "color", "colortbl",
 "float", "fontspec", "framed", "graphicx", "hhline", "ifthen", "longtable",
 "makeidx", "minted", "multirow", "nomencl", "parskip", "pdfpages", "prettyref", "refstyle",
 "rotating", "rotfloat", "splitidx", "setspace", "subscript", "tabularx","textcomp", "tipa",
@@ -2163,7 +2163,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_use_indices = "true";
 		else if (name == "minted")
 			h_use_minted = true;
-		else if (name == "refstyle" || name == "prettyref")
+		else if (name == "refstyle"
+			 || name == "prettyref"
+			 || name == "cleveref")
 			h_crossref_package = name;
 
 		if (!in_lyx_preamble) {

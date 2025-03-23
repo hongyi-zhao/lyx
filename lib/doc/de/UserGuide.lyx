@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 635
+\lyxformat 636
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30684,7 +30684,7 @@ Querverweis:
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -30696,12 +30696,40 @@ Bemerkung:
  wenn das \SpecialChar LaTeX
 -Paket 
 \series bold
+cleveref
+\series default
+,
+ 
+\series bold
 prettyref
 \series default
  oder 
 \series bold
 refstyle
 \series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+cleveref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \begin_inset Index idx
 range none
@@ -30759,9 +30787,9 @@ refstyle
 
 Man kann mit der Option 
 \family sans
-Verwende refstyle (statt prettyref) für Querverweise
+Formatpakete 
 \family default
- im Menü 
+im Menü 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
@@ -30774,12 +30802,13 @@ Dokumentklasse
 \series bold
 refstyle
 \series default
- ist die Voreinstellung und bevorzugt,
- da 
+ ist die Voreinstellung.
+ Beachten Sie,
+ dass 
 \series bold
 prettyref
 \series default
- nur englische Dokumente unterstützt.
+ von Haus aus nur englische Dokumente unterstützt (Sie können aber Definitionen in Ihrer Sprache in die Präambel eingeben).
  Das Format wird festgelegt,
  indem der Befehl 
 \series bold
@@ -30787,7 +30816,23 @@ prettyref
 \backslash
 newrefformat
 \series default
- (prettyref) oder 
+ (prettyref),
+ 
+\series bold
+
+\backslash
+crefname|
+\backslash
+crefname
+\series default
+ (cleveref)
+\series bold
+,
+ 
+\backslash
+zcRefTypeSetup
+\series default
+ (zref-clever) oder 
 \series bold
 
 \backslash
@@ -30843,7 +30888,7 @@ Theorem
 \begin_inset Quotes grs
 \end_inset
 
--Umgebungen zu.
+-Umgebungen zu (cleveref ist hier cleverer).
  Sollten Sie also formatierte Querverweise beispielsweise auf (mathematische) Sätze machen wollen,
  müssen Sie das relevante Format selbst definieren.
  Für 
@@ -30874,7 +30919,7 @@ Für weitere Informationen zur Definition formatierter Querverweise konsultieren
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "prettyref,refstyle"
+key "cleveref,prettyref,refstyle,zref-clever"
 literal "true"
 
 \end_inset
@@ -30883,19 +30928,70 @@ literal "true"
 \begin_inset Newline newline
 \end_inset
 
-Die Optionen 
+Die Option 
 \family sans
 Plural
 \family default
- und 
-\family sans
-Großschreibung
-\family default
- sind nur bei formatierten Querverweisen mit 
+ ist nur bei formatierten Querverweisen mit 
 \series bold
 refstyle
 \series default
- aktiviert.
+ aktiviert,
+ außerdem bei Textverweisen mit 
+\series bold
+cleveref
+\series default
+.
+ 
+\family sans
+Großschreibung
+\family default
+ ist bei formatierten Querverweisen mit 
+\series bold
+refstyle,
+
+\series default
+ 
+\series bold
+cleveref
+\series default
+ und 
+\series bold
+zref-clever
+\series default
+ aktiviert,
+ bei 
+\series bold
+cleveref
+\series default
+ außerdem auch bei Textverweisen,
+ bei 
+\series bold
+zref-clever\SpecialChar breakableslash
+zref-vario
+\series default
+ bei 
+\begin_inset Quotes gld
+\end_inset
+
+auf Seite
+\begin_inset Quotes grd
+\end_inset
+
+-Verweisen.
+\begin_inset Newline newline
+\end_inset
+
+Für 
+\series bold
+zref-clever
+\series default
+ und 
+\series bold
+zref-vario
+\series default
+ können Sie auch benutzerdefinierte Optionen eingeben,
+ für die andere Pakete ist dies deaktiviert.
 \begin_inset Newline newline
 \end_inset
 
@@ -56374,6 +56470,68 @@ https://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "cleveref"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "https://mirrors.ctan.org/macros/latex/contrib/cleveref/cleveref.pdf"
+literal "false"
+
+\end_inset
+
+ des \SpecialChar LaTeX
+-Pakets 
+\series bold
+cleveref
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+cleveref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+https://mirrors.ctan.org/macros/latex/contrib/cleveref/cleveref.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "enumitem"
 literal "true"
 
@@ -56748,6 +56906,68 @@ https://mirrors.ctan.org/macros/latex/contrib/prettyref/prettyref.pdf
 LatexCommand bibitem
 key "refstyle"
 literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "https://mirrors.ctan.org/macros/latex/contrib/zref-clever/zref-clever.pdf"
+literal "false"
+
+\end_inset
+
+ des \SpecialChar LaTeX
+-Pakets 
+\series bold
+zref-clever
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+zref-clever
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+https://mirrors.ctan.org/macros/latex/contrib/zref-clever/zref-clever.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "zref-clever"
+literal "false"
 
 \end_inset
 

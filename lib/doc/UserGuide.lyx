@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 635
+\lyxformat 636
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31835,7 +31835,7 @@ reference:
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31844,14 +31844,58 @@ Note:
 
 \series default
  This feature is only available when you have the \SpecialChar LaTeX
--package 
+-package
+\change_inserted -712698321 1742721528
+ 
+\series bold
+cleveref
+\series default
+,
+
+\change_unchanged
+ 
 \series bold
 prettyref
 \series default
  or 
 \series bold
 refstyle
+\change_inserted -712698321 1742721546
+
 \series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742721546
+\SpecialChar LaTeX
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742721546
+prettyref
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \begin_inset Index idx
 range none
@@ -31879,7 +31923,7 @@ prettyref
 \begin_inset Index idx
 range none
 pageformat default
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
@@ -31888,7 +31932,13 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1742721549
 refstyle
+\change_inserted -712698321 1742721550
+cleveref
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -31909,8 +31959,16 @@ refstyle
 
 You can select which \SpecialChar LaTeX
 -package should be used for this feature by setting the option 
+\change_deleted -712698321 1742721596
+
 \family sans
-Use refstyle (not prettyref) for cross-references
+U
+\change_inserted -712698321 1742721595
+Format packages
+\change_deleted -712698321 1742721600
+se refstyle (not prettyref) for cross-references
+\change_unchanged
+
 \family default
  in the menu 
 \family sans
@@ -31923,11 +31981,26 @@ Document Class
 \series bold
 refstyle
 \series default
- is the default and preferred because 
+ is the default
+\change_inserted -712698321 1742721692
+.
+
+\change_unchanged
+ 
+\change_deleted -712698321 1742721696
+and preferred because
+\change_inserted -712698321 1742721697
+Note that
+\change_unchanged
+ 
 \series bold
 prettyref
 \series default
- supports only English documents.
+ supports only English documents
+\change_inserted -712698321 1742721720
+ (unless you add your own settings)
+\change_unchanged
+.
  The format is specified by using the command 
 \series bold
 
@@ -31935,7 +32008,27 @@ prettyref
 newref\SpecialChar ligaturebreak
 format
 \series default
- (prettyref) or 
+ (prettyref)
+\change_inserted -712698321 1742730901
+,
+
+\series bold
+ 
+\backslash
+crefname|
+\backslash
+crefname
+\series default
+ (cleveref),
+ 
+\series bold
+
+\backslash
+zcRefTypeSetup
+\series default
+ (zref-clever)
+\change_unchanged
+ or 
 \series bold
 
 \backslash
@@ -31984,7 +32077,39 @@ prettyref
 refstyle 
 \series default
 predefines reference formats for all available types.
- This is especially true for the wide variety of mathematical `theorem' environments.
+ This is especially true for the wide variety of mathematical 
+\change_inserted -712698321 1742722007
+
+\begin_inset Quotes els
+\end_inset
+
+
+\change_deleted -712698321 1742722008
+`
+\change_unchanged
+theorem
+\change_deleted -712698321 1742722011
+'
+\change_inserted -712698321 1742722012
+
+\begin_inset Quotes ers
+\end_inset
+
+
+\change_unchanged
+ environments
+\change_inserted -712698321 1742722033
+ (cleveref is more 
+\begin_inset Quotes els
+\end_inset
+
+clever
+\begin_inset Quotes ers
+\end_inset
+
+ here)
+\change_unchanged
+.
  So if you want to make formatted references to,
  say,
  Propositions,
@@ -32015,7 +32140,7 @@ For more information about defining formatted references,
  have a look at the package documentation 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "prettyref,refstyle"
+key "cleveref,prettyref,refstyle,zref-clever"
 literal "true"
 
 \end_inset
@@ -32028,18 +32153,86 @@ The options
 \family sans
 Plural
 \family default
- and 
+ 
+\change_deleted -712698321 1742722076
+and 
 \family sans
 Capitalized
 \family default
- will be available with formatted references only if you are using the 
+ 
+\change_unchanged
+will be available with formatted references only if you are using the 
 \series bold
 refstyle
 \series default
- package.
+ package
+\change_inserted -712698321 1742722093
+,
+ and with textual references using cleveref
+\change_unchanged
+.
+
+\change_inserted -712698321 1742730991
+ 
+\family sans
+Capitalized
+\family default
+ is available with formatted references using 
+\series bold
+refstyle
+\series default
+,
+ with formatted and textual references using 
+\series bold
+cleveref
+\series default
+,
+ and with formatted and 
+\begin_inset Quotes eld
+\end_inset
+
+on page
+\begin_inset Quotes erd
+\end_inset
+
+ references with
+\series bold
+ zref-clever
+\series default
+ and 
+\series bold
+zref-vario
+\series default
+.
+\change_deleted -712698321 1742731074
+
 \begin_inset Newline newline
 \end_inset
 
+
+\change_inserted -712698321 1742731076
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1742731072
+For
+\series bold
+ zref-clever
+\series default
+ and 
+\series bold
+zref-vario
+\series default
+,
+ you can also insert custom options;
+ for the other packages,
+ this field is disabled.
+\end_layout
+
+\begin_layout Standard
 If you activate the option 
 \family sans
 Format cross-references in work area
@@ -32060,6 +32253,7 @@ Theorem 1
  rather than just displaying the label.
 \end_layout
 
+\end_deeper
 \begin_layout Description
 Textual
 \begin_inset space ~
@@ -51167,10 +51361,14 @@ status open
 
 \change_inserted -712698321 1742640894
 prettyref
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -51194,10 +51392,14 @@ status open
 
 \change_inserted -712698321 1742640894
 refstyle
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -59398,6 +59600,82 @@ https://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf
 \end_inset
 
 
+\change_inserted -712698321 1742722173
+
+\end_layout
+
+\begin_layout Bibliography
+
+\change_inserted -712698321 1742722235
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "cleveref"
+literal "false"
+
+\end_inset
+
+cleveref
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "https://mirrors.ctan.org/macros/latex/contrib/cleveref/cleveref.pdf"
+literal "false"
+
+\end_inset
+
+ of the \SpecialChar LaTeX
+ package cleveref
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742722175
+\SpecialChar LaTeX
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742722254
+cleveref
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742722259
+https://mirrors.ctan.org/macros/latex/contrib/cleveref/cleveref.pdf
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Bibliography
@@ -59831,6 +60109,76 @@ https://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 
 \end_inset
 
+
+\change_inserted -712698321 1742730694
+
+\end_layout
+
+\begin_layout Bibliography
+
+\change_inserted -712698321 1742730701
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "zref-clever"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "https://mirrors.ctan.org/macros/latex/contrib/zref-clever//zref-clever.pdf"
+literal "false"
+
+\end_inset
+
+ of the \SpecialChar LaTeX
+ package zref-clever
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742730695
+\SpecialChar LaTeX
+ packages
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742730730
+zref-clever
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1742730723
+https://mirrors.ctan.org/macros/latex/contrib/refstyle//zref-clever.pdf
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 

@@ -7,6 +7,33 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2025-03-23 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 636: 
+	1. Support for the cleveref package
+	  \crossref_package cleveref
+	  With CommandInset ref:
+	  * LatexCommand formatted: \cref
+	    + caps "true": \Cref
+	    + nolink "true": \cref*, \Cref*
+	  * LatexCommand nameref: \namecref
+	    + caps "true": \nameCref
+	    + plural "true": \namecrefs, \nameCrefs
+	2. Support for zref-clever and zref-vario
+	  \crossref_package zref
+	  With CommandInset ref:
+	  * LatexCommand formatted: \zcref
+	    + caps "true": \zcref[S]
+	    + nolink "true": \zcref*
+	    + options: \zcref[<options>]
+	  * LatexCommand vref: \zvref
+	    + caps "true": \zvref[S]
+	    + nolink "true": \zvref*
+	    + options: \zvref[<options>]
+	  * LatexCommand vpageref: \zvpageref
+	    + caps "true": \zvpageref[S]
+	    + nolink "true": \zvpageref*
+	    + options: \zvpageref[<options>]
+
 2025-03-22 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 635:  Rename buffer param \use_refstyle to \crossref_package
 	  that takes a string ("prettyref" or "refstyle") rather than a boolean value.

@@ -150,13 +150,15 @@ char const * const known_babel_shorthands[] = { "\"", "|", "-", "~", "=", "/",
  "~", "*", ":", "_", "x", "'", "`", "<", ">", 0 };
 
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
- "vpageref", "prettyref", "nameref", "eqref", 0 };
+ "vpageref", "prettyref", "nameref", "eqref", "cref", "Cref", "namecref",
+ "nameCref", "namecrefs", "nameCrefs", 0 };
 
 char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
- "vpageref", "formatted", "nameref", "eqref", 0 };
+ "vpageref", "formatted", "nameref", "eqref", "formatted", "formatted", "nameref",
+ "nameref", "nameref", "nameref", 0 };
 
 char const * const known_starref_commands[] = { "ref", "pageref", "vref",
- "vpageref", "nameref", "eqref", 0 };
+ "vpageref", "nameref", "eqref", "cref", "Cref", 0 };
 
 char const * const known_refstyle_commands[] = { "algref", "chapref", "corref",
  "eqref", "enuref", "figref", "fnref", "lemref", "parref", "partref", "propref",
@@ -4586,6 +4588,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		     && (t.cs() != "prettyref" || preamble.crossrefPackage() == "prettyref")
 		     && (p.next_token().asInput() != "*" || is_known(t.cs(), known_starref_commands))) {
 			bool starred = false;
+			bool const caps = contains(t.cs(), 'C');
+			bool const plural = suffixIs(t.cs(), "refs");
 			if (p.next_token().asInput() == "*") {
 				starred = true;
 				p.get_token();
@@ -4598,8 +4602,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "reference \""
 				   << convert_literate_command_inset_arg(p.verbatim_item())
 				   << "\"\n";
-				os << "plural \"false\"\n";
-				os << "caps \"false\"\n";
+				if (plural)
+					os << "plural \"true\"\n";
+				else
+					os << "plural \"false\"\n";
+				if (caps)
+					os << "caps \"true\"\n";
+				else
+					os << "caps \"false\"\n";
 				os << "noprefix \"false\"\n";
 				if (starred)
 					os << "nolink \"true\"\n";
@@ -4610,6 +4620,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					preamble.registerAutomaticallyLoadedPackage("varioref");
 				else if (t.cs() == "prettyref")
 					preamble.registerAutomaticallyLoadedPackage("prettyref");
+				else if (contains(t.cs(), "cref") || contains(t.cs(), "Cref"))
+					preamble.registerAutomaticallyLoadedPackage("cleveref");
 			} else {
 				// LyX does not yet support optional arguments of ref commands
 				output_ert_inset(os, t.asInput() + opt + "{" +

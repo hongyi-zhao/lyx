@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 636
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -53,10 +53,18 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Index
 \shortcut idx
 \color #008000
@@ -82,6 +90,7 @@
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \html_latex_start <span class='latex'>
 \html_latex_end </span>
 \end_header
@@ -2906,7 +2915,6 @@ Publications of the Astronomical Society of the Pacific
 status open
 
 \begin_layout Plain Layout
-
 https://journals.aas.org/authors/aastex/aastex.html
 \end_layout
 
@@ -2972,7 +2980,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.aeaweb.org/templates/latex_templates.zip
 \end_layout
 
@@ -3038,7 +3045,6 @@ AEA-\SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.aeaweb.org/journals/aer/submissions/accepted-articles/styleguide
 \end_layout
 
@@ -3285,7 +3291,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://sgmltools-lite.sourceforge.net
 \end_layout
 
@@ -3364,7 +3369,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.dante.de
 \end_layout
 
@@ -3445,7 +3449,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.elsevier.com/authors/author-schemas/latex-instructions
 \end_layout
 
@@ -3487,7 +3490,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.entcs.org/generic.zip
 \end_layout
 
@@ -3910,7 +3912,6 @@ IEEEtran
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ieee.org
 \end_layout
 
@@ -3976,7 +3977,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.worldscientific.com/page/ijmpc/submission-guidelines
 \end_layout
 
@@ -4022,7 +4022,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.worldscientific.com/page/ijmpd/submission-guidelines
 \end_layout
 
@@ -4068,7 +4067,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://publishingsupport.iopscience.iop.org/questions/latex-template/
 \end_layout
 
@@ -4516,7 +4514,6 @@ book
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/jptex/latex/jlreq/jlreq.pdf
 \end_layout
 
@@ -4552,7 +4549,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.jstatsoft.org/public/journals/1/jss-style.zip
 \end_layout
 
@@ -4597,7 +4593,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
 
@@ -4623,7 +4618,6 @@ Astrophysics and Space Science,
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.wkap.nl/jrnllist.htm/JRNLHOME
 \end_layout
 
@@ -4909,7 +4903,6 @@ Lecture Notes in Computer Science
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ctan.org/pkg/llncs
 \end_layout
 
@@ -4952,7 +4945,6 @@ Web:
 status open
 
 \begin_layout Plain Layout
-
 https://maa.org/publication/the-american-mathematical-monthly/
 \end_layout
 
@@ -5216,7 +5208,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://kmh-lanl.hansonhub.com/spie/
 \end_layout
 
@@ -5237,7 +5228,6 @@ spie.cls
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ctan.org/tex-archive/macros/latex/contrib/spie
 \end_layout
 
@@ -5335,7 +5325,6 @@ Accelerators and Beams),
 status collapsed
 
 \begin_layout Plain Layout
-
 https://journals.aps.org/revtex
 \end_layout
 
@@ -5449,7 +5438,6 @@ WWW:
 status open
 
 \begin_layout Plain Layout
-
 https://www.springernature.com/gp/authors/campaigns/latex-author-support
 \end_layout
 
@@ -5514,7 +5502,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.springeronline.com
 \end_layout
 
@@ -5614,7 +5601,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.springeronline.com
 \end_layout
 
@@ -5673,7 +5659,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.springeronline.com
 \end_layout
 
@@ -5730,7 +5715,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.springeronline.com
 \end_layout
 
@@ -5778,7 +5762,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.springeronline.com
 \end_layout
 
@@ -5844,7 +5827,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.tug.org
 \end_layout
 
@@ -5888,7 +5870,6 @@ WWW:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.isprs.org/documents/orangebook/LATEX/ISPRSguidelines_authors_fullpaper_latex_2024_01_17.zip
 \end_layout
 
@@ -7220,7 +7201,6 @@ jurabib
 status collapsed
 
 \begin_layout Plain Layout
-
 https://sourceforge.net/projects/jurabib/
 \end_layout
 
@@ -8798,6 +8778,60 @@ cancelto
 \end_layout
 
 \begin_layout Subsection
+cleveref
+\end_layout
+
+\begin_layout Description
+Found:
+ 
+\begin_inset Info
+type  "package"
+arg   "cleveref"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/cleveref
+\end_layout
+
+\begin_layout Description
+Notes:
+ The package 
+\family sans
+cleveref
+\family default
+ provides commands to identify reference labels by their context and automatically output matching references (e.g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset space ~
+\end_inset
+
+3
+\begin_inset Quotes erd
+\end_inset
+
+).
+ It is an alternative approach to 
+\family sans
+prettyref
+\family default
+ and 
+\family sans
+refstyle
+\family default
+,
+ which both need a specific label prefix.
+\end_layout
+
+\begin_layout Subsection
 cprotect
 \end_layout
 
@@ -9612,6 +9646,64 @@ preview
 \end_layout
 
 \begin_layout Subsection
+refstyle
+\end_layout
+
+\begin_layout Description
+Found:
+ 
+\begin_inset Info
+type  "package"
+arg   "refstyle"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/refstyle
+\end_layout
+
+\begin_layout Description
+Notes:
+ The package 
+\family sans
+refstyle
+\family default
+ provides commands to identify reference labels by their prefixes and automatically output matching references (e.g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset space ~
+\end_inset
+
+3
+\begin_inset Quotes erd
+\end_inset
+
+).
+ \SpecialChar LyX
+ uses labels in the form 
+\begin_inset Quotes eld
+\end_inset
+
+sec:mysection
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\family sans
+refstyle
+\family default
+ interprets the "sec:" part.
+\end_layout
+
+\begin_layout Subsection
 rotating
 \end_layout
 
@@ -10197,6 +10289,105 @@ color
  package.
  \SpecialChar LyX
  uses it to output colored change tracking marks.
+\end_layout
+
+\begin_layout Subsection
+zref-clever
+\end_layout
+
+\begin_layout Description
+Found:
+ 
+\begin_inset Info
+type  "package"
+arg   "zref-clever"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/zref-clever
+\end_layout
+
+\begin_layout Description
+Notes:
+ The package 
+\family sans
+zref-clever
+\family default
+ provides commands to identify reference labels by their context and automatically output matching references (e.g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset space ~
+\end_inset
+
+3
+\begin_inset Quotes erd
+\end_inset
+
+).
+ It is an alternative approach to 
+\family sans
+prettyref
+\family default
+ and 
+\family sans
+refstyle
+\family default
+,
+ which both need a specific label prefix,
+ and 
+\family sans
+cleveref
+\family default
+,
+ which it emulates and enhances.
+\end_layout
+
+\begin_layout Subsection
+zref-vario
+\end_layout
+
+\begin_layout Description
+Found:
+ 
+\begin_inset Info
+type  "package"
+arg   "zref-vario"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/zref-vario
+\end_layout
+
+\begin_layout Description
+Notes:
+ The package 
+\family sans
+zref-vario
+\family default
+ is a companion package to 
+\family sans
+zref-clever
+\family default
+ which emulates page references known from the 
+\family sans
+varioref
+\family default
+ package.
 \end_layout
 
 \end_body

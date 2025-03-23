@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-14 10:29+0100\n"
-"PO-Revision-Date: 2025-03-14 10:35+0100\n"
+"POT-Creation-Date: 2025-03-23 17:07+0100\n"
+"PO-Revision-Date: 2025-03-23 17:11+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -457,7 +457,7 @@ msgid "Sele&cted:"
 msgstr "Ausg&ewählt:"
 
 #: src/frontends/qt/ui/BibtexUi.ui:228 src/frontends/qt/ui/CitationUi.ui:27
-#: src/frontends/qt/ui/ModulesUi.ui:76 src/frontends/qt/ui/RefUi.ui:53
+#: src/frontends/qt/ui/ModulesUi.ui:76 src/frontends/qt/ui/RefUi.ui:27
 #: src/frontends/qt/ui/TocUi.ui:345
 msgid "&Filter:"
 msgstr "&Filter:"
@@ -495,16 +495,16 @@ msgid "Add L&ocal..."
 msgstr "L&okalen hinzufügen..."
 
 #: src/frontends/qt/ui/BibtexUi.ui:327 src/frontends/qt/ui/LanguageUi.ui:225
-#: lib/layouts/beamer.layout:534 lib/layouts/beamer.layout:564
-#: lib/layouts/beamer.layout:575 lib/layouts/beamer.layout:604
-#: lib/layouts/beamer.layout:707 lib/layouts/chessboard.module:31
-#: lib/layouts/chessboard.module:61 lib/layouts/chessboard.module:139
-#: lib/layouts/fixme.module:68 lib/layouts/fixme.module:103
-#: lib/layouts/fixme.module:146 lib/layouts/fixme.module:188
-#: lib/layouts/initials.module:37 lib/layouts/lilypond.module:38
-#: lib/layouts/litinsets.inc:46 lib/layouts/litinsets.inc:47
-#: lib/layouts/todonotes.module:79 lib/layouts/todonotes.module:91
-#: lib/layouts/todonotes.module:108
+#: src/frontends/qt/ui/RefUi.ui:293 lib/layouts/beamer.layout:534
+#: lib/layouts/beamer.layout:564 lib/layouts/beamer.layout:575
+#: lib/layouts/beamer.layout:604 lib/layouts/beamer.layout:707
+#: lib/layouts/chessboard.module:31 lib/layouts/chessboard.module:61
+#: lib/layouts/chessboard.module:139 lib/layouts/fixme.module:68
+#: lib/layouts/fixme.module:103 lib/layouts/fixme.module:146
+#: lib/layouts/fixme.module:188 lib/layouts/initials.module:37
+#: lib/layouts/lilypond.module:38 lib/layouts/litinsets.inc:46
+#: lib/layouts/litinsets.inc:47 lib/layouts/todonotes.module:79
+#: lib/layouts/todonotes.module:91 lib/layouts/todonotes.module:108
 msgid "Options"
 msgstr "Optionen"
 
@@ -589,19 +589,19 @@ msgstr "Art der inneren Box"
 #: src/frontends/qt/ui/BoxUi.ui:98 src/frontends/qt/ui/HSpaceUi.ui:30
 #: src/frontends/qt/ui/ListingsUi.ui:108 src/frontends/qt/ui/TabularUi.ui:1217
 #: src/frontends/qt/ui/TabularUi.ui:1236 src/frontends/qt/ui/TabularUi.ui:1296
-#: src/frontends/qt/GuiBox.cpp:350 src/frontends/qt/GuiBox.cpp:560
+#: src/frontends/qt/GuiBox.cpp:347 src/frontends/qt/GuiBox.cpp:557
 #: src/frontends/qt/GuiDocument.cpp:114 src/frontends/qt/GuiGraphics.cpp:597
 #: src/frontends/qt/GuiIndex.cpp:41 src/frontends/qt/GuiMathMatrix.cpp:33
-#: src/frontends/qt/GuiPrefs.cpp:2764 src/frontends/qt/GuiPrefs.cpp:2789
+#: src/frontends/qt/GuiPrefs.cpp:2769 src/frontends/qt/GuiPrefs.cpp:2794
 msgid "None"
 msgstr "Keine"
 
-#: src/frontends/qt/ui/BoxUi.ui:103 src/frontends/qt/GuiBox.cpp:352
-#: src/frontends/qt/GuiBox.cpp:563 src/insets/InsetBox.cpp:139
+#: src/frontends/qt/ui/BoxUi.ui:103 src/frontends/qt/GuiBox.cpp:349
+#: src/frontends/qt/GuiBox.cpp:560 src/insets/InsetBox.cpp:139
 msgid "Parbox"
 msgstr "Parbox"
 
-#: src/frontends/qt/ui/BoxUi.ui:108 src/frontends/qt/GuiBox.cpp:564
+#: src/frontends/qt/ui/BoxUi.ui:108 src/frontends/qt/GuiBox.cpp:561
 #: src/insets/InsetBox.cpp:143
 msgid "Minipage"
 msgstr "Minipage"
@@ -686,28 +686,28 @@ msgstr "Mitte"
 msgid "Bottom"
 msgstr "Unten"
 
-#: src/frontends/qt/ui/BoxUi.ui:229 src/frontends/qt/GuiBox.cpp:269
-#: src/frontends/qt/GuiBox.cpp:484
+#: src/frontends/qt/ui/BoxUi.ui:229 src/frontends/qt/GuiBox.cpp:266
+#: src/frontends/qt/GuiBox.cpp:481
 msgid "Stretch"
 msgstr "Dehnen"
 
 #: src/frontends/qt/ui/BoxUi.ui:275 src/frontends/qt/ui/ListingsUi.ui:113
 #: src/frontends/qt/ui/TabularUi.ui:343 src/frontends/qt/ui/TabularUi.ui:1855
-#: src/frontends/qt/ui/WrapUi.ui:47 src/frontends/qt/GuiDocument.cpp:1642
-#: src/frontends/qt/GuiParagraph.cpp:114 src/frontends/qt/GuiTabular.cpp:1117
+#: src/frontends/qt/ui/WrapUi.ui:47 src/frontends/qt/GuiDocument.cpp:1635
+#: src/frontends/qt/GuiParagraph.cpp:114 src/frontends/qt/GuiTabular.cpp:1109
 msgid "Left"
 msgstr "Links"
 
 #: src/frontends/qt/ui/BoxUi.ui:280 src/frontends/qt/ui/TabularUi.ui:348
 #: src/frontends/qt/GuiExternal.cpp:78 src/frontends/qt/GuiGraphics.cpp:73
-#: src/frontends/qt/GuiParagraph.cpp:116 src/frontends/qt/GuiTabular.cpp:1118
+#: src/frontends/qt/GuiParagraph.cpp:116 src/frontends/qt/GuiTabular.cpp:1110
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt/ui/BoxUi.ui:285 src/frontends/qt/ui/ListingsUi.ui:118
 #: src/frontends/qt/ui/TabularUi.ui:353 src/frontends/qt/ui/WrapUi.ui:52
-#: src/frontends/qt/GuiDocument.cpp:1644 src/frontends/qt/GuiParagraph.cpp:115
-#: src/frontends/qt/GuiTabular.cpp:1119
+#: src/frontends/qt/GuiDocument.cpp:1637 src/frontends/qt/GuiParagraph.cpp:115
+#: src/frontends/qt/GuiTabular.cpp:1111
 msgid "Right"
 msgstr "Rechts"
 
@@ -747,8 +747,8 @@ msgstr "Schatten&größe:"
 msgid "Size value"
 msgstr "Größenwert"
 
-#: src/frontends/qt/ui/BoxUi.ui:431 src/frontends/qt/GuiBranches.cpp:55
-#: src/frontends/qt/GuiDocument.cpp:1395
+#: src/frontends/qt/ui/BoxUi.ui:431 src/frontends/qt/GuiBranches.cpp:56
+#: src/frontends/qt/GuiDocument.cpp:1388
 msgid "Color"
 msgstr "Farbe"
 
@@ -872,17 +872,17 @@ msgstr "A&lle hinzufügen"
 
 #: src/frontends/qt/ui/BranchesUnknownUi.ui:58 src/Buffer.cpp:1501
 #: src/Buffer.cpp:4826 src/Buffer.cpp:4936 src/LyXVC.cpp:114 src/LyXVC.cpp:309
-#: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:226
-#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:3014
-#: src/frontends/qt/GuiParagraph.cpp:176 src/frontends/qt/GuiPrefs.cpp:3931
-#: src/frontends/qt/GuiPrefs.cpp:3955 src/frontends/qt/GuiView.cpp:3003
-#: src/frontends/qt/GuiView.cpp:3166 src/frontends/qt/GuiView.cpp:3396
-#: src/frontends/qt/GuiView.cpp:3420 src/frontends/qt/GuiView.cpp:3434
-#: src/frontends/qt/GuiView.cpp:3538 src/frontends/qt/GuiView.cpp:3583
-#: src/frontends/qt/GuiView.cpp:3638 src/frontends/qt/GuiView.cpp:3872
-#: src/frontends/qt/GuiView.cpp:3886 src/frontends/qt/GuiView.cpp:4005
-#: src/frontends/qt/GuiView.cpp:4030 src/frontends/qt/GuiView.cpp:4752
-#: src/frontends/qt/GuiView.cpp:4759 src/insets/InsetBibtex.cpp:153
+#: src/buffer_funcs.cpp:56 src/frontends/qt/GuiBranches.cpp:248
+#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiDocument.cpp:3012
+#: src/frontends/qt/GuiParagraph.cpp:176 src/frontends/qt/GuiPrefs.cpp:3936
+#: src/frontends/qt/GuiPrefs.cpp:3960 src/frontends/qt/GuiView.cpp:3118
+#: src/frontends/qt/GuiView.cpp:3281 src/frontends/qt/GuiView.cpp:3511
+#: src/frontends/qt/GuiView.cpp:3535 src/frontends/qt/GuiView.cpp:3549
+#: src/frontends/qt/GuiView.cpp:3653 src/frontends/qt/GuiView.cpp:3698
+#: src/frontends/qt/GuiView.cpp:3753 src/frontends/qt/GuiView.cpp:3987
+#: src/frontends/qt/GuiView.cpp:4001 src/frontends/qt/GuiView.cpp:4120
+#: src/frontends/qt/GuiView.cpp:4145 src/frontends/qt/GuiView.cpp:4867
+#: src/frontends/qt/GuiView.cpp:4874 src/insets/InsetBibtex.cpp:153
 msgid "&Cancel"
 msgstr "&Abbrechen"
 
@@ -916,28 +916,28 @@ msgstr "&Größe:"
 #: src/frontends/qt/ui/TabularUi.ui:1222 src/frontends/qt/ui/TabularUi.ui:1241
 #: src/frontends/qt/ui/TabularUi.ui:1301 lib/encodings:50
 #: lib/ui/stdtoolbars.inc:125 src/Font.cpp:143 src/FontInfo.cpp:638
-#: src/frontends/qt/ColorsCombo.cpp:119 src/frontends/qt/GuiCharacter.cpp:49
-#: src/frontends/qt/GuiCharacter.cpp:62 src/frontends/qt/GuiCharacter.cpp:83
-#: src/frontends/qt/GuiCharacter.cpp:96 src/frontends/qt/GuiCharacter.cpp:108
-#: src/frontends/qt/GuiCharacter.cpp:119 src/frontends/qt/GuiCharacter.cpp:192
-#: src/frontends/qt/GuiDocument.cpp:110 src/frontends/qt/GuiDocument.cpp:882
-#: src/frontends/qt/GuiDocument.cpp:904 src/frontends/qt/GuiDocument.cpp:1075
-#: src/frontends/qt/GuiDocument.cpp:1160 src/frontends/qt/GuiDocument.cpp:1208
-#: src/frontends/qt/GuiDocument.cpp:1221 src/frontends/qt/GuiDocument.cpp:1499
-#: src/frontends/qt/GuiDocument.cpp:1526 src/frontends/qt/GuiDocument.cpp:1635
-#: src/frontends/qt/GuiDocument.cpp:1643 src/frontends/qt/GuiDocument.cpp:2697
-#: src/frontends/qt/GuiDocument.cpp:2822 src/frontends/qt/GuiDocument.cpp:2825
-#: src/frontends/qt/GuiDocument.cpp:2828 src/frontends/qt/GuiDocument.cpp:2860
-#: src/frontends/qt/GuiDocument.cpp:2871 src/frontends/qt/GuiDocument.cpp:2882
-#: src/frontends/qt/GuiDocument.cpp:2969 src/frontends/qt/GuiDocument.cpp:3583
-#: src/frontends/qt/GuiDocument.cpp:5158 src/frontends/qt/GuiExternal.cpp:76
-#: src/frontends/qt/GuiGraphics.cpp:71 src/frontends/qt/GuiIndex.cpp:46
-#: src/frontends/qt/GuiIndices.cpp:58 src/frontends/qt/GuiListings.cpp:156
-#: src/frontends/qt/GuiListings.cpp:163 src/frontends/qt/GuiPrefs.cpp:2921
-#: src/frontends/qt/GuiPrefs.cpp:3083 src/frontends/qt/GuiPrefs.cpp:3097
-#: src/frontends/qt/GuiPrintNomencl.cpp:47 src/frontends/qt/GuiTabular.cpp:71
-#: src/frontends/qt/GuiTabular.cpp:72 src/frontends/qt/GuiTabular.cpp:73
-#: src/frontends/qt/GuiTabular.cpp:74 src/frontends/qt/GuiTabularCreate.cpp:105
+#: src/frontends/qt/GuiCharacter.cpp:49 src/frontends/qt/GuiCharacter.cpp:62
+#: src/frontends/qt/GuiCharacter.cpp:83 src/frontends/qt/GuiCharacter.cpp:96
+#: src/frontends/qt/GuiCharacter.cpp:108 src/frontends/qt/GuiCharacter.cpp:119
+#: src/frontends/qt/GuiCharacter.cpp:192 src/frontends/qt/GuiDocument.cpp:110
+#: src/frontends/qt/GuiDocument.cpp:882 src/frontends/qt/GuiDocument.cpp:904
+#: src/frontends/qt/GuiDocument.cpp:1075 src/frontends/qt/GuiDocument.cpp:1160
+#: src/frontends/qt/GuiDocument.cpp:1208 src/frontends/qt/GuiDocument.cpp:1221
+#: src/frontends/qt/GuiDocument.cpp:1492 src/frontends/qt/GuiDocument.cpp:1519
+#: src/frontends/qt/GuiDocument.cpp:1628 src/frontends/qt/GuiDocument.cpp:1636
+#: src/frontends/qt/GuiDocument.cpp:2695 src/frontends/qt/GuiDocument.cpp:2820
+#: src/frontends/qt/GuiDocument.cpp:2823 src/frontends/qt/GuiDocument.cpp:2826
+#: src/frontends/qt/GuiDocument.cpp:2858 src/frontends/qt/GuiDocument.cpp:2869
+#: src/frontends/qt/GuiDocument.cpp:2880 src/frontends/qt/GuiDocument.cpp:2967
+#: src/frontends/qt/GuiDocument.cpp:3581 src/frontends/qt/GuiDocument.cpp:5158
+#: src/frontends/qt/GuiExternal.cpp:76 src/frontends/qt/GuiGraphics.cpp:71
+#: src/frontends/qt/GuiIndex.cpp:46 src/frontends/qt/GuiIndices.cpp:58
+#: src/frontends/qt/GuiListings.cpp:156 src/frontends/qt/GuiListings.cpp:163
+#: src/frontends/qt/GuiPrefs.cpp:2926 src/frontends/qt/GuiPrefs.cpp:3088
+#: src/frontends/qt/GuiPrefs.cpp:3102 src/frontends/qt/GuiPrintNomencl.cpp:47
+#: src/frontends/qt/GuiTabular.cpp:71 src/frontends/qt/GuiTabular.cpp:72
+#: src/frontends/qt/GuiTabular.cpp:73 src/frontends/qt/GuiTabular.cpp:74
+#: src/frontends/qt/GuiTabularCreate.cpp:105 src/frontends/qt/GuiView.cpp:1275
 #: src/frontends/qt/GuiViewSource.cpp:351
 msgid "Default"
 msgstr "Standard"
@@ -1134,7 +1134,7 @@ msgstr "S&prache:"
 #: lib/layouts/europasscv.layout:441 lib/layouts/europasscv.layout:476
 #: lib/layouts/europasscv.layout:483 lib/layouts/europecv.layout:322
 #: lib/layouts/europecv.layout:328 lib/layouts/moderncv.layout:581
-#: src/frontends/qt/GuiDocument.cpp:1871 src/frontends/qt/GuiPrefs.cpp:2872
+#: src/frontends/qt/GuiDocument.cpp:1869 src/frontends/qt/GuiPrefs.cpp:2877
 #: src/frontends/qt/Menus.cpp:1024
 msgid "Language"
 msgstr "Sprache"
@@ -1329,7 +1329,8 @@ msgstr "Schattierte Boxen:"
 msgid "Page:"
 msgstr "Seite:"
 
-#: src/frontends/qt/ui/ColorUi.ui:228 src/frontends/qt/ColorsCombo.cpp:131
+#: src/frontends/qt/ui/ColorUi.ui:228 src/frontends/qt/GuiView.cpp:1283
+#: src/frontends/qt/GuiView.cpp:1315
 msgid "Custom Colors"
 msgstr "Benutzerdefinierte Farben"
 
@@ -1462,7 +1463,7 @@ msgstr ""
 
 #: src/frontends/qt/ui/CompareUi.ui:197 src/frontends/qt/ui/ExternalUi.ui:92
 #: src/frontends/qt/ui/GraphicsUi.ui:75 src/frontends/qt/ui/IncludeUi.ui:28
-#: src/frontends/qt/ui/LaTeXUi.ui:155 src/frontends/qt/ui/LyXFilesUi.ui:155
+#: src/frontends/qt/ui/LaTeXUi.ui:171 src/frontends/qt/ui/LyXFilesUi.ui:155
 #: src/frontends/qt/ui/PrefInputUi.ui:52
 msgid "&Browse..."
 msgstr "&Durchsuchen..."
@@ -1550,7 +1551,7 @@ msgstr ""
 msgid "Save as Document Defaults"
 msgstr "Als Dokument-Voreinstellung speichern"
 
-#: src/frontends/qt/ui/ERTUi.ui:38 src/frontends/qt/GuiPrefs.cpp:1759
+#: src/frontends/qt/ui/ERTUi.ui:38 src/frontends/qt/GuiPrefs.cpp:1764
 msgid "Display"
 msgstr "Anzeige"
 
@@ -2730,7 +2731,7 @@ msgstr "&Fixes Datum:"
 msgid "Here you can enter a fixed date (in ISO format: YYYY-MM-DD)"
 msgstr "Hier können Sie ein fixes Datum eingeben (im ISO-Format: YYYY-MM-DD)"
 
-#: src/frontends/qt/ui/InfoUi.ui:70
+#: src/frontends/qt/ui/InfoUi.ui:70 src/frontends/qt/ui/RefUi.ui:353
 msgid "&Custom:"
 msgstr "Benut&zerdefiniert:"
 
@@ -2758,59 +2759,30 @@ msgid "I&mmediate Apply"
 msgstr "&Direkt anwenden"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:20
-msgid "&Graphics driver:"
-msgstr "&Grafiktreiber:"
-
-#: src/frontends/qt/ui/LaTeXUi.ui:40
-msgid "&Use refstyle (not prettyref) for cross-references"
-msgstr "Verwende &Refstyle (statt Prettyref) für Querverweise"
-
-#: src/frontends/qt/ui/LaTeXUi.ui:69
-msgid "&Suppress default date on front page"
-msgstr "Datum auf der &Titelseite nicht anzeigen"
-
-#: src/frontends/qt/ui/LaTeXUi.ui:89
 msgid "Document &Class"
 msgstr "Dokumentklasse"
 
-#: src/frontends/qt/ui/LaTeXUi.ui:114
+#: src/frontends/qt/ui/LaTeXUi.ui:45
 msgid "Click to select a local document class definition file"
 msgstr "Hier klicken, um eine lokale Dokumentklassen-Datei auszuwählen"
 
-#: src/frontends/qt/ui/LaTeXUi.ui:117
+#: src/frontends/qt/ui/LaTeXUi.ui:48
 msgid "&Local Class..."
 msgstr "&Lokale Klasse..."
 
-#: src/frontends/qt/ui/LaTeXUi.ui:127
-msgid "Select if the current document is included to a master file"
-msgstr ""
-"Wählen Sie dies, wenn dieses Dokument in ein Hauptdokument eingebettet ist"
-
-#: src/frontends/qt/ui/LaTeXUi.ui:133
-msgid "Select de&fault master document"
-msgstr "Standard-Hauptdokument &wählen"
-
-#: src/frontends/qt/ui/LaTeXUi.ui:145
-msgid "&Master:"
-msgstr "&Hauptdokument:"
-
-#: src/frontends/qt/ui/LaTeXUi.ui:162
-msgid "Enter the name of the default master document"
-msgstr "Geben Sie den Namen des Hauptdokuments an"
-
-#: src/frontends/qt/ui/LaTeXUi.ui:172
+#: src/frontends/qt/ui/LaTeXUi.ui:58
 msgid "Class Options"
 msgstr "Klassenoptionen"
 
-#: src/frontends/qt/ui/LaTeXUi.ui:181
+#: src/frontends/qt/ui/LaTeXUi.ui:67
 msgid "Enable to use the options that are predefined in the layout file"
 msgstr "Aktiviert die Benutzung der in der Formatdatei vordefinierten Optionen"
 
-#: src/frontends/qt/ui/LaTeXUi.ui:184
+#: src/frontends/qt/ui/LaTeXUi.ui:70
 msgid "&Predefined:"
 msgstr "Vo&rdefiniert:"
 
-#: src/frontends/qt/ui/LaTeXUi.ui:191
+#: src/frontends/qt/ui/LaTeXUi.ui:77
 msgid ""
 "The options that are predefined in the layout file. Click to the left to "
 "select/deselect."
@@ -2818,9 +2790,38 @@ msgstr ""
 "Die Optionen, die in der Formatdatei vordefiniert sind. Mit dem "
 "Kontrollkästchen links können diese an-/ausgeschaltet werden."
 
-#: src/frontends/qt/ui/LaTeXUi.ui:204
+#: src/frontends/qt/ui/LaTeXUi.ui:90
 msgid "Cus&tom:"
 msgstr "&Benutzerdefiniert:"
+
+#: src/frontends/qt/ui/LaTeXUi.ui:110
+msgid "&Graphics driver:"
+msgstr "&Grafiktreiber:"
+
+#: src/frontends/qt/ui/LaTeXUi.ui:143
+msgid "Select if the current document is included to a master file"
+msgstr ""
+"Wählen Sie dies, wenn dieses Dokument in ein Hauptdokument eingebettet ist"
+
+#: src/frontends/qt/ui/LaTeXUi.ui:149
+msgid "Select de&fault master document"
+msgstr "Standard-Hauptdokument &wählen"
+
+#: src/frontends/qt/ui/LaTeXUi.ui:161
+msgid "&Master:"
+msgstr "&Hauptdokument:"
+
+#: src/frontends/qt/ui/LaTeXUi.ui:178
+msgid "Enter the name of the default master document"
+msgstr "Geben Sie den Namen des Hauptdokuments an"
+
+#: src/frontends/qt/ui/LaTeXUi.ui:188
+msgid "Formatted cross-references"
+msgstr "Formatierte Querverweise"
+
+#: src/frontends/qt/ui/LaTeXUi.ui:196
+msgid "&Format packages:"
+msgstr "&Formatpakete:"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:224
 msgid ""
@@ -2833,6 +2834,10 @@ msgstr ""
 #: src/frontends/qt/ui/LaTeXUi.ui:227
 msgid "Format cross-references in the &work area"
 msgstr "&Querverweise im Arbeitsbereich formatieren"
+
+#: src/frontends/qt/ui/LaTeXUi.ui:246
+msgid "&Suppress default date on front page"
+msgstr "Datum auf der &Titelseite nicht anzeigen"
 
 #: src/frontends/qt/ui/LanguageUi.ui:20
 msgid "Encoding"
@@ -3205,11 +3210,11 @@ msgstr ""
 "Legt fest, ob nur persönliche Dateien, Systemdateien oder beides angezeigt "
 "werden."
 
-#: src/frontends/qt/ui/LyXFilesUi.ui:72 src/frontends/qt/ui/RefUi.ui:82
+#: src/frontends/qt/ui/LyXFilesUi.ui:72 src/frontends/qt/ui/RefUi.ui:56
 msgid "Filter case-sensitively"
 msgstr "Groß-/Kleinschreibung beim Filtern beachten"
 
-#: src/frontends/qt/ui/LyXFilesUi.ui:75 src/frontends/qt/ui/RefUi.ui:85
+#: src/frontends/qt/ui/LyXFilesUi.ui:75 src/frontends/qt/ui/RefUi.ui:59
 msgid "Case Sensiti&ve"
 msgstr "Groß-/&Kleinschreibung beachten"
 
@@ -3678,7 +3683,7 @@ msgstr "Bilder"
 
 #: src/frontends/qt/ui/OutputUi.ui:317 lib/layouts/aapaper.layout:63
 #: lib/layouts/egs.layout:720 lib/languages:161
-#: src/frontends/qt/GuiDocument.cpp:1699 src/frontends/qt/GuiErrorList.cpp:51
+#: src/frontends/qt/GuiDocument.cpp:1697 src/frontends/qt/GuiErrorList.cpp:51
 #: src/frontends/qt/GuiLog.cpp:250 src/frontends/qt/GuiPrefs.cpp:539
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -3924,7 +3929,7 @@ msgstr "&Querformat"
 #: src/frontends/qt/ui/PageLayoutUi.ui:179
 #: lib/layouts/customHeadersFooters.module:3 lib/layouts/landscape.module:3
 #: lib/layouts/multicol.module:3 src/frontends/qt/GuiDocument.cpp:1215
-#: src/frontends/qt/GuiDocument.cpp:1218 src/frontends/qt/GuiDocument.cpp:1869
+#: src/frontends/qt/GuiDocument.cpp:1218 src/frontends/qt/GuiDocument.cpp:1867
 msgid "Page Layout"
 msgstr "Seitenlayout"
 
@@ -3971,11 +3976,11 @@ msgstr "Doppelt"
 #: src/frontends/qt/GuiDocument.cpp:883 src/frontends/qt/GuiDocument.cpp:889
 #: src/frontends/qt/GuiDocument.cpp:897 src/frontends/qt/GuiDocument.cpp:1016
 #: src/frontends/qt/GuiDocument.cpp:1081 src/frontends/qt/GuiDocument.cpp:1167
-#: src/frontends/qt/GuiDocument.cpp:1222 src/frontends/qt/GuiDocument.cpp:1636
+#: src/frontends/qt/GuiDocument.cpp:1222 src/frontends/qt/GuiDocument.cpp:1629
 #: src/frontends/qt/GuiHSpace.cpp:57 src/frontends/qt/GuiIndex.cpp:50
 #: src/frontends/qt/GuiPrefs.cpp:713 src/frontends/qt/GuiPrefs.cpp:741
-#: src/frontends/qt/GuiPrefs.cpp:768 src/frontends/qt/GuiPrefs.cpp:2768
-#: src/frontends/qt/GuiPrefs.cpp:2793 src/frontends/qt/GuiPrintNomencl.cpp:53
+#: src/frontends/qt/GuiPrefs.cpp:768 src/frontends/qt/GuiPrefs.cpp:2773
+#: src/frontends/qt/GuiPrefs.cpp:2798 src/frontends/qt/GuiPrintNomencl.cpp:53
 #: src/insets/InsetInfo.cpp:241 src/insets/InsetInfo.cpp:251
 #: src/insets/InsetInfo.cpp:255 src/insets/InsetInfo.cpp:264
 #: src/insets/InsetInfo.cpp:323 src/insets/InsetInfo.cpp:342
@@ -4114,7 +4119,7 @@ msgid "Update &immediately"
 msgstr "&Sofort aktualisieren"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:290 lib/ui/stdtoolbars.inc:87
-#: src/BufferView.cpp:1571
+#: src/BufferView.cpp:1573
 msgid "Undo"
 msgstr "Rückgängig"
 
@@ -4123,7 +4128,7 @@ msgid "&Undo"
 msgstr "&Rückgängig"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:309 lib/ui/stdtoolbars.inc:88
-#: src/BufferView.cpp:1592
+#: src/BufferView.cpp:1594
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -4299,8 +4304,8 @@ msgid "&Modify"
 msgstr "&Ändern"
 
 #: src/frontends/qt/ui/PrefConvertersUi.ui:300
-#: src/frontends/qt/ui/PrefShortcutsUi.ui:48 src/frontends/qt/GuiPrefs.cpp:3669
-#: src/frontends/qt/GuiPrefs.cpp:3755
+#: src/frontends/qt/ui/PrefShortcutsUi.ui:48 src/frontends/qt/GuiPrefs.cpp:3674
+#: src/frontends/qt/GuiPrefs.cpp:3760
 msgid "Remo&ve"
 msgstr "&Entfernen"
 
@@ -4854,7 +4859,7 @@ msgstr ""
 "soll"
 
 #: src/frontends/qt/ui/PrefLanguageUi.ui:77
-#: src/frontends/qt/GuiDocument.cpp:1077 src/frontends/qt/GuiDocument.cpp:2893
+#: src/frontends/qt/GuiDocument.cpp:1077 src/frontends/qt/GuiDocument.cpp:2891
 #: src/frontends/qt/GuiPrefs.cpp:712 src/frontends/qt/GuiPrefs.cpp:740
 msgid "Automatic"
 msgstr "Automatisch"
@@ -5561,7 +5566,7 @@ msgstr ""
 "LaTeX-Code eingeben wollen."
 
 #: src/frontends/qt/ui/ProgressViewUi.ui:93
-#: src/frontends/qt/GuiDocument.cpp:1884 src/frontends/qt/GuiPrefs.cpp:105
+#: src/frontends/qt/GuiDocument.cpp:1882 src/frontends/qt/GuiPrefs.cpp:105
 msgid "Output"
 msgstr "Ausgabe"
 
@@ -5618,100 +5623,100 @@ msgstr ""
 msgid "&Clear automatically"
 msgstr "A&utomatisch aufräumen"
 
-#: src/frontends/qt/ui/RefUi.ui:33 src/insets/InsetRef.cpp:657
-msgid "Label"
-msgstr "Marke"
-
-#: src/frontends/qt/ui/RefUi.ui:38
-msgid "Reference counter value"
-msgstr "Wert des referenzierten Zählers"
-
-#: src/frontends/qt/ui/RefUi.ui:63
+#: src/frontends/qt/ui/RefUi.ui:37
 msgid "&In[[buffer]]:"
 msgstr "&In:"
 
-#: src/frontends/qt/ui/RefUi.ui:100
+#: src/frontends/qt/ui/RefUi.ui:74
 msgid "The (sub-)document from which the available labels are displayed"
 msgstr "Das (Teil-)Dokument, dessen verfügbare Marken angezeigt werden"
 
-#: src/frontends/qt/ui/RefUi.ui:134
-msgid "So&rt:"
-msgstr "&Sortierung:"
-
-#: src/frontends/qt/ui/RefUi.ui:144
-msgid "Sorting of the list of available labels"
-msgstr "Sortierung der Liste verfügbarer Marken"
-
-#: src/frontends/qt/ui/RefUi.ui:151
-msgid "Group the list of available labels by prefix (e.g. \"sec:\")"
-msgstr "Liste der verfügbaren Marken nach Präfix (bspw. \"sec:\") gruppieren"
-
-#: src/frontends/qt/ui/RefUi.ui:154
-msgid "Grou&p"
-msgstr "Gru&ppieren"
-
-#: src/frontends/qt/ui/RefUi.ui:176
+#: src/frontends/qt/ui/RefUi.ui:91
 msgid "Available &Labels:"
 msgstr "&Verfügbare Marken:"
 
-#: src/frontends/qt/ui/RefUi.ui:188
+#: src/frontends/qt/ui/RefUi.ui:111 src/insets/InsetRef.cpp:708
+msgid "Label"
+msgstr "Marke"
+
+#: src/frontends/qt/ui/RefUi.ui:116
+msgid "Reference counter value"
+msgstr "Wert des referenzierten Zählers"
+
+#: src/frontends/qt/ui/RefUi.ui:141
+msgid "So&rt:"
+msgstr "&Sortierung:"
+
+#: src/frontends/qt/ui/RefUi.ui:151
+msgid "Sorting of the list of available labels"
+msgstr "Sortierung der Liste verfügbarer Marken"
+
+#: src/frontends/qt/ui/RefUi.ui:158
+msgid "Group the list of available labels by prefix (e.g. \"sec:\")"
+msgstr "Liste der verfügbaren Marken nach Präfix (bspw. \"sec:\") gruppieren"
+
+#: src/frontends/qt/ui/RefUi.ui:161
+msgid "Grou&p"
+msgstr "Gru&ppieren"
+
+#: src/frontends/qt/ui/RefUi.ui:185
 msgid "Sele&cted Label:"
 msgstr "Ausgewählte &Marke:"
 
-#: src/frontends/qt/ui/RefUi.ui:201
+#: src/frontends/qt/ui/RefUi.ui:198
 msgid "Select a label from the list above or enter a label manually"
 msgstr ""
 "Wählen Sie eine Marke aus der Liste oben oder geben Sie manuell eine ein."
 
-#: src/frontends/qt/ui/RefUi.ui:214 src/frontends/qt/GuiRef.cpp:403
+#: src/frontends/qt/ui/RefUi.ui:211 src/frontends/qt/GuiRef.cpp:418
 msgid "Jump to the selected label"
 msgstr "Springe zur ausgewählten Marke"
 
-#: src/frontends/qt/ui/RefUi.ui:217 src/frontends/qt/GuiRef.cpp:402
+#: src/frontends/qt/ui/RefUi.ui:214 src/frontends/qt/GuiRef.cpp:417
 msgid "&Go to Label"
 msgstr "&Gehe zur Marke"
 
-#: src/frontends/qt/ui/RefUi.ui:228
+#: src/frontends/qt/ui/RefUi.ui:225
 msgid "Reference For&mat:"
 msgstr "&Querverweisstil:"
 
-#: src/frontends/qt/ui/RefUi.ui:247
+#: src/frontends/qt/ui/RefUi.ui:244
 msgid "Adjust the style of the cross-reference"
 msgstr "Wählen Sie hier den Stil des Querverweises aus."
 
-#: src/frontends/qt/ui/RefUi.ui:251 src/frontends/qt/GuiRef.cpp:317
+#: src/frontends/qt/ui/RefUi.ui:248 src/frontends/qt/GuiRef.cpp:330
 msgid "<reference>"
 msgstr "<Querverweis>"
 
-#: src/frontends/qt/ui/RefUi.ui:256 src/frontends/qt/GuiRef.cpp:318
+#: src/frontends/qt/ui/RefUi.ui:253 src/frontends/qt/GuiRef.cpp:331
 msgid "(<reference>)"
 msgstr "(<Querverweis>)"
 
-#: src/frontends/qt/ui/RefUi.ui:261 src/frontends/qt/GuiRef.cpp:319
+#: src/frontends/qt/ui/RefUi.ui:258 src/frontends/qt/GuiRef.cpp:332
 msgid "<page>"
 msgstr "<Seite>"
 
-#: src/frontends/qt/ui/RefUi.ui:266 src/frontends/qt/GuiRef.cpp:320
+#: src/frontends/qt/ui/RefUi.ui:263 src/frontends/qt/GuiRef.cpp:333
 msgid "on page <page>"
 msgstr "auf Seite <Seite>"
 
-#: src/frontends/qt/ui/RefUi.ui:271 src/frontends/qt/GuiRef.cpp:321
+#: src/frontends/qt/ui/RefUi.ui:268 src/frontends/qt/GuiRef.cpp:334
 msgid "<reference> on page <page>"
 msgstr "<Querverweis> auf Seite <Seite>"
 
-#: src/frontends/qt/ui/RefUi.ui:276 src/frontends/qt/GuiRef.cpp:323
+#: src/frontends/qt/ui/RefUi.ui:273 src/frontends/qt/GuiRef.cpp:336
 msgid "Formatted reference"
 msgstr "Formatierter Querverweis"
 
-#: src/frontends/qt/ui/RefUi.ui:281 src/frontends/qt/GuiRef.cpp:322
+#: src/frontends/qt/ui/RefUi.ui:278 src/frontends/qt/GuiRef.cpp:335
 msgid "Textual reference"
 msgstr "Textverweis"
 
-#: src/frontends/qt/ui/RefUi.ui:286 src/frontends/qt/GuiRef.cpp:324
+#: src/frontends/qt/ui/RefUi.ui:283 src/frontends/qt/GuiRef.cpp:337
 msgid "Label only"
 msgstr "Nur Marke"
 
-#: src/frontends/qt/ui/RefUi.ui:324
+#: src/frontends/qt/ui/RefUi.ui:301
 msgid ""
 "Use plural form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
@@ -5719,11 +5724,11 @@ msgstr ""
 "Verwende Pluralformen bei formatierten Querverweisen. Dies funktioniert nur "
 "bei formatierten Querverweisen und mit Refstyle."
 
-#: src/frontends/qt/ui/RefUi.ui:327
-msgid "Plural"
-msgstr "Plural"
+#: src/frontends/qt/ui/RefUi.ui:304
+msgid "&Plural"
+msgstr "&Plural"
 
-#: src/frontends/qt/ui/RefUi.ui:334
+#: src/frontends/qt/ui/RefUi.ui:311
 msgid ""
 "Use capitalized form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
@@ -5731,21 +5736,21 @@ msgstr ""
 "Verwende Großschreibung bei formatierten Querverweisen. (Funktioniert nur "
 "bei formatierten Querverweisen und nur, wenn man refstyle verwendet.)"
 
-#: src/frontends/qt/ui/RefUi.ui:337
-msgid "Capitalized"
-msgstr "Großschreibung"
+#: src/frontends/qt/ui/RefUi.ui:314
+msgid "&Capitalized"
+msgstr "Gr&oßschreibung"
 
-#: src/frontends/qt/ui/RefUi.ui:344
+#: src/frontends/qt/ui/RefUi.ui:321
 msgid "Do not output part of label before \":\""
 msgstr "Den Teil der Marke vor \":\" nicht ausgeben"
 
-#: src/frontends/qt/ui/RefUi.ui:347 lib/ui/stdcontext.inc:126
-msgid "No Prefix"
-msgstr "Ohne Präfix"
+#: src/frontends/qt/ui/RefUi.ui:324
+msgid "No Prefi&x"
+msgstr "Ohne Präfi&x"
 
-#: src/frontends/qt/ui/RefUi.ui:354 lib/ui/stdcontext.inc:127
-msgid "No Hyperlink"
-msgstr "Ohne Hyperlink "
+#: src/frontends/qt/ui/RefUi.ui:331
+msgid "No H&yperlink"
+msgstr "Ohne H&yperlink"
 
 #: src/frontends/qt/ui/SearchUi.ui:52
 msgid "Find previous occurrence (Shift+Enter)"
@@ -6110,12 +6115,12 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
 #: src/frontends/qt/ui/TabularUi.ui:338 src/frontends/qt/GuiParagraph.cpp:113
-#: src/frontends/qt/GuiTabular.cpp:1121
+#: src/frontends/qt/GuiTabular.cpp:1113
 msgid "Justified"
 msgstr "Blocksatz"
 
 #: src/frontends/qt/ui/TabularUi.ui:358 src/frontends/qt/GuiTabular.cpp:292
-#: src/frontends/qt/GuiTabular.cpp:1123
+#: src/frontends/qt/GuiTabular.cpp:1115
 msgid "At Decimal Separator"
 msgstr "Am Dezimaltrenner"
 
@@ -6696,8 +6701,8 @@ msgstr "Nur Haupttext"
 msgid "Select the output format"
 msgstr "Ausgabeformat wählen"
 
-#: src/frontends/qt/ui/WorkAreaUi.ui:82 src/frontends/qt/GuiView.cpp:4030
-#: src/frontends/qt/GuiView.cpp:4752
+#: src/frontends/qt/ui/WorkAreaUi.ui:82 src/frontends/qt/GuiView.cpp:4145
+#: src/frontends/qt/GuiView.cpp:4867
 msgid "&Reload"
 msgstr "Ne&u laden"
 
@@ -7756,7 +7761,7 @@ msgstr "Definition"
 #: lib/layouts/theorems-without-preamble.inc:272
 #: lib/layouts/theorems-without-preamble.inc:275 lib/layouts/theorems.inc:225
 #: lib/layouts/theorems.inc:234 lib/layouts/theorems.inc:237
-#: src/frontends/qt/GuiDocument.cpp:1425
+#: src/frontends/qt/GuiDocument.cpp:1418
 msgid "Example"
 msgstr "Beispiel"
 
@@ -8068,7 +8073,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdinsets.inc:767 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
-#: src/insets/InsetRef.cpp:650
+#: src/insets/InsetRef.cpp:701
 msgid "Standard"
 msgstr "Standard"
 
@@ -8322,7 +8327,7 @@ msgstr "Kurztitel für den Anhang"
 #: lib/layouts/stdstruct.inc:59 lib/layouts/svcommon.inc:658
 #: lib/layouts/tufte-book.layout:299 lib/layouts/tufte-book.layout:301
 #: lib/layouts/tufte-handout.layout:78 lib/examples/Articles:0
-#: src/frontends/qt/GuiDocument.cpp:1875 src/insets/InsetBibtex.cpp:963
+#: src/frontends/qt/GuiDocument.cpp:1873 src/insets/InsetBibtex.cpp:963
 msgid "Bibliography"
 msgstr "Literaturverzeichnis"
 
@@ -8408,8 +8413,8 @@ msgstr "Optionales Foto für die Biografie"
 #: lib/layouts/pdfcomment.module:47 lib/layouts/pdfcomment.module:58
 #: lib/layouts/scrlettr.layout:129 lib/layouts/scrlttr2.layout:173
 #: lib/layouts/sigplanconf.layout:85 lib/layouts/sigplanconf.layout:164
-#: lib/layouts/tcolorbox.module:144 src/frontends/qt/GuiDocument.cpp:1394
-#: src/frontends/qt/GuiIndices.cpp:52 src/mathed/InsetMathMacroTemplate.cpp:492
+#: lib/layouts/tcolorbox.module:144 src/frontends/qt/GuiDocument.cpp:1387
+#: src/frontends/qt/GuiIndices.cpp:52 src/mathed/InsetMathMacroTemplate.cpp:493
 msgid "Name"
 msgstr "Name"
 
@@ -8872,7 +8877,7 @@ msgid "Altaffilation"
 msgstr "Alt. Zugehörigkeit"
 
 #: lib/layouts/aastex.layout:201 lib/layouts/agutex.layout:132
-#: src/mathed/InsetMathHull.cpp:1921 src/mathed/InsetMathHull.cpp:1930
+#: src/mathed/InsetMathHull.cpp:1926 src/mathed/InsetMathHull.cpp:1935
 msgid "Number"
 msgstr "Nummer"
 
@@ -8888,9 +8893,9 @@ msgstr "Alternative Zugehörigkeit:"
 msgid "And"
 msgstr "Und"
 
-#: lib/layouts/aastex.layout:256 src/frontends/qt/GuiDocument.cpp:3321
-#: src/frontends/qt/GuiDocument.cpp:3333 src/frontends/qt/GuiDocument.cpp:3462
-#: src/frontends/qt/GuiDocument.cpp:3481
+#: lib/layouts/aastex.layout:256 src/frontends/qt/GuiDocument.cpp:3319
+#: src/frontends/qt/GuiDocument.cpp:3331 src/frontends/qt/GuiDocument.cpp:3460
+#: src/frontends/qt/GuiDocument.cpp:3479
 msgid "and"
 msgstr "und"
 
@@ -12905,7 +12910,7 @@ msgstr "Gleichungen abschnittsweise nummerieren"
 #: lib/layouts/theorems-chap-bytype.module:3 lib/layouts/theorems-chap.module:3
 #: lib/layouts/theorems-named.module:4 lib/layouts/theorems-sec-bytype.module:3
 #: lib/layouts/theorems-sec.module:3 lib/layouts/theorems-starred.module:3
-#: lib/layouts/theorems-std.module:3 src/frontends/qt/BulletsModule.cpp:52
+#: lib/layouts/theorems-std.module:3 src/frontends/qt/BulletsModule.cpp:59
 msgid "Maths"
 msgstr "Mathe"
 
@@ -12918,8 +12923,8 @@ msgstr ""
 "Gleichungsnummer die Abschnittsnummer voran, bspw. '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17 lib/layouts/scrbook.layout:30
-#: lib/layouts/stdcounters.inc:86 src/insets/InsetRef.cpp:651
-#: src/mathed/InsetMathRef.cpp:378
+#: lib/layouts/stdcounters.inc:86 src/insets/InsetRef.cpp:702
+#: src/mathed/InsetMathRef.cpp:380
 msgid "Equation"
 msgstr "Gleichung"
 
@@ -13230,7 +13235,7 @@ msgid "Size the photo is resized to"
 msgstr "Ausgabegröße des Bildes"
 
 #: lib/layouts/europecv.layout:185 src/frontends/qt/GuiDocument.cpp:126
-#: src/insets/InsetRef.cpp:652
+#: src/insets/InsetRef.cpp:703
 msgid "Page"
 msgstr "Seite"
 
@@ -13410,7 +13415,7 @@ msgid "Fixme Error"
 msgstr "Fixme-Fehler"
 
 #: lib/layouts/fixme.module:83 src/frontends/qt/GuiCompare.cpp:202
-#: src/frontends/qt/GuiDocument.cpp:3027 src/frontends/qt/GuiDocument.cpp:3107
+#: src/frontends/qt/GuiDocument.cpp:3025 src/frontends/qt/GuiDocument.cpp:3105
 #: src/frontends/qt/GuiDocument.cpp:5121
 msgid "Error"
 msgstr "Fehler"
@@ -17796,7 +17801,7 @@ msgstr "Tropfen abwärts"
 msgid "Drop up"
 msgstr "Tropfen aufwärts"
 
-#: lib/layouts/shapepar.module:105 src/mathed/InsetMathMacroTemplate.cpp:543
+#: lib/layouts/shapepar.module:105 src/mathed/InsetMathMacroTemplate.cpp:544
 msgid "TeX"
 msgstr "TeX"
 
@@ -18245,7 +18250,7 @@ msgstr "Fußnoten"
 msgid "Notes"
 msgstr "Notizen"
 
-#: lib/layouts/stdinsets.inc:14 src/frontends/qt/GuiDocument.cpp:1883
+#: lib/layouts/stdinsets.inc:14 src/frontends/qt/GuiDocument.cpp:1881
 msgid "Branches"
 msgstr "Zweige"
 
@@ -18279,7 +18284,7 @@ msgstr "Programmlistings"
 msgid "List of Listings"
 msgstr "Verzeichnis der Programmlistings"
 
-#: lib/layouts/stdinsets.inc:355 src/frontends/qt/GuiDocument.cpp:1881
+#: lib/layouts/stdinsets.inc:355 src/frontends/qt/GuiDocument.cpp:1879
 #: src/frontends/qt/GuiDocument.cpp:5144
 msgid "Listings[[inset]]"
 msgstr "Programmlistings"
@@ -23090,7 +23095,7 @@ msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:62 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:109
-#: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2563
+#: lib/ui/stdtoolbars.inc:90 src/BufferView.cpp:2579
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -23232,6 +23237,14 @@ msgstr "Plural|a"
 #: lib/ui/stdcontext.inc:125
 msgid "Capitalize|C"
 msgstr "Große Anfangsbuchstaben|A"
+
+#: lib/ui/stdcontext.inc:126
+msgid "No Prefix"
+msgstr "Ohne Präfix"
+
+#: lib/ui/stdcontext.inc:127
+msgid "No Hyperlink"
+msgstr "Ohne Hyperlink "
 
 #: lib/ui/stdcontext.inc:137
 msgid "Go Back|G"
@@ -25575,7 +25588,7 @@ msgid "Fractions"
 msgstr "Brüche"
 
 #: lib/ui/stdtoolbars.inc:222 lib/ui/stdtoolbars.inc:445
-#: src/frontends/qt/GuiDocument.cpp:1867
+#: src/frontends/qt/GuiDocument.cpp:1865
 msgid "Fonts"
 msgstr "Schriften"
 
@@ -25592,7 +25605,7 @@ msgid "Big operators"
 msgstr "Große Operatoren"
 
 #: lib/ui/stdtoolbars.inc:226 lib/ui/stdtoolbars.inc:693
-#: src/frontends/qt/GuiDocument.cpp:5443
+#: src/frontends/qt/GuiDocument.cpp:5447
 msgid "Miscellaneous"
 msgstr "Verschiedenes"
 
@@ -30432,8 +30445,8 @@ msgstr "MS-Word Office-Open XML"
 msgid "Table (CSV)"
 msgstr "Tabelle (CSV)"
 
-#: lib/configure.py:852 src/frontends/qt/GuiView.cpp:1834
-#: src/mathed/InsetMathMacroTemplate.cpp:548
+#: lib/configure.py:852 src/frontends/qt/GuiView.cpp:1949
+#: src/mathed/InsetMathMacroTemplate.cpp:549
 msgid "LyX"
 msgstr "LyX"
 
@@ -30634,7 +30647,7 @@ msgstr "H- und P-Sätze"
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
 
-#: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1865
+#: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1863
 msgid "Modules"
 msgstr "Module"
 
@@ -31006,8 +31019,8 @@ msgid "Overwrite modified file?"
 msgstr "Modifizierte Datei überschreiben?"
 
 #: src/Buffer.cpp:1501 src/Exporter.cpp:50
-#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiView.cpp:3166
-#: src/frontends/qt/GuiView.cpp:3433 src/frontends/qt/GuiView.cpp:3538
+#: src/frontends/qt/GuiClipboard.cpp:252 src/frontends/qt/GuiView.cpp:3281
+#: src/frontends/qt/GuiView.cpp:3548 src/frontends/qt/GuiView.cpp:3653
 msgid "&Overwrite"
 msgstr "&Überschreiben"
 
@@ -31255,7 +31268,7 @@ msgstr "Zweig \"%1$s\" existiert bereits."
 msgid "Error viewing the output file."
 msgstr "Fehler bei der Ansicht der Ausgabedatei."
 
-#: src/Buffer.cpp:3472 src/frontends/qt/GuiView.cpp:2983
+#: src/Buffer.cpp:3472 src/frontends/qt/GuiView.cpp:3098
 #: src/frontends/qt/Validator.cpp:256 src/insets/ExternalSupport.cpp:400
 #: src/insets/InsetGraphics.cpp:697 src/insets/InsetInclude.cpp:616
 msgid "Invalid filename"
@@ -31342,7 +31355,7 @@ msgstr ""
 msgid "Couldn't export file"
 msgstr "Die Datei konnte nicht exportiert werden"
 
-#: src/Buffer.cpp:4622 src/frontends/qt/GuiView.cpp:3139
+#: src/Buffer.cpp:4622 src/frontends/qt/GuiView.cpp:3254
 msgid "File name error"
 msgstr "Fehler im Dateinamen"
 
@@ -31359,7 +31372,7 @@ msgstr ""
 "enthält Leerzeichen, aber Ihre TeX-Installation erlaubt dies nicht. Bitte "
 "speichern Sie Ihr Dokument in einem Verzeichnis ohne Leerzeichen."
 
-#: src/Buffer.cpp:4713 src/Buffer.cpp:4743 src/frontends/qt/GuiView.cpp:929
+#: src/Buffer.cpp:4713 src/Buffer.cpp:4743 src/frontends/qt/GuiView.cpp:931
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
@@ -31647,32 +31660,32 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:2070 src/BufferParams.cpp:2231
-#: src/BufferParams.cpp:2758 src/Encoding.cpp:264 src/Paragraph.cpp:3203
+#: src/BufferParams.cpp:2073 src/BufferParams.cpp:2234
+#: src/BufferParams.cpp:2761 src/Encoding.cpp:264 src/Paragraph.cpp:3203
 #: src/frontends/qt/LaTeXHighlighter.cpp:178
 #: src/insets/InsetCommandParams.cpp:516 src/insets/InsetCommandParams.cpp:524
 #: src/insets/InsetGraphics.cpp:904 src/insets/InsetGraphics.cpp:912
 #: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
-#: src/insets/InsetListings.cpp:333 src/mathed/InsetMathMacro.cpp:1178
+#: src/insets/InsetListings.cpp:333 src/mathed/InsetMathMacro.cpp:1175
 #: src/mathed/MathExtern.cpp:1487 src/mathed/MathExtern.cpp:1561
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
-#: src/BufferParams.cpp:2071 src/BufferParams.cpp:2232
-#: src/BufferParams.cpp:2759 src/Encoding.cpp:265 src/Paragraph.cpp:3204
+#: src/BufferParams.cpp:2074 src/BufferParams.cpp:2235
+#: src/BufferParams.cpp:2762 src/Encoding.cpp:265 src/Paragraph.cpp:3204
 #: src/insets/InsetCommandParams.cpp:517 src/insets/InsetCommandParams.cpp:525
 #: src/insets/InsetGraphics.cpp:905 src/insets/InsetGraphics.cpp:913
 #: src/insets/InsetListings.cpp:301 src/insets/InsetListings.cpp:309
-#: src/mathed/InsetMathMacro.cpp:1179 src/mathed/MathExtern.cpp:1488
+#: src/mathed/InsetMathMacro.cpp:1176 src/mathed/MathExtern.cpp:1488
 #: src/mathed/MathExtern.cpp:1562
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
 
-#: src/BufferParams.cpp:2084
+#: src/BufferParams.cpp:2087
 msgid "Uncodable character in document metadata"
 msgstr "Unkodierbares Zeichen in Dokument-Metadaten"
 
-#: src/BufferParams.cpp:2086
+#: src/BufferParams.cpp:2089
 #, c-format
 msgid ""
 "The metadata of your document contains glyphs that are unknown in the "
@@ -31690,11 +31703,11 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie die Metadaten entsprechend."
 
-#: src/BufferParams.cpp:2245
+#: src/BufferParams.cpp:2248
 msgid "Uncodable character in class options"
 msgstr "Unkodierbare Zeichen in den Klassenoptionen"
 
-#: src/BufferParams.cpp:2247
+#: src/BufferParams.cpp:2250
 #, c-format
 msgid ""
 "The class options of your document contain glyphs that are unknown in the "
@@ -31712,11 +31725,11 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2772
+#: src/BufferParams.cpp:2775
 msgid "Uncodable character in user preamble"
 msgstr "Unkodierbares Zeichen im Benutzervorspann"
 
-#: src/BufferParams.cpp:2774
+#: src/BufferParams.cpp:2777
 #, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -31734,7 +31747,7 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:3098
+#: src/BufferParams.cpp:3109
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -31749,11 +31762,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:3104
+#: src/BufferParams.cpp:3115
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:3111
+#: src/BufferParams.cpp:3122
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -31768,23 +31781,23 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:3117 src/BufferView.cpp:1523 src/BufferView.cpp:1555
+#: src/BufferParams.cpp:3128 src/BufferView.cpp:1525 src/BufferView.cpp:1557
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:3162
+#: src/BufferParams.cpp:3173
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:3163 src/TextClass.cpp:2007 src/TextClass.cpp:2040
+#: src/BufferParams.cpp:3174 src/TextClass.cpp:2007 src/TextClass.cpp:2040
 msgid "Read Error"
 msgstr "Lesefehler"
 
-#: src/BufferParams.cpp:4338
+#: src/BufferParams.cpp:4349
 msgid "No bibliography processor found!"
 msgstr "Kein Literaturverzeichnis-Prozessor gefunden!"
 
-#: src/BufferParams.cpp:4340
+#: src/BufferParams.cpp:4351
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -31798,11 +31811,11 @@ msgstr ""
 "Literaturverweise erzeugt werden.\n"
 "Bitte reparieren Sie Ihr System!"
 
-#: src/BufferParams.cpp:4348
+#: src/BufferParams.cpp:4359
 msgid "Requested bibliography processor not found!"
 msgstr "Verlangter Literaturverzeichnis-Prozessor nicht gefunden!"
 
-#: src/BufferParams.cpp:4350
+#: src/BufferParams.cpp:4361
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -31838,119 +31851,119 @@ msgstr "Das Dokument wurde extern bearbeitet"
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/BufferView.cpp:1267 src/BufferView.cpp:2549
-#: src/frontends/qt/GuiView.cpp:4613 src/frontends/qt/GuiView.cpp:4710
+#: src/BufferView.cpp:1267 src/BufferView.cpp:2564
+#: src/frontends/qt/GuiView.cpp:4728 src/frontends/qt/GuiView.cpp:4825
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
 
-#: src/BufferView.cpp:1521 src/BufferView.cpp:1553
+#: src/BufferView.cpp:1523 src/BufferView.cpp:1555
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Die Dokumentklasse ,%1$s` konnte nicht geladen werden."
 
-#: src/BufferView.cpp:1579
+#: src/BufferView.cpp:1581
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.cpp:1600
+#: src/BufferView.cpp:1602
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:1845 src/BufferView.cpp:1860 src/BufferView.cpp:1893
+#: src/BufferView.cpp:1847 src/BufferView.cpp:1862 src/BufferView.cpp:1895
 msgid "Search string not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/BufferView.cpp:1986
+#: src/BufferView.cpp:1994
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:1992
+#: src/BufferView.cpp:2000
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:1999
+#: src/BufferView.cpp:2007
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:2002
+#: src/BufferView.cpp:2010
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:2105
+#: src/BufferView.cpp:2113
 msgid "Statistics for the selection:"
 msgstr "Statistik für die Auswahl:"
 
-#: src/BufferView.cpp:2107
+#: src/BufferView.cpp:2115
 msgid "Statistics for the document:"
 msgstr "Statistik für das Dokument:"
 
-#: src/BufferView.cpp:2110
+#: src/BufferView.cpp:2118
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d Wörter"
 
-#: src/BufferView.cpp:2112
+#: src/BufferView.cpp:2120
 msgid "One word"
 msgstr "Ein Wort"
 
-#: src/BufferView.cpp:2115
+#: src/BufferView.cpp:2123
 #, c-format
 msgid "%1$d characters"
 msgstr "%1$d Zeichen"
 
-#: src/BufferView.cpp:2117
+#: src/BufferView.cpp:2125
 msgid "One character"
 msgstr "1 Zeichen"
 
-#: src/BufferView.cpp:2120
+#: src/BufferView.cpp:2128
 #, c-format
 msgid "%1$d characters (no blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:2122
+#: src/BufferView.cpp:2130
 msgid "One character (no blanks)"
 msgstr "1 Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:2124
+#: src/BufferView.cpp:2132
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2386
+#: src/BufferView.cpp:2400
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 ",inset-forall` wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
-#: src/BufferView.cpp:2388
+#: src/BufferView.cpp:2402
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Einfügungen angewandt"
 
-#: src/BufferView.cpp:2396
+#: src/BufferView.cpp:2410
 msgid "Branch name"
 msgstr "Name des Zweigs"
 
-#: src/BufferView.cpp:2403 src/frontends/qt/GuiBranches.cpp:225
+#: src/BufferView.cpp:2417 src/frontends/qt/GuiBranches.cpp:247
 msgid "Branch already exists"
 msgstr "Zweig existiert bereits"
 
-#: src/BufferView.cpp:3356
+#: src/BufferView.cpp:3374
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:3373
+#: src/BufferView.cpp:3391
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:3375
+#: src/BufferView.cpp:3393
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3881
+#: src/BufferView.cpp:3899
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -31961,11 +31974,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3883
+#: src/BufferView.cpp:3901
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3890
+#: src/BufferView.cpp:3908
 #, c-format
 msgid ""
 "%1$s\n"
@@ -31974,17 +31987,17 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3891 src/frontends/qt/qt_helpers.cpp:324
+#: src/BufferView.cpp:3909 src/frontends/qt/qt_helpers.cpp:324
 #: src/frontends/qt/qt_helpers.cpp:331 src/frontends/qt/qt_helpers.cpp:397
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3898
+#: src/BufferView.cpp:3916
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3899
+#: src/BufferView.cpp:3917
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -32619,11 +32632,11 @@ msgstr ""
 "konvertieren.\n"
 "Definieren Sie einen Konverter in den Einstellungen."
 
-#: src/Converter.cpp:603 src/frontends/qt/GuiDocument.cpp:2168
+#: src/Converter.cpp:603 src/frontends/qt/GuiDocument.cpp:2166
 msgid "Pygments driver command not found!"
 msgstr "Pygments-Treiberbefehl nicht gefunden!"
 
-#: src/Converter.cpp:604 src/frontends/qt/GuiDocument.cpp:2169
+#: src/Converter.cpp:604 src/frontends/qt/GuiDocument.cpp:2167
 msgid ""
 "The driver command necessary to use the minted package\n"
 "(pygmentize) has not been found. Make sure you have\n"
@@ -32875,7 +32888,7 @@ msgstr "&Nicht überschreiben"
 msgid "Overwrite &all"
 msgstr "&Alle überschreiben"
 
-#: src/Exporter.cpp:51 src/frontends/qt/GuiView.cpp:830
+#: src/Exporter.cpp:51 src/frontends/qt/GuiView.cpp:832
 msgid "&Cancel export"
 msgstr "Export &abbrechen"
 
@@ -32994,7 +33007,7 @@ msgstr "Eigenname %1$s, "
 msgid "Cannot view file"
 msgstr "Datei kann nicht betrachtet werden"
 
-#: src/Format.cpp:633 src/frontends/qt/GuiView.cpp:4294
+#: src/Format.cpp:633 src/frontends/qt/GuiView.cpp:4409
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Die Datei existiert nicht: %1$s"
@@ -34138,7 +34151,7 @@ msgstr "LyX-VK: Protokollmeldung"
 msgid "(no log message)"
 msgstr "(keine Protokollmeldung)"
 
-#: src/LyXVC.cpp:251 src/frontends/qt/GuiView.cpp:4157
+#: src/LyXVC.cpp:251 src/frontends/qt/GuiView.cpp:4272
 msgid "LyX VC: Log Message"
 msgstr "LyX VK: Protokollmeldung"
 
@@ -34159,7 +34172,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
-#: src/LyXVC.cpp:309 src/frontends/qt/GuiView.cpp:4759
+#: src/LyXVC.cpp:309 src/frontends/qt/GuiView.cpp:4874
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
@@ -34540,7 +34553,7 @@ msgstr "Marken und Querverweise"
 msgid "Broken References and Citations"
 msgstr "Ungültige Literatur- und Querverweise"
 
-#: src/TocBackend.cpp:299 src/frontends/qt/GuiDocument.cpp:1864
+#: src/TocBackend.cpp:299 src/frontends/qt/GuiDocument.cpp:1862
 msgid "Child Documents"
 msgstr "Unterdokumente"
 
@@ -34564,7 +34577,7 @@ msgstr "Prüfen Sie, ob das Programm GNU RCS auf Ihrem System installiert ist."
 #: src/VCBackend.cpp:934 src/VCBackend.cpp:993 src/VCBackend.cpp:1052
 #: src/VCBackend.cpp:1060 src/VCBackend.cpp:1348 src/VCBackend.cpp:1450
 #: src/VCBackend.cpp:1456 src/VCBackend.cpp:1479 src/VCBackend.cpp:1964
-#: src/frontends/qt/GuiView.cpp:4073 src/frontends/qt/GuiView.cpp:4116
+#: src/frontends/qt/GuiView.cpp:4188 src/frontends/qt/GuiView.cpp:4231
 msgid "Revision control error."
 msgstr "Fehler der Versionskontrolle."
 
@@ -34764,14 +34777,14 @@ msgstr ""
 "Fortfahren?"
 
 #: src/VCBackend.cpp:1522 src/VCBackend.cpp:1526
-#: src/frontends/qt/FindAndReplace.cpp:392 src/frontends/qt/GuiPrefs.cpp:2330
+#: src/frontends/qt/FindAndReplace.cpp:392 src/frontends/qt/GuiPrefs.cpp:2335
 #: src/lyxfind.cpp:316 src/lyxfind.cpp:343 src/lyxfind.cpp:363
 #: src/lyxfind.cpp:712 src/lyxfind.cpp:740
 msgid "&Yes"
 msgstr "&Ja"
 
 #: src/VCBackend.cpp:1522 src/VCBackend.cpp:1526
-#: src/frontends/qt/FindAndReplace.cpp:392 src/frontends/qt/GuiPrefs.cpp:2330
+#: src/frontends/qt/FindAndReplace.cpp:392 src/frontends/qt/GuiPrefs.cpp:2335
 #: src/lyxfind.cpp:316 src/lyxfind.cpp:343 src/lyxfind.cpp:363
 #: src/lyxfind.cpp:712 src/lyxfind.cpp:740
 msgid "&No"
@@ -34809,7 +34822,7 @@ msgstr ""
 "Möchten Sie die Änderungen verwerfen und zur gespeicherten Version "
 "zurückkehren?"
 
-#: src/buffer_funcs.cpp:55 src/frontends/qt/GuiView.cpp:4750
+#: src/buffer_funcs.cpp:55 src/frontends/qt/GuiView.cpp:4865
 msgid "Reload saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
 
@@ -34869,23 +34882,23 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Die Vorlage konnte nicht gelesen werden"
 
-#: src/frontends/qt/BulletsModule.cpp:51
+#: src/frontends/qt/BulletsModule.cpp:58
 msgid "Standard[[Bullets]]"
 msgstr "Standard"
 
-#: src/frontends/qt/BulletsModule.cpp:53
+#: src/frontends/qt/BulletsModule.cpp:60
 msgid "Dings 1"
 msgstr "Dings 1"
 
-#: src/frontends/qt/BulletsModule.cpp:54
+#: src/frontends/qt/BulletsModule.cpp:61
 msgid "Dings 2"
 msgstr "Dings 2"
 
-#: src/frontends/qt/BulletsModule.cpp:55
+#: src/frontends/qt/BulletsModule.cpp:62
 msgid "Dings 3"
 msgstr "Dings 3"
 
-#: src/frontends/qt/BulletsModule.cpp:56
+#: src/frontends/qt/BulletsModule.cpp:63
 msgid "Dings 4"
 msgstr "Dings 4"
 
@@ -34918,33 +34931,17 @@ msgstr "Nicht verfügbar: %1$s"
 #: src/frontends/qt/CategorizedCombo.cpp:483
 #: src/frontends/qt/CategorizedCombo.cpp:508
 #: src/frontends/qt/CategorizedCombo.cpp:509
-#: src/frontends/qt/ColorsCombo.cpp:91
 msgid "Uncategorized"
 msgstr "Nicht kategorisiert"
 
-#: src/frontends/qt/ColorsCombo.cpp:37
-msgid "Type on the list to filter on color names."
-msgstr "In die Liste eintippen, um nach Farbnamen zu suchen."
-
-#: src/frontends/qt/ColorsCombo.cpp:67
+#: src/frontends/qt/ColorsCombo.cpp:187
 #, c-format
 msgid "%1$s (= Default[[color]])"
 msgstr "%1$s (= Voreinstellung)"
 
-#: src/frontends/qt/ColorsCombo.cpp:116 src/frontends/qt/GuiCharacter.cpp:48
-#: src/frontends/qt/GuiCharacter.cpp:61 src/frontends/qt/GuiCharacter.cpp:82
-#: src/frontends/qt/GuiCharacter.cpp:95 src/frontends/qt/GuiCharacter.cpp:107
-#: src/frontends/qt/GuiCharacter.cpp:118 src/frontends/qt/GuiCharacter.cpp:193
-msgid "No change"
-msgstr "Keine Änderung"
-
-#: src/frontends/qt/ColorsCombo.cpp:122
-msgid "None[[color]]"
-msgstr "Keine"
-
-#: src/frontends/qt/ColorsCombo.cpp:125
-msgid "(Without)[[color]]"
-msgstr "(Ohne)"
+#: src/frontends/qt/ColorsCombo.cpp:385
+msgid "Type on the list to filter on color names."
+msgstr "In die Liste eintippen, um nach Farbnamen zu suchen."
 
 #: src/frontends/qt/FileDialog.cpp:207
 msgid "Directories"
@@ -35025,8 +35022,8 @@ msgstr ""
 "Eingabetaste)"
 
 #: src/frontends/qt/FloatPlacement.cpp:182
-#: src/frontends/qt/GuiDocument.cpp:1166 src/frontends/qt/GuiDocument.cpp:2894
-#: src/frontends/qt/GuiDocument.cpp:2921
+#: src/frontends/qt/GuiDocument.cpp:1166 src/frontends/qt/GuiDocument.cpp:2892
+#: src/frontends/qt/GuiDocument.cpp:2919
 msgid "Class Default"
 msgstr "Klassenvoreinstellungen"
 
@@ -35034,7 +35031,7 @@ msgstr "Klassenvoreinstellungen"
 msgid "Document Default"
 msgstr "Dokumentvoreinstellung"
 
-#: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1880
+#: src/frontends/qt/FloatPlacement.h:38 src/frontends/qt/GuiDocument.cpp:1878
 msgid "Float Settings"
 msgstr "Gleitobjekt-Einstellungen"
 
@@ -35160,7 +35157,7 @@ msgstr "Über LyX"
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt/GuiApplication.cpp:775 src/frontends/qt/GuiPrefs.cpp:4071
+#: src/frontends/qt/GuiApplication.cpp:775 src/frontends/qt/GuiPrefs.cpp:4076
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -35218,7 +35215,7 @@ msgstr "Befehl ist deaktiviert"
 msgid "Bad debug value `%1$s'."
 msgstr "Falscher Debug-Wert ,%1$s'."
 
-#: src/frontends/qt/GuiApplication.cpp:1482 src/frontends/qt/GuiView.cpp:2449
+#: src/frontends/qt/GuiApplication.cpp:1482 src/frontends/qt/GuiView.cpp:2564
 msgid "Command not allowed without a buffer open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
 
@@ -35512,12 +35509,12 @@ msgstr "alle Literaturverzeichnisse"
 
 #: src/frontends/qt/GuiBibtex.cpp:657 src/frontends/qt/GuiBibtex.cpp:667
 #: src/frontends/qt/GuiCompare.cpp:166 src/frontends/qt/GuiCompare.cpp:170
-#: src/frontends/qt/GuiDocument.cpp:3065 src/frontends/qt/GuiExternal.cpp:691
+#: src/frontends/qt/GuiDocument.cpp:3063 src/frontends/qt/GuiExternal.cpp:691
 #: src/frontends/qt/GuiGraphics.cpp:841 src/frontends/qt/GuiInclude.cpp:382
 #: src/frontends/qt/GuiLyXFiles.cpp:365 src/frontends/qt/GuiLyXFiles.cpp:371
-#: src/frontends/qt/GuiView.cpp:2888 src/frontends/qt/GuiView.cpp:2947
-#: src/frontends/qt/GuiView.cpp:3105 src/frontends/qt/GuiView.cpp:3239
-#: src/frontends/qt/GuiView.cpp:3359 src/frontends/qt/GuiView.cpp:3479
+#: src/frontends/qt/GuiView.cpp:3003 src/frontends/qt/GuiView.cpp:3062
+#: src/frontends/qt/GuiView.cpp:3220 src/frontends/qt/GuiView.cpp:3354
+#: src/frontends/qt/GuiView.cpp:3474 src/frontends/qt/GuiView.cpp:3594
 msgid "D&ocuments"
 msgstr "Do&kumente"
 
@@ -35573,12 +35570,12 @@ msgstr "Tiefe"
 msgid "Total Height"
 msgstr "Gesamthöhe"
 
-#: src/frontends/qt/GuiBox.cpp:354 src/frontends/qt/GuiBox.cpp:562
+#: src/frontends/qt/GuiBox.cpp:351 src/frontends/qt/GuiBox.cpp:559
 #: src/insets/InsetBox.cpp:141
 msgid "Makebox"
 msgstr "Makebox"
 
-#: src/frontends/qt/GuiBox.h:43
+#: src/frontends/qt/GuiBox.h:42
 msgid "Box Settings"
 msgstr "Box-Einstellungen"
 
@@ -35595,28 +35592,28 @@ msgstr "Hauptdokument"
 msgid "Branch Settings"
 msgstr "Zweig-Einstellungen"
 
-#: src/frontends/qt/GuiBranches.cpp:53 src/insets/Inset.cpp:116
+#: src/frontends/qt/GuiBranches.cpp:54 src/insets/Inset.cpp:116
 msgid "Branch"
 msgstr "Zweig"
 
-#: src/frontends/qt/GuiBranches.cpp:54
+#: src/frontends/qt/GuiBranches.cpp:55
 msgid "Activated"
 msgstr "Aktiviert"
 
-#: src/frontends/qt/GuiBranches.cpp:56
+#: src/frontends/qt/GuiBranches.cpp:57
 msgid "Filename Suffix"
 msgstr "Erweitere Dateinamen"
 
-#: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:149
-#: src/frontends/qt/GuiDocument.cpp:3511 src/frontends/qt/GuiDocument.cpp:4919
+#: src/frontends/qt/GuiBranches.cpp:136 src/frontends/qt/GuiBranches.cpp:150
+#: src/frontends/qt/GuiDocument.cpp:3509 src/frontends/qt/GuiDocument.cpp:4919
 #: src/frontends/qt/GuiProgressView.cpp:148
 #: src/frontends/qt/GuiProgressView.cpp:162
 #: src/frontends/qt/GuiProgressView.cpp:184
 msgid "Yes"
 msgstr "Ja"
 
-#: src/frontends/qt/GuiBranches.cpp:135 src/frontends/qt/GuiBranches.cpp:149
-#: src/frontends/qt/GuiDocument.cpp:3510 src/frontends/qt/GuiDocument.cpp:4191
+#: src/frontends/qt/GuiBranches.cpp:136 src/frontends/qt/GuiBranches.cpp:150
+#: src/frontends/qt/GuiDocument.cpp:3508 src/frontends/qt/GuiDocument.cpp:4191
 #: src/frontends/qt/GuiDocument.cpp:4918
 #: src/frontends/qt/GuiProgressView.cpp:114
 #: src/frontends/qt/GuiProgressView.cpp:147
@@ -35624,11 +35621,11 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: src/frontends/qt/GuiBranches.cpp:216
+#: src/frontends/qt/GuiBranches.cpp:238
 msgid "Enter new branch name"
 msgstr "Neuen Namen für den Zweig eingeben"
 
-#: src/frontends/qt/GuiBranches.cpp:222
+#: src/frontends/qt/GuiBranches.cpp:244
 #, c-format
 msgid ""
 "A branch with the name \"%1$s\" already exists.\n"
@@ -35637,16 +35634,16 @@ msgstr ""
 "Es gibt bereits einen Zweig mit dem Namen \"%1$s\".\n"
 "Möchten Sie den Zweig \"%2$s\" mit diesem zusammenführen?"
 
-#: src/frontends/qt/GuiBranches.cpp:226
+#: src/frontends/qt/GuiBranches.cpp:248
 msgid "&Merge"
 msgstr "&Zusammenführen"
 
-#: src/frontends/qt/GuiBranches.cpp:234 src/frontends/qt/GuiDocument.cpp:5683
+#: src/frontends/qt/GuiBranches.cpp:256 src/frontends/qt/GuiDocument.cpp:5679
 #: src/frontends/qt/GuiIndices.cpp:243
 msgid "Renaming failed"
 msgstr "Umbenennung fehlgeschlagen"
 
-#: src/frontends/qt/GuiBranches.cpp:235
+#: src/frontends/qt/GuiBranches.cpp:257
 msgid "The branch could not be renamed."
 msgstr "Der Zweig konnte nicht umbenannt werden."
 
@@ -35673,6 +35670,13 @@ msgstr "Hinzugefügt am %1"
 #: src/frontends/qt/GuiChanges.cpp:81
 msgid "Deleted on %1"
 msgstr "Gelöscht am %1"
+
+#: src/frontends/qt/GuiCharacter.cpp:48 src/frontends/qt/GuiCharacter.cpp:61
+#: src/frontends/qt/GuiCharacter.cpp:82 src/frontends/qt/GuiCharacter.cpp:95
+#: src/frontends/qt/GuiCharacter.cpp:107 src/frontends/qt/GuiCharacter.cpp:118
+#: src/frontends/qt/GuiCharacter.cpp:193 src/frontends/qt/GuiView.cpp:1274
+msgid "No change"
+msgstr "Keine Änderung"
 
 #: src/frontends/qt/GuiCharacter.cpp:53
 msgid "Small Caps"
@@ -35710,15 +35714,15 @@ msgstr "Mit /"
 msgid "Text Properties"
 msgstr "Texteigenschaften"
 
-#: src/frontends/qt/GuiCharacter.cpp:228
+#: src/frontends/qt/GuiCharacter.cpp:226
 msgid "Reset All To &Default"
 msgstr "Zurücksetzen zu &Standard"
 
-#: src/frontends/qt/GuiCharacter.cpp:229
+#: src/frontends/qt/GuiCharacter.cpp:227
 msgid "Reset All To No Chan&ge"
 msgstr "Zurücksetzen zu &Keine Änderung"
 
-#: src/frontends/qt/GuiCharacter.cpp:234
+#: src/frontends/qt/GuiCharacter.cpp:232
 msgid "&Reset All Fields"
 msgstr "Alle Felder &zurücksetzen"
 
@@ -35873,10 +35877,10 @@ msgstr "%1$s Dateien"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Wählen Sie einen Dateinamen, um die eingefügte Grafik zu speichern als"
 
-#: src/frontends/qt/GuiClipboard.cpp:220 src/frontends/qt/GuiView.cpp:2965
-#: src/frontends/qt/GuiView.cpp:3124 src/frontends/qt/GuiView.cpp:3140
-#: src/frontends/qt/GuiView.cpp:3152 src/frontends/qt/GuiView.cpp:3169
-#: src/frontends/qt/GuiView.cpp:3254 src/frontends/qt/GuiView.cpp:4722
+#: src/frontends/qt/GuiClipboard.cpp:220 src/frontends/qt/GuiView.cpp:3080
+#: src/frontends/qt/GuiView.cpp:3239 src/frontends/qt/GuiView.cpp:3255
+#: src/frontends/qt/GuiView.cpp:3267 src/frontends/qt/GuiView.cpp:3284
+#: src/frontends/qt/GuiView.cpp:3369 src/frontends/qt/GuiView.cpp:4837
 msgid "Canceled."
 msgstr "Abgebrochen."
 
@@ -35906,8 +35910,8 @@ msgid "Select document"
 msgstr "Dokument wählen"
 
 #: src/frontends/qt/GuiCompare.cpp:160 src/frontends/qt/GuiLyXFiles.cpp:364
-#: src/frontends/qt/GuiView.cpp:2892 src/frontends/qt/GuiView.cpp:2951
-#: src/frontends/qt/GuiView.cpp:3243 src/frontends/qt/GuiView.cpp:3369
+#: src/frontends/qt/GuiView.cpp:3007 src/frontends/qt/GuiView.cpp:3066
+#: src/frontends/qt/GuiView.cpp:3358 src/frontends/qt/GuiView.cpp:3484
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
@@ -36020,7 +36024,7 @@ msgid "Big Skip"
 msgstr "Groß"
 
 #: src/frontends/qt/GuiDocument.cpp:900 src/frontends/qt/GuiDocument.cpp:902
-#: src/frontends/qt/GuiDocument.cpp:1868
+#: src/frontends/qt/GuiDocument.cpp:1866
 msgid "Text Layout"
 msgstr "Textformat"
 
@@ -36266,70 +36270,86 @@ msgstr "JIS B6"
 #: src/frontends/qt/GuiDocument.cpp:1329 src/frontends/qt/GuiDocument.cpp:1333
 #: src/frontends/qt/GuiDocument.cpp:1337 src/frontends/qt/GuiDocument.cpp:1341
 #: src/frontends/qt/GuiDocument.cpp:1345 src/frontends/qt/GuiDocument.cpp:1349
-#: src/frontends/qt/GuiDocument.cpp:1870
+#: src/frontends/qt/GuiDocument.cpp:1868
 msgid "Page Margins"
 msgstr "Seitenränder"
 
-#: src/frontends/qt/GuiDocument.cpp:1397
+#: src/frontends/qt/GuiDocument.cpp:1390
 msgid "Double-click on an item to change its color"
 msgstr "Klicken Sie doppelt auf einen Eintrag um die Farbe zu ändern"
 
-#: src/frontends/qt/GuiDocument.cpp:1426
+#: src/frontends/qt/GuiDocument.cpp:1419
 msgid "Numbered"
 msgstr "Nummeriert"
 
-#: src/frontends/qt/GuiDocument.cpp:1427
+#: src/frontends/qt/GuiDocument.cpp:1420
 msgid "Appears in TOC"
 msgstr "Erscheint im Inhaltsverzeichnis"
 
-#: src/frontends/qt/GuiDocument.cpp:1527
+#: src/frontends/qt/GuiDocument.cpp:1520
 msgid "Tabular"
 msgstr "Tabelle"
 
-#: src/frontends/qt/GuiDocument.cpp:1533
+#: src/frontends/qt/GuiDocument.cpp:1526
 msgid "Package"
 msgstr "Paket"
 
-#: src/frontends/qt/GuiDocument.cpp:1533
+#: src/frontends/qt/GuiDocument.cpp:1526
 msgid "Load automatically"
 msgstr "Automatisch laden"
 
-#: src/frontends/qt/GuiDocument.cpp:1534
+#: src/frontends/qt/GuiDocument.cpp:1527
 msgid "Load always"
 msgstr "Immer laden"
 
-#: src/frontends/qt/GuiDocument.cpp:1534
+#: src/frontends/qt/GuiDocument.cpp:1527
 msgid "Do not load"
 msgstr "Nicht laden"
 
-#: src/frontends/qt/GuiDocument.cpp:1546
+#: src/frontends/qt/GuiDocument.cpp:1539
 msgid "The AMS LaTeX packages are always used"
 msgstr "Die AMS-LaTeX-Pakete werden immer verwendet"
 
-#: src/frontends/qt/GuiDocument.cpp:1549
+#: src/frontends/qt/GuiDocument.cpp:1542
 #, c-format
 msgid "The LaTeX package %1$s is always used"
 msgstr "Das LaTeX-Paket %1$s wird immer verwendet"
 
-#: src/frontends/qt/GuiDocument.cpp:1554
+#: src/frontends/qt/GuiDocument.cpp:1547
 msgid "The AMS LaTeX packages are never used"
 msgstr "Die AMS-LaTeX-Pakete werden nie verwendet"
 
-#: src/frontends/qt/GuiDocument.cpp:1557
+#: src/frontends/qt/GuiDocument.cpp:1550
 #, c-format
 msgid "The LaTeX package %1$s is never used"
 msgstr "Das LaTeX-Paket %1$s wird nie verwendet"
 
-#: src/frontends/qt/GuiDocument.cpp:1641 src/frontends/qt/GuiDocument.cpp:1879
+#: src/frontends/qt/GuiDocument.cpp:1634 src/frontends/qt/GuiDocument.cpp:1877
 msgid "Math Options"
 msgstr "Mathe-Optionen"
 
-#: src/frontends/qt/GuiDocument.cpp:1697 src/frontends/qt/GuiDocument.cpp:3044
+#: src/frontends/qt/GuiDocument.cpp:1675
+msgid "Cleveref and varioref"
+msgstr "Cleveref und Varioref"
+
+#: src/frontends/qt/GuiDocument.cpp:1676
+msgid "Prettyref and varioref"
+msgstr "Prettyref und Varioref"
+
+#: src/frontends/qt/GuiDocument.cpp:1677
+msgid "Refstyle and varioref"
+msgstr "Refstyle und Varioref"
+
+#: src/frontends/qt/GuiDocument.cpp:1678
+msgid "Zref-clever and zref-vario"
+msgstr "Zref-Clever und Zref-Vario"
+
+#: src/frontends/qt/GuiDocument.cpp:1695 src/frontends/qt/GuiDocument.cpp:3042
 #, c-format
 msgid "%1$s [Class '%2$s']"
 msgstr "%1$s [Klasse '%2$s']"
 
-#: src/frontends/qt/GuiDocument.cpp:1700
+#: src/frontends/qt/GuiDocument.cpp:1698
 #, c-format
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
@@ -36338,66 +36358,66 @@ msgstr ""
 "Klasse wurde von LyX nicht gefunden. Bitte prüfen Sie, ob Sie die "
 "entsprechende %1$s-Klasse und alle nötigen Pakete (%2$s) installiert haben."
 
-#: src/frontends/qt/GuiDocument.cpp:1762
+#: src/frontends/qt/GuiDocument.cpp:1760
 msgid "All avail. modules"
 msgstr "Alle verf. Module"
 
-#: src/frontends/qt/GuiDocument.cpp:1856 src/frontends/qt/GuiDocument.cpp:2154
+#: src/frontends/qt/GuiDocument.cpp:1854 src/frontends/qt/GuiDocument.cpp:2152
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 "Geben Sie unten Listing-Parameter ein. Geben Sie '?' für eine Liste gültiger "
 "Parameter ein."
 
-#: src/frontends/qt/GuiDocument.cpp:1863
+#: src/frontends/qt/GuiDocument.cpp:1861
 msgid "Document Class"
 msgstr "Dokumentklasse"
 
-#: src/frontends/qt/GuiDocument.cpp:1866 src/frontends/qt/GuiDocument.cpp:3611
+#: src/frontends/qt/GuiDocument.cpp:1864 src/frontends/qt/GuiDocument.cpp:3609
 #: src/frontends/qt/GuiDocument.cpp:5145
 msgid "Local Layout"
 msgstr "Lokales Format"
 
-#: src/frontends/qt/GuiDocument.cpp:1872 src/frontends/qt/GuiPrefs.cpp:990
+#: src/frontends/qt/GuiDocument.cpp:1870 src/frontends/qt/GuiPrefs.cpp:990
 msgid "Colors"
 msgstr "Farben"
 
-#: src/frontends/qt/GuiDocument.cpp:1873
+#: src/frontends/qt/GuiDocument.cpp:1871
 msgid "Change Tracking"
 msgstr "Änderungsverfolgung"
 
-#: src/frontends/qt/GuiDocument.cpp:1874
+#: src/frontends/qt/GuiDocument.cpp:1872
 msgid "Numbering & TOC"
 msgstr "Nummerierung & Inhaltsverzeichnis"
 
-#: src/frontends/qt/GuiDocument.cpp:1876
+#: src/frontends/qt/GuiDocument.cpp:1874
 msgid "Indexes"
 msgstr "Stichwortverzeichnis"
 
-#: src/frontends/qt/GuiDocument.cpp:1877 src/insets/InsetNomencl.cpp:193
+#: src/frontends/qt/GuiDocument.cpp:1875 src/insets/InsetNomencl.cpp:193
 msgid "Nomenclature"
 msgstr "Nomenklatur"
 
-#: src/frontends/qt/GuiDocument.cpp:1878
+#: src/frontends/qt/GuiDocument.cpp:1876
 msgid "PDF Properties"
 msgstr "PDF-Eigenschaften"
 
-#: src/frontends/qt/GuiDocument.cpp:1882
+#: src/frontends/qt/GuiDocument.cpp:1880
 msgid "Bullets"
 msgstr "Auflistungszeichen"
 
-#: src/frontends/qt/GuiDocument.cpp:1885 src/frontends/qt/GuiDocument.cpp:5146
+#: src/frontends/qt/GuiDocument.cpp:1883 src/frontends/qt/GuiDocument.cpp:5146
 msgid "LaTeX Preamble"
 msgstr "LaTeX-Vorspann"
 
 # , c-format
 # , c-format
-#: src/frontends/qt/GuiDocument.cpp:1899 src/frontends/qt/GuiDocument.cpp:1947
-#: src/frontends/qt/GuiDocument.cpp:3093 src/frontends/qt/GuiDocument.cpp:3395
+#: src/frontends/qt/GuiDocument.cpp:1897 src/frontends/qt/GuiDocument.cpp:1945
+#: src/frontends/qt/GuiDocument.cpp:3091 src/frontends/qt/GuiDocument.cpp:3393
 #: src/frontends/qt/GuiDocument.cpp:5110
 msgid "Unapplied changes"
 msgstr "Nicht übernommene Änderungen"
 
-#: src/frontends/qt/GuiDocument.cpp:1900
+#: src/frontends/qt/GuiDocument.cpp:1898
 msgid ""
 "Some changes in the document were not yet applied.\n"
 "Do you want to apply them before closing or dismiss the changes?"
@@ -36405,16 +36425,16 @@ msgstr ""
 "Einige Änderungen im Dokument wurden noch nicht angewendet.\n"
 "Möchten Sie diese vor dem Schließen anwenden oder sie verwerfen?"
 
-#: src/frontends/qt/GuiDocument.cpp:1902 src/frontends/qt/GuiDocument.cpp:3096
-#: src/frontends/qt/GuiDocument.cpp:3398 src/frontends/qt/GuiDocument.cpp:5113
+#: src/frontends/qt/GuiDocument.cpp:1900 src/frontends/qt/GuiDocument.cpp:3094
+#: src/frontends/qt/GuiDocument.cpp:3396 src/frontends/qt/GuiDocument.cpp:5113
 msgid "&Apply"
 msgstr "&Anwenden"
 
-#: src/frontends/qt/GuiDocument.cpp:1902 src/frontends/qt/GuiDocument.cpp:1950
+#: src/frontends/qt/GuiDocument.cpp:1900 src/frontends/qt/GuiDocument.cpp:1948
 msgid "&Dismiss Changes"
 msgstr "Änderungen &verwerfen"
 
-#: src/frontends/qt/GuiDocument.cpp:1948
+#: src/frontends/qt/GuiDocument.cpp:1946
 msgid ""
 "Some changes in the previous document were not yet applied.\n"
 "Do you want to switch back in order to apply them or dismiss the changes?"
@@ -36423,19 +36443,19 @@ msgstr ""
 "Möchten Sie zu diesem Dokument zurückwechseln, um sie anzuwenden, oder die "
 "Änderungen verwerfen?"
 
-#: src/frontends/qt/GuiDocument.cpp:1950
+#: src/frontends/qt/GuiDocument.cpp:1948
 msgid "&Switch Back"
 msgstr "&Zurückwechseln"
 
-#: src/frontends/qt/GuiDocument.cpp:2388
+#: src/frontends/qt/GuiDocument.cpp:2386
 msgid "Default margins"
 msgstr "Standardränder"
 
-#: src/frontends/qt/GuiDocument.cpp:2388
+#: src/frontends/qt/GuiDocument.cpp:2386
 msgid "Package defaults"
 msgstr "Paketvoreinstellung"
 
-#: src/frontends/qt/GuiDocument.cpp:2391
+#: src/frontends/qt/GuiDocument.cpp:2389
 msgid ""
 "If no value is given, the defaults as set by the class, a package or the "
 "preamble are used."
@@ -36443,7 +36463,7 @@ msgstr ""
 "Wenn kein Wert angegeben wird, werden die Voreinstellungen der Klasse, eines "
 "Pakets oder des Vorspanns verwendet."
 
-#: src/frontends/qt/GuiDocument.cpp:2392
+#: src/frontends/qt/GuiDocument.cpp:2390
 msgid ""
 "If no value is given, the defaults as set by the geometry package or a "
 "package/class overriding geometry's defaults are used."
@@ -36452,51 +36472,51 @@ msgstr ""
 "Pakets oder eines Pakets bzw. der Klasse verwendet, falls diese die Geometry-"
 "Voreinstellungen überschreiben."
 
-#: src/frontends/qt/GuiDocument.cpp:2580
+#: src/frontends/qt/GuiDocument.cpp:2578
 msgid "Direct (No inputenc)"
 msgstr "Direkt (ohne inputenc)"
 
-#: src/frontends/qt/GuiDocument.cpp:2582
+#: src/frontends/qt/GuiDocument.cpp:2580
 msgid "Direct (XeTeX/LuaTeX)"
 msgstr "Direkt (XeTeX/LuaTeX)"
 
-#: src/frontends/qt/GuiDocument.cpp:2758 src/frontends/qt/GuiDocument.cpp:4574
+#: src/frontends/qt/GuiDocument.cpp:2756 src/frontends/qt/GuiDocument.cpp:4574
 #: src/frontends/qt/GuiDocument.cpp:4585 src/frontends/qt/GuiDocument.cpp:4596
 #: src/frontends/qt/GuiDocument.cpp:4608
 msgid " (not installed)"
 msgstr " (nicht installiert)"
 
-#: src/frontends/qt/GuiDocument.cpp:2823 src/frontends/qt/GuiDocument.cpp:2826
-#: src/frontends/qt/GuiDocument.cpp:2829 src/frontends/qt/GuiDocument.cpp:2861
-#: src/frontends/qt/GuiDocument.cpp:2872 src/frontends/qt/GuiDocument.cpp:2883
+#: src/frontends/qt/GuiDocument.cpp:2821 src/frontends/qt/GuiDocument.cpp:2824
+#: src/frontends/qt/GuiDocument.cpp:2827 src/frontends/qt/GuiDocument.cpp:2859
+#: src/frontends/qt/GuiDocument.cpp:2870 src/frontends/qt/GuiDocument.cpp:2881
 msgid "Default font (as set by class)"
 msgstr "Standardschrift (wie von der Dokumentklasse festgelegt)"
 
-#: src/frontends/qt/GuiDocument.cpp:2831
+#: src/frontends/qt/GuiDocument.cpp:2829
 msgid "Non-TeX Fonts Default"
 msgstr "Voreinstellung Nicht-TeX Schriften"
 
-#: src/frontends/qt/GuiDocument.cpp:2833
+#: src/frontends/qt/GuiDocument.cpp:2831
 msgid " (not available)"
 msgstr " (nicht verfügbar)"
 
-#: src/frontends/qt/GuiDocument.cpp:2834
+#: src/frontends/qt/GuiDocument.cpp:2832
 msgid "Class Default (TeX Fonts)"
 msgstr "Klassenvoreinstellungen (TeX-Schriften)"
 
-#: src/frontends/qt/GuiDocument.cpp:2996
+#: src/frontends/qt/GuiDocument.cpp:2994
 msgid "Lay&outs"
 msgstr "F&ormatdateien"
 
-#: src/frontends/qt/GuiDocument.cpp:2998
+#: src/frontends/qt/GuiDocument.cpp:2996
 msgid "LyX Layout (*.layout)"
 msgstr "LyX-Formatdatei (*.layout)"
 
-#: src/frontends/qt/GuiDocument.cpp:3000 src/frontends/qt/GuiDocument.cpp:3009
+#: src/frontends/qt/GuiDocument.cpp:2998 src/frontends/qt/GuiDocument.cpp:3007
 msgid "Local layout file"
 msgstr "Lokale Formatdatei"
 
-#: src/frontends/qt/GuiDocument.cpp:3010
+#: src/frontends/qt/GuiDocument.cpp:3008
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory.\n"
@@ -36509,27 +36529,27 @@ msgstr ""
 "kann, müssen Sie sicherstellen, dass die Formatdatei\n"
 "nicht verschoben wird."
 
-#: src/frontends/qt/GuiDocument.cpp:3014
+#: src/frontends/qt/GuiDocument.cpp:3012
 msgid "&Set Layout"
 msgstr "&Layout übernehmen"
 
-#: src/frontends/qt/GuiDocument.cpp:3028
+#: src/frontends/qt/GuiDocument.cpp:3026
 msgid "Unable to read local layout file."
 msgstr "Lokale Formatdatei kann nicht gelesen werden."
 
-#: src/frontends/qt/GuiDocument.cpp:3045
+#: src/frontends/qt/GuiDocument.cpp:3043
 msgid "This is a local layout file."
 msgstr "Dies ist eine lokale Formatdatei."
 
-#: src/frontends/qt/GuiDocument.cpp:3059
+#: src/frontends/qt/GuiDocument.cpp:3057
 msgid "Select master document"
 msgstr "Hauptdokument wählen"
 
-#: src/frontends/qt/GuiDocument.cpp:3063
+#: src/frontends/qt/GuiDocument.cpp:3061
 msgid "LyX Files (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/frontends/qt/GuiDocument.cpp:3094 src/frontends/qt/GuiDocument.cpp:3396
+#: src/frontends/qt/GuiDocument.cpp:3092 src/frontends/qt/GuiDocument.cpp:3394
 #: src/frontends/qt/GuiDocument.cpp:5111
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
@@ -36539,85 +36559,85 @@ msgstr ""
 "Wenn Sie sie jetzt nicht anwenden, werden sie nach dieser\n"
 "Aktion verlorengehen."
 
-#: src/frontends/qt/GuiDocument.cpp:3096 src/frontends/qt/GuiDocument.cpp:3398
+#: src/frontends/qt/GuiDocument.cpp:3094 src/frontends/qt/GuiDocument.cpp:3396
 #: src/frontends/qt/GuiDocument.cpp:5113
 msgid "&Dismiss"
 msgstr "&Ablehnen"
 
-#: src/frontends/qt/GuiDocument.cpp:3107 src/frontends/qt/GuiDocument.cpp:5121
+#: src/frontends/qt/GuiDocument.cpp:3105 src/frontends/qt/GuiDocument.cpp:5121
 msgid "Unable to set document class."
 msgstr "Kann Dokumentklasse nicht einstellen."
 
-#: src/frontends/qt/GuiDocument.cpp:3277
+#: src/frontends/qt/GuiDocument.cpp:3275
 msgid "Basic numerical"
 msgstr "Einfach nummerisch"
 
-#: src/frontends/qt/GuiDocument.cpp:3280
+#: src/frontends/qt/GuiDocument.cpp:3278
 msgid "Author-year"
 msgstr "Autor-Jahr"
 
-#: src/frontends/qt/GuiDocument.cpp:3283
+#: src/frontends/qt/GuiDocument.cpp:3281
 msgid "Author-number"
 msgstr "Autor-Nummer"
 
-#: src/frontends/qt/GuiDocument.cpp:3286
+#: src/frontends/qt/GuiDocument.cpp:3284
 msgid "Notes and Bibliography"
 msgstr "Fuß-/Endnoten und Literaturverzeichnis"
 
-#: src/frontends/qt/GuiDocument.cpp:3320
+#: src/frontends/qt/GuiDocument.cpp:3318
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s und %2$s"
 
-#: src/frontends/qt/GuiDocument.cpp:3327
+#: src/frontends/qt/GuiDocument.cpp:3325
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt/GuiDocument.cpp:3332
+#: src/frontends/qt/GuiDocument.cpp:3330
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s und %3$s"
 
-#: src/frontends/qt/GuiDocument.cpp:3346
+#: src/frontends/qt/GuiDocument.cpp:3344
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (nicht verfügbar)"
 
-#: src/frontends/qt/GuiDocument.cpp:3448
+#: src/frontends/qt/GuiDocument.cpp:3446
 msgid "Module provided by document class."
 msgstr "Von der Dokumentklasse bereitgestelltes Modul."
 
-#: src/frontends/qt/GuiDocument.cpp:3456
+#: src/frontends/qt/GuiDocument.cpp:3454
 #, c-format
 msgid "<p><b>Category:</b> %1$s.</p>"
 msgstr "<p><b>Kategorie:</b> %1$s.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3466
+#: src/frontends/qt/GuiDocument.cpp:3464
 #, c-format
 msgid "<p><b>Package(s) required:</b> %1$s.</p>"
 msgstr "<p><b>Benötigte Pakete:</b> %1$s.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3472
+#: src/frontends/qt/GuiDocument.cpp:3470
 msgid "or"
 msgstr "oder"
 
-#: src/frontends/qt/GuiDocument.cpp:3475
+#: src/frontends/qt/GuiDocument.cpp:3473
 #, c-format
 msgid "<p><b>Modules required:</b> %1$s.</p>"
 msgstr "<p><b>Benötigte Module:</b> %1$s.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3484
+#: src/frontends/qt/GuiDocument.cpp:3482
 #, c-format
 msgid "<p><b>Modules excluded:</b> %1$s.</p>"
 msgstr "<p><b>Ausgeschlossene Module:</b> %1$s.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3489
+#: src/frontends/qt/GuiDocument.cpp:3487
 #, c-format
 msgid "<p><b>Filename:</b> <tt>%1$s.module</tt>.</p>"
 msgstr "<p><b>Dateiname:</b> <tt>%1$s.module</tt>.</p>"
 
-#: src/frontends/qt/GuiDocument.cpp:3494
+#: src/frontends/qt/GuiDocument.cpp:3492
 msgid ""
 "<p><font color=red><b>WARNING: Some required packages are unavailable!</b></"
 "font></p>"
@@ -36714,41 +36734,41 @@ msgstr ""
 "Das Hauptdokument '%1$s'\n"
 "konnte nicht geladen werden."
 
-#: src/frontends/qt/GuiDocument.cpp:5440
+#: src/frontends/qt/GuiDocument.cpp:5444
 msgid "%1 (missing req.)"
 msgstr "%1 (fehlende Vor.)"
 
-#: src/frontends/qt/GuiDocument.cpp:5452
+#: src/frontends/qt/GuiDocument.cpp:5456
 msgid "personal module"
 msgstr "persönliches Modul"
 
-#: src/frontends/qt/GuiDocument.cpp:5452
+#: src/frontends/qt/GuiDocument.cpp:5456
 msgid "distributed module"
 msgstr "mitgeliefertes Modul"
 
-#: src/frontends/qt/GuiDocument.cpp:5453
+#: src/frontends/qt/GuiDocument.cpp:5457
 msgid "<b>Module name:</b> <i>%1</i> (%2)"
 msgstr "<b>Modulname:</b> <i>%1</i> (%2)"
 
-#: src/frontends/qt/GuiDocument.cpp:5459
+#: src/frontends/qt/GuiDocument.cpp:5463
 msgid "<b>Note:</b> Some requirements for this module are missing!"
 msgstr ""
 "<b>Achtung:</b> Einige Voraussetzungen für dieses Modul sind nicht gegeben!"
 
-#: src/frontends/qt/GuiDocument.cpp:5614
+#: src/frontends/qt/GuiDocument.cpp:5610
 msgid "Color naming failed"
 msgstr "Farb-Umbenennung fehlgeschlagen"
 
-#: src/frontends/qt/GuiDocument.cpp:5615
+#: src/frontends/qt/GuiDocument.cpp:5611
 #, c-format
 msgid "The color name `%1$s' is already taken."
 msgstr "Der Farbname %1$s ist bereits vergeben."
 
-#: src/frontends/qt/GuiDocument.cpp:5676
+#: src/frontends/qt/GuiDocument.cpp:5672
 msgid "Enter new color name"
 msgstr "Geben den Namen der neuen Farbe ein"
 
-#: src/frontends/qt/GuiDocument.cpp:5684
+#: src/frontends/qt/GuiDocument.cpp:5680
 msgid ""
 "The color could not be renamed since the new name consists of non-ASCII "
 "characters or blanks."
@@ -37446,17 +37466,17 @@ msgstr ""
 msgid "Select example file"
 msgstr "Wählen Sie eine Beispieldatei"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:366 src/frontends/qt/GuiView.cpp:2948
-#: src/frontends/qt/GuiView.cpp:3106 src/frontends/qt/GuiView.cpp:3240
+#: src/frontends/qt/GuiLyXFiles.cpp:366 src/frontends/qt/GuiView.cpp:3063
+#: src/frontends/qt/GuiView.cpp:3221 src/frontends/qt/GuiView.cpp:3355
 msgid "&Examples"
 msgstr "&Beispiele"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:370 src/frontends/qt/GuiView.cpp:2887
+#: src/frontends/qt/GuiLyXFiles.cpp:370 src/frontends/qt/GuiView.cpp:3002
 msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
-#: src/frontends/qt/GuiLyXFiles.cpp:372 src/frontends/qt/GuiView.cpp:2889
-#: src/frontends/qt/GuiView.cpp:3360
+#: src/frontends/qt/GuiLyXFiles.cpp:372 src/frontends/qt/GuiView.cpp:3004
+#: src/frontends/qt/GuiView.cpp:3475
 msgid "&Templates"
 msgstr "&Vorlagen"
 
@@ -37579,7 +37599,7 @@ msgstr ""
 "Normalerweise müssen Sie diese Breite nicht festlegen, da die maximale "
 "Breite aller Punkte verwendet wird."
 
-#: src/frontends/qt/GuiParagraph.cpp:174 src/frontends/qt/GuiView.cpp:3638
+#: src/frontends/qt/GuiParagraph.cpp:174 src/frontends/qt/GuiView.cpp:3753
 msgid "&Close"
 msgstr "&Schließen"
 
@@ -37628,138 +37648,138 @@ msgstr "Dunkel"
 msgid "Color name"
 msgstr "Farbname"
 
-#: src/frontends/qt/GuiPrefs.cpp:1329
+#: src/frontends/qt/GuiPrefs.cpp:1331
 msgid "Export a color theme"
 msgstr "Ein Farbthema exportieren"
 
-#: src/frontends/qt/GuiPrefs.cpp:1365
+#: src/frontends/qt/GuiPrefs.cpp:1367
 msgid "What is the name of the color theme?"
 msgstr "Welchen Namen soll das Farbschema bekommen?"
 
-#: src/frontends/qt/GuiPrefs.cpp:1366
+#: src/frontends/qt/GuiPrefs.cpp:1368
 msgid "What is the name of the new color theme to save?"
 msgstr "Welchen Namen soll das zu speichernde Farbschema bekommen?"
 
-#: src/frontends/qt/GuiPrefs.cpp:1369
+#: src/frontends/qt/GuiPrefs.cpp:1371
 msgid "Name the color theme"
 msgstr "Name des Farbthemas"
 
-#: src/frontends/qt/GuiPrefs.cpp:1371
+#: src/frontends/qt/GuiPrefs.cpp:1373
 msgid "New theme name"
 msgstr "Name des neuen Themas"
 
-#: src/frontends/qt/GuiPrefs.cpp:1392
+#: src/frontends/qt/GuiPrefs.cpp:1394
 msgid "A user color theme with the same name exists."
 msgstr "Ein benutzerdefiniertes Farbthema mit diesem Namen existiert bereits."
 
-#: src/frontends/qt/GuiPrefs.cpp:1393
+#: src/frontends/qt/GuiPrefs.cpp:1395
 msgid "Do you want to overwrite?"
 msgstr "Möchten Sie überschreiben?"
 
-#: src/frontends/qt/GuiPrefs.cpp:1433
+#: src/frontends/qt/GuiPrefs.cpp:1435
 msgid "Import a color theme"
 msgstr "Ein Farbthema importieren"
 
-#: src/frontends/qt/GuiPrefs.cpp:1510
+#: src/frontends/qt/GuiPrefs.cpp:1515
 msgid "Select a user theme"
 msgstr "Benutzerthema wählen"
 
-#: src/frontends/qt/GuiPrefs.cpp:1511
+#: src/frontends/qt/GuiPrefs.cpp:1516
 msgid "Please select a user theme to remove from the \"Themes\" list menu."
 msgstr ""
 "Wählen Sie ein Benutzerthema, um es aus der \"Themen\"-Liste zu entfernen."
 
-#: src/frontends/qt/GuiPrefs.cpp:1523
+#: src/frontends/qt/GuiPrefs.cpp:1528
 msgid "Not a user theme"
 msgstr "Kein Beuntzerthema"
 
-#: src/frontends/qt/GuiPrefs.cpp:1524
+#: src/frontends/qt/GuiPrefs.cpp:1529
 msgid "The selected theme is a system theme. It cannot be removed."
 msgstr ""
 "Das ausgewählte Thema ist ein Systemthema. Es kann nicht entfernt werden."
 
-#: src/frontends/qt/GuiPrefs.cpp:1534
+#: src/frontends/qt/GuiPrefs.cpp:1539
 msgid "Are you sure?"
 msgstr "Sind Sie sicher?"
 
-#: src/frontends/qt/GuiPrefs.cpp:1535
+#: src/frontends/qt/GuiPrefs.cpp:1540
 #, c-format
 msgid "Do you really want to remove the theme \"%1$s\"?"
 msgstr "Wollen Sie das Farbthema \"%1$s\" wirklich entfernen?"
 
-#: src/frontends/qt/GuiPrefs.cpp:1613
+#: src/frontends/qt/GuiPrefs.cpp:1618
 msgid "&Export..."
 msgstr "&Exportieren ..."
 
-#: src/frontends/qt/GuiPrefs.cpp:1614
+#: src/frontends/qt/GuiPrefs.cpp:1619
 msgid "&Import..."
 msgstr "&Importieren..."
 
-#: src/frontends/qt/GuiPrefs.cpp:1836
+#: src/frontends/qt/GuiPrefs.cpp:1841
 msgid "Paths"
 msgstr "Pfade"
 
-#: src/frontends/qt/GuiPrefs.cpp:1923
+#: src/frontends/qt/GuiPrefs.cpp:1928
 msgid "Select directory for example files"
 msgstr "Wählen Sie ein Verzeichnis für Beispieldateien"
 
-#: src/frontends/qt/GuiPrefs.cpp:1932
+#: src/frontends/qt/GuiPrefs.cpp:1937
 msgid "Select a document templates directory"
 msgstr "Wählen Sie ein Verzeichnis für die Dokumentvorlagen"
 
-#: src/frontends/qt/GuiPrefs.cpp:1941
+#: src/frontends/qt/GuiPrefs.cpp:1946
 msgid "Select a temporary directory"
 msgstr "Wählen Sie ein temporäres Verzeichnis"
 
-#: src/frontends/qt/GuiPrefs.cpp:1950
+#: src/frontends/qt/GuiPrefs.cpp:1955
 msgid "Select a backups directory"
 msgstr "Wählen Sie ein Verzeichnis für Sicherungen"
 
-#: src/frontends/qt/GuiPrefs.cpp:1959
+#: src/frontends/qt/GuiPrefs.cpp:1964
 msgid "Select a document directory"
 msgstr "Wählen Sie ein Dokumentverzeichnis"
 
-#: src/frontends/qt/GuiPrefs.cpp:1968
+#: src/frontends/qt/GuiPrefs.cpp:1973
 msgid "Set the path to the thesaurus dictionaries"
 msgstr "Den Pfad zum Thesaurus-Wörterbuch festlegen"
 
-#: src/frontends/qt/GuiPrefs.cpp:1977
+#: src/frontends/qt/GuiPrefs.cpp:1982
 msgid "Set the path to the Hunspell dictionaries"
 msgstr "Den Pfad zu den Hunspell-Wörterbüchern festlegen"
 
-#: src/frontends/qt/GuiPrefs.cpp:1986
+#: src/frontends/qt/GuiPrefs.cpp:1991
 msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
-#: src/frontends/qt/GuiPrefs.cpp:1999 src/frontends/qt/GuiSpellchecker.cpp:625
+#: src/frontends/qt/GuiPrefs.cpp:2004 src/frontends/qt/GuiSpellchecker.cpp:625
 msgid "Spellchecker"
 msgstr "Rechtschreibprüfung"
 
-#: src/frontends/qt/GuiPrefs.cpp:2005
+#: src/frontends/qt/GuiPrefs.cpp:2010
 msgid "Native"
 msgstr "Nativ"
 
-#: src/frontends/qt/GuiPrefs.cpp:2011
+#: src/frontends/qt/GuiPrefs.cpp:2016
 msgid "Aspell"
 msgstr "Aspell"
 
-#: src/frontends/qt/GuiPrefs.cpp:2014
+#: src/frontends/qt/GuiPrefs.cpp:2019
 msgid "Enchant"
 msgstr "Enchant"
 
-#: src/frontends/qt/GuiPrefs.cpp:2017
+#: src/frontends/qt/GuiPrefs.cpp:2022
 msgid "Hunspell"
 msgstr "Hunspell"
 
-#: src/frontends/qt/GuiPrefs.cpp:2090
+#: src/frontends/qt/GuiPrefs.cpp:2095
 msgid "Converters"
 msgstr "Konverter"
 
-#: src/frontends/qt/GuiPrefs.cpp:2329
+#: src/frontends/qt/GuiPrefs.cpp:2334
 msgid "SECURITY WARNING!"
 msgstr "SICHERHEITSWARNUNG!"
 
-#: src/frontends/qt/GuiPrefs.cpp:2329
+#: src/frontends/qt/GuiPrefs.cpp:2334
 msgid ""
 "Unchecking this option has the effect that potentially harmful converters "
 "would be run without asking your permission first. This is UNSAFE and NOT "
@@ -37772,15 +37792,15 @@ msgstr ""
 "tun. Sind Sie sicher, dass Sie fortfahren möchten? Die empfohlene und "
 "sichere Antwort ist NEIN!"
 
-#: src/frontends/qt/GuiPrefs.cpp:2450
+#: src/frontends/qt/GuiPrefs.cpp:2455
 msgid "File Formats"
 msgstr "Dateiformate"
 
-#: src/frontends/qt/GuiPrefs.cpp:2693 src/frontends/qt/GuiPrefs.cpp:2850
+#: src/frontends/qt/GuiPrefs.cpp:2698 src/frontends/qt/GuiPrefs.cpp:2855
 msgid "Format in use"
 msgstr "Format wird verwendet"
 
-#: src/frontends/qt/GuiPrefs.cpp:2694
+#: src/frontends/qt/GuiPrefs.cpp:2699
 msgid ""
 "You cannot change a format's short name if the format is used by a "
 "converter. Please remove the converter first."
@@ -37788,22 +37808,22 @@ msgstr ""
 "Der Kurztitel eines Formats, das von einem Konverter verwendet wird, kann "
 "nicht umbenannt werden. Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/qt/GuiPrefs.cpp:2766 src/frontends/qt/GuiPrefs.cpp:2791
-#: src/frontends/qt/GuiPrefs.cpp:3089
+#: src/frontends/qt/GuiPrefs.cpp:2771 src/frontends/qt/GuiPrefs.cpp:2796
+#: src/frontends/qt/GuiPrefs.cpp:3094
 msgid "System Default"
 msgstr "System-Voreinstellung"
 
-#: src/frontends/qt/GuiPrefs.cpp:2851
+#: src/frontends/qt/GuiPrefs.cpp:2856
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Ein Format, das von einem Konverter verwendet wird, kann nicht entfernt "
 "werden. Bitte entfernen Sie zunächst den Konverter."
 
-#: src/frontends/qt/GuiPrefs.cpp:2948
+#: src/frontends/qt/GuiPrefs.cpp:2953
 msgid "LyX needs to be restarted!"
 msgstr "LyX muss neu gestartet werden!"
 
-#: src/frontends/qt/GuiPrefs.cpp:2949
+#: src/frontends/qt/GuiPrefs.cpp:2954
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -37811,46 +37831,46 @@ msgstr ""
 "Die Änderung der Sprache der Benutzeroberfläche wird erst nach einem "
 "Neustart von LyX wirksam."
 
-#: src/frontends/qt/GuiPrefs.cpp:3049
+#: src/frontends/qt/GuiPrefs.cpp:3054
 msgid "User Interface"
 msgstr "Benutzeroberfläche"
 
-#: src/frontends/qt/GuiPrefs.cpp:3084
+#: src/frontends/qt/GuiPrefs.cpp:3089
 msgid "Adwaita"
 msgstr "Adwaita"
 
-#: src/frontends/qt/GuiPrefs.cpp:3085
+#: src/frontends/qt/GuiPrefs.cpp:3090
 msgid "Classic"
 msgstr "Klassisch"
 
-#: src/frontends/qt/GuiPrefs.cpp:3086
+#: src/frontends/qt/GuiPrefs.cpp:3091
 msgid "Oxygen"
 msgstr "Oxygen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3090
+#: src/frontends/qt/GuiPrefs.cpp:3095
 msgid "Light Mode"
 msgstr "Heller Modus"
 
-#: src/frontends/qt/GuiPrefs.cpp:3091
+#: src/frontends/qt/GuiPrefs.cpp:3096
 msgid "Dark Mode"
 msgstr "Dunkler Modus"
 
-#: src/frontends/qt/GuiPrefs.cpp:3119
+#: src/frontends/qt/GuiPrefs.cpp:3124
 msgid "Restart needed"
 msgstr "Neus art erforderlich"
 
-#: src/frontends/qt/GuiPrefs.cpp:3120
+#: src/frontends/qt/GuiPrefs.cpp:3125
 msgid ""
 "Resetting the user interface style to 'Default' requires a restart of LyX."
 msgstr ""
 "Das Zurücksetzen des Oberflächenstils auf 'Standard' erfordert einen "
 "Neustart von LyX."
 
-#: src/frontends/qt/GuiPrefs.cpp:3196
+#: src/frontends/qt/GuiPrefs.cpp:3201
 msgid "Document Handling"
 msgstr "Dokument-Handhabung"
 
-#: src/frontends/qt/GuiPrefs.cpp:3287
+#: src/frontends/qt/GuiPrefs.cpp:3292
 msgid ""
 "If this is checked, a backup of the document is created in the current "
 "working directory. The backup file has the same name but the suffix '.lyx~'. "
@@ -37864,7 +37884,7 @@ msgstr ""
 "spezifischen Ordner für diese Sicherungsdateien können Sie im Abschnitt "
 "'Pfade' festlegen."
 
-#: src/frontends/qt/GuiPrefs.cpp:3293
+#: src/frontends/qt/GuiPrefs.cpp:3298
 #, c-format
 msgid ""
 "If this is checked, a backup of the document is created in the backup "
@@ -37878,66 +37898,66 @@ msgstr ""
 "meinVerzeichnis!Dateiname.lyx~). Beachten Sie, dass diese Dateien von "
 "manchen Dateimanagern per Voreinstellung nicht angezeigt werden."
 
-#: src/frontends/qt/GuiPrefs.cpp:3318
+#: src/frontends/qt/GuiPrefs.cpp:3323
 msgid "Control"
 msgstr "Kontrolle"
 
-#: src/frontends/qt/GuiPrefs.cpp:3429
+#: src/frontends/qt/GuiPrefs.cpp:3434
 msgid "Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt/GuiPrefs.cpp:3436
+#: src/frontends/qt/GuiPrefs.cpp:3441
 msgid "Function"
 msgstr "Funktion"
 
-#: src/frontends/qt/GuiPrefs.cpp:3437
+#: src/frontends/qt/GuiPrefs.cpp:3442
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: src/frontends/qt/GuiPrefs.cpp:3514
+#: src/frontends/qt/GuiPrefs.cpp:3519
 msgid "Cursor, Mouse and Editing Functions"
 msgstr "Cursor-, Maus- und Bearbeitungsfunktionen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3518
+#: src/frontends/qt/GuiPrefs.cpp:3523
 msgid "Mathematical Symbols"
 msgstr "Mathematische Symbole"
 
-#: src/frontends/qt/GuiPrefs.cpp:3522
+#: src/frontends/qt/GuiPrefs.cpp:3527
 msgid "Document and Window"
 msgstr "Dokument und Arbeitsbereich"
 
-#: src/frontends/qt/GuiPrefs.cpp:3526
+#: src/frontends/qt/GuiPrefs.cpp:3531
 msgid "Font, Layouts and Textclasses"
 msgstr "Schriften, Absatzformate und Textklassen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3530
+#: src/frontends/qt/GuiPrefs.cpp:3535
 msgid "System and Miscellaneous"
 msgstr "System und Verschiedenes"
 
-#: src/frontends/qt/GuiPrefs.cpp:3667 src/frontends/qt/GuiPrefs.cpp:3727
+#: src/frontends/qt/GuiPrefs.cpp:3672 src/frontends/qt/GuiPrefs.cpp:3732
 msgid "Res&tore"
 msgstr "Zurüc&ksetzen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3896 src/frontends/qt/GuiPrefs.cpp:3906
-#: src/frontends/qt/GuiPrefs.cpp:3913 src/frontends/qt/GuiPrefs.cpp:3997
+#: src/frontends/qt/GuiPrefs.cpp:3901 src/frontends/qt/GuiPrefs.cpp:3911
+#: src/frontends/qt/GuiPrefs.cpp:3918 src/frontends/qt/GuiPrefs.cpp:4002
 msgid "Failed to create shortcut"
 msgstr "Erstellen des Tastenkürzels fehlgeschlagen"
 
-#: src/frontends/qt/GuiPrefs.cpp:3897
+#: src/frontends/qt/GuiPrefs.cpp:3902
 msgid "Unknown or invalid LyX function"
 msgstr "Unbekannte oder ungültige LyX-Funktion"
 
-#: src/frontends/qt/GuiPrefs.cpp:3907
+#: src/frontends/qt/GuiPrefs.cpp:3912
 msgid "This LyX function is hidden and cannot be bound."
 msgstr ""
 "Dies ist eine versteckte LyX-Funktion. Sie kann nicht mit einer "
 "Tastenkombination belegt werden."
 
-#: src/frontends/qt/GuiPrefs.cpp:3914
+#: src/frontends/qt/GuiPrefs.cpp:3919
 msgid "Invalid or empty key sequence"
 msgstr "Ungültige oder leere Tastensequenz"
 
-#: src/frontends/qt/GuiPrefs.cpp:3927
+#: src/frontends/qt/GuiPrefs.cpp:3932
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already a prefix for other commands.\n"
@@ -37947,15 +37967,15 @@ msgstr ""
 "Sind Sie sicher, dass Sie dies aufheben und das\n"
 "Tastenkürzel mit %2$s belegen wollen?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3930 src/frontends/qt/GuiPrefs.cpp:3954
+#: src/frontends/qt/GuiPrefs.cpp:3935 src/frontends/qt/GuiPrefs.cpp:3959
 msgid "Redefine shortcut?"
 msgstr "Tastenkürzel neu definieren?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3931 src/frontends/qt/GuiPrefs.cpp:3955
+#: src/frontends/qt/GuiPrefs.cpp:3936 src/frontends/qt/GuiPrefs.cpp:3960
 msgid "&Redefine"
 msgstr "&Neu Definieren"
 
-#: src/frontends/qt/GuiPrefs.cpp:3948
+#: src/frontends/qt/GuiPrefs.cpp:3953
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -37965,11 +37985,11 @@ msgstr ""
 "Sind Sie sicher, dass Sie dies aufheben und das\n"
 "Tastenkürzel mit %3$s belegen wollen?"
 
-#: src/frontends/qt/GuiPrefs.cpp:3998
+#: src/frontends/qt/GuiPrefs.cpp:4003
 msgid "Can not insert shortcut to the list"
 msgstr "Kann Tastenkürzel nicht in Liste einfügen"
 
-#: src/frontends/qt/GuiPrefs.cpp:4030
+#: src/frontends/qt/GuiPrefs.cpp:4035
 msgid "Identity"
 msgstr "Identität"
 
@@ -38043,15 +38063,15 @@ msgstr "Alphabetisch (Groß- vor Kleinschreibung)"
 msgid "Update the label list"
 msgstr "Liste der Marken aktualisieren"
 
-#: src/frontends/qt/GuiRef.cpp:395
+#: src/frontends/qt/GuiRef.cpp:410
 msgid "&Go Back"
 msgstr "&Gehe zurück"
 
-#: src/frontends/qt/GuiRef.cpp:396
+#: src/frontends/qt/GuiRef.cpp:411
 msgid "Jump back to the original cursor location"
 msgstr "Springe zur ursprünglichen Cursor-Platzierung zurück"
 
-#: src/frontends/qt/GuiRef.cpp:477 src/frontends/qt/GuiRef.cpp:498
+#: src/frontends/qt/GuiRef.cpp:492 src/frontends/qt/GuiRef.cpp:513
 msgid "<No prefix>"
 msgstr "<Ohne Präfix>"
 
@@ -38525,7 +38545,7 @@ msgstr "verankert"
 msgid "Vertical Space Settings"
 msgstr "Einstellungen für vertikalen Abstand"
 
-#: src/frontends/qt/GuiView.cpp:161
+#: src/frontends/qt/GuiView.cpp:162
 msgid ""
 "The Document\n"
 "Processor[[welcome banner]]"
@@ -38533,39 +38553,39 @@ msgstr ""
 "Die bessere\n"
 "Textverarbeitung"
 
-#: src/frontends/qt/GuiView.cpp:162
+#: src/frontends/qt/GuiView.cpp:163
 msgid ""
 "1.0[[translating this to different value scales the welcome banner text size "
 "for your language]]"
 msgstr "1.1"
 
-#: src/frontends/qt/GuiView.cpp:165
+#: src/frontends/qt/GuiView.cpp:166
 msgid "version "
 msgstr "Version "
 
-#: src/frontends/qt/GuiView.cpp:165
+#: src/frontends/qt/GuiView.cpp:166
 msgid "unknown version"
 msgstr "unbekannte Version"
 
-#: src/frontends/qt/GuiView.cpp:644
+#: src/frontends/qt/GuiView.cpp:646
 msgid "Click here to stop export/output process"
 msgstr "Klicken Sie hier, um den Export-/Ausgabeprozess abzubrechen"
 
-#: src/frontends/qt/GuiView.cpp:683
+#: src/frontends/qt/GuiView.cpp:685
 msgid "Workarea zoom level. Drag, use Ctrl-+/- or Shift-Mousewheel to adjust."
 msgstr ""
 "Skalierung des Arbeitsbereichs. Um dies anzupassen, verwenden Sie den "
 "Schieber, Strg-+/- oder Umschalt-Mausrad."
 
-#: src/frontends/qt/GuiView.cpp:736 src/frontends/qt/GuiView.cpp:847
-#: src/frontends/qt/GuiView.cpp:1034 src/frontends/qt/Menus.cpp:1934
+#: src/frontends/qt/GuiView.cpp:738 src/frontends/qt/GuiView.cpp:849
+#: src/frontends/qt/GuiView.cpp:1036 src/frontends/qt/Menus.cpp:1934
 #: src/frontends/qt/Menus.cpp:1938 src/frontends/qt/Menus.cpp:1942
 #: src/frontends/qt/Menus.cpp:1946 src/frontends/qt/Menus.cpp:1950
 #: src/frontends/qt/Menus.cpp:1954
 msgid "[[ZOOM]]%1$d%"
 msgstr "%1$d%"
 
-#: src/frontends/qt/GuiView.cpp:752
+#: src/frontends/qt/GuiView.cpp:754
 msgid ""
 "WARNING: LaTeX is allowed to execute external commands for this document. "
 "Right click to change."
@@ -38573,153 +38593,161 @@ msgstr ""
 "ACHTUNG: LaTeX darf für dieses Dokument beliebige externe Befehle ausführen. "
 "Um dies zu ändern, klicken Sie die rechte Maustaste."
 
-#: src/frontends/qt/GuiView.cpp:826
+#: src/frontends/qt/GuiView.cpp:828
 msgid "Cancel Export?"
 msgstr "Export abbrechen?"
 
-#: src/frontends/qt/GuiView.cpp:827
+#: src/frontends/qt/GuiView.cpp:829
 msgid "Do you want to cancel the background export process?"
 msgstr "Wollen Sie den Exportvorgang im Hintergrund abbrechen?"
 
-#: src/frontends/qt/GuiView.cpp:830
+#: src/frontends/qt/GuiView.cpp:832
 msgid "Co&ntinue"
 msgstr "&Fortfahren"
 
-#: src/frontends/qt/GuiView.cpp:926
+#: src/frontends/qt/GuiView.cpp:928
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Export in das Format %1$s erfolgreich"
 
-#: src/frontends/qt/GuiView.cpp:935
+#: src/frontends/qt/GuiView.cpp:937
 #, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Fehler beim Export in das Formats %1$s"
 
-#: src/frontends/qt/GuiView.cpp:938
+#: src/frontends/qt/GuiView.cpp:940
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Erfolgreiche Vorschau des Formats %1$s"
 
-#: src/frontends/qt/GuiView.cpp:941
+#: src/frontends/qt/GuiView.cpp:943
 #, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "Fehler bei der Vorschau des Formats %1$s"
 
-#: src/frontends/qt/GuiView.cpp:944
+#: src/frontends/qt/GuiView.cpp:946
 #, c-format
 msgid "Conversion cancelled while previewing format: %1$s"
 msgstr "Abbruch der Ausgabe bei der Vorschau des Formats %1$s"
 
-#: src/frontends/qt/GuiView.cpp:1312
+#: src/frontends/qt/GuiView.cpp:1276
+msgid "None[[color]]"
+msgstr "Keine"
+
+#: src/frontends/qt/GuiView.cpp:1277
+msgid "(Without)[[color]]"
+msgstr "(Ohne)"
+
+#: src/frontends/qt/GuiView.cpp:1425
 msgid "Exit LyX"
 msgstr "LyX beenden"
 
-#: src/frontends/qt/GuiView.cpp:1313
+#: src/frontends/qt/GuiView.cpp:1426
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr ""
 "LyX konnte nicht geschlossen werden, da gerade Dokumente von LyX verarbeitet "
 "werden."
 
-#: src/frontends/qt/GuiView.cpp:1492
+#: src/frontends/qt/GuiView.cpp:1605
 #, c-format
 msgid "%1$d Word"
 msgstr "%1$d Wort"
 
-#: src/frontends/qt/GuiView.cpp:1494
+#: src/frontends/qt/GuiView.cpp:1607
 #, c-format
 msgid "%1$d Words"
 msgstr "%1$d Wörter"
 
-#: src/frontends/qt/GuiView.cpp:1500
+#: src/frontends/qt/GuiView.cpp:1613
 #, c-format
 msgid "%1$d Character"
 msgstr "%1$d Zeichen"
 
-#: src/frontends/qt/GuiView.cpp:1502
+#: src/frontends/qt/GuiView.cpp:1615
 #, c-format
 msgid "%1$d Characters"
 msgstr "%1$d Zeichen"
 
-#: src/frontends/qt/GuiView.cpp:1507
+#: src/frontends/qt/GuiView.cpp:1620
 #, c-format
 msgid "%1$d Character (no Blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/frontends/qt/GuiView.cpp:1509
+#: src/frontends/qt/GuiView.cpp:1622
 #, c-format
 msgid "%1$d Characters (no Blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/frontends/qt/GuiView.cpp:1513
+#: src/frontends/qt/GuiView.cpp:1626
 msgid ", [[stats separator]]"
 msgstr ", "
 
-#: src/frontends/qt/GuiView.cpp:1532
+#: src/frontends/qt/GuiView.cpp:1645
 #, c-format
 msgid "%1$s (modified externally)"
 msgstr "%1$s (extern bearbeitet)"
 
-#: src/frontends/qt/GuiView.cpp:1660
+#: src/frontends/qt/GuiView.cpp:1775
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
-#: src/frontends/qt/GuiView.cpp:2305
+#: src/frontends/qt/GuiView.cpp:2420
 msgid "Automatic save done."
 msgstr "Automatische Speicherung abgeschlossen."
 
-#: src/frontends/qt/GuiView.cpp:2306
+#: src/frontends/qt/GuiView.cpp:2421
 msgid "Automatic save failed!"
 msgstr "Die automatische Speicherung ist fehlgeschlagen!"
 
-#: src/frontends/qt/GuiView.cpp:2386
+#: src/frontends/qt/GuiView.cpp:2501
 msgid "Command not allowed without any document open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
 
-#: src/frontends/qt/GuiView.cpp:2455
+#: src/frontends/qt/GuiView.cpp:2570
 msgid "Invalid argument of master-buffer-forall"
 msgstr "Ungültiges Argument für master-buffer-forall"
 
-#: src/frontends/qt/GuiView.cpp:2586
+#: src/frontends/qt/GuiView.cpp:2701
 msgid "Function toolbar-set requires two arguments!"
 msgstr "Die Funktion toolbar-set erfordert zwei Argumente!"
 
-#: src/frontends/qt/GuiView.cpp:2593
+#: src/frontends/qt/GuiView.cpp:2708
 #, c-format
 msgid "Invalid argument \"%1$s\" to function toolbar-set!"
 msgstr "Ungültiges Argument \"%1$s\" der Funktion toolbar-set!"
 
-#: src/frontends/qt/GuiView.cpp:2609 src/frontends/qt/GuiView.cpp:2622
-#: src/frontends/qt/GuiView.cpp:2639
+#: src/frontends/qt/GuiView.cpp:2724 src/frontends/qt/GuiView.cpp:2737
+#: src/frontends/qt/GuiView.cpp:2754
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Unbekannte Werkzeugleiste \"%1$s\""
 
-#: src/frontends/qt/GuiView.cpp:2781
+#: src/frontends/qt/GuiView.cpp:2896
 msgid "Zoom level cannot be less than %1$d%."
 msgstr "Der Skalierungsfaktor darf nicht kleiner als %1$d% sein."
 
-#: src/frontends/qt/GuiView.cpp:2786
+#: src/frontends/qt/GuiView.cpp:2901
 msgid "Zoom level cannot be more than %1$d%."
 msgstr "Der Skalierungsfaktor darf nicht größer als %1$d% sein."
 
-#: src/frontends/qt/GuiView.cpp:2916
+#: src/frontends/qt/GuiView.cpp:3031
 msgid "Document not loaded."
 msgstr "Dokument nicht geladen."
 
-#: src/frontends/qt/GuiView.cpp:2946
+#: src/frontends/qt/GuiView.cpp:3061
 msgid "Select documents to open"
 msgstr "Wählen Sie die zu öffnenden Dokumente"
 
-#: src/frontends/qt/GuiView.cpp:2952
+#: src/frontends/qt/GuiView.cpp:3067
 msgid "LyX Document Backups (*.lyx~)"
 msgstr "LyX-Dokument-Backups (*.lyx~)"
 
-#: src/frontends/qt/GuiView.cpp:2953 src/frontends/qt/GuiView.cpp:4719
+#: src/frontends/qt/GuiView.cpp:3068 src/frontends/qt/GuiView.cpp:4834
 #: src/frontends/qt/qt_helpers.cpp:682
 msgid "All Files"
 msgstr "Alle Dateien "
 
-#: src/frontends/qt/GuiView.cpp:2984
+#: src/frontends/qt/GuiView.cpp:3099
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -38730,7 +38758,7 @@ msgstr ""
 "%1$s\n"
 "existiert nicht."
 
-#: src/frontends/qt/GuiView.cpp:2996
+#: src/frontends/qt/GuiView.cpp:3111
 #, c-format
 msgid ""
 "File\n"
@@ -38741,48 +38769,48 @@ msgstr ""
 "%1$s\n"
 "existiert nicht. Leere Datei anlegen?"
 
-#: src/frontends/qt/GuiView.cpp:3000
+#: src/frontends/qt/GuiView.cpp:3115
 msgid "File does not exist"
 msgstr "Datei existiert nicht"
 
-#: src/frontends/qt/GuiView.cpp:3002
+#: src/frontends/qt/GuiView.cpp:3117
 msgid "Create &File"
 msgstr "Datei &anlegen"
 
-#: src/frontends/qt/GuiView.cpp:3014
+#: src/frontends/qt/GuiView.cpp:3129
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Öffne Dokument %1$s..."
 
-#: src/frontends/qt/GuiView.cpp:3019
+#: src/frontends/qt/GuiView.cpp:3134
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s ist geöffnet."
 
-#: src/frontends/qt/GuiView.cpp:3022
+#: src/frontends/qt/GuiView.cpp:3137
 msgid "Version control detected."
 msgstr "Versionskontrolle erkannt."
 
-#: src/frontends/qt/GuiView.cpp:3024
+#: src/frontends/qt/GuiView.cpp:3139
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Das Dokument %1$s konnte nicht geöffnet werden"
 
-#: src/frontends/qt/GuiView.cpp:3053
+#: src/frontends/qt/GuiView.cpp:3168
 msgid "Couldn't import file"
 msgstr "Die Datei konnte nicht importiert werden"
 
-#: src/frontends/qt/GuiView.cpp:3054
+#: src/frontends/qt/GuiView.cpp:3169
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Keine Informationen vorhanden, um das Format %1$s zu importieren."
 
-#: src/frontends/qt/GuiView.cpp:3101
+#: src/frontends/qt/GuiView.cpp:3216
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
-#: src/frontends/qt/GuiView.cpp:3136
+#: src/frontends/qt/GuiView.cpp:3251
 #, c-format
 msgid ""
 "The file name '%1$s' is invalid!\n"
@@ -38791,8 +38819,8 @@ msgstr ""
 "Der Dateiname '%1$s' ist ungültig!\n"
 "Import wird abgebrochen."
 
-#: src/frontends/qt/GuiView.cpp:3163 src/frontends/qt/GuiView.cpp:3428
-#: src/frontends/qt/GuiView.cpp:3533
+#: src/frontends/qt/GuiView.cpp:3278 src/frontends/qt/GuiView.cpp:3543
+#: src/frontends/qt/GuiView.cpp:3648
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -38803,33 +38831,33 @@ msgstr ""
 "\n"
 "Möchten Sie dieses Dokument überschreiben?"
 
-#: src/frontends/qt/GuiView.cpp:3165 src/frontends/qt/GuiView.cpp:3432
-#: src/frontends/qt/GuiView.cpp:3537
+#: src/frontends/qt/GuiView.cpp:3280 src/frontends/qt/GuiView.cpp:3547
+#: src/frontends/qt/GuiView.cpp:3652
 msgid "Overwrite document?"
 msgstr "Dokument überschreiben?"
 
-#: src/frontends/qt/GuiView.cpp:3174
+#: src/frontends/qt/GuiView.cpp:3289
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importiere %1$s..."
 
-#: src/frontends/qt/GuiView.cpp:3177
+#: src/frontends/qt/GuiView.cpp:3292
 msgid "imported."
 msgstr "wurde eingefügt."
 
-#: src/frontends/qt/GuiView.cpp:3179
+#: src/frontends/qt/GuiView.cpp:3294
 msgid "file not imported!"
 msgstr "Datei wurde nicht importiert!"
 
-#: src/frontends/qt/GuiView.cpp:3205
+#: src/frontends/qt/GuiView.cpp:3320
 msgid "newfile"
 msgstr "Neues_Dokument"
 
-#: src/frontends/qt/GuiView.cpp:3238
+#: src/frontends/qt/GuiView.cpp:3353
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/frontends/qt/GuiView.cpp:3285
+#: src/frontends/qt/GuiView.cpp:3400
 #, c-format
 msgid ""
 "It is suggested to save the template in a subdirectory\n"
@@ -38842,23 +38870,23 @@ msgstr ""
 "Dieser Unterordner existiert aber noch nicht.\n"
 "Soll er angelegt werden?"
 
-#: src/frontends/qt/GuiView.cpp:3290
+#: src/frontends/qt/GuiView.cpp:3405
 msgid "Create Language Directory?"
 msgstr "Sprach-Unterorder erstellen?"
 
-#: src/frontends/qt/GuiView.cpp:3291 src/frontends/qt/GuiView.cpp:3322
+#: src/frontends/qt/GuiView.cpp:3406 src/frontends/qt/GuiView.cpp:3437
 msgid "&Yes, Create"
 msgstr "&Ja, erstellen"
 
-#: src/frontends/qt/GuiView.cpp:3291 src/frontends/qt/GuiView.cpp:3322
+#: src/frontends/qt/GuiView.cpp:3406 src/frontends/qt/GuiView.cpp:3437
 msgid "&No, Save Template in Parent Directory"
 msgstr "&Nein, speichere Vorlage im Hauptordner"
 
-#: src/frontends/qt/GuiView.cpp:3294 src/frontends/qt/GuiView.cpp:3325
+#: src/frontends/qt/GuiView.cpp:3409 src/frontends/qt/GuiView.cpp:3440
 msgid "Subdirectory creation failed!"
 msgstr "Erstellung des Unterordners fehlgeschlagen!"
 
-#: src/frontends/qt/GuiView.cpp:3295 src/frontends/qt/GuiView.cpp:3326
+#: src/frontends/qt/GuiView.cpp:3410 src/frontends/qt/GuiView.cpp:3441
 msgid ""
 "Could not create subdirectory.\n"
 "The template will be saved in the parent directory."
@@ -38866,7 +38894,7 @@ msgstr ""
 "Der Unterordner konnte leider nicht erstellt werden\n"
 "Die Vorlage wird im Hauptordner gespeichert."
 
-#: src/frontends/qt/GuiView.cpp:3316
+#: src/frontends/qt/GuiView.cpp:3431
 #, c-format
 msgid ""
 "It is suggested to save the template in a subdirectory\n"
@@ -38879,19 +38907,19 @@ msgstr ""
 "Dieser Unterordner existiert aber noch nicht.\n"
 "Soll er angelegt werden?"
 
-#: src/frontends/qt/GuiView.cpp:3321
+#: src/frontends/qt/GuiView.cpp:3436
 msgid "Create Category Directory?"
 msgstr "Kategorien-Ordner erstellen?"
 
-#: src/frontends/qt/GuiView.cpp:3356
+#: src/frontends/qt/GuiView.cpp:3471
 msgid "Choose a filename to save template as"
 msgstr "Wählen Sie einen Dateinamen für die Vorlage"
 
-#: src/frontends/qt/GuiView.cpp:3357
+#: src/frontends/qt/GuiView.cpp:3472
 msgid "Choose a filename to save document as"
 msgstr "Wählen Sie einen Dateinamen für das Dokument"
 
-#: src/frontends/qt/GuiView.cpp:3391
+#: src/frontends/qt/GuiView.cpp:3506
 #, c-format
 msgid ""
 "The file\n"
@@ -38906,17 +38934,17 @@ msgstr ""
 "Bitte schließen Sie sie, wenn Sie sie überschreiben möchten.\n"
 "Möchten Sie statt dessen einen neuen Dateinamen wählen?"
 
-#: src/frontends/qt/GuiView.cpp:3395
+#: src/frontends/qt/GuiView.cpp:3510
 msgid "Chosen File Already Open"
 msgstr "Ausgewählte Datei bereits geöffnet"
 
-#: src/frontends/qt/GuiView.cpp:3396 src/frontends/qt/GuiView.cpp:3418
-#: src/frontends/qt/GuiView.cpp:3434 src/frontends/qt/GuiView.cpp:3538
-#: src/frontends/qt/GuiView.cpp:3583
+#: src/frontends/qt/GuiView.cpp:3511 src/frontends/qt/GuiView.cpp:3533
+#: src/frontends/qt/GuiView.cpp:3549 src/frontends/qt/GuiView.cpp:3653
+#: src/frontends/qt/GuiView.cpp:3698
 msgid "&Rename"
 msgstr "&Umbenennen"
 
-#: src/frontends/qt/GuiView.cpp:3411
+#: src/frontends/qt/GuiView.cpp:3526
 #, c-format
 msgid ""
 "The document %1$s is already registered.\n"
@@ -38927,27 +38955,27 @@ msgstr ""
 "\n"
 "Möchten Sie einen anderen Namen wählen?"
 
-#: src/frontends/qt/GuiView.cpp:3416
+#: src/frontends/qt/GuiView.cpp:3531
 msgid "Rename document?"
 msgstr "Dokument umbenennen?"
 
-#: src/frontends/qt/GuiView.cpp:3416
+#: src/frontends/qt/GuiView.cpp:3531
 msgid "Copy document?"
 msgstr "Dokument kopieren?"
 
-#: src/frontends/qt/GuiView.cpp:3418
+#: src/frontends/qt/GuiView.cpp:3533
 msgid "&Copy"
 msgstr "&Kopieren"
 
-#: src/frontends/qt/GuiView.cpp:3478
+#: src/frontends/qt/GuiView.cpp:3593
 msgid "Choose a filename to export the document as"
 msgstr "Wählen Sie einen Dateinamen für das exportierte Dokument"
 
-#: src/frontends/qt/GuiView.cpp:3482
+#: src/frontends/qt/GuiView.cpp:3597
 msgid "Guess from extension (*.*)"
 msgstr "Von der Dateierweiterung ableiten (*.*)"
 
-#: src/frontends/qt/GuiView.cpp:3579
+#: src/frontends/qt/GuiView.cpp:3694
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -38958,15 +38986,15 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument umbenennen und erneut versuchen?"
 
-#: src/frontends/qt/GuiView.cpp:3582
+#: src/frontends/qt/GuiView.cpp:3697
 msgid "Rename and save?"
 msgstr "Umbenennen und speichern?"
 
-#: src/frontends/qt/GuiView.cpp:3583
+#: src/frontends/qt/GuiView.cpp:3698
 msgid "&Retry"
 msgstr "&Wiederholen"
 
-#: src/frontends/qt/GuiView.cpp:3628
+#: src/frontends/qt/GuiView.cpp:3743
 #, c-format
 msgid ""
 "Last view on document %1$s is being closed.\n"
@@ -38988,25 +39016,25 @@ msgstr ""
 "die Voreinstellung in  Werkzeuge > Einstellungen ... >\n"
 "Aussehen & Handhabung > Benutzeroberfläche.\n"
 
-#: src/frontends/qt/GuiView.cpp:3637
+#: src/frontends/qt/GuiView.cpp:3752
 msgid "Close or hide document?"
 msgstr "Dokument schließen oder verbergen?"
 
-#: src/frontends/qt/GuiView.cpp:3638
+#: src/frontends/qt/GuiView.cpp:3753
 msgid "&Hide"
 msgstr "&Verbergen"
 
-#: src/frontends/qt/GuiView.cpp:3735
+#: src/frontends/qt/GuiView.cpp:3850
 msgid "Close document"
 msgstr "Dokument schließen"
 
-#: src/frontends/qt/GuiView.cpp:3736
+#: src/frontends/qt/GuiView.cpp:3851
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr ""
 "Dokument konnte nicht geschlossen werden, da es gerade von LyX verarbeitet "
 "wird."
 
-#: src/frontends/qt/GuiView.cpp:3868 src/frontends/qt/GuiView.cpp:4000
+#: src/frontends/qt/GuiView.cpp:3983 src/frontends/qt/GuiView.cpp:4115
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -39017,16 +39045,16 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern?"
 
-#: src/frontends/qt/GuiView.cpp:3871 src/frontends/qt/GuiView.cpp:4003
+#: src/frontends/qt/GuiView.cpp:3986 src/frontends/qt/GuiView.cpp:4118
 msgid "Save new document?"
 msgstr "Neues Dokument speichern?"
 
-#: src/frontends/qt/GuiView.cpp:3872 src/frontends/qt/GuiView.cpp:3886
-#: src/frontends/qt/GuiView.cpp:4005
+#: src/frontends/qt/GuiView.cpp:3987 src/frontends/qt/GuiView.cpp:4001
+#: src/frontends/qt/GuiView.cpp:4120
 msgid "&Save"
 msgstr "&Speichern"
 
-#: src/frontends/qt/GuiView.cpp:3877
+#: src/frontends/qt/GuiView.cpp:3992
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -39037,7 +39065,7 @@ msgstr ""
 "sind nicht gespeichert.\n"
 "Möchten Sie das Dokument speichern oder die Änderungen verwerfen?"
 
-#: src/frontends/qt/GuiView.cpp:3880
+#: src/frontends/qt/GuiView.cpp:3995
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -39048,19 +39076,19 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern oder es endgültig verwerfen?"
 
-#: src/frontends/qt/GuiView.cpp:3884 src/frontends/qt/GuiView.cpp:3997
+#: src/frontends/qt/GuiView.cpp:3999 src/frontends/qt/GuiView.cpp:4112
 msgid "Save changed document?"
 msgstr "Geändertes Dokument speichern?"
 
-#: src/frontends/qt/GuiView.cpp:3884
+#: src/frontends/qt/GuiView.cpp:3999
 msgid "Save document?"
 msgstr "Dokument speichern?"
 
-#: src/frontends/qt/GuiView.cpp:3886
+#: src/frontends/qt/GuiView.cpp:4001
 msgid "&Discard"
 msgstr "&Verwerfen"
 
-#: src/frontends/qt/GuiView.cpp:3994
+#: src/frontends/qt/GuiView.cpp:4109
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -39071,7 +39099,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern?"
 
-#: src/frontends/qt/GuiView.cpp:4026
+#: src/frontends/qt/GuiView.cpp:4141
 #, c-format
 msgid ""
 "Document \n"
@@ -39083,37 +39111,37 @@ msgstr ""
 "wurde extern verändert. Wollen Sie es erneut laden?\n"
 "Alle lokalen Veränderungen werden dann verworfen."
 
-#: src/frontends/qt/GuiView.cpp:4029
+#: src/frontends/qt/GuiView.cpp:4144
 msgid "Reload externally changed document?"
 msgstr "Extern geändertes Dokument neu laden?"
 
-#: src/frontends/qt/GuiView.cpp:4074
+#: src/frontends/qt/GuiView.cpp:4189
 msgid "Document could not be checked in."
 msgstr "Das Dokument konnte nicht eingecheckt werden."
 
-#: src/frontends/qt/GuiView.cpp:4117
+#: src/frontends/qt/GuiView.cpp:4232
 msgid "Error when setting the locking property."
 msgstr "Fehler beim Setzen der Dateisperrung."
 
-#: src/frontends/qt/GuiView.cpp:4166
+#: src/frontends/qt/GuiView.cpp:4281
 msgid "Directory is not accessible."
 msgstr "Das Verzeichnis ist nicht lesbar."
 
-#: src/frontends/qt/GuiView.cpp:4243
+#: src/frontends/qt/GuiView.cpp:4358
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
-#: src/frontends/qt/GuiView.cpp:4301
+#: src/frontends/qt/GuiView.cpp:4416
 #, c-format
 msgid "No buffer for file: %1$s."
 msgstr "Kein Pufferspeicher für Datei: %1$s."
 
-#: src/frontends/qt/GuiView.cpp:4311
+#: src/frontends/qt/GuiView.cpp:4426
 msgid "Inverse Search Failed"
 msgstr "Rückwärtssuche gescheitert"
 
-#: src/frontends/qt/GuiView.cpp:4312
+#: src/frontends/qt/GuiView.cpp:4427
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You may need to update the viewed document."
@@ -39121,31 +39149,31 @@ msgstr ""
 "Die Rückwärtssuche wollte eine ungültige Position anspringen.\n"
 "Bitte aktualisieren Sie das ausgegebene Dokument."
 
-#: src/frontends/qt/GuiView.cpp:4385
+#: src/frontends/qt/GuiView.cpp:4500
 msgid "Export Error"
 msgstr "Exportfehler"
 
-#: src/frontends/qt/GuiView.cpp:4386
+#: src/frontends/qt/GuiView.cpp:4501
 msgid "Error cloning the Buffer."
 msgstr "Fehler beim Klonen des Pufferspeichers."
 
-#: src/frontends/qt/GuiView.cpp:4537 src/frontends/qt/GuiView.cpp:4557
+#: src/frontends/qt/GuiView.cpp:4652 src/frontends/qt/GuiView.cpp:4672
 msgid "Exporting ..."
 msgstr "Exportiere ..."
 
-#: src/frontends/qt/GuiView.cpp:4570
+#: src/frontends/qt/GuiView.cpp:4685
 msgid "Previewing ..."
 msgstr "Generiere Vorschau ..."
 
-#: src/frontends/qt/GuiView.cpp:4620
+#: src/frontends/qt/GuiView.cpp:4735
 msgid "Document not loaded"
 msgstr "Dokument nicht geladen"
 
-#: src/frontends/qt/GuiView.cpp:4716
+#: src/frontends/qt/GuiView.cpp:4831
 msgid "Select file to insert"
 msgstr "Wählen Sie das einzufügende Dokument"
 
-#: src/frontends/qt/GuiView.cpp:4747
+#: src/frontends/qt/GuiView.cpp:4862
 #, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
@@ -39155,7 +39183,7 @@ msgstr ""
 "dass Sie die auf der Festplatte gespeicherte Version des Dokuments %1$s "
 "laden möchten?"
 
-#: src/frontends/qt/GuiView.cpp:4754
+#: src/frontends/qt/GuiView.cpp:4869
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -39164,61 +39192,61 @@ msgstr ""
 "Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur gespeicherten "
 "Version des Dokuments %1$s zurückkehren möchten?"
 
-#: src/frontends/qt/GuiView.cpp:4757
+#: src/frontends/qt/GuiView.cpp:4872
 msgid "Revert to saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
 
-#: src/frontends/qt/GuiView.cpp:4774
+#: src/frontends/qt/GuiView.cpp:4889
 msgid "Buffer export reset."
 msgstr "Export zurückgesetzt."
 
-#: src/frontends/qt/GuiView.cpp:4797
+#: src/frontends/qt/GuiView.cpp:4912
 msgid "Saving all documents..."
 msgstr "Speichere alle Dokumente..."
 
-#: src/frontends/qt/GuiView.cpp:4807
+#: src/frontends/qt/GuiView.cpp:4922
 msgid "All documents saved."
 msgstr "Alle Dokumente wurden gespeichert."
 
-#: src/frontends/qt/GuiView.cpp:4846
+#: src/frontends/qt/GuiView.cpp:4961
 msgid "Developer mode is now enabled."
 msgstr "Der Entwicklermodus ist nun aktiviert."
 
-#: src/frontends/qt/GuiView.cpp:4848
+#: src/frontends/qt/GuiView.cpp:4963
 msgid "Developer mode is now disabled."
 msgstr "Der Entwicklermodus ist nun deaktiviert."
 
-#: src/frontends/qt/GuiView.cpp:4880
+#: src/frontends/qt/GuiView.cpp:4995
 msgid "Toolbars unlocked."
 msgstr "Werkzeugleisten nicht verankert."
 
-#: src/frontends/qt/GuiView.cpp:4882
+#: src/frontends/qt/GuiView.cpp:4997
 msgid "Toolbars locked."
 msgstr "Werkzeugleisten verankert."
 
-#: src/frontends/qt/GuiView.cpp:4894
+#: src/frontends/qt/GuiView.cpp:5009
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
 msgstr "Eingestellte Symbolgröße: %1$dx%2$d."
 
-#: src/frontends/qt/GuiView.cpp:5001
+#: src/frontends/qt/GuiView.cpp:5116
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "LFUN_UI_TOGGLE %1$s unbekannter Befehl!"
 
-#: src/frontends/qt/GuiView.cpp:5102
+#: src/frontends/qt/GuiView.cpp:5217
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
 msgstr "Aktueller Skalierungsfaktor: %1$d% (Standardwert: %2$d%)"
 
-#: src/frontends/qt/GuiView.cpp:5165
+#: src/frontends/qt/GuiView.cpp:5280
 msgid "Please, preview the document first."
 msgstr "Bitte geben Sie das Dokument zunächst aus."
 
-#: src/frontends/qt/GuiView.cpp:5183
+#: src/frontends/qt/GuiView.cpp:5298
 msgid "Couldn't proceed."
 msgstr "Konnte nicht fortfahren."
 
-#: src/frontends/qt/GuiView.cpp:5563
+#: src/frontends/qt/GuiView.cpp:5678
 msgid "Disable Shell Escape"
 msgstr "Erlaubnis zum Aufruf externer Programme widerrufen"
 
@@ -39941,8 +39969,8 @@ msgstr "Kein Literaturverzeichnis definiert!"
 msgid "+ %1$d more entries."
 msgstr "+ %1$d weitere Einträge."
 
-#: src/insets/InsetCitation.cpp:589 src/insets/InsetRef.cpp:556
-#: src/insets/InsetRef.cpp:669
+#: src/insets/InsetCitation.cpp:589 src/insets/InsetRef.cpp:595
+#: src/insets/InsetRef.cpp:720
 msgid "BROKEN: "
 msgstr "UNGÜLTIG: "
 
@@ -41145,55 +41173,55 @@ msgstr "%1$sText"
 msgid "text%1$s"
 msgstr "Text%1$s"
 
-#: src/insets/InsetRef.cpp:408
+#: src/insets/InsetRef.cpp:447
 msgid "elsewhere"
 msgstr "woanders"
 
-#: src/insets/InsetRef.cpp:650
+#: src/insets/InsetRef.cpp:701
 msgid "Ref"
 msgstr "Querverweis"
 
-#: src/insets/InsetRef.cpp:651
+#: src/insets/InsetRef.cpp:702
 msgid "EqRef"
 msgstr "(Querverweis)"
 
-#: src/insets/InsetRef.cpp:652 src/mathed/InsetMathRef.cpp:379
+#: src/insets/InsetRef.cpp:703 src/mathed/InsetMathRef.cpp:381
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/InsetRef.cpp:653 src/mathed/InsetMathRef.cpp:380
+#: src/insets/InsetRef.cpp:704 src/mathed/InsetMathRef.cpp:382
 msgid "Textual Page Number"
 msgstr "Seitennummer in Textform"
 
-#: src/insets/InsetRef.cpp:653
+#: src/insets/InsetRef.cpp:704
 msgid "TextPage"
 msgstr "TextSeite"
 
-#: src/insets/InsetRef.cpp:654 src/mathed/InsetMathRef.cpp:381
+#: src/insets/InsetRef.cpp:705 src/mathed/InsetMathRef.cpp:383
 msgid "Standard+Textual Page"
 msgstr "Standard+Seite in Textform"
 
-#: src/insets/InsetRef.cpp:654
+#: src/insets/InsetRef.cpp:705
 msgid "Ref+Text"
 msgstr "Querverweis+Text"
 
-#: src/insets/InsetRef.cpp:655 src/mathed/InsetMathRef.cpp:383
+#: src/insets/InsetRef.cpp:706 src/mathed/InsetMathRef.cpp:385
 msgid "Reference to Name"
 msgstr "Referenz auf Namen"
 
-#: src/insets/InsetRef.cpp:655
+#: src/insets/InsetRef.cpp:706
 msgid "NameRef"
 msgstr "Namen-Querverweis"
 
-#: src/insets/InsetRef.cpp:656
+#: src/insets/InsetRef.cpp:707
 msgid "Formatted"
 msgstr "Formatiert"
 
-#: src/insets/InsetRef.cpp:656
+#: src/insets/InsetRef.cpp:707
 msgid "Format"
 msgstr "Format"
 
-#: src/insets/InsetRef.cpp:657 src/mathed/InsetMathRef.cpp:384
+#: src/insets/InsetRef.cpp:708 src/mathed/InsetMathRef.cpp:386
 msgid "Label Only"
 msgstr "Nur Marke"
 
@@ -41497,7 +41525,7 @@ msgid "Match found."
 msgstr "Die Zeichenkette wurde gefunden!"
 
 #: src/mathed/InsetMathAMSArray.cpp:136 src/mathed/InsetMathCases.cpp:91
-#: src/mathed/InsetMathHull.cpp:2222 src/mathed/InsetMathSplit.cpp:127
+#: src/mathed/InsetMathHull.cpp:2227 src/mathed/InsetMathSplit.cpp:127
 #: src/mathed/InsetMathSubstack.cpp:89
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -41553,16 +41581,16 @@ msgstr "Keine vertikale Linie zu löschen"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1770
+#: src/mathed/InsetMathHull.cpp:1775
 #, c-format
 msgid "Type: %1$s"
 msgstr "Typ: %1$s"
 
-#: src/mathed/InsetMathHull.cpp:1806
+#: src/mathed/InsetMathHull.cpp:1811
 msgid "Bad math environment"
 msgstr "Ungeeignete Matheumgebung"
 
-#: src/mathed/InsetMathHull.cpp:1807
+#: src/mathed/InsetMathHull.cpp:1812
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -41570,25 +41598,25 @@ msgstr ""
 "In AMS-Matheumgebungen kann keine Berechnung durchgeführt werden.\n"
 "Bitte ändern Sie die Formelart und versuchen Sie es noch einmal."
 
-#: src/mathed/InsetMathHull.cpp:1921 src/mathed/InsetMathHull.cpp:1930
+#: src/mathed/InsetMathHull.cpp:1926 src/mathed/InsetMathHull.cpp:1935
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/InsetMathHull.cpp:2205
+#: src/mathed/InsetMathHull.cpp:2210
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden."
 
-#: src/mathed/InsetMathHull.cpp:2215
+#: src/mathed/InsetMathHull.cpp:2220
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden."
 
-#: src/mathed/InsetMathMacro.cpp:1203
+#: src/mathed/InsetMathMacro.cpp:1200
 msgid "Uncodable characters in math macro"
 msgstr "Unkodierbare Zeichen in Mathe-Makro"
 
-#: src/mathed/InsetMathMacro.cpp:1204
+#: src/mathed/InsetMathMacro.cpp:1201
 #, c-format
 msgid ""
 "The macro name '%1$s' contains a character\n"
@@ -41599,25 +41627,25 @@ msgstr ""
 "in der aktuellen Kodierung kodierbar sind (%2$s).\n"
 "Bitte korrigieren Sie das Makro."
 
-#: src/mathed/InsetMathMacro.cpp:1361 src/mathed/InsetMathMacro.cpp:1367
+#: src/mathed/InsetMathMacro.cpp:1358 src/mathed/InsetMathMacro.cpp:1364
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s"
 
-#: src/mathed/InsetMathMacroTemplate.cpp:500
+#: src/mathed/InsetMathMacroTemplate.cpp:501
 msgid "optional"
 msgstr "optional"
 
-#: src/mathed/InsetMathMacroTemplate.cpp:1296
+#: src/mathed/InsetMathMacroTemplate.cpp:1297
 msgid "math macro"
 msgstr "Mathe-Makro"
 
-#: src/mathed/InsetMathMacroTemplate.cpp:1405
+#: src/mathed/InsetMathMacroTemplate.cpp:1403
 #, c-format
 msgid "Math Macro: \\%1$s"
 msgstr "Mathe-Makro: \\%1$s"
 
-#: src/mathed/InsetMathMacroTemplate.cpp:1420
+#: src/mathed/InsetMathMacroTemplate.cpp:1418
 #, c-format
 msgid "Invalid macro! \\%1$s"
 msgstr "Ungültiges Makro! \\%1$s"
@@ -41639,43 +41667,43 @@ msgstr "Bearbeitungsmodus für reguläre Ausdrücke"
 msgid "Cannot apply %1$s here."
 msgstr "%1$s kann hier nicht angewendet werden."
 
-#: src/mathed/InsetMathRef.cpp:377
+#: src/mathed/InsetMathRef.cpp:379
 msgid "Standard[[mathref]]"
 msgstr "Standard"
 
-#: src/mathed/InsetMathRef.cpp:377
+#: src/mathed/InsetMathRef.cpp:379
 msgid "Ref: "
 msgstr "Querverweis: "
 
-#: src/mathed/InsetMathRef.cpp:378
+#: src/mathed/InsetMathRef.cpp:380
 msgid "EqRef: "
 msgstr "(Querverweis): "
 
-#: src/mathed/InsetMathRef.cpp:379
+#: src/mathed/InsetMathRef.cpp:381
 msgid "Page: "
 msgstr "Seite: "
 
-#: src/mathed/InsetMathRef.cpp:380
+#: src/mathed/InsetMathRef.cpp:382
 msgid "TextPage: "
 msgstr "TextSeite: "
 
-#: src/mathed/InsetMathRef.cpp:381
+#: src/mathed/InsetMathRef.cpp:383
 msgid "Ref+Text: "
 msgstr "Querverweis+Text: "
 
-#: src/mathed/InsetMathRef.cpp:382
+#: src/mathed/InsetMathRef.cpp:384
 msgid "PrettyRef"
 msgstr "Prettyref"
 
-#: src/mathed/InsetMathRef.cpp:382
+#: src/mathed/InsetMathRef.cpp:384
 msgid "FormatRef: "
 msgstr "Formatiert: "
 
-#: src/mathed/InsetMathRef.cpp:383
+#: src/mathed/InsetMathRef.cpp:385
 msgid "NameRef: "
 msgstr "NameRef: "
 
-#: src/mathed/InsetMathRef.cpp:384
+#: src/mathed/InsetMathRef.cpp:386
 msgid "Label Only: "
 msgstr "Nur Marke:"
 
@@ -42102,6 +42130,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "&Use refstyle (not prettyref) for cross-references"
+#~ msgstr "Verwende &Refstyle (statt Prettyref) für Querverweise"
 
 #~ msgid "&Next"
 #~ msgstr "&Nächstes"

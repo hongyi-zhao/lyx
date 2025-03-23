@@ -168,6 +168,12 @@ char const * const known_refstyle_prefixes[] = { "alg", "chap", "cor",
  "eq", "enu", "fig", "fn", "lem", "par", "part", "prop",
  "sec", "subsec", "tab", "thm", 0 };
 
+char const * const known_zref_commands[] = { "zcref", "zvref",
+ "zvpageref", 0 };
+
+char const * const known_coded_zref_commands[] = { "formatted", "vref",
+ "vpageref", 0 };
+
 
 /**
  * supported CJK encodings
@@ -4627,6 +4633,51 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				output_ert_inset(os, t.asInput() + opt + "{" +
 						 p.verbatim_item() + '}', context);
 			}
+			continue;
+		}
+
+		if ((where = is_known(t.cs(), known_zref_commands))
+		     && preamble.crossrefPackage() == "zref") {
+			bool starred = false;
+			bool caps = false;
+			if (p.next_token().asInput() == "*") {
+				starred = true;
+				p.get_token();
+			}
+			vector<string> const opts = getVectorFromString(p.getOpt());
+			string options;
+			bool first = true;
+			for (auto const & opt : opts) {
+				if (opt == "S")
+					caps = true;
+				else {
+					if (!first)
+						options += ",";
+					options += opt;
+					first = false;
+				}
+			}
+			context.check_layout(os);
+			begin_command_inset(os, "ref",
+				known_coded_zref_commands[where - known_zref_commands]);
+			os << "reference \""
+			   << convert_literate_command_inset_arg(p.verbatim_item())
+			   << "\"\n";
+			os << "plural \"false\"\n";
+			if (caps)
+				os << "caps \"true\"\n";
+			else
+				os << "caps \"false\"\n";
+			os << "noprefix \"false\"\n";
+			if (starred)
+				os << "nolink \"true\"\n";
+			else
+				os << "nolink \"false\"\n";
+			end_inset(os);
+			if (t.cs() == "zvref" || t.cs() == "zvpageref")
+				preamble.registerAutomaticallyLoadedPackage("zref-vario");
+			else
+				preamble.registerAutomaticallyLoadedPackage("zref-clever");
 			continue;
 		}
 

@@ -32149,7 +32149,11 @@ literal "true"
 \begin_inset Newline newline
 \end_inset
 
-The options 
+The option
+\change_deleted -584632292 1742750435
+s
+\change_unchanged
+ 
 \family sans
 Plural
 \family default
@@ -32172,12 +32176,18 @@ refstyle
 \change_unchanged
 .
 
+\change_inserted -584632292 1742750449
+ The
 \change_inserted -712698321 1742730991
  
 \family sans
 Capitalized
 \family default
- is available with formatted references using 
+ 
+\change_inserted -584632292 1742750451
+option 
+\change_inserted -712698321 1742730991
+is available with formatted references using 
 \series bold
 refstyle
 \series default
@@ -32332,7 +32342,12 @@ g.
 \series bold
 refstyle
 \series default
-'s range commands.The number and current page of the referenced document part in the output is automatically calculated by \SpecialChar LaTeX
+'s range commands.
+
+\change_inserted -584632292 1742750335
+ 
+\change_unchanged
+The number and current page of the referenced document part in the output is automatically calculated by \SpecialChar LaTeX
 .
  The varieties are adjusted in the field 
 \family sans
@@ -60152,10 +60167,14 @@ status open
 
 \change_inserted -712698321 1742730730
 zref-clever
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -60173,6 +60192,8 @@ status collapsed
 
 \change_inserted -712698321 1742730723
 https://mirrors.ctan.org/macros/latex/contrib/refstyle//zref-clever.pdf
+\change_unchanged
+
 \end_layout
 
 \end_inset

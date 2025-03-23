@@ -357,7 +357,7 @@ const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
 "makeidx", "minted", "multirow", "nomencl", "parskip", "pdfpages", "prettyref", "refstyle",
 "rotating", "rotfloat", "splitidx", "setspace", "subscript", "tabularx","textcomp", "tipa",
 "tipx", "tone", "ulem", "url", "varioref", "verbatim", "wrapfig", "xcolor", "xltabular",
-"xunicode", 0};
+"xunicode", "zref-clever", "zref-vario", 0};
 
 // codes used to remove packages that are loaded automatically by LyX.
 // Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
@@ -2167,6 +2167,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 			 || name == "prettyref"
 			 || name == "cleveref")
 			h_crossref_package = name;
+		else if (name == "zref-clever"
+			 || name == "zref-vario")
+			h_crossref_package = "zref";
 
 		if (!in_lyx_preamble) {
 			h_preamble << package_beg_sep << name

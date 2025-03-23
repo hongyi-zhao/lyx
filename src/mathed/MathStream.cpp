@@ -693,7 +693,11 @@ MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
 					} else if (within_entity) { // Within new entity.
 						buf += c;
 					} else {
-						buf = docstring(c, 1);
+						if (!buf.empty()) {
+							lyxerr << "Assertion failed in MathLMStream::operator<<(docstring): the buffer is not empty (" << buf << ") when processing a single character";
+						}
+
+						buf = docstring(1, c);
 						ms.os_ << ms.current_font_.convertCharacterToUnicodeEntityWithFont(buf, ms.inText());
 						buf.clear();
 					}
@@ -704,7 +708,7 @@ MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
 					}
 				}
 				if (!buf.empty()) {
-					lyxerr << "Assertion failed in MathLMStream::operator<<(docstring): the buffer is not empty (" << buf << ")";
+					lyxerr << "Assertion failed in MathLMStream::operator<<(docstring): the buffer is not empty (" << buf << ") after processing the whole string";
 					ms.os_ << ms.current_font_.convertCharacterToUnicodeEntityWithFont(buf, ms.inText());
 				}
 			}

@@ -184,7 +184,17 @@ void GuiBranches::on_newBranchLE_textChanged(QString)
 void GuiBranches::on_addBranchPB_pressed()
 {
 	QString const new_branch = newBranchLE->text();
-	branchlist_.add(qstring_to_ucs4(new_branch));
+	docstring const new_branch_ds = qstring_to_ucs4(new_branch);
+
+	if (branchlist_.find(new_branch_ds)) {
+		docstring text = support::bformat(
+			_("A branch with the name \"%1$s\" already exists."),
+			new_branch_ds);
+		frontend::Alert::error(_("Branch already exists"), text);
+		return;
+	}
+
+	branchlist_.add(new_branch_ds);
 	newBranchLE->clear();
 	addBranchPB->setEnabled(false);
 

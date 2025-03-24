@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
-<meta name="generator" content="LyX 2.4.0~devel" />
+<meta name="generator" content="LyX 2.5.0~devel" />
 <title>Math formula output as raw LaTeX</title>
 <style>
 /* Layout-provided Styles */
@@ -22,7 +22,14 @@ div.standard {
 <h1 class='title' id='magicparlabel-1'>Math formula output as raw LaTeX</h1>
 <div class='standard' id='magicparlabel-2'>The problem occurs when adding a label. https://www.lyx.org/trac/ticket/13048</div>
 
-<div class='standard' id='magicparlabel-3'><a id="eq_1" /><div class='math'><table class='mathtable'><tr><td class='math'>x^{2}<\log x</td><td>(1)</td></tr></table></div>
+<div class='standard' id='magicparlabel-3'><a id="eq_1" /><div class='math'><table class='mathtable'><tr><td class='math'>x^{2}&lt;\log x</td><td>(1)</td></tr></table></div>
+</div>
+
+<div class='standard' id='magicparlabel-4'>Be careful with that escaping axe, though, this should still be valid XHTML: <div class='math'>\left(\begin{array}{cccc}
+A &amp; B &amp; C &amp; D\\
+\hdotsfor[2]{4}\\
+q &amp; w &amp; e &amp; r
+\end{array}\right)</div>
 </div>
 </body>
 </html>

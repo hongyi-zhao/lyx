@@ -2772,13 +2772,51 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 		// The returned value already has the correct escaping for HTML.
 		docstring const latex = mathAsLatex();
 
+		// Escaping this string is hairy. `latex` contains some XHTML and
+		// we don't want the output to look like this:
+		//     &lt;table class='mathtable'&gt;
+		// We have to perform some escaping, otherwise a matrix will be
+		// output with raw ampersands:
+		//     \left(\begin{array}{cccc}
+		//     A & B & C & D\\
+		//     \hdotsfor[2]{4}\\
+		//     q & w & e & r
+		//     \end{array}\right)
+		// We cannot perform standard XML escaping, otherwise the XHTML
+		// will be off. We must escape at the very least &, as it's common
+		// (not escaping it causes many failures in tests for doc/Math.lyx).
+		// Not escaping < causes problems if it comes from LaTeX. Escaping >
+		// is not really required (but it would be best).
+		//
+		// Current compromise: only escape &. It is safe to do so. Unescape
+		// some angle brackets too.
+		//
+		// To get a better result, we would need to have a better handling
+		// of escaping, as `latex` already has some parts that are escaped.
+		// The root cause is that `mathAsLatex` outputs both LaTeX and XHTML
+		// code intertwined in the right way.
+		//
+		// When debugging this code, pay attention to the differences
+        // between exporting and previewing (in preview mode, LyX won't
+        // attempt generating an image, thus never exercising this code).
+		docstring const latex_escaped = subst(
+			subst(
+				subst(
+					latex,
+					from_ascii("&"), from_ascii("&amp;")
+				),
+				from_ascii("&amp;lt;"), from_ascii("&lt;")
+			),
+			from_ascii("&amp;gt;"), from_ascii("&gt;")
+		);
+
 		// class='math' allows for use of jsMath
 		// http://www.math.union.edu/~dpvc/jsMath/
 		// FIXME XHTML
 		// probably should allow for some kind of customization here
 		string const tag = (getType() == hullSimple) ? "span" : "div";
 		xs << xml::StartTag(tag, "class='math'")
-		   << XMLStream::ESCAPE_NONE << latex // Don't escape anything: latex might contain XML.
+		   << XMLStream::ESCAPE_NONE << latex_escaped
 		   << xml::EndTag(tag)
 		   << xml::CR();
 	}

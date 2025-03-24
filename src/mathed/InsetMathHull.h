@@ -152,8 +152,6 @@ public:
 	void mathmlize(MathMLStream &) const override;
 	///
 	void htmlize(HtmlStream &) const override;
-	/// Returns the hull as a LaTeX string for embedding in HTML or XML.
-	docstring mathAsLatex() const;
 	///
 	void toString(odocstream &) const override;
 	///
@@ -219,6 +217,8 @@ private:
 	void loadPreview(DocIterator const & pos) const;
 	///
 	void setType(HullType type);
+	/// Returns the hull as a LaTeX string for embedding in HTML or XML.
+	docstring mathAsLatex() const;
 	///
 	void validate1(LaTeXFeatures & features);
 	///

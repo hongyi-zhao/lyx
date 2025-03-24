@@ -2604,28 +2604,14 @@ void InsetMathHull::mathmlize(MathMLStream & ms) const
 
 docstring InsetMathHull::mathAsLatex() const
 {
-	bool const havenumbers = haveNumbers();
-	bool const havetable = havenumbers || nrows() > 1 || ncols() > 1;
-
-	if (!havetable) {
-		odocstringstream ls;
-		otexrowstream ots(ls);
-		TeXMathStream os(ots, false, true, TeXMathStream::wsPreview);
-		ModeSpecifier specifier(os, MATH_MODE);
-		MathEnsurer ensurer(os, false);
-
-		os << cell(index(0, 0));
-		return ls.str();
-	}
-
 	odocstringstream ods;
 	XMLStream xs(ods);
 
-	xs << xml::StartTag("table", "class='mathtable'");
+	if (haveNumbers()) { xs << xml::StartTag("table", "class='mathtable'"); }
 	for (row_type row = 0; row < nrows(); ++row) {
-		xs << xml::StartTag("tr");
+		if (haveNumbers()) { xs << xml::StartTag("tr"); }
 		for (col_type col = 0; col < ncols(); ++col) {
-			xs << xml::StartTag("td", "class='math'");
+			if (haveNumbers()) { xs << xml::StartTag("td", "class='math'"); }
 
 			odocstringstream ls;
 			otexrowstream ots(ls);
@@ -2637,9 +2623,9 @@ docstring InsetMathHull::mathAsLatex() const
 			// ls.str() contains a raw LaTeX string, which might require some encoding before being valid XML.
 			xs << ls.str();
 
-			xs << xml::EndTag("td");
+			if (haveNumbers()) { xs << xml::EndTag("td"); }
 		}
-		if (havenumbers) {
+		if (haveNumbers()) {
 			xs << xml::StartTag("td");
 			docstring const & num = numbers_[row];
 			if (!num.empty()) {
@@ -2647,9 +2633,9 @@ docstring InsetMathHull::mathAsLatex() const
 			}
 			xs << xml::EndTag("td");
 		}
-		xs << xml::EndTag("tr");
+		if (haveNumbers()) { xs << xml::EndTag("tr"); }
 	}
-	xs << xml::EndTag("table");
+	if (haveNumbers()) { xs << xml::EndTag("table"); }
 
 	return ods.str();
 }
@@ -2772,51 +2758,13 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 		// The returned value already has the correct escaping for HTML.
 		docstring const latex = mathAsLatex();
 
-		// Escaping this string is hairy. `latex` contains some XHTML and
-		// we don't want the output to look like this:
-		//     &lt;table class='mathtable'&gt;
-		// We have to perform some escaping, otherwise a matrix will be
-		// output with raw ampersands:
-		//     \left(\begin{array}{cccc}
-		//     A & B & C & D\\
-		//     \hdotsfor[2]{4}\\
-		//     q & w & e & r
-		//     \end{array}\right)
-		// We cannot perform standard XML escaping, otherwise the XHTML
-		// will be off. We must escape at the very least &, as it's common
-		// (not escaping it causes many failures in tests for doc/Math.lyx).
-		// Not escaping < causes problems if it comes from LaTeX. Escaping >
-		// is not really required (but it would be best).
-		//
-		// Current compromise: only escape &. It is safe to do so. Unescape
-		// some angle brackets too.
-		//
-		// To get a better result, we would need to have a better handling
-		// of escaping, as `latex` already has some parts that are escaped.
-		// The root cause is that `mathAsLatex` outputs both LaTeX and XHTML
-		// code intertwined in the right way.
-		//
-		// When debugging this code, pay attention to the differences
-        // between exporting and previewing (in preview mode, LyX won't
-        // attempt generating an image, thus never exercising this code).
-		docstring const latex_escaped = subst(
-			subst(
-				subst(
-					latex,
-					from_ascii("&"), from_ascii("&amp;")
-				),
-				from_ascii("&amp;lt;"), from_ascii("&lt;")
-			),
-			from_ascii("&amp;gt;"), from_ascii("&gt;")
-		);
-
 		// class='math' allows for use of jsMath
 		// http://www.math.union.edu/~dpvc/jsMath/
 		// FIXME XHTML
 		// probably should allow for some kind of customization here
 		string const tag = (getType() == hullSimple) ? "span" : "div";
 		xs << xml::StartTag(tag, "class='math'")
-		   << XMLStream::ESCAPE_NONE << latex_escaped
+		   << XMLStream::ESCAPE_NONE << latex
 		   << xml::EndTag(tag)
 		   << xml::CR();
 	}

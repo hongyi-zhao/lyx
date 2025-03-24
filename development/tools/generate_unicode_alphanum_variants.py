@@ -121,7 +121,7 @@ def lookup_with_exceptions(char_name: str) -> str:
 
 
 def format_variants(variants: List[str]) -> str:
-    return ' '.join([hex(ord(v)) if v != '' else '""' for v in variants])
+    return ' '.join([hex(ord(v))[1:] if v != '' else '""' for v in variants])
 
 
 print("# Lower-case Latin letters")
@@ -137,7 +137,7 @@ for letter_index in range(26):
 
 print("# Upper-case Latin letters")
 for letter_index in range(26):
-    letter = chr(ord('a') + letter_index)  # 'a' to 'z'
+    letter = chr(ord('A') + letter_index)  # 'a' to 'z'
     variant_names = get_upper_latin_letter_variant_names(letter)
     variants = [lookup_with_exceptions(char_name) for char_name in variant_names]
 
@@ -160,29 +160,24 @@ for letter_index in range(25):
     if DEBUG:
         print(variants)
     else:
-        print(f'{hex(ord(letter))} {format_variants(variants)}')
+        print(f'{hex(ord(letter))[1:]} {format_variants(variants)}')
 
 print("# Upper-case Greek letters")
 for letter_index in range(25):
-    # For upper-case Greek letters, we need to filter out 'final sigma'.
-    # It's not sufficient to iterate over the upper-case Greek letters
-    # (with ALPHA being 913): there is a gap between RHO and SIGMA for, well,
-    # FINAL SIGMA (which, for obvious reasons, does not exist).
-
-    # 'alpha' to 'omega', the actual character.
-    letter = chr(945 + letter_index)
-    # 'alpha' to 'omega' (still a 'final sigma').
-    letter_name = unicodedata.name(letter).lower().replace('greek small letter', '').strip()
-    # 'alpha' to 'omega' (without 'final sigma').
-    if letter_name == 'final sigma':
+    # Skip 'finalsigma'.
+    if letter_index == 17:
         continue
+    # 'alpha' to 'omega', the actual character.
+    letter = chr(913 + letter_index)
+    # 'alpha' to 'omega' (without 'final sigma').
+    letter_name = unicodedata.name(letter).lower().replace('greek capital letter', '').strip()
     variant_names = get_upper_greek_letter_variant_names(letter_name)
     variants = [lookup_with_exceptions(char_name) for char_name in variant_names]
 
     if DEBUG:
         print(variants)
     else:
-        print(f'{hex(ord(letter))} {format_variants(variants)}')
+        print(f'{hex(ord(letter))[1:]} {format_variants(variants)}')
 
 print("# Numbers")
 for number_index in range(10):

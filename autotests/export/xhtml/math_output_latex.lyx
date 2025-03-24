@@ -133,6 +133,17 @@ q & w & e & r
 
 \end_inset
 
+Worse still:
+\begin_inset Formula 
+\[
+\smashoperator{\sum_{\begin{subarray}{c}
+0<k<1000\\
+\\k\,\in\,\mathbb{N}
+\end{subarray}}^{n}}k^{-2}
+\]
+
+\end_inset
+
 
 \end_layout
 

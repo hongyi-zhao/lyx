@@ -198,20 +198,32 @@ std::string MathFontInfo::toHTMLSpanClass() const
 
 docstring MathFontInfo::convertCharacterToUnicodeEntityWithFont(const docstring & c, bool in_text) const
 {
-	if (c.size() <= 1) {
-		return c;
+	docstring mapped = convertCharacterToUnicodeWithFont(c, in_text);
+	if (mapped == c || mapped.length() == 1) {
+		return mapped;
 	}
 	// Otherwise, it's an entity, like 0x1d44e (as a hexadecimal number).
-	return from_ascii("&#") + convertCharacterToUnicodeWithFont(c, in_text) + from_ascii(";");
+	return from_ascii("&#") + mapped + from_ascii(";");
 }
 
 
 docstring MathFontInfo::convertCharacterToUnicodeWithFont(const docstring & c, bool in_text) const
 {
+	// Not much to do if the query is empty.
+	if (c.empty()) {
+		return c;
+	}
+
 	MathVariantList const & mvl = mathedVariantList();
 
 	// If this character is unknown, exit early.
-	const auto it = mvl.find(support::ascii_lowercase(c));
+	auto it = mvl.find(support::ascii_lowercase(c));
+	if (it == mvl.end() && c.size() >= 2 && c[0] == '0' && c[1] == 'x') {
+		// If the character starts with "0x", it might be a hex encoding,
+		// like "0x1d73d": also look for the variant that browsers support
+		// best, "x1d73d".
+		it = mvl.find(support::ascii_lowercase(c.substr(1)));
+	}
 	if (it == mvl.end()) {
 		return c;
 	}
@@ -648,6 +660,22 @@ MathMLStream & operator<<(MathMLStream & ms, MathData const & ar)
 }
 
 
+bool MathMLStream::needsFontMapping() const {
+	// Condition written for *not* needing mapping, because it's easier
+	// (every field has a default value). The function returns the
+	// opposite because it's easier to understand.
+	return !(
+		(current_font_.family() == MathFontInfo::MathFontFamily::MATH_INHERIT_FAMILY ||
+					current_font_.family() == MathFontInfo::MathFontFamily::MATH_NORMAL_FAMILY) &&
+		(current_font_.series() == MathFontInfo::MathFontSeries::MATH_INHERIT_SERIES ||
+		   			current_font_.series() == MathFontInfo::MathFontSeries::MATH_MEDIUM_SERIES) &&
+		(current_font_.shape() == MathFontInfo::MathFontShape::MATH_INHERIT_SHAPE ||
+					(in_mtext_ && current_font_.shape() == MathFontInfo::MathFontShape::MATH_UP_SHAPE) ||
+					(!in_mtext_ && current_font_.shape() == MathFontInfo::MathFontShape::MATH_ITALIC_SHAPE))
+	);
+}
+
+
 MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
 {
 	ms.beforeText();
@@ -659,16 +687,8 @@ MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
 		if (ms.version() == MathMLVersion::mathmlCore) {
 			// New case: MathML uses Unicode characters to indicate fonts.
 			// If possible, avoid doing the mapping: it involves looking up a hash
-			// table and doing a lot of conditions *per character*
-			bool needs_no_mapping =
-				(ms.current_font_.family() == MathFontInfo::MathFontFamily::MATH_INHERIT_FAMILY ||
-					ms.current_font_.family() == MathFontInfo::MathFontFamily::MATH_NORMAL_FAMILY) &&
-				(ms.current_font_.series() == MathFontInfo::MathFontSeries::MATH_INHERIT_SERIES ||
-					ms.current_font_.series() == MathFontInfo::MathFontSeries::MATH_MEDIUM_SERIES) &&
-				(ms.current_font_.shape() == MathFontInfo::MathFontShape::MATH_INHERIT_SHAPE ||
-					(ms.in_mtext_ && ms.current_font_.shape() == MathFontInfo::MathFontShape::MATH_UP_SHAPE) ||
-					(!ms.in_mtext_ && ms.current_font_.shape() == MathFontInfo::MathFontShape::MATH_ITALIC_SHAPE));
-			if (needs_no_mapping) {
+			// table and doing a lot of conditions *per character*.
+			if (!ms.needsFontMapping()) {
 				ms.os_ << s;
 			} else {
 				// Perform the conversion character per character (which might

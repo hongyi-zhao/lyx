@@ -256,6 +256,9 @@ void InsetMathChar::octave(OctaveStream & os) const
 // is recognised as an operator, to match TeX' behaviour.
 void InsetMathChar::mathmlize(MathMLStream & ms) const
 {
+	// The characters hard-coded here do not need to respect the font,
+	// they do not have a Unicode mapping (in the sense of
+	// unicode_alphanum_variants).
 	std::string entity;
 	switch (char_) {
 	case '<': entity = "&lt;"; break;

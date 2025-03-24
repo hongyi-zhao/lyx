@@ -71,7 +71,9 @@ void InsetMathNumber::octave(OctaveStream & os) const
 void InsetMathNumber::mathmlize(MathMLStream & ms) const
 {
 	ms << MTagInline("mn")
+	   << StartRespectFont()
 	   << str_
+	   << StopRespectFont()
 	   << ETagInline("mn");
 }
 

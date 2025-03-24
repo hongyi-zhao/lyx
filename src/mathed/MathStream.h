@@ -515,6 +515,9 @@ private:
 	void beforeText();
 	/// Check whether there is a <mtext> to close here
 	void beforeTag();
+	/// Determines whether characters should be mapped for font variations.
+	/// (True if characters must respect font, in particular.)
+	bool needsFontMapping() const;
 	///
 	odocstream & os_;
 	///

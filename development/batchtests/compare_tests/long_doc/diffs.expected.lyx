@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 613
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 636
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -87,9 +87,18 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\crossref_package prettyref
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Index
 \shortcut idx
 \color #008000
@@ -115,6 +124,7 @@
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \author 1660427103 "Document Comparison"
 \end_header
 
@@ -209,7 +219,7 @@ What is \SpecialChar LyX
 
 \begin_layout Standard
 
-\change_deleted 1660427103 1670920569
+\change_deleted 1660427103 1742976964
 \SpecialChar LyX
  is a program that provides a modern approach to writing documents with a computer by using a markup language paradigm,
  an approach that breaks with the obsolete tradition of the 
@@ -302,7 +312,7 @@ what you're doing
 style
 \emph default
 .
-\change_deleted 1660427103 1670920570
+\change_deleted 1660427103 1742976964
 
 \begin_inset Foot
 status collapsed
@@ -502,56 +512,56 @@ do
  is missing some cool function.
  It simply means that it isn't the right tool for the job —
  you don't use a screwdriver to dr
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 ive in nails.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 Yes,
  that's all.
  If you cut and paste the section,
  it will automat
 \change_unchanged
 i
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 cally be renumbered —
  e
 \change_unchanged
 v
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 erywhere.
  And if you enter references to that section corr
 \change_unchanged
 e
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 ctly (by
 \change_unchanged
  in
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 serting
 \change_unchanged
  
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 cross-refere
 \change_unchanged
 n
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 ce t
 \change_unchanged
 a
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 gs),
  \SpecialChar LyX
  will automatically update them all throughout the f
 \change_unchanged
 il
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 e 
 \change_unchanged
 s
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976964
 o that you never,
  ever type a section number
 \change_unchanged
@@ -561,7 +571,7 @@ o that you never,
 \begin_layout Subsection
 Differences between \SpecialChar LyX
  and Other 
-\change_inserted 1660427103 1670920570
+\change_inserted 1660427103 1742976965
 (Crappy) 
 \change_unchanged
 Word Processors

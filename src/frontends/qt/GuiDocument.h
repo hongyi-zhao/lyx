@@ -183,6 +183,7 @@ private Q_SLOTS:
 	void renameCustomColor();
 	void alterCustomColor();
 	void toggleCustomColor(QTreeWidgetItem *, int);
+	void updateMarginLabels(int);
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();

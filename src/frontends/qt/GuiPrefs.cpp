@@ -60,19 +60,20 @@
 #include <QCheckBox>
 #include <QFile>
 #include <QFontDatabase>
+#include <QGraphicsColorizeEffect>
 #include <QHeaderView>
 #include <QInputDialog>
 #include <QLineEdit>
 #include <QMessageBox>
+#include <QPainter>
 #include <QPushButton>
+#include <QShortcut>
 #include <QSpinBox>
 #include <QString>
 #include <QStyleFactory>
 #if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 #include <QStyleHints>
 #endif
-#include <QPainter>
-#include <QShortcut>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QValidator>
@@ -994,7 +995,6 @@ PrefColors::PrefColors(GuiPreferences * form)
 	// FIXME: all of this initialization should be put into the controller.
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg113301.html
 	// for some discussion of why that is not trivial.
-	QPixmap icon(icon_width_, icon_height_);
 	for (int i = 0; i < Color_ignore; ++i) {
 		ColorCode lc = static_cast<ColorCode>(i);
 		if (lc == Color_none
@@ -1023,19 +1023,9 @@ PrefColors::PrefColors(GuiPreferences * form)
 		lcolors_.push_back(lc);
 	}
 	sort(lcolors_.begin(), lcolors_.end(), ColorSorter);
-	colorsTW->setRowCount(lcolors_.size());
-	colorsTW->setHorizontalHeaderLabels({qt_("Light"), qt_("Dark"),
-	                                     qt_("Color name")});
-	colorsTW->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-	for (size_type row=0; row!=lcolors_.size(); ++row) {
-		colorsTW->setItem(row, 0, new QTableWidgetItem(icon, ""));
-		colorsTW->setItem(row, 1, new QTableWidgetItem(icon, ""));
-		QTableWidgetItem* txtItem = new QTableWidgetItem(toqstr(lcolor.getGUIName(lcolors_[row])));
-		txtItem->setFlags(~QFlags(Qt::ItemIsEditable));
-		colorsTW->setItem(row, 2, txtItem);
-	}
 	curcolors_.resize(lcolors_.size());
 	newcolors_.resize(lcolors_.size());
+	theme_colors_.resize(lcolors_.size());
 
 	undo_stack_ = new QUndoStack(this);
 
@@ -1044,11 +1034,8 @@ PrefColors::PrefColors(GuiPreferences * form)
 	QShortcut* sc_redo = new QShortcut(QKeySequence(QKeySequence::Redo), this);
 	QShortcut* sc_search =
 	        new QShortcut(QKeySequence(QKeySequence::Find), this);
-	QShortcut* sc_search_forward =
-	        new QShortcut(QKeySequence(QKeySequence::FindNext), this);
-	QShortcut* sc_search_backward =
-	        new QShortcut(QKeySequence(QKeySequence::FindPrevious), this);
 
+	initializeColorsTV();
 	initializeThemesLW();
 	initializeThemeMenu();
 
@@ -1056,40 +1043,27 @@ PrefColors::PrefColors(GuiPreferences * form)
 
 	connect(autoapplyCB, SIGNAL(toggled(bool)),
 	        this, SLOT(changeAutoapply()));
-	connect(colorResetPB, SIGNAL(clicked()),
-	        this, SLOT(resetColor()));
+
+	connect(colorsTV, SIGNAL(pressed(QModelIndex)),
+	        this, SLOT(pressedColorsTV(QModelIndex)));
+	connect(colorsTV, SIGNAL(clicked(QModelIndex)),
+	        this, SLOT(clickedColorsTV(QModelIndex)));
 	connect(colorResetAllPB, SIGNAL(clicked()),
 	        this, SLOT(resetAllColor()));
-	connect(colorsTW, SIGNAL(cellClicked(int,int)),
-	        this, SLOT(changeColor(int,int)));
-	connect(colorsTW, SIGNAL(itemActivated(QTableWidgetItem*)),
-	        this, SLOT(changeColor()));
-	connect(colorsTW, SIGNAL(itemSelectionChanged()),
-	        this, SLOT(changeLyxObjectsSelection()));
-	connect(colorsTW, SIGNAL(itemPressed(QTableWidgetItem*)),
-	        this, SLOT(pressCurrentItem(QTableWidgetItem*)));
-	connect(findNextPB, SIGNAL(clicked()),
-	        this, SLOT(searchNextColorItem()));
-	connect(findPreviousPB, SIGNAL(clicked()),
-	        this, SLOT(searchPreviousColorItem()));
 	connect(redoColorPB, SIGNAL(clicked()),
 	        undo_stack_, SLOT(redo()));
 	connect(removeThemePB, SIGNAL(clicked()),
 	        this, SLOT(removeTheme()));
 	connect(saveThemePB, SIGNAL(clicked()),
-	        this, SLOT(saveThemeInterface()));
+	        this, SLOT(saveTheme()));
 	connect(sc_search, SIGNAL(activated()),
 	        searchStringEdit, SLOT(setFocus()));
-	connect(sc_search_forward, SIGNAL(activated()),
-	        this, SLOT(searchNextColorItem()));
-	connect(sc_search_backward, SIGNAL(activated()),
-	        this, SLOT(searchPreviousColorItem()));
 	connect(sc_redo, SIGNAL(activated()),
 	        undo_stack_, SLOT(redo()));
 	connect(sc_undo, SIGNAL(activated()),
 	        undo_stack_, SLOT(undo()));
-	connect(searchStringEdit, SIGNAL(returnPressed()),
-	        this, SLOT(searchNextColorItem()));
+	connect(searchStringEdit, SIGNAL(textEdited(QString)),
+	        this, SLOT(filterColorItem(QString)));
 	connect(syscolorsCB, SIGNAL(toggled(bool)),
 	        this, SIGNAL(changed()));
 	connect(syscolorsCB, SIGNAL(toggled(bool)),
@@ -1099,7 +1073,7 @@ PrefColors::PrefColors(GuiPreferences * form)
 	connect(themesLW,
 	        SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
 	        this,
-	        SLOT(loadThemeInterface(QListWidgetItem*,QListWidgetItem*)));
+	        SLOT(loadTheme(QListWidgetItem*,QListWidgetItem*)));
 	connect(undoColorPB, SIGNAL(clicked()),
 	        undo_stack_, SLOT(undo()));
 }
@@ -1124,130 +1098,126 @@ void PrefColors::updateRC(LyXRC const & rc)
 	for (size_type i = 0; i < lcolors_.size(); ++i) {
 		ColorPair colors =
 		        guiApp->colorCache().getAll(lcolors_[i], false);
-		setIcons(i, colors);
-		newcolors_[i].first  = curcolors_[i].first  = colors.first.name();
-		newcolors_[i].second = curcolors_[i].second = colors.second.name();
+		theme_colors_[i].first  = newcolors_[i].first
+		        = curcolors_[i].first  = colors.first.name();
+		theme_colors_[i].second = newcolors_[i].second
+		        = curcolors_[i].second = colors.second.name();
+		setSwatches(i, colors);
+	}
+
+	for (int row=0; row<(int)lcolors_.size(); ++row) {
+		colorsTV_model_.item(row, LightColorResetColumn)->setFlags(Qt::NoItemFlags);
+		colorsTV_model_.item(row, DarkColorResetColumn)->setFlags(Qt::NoItemFlags);
 	}
 	syscolorsCB->setChecked(rc.use_system_colors);
-	changeLyxObjectsSelection();
-
-	setDisabledResets();
+	colorsTV->update();
 }
 
 
-void PrefColors::changeColor()
+void PrefColors::pressedColorsTV(const QModelIndex index)
 {
-	changeColor(guiApp->colorCache().isDarkMode());
-}
-
-
-void PrefColors::changeColor(bool const dark_mode)
-{
-	int const row = colorsTW->currentRow();
-
-	// just to be sure
-	if (row < 0)
+	if (!index.flags().testFlag(Qt::ItemIsEnabled))
 		return;
 
+	Column const column = (Column)index.column();
+
+	if (column == LightColorResetColumn || column == DarkColorResetColumn) {
+		mouse_pressed_ = true;
+		update();
+	}
+}
+
+
+void PrefColors::clickedColorsTV(const QModelIndex index)
+{
+	if (!index.flags().testFlag(Qt::ItemIsEnabled))
+		return;
+
+	int const row = index.row();
+	Column const column = (Column)index.column();
+
+	if (column == LightColorResetColumn || column == DarkColorResetColumn) {
+		mouse_pressed_ = false;
+		resetColor(row, column);
+	} else
+		changeColor(row, column);
+}
+
+
+void PrefColors::changeColor(int const &row, Column const &column)
+{
 	QString color;
-	if (dark_mode)
+
+	if (column == LightColorColumn)
+		color = newcolors_[size_t(row)].first;
+	else if (column == DarkColorColumn)
 		color = newcolors_[size_t(row)].second;
 	else
-		color = newcolors_[size_t(row)].first;
-
-	QColor const c = form_->getColor(QColor(color));
-
-	if (setColor(row, dark_mode, c, color)) {
-		setDisabledResets();
-		// emit signal
-		changed();
-	}
-}
-
-
-void PrefColors::changeColor(int const row, int const column)
-{
-	if (column >= 2) return;
-
-	QString color;
-	if (column == 0)
-		color = newcolors_[size_t(row)].first;
-	else // column == 1
-		color = newcolors_[size_t(row)].second;
-
-	QColor const c = form_->getColor(QColor(color));
-
-	if (setColor(row, column, c, color)) {
-		setDisabledResets();
-		// emit signal
-		changed();
-	}
-}
-
-
-void PrefColors::setIcon(size_type row, bool const dark_mode, QColor color)
-{
-	QPixmap coloritem(icon_width_, icon_height_);
-	coloritem.fill(color);
-	QTableWidgetItem* item = new QTableWidgetItem(QIcon(coloritem), "");
-	colorsTW->setItem(row, (int)dark_mode, item);
-}
-
-
-void PrefColors::setIcons(size_type row, ColorPair colors)
-{
-	setIcon(row, false, colors.first);
-	setIcon(row, true, colors.second);
-}
-
-
-void PrefColors::updateAllIcons()
-{
-	for (size_type row = 0; row < lcolors_.size(); ++row) {
-		setIcons(row, toqcolor(newcolors_[row]));
-	}
-}
-
-
-void PrefColors::redrawColorTable()
-{
-	colorsTW->clearContents();
-	for (size_type row=0; row!=lcolors_.size(); ++row) {
-		QPixmap coloritem(icon_width_, icon_height_);
-		coloritem.fill(newcolors_[row].first);
-		colorsTW->setItem(row, 0, new QTableWidgetItem(coloritem, ""));
-
-		coloritem.fill(newcolors_[row].second);
-		colorsTW->setItem(row, 1, new QTableWidgetItem(coloritem, ""));
-
-		QTableWidgetItem* txtItem =
-		        new QTableWidgetItem(toqstr(lcolor.getGUIName(lcolors_[row])));
-		txtItem->setFlags(~QFlags(Qt::ItemIsEditable));
-		colorsTW->setItem(row, 2, txtItem);
-	}
-}
-
-
-void PrefColors::resetColor()
-{
-	int const row = colorsTW->currentRow();
-
-	// just to be sure
-	if (row < 0)
 		return;
 
-	ColorNamePair const colors = newcolors_[size_t(row)];
-	ColorPair const c = getDefaultColorsByRow(row);
+	QColor const c = form_->getColor(QColor(color));
 
-	if (setColor(row, c, colors)) {
-		setDisabledResets();
+	if (setColor(colorsTV_model_.item(row, column), c, color)) {
+		// setEnabledReset(row, column);
 		// emit signal
 		changed();
 	}
 }
 
 
-void PrefColors::resetAllColor()
+bool PrefColors::setSwatch(QStandardItem *item, QColor const &color)
+{
+	QModelIndex index = colorsTV_model_.indexFromItem(item);
+
+	return colorsTV_model_.setData(index, QVariant(color), Qt::DecorationRole);
+}
+
+
+bool PrefColors::setSwatches(size_type const &row, ColorPair colors)
+{
+	bool res1 = setSwatch(colorsTV_model_.item(row, 0), colors.first);
+	bool res2 = setSwatch(colorsTV_model_.item(row, 1), colors.second);
+	return res1 && res2;
+}
+
+
+void PrefColors::updateAllSwatches()
+{
+	for (size_type row = 0; row < lcolors_.size(); ++row) {
+		setSwatches(row, toqcolor(newcolors_[row]));
+	}
+}
+
+
+bool PrefColors::resetColor(int const &row, Column const &column)
+{
+	QColor const c = getCurrentThemeColor(row, column);
+
+	if (!c.isValid()) return false;
+
+	QStandardItem *item; // ColorColumn
+	bool result;
+
+	if (column == LightColorResetColumn) {
+		item = colorsTV_model_.item(row, LightColorColumn);
+		result = setColor(item, c, newcolors_[size_t(row)].first);
+
+	} else if (column == DarkColorResetColumn) {
+		item = colorsTV_model_.item(row, DarkColorColumn);
+		result = setColor(item, c, newcolors_[size_t(row)].second);
+
+	} else
+		result = false;
+
+	if (result)
+		// ResetColumn
+		colorsTV_model_.item(row, column)->setFlags(Qt::NoItemFlags);
+
+	return result;
+}
+
+
+bool PrefColors::resetAllColor()
 {
 	guiApp->setOverrideCursor(QCursor(Qt::WaitCursor));
 
@@ -1255,43 +1225,28 @@ void PrefColors::resetAllColor()
 
 	colorResetAllPB->setDisabled(true);
 
-	for (int irow = 0, count = colorsTW->rowCount(); irow < count; ++irow) {
-		ColorNamePair const & colors = newcolors_[size_t(irow)];
-		ColorPair const c = getDefaultColorsByRow(irow);
 
-		if (setColor(irow, c, colors))
-			isChanged = true;
+	for (int row = 0, count = colorsTV_model_.rowCount(); row < count; ++row) {
+		isChanged |= resetColor(row, LightColorResetColumn);
+		isChanged |= resetColor(row, DarkColorResetColumn);
 	}
 
 	if (isChanged) {
-		setDisabledResets();
 		// emit signal
 		changed();
 	}
-
-	// updateAllIcons is not sufficient
-	redrawColorTable();
-
 	guiApp->restoreOverrideCursor();
+
+	return isChanged;
 }
 
 
-bool PrefColors::setColor(int const row, ColorPair const & new_colors,
-                          ColorNamePair const & old_colors)
-{
-	bool res1, res2;
-	res1 = setColor(row, false, new_colors.first,  old_colors.first);
-	res2 = setColor(row, true,  new_colors.second, old_colors.second);
-	return res1 || res2;
-}
-
-
-bool PrefColors::setColor(int const row, bool const dark_mode,
-                          QColor const & new_color, QString const & old_color)
+bool PrefColors::setColor(QStandardItem *pitem,
+                          QColor const &new_color, QString const &old_color)
 {
 	if (new_color.isValid() && new_color.name() != old_color) {
 		QUndoCommand* setColorCmd =
-		        new SetColor(row, dark_mode, new_color, old_color, newcolors_,
+		        new SetColor(pitem, new_color, old_color, newcolors_,
 		                     autoapply_, this);
 		undo_stack_->push(setColorCmd);
 		return true;
@@ -1300,31 +1255,35 @@ bool PrefColors::setColor(int const row, bool const dark_mode,
 }
 
 
-void PrefColors::setDisabledResets()
+void PrefColors::setEnabledReset(int const &row, Column const &column)
 {
-	int const row = colorsTW->currentRow();
-	// set disable reset buttons ...
-	if (row >= 0)
-		colorResetPB->setDisabled(isDefaultColor(row, newcolors_[size_t(row)]));
+	QColor theme_color;
+	QColor new_color;
+	QStandardItem *item;
 
-	colorResetAllPB->setDisabled(true);
-
-	// ... in between process qt events to give quicker visual feedback to the user ...
-	guiApp->processEvents();
-
-	// ... set disable Reset All button
-	for (int irow = 0, count = colorsTW->rowCount(); irow < count; ++irow) {
-		if (!isDefaultColor(irow, newcolors_[size_t(irow)])) {
-			colorResetAllPB->setDisabled(false);
-			// the break condition might hide performance issues
-			// if a non-default color is at the top of the list
-			break;
+	if (column == LightColorColumn || column == LightColorResetColumn) {
+		theme_color = getCurrentThemeColor(lcolors_[row], LightColorColumn);
+		new_color = (QColor)newcolors_[size_t(row)].first;
+		item = colorsTV_model_.item(row, LightColorResetColumn);
+		Qt::ItemFlags const flags = item->flags();
+		if (new_color != theme_color) {
+			item->setFlags(flags | Qt::ItemIsEnabled);
+		} else {
+			item->setFlags(flags & ~Qt::ItemIsEnabled);
 		}
-	}
+	} else if (column == DarkColorColumn || column == DarkColorResetColumn) {
+		theme_color = getCurrentThemeColor(lcolors_[row], DarkColorColumn);
+		new_color = (QColor)newcolors_[size_t(row)].second;
+		if (new_color != theme_color) {
+			item = colorsTV_model_.item(row, DarkColorResetColumn);
+			item->setFlags(Qt::ItemIsEnabled);
+		}
+	} else
+		return;
 }
 
 
-void PrefColors::exportThemeInterface()
+void PrefColors::exportTheme()
 {
 	// ask for directory to export
 	QString home_dir = toqstr(package().get_home_dir().absFileName());
@@ -1335,12 +1294,12 @@ void PrefColors::exportThemeInterface()
 	QString file_path;
 	if (result.first == FileDialog::Chosen) {
 		file_path = result.second;
-		(saveTheme(file_path));
+		(saveExportThemeCommon(file_path));
 	}
 }
 
 
-void PrefColors::saveThemeInterface()
+void PrefColors::saveTheme()
 {
 	while (true) {
 		// this sets theme_filename_
@@ -1354,7 +1313,7 @@ void PrefColors::saveThemeInterface()
 
 		QFile target_file(toqstr(file_path));
 		if (!target_file.exists() || wantToOverwrite()) {
-			saveTheme(toqstr(file_path));
+			saveExportThemeCommon(toqstr(file_path));
 			break;
 		}
 	}
@@ -1370,7 +1329,8 @@ bool PrefColors::askThemeName(bool porting)
 	theme_name_ =
 	        QInputDialog::getText(this, qt_("Name the color theme"),
 	                              prompt, QLineEdit::Normal,
-	                              (theme_name_ == "") ? qt_("New theme name") : theme_name_, &ok);
+	                              (theme_name_ == "") ? qt_("New theme name")
+	                                                  : theme_name_, &ok);
 
 	if (ok && !theme_name_.isEmpty()) {
 		// Makefile cannot handle spaces in filenames directly
@@ -1403,7 +1363,7 @@ bool PrefColors::wantToOverwrite()
 }
 
 
-void PrefColors::saveTheme(QString file_path)
+void PrefColors::saveExportThemeCommon(QString file_path)
 {
 	ofstream ofs(fromqstr(file_path));
 
@@ -1429,7 +1389,7 @@ void PrefColors::saveTheme(QString file_path)
 }
 
 
-void PrefColors::importThemeInterface()
+void PrefColors::importTheme()
 {
 	QString home_dir = toqstr(package().get_home_dir().absFileName());
 	FileDialog dialog(qt_("Import a color theme"));
@@ -1465,32 +1425,38 @@ void PrefColors::importThemeInterface()
 	import_file.copy(toqstr(target_file_path));
 
 	initializeThemesLW();
-	loadTheme(FileName(fromqstr(file_path)));
+	loadImportThemeCommon(FileName(fromqstr(file_path)));
+
+	theme_name_ = removeExtension(theme_filename_).replace('_', ' ');
 
 	return;
 }
 
 
-void PrefColors::loadThemeInterface(QListWidgetItem* current_item,
+void PrefColors::loadTheme(QListWidgetItem* current_item,
                                     QListWidgetItem* previous_item)
 {
 	Q_UNUSED(previous_item)
 
-	loadTheme(FileName(fromqstr(theme_fullpaths_[themesLW->row(current_item)])));
+	loadImportThemeCommon(FileName(fromqstr(theme_fullpaths_[themesLW->row(current_item)])));
+	// state variables below are used for suggestion in dialogs
 	theme_filename_ = onlyFileName(theme_fullpaths_[themesLW->row(current_item)]);
 	theme_name_ = removeExtension(theme_filename_).replace('_', ' ');
 }
 
 
-void PrefColors::loadTheme(FileName fullpath)
+void PrefColors::loadImportThemeCommon(FileName fullpath)
 {
+	// read RC colors to extern ColorSet lcolor
 	form_->rc().read(fullpath, true);
 	for (size_type row = 0; row < lcolors_.size(); ++row) {
+		// get colors from extern lcolor
 		newcolors_[size_t(row)] =
-		    {QString(lcolor.getX11HexName(lcolors_[row], false).c_str()),
-		     QString(lcolor.getX11HexName(lcolors_[row], true).c_str())};
+		    {getCurrentColor(lcolors_[row], false).name(),
+		     getCurrentColor(lcolors_[row], true).name()};
 	}
-	updateAllIcons();
+	theme_colors_ = newcolors_;
+	updateAllSwatches();
 
 	if (autoapply_) {
 		for (unsigned int i = 0; i < lcolors_.size(); ++i) {
@@ -1620,9 +1586,9 @@ void PrefColors::initializeThemeMenu()
 	theme_menu_.addAction(ac_export);
 	theme_menu_.addAction(ac_import);
 	connect(ac_export, &QAction::triggered,
-	        this, &PrefColors::exportThemeInterface);
+	        this, &PrefColors::exportTheme);
 	connect(ac_import, &QAction::triggered,
-	        this, &PrefColors::importThemeInterface);
+	        this, &PrefColors::importTheme);
 }
 
 
@@ -1634,31 +1600,93 @@ void PrefColors::openThemeMenu()
 }
 
 
-bool PrefColors::isDefaultColor(int const row, ColorNamePair const & colors)
+void PrefColors::initializeColorsTV()
 {
-	return colors.first == getDefaultColorsByRow(row).first.name() &&
-	        colors.second == getDefaultColorsByRow(row).second.name();
+	// The table
+	// Only color names are listed here. Colors will be set at updateRC().
+	for (int row=0; row<(int)lcolors_.size(); ++row) {
+		for (int column = 0; column < header_labels_.length(); ++column) {
+			QStandardItem* item = new QStandardItem();
+			if (column == ColorNameColumn) {
+				item->setText(toqstr(lcolor.getGUIName(lcolors_[row])));
+				item->setTextAlignment(Qt::AlignLeft);
+			} else if (column == LightColorColumn)
+				item->setToolTip(qt_("Click here to change the color in the light mode"));
+			else if (column == DarkColorColumn)
+				item->setToolTip(qt_("Click here to change the color in the dark mode"));
+			else if (column == LightColorResetColumn)
+				item->setToolTip(qt_("Reset the light color to the one set last"));
+			else if (column == DarkColorResetColumn)
+				item->setToolTip(qt_("Reset the dark color to the one set last"));
+			colorsTV_model_.setItem(row, column, item);
+		}
+	}
+	colorsTV_model_.setHorizontalHeaderLabels(header_labels_);
+
+	colorsTV->setModel(&colorsTV_model_);
+
+	ColorSwatchDelegate *delegate = new ColorSwatchDelegate(this);
+	colorsTV->setItemDelegate(delegate);
+
+	// Headers
+	// we don't set a model for vertical header since it is hidden
+	QHeaderView* vertical_header = new QHeaderView(Qt::Vertical);
+	vertical_header->setDefaultSectionSize(swatch_height_);
+	vertical_header->setSectionResizeMode(QHeaderView::ResizeToContents);
+	vertical_header->setDefaultAlignment(Qt::AlignCenter);
+	colorsTV->verticalHeader()->hide();
+
+	QHeaderView* horizontal_header = new QHeaderView(Qt::Horizontal);
+	horizontal_header->setModel(&colorsTV_model_);
+	horizontal_header->setSectionResizeMode(QHeaderView::Fixed);
+	horizontal_header->setSectionResizeMode(ColorNameColumn, QHeaderView::Stretch);
+	horizontal_header->setDefaultAlignment(Qt::AlignCenter);
+	horizontal_header->setDefaultSectionSize(swatch_width_);
+	colorsTV->setHorizontalHeader(horizontal_header);
+
+	colorsTV->setColumnWidth(LightColorColumn, swatch_width_ + 2 * swatch_hmargin_);
+	colorsTV->setColumnWidth(DarkColorColumn, swatch_width_ + 2 * swatch_hmargin_);
+	colorsTV->setColumnWidth(LightColorResetColumn, reset_pb_width_);
+	colorsTV->setColumnWidth(DarkColorResetColumn, reset_pb_width_);
+	colorsTV->setSelectionMode(QAbstractItemView::NoSelection);
+
+	colorsTV->resizeRowsToContents();
+	colorsTV->show();
 }
 
 
-ColorPair PrefColors::getDefaultColorsByRow(int const row)
+QColor PrefColors::getCurrentColor(ColorCode color_code, bool is_dark_mode)
 {
-	ColorSet const defaultcolor;
-	std::pair<std::string, std::string> hex_names =
-	        defaultcolor.getAllX11HexNames(lcolors_[size_t(row)]);
-	return {hex_names.first.c_str(), hex_names.second.c_str()};
+	return lcolor.getX11HexName(color_code, is_dark_mode).c_str();
+}
+
+
+QColor PrefColors::getCurrentThemeColor(int const &row, Column const &column)
+{
+	Q_ASSERT(column == LightColorColumn || column == DarkColorColumn ||
+	         column == LightColorResetColumn || column == DarkColorResetColumn);
+
+	QColor color;
+
+	if (!theme_colors_.empty()) {
+		if (column == LightColorColumn || column == LightColorResetColumn)
+			color = (QColor)theme_colors_[row].first;
+		else if (column == DarkColorColumn || column == DarkColorResetColumn)
+			color = (QColor)theme_colors_[row].second;
+	}
+	return color;
 }
 
 
 void PrefColors::changeSysColor()
 {
-	for (int row = 0 ; row < colorsTW->rowCount() ; ++row) {
+	for (int row = 0 ; row < colorsTV_model_.rowCount() ; ++row) {
 		// skip colors that are taken from system palette
 		bool const disable = syscolorsCB->isChecked()
 			&& guiApp->colorCache().isSystem(lcolors_[size_t(row)]);
 
-		for (int column = 0 ; column < colorsTW->columnCount() ; ++column) {
-			QTableWidgetItem * const item = colorsTW->item(row, column);
+		for (int column = 0 ; column <= ColorNameColumn ; ++column) {
+			QStandardItem * const item = colorsTV_model_.item(row, column);
 			Qt::ItemFlags const flags = item->flags();
 
 			if (disable)
@@ -1667,18 +1695,10 @@ void PrefColors::changeSysColor()
 				item->setFlags(flags | Qt::ItemIsEnabled);
 		}
 	}
-}
-
-
-void PrefColors::changeLyxObjectsSelection()
-{
-	int currentRow = colorsTW->currentRow();
-
-	if (currentRow < 0)
-		colorResetPB->setDisabled(true);
-	else
-		colorResetPB->setDisabled(
-			isDefaultColor(currentRow, newcolors_[size_t(currentRow)]));
+	if (autoapply_) {
+		applyRC(form_->rc());
+		form_->dispatchParams();
+	}
 }
 
 
@@ -1688,63 +1708,17 @@ void PrefColors::changeAutoapply()
 }
 
 
-void PrefColors::pressCurrentItem(QTableWidgetItem * item)
+void PrefColors::filterColorItem(const QString &text)
 {
-	if (item == nullptr) return;
-
-	setIcons(item->row(), {QColor(newcolors_[colorsTW->row(item)].first),
-	                       QColor(newcolors_[colorsTW->row(item)].second)});
-	changed();
-}
-
-
-void PrefColors::changeFocus()
-{
-	// palette is already changed to Inactive in ColorListWidget
-	pressCurrentItem(colorsTW->currentItem());
-}
-
-
-void PrefColors::searchColorItem(bool backward_direction)
-{
-	search_string_ = searchStringEdit->text();
+	search_string_ = text;
 	items_found_ =
-	        colorsTW->findItems(search_string_, Qt::MatchContains);
+		colorsTV_model_.findItems(search_string_, Qt::MatchContains, ColorNameColumn);
 	if (items_found_.empty())
 		return;
-	if (backward_direction)
-		it_ = --(items_found_.end());
-	else
-		it_ = items_found_.begin();
-	colorsTW->setCurrentItem(*it_);
-}
-
-
-void PrefColors::searchNextColorItem()
-{
-	// search may not have undertaken yet
-	if (items_found_.empty() || search_string_ != searchStringEdit->text())
-		searchColorItem(false);
-	else {
-		if ((++it_) == items_found_.end())
-			it_ = items_found_.begin();
-		colorsTW->setCurrentItem(*it_);
-	}
-}
-
-
-void PrefColors::searchPreviousColorItem()
-{
-	// search may not have undertaken yet
-	if (items_found_.empty() || search_string_ != searchStringEdit->text())
-		searchColorItem(true);
-	else {
-		if (it_ == items_found_.begin())
-			it_ = items_found_.end() - 1;
-		else
-			--it_;
-		colorsTW->setCurrentItem(*it_);
-	}
+	for (size_type row = 0; row < lcolors_.size(); ++row)
+		colorsTV->hideRow(row);
+	for (QStandardItem* item : std::as_const(items_found_))
+		colorsTV->showRow(item->row());
 }
 
 
@@ -4286,53 +4260,184 @@ QString GuiPreferences::browse(QString const & file,
 }
 
 
-SetColor::SetColor(const int row, bool dark_mode, const QColor & new_color,
-                   QString old_color, ColorNamePairs & new_color_list,
-                   const bool autoapply, PrefColors* color_module,
+/////////////////////////////////////////////////////////////////////
+//
+// SetColor
+//
+/////////////////////////////////////////////////////////////////////
+
+// This class enables undo/redo of setColor()
+SetColor::SetColor(QStandardItem *item, QColor const &new_color,
+                   QString const &old_color, ColorNamePairs &new_color_list,
+                   bool const autoapply, PrefColors* color_module,
                    QUndoCommand* uc_parent)
     : PrefColors(color_module->form_), QUndoCommand(uc_parent),
-      autoapply_(autoapply), row_(row), dark_mode_(dark_mode),
-      new_color_(new_color), old_color_(old_color), newcolors_(new_color_list),
+      autoapply_(autoapply), item_(*item), new_color_(new_color),
+      old_color_(old_color), newcolors_(new_color_list),
       parent_(color_module)
 {
 	setText(QString("Color %1 is changed to %2 (light) and %3 (dark)")
-	        .arg(lcolors_[row_]).arg(newcolors_[row_].first)
-	        .arg(newcolors_[row_].second));
+	        .arg(lcolors_[item_.row()])
+	        .arg(newcolors_[item_.row()].first, newcolors_[item_.row()].second));
 }
 
 
 void SetColor::redo()
 {
 	setColor(new_color_);
+	setStateOfResetButtons(false);
 }
 
 
 void SetColor::undo()
 {
 	setColor(old_color_);
+	setStateOfResetButtons(true);
 }
 
 
-void SetColor::setColor(QColor color)
+void SetColor::setColor(QColor const &color)
 {
-
-	if (dark_mode_)
-		newcolors_[size_t(row_)].second = color.name();
+	if (item_.column() == 1)
+		newcolors_[size_t(item_.row())].second = color.name();
 	else
-		newcolors_[size_t(row_)].first = color.name();
-	setIcon(row_, dark_mode_, color);
+		newcolors_[size_t(item_.row())].first = color.name();
+	setSwatch(&item_, color);
 
-	// LYXERR0("New color at (" << row_ << ", " << dark_mode_ << ") is now " <<
-	//         color.name() << ": " << newcolors_[size_t(row_)].first <<
-	//         ", " << newcolors_[size_t(row_)].second);
-	parent_->changeFocus();
+	parent_->form_->update();
 
 	// emit signal
 	changed();
 
 	if (autoapply_) {
-		parent_->form_->setColor(lcolors_[row_], newcolors_[row_]);
+		parent_->form_->setColor(lcolors_[item_.row()], newcolors_[item_.row()]);
 		parent_->form_->dispatchParams();
+	}
+}
+
+
+void SetColor::setStateOfResetButtons(bool doingUndo)
+{
+	QStandardItem *reset_item;
+	int const row = item_.row();
+	Column column = (Column)item_.column();
+
+	if (column != LightColorColumn && column != DarkColorColumn &&
+	        column != LightColorResetColumn && column != DarkColorResetColumn)
+		return;
+
+	QColor theme_color;
+	QColor color_to_compare;
+	if (doingUndo)
+		color_to_compare = QColor(old_color_);
+	else
+		color_to_compare = new_color_;
+
+	if (column == LightColorColumn || column == LightColorResetColumn) {
+		theme_color = parent_->getCurrentThemeColor(row, LightColorColumn);
+		reset_item = colorsTV_model_.item(row, LightColorResetColumn);
+		Qt::ItemFlags const flags = reset_item->flags();
+		if (color_to_compare == theme_color)
+			parent_->colorsTV_model_.item(row, LightColorResetColumn)->
+			        setFlags(flags & ~Qt::ItemIsEnabled);
+		else
+			parent_->colorsTV_model_.item(row, LightColorResetColumn)->
+			        setFlags(flags | Qt::ItemIsEnabled);
+
+	} else if (column == DarkColorColumn || column == DarkColorResetColumn) {
+		theme_color = parent_->getCurrentThemeColor(row, DarkColorColumn);
+		reset_item = colorsTV_model_.item(row, DarkColorResetColumn);
+		Qt::ItemFlags const flags = reset_item->flags();
+		if (color_to_compare == theme_color)
+			parent_->colorsTV_model_.item(row, DarkColorResetColumn)->
+			        setFlags(flags & ~Qt::ItemIsEnabled);
+		else
+			parent_->colorsTV_model_.item(row, DarkColorResetColumn)->
+					setFlags(flags | Qt::ItemIsEnabled);
+		parent_->colorsTV->update();
+
+	} else return;
+
+	changed();
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// ColorSwatchDelegate
+//
+/////////////////////////////////////////////////////////////////////
+
+ColorSwatchDelegate::ColorSwatchDelegate(QObject *parent)
+    : QStyledItemDelegate(parent), button_(new QPushButton)
+{
+	pane_ = static_cast<PrefColors*>(parent);
+}
+
+
+void ColorSwatchDelegate::paint(QPainter *painter,
+                                const QStyleOptionViewItem &option,
+                                const QModelIndex &index) const
+{
+	Q_ASSERT(index.isValid());
+
+	QStyleOptionViewItem opt = option;
+
+	initStyleOption(&opt, index);
+
+	const QWidget *widget = option.widget;
+	QStyle *style = widget ? widget->style() : QApplication::style();
+	PrefColors::Column const column = (PrefColors::Column)index.column();
+
+	if (column == PrefColors::LightColorColumn ||
+	        column == PrefColors::DarkColorColumn) {
+		opt.rect = option.rect;
+		QPixmap pixmap(pane_->swatch_width_, pane_->swatch_height_);
+		QColor color =
+		        pane_->colorsTV_model_.data(index, Qt::DecorationRole).
+		        value<QColor>();
+		if (index.flags().testFlag(Qt::ItemIsEnabled))
+			pixmap.fill(color);
+		else
+			pixmap.fill(QColorConstants::Transparent);
+		style->drawItemPixmap(painter, opt.rect, Qt::AlignCenter, pixmap);
+	} else if (column == PrefColors::LightColorResetColumn ||
+	           column == PrefColors::DarkColorResetColumn) {
+		QStyleOptionButton pb_opt_;
+		pb_opt_.text = pane_->reset_label_;
+		pb_opt_.features = QStyleOptionButton::None;
+		pb_opt_.rect = option.rect;
+
+		if (guiApp->isInDarkMode()) {
+			// Dark mode
+			if (index.flags().testFlag(Qt::ItemIsEnabled)) {
+				// Button enabled
+				if (pane_->mouse_pressed_)
+					button_->setStyleSheet(activePressedPB_style_dark_);
+				else
+					button_->setStyleSheet(activePB_style_dark_);
+			} else {
+				// Button disabled
+				button_->setStyleSheet(inactivePB_style_dark_);
+			}
+		} else {
+			// Light mode
+			if (index.flags().testFlag(Qt::ItemIsEnabled)) {
+				// Button enabled
+				if (pane_->mouse_pressed_)
+					button_->setStyleSheet(activePressedPB_style_light_);
+				else
+					button_->setStyleSheet(activePB_style_light_);
+			} else {
+				// Button disabled
+				button_->setStyleSheet(inactivePB_style_light_);
+			}
+		}
+		button_->style()->drawControl(QStyle::CE_PushButton, &pb_opt_,
+		                                     painter, button_.data());
+	} else {
+		opt.displayAlignment = Qt::AlignVCenter;
+		style->drawControl(QStyle::CE_ItemViewItem, &opt, painter, widget);
 	}
 }
 

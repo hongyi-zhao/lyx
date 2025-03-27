@@ -48,6 +48,8 @@
 #include <string>
 #include <vector>
 #include <QtWidgets/qmenu.h>
+#include <QStandardItemModel>
+#include <QStyledItemDelegate>
 #include <QUndoCommand>
 
 
@@ -254,62 +256,65 @@ class PrefColors : public PrefModule, public Ui::PrefColorsUi
 	Q_OBJECT
 
 public:
+	enum Column {
+		LightColorColumn,
+		DarkColorColumn,
+		ColorNameColumn,
+		LightColorResetColumn,
+		DarkColorResetColumn
+	};
+
 	PrefColors(GuiPreferences * form);
 
 	void applyRC(LyXRC & rc) const override;
 	void updateRC(LyXRC const & rc) override;
+	QColor getCurrentColor(ColorCode color_code, bool is_dark_mode);
 
 private Q_SLOTS:
-	void changeLightColor(){ changeColor(false); }
-	void changeDarkColor() { changeColor(true);  }
-	void changeColor();
-	void changeColor(int const row, int const column);
-	void resetColor();
-	void resetAllColor();
-	void redrawColorTable();
+	// void changeColor();
+	void pressedColorsTV(const QModelIndex index);
+	void clickedColorsTV(const QModelIndex index);
+	bool resetAllColor();
 	void changeSysColor();
-	void changeLyxObjectsSelection();
 	void changeAutoapply();
-	bool setColor(int const row, ColorPair const & new_colors,
-	              ColorNamePair const & old_colors);
-	bool setColor(int const row, bool const dark_mode, QColor const & new_color,
-	              QString const & old_color);
-	bool isDefaultColor(int const row, ColorNamePair const & color);
-	void setDisabledResets();
+	bool setColor(QStandardItem *item, QColor const &new_color,
+	              QString const &old_color);
+	void setEnabledReset(int const &row, Column const &column);
 	void openThemeMenu();
-	void saveThemeInterface();
-	void loadThemeInterface(QListWidgetItem* current_item,
-	                        QListWidgetItem* previous_item);
+	void saveTheme();
+	void loadTheme(QListWidgetItem* current_item,
+	               QListWidgetItem* previous_item);
 	void removeTheme();
-	void exportThemeInterface();
-	void importThemeInterface();
+	void exportTheme();
+	void importTheme();
 
-	void pressCurrentItem(QTableWidgetItem * item = nullptr);
-	void changeFocus();
-
-	void searchColorItem(bool backward_direction);
-	void searchNextColorItem();
-	void searchPreviousColorItem();
+	void filterColorItem(const QString &text);
 
 private:
+	/// Change color at (row, column).
+	void changeColor(int const &row, Column const &column);
+	/// Reset color to the previously set theme color.
+	bool resetColor(int const &row, Column const &column);
+	/// Get default color of current theme at (row, column) in the colorsTV.
+	/// If theme_colors_ is empty, this returns an invalid QColor.
+	QColor getCurrentThemeColor(int const &row, Column const &column);
+	/// Set color swatches for both light and dark colors by row.
+	bool setSwatches(size_type const &row, ColorPair colors);
+	/// Set color swatch at item.
+	bool setSwatch(QStandardItem *item, QColor const &color);
 	///
-	void changeColor(bool const dark_color);
-	///
-	ColorPair getDefaultColorsByRow(int const row);
-	///
-	void setIcons(size_type row, ColorPair colors);
-	///
-	void setIcon(size_type row, bool const dark_mode, QColor color);
-	///
-	void updateAllIcons();
-	///
+	void updateAllSwatches();
+	/// This initializes the theme list widget.
 	void initializeThemesLW();
-	///
+	/// This initializes the extension menu for theme including exports and
+	/// imports.
 	void initializeThemeMenu();
+	/// This initializes the color setting table view.
+	void initializeColorsTV();
 	///
-	void saveTheme(QString file_path);
+	void saveExportThemeCommon(QString file_path);
 	///
-	void loadTheme(support::FileName filename);
+	void loadImportThemeCommon(support::FileName filename);
 	///
 	bool askThemeName(bool porting);
 	///
@@ -317,16 +322,26 @@ private:
 	///
 	ColorPair toqcolor(ColorNamePair);
 
+	QStringList const header_labels_ =
+	  {qt_("Light"), qt_("Dark"), qt_("Object/Element"), qt_("Light"), qt_("Dark")};
+	QString const reset_label_ = qt_("Reset");
+	int const swatch_width_  = 32;
+	int const swatch_height_ = 18;
+	int const swatch_hmargin_ = 2;
+	int const reset_pb_width_ = 50;
+
 	std::vector<ColorCode> lcolors_;
 	ColorNamePairs curcolors_;
 	ColorNamePairs newcolors_;
+	ColorNamePairs theme_colors_;
 
-	QList<QTableWidgetItem *> items_found_;
-	QList<QTableWidgetItem *>::iterator it_;
+	QStandardItemModel colorsTV_model_;
+
+	std::vector<QPersistentModelIndex> light_color_index_;
+	std::vector<QPersistentModelIndex> dark_color_index_;
+
+	QList<QStandardItem *> items_found_;
 	QString search_string_;
-
-	int const icon_width_  = 36;
-	int const icon_height_ = 18;
 
 	bool autoapply_ = false;
 	QUndoStack * undo_stack_;
@@ -339,7 +354,10 @@ private:
 	/// holds filename of currently selected theme
 	QString theme_filename_;
 
+	bool mouse_pressed_;
+
 	friend class SetColor;
+	friend class ColorSwatchDelegate;
 };
 
 
@@ -631,25 +649,109 @@ public:
 class SetColor : public PrefColors, public QUndoCommand
 {
 public:
-	SetColor(const int row, bool dark_mode, const QColor & new_color,
-	         QString old_color,
-	         ColorNamePairs & new_color_list,
-	         const bool autoapply, PrefColors* color_module,
+	SetColor(QStandardItem *item, QColor const &new_color,
+	         QString const &old_color,
+	         ColorNamePairs &new_color_list,
+	         bool const autoapply,
+	         PrefColors* color_module,
 	         QUndoCommand* uc_parent = nullptr);
 	~SetColor(){};
 
 	void redo() override;
 	void undo() override;
-	void setColor(QColor);
+	void setColor(QColor const &color);
+	/// If new_color_ (when doingUndo is false) or old_color_ (when doingUndo is
+	/// true) is different from theme's color, enable the reset button. If not,
+	/// disable it.
+	void setStateOfResetButtons(bool doingUndo);
 
 private:
-	const bool autoapply_;
-	const int row_;
-	const bool dark_mode_;
+	bool const autoapply_;
+	QStandardItem & item_;
 	QColor new_color_;
 	QString old_color_;
 	ColorNamePairs & newcolors_;
 	PrefColors* parent_;
+};
+
+
+class ColorSwatchDelegate : public QStyledItemDelegate
+{
+	Q_OBJECT
+
+	QScopedPointer<QPushButton> button_;
+
+public:
+	ColorSwatchDelegate(QObject *parent = nullptr);
+
+	void paint(QPainter *painter, const QStyleOptionViewItem &option,
+	           const QModelIndex &index) const override;
+
+private:
+	PrefColors* pane_;
+	QFont font_;
+
+	// To give impression that a button is pressed, flip the direction of
+	// gradiation giving colors slightly darker
+	QString activePB_style_light_ =
+	        "QPushButton{"
+	        "background: qlineargradient(x1:0,y1:0,x2:0,y2:1,"
+	        "                            stop:0 #ffffff,stop: 1 #dddddd);"
+	        "border-width: 1px;"
+	        "border-color: #d0d0d0;"
+	        "border-style: solid;"
+	        "border-radius: 3px;"
+	        "color:#000000;"
+	        "font:10px; }";
+	QString activePressedPB_style_light_ =
+	        "QPushButton{"
+	        "background: qlineargradient(x1:0,y1:0,x2:0,y2:1,"
+	        "                            stop:0 #dddddd,stop: 1 #eeeeee);"
+	        "border-width: 1px;"
+	        "border-color: #d0d0d0;"
+	        "border-style: solid;"
+	        "border-radius: 3px;"
+	        "color:#000000;"
+	        "font:10px; }";
+	QString inactivePB_style_light_ =
+	        "QPushButton{"
+	        "background: transparent;"
+	        "border-width: 0px;"
+	        "border-color: #eeeeee;"
+	        "border-style: solid;"
+	        "border-radius: 3px;"
+	        "color:#c5c5c5;"
+	        "font:10px; }";
+	QString activePB_style_dark_ =
+	        "QPushButton{"
+	        "background: qlineargradient(x1:0,y1:0,x2:0,y2:1,"
+	        "                            stop:0 #222222,stop: 1 #000000);"
+	        "border-width: 0px;"
+	        "border-color: #343434;"
+	        "border-style: solid;"
+	        "border-radius: 3px;"
+	        "color:#eeeeee;"
+	        "font:10px; }";
+	QString activePressedPB_style_dark_ =
+	        "QPushButton{"
+	        "background: qlineargradient(x1:0,y1:0,x2:0,y2:1,"
+	        "                            stop:0 #222222,stop: 1 #444444);"
+	        "border-width: 0px;"
+	        "border-color: #343434;"
+	        "border-style: solid;"
+	        "border-radius: 3px;"
+	        "color:#aaeeaa;"
+	        "font:10px; }";
+	QString inactivePB_style_dark_ =
+	        "QPushButton{"
+	        "background: transparent;"
+	        "border-width: 0px;"
+	        "border-color: #343434;"
+	        "border-style: solid;"
+	        "border-radius: 3px;"
+	        "color:#343434;"
+	        "font:10px; }";
+
 };
 
 

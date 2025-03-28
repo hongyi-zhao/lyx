@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-23 17:32+0100\n"
-"PO-Revision-Date: 2025-03-23 17:37+0000\n"
+"POT-Creation-Date: 2025-03-27 20:38+0100\n"
+"PO-Revision-Date: 2025-03-27 19:47+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3907,10 +3907,6 @@ msgstr "Nájsť v preambule"
 msgid "&Find"
 msgstr "Ná&jsť"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:26
-msgid "Themes"
-msgstr "Témy"
-
 #: src/frontends/qt/ui/PrefColorsUi.ui:39
 msgid "Apply changed color immediately"
 msgstr "Okamžite použiť zmenenú tému farieb"
@@ -3931,25 +3927,9 @@ msgstr "Opä&ť"
 msgid "Enter a color name to search"
 msgstr "Zadajte časť názvu zafarbeného prvku na vyhľadávanie"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:148
-msgid "Search color"
-msgstr "Hľadaný prvok"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:318
-msgid "Search backward"
-msgstr "Hľadať dozadu"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:161
-msgid "Pr&evious[[Color]]"
-msgstr "Pr&edchádzajúci"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:343
-msgid "Search forward"
-msgstr "Hľadať dopredu"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:183
-msgid "&Next[[Color]]"
-msgstr "Ď&alší"
+#: src/frontends/qt/ui/PrefColorsUi.ui:115
+msgid "Filter by object/element name"
+msgstr "Filtrovať podľa názvu objektu/prvku"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:237
 msgid "Remove a selected color theme"
@@ -3963,10 +3943,6 @@ msgstr "Ďalšie ponuky na spracovanie tém"
 msgid "&More..."
 msgstr "&Viac…"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:113
-msgid "Color Settings"
-msgstr "Nastavenie farieb"
-
 #: src/frontends/qt/GuiPrefs.cpp:1028
 msgid "Light"
 msgstr "Svetlá"
@@ -3975,9 +3951,9 @@ msgstr "Svetlá"
 msgid "Dark"
 msgstr "Tmavá"
 
-#: src/frontends/qt/GuiPrefs.cpp:1029
-msgid "Color name"
-msgstr "Názov zafarbenej vložky"
+#: src/frontends/qt/GuiPrefs.h:326
+msgid "Object/Element"
+msgstr "Objekt/Prvok"
 
 #: src/frontends/qt/GuiPrefs.cpp:1368
 msgid "Export a color theme"
@@ -3995,14 +3971,6 @@ msgstr ""
 #: src/frontends/qt/ui/PrefColorsUi.ui:108
 msgid "&Use system colors"
 msgstr "Použiť farby &systému"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:374
-msgid "Revert selected to theme colors"
-msgstr "Vrátiť vybrané na farby témy"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:127
-msgid "Re&set"
-msgstr "O&bnoviť"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:390
 msgid "Reset all colors to theme"
@@ -6373,6 +6341,14 @@ msgstr "…"
 #: src/frontends/qt/ui/PrefColorsUi.ui:260
 msgid "Add the current color set as a theme"
 msgstr "Pridajte aktuálnu sadu farieb ako tému"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:307
+msgid "&Color Settings:"
+msgstr "Nastavenie &farieb:"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:320
+msgid "&Themes:"
+msgstr "&Témy:"
 
 #: src/frontends/qt/ui/TocUi.ui:98
 msgid "Decrease nesting depth of selected item"
@@ -35179,6 +35155,11 @@ msgstr "Áno"
 msgid "No"
 msgstr "Nie"
 
+#: src/frontends/qt/GuiBranches.cpp:191
+#, c-format
+msgid "A branch with the name \"%1$s\" already exists."
+msgstr "Vetva s menom \"%1$s\" už existuje."
+
 #: src/frontends/qt/GuiBranches.cpp:216
 msgid "Enter new branch name"
 msgstr "Zadajte meno novej vetvy"
@@ -35977,6 +35958,18 @@ msgstr ""
 #: src/frontends/qt/GuiDocument.cpp:1889
 msgid "&Switch Back"
 msgstr "&Vrátiť sa"
+
+#: src/frontends/qt/GuiDocument.cpp:2008
+msgid "&Left:"
+msgstr "V&ľavo:"
+
+#: src/frontends/qt/GuiDocument.cpp:2009
+msgid "&Right:"
+msgstr "Vp&ravo:"
+
+#: src/frontends/qt/GuiDocument.cpp:2012
+msgid "&Outer:"
+msgstr "Vo&nkajší:"
 
 #: src/frontends/qt/GuiDocument.cpp:2333
 msgid "Default margins"
@@ -37207,6 +37200,22 @@ msgstr "&Exportovať…"
 #: src/frontends/qt/GuiPrefs.cpp:1653
 msgid "&Import..."
 msgstr "&Importovať…"
+
+#: src/frontends/qt/GuiPrefs.cpp:1614
+msgid "Click here to change the color in the light mode"
+msgstr "Kliknite tu na zmenu farby vo svetlom režime"
+
+#: src/frontends/qt/GuiPrefs.cpp:1616
+msgid "Click here to change the color in the dark mode"
+msgstr "Kliknite tu na zmenu farby v tmavom režime"
+
+#: src/frontends/qt/GuiPrefs.cpp:1618
+msgid "Reset the light color to the one set last"
+msgstr "Návrat svetlej farby na poslednú nastavenú"
+
+#: src/frontends/qt/GuiPrefs.cpp:1620
+msgid "Reset the dark color to the one set last"
+msgstr "Návrat tmavej farby na poslednú nastavenú"
 
 #: src/frontends/qt/GuiPrefs.cpp:1277
 msgid "Paths"
@@ -41559,6 +41568,36 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Color name"
+#~ msgstr "Názov zafarbenej vložky"
+
+#~ msgid "Themes"
+#~ msgstr "Témy"
+
+#~ msgid "Color Settings"
+#~ msgstr "Nastavenie farieb"
+
+#~ msgid "Search color"
+#~ msgstr "Hľadaný prvok"
+
+#~ msgid "Search backward"
+#~ msgstr "Hľadať dozadu"
+
+#~ msgid "Pr&evious[[Color]]"
+#~ msgstr "Pr&edchádzajúci"
+
+#~ msgid "Search forward"
+#~ msgstr "Hľadať dopredu"
+
+#~ msgid "&Next[[Color]]"
+#~ msgstr "Ď&alší"
+
+#~ msgid "Revert selected to theme colors"
+#~ msgstr "Vrátiť vybrané na farby témy"
+
+#~ msgid "Re&set"
+#~ msgstr "O&bnoviť"
 
 #~ msgid "&Use refstyle (not prettyref) for cross-references"
 #~ msgstr "&Použiť refstyle (nie prettyref) pre krížové referencie"
@@ -47226,12 +47265,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Pr&evious"
 #~ msgstr "Pr&edošlí"
-
-#~ msgid "&Color Settings:"
-#~ msgstr "Nastavenie &farieb:"
-
-#~ msgid "&Themes:"
-#~ msgstr "&Témy:"
 
 #~ msgid "Plural"
 #~ msgstr "Plurál"

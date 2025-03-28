@@ -39,7 +39,7 @@
    <item row="3" column="2">
     <spacer name="hsBottomRight">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -72,10 +72,10 @@
        <item>
         <spacer name="horizontalSpacerLeft">
          <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeType">
-          <enum>QSizePolicy::Policy::MinimumExpanding</enum>
+          <enum>QSizePolicy::MinimumExpanding</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -109,7 +109,7 @@
           <string>Enter a color name to search</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
          <property name="placeholderText">
           <string>Filter by object/element name</string>
@@ -122,10 +122,10 @@
        <item>
         <spacer name="horizontalSpacerMiddleLeft">
          <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeType">
-          <enum>QSizePolicy::Policy::Fixed</enum>
+          <enum>QSizePolicy::Fixed</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -150,7 +150,7 @@
           </size>
          </property>
          <property name="arrowType">
-          <enum>Qt::ArrowType::NoArrow</enum>
+          <enum>Qt::NoArrow</enum>
          </property>
         </widget>
        </item>
@@ -173,10 +173,10 @@
        <item>
         <spacer name="horizontalSpacerMiddleRight">
          <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeType">
-          <enum>QSizePolicy::Policy::Fixed</enum>
+          <enum>QSizePolicy::Fixed</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -205,10 +205,10 @@
        <item>
         <spacer name="horizontalSpacerRight">
          <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeType">
-          <enum>QSizePolicy::Policy::Fixed</enum>
+          <enum>QSizePolicy::Fixed</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -228,10 +228,10 @@
        <item row="1" column="3">
         <spacer name="horizontalSpacer">
          <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeType">
-          <enum>QSizePolicy::Policy::Preferred</enum>
+          <enum>QSizePolicy::Preferred</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -307,7 +307,7 @@
         <string>&amp;Color Settings:</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
+        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
        </property>
        <property name="buddy">
         <cstring>colorsTV</cstring>
@@ -320,7 +320,7 @@
         <string>&amp;Themes:</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
+        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
        </property>
        <property name="buddy">
         <cstring>themesLW</cstring>

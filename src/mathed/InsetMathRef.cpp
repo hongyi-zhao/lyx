@@ -358,14 +358,26 @@ void InsetMathRef::write(TeXMathStream & os) const
 			bool const caps   = support::contains(options, 'C');
 			bool const plural = support::contains(options, 's');
 			*/
-			docstring label;
+			vector<docstring> label;
 			docstring prefix;
 			docstring const fcmd =
 				InsetRef::getFormattedCmd(ref, label, prefix, buffer().params().xref_package);
 			os << fcmd;
 			//if (plural)
 			//	os << "[s]";
-			os << '{' << label << '}';
+			bool first = true;
+			os << "{";
+			for (auto const & l : label) {
+				if (!first) {
+//					if (useRange())
+//						os << "}{";
+//					else
+						os << ",";
+				}
+				os << l;
+				first = false;
+			}
+			os << "}";
 		}
 	}
 	else if (cmd == "labelonly") {

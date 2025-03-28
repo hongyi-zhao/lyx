@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 636
+\lyxformat 637
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30575,6 +30575,26 @@ nolink "false"
 \end_layout
 
 \begin_layout Description
+Seite
+\begin_inset space ~
+\end_inset
+
+<Seite>:
+ Diese Option,
+ die nur mit 
+\series bold
+cleveref
+\series default
+ und 
+\series bold
+zref-clever
+\series default
+ angeboten wird,
+ druckt den Text „Seite“ und die Seitennummer.
+ Mehrere Labels werden sortiert und zu Listen oder Seitenbereichen kombiniert.
+\end_layout
+
+\begin_layout Description
 auf
 \begin_inset space ~
 \end_inset
@@ -30616,6 +30636,11 @@ auf dieser Seite
  nicht gegenüberliegenden Seite befindet,
  wird „auf der nächsten Seite“ gedruckt.
  Der Wortlaut des gedruckten Texts hängt zudem von der verwendeten Dokumentklasse ab.
+\begin_inset Newline newline
+\end_inset
+
+Wenn auf zwei Marken verwiesen wird,
+ werden Sie als Anfang und Ende eines Bereichs behandelt.
 \end_layout
 
 \begin_layout Description
@@ -30670,6 +30695,11 @@ Seite
 \family default
 \series default
 .
+\begin_inset Newline newline
+\end_inset
+
+Wenn auf zwei Marken verwiesen wird,
+ werden Sie als Anfang und Ende eines Bereichs behandelt.
 \end_layout
 
 \begin_layout Description

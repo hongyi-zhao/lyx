@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.5
-\lyxformat 636
+\lyxformat 637
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -222,6 +222,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -250,6 +251,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -266,6 +268,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -282,6 +285,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -298,6 +302,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -314,6 +319,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -330,6 +336,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 

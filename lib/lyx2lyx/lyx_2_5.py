@@ -2676,6 +2676,192 @@ def revert_zref(document):
             ["\\usepackage{zref-vario}"]
         )
 
+
+def revert_reflists(document):
+    "Reverts crossref lists and ranges to ERT"
+
+    package = "refstyle"
+    i = find_token(document.header, "\\crossref_package", 0)
+    if i == -1:
+        document.warning("Missing \\crossref_package header!")
+    else:
+        package = get_value(document.header, "\\crossref_package", i)
+
+    # Check and revert insets
+    need_zref_clever = False
+    need_zref_vario = False
+    need_cleveref = False
+    need_refstyle = False
+    need_varioref = False
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of reference inset at line %d!!" % (i))
+            i += 1
+            continue
+
+        reftype = get_value(document.body, "LatexCommand", i, j, "ref")
+        label = get_quoted_value(document.body, "reference", i, j)
+        if label.find(",") == -1 and reftype != "cpageref":
+            # only need to remove the tuple param
+            del_token(document.body, "tuple", i, j)
+            i += 1
+            continue
+
+        caps = get_bool_value(document.body, "caps", i, j, False)
+        plural = get_bool_value(document.body, "plural", i, j, False)
+        nolink = get_bool_value(document.body, "nolink", i, j, False)
+        options = get_quoted_value(document.body, "options", i, j)
+        tupl = get_quoted_value(document.body, "tuple", i, j)
+        labels = label.split(",")
+        isRange = len(labels) == 2 and tupl == "range"
+
+        cmd = "\\" + reftype
+        cmd_options = []
+        if reftype == "ref":
+            if package == "cleveref":
+                cmd = "\\labelcref"
+                need_cleveref = True
+            elif package == "zref":
+                cmd = "\\zcref"
+                if nolink:
+                    cmd += "*"
+                cmd_options.append("noname")
+                need_zref_clever = True
+        elif reftype == "pageref":
+            if package == "cleveref":
+                cmd = "\\labelcpageref"
+                need_cleveref = True
+            elif package == "zref":
+                need_zref_clever = True
+                cmd = "\\zcref"
+                if nolink:
+                    cmd += "*"
+                cmd_options.append("noname")
+                cmd_options.append("page")
+        elif reftype == "cpageref":
+            if package == "cleveref":
+                need_cleveref = True
+                if caps:
+                    cmd = "\\Cpageref"
+                if isRange:
+                    cmd += "range"
+            elif package == "zref":
+                need_zref_clever = True
+                cmd = "\\zcpageref"
+                if isRange:
+                    cmd_options.append("range")
+            else:
+                cmd = "\\pageref"
+        elif reftype == "formatted":
+            if package == "cleveref":
+                need_cleveref = True
+                if caps:
+                    cmd = "\\Cref"
+                else:
+                    cmd = "\\cref"
+                if isRange:
+                    cmd += "range"
+                if nolink:
+                    cmd += "*"
+            elif package == "zref":
+                need_zref_clever = True
+                cmd = "\\zcpageref"
+                if nolink:
+                    cmd += "*"
+                if caps:
+                    cmd_options.append("S")
+            elif package == "refstyle":
+                need_refstyle = True
+                prefix = ""
+                nlabels = []
+                for l in labels:
+                    if l.find(":") != -1:
+                        ll = l.split(":")
+                        if len(ll) > 1:
+                            prefix = ll[0]
+                            nlabels.append(ll[1])
+                        else:
+                            nlabels.append(ll[0])
+                labels = nlabels
+                if caps:
+                    prefix = prefix[0].title() + prefix[1:]
+                cmd = "\\" + prefix
+                if isRange:
+                    cmd += "range"
+                cmd += "ref"
+                if plural:
+                    cmd_options.append("s")
+        elif reftype == "vref":
+            if package == "zref":
+                need_zref_vario = True
+                cmd = "\\zvref"
+                if caps:
+                    cmd_options.append("S")
+            else:
+                need_varioref = True
+            if isRange:
+                    cmd += "range"
+            if nolink:
+                cmd += "*"
+        elif reftype == "vpageref":
+            if package == "zref":
+                cmd = "\\zvpageref"
+                if caps:
+                    cmd_options.append("S")
+            else:
+                need_varioref = True
+            if isRange:
+                    cmd += "range"
+            if nolink:
+                cmd += "*"
+
+        if len(cmd_options) > 0:
+            cmd += "[" + ", ".join(cmd_options) + "]"
+        
+        if isRange and (reftype == "vref" or reftype == "vpageref" or reftype == "cpageref" or (reftype == "formatted" and package != "prettyref")):
+            cmd += "{" + labels[0] + "}{" + labels[1] + "}"
+        elif package == "prettyref" or (package == "refstyle" and (reftype == "ref" or reftype == "pageref" or reftype == "cpageref")):
+            cmds = []
+            for l in labels:
+                cmds.append(cmd + "{" + l + "}")
+            cmd = ", ".join(cmds)
+        else:
+            cmd += "{" + ','.join(labels) + "}"
+        document.body[i : j + 1] = put_cmd_in_ert([cmd])
+        i += 1
+
+    # preamble
+    if need_zref_clever:
+        add_to_preamble(
+            document,
+            ["\\usepackage{zref-clever}"]
+        )
+    if need_zref_vario:
+        add_to_preamble(
+            document,
+            ["\\usepackage{zref-vario}"]
+        )
+    if need_cleveref:
+        add_to_preamble(
+            document,
+            ["\\usepackage{cleveref}"]
+        )
+    if need_varioref:
+        add_to_preamble(
+            document,
+            ["\\usepackage{varioref}"]
+        )
+    if need_refstyle:
+        add_to_preamble(
+            document,
+            ["\\usepackage{refstyle}"]
+        )
+
 ##
 # Conversion hub
 #
@@ -2697,11 +2883,13 @@ convert = [
     [633, [convert_doc_colors]],
     [634, []],
     [635, [convert_crossref_package]],
-    [636, []]
+    [636, []],
+    [637, []]
 ]
 
 
 revert = [
+    [636, [revert_reflists]],
     [635, [revert_cleveref, revert_zref]],
     [634, [revert_crossref_package]],
     [633, [revert_colortbl]],

@@ -1035,6 +1035,13 @@ PrefColors::PrefColors(GuiPreferences * form)
 	QShortcut* sc_search =
 	        new QShortcut(QKeySequence(QKeySequence::Find), this);
 
+	header_labels_ << qt_("Light")
+		       << qt_("Dark")
+		       << qt_("Object/Element")
+		       << qt_("Light")
+		       << qt_("Dark");
+	reset_label_ = qt_("Reset");
+
 	initializeColorsTV();
 	initializeThemesLW();
 	initializeThemeMenu();
@@ -1636,7 +1643,7 @@ void PrefColors::initializeColorsTV()
 	vertical_header->setDefaultAlignment(Qt::AlignCenter);
 	colorsTV->verticalHeader()->hide();
 
-	QHeaderView* horizontal_header = new QHeaderView(Qt::Horizontal);
+	QHeaderView * horizontal_header = new QHeaderView(Qt::Horizontal);
 	horizontal_header->setModel(&colorsTV_model_);
 	horizontal_header->setSectionResizeMode(QHeaderView::Fixed);
 	horizontal_header->setSectionResizeMode(ColorNameColumn, QHeaderView::Stretch);

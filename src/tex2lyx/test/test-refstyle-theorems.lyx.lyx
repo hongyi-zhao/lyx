@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.5
-\lyxformat 636
+\lyxformat 637
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -110,6 +110,7 @@ reference "part:part"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -135,6 +136,7 @@ reference "chap:chapter"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -160,6 +162,7 @@ reference "sec:Section"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -185,6 +188,7 @@ reference "subsec:subsection"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -210,6 +214,7 @@ reference "subsec:Subsubsection"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -235,6 +240,7 @@ reference "par:paragraph"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -260,6 +266,7 @@ reference "par:subparagraph"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -319,6 +326,7 @@ reference "fig:figure"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -378,6 +386,7 @@ reference "tab:table"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -437,6 +446,7 @@ reference "alg:algorithm"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -473,6 +483,7 @@ reference "fn:foot"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -510,6 +521,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -535,6 +547,7 @@ reference "enu:item"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -559,6 +572,7 @@ reference "eq:A=00003DB"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -584,6 +598,7 @@ reference "lem:lemma"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -609,6 +624,7 @@ reference "thm:theorem"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -634,6 +650,7 @@ reference "cor:corollary"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -659,6 +676,7 @@ reference "prop:proposition"
 plural "false"
 caps "false"
 noprefix "false"
+tuple "list"
 
 \end_inset
 
@@ -685,6 +703,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -711,6 +730,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -737,6 +757,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -763,6 +784,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -789,6 +811,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -815,6 +838,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -841,6 +865,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -867,6 +892,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -893,6 +919,7 @@ plural "false"
 caps "false"
 noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 

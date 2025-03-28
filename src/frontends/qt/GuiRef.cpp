@@ -31,6 +31,10 @@
 #include "support/FileName.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h" // makeAbsPath, makeDisplayPath
+#include "support/gettext.h"
+#include "support/lstrings.h"
+
+#include "frontends/alert.h"
 
 #include <QLineEdit>
 #include <QCheckBox>
@@ -40,6 +44,8 @@
 #include <QToolTip>
 #include <QCloseEvent>
 #include <QHeaderView>
+#include <QAbstractItemModel>
+#include <QTableWidget>
 
 using namespace std;
 using namespace lyx::support;
@@ -70,17 +76,16 @@ GuiRef::GuiRef(GuiView & lv)
 	sortingCO->addItem(qt_("Alphabetically (Case-Insensitive)"), "nocase");
 	sortingCO->addItem(qt_("Alphabetically (Case-Sensitive)"), "case");
 
+	rangeListCO->addItem(qt_("list (1 and 2)"), "list");
+	rangeListCO->addItem(qt_("range (1 to 2)"), "range");
+
 	buttonBox->button(QDialogButtonBox::Reset)->setText(qt_("&Update"));
 	buttonBox->button(QDialogButtonBox::Reset)->setToolTip(qt_("Update the label list"));
 
 	connect(this, SIGNAL(rejected()), this, SLOT(dialogRejected()));
 
 	connect(typeCO, SIGNAL(activated(int)),
-		this, SLOT(changed_adaptor()));
-	connect(referenceED, SIGNAL(textChanged(QString)),
-		this, SLOT(refTextChanged(QString)));
-	connect(referenceED, SIGNAL(textChanged(QString)),
-		this, SLOT(changed_adaptor()));
+		this, SLOT(typeChanged()));
 	connect(filter_, SIGNAL(textEdited(QString)),
 		this, SLOT(filterLabels()));
 	connect(filter_, SIGNAL(rightButtonClicked()),
@@ -91,6 +96,10 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(refHighlighted(QTreeWidgetItem *)));
 	connect(refsTW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(selectionChanged()));
+	connect(selectedLV, SIGNAL(itemSelectionChanged()),
+		this, SLOT(updateButtons()));
+	connect(selectedLV, SIGNAL(itemSelectionChanged()),
+		this, SLOT(refTextChanged()));
 	connect(refsTW, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
 		this, SLOT(refSelected(QTreeWidgetItem *)));
 	connect(sortingCO, SIGNAL(activated(int)),
@@ -111,6 +120,16 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(refOptionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
+	connect(addPB, SIGNAL(clicked()),
+		this, SLOT(addClicked()));
+	connect(deletePB, SIGNAL(clicked()),
+		this, SLOT(deleteClicked()));
+	connect(upPB, SIGNAL(clicked()),
+		this, SLOT(upClicked()));
+	connect(downPB, SIGNAL(clicked()),
+		this, SLOT(downClicked()));
+	connect(rangeListCO, SIGNAL(activated(int)),
+		this, SLOT(changed_adaptor()));
 
 	enableBoxes();
 
@@ -124,6 +143,7 @@ GuiRef::GuiRef(GuiView & lv)
 	active_buffer_ = -1;
 
 	setFocusProxy(filter_);
+	refsTW->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 
@@ -140,6 +160,7 @@ void GuiRef::enableBoxes()
 {
 	QString const reftype =
 		typeCO->itemData(typeCO->currentIndex()).toString();
+	bool const use_prettyref = buffer().params().xref_package == "prettyref";
 	bool const use_refstyle = buffer().params().xref_package == "refstyle";
 	bool const use_cleveref = buffer().params().xref_package == "cleveref";
 	bool const use_zref = buffer().params().xref_package == "zref";
@@ -151,16 +172,129 @@ void GuiRef::enableBoxes()
 	bool const zref_clever = use_zref && (reftype == "vref" || reftype == "vpageref");
 	bool const allow_plural = use_refstyle || cleveref_nameref;
 	bool const allow_caps = use_refstyle || use_cleveref || use_zref;
-	bool const allow_nohyper = !isLabelOnly && (!isFormatted || use_cleveref || use_zref);
+	bool const allow_nohyper = !isLabelOnly && (!isFormatted || use_cleveref || use_zref)
+			&& (reftype != "cpageref" || use_zref);
 	bool const intext = bufferview()->cursor().inTexted();
 	pluralCB->setEnabled(intext && (isFormatted || cleveref_nameref) && allow_plural);
-	capsCB->setEnabled(intext && (isFormatted || cleveref_nameref || zref_clever) && allow_caps);
+	capsCB->setEnabled(intext && (isFormatted || cleveref_nameref || zref_clever || reftype == "cpageref")
+			   && allow_caps);
 	noprefixCB->setEnabled(intext && isLabelOnly);
 	// disabling of hyperlinks not supported by formatted references
 	nolinkCB->setEnabled(hyper_on && intext && allow_nohyper);
 	// options only supported by zref currently
 	refOptionsLE->setEnabled(use_zref && (isFormatted || zref_clever));
 	refOptionsLA->setEnabled(use_zref && (isFormatted || zref_clever));
+	bool const allow_range_list_switch = selectedLV->topLevelItemCount() == 2
+		&& (isFormatted || reftype == "cpageref") && !use_prettyref;
+	if (reftype == "vref" || reftype == "vpageref")
+		rangeListCO->setCurrentIndex(rangeListCO->findData("range"));
+	rangeListCO->setEnabled(allow_range_list_switch);
+	rangeListLA->setEnabled(allow_range_list_switch);
+}
+
+
+bool GuiRef::isSelected(const QModelIndex & idx)
+{
+	if (!selectedLV->model() || selectedLV->model()->rowCount() == 0)
+		return false;
+	QVariant const & str = refsTW->model()->data(idx, Qt::DisplayRole);
+	QModelIndexList qmil =
+			selectedLV->model()->match(selectedLV->model()->index(0, 0),
+			                     Qt::DisplayRole, str, 1,
+			                     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
+	return !qmil.empty();
+}
+
+
+void GuiRef::typeChanged()
+{
+	QString const reftype =
+		typeCO->itemData(typeCO->currentIndex()).toString();
+	bool const threshold = (reftype == "vref" || reftype == "vpageref")
+		&& selectedLV->topLevelItemCount() > 1;
+	if (threshold)
+		Alert::warning(_("Unsupported setting!"),
+			_("The reference type you selected allows for maximally two target labels."));
+	changed_adaptor();
+}
+
+
+void GuiRef::updateAddPB()
+{
+	QString const reftype =
+		typeCO->itemData(typeCO->currentIndex()).toString();
+	bool const threshold = (reftype == "vref" || reftype == "vpageref")
+		&& selectedLV->topLevelItemCount() > 1;
+	int const arows = refsTW->model()->rowCount();
+	QModelIndexList const availSels =
+		refsTW->selectionModel()->selectedIndexes();
+	addPB->setEnabled(arows > 0
+		 &&!availSels.isEmpty()
+		 && !isSelected(availSels.first())
+		 && ! threshold);
+}
+
+
+void GuiRef::updateDelPB()
+{
+	if (!selectedLV->model()) {
+		deletePB->setEnabled(false);
+		return;
+	}
+	int const srows = selectedLV->model()->rowCount();
+	if (srows == 0) {
+		deletePB->setEnabled(false);
+		return;
+	}
+	QModelIndexList const selSels =
+		selectedLV->selectionModel()->selectedIndexes();
+	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
+	deletePB->setEnabled(sel_nr >= 0);
+}
+
+
+void GuiRef::updateUpPB()
+{
+	if (!selectedLV->model()) {
+		upPB->setEnabled(false);
+		return;
+	}
+	int const srows = selectedLV->model()->rowCount();
+	if (srows == 0) {
+		upPB->setEnabled(false);
+		return;
+	}
+	QModelIndexList const selSels =
+			selectedLV->selectionModel()->selectedIndexes();
+	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
+	upPB->setEnabled(sel_nr > 0);
+}
+
+
+void GuiRef::updateDownPB()
+{
+	if (!selectedLV->model()) {
+		downPB->setEnabled(false);
+		return;
+	}
+	int const srows = selectedLV->model()->rowCount();
+	if (srows == 0) {
+		downPB->setEnabled(false);
+		return;
+	}
+	QModelIndexList const selSels =
+			selectedLV->selectionModel()->selectedIndexes();
+	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
+	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
+}
+
+
+void GuiRef::updateButtons()
+{
+	updateAddPB();
+	updateDelPB();
+	updateDownPB();
+	updateUpPB();
 }
 
 
@@ -179,8 +313,8 @@ void GuiRef::gotoClicked()
 	// and no-one seems to have any better idea.
 	bool const toggled =
 		last_reference_.isEmpty() || last_reference_.isNull();
-	if (toggled)
-		last_reference_ = referenceED->text();
+	if (toggled && refsTW->currentItem())
+		last_reference_ = refsTW->currentItem()->data(0, Qt::UserRole).toString();
 	gotoRef();
 	if (toggled)
 		last_reference_.clear();
@@ -197,6 +331,7 @@ void GuiRef::selectionChanged()
 		return;
 	QTreeWidgetItem * sel = selections.first();
 	refHighlighted(sel);
+	updateButtons();
 }
 
 
@@ -207,14 +342,6 @@ void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 		return;
 	}
 
-/*	int const cur_item = refsTW->currentRow();
-	bool const cur_item_selected = cur_item >= 0 ?
-		refsLB->isSelected(cur_item) : false;*/
-	bool const cur_item_selected = sel->isSelected();
-
-	if (cur_item_selected)
-		referenceED->setText(sel->data(0, Qt::UserRole).toString());
-
 	if (at_ref_)
 		gotoRef();
 	gotoPB->setEnabled(true);
@@ -223,11 +350,13 @@ void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 }
 
 
-void GuiRef::refTextChanged(QString const & str)
+void GuiRef::refTextChanged()
 {
-	gotoPB->setEnabled(!str.isEmpty());
-	typeCO->setEnabled(!str.isEmpty());
-	typeLA->setEnabled(!str.isEmpty());
+	bool const sel = selectedLV->currentItem()
+			&& selectedLV->currentItem()->isSelected();
+	gotoPB->setEnabled(sel);
+	typeCO->setEnabled(sel);
+	typeLA->setEnabled(sel);
 }
 
 
@@ -241,15 +370,8 @@ void GuiRef::refSelected(QTreeWidgetItem * sel)
 		return;
 	}
 
-/*	int const cur_item = refsTW->currentRow();
-	bool const cur_item_selected = cur_item >= 0 ?
-		refsLB->isSelected(cur_item) : false;*/
-	bool const cur_item_selected = sel->isSelected();
-
-	if (cur_item_selected)
-		referenceED->setText(sel->data(0, Qt::UserRole).toString());
-	// <enter> or double click, inserts ref and closes dialog
-	slotOK();
+	// <enter> or double click, inserts ref
+	addClicked();
 }
 
 
@@ -293,6 +415,56 @@ void GuiRef::updateClicked()
 }
 
 
+void GuiRef::addClicked()
+{
+	QString text = refsTW->currentItem()->data(0, Qt::UserRole).toString();
+	QTreeWidgetItem * item = new QTreeWidgetItem(selectedLV);
+	item->setText(0, text);
+	item->setData(0, Qt::UserRole, text);
+
+	selectedLV->addTopLevelItem(item);
+	selectedLV->setCurrentItem(item);
+
+	changed_adaptor();
+}
+
+
+void GuiRef::deleteClicked()
+{
+	int const i = selectedLV->indexOfTopLevelItem(selectedLV->currentItem());
+	selectedLV->takeTopLevelItem(i);
+	changed_adaptor();
+}
+
+
+void GuiRef::upClicked()
+{
+	int const i = selectedLV->indexOfTopLevelItem(selectedLV->currentItem());
+	if (i < 1)
+		return;
+	QTreeWidgetItem * item = selectedLV->takeTopLevelItem(i);
+	if (item) {
+		selectedLV->insertTopLevelItem(i - 1, item);
+		selectedLV->setCurrentItem(item);
+	}
+	changed_adaptor();
+}
+
+
+void GuiRef::downClicked()
+{
+	int const i = selectedLV->indexOfTopLevelItem(selectedLV->currentItem());
+	if (i == selectedLV->topLevelItemCount())
+		return;
+	QTreeWidgetItem * item = selectedLV->takeTopLevelItem(i);
+	if (item) {
+		selectedLV->insertTopLevelItem(i + 1, item);
+		selectedLV->setCurrentItem(item);
+	}
+	changed_adaptor();
+}
+
+
 void GuiRef::dialogRejected()
 {
 	resetDialog();
@@ -322,21 +494,23 @@ void GuiRef::updateContents()
 	QString const orig_type =
 		typeCO->itemData(typeCO->currentIndex()).toString();
 
-	referenceED->clear();
 	typeCO->clear();
 
 	// FIXME Bring InsetMathRef on par with InsetRef
 	// (see #11104)
+	bool const have_cpageref =
+			buffer().params().xref_package == "cleveref"
+			|| buffer().params().xref_package == "zref";
 	typeCO->addItem(qt_("<reference>"), "ref");
 	typeCO->addItem(qt_("(<reference>)"), "eqref");
 	typeCO->addItem(qt_("<page>"), "pageref");
+	if (have_cpageref)
+		typeCO->addItem(qt_("page <page>"), "cpageref");
 	typeCO->addItem(qt_("on page <page>"), "vpageref");
 	typeCO->addItem(qt_("<reference> on page <page>"), "vref");
 	typeCO->addItem(qt_("Textual reference"), "nameref");
 	typeCO->addItem(qt_("Formatted reference"), "formatted");
 	typeCO->addItem(qt_("Label only"), "labelonly");
-
-	referenceED->setText(toqstr(params_["reference"]));
 
 	// restore type settings for new insets
 	bool const new_inset = params_["reference"].empty();
@@ -345,7 +519,8 @@ void GuiRef::updateContents()
 		if (index == -1)
 			index = 0;
 		typeCO->setCurrentIndex(index);
-	}
+	} else if (params_.getCmdName() == "cpageref" && !have_cpageref)
+		typeCO->setCurrentIndex(typeCO->findData("pageref"));
 	else
 		typeCO->setCurrentIndex(
 			typeCO->findData(toqstr(params_.getCmdName())));
@@ -356,6 +531,8 @@ void GuiRef::updateContents()
 	noprefixCB->setChecked(params_["noprefix"] == "true");
 	nolinkCB->setChecked(params_["nolink"] == "true");
 	refOptionsLE->setText(toqstr(params_["options"]));
+	if (!params_["tuple"].empty())
+		rangeListCO->setCurrentIndex(rangeListCO->findData(toqstr(params_["tuple"])));
 
 	// insert buffer list
 	bufferCO->clear();
@@ -388,10 +565,13 @@ void GuiRef::updateContents()
 
 void GuiRef::applyView()
 {
-	last_reference_ = referenceED->text();
+	QList<QTreeWidgetItem *> selRefs = selectedLV->findItems("*", Qt::MatchWildcard);
+	vector<docstring> labels;
+	for (int i = 0; i < selRefs.size(); ++i)
+		labels.push_back(qstring_to_ucs4(selRefs.at(i)->data(0, Qt::UserRole).toString()));
 
 	params_.setCmdName(fromqstr(typeCO->itemData(typeCO->currentIndex()).toString()));
-	params_["reference"] = qstring_to_ucs4(last_reference_);
+	params_["reference"] = getStringFromVector(labels);
 	params_["plural"] = pluralCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
 	params_["caps"] = capsCB->isChecked() ?
@@ -401,6 +581,7 @@ void GuiRef::applyView()
 	params_["nolink"] = nolinkCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
 	params_["options"] = qstring_to_ucs4(refOptionsLE->text());
+	params_["tuple"] = qstring_to_ucs4(rangeListCO->itemData(rangeListCO->currentIndex()).toString());
 	restored_buffer_ = bufferCO->currentIndex();
 }
 
@@ -421,8 +602,6 @@ void GuiRef::setGotoRef()
 
 void GuiRef::gotoRef()
 {
-	string ref = fromqstr(referenceED->text());
-
 	if (at_ref_) {
 		// go back
 		setGotoRef();
@@ -430,12 +609,28 @@ void GuiRef::gotoRef()
 	} else {
 		// go to the ref
 		setGoBack();
-		gotoRef(ref);
+		goToRef(fromqstr(last_reference_));
+		// restore the last selection
+		if (!last_reference_.isEmpty()) {
+			QTreeWidgetItemIterator it(selectedLV);
+			while (*it) {
+				if ((*it)->text(0) == last_reference_) {
+					selectedLV->setCurrentItem(*it);
+					(*it)->setSelected(true);
+					//Make sure selected item is visible
+					selectedLV->scrollToItem(*it);
+					break;
+				}
+				++it;
+			}
+			last_reference_.clear();
+		}
 	}
 	at_ref_ = !at_ref_;
 }
 
-inline bool caseInsensitiveLessThanVec(std::tuple<QString, QString, QString> const & s1, std::tuple<QString, QString, QString> const & s2)
+inline bool caseInsensitiveLessThanVec(std::tuple<QString, QString, QString> const & s1,
+				       std::tuple<QString, QString, QString> const & s2)
 {
 	return std::get<0>(s1).toLower() < std::get<0>(s2).toLower();
 }
@@ -451,14 +646,9 @@ void GuiRef::redoRefs()
 	// Prevent these widgets from emitting any signals whilst
 	// we modify their state.
 	refsTW->blockSignals(true);
-	referenceED->blockSignals(true);
 	refsTW->setUpdatesEnabled(false);
 
 	refsTW->clear();
-
-	// need this because Qt will send a highlight() here for
-	// the first item inserted
-	QString const oldSelection(referenceED->text());
 
 	// Plain label, GUI string, and dereferenced string.
 	// This might get resorted below
@@ -540,39 +730,27 @@ void GuiRef::redoRefs()
 		refsTW->addTopLevelItems(refsItems);
 	}
 
-	// restore the last selection or, for new insets, highlight
-	// the previous selection
-	if (!oldSelection.isEmpty() || !last_reference_.isEmpty()) {
-		bool const newInset = oldSelection.isEmpty();
-		QString textToFind = newInset ? last_reference_ : oldSelection;
-		referenceED->setText(textToFind);
-		last_reference_.clear();
-		QTreeWidgetItemIterator it(refsTW);
-		while (*it) {
-			if ((*it)->text(0) == textToFind) {
-				refsTW->setCurrentItem(*it);
-				(*it)->setSelected(true);
-				//Make sure selected item is visible
-				refsTW->scrollToItem(*it);
-				last_reference_ = textToFind;
-				break;
-			}
-			++it;
-		}
-	}
 	refsTW->setUpdatesEnabled(true);
 	refsTW->update();
+	updateButtons();
 
 	// redo filter
 	filterLabels();
 
 	// Re-activate the emission of signals by these widgets.
 	refsTW->blockSignals(false);
-	referenceED->blockSignals(false);
 
-	gotoPB->setEnabled(!referenceED->text().isEmpty());
-	typeCO->setEnabled(!referenceED->text().isEmpty());
-	typeLA->setEnabled(!referenceED->text().isEmpty());
+	bool const sel = selectedLV->currentItem()
+			&& selectedLV->currentItem()->isSelected();
+
+	gotoPB->setEnabled(sel);
+	typeCO->setEnabled(sel);
+	typeLA->setEnabled(sel);
+
+	if (groupCB->isChecked())
+		refsTW->setIndentation(10);
+	else
+		refsTW->setIndentation(0);
 }
 
 
@@ -595,11 +773,15 @@ void GuiRef::updateRefs()
 
 bool GuiRef::isValid()
 {
-	return !referenceED->text().isEmpty();
+	QString const reftype =
+		typeCO->itemData(typeCO->currentIndex()).toString();
+	bool const threshold = (reftype == "vref" || reftype == "vpageref")
+		&& selectedLV->topLevelItemCount() > 1;
+	return selectedLV->currentItem() && !threshold;
 }
 
 
-void GuiRef::gotoRef(string const & ref)
+void GuiRef::goToRef(string const & ref)
 {
 	dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
 	dispatch(FuncRequest(LFUN_LABEL_GOTO, ref));
@@ -638,6 +820,21 @@ void GuiRef::resetFilter()
 bool GuiRef::initialiseParams(std::string const & sdata)
 {
 	InsetCommand::string2params(sdata, params_);
+
+	selectedLV->clear();
+	vector<docstring> selRefs = getVectorFromString(params_["reference"]);
+	QList<QTreeWidgetItem *> selRefsItems;
+	for (auto const & sr : selRefs) {
+		QTreeWidgetItem * item = new QTreeWidgetItem(selectedLV);
+		item->setText(0, toqstr(sr));
+		item->setData(0, Qt::UserRole, toqstr(sr));
+		selRefsItems.append(item);
+	}
+	if (!selRefsItems.empty()) {
+		selectedLV->addTopLevelItems(selRefsItems);
+		selectedLV->setCurrentItem(selRefsItems.front());
+	}
+
 	return true;
 }
 

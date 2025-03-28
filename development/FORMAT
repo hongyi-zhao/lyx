@@ -7,6 +7,30 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2025-03-28 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 637: Support for crossref lists and ranges
+	- InsetRef has a new param: tuple = "list"|"range"
+	  determining how a list of two labels should be handled
+	  for formats that support both lists and ranges.
+	- CommandInset cpageref:
+	  New inset type which outputs:
+	  1. \cpageref or \Cpageref with cleveref
+	  2. \zcpageref with zref
+	- New supported LaTeX commands:
+	  1. \vrefrange, \vpagerefrange (varioref) with LatexCommand vref
+	     and LatexCommand vpageref and a list of two labels.
+	  2. \<type>rangeref (refstyle) with two labels and tuple=range
+	  3. \crefrange, \CRefrange (cleveref) with dito conditions
+	  4. \zvref and \zvpageref for vref and vpageref with zref
+	  5. With CommandInset ref and multiple labels, we output:
+	    a. \ref{label1}, \ref{label2} ... with prettyref and refstyle
+	    b. \labelcref{label1, label2...} with cleveref
+	    c. \zcref[noname]{label1, label2...} with zref
+	  6. With CommandInset pageref and multiple labels, we output:
+	    a. \pageref{label1}, \pageref{label2} ... with prettyref and refstyle
+	    b. \labelcpageref{label1, label2...} with cleveref
+	    c. \zcref[noname, page]{label1, label2...} with zref
+
 2025-03-23 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 636: 
 	1. Support for the cleveref package

@@ -13,6 +13,7 @@
 #define INSET_REF_H
 
 #include "InsetCommand.h"
+#include "support/lstrings.h"
 
 
 namespace lyx {
@@ -99,9 +100,9 @@ public:
 	/// \param argument for reference command
 	/// \param prefix of the label (before :)
 	/// Also used by InsetMathRef
-	static docstring getFormattedCmd(docstring const & ref, docstring & label,
+	static docstring getFormattedCmd(docstring const & ref, std::vector<docstring> & label,
 			docstring & prefix, std::string const xref_package,
-			bool use_caps = false);
+			bool use_caps = false, bool use_range = false);
 
 protected:
 	///
@@ -126,6 +127,10 @@ private:
 
 	/// \return the label with things that need to be escaped escaped
 	docstring getEscapedLabel(OutputParams const &) const;
+	///
+	bool useRange() const;
+	///
+	std::vector<docstring> getLabels() const { return support::getVectorFromString(getParam("reference")); }
 
 	///
 	mutable docstring screen_label_;

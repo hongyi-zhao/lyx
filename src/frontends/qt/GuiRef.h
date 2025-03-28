@@ -44,7 +44,7 @@ private Q_SLOTS:
 	void resetFilter();
 	void refHighlighted(QTreeWidgetItem *);
 	void selectionChanged();
-	void refTextChanged(QString const &);
+	void refTextChanged();
 	void refSelected(QTreeWidgetItem *);
 	void sortToggled();
 	void groupToggled();
@@ -52,6 +52,12 @@ private Q_SLOTS:
 	void updateClicked();
 	void resetDialog();
 	void dialogRejected();
+	void updateButtons();
+	void addClicked();
+	void deleteClicked();
+	void upClicked();
+	void downClicked();
+	void typeChanged();
 
 private:
 	///
@@ -60,7 +66,7 @@ private:
 	 Allows easy insertion of multiple references. */
 	bool disconnectOnApply() const override { return true; }
 	///
-	void gotoRef(std::string const &);
+	void goToRef(std::string const &);
 	///
 	void gotoBookmark();
 	///
@@ -94,6 +100,16 @@ private:
 private:
 	///
 	InsetCommandParams params_;
+	///
+	virtual void updateAddPB();
+	///
+	virtual void updateDelPB();
+	///
+	virtual void updateDownPB();
+	///
+	virtual void updateUpPB();
+	///
+	bool isSelected(const QModelIndex & idx);
 
 	/// contains the search box
 	FancyLineEdit * filter_;

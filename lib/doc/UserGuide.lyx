@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 636
+\lyxformat 637
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31734,6 +31734,32 @@ nolink "false"
 \end_inset
 
 
+\change_inserted -712698321 1743170721
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1743170846
+page
+\begin_inset space ~
+\end_inset
+
+<page>:
+ this option,
+ which is only available with 
+\series bold
+cleveref
+\series default
+ and 
+\series bold
+zref-clever
+\series default
+,
+ prints the text “page” and the page number.
+ It can combine multiple labels to an ordered page list or range.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -31768,6 +31794,13 @@ If the label is on the same page,
  if it is on the next page which is not a facing page,
  it prints “on the next page”.
  The wording of the printed text also depends on the used document class.
+\change_inserted -712698321 1743171056
+
+\begin_inset Newline newline
+\end_inset
+
+If two labels are inserted,
+ they are handled as beginning and end of a range.
 \end_layout
 
 \begin_layout Description
@@ -31821,6 +31854,15 @@ page
 \family default
 \series default
 .
+\change_inserted -712698321 1743171062
+
+\begin_inset Newline newline
+\end_inset
+
+If two labels are inserted,
+ they are handled as beginning and end of a range.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

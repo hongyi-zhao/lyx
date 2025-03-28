@@ -57,6 +57,7 @@ bool InsetRef::isCompatibleCommand(string const & s) {
 	//But this stuff is hardcoded elsewhere already.
 	return s == "ref"
 		|| s == "pageref"
+		|| s == "cpageref"
 		|| s == "vref"
 		|| s == "vpageref"
 		|| s == "formatted"
@@ -79,6 +80,7 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 		param_info_.add("noprefix", ParamInfo::LYX_INTERNAL);
 		param_info_.add("nolink", ParamInfo::LYX_INTERNAL);
 		param_info_.add("options", ParamInfo::LYX_INTERNAL);
+		param_info_.add("tuple", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -153,6 +155,14 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	if (cmd.action() != LFUN_INSET_MODIFY)
 		return InsetCommand::getStatus(cur, cmd, status);
+
+	// this is not allowed
+	if ((cmd.argument() == "changetype vref" || cmd.argument() == "changetype vpageref")
+	     && getLabels().size() > 2) {
+		status.setEnabled(false);
+		return true;
+	}
+
 	if (cmd.getArg(0) != "ref")
 		return InsetCommand::getStatus(cur, cmd, status);
 
@@ -203,59 +213,86 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 // label, thus: \prettyref{pfx:suffix}.
 //
 docstring InsetRef::getFormattedCmd(docstring const & ref,
-	docstring & label, docstring & prefix, string const xref_package,
-	bool use_caps)
+	vector<docstring> & label, docstring & prefix, string const xref_package,
+	bool use_caps, bool use_range)
 {
 	docstring defcmd = from_ascii("\\ref");
-	docstring prtcmd = from_ascii("\\prettyref");
 	if (xref_package == "cleveref") {
-		docstring const crefcmd = use_caps ? from_ascii("\\Cref") : from_ascii("\\cref");
-		defcmd = crefcmd;
-		prtcmd = crefcmd;
-	} else if  (xref_package == "zref") {
+		defcmd = use_caps ? from_ascii("\\Cref") : from_ascii("\\cref");
+		if (use_range)
+			defcmd += "range";
+	} else if (xref_package == "zref")
 		defcmd = from_ascii("\\zcref");
-		prtcmd = from_ascii("\\zcref");
+	else if (xref_package == "prettyref")
+		defcmd = from_ascii("\\prettyref");
+
+	bool have_cmd = false;
+	bool have_prefix = false;
+	vector<docstring> refs = getVectorFromString(ref);
+	for (auto const & r : refs ) {
+		docstring pr;
+		docstring l = split(r, pr, ':');
+
+		// except for cleveref and zref, we have to have xxx:xxxxx...
+		if (l.empty()) {
+			if (xref_package != "cleveref" && xref_package != "zref")
+				LYXERR0("Label `" << r << "' contains no `:' separator.");
+			label.push_back(r);
+			if (!have_prefix)
+				prefix = from_ascii("");
+			have_cmd = true;
+			continue;
+		}
+	
+		if (pr.empty()) {
+			// we have ":xxxx"
+			if (xref_package != "cleveref" && xref_package != "zref")
+				LYXERR0("Label `" << ref << "' contains nothing before `:'.");
+			label.push_back(r);
+			have_cmd = true;
+			continue;
+		}
+	
+		if (xref_package != "refstyle") {
+			// \prettyref uses the whole label
+			label.push_back(r);
+			have_cmd = true;
+			continue;
+		}
+	
+		// make sure the prefix is legal for a latex command
+		size_t const len = pr.size();
+		bool invalid_prefix = false;
+		for (size_t i = 0; i < len; i++) {
+			char_type const c = pr[i];
+			if (!isAlphaASCII(c)) {
+				LYXERR0("Prefix `" << prefix << "' is invalid for LaTeX.");
+				// restore the label
+				label.push_back(r);
+				invalid_prefix = true;
+			}
+		}
+		if (!have_prefix && !invalid_prefix) {
+			prefix = pr;
+			have_prefix = true;
+		}
+		if (!invalid_prefix)
+			label.push_back(l);
 	}
-
-
-	label = split(ref, prefix, ':');
-
-	// we have to have xxx:xxxxx...
-	if (label.empty()) {
-		LYXERR0("Label `" << ref << "' contains no `:' separator.");
-		label = ref;
-		prefix = from_ascii("");
+	if (have_cmd)
 		return defcmd;
-	}
 
 	if (prefix.empty()) {
-		// we have ":xxxx"
-		LYXERR0("Label `" << ref << "' contains nothing before `:'.");
-		label = ref;
+		label = getVectorFromString(ref);
 		return defcmd;
 	}
 
-	if (xref_package != "refstyle") {
-		// \prettyref uses the whole label
-		label = ref;
-		return prtcmd;
-	}
-
-	// make sure the prefix is legal for a latex command
-	size_t const len = prefix.size();
-	for (size_t i = 0; i < len; i++) {
-		char_type const c = prefix[i];
-		if (!isAlphaASCII(c)) {
-			LYXERR0("Prefix `" << prefix << "' is invalid for LaTeX.");
-			// restore the label
-			label = ref;
-			return defcmd;
-		}
-	}
 	if (use_caps) {
 		prefix = support::capitalize(prefix);
 	}
-	return from_ascii("\\") + prefix + from_ascii("ref");
+	defcmd = from_ascii("\\") + prefix + from_ascii("ref");
+	return (use_range) ? from_ascii("\\") + prefix + from_ascii("rangeref")
+			   : from_ascii("\\") + prefix + from_ascii("ref");
 }
 
 
@@ -272,6 +309,8 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 {
 	string const & cmd = getCmdName();
 	docstring const & data = getEscapedLabel(rp);
+	vector<docstring> labels = getVectorFromString(data);
+	int const nlabels = labels.size();
 	bool const hyper_on = buffer().masterParams().pdfoptions().use_hyperref;
 	bool const use_nolink = hyper_on && getParam("nolink") == "true";
 	bool const use_caps   = getParam("caps") == "true";
@@ -292,10 +331,10 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 			(use_nolink ? from_utf8("*") : from_utf8("")) +
 			from_ascii("{") << data << from_ascii("})");
 	} else if (cmd == "formatted") {
-		docstring label;
+		vector<docstring> label;
 		docstring prefix;
 		docstring const fcmd =
-			getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps);
+			getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps, useRange());
 		os << fcmd;
 		if ((use_cleveref || use_zref) && use_nolink)
 			os << "*";
@@ -308,15 +347,32 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 					opts +=", ";
 				opts += "S";
 			}
+			if (useRange()) {
+				if (!opts.empty())
+					opts +=", ";
+				opts += "range";
+			}
 			if (!opts.empty())
 				os << "[" << opts << "]";
 		}
-		if (contains(label, ' '))
-			// refstyle bug: labels with blanks need to be grouped
-			// otherwise the blanks will be gobbled
-			os << "{{" << label << "}}";
-		else
-			os << '{' << label << '}';
+		bool first = true;
+		os << "{";
+		for (auto const & l : label) {
+			if (!first) {
+				if (useRange())
+					os << "}{";
+				else
+					os << ",";
+			}
+			if (contains(l, ' '))
+				// refstyle bug: labels with blanks need to be grouped
+				// otherwise the blanks will be gobbled
+				os << "{" << l << "}";
+			else
+				os << l;
+			first = false;
+		}
+		os << "}";
 	} else if (cmd == "nameref" && use_cleveref && (use_nolink || !hyper_on)) {
 		docstring const crefcmd = use_caps ? from_ascii("Cref") : from_ascii("cref");
 		os << "\\name" << crefcmd;
@@ -329,16 +385,70 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 			os << ref;
 		else {
 			docstring prefix;
-			docstring suffix = split(ref, prefix, ':');
-			if (suffix.empty()) {
-				LYXERR0("Label `" << ref << "' contains no `:' separator.");
-				os << ref;
-			} else {
-				os << suffix;
+			vector <docstring> slrefs;
+			for (auto const & r : labels) {
+				docstring suffix = split(r, prefix, ':');
+				if (suffix.empty()) {
+					LYXERR0("Label `" << r << "' contains no `:' separator.");
+					slrefs.push_back(r);
+				} else {
+					slrefs.push_back(suffix);
+				}
 			}
+			os << getStringFromVector(slrefs);
 		}
-	} else if ((cmd == "vref" || cmd == "vpageref") && use_zref) {
-		os << "\\z" << cmd;
+	} else if (cmd == "vref" || cmd == "vpageref") {
+		os << "\\";
+		if (use_zref)
+			os << "z";
+		os << cmd;
+		if (useRange())
+			os << "range";
+		if (use_nolink)
+			os << "*";
+		docstring opts = getParam("options");
+		if (use_zref && use_caps) {
+			if (!opts.empty())
+				opts +=", ";
+			opts += "S";
+		}
+		if (use_zref && !opts.empty())
+			os << "[" << opts << "]";
+		bool first = true;
+		os << "{";
+		for (auto const & l : labels) {
+			if (!first) {
+				if (useRange())
+					os << "}{";
+				else
+					os << ",";
+			}
+			os << l;
+			first = false;
+		}
+		os << "}";
+	} else if (cmd == "cpageref" && use_cleveref) {
+		if (use_caps)
+			os << "\\Cpageref";
+		else
+			os << "\\cpageref";
+		if (useRange())
+			os << "range";
+		bool first = true;
+		os << "{";
+		for (auto const & l : labels) {
+			if (!first) {
+				if (useRange())
+					os << "}{";
+				else
+					os << ",";
+			}
+			os << l;
+			first = false;
+		}
+		os << "}";
+	} else if (cmd == "cpageref" && use_zref) {
+		os << "\\zcpageref";
 		if (use_nolink)
 			os << "*";
 		docstring opts = getParam("options");
@@ -347,14 +457,79 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 				opts +=", ";
 			opts += "S";
 		}
+		if (useRange()) {
+			if (!opts.empty())
+				opts +=", ";
+			opts += "range";
+		}
 		if (!opts.empty())
 			os << "[" << opts << "]";
+		bool first = true;
+		os << "{";
+		for (auto const & l : labels) {
+			if (!first)
+				os << ",";
+			os << l;
+			first = false;
+		}
+		os << "}";
+	} else if (cmd == "cpageref") {
+		bool first = true;
+		for (auto const & label : labels) {
+			if (!first)
+				os << ", ";
+			os << "\\pageref";
+			if (use_nolink)
+				os << "*";
+			os << '{' << label << '}';
+			first = false;
+		}
+	} else if (nlabels > 1 && cmd == "ref" && use_cleveref) {
+		os << "\\labelcref" << '{' << data << '}';
+	} else if (nlabels > 1 && cmd == "pageref" && use_cleveref) {
+		os << "\\labelcpageref" << '{' << data << '}';
+	} else if (nlabels > 1 && cmd == "ref" && use_zref) {
+		os << "\\zcref";
+		if (use_nolink)
+			os << "*";
+		docstring opts = getParam("options");
+		if (use_zref && use_caps) {
+			if (!opts.empty())
+				opts +=", ";
+			opts += "noname";
+		}
+		if (use_zref && !opts.empty())
+			os << "[" << opts << "]";
 		os << '{' << data << '}';
-	} else {
+	} else if (nlabels > 1 && cmd == "pageref" && use_zref) {
+		os << "\\zcref";
+		if (use_nolink)
+			os << "*";
+		docstring opts = getParam("options");
+		if (use_zref && use_caps) {
+			if (!opts.empty())
+				opts +=", ";
+			opts += "noname, page";
+		}
+		if (use_zref && !opts.empty())
+			os << "[" << opts << "]";
+		os << '{' << data << '}';
+	} else if (nlabels == 1) {
 		InsetCommandParams p(REF_CODE, cmd);
 		bool const use_nolink = hyper_on && getParam("nolink") == "true";
 		p["reference"] = getParam("reference");
 		os << p.getCommand(rp, use_nolink);
+	} else {
+		bool first = true;
+		for (auto const & label : labels) {
+			if (!first)
+				os << ", ";
+			os << "\\" << cmd;
+			if (use_nolink)
+				os << "*";
+			os << '{' << label << '}';
+			first = false;
+		}
 	}
 
 	if (rp.inulemcmd > 0)
@@ -431,40 +606,52 @@ docstring InsetRef::displayString(docstring const & ref, string const & cmd,
 		string const & language) const
 
 {
-	InsetLabel const * il = buffer().insetLabel(ref, true);
-	docstring display_string;
+	vector<docstring> display_string;
+	vector<docstring> labels = getVectorFromString(ref);
 
-	if (il && !il->counterValue().empty()) {
-		// Try to construct a label from the InsetLabel we reference.
-		docstring const & value = il->counterValue();
-		if (cmd == "ref")
-			display_string = value;
-		else if (cmd == "vref")
-			// normally, would be "ref on page #", but we have no pages
-			display_string = value;
-		else if (cmd == "pageref" || cmd == "vpageref") {
-			// normally would be "on page #", but we have no pages.
-			display_string = language.empty() ? buffer().B_("elsewhere")
-				: getMessages(language).get("elsewhere");
-		} else if (cmd == "eqref")
-			display_string = '(' + value + ')';
-		else if (cmd == "formatted") {
-			display_string = il->formattedCounter();
-			if (buffer().params().xref_package == "refstyle" && getParam("caps") == "true")
-				capitalize(display_string);
-			// it is hard to see what to do about plurals...
-		}
-		else if (cmd == "nameref")
-			// FIXME We don't really have the ability to handle these
-			// properly in XHTML output yet (bug #8599).
-			// It might not be that hard to do. We have the InsetLabel,
-			// and we can presumably find its paragraph using the TOC.
-			// But the label might be referencing a section, yet not be
-			// in that section. So this is not trivial.
-			display_string = il->prettyCounter();
-	} else
-		display_string = ref;
-	return display_string;
+	bool first = true;
+	for (auto const & label : labels) {
+		InsetLabel const * il = buffer().insetLabel(label, true);
+		if (il && !il->counterValue().empty()) {
+			// Try to construct a label from the InsetLabel we reference.
+			docstring const & value = il->counterValue();
+			if (cmd == "ref")
+				display_string.push_back(value);
+			else if (cmd == "vref")
+				// normally, would be "ref on page #", but we have no pages
+				display_string.push_back(value);
+			else if (cmd == "pageref" || cmd == "vpageref" || cmd == "cpageref") {
+				// normally would be "on page #", but we have no pages.
+				display_string.push_back(language.empty() ? buffer().B_("elsewhere")
+					: getMessages(language).get("elsewhere"));
+			} else if (cmd == "eqref")
+				display_string.push_back('(' + value + ')');
+			else if (cmd == "formatted") {
+				if (first)
+					display_string.push_back(il->formattedCounter());
+				else
+					display_string.push_back(value);
+			}
+			else if (cmd == "nameref")
+				// FIXME We don't really have the ability to handle these
+				// properly in XHTML output yet (bug #8599).
+				// It might not be that hard to do. We have the InsetLabel,
+				// and we can presumably find its paragraph using the TOC.
+				// But the label might be referencing a section, yet not be
+				// in that section. So this is not trivial.
+				display_string.push_back(il->prettyCounter());
+		} else
+			display_string.push_back(ref);
+		first = false;
+	}
+	docstring res = (useRange()) ? getStringFromVector(display_string, from_utf8("–"))
+				     : getStringFromVector(display_string, from_ascii(", "));
+
+	if (cmd == "formatted" && buffer().params().xref_package != "prettyref" && getParam("caps") == "true")
+		return capitalize(res);
+		// it is hard to see what to do about plurals...
+
+	return res;
 }
 
 
@@ -521,8 +708,10 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 		}
 	}
 
-	// register this inset into the buffer reference cache.
-	buffer().addReference(ref, this, it);
+	for (auto const & label : getLabels()) {
+		// register this inset into the buffer reference cache.
+		buffer().addReference(label, this, it);
+	}
 
 	docstring label;
 	string const & cmd = getCmdName();
@@ -558,12 +747,15 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 			label += ref;
 		else {
 			docstring prefix;
-			docstring suffix = split(ref, prefix, ':');
-			if (suffix.empty()) {
-				label += ref;
-			} else {
-				label += suffix;
+			vector <docstring> slrefs;
+			for (auto const & r : getLabels()) {
+				docstring suffix = split(r, prefix, ':');
+				if (suffix.empty())
+					slrefs.push_back(ref);
+				else
+					slrefs.push_back(suffix);
 			}
+			label += getStringFromVector(slrefs);
 		}
 	}
 
@@ -600,38 +792,39 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 			UpdateType, TocBackend & backend) const
 {
 	active_ = output_active;
-	docstring const & label = getParam("reference");
-	if (buffer().insetLabel(label)) {
-		broken_ = !buffer().activeLabel(label) && active_;
+	for (auto const & label : getLabels()) {
+		if (buffer().insetLabel(label)) {
+			broken_ = !buffer().activeLabel(label) && active_;
+			setBroken(broken_);
+			if (broken_ && output_active) {
+				shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
+				toc2->push_back(TocItem(cpit, 0, screenLabel(), output_active));
+			}
+	
+			// Code for display of formatted references
+			string const & cmd = getCmdName();
+			if (cmd != "pageref" && cmd != "vpageref" &&
+				cmd != "vref"    && cmd != "labelonly")
+			{
+				bool const use_formatted_ref = buffer().params().use_formatted_ref;
+				// We will put the value of the reference either into the tooltip
+				// or the screen label, depending.
+				docstring & target = use_formatted_ref ? screen_label_ : tooltip_;
+				docstring const & ref = getParam("reference");
+					target = displayString(ref, cmd);
+			}
+			return;
+		}
+		// It seems that this reference does not point to any valid label.
+		broken_ = true;
 		setBroken(broken_);
-		if (broken_ && output_active) {
-			shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
-			toc2->push_back(TocItem(cpit, 0, screenLabel(), output_active));
-		}
-
-		// Code for display of formatted references
-		string const & cmd = getCmdName();
-		if (cmd != "pageref" && cmd != "vpageref" &&
-			cmd != "vref"    && cmd != "labelonly")
-		{
-			bool const use_formatted_ref = buffer().params().use_formatted_ref;
-			// We will put the value of the reference either into the tooltip
-			// or the screen label, depending.
-			docstring & target = use_formatted_ref ? screen_label_ : tooltip_;
-			docstring const & ref = getParam("reference");
-				target = displayString(ref, cmd);
-		}
-		return;
+		shared_ptr<Toc> toc = backend.toc("label");
+		if (TocBackend::findItem(*toc, 0, label) == toc->end())
+			toc->push_back(TocItem(cpit, 0, label, output_active, true));
+		toc->push_back(TocItem(cpit, 1, screenLabel(), output_active));
+		shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
+		toc2->push_back(TocItem(cpit, 0, screenLabel(), output_active));
 	}
-	// It seems that this reference does not point to any valid label.
-	broken_ = true;
-	setBroken(broken_);
-	shared_ptr<Toc> toc = backend.toc("label");
-	if (TocBackend::findItem(*toc, 0, label) == toc->end())
-		toc->push_back(TocItem(cpit, 0, label, output_active, true));
-	toc->push_back(TocItem(cpit, 1, screenLabel(), output_active));
-	shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
-	toc2->push_back(TocItem(cpit, 0, screenLabel(), output_active));
 }
 
 
@@ -645,11 +838,11 @@ void InsetRef::validate(LaTeXFeatures & features) const
 			features.require("varioref");
 	} else if (cmd == "formatted") {
 		docstring const data = getEscapedLabel(features.runparams());
-		docstring label;
+		vector<docstring> label;
 		docstring prefix;
 		bool const use_caps   = getParam("caps") == "true";
 		docstring const fcmd =
-			getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps);
+			getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps, useRange());
 		if (buffer().masterParams().xref_package == "refstyle") {
 			features.require("refstyle");
 			if (prefix == "cha")
@@ -680,6 +873,16 @@ void InsetRef::validate(LaTeXFeatures & features) const
 			features.require("cleveref");
 		else
 			features.require("nameref");
+	} else if (cmd == "cpageref") {
+		if (buffer().masterParams().xref_package == "cleveref")
+			features.require("cleveref");
+		else if (buffer().masterParams().xref_package == "zref")
+			features.require("zref-clever");
+	} else if (getLabels().size() > 1 && (cmd == "ref" || cmd == "pageref")) {
+		if (buffer().masterParams().xref_package == "cleveref")
+			features.require("cleveref");
+		if (buffer().masterParams().xref_package == "zref")
+			features.require("zref-clever");
 	}
 }
 
@@ -712,11 +915,13 @@ InsetRef::type_info const InsetRef::types[] = {
 
 docstring InsetRef::getTOCString() const
 {
-	docstring const & label = getParam("reference");
-	if (buffer().insetLabel(label))
-		broken_ = !buffer().activeLabel(label) && active_;
-	else 
-		broken_ = active_;
+	broken_ = false;
+	for (auto const & label : getLabels()) {
+		if (buffer().insetLabel(label))
+			broken_ &= !buffer().activeLabel(label) && active_;
+		else 
+			broken_ &= active_;
+	}
 	return (broken_ ? _("BROKEN: ") : docstring()) + toc_string_;
 }
 
@@ -728,6 +933,17 @@ void InsetRef::updateStatistics(Statistics & stats) const
 	string const & lang = buffer().params().language->lang();
 	docstring const refstring = displayString(ref, cmd, lang);
 	stats.update(refstring);
+}
+
+
+bool InsetRef::useRange() const
+{
+	if (getLabels().size() != 2 || getParam("tuple") == "list")
+		return false;
+	string const & cmd = getCmdName();
+	return cmd == "vref" || cmd == "vpageref"
+		|| (cmd == "formatted" && buffer().masterParams().xref_package != "prettyref")
+		|| (cmd == "cpageref");
 }
 
 

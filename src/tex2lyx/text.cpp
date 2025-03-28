@@ -151,28 +151,36 @@ char const * const known_babel_shorthands[] = { "\"", "|", "-", "~", "=", "/",
 
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "prettyref", "nameref", "eqref", "cref", "Cref", "namecref",
- "nameCref", "namecrefs", "nameCrefs", 0 };
+ "nameCref", "namecrefs", "nameCrefs", "cpageref", "labelcref",
+ "labelcpageref", "vrefrange", "vpagerefrange", "crefrange", "Crefrange", 0 };
 
 char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "formatted", "nameref", "eqref", "formatted", "formatted", "nameref",
- "nameref", "nameref", "nameref", 0 };
+ "nameref", "nameref", "nameref", "cpageref", "ref", "pageref",
+  "vref", "vpageref", "formatted", "formatted", 0 };
 
 char const * const known_starref_commands[] = { "ref", "pageref", "vref",
- "vpageref", "nameref", "eqref", "cref", "Cref", 0 };
+ "vpageref", "nameref", "eqref", "cref", "Cref", "cpageref", 0 };
 
 char const * const known_refstyle_commands[] = { "algref", "chapref", "corref",
  "eqref", "enuref", "figref", "fnref", "lemref", "parref", "partref", "propref",
- "secref", "subsecref", "tabref", "thmref", 0 };
+ "secref", "subsecref", "tabref", "thmref",
+"algrangeref", "chaprangeref", "corrangeref",
+ "eqrangeref", "enurangeref", "figrangeref", "fnrangeref", "lemrangeref", "parrangeref", "partrangeref", "proprangeref",
+ "secrangeref", "subsecrangeref", "tabrangeref", "thmrangeref", 0 };
 
 char const * const known_refstyle_prefixes[] = { "alg", "chap", "cor",
  "eq", "enu", "fig", "fn", "lem", "par", "part", "prop",
- "sec", "subsec", "tab", "thm", 0 };
+ "sec", "subsec", "tab", "thm",
+ "alg", "chap", "cor",
+  "eq", "enu", "fig", "fn", "lem", "par", "part", "prop",
+  "sec", "subsec", "tab", "thm", 0 };
 
-char const * const known_zref_commands[] = { "zcref", "zvref",
- "zvpageref", 0 };
+char const * const known_zref_commands[] = { "zcref", "zcpageref", "zvref",
+ "zvpageref", "zvrefrange", "zvpagerefrange", 0 };
 
-char const * const known_coded_zref_commands[] = { "formatted", "vref",
- "vpageref", 0 };
+char const * const known_coded_zref_commands[] = { "formatted", "cpageref", "vref",
+ "vpageref", "vref", "vpageref", 0 };
 
 
 /**
@@ -4578,11 +4586,22 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// remove the grouping
 			if (contains(arg, ' '))
 				arg = ltrim(rtrim(arg, "}"), "{");
+			if (contains(t.cs(), "range")) {
+				string arg2 = p.getArg('{', '}');
+				if (contains(arg2, ' '))
+					arg2 = ltrim(rtrim(arg2, "}"), "{");
+				if (!arg2.empty())
+					arg += "," + arg2;
+			}
 			os << convert_literate_command_inset_arg(arg)
 			   << "\"\n";
 			os << "plural \"" << plural << "\"\n";
 			os << "caps \"" << cap << "\"\n";
 			os << "noprefix \"false\"\n";
+			if (contains(t.cs(), "range"))
+				os << "tuple \"range\"\n";
+			else
+				os << "tuple \"list\"\n";
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("refstyle");
 			continue;
@@ -4605,8 +4624,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				context.check_layout(os);
 				begin_command_inset(os, "ref",
 					known_coded_ref_commands[where - known_ref_commands]);
+				string arg = p.getArg('{', '}');
+				if (contains(t.cs(), "range")) {
+					string arg2 = p.getArg('{', '}');
+					if (!arg2.empty())
+						arg += "," + arg2;
+				}
 				os << "reference \""
-				   << convert_literate_command_inset_arg(p.verbatim_item())
+				   << convert_literate_command_inset_arg(arg)
 				   << "\"\n";
 				if (plural)
 					os << "plural \"true\"\n";
@@ -4621,8 +4646,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << "nolink \"true\"\n";
 				else
 					os << "nolink \"false\"\n";
+				if (contains(t.cs(), "range"))
+					os << "tuple \"range\"\n";
+				else
+					os << "tuple \"list\"\n";
 				end_inset(os);
-				if (t.cs() == "vref" || t.cs() == "vpageref")
+				if (t.cs() == "vref" || t.cs() == "vpageref"
+				    || t.cs() == "vrefrange" || t.cs() == "vpagerefrange")
 					preamble.registerAutomaticallyLoadedPackage("varioref");
 				else if (t.cs() == "prettyref")
 					preamble.registerAutomaticallyLoadedPackage("prettyref");
@@ -4640,6 +4670,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		     && preamble.crossrefPackage() == "zref") {
 			bool starred = false;
 			bool caps = false;
+			bool range = false;
+			bool noname = false;
+			bool page = false;
 			if (p.next_token().asInput() == "*") {
 				starred = true;
 				p.get_token();
@@ -4650,6 +4683,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			for (auto const & opt : opts) {
 				if (opt == "S")
 					caps = true;
+				if (opt == "range")
+					range = true;
+				if (opt == "noname" && t.cs() == "zcref")
+					noname = true;
+				if (opt == "page" && t.cs() == "zcref")
+					page = true;
 				else {
 					if (!first)
 						options += ",";
@@ -4658,10 +4697,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				}
 			}
 			context.check_layout(os);
-			begin_command_inset(os, "ref",
-				known_coded_zref_commands[where - known_zref_commands]);
+			string lyxname = known_coded_zref_commands[where - known_zref_commands];
+			if (noname) 
+				lyxname = (page) ? "pageref" : "ref";
+			begin_command_inset(os, "ref", lyxname);
+			string arg = p.getArg('{', '}');
+			if (contains(t.cs(), "range")) {
+				range = true;
+				string arg2 = p.getArg('{', '}');
+				if (!arg2.empty())
+					arg += "," + arg2;
+			}
 			os << "reference \""
-			   << convert_literate_command_inset_arg(p.verbatim_item())
+			   << convert_literate_command_inset_arg(arg)
 			   << "\"\n";
 			os << "plural \"false\"\n";
 			if (caps)
@@ -4673,6 +4721,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "nolink \"true\"\n";
 			else
 				os << "nolink \"false\"\n";
+			if (range)
+				os << "tuple \"range\"\n";
+			else
+				os << "tuple \"list\"\n";
 			end_inset(os);
 			if (t.cs() == "zvref" || t.cs() == "zvpageref")
 				preamble.registerAutomaticallyLoadedPackage("zref-vario");

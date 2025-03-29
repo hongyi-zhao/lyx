@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-27 20:38+0100\n"
-"PO-Revision-Date: 2025-03-27 19:47+0000\n"
+"POT-Creation-Date: 2025-03-29 11:07+0100\n"
+"PO-Revision-Date: 2025-03-29 10:27+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2609,9 +2609,9 @@ msgstr "&Pevný Dátum:"
 msgid "Here you can enter a fixed date (in ISO format: YYYY-MM-DD)"
 msgstr "Tu môžte vložiť pevný dátum (vo formáte ISO: YYYY-MM-DD)"
 
-#: src/frontends/qt/ui/InfoUi.ui:70
+#: src/frontends/qt/ui/InfoUi.ui:70 src/frontends/qt/ui/RefUi.ui:464
 msgid "&Custom:"
-msgstr "V&lastné:"
+msgstr "Vlast&né:"
 
 #: src/frontends/qt/ui/InsetParamsUi.ui:17
 msgid "Inset Parameter Configuration"
@@ -5442,13 +5442,9 @@ msgstr "Zo&skupiť"
 msgid "Available &Labels:"
 msgstr "Dostupné &štítky:"
 
-#: src/frontends/qt/ui/RefUi.ui:188
-msgid "Sele&cted Label:"
-msgstr "V&ybraný štítok:"
-
-#: src/frontends/qt/ui/RefUi.ui:201
-msgid "Select a label from the list above or enter a label manually"
-msgstr "Vyberte štítok z listiny hore alebo vložte štítok manuálne"
+#: src/frontends/qt/ui/RefUi.ui:103
+msgid "Selected &Labels:"
+msgstr "V&ybrané štítky:"
 
 #: src/frontends/qt/GuiRef.cpp:403 src/frontends/qt/ui/RefUi.ui:214
 msgid "Jump to the selected label"
@@ -5466,6 +5462,10 @@ msgstr "Š&týl referencie:"
 msgid "Adjust the style of the cross-reference"
 msgstr "Upravte štýl krížovej referencie"
 
+#: src/frontends/qt/ui/RefUi.ui:376
+msgid "Handle t&wo labels as:"
+msgstr "&Dva štítky spracovať ako:"
+
 #: src/frontends/qt/ui/RefUi.ui:251 src/frontends/qt/GuiRef.cpp:317
 msgid "<reference>"
 msgstr "<referencia>"
@@ -5477,6 +5477,10 @@ msgstr "(<referencia>)"
 #: src/frontends/qt/ui/RefUi.ui:261 src/frontends/qt/GuiRef.cpp:319
 msgid "<page>"
 msgstr "<strana>"
+
+#: src/frontends/qt/GuiRef.cpp:508
+msgid "page <page>"
+msgstr "strana <strana>"
 
 #: src/frontends/qt/ui/RefUi.ui:266 src/frontends/qt/GuiRef.cpp:320
 msgid "on page <page>"
@@ -5530,9 +5534,9 @@ msgstr "Neukazovať časť štítka pred \":\""
 msgid "No Prefi&x"
 msgstr "Bez prefi&xu"
 
-#: src/frontends/qt/ui/RefUi.ui:331
+#: src/frontends/qt/ui/RefUi.ui:442
 msgid "No H&yperlink"
-msgstr "Bez &hyperlinky"
+msgstr "&Bez hyperlinky"
 
 #: src/frontends/qt/ui/RefUi.ui:347 lib/ui/stdcontext.inc:126
 msgid "No Prefix"
@@ -37549,9 +37553,25 @@ msgstr "Abecedne (Nerozlišujúc veľké a malé písmená)"
 msgid "Alphabetically (Case-Sensitive)"
 msgstr "Abecedne (Rozlišujúc veľké a malé písmená)"
 
+#: src/frontends/qt/GuiRef.cpp:79
+msgid "list (1 and 2)"
+msgstr "zoznam (1 a 2)"
+
+#: src/frontends/qt/GuiRef.cpp:80
+msgid "range (1 to 2)"
+msgstr "rozsah (1 až 2)"
+
 #: src/frontends/qt/GuiRef.cpp:74
 msgid "Update the label list"
 msgstr "Aktualizovať prehľad štítkov"
+
+#: src/frontends/qt/GuiRef.cpp:216
+msgid "Unsupported setting!"
+msgstr "Nepodporované nastavenie!"
+
+#: src/frontends/qt/GuiRef.cpp:217
+msgid "The reference type you selected allows for maximally two target labels."
+msgstr "Typ referencie, ktorý ste vybrali, umožňuje maximálne dva štítky."
 
 #: src/frontends/qt/GuiRef.cpp:395
 msgid "&Go Back"
@@ -41568,6 +41588,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Select a label from the list above or enter a label manually"
+#~ msgstr "Vyberte štítok z listiny hore alebo vložte štítok manuálne"
 
 #~ msgid "Color name"
 #~ msgstr "Názov zafarbenej vložky"
@@ -47271,3 +47294,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Capitalized"
 #~ msgstr "Prvé veľké"
+
+#~ msgid "Sele&cted Label:"
+#~ msgstr "V&ybraný štítok:"

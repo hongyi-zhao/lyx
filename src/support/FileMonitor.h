@@ -24,7 +24,6 @@
 
 #include <QFileSystemWatcher>
 #include <QObject>
-#include <QPointer>
 
 
 namespace lyx {

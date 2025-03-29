@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>636</width>
+    <width>656</width>
     <height>439</height>
    </rect>
   </property>
@@ -106,13 +106,10 @@
           </size>
          </property>
          <property name="toolTip">
-          <string>Enter a color name to search</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <string>Enter a string to filter colors</string>
          </property>
          <property name="placeholderText">
-          <string>Filter by object/element name</string>
+          <string>Filter colors</string>
          </property>
          <property name="clearButtonEnabled">
           <bool>true</bool>

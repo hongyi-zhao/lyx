@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-29 11:07+0100\n"
-"PO-Revision-Date: 2025-03-29 10:27+0000\n"
+"POT-Creation-Date: 2025-03-30 09:35+0200\n"
+"PO-Revision-Date: 2025-03-30 08:35+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3915,6 +3915,14 @@ msgstr "Okamžite použiť zmenenú tému farieb"
 msgid "Update &immediately"
 msgstr "O&kamžite použiť"
 
+#: src/frontends/qt/ui/PrefColorsUi.ui:109
+msgid "Enter a string to filter colors"
+msgstr "Zadajte reťazec na filtrovanie prvkov"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:112
+msgid "Filter colors"
+msgstr "Filter prvkov"
+
 #: src/frontends/qt/ui/PrefColorsUi.ui:76
 msgid "&Undo"
 msgstr "Sp&äť"
@@ -3922,14 +3930,6 @@ msgstr "Sp&äť"
 #: src/frontends/qt/ui/PrefColorsUi.ui:95
 msgid "Re&do"
 msgstr "Opä&ť"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:142
-msgid "Enter a color name to search"
-msgstr "Zadajte časť názvu zafarbeného prvku na vyhľadávanie"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:115
-msgid "Filter by object/element name"
-msgstr "Filtrovať podľa názvu objektu/prvku"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:237
 msgid "Remove a selected color theme"
@@ -41588,6 +41588,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Enter a color name to search"
+#~ msgstr "Zadajte časť názvu zafarbeného prvku na vyhľadávanie"
+
+#~ msgid "Filter by object/element name"
+#~ msgstr "Filtrovať podľa názvu objektu/prvku"
 
 #~ msgid "Select a label from the list above or enter a label manually"
 #~ msgstr "Vyberte štítok z listiny hore alebo vložte štítok manuálne"

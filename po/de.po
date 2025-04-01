@@ -90,20 +90,20 @@
 #   wrap                 -> umflossenes Gleitobjekt
 #
 # SPDX-FileCopyrightText: 2009-2023, 2024, 2025 Jürgen Spitzmüller <spitz@lyx.org>
-# Juergen Spitzmueller <spitz@lyx.org>, 2023, 2024.
+# Juergen Spitzmueller <spitz@lyx.org>, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-28 14:46+0100\n"
-"PO-Revision-Date: 2025-03-28 14:47+0100\n"
+"POT-Creation-Date: 2025-04-01 15:44+0200\n"
+"PO-Revision-Date: 2025-04-01 15:46+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 18.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt/ui/AboutUi.ui:27
@@ -794,7 +794,7 @@ msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
 #: src/frontends/qt/ui/BranchesUi.ui:74 src/frontends/qt/ui/ColorUi.ui:251
-#: src/frontends/qt/ui/IndicesUi.ui:169 src/frontends/qt/ui/PrefColorsUi.ui:250
+#: src/frontends/qt/ui/IndicesUi.ui:169 src/frontends/qt/ui/PrefColorsUi.ui:247
 #: src/Buffer.cpp:4852 src/Buffer.cpp:4865
 msgid "&Remove"
 msgstr "&Entfernen"
@@ -821,7 +821,7 @@ msgstr "Füge einen neuen Zweig zur Liste hinzu"
 
 #: src/frontends/qt/ui/BranchesUi.ui:119 src/frontends/qt/ui/CitationUi.ui:146
 #: src/frontends/qt/ui/ColorUi.ui:318 src/frontends/qt/ui/IndicesUi.ui:135
-#: src/frontends/qt/ui/PrefColorsUi.ui:273 src/frontends/qt/ui/RefUi.ui:145
+#: src/frontends/qt/ui/PrefColorsUi.ui:270 src/frontends/qt/ui/RefUi.ui:145
 #: src/CutAndPaste.cpp:458
 msgid "&Add"
 msgstr "&Hinzufügen"
@@ -4073,60 +4073,60 @@ msgid "Update &immediately"
 msgstr "&Sofort aktualisieren"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:109
-msgid "Enter a color name to search"
-msgstr "Geben einen Farbnamen für die Suche ein"
+msgid "Enter a string to filter colors"
+msgstr "Geben Sie eine Zeichenkette zum Filtern der Farben ein"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:115
-msgid "Filter by object/element name"
-msgstr "Nach Objekt-/Elementname filtern"
+#: src/frontends/qt/ui/PrefColorsUi.ui:112
+msgid "Filter colors"
+msgstr "Filtere Farben"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:141 lib/ui/stdtoolbars.inc:87
+#: src/frontends/qt/ui/PrefColorsUi.ui:138 lib/ui/stdtoolbars.inc:87
 #: src/BufferView.cpp:1573
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:144
+#: src/frontends/qt/ui/PrefColorsUi.ui:141
 msgid "&Undo"
 msgstr "&Rückgängig"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:160 lib/ui/stdtoolbars.inc:88
+#: src/frontends/qt/ui/PrefColorsUi.ui:157 lib/ui/stdtoolbars.inc:88
 #: src/BufferView.cpp:1594
 msgid "Redo"
 msgstr "Wiederholen"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:163
+#: src/frontends/qt/ui/PrefColorsUi.ui:160
 msgid "Re&do"
 msgstr "&Wiederherstellen"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:192
+#: src/frontends/qt/ui/PrefColorsUi.ui:189
 msgid "Reset all colors to theme"
 msgstr "Alle Farben auf die Einstellungen des Thema zurücksetzen"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:195
+#: src/frontends/qt/ui/PrefColorsUi.ui:192
 msgid "Reset A&ll"
 msgstr "&Alle zurücksetzen"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:247
+#: src/frontends/qt/ui/PrefColorsUi.ui:244
 msgid "Remove a selected color theme"
 msgstr "Das ausgewählte Farbthema entfernen"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:260
+#: src/frontends/qt/ui/PrefColorsUi.ui:257
 msgid "Other menus to handle themes"
 msgstr "Weitere themenbezogene Aktionen"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:263
+#: src/frontends/qt/ui/PrefColorsUi.ui:260
 msgid "&More..."
 msgstr "&Mehr..."
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:270
+#: src/frontends/qt/ui/PrefColorsUi.ui:267
 msgid "Add the current color set as a theme"
 msgstr "Aktuelle Farbeinstellungen als Farbthema speichern"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:307
+#: src/frontends/qt/ui/PrefColorsUi.ui:304
 msgid "&Color Settings:"
 msgstr "&Farbeinstellungen:"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:320
+#: src/frontends/qt/ui/PrefColorsUi.ui:317
 msgid "&Themes:"
 msgstr "&Themen:"
 
@@ -5617,7 +5617,7 @@ msgstr "&Verfügbare Marken:"
 msgid "Selected &Labels:"
 msgstr "Ausgewählte &Marken:"
 
-#: src/frontends/qt/ui/RefUi.ui:129 src/insets/InsetRef.cpp:911
+#: src/frontends/qt/ui/RefUi.ui:129 src/insets/InsetRef.cpp:935
 msgid "Label"
 msgstr "Marke"
 
@@ -8050,7 +8050,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdinsets.inc:767 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
-#: src/insets/InsetRef.cpp:904
+#: src/insets/InsetRef.cpp:928
 msgid "Standard"
 msgstr "Standard"
 
@@ -12900,7 +12900,7 @@ msgstr ""
 "Gleichungsnummer die Abschnittsnummer voran, bspw. '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17 lib/layouts/scrbook.layout:30
-#: lib/layouts/stdcounters.inc:86 src/insets/InsetRef.cpp:905
+#: lib/layouts/stdcounters.inc:86 src/insets/InsetRef.cpp:929
 #: src/mathed/InsetMathRef.cpp:392
 msgid "Equation"
 msgstr "Gleichung"
@@ -13212,7 +13212,7 @@ msgid "Size the photo is resized to"
 msgstr "Ausgabegröße des Bildes"
 
 #: lib/layouts/europecv.layout:185 src/frontends/qt/GuiDocument.cpp:126
-#: src/insets/InsetRef.cpp:906
+#: src/insets/InsetRef.cpp:930
 msgid "Page"
 msgstr "Seite"
 
@@ -18354,6 +18354,34 @@ msgstr "Kapitel \\thechapter"
 #: lib/layouts/stdsections.inc:60
 msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
+
+#: lib/layouts/stdspecialchars.inc:8 lib/ui/stdmenus.inc:467
+msgid "Ligature Break|k"
+msgstr "Ligaturtrenner|r"
+
+#: lib/layouts/stdspecialchars.inc:17 lib/ui/stdmenus.inc:418
+msgid "End of Sentence|E"
+msgstr "Satzendepunkt|S"
+
+#: lib/layouts/stdspecialchars.inc:26 lib/ui/stdmenus.inc:417
+msgid "Ellipsis|i"
+msgstr "Fortsetzungspunkte|F"
+
+#: lib/layouts/stdspecialchars.inc:36 lib/ui/stdmenus.inc:425
+msgid "Menu Separator|M"
+msgstr "Menütrenner|M"
+
+#: lib/layouts/stdspecialchars.inc:49 lib/ui/stdmenus.inc:466
+msgid "Hyphenation Point|H"
+msgstr "Trennmöglichkeit|ö"
+
+#: lib/layouts/stdspecialchars.inc:56 lib/ui/stdmenus.inc:423
+msgid "Breakable Slash|a"
+msgstr "Umbruchfähiger Schrägstrich|ä"
+
+#: lib/layouts/stdspecialchars.inc:65
+msgid "Protected Hyphen|y"
+msgstr "Geschützter Trennstrich|T"
 
 #: lib/layouts/stdstarsections.inc:109
 msgid "Subparagraph*"
@@ -24682,14 +24710,6 @@ msgstr "Eingebettete Vorschau|i"
 msgid "Symbols...|b"
 msgstr "Symbole...|b"
 
-#: lib/ui/stdmenus.inc:417
-msgid "Ellipsis|i"
-msgstr "Fortsetzungspunkte|F"
-
-#: lib/ui/stdmenus.inc:418
-msgid "End of Sentence|E"
-msgstr "Satzendepunkt|S"
-
 #: lib/ui/stdmenus.inc:419
 msgid "Plain Double Quotation Mark|Q"
 msgstr "Nicht-typographisches doppeltes Anführungszeichen|N"
@@ -24706,17 +24726,9 @@ msgstr "Inneres Anführungszeichen|I"
 msgid "Non-Breaking Hyphen|y"
 msgstr "Geschützter Trennstrich|T"
 
-#: lib/ui/stdmenus.inc:423
-msgid "Breakable Slash|a"
-msgstr "Umbruchfähiger Schrägstrich|ä"
-
 #: lib/ui/stdmenus.inc:424
 msgid "Visible Space|V"
 msgstr "Sichtbares Leerzeichen|L"
-
-#: lib/ui/stdmenus.inc:425
-msgid "Menu Separator|M"
-msgstr "Menütrenner|M"
 
 #: lib/ui/stdmenus.inc:426
 msgid "Phonetic Symbols|P"
@@ -24817,14 +24829,6 @@ msgstr "Vertikaler Abstand...|V"
 #: lib/ui/stdmenus.inc:464
 msgid "Phantom|m"
 msgstr "Phantom|m"
-
-#: lib/ui/stdmenus.inc:466
-msgid "Hyphenation Point|H"
-msgstr "Trennmöglichkeit|ö"
-
-#: lib/ui/stdmenus.inc:467
-msgid "Ligature Break|k"
-msgstr "Ligaturtrenner|r"
 
 #: lib/ui/stdmenus.inc:468
 msgid "Optional Line Break|B"
@@ -30520,12 +30524,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 1"
-msgstr "Spiel 1"
-
-#: lib/examples/Articles:0
 msgid "Game 2"
 msgstr "Spiel 2"
+
+#: lib/examples/Articles:0
+msgid "Game 1"
+msgstr "Spiel 1"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -30541,52 +30545,52 @@ msgid "External Material"
 msgstr "Externes Material"
 
 #: lib/examples/Articles:0
-msgid "Itemize Bullets"
-msgstr "Auflistungszeichen"
-
-#: lib/examples/Articles:0
-msgid "Minted File Listing"
-msgstr "Minted-Programmlistings (Dateien)"
-
-#: lib/examples/Articles:0
-msgid "Minted Listings"
-msgstr "Minted-Programmlistings"
+msgid "Instant Preview"
+msgstr "Eingebettete Vorschau"
 
 #: lib/examples/Articles:0
 msgid "XY-Figure"
 msgstr "XY-Figure"
 
 #: lib/examples/Articles:0
-msgid "Instant Preview"
-msgstr "Eingebettete Vorschau"
+msgid "Minted File Listing"
+msgstr "Minted-Programmlistings (Dateien)"
 
 #: lib/examples/Articles:0
 msgid "Feynman Diagrams"
 msgstr "Feynman-Diagramme"
 
 #: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "Auflistungszeichen"
+
+#: lib/examples/Articles:0
 msgid "XY-Pic"
 msgstr "XY-Pic"
+
+#: lib/examples/Articles:0
+msgid "Minted Listings"
+msgstr "Minted-Programmlistings"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
 msgstr "Grafiken und Einfügungen"
 
 #: lib/examples/Articles:0
-msgid "Localization Test (for Developers)"
-msgstr "Übersetzungstest (für Entwickler)"
-
-#: lib/examples/Articles:0
-msgid "Mixing Japanese with other Languages (with CJKutf8)"
-msgstr "Japanisch mit anderen Sprachen kombinieren (mit CJKutf8)"
+msgid "Writing Armenian"
+msgstr "Armenisch schreiben"
 
 #: lib/examples/Articles:0
 msgid "Mixing Japanese with other Languages (with platex)"
 msgstr "Japanisch mit anderen Sprachen kombinieren (mit platex)"
 
 #: lib/examples/Articles:0
-msgid "Writing Armenian"
-msgstr "Armenisch schreiben"
+msgid "Mixing Japanese with other Languages (with CJKutf8)"
+msgstr "Japanisch mit anderen Sprachen kombinieren (mit CJKutf8)"
+
+#: lib/examples/Articles:0
+msgid "Localization Test (for Developers)"
+msgstr "Übersetzungstest (für Entwickler)"
 
 #: lib/examples/Articles:0
 msgid "Language Support"
@@ -30597,12 +30601,12 @@ msgid "Serial Letter 1"
 msgstr "Serienbrief 1"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 2"
-msgstr "Serienbrief 2"
-
-#: lib/examples/Articles:0
 msgid "Serial Letter 3"
 msgstr "Serienbrief 3"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 2"
+msgstr "Serienbrief 2"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Captions"
@@ -30617,20 +30621,16 @@ msgid "Noweb Listerrors"
 msgstr "Noweb-Fehlerbericht"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "H- und P-Sätze"
-
-#: lib/examples/Articles:0
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
+
+#: lib/examples/Articles:0
+msgid "Hazard and Precautionary Statements"
+msgstr "H- und P-Sätze"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1865
 msgid "Modules"
 msgstr "Module"
-
-#: lib/examples/Articles:0
-msgid "Beamer (Complex)"
-msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
 msgid "Foils"
@@ -30639,6 +30639,10 @@ msgstr "Foils"
 #: lib/examples/Articles:0
 msgid "Foils Landslide"
 msgstr "Foils (Querformat)"
+
+#: lib/examples/Articles:0
+msgid "Beamer (Complex)"
+msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
@@ -30653,44 +30657,76 @@ msgid "IEEE Transactions Journal"
 msgstr "IEEE Transactions Journal"
 
 #: lib/examples/Articles:0
-msgid "Hebrew Article (KOMA-Script)"
-msgstr "Hebräischer Aufsatz (KOMA-Script)"
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "Hebräischer Aufsatz (KOMA-Script)"
 
 #: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
 msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
 #: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
-
-#: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Hauptdatei"
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "01 Dedication"
 msgstr "01 Widmung"
 
 #: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Hauptdatei"
+
+#: lib/examples/Articles:0
+msgid "08 Appendix"
+msgstr "08 Anhang"
+
+#: lib/examples/Articles:0
 msgid "02 Foreword"
 msgstr "02 Vorwort"
+
+#: lib/examples/Articles:0
+msgid "07 Chapter"
+msgstr "07 Kapitel"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11 Literaturverzeichnis"
 
 #: lib/examples/Articles:0
 msgid "03 Preface"
 msgstr "03 Vorwort"
 
 #: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "09 Glossary"
+msgstr "09 Glossar"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06 Teil"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Lösungen"
+
+#: lib/examples/Articles:0
 msgid "04 Acknowledgements"
 msgstr "04 Danksagungen"
 
 #: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste der Mitwirkenden"
+msgid "10 Glossary"
+msgstr "10 Glossar"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
 
 #: lib/examples/Articles:0
 msgid "06 Acronym"
@@ -30701,44 +30737,12 @@ msgid "07 Part"
 msgstr "07 Teil"
 
 #: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Autor"
-
-#: lib/examples/Articles:0
 msgid "09 Appendix"
 msgstr "09 Anhang"
 
 #: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Literaturverzeichnis"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Akronyme"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Teil"
-
-#: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Kapitel"
-
-#: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08 Anhang"
-
-#: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Glossar"
-
-#: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
+msgid "05 Contributor List"
+msgstr "05 Liste der Mitwirkenden"
 
 #: lib/examples/Articles:0
 msgid "Simple"
@@ -30749,16 +30753,16 @@ msgid "Colored"
 msgstr "Farbig"
 
 #: lib/examples/Articles:0
+msgid "Main File"
+msgstr "Hauptdatei"
+
+#: lib/examples/Articles:0
 msgid "Chapter 1"
 msgstr "Kapitel 1"
 
 #: lib/examples/Articles:0
 msgid "Chapter 2"
 msgstr "Kapitel 2"
-
-#: lib/examples/Articles:0
-msgid "Main File"
-msgstr "Hauptdatei"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
@@ -30774,12 +30778,12 @@ msgstr ""
 "Japanischer Aufsatz (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
 
 #: lib/examples/Articles:0
-msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
+msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
 msgstr ""
 "Japanisches Buch (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
 
 #: lib/examples/Articles:0
-msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
+msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
 msgstr ""
 "Japanisches Buch (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
 
@@ -30884,7 +30888,7 @@ msgstr ""
 "Bitte installieren Sie beide Pakete oder definieren Sie \\lyxadded und "
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
-#: src/Buffer.cpp:1100 src/BufferParams.cpp:481 src/frontends/qt/GuiLog.cpp:261
+#: src/Buffer.cpp:1100 src/BufferParams.cpp:483 src/frontends/qt/GuiLog.cpp:261
 #: src/insets/InsetIndex.cpp:1294
 msgid "Index"
 msgstr "Stichwortverzeichnis"
@@ -31530,7 +31534,7 @@ msgstr ""
 "wurde von der Festplatte gelöscht!\n"
 "Sie wird nun als modifiziert markiert."
 
-#: src/BufferParams.cpp:539
+#: src/BufferParams.cpp:541
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
 "the AMS math toolbars are inserted into formulas"
@@ -31538,7 +31542,7 @@ msgstr ""
 "Die AMS-LaTeX-Pakete werden nur verwendet, wenn Symbole der AMS-"
 "Werkzeugleisten in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:541
+#: src/BufferParams.cpp:543
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
@@ -31546,7 +31550,7 @@ msgstr ""
 "Das AMS-Symb-Paket wird nur verwendet, wenn Symbole der AMS-Werkzeugleisten "
 "in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:543
+#: src/BufferParams.cpp:545
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
@@ -31554,7 +31558,7 @@ msgstr ""
 "Das LaTeX-Paket 'cancel' wird nur verwendet, wenn der Befehl \\cancel in "
 "Formeln eingefügt wird"
 
-#: src/BufferParams.cpp:545
+#: src/BufferParams.cpp:547
 msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
@@ -31562,7 +31566,7 @@ msgstr ""
 "Das LaTeX-Paket 'esint' wird nur verwendet, wenn spezielle Integralzeichen "
 "in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:547
+#: src/BufferParams.cpp:549
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
@@ -31570,7 +31574,7 @@ msgstr ""
 "Das LaTeX-Paket 'mathdots' wird nur verwendet, wenn der Befehl \\iddots in "
 "Formeln eingefügt wird"
 
-#: src/BufferParams.cpp:549
+#: src/BufferParams.cpp:551
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
 "inserted into formulas"
@@ -31578,7 +31582,7 @@ msgstr ""
 "Das LaTeX-Paket mathtools wird nur verwendet, wenn mathematische Relationen "
 "in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:551
+#: src/BufferParams.cpp:553
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
@@ -31586,7 +31590,7 @@ msgstr ""
 "Das LaTeX-Paket 'mhchem' wird nur verwendet, wenn entweder der Befehl \\ce "
 "oder \\cf in Formeln eingefügt wird"
 
-#: src/BufferParams.cpp:553
+#: src/BufferParams.cpp:555
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
 "subscript is inserted into formulas"
@@ -31594,7 +31598,7 @@ msgstr ""
 "Das LaTeX-Paket 'stackrel' wird nur verwendet, wenn der Befehl \\stackrel "
 "mit Tiefstellung in Formeln eingefügt wird"
 
-#: src/BufferParams.cpp:555
+#: src/BufferParams.cpp:557
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
 "symbol font for theoretical computer science are inserted into formulas"
@@ -31602,7 +31606,7 @@ msgstr ""
 "Das Stmaryrd-Paket wird nur verwendet, wenn Symbole des St.-Mary's-Road-"
 "Symbolzeichensatzes für theoretische Informatik in Formeln eingefügt werden"
 
-#: src/BufferParams.cpp:557
+#: src/BufferParams.cpp:559
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
 "decoration 'utilde'"
@@ -31610,7 +31614,7 @@ msgstr ""
 "Das LaTeX-Paket undertilde wird nur verwendet, wenn die Mathe Rahmen-"
 "Verzierung 'utilde' verwendet wird"
 
-#: src/BufferParams.cpp:823
+#: src/BufferParams.cpp:825
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -31633,7 +31637,7 @@ msgstr ""
 "In Abschnitt 3.1.2.2 des Benutzerhandbuchs\n"
 "finden Sie weitere Hilfe."
 
-#: src/BufferParams.cpp:832
+#: src/BufferParams.cpp:834
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
@@ -40002,8 +40006,8 @@ msgstr "Kein Literaturverzeichnis definiert!"
 msgid "+ %1$d more entries."
 msgstr "+ %1$d weitere Einträge."
 
-#: src/insets/InsetCitation.cpp:589 src/insets/InsetRef.cpp:787
-#: src/insets/InsetRef.cpp:925
+#: src/insets/InsetCitation.cpp:589 src/insets/InsetRef.cpp:811
+#: src/insets/InsetRef.cpp:949
 msgid "BROKEN: "
 msgstr "UNGÜLTIG: "
 
@@ -41206,55 +41210,67 @@ msgstr "%1$sText"
 msgid "text%1$s"
 msgstr "Text%1$s"
 
-#: src/insets/InsetRef.cpp:625
+#: src/insets/InsetRef.cpp:371 src/insets/InsetRef.cpp:545
+msgid "[[reference 1]] and [[reference2]]"
+msgstr " und "
+
+#: src/insets/InsetRef.cpp:373 src/insets/InsetRef.cpp:547
+msgid "[[reference 1, ...]], and [[reference n]]"
+msgstr " und "
+
+#: src/insets/InsetRef.cpp:375 src/insets/InsetRef.cpp:549
+msgid "[[reference 1]], [[reference2, ...]]"
+msgstr ", "
+
+#: src/insets/InsetRef.cpp:649
 msgid "elsewhere"
 msgstr "woanders"
 
-#: src/insets/InsetRef.cpp:904
+#: src/insets/InsetRef.cpp:928
 msgid "Ref"
 msgstr "Querverweis"
 
-#: src/insets/InsetRef.cpp:905
+#: src/insets/InsetRef.cpp:929
 msgid "EqRef"
 msgstr "(Querverweis)"
 
-#: src/insets/InsetRef.cpp:906 src/mathed/InsetMathRef.cpp:393
+#: src/insets/InsetRef.cpp:930 src/mathed/InsetMathRef.cpp:393
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/InsetRef.cpp:907 src/mathed/InsetMathRef.cpp:394
+#: src/insets/InsetRef.cpp:931 src/mathed/InsetMathRef.cpp:394
 msgid "Textual Page Number"
 msgstr "Seitennummer in Textform"
 
-#: src/insets/InsetRef.cpp:907
+#: src/insets/InsetRef.cpp:931
 msgid "TextPage"
 msgstr "TextSeite"
 
-#: src/insets/InsetRef.cpp:908 src/mathed/InsetMathRef.cpp:395
+#: src/insets/InsetRef.cpp:932 src/mathed/InsetMathRef.cpp:395
 msgid "Standard+Textual Page"
 msgstr "Standard+Seite in Textform"
 
-#: src/insets/InsetRef.cpp:908
+#: src/insets/InsetRef.cpp:932
 msgid "Ref+Text"
 msgstr "Querverweis+Text"
 
-#: src/insets/InsetRef.cpp:909 src/mathed/InsetMathRef.cpp:397
+#: src/insets/InsetRef.cpp:933 src/mathed/InsetMathRef.cpp:397
 msgid "Reference to Name"
 msgstr "Referenz auf Namen"
 
-#: src/insets/InsetRef.cpp:909
+#: src/insets/InsetRef.cpp:933
 msgid "NameRef"
 msgstr "Namen-Querverweis"
 
-#: src/insets/InsetRef.cpp:910
+#: src/insets/InsetRef.cpp:934
 msgid "Formatted"
 msgstr "Formatiert"
 
-#: src/insets/InsetRef.cpp:910
+#: src/insets/InsetRef.cpp:934
 msgid "Format"
 msgstr "Format"
 
-#: src/insets/InsetRef.cpp:911 src/mathed/InsetMathRef.cpp:398
+#: src/insets/InsetRef.cpp:935 src/mathed/InsetMathRef.cpp:398
 msgid "Label Only"
 msgstr "Nur Marke"
 
@@ -42164,6 +42180,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "Enter a color name to search"
+#~ msgstr "Geben einen Farbnamen für die Suche ein"
+
+#~ msgid "Filter by object/element name"
+#~ msgstr "Nach Objekt-/Elementname filtern"
+
 #~ msgid "Search color"
 #~ msgstr "Suche Farbe"
 
@@ -42390,9 +42412,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Hebrew Letter"
 #~ msgstr "Hebräischer Brief"
-
-#~ msgid "Protected Hyphen|y"
-#~ msgstr "Geschützter Trennstrich|T"
 
 #~ msgid "Lan&guage:"
 #~ msgstr "Sprac&he:"
@@ -42655,9 +42674,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Filter:"
 #~ msgstr "Filter:"
-
-#~ msgid "Enter string to filter contents"
-#~ msgstr "Geben Sie eine Zeichenkette zum Filtern ein"
 
 #~ msgid "Toggle math toolbar"
 #~ msgstr "Mathe-Werkzeugleiste an/aus"

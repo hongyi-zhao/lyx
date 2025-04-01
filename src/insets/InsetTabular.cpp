@@ -1160,6 +1160,7 @@ idx_type Tabular::numberOfCellsInRow(row_type const row) const
 	for (col_type c = 0; c < ncols(); ++c)
 		if (cell_info[row][c].multicolumn != Tabular::CELL_PART_OF_MULTICOLUMN)
 			++result;
+	LATTEST(result > 0);
 	return result;
 }
 
@@ -7138,6 +7139,9 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 
 void InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
 {
+	// Tell Coverity Scan that a tabular is never empty
+	LATTEST(tabular.nrows() > 0 && tabular.ncols() > 0);
+
 	cur.recordUndoInset(this);
 
 	istringstream is(argument);

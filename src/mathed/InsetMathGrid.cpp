@@ -316,12 +316,16 @@ char InsetMathGrid::verticalAlignment() const
 
 col_type InsetMathGrid::ncols() const
 {
+	// the array is never empty and there is an extra column for last vlines.
+	LATTEST(colinfo_.size() > 1);
 	return colinfo_.size() - 1;
 }
 
 
 row_type InsetMathGrid::nrows() const
 {
+	// the array is never empty and there is an extra row for last hlines.
+	LATTEST(rowinfo_.size() > 1);
 	return rowinfo_.size() - 1;
 }
 

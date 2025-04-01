@@ -321,7 +321,6 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	if (rp.inulemcmd > 0)
 		os << "\\mbox{";
 
-	bool first = true;
 	if (buffer().masterParams().xref_package == "refstyle" && cmd == "eqref") {
 		// we advertise this as printing "(n)", so we'll do that, at least
 		// for refstyle, since refstlye's own \eqref prints, by default,
@@ -334,12 +333,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	} else if (cmd == "formatted") {
 		vector<docstring> label;
 		docstring prefix;
-		docstring const fcmd =
-			getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps, useRange());
-		if (!first && buffer().masterParams().xref_package == "prettyref")
-			os << from_ascii("\\ref");
-		else
-			os << fcmd;
+		os << getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps, useRange());;
 		if ((use_cleveref || use_zref) && use_nolink)
 			os << "*";
 		if (buffer().masterParams().xref_package == "refstyle" && use_plural)
@@ -360,21 +354,33 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 				os << "[" << opts << "]";
 		}
 		os << "{";
-		for (auto const & l : label) {
+		bool first = true;
+		vector<docstring>::const_iterator it = labels.begin();
+		vector<docstring>::const_iterator en = labels.end();
+		for (size_t i = 0; it != en; ++it, ++i) {
 			if (!first) {
-				if (buffer().masterParams().xref_package == "prettyref")
-					os << "}, \\ref{";
-				else if (useRange())
+				if (buffer().masterParams().xref_package == "prettyref") {
+					if (!first) {
+						os << "}";
+						if (labels.size() == 2)
+							os << buffer().B_("[[reference 1]] and [[reference2]]");
+						else if (i > 0 && i == labels.size() - 1)
+							os << buffer().B_("[[reference 1, ...]], and [[reference n]]");
+						else
+							os << buffer().B_("[[reference 1]], [[reference2, ...]]");
+					}
+					os << "\\ref{";
+				} else if (useRange())
 					os << "}{";
 				else
 					os << ",";
 			}
-			if (contains(l, ' '))
+			if (contains(*it, ' '))
 				// refstyle bug: labels with blanks need to be grouped
 				// otherwise the blanks will be gobbled
-				os << "{" << l << "}";
+				os << "{" << *it << "}";
 			else
-				os << l;
+				os << *it;
 			first = false;
 		}
 		os << "}";
@@ -526,13 +532,21 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		os << p.getCommand(rp, use_nolink);
 	} else {
 		bool first = true;
-		for (auto const & label : labels) {
-			if (!first)
-				os << ", ";
+		vector<docstring>::const_iterator it = labels.begin();
+		vector<docstring>::const_iterator en = labels.end();
+		for (size_t i = 0; it != en; ++it, ++i) {
+			if (!first) {
+				if (labels.size() == 2)
+					os << buffer().B_("[[reference 1]] and [[reference2]]");
+				else if (i > 0 && i == labels.size() - 1)
+					os << buffer().B_("[[reference 1, ...]], and [[reference n]]");
+				else
+					os << buffer().B_("[[reference 1]], [[reference2, ...]]");
+			}
 			os << "\\" << cmd;
 			if (use_nolink)
 				os << "*";
-			os << '{' << label << '}';
+			os << '{' << *it << '}';
 			first = false;
 		}
 	}

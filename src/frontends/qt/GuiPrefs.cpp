@@ -4325,45 +4325,35 @@ void SetColor::setColor(QColor const &color)
 
 void SetColor::setStateOfResetButtons(bool doingUndo)
 {
-	QStandardItem *reset_item;
 	int const row = item_.row();
-	Column column = (Column)item_.column();
+	Column const column = (Column)item_.column();
 
-	if (column != LightColorColumn && column != DarkColorColumn &&
-	        column != LightColorResetColumn && column != DarkColorResetColumn)
+	Column colorcolumn, resetcolumn;
+	switch (column) {
+	case LightColorColumn:
+	case LightColorResetColumn:
+		colorcolumn = LightColorColumn;
+		resetcolumn = LightColorResetColumn;
+		break;
+	case DarkColorColumn:
+	case DarkColorResetColumn:
+		colorcolumn = DarkColorColumn;
+		resetcolumn = DarkColorResetColumn;
+		break;
+	default:
 		return;
+	}
 
-	QColor theme_color;
-	QColor color_to_compare;
-	if (doingUndo)
-		color_to_compare = QColor(old_color_);
+	QColor const color_to_compare = doingUndo ? QColor(old_color_) : new_color_;
+	QColor const theme_color = parent_->getCurrentThemeColor(row, colorcolumn);
+	QStandardItem const * reset_item = colorsTV_model_.item(row, resetcolumn);
+	Qt::ItemFlags const flags = reset_item->flags();
+	if (color_to_compare == theme_color)
+		parent_->colorsTV_model_.item(row, resetcolumn)->
+			setFlags(flags & ~Qt::ItemIsEnabled);
 	else
-		color_to_compare = new_color_;
-
-	if (column == LightColorColumn || column == LightColorResetColumn) {
-		theme_color = parent_->getCurrentThemeColor(row, LightColorColumn);
-		reset_item = colorsTV_model_.item(row, LightColorResetColumn);
-		Qt::ItemFlags const flags = reset_item->flags();
-		if (color_to_compare == theme_color)
-			parent_->colorsTV_model_.item(row, LightColorResetColumn)->
-			        setFlags(flags & ~Qt::ItemIsEnabled);
-		else
-			parent_->colorsTV_model_.item(row, LightColorResetColumn)->
-			        setFlags(flags | Qt::ItemIsEnabled);
-
-	} else if (column == DarkColorColumn || column == DarkColorResetColumn) {
-		theme_color = parent_->getCurrentThemeColor(row, DarkColorColumn);
-		reset_item = colorsTV_model_.item(row, DarkColorResetColumn);
-		Qt::ItemFlags const flags = reset_item->flags();
-		if (color_to_compare == theme_color)
-			parent_->colorsTV_model_.item(row, DarkColorResetColumn)->
-			        setFlags(flags & ~Qt::ItemIsEnabled);
-		else
-			parent_->colorsTV_model_.item(row, DarkColorResetColumn)->
-					setFlags(flags | Qt::ItemIsEnabled);
-		parent_->colorsTV->update();
-
-	} else return;
+		parent_->colorsTV_model_.item(row, resetcolumn)->
+			setFlags(flags | Qt::ItemIsEnabled);
 
 	changed();
 }

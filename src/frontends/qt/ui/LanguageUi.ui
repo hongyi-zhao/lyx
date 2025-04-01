@@ -166,7 +166,7 @@
         <string>Enter the command to load the language package (default: \usepackage{babel})</string>
        </property>
        <property name="inputMethodHints">
-        <set>Qt::InputMethodHint::ImhPreferLatin</set>
+        <set>Qt::ImhPreferLatin</set>
        </property>
       </widget>
      </item>

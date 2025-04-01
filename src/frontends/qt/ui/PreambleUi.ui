@@ -56,7 +56,7 @@
    <item row="0" column="0" colspan="3">
     <widget class="QTextEdit" name="preambleTE">
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhMultiLine|Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhMultiLine|Qt::ImhPreferLatin</set>
      </property>
      <property name="acceptRichText">
       <bool>false</bool>

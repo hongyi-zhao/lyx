@@ -40,7 +40,7 @@
       <string>Specify those directories which should be prepended to the PATH environment variable. Use the OS native format.</string>
      </property>
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -60,7 +60,7 @@
       <string>Specify those directories which should be prepended to the TEXINPUTS environment variable. Use the OS native format.</string>
      </property>
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -87,7 +87,7 @@
    <item row="6" column="1">
     <widget class="QLineEdit" name="thesaurusDirED">
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -104,7 +104,7 @@
    <item row="5" column="1">
     <widget class="QLineEdit" name="tempDirED">
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -131,7 +131,7 @@
    <item row="4" column="1">
     <widget class="QLineEdit" name="lyxserverDirED">
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -161,7 +161,7 @@
       <string>If a path is specified here, all backups of LyX files will be stored there. If no path is given, backups will be stored alongside the original document. This requires 'Backup original documents when saving' in Look &amp; Feel &gt; Document Handling to be checked.</string>
      </property>
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -188,7 +188,7 @@
    <item row="2" column="1">
     <widget class="QLineEdit" name="exampleDirED">
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -215,7 +215,7 @@
    <item row="1" column="1">
     <widget class="QLineEdit" name="templateDirED">
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -242,7 +242,7 @@
    <item row="0" column="1">
     <widget class="QLineEdit" name="workingDirED">
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>
@@ -269,7 +269,7 @@
    <item row="8" column="1">
     <widget class="QLineEdit" name="hunspellDirED">
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhPreferLatin</set>
      </property>
     </widget>
    </item>

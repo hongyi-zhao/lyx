@@ -192,7 +192,7 @@
           <item row="0" column="1">
            <widget class="lyx::frontend::ColorsCombo" name="colorCO">
             <property name="inputMethodHints">
-             <set>Qt::InputMethodHint::ImhDigitsOnly|Qt::InputMethodHint::ImhLatinOnly</set>
+             <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
             </property>
             <property name="maxVisibleItems">
              <number>20</number>
@@ -376,7 +376,7 @@
      <item>
       <widget class="QDialogButtonBox" name="buttonBox">
        <property name="standardButtons">
-        <set>QDialogButtonBox::StandardButton::Apply|QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok|QDialogButtonBox::StandardButton::Reset|QDialogButtonBox::StandardButton::RestoreDefaults</set>
+        <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset|QDialogButtonBox::RestoreDefaults</set>
        </property>
       </widget>
      </item>

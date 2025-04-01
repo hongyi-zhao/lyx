@@ -33,7 +33,7 @@ sub checkConstants($) {
     my $lineno = 0;
     while (my $l = <$FI>) {
       $lineno += 1;
-      if ($l =~ /\bQ([a-zA-Z]+\:\:){3}/) {
+      if ($l =~ /\bQ([a-zA-Z]+\:\:){2}/) {
         print "$ui:$lineno $l";
         $no_founds += 1;
       }

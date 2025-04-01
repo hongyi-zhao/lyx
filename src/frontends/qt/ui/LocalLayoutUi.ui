@@ -23,7 +23,7 @@
       <string/>
      </property>
      <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhMultiLine|Qt::InputMethodHint::ImhPreferLatin</set>
+      <set>Qt::ImhMultiLine|Qt::ImhPreferLatin</set>
      </property>
      <property name="acceptRichText">
       <bool>false</bool>
@@ -45,7 +45,7 @@
      <item row="0" column="1">
       <widget class="QLabel" name="validLB">
        <property name="contextMenuPolicy">
-        <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+        <enum>Qt::NoContextMenu</enum>
        </property>
        <property name="toolTip">
         <string>Errors reported in terminal.</string>
@@ -54,14 +54,14 @@
         <string/>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
      <item row="0" column="2">
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -91,7 +91,7 @@
      <item row="1" column="1">
       <widget class="QLabel" name="convertLB">
        <property name="contextMenuPolicy">
-        <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+        <enum>Qt::NoContextMenu</enum>
        </property>
        <property name="toolTip">
         <string>Errors reported in terminal.</string>
@@ -100,7 +100,7 @@
         <string/>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>

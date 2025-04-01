@@ -53,13 +53,13 @@
            </sizepolicy>
           </property>
           <property name="inputMethodHints">
-           <set>Qt::InputMethodHint::ImhPreferLatin</set>
+           <set>Qt::ImhPreferLatin</set>
           </property>
           <property name="editable">
            <bool>true</bool>
           </property>
           <property name="sizeAdjustPolicy">
-           <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+           <enum>QComboBox::AdjustToContents</enum>
           </property>
          </widget>
         </item>
@@ -92,13 +92,13 @@
            </sizepolicy>
           </property>
           <property name="inputMethodHints">
-           <set>Qt::InputMethodHint::ImhPreferLatin</set>
+           <set>Qt::ImhPreferLatin</set>
           </property>
           <property name="editable">
            <bool>true</bool>
           </property>
           <property name="sizeAdjustPolicy">
-           <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+           <enum>QComboBox::AdjustToContents</enum>
           </property>
          </widget>
         </item>
@@ -122,7 +122,7 @@
          <string/>
         </property>
         <property name="inputMethodHints">
-         <set>Qt::InputMethodHint::ImhPreferLatin</set>
+         <set>Qt::ImhPreferLatin</set>
         </property>
        </widget>
       </item>
@@ -139,7 +139,7 @@
       <item row="2" column="2">
        <widget class="QLineEdit" name="printerPaperSizeED">
         <property name="inputMethodHints">
-         <set>Qt::InputMethodHint::ImhPreferLatin</set>
+         <set>Qt::ImhPreferLatin</set>
         </property>
        </widget>
       </item>
@@ -156,7 +156,7 @@
       <item row="0" column="2">
        <widget class="QLineEdit" name="printerLandscapeED">
         <property name="inputMethodHints">
-         <set>Qt::InputMethodHint::ImhPreferLatin</set>
+         <set>Qt::ImhPreferLatin</set>
         </property>
        </widget>
       </item>
@@ -251,7 +251,7 @@
    <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Orientation::Vertical</enum>
+      <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>

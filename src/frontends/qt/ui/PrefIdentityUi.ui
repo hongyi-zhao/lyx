@@ -63,7 +63,7 @@
           <string>Initials of your name</string>
          </property>
          <property name="inputMethodHints">
-          <set>Qt::InputMethodHint::ImhPreferLatin</set>
+          <set>Qt::ImhPreferLatin</set>
          </property>
         </widget>
        </item>
@@ -85,7 +85,7 @@
         <string>Your E-mail address</string>
        </property>
        <property name="inputMethodHints">
-        <set>Qt::InputMethodHint::ImhEmailCharactersOnly|Qt::InputMethodHint::ImhNoPredictiveText|Qt::InputMethodHint::ImhPreferLowercase</set>
+        <set>Qt::ImhEmailCharactersOnly|Qt::ImhNoPredictiveText|Qt::ImhPreferLowercase</set>
        </property>
       </widget>
      </item>

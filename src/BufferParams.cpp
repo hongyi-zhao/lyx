@@ -467,7 +467,9 @@ BufferParams::BufferParams()
 	fontcolor = "none";
 	// light gray is the default font color for greyed-out notes
 	notefontcolor = "lightgray";
+	registerLyXColor("notefontcolor", notefontcolor);
 	boxbgcolor = "red";
+	registerLyXColor("boxbgcolor", boxbgcolor);
 	table_border_color = "default";
 	table_odd_row_color = "default";
 	table_even_row_color = "default";
@@ -1295,7 +1297,6 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		if (token == "\\notefontcolor") {
 			lex.eatLine();
 			notefontcolor = lex.getString();
-			registerLyXColor("notefontcolor", notefontcolor);
 			// set a local name for the painter
 			lcolor.setColor("notefontcolor@" + filename.absFileName(),
 					lcolor.getX11HexName(notefontcolor));
@@ -1304,7 +1305,6 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		if (token == "\\boxbgcolor") {
 			lex.eatLine();
 			boxbgcolor = lex.getString();
-			registerLyXColor("boxbgcolor", boxbgcolor);
 			// set a local name for the painter
 			lcolor.setColor("boxbgcolor@" + filename.absFileName(),
 					lcolor.getX11HexName(boxbgcolor));

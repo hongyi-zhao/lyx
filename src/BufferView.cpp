@@ -1698,6 +1698,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		vector<string> const pids = getVectorFromString(cmd.getArg(0));
 		string const type = cmd.getArg(1);
 		int id = convert<int>(pids.back());
+		inserted_label_.clear();
 		if (id < 0)
 			break;
 		int i = 0;
@@ -1738,8 +1739,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 								  : to_utf8(new_label) + " " + type;
 				// ... and go back to the original position
 				lyx::dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
-				// ... to insert the ref
-				lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
+				if (type == "forrefdialog")
+					// and save for the ref dialog to insert
+					inserted_label_ = arg;
+				else
+					// ... or insert the ref directly (from outliner)
+					lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
 				break;
 			}
 		}

@@ -3552,12 +3552,16 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_REFERENCE_TO_PARAGRAPH
  * \li Action: Inserts a cross-reference to the paragraph with a given ID
- * \li Notion: The function checks of the paragraph already has a label.
+ *             or saves the newly created label for insertion into the ref dialog
+ * \li Notion: The function checks of the paragraph already has a label.\n
  *             If so, it uses that. Otherwise it inserts a label and uses this.
  * \li Syntax: reference-to-paragraph <PAR_ID> [<TYPE>]
  * \li Params: <PAR_IDs>: paragraph ids, might be a comma-separated list\n
  *                        if it is in a nested inset\n
- *             <TYPE>: cross-references type
+ *             <TYPE>: cross-references type or "forrefdialog".\n
+ *                    The latter stores the label for further processing,\n
+ *                    all other immendiately insert a ref of the given type\n
+ *                    (e.g., eqref).
  * \li Origin: spitz, 28 Jul 2024
  * \endvar
  */

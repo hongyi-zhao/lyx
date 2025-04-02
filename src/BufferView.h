@@ -412,6 +412,9 @@ public:
 	//signals need for update in gui
 	bool stats_update_trigger();
 
+	/// Inserted label from ref dialog
+	std::string insertedLabel() const { return inserted_label_; }
+
 private:
 	/// noncopyable
 	BufferView(BufferView const &);
@@ -463,6 +466,8 @@ private:
 	int height_;
 	///
 	bool full_screen_;
+	///
+	std::string inserted_label_;
 	///
 	Buffer & buffer_;
 

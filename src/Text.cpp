@@ -2273,6 +2273,9 @@ docstring Text::getPossibleLabel(DocIterator const & cur) const
 
 	// The return string of math matrices might contain linebreaks
 	par_text = subst(par_text, '\n', '-');
+	// commas are not allowed, as they are used to separate multiple
+	// in cross-references
+	par_text = subst(par_text, ',', '-');
 	int const numwords = 3;
 	for (int i = 0; i < numwords; ++i) {
 		if (par_text.empty())

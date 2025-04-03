@@ -19,6 +19,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
+#include <QRegularExpressionValidator>
 
 using namespace std;
 
@@ -37,6 +38,9 @@ GuiLabel::GuiLabel(QWidget * parent) : InsetParamsWidget(parent)
 
 	connect(keywordED, SIGNAL(textChanged(const QString &)),
 		this, SIGNAL(changed()));
+
+	QRegularExpression nocomma_re("[^,]+");
+	keywordED->setValidator(new QRegularExpressionValidator(nocomma_re, keywordED));
 
 	setFocusProxy(keywordED);
 }

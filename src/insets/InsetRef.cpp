@@ -375,7 +375,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 				else
 					os << ",";
 			}
-			if (contains(*it, ' '))
+			if (contains(*it, ' ') && buffer().masterParams().xref_package != "prettyref")
 				// refstyle bug: labels with blanks need to be grouped
 				// otherwise the blanks will be gobbled
 				os << "{" << *it << "}";

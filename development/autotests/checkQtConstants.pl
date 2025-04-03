@@ -1,6 +1,11 @@
 #! /usr/bin/env perl
 # -*- mode: perl; -*-
 #
+# Checking for allowed Qt constants in src/frontends/qt/ui/*.ui
+# Allowed form: Q[A_Za-z]+::[A-Za-z]+
+# See https://doc.qt.io/qt-6/qt.html
+# Therefore, forms like Q[A_Za-z]+(::[A-Za-z]+){2,} are considered not allowed.
+#
 use strict;
 use warnings;
 
@@ -18,9 +23,15 @@ sub collectUiFiles($$);
 my @UIFiles = ();
 
 collectUiFiles('.', \@UIFiles);
-
+print "Checking Qt constants according to https://doc.qt.io/qt-6/qt.html\n";
 for my $ui (@UIFiles) {
   checkConstants($ui);
+}
+if ($no_founds == 0) {
+  print "...\nNo offending values found\n";
+}
+else {
+  print "$no_founds places with questionable names for qt-constants found\n";
 }
 exit($no_founds);
 

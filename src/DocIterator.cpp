@@ -577,9 +577,11 @@ bool DocIterator::fixIfBroken()
 		CursorSlice & cs = slices_[i];
 		if (&cs.inset() != inset || ! cs.inset().isActive()) {
 			// the whole slice is wrong, chop off this as well
-			--i;
 			LYXERR(Debug::DEBUG, "fixIfBroken(): inset changed");
-			break;
+			// The code is different from below to avoid doing --i when i == 0.
+			LYXERR(Debug::DEBUG, "fixIfBroken(): cursor chopped after " << i);
+			resize(i);
+			return true;
 		} else if (cs.idx() > cs.lastidx()) {
 			cs.idx() = cs.lastidx();
 			cs.pit() = cs.lastpit();

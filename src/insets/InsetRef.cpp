@@ -29,6 +29,8 @@
 #include "texstream.h"
 #include "TocBackend.h"
 
+#include "frontends/alert.h"
+
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
@@ -379,8 +381,16 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 				// refstyle bug: labels with blanks need to be grouped
 				// otherwise the blanks will be gobbled
 				os << "{" << *it << "}";
-			else
+			else {
+				if (buffer().masterParams().xref_package == "prettyref" && !contains(*it, ':'))
+					// warn on invalid label
+					frontend::Alert::warning(_("Invalid label!"),
+								 bformat(_("The label `%1$s' does not have a prefix (e.g., `sec:'), "
+									   "which is needed for formatted references with prettyref.\n"
+									   "You will most likely run into a LaTeX error."),
+									 *it), true);
 				os << *it;
+			}
 			first = false;
 		}
 		os << "}";

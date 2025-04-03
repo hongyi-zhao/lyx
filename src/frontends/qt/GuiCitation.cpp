@@ -901,18 +901,6 @@ BiblioInfo::CiteStringMap GuiCitation::citationStyles(BiblioInfo const & bi, siz
 		&& (selectedLV->model()->rowCount() > 1
 		    || !pretexts.empty()
 		    || !posttexts.empty());
-	vector<pair<docstring, docstring>> pres;
-	for (docstring const & s: pretexts) {
-		docstring key;
-		docstring val = split(s, key, ' ');
-		pres.push_back(make_pair(key, val));
-	}
-	vector<pair<docstring, docstring>> posts;
-	for (docstring const & s: posttexts) {
-		docstring key;
-		docstring val = split(s, key, ' ');
-		posts.push_back(make_pair(key, val));
-	}
 	CiteItem ci;
 	ci.textBefore = qstring_to_ucs4(textBeforeED->text());
 	ci.textAfter = qstring_to_ucs4(textAfterED->text());
@@ -921,8 +909,16 @@ BiblioInfo::CiteStringMap GuiCitation::citationStyles(BiblioInfo const & bi, siz
 	ci.context = CiteItem::Dialog;
 	ci.max_size = max_size;
 	ci.isQualified = qualified;
-	ci.pretexts = pres;
-	ci.posttexts = posts;
+	for (docstring const & s: pretexts) {
+		docstring key;
+		docstring val = split(s, key, ' ');
+		ci.pretexts.emplace_back(key, val);
+	}
+	for (docstring const & s: posttexts) {
+		docstring key;
+		docstring val = split(s, key, ' ');
+		ci.posttexts.emplace_back(key, val);
+	}
 	BiblioInfo::CiteStringMap ret = bi.getCiteStrings(keys, styles, documentBuffer(), ci);
 	return ret;
 }

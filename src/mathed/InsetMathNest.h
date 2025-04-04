@@ -14,7 +14,6 @@
 
 #include "InsetMath.h"
 #include "MathData.h"
-#include "Row.h"
 
 #include <map>
 

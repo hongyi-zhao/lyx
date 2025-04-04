@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "GuiInputMethod.h"
 #include "GuiWorkArea.h"
 #include "GuiWorkArea_Private.h"
 

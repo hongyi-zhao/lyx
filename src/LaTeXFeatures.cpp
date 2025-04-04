@@ -24,6 +24,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "Language.h"
+#include "LaTeXColors.h"
 #include "LaTeXFonts.h"
 #include "LaTeXPackages.h"
 #include "Layout.h"

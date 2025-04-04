@@ -55,6 +55,7 @@
 #include "FuncRequest.h"
 #include "KeySymbol.h"
 #include "Language.h"
+#include "LaTeXColors.h"
 #include "LayoutFile.h"
 #include "LyXAction.h"
 #include "LyX.h"

@@ -117,7 +117,9 @@ foreach my $pofilename ( @ARGV ) {
 
     # discard [[...]] from the end of msgid, this is used only as hint to translation
     $msgid_trans = $msgid;	# used for uniform translation
-    $msgid =~ s/\[\[.*\]\]$//;
+    while ($msgid =~ s/\[\[[^\]]*\]\]//) {
+      ;
+    }
 
     # Check for matching %1$s, etc.
       if ($check_args) {
@@ -180,10 +182,12 @@ foreach my $pofilename ( @ARGV ) {
 	}
       }
       if (($msgid1 =~ / $/) != ($msgstr1 =~ / $/)) {
-        print "Line $linenum: Missing or unexpected space:\n  '$msgid' => '$msgstr'\n"
-          unless $only_total;
-        ++$bad{"Bad spaces"};
-        $warn++;
+	{
+          print "Line $linenum: Missing or unexpected space:\n  '$msgid' => '$msgstr'\n"
+            unless $only_total;
+          ++$bad{"Bad spaces"};
+          $warn++;
+	}
       }
     }
 

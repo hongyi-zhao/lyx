@@ -30,6 +30,7 @@
 #include "Format.h"
 #include "IndicesList.h"
 #include "Language.h"
+#include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "LaTeXFonts.h"
 #include "Font.h"

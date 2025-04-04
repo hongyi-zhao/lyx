@@ -26,6 +26,7 @@
 #include "GuiCompleter.h"
 #include "GuiFontLoader.h"
 #include "GuiWorkArea.h"
+#include "InsetList.h"
 #include "KeyMap.h"
 #include "LyX.h"
 #include "Row.h"

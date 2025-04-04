@@ -957,12 +957,9 @@ MacroData const * InsetMathMacro::macroBackup() const
 void InsetMathMacro::validate(LaTeXFeatures & features) const
 {
 	// Protect against recursive macros
-	static set<docstring> active_macros;
-	if (active_macros.count(name())) {
-		LYXERR0("Recursive nesting for "  << name());
+	if (features.activeMacros().count(name()))
 		return;
-	}
-	active_macros.insert(name());
+	features.activeMacros().insert(name());
 
 	// Immediately after a document is loaded, in some cases the MacroData
 	// of the global macros defined in the lib/symbols file may still not
@@ -1000,8 +997,8 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 			}
 		}
 	}
+	features.activeMacros().erase(name());
 	InsetMathNest::validate(features);
-	active_macros.erase(name());
 }
 
 

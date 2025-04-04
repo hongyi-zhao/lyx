@@ -62,6 +62,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 #include "frontends/Clipboard.h"
+#include "frontends/InputMethod.h"
 #include "frontends/Selection.h"
 
 #include "mathed/InsetMathHull.h"

@@ -18,7 +18,6 @@
 #include "Color.h"
 #include "ColorCode.h"
 #include "FontEnums.h"
-#include "LaTeXColors.h"
 
 #include "support/Changer.h"
 #include "support/docstring.h"

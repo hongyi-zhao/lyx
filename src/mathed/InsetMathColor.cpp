@@ -13,6 +13,7 @@
 #include "ColorSet.h"
 
 #include "InsetMathColor.h"
+#include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"

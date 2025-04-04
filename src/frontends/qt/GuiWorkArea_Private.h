@@ -13,7 +13,6 @@
 #define WORKAREA_PRIVATE_H
 
 #include "FuncRequest.h"
-#include "GuiInputMethod.h"
 
 #include "support/FileName.h"
 #include "support/Timeout.h"

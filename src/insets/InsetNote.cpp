@@ -24,6 +24,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetLayout.h"
+#include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "output_docbook.h"

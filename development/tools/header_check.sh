@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
-
-# Typical usage: cd src; ../development/tools/header_check.sh
+# Syntax: header_check.sh [output_log_file]
+#
+# Typical usage: cd src; ../development/tools/header_check.sh ../development/tools/header_check.sh.log
+# 
+# The tree needs to be configured. ./configure --disable-debug --disable-optimization
+# looks ~1/3 faster than -g -O2 alternatives.
 
 # file header_check.sh
 # This file is part of LyX, the document processor.
@@ -19,11 +23,31 @@
 # is no error because Undo.h is included in Cursor.h which is included
 # in Undo.cpp. But clearly we do want to include Undo.h in Undo.cpp.
 
-# The results are stored in header_check.sh.log
+# The results are stored by default in header_check.sh.log
 
 set -u
 
+# Default
 LOG_FILE="$(basename $0).log"
+# User supplied
+if ! [ a"$*" == a ]; then
+  LOG_FILE="$1"
+fi
+echo Output file: "${LOG_FILE}"
+
+
+#Now commented out, we use STDOUT for progress messages as well now
+##Use log file above only if not redirected already from the command line
+#OUTF=`ls /proc/$$/fd/1`
+#OUTF_L=`readlink "$OUTF"`
+##did user instructed to redirect to other file?
+#if ! [[ a"${OUTF_L}" =~ a/dev/pts ]]; then
+#  LOG_FILE="${OUTF_L}"
+#else
+#  # we are on console
+#  echo Output file: "${LOG_FILE}"
+#fi
+
 
 # For only standard headers:
 # PATTERN='^#include <'
@@ -36,7 +60,7 @@ LOG_FILE="$(basename $0).log"
 # require headers not needed on win/linux. So check the logs before
 # deleting "redundant" standard libraries, Qt headers or includes around
 # various ifdefs...
-EXCLUDE='\(debug.h\|cstdio\|config.h\)'
+EXCLUDE='\(debug.h\|config.h\)'
 
 NCORES=$(grep "CPU" /proc/cpuinfo | wc -l)
 
@@ -78,7 +102,7 @@ make -j${NCORES} 2>&1 >/dev/null || exit
 echo "BUILD_FN exited without error after removing the following include statements invididually:" > "${LOG_FILE}" \
 || { echo "ERROR: could not create log file, ${LOG_FILE}"; exit 1; }
 
-find -regex ".*\(cpp\|h\)$" |  grep -vE "frontends/qt/ui_|frontends/qt/moc_" | sort |
+( find -regex ".*\(h\)$" | sort ;  find -regex ".*\(cpp\)$" | sort ) | grep -vE "frontends/qt/ui_|frontends/qt/moc_" |
 while read FILE_
 do
 	FILE_COPY=$( tempfile )

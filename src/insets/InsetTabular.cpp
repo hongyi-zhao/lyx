@@ -38,6 +38,7 @@
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Language.h"
+#include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
 #include "LyXRC.h"

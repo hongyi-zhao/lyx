@@ -22,6 +22,7 @@
 #include "Cursor.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
+#include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "output_docbook.h"

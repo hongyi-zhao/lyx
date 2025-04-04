@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-03-30 09:35+0200\n"
-"PO-Revision-Date: 2025-03-30 08:35+0000\n"
+"POT-Creation-Date: 2025-04-03 19:45+0200\n"
+"PO-Revision-Date: 2025-04-03 17:54+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -40638,6 +40638,34 @@ msgstr "%1$stext"
 #, c-format
 msgid "text%1$s"
 msgstr "text%1$s"
+
+#: src/insets/InsetRef.cpp:366 src/insets/InsetRef.cpp:540
+msgid "[[reference 1]] and [[reference2]]"
+msgstr " a "
+
+#: src/insets/InsetRef.cpp:368 src/insets/InsetRef.cpp:542
+msgid "[[reference 1, ...]], and [[reference n]]"
+msgstr ", a "
+
+# , 
+#: src/insets/InsetRef.cpp:370 src/insets/InsetRef.cpp:544
+msgid "[[reference 1]], [[reference2, ...]]"
+msgstr ", "
+
+#: src/insets/InsetRef.cpp:387
+msgid "Invalid label!"
+msgstr "Neplatný názov štítku!"
+
+#: src/insets/InsetRef.cpp:388
+#, c-format
+msgid ""
+"The label `%1$s' does not have a prefix (e.g., `sec:'), which is needed for "
+"formatted references with prettyref.\n"
+"You will most likely run into a LaTeX error."
+msgstr ""
+"Názov štítku „%1$s“ nemá predponu (napr. „sec:“), ktorá je potrebná pre "
+"formátované referencie s prettyref.\n"
+"S najväčšou pravdepodobnosťou narazí LaTeX na túto chybu."
 
 #: src/insets/InsetRef.cpp:403
 msgid "elsewhere"

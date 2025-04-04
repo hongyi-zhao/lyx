@@ -63,6 +63,7 @@
 #include "frontends/CaretGeometry.h"
 #include "frontends/Delegates.h"
 #include "frontends/FontMetrics.h"
+#include "frontends/InputMethod.h"
 #include "frontends/NullPainter.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"

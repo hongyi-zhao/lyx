@@ -1893,8 +1893,16 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			mutate(align ? hullAlign : hullEqnArray);
 			// mutate() may change labels and such.
 			cur.forceBufferUpdate();
-			cur.idx() = nrows() * ncols() - 1;
-			cur.pos() = cur.lastpos();
+			size_t p = cur.pos();
+			for (idx_type idx = 0 ; idx < nargs() ; ++idx) {
+				if (cell(idx).size() < p)
+					p -= cell(idx).size();
+				else {
+					cur.idx() = idx;
+					cur.pos() = p;
+					break;
+				}
+			}
 		}
 		InsetMathGrid::doDispatch(cur, cmd);
 		break;

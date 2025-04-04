@@ -187,6 +187,8 @@ public:
 	docstring const & htmlTitle() const { return htmltitle_; }
 	///
 	bool hasRTLLanguage() const;
+	/// This is used to avoid recursion in InsetMathMacro::validate
+	std::set<docstring> & activeMacros() { return active_macros_; }
 
 private:
 	///
@@ -241,6 +243,8 @@ private:
 	docstring htmltitle_;
 	///
 	std::string savenote_env_;
+	/// This is used to avoid recursion in InsetMathMacro::validate
+	std::set<docstring> active_macros_;
 };
 
 

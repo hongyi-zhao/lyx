@@ -1713,9 +1713,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			}
 			string label = dit.innerParagraph().getLabelForXRef();
 			if (!label.empty()) {
-				// if the paragraph has a label, we refer to this
-				string const arg = (type.empty()) ? label : label + " " + type;
-				lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
+				// if the paragraph has a label, we use this
+				if (type == "forrefdialog")
+					inserted_label_ = label;
+				else {
+					string const arg = (type.empty()) ? label : label + " " + type;
+					lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
+				}
 				break;
 			} else {
 				// if there is not a label yet
@@ -1736,16 +1740,17 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				p["name"] = new_label;
 				string const data = InsetCommand::params2string(p);
 				lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
-				string const arg = (type.empty()) ? to_utf8(new_label)
-								  : to_utf8(new_label) + " " + type;
-				// ... and go back to the original position
+				// ... go back to the original position
 				lyx::dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
 				if (type == "forrefdialog")
-					// and save for the ref dialog to insert
-					inserted_label_ = arg;
-				else
+					// ... and save for the ref dialog to insert
+					inserted_label_ = to_utf8(new_label);
+				else {
 					// ... or insert the ref directly (from outliner)
+					string const arg = (type.empty()) ? to_utf8(new_label)
+									  : to_utf8(new_label) + " " + type;
 					lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
+				}
 				break;
 			}
 		}

@@ -122,6 +122,8 @@ public:
 	///
 	QAbstractItemModel * model(QString const & type);
 	///
+	bool hasModel(QString const & type) const;
+	///
 	QAbstractItemModel * nameModel();
 	///
 	QModelIndex currentIndex(QString const & type,

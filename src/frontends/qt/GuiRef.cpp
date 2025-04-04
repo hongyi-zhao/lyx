@@ -20,10 +20,16 @@
 #include "BufferList.h"
 #include "BufferView.h"
 #include "Cursor.h"
+#include "Paragraph.h"
+#include "TextClass.h"
+
 #include "FancyLineEdit.h"
 #include "FuncRequest.h"
+#include "GuiView.h"
 #include "PDFOptions.h"
 
+#include "TocModel.h"
+#include "TocBackend.h"
 #include "qt_helpers.h"
 
 #include "insets/InsetRef.h"
@@ -55,7 +61,7 @@ namespace frontend {
 
 GuiRef::GuiRef(GuiView & lv)
 	: GuiDialog(lv, "ref", qt_("Cross-reference")),
-	  params_(insetCode("ref"))
+	  params_(insetCode("ref")), view_(&lv)
 {
 	setupUi(this);
 
@@ -109,6 +115,8 @@ GuiRef::GuiRef(GuiView & lv)
 	connect(gotoPB, SIGNAL(clicked()),
 		this, SLOT(gotoClicked()));
 	connect(bufferCO, SIGNAL(activated(int)),
+		this, SLOT(updateClicked()));
+	connect(targetCO, SIGNAL(activated(int)),
 		this, SLOT(updateClicked()));
 	connect(pluralCB, SIGNAL(clicked()),
 		this, SLOT(changed_adaptor()));
@@ -197,7 +205,30 @@ bool GuiRef::isSelected(const QModelIndex & idx)
 {
 	if (!selectedLV->model() || selectedLV->model()->rowCount() == 0)
 		return false;
-	QVariant const & str = refsTW->model()->data(idx, Qt::DisplayRole);
+	QVariant str = refsTW->model()->data(idx, Qt::DisplayRole);
+	if (targetCO->itemData(targetCO->currentIndex()).toString() != "labels") {
+		// for outliner-based items, we need to check whether the paragraph
+		// has a label and see if this is already selected
+		int const id = refsTW->currentItem()->data(0, Qt::UserRole).toInt();
+		if (id < 0)
+			return false;
+		int const the_buffer = bufferCO->currentIndex();
+		if (the_buffer == -1)
+			return false;
+		FileNameList const names(theBufferList().fileNames());
+		FileName const & name = names[the_buffer];
+		Buffer const * buf = theBufferList().getBuffer(name);
+		if (!buf)
+			return false;
+		DocIterator dit = buf->getParFromID(id);
+		if (dit.empty())
+			return false;
+		string label = dit.innerParagraph().getLabelForXRef();
+		if (label.empty())
+			return false;
+		str = toqstr(label);
+	}
+	
 	QModelIndexList qmil =
 			selectedLV->model()->match(selectedLV->model()->index(0, 0),
 			                     Qt::DisplayRole, str, 1,
@@ -229,9 +260,9 @@ void GuiRef::updateAddPB()
 	QModelIndexList const availSels =
 		refsTW->selectionModel()->selectedIndexes();
 	addPB->setEnabled(arows > 0
-		 &&!availSels.isEmpty()
+		 && !availSels.isEmpty()
 		 && !isSelected(availSels.first())
-		 && ! threshold);
+		 && !threshold);
 }
 
 
@@ -377,13 +408,13 @@ void GuiRef::refSelected(QTreeWidgetItem * sel)
 
 void GuiRef::sortToggled()
 {
-	redoRefs();
+	updateAvailableLabels();
 }
 
 
 void GuiRef::groupToggled()
 {
-	redoRefs();
+	updateAvailableLabels();
 }
 
 
@@ -418,6 +449,17 @@ void GuiRef::updateClicked()
 void GuiRef::addClicked()
 {
 	QString text = refsTW->currentItem()->data(0, Qt::UserRole).toString();
+	if (targetCO->itemData(targetCO->currentIndex()).toString() != "labels") {
+		dispatch(FuncRequest(LFUN_REFERENCE_TO_PARAGRAPH,
+				qstring_to_ucs4(text) + " " + "forrefdialog"));
+		if (bufferview()->insertedLabel().empty()) {
+			frontend::Alert::error(_("Label creation error!"),
+					       _("Could not auto-generate label for this target.\n"
+						 "Please insert a label manually."));
+			return;
+		}
+		text = toqstr(bufferview()->insertedLabel());
+	}
 	QTreeWidgetItem * item = new QTreeWidgetItem(selectedLV);
 	item->setText(0, text);
 	item->setData(0, Qt::UserRole, text);
@@ -489,6 +531,31 @@ void GuiRef::closeEvent(QCloseEvent * e)
 }
 
 
+void GuiRef::updateTargets()
+{
+	QString const target = targetCO->itemData(targetCO->currentIndex()).toString();
+	targetCO->clear();
+	targetCO->addItem(qt_("Existing Labels"), "labels");
+	if (isTargetAvailable("tableofcontents"))
+		targetCO->addItem(qt_("Table of Contents"), "tableofcontents");
+	for (auto const & name : buffer().params().documentClass().outlinerNames()) {
+		// Use only items that make sense in this context
+		// FIXME: avoid hardcoding
+		if (name.first != "branch" && name.first != "index"
+		    && name.first != "marginalnote" && name.first != "note") {
+			if (isTargetAvailable(toqstr(name.first)))
+				targetCO->addItem(toqstr(translateIfPossible(name.second)), toqstr(name.first));
+		}
+	}
+	if (isTargetAvailable("equation"))
+		targetCO->addItem(qt_("Equations"), "equation");
+	// restore previous setting
+	int const i = targetCO->findData(target);
+	if (i != -1)
+		targetCO->setCurrentIndex(i);
+}
+
+
 void GuiRef::updateContents()
 {
 	QString const orig_type =
@@ -554,6 +621,8 @@ void GuiRef::updateContents()
 			restored_buffer_ = num;
 	}
 	active_buffer_ = thebuffer;
+
+	updateTargets();
 
 	updateRefs();
 	enableBoxes();
@@ -641,7 +710,7 @@ inline bool caseInsensitiveLessThan(QString const & s1, QString const & s2)
 }
 
 
-void GuiRef::redoRefs()
+void GuiRef::updateAvailableLabels()
 {
 	// Prevent these widgets from emitting any signals whilst
 	// we modify their state.
@@ -754,20 +823,132 @@ void GuiRef::redoRefs()
 }
 
 
+void GuiRef::getTargetChildren(QModelIndex & index, QAbstractItemModel * model,
+			       QTreeWidgetItem * pitem, QString const & target)
+{
+	for (int r = 0; r != model->rowCount(index); ++r) {
+		QModelIndex mi = model->index(r, 0, index);
+		if (mi == index)
+			continue;
+		TocItem const & ti = view_->tocModels().currentItem(target, mi);
+		docstring const id = (ti.parIDs().empty())
+				? ti.dit().paragraphGotoArgument(true)
+				: ti.parIDs();
+		QString const ref = toqstr(id);
+		QString const val = model->data(mi, Qt::DisplayRole).toString();
+		QTreeWidgetItem * child = new QTreeWidgetItem(pitem);
+		child->setText(0, val);
+		child->setData(0, Qt::UserRole, ref);
+		// recursive call to get grandchildren
+		if (model->hasChildren(mi))
+			getTargetChildren(mi, model, child, target);
+		pitem->addChild(child);
+	}
+}
+
+
+void GuiRef::updateAvailableTargets()
+{
+	// Prevent these widgets from emitting any signals whilst
+	// we modify their state.
+	refsTW->blockSignals(true);
+	refsTW->setUpdatesEnabled(false);
+
+	refsTW->clear();
+
+	QString const target = targetCO->itemData(targetCO->currentIndex()).toString();
+	QAbstractItemModel * toc_model = view_->tocModels().model(target);
+	if (!toc_model)
+		return;
+
+	bool has_children = false;
+	QList<QTreeWidgetItem *> refsItems;
+	for (int r = 0; r < toc_model->rowCount(); ++r) {
+		QModelIndex mi = toc_model->index(r, 0);
+		QTreeWidgetItem * item = new QTreeWidgetItem(refsTW);
+		TocItem const & ti = view_->tocModels().currentItem(target, mi);
+		docstring const id = (ti.parIDs().empty())
+				? ti.dit().paragraphGotoArgument(true)
+				: ti.parIDs();
+		QString const ref = toqstr(id);
+		QString const val = toc_model->data(mi, Qt::DisplayRole).toString();
+		item->setText(0, val);
+		item->setData(0, Qt::UserRole, ref);
+		if (toc_model->hasChildren(mi)) {
+			getTargetChildren(mi, toc_model, item, target);
+			has_children = true;
+		}
+		refsItems.append(item);
+	}
+	refsTW->addTopLevelItems(refsItems);
+
+	refsTW->setUpdatesEnabled(true);
+	refsTW->update();
+	updateButtons();
+
+	// redo filter
+	filterLabels();
+
+	// Re-activate the emission of signals by these widgets.
+	refsTW->blockSignals(false);
+
+	bool const sel = selectedLV->currentItem()
+		&& selectedLV->currentItem()->isSelected();
+
+	gotoPB->setEnabled(sel);
+	typeCO->setEnabled(sel);
+	typeLA->setEnabled(sel);
+
+	if (has_children)
+		refsTW->setIndentation(10);
+	else
+		refsTW->setIndentation(0);
+}
+
+
+bool GuiRef::isTargetAvailable(QString const & target)
+{
+	if (!view_->tocModels().hasModel(target))
+		return false;
+
+	QAbstractItemModel * toc_model = view_->tocModels().model(target);
+	return toc_model && toc_model->rowCount() > 0;
+}
+
+
 void GuiRef::updateRefs()
 {
-	refs_.clear();
-	int const the_buffer = bufferCO->currentIndex();
-	if (the_buffer != -1) {
-		FileNameList const names(theBufferList().fileNames());
-		FileName const & name = names[the_buffer];
-		Buffer const * buf = theBufferList().getBuffer(name);
-		buf->getLabelList(refs_);
+	QString const target = targetCO->itemData(targetCO->currentIndex()).toString();
+	bool const show_labels = target == "labels";
+	if (show_labels) {
+		refs_.clear();
+		int const the_buffer = bufferCO->currentIndex();
+		if (the_buffer != -1) {
+			FileNameList const names(theBufferList().fileNames());
+			FileName const & name = names[the_buffer];
+			Buffer const * buf = theBufferList().getBuffer(name);
+			buf->getLabelList(refs_);
+		}
 	}
-	sortingCO->setEnabled(!refs_.empty());
-	refsTW->setEnabled(!refs_.empty());
-	groupCB->setEnabled(!refs_.empty());
-	redoRefs();
+	bool const enable_tw = (show_labels) ? !refs_.empty()
+					     : isTargetAvailable(target);
+	refsTW->setEnabled(enable_tw);
+	sortingCO->setEnabled(show_labels && !refs_.empty());
+	groupCB->setEnabled(show_labels && !refs_.empty());
+
+	if (show_labels) {
+		refsTW->header()->setVisible(true);
+		availableLA->setText(qt_("Available &Labels:"));
+		filter_->setPlaceholderText(qt_("All available labels"));
+		filter_->setToolTip(qt_("Enter string to filter the list of available labels"));
+		updateAvailableLabels();
+	} else {
+		refsTW->header()->setVisible(false);
+		availableLA->setText(qt_("Available &Targets:"));
+		filter_->setPlaceholderText(qt_("All available targets"));
+		filter_->setToolTip(qt_("Enter string to filter the list of available targets"));
+		updateAvailableTargets();
+	}
 }
 
 
@@ -796,16 +977,32 @@ void GuiRef::gotoBookmark()
 
 void GuiRef::filterLabels()
 {
+	bool const show_labels = targetCO->itemData(targetCO->currentIndex()).toString() == "labels";
 	Qt::CaseSensitivity cs = csFindCB->isChecked() ?
 		Qt::CaseSensitive : Qt::CaseInsensitive;
 	QTreeWidgetItemIterator it(refsTW);
-	while (*it) {
-		(*it)->setHidden(
-			(*it)->childCount() == 0
-			&& !(*it)->text(0).contains(filter_->text(), cs)
-			&& !(*it)->text(1).contains(filter_->text(), cs)
-		);
-		++it;
+	if (show_labels) {
+		while (*it) {
+			(*it)->setHidden(
+				(*it)->childCount() == 0
+				&& !(*it)->text(0).contains(filter_->text(), cs)
+				&& !(*it)->text(1).contains(filter_->text(), cs)
+			);
+			++it;
+		}
+	} else {
+		QTreeWidgetItemIterator itt(refsTW);
+		while (*it) {
+			(*it)->setHidden(!(*it)->text(0).contains(filter_->text(), cs));
+			itt = it;
+			++it;
+		}
+		// recursively unhide parents of unhidden children
+		while (*itt) {
+			if (!(*itt)->isHidden() && (*itt)->parent())
+				(*itt)->parent()->setHidden(false);
+			--itt;
+		}
 	}
 }
 

@@ -1713,7 +1713,7 @@ bool TextClass::readOutlinerName(Lexer & lexrc)
 		return false;
 	}
 	outliner_names_[type] = name;
-    return true;
+	return true;
 }
 
 

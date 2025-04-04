@@ -287,6 +287,12 @@ QAbstractItemModel * TocModels::model(QString const & type)
 }
 
 
+bool TocModels::hasModel(QString const & type) const
+{
+	return (models_.find(type) != models_.end());
+}
+
+
 QAbstractItemModel * TocModels::nameModel()
 {
 	return names_sorted_;

@@ -86,10 +86,14 @@ private:
 	void setGoBack();
 	/// set goto ref button
 	void setGotoRef();
-	/// re-enter references
-	void redoRefs();
+	/// re-enter available labels
+	void updateAvailableLabels();
+	/// re-enter available targets
+	void updateAvailableTargets();
 	/// update references
 	void updateRefs();
+	///
+	void updateTargets();
 	///
 	bool initialiseParams(std::string const & data) override;
 	/// clean-up on hide.
@@ -110,6 +114,10 @@ private:
 	virtual void updateUpPB();
 	///
 	bool isSelected(const QModelIndex & idx);
+	///
+	bool isTargetAvailable(QString const &);
+	///
+	void getTargetChildren(QModelIndex &, QAbstractItemModel *, QTreeWidgetItem *, QString const &);
 
 	/// contains the search box
 	FancyLineEdit * filter_;
@@ -126,6 +134,8 @@ private:
 	/// string, and pretty dereferenced name ("Lemma 3")
 	/// FIXME: might be a good idea to use a custom struct
 	std::vector<std::tuple<docstring, docstring, docstring>> refs_;
+	///
+	GuiView * view_;
 };
 
 } // namespace frontend

@@ -118,6 +118,8 @@ private:
 	bool isTargetAvailable(QString const &);
 	///
 	void getTargetChildren(QModelIndex &, QAbstractItemModel *, QTreeWidgetItem *, QString const &);
+	///
+	void updateSelectedPrettyTargets();
 
 	/// contains the search box
 	FancyLineEdit * filter_;

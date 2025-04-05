@@ -152,6 +152,7 @@ GuiRef::GuiRef(GuiView & lv)
 
 	setFocusProxy(filter_);
 	refsTW->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+	selectedLV->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 
@@ -467,6 +468,8 @@ void GuiRef::addClicked()
 	selectedLV->addTopLevelItem(item);
 	selectedLV->setCurrentItem(item);
 
+	updateSelectedPrettyTargets();
+
 	changed_adaptor();
 }
 
@@ -626,11 +629,28 @@ void GuiRef::updateContents()
 
 	updateRefs();
 	enableBoxes();
+
+	// Set or update "pretty" targets
+	updateSelectedPrettyTargets();
+
 	// Activate OK/Apply buttons if the users inserts a new ref
 	// and we have a valid pre-setting.
 	bc().setValid(isValid() && new_inset);
 }
 
+
+void GuiRef::updateSelectedPrettyTargets()
+{
+	QList<QTreeWidgetItem *> selRefs = selectedLV->findItems("*", Qt::MatchWildcard);
+	for (int i = 0; i < selRefs.size(); ++i) {
+		for (auto const & theref : refs_) {
+			if (get<0>(theref) == qstring_to_ucs4(selRefs.at(i)->data(0, Qt::UserRole).toString())) {
+				selRefs.at(i)->setText(1, toqstr(get<2>(theref)));
+				break;
+			}
+		}
+	}
+}
 
 void GuiRef::applyView()
 {
@@ -929,12 +949,17 @@ void GuiRef::updateRefs()
 			Buffer const * buf = theBufferList().getBuffer(name);
 			buf->getLabelList(refs_);
 		}
+	} else {
+		refs_.clear();
+		buffer().masterBuffer()->getLabelList(refs_);
 	}
 	bool const enable_tw = (show_labels) ? !refs_.empty()
 					     : isTargetAvailable(target);
 	refsTW->setEnabled(enable_tw);
 	sortingCO->setEnabled(show_labels && !refs_.empty());
 	groupCB->setEnabled(show_labels && !refs_.empty());
+	bufferCO->setEnabled(show_labels);
+	bufferLA->setEnabled(show_labels);
 
 	if (show_labels) {
 		refsTW->header()->setVisible(true);
@@ -1025,6 +1050,7 @@ bool GuiRef::initialiseParams(std::string const & sdata)
 		QTreeWidgetItem * item = new QTreeWidgetItem(selectedLV);
 		item->setText(0, toqstr(sr));
 		item->setData(0, Qt::UserRole, toqstr(sr));
+		item->setText(1, qt_("Unknown[[ref target]]"));
 		selRefsItems.append(item);
 	}
 	if (!selRefsItems.empty()) {

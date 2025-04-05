@@ -35,7 +35,7 @@
         <widget class="QComboBox" name="targetCO"/>
        </item>
        <item>
-        <widget class="QLabel" name="refsL">
+        <widget class="QLabel" name="bufferLA">
          <property name="text">
           <string>&amp;In[[buffer]]:</string>
          </property>
@@ -169,12 +169,23 @@
        <property name="indentation">
         <number>0</number>
        </property>
+       <property name="columnCount">
+        <number>2</number>
+       </property>
        <attribute name="headerVisible">
-        <bool>false</bool>
+        <bool>true</bool>
+       </attribute>
+       <attribute name="headerDefaultSectionSize">
+        <number>150</number>
        </attribute>
        <column>
         <property name="text">
-         <string notr="true">1</string>
+         <string notr="true">Label</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Reference counter value</string>
         </property>
        </column>
       </widget>

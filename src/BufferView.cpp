@@ -1719,6 +1719,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				else {
 					string const arg = (type.empty()) ? label : label + " " + type;
 					lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
+					cur.forceBufferUpdate();
 				}
 				break;
 			} else {
@@ -1751,6 +1752,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 									  : to_utf8(new_label) + " " + type;
 					lyx::dispatch(FuncRequest(LFUN_REFERENCE_INSERT, arg));
 				}
+				cur.forceBufferUpdate();
 				break;
 			}
 		}

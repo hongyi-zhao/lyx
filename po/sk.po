@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-03 19:45+0200\n"
-"PO-Revision-Date: 2025-04-03 17:54+0000\n"
+"POT-Creation-Date: 2025-04-05 19:43+0200\n"
+"PO-Revision-Date: 2025-04-05 17:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5405,6 +5405,10 @@ msgstr "Pred pokračovaním kompilácie LaTeX-om okno automaticky vyčistiť"
 msgid "&Clear automatically"
 msgstr "Vyčis&tiť automaticky"
 
+#: src/frontends/qt/ui/RefUi.ui:25
+msgid "&Select from:"
+msgstr "&Vyberať z:"
+
 #: src/insets/InsetRef.cpp:652 lib/layouts/pdfform.module:90
 #: src/frontends/qt/ui/RefUi.ui:33
 msgid "Label"
@@ -5414,9 +5418,9 @@ msgstr "Štítok"
 msgid "Reference counter value"
 msgstr "Referovaná hodnota čítača"
 
-#: src/frontends/qt/ui/RefUi.ui:63
+#: src/frontends/qt/ui/RefUi.ui:40
 msgid "&In[[buffer]]:"
-msgstr "&V:"
+msgstr "Vn&útri:"
 
 #: src/frontends/qt/ui/RefUi.ui:100
 msgid "The (sub-)document from which the available labels are displayed"
@@ -5441,6 +5445,22 @@ msgstr "Zo&skupiť"
 #: src/frontends/qt/ui/RefUi.ui:176
 msgid "Available &Labels:"
 msgstr "Dostupné &štítky:"
+
+#: src/frontends/qt/GuiRef.cpp:972
+msgid "Available &Targets:"
+msgstr "Dosažiteľné &ciele:"
+
+#: src/frontends/qt/GuiRef.cpp:973
+msgid "All available targets"
+msgstr "Všetky dosažiteľné ciele"
+
+#: src/frontends/qt/GuiRef.cpp:974
+msgid "Enter string to filter the list of available targets"
+msgstr "Zadajte reťazec na výber z listiny dosažiteľných štítkov"
+
+#: src/frontends/qt/GuiRef.cpp:1053
+msgid "Unknown[[ref target]]"
+msgstr "Neznámy"
 
 #: src/frontends/qt/ui/RefUi.ui:103
 msgid "Selected &Labels:"
@@ -37572,6 +37592,22 @@ msgstr "Nepodporované nastavenie!"
 #: src/frontends/qt/GuiRef.cpp:217
 msgid "The reference type you selected allows for maximally two target labels."
 msgstr "Typ referencie, ktorý ste vybrali, umožňuje maximálne dva štítky."
+
+#: src/frontends/qt/GuiRef.cpp:457
+msgid "Label creation error!"
+msgstr "Chyba pri vytváraní štítku!"
+
+#: src/frontends/qt/GuiRef.cpp:458
+msgid ""
+"Could not auto-generate label for this target.\n"
+"Please insert a label manually."
+msgstr ""
+"Nepodarilo sa automaticky vygenerovať štítok pre tento cieľ.\n"
+"Prosím vložte štítok ručne."
+
+#: src/frontends/qt/GuiRef.cpp:541
+msgid "Existing Labels"
+msgstr "Existujúce štítky"
 
 #: src/frontends/qt/GuiRef.cpp:395
 msgid "&Go Back"

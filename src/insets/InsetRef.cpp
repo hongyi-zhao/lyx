@@ -12,9 +12,9 @@
 #include "InsetRef.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "Cursor.h"
-#include "DispatchResult.h"
 #include "FuncStatus.h"
 #include "InsetLabel.h"
 #include "Language.h"
@@ -33,6 +33,8 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"
@@ -83,6 +85,7 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 		param_info_.add("nolink", ParamInfo::LYX_INTERNAL);
 		param_info_.add("options", ParamInfo::LYX_INTERNAL);
 		param_info_.add("tuple", ParamInfo::LYX_INTERNAL);
+		param_info_.add("filenames", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -333,9 +336,9 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 			(use_nolink ? from_utf8("*") : from_utf8("")) +
 			from_ascii("{") << data << from_ascii("})");
 	} else if (cmd == "formatted") {
-		vector<docstring> label;
+		vector<docstring> flabels;
 		docstring prefix;
-		os << getFormattedCmd(data, label, prefix, buffer().masterParams().xref_package, use_caps, useRange());;
+		os << getFormattedCmd(data, flabels, prefix, buffer().masterParams().xref_package, use_caps, useRange());;
 		if ((use_cleveref || use_zref) && use_nolink)
 			os << "*";
 		if (buffer().masterParams().xref_package == "refstyle" && use_plural)
@@ -357,16 +360,16 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		}
 		os << "{";
 		bool first = true;
-		vector<docstring>::const_iterator it = labels.begin();
-		vector<docstring>::const_iterator en = labels.end();
+		vector<docstring>::const_iterator it = flabels.begin();
+		vector<docstring>::const_iterator en = flabels.end();
 		for (size_t i = 0; it != en; ++it, ++i) {
 			if (!first) {
 				if (buffer().masterParams().xref_package == "prettyref") {
 					if (!first) {
 						os << "}";
-						if (labels.size() == 2)
+						if (flabels.size() == 2)
 							os << buffer().B_("[[reference 1]] and [[reference2]]");
-						else if (i > 0 && i == labels.size() - 1)
+						else if (i > 0 && i == flabels.size() - 1)
 							os << buffer().B_("[[reference 1, ...]], and [[reference n]]");
 						else
 							os << buffer().B_("[[reference 1]], [[reference2, ...]]");
@@ -737,6 +740,10 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 		}
 	}
 
+	for (auto const & fn : externalFilenames())
+		// register externally referred files
+		buffer().registerExternalRefs(fn);
+
 	for (auto const & label : getLabels()) {
 		// register this inset into the buffer reference cache.
 		buffer().addReference(label, this, it);
@@ -823,7 +830,7 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 	active_ = output_active;
 	for (auto const & label : getLabels()) {
 		if (buffer().insetLabel(label)) {
-			broken_ = !buffer().activeLabel(label) && active_;
+			broken_ = isBroken(label);
 			setBroken(broken_);
 			if (broken_ && output_active) {
 				shared_ptr<Toc> toc2 = backend.toc("brokenrefs");
@@ -845,7 +852,7 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 			return;
 		}
 		// It seems that this reference does not point to any valid label.
-		broken_ = true;
+		broken_ = isBroken(label);
 		setBroken(broken_);
 		shared_ptr<Toc> toc = backend.toc("label");
 		if (TocBackend::findItem(*toc, 0, label) == toc->end())
@@ -913,6 +920,8 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		if (buffer().masterParams().xref_package == "zref")
 			features.require("zref-clever");
 	}
+	if (!externalFilenames(true).empty())
+		features.require("xr");
 }
 
 bool InsetRef::forceLTR(OutputParams const & rp) const
@@ -946,13 +955,23 @@ docstring InsetRef::getTOCString() const
 {
 	broken_ = false;
 	for (auto const & label : getLabels()) {
-		if (buffer().insetLabel(label))
-			broken_ &= !buffer().activeLabel(label) && active_;
-		else 
-			broken_ &= active_;
+		broken_ &= isBroken(label, active_);
 	}
 	return (broken_ ? _("BROKEN: ") : docstring()) + toc_string_;
 }
+
+
+bool InsetRef::isBroken(docstring const & label, bool const preset) const
+{
+	FileName fn = getExternalFileName(label);
+	if (fn.empty() || !fn.exists())
+		return !buffer().activeLabel(label) && preset;
+	Buffer const * buf = theBufferList().getBuffer(fn);
+	if (buf)
+		return !buf->activeLabel(label) && preset;
+	return preset;
+}
+
 
 void InsetRef::updateStatistics(Statistics & stats) const
 {
@@ -973,6 +992,68 @@ bool InsetRef::useRange() const
 	return cmd == "vref" || cmd == "vpageref"
 		|| (cmd == "formatted" && buffer().masterParams().xref_package != "prettyref")
 		|| (cmd == "cpageref");
+}
+
+
+vector<FileName> InsetRef::externalFilenames(bool const warn) const
+{
+	vector<FileName> res;
+	// check whether the included file exist
+	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params()["filenames"])));
+	ListOfBuffers const children = buffer().masterBuffer()->getDescendants();
+	for (auto const & ifn : incFileNames) {
+		string label;
+		string const incFileName = split(ifn, label, '@');
+		FileName fn =
+			support::makeAbsPath(incFileName,
+					     support::onlyPath(buffer().absFileName()));
+		if (fn.exists()) {
+			bool is_family = false;
+			for (auto const * b : children) {
+				if (b->fileName() == fn) {
+					is_family = true;
+					break;
+				}
+			}
+			if (!is_family)
+				res.push_back(fn);
+		} else if (warn)
+			frontend::Alert::warning(_("Unknown external file!"),
+						 bformat(_("The label `%1$s' refers to an external file\n"
+							   "(`%2$s')\n"
+							   "which could not be found. Output will be broken!"),
+							 from_utf8(label), from_utf8(fn.absFileName())));
+	}
+	return res;
+}
+
+
+FileName InsetRef::getExternalFileName(docstring const & inlabel) const
+{
+	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params()["filenames"])));
+	ListOfBuffers const children = buffer().masterBuffer()->getDescendants();
+	for (auto const & ifn : incFileNames) {
+		string label;
+		string const incFileName = split(ifn, label, '@');
+		if (label != to_utf8(inlabel))
+			continue;
+		FileName fn =
+			support::makeAbsPath(incFileName,
+					     support::onlyPath(buffer().absFileName()));
+		if (fn.exists()) {
+			bool is_family = false;
+			for (auto const * b : children) {
+				if (b->fileName() == fn) {
+					is_family = true;
+					break;
+				}
+			}
+			if (!is_family)
+				return fn;
+		} else
+			return FileName();
+	}
+	return FileName();
 }
 
 

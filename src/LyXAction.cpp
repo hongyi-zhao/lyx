@@ -862,6 +862,19 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly, Buffer },
 
+/*!
+* \var lyx::FuncCode lyx::LFUN_BUFFER_UPDATE_EXTERNAL
+* \li Action: Exports the externally referred documents of the current document and put the result
+*             into the temporary directory.
+* \li Notion: This is needed for external references (xr) support.
+* \li Syntax: buffer-update-external [master]
+* \li Params: master: do this for the master document.
+* \li Origin: spitz, 6 Aug 2025
+* \endvar
+*/
+              { LFUN_BUFFER_UPDATE_EXTERNAL, "buffer-update-external", ReadOnly, Buffer },
+
+
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_VIEW

@@ -812,6 +812,11 @@ public:
 	void pushIncludedBuffer(Buffer const * buf) const;
 	void popIncludedBuffer() const;
 	bool isBufferIncluded(Buffer const * buf) const;
+
+	///
+	void registerExternalRefs(support::FileName) const;
+	///
+	std::vector<support::FileName> externalRefFiles() const;
 private:
 	void clearIncludeList() const;
 	///

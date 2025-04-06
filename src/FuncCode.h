@@ -515,6 +515,8 @@ enum FuncCode
 	LFUN_WORD_INVERTCASE,           // lasgouttes 20241015
 	LFUN_ERRORS_SHOW,               // spitz 20241231,
 	LFUN_ERROR_NEXT,                // spitz 20200101,
+	LFUN_BUFFER_UPDATE_EXTERNAL,    // spitz 20250406,
+	/// 405
 	LFUN_LASTACTION                 // end of the table
 };
 

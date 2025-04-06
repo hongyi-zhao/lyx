@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 637
+\lyxformat 638
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30275,7 +30275,7 @@ Abschnitte,
  Gleitobjekte,
  Fußnote,
  Formel und Listen).
- Für eine Referenz müssen Sie zuerst eine Marke in den zu referenzieren Teil einfügen.
+ Für eine Referenz muss der zu referenziere Teil eine Marke beinhalten.
  Die Marke dient als Anker und Name für die Referenz.
  Angenommen Sie wollen den zweiten Eintrag der folgenden Liste referenzieren:
 \end_layout
@@ -30299,7 +30299,17 @@ Dritter Eintrag
 \end_layout
 
 \begin_layout Standard
-Zuerst setzen Sie eine Marke zu definieren,
+Marken können manuell eingefügt werden,
+ wie wir gleich beschreiben werden,
+ \SpecialChar LyX
+ bietet aber auch die Möglichkeit,
+ den Prozess zu automatisieren und noch nicht vorhandene Marken automatisch einzufügen,
+ wenn Sie einen Verwies auf ein Element vom Querverweis-Dialog oder der Gleiderungsansicht aus einfügen wollen.
+ Das beschreiben wir im Anschluss.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie eine Marke manuell einfügen wollen,
  benutzen Sie 
 \family sans
 Einfügen\SpecialChar menuseparator
@@ -30378,6 +30388,15 @@ arg   "dialog-show-new-inset ref"
 \end_inset
 
 .
+ Der Querverweis-Dialog erscheint mit einer Liste der Marken,
+ die Sie filtern,
+ sortieren oder gruppieren können.
+ Um einen Querverweis zur oben eingefügten Marke zu erstellen,
+ wählen Sie 
+\family sans
+„enu:Zweiter-Eintrag
+\family default
+“ aus.
  Ein graues Querverweis-Kästchen wie dieses:
  
 \begin_inset Graphics
@@ -30385,26 +30404,70 @@ arg   "dialog-show-new-inset ref"
 
 \end_inset
 
- wird eingefügt und der Querverweis-Dialog erscheint mit einer Liste der Marken.
- Um eine Marke einzufügen,
- können Sie die Marken alphabetisch sortieren und wählen dann 
-\family sans
-„enu:Zweiter-Eintrag
-\family default
-“ aus.
- Im Feld 
-\family sans
-Format
-\family default
- können Sie einen der unten beschriebenen Verweisstile auswählen.
- An der Stelle der Querverweis-Box erscheint in der Ausgabe die Nummer des Listeneintrags.
+ wird eingefügt – dies wird in der Ausgabe der Querverweis (in der Voreinstellung die Nummer des Listeneintrags).
 \end_layout
 
 \begin_layout Standard
-Für Kapitel\SpecialChar breakableslash
+Einige Querverweis-Stile erlauben es,
+ auf mehrere Marken gleichzeitig zu verweisen.
+ Diese werden in der Ausgabe entsprechend angeordnet (bspw.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Abschnitte 1,
+ 2 und 3
+\begin_inset Quotes grd
+\end_inset
+
+).
+ Manche erlauben es,
+ zwei Marken als Anfang und Ende eines Bereichs zu behandeln (wie in 
+\begin_inset Quotes gld
+\end_inset
+
+Abschnitte 1 bis 5
+\begin_inset Quotes grd
+\end_inset
+
+).
+ Daher können Sie in dem Dialog mehrere Marken einfügen und (um-)ordnen.
+\end_layout
+
+\begin_layout Standard
+Alternativ zur Liste der existierenden Marken können Sie im Dialog auch alle Überschriften (
+\begin_inset Quotes gld
+\end_inset
+
+Inhaltsverzeichnis
+\begin_inset Quotes grd
+\end_inset
+
+),
+ die Legenden von Abbildungen oder Tabellen oder andere referenzierbare Elemente anzeigen lassen.
+ Wenn Sie eines von diesen wählen und 
+\begin_inset Quotes gld
+\end_inset
+
+Hinzufügen
+\begin_inset Quotes grd
+\end_inset
+
+ klicken,
+ prüft \SpecialChar LyX
+,
+ ob eine entsprechende Marke vorhanden ist,
+ falls nicht,
+ legt es diese an,
+ bevor es sie einfügt.
+ Sie müssen sich damit nicht mehr länger selbst um das Anlegen der Marken kümmern.
+\end_layout
+
+\begin_layout Standard
+Für bestimmte Elemente (Kapitel\SpecialChar breakableslash
 Abschnitte,
  Fußnoten,
- Tabellen- und Abbildungsgleitobjekte geht das Ganze auch noch einfacher,
+ Tabellen- und Abbildungsgleitobjekte) geht das Ganze sogar noch einfacher,
  wenn Sie die Gliederungsansicht (siehe Abschnitt
 \begin_inset space ~
 \end_inset
@@ -30422,8 +30485,8 @@ reference "subsec:Gliederung"
  auf den Sie verweisen wollen,
  wählen dann Querverweis auf diesen Eintrag einfügen und den gewünschten Querverweisstil (s.
  dazu unten) aus dem Kontextmenü.
- \SpecialChar LyX
- prüft,
+ Wie beim Dialog prüft \SpecialChar LyX
+,
  ob eine entsprechende Marke vorhanden ist,
  falls nicht,
  legt es diese an,
@@ -30438,7 +30501,7 @@ Einfügen\SpecialChar menuseparator
 Querverweis
 \family default
 ,
- die für alle Eintragstypen funktionieren (so lange ein Label vorhanden ist) sind diese:
+ die für alle Eintragstypen funktionieren (aber eine existierende Marke voraussetzen) sind diese:
 \end_layout
 
 \begin_layout Itemize
@@ -31236,6 +31299,93 @@ Eingebettete
 Objekte
 \emph default
  Handbuch beschrieben.
+\end_layout
+
+\begin_layout Subsection
+Querverwiese auf externe Dokumente
+\end_layout
+
+\begin_layout Standard
+Für Querverweise innerhalb eines Dokuments (auch innerhalb solcher,
+ die aus mehreren \SpecialChar LyX
+-Dateien bestehen,
+ wie es im Abschnitt 
+\emph on
+Unterdokumente
+\emph default
+ im Handbuch 
+\emph on
+Eingebettete Objekte
+\emph default
+ beschrieben ist) ist damit alles gesagt.
+ Es gibt darüber hinaus aber manchmal das Bedürfnis,
+ auf Teile in komplett unabhängigen anderen Dokumenten zu verweisen (beispielsweise in einem anderen Band innerhalb eines mehrbändigen Werks).
+ Das ist (mithilfe des \SpecialChar LaTeX
+-Pakets 
+\family sans
+xr
+\family default
+) möglich,
+ sofern dieses andere Dokument auch als \SpecialChar LyX
+-Datei vorliegt.
+\end_layout
+
+\begin_layout Standard
+Um einen solchen Querverweis einzufügen,
+ öffnen Sie auch dieses andere Dokument.
+ Von dem Dokument aus,
+ in das de Querverwies eingefügt werden soll,
+ öffnen Sie (wie oben beschrieben) den Querverweis-Dialog.
+ Achten Sie darauf,
+ dass 
+\begin_inset Quotes gld
+\end_inset
+
+Alle existierenden Marken
+\begin_inset Quotes grd
+\end_inset
+
+ angezeigt werden.
+ Nun wählen Sie aus dem Auswahlfeld,
+ das nach 
+\begin_inset Quotes gld
+\end_inset
+
+In:
+\begin_inset Quotes grd
+\end_inset
+
+ folgt,
+ das Dokument,
+ auf das Sie verweisen möchten.
+ Dessen Marken werden nun im Dialog angezeigt.
+ Wählen Sie die gewünschte und fügen Sie sie hinzu.
+\end_layout
+
+\begin_layout Standard
+Beachten Sie aber folgendes:
+ Da \SpecialChar LaTeX
+ Informationen über das Verweisziel braucht,
+ um den Querverwies anzulegen,
+ muss es das Dokument,
+ auf das verwiesen wird,
+ kompilieren,
+ um auf seine Marken zugreifen zu können.
+ \SpecialChar LyX
+ erledigt das automatisch für Sie,
+ wenn es Dokumente,
+ die solche externen Querverweise beinhalten,
+ für die Ansicht oder den Export verarbeitet.
+ Im Rahmen dieses Prozesses wird das Dokument,
+ auf das verwiesen wird,
+ geöffnet und kompiliert,
+ bevor das eigentliche (verweisende) Dokument drankommt.
+ Naütrlich müssen Sie dafür Sorge tragen,
+ dass dieses Zieldokument auch verfügbar ist (an dem Ort,
+ an dem es gespeichert war,
+ als Sie den Querverweis eingefügt haben),
+ und dass es lesbar ist.
+ 
 \end_layout
 
 \begin_layout Section

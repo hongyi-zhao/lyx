@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 636
+\lyxformat 638
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -10289,6 +10289,37 @@ color
  package.
  \SpecialChar LyX
  uses it to output colored change tracking marks.
+\end_layout
+
+\begin_layout Subsection
+xr
+\end_layout
+
+\begin_layout Description
+Found:
+ 
+\begin_inset Info
+type  "package"
+arg   "xr"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+ 
+\family typewriter
+macros/latex/contrib/xr
+\end_layout
+
+\begin_layout Description
+Notes:
+ The package 
+\family sans
+xr
+\family default
+ enables documents to cross-refer to unrelated other documents (which are not related to the referring document by inclusion).
 \end_layout
 
 \begin_layout Subsection

@@ -37,6 +37,7 @@
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "Spacing.h"
+#include "buffer_funcs.h"
 #include "texstream.h"
 #include "TexRow.h"
 #include "VSpace.h"
@@ -2673,6 +2674,24 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 				os << "]\n";
 			else
 				os << "}\n";
+		}
+	}
+
+	// with external references (xr), load and register the
+	// externally referred files
+	if (features.isRequired("xr")) {
+		for (FileName & fn : features.buffer().externalRefFiles()) {
+			Buffer const * buf = checkAndLoadLyXFile(fn, true);
+			if (buf) {
+				fn.changeExtension(string());
+				if (features.runparams().nice) {
+					os << "\\externaldocument{" << fn.relPath(features.buffer().filePath()) << "}\n";
+				} else {
+					FileName const in_file(addName(buf->temppath(), fn.onlyFileName()));
+					os << "\\externaldocument{" << in_file.absFileName() << "}\n";
+				}
+			} else
+				LYXERR0("File " << fn.absFileName() << " not could not be loaded. External reference to it won't work.");
 		}
 	}
 

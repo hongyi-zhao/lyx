@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 637 // spitz: crossref lists and ranges
-#define LYX_FORMAT_TEX2LYX 637
+#define LYX_FORMAT_LYX 638 // spitz: xr support
+#define LYX_FORMAT_TEX2LYX 638
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

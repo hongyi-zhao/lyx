@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2025-04-06 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 638: Support for external cross references (via xr package)
+	- InsetRef has a new param "filenames" that holds a comma-separated list
+	  of label@filepath for those labels that are in external documents.
+
 2025-03-28 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 637: Support for crossref lists and ranges
 	- InsetRef has a new param: tuple = "list"|"range"

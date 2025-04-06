@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 637
+\lyxformat 638
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31372,7 +31372,17 @@ section,
 \change_unchanged
 .
  To reference a document part,
- you have to insert a label into it.
+ 
+\change_deleted -712698321 1743945136
+you have to insert
+\change_inserted -712698321 1743945140
+it needs to have
+\change_unchanged
+ a label
+\change_deleted -712698321 1743945148
+ into it
+\change_unchanged
+.
  The label is used as an anchor and a name for the reference.
  We want for example to refer to the second item of the following list:
 \end_layout
@@ -31396,12 +31406,39 @@ Third item
 \end_layout
 
 \begin_layout Standard
-First we insert a label into the second item with the menu 
+
+\change_inserted -712698321 1743945230
+Labels can be inserted manually,
+ as described in what follows,
+ but \SpecialChar LyX
+ also provides ways to automate the process directly from the cross-references dialog or the outliner.
+ This is described afterwards.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1743945473
+To manually insert a label,
+ 
+\change_deleted -712698321 1743945482
+First we insert a label into the second item with
+\change_inserted -712698321 1743945482
+use
+\change_unchanged
+ the menu 
 \family sans
 Insert\SpecialChar menuseparator
 Label
 \family default
- or by pressing the toolbar button 
+ or 
+\change_deleted -712698321 1743945487
+by 
+\change_unchanged
+press
+\change_deleted -712698321 1743945489
+ing
+\change_unchanged
+ the toolbar button 
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
@@ -31484,15 +31521,32 @@ arg   "dialog-show-new-inset ref"
 \end_inset
 
 .
- A gray cross-reference box like this:
+ 
+\change_deleted -712698321 1743945594
+A gray cross-reference box like this:
  
 \begin_inset Graphics
 	filename clipart/reference.png
 
 \end_inset
 
- is inserted and the cross-reference window appears showing all the labels in the document.
- We can now sort the labels alphabetically and then choose the entry 
+ is inserted and t
+\change_inserted -712698321 1743945594
+T
+\change_unchanged
+he cross-reference window appears showing all the labels in the document
+\change_inserted -712698321 1743945638
+ (note that you can sort,
+ group or filter the list)
+\change_unchanged
+.
+ We can now 
+\change_deleted -712698321 1743945646
+sort the labels alphabetically and then choose
+\change_inserted -712698321 1743945647
+select
+\change_unchanged
+ the entry 
 \begin_inset Quotes eld
 \end_inset
 
@@ -31505,18 +31559,92 @@ enu:Second-item
 \end_inset
 
 .
- At the position of the cross-reference box the item number will appear in the output.
-\change_inserted -712698321 1723183607
+ 
+\change_inserted -712698321 1743945707
+A gray cross-reference box like this:
+ 
+\begin_inset Graphics
+	filename clipart/reference.png
+
+\end_inset
+
+ is inserted – this will become the reference in the output (the item number by default).
+\change_deleted -712698321 1743945710
+At the position of the cross-reference box the item number will appear in the output.
+\change_inserted -712698321 1743945942
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1723185545
-For section headings,
+\change_inserted -712698321 1743946070
+Note that some cross-reference styles allow for multiple labels in a cross reference and format this to appropriate output (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Sections 1,
+ 2,
+ and 3
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Some allow to treat two labels as start and end of a range (as in 
+\begin_inset Quotes eld
+\end_inset
+
+Sections 1 to 5
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Hence you can add multiple labels in the dialog and re-arrange their order.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1743945888
+Alternatively to the list of existing labels,
+ you can also let the dialog display all sections headings (
+\begin_inset Quotes eld
+\end_inset
+
+Table of contents
+\begin_inset Quotes erd
+\end_inset
+
+),
+ table or figure captions,
+ and other referable elements of the document.
+ If you select one of those and hit 
+\begin_inset Quotes eld
+\end_inset
+
+Add
+\begin_inset Quotes erd
+\end_inset
+
+ to add it to the list of labels to refer to,
+ \SpecialChar LyX
+ will check if the item already has a label and if not,
+ creates one before inserting it.
+ You don't have to bother with inserting labels yourself!
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1743946586
+For selected elements (section headings,
  footnotes,
- table and figure floats,
- this procedure can be simplified by using the outliner (see section
+ table and figure floats),
+ this procedure can also be done even more easy via the outliner (see section
 \begin_inset space ~
 \end_inset
 
@@ -31535,6 +31663,7 @@ reference "subsec:The-Outliner"
 Insert Cross-Reference to this Item
 \family default
  and the desired cross-reference format (see below for those) in the context menu.
+ As with the dialog,
  \SpecialChar LyX
  will check if the item already has a label and if not,
  creates one before inserting the reference.
@@ -32494,6 +32623,105 @@ Referencing Floats
 Embedded Objects
 \emph default
  manual.
+\change_inserted -712698321 1743947129
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1743947200
+Cross-References to External Documents
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1743947564
+Within one file or a set of related files (master,
+ children and siblings;
+ see section 
+\emph on
+Child Documents
+\emph default
+ in the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+),
+ 
+\change_inserted -584632292 1743955999
+that is 
+\change_inserted -712698321 1743947564
+all 
+\change_inserted -584632292 1743956003
+that needs to be 
+\change_inserted -712698321 1743947564
+said about how to generate cross references.
+ However,
+ there might be cases when you want to refer to parts of completely separate documents (such as another volume in a multi-volume book).
+ This is possible (with the help of the \SpecialChar LaTeX
+ package 
+\family sans
+xr
+\family default
+) if this other document is available as a \SpecialChar LyX
+ file.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1743947698
+To insert such a reference,
+ open this document as well.
+ From the document
+\change_inserted -584632292 1743956042
+ in which
+\change_inserted -712698321 1743947698
+ the reference should be inserted,
+ open the cross-references dialog as explained in the previous section.
+ Assure that 
+\begin_inset Quotes eld
+\end_inset
+
+All existing labels
+\begin_inset Quotes erd
+\end_inset
+
+ are shown.
+ Now,
+ from the file selection box preceded by 
+\begin_inset Quotes eld
+\end_inset
+
+In:
+\begin_inset Quotes erd
+\end_inset
+
+,
+ select the document to refer to.
+ The dialog now shows all existing labels in that document.
+ Select the one you want and add it.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1743947906
+There is one caveat,
+ though:
+ Since \SpecialChar LaTeX
+ needs information about the reference target,
+ it needs to compile the referred-to document before compiling the referring document,
+ in order to access the former's labels.
+ \SpecialChar LyX
+ does that automatically for you in documents that contains such external cross-references.
+ When previewing such documents,
+ it opens the respective target documents and compiles or updates them before handling the actual (referring) document.
+ Of course you need to make sure that the referred to document is available (at the path it was when you inserted the reference) and accessible.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

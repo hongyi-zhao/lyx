@@ -265,6 +265,9 @@ public:
 	/// documents), needed for appropriate update of natbib labels.
 	mutable docstring_list bibfiles_cache_;
 
+	///
+	vector<FileName> external_xrefed_files_;
+
 	// FIXME The caching mechanism could be improved. At present, we have a
 	// cache for each Buffer, that caches all the bibliography info for that
 	// Buffer. A more efficient solution would be to have a global cache per
@@ -650,6 +653,8 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList_ptr clones) const
 		// FIXME Do we need to do this now, or can we wait until we run updateMacros()?
 		buffer_clone->setChild(dit, child_clone);
 	}
+	for (auto const & fn : externalRefFiles())
+		buffer_clone->registerExternalRefs(fn);
 	buffer_clone->d->macro_lock = false;
 }
 
@@ -2521,6 +2526,28 @@ void Buffer::registerBibfiles(const docstring_list & bf) const
 		if (temp == d->bibfiles_cache_.end())
 			d->bibfiles_cache_.push_back(p);
 	}
+}
+
+
+void Buffer::registerExternalRefs(FileName fn) const
+{
+	// We register the files in the master buffer,
+	// if there is one, but also in every single buffer,
+	// in case a child is compiled alone.
+	Buffer const * const tmp = masterBuffer();
+	if (tmp != this)
+		tmp->registerExternalRefs(fn);
+
+	vector<FileName>::const_iterator temp =
+		find(d->external_xrefed_files_.begin(), d->external_xrefed_files_.end(), fn);
+	if (temp == d->external_xrefed_files_.end())
+		d->external_xrefed_files_.push_back(fn);
+}
+
+
+vector<FileName> Buffer::externalRefFiles() const
+{
+	return d->external_xrefed_files_;
 }
 
 
@@ -5387,6 +5414,7 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype, bool const dele
 	// to resolve macros in it.
 	parit.text()->setMacrocontextPosition(parit);
 
+	d->external_xrefed_files_.clear();
 	depth_type maxdepth = 0;
 	pit_type const lastpit = parit.lastpit();
 	bool changed = false;

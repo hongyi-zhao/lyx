@@ -2546,6 +2546,15 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
+	case LFUN_BUFFER_UPDATE_EXTERNAL: {
+		if (!doc_buffer || d.processing_thread_watcher_.isRunning()) {
+			enable = false;
+			break;
+		}
+		enable = !doc_buffer->externalRefFiles().empty();
+		break;
+	}
+
 	case LFUN_BUFFER_RELOAD:
 		enable = doc_buffer && !doc_buffer->isUnnamed()
 			&& doc_buffer->fileName().exists()
@@ -4668,6 +4677,12 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		case LFUN_BUFFER_UPDATE: {
+			if (doc_buffer && !doc_buffer->externalRefFiles().empty()) {
+				// compile externally referred files first
+				FuncRequest fr = FuncRequest(LFUN_BUFFER_UPDATE_EXTERNAL);
+				fr.allowAsync(false);
+				lyx::dispatch(fr);
+			}
 			d.asyncBufferProcessing(argument,
 						doc_buffer,
 						_("Exporting ..."),
@@ -4680,7 +4695,38 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				doc_buffer->requireFreshStart(false);
 			break;
 		}
+
+		case LFUN_BUFFER_UPDATE_EXTERNAL: {
+			if (!doc_buffer)
+				break;
+			bool const master = cmd.argument() == "master";
+			for (FileName const & fn : master
+			     ? doc_buffer->masterBuffer()->externalRefFiles()
+			     : doc_buffer->externalRefFiles()) {
+				Buffer const * buf = checkAndLoadLyXFile(fn, true);
+				if (buf) {
+					d.asyncBufferProcessing(string(),
+								buf,
+								_("Preparing externally referenced file ..."),
+								&GuiViewPrivate::compileAndDestroy,
+								&Buffer::doExport,
+								nullptr, cmd.allowAsync(), true);
+					// If fresh start had been required, reset to false here
+					// otherwise this would be done on each subsequent call
+					buf->requireFreshStart(false);
+				} else
+					LYXERR0("File " << fn.absFileName() << " not could not be compiled. External reference to it won't work.");
+			}
+			break;
+		}
+
 		case LFUN_BUFFER_VIEW: {
+			if (doc_buffer && !doc_buffer->externalRefFiles().empty()) {
+				// compile externally referred files first
+				FuncRequest fr = FuncRequest(LFUN_BUFFER_UPDATE_EXTERNAL);
+				fr.allowAsync(false);
+				lyx::dispatch(fr);
+			}
 			d.asyncBufferProcessing(argument,
 						doc_buffer,
 						_("Previewing ..."),
@@ -4694,6 +4740,12 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 		case LFUN_MASTER_BUFFER_UPDATE: {
+			if (doc_buffer && !doc_buffer->masterBuffer()->externalRefFiles().empty()) {
+				// compile externally referred files first
+				FuncRequest fr = FuncRequest(LFUN_BUFFER_UPDATE_EXTERNAL, "master");
+				fr.allowAsync(false);
+				lyx::dispatch(fr);
+			}
 			d.asyncBufferProcessing(argument,
 						(doc_buffer ? doc_buffer->masterBuffer() : nullptr),
 						docstring(),
@@ -4707,6 +4759,12 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 		case LFUN_MASTER_BUFFER_VIEW: {
+			if (doc_buffer && !doc_buffer->masterBuffer()->externalRefFiles().empty()) {
+				// compile externally referred files first
+				FuncRequest fr = FuncRequest(LFUN_BUFFER_UPDATE_EXTERNAL, "master");
+				fr.allowAsync(false);
+				lyx::dispatch(fr);
+			}
 			d.asyncBufferProcessing(argument,
 						(doc_buffer ? doc_buffer->masterBuffer() : nullptr),
 						docstring(),

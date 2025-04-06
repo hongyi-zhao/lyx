@@ -130,7 +130,13 @@ private:
 	///
 	bool useRange() const;
 	///
+	std::vector<support::FileName> externalFilenames(bool warn = false) const;
+	///
+	support::FileName getExternalFileName(docstring const & label) const;
+	///
 	std::vector<docstring> getLabels() const { return support::getVectorFromString(getParam("reference")); }
+	///
+	bool isBroken(docstring const & label, bool const preset = false) const;
 
 	///
 	mutable docstring screen_label_;

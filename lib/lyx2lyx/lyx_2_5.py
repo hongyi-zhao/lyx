@@ -2862,6 +2862,27 @@ def revert_reflists(document):
             ["\\usepackage{refstyle}"]
         )
 
+
+def revert_xr(document):
+    "Removes filenames params from InsetRef"
+
+    # Since LyX < 2.5 is fundamentally unable to support xr,
+    # we can only remove the param
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of reference inset at line %d!!" % (i))
+            i += 1
+            continue
+
+        del_token(document.body, "filenames", i, j)
+        i += 1
+        continue
+
 ##
 # Conversion hub
 #
@@ -2884,11 +2905,13 @@ convert = [
     [634, []],
     [635, [convert_crossref_package]],
     [636, []],
-    [637, []]
+    [637, []],
+    [638, []]
 ]
 
 
 revert = [
+    [637, [revert_xr]],
     [636, [revert_reflists]],
     [635, [revert_cleveref, revert_zref]],
     [634, [revert_crossref_package]],

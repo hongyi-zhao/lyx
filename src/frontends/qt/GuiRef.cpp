@@ -450,6 +450,7 @@ void GuiRef::updateClicked()
 void GuiRef::addClicked()
 {
 	QString text = refsTW->currentItem()->data(0, Qt::UserRole).toString();
+	QString fn;
 	if (targetCO->itemData(targetCO->currentIndex()).toString() != "labels") {
 		dispatch(FuncRequest(LFUN_REFERENCE_TO_PARAGRAPH,
 				qstring_to_ucs4(text) + " " + "forrefdialog"));
@@ -460,10 +461,21 @@ void GuiRef::addClicked()
 			return;
 		}
 		text = toqstr(bufferview()->insertedLabel());
+	} else {
+		int const the_buffer = bufferCO->currentIndex();
+		if (the_buffer != -1) {
+			FileNameList const names(theBufferList().fileNames());
+			FileName const & name = names[the_buffer];
+			Buffer const * buf = theBufferList().getBuffer(name);
+			if (buf && buf != &buffer())
+				fn = toqstr(name.relPath(buffer().filePath()));
+		}
 	}
 	QTreeWidgetItem * item = new QTreeWidgetItem(selectedLV);
 	item->setText(0, text);
 	item->setData(0, Qt::UserRole, text);
+	if (!fn.isEmpty())
+		item->setData(1, Qt::UserRole, fn);
 
 	selectedLV->addTopLevelItem(item);
 	selectedLV->setCurrentItem(item);
@@ -656,8 +668,14 @@ void GuiRef::applyView()
 {
 	QList<QTreeWidgetItem *> selRefs = selectedLV->findItems("*", Qt::MatchWildcard);
 	vector<docstring> labels;
-	for (int i = 0; i < selRefs.size(); ++i)
-		labels.push_back(qstring_to_ucs4(selRefs.at(i)->data(0, Qt::UserRole).toString()));
+	vector<docstring> filenames;
+	for (int i = 0; i < selRefs.size(); ++i) {
+		docstring const lb = qstring_to_ucs4(selRefs.at(i)->data(0, Qt::UserRole).toString());
+		docstring const fn = qstring_to_ucs4(selRefs.at(i)->data(1, Qt::UserRole).toString());
+		labels.push_back(lb);
+		if (!fn.empty())
+			filenames.push_back(lb + "@" + fn);
+	}
 
 	params_.setCmdName(fromqstr(typeCO->itemData(typeCO->currentIndex()).toString()));
 	params_["reference"] = getStringFromVector(labels);
@@ -671,6 +689,7 @@ void GuiRef::applyView()
 	      from_ascii("true") : from_ascii("false");
 	params_["options"] = qstring_to_ucs4(refOptionsLE->text());
 	params_["tuple"] = qstring_to_ucs4(rangeListCO->itemData(rangeListCO->currentIndex()).toString());
+	params_["filenames"] = getStringFromVector(filenames);
 	restored_buffer_ = bufferCO->currentIndex();
 }
 
@@ -1044,6 +1063,14 @@ bool GuiRef::initialiseParams(std::string const & sdata)
 	InsetCommand::string2params(sdata, params_);
 
 	selectedLV->clear();
+	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params_["filenames"])));
+	QMap<QString, QString> fnmap;
+	for (auto const & ifn : incFileNames) {
+		string label;
+		string const incFileName = split(ifn, label, '@');
+		fnmap[toqstr(label)] = toqstr(incFileName);
+	}
+	
 	vector<docstring> selRefs = getVectorFromString(params_["reference"]);
 	QList<QTreeWidgetItem *> selRefsItems;
 	for (auto const & sr : selRefs) {
@@ -1051,6 +1078,8 @@ bool GuiRef::initialiseParams(std::string const & sdata)
 		item->setText(0, toqstr(sr));
 		item->setData(0, Qt::UserRole, toqstr(sr));
 		item->setText(1, qt_("Unknown[[ref target]]"));
+		if (fnmap.contains(toqstr(sr)))
+			item->setData(2, Qt::UserRole, fnmap.value(toqstr(sr)));
 		selRefsItems.append(item);
 	}
 	if (!selRefsItems.empty()) {

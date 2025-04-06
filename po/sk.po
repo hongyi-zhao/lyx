@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-05 19:43+0200\n"
-"PO-Revision-Date: 2025-04-05 17:59+0000\n"
+"POT-Creation-Date: 2025-04-06 11:10+0200\n"
+"PO-Revision-Date: 2025-04-06 09:26+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3927,9 +3927,9 @@ msgstr "Filter prvkov"
 msgid "&Undo"
 msgstr "Sp&äť"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:95
-msgid "Re&do"
-msgstr "Opä&ť"
+#: src/frontends/qt/ui/PrefColorsUi.ui:266
+msgid "R&edo"
+msgstr "O&päť"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:237
 msgid "Remove a selected color theme"
@@ -3968,17 +3968,9 @@ msgid "Use the color scheme of your Operating System/Desktop Environment"
 msgstr ""
 "Použiť farebnú schému vášho Operačného Systému/Prostredia Pracovnej Plochy"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:108
-msgid "&Use system colors"
+#: src/frontends/qt/ui/PrefColorsUi.ui:48
+msgid "Use &system colors"
 msgstr "Použiť farby &systému"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:390
-msgid "Reset all colors to theme"
-msgstr "Vrátiť všetko na farby témy"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:143
-msgid "Reset A&ll"
-msgstr "Obnoviť v&šetko"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -6366,9 +6358,49 @@ msgstr "…"
 msgid "Add the current color set as a theme"
 msgstr "Pridajte aktuálnu sadu farieb ako tému"
 
+#: src/frontends/qt/ui/PrefColorsUi.ui:166
+msgid "&Light"
+msgstr "Sv&etlá"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:179
+msgid "&Dark"
+msgstr "T&mavá"
+
 #: src/frontends/qt/ui/PrefColorsUi.ui:307
 msgid "&Color Settings:"
 msgstr "Nastavenie &farieb:"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:348
+msgid "Reset selected light-mode color to the last saved"
+msgstr "Vrátiť vybranú farbu svetlej témy na poslednú uloženú"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:351
+msgid "Ligh&t"
+msgstr "Svet&lá"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:358
+msgid "Reset selected dark-mode color to the last saved"
+msgstr "Vrátiť vybranú farbu tmavej témy na poslednú uloženú"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:361
+msgid "Dar&k"
+msgstr "Tm&avá"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:368
+msgid "&Both"
+msgstr "O&bidve"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:383
+msgid "Reset all colors in the table to the last saved"
+msgstr "Vrátiť všetky farby tmavej témy na posledné uložené"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:386
+msgid "Reset &All Colors"
+msgstr "Ob&noviť farbu"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:393
+msgid "Edit"
+msgstr "Upraviť"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:320
 msgid "&Themes:"
@@ -37233,14 +37265,6 @@ msgstr "Kliknite tu na zmenu farby vo svetlom režime"
 msgid "Click here to change the color in the dark mode"
 msgstr "Kliknite tu na zmenu farby v tmavom režime"
 
-#: src/frontends/qt/GuiPrefs.cpp:1618
-msgid "Reset the light color to the one set last"
-msgstr "Návrat svetlej farby na poslednú nastavenú"
-
-#: src/frontends/qt/GuiPrefs.cpp:1620
-msgid "Reset the dark color to the one set last"
-msgstr "Návrat tmavej farby na poslednú nastavenú"
-
 #: src/frontends/qt/GuiPrefs.cpp:1277
 msgid "Paths"
 msgstr "Cesty"
@@ -42276,9 +42300,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Soul Text Markup"
 #~ msgstr "Soul sémantické značkovanie"
-
-#~ msgid "Edit"
-#~ msgstr "Upraviť"
 
 #~ msgid "Find"
 #~ msgstr "Hľadať"

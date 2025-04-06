@@ -372,13 +372,14 @@ FontInfo InsetNote::getFont() const
 	FontInfo font = getLayout().font();
 	if (params_.type == InsetNoteParams::Greyedout) {
 		ColorCode c = lcolor.getFromLyXName("notefontcolor");
-		if (c != Color_none)
-			font.setColor(c);
 		// This is the local color (not overridden by other documents)
 		// the color might not yet be initialized for new documents
 		ColorCode lc = lcolor.getFromLyXName("notefontcolor@" + buffer().fileName().absFileName(), false);
-		if (lc != Color_none)
+		if (lc != Color_none) {
+			font.setColor(lc);
 			font.setPaintColor(lc);
+		} else if (c != Color_none)
+			font.setColor(c);
 	}
 	return font;
 }

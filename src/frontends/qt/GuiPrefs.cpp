@@ -1713,11 +1713,19 @@ void PrefColors::initializeColorsTV()
 
 	QFont font;
 	QFontMetrics fm(font);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
 	int col_width = max(fm.horizontalAdvance(header_labels_[LightColorColumn]),
 	                    swatch_width_);
 	colorsTV->setColumnWidth(LightColorColumn, col_width);
 	col_width = max(fm.horizontalAdvance(header_labels_[DarkColorColumn]),
 	                swatch_width_);
+#else
+	int col_width = max(fm.width(header_labels_[LightColorColumn]),
+	                    swatch_width_);
+	colorsTV->setColumnWidth(LightColorColumn, col_width);
+	col_width = max(fm.width(header_labels_[DarkColorColumn]),
+	                swatch_width_);
+#endif
 	colorsTV->setColumnWidth(DarkColorColumn, col_width);
 	colorsTV->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	colorsTV->setSelectionBehavior(QAbstractItemView::SelectRows);

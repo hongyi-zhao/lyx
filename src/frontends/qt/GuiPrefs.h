@@ -50,6 +50,7 @@
 #include <QtWidgets/qmenu.h>
 #include <QStandardItemModel>
 #include <QStyledItemDelegate>
+#include <QTableView>
 #include <QUndoCommand>
 
 
@@ -259,9 +260,7 @@ public:
 	enum Column {
 		LightColorColumn,
 		DarkColorColumn,
-		ColorNameColumn,
-		LightColorResetColumn,
-		DarkColorResetColumn
+		ColorNameColumn
 	};
 
 	PrefColors(GuiPreferences * form);
@@ -271,15 +270,24 @@ public:
 	QColor getCurrentColor(ColorCode color_code, bool is_dark_mode);
 
 private Q_SLOTS:
-	// void changeColor();
-	void pressedColorsTV(const QModelIndex index);
 	void clickedColorsTV(const QModelIndex index);
+	void selectionChanged(const QItemSelection &selected,
+	                      const QItemSelection &deselected);
 	bool resetAllColor();
 	void changeSysColor();
 	void changeAutoapply();
 	bool setColor(QStandardItem *item, QColor const &new_color,
 	              QString const &old_color);
-	void setEnabledReset(int const &row, Column const &column);
+	/// Change the light color of the selected row
+	void editLightColor();
+	/// Change the dark color of the selected row
+	void editDarkColor();
+	/// Reset light and dark colors to the previously set theme colors
+	bool resetColors();
+	/// Reset light color to the previously set theme colors
+	bool resetLightColor(){ return resetColor(false); }
+	/// Reset dark color to the previously set theme colors
+	bool resetDarkColor() { return resetColor(true);  }
 	void openThemeMenu();
 	void saveTheme();
 	void loadTheme(QListWidgetItem* current_item,
@@ -292,42 +300,51 @@ private Q_SLOTS:
 
 private:
 	/// Change color at (row, column).
-	void changeColor(int const &row, Column const &column);
-	/// Reset color to the previously set theme color.
-	bool resetColor(int const &row, Column const &column);
+	void changeColor(int const &row, bool const &is_dark_mode);
+	/// Reset color to the previously set theme color
+	bool resetColor(bool const is_dark_color);
+	/// Reset color to the previously set theme color
+	bool resetColor(int const row, bool const is_dark_color);
+	/// Set availability of reset buttons of a given row
+	void setResetButtonStatus(int const &row, bool is_undoing = false);
+	/// Set availability of reset buttons of the selected row
+	void setResetButtonStatus(bool is_undoing = false);
 	/// Get default color of current theme at (row, column) in the colorsTV.
 	/// If theme_colors_ is empty, this returns an invalid QColor.
-	QColor getCurrentThemeColor(int const &row, Column const &column);
+	QColor getCurrentThemeColor(int const &row, bool const &is_dark_color);
+	///
+	ColorPair getCurrentThemeColors(int const &row);
 	/// Set color swatches for both light and dark colors by row.
 	bool setSwatches(size_type const &row, ColorPair colors);
 	/// Set color swatch at item.
 	bool setSwatch(QStandardItem *item, QColor const &color);
 	///
 	void updateAllSwatches();
-	/// This initializes the theme list widget.
+	///
+	void setUndoRedoButtonStatuses(bool isUndoing);
+	///
 	void initializeThemesLW();
 	/// This initializes the extension menu for theme including exports and
 	/// imports.
 	void initializeThemeMenu();
 	/// This initializes the color setting table view.
 	void initializeColorsTV();
-	///
+	/// Common algorithm between saving and exporting
 	void saveExportThemeCommon(QString file_path);
-	///
+	/// Common algorithm between loading and importing
 	void loadImportThemeCommon(support::FileName filename);
-	///
+	/// Ask the user a theme name
 	bool askThemeName(bool porting);
 	///
 	bool wantToOverwrite();
 	///
 	ColorPair toqcolor(ColorNamePair);
 
-	QStringList header_labels_;
-	QString reset_label_;
+	QStringList header_labels_ =
+	                {qt_("Light"), qt_("Dark"), qt_("Object/Element")};
+	QString reset_label_ = qt_("Reset");
 	int const swatch_width_  = 32;
 	int const swatch_height_ = 18;
-	int const swatch_hmargin_ = 2;
-	int const reset_pb_width_ = 50;
 
 	std::vector<ColorCode> lcolors_;
 	ColorNamePairs curcolors_;
@@ -335,9 +352,8 @@ private:
 	ColorNamePairs theme_colors_;
 
 	QStandardItemModel colorsTV_model_;
-
-	std::vector<QPersistentModelIndex> light_color_index_;
-	std::vector<QPersistentModelIndex> dark_color_index_;
+	QItemSelectionModel selection_model_;
+	QModelIndexList selected_indexes_;
 
 	QList<QStandardItem *> items_found_;
 	QString search_string_;
@@ -353,9 +369,8 @@ private:
 	/// holds filename of currently selected theme
 	QString theme_filename_;
 
-	bool mouse_pressed_;
-
 	friend class SetColor;
+	friend class ColorTableView;
 	friend class ColorSwatchDelegate;
 };
 
@@ -648,21 +663,16 @@ public:
 class SetColor : public PrefColors, public QUndoCommand
 {
 public:
-	SetColor(QStandardItem *item, QColor const &new_color,
-	         QString const &old_color,
+	SetColor(QStandardItem *item,
+	         QColor const &new_color, QString const &old_color,
 	         ColorNamePairs &new_color_list,
-	         bool const autoapply,
-	         PrefColors* color_module,
+	         bool const autoapply, PrefColors* color_module,
 	         QUndoCommand* uc_parent = nullptr);
 	~SetColor(){};
 
 	void redo() override;
 	void undo() override;
 	void setColor(QColor const &color);
-	/// If new_color_ (when doingUndo is false) or old_color_ (when doingUndo is
-	/// true) is different from theme's color, enable the reset button. If not,
-	/// disable it.
-	void setStateOfResetButtons(bool doingUndo);
 
 private:
 	bool const autoapply_;

@@ -55,7 +55,7 @@
       <string>Apply changed colors immediately</string>
      </property>
      <property name="text">
-      <string>Update &amp;immediately</string>
+      <string>Apply &amp;immediately</string>
      </property>
     </widget>
    </item>

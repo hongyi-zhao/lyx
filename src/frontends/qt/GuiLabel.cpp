@@ -39,7 +39,8 @@ GuiLabel::GuiLabel(QWidget * parent) : InsetParamsWidget(parent)
 	connect(keywordED, SIGNAL(textChanged(const QString &)),
 		this, SIGNAL(changed()));
 
-	QRegularExpression nocomma_re("[^,]+");
+	// disallow the input of , and @ as they are used as separators
+	QRegularExpression nocomma_re("[^,@]+");
 	keywordED->setValidator(new QRegularExpressionValidator(nocomma_re, keywordED));
 
 	setFocusProxy(keywordED);

@@ -2277,6 +2277,8 @@ docstring Text::getPossibleLabel(DocIterator const & cur) const
 	// commas are not allowed, as they are used to separate multiple
 	// in cross-references
 	par_text = subst(par_text, ',', '-');
+	// same for @ as they are used as separators in the filename list
+	par_text = subst(par_text, '@', '-');
 	int const numwords = 3;
 	for (int i = 0; i < numwords; ++i) {
 		if (par_text.empty())

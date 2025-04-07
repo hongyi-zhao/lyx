@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-06 11:10+0200\n"
-"PO-Revision-Date: 2025-04-06 09:26+0000\n"
+"POT-Creation-Date: 2025-04-07 10:29+0200\n"
+"PO-Revision-Date: 2025-04-07 08:51+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3907,10 +3907,6 @@ msgstr "Nájsť v preambule"
 msgid "&Find"
 msgstr "Ná&jsť"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:39
-msgid "Apply changed color immediately"
-msgstr "Okamžite použiť zmenenú tému farieb"
-
 #: src/frontends/qt/ui/PrefColorsUi.ui:42
 msgid "Update &immediately"
 msgstr "O&kamžite použiť"
@@ -3971,6 +3967,10 @@ msgstr ""
 #: src/frontends/qt/ui/PrefColorsUi.ui:48
 msgid "Use &system colors"
 msgstr "Použiť farby &systému"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:55
+msgid "Apply changed colors immediately"
+msgstr "Okamžite použiť zmenené farby"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -5406,6 +5406,21 @@ msgstr "&Vyberať z:"
 msgid "Label"
 msgstr "Štítok"
 
+#: src/insets/InsetRef.cpp:1021
+msgid "Unknown external file!"
+msgstr "Neznámy externý súbor!"
+
+#: src/insets/InsetRef.cpp:1022
+#, c-format
+msgid ""
+"The label `%1$s' refers to an external file\n"
+"(`%2$s')\n"
+"which could not be found. Output will be broken!"
+msgstr ""
+"Štítok `%1$s' odkazuje na externý súbor\n"
+"(`%2$s')\n"
+"ktorý sa nepodarilo nájsť. Výstup bude pokazený!"
+
 #: src/frontends/qt/ui/RefUi.ui:38
 msgid "Reference counter value"
 msgstr "Referovaná hodnota čítača"
@@ -6359,8 +6374,16 @@ msgid "Add the current color set as a theme"
 msgstr "Pridajte aktuálnu sadu farieb ako tému"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:166
+msgid "Change the light-mode color of the selected object/element"
+msgstr "Zmeňte farbu svetlej témy vybraného objektu/prvku"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:166
 msgid "&Light"
 msgstr "Sv&etlá"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:182
+msgid "Change the dark-mode color of the selected object/element"
+msgstr "Zmeňte farbu tmavej témy vybraného objektu/prvku"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:179
 msgid "&Dark"
@@ -6370,21 +6393,31 @@ msgstr "T&mavá"
 msgid "&Color Settings:"
 msgstr "Nastavenie &farieb:"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:348
-msgid "Reset selected light-mode color to the last saved"
-msgstr "Vrátiť vybranú farbu svetlej témy na poslednú uloženú"
+#: src/frontends/qt/ui/PrefColorsUi.ui:354
+msgid ""
+"Reset the light-mode color of the selected object/element to the last saved"
+msgstr "Vrátiť farbu svetlej témy vybraného objektu/prvku na poslednú uloženú"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:351
 msgid "Ligh&t"
 msgstr "Svet&lá"
 
-#: src/frontends/qt/ui/PrefColorsUi.ui:358
-msgid "Reset selected dark-mode color to the last saved"
-msgstr "Vrátiť vybranú farbu tmavej témy na poslednú uloženú"
+#: src/frontends/qt/ui/PrefColorsUi.ui:364
+msgid ""
+"Reset the dark-mode color of the selected object/element to the last saved"
+msgstr "Vrátiť farbu tmavej témy vybraného objektu/prvku na poslednú uloženú"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:361
 msgid "Dar&k"
 msgstr "Tm&avá"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:374
+msgid ""
+"Reset the light- and dark-mode colors of the selected object/element to the "
+"last saved"
+msgstr ""
+"Vrátiť farby svetlej a tmavej témy vybratého objektu/prvku na posledné "
+"uložené"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:368
 msgid "&Both"
@@ -38708,6 +38741,10 @@ msgstr "Chyba pri klonovaní pamäte dokumentu."
 #: src/frontends/qt/GuiView.cpp:4442 src/frontends/qt/GuiView.cpp:4462
 msgid "Exporting ..."
 msgstr "Exportujem …"
+
+#: src/frontends/qt/GuiView.cpp:4710
+msgid "Preparing externally referenced file ..."
+msgstr "Pripravuje sa externe odkazovaný súbor…"
 
 #: src/frontends/qt/GuiView.cpp:4471
 msgid "Previewing ..."

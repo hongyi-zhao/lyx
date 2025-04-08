@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-07 20:20+0200\n"
-"PO-Revision-Date: 2025-04-07 18:34+0000\n"
+"POT-Creation-Date: 2025-04-08 09:36+0200\n"
+"PO-Revision-Date: 2025-04-08 07:48+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3967,6 +3967,10 @@ msgstr "Použiť farby &systému"
 #: src/frontends/qt/ui/PrefColorsUi.ui:55
 msgid "Apply changed colors immediately"
 msgstr "Okamžite použiť zmenené farby"
+
+#: src/frontends/qt/ui/PrefColorsUi.ui:58
+msgid "Apply &immediately"
+msgstr "O&kamžite uplatniť"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:26
 msgid "In Math"

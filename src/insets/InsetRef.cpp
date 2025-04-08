@@ -999,6 +999,11 @@ bool InsetRef::useRange() const
 vector<FileName> InsetRef::externalFilenames(bool const warn) const
 {
 	vector<FileName> res;
+	if (buffer().isInternal())
+		// internal buffers (with their own filenames)
+		// are excluded from this.
+		return res;
+
 	// check whether the included file exist
 	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params()["filenames"])));
 	ListOfBuffers const children = buffer().masterBuffer()->getDescendants();
@@ -1008,8 +1013,8 @@ vector<FileName> InsetRef::externalFilenames(bool const warn) const
 		FileName fn =
 			support::makeAbsPath(incFileName,
 					     support::onlyPath(buffer().absFileName()));
-		if (buffer().fileName() == fn || buffer().isInternal())
-			// ignore own file and internal buffers
+		if (buffer().fileName() == fn)
+			// ignore own file
 			continue;
 		if (fn.exists()) {
 			bool is_family = false;

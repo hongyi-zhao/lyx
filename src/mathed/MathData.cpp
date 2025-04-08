@@ -697,6 +697,9 @@ void MathData::attachMacroParameters(Cursor * cur,
 	const int macroOptionals, const bool fromInitToNormalMode,
 	const bool interactiveInit, const size_t appetite)
 {
+	// Coverity Scan believes that this can happen
+	LATTEST(macroPos != lyx::npos);
+
 	InsetMathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
 
 	// start at atom behind the macro again, maybe with some new arguments

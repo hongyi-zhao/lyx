@@ -185,6 +185,21 @@ static void build_translator()
 	passed = true;
 }
 
+Inset & Inset::operator=(Inset const & in)
+{
+	if (&in != this)
+		buffer_ = nullptr;
+	return *this;
+}
+
+
+Inset & Inset::operator=(Inset && in)
+{
+	if (&in != this)
+		buffer_ = nullptr;
+	return *this;
+}
+
 
 void Inset::setBuffer(Buffer & buffer)
 {

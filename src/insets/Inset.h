@@ -634,7 +634,10 @@ public:
 protected:
 	/// Constructors
 	Inset(Buffer * buf) : buffer_(buf) {}
-	Inset(Inset const &) : buffer_(0) {}
+	Inset(Inset const &) : buffer_(nullptr) {}
+	Inset(Inset &&) : buffer_(nullptr) {}
+	Inset & operator=(Inset const &);
+	Inset & operator=(Inset &&);
 
 	/// replicate ourselves
 	friend class InsetList;

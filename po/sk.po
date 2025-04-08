@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-07 10:29+0200\n"
-"PO-Revision-Date: 2025-04-07 08:51+0000\n"
+"POT-Creation-Date: 2025-04-07 20:20+0200\n"
+"PO-Revision-Date: 2025-04-07 18:34+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3906,10 +3906,6 @@ msgstr "Nájsť v preambule"
 #: src/frontends/qt/ui/PreambleUi.ui:42
 msgid "&Find"
 msgstr "Ná&jsť"
-
-#: src/frontends/qt/ui/PrefColorsUi.ui:42
-msgid "Update &immediately"
-msgstr "O&kamžite použiť"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:109
 msgid "Enter a string to filter colors"

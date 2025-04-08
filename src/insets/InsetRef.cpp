@@ -815,6 +815,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 	// not be in the label cache yet.)
 	broken_ = false;
 	setBroken(broken_);
+	cleanUpExternalFileNames();
 }
 
 
@@ -1007,6 +1008,9 @@ vector<FileName> InsetRef::externalFilenames(bool const warn) const
 		FileName fn =
 			support::makeAbsPath(incFileName,
 					     support::onlyPath(buffer().absFileName()));
+		if (buffer().fileName() == fn || buffer().isInternal())
+			// ignore own file and internal buffers
+			continue;
 		if (fn.exists()) {
 			bool is_family = false;
 			for (auto const * b : children) {
@@ -1054,6 +1058,40 @@ FileName InsetRef::getExternalFileName(docstring const & inlabel) const
 			return FileName();
 	}
 	return FileName();
+}
+
+
+void InsetRef::cleanUpExternalFileNames()
+{
+	// remove file names from document and relatives
+	// and make all paths relative
+	if (params()["filenames"].empty())
+		return;
+	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params()["filenames"])));
+	vector<string> cleanedFN;
+	ListOfBuffers const children = buffer().masterBuffer()->getDescendants();
+	for (auto const & ifn : incFileNames) {
+		string label;
+		string const incFileName = split(ifn, label, '@');
+		FileName fn =
+			support::makeAbsPath(incFileName,
+					     support::onlyPath(buffer().absFileName()));
+		if (buffer().fileName() == fn)
+			continue;
+		if (fn.exists()) {
+			bool is_family = false;
+			for (auto const * b : children) {
+				if (b->fileName() == fn) {
+					is_family = true;
+					break;
+				}
+			}
+			if (!is_family)
+				cleanedFN.push_back(label + "@" + to_utf8(fn.relPath(buffer().filePath())));
+		} else
+			cleanedFN.push_back(label + "@" + to_utf8(fn.relPath(buffer().filePath())));
+	}
+	setParam("filenames", from_utf8(getStringFromVector(cleanedFN)));
 }
 
 

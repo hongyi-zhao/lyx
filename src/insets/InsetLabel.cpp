@@ -302,6 +302,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = getParam("name");
+		p["filenames"] = getParam("name") + "@" + from_utf8(buffer().absFileName());
 		cap::clearSelection();
 		cap::copyInset(cur, new InsetRef(buffer_, p), getParam("name"));
 		break;

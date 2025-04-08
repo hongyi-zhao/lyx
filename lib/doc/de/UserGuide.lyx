@@ -31363,6 +31363,16 @@ In:
 \end_layout
 
 \begin_layout Standard
+Alternativ können Sie – wie im vorhergehenden Abschnitt beschrieben – auch die Funktion 
+\family sans
+Als Querverweis kopieren
+\family default
+ aus dem Kontextmenü verwenden,
+ um eine Marke aus einem externen Dokument zu kopieren und sie dann als Querverweis einzufügen.
+ 
+\end_layout
+
+\begin_layout Standard
 Beachten Sie aber folgendes:
  Da \SpecialChar LaTeX
  Informationen über das Verweisziel braucht,

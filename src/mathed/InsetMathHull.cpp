@@ -1987,6 +1987,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = label(row);
+		p["filenames"] = label(row) + "@" + from_utf8(buffer().absFileName());
 		cap::clearSelection();
 		cap::copyInset(cur, new InsetRef(buffer_, p), label(row));
 		break;

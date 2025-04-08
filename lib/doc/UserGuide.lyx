@@ -32679,7 +32679,7 @@ To insert such a reference,
  From the document
 \change_inserted -584632292 1743956042
  in which
-\change_inserted -712698321 1743947698
+\change_inserted -712698321 1744087522
  the reference should be inserted,
  open the cross-references dialog as explained in the previous section.
  Assure that 
@@ -32704,6 +32704,17 @@ In:
  select the document to refer to.
  The dialog now shows all existing labels in that document.
  Select the one you want and add it.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1744087587
+Alternatively,
+ you can also use the 
+\family sans
+Copy as Reference
+\family default
+ context menu function to copy the label from the external document as described in the previous section.
 \end_layout
 
 \begin_layout Standard

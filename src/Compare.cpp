@@ -17,7 +17,6 @@
 #include "BufferParams.h"
 #include "Changes.h"
 #include "CutAndPaste.h"
-#include "ErrorList.h"
 #include "Font.h"
 
 #include "insets/InsetText.h"

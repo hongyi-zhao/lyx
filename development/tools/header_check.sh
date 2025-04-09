@@ -132,3 +132,9 @@ do
 	echo 
 	cp "${FILE_COPY}" "${FILE_}"
 done
+
+if [ -e ../development/tools/header_check-filter_candidates.sh ];
+  echo Filtering suitable candidates from .cpp list...
+  ../development/tools/header_check-filter_candidates.sh >> "${LOG_FILE}"
+fi
+

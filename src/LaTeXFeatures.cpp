@@ -39,7 +39,6 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/docstring.h"
-#include "support/filetools.h"
 #include "support/lstrings.h"
 
 #include <algorithm>

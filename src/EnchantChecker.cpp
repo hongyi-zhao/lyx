@@ -14,7 +14,6 @@
 #include <enchant++.h>
 
 #include "EnchantChecker.h"
-#include "LyXRC.h"
 #include "WordLangTuple.h"
 
 #include "support/lassert.h"

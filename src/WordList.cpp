@@ -12,7 +12,6 @@
 
 #include "WordList.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lassert.h"

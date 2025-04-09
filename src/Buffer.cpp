@@ -75,7 +75,6 @@
 #include "mathed/InsetMathHull.h"
 #include "mathed/MacroTable.h"
 #include "mathed/InsetMathMacroTemplate.h"
-#include "mathed/MathSupport.h"
 
 #include "graphics/PreviewLoader.h"
 
@@ -103,7 +102,6 @@
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"
 #include "support/TempFile.h"
-#include "support/textutils.h"
 #include "support/types.h"
 
 #include <algorithm>

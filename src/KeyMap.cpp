@@ -19,7 +19,6 @@
 #include "LyXAction.h"
 
 #include "support/debug.h"
-#include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"

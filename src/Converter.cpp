@@ -22,7 +22,6 @@
 #include "Format.h"
 #include "InsetList.h"
 #include "Language.h"
-#include "LaTeXFeatures.h"
 #include "LaTeX.h"
 #include "LyXRC.h"
 #include "Mover.h"

@@ -670,6 +670,18 @@ public:
 
 	/// This function is called when the buffer is changed.
 	void changed(bool update_metrics) const;
+	/**  Update the cursors held by bufferviews iterator after an  insertion
+	 * \param dit : the place where the insertion happened.
+	 * \param count : the number of characters added (or deleted if negative).
+	 */
+	void updateCursorsAfterInsertion(DocIterator const & dit, int count = 1);
+	/**  Update the cursors held by bufferviews iterator after a deletion
+	 * \param dit : the place where the insertion happened.
+	 * \param count : the number of characters deleted (or added if negative).
+	 */
+	void updateCursorsAfterDeletion(DocIterator const & dit, int count = 1)
+		{ updateCursorsAfterInsertion(dit, -count); }
+
 	///
 	void setChild(DocIterator const & dit, Buffer * child);
 	///

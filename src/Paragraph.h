@@ -463,12 +463,8 @@ public:
 	bool brokenBiblio() const;
 	/// Check if we are in a Biblio environment and insert or
 	/// delete InsetBibitems as necessary.
-	/// \retval int 1, if we had to add an inset, in which case
-	/// the cursor will need to move cursor forward; -pos, if we deleted
-	/// an inset, in which case pos is the position from which the inset
-	/// was deleted, and the cursor will need to be moved back one if it
-	/// was previously past that position. Return 0 otherwise.
-	int fixBiblio(Buffer const & buffer);
+	/// \param cur : the cursor that needs to be updated accordingly
+	void fixBiblio(DocIterator & dit);
 
 	/// For each author, set 'used' to true if there is a change
 	/// by this author in the paragraph.

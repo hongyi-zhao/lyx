@@ -499,31 +499,6 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	Buffer & buffer = bv_->buffer();
 	bool changed = false;
 
-	// Check whether there are InsetBibItems that need fixing
-	// FIXME: This check ought to be done somewhere else. It is the reason
-	// why text_ is not const. But then, where else to do it?
-	// Well, how can you end up with either (a) a biblio environment that
-	// has no InsetBibitem, (b) a biblio environment with more than one
-	// InsetBibitem or (c) a paragraph that has a bib item but is no biblio
-	// environment? I think the answer is: when paragraphs are merged;
-	// when layout is set; when material is pasted.
-	if (par.brokenBiblio()) {
-		Cursor & cur = bv_->cursor();
-		// In some cases, we do not know how to record undo
-		if (&cur.inset() == &text_->inset())
-			cur.recordUndo(pit, pit);
-
-		int const moveCursor = par.fixBiblio(buffer);
-
-		// Is it necessary to update the cursor?
-		if (&cur.inset() == &text_->inset() && cur.pit() == pit) {
-			if (moveCursor > 0)
-				cur.posForward();
-			else if (moveCursor < 0 && cur.pos() >= -moveCursor)
-				cur.posBackward();
-		}
-	}
-
 	// Optimisation: this is used in the next two loops
 	// so better to calculate that once here.
 	int const right_margin = rightMargin(pm);

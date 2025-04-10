@@ -334,10 +334,10 @@ void GuiInputMethod::setPreeditStyle(
 		QTextCharFormat & focus_char_format =
 		        d->style_.segments_[focusedSegmentIndex()].char_format_;
 		if (d->style_.segments_.size() > 1) {
-			QColor background_color(
-			            lcolor.getX11HexName(Color_selection, false).c_str());
-			QBrush brush(background_color);
-			focus_char_format.setBackground(brush);
+			QBrush fgbrush(guiApp->colorCache().get(Color_selectiontext));
+			QBrush bgbrush(guiApp->colorCache().get(Color_selection));
+			focus_char_format.setForeground(fgbrush);
+			focus_char_format.setBackground(bgbrush);
 		}
 	}
 #endif // QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -372,7 +372,15 @@ void GuiInputMethod::setTextFormat(const QInputMethodEvent::Attribute & it,
                                    const QInputMethodEvent::Attribute * focus_style,
                                    pos_type & max_start)
 {
+	// get LyX's color setting
 	QTextCharFormat char_format = it.value.value<QTextCharFormat>();
+	QTextCharFormat lyx_cf;
+	QBrush fg_brush(guiApp->colorCache().get(Color_foreground));
+	QBrush bg_brush(guiApp->colorCache().get(Color_background));
+	lyx_cf.setForeground(fg_brush);
+	lyx_cf.setBackground(bg_brush);
+	// merge into IM's specification (lyx_cf has priority)
+	char_format.merge(lyx_cf);
 
 	LYXERR(Debug::GUI,
 	       "QInputMethodEvent::TextFormat start: " << it.start <<
@@ -389,17 +397,6 @@ void GuiInputMethod::setTextFormat(const QInputMethodEvent::Attribute & it,
 	        (it.start == focus_style->start || focus_style->length == 0) &&
 	        it.length < (int)d->preedit_str_.length() /* completing mode*/)
 		char_format.merge(focus_style->value.value<QTextCharFormat>());
-
-	// color adjustment for dark mode
-	if (guiApp->isInDarkMode()) {
-		if (char_format.foreground().color().black() >=
-		        char_format.background().color().black())
-			char_format.setForeground(
-			            guiApp->palette().color(
-			                QPalette::Active, QPalette::WindowText));
-		// make background color 10% lighter
-		char_format.setBackground(char_format.background().color().lighter(110));
-	}
 
 	conformToSurroundingFont(char_format);
 
@@ -788,6 +785,8 @@ void GuiInputMethod::processQuery(Qt::InputMethodQuery query)
 	}
 	default: {
 		QVariant null;
+		LYXERR(Debug::DEBUG, "Unsupported query by LyX came in: " <<
+		       inputMethodQueryFlagsAsString(query));
 		Q_EMIT queryProcessed(null);
 	}
 	}

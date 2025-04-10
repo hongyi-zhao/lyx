@@ -251,6 +251,11 @@ public:
 	/// Repopulate the slices insets from bottom to top. Useful
 	/// for stable iterators or Undo data.
 	void sanitize();
+	/**  Update the iterator after an  insertion or a deletion
+	 * \param dit : the place where the insertion happened.
+	 * \param count : the number of characters added (or deleted if negative).
+	 */
+	void updateAfterInsertion(DocIterator const & dit, int count = 1);
 	///
 	bool isInside(Inset const *) const;
 	/// make sure we are outside of given inset

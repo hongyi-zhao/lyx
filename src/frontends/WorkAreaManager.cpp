@@ -80,6 +80,14 @@ void WorkAreaManager::sanitizeCursors()
 	}
 }
 
+void WorkAreaManager::updateCursorsAfterInsertion(DocIterator const & dit, int count)
+{
+	for (WorkArea * wa : work_areas_) {
+		wa->bufferView().cursor().updateAfterInsertion(dit, count);
+		wa->bufferView().cursor().realAnchor().updateAfterInsertion(dit, count);
+	}
+}
+
 
 } // namespace frontend
 } // namespace lyx

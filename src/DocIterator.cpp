@@ -649,6 +649,31 @@ void DocIterator::sanitize()
 }
 
 
+void DocIterator::updateAfterInsertion(DocIterator const & dit, int const count)
+{
+	LASSERT(dit.inTexted(), return);
+	size_type const n = find(&dit.inset());
+	if (n == lyx::npos)
+		// we do not point to the inset where this happened.
+		return;
+	CursorSlice & sl = slices_[n];
+	if (sl.idx() != dit.idx() || sl.pit() != dit.pit() || sl.pos() < dit.pos())
+		// the change has been happening in a place that we do not care about.
+		return;
+
+	if (count < 0 && sl.pos() < dit.pos() - count) {
+		if (n + 1 < slices_.size())
+			// the inset we pointed to has been chopped-off.
+			resize(n + 1);
+		else
+			// set cursor at the start of deleted part.
+			sl.pos() = dit.pos();
+	} else
+		// adapt cursor position.
+		sl.pos() += count;
+}
+
+
 bool DocIterator::isInside(Inset const * p) const
 {
 	for (CursorSlice const & sl : slices_)

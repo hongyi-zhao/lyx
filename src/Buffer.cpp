@@ -691,6 +691,13 @@ void Buffer::changed(bool update_metrics) const
 }
 
 
+void Buffer::updateCursorsAfterInsertion(DocIterator const & dit, int const count)
+{
+	if (d->wa_)
+		d->wa_->updateCursorsAfterInsertion(dit, count);
+}
+
+
 frontend::WorkAreaManager & Buffer::workAreaManager() const
 {
 	LBUFERR(d->wa_);
@@ -5417,19 +5424,23 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype, bool const dele
 	pit_type const lastpit = parit.lastpit();
 	bool changed = false;
 	for ( ; parit.pit() <= lastpit ; ++parit.pit()) {
+		/** FIXME: this function is const, but nevertheless it
+		 * modifies the buffer. To be cleaner, one should modify the
+		 * buffer in another function, which is actually non-const.
+		 * This would however be costly in terms of code duplication.
+		 */
 		// reduce depth if necessary
 		if (parit->params().depth() > maxdepth) {
-			/** FIXME: this function is const, but
-			 * nevertheless it modifies the buffer. To be
-			 * cleaner, one should modify the buffer in
-			 * another function, which is actually
-			 * non-const. This would however be costly in
-			 * terms of code duplication.
-			 */
 			CursorData(parit).recordUndo();
 			parit->params().depth(maxdepth);
 		}
 		maxdepth = parit->getMaxDepthAfter();
+
+		// Check whether there are InsetBibItems that need fixing
+		if (parit->brokenBiblio()) {
+			CursorData(parit).recordUndo();
+			parit->fixBiblio(parit);
+		}
 
 		if (utype == OutputUpdate) {
 			// track the active counters

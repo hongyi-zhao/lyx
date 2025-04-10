@@ -17,6 +17,7 @@
 namespace lyx {
 
 class Buffer;
+class DocIterator;
 
 namespace frontend {
 
@@ -51,6 +52,9 @@ public:
 	bool unhide(Buffer * buf) const;
 	/// Fix cursors in all buffer views held by work areas.
 	void sanitizeCursors();
+	/// Update all cursors after insertion (or deletion is count < 0)
+	void updateCursorsAfterInsertion(DocIterator const & dit, int count);
+
 
 private:
 	typedef std::list<WorkArea *>::iterator iterator;

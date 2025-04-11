@@ -22,7 +22,6 @@
 #include "Changes.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
-#include "LyXRC.h"
 
 #include <QDateTime>
 #include <QTextBrowser>

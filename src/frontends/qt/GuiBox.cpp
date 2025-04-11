@@ -15,11 +15,6 @@
 
 #include "GuiBox.h"
 
-#include "Buffer.h"
-#include "BufferParams.h"
-
-#include "ColorsCombo.h"
-
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Validator.h"

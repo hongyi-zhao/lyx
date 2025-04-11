@@ -15,10 +15,7 @@
 
 #include "GuiCharacter.h"
 
-#include "ColorsCombo.h"
-
 #include "GuiApplication.h"
-#include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"

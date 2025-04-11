@@ -23,7 +23,6 @@
 
 #include "frontends/alert.h"
 
-#include "Buffer.h"
 #include "BufferParams.h"
 
 #include "support/gettext.h"

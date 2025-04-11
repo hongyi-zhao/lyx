@@ -17,25 +17,19 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "CiteEnginesList.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
-#include "GuiApplication.h"
 #include "LyXRC.h"
 #include "qt_helpers.h"
 #include "TextClass.h"
-#include "Validator.h"
 
 #include "ButtonPolicy.h"
 #include "FancyLineEdit.h"
-
-#include "frontends/alert.h"
 
 #include "insets/InsetBibtex.h"
 
 #include "support/debug.h"
 #include "support/docstring_list.h"
-#include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h" // changeExtension
 #include "support/gettext.h"

@@ -37,7 +37,6 @@
 #include "Converter.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "ErrorList.h"
 #include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"

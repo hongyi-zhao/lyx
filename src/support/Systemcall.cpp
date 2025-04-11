@@ -702,10 +702,8 @@ void SystemcallPrivate::killProcess(QProcess * p)
 	}
 }
 
-
+} // namespace support
+} // namespace lyx
 
 #include "moc_SystemcallPrivate.cpp"
 #endif
-
-} // namespace support
-} // namespace lyx

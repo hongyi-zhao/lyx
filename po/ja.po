@@ -2,13 +2,13 @@
 # Japanese translation for LyX
 # Copyright (C) 2007 LyX Developers
 # This file is distributed under the same license as the LyX package.
-# Koji Yokota <yokota@lyx.org>, 2007-2024.
+# Koji Yokota <yokota@lyx.org>, 2007-2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-japanese\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2025-04-07 22:52+0900\n"
-"PO-Revision-Date: 2025-04-07 23:59+0900\n"
+"PO-Revision-Date: 2025-04-11 23:09+0900\n"
 "Last-Translator: Koji Yokota <yokota@lyx.org>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -6690,116 +6690,110 @@ msgstr "の"
 #: lib/citeengines/biblatex-natbib.citeengine:332
 #: lib/citeengines/biblatex.citeengine:318
 msgid "Super"
-msgstr "上付き"
+msgstr "Super"
 
 #: lib/citeengines/biblatex-chicago.citeengine:323
 #: lib/citeengines/biblatex-natbib.citeengine:333
 #: lib/citeengines/biblatex.citeengine:319 lib/ui/stdtoolbars.inc:195
 #: src/insets/InsetScript.cpp:61
 msgid "Superscript"
-msgstr "上付き文字"
+msgstr "Superscript"
 
 #: lib/citeengines/biblatex-chicago.citeengine:324
 msgid "+ footnote: full or abbr. bib. entry"
-msgstr ""
+msgstr "+ footnote: full or abbr. bib. entry"
 
 #: lib/citeengines/biblatex-chicago.citeengine:325
 msgid "full or abbr. bib. entry"
-msgstr ""
+msgstr "full or abbr. bib. entry"
 
 #: lib/citeengines/biblatex-chicago.citeengine:326
 msgid "Full or abbreviated bibliography entry."
-msgstr "完全形または短縮形の文献項目．"
+msgstr "Full or abbreviated bibliography entry."
 
 #: lib/citeengines/biblatex-chicago.citeengine:327
 msgid "full or abbr. bib. entry w/o author"
-msgstr ""
+msgstr "full or abbr. bib. entry w/o author"
 
 #: lib/citeengines/biblatex-chicago.citeengine:328
-#, fuzzy
 msgid "Full or abbreviated bibliography entry without author."
-msgstr "完全な文献項目．"
+msgstr "Full or abbreviated bibliography entry without author."
 
 #: lib/citeengines/biblatex-chicago.citeengine:329
-#, fuzzy
 msgid "abbr. bib. entry"
-msgstr "文献項目"
+msgstr "abbr. bib. entry"
 
 #: lib/citeengines/biblatex-chicago.citeengine:330
-#, fuzzy
 msgid "Abbreviated bibliography entry."
-msgstr "文献項目"
+msgstr "Abbreviated bibliography entry."
 
 #: lib/citeengines/biblatex-chicago.citeengine:331
 msgid "full bib. entry w/o author"
-msgstr ""
+msgstr "full bib. entry w/o author"
 
 #: lib/citeengines/biblatex-chicago.citeengine:332
-#, fuzzy
 msgid "Full bibliography entry without author."
-msgstr "完全な文献項目．"
+msgstr "Full bibliography entry without author."
 
 #: lib/citeengines/biblatex-chicago.citeengine:333
 msgid "full or abbr. bib. entry w/o prenames"
-msgstr ""
+msgstr "full or abbr. bib. entry w/o prenames"
 
 #: lib/citeengines/biblatex-chicago.citeengine:334
 msgid "Full or abbreviated bibliography, omit prenames."
-msgstr ""
+msgstr "Full or abbreviated bibliography, omit prenames."
 
 #: lib/citeengines/biblatex-chicago.citeengine:335
-#, fuzzy
 msgid "No ibidem tracking"
-msgstr "変更追跡機能"
+msgstr "No ibidem tracking"
 
 #: lib/citeengines/biblatex-chicago.citeengine:336
 msgid "No ibid."
-msgstr ""
+msgstr "No ibid."
 
 #: lib/citeengines/biblatex-chicago.citeengine:337
-#, fuzzy
 msgid "No &ibidem tracking[[Possible substitute to All aut&hors]]"
-msgstr "完全な見出しを強制する(&O)"
+msgstr "No &ibidem tracking[[Possible substitute to All aut&hors]]"
 
 #: lib/citeengines/biblatex-chicago.citeengine:338
 msgid "Disable ibidem tracking for this entry"
-msgstr ""
+msgstr "Disable ibidem tracking for this entry"
 
 #: lib/citeengines/biblatex-chicago.citeengine:339
-#, fuzzy
 msgid "No &back reference[[Possible substitute to All aut&hors]]"
-msgstr "完全な見出しを強制する(&O)"
+msgstr "No &back reference[[Possible substitute to All aut&hors]]"
 
 #: lib/citeengines/biblatex-chicago.citeengine:340
 msgid ""
 "Disable page tracking for this entry to prevent back references (with option "
 "noteref)"
 msgstr ""
+"Disable page tracking for this entry to prevent back references (with option "
+"noteref)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:341
 msgid "abbr. bib. entry w/ back ref."
-msgstr ""
+msgstr "abbr. bib. entry w/ back ref."
 
 #: lib/citeengines/biblatex-chicago.citeengine:342
 msgid "Abbreviated bib. entry (enforce back reference)"
-msgstr ""
+msgstr "Abbreviated bib. entry (enforce back reference)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:343
 msgid "(w/ back ref.)"
-msgstr ""
+msgstr "(w/ back ref.)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:344
-#, fuzzy
 msgid "(enforce back reference)"
-msgstr "ボタン枠(壊れた参照)"
+msgstr "(enforce back reference)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:345
 msgid "??? (no shorthand!)"
-msgstr ""
+msgstr "??? (no shorthand!)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:346
 msgid "??? (no journal title!)"
-msgstr ""
+msgstr "??? (no journal title!)"
 
 #: lib/citeengines/biblatex-natbib.citeengine:2
 msgid "Biblatex (natbib mode)"
@@ -8838,11 +8832,11 @@ msgstr "American Astronomical Society (AASTeX v. 6.2)"
 #: lib/layouts/aastex62.layout:137 lib/layouts/aastex63.layout:145
 #: lib/layouts/ectaart.layout:210 lib/layouts/ectaart.layout:213
 msgid "Corresponding Author"
-msgstr "連絡担当著者"
+msgstr "責任著者"
 
 #: lib/layouts/aastex62.layout:143 lib/layouts/aastex63.layout:151
 msgid "Corresponding author:"
-msgstr "連絡担当著者："
+msgstr "責任著者："
 
 #: lib/layouts/aastex62.layout:162 lib/layouts/aastex63.layout:170
 #: lib/layouts/copernicus.layout:65 lib/layouts/egs.layout:388
@@ -12498,11 +12492,11 @@ msgstr "共著者マーク"
 
 #: lib/layouts/elsarticle.layout:214
 msgid "Corresponding author"
-msgstr "連絡担当著者"
+msgstr "責任著者"
 
 #: lib/layouts/elsarticle.layout:218
 msgid "Corresponding author text:"
-msgstr "連絡担当著者："
+msgstr "責任著者："
 
 #: lib/layouts/elsarticle.layout:229
 msgid "Address Label"
@@ -17689,85 +17683,71 @@ msgstr "<以下可視文>"
 
 #: lib/layouts/sn-jnl.layout:3 lib/examples/Articles:0
 msgid "Springer Nature Journals"
-msgstr ""
+msgstr "Springer Nature誌"
 
 #: lib/layouts/sn-jnl.layout:60 lib/layouts/sn-jnl.layout:74
-#, fuzzy
 msgid "Affiliation Nr."
-msgstr "所属："
+msgstr "所属番号"
 
 #: lib/layouts/sn-jnl.layout:64
-#, fuzzy
 msgid "Author (Corresp.)"
-msgstr "著者の住所"
+msgstr "著者(責任)"
 
 #: lib/layouts/sn-jnl.layout:67
-#, fuzzy
 msgid "Author (Corr.):"
-msgstr "著者註釈："
+msgstr "著者(責任)："
 
 #: lib/layouts/sn-jnl.layout:78
-#, fuzzy
 msgid "Affiliation (Corresp.)"
-msgstr "所属(なし)"
+msgstr "所属(責任)"
 
 #: lib/layouts/sn-jnl.layout:89
-#, fuzzy
 msgid "Equal Contribution"
-msgstr "著者の貢献"
+msgstr "共同筆頭著者"
 
 #: lib/layouts/sn-jnl.layout:138
-#, fuzzy
 msgid "Classification"
-msgstr "分類コード"
+msgstr "分類"
 
 #: lib/layouts/sn-jnl.layout:140
-#, fuzzy
 msgid "Classification:"
-msgstr "分類コード"
+msgstr "分類："
 
 #: lib/layouts/sn-jnl.layout:143
-#, fuzzy
 msgid "Classification System"
-msgstr "分類コード"
+msgstr "分類体系"
 
 #: lib/layouts/sn-jnl.layout:144
 msgid "E.g., MSC, PACS, or JEL"
-msgstr ""
+msgstr "例：MSC，PACS，JEL"
 
 #: lib/layouts/sn-jnl.layout:175 lib/layouts/sn-jnl.layout:178
-#, fuzzy
 msgid "Organization"
-msgstr "画面遷移"
+msgstr "組織"
 
 #: lib/layouts/sn-jnl.layout:181 lib/layouts/sn-jnl.layout:184
-#, fuzzy
 msgid "Org. Address"
-msgstr "住所"
+msgstr "組織住所"
 
 #: lib/layouts/sn-jnl.layout:199
-#, fuzzy
 msgid "Post Code"
 msgstr "郵便番号"
 
 #: lib/layouts/sn-jnl.layout:202
-#, fuzzy
 msgid "Postcode"
 msgstr "郵便番号"
 
 #: lib/layouts/sn-jnl.layout:236
 msgid "----------- Begin Backmatter ----------"
-msgstr ""
+msgstr "----------- ここから後付け ----------"
 
 #: lib/layouts/sn-jnl.layout:246
-#, fuzzy
 msgid "Backmatter heading"
-msgstr "ページヘッダ"
+msgstr "後付けヘッダ"
 
 #: lib/layouts/sn-jnl.layout:277
-#, fuzzy
 msgid "Appendix \\Alph{appendix}"
-msgstr "Appendix \\Alph{appendix}:"
+msgstr "附録\\Alph{appendix}："
 
 #: lib/layouts/soul.module:2
 msgid "Hyphenatable Text Markup (Soul)"
@@ -17890,14 +17870,12 @@ msgid "in"
 msgstr "in"
 
 #: lib/layouts/stdciteformats.inc:32
-#, fuzzy
 msgid ", & [[separate name of last author in citation w/ ampersand]]"
-msgstr "・"
+msgstr ", & "
 
 #: lib/layouts/stdciteformats.inc:33
-#, fuzzy
 msgid " & [[separate two authors in citation w/ ampersand]]"
-msgstr "および"
+msgstr " & "
 
 #: lib/layouts/stdcounters.inc:10
 msgid "\\Roman{part}"
@@ -19477,14 +19455,12 @@ msgid "Greek (ancient)"
 msgstr "ギリシャ語(ancient)"
 
 #: lib/languages:246
-#, fuzzy
 msgid "Arabic (ArabTeX, only with TeX fonts)"
-msgstr "アラビア語(ArabTeX)"
+msgstr "アラビア語(ArabTeX：TeXフォント時のみ)"
 
 #: lib/languages:258
-#, fuzzy
 msgid "Arabic (Arabi or non-TeX fonts)"
-msgstr "アラビア語(ArabTeX)"
+msgstr "アラビア語(Arabiまたは非TeXフォント)"
 
 #: lib/languages:293 src/frontends/qt/GuiSymbols.cpp:64
 msgid "Armenian"
@@ -19690,7 +19666,7 @@ msgstr "日本語"
 
 #: lib/languages:992
 msgid "Japanese (CJK, only with TeX fonts)"
-msgstr ""
+msgstr "日本語(CJK：TeXフォント時のみ)"
 
 #: lib/languages:1002 src/frontends/qt/GuiSymbols.cpp:74
 msgid "Kannada"
@@ -19713,32 +19689,28 @@ msgid "Kurdish (Kurmanji)"
 msgstr "クルド語(クルマンジー)"
 
 #: lib/languages:1068
-#, fuzzy
 msgid "Kurdish (Sorani)"
-msgstr "クルド語(クルマンジー)"
+msgstr "クルド語(ソラニ)"
 
 #: lib/languages:1082 src/frontends/qt/GuiSymbols.cpp:77
 msgid "Lao"
-msgstr "ラーオ文字"
+msgstr "ラーオ語"
 
 #: lib/languages:1095
-#, fuzzy
 msgid "Latin (Modern)"
-msgstr "Latin Modern Sans"
+msgstr "ラテン語(現代)"
 
 #: lib/languages:1108
-#, fuzzy
 msgid "Latin (Classic)"
-msgstr "古典的"
+msgstr "ラテン語(古典)"
 
 #: lib/languages:1121
 msgid "Latin (Ecclesiastic)"
-msgstr ""
+msgstr "ラテン語(教会)"
 
 #: lib/languages:1134
-#, fuzzy
 msgid "Latin (Medieval)"
-msgstr "Latin Modern Sans"
+msgstr "ラテン語(中世)"
 
 #: lib/languages:1151
 msgid "Latvian"
@@ -19778,7 +19750,7 @@ msgstr "英語(ニュージーランド)"
 
 #: lib/languages:1286
 msgid "N'Ko"
-msgstr ""
+msgstr "ンコ語"
 
 #: lib/languages:1299
 msgid "Norwegian (Bokmaal)"
@@ -30635,6 +30607,9 @@ msgid ""
 "which means that it is probably corrupted.\n"
 "You can find the converted file at %2$s while LyX is running."
 msgstr ""
+"%1$s を現行LyX書式へ変換したものが予期せずして終了したため，破損している恐れ"
+"があります．\n"
+"変換後ファイルは，LyXが実行中であれば %2$s にあります．"
 
 #: src/Buffer.cpp:1272 src/Buffer.cpp:1343
 msgid "Document format failure"
@@ -31232,7 +31207,7 @@ msgid "File deleted from disk"
 msgstr "ファイルがディスクから削除されました"
 
 #: src/Buffer.cpp:5740
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file\n"
 "  %1$s\n"
@@ -31241,7 +31216,8 @@ msgid ""
 msgstr ""
 "ファイル\n"
 " %1$s\n"
-"はディスクから削除されました！"
+"はディスクから削除されました！\n"
+"これより修正済みとしてマークされます．"
 
 #: src/BufferParams.cpp:543
 msgid ""
@@ -31937,9 +31913,8 @@ msgid "margin note label"
 msgstr "傍註ラベル"
 
 #: src/Color.cpp:292
-#, fuzzy
 msgid "nomenclature label"
-msgstr "用語集"
+msgstr "用語集ラベル"
 
 #: src/Color.cpp:293
 msgid "URL label"
@@ -31955,7 +31930,7 @@ msgstr "階層表示線"
 
 #: src/Color.cpp:296
 msgid "scroll indicator"
-msgstr "スクロール表示器(&N)"
+msgstr "スクロール インジケーター"
 
 #: src/Color.cpp:297
 msgid "language"
@@ -32708,9 +32683,8 @@ msgid "Cannot edit file"
 msgstr "ファイルを編集することができませんでした"
 
 #: src/Format.cpp:736
-#, fuzzy
 msgid "LinkBack files can only be edited on macOS."
-msgstr "LinkBackファイルはApple Mac OSX上でのみ編集することができます．"
+msgstr "LinkBackファイルはmacOS上でのみ編集することができます．"
 
 #: src/Format.cpp:749
 #, c-format
@@ -33326,9 +33300,8 @@ msgstr ""
 "アップルキーをMetaキーとして，コントロールキーをCtrlキーとして動作させます．"
 
 #: src/LyXRC.cpp:3222
-#, fuzzy
 msgid "Use the macOS conventions for cursor movement"
-msgstr "カーソル移動はMac OS Xの慣習に従う"
+msgstr "Mac OS Xの慣習にしたがったカーソル移動を行う"
 
 #: src/LyXRC.cpp:3226
 msgid ""
@@ -33339,7 +33312,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3230
 msgid "Possibility to enforce a particular color scheme (system|dark|light)"
-msgstr ""
+msgstr "特定の色スキームを適用できるか否か(システム|ダーク|ライト)"
 
 #: src/LyXRC.cpp:3234
 msgid ""
@@ -34520,11 +34493,11 @@ msgstr "カテゴリ分けされていません"
 #: src/frontends/qt/ColorsCombo.cpp:187
 #, c-format
 msgid "%1$s (= Default[[color]])"
-msgstr ""
+msgstr "%1$s (＝既定値[[color]])"
 
 #: src/frontends/qt/ColorsCombo.cpp:385
 msgid "Type on the list to filter on color names."
-msgstr ""
+msgstr "色名をフィルターに掛けるにはリスト上で打鍵してください．"
 
 #: src/frontends/qt/FileDialog.cpp:207
 msgid "Directories"
@@ -34765,9 +34738,8 @@ msgid "Open"
 msgstr "開く"
 
 #: src/frontends/qt/GuiApplication.cpp:784
-#, fuzzy
 msgid "Select Color"
-msgstr "色をリセット(&E)"
+msgstr "色を選択"
 
 #: src/frontends/qt/GuiApplication.cpp:1289
 msgid "Nothing to do"
@@ -34977,13 +34949,12 @@ msgid "Author &Names:"
 msgstr "著者名(&N)："
 
 #: src/frontends/qt/GuiBibitem.cpp:64
-#, fuzzy
 msgid ""
 "Insert the author name(s) for the author-number reference here. If you use "
 "an abbreviated list (with `et al.'), the full list can go below."
 msgstr ""
-"著者-年 参照用の著者名をここに入力してください．省略されたリスト(「et al.」を"
-"付けるもの)を使う場合には，完全リストはその下に入力することができます．"
+"著者-番号 参照用の著者名をここに入力してください．省略されたリスト(「et al.」"
+"を付けるもの)を使う場合には，完全リストはその下に入力することができます．"
 
 #: src/frontends/qt/GuiBibitem.cpp:67
 msgid ""
@@ -35031,7 +35002,7 @@ msgstr "文書文字コード"
 
 #: src/frontends/qt/GuiBibtex.cpp:432
 msgid "&Make Absolute"
-msgstr ""
+msgstr "絶対パス化(&M)"
 
 #: src/frontends/qt/GuiBibtex.cpp:452
 msgid "General Encoding"
@@ -35190,9 +35161,9 @@ msgid "No"
 msgstr "いいえ"
 
 #: src/frontends/qt/GuiBranches.cpp:191
-#, fuzzy, c-format
+#, c-format
 msgid "A branch with the name \"%1$s\" already exists."
-msgstr "「%1$s」という名称の画像グループは既に存在しています．"
+msgstr "「%1$s」という名称の派生枝は既に存在しています．"
 
 #: src/frontends/qt/GuiBranches.cpp:248
 msgid "Enter new branch name"
@@ -35837,9 +35808,8 @@ msgid "Page Margins"
 msgstr "ページ余白"
 
 #: src/frontends/qt/GuiDocument.cpp:1393
-#, fuzzy
 msgid "Double-click on an item to change its color"
-msgstr "クリックして色を変更してください"
+msgstr "色を変更するには項目をダブルクリックしてください"
 
 #: src/frontends/qt/GuiDocument.cpp:1422
 msgid "Numbered"
@@ -35850,9 +35820,8 @@ msgid "Appears in TOC"
 msgstr "目次に載せる"
 
 #: src/frontends/qt/GuiDocument.cpp:1523
-#, fuzzy
 msgid "Tabular"
-msgstr "表の設定"
+msgstr "表"
 
 #: src/frontends/qt/GuiDocument.cpp:1529
 msgid "Package"
@@ -35894,19 +35863,19 @@ msgstr "数式オプション"
 
 #: src/frontends/qt/GuiDocument.cpp:1678
 msgid "Cleveref and varioref"
-msgstr ""
+msgstr "Cleverefおよびvarioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1679
 msgid "Prettyref and varioref"
-msgstr ""
+msgstr "Prettyrefおよびvarioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1680
 msgid "Refstyle and varioref"
-msgstr ""
+msgstr "Refstyleおよびvarioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1681
 msgid "Zref-clever and zref-vario"
-msgstr ""
+msgstr "Zref-cleverおよびzref-vario"
 
 #: src/frontends/qt/GuiDocument.cpp:1698 src/frontends/qt/GuiDocument.cpp:3058
 #, c-format
@@ -36009,19 +35978,16 @@ msgid "&Switch Back"
 msgstr "戻る(&S)"
 
 #: src/frontends/qt/GuiDocument.cpp:2009
-#, fuzzy
 msgid "&Left:"
-msgstr "左揃え(&L)"
+msgstr "左側(&L)："
 
 #: src/frontends/qt/GuiDocument.cpp:2010
-#, fuzzy
 msgid "&Right:"
-msgstr "右揃え(&R)"
+msgstr "右側(&R)："
 
 #: src/frontends/qt/GuiDocument.cpp:2013
-#, fuzzy
 msgid "&Outer:"
-msgstr "外側(&U)："
+msgstr "外側(&O)："
 
 #: src/frontends/qt/GuiDocument.cpp:2402
 msgid "Default margins"
@@ -36154,9 +36120,8 @@ msgid "Author-number"
 msgstr "著者‐番号"
 
 #: src/frontends/qt/GuiDocument.cpp:3300
-#, fuzzy
 msgid "Notes and Bibliography"
-msgstr "書誌情報"
+msgstr "註釈および書誌情報"
 
 #: src/frontends/qt/GuiDocument.cpp:3334
 #, c-format
@@ -36328,25 +36293,24 @@ msgid "<b>Note:</b> Some requirements for this module are missing!"
 msgstr "<b>註：</b>このモジュールに必要なものが揃っていません！"
 
 #: src/frontends/qt/GuiDocument.cpp:5627
-#, fuzzy
 msgid "Color naming failed"
-msgstr "名称変更に失敗しました"
+msgstr "色の命名に失敗しました"
 
 #: src/frontends/qt/GuiDocument.cpp:5628
-#, fuzzy, c-format
+#, c-format
 msgid "The color name `%1$s' is already taken."
-msgstr "言語「%1$s」はBabelでのみサポートされています．"
+msgstr "色名「%1$s」はすでに使われています．"
 
 #: src/frontends/qt/GuiDocument.cpp:5689
-#, fuzzy
 msgid "Enter new color name"
-msgstr "新規派生枝名を入力してください"
+msgstr "新規色名を入力してください"
 
 #: src/frontends/qt/GuiDocument.cpp:5697
 msgid ""
 "The color could not be renamed since the new name consists of non-ASCII "
 "characters or blanks."
 msgstr ""
+"新しい名前に非ASCII文字や空白が入っていたため，色の改名ができませんでした．"
 
 #: src/frontends/qt/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
@@ -37633,18 +37597,19 @@ msgstr "サポートされていない設定です！"
 
 #: src/frontends/qt/GuiRef.cpp:249
 msgid "The reference type you selected allows for maximally two target labels."
-msgstr ""
+msgstr "選択した参照型は最大二つのターゲットラベルしか許容しません"
 
 #: src/frontends/qt/GuiRef.cpp:458
 msgid "Label creation error!"
 msgstr "ラベル引用エラーです！"
 
 #: src/frontends/qt/GuiRef.cpp:459
-#, fuzzy
 msgid ""
 "Could not auto-generate label for this target.\n"
 "Please insert a label manually."
-msgstr "上の一覧からラベルを選択するか，手動でラベルを入力してください"
+msgstr ""
+"このターゲット用にラベルを自動生成することができませんでした．\n"
+"ラベルを手動で入力してください．"
 
 #: src/frontends/qt/GuiRef.cpp:553
 msgid "Existing Labels"
@@ -38078,7 +38043,7 @@ msgstr "記号"
 
 #: src/frontends/qt/GuiTabular.cpp:70
 msgid "Adjust the horizontal overhang of the coloring here if needed."
-msgstr ""
+msgstr "必要であれば，ここで色塗りの横へのはみ出しを調整してください．"
 
 #: src/frontends/qt/GuiTabular.h:48
 msgid "Tabular Settings"
@@ -38757,7 +38722,7 @@ msgstr "書き出しています..."
 
 #: src/frontends/qt/GuiView.cpp:4710
 msgid "Preparing externally referenced file ..."
-msgstr ""
+msgstr "外部で参照されているファイルを準備しています…"
 
 #: src/frontends/qt/GuiView.cpp:4732
 msgid "Previewing ..."
@@ -40772,10 +40737,13 @@ msgid ""
 "formatted references with prettyref.\n"
 "You will most likely run into a LaTeX error."
 msgstr ""
+"ラベル「%1$s」に前置句がありません（例：「sec:」）．これはprettyrefでの整形さ"
+"れた参照に必要です．\n"
+"LaTeXエラーに嵌まる可能性が高いでしょう．"
 
 #: src/insets/InsetRef.cpp:657
 msgid "elsewhere"
-msgstr ""
+msgstr "他の箇所"
 
 #: src/insets/InsetRef.cpp:942
 msgid "Ref"
@@ -40826,9 +40794,8 @@ msgid "Label Only"
 msgstr "ラベルのみ"
 
 #: src/insets/InsetRef.cpp:1021
-#, fuzzy
 msgid "Unknown external file!"
-msgstr "外部ファイルを選択する"
+msgstr "知らない外部ファイルです！"
 
 #: src/insets/InsetRef.cpp:1022
 #, c-format
@@ -40837,6 +40804,9 @@ msgid ""
 "(`%2$s')\n"
 "which could not be found. Output will be broken!"
 msgstr ""
+"ラベル「%1$s」は外部ファイル（「%2$s」）を\n"
+"参照していますが見つかりません\n"
+"出力は壊れている可能性があります"
 
 #: src/insets/InsetScript.cpp:334
 msgid "subscript"
@@ -41732,121 +41702,3 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知のユーザー"
-
-#~ msgid "Update &immediately"
-#~ msgstr "すぐに適用(&I)"
-
-#~ msgid "&Change..."
-#~ msgstr "変更(&C)..."
-
-#~ msgid "C&hange..."
-#~ msgstr "変更(&H)…"
-
-#~ msgid "Revert the color to the default"
-#~ msgstr "色を既定値に戻す"
-
-#~ msgid "Ch&ange..."
-#~ msgstr "変更(&A)…"
-
-#~ msgid "Re&set"
-#~ msgstr "リセット(&S)"
-
-#~ msgid "Chan&ge..."
-#~ msgstr "変更(&G)…"
-
-#~ msgid "&Use refstyle (not prettyref) for cross-references"
-#~ msgstr "相互参照に(prettyrefではなく)&refstyleを使用"
-
-#~ msgid "Sy&mbol:"
-#~ msgstr "記号(&M)："
-
-#~ msgid "Des&cription:"
-#~ msgstr "説明(&C)："
-
-#~ msgid "Sort &as:"
-#~ msgstr "整序用文字列(&A)："
-
-#~ msgid ""
-#~ "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
-#~ "Check this if you want to enter LaTeX code."
-#~ msgstr ""
-#~ "「記号」と「説明」フィールドの内容を原文のままLaTeXに渡します．LaTeXコード"
-#~ "を入力したい場合に有効にしてください．"
-
-#~ msgid "XHTML Output Options"
-#~ msgstr "XHTML出力オプション"
-
-#~ msgid "Scaling factor for images used for math output."
-#~ msgstr "数式出力に使用する画像の伸縮係数．"
-
-#~ msgid "Math &image scaling:"
-#~ msgstr "数式画像の伸縮(&I)："
-
-#~ msgid "DocBook Output Options"
-#~ msgstr "DocBook出力オプション"
-
-#~ msgid "A&lter..."
-#~ msgstr "変更(&L)..."
-
-#~ msgid "Reset the selected color to its original value"
-#~ msgstr "選択した色を初期値にリセットする"
-
-#~ msgid "Restore &Default"
-#~ msgstr "既定値に戻す(&D)"
-
-#~ msgid "Restore A&ll"
-#~ msgstr "すべて復元(&L)"
-
-#~ msgid "Arabic (Arabi)"
-#~ msgstr "アラビア語(Arabi)"
-
-#~ msgid "Japanese (CJK)"
-#~ msgstr "日本語(CJK)"
-
-#~ msgid "tgo"
-#~ msgstr "tgo"
-
-#~ msgid "sxd"
-#~ msgstr "sxd"
-
-#~ msgid "sxd|OpenDocument"
-#~ msgstr "sxd|OpenDocument"
-
-#~ msgid "jpeg"
-#~ msgstr "jpeg"
-
-#~ msgid "jpeg|JPEG"
-#~ msgstr "jpeg|JPEG"
-
-#~ msgid "htm"
-#~ msgstr "htm"
-
-#~ msgid "htm|HTML"
-#~ msgstr "html|HTML"
-
-#~ msgid "OpenDocument (eLyXer)"
-#~ msgstr "OpenDocument (eLyXer)"
-
-#~ msgid "pdf_tex"
-#~ msgstr "pdf_tex"
-
-#~ msgid "ps_tex"
-#~ msgstr "ps_tex"
-
-#~ msgid "ps_tex|PSTEX"
-#~ msgstr "ps_tex|PSTEX"
-
-#~ msgid "gnuplot"
-#~ msgstr "gnuplot"
-
-#~ msgid "gnuplot|Gnuplot"
-#~ msgstr "gnuplot|Gnuplot"
-
-#~ msgid "Nomenclature Settings"
-#~ msgstr "用語集の設定"
-
-#~ msgid "Nom: "
-#~ msgstr "用語："
-
-#~ msgid "Hebrew Letter"
-#~ msgstr "ヘブライ語Letter"

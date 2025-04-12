@@ -170,8 +170,9 @@
 #   Add option to configure ui style
 #   No conversion necessary.
 
-# Incremented to format 39, by spitz
-#   Add \color_scheme {system|light|dark}
+# Incremented to format 39
+#   Add \color_scheme {system|light|dark}, by spitz
+#   Add \ui_theme, by koji
 #   No conversion necessary.
 
 # NOTE: The format should also be updated in LYXRC.cpp and

@@ -176,6 +176,7 @@ public:
 		RC_THESAURUSDIRPATH,
 		RC_UIFILE,
 		RC_UI_STYLE,
+		RC_UI_THEME,
 		RC_USELASTFILEPOS,
 		RC_USER_EMAIL,
 		RC_USER_INITIALS,
@@ -354,6 +355,8 @@ public:
 	bool use_tooltip = true;
 	/// Use the colors from current system theme?
 	bool use_system_colors = false;
+	/// Current ui theme if named
+	std::string ui_theme;
 	/// use native file dialog or our own ?
 	bool use_native_filedialog = true;
 	/// Spellchecker engine: aspell, hunspell, etc

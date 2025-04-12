@@ -178,6 +178,7 @@ docstring InsetBibtex::screenLabel() const
 {
 	docstring res;
 	if (getParam("bibfiles").empty())
+		// additionally, in updateBuffer(), we setBroken() in this case.
 		res = _("EMPTY: ");
 	res += usingBiblatex() ? _("Biblatex Generated Bibliography")
 			       : _("BibTeX Generated Bibliography");
@@ -939,6 +940,7 @@ void InsetBibtex::updateBuffer(ParIterator const &, UpdateType, bool const /*del
 	if (invalidate)
 		buffer().invalidateBibinfoCache();
 
+	// additionally, in screenLabel(), we prepend string "EMPTY".
 	setBroken(getParam("bibfiles").empty());
 }
 

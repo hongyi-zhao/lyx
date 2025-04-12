@@ -199,6 +199,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\thesaurusdir_path", LyXRC::RC_THESAURUSDIRPATH },
 	{ "\\ui_file", LyXRC::RC_UIFILE },
 	{ "\\ui_style", LyXRC::RC_UI_STYLE },
+    { "\\ui_theme", LyXRC::RC_UI_THEME },
 	{ "\\use_converter_cache", LyXRC::RC_USE_CONVERTER_CACHE },
 	{ "\\use_converter_needauth", LyXRC::RC_USE_CONVERTER_NEEDAUTH },
 	{ "\\use_converter_needauth_forbidden", LyXRC::RC_USE_CONVERTER_NEEDAUTH_FORBIDDEN },
@@ -678,6 +679,11 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			       << x11_name << " and " << x11_darkname);
 			break;
 		}
+
+		case RC_UI_THEME:
+			if (lexrc.next())
+				ui_theme = lexrc.getString();
+			break;
 
 		case RC_AUTOREGIONDELETE:
 			// Auto region delete defaults to true
@@ -2092,6 +2098,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		<< "#\n\n";
 
 	// fall through
+	case RC_UI_THEME:
+		if (ignore_system_lyxrc ||
+		        ui_theme != system_lyxrc.ui_theme)
+			os << "\\ui_theme \"" << ui_theme << "\"\n";
+
+		if (tag != RC_LAST)
+			break;
+
+	// fall through
 	case RC_SET_COLOR:
 		for (int i = 0; i < Color_ignore; ++i) {
 			ColorCode lc = static_cast<ColorCode>(i);
@@ -3064,6 +3079,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		// fall through
 	case LyXRC::RC_GEOMETRY_SESSION:
 	case LyXRC::RC_SERVERPIPE:
+	case LyXRC::RC_UI_THEME:
 	case LyXRC::RC_SET_COLOR:
 	case LyXRC::RC_SHOW_BANNER:
 	case LyXRC::RC_OPEN_BUFFERS_IN_TABS:
@@ -3228,6 +3244,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case LyXRC::RC_COLOR_SCHEME:
 		str = _("Possibility to enforce a particular color scheme (system|dark|light)");
+		break;
+
+	case LyXRC::RC_UI_THEME:
+		str = _("Current UI theme if it has a name, otherwise empty");
 		break;
 
 	case RC_DEFFILE:

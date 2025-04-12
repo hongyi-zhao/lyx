@@ -1081,10 +1081,8 @@ PrefColors::PrefColors(GuiPreferences * form)
 	        this, SLOT(changeSysColor()));
 	connect(themesMenuPB, SIGNAL(clicked()),
 	        this, SLOT(openThemeMenu()));
-	connect(themesLW,
-	        SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),
-	        this,
-	        SLOT(loadTheme(QListWidgetItem*,QListWidgetItem*)));
+	connect(themesLW, SIGNAL(currentRowChanged(int)),
+	        this, SLOT(loadTheme(int)));
 	connect(undoColorPB, SIGNAL(clicked()),
 	        undo_stack_, SLOT(undo()));
 }
@@ -1098,6 +1096,9 @@ void PrefColors::applyRC(LyXRC & rc) const
 		if (curcolors_[i] != newcolors_[i])
 			form_->setColor(lcolors_[i], newcolors_[i]);
 	rc.use_system_colors = syscolorsCB->isChecked();
+
+	if (toqstr(rc.ui_theme) != theme_name_)
+		rc.ui_theme = theme_name_.toStdString();
 
 	if (oldrc.use_system_colors != rc.use_system_colors)
 		guiApp->colorCache().clear();
@@ -1176,11 +1177,50 @@ void PrefColors::changeColor(int const &row, bool const &is_dark_mode)
 	QColor const c = form_->getColor(QColor(color));
 
 	if (setColor(colorsTV_model_.item(row, is_dark_mode), c, color)) {
-		themesLW->setCurrentRow(themesLW->currentRow(),
-		                        QItemSelectionModel::Deselect);
+		setCurrentTheme(row);
 		// emit signal
 		changed();
 	}
+}
+
+
+void PrefColors::setCurrentTheme(int const color_row)
+{
+	if (newcolors_[color_row] != theme_colors_[color_row])
+		dismissCurrentTheme();
+	else {
+		// now that current row matched, check for other color_row's if they
+		// make up the current theme
+		// note: we won't care about matches with other themes since it would
+		// rarely happen and doesn't convey much useful information.
+		// its implementation cost (esp. cpu time) would exceed the benefit.
+		for (int col = 0; col < colorsTV_model_.rowCount(); ++col) {
+			if (col == color_row) continue;
+			if (newcolors_[col] != theme_colors_[col]) {
+				dismissCurrentTheme();
+				break;
+			}
+		}
+		// all colors matched
+		theme_name_ = last_theme_name_;
+		// set the theme indicator
+		for (int theme_row = 0; theme_row < themesLW->count(); ++theme_row) {
+			if (themesLW->item(theme_row)->text() == theme_name_) {
+				themesLW->setCurrentRow(theme_row);
+				break;
+			}
+		}
+	}
+}
+
+
+void PrefColors::dismissCurrentTheme()
+{
+	if (!theme_name_.isEmpty())
+		last_theme_name_ = theme_name_;
+	theme_name_ = "";
+	themesLW->setCurrentRow(themesLW->currentRow(),
+	                        QItemSelectionModel::Deselect);
 }
 
 
@@ -1504,14 +1544,13 @@ void PrefColors::importTheme()
 }
 
 
-void PrefColors::loadTheme(QListWidgetItem* current_item,
-                                    QListWidgetItem* previous_item)
+void PrefColors::loadTheme(int const row)
 {
-	Q_UNUSED(previous_item)
+	if (row < 0) return;
 
-	loadImportThemeCommon(FileName(fromqstr(theme_fullpaths_[themesLW->row(current_item)])));
+	loadImportThemeCommon(FileName(fromqstr(theme_fullpaths_[row])));
 	// state variables below are used for suggestion in dialogs
-	theme_filename_ = onlyFileName(theme_fullpaths_[themesLW->row(current_item)]);
+	theme_filename_ = onlyFileName(theme_fullpaths_[row]);
 	theme_name_ = removeExtension(theme_filename_).replace('_', ' ');
 }
 
@@ -1632,6 +1671,10 @@ void PrefColors::initializeThemesLW()
 		themes.emplace(guiname + "_usr", std::make_pair(filename, true));
 	}
 	themesLW->clear();
+
+	if (toqstr(lyxrc.ui_theme) != theme_name_)
+		theme_name_ = toqstr(lyxrc.ui_theme);
+
 	// themes are already sorted with GUI name as std::map sorts its entries
 	for (const auto & theme : themes) {
 		QListWidgetItem* item = new QListWidgetItem;
@@ -1641,6 +1684,11 @@ void PrefColors::initializeThemesLW()
 		else
 			item->setIcon(sys_theme_icon);
 		themesLW->addItem(item);
+
+		// current theme is indicated by selection
+		if (item->text() == theme_name_)
+			themesLW->setCurrentItem(item);
+
 		theme_fullpaths_.push_back(theme.second.first);
 		if (theme.first.right(3) == "sys")
 			isSysThemes_.push_back(true);
@@ -4398,6 +4446,7 @@ void SetColor::redo()
 	// set button statuses
 	parent_->setResetButtonStatus(false);
 	parent_->setUndoRedoButtonStatuses(false);
+	parent_->setCurrentTheme(item_.row());
 }
 
 
@@ -4408,6 +4457,7 @@ void SetColor::undo()
 	// set button statuses
 	parent_->setResetButtonStatus(true);
 	parent_->setUndoRedoButtonStatuses(true);
+	parent_->setCurrentTheme(item_.row());
 }
 
 

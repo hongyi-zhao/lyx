@@ -290,8 +290,7 @@ private Q_SLOTS:
 	bool resetDarkColor() { return resetColor(true);  }
 	void openThemeMenu();
 	void saveTheme();
-	void loadTheme(QListWidgetItem* current_item,
-	               QListWidgetItem* previous_item);
+	void loadTheme(int const row);
 	void removeTheme();
 	void exportTheme();
 	void importTheme();
@@ -314,6 +313,12 @@ private:
 	QColor getCurrentThemeColor(int const &row, bool const &is_dark_color);
 	///
 	ColorPair getCurrentThemeColors(int const &row);
+	/// After a color change of \p row, set a theme name of the current color
+	/// set in theme_name and indicates it in themesLW.
+	void setCurrentTheme(int const row);
+	/// Empty the current theme name and deselect the corresponding item in
+	/// themesLW.
+	void dismissCurrentTheme();
 	/// Set color swatches for both light and dark colors by row.
 	bool setSwatches(size_type const &row, ColorPair colors);
 	/// Set color swatch at item.
@@ -364,8 +369,10 @@ private:
 	QMenu theme_menu_;
 	std::vector<bool> isSysThemes_;
 	std::vector<QString> theme_fullpaths_;
-	/// holds currently selected theme
+	/// name of current theme
 	QString theme_name_ = "";
+	/// name of last theme name
+	QString last_theme_name_ = "";
 	/// holds filename of currently selected theme
 	QString theme_filename_;
 

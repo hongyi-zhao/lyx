@@ -2927,15 +2927,12 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, list<col_type> const & 
 				if (topltrims[c])
 					trim = "l";
 				col_type cstart = c;
-				for ( ; c < ncols() - 1 && topline[c + 1] ; ++c) {
+				for ( ; c < ncols() - 1 && topline[c + 1]
+				      && (!topltrims[c + 1] || isPartOfMultiColumn(row, c + 1)) ; ++c) {
 					if (isMultiColumn(cellIndex(row, c))
 					    && c < ncols() - 1 && isPartOfMultiColumn(row, c + 1))
 						continue;
-					if (c > cstart && topltrims[c]) {
-						if (!isPartOfMultiColumn(row, c))
-							--c;
-						break;
-					} else if (toprtrims[c])
+					if (toprtrims[c])
 						break;
 				}
 
@@ -3054,16 +3051,13 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, list<col_type> const
 				if (bottomltrims[c])
 					trim = "l";
 				col_type cstart = c;
-				for ( ; c < ncols() - 1 && bottomline[c + 1] ; ++c) {
+				for ( ; c < ncols() - 1 && bottomline[c + 1]
+				      && (!bottomltrims[c + 1] || isPartOfMultiColumn(row, c + 1)) ; ++c) {
 					if (isMultiColumn(cellIndex(row, c))
 					    && c < ncols() - 1
 					    && isPartOfMultiColumn(row, c + 1))
 						continue;
-					if (c > cstart && bottomltrims[c]) {
-						if (!isPartOfMultiColumn(row, c))
-							--c;
-						break;
-					} else if (bottomrtrims[c])
+					if (bottomrtrims[c])
 						break;
 				}
 

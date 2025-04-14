@@ -1081,6 +1081,8 @@ PrefColors::PrefColors(GuiPreferences * form)
 	        this, SLOT(changeSysColor()));
 	connect(themesMenuPB, SIGNAL(clicked()),
 	        this, SLOT(openThemeMenu()));
+	connect(themesLW, SIGNAL(itemClicked(QListWidgetItem*)),
+	        this, SLOT(loadTheme(QListWidgetItem*)));
 	connect(themesLW, SIGNAL(currentRowChanged(int)),
 	        this, SLOT(loadTheme(int)));
 	connect(undoColorPB, SIGNAL(clicked()),
@@ -1167,6 +1169,11 @@ void PrefColors::selectionChanged(const QItemSelection &selected,
 
 void PrefColors::changeColor(int const &row, bool const &is_dark_mode)
 {
+	if (initial_edit_) {
+		cacheAllThemes();
+		initial_edit_ = false;
+	}
+
 	QString color;
 
 	if (is_dark_mode)
@@ -1177,47 +1184,46 @@ void PrefColors::changeColor(int const &row, bool const &is_dark_mode)
 	QColor const c = form_->getColor(QColor(color));
 
 	if (setColor(colorsTV_model_.item(row, is_dark_mode), c, color)) {
-		setCurrentTheme(row);
+		setCurrentTheme();
 		// emit signal
 		changed();
 	}
 }
 
 
-void PrefColors::setCurrentTheme(int const color_row)
+void PrefColors::setCurrentTheme()
 {
-	if (newcolors_[color_row] != theme_colors_[color_row])
-		dismissCurrentTheme();
-	else {
-		// now that current row matched, check for other color_row's if they
-		// make up the current theme
-		// note: we won't care about matches with other themes since it would
-		// rarely happen and doesn't convey much useful information.
-		// its implementation cost (esp. cpu time) would exceed the benefit.
-		for (int col = 0; col < colorsTV_model_.rowCount(); ++col) {
-			if (col == color_row) continue;
-			if (newcolors_[col] != theme_colors_[col]) {
-				dismissCurrentTheme();
-				break;
+	for (int theme_id = 0; theme_id < themesLW->count(); ++theme_id) {
+		if (checkMatchWithTheme(theme_id)) {
+			// all colors matched
+			theme_name_ = theme_names_cache_[theme_id];
+			// set the theme indicator
+			for (int theme_row = 0; theme_row < themesLW->count(); ++theme_row) {
+				if (themesLW->item(theme_row)->text() == theme_name_) {
+					themesLW->setCurrentRow(theme_row);
+					break;
+				}
 			}
-		}
-		// all colors matched
-		theme_name_ = last_theme_name_;
-		// set the theme indicator
-		for (int theme_row = 0; theme_row < themesLW->count(); ++theme_row) {
-			if (themesLW->item(theme_row)->text() == theme_name_) {
-				themesLW->setCurrentRow(theme_row);
-				break;
-			}
+			return;
 		}
 	}
+	// no themes have matched
+	dismissCurrentTheme();
+}
+
+
+bool PrefColors::checkMatchWithTheme(int const theme_id)
+{
+	for (int col = 0; col < colorsTV_model_.rowCount(); ++col) {
+		if (newcolors_[col] != themes_cache_[theme_id][col])
+			return false;
+	}
+	return true;
 }
 
 
 void PrefColors::dismissCurrentTheme()
 {
-	if (!theme_name_.isEmpty())
-		last_theme_name_ = theme_name_;
 	theme_name_ = "";
 	themesLW->setCurrentRow(themesLW->currentRow(),
 	                        QItemSelectionModel::Deselect);
@@ -1425,6 +1431,9 @@ void PrefColors::saveTheme()
 		QFile target_file(toqstr(file_path));
 		if (!target_file.exists() || wantToOverwrite()) {
 			saveExportThemeCommon(toqstr(file_path));
+			cacheAllThemes();
+			setCurrentTheme();
+			initial_edit_ = true;
 			break;
 		}
 	}
@@ -1536,9 +1545,9 @@ void PrefColors::importTheme()
 	import_file.copy(toqstr(target_file_path));
 
 	initializeThemesLW();
-	loadImportThemeCommon(FileName(fromqstr(file_path)));
-
+	theme_colors_ = loadImportThemeCommon(FileName(fromqstr(file_path)));
 	theme_name_ = removeExtension(theme_filename_).replace('_', ' ');
+	initial_edit_ = true;
 
 	return;
 }
@@ -1548,14 +1557,33 @@ void PrefColors::loadTheme(int const row)
 {
 	if (row < 0) return;
 
-	loadImportThemeCommon(FileName(fromqstr(theme_fullpaths_[row])));
-	// state variables below are used for suggestion in dialogs
+	theme_colors_ = loadImportThemeCommon(FileName(fromqstr(theme_fullpaths_[row])));
+	// variables below are used for suggestion in input dialogs
 	theme_filename_ = onlyFileName(theme_fullpaths_[row]);
 	theme_name_ = removeExtension(theme_filename_).replace('_', ' ');
 }
 
 
-void PrefColors::loadImportThemeCommon(FileName fullpath)
+void PrefColors::loadTheme(QListWidgetItem *item)
+{
+	loadTheme(themesLW->row(item));
+}
+
+
+void PrefColors::cacheAllThemes()
+{
+	guiApp->setOverrideCursor(QCursor(Qt::WaitCursor));
+	for (int id = 0; id < themesLW->count(); ++id) {
+		ColorNamePairs colorset;
+		colorset = loadImportThemeCommon(FileName(fromqstr(theme_fullpaths_[id])));
+		themes_cache_.push_back(colorset);
+		theme_names_cache_.push_back(themesLW->item(id)->text());
+	}
+	guiApp->restoreOverrideCursor();
+}
+
+
+ColorNamePairs PrefColors::loadImportThemeCommon(FileName fullpath)
 {
 	// read RC colors to extern ColorSet lcolor
 	form_->rc().read(fullpath, true);
@@ -1565,7 +1593,6 @@ void PrefColors::loadImportThemeCommon(FileName fullpath)
 		    {getCurrentColor(lcolors_[row], false).name(),
 		     getCurrentColor(lcolors_[row], true).name()};
 	}
-	theme_colors_ = newcolors_;
 	updateAllSwatches();
 
 	if (autoapply_) {
@@ -1578,6 +1605,8 @@ void PrefColors::loadImportThemeCommon(FileName fullpath)
 	// emit signal
 	changed();
 	activatePrefsWindow(form_);
+
+	return newcolors_;
 }
 
 
@@ -1622,6 +1651,8 @@ void PrefColors::removeTheme()
 		QFile file(theme_fullpaths_[cur_row]);
 		file.remove();
 		initializeThemesLW();
+		dismissCurrentTheme();
+		initial_edit_ = true;
 	}
 }
 
@@ -4446,7 +4477,7 @@ void SetColor::redo()
 	// set button statuses
 	parent_->setResetButtonStatus(false);
 	parent_->setUndoRedoButtonStatuses(false);
-	parent_->setCurrentTheme(item_.row());
+	parent_->setCurrentTheme();
 }
 
 
@@ -4457,7 +4488,7 @@ void SetColor::undo()
 	// set button statuses
 	parent_->setResetButtonStatus(true);
 	parent_->setUndoRedoButtonStatuses(true);
-	parent_->setCurrentTheme(item_.row());
+	parent_->setCurrentTheme();
 }
 
 

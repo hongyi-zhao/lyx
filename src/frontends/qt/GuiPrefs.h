@@ -291,6 +291,7 @@ private Q_SLOTS:
 	void openThemeMenu();
 	void saveTheme();
 	void loadTheme(int const row);
+	void loadTheme(QListWidgetItem *item);
 	void removeTheme();
 	void exportTheme();
 	void importTheme();
@@ -313,9 +314,12 @@ private:
 	QColor getCurrentThemeColor(int const &row, bool const &is_dark_color);
 	///
 	ColorPair getCurrentThemeColors(int const &row);
-	/// After a color change of \p row, set a theme name of the current color
-	/// set in theme_name and indicates it in themesLW.
-	void setCurrentTheme(int const row);
+	/// Find a theme name of the current color set and indicates it in themesLW
+	/// if there is a match.
+	void setCurrentTheme();
+	/// Check if the current color set matches with a theme. Returns true if
+	/// it matches or false otherwise.
+	bool checkMatchWithTheme(int const theme_id);
 	/// Empty the current theme name and deselect the corresponding item in
 	/// themesLW.
 	void dismissCurrentTheme();
@@ -334,10 +338,13 @@ private:
 	void initializeThemeMenu();
 	/// This initializes the color setting table view.
 	void initializeColorsTV();
+	///
+	void cacheAllThemes();
 	/// Common algorithm between saving and exporting
 	void saveExportThemeCommon(QString file_path);
-	/// Common algorithm between loading and importing
-	void loadImportThemeCommon(support::FileName filename);
+	/// Common algorithm between loading and importing.
+	/// It returns the color set read from \p fullpath.
+	ColorNamePairs loadImportThemeCommon(support::FileName fullpath);
 	/// Ask the user a theme name
 	bool askThemeName(bool porting);
 	///
@@ -355,6 +362,8 @@ private:
 	ColorNamePairs curcolors_;
 	ColorNamePairs newcolors_;
 	ColorNamePairs theme_colors_;
+	std::vector<ColorNamePairs> themes_cache_;
+	std::vector<QString> theme_names_cache_;
 
 	QStandardItemModel colorsTV_model_;
 	QItemSelectionModel selection_model_;
@@ -371,10 +380,10 @@ private:
 	std::vector<QString> theme_fullpaths_;
 	/// name of current theme
 	QString theme_name_ = "";
-	/// name of last theme name
-	QString last_theme_name_ = "";
 	/// holds filename of currently selected theme
 	QString theme_filename_;
+	/// if this is initial edit after themes are renewed
+	bool initial_edit_ = true;
 
 	friend class SetColor;
 	friend class ColorTableView;

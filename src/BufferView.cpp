@@ -80,7 +80,6 @@
 #include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/pmprof.h"
 #include "support/types.h"
 
 #include <algorithm>

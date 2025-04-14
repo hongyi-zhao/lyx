@@ -3936,7 +3936,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 					hull->recordLocation(it);
 			}
 
-			if (im->asMacroTemplate())
+			if (insit.inset->lyxCode() != MATH_MACROTEMPLATE_CODE)
 				continue;
 
 			// get macro data

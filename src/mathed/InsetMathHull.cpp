@@ -46,6 +46,8 @@
 #include "TextPainter.h"
 #include "TocBackend.h"
 
+#include "Session.h"
+
 #include "insets/InsetLabel.h"
 #include "insets/InsetRef.h"
 #include "insets/RenderPreview.h"
@@ -1985,7 +1987,10 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (row == nrows())
 			break;
 
-		InsetCommandParams p(REF_CODE, "ref");
+		string type = theSession().uiSettings().value("default_crossreftype");
+		if (type.empty())
+			type = "eqref";
+		InsetCommandParams p(REF_CODE, type);
 		p["reference"] = label(row);
 		p["filenames"] = label(row) + "@" + from_utf8(buffer().absFileName());
 		cap::clearSelection();

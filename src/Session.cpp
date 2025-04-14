@@ -16,6 +16,7 @@
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/Package.h"
+#include "support/lstrings.h"
 
 #include <fstream>
 #include <sstream>
@@ -34,6 +35,7 @@ string const sec_bookmarks = "[bookmarks]";
 string const sec_lastcommands = "[last commands]";
 string const sec_authfiles = "[auth files]";
 string const sec_shellescape = "[shell escape files]";
+string const sec_ui = "[user interface]";
 // currently unused:
 //string const sec_session = "[session info]";
 //string const sec_toolbars = "[toolbars]";
@@ -461,6 +463,8 @@ void Session::readFile()
 			authFiles().read(is);
 		else if (tmp == sec_shellescape)
 			shellescapeFiles().read(is);
+		else if (tmp == sec_ui)
+			uiSettings().read(is);
 
 		else
 			LYXERR(Debug::INIT, "LyX: Warning: unknown Session section: " << tmp);
@@ -482,6 +486,7 @@ void Session::writeFile() const
 		bookmarks().write(os);
 		authFiles().write(os);
 		shellescapeFiles().write(os);
+		uiSettings().write(os);
 	} else
 		LYXERR(Debug::INIT, "LyX: Warning: unable to save Session: "
 		       << session_file);
@@ -603,6 +608,48 @@ void ShellEscapeSection::remove(string const & name)
 		it = shellescape_files_.find(name + ",1");
 	if (it != shellescape_files_.end())
 		shellescape_files_.erase(it);
+}
+
+
+void UISection::read(istream & is)
+{
+	string s;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, s);
+		if (s.empty() || s[0] == '#' || s[0] == ' ' || !support::contains(s, " "))
+			continue;
+
+		// read UI settings
+		string key;
+		string const value = support::split(s, key, ' ');
+		if (!key.empty())
+			ui_settings_[key] = value;
+		else
+			LYXERR(Debug::INIT, "LyX: Warning: Ignore UI setting: " << s);
+	} while (is.good());
+}
+
+
+void UISection::write(ostream & os) const
+{
+	os << '\n' << sec_ui << '\n';
+	for (auto const & s : ui_settings_)
+		os << s.first << " " << s.second << "\n";
+}
+
+
+string UISection::value(string const & key)
+{
+	return ui_settings_[key];
+}
+
+
+void UISection::insert(string const & key, string const & value)
+{
+	ui_settings_[key] = value;
 }
 
 

@@ -193,7 +193,7 @@ bool InsetCaption::insetAllowed(InsetCode code) const
 	case FOOT_CODE:
 	case NEWPAGE_CODE:
 	case MARGIN_CODE:
-	case MATHMACRO_CODE:
+	case MATH_MACROTEMPLATE_CODE:
 	case TABULAR_CODE:
 	case WRAP_CODE:
 		return false;

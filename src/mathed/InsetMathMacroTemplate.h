@@ -101,7 +101,7 @@ public:
 	/// identifies macro templates
 	InsetMathMacroTemplate const * asMacroTemplate() const override { return this; }
 	///
-	InsetCode lyxCode() const override { return MATHMACRO_CODE; }
+	InsetCode lyxCode() const override { return MATH_MACROTEMPLATE_CODE; }
 	///
 	void infoize(odocstream & os) const override;
 	///

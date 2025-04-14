@@ -824,7 +824,7 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 		}
 
 		// only until a macro is redefined
-		if (dit.inset().lyxCode() == MATHMACRO_CODE) {
+		if (dit.inset().lyxCode() == MATH_MACROTEMPLATE_CODE) {
 			InsetMathMacroTemplate const & macroTemplate
 			= static_cast<InsetMathMacroTemplate const &>(dit.inset());
 			if (macroTemplate.name() == name)

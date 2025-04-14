@@ -171,7 +171,7 @@ void MacroData::updateData() const
 
 	// find macro template
 	Inset * inset = pos_.nextInset();
-	if (inset == 0 || inset->lyxCode() != MATHMACRO_CODE) {
+	if (inset == 0 || inset->lyxCode() != MATH_MACROTEMPLATE_CODE) {
 		lyxerr << "BUG: No macro template found by MacroData" << endl;
 		return;
 	}
@@ -187,7 +187,7 @@ int MacroData::write(odocstream & os, bool overwriteRedefinition) const
 
 	// find macro template
 	Inset * inset = pos_.nextInset();
-	if (inset == 0 || inset->lyxCode() != MATHMACRO_CODE) {
+	if (inset == 0 || inset->lyxCode() != MATH_MACROTEMPLATE_CODE) {
 		lyxerr << "BUG: No macro template found by MacroData" << endl;
 		return 0;
 	}

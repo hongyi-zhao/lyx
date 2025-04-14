@@ -28,6 +28,8 @@
 #include "GuiView.h"
 #include "PDFOptions.h"
 
+#include "Session.h"
+
 #include "TocModel.h"
 #include "TocBackend.h"
 #include "qt_helpers.h"
@@ -597,7 +599,10 @@ void GuiRef::updateContents()
 	// restore type settings for new insets
 	bool const new_inset = params_["reference"].empty();
 	if (new_inset) {
-		int index = typeCO->findData(orig_type);
+		QString const use_type = orig_type.isEmpty()
+				? toqstr(theSession().uiSettings().value("default_crossreftype"))
+				: orig_type;
+		int index = typeCO->findData(use_type);
 		if (index == -1)
 			index = 0;
 		typeCO->setCurrentIndex(index);
@@ -1096,6 +1101,7 @@ void GuiRef::dispatchParams()
 	std::string const lfun = InsetCommand::params2string(params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 	connectToNewInset();
+	theSession().uiSettings().insert("default_crossreftype", params_.getCmdName());
 }
 
 

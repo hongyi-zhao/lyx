@@ -17,6 +17,7 @@
 #include "support/types.h"
 
 #include <list>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -387,6 +388,30 @@ private:
 };
 
 
+class UISection : SessionSection
+{
+public:
+	///
+	explicit UISection() {}
+
+	///
+	void read(std::istream & is) override;
+
+	///
+	void write(std::ostream & os) const override;
+
+	///
+	std::string value(std::string const & key);
+
+	///
+	void insert(std::string const & key, std::string const & value);
+
+private:
+	/// map with UI session settings
+	std::map<std::string, std::string> ui_settings_;
+};
+
+
 class Session
 {
 public:
@@ -423,6 +448,10 @@ public:
 	ShellEscapeSection & shellescapeFiles() { return shellescape_files; }
 	///
 	ShellEscapeSection const & shellescapeFiles() const { return shellescape_files; }
+	///
+	UISection & uiSettings() { return ui_settings; }
+	///
+	UISection const & uiSettings() const { return ui_settings; }
 
 private:
 	friend class LyX;
@@ -454,6 +483,8 @@ private:
 	AuthFilesSection auth_files;
 	///
 	ShellEscapeSection shellescape_files;
+	///
+	UISection ui_settings;
 };
 
 /// This is a singleton class. Get the instance.

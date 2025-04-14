@@ -29,6 +29,8 @@
 #include "TextClass.h"
 #include "TocBackend.h"
 
+#include "Session.h"
+
 #include "mathed/InsetMathRef.h"
 
 #include "frontends/alert.h"
@@ -300,7 +302,10 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_LABEL_COPY_AS_REFERENCE: {
-		InsetCommandParams p(REF_CODE, "ref");
+		string type = theSession().uiSettings().value("default_crossreftype");
+		if (type.empty())
+			type = "ref";
+		InsetCommandParams p(REF_CODE, type);
 		p["reference"] = getParam("name");
 		p["filenames"] = getParam("name") + "@" + from_utf8(buffer().absFileName());
 		cap::clearSelection();
@@ -309,7 +314,10 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_LABEL_INSERT_AS_REFERENCE: {
-		InsetCommandParams p(REF_CODE, "ref");
+		string type = theSession().uiSettings().value("default_crossreftype");
+		if (type.empty())
+			type = "ref";
+		InsetCommandParams p(REF_CODE, type);
 		p["reference"] = getParam("name");
 		string const data = InsetCommand::params2string(p);
 		lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));

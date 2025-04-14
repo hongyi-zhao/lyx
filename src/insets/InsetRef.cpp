@@ -29,6 +29,8 @@
 #include "texstream.h"
 #include "TocBackend.h"
 
+#include "Session.h"
+
 #include "frontends/alert.h"
 
 #include "support/debug.h"
@@ -146,8 +148,13 @@ void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	// otherwise not for us
-	if (pstring.empty())
-		return InsetCommand::doDispatch(cur, cmd);
+	if (pstring.empty()) {
+		InsetCommand::doDispatch(cur, cmd);
+		if (cmd.action() == LFUN_INSET_MODIFY && cmd.getArg(0) == "changetype")
+			// store last used type in session
+			theSession().uiSettings().insert("default_crossreftype", getCmdName());
+		return;
+	}
 
 	bool const isSet = (getParam(pstring) == "true");
 	setParam(pstring, from_ascii(isSet ? "false"  : "true"));

@@ -4973,7 +4973,7 @@ bool InsetTableCell::insetAllowed(InsetCode code) const
 	switch (code) {
 	case FLOAT_CODE:
 	case MARGIN_CODE:
-	case MATHMACRO_CODE:
+	case MATH_MACROTEMPLATE_CODE:
 	case WRAP_CODE:
 		return false;
 
@@ -5025,7 +5025,7 @@ bool InsetTabular::insetAllowed(InsetCode code) const
 	switch (code) {
 	case FLOAT_CODE:
 	case MARGIN_CODE:
-	case MATHMACRO_CODE:
+	case MATH_MACROTEMPLATE_CODE:
 	case WRAP_CODE:
 		return false;
 

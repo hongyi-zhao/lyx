@@ -508,9 +508,9 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	if (!parPos.empty())
 		parPos.pit() = pit;
 	else {
-		LYXERR(Debug::INFO, "MacroContext not initialised!"
+		LYXERR0("MacroContext not initialised!"
 			<< " Going through the buffer again and hope"
-			<< " the context is better then.");
+			<< " the context is better then. Please report");
 		// FIXME audit updateBuffer calls
 		// This should not be here, but it is not clear yet where else it
 		// should be.
@@ -526,18 +526,13 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	CoordCache::Insets & insetCache = bv_->coordCache().insets();
 	map <Inset const *, int> extrawidths;
 	for (auto const & e : par.insetList()) {
-		// FIXME Doesn't this HAVE to be non-empty?
-		// position already initialized?
-		if (!parPos.empty()) {
-			parPos.pos() = e.pos;
-
-			// A macro template would normally not be visible
-			// by itself. But the tex macro semantics allow
-			// recursion, so we artifically take the context
-			// after the macro template to simulate this.
-			if (e.inset->lyxCode() == MATHMACRO_CODE)
-				parPos.pos()++;
-		}
+		parPos.pos() = e.pos;
+		// A macro template would normally not be visible by itself.
+		// But the tex macro semantics allow recursion, so we
+		// artifically take the context after the macro template to
+		// simulate this.
+		if (e.inset->lyxCode() == MATH_MACROTEMPLATE_CODE)
+			parPos.pos()++;
 
 		// If there is an end of paragraph marker, its size should be
 		// substracted to the available width. The logic here is
@@ -557,7 +552,7 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 			- right_margin - eop;
 		Font const & font = e.inset->inheritFont() ?
 			displayFont(pit, e.pos) : bufferfont;
-		MacroContext mc(&buffer, parPos);
+		MacroContext const mc(&buffer, parPos);
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc, e.pos == 0, tight_);
 		mi.base.outer_font = displayFont(pit, e.pos).fontInfo();
 		e.inset->metrics(mi, dim);

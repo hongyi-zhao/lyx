@@ -75,7 +75,7 @@ enum InsetCode {
 	///
 	CAPTION_CODE,
 	///
-	MATHMACRO_CODE,
+	MATH_MACROTEMPLATE_CODE,
 	///
 	CITE_CODE,
 	///

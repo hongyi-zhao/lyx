@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-08 09:36+0200\n"
-"PO-Revision-Date: 2025-04-08 07:48+0000\n"
+"POT-Creation-Date: 2025-04-12 15:36+0200\n"
+"PO-Revision-Date: 2025-04-12 13:48+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -33394,6 +33394,10 @@ msgstr ""
 #: src/LyXRC.cpp:3230
 msgid "Possibility to enforce a particular color scheme (system|dark|light)"
 msgstr "Možnosť vynútenia konkrétnej farebnej schémy (systémová|tmavá|svetlá)"
+
+#: src/LyXRC.cpp:3250
+msgid "Current UI theme if it has a name, otherwise empty"
+msgstr "Aktuálna téma farebného rozhrania, ak má názov, inak je prázdna"
 
 #: src/LyXRC.cpp:3210
 msgid ""

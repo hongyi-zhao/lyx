@@ -6718,7 +6718,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_MATH_MACRO:
-		code = MATHMACRO_CODE;
+		code = MATH_MACROTEMPLATE_CODE;
 		break;
 
 	case LFUN_REGEXP_MODE:

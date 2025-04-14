@@ -236,7 +236,7 @@ bool InsetScript::insetAllowed(InsetCode code) const
 	case LISTINGS_CODE:
 	case MARGIN_CODE:
 	case MATH_MACRO_CODE:
-	case MATHMACRO_CODE:
+	case MATH_MACROTEMPLATE_CODE:
 	case NEWLINE_CODE:
 	case NEWPAGE_CODE:
 	case NOMENCL_PRINT_CODE:

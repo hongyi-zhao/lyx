@@ -105,7 +105,7 @@ static void build_translator()
 	insetnames[TABULAR_CODE] = InsetName("tabular", _("Table"));
 	insetnames[EXTERNAL_CODE] = InsetName("external");
 	insetnames[CAPTION_CODE] = InsetName("caption");
-	insetnames[MATHMACRO_CODE] = InsetName("mathmacro");
+	insetnames[MATH_MACROTEMPLATE_CODE] = InsetName("mathmacrotemplate");
 	insetnames[CITE_CODE] = InsetName("citation");
 	insetnames[FLOAT_LIST_CODE] = InsetName("floatlist");
 	insetnames[INDEX_PRINT_CODE] = InsetName("index_print");

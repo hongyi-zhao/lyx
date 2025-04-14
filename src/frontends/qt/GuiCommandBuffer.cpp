@@ -19,7 +19,6 @@
 #include "GuiView.h"
 #include "qt_helpers.h"
 
-#include "BufferView.h"
 #include "Cursor.h"
 #include "LyX.h"
 #include "LyXAction.h"

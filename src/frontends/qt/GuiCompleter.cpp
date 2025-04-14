@@ -14,8 +14,6 @@
 
 #include "GuiApplication.h"
 #include "GuiWorkArea.h"
-#include "GuiView.h"
-#include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
@@ -25,7 +23,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
-#include "version.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"

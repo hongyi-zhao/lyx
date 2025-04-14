@@ -21,7 +21,6 @@
 #include "FuncStatus.h"
 #include "BufferList.h"
 #include "LyX.h"
-#include "Text.h"
 #include "TexRow.h"
 
 #include "support/convert.h"

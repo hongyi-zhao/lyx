@@ -14,12 +14,10 @@
 
 #include "GuiExternal.h"
 
-#include "Buffer.h"
 #include "FuncRequest.h"
 #include "support/gettext.h"
 #include "LyXRC.h"
 
-#include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
 
 #include "graphics/epstools.h"

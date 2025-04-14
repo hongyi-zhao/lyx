@@ -15,7 +15,6 @@
 #include "GuiApplication.h"
 
 #include "Buffer.h"
-#include "BufferView.h"
 #include "BufferList.h"
 #include "buffer_funcs.h"
 #include "ColorCache.h"

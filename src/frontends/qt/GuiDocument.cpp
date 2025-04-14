@@ -15,7 +15,6 @@
 
 #include "BulletsModule.h"
 #include "CategorizedCombo.h"
-#include "ColorsCombo.h"
 #include "FancyLineEdit.h"
 #include "GuiApplication.h"
 #include "GuiBranches.h"

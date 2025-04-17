@@ -3555,8 +3555,10 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_REFERENCE_NEXT
- * \li Action: Go to the next label or cross-reference.
- * \li Syntax: reference-next
+ * \li Action: Go to the next label or cross-reference of the same target.
+ * \li Syntax: reference-next [anyref]
+ * \li Params: anyref: if this is used, the function goes to the next
+ *             cross-reference, whatever its target (but not to labels) 
  * \li Origin: Dekel, 14 Jan 2001
  * \endvar
  */

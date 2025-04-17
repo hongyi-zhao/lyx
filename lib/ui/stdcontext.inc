@@ -89,7 +89,8 @@ Menuset
 # InsetMathRef context menu
 #
 	Menu "context-mathref"
-		Item "Next Cross-Reference|N" "reference-next"
+		Item "Next Cross-Reference or Label with the Same Target|N" "reference-next"
+		Item "Next Cross-Reference|C" "reference-next anyref"
 		Item "Go to Label|G" "label-goto"
 		Separator
 		Item "<Reference>|R" "inset-modify changetype ref"
@@ -109,7 +110,8 @@ Menuset
 # InsetRef context menu
 #
 	Menu "context-ref"
-		Item "Next Cross-Reference|N" "reference-next"
+		Item "Next Cross-Reference or Label with the Same Target|N" "reference-next"
+		Item "Next Cross-Reference|C" "reference-next anyref"
 		Item "Go to Label|G" "label-goto"
 		Separator
 		Item "<Reference>|R" "inset-modify changetype ref"
@@ -133,7 +135,7 @@ Menuset
 # InsetLabel context menu
 #
 	Menu "context-label"
-		Item "Next Cross-Reference|N" "reference-next"
+		Item "Next Cross-Reference that Points to This Label|N" "reference-next"
 		Item "Go Back|G" "bookmark-goto 0"
 		Separator
 		Item "Copy as Reference|C" "label-copy-as-reference"

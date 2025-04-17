@@ -19,9 +19,6 @@
 #include "support/lassert.h"
 #include "support/debug.h"
 
-#include "Encoding.h"
-#include "Language.h"
-
 #include <QKeyEvent>
 #include <QKeySequence>
 #include <QEvent>

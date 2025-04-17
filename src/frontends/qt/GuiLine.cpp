@@ -17,13 +17,9 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "FuncRequest.h"
-
 #include "insets/InsetLine.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
-#include "support/lstrings.h"
 
 #include <QLineEdit>
 #include <QPushButton>

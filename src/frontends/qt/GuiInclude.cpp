@@ -28,8 +28,6 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 
-#include "frontends/alert.h"
-
 #include "insets/InsetListingsParams.h"
 #include "insets/InsetInclude.h"
 

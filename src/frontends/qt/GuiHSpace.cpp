@@ -23,7 +23,6 @@
 #include "mathed/InsetMathSpace.h"
 
 #include "support/gettext.h"
-#include "support/lstrings.h"
 
 #include <QCheckBox>
 #include <QLineEdit>

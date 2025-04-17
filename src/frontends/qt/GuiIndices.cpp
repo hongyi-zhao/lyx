@@ -15,7 +15,6 @@
 #include "GuiIndices.h"
 
 #include "ColorCache.h"
-#include "GuiApplication.h"
 #include "GuiDialog.h"
 #include "Validator.h"
 #include "qt_helpers.h"

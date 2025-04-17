@@ -18,7 +18,6 @@
 
 #include "Dimension.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
 #include "support/lyxlib.h"

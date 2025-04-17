@@ -16,10 +16,7 @@
 #include "qt_helpers.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
-#include "BufferParams.h"
 #include "BufferView.h"
-#include "Cursor.h"
 #include "Language.h"
 
 #include "GuiApplication.h"
@@ -29,7 +26,6 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
 
 #include <QDate>
 

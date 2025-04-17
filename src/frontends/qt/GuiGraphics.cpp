@@ -19,7 +19,6 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "Buffer.h"
 #include "FuncRequest.h"
 #include "LengthCombo.h"
 #include "LyXRC.h"

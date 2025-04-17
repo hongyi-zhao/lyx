@@ -21,7 +21,6 @@
 #endif // QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "ErrorList.h"
 #include "GuiApplication.h"
 #include "GuiCompleter.h"
 #include "GuiFontLoader.h"

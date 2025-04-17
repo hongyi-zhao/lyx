@@ -15,8 +15,6 @@
 #include "GuiImage.h"
 #include "qt_helpers.h"
 
-#include "Format.h"
-
 #include "graphics/GraphicsParams.h"
 
 #include "support/debug.h"

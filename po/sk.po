@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-12 15:36+0200\n"
-"PO-Revision-Date: 2025-04-12 13:48+0000\n"
+"POT-Creation-Date: 2025-04-17 10:49+0200\n"
+"PO-Revision-Date: 2025-04-17 08:58+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5572,6 +5572,10 @@ msgstr "Bez prefixu"
 #: src/frontends/qt/ui/RefUi.ui:354 lib/ui/stdcontext.inc:127
 msgid "No Hyperlink"
 msgstr "Nie Hyperlinka"
+
+#: lib/ui/stdcontext.inc:138
+msgid "Next Cross-Reference that Points to This Label|N"
+msgstr "Ďalšia krížová referencia, ktorá ukazuje na tento štítok|k"
 
 #: src/frontends/qt/ui/SearchUi.ui:52
 msgid "Find previous occurrence (Shift+Enter)"
@@ -22947,8 +22951,12 @@ msgstr "Zobraz lištu nástrojov pre tabuľku"
 msgid "Use Computer Algebra System|m"
 msgstr "Použiť Systém Computer Algebra|g"
 
-#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:112 lib/ui/stdcontext.inc:136
-msgid "Next Cross-Reference|N"
+#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:113
+msgid "Next Cross-Reference or Label with the Same Target|N"
+msgstr "Ďalšia krížová referencia alebo štítok s rovnakým cieľom|k"
+
+#: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:114
+msgid "Next Cross-Reference|C"
 msgstr "Ďalšia krížová referencia|o"
 
 #: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:113

@@ -21,7 +21,6 @@
 #include "LyX.h"
 #include "BufferView.h"
 #include "Buffer.h"
-#include "Cursor.h"
 #include "FuncRequest.h"
 #include "KeyMap.h"
 #include "GuiKeySymbol.h"
@@ -32,7 +31,6 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/FileName.h"
-#include "frontends/alert.h"
 #include "frontends/Clipboard.h"
 
 #include <QClipboard>

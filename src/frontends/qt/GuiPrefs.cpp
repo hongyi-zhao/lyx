@@ -17,8 +17,6 @@
 #include "FileDialog.h"
 #include "GuiApplication.h"
 #include "GuiFontExample.h"
-#include "GuiFontLoader.h"
-#include "GuiKeySymbol.h"
 #include "GuiLyXFiles.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
@@ -38,8 +36,6 @@
 #include "LyXAction.h"
 #include "LyX.h"
 #include "PanelStack.h"
-#include "Session.h"
-#include "SpellChecker.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
@@ -54,7 +50,6 @@
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 
 #include <QAbstractItemModel>
 #include <QCheckBox>

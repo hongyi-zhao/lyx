@@ -29,7 +29,6 @@
 #include "Spacing.h"
 
 #include "support/debug.h"
-#include "support/Lexer.h"
 
 #include <QCheckBox>
 #include <QDialogButtonBox>

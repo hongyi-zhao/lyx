@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "GuiSendto.h"
-#include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"

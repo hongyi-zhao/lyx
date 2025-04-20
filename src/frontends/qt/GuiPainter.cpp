@@ -22,7 +22,6 @@
 #include "qt_helpers.h"
 
 #include "Font.h"
-#include "LyXRC.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"

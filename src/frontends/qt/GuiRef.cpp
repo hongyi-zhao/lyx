@@ -13,8 +13,6 @@
 
 #include "GuiRef.h"
 
-#include "GuiApplication.h"
-
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferList.h"

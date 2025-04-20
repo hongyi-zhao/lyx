@@ -17,13 +17,10 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "FuncRequest.h"
-
 #include "insets/InsetNomencl.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
 
 using namespace std;
 

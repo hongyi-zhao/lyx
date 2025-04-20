@@ -19,7 +19,6 @@
 #include "frontends/alert.h"
 
 #include "support/debug.h"
-#include "support/Systemcall.h"
 
 #include <QApplication>
 #include <QCheckBox>

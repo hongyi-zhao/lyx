@@ -17,8 +17,6 @@
 #include "GuiApplication.h"
 #include "qt_helpers.h"
 
-#include "frontends/Clipboard.h"
-
 #include "support/docstring.h"
 #include "support/gettext.h"
 #include "support/Lexer.h"
@@ -30,7 +28,6 @@
 
 #include <QTextBrowser>
 #include <QSyntaxHighlighter>
-#include <QClipboard>
 
 #include <fstream>
 #include <sstream>

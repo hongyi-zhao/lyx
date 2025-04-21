@@ -40,7 +40,7 @@ public:
 	/// Default constructor (only here for STL containers).
 	TextMetrics() {}
 	/// The only useful constructor.
-	TextMetrics(BufferView *, Text *);
+	TextMetrics(BufferView *, Text const *);
 
 	/// A map from paragraph index number to paragraph metrics
 	typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;
@@ -253,8 +253,7 @@ private:
 	BufferView * bv_ = nullptr;
 
 	/// The text contents (the model).
-	/// \todo FIXME: this should be const.
-	Text * text_ = nullptr;
+	Text const * text_ = nullptr;
 
 	/// The input method instance
 	frontend::InputMethod * im_ = nullptr;

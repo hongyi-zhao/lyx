@@ -292,7 +292,7 @@ bool testString(MathAtom const & at, char const * const str)
 
 bool testSymbol(MathAtom const & at, docstring const & name)
 {
-	return at->asSymbolInset() && at->asSymbolInset()->name() == name;
+	return (at->asSymbolInset() || at->asMacro()) && at->name() == name;
 }
 
 
@@ -373,9 +373,8 @@ void splitScripts(MathData & ar)
 
 		if (script->nuc().size() == 1) {
 			// leave alone sums and integrals
-			InsetMathSymbol const * sym =
-				script->nuc().front()->asSymbolInset();
-			if (sym && (sym->name() == "sum" || sym->name() == "int"))
+			MathAtom const & atom = script->nuc().front();
+			if (testSymbol(atom, "sum") || testSymbol(atom, "int"))
 				continue;
 		}
 

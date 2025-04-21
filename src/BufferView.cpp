@@ -3035,8 +3035,8 @@ TextMetrics & BufferView::textMetrics(Text const * t)
 	TextMetricsCache::iterator tmc_it  = d->text_metrics_.find(t);
 	if (tmc_it == d->text_metrics_.end()) {
 		tmc_it = d->text_metrics_.emplace(std::piecewise_construct,
-		         	std::forward_as_tuple(t),
-		         	std::forward_as_tuple(this, const_cast<Text *>(t))).first;
+		            std::forward_as_tuple(t),
+		            std::forward_as_tuple(this, t)).first;
 	}
 	return tmc_it->second;
 }

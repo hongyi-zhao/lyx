@@ -108,7 +108,7 @@ int numberOfHfills(Row const & row, ParagraphMetrics const & pm,
 /////////////////////////////////////////////////////////////////////
 
 
-TextMetrics::TextMetrics(BufferView * bv, Text * text)
+TextMetrics::TextMetrics(BufferView * bv, Text const * text)
     : bv_(bv), text_(text), im_(bv_->inputMethod()),
       dim_(bv_->workWidth(), 10, 10), max_width_(dim_.wid)
 {}
@@ -490,7 +490,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 
 bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 {
-	Paragraph & par = text_->getPar(pit);
+	Paragraph const & par = text_->getPar(pit);
 	// This gets the dimension if it exists and an empty one otherwise.
 	Dimension old_dim = dim(pit);
 	ParagraphMetrics & pm = par_metrics_[pit];
@@ -521,7 +521,8 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	}
 
 	// redo insets
-	par.setBeginOfBody();
+	// FIXME: contents should not be modified, move elsewhere.
+	const_cast<Paragraph &>(par).setBeginOfBody();
 	Font const bufferfont = buffer.params().getFont();
 	CoordCache::Insets & insetCache = bv_->coordCache().insets();
 	map <Inset const *, int> extrawidths;
@@ -1600,7 +1601,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int x, int y)
 	Row const * row = getRowNearY(y);
 	LASSERT(row != nullptr, return);
 	auto [pos, bound] = getPosNearX(*row, x);
-	text_->setCursor(cur, row->pit(), pos, true, bound);
+	cur.text()->setCursor(cur, row->pit(), pos, true, bound);
 	// remember new position.
 	cur.setTargetX();
 }
@@ -1681,7 +1682,7 @@ bool TextMetrics::cursorHome(Cursor & cur)
 	LASSERT(text_ == cur.text(), return false);
 	ParagraphMetrics const & pm = par_metrics_[cur.pit()];
 	Row const & row = pm.getRow(cur.pos(),cur.boundary());
-	return text_->setCursor(cur, cur.pit(), row.pos());
+	return cur.text()->setCursor(cur, cur.pit(), row.pos());
 }
 
 
@@ -1705,7 +1706,7 @@ bool TextMetrics::cursorEnd(Cursor & cur)
 			--end;
 	} else if (cur.paragraph().isEnvSeparator(end-1))
 		--end;
-	return text_->setCursor(cur, cur.pit(), end, true, boundary);
+	return cur.text()->setCursor(cur, cur.pit(), end, true, boundary);
 }
 
 
@@ -1714,7 +1715,7 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 	LASSERT(text_ == cur.text(), return);
 	if (cur.lastpos() == 0) {
 		// Paragraph is empty, so we just go forward
-		text_->cursorForward(cur);
+		cur.text()->cursorForward(cur);
 	} else {
 		cur.resetAnchor();
 		cur.selection(true); // to avoid deletion
@@ -1722,7 +1723,7 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 		cur.setSelection();
 		// What is this test for ??? (JMarc)
 		if (!cur.selection())
-			text_->deleteWordForward(cur);
+			cur.text()->deleteWordForward(cur);
 		else
 			cap::cutSelection(cur, false);
 		cur.checkBufferStructure();

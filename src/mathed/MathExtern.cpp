@@ -1124,7 +1124,7 @@ namespace {
 			out = captureOutput("maxima", to_utf8(full));
 
 			// leave loop if expression syntax is probably ok
-			if (out.find("Incorrect syntax") == string::npos)
+			if (ascii_lowercase(out).find("incorrect syntax") == string::npos)
 				break;
 
 			// search line with "Incorrect syntax"
@@ -1132,7 +1132,7 @@ namespace {
 			string line;
 			while (is) {
 				getline(is, line);
-				if (line.find("Incorrect syntax") != string::npos)
+				if (ascii_lowercase(line).find("incorrect syntax") != string::npos)
 					break;
 			}
 

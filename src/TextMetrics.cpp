@@ -25,7 +25,6 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "InsetList.h"
 #include "Layout.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -45,9 +44,9 @@
 #include "frontends/InputMethod.h"
 #include "frontends/NullPainter.h"
 
+#include "support/Changer.h"
 #include "support/debug.h"
 #include "support/lassert.h"
-#include "support/Changer.h"
 
 #include <stdlib.h>
 #include <cmath>
@@ -503,95 +502,23 @@ bool TextMetrics::redoParagraph(pit_type const pit, bool const align_rows)
 	// so better to calculate that once here.
 	int const right_margin = rightMargin(pm);
 
-	// iterator pointing to paragraph to resolve macros
-	DocIterator parPos = text_->macrocontextPosition();
-	if (!parPos.empty())
-		parPos.pit() = pit;
-	else {
-		LYXERR0("MacroContext not initialised!"
-			<< " Going through the buffer again and hope"
-			<< " the context is better then. Please report");
-		// FIXME audit updateBuffer calls
-		// This should not be here, but it is not clear yet where else it
-		// should be.
-		bv_->buffer().updateBuffer();
-		parPos = text_->macrocontextPosition();
-		LBUFERR(!parPos.empty());
-		parPos.pit() = pit;
-	}
-
-	// redo insets
 	// FIXME: contents should not be modified, move elsewhere.
 	const_cast<Paragraph &>(par).setBeginOfBody();
-	Font const bufferfont = buffer.params().getFont();
-	CoordCache::Insets & insetCache = bv_->coordCache().insets();
-	map <Inset const *, int> extrawidths;
-	for (auto const & e : par.insetList()) {
-		parPos.pos() = e.pos;
-		// A macro template would normally not be visible by itself.
-		// But the tex macro semantics allow recursion, so we
-		// artifically take the context after the macro template to
-		// simulate this.
-		if (e.inset->lyxCode() == MATH_MACROTEMPLATE_CODE)
-			parPos.pos()++;
-
-		// If there is an end of paragraph marker, its size should be
-		// substracted to the available width. The logic here is
-		// almost the same as in tokenizeParagraph, remember keep them in sync.
-		int eop = 0;
-		if (e.pos + 1 == par.size()
-		      && (lyxrc.paragraph_markers || par.lookupChange(par.size()).changed())
-		      && size_type(pit + 1) < text_->paragraphs().size()) {
-			Font f(text_->layoutFont(pit));
-			// ¶ U+00B6 PILCROW SIGN
-			eop = theFontMetrics(f).width(char_type(0x00B6));
-		}
-
-		// do the metric calculation
-		Dimension dim;
-		int const w = max_width_ - leftMargin(pit, e.pos)
-			- right_margin - eop;
-		Font const & font = e.inset->inheritFont() ?
-			displayFont(pit, e.pos) : bufferfont;
-		MacroContext const mc(&buffer, parPos);
-		MetricsInfo mi(bv_, font.fontInfo(), w, mc, e.pos == 0, tight_);
-		mi.base.outer_font = displayFont(pit, e.pos).fontInfo();
-		e.inset->metrics(mi, dim);
-		/* FIXME: This is a hack. This allows InsetMathHull to state
-		 * that it needs some elbow room beyond its width, in order to
-		 * fit the numbering and/or the left margin (with left
-		 * alignment), which are outside of the inset itself.
-		 *
-		 * To this end, InsetMathHull::metrics() sets a value in
-		 * MetricsInfo::extrawidth and this value is added later to
-		 * the width of the row that contains the inset (when this row
-		 * is tight or shorter than the max allowed width).
-		 *
-		 * See ticket #12320 for details.
-		*/
-		extrawidths[e.inset] = mi.extrawidth;
-
-		changed |= insetCache.add(e.inset, dim);
-	}
-
 	// Transform the paragraph into a single row containing all the elements.
 	Row const bigrow = tokenizeParagraph(pit);
 	// Split the row in several rows fitting in available width
 	pm.rows() = breakParagraph(bigrow);
 
-	// Add the needed extra width to the rows that contain the insets that request it
-	for (Row & row : pm.rows())
-		for (Row::Element & e : row)
-			if (e.type == Row::INSET && (row.width() < max_width_ || tight_))
-				row.dim().wid += extrawidths[e.inset];
-
 	/* If there is more than one row, expand the text to the full
 	 * allowable width. This setting here is needed for the
 	 * setRowAlignment() below. We do nothing when tight insets are
-	 * requested.
+	 * requested or when the first row of two is empty due to
+	 * AlwaysBreakBefore flag.
 	 */
-	if (pm.rows().size() > 1 && !tight_ && dim_.wid < max_width_)
-			dim_.wid = max_width_;
+	if (!tight_ && dim_.wid < max_width_
+	    && (pm.rows().size() > 2
+	        || (pm.rows().size() == 2 && !pm.rows().front().empty())))
+		dim_.wid = max_width_;
 
 	// Compute height and alignment of the rows.
 	for (Row & row : pm.rows()) {
@@ -977,8 +904,7 @@ Row TextMetrics::tokenizeParagraph(pit_type const pit) const
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
 			Inset const * ins = par.getInset(i);
-			Dimension dim = bv_->coordCache().insets().dim(ins);
-			row.add(i, ins, dim, *fi, par.lookupChange(i));
+			row.add(i, ins, *fi, par.lookupChange(i));
 		} else if (c == ' ' && i + 1 == body_pos) {
 			// This space is an \item separator. Represent it with a
 			// special space element, which dimension will be computed
@@ -1171,6 +1097,44 @@ bool needsRowBreak(int f1, int f2)
 }
 
 
+bool TextMetrics::redoInset(Row::Element & elt, DocIterator & parPos, int w, int & extrawidth) const
+{
+	Buffer const & buffer = bv_->buffer();
+	Font const bufferfont = buffer.params().getFont();
+	parPos.pos() = elt.pos;
+	// A macro template would normally not be visible by itself.
+	// But the tex macro semantics allow recursion, so we
+	// artifically take the context after the macro template to
+	// simulate this.
+	if (elt.inset->lyxCode() == MATH_MACROTEMPLATE_CODE)
+		parPos.pos()++;
+
+	// do the metric calculation
+	Font const & font = elt.inset->inheritFont() ?
+	                    displayFont(parPos.pit(), elt.pos) : bufferfont;
+	MacroContext const mc(&buffer, parPos);
+	MetricsInfo mi(bv_, font.fontInfo(), w, mc, elt.pos == 0, tight_);
+	mi.base.outer_font = displayFont(parPos.pit(), elt.pos).fontInfo();
+	elt.inset->metrics(mi, elt.dim);
+	bool const changed = bv_->coordCache().insets().add(elt.inset, elt.dim);
+	/* FIXME: This is a hack. This allows InsetMathHull to state that
+	 * it needs some elbow room beyond its width, in order to fit the
+	 * numbering and/or the left margin (with left alignment), which
+	 * are outside of the inset itself.
+	 *
+	 * To this end, InsetMathHull::metrics() sets a value in
+	 * MetricsInfo::extrawidth and this value is added later to the
+	 * width of the row that contains the inset (when this row is
+	 * tight or shorter than the max allowed width).
+	 *
+	 * See ticket #12320 for details.
+	 */
+	extrawidth = mi.extrawidth;
+
+	return changed;
+}
+
+
 Rows TextMetrics::breakParagraph(Row const & bigrow) const
 {
 	Rows rows;
@@ -1182,6 +1146,23 @@ Rows TextMetrics::breakParagraph(Row const & bigrow) const
 	            bigrow.endpos();
 	int const next_width = max_width_ - leftMargin(bigrow.pit(), bigrow_endpos)
 		- rightMargin(bigrow.pit());
+	pit_type const pit = bigrow.pit();
+	Paragraph const & par = text_->getPar(pit);
+
+	// iterator pointing to paragraph to resolve macros
+	DocIterator parPos = text_->macrocontextPosition();
+	if (parPos.empty()) {
+		LYXERR0("MacroContext not initialised!"
+			<< " Going through the buffer again and hope"
+			<< " the context is better then. Please report");
+		// FIXME audit updateBuffer calls
+		// This should not be here, but it is not clear yet where else it
+		// should be.
+		bv_->buffer().updateBuffer();
+		parPos = text_->macrocontextPosition();
+		LBUFERR(!parPos.empty());
+	}
+	parPos.pit() = pit;
 
 	int width = 0;
 	flexible_const_iterator<Row> fcit = flexible_begin(bigrow);
@@ -1199,7 +1180,7 @@ Rows TextMetrics::breakParagraph(Row const & bigrow) const
 		                             : fcit->row_flags;
 		if (rows.empty() && needsRowBreak(f1, f2)) {
 			// Create an empty row before element
-			rows.push_back(newRow(*this, bigrow.pit(), 0, is_rtl));
+			rows.push_back(newRow(*this, pit, 0, is_rtl));
 			Row & newrow = rows.back();
 			cleanupRow(newrow, false);
 			newrow.end_boundary(true);
@@ -1216,12 +1197,12 @@ Rows TextMetrics::breakParagraph(Row const & bigrow) const
 			        rows.back().back().type == Row::PREEDIT) {
 				rows.push_back(
 				            newRow(
-				                *this, bigrow.pit(), pos, is_rtl,
+				                *this, pit, pos, is_rtl,
 				                rows.back().back().str.length()
 				                )
 				            );
 			} else {
-				rows.push_back(newRow(*this, bigrow.pit(), pos, is_rtl));
+				rows.push_back(newRow(*this, pit, pos, is_rtl));
 			}
 			// the width available for the row.
 			width = max_width_ - rows.back().right_margin;
@@ -1236,10 +1217,33 @@ Rows TextMetrics::breakParagraph(Row const & bigrow) const
 		// pile, or the place when we were in main row
 		Row::Element elt = *fcit;
 		Row::Elements tail;
-		elt.splitAt(width - rows.back().width(), next_width, Row::FIT, tail);
 		Row & rb = rows.back();
-		if (elt.type == Row::MARGINSPACE)
-			elt.dim.wid = max(elt.dim.wid, leftMargin(bigrow.pit()) - rb.width());
+
+		if (elt.type == Row::INSET) {
+			parPos.pos() = elt.pos;
+			// If there is an end of paragraph marker, its size should be
+			// substracted to the available width. The logic here is
+			// almost the same as in tokenizeParagraph, remember keep them in sync.
+			int eop = 0;
+			if (elt.pos + 1 == par.size()
+				&& (lyxrc.paragraph_markers || par.lookupChange(par.size()).changed())
+				&& size_type(pit + 1) < text_->paragraphs().size()) {
+				Font f(text_->layoutFont(pit));
+				// ¶ U+00B6 PILCROW SIGN
+				eop = theFontMetrics(f).width(char_type(0x00B6));
+			}
+			int const w = max_width_ - leftMargin(pit, elt.pos)
+				- rightMargin(pit) - eop;
+			int extrawidth = 0;
+			redoInset(elt, parPos, w, extrawidth);
+			// For now only hull inset sets this, and it is alone on its row
+			if (elt.dim.wid < max_width_ || tight_)
+				rb.dim().wid += extrawidth;
+		} else if (elt.type == Row::MARGINSPACE)
+			elt.dim.wid = max(elt.dim.wid, leftMargin(pit) - rb.width());
+		else
+			elt.splitAt(width - rows.back().width(), next_width, Row::FIT, tail);
+
 		rb.push_back(elt);
 		rb.finalizeLast();
 		if (rb.width() > width) {

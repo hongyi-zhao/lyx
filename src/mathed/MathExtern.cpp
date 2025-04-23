@@ -720,14 +720,15 @@ void extractIntegrals(MathData & ar, ExternalMath kind)
 		if (!testIntegral(*it))
 			continue;
 
-		// core is part from behind the scripts to the 'd'
-		auto p = make_unique<InsetMathExInt>(buf, from_ascii("int"));
+		// \int is a macro nowadays (like in LaTeX), the symbol is \intop.
+		auto p = make_unique<InsetMathExInt>(buf, from_ascii("intop"));
 
 		// handle scripts if available
 		if (!testIntSymbol(*it)) {
 			p->cell(2) = (*it)->asScriptInset()->down();
 			p->cell(3) = (*it)->asScriptInset()->up();
 		}
+		// core is part from behind the scripts to the 'd'
 		p->cell(0) = MathData(buf, it + 1, jt);
 
 		// use the "thing" behind the 'd' as differential

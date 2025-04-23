@@ -276,7 +276,7 @@ public:
 	double pos2x(pos_type const pos, bool const boundary) const;
 
 	///
-	void add(pos_type pos, Inset const * ins, Dimension const & dim,
+	void add(pos_type pos, Inset const * ins,
 	         Font const & f, Change const & ch);
 	///
 	void add(pos_type pos, char_type const c,

@@ -176,6 +176,9 @@ private:
 	// Turn paragraph oh index \c pit into a single row
 	Row tokenizeParagraph(pit_type pit) const;
 
+	// Compute metrics of inset element
+	bool redoInset(Row::Element & elt, DocIterator & parPos, int w, int & extrawidth) const;
+
 	// Break the row produced by tokenizeParagraph() into a list of rows.
 	Rows breakParagraph(Row const & row) const;
 

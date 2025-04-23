@@ -531,16 +531,14 @@ void Row::finalizeLast()
 }
 
 
-void Row::add(pos_type const pos, Inset const * ins, Dimension const & dim,
+void Row::add(pos_type const pos, Inset const * ins,
               Font const & f, Change const & ch)
 {
 	finalizeLast();
 	Element e(INSET, pos, f, ch);
 	e.inset = ins;
-	e.dim = dim;
 	e.row_flags = ins->rowFlags();
 	elements_.push_back(e);
-	dim_.wid += dim.wid;
 	changebar_ |= ins->isChanged();
 }
 

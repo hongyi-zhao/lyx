@@ -1569,9 +1569,8 @@ void PrefColors::cacheAllThemes()
 {
 	guiApp->setOverrideCursor(QCursor(Qt::WaitCursor));
 	for (int id = 0; id < themesLW->count(); ++id) {
-		ColorNamePairs colorset;
-		colorset = loadImportThemeCommon(FileName(fromqstr(theme_fullpaths_[id])));
-		themes_cache_.push_back(colorset);
+		FileName const fn(fromqstr(theme_fullpaths_[id]));
+		themes_cache_.push_back(loadImportThemeCommon(fn));
 		theme_names_cache_.push_back(themesLW->item(id)->text());
 	}
 	guiApp->restoreOverrideCursor();

@@ -275,6 +275,7 @@ void MacroTable::dump()
 MacroContext::MacroContext(Buffer const * buf, DocIterator const & pos)
 	: buf_(buf), pos_(pos)
 {
+	LATTEST(pos.buffer() == buf);
 }
 
 

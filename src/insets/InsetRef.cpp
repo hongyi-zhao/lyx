@@ -382,7 +382,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 							os << buffer().B_("[[reference 1]], [[reference2, ...]]");
 					}
 					os << "\\ref{";
-				} else if (useRange())
+				} else if (useRange() && !use_zref)
 					os << "}{";
 				else
 					os << ",";

@@ -35445,7 +35445,7 @@ msgstr "Version Qt (à la compilation): %1$s"
 #: src/frontends/qt/GuiAbout.cpp:299
 #, c-format
 msgid "OS Version (run-time): %1$s"
-msgstr "Version OS (à la compilation) : %1$s"
+msgstr "Version OS (à l'exécution) : %1$s"
 
 #: src/frontends/qt/GuiAbout.cpp:305
 #, c-format

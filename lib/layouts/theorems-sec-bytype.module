@@ -12,7 +12,7 @@
 
 # Author: Paul Rubin <rubin@msu.edu> (hacked from Richard Kimberly Heck's various modules)
 
-Format 107
+Format 108
 
 Input theorems-counters-bytype.inc
 
@@ -54,96 +54,60 @@ Counter claim
 End
 
 Style Theorem
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{thm}{\protect\theoremname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Corollary
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{cor}{\protect\corollaryname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Lemma
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{lem}{\protect\lemmaname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Proposition
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{prop}{\protect\propositionname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Conjecture
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{conjecture}{\protect\conjecturename}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Fact
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{fact}{\protect\factname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Definition
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{defn}{\protect\definitionname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Example
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{example}{\protect\examplename}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Problem
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{problem}{\protect\problemname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Exercise
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{xca}{\protect\exercisename}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Remark
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{rem}{\protect\remarkname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End
 
 
 Style Claim
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{claim}{\protect\claimname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End

@@ -31,6 +31,17 @@ class otexstream;
 class OutputParams;
 struct TexString;
 
+
+struct ThmInfo {
+	std::string name;
+	std::string latexname;
+	std::string counter;
+	std::string parent_counter;
+	std::string style;
+	std::string zrefname;
+};
+
+
 /** The packages and commands that a buffer needs. This class
  *  contains a list<string>.  Each of the LaTeX packages that a buffer needs
  *  should be added with void require(string const & name).
@@ -68,6 +79,8 @@ public:
 	docstring const getBabelPresettings() const;
 	/// Extra preamble code after babel is called
 	docstring const getBabelPostsettings() const;
+	/// get theorem definitions
+	std::string const getThmDefinitions() const;
 	/// Load AMS packages when appropriate
 	std::string const loadAMSPackages() const;
 	/// The definitions needed by the document's textclass
@@ -219,6 +232,8 @@ private:
 	typedef std::map<std::string, bool> UsedFloats;
 	///
 	UsedFloats usedFloats_;
+	///
+	std::list<ThmInfo> usedTheorems_;
 	///
 	typedef std::map<docstring, std::string> FileMap;
 	///

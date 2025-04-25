@@ -3052,6 +3052,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		if (!lyxrc.language_global_options && !language_options.str().empty())
 			os << "[" << language_options.str() << "]";
 		os << "{cleveref}\n";
+		os << features.getThmDefinitions();
 	}
 
 	// Since menukeys uses catoptions, which does some heavy changes on key-value options,

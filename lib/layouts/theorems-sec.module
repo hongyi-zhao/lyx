@@ -9,7 +9,7 @@
 
 # Author: Richard Kimberly Heck <rikiheck@lyx.org>
 
-Format 107
+Format 108
 
 Counter theorem
 	GuiName Theorem
@@ -33,8 +33,5 @@ Counter theorem
 End
 
 Style Theorem
-	Preamble
-		\theoremstyle{plain}
-		\newtheorem{thm}{\protect\theoremname}[section]
-	EndPreamble
+	TheoremParentCounter  section
 End

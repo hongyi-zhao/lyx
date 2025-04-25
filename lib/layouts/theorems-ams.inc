@@ -20,7 +20,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 107
+Format 108
 
 OutlinerName thm "Definitions & Theorems"
 
@@ -58,17 +58,15 @@ Style Theorem
 	  Shape               Up
 	  Series              Bold
 	EndFont
-	Preamble
-		\theoremstyle{plain}
-		\newtheorem{thm}{\protect\theoremname}
-	EndPreamble
+	TheoremName           thm
+	TheoremLaTeXName      theoremname
+	TheoremZRefName       theorem
 	LangPreamble
 		\providecommand{\theoremname}{_(Theorem)}
 	EndLangPreamble
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
-	Requires              amsthm
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='theorem'
 	DocBookTag            para
@@ -82,10 +80,10 @@ Style Corollary
 	DependsOn             Theorem
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{cor}[thm]{\protect\corollaryname}
-	EndPreamble
+	TheoremName           cor
+	TheoremCounter        thm
+	TheoremLaTeXName      corollaryname
+	TheoremZRefName       corollary
 	LangPreamble
 	  \providecommand{\corollaryname}{_(Corollary)}
 	EndLangPreamble
@@ -105,10 +103,10 @@ Style Lemma
 	DependsOn             Theorem
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{lem}[thm]{\protect\lemmaname}
-	EndPreamble
+	TheoremName           lem
+	TheoremCounter        thm
+	TheoremLaTeXName      lemmaname
+	TheoremZRefName       lemma
 	LangPreamble
 	  \providecommand{\lemmaname}{_(Lemma)}
 	EndLangPreamble
@@ -128,10 +126,10 @@ Style Proposition
 	DependsOn             Theorem
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{prop}[thm]{\protect\propositionname}
-	EndPreamble
+	TheoremName           prop
+	TheoremCounter        thm
+	TheoremLaTeXName      propositionname
+	TheoremZRefName       proposition
 	LangPreamble
 	  \providecommand{\propositionname}{_(Proposition)}
 	EndLangPreamble
@@ -151,10 +149,10 @@ Style Conjecture
 	DependsOn             Theorem
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{conjecture}[thm]{\protect\conjecturename}
-	EndPreamble
+	TheoremName           conjecture
+	TheoremCounter        thm
+	TheoremLaTeXName      conjecturename
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conjecturename}{_(Conjecture)}
 	EndLangPreamble
@@ -174,10 +172,10 @@ Style Fact
 	DependsOn             Theorem
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{fact}[thm]{\protect\factname}
-	EndPreamble
+	TheoremName           fact
+	TheoremCounter        thm
+	TheoremLaTeXName      factname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\factname}{_(Fact)}
 	EndLangPreamble
@@ -204,10 +202,11 @@ Style Definition
 	  Shape               Up
 	  Series              Bold
 	EndFont
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{defn}[thm]{\protect\definitionname}
-	EndPreamble
+	TheoremName           defn
+	TheoremStyle          definition
+	TheoremCounter        thm
+	TheoremLaTeXName      definitionname
+	TheoremZRefName       definition
 	LangPreamble
 	  \providecommand{\definitionname}{_(Definition)}
 	EndLangPreamble
@@ -226,10 +225,10 @@ Style Example
 	CopyStyle             Definition
 	LatexName             example
 	LabelString           "Example \thetheorem."
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{example}[thm]{\protect\examplename}
-	EndPreamble
+	TheoremName           example
+	TheoremStyle          definition
+	TheoremCounter        thm
+	TheoremLaTeXName      examplename
 	LangPreamble
 	  \providecommand{\examplename}{_(Example)}
 	EndLangPreamble
@@ -246,10 +245,11 @@ Style Problem
 	CopyStyle             Definition
 	LatexName             problem
 	LabelString           "Problem \thetheorem."
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{problem}[thm]{\protect\problemname}
-	EndPreamble
+	TheoremName           problem
+	TheoremStyle          definition
+	TheoremCounter        thm
+	TheoremLaTeXName      problemname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\problemname}{_(Problem)}
 	EndLangPreamble
@@ -268,10 +268,11 @@ Style Exercise
 	CopyStyle             Definition
 	LatexName             xca
 	LabelString           "Exercise \thetheorem."
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{xca}[thm]{\protect\exercisename}
-	EndPreamble
+	TheoremName           xca
+	TheoremStyle          definition
+	TheoremCounter        thm
+	TheoremLaTeXName      exercisename
+	TheoremZRefName       exercise
 	LangPreamble
 	  \providecommand{\exercisename}{_(Exercise)}
 	EndLangPreamble
@@ -290,10 +291,11 @@ Style Solution
 	CopyStyle             Definition
 	LatexName             sol
 	LabelString           "Solution \thetheorem."
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{sol}[thm]{\protect\solutionname}
-	EndPreamble
+	TheoremName           sol
+	TheoremStyle          definition
+	TheoremCounter        thm
+	TheoremLaTeXName      solutionname
+	TheoremZRefName       solution
 	LangPreamble
 		\providecommand{\solutionname}{_(Solution)}
 	EndLangPreamble
@@ -321,10 +323,11 @@ Style Remark
 	  Series              Medium
 	  Shape               Italic
 	EndFont
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{rem}[thm]{\protect\remarkname}
-	EndPreamble
+	TheoremName           rem
+	TheoremStyle          remark
+	TheoremCounter        thm
+	TheoremLaTeXName      remarkname
+	TheoremZRefName       remark
 	LangPreamble
 	  \providecommand{\remarkname}{_(Remark)}
 	EndLangPreamble
@@ -343,10 +346,11 @@ Style Claim
 	CopyStyle             Remark
 	LatexName             claim
 	LabelString           "Claim \thetheorem."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{claim}[thm]{\protect\claimname}
-	EndPreamble
+	TheoremName           claim
+	TheoremStyle          remark
+	TheoremCounter        thm
+	TheoremLaTeXName      claimname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\claimname}{_(Claim)}
 	EndLangPreamble

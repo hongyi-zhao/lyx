@@ -6,7 +6,7 @@
 #
 # Author : John Perry <john.perry@usm.edu>
 
-Format 107
+Format 108
 
 Provides amscls 1
 Provides amsmath 1
@@ -179,9 +179,6 @@ Input theorems-starred.inc
 
 # the Monthly wants its remarks to look like definitions
 Style Remark*
-  Preamble
-    \theoremstyle{definition}
-    \newtheorem*{rem*}{\protect\remarkname}
-  EndPreamble
+  TheoremStyle          definition
 End
 

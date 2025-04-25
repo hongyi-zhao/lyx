@@ -154,7 +154,7 @@ static InsetLabel * dummy_pointer = nullptr;
 
 InsetMathHull::InsetMathHull(Buffer * buf)
 	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, NONUMBER),
-	  numbers_(1, empty_docstring()), label_(1, dummy_pointer),
+	  numbers_(1, empty_docstring()), labels_(1, dummy_pointer),
 	  preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
@@ -169,7 +169,7 @@ InsetMathHull::InsetMathHull(Buffer * buf)
 
 InsetMathHull::InsetMathHull(Buffer * buf, HullType type)
 	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, NONUMBER),
-	  numbers_(1, empty_docstring()), label_(1, dummy_pointer),
+	  numbers_(1, empty_docstring()), labels_(1, dummy_pointer),
 	  preview_(new RenderPreview(this))
 {
 	buffer_ = buf;
@@ -186,7 +186,7 @@ InsetMathHull::InsetMathHull(InsetMathHull const & other) : InsetMathGrid(other)
 
 InsetMathHull::~InsetMathHull()
 {
-	for (auto & i : label_)
+	for (auto & i : labels_)
 		delete i;
 }
 
@@ -206,12 +206,12 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 	numbered_ = other.numbered_;
 	numbers_ = other.numbers_;
 	buffer_ = other.buffer_;
-	for (auto & i : label_)
+	for (auto & i : labels_)
 		delete i;
-	label_ = other.label_;
-	for (size_t i = 0; i != label_.size(); ++i) {
-		if (label_[i])
-			label_[i] = new InsetLabel(*label_[i]);
+	labels_ = other.labels_;
+	for (size_t i = 0; i != labels_.size(); ++i) {
+		if (labels_[i])
+			labels_[i] = new InsetLabel(*labels_[i]);
 	}
 	preview_.reset(new RenderPreview(*other.preview_, this));
 
@@ -229,9 +229,9 @@ void InsetMathHull::setBuffer(Buffer & buffer)
 {
 	InsetMathGrid::setBuffer(buffer);
 
-	for (size_t i = 0; i != label_.size(); ++i) {
-		if (label_[i])
-			label_[i]->setBuffer(buffer);
+	for (size_t i = 0; i != labels_.size(); ++i) {
+		if (labels_[i])
+			labels_[i]->setBuffer(buffer);
 	}
 }
 
@@ -259,7 +259,7 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 		// this has to be done separately
 		docstring const eqstr = from_ascii("equation");
 		if (cnts.hasCounter(eqstr)) {
-			for (size_t i = 0; i != label_.size(); ++i) {
+			for (size_t i = 0; i != labels_.size(); ++i) {
 				docstring const oldnumber = numbers_[i];
 				if (numbered(i)) {
 					Paragraph const & par = it.paragraph();
@@ -281,9 +281,9 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 	}
 
 	// now the labels
-	for (size_t i = 0; i != label_.size(); ++i) {
-		if (label_[i])
-			label_[i]->updateBuffer(it, utype, deleted);
+	for (size_t i = 0; i != labels_.size(); ++i) {
+		if (labels_[i])
+			labels_[i]->updateBuffer(it, utype, deleted);
 	}
         // set up equation numbers
 
@@ -303,10 +303,10 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 		for (row_type row = 0; row != nrows(); ++row) {
 			if (!numbered(row))
 				continue;
-			if (label_[row]) {
-				label_[row]->setCounterValue(numbers_[row]);
-				label_[row]->setPrettyCounter("(" + numbers_[row] + ")");
-				label_[row]->setFormattedCounter("(" + numbers_[row] + ")");
+			if (labels_[row]) {
+				labels_[row]->setCounterValue(numbers_[row]);
+				labels_[row]->setPrettyCounter("(" + numbers_[row] + ")");
+				labels_[row]->setFormattedCounter("(" + numbers_[row] + ")");
 			}
 		}
 	}
@@ -353,8 +353,8 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active,
 	for (row_type row = 0; row != nrows(); ++row) {
 		if (!numbered(row))
 			continue;
-		if (label_[row]) {
-			label_[row]->addToToc(pit, output_active, utype, backend);
+		if (labels_[row]) {
+			labels_[row]->addToToc(pit, output_active, utype, backend);
 		}
 		docstring label = nicelabel(row);
 		if (first == last) {
@@ -933,7 +933,7 @@ bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 docstring InsetMathHull::label(row_type row) const
 {
 	LASSERT(row < nrows(), return docstring());
-	if (InsetLabel * il = label_[row])
+	if (InsetLabel * il = labels_[row])
 		return il->screenLabel();
 	return docstring();
 }
@@ -942,23 +942,23 @@ docstring InsetMathHull::label(row_type row) const
 void InsetMathHull::label(row_type row, docstring const & label)
 {
 	//lyxerr << "setting label '" << label << "' for row " << row << endl;
-	if (label_[row]) {
+	if (labels_[row]) {
 		if (label.empty()) {
-			delete label_[row];
-			label_[row] = dummy_pointer;
+			delete labels_[row];
+			labels_[row] = dummy_pointer;
 		} else {
 			if (buffer_)
-				label_[row]->updateLabelAndRefs(label);
+				labels_[row]->updateLabelAndRefs(label);
 			else
-				label_[row]->setParam("name", label);
+				labels_[row]->setParam("name", label);
 		}
 		return;
 	}
 	InsetCommandParams p(LABEL_CODE);
 	p["name"] = label;
-	label_[row] = new InsetLabel(buffer_, p);
+	labels_[row] = new InsetLabel(buffer_, p);
 	if (buffer_)
-		label_[row]->setBuffer(buffer());
+		labels_[row]->setBuffer(buffer());
 }
 
 
@@ -1346,7 +1346,7 @@ void InsetMathHull::addRow(row_type row)
 	if (type_ == hullMultline) {
 		if (row + 1 == nrows())  {
 			numbered_[row] = NONUMBER;
-			swap(label, label_[row]);
+			swap(label, labels_[row]);
 			swap(number, numbers_[row]);
 		} else
 			numbered = false;
@@ -1354,7 +1354,7 @@ void InsetMathHull::addRow(row_type row)
 
 	numbered_.insert(numbered_.begin() + row + 1, numbered ? NUMBER : NONUMBER);
 	numbers_.insert(numbers_.begin() + row + 1, number);
-	label_.insert(label_.begin() + row + 1, label);
+	labels_.insert(labels_.begin() + row + 1, label);
 	InsetMathGrid::addRow(row);
 }
 
@@ -1367,7 +1367,7 @@ void InsetMathHull::swapRow(row_type row)
 		--row;
 	swap(numbered_[row], numbered_[row + 1]);
 	swap(numbers_[row], numbers_[row + 1]);
-	swap(label_[row], label_[row + 1]);
+	swap(labels_[row], labels_[row + 1]);
 	InsetMathGrid::swapRow(row);
 }
 
@@ -1379,7 +1379,7 @@ void InsetMathHull::delRow(row_type row)
 	if (row + 1 == nrows() && type_ == hullMultline) {
 		swap(numbered_[row - 1], numbered_[row]);
 		swap(numbers_[row - 1], numbers_[row]);
-		swap(label_[row - 1], label_[row]);
+		swap(labels_[row - 1], labels_[row]);
 		InsetMathGrid::delRow(row);
 		return;
 	}
@@ -1390,8 +1390,8 @@ void InsetMathHull::delRow(row_type row)
 		row--;
 	numbered_.erase(numbered_.begin() + row);
 	numbers_.erase(numbers_.begin() + row);
-	delete label_[row];
-	label_.erase(label_.begin() + row);
+	delete labels_[row];
+	labels_.erase(labels_.begin() + row);
 }
 
 
@@ -1414,14 +1414,14 @@ void InsetMathHull::delCol(col_type col)
 docstring InsetMathHull::nicelabel(row_type row) const
 {
 	if (!numbered(row)) {
-		if (!label_[row])
+		if (!labels_[row])
 			return docstring();
-		return '[' + label_[row]->screenLabel() + ']';
+		return '[' + labels_[row]->screenLabel() + ']';
 	}
 	docstring const & val = numbers_[row];
-	if (!label_[row])
+	if (!labels_[row])
 		return '(' + val + ')';
-	return '(' + val + ',' + label_[row]->screenLabel() + ')';
+	return '(' + val + ',' + labels_[row]->screenLabel() + ')';
 }
 
 
@@ -1434,15 +1434,15 @@ void InsetMathHull::glueall(HullType type)
 	if (type == hullEquation) {
 		// preserve first non-empty label
 		for (row_type row = 0; row < nrows(); ++row) {
-			if (label_[row]) {
-				label = label_[row];
-				label_[row] = 0;
+			if (labels_[row]) {
+				label = labels_[row];
+				labels_[row] = 0;
 				break;
 			}
 		}
 	}
 	*this = InsetMathHull(buffer_, hullSimple);
-	label_[0] = label;
+	labels_[0] = label;
 	cell(0) = ar;
 	setDefaults();
 }
@@ -1581,7 +1581,7 @@ void InsetMathHull::mutate(HullType newtype)
 			numbered(0, false);
 		} else {
 			setType(hullEquation);
-			numbered(0, label_[0] != nullptr);
+			numbered(0, labels_[0] != nullptr);
 			mutate(newtype);
 		}
 		break;
@@ -1726,14 +1726,14 @@ void InsetMathHull::eol(TeXMathStream & os, row_type row, bool fragile, bool lat
 	if (numberedType()) {
 		bool const for_preview =
 			(os.output() == TeXMathStream::wsPreview);
-		if (label_[row]) {
+		if (labels_[row]) {
 			// Use utf8 strings for previewed labels when possible
 			bool use_utf8 = for_preview &&
 				(buffer().params().useNonTeXFonts ||
 				 buffer().params().encoding().package() == Encoding::japanese);
 			docstring const name = (latex && !use_utf8)
-				? escape(label_[row]->getParam("name"))
-				: label_[row]->getParam("name");
+				? escape(labels_[row]->getParam("name"))
+				: labels_[row]->getParam("name");
 			os << "\\label{" + name + '}';
 		}
 		if (type_ != hullMultline) {
@@ -1779,7 +1779,7 @@ void InsetMathHull::check() const
 {
 	LATTEST(numbered_.size() == nrows());
 	LATTEST(numbers_.size() == nrows());
-	LATTEST(label_.size() == nrows());
+	LATTEST(labels_.size() == nrows());
 }
 
 
@@ -1916,16 +1916,16 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (type_ == hullMultline) {
 			row_type row = nrows() - 1;
 			numbered(row, !old);
-			if (old && label_[row]) {
-				delete label_[row];
-				label_[row] = 0;
+			if (old && labels_[row]) {
+				delete labels_[row];
+				labels_[row] = 0;
 			}
 		} else {
 			for (row_type row = 0; row < nrows(); ++row) {
 				numbered(row, !old);
-				if (old && label_[row]) {
-					delete label_[row];
-					label_[row] = 0;
+				if (old && labels_[row]) {
+					delete labels_[row];
+					labels_[row] = 0;
 				}
 			}
 		}
@@ -1941,9 +1941,9 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool old = numbered(r);
 		cur.message(old ? _("No number") : _("Number"));
 		numbered(r, !old);
-		if (old && label_[r]) {
-			delete label_[r];
-			label_[r] = 0;
+		if (old && labels_[r]) {
+			delete labels_[r];
+			labels_[r] = 0;
 		}
 		cur.forceBufferUpdate();
 		break;
@@ -1979,7 +1979,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row = 0; row != nrows(); ++row)
-				if (label_[row]
+				if (labels_[row]
 					  && (cmd.argument().empty() || label(row) == cmd.argument()))
 					break;
 		}
@@ -2035,13 +2035,13 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 				numbered(r, true);
 			docstring old = label(r);
 			if (str != old) {
-				if (label_[r])
+				if (labels_[r])
 					// The label will take care of the reference update.
 					label(r, str);
 				else {
 					label(r, str);
 					// Newly created inset so initialize it.
-					label_[r]->initView();
+					labels_[r]->initView();
 				}
 			}
 			cur.forceBufferUpdate();
@@ -2186,12 +2186,12 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			// if there is no argument and we're inside math, we retrieve
 			// the row number from the cursor position.
 			row_type row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-			enabled = numberedType() && label_[row];
+			enabled = numberedType() && labels_[row];
 		} else {
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row_type row = 0; row != nrows(); ++row) {
-				if (label_[row] &&
+				if (labels_[row] &&
 					(cmd.argument().empty() || label(row) == cmd.argument())) {
 						enabled = true;
 						break;
@@ -2661,8 +2661,8 @@ docstring InsetMathHull::xhtml(XMLStream & xs, OutputParams const & op) const
 
 	// we output all the labels just at the beginning of the equation.
 	// this should be fine.
-	for (size_t i = 0; i != label_.size(); ++i) {
-		InsetLabel const * const il = label_[i];
+	for (size_t i = 0; i != labels_.size(); ++i) {
+		InsetLabel const * const il = labels_[i];
 		if (!il)
 			continue;
 		il->xhtml(xs, op);

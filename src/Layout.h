@@ -182,6 +182,18 @@ public:
 	///
 	std::string const & itemtag() const { return itemtag_; }
 	///
+	std::string const & thmName() const { return thm_name_; }
+	///
+	std::string const & thmLaTeXName() const { return thm_latex_name_; }
+	///
+	std::string const & thmCounter() const { return thm_counter_; }
+	///
+	std::string const & thmParentCounter() const { return thm_parent_counter_; }
+	///
+	std::string const & thmStyle() const { return thm_style_; }
+	///
+	std::string const & thmZRefName() const { return thm_zref_name_; }
+	///
 	std::string const & htmltag() const;
 	///
 	std::string const & htmlattr() const { return htmlattr_; }
@@ -499,6 +511,19 @@ private:
 	std::string labeltag_;
 	/// Internal tag to surround the item text in a list.
 	std::string itemtag_;
+	/// Tags for theorem definitions
+	/// 1. name
+	std::string thm_name_;
+	/// 2. latex name
+	std::string thm_latex_name_;
+	/// 3. counter
+	std::string thm_counter_;
+	/// 4. parent counter (e.g., section)
+	std::string thm_parent_counter_;
+	/// 5. style
+	std::string thm_style_;
+	/// 6. zref-clever name
+	std::string thm_zref_name_;
 	/// The interpretation of this tag varies depending upon the latextype.
 	/// In an environment, it is the tag enclosing all content for this set of
 	/// paragraphs. So for quote, e.g,. it would be: blockquote. For itemize,

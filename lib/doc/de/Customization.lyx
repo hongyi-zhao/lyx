@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 638
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -110,11 +110,19 @@ logicalmkup
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\notefontcolor #0000ff
+\customcolor lyxnotefontcolor 0000ff
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lyxnotefontcolor
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch OutDated
 \selected 0
 \filename_suffix 0
@@ -146,6 +154,7 @@ logicalmkup
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -787,7 +796,6 @@ lyx2lyx
 status collapsed
 
 \begin_layout Plain Layout
-
 "=
 \end_layout
 
@@ -2766,7 +2774,6 @@ Emacs
 status open
 
 \begin_layout Plain Layout
-
 https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html#PO-Mode
 \end_layout
 
@@ -3121,7 +3128,6 @@ Achtung:
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/HowToUseGIT
 \end_layout
 
@@ -3325,7 +3331,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 b o
 \end_layout
@@ -3353,7 +3358,6 @@ underdot (underd)
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 d o
@@ -3391,7 +3395,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 t oo
 \end_layout
@@ -3411,7 +3414,6 @@ breve (bre)
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 u o
@@ -3456,7 +3458,6 @@ dot (dot)
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 .s
@@ -4195,7 +4196,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 '{
 \backslash
@@ -4249,7 +4249,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 'i
 \end_layout
@@ -4292,7 +4291,6 @@ Nachdem \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -4306,7 +4304,6 @@ Distribution enthält wenigstens die Dateien
 status collapsed
 
 \begin_layout Plain Layout
-
 iso8859-1.cdef
 \end_layout
 
@@ -4317,7 +4314,6 @@ iso8859-1.cdef
 status collapsed
 
 \begin_layout Plain Layout
-
 iso8859-2.cdef
 \end_layout
 
@@ -5245,7 +5241,6 @@ TEXMFLOCAL
 status open
 
 \begin_layout Plain Layout
-
 /usr/local/share/texmf/
 \end_layout
 
@@ -5256,7 +5251,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 /usr/local/texlive/XXXX
 \end_layout
 
@@ -5281,7 +5275,6 @@ TEXMFHOME
 status open
 
 \begin_layout Plain Layout
-
 $HOME/texmf/
 \end_layout
 
@@ -5292,7 +5285,6 @@ $HOME/texmf/
 status open
 
 \begin_layout Plain Layout
-
 $HOME/.texliveXXXX
 \end_layout
 
@@ -7209,7 +7201,6 @@ Angenommen,
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -7267,7 +7258,6 @@ myarticle
 status collapsed
 
 \begin_layout Plain Layout
-
 "=
 \end_layout
 
@@ -15342,6 +15332,295 @@ Enumerate
 \end_inset
 
  gesetzt ist.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremName
+\end_layout
+
+\end_inset
+
+ bestimmt,
+ dass dieser Absatzstil ein Theorem darstellt,
+ das mir dem Paket 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+amsthm
+\end_layout
+
+\end_inset
+
+ definiert wird.
+ Der hier angegebene Name wird für die Definition verwendet (im ersten obligatorischen Argument von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremLaTeXName
+\end_layout
+
+\end_inset
+
+ Wenn ein 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremName
+\end_layout
+
+\end_inset
+
+ spezifiziert wurde,
+ kann man hier festlegen,
+ welches \SpecialChar LaTeX
+-Makro den Namen enthält,
+ der in der Ausgabe verwendet wird;
+ der Backslash wird dabei weggelassen (bspw.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+theoremname
+\end_layout
+
+\end_inset
+
+).
+ Das wird im zweiten obligatorischen Argument von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+ verwendet.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremZRefName
+\end_layout
+
+\end_inset
+
+ Wenn ein 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremName
+\end_layout
+
+\end_inset
+
+ spezifiziert wurde,
+ kann man hier einen passenden Namen für das Paket 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zref-clever
+\end_layout
+
+\end_inset
+
+ angeben,
+ falls dieser vom Theorennamen abweicht.
+ Der Wert 
+\begin_inset Quotes gld
+\end_inset
+
+none
+\begin_inset Quotes grd
+\end_inset
+
+ bedeutet,
+ dass keine passende Definition in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zref-clever
+\end_layout
+
+\end_inset
+
+ existiert.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremCounter
+\end_layout
+
+\end_inset
+
+ Wenn ein 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremName
+\end_layout
+
+\end_inset
+
+ spezifiziert wurde,
+ kann man hier einen geteilten Zähler festlegen.
+ Dies muss ein existierender Zähler\SpecialChar breakableslash
+anderer Theoremname sein (erstes optionales Argument von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+).
+ Der Wert 
+\begin_inset Quotes gld
+\end_inset
+
+none
+\begin_inset Quotes grd
+\end_inset
+
+ zeigt an,
+ dass das Theorem nicht nummeriert ist (dann wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newtheorem*
+\end_layout
+
+\end_inset
+
+ für die Definition verwendet).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremParentCounter
+\end_layout
+
+\end_inset
+
+ Wenn ein 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremName
+\end_layout
+
+\end_inset
+
+ spezifiziert wurde,
+ kann man hoer einen übergeordneten Zähler für das Theorem festlegen (zweites optionales Argument von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+).
+ Das muss ein existierender Zähler sein (bspw.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+chapter
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremStyle
+\end_layout
+
+\end_inset
+
+ Wenn ein 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremName
+\end_layout
+
+\end_inset
+
+ spezifiziert wurde,
+ kann man hier einen Theoremstil festlegen (der dann mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theoremstyle
+\end_layout
+
+\end_inset
+
+ festgelegt wird).
 \end_layout
 
 \begin_layout Description
@@ -28267,7 +28546,6 @@ getSizeCSS()
 status collapsed
 
 \begin_layout Plain Layout
-
 src/FontInfo.cpp
 \end_layout
 

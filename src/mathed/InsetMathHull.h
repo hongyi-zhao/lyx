@@ -267,7 +267,7 @@ private:
 	///
 	std::vector<docstring> numbers_;
 	///
-	std::vector<InsetLabel *> label_;
+	std::vector<InsetLabel *> labels_;
 	///
 	std::unique_ptr<RenderPreview> preview_;
 	///

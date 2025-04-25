@@ -10,7 +10,7 @@
 #
 # see https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v11 for class files
 
-Format 107
+Format 108
 
 # General textclass parameters
 Input article.layout

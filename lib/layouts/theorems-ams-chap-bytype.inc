@@ -23,7 +23,7 @@
 # - Case (by inclusion)
 
 
-Format 107
+Format 108
 
 Input theorems-counters-bytype.inc
 
@@ -103,21 +103,16 @@ Style Theorem
 	  Shape               Up
 	  Series              Bold
 	EndFont
-	Preamble
-		\theoremstyle{plain}
-    \ifx\thechapter\undefined
-	    \newtheorem{thm}{\protect\theoremname}
-	  \else
-      \newtheorem{thm}{\protect\theoremname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           thm
+	TheoremLaTeXName      theoremname
+	TheoremParentCounter  chapter
+	TheoremZRefName       theorem
 	LangPreamble
 		\providecommand{\theoremname}{_(Theorem)}
 	EndLangPreamble
 	BabelPreamble
 		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
-	Requires              amsthm
 	DocBookWrapperTag     figure
 	DocBookWrapperAttr    role='theorem'
 	DocBookTag            para
@@ -130,14 +125,10 @@ Style Corollary
 	CopyStyle             Theorem
 	LatexName             cor
 	LabelString           "Corollary \thecorollary."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-	    \newtheorem{cor}{\protect\corollaryname}
-	  \else
-      \newtheorem{cor}{\protect\corollaryname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           cor
+	TheoremLaTeXName      corollaryname
+	TheoremParentCounter  chapter
+	TheoremZRefName       corollary
 	LabelCounter          corollary
 	LangPreamble
 		\providecommand{\corollaryname}{_(Corollary)}
@@ -157,14 +148,10 @@ Style Lemma
 	CopyStyle             Theorem
 	LatexName             lem
 	LabelString           "Lemma \thelemma."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{lem}{\protect\lemmaname}
-    \else
-      \newtheorem{lem}{\protect\lemmaname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           lem
+	TheoremLaTeXName      lemmaname
+	TheoremParentCounter  chapter
+	TheoremZRefName       lemma
 	LangPreamble
 	  \providecommand{\lemmaname}{_(Lemma)}
 	EndLangPreamble
@@ -184,14 +171,10 @@ Style Proposition
 	CopyStyle             Theorem
 	LatexName             prop
 	LabelString           "Proposition \theproposition."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{prop}{\protect\propositionname}
-    \else
-      \newtheorem{prop}{\protect\propositionname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           prop
+	TheoremLaTeXName      propositionname
+	TheoremParentCounter  chapter
+	TheoremZRefName       proposition
 	LangPreamble
 	  \providecommand{\propositionname}{_(Proposition)}
 	EndLangPreamble
@@ -211,14 +194,10 @@ Style Conjecture
 	CopyStyle             Theorem
 	LatexName             conjecture
 	LabelString           "Conjecture \theconjecture."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{conjecture}{\protect\conjecturename}
-    \else
-      \newtheorem{conjecture}{\protect\conjecturename}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           conjecture
+	TheoremLaTeXName      conjecturename
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conjecturename}{_(Conjecture)}
 	EndLangPreamble
@@ -238,14 +217,10 @@ Style Fact
 	CopyStyle             Theorem
 	LatexName             fact
 	LabelString           "Fact \thefact."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{fact}{\protect\factname}
-    \else
-      \newtheorem{fact}{\protect\factname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           fact
+	TheoremLaTeXName      factname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\factname}{_(Fact)}
 	EndLangPreamble
@@ -272,14 +247,11 @@ Style Definition
 	  Shape               Up
 	  Series              Bold
 	EndFont
-	Preamble
-	  \theoremstyle{definition}
-    \ifx\thechapter\undefined
-      \newtheorem{defn}{\protect\definitionname}
-    \else
-      \newtheorem{defn}{\protect\definitionname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           defn
+	TheoremStyle          definition
+	TheoremLaTeXName      definitionname
+	TheoremParentCounter  chapter
+	TheoremZRefName       definition
 	LangPreamble
 	  \providecommand{\definitionname}{_(Definition)}
 	EndLangPreamble
@@ -299,15 +271,10 @@ Style Example
 	CopyStyle             Definition
 	LatexName             example
 	LabelString           "Example \theexample."
-	Preamble
-	  \theoremstyle{definition}
-    \ifx\thechapter\undefined
-      \newtheorem{example}{\protect\examplename}
-    \else
-      \newtheorem{example}{\protect\examplename}[chapter]
-    \fi
-	EndPreamble
-	Requires              amsthm
+	TheoremName           example
+	TheoremStyle          definition
+	TheoremLaTeXName      examplename
+	TheoremParentCounter  chapter
 	LangPreamble
 	  \providecommand{\examplename}{_(Example)}
 	EndLangPreamble
@@ -325,15 +292,11 @@ Style Problem
 	CopyStyle             Definition
 	LatexName             problem
 	LabelString           "Problem \theproblem."
-	Preamble
-	  \theoremstyle{definition}
-    \ifx\thechapter\undefined
-      \newtheorem{problem}{\protect\problemname}
-    \else
-      \newtheorem{problem}{\protect\problemname}[chapter]
-    \fi
-	EndPreamble
-	Requires              amsthm
+	TheoremName           problem
+	TheoremStyle          definition
+	TheoremLaTeXName      problemname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\problemname}{_(Problem)}
 	EndLangPreamble
@@ -353,15 +316,11 @@ Style Exercise
 	CopyStyle             Definition
 	LatexName             xca
 	LabelString           "Exercise \theexercise."
-	Preamble
-	  \theoremstyle{definition}
-    \ifx\thechapter\undefined
-      \newtheorem{xca}{\protect\exercisename}
-    \else
-      \newtheorem{xca}{\protect\exercisename}[chapter]
-    \fi
-	EndPreamble
-	Requires              amsthm
+	TheoremName           xca
+	TheoremStyle          definition
+	TheoremLaTeXName      exercisename
+	TheoremParentCounter  chapter
+	TheoremZRefName       exercise
 	LangPreamble
 	  \providecommand{\exercisename}{_(Exercise)}
 	EndLangPreamble
@@ -381,15 +340,11 @@ Style Solution
 	CopyStyle             Definition
 	LatexName             sol
 	LabelString           "Solution \thesolution."
-	Preamble
-	  \theoremstyle{definition}
-    \ifx\thechapter\undefined
-      \newtheorem{sol}{\protect\solutionname}
-    \else
-      \newtheorem{sol}{\protect\solutionname}[chapter]
-    \fi
-	EndPreamble
-	Requires              amsthm
+	TheoremName           sol
+	TheoremStyle          definition
+	TheoremLaTeXName      solutionname
+	TheoremParentCounter  chapter
+	TheoremZRefName       solution
 	LangPreamble
 		\providecommand{\solutionname}{_(Solution)}
 	EndLangPreamble
@@ -417,14 +372,11 @@ Style Remark
 	  Series              Medium
 	  Shape               Italic
 	EndFont
-	Preamble
-	  \theoremstyle{remark}
-    \ifx\thechapter\undefined
-      \newtheorem{rem}{\protect\remarkname}
-    \else
-      \newtheorem{rem}{\protect\remarkname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           rem
+	TheoremStyle          remark
+	TheoremLaTeXName      remarkname
+	TheoremParentCounter  chapter
+	TheoremZRefName       remark
 	LangPreamble
 	  \providecommand{\remarkname}{_(Remark)}
 	EndLangPreamble
@@ -444,15 +396,11 @@ Style Claim
 	CopyStyle             Remark
 	LatexName             claim
 	LabelString           "Claim \theclaim."
-	Preamble
-	  \theoremstyle{remark}
-    \ifx\thechapter\undefined
-      \newtheorem{claim}{\protect\claimname}
-    \else
-      \newtheorem{claim}{\protect\claimname}[chapter]
-    \fi
-	EndPreamble
-	Requires              amsthm
+	TheoremName           claim
+	TheoremStyle          remark
+	TheoremLaTeXName      claimname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\claimname}{_(Claim)}
 	EndLangPreamble

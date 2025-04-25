@@ -94,6 +94,12 @@ enum LayoutTags {
 	LT_INNERTAG,
 	LT_LABELTAG,
 	LT_ITEMTAG,
+	LT_THM_NAME,
+	LT_THM_LATEXNAME,
+	LT_THM_COUNTER,
+	LT_THM_PARENTCOUNTER,
+	LT_THM_STYLE,
+	LT_THM_ZREFNAME,
 	LT_HTMLTAG,
 	LT_HTMLATTR,
 	LT_HTMLCLASS,
@@ -202,6 +208,7 @@ Layout::Layout()
 	itemcommand_ = "item";
 	toggle_indent = ITOGGLE_DOCUMENT_DEFAULT;
 	par_group_ = false;
+	thm_style_ = "plain";
 }
 
 
@@ -340,6 +347,12 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "spellcheck",     LT_SPELLCHECK },
 		{ "stepparentcounter",  LT_STEPPARENTCOUNTER },
 		{ "textfont",       LT_TEXTFONT },
+		{ "theoremcounter",    LT_THM_COUNTER },
+		{ "theoremlatexname",  LT_THM_LATEXNAME },
+		{ "theoremname",       LT_THM_NAME },
+		{ "theoremparentcounter", LT_THM_PARENTCOUNTER },
+		{ "theoremstyle",      LT_THM_STYLE },
+		{ "theoremzrefname",   LT_THM_ZREFNAME },
 		{ "toclevel",       LT_TOCLEVEL },
 		{ "toggleindent",   LT_TOGGLE_INDENT },
 		{ "topsep",         LT_TOPSEP }
@@ -559,6 +572,30 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
 		case LT_ITEMCOMMAND:
 			lex >> itemcommand_;
+			break;
+
+		case LT_THM_NAME:
+			lex >> thm_name_;
+			break;
+
+		case LT_THM_LATEXNAME:
+			lex >> thm_latex_name_;
+			break;
+
+		case LT_THM_COUNTER:
+			lex >> thm_counter_;
+			break;
+
+		case LT_THM_PARENTCOUNTER:
+			lex >> thm_parent_counter_;
+			break;
+
+		case LT_THM_STYLE:
+			lex >> thm_style_;
+			break;
+
+		case LT_THM_ZREFNAME:
+			lex >> thm_zref_name_;
 			break;
 
 		case LT_PREAMBLE:

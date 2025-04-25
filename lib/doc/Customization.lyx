@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 638
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -102,11 +102,19 @@ logicalmkup
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\notefontcolor #0000ff
+\customcolor lyxnotefontcolor 0000ff
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lyxnotefontcolor
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch OutDated
 \selected 0
 \filename_suffix 0
@@ -138,6 +146,7 @@ logicalmkup
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \author -1900975149 "Koji Yokota" yokota@lyx.org
 \author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
@@ -2095,22 +2104,18 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 #!/bin/bash
 \end_layout
 
 \begin_layout Plain Layout
-
 FROMFILE=$1
 \end_layout
 
 \begin_layout Plain Layout
-
 TOFILE=`basename $2`
 \end_layout
 
 \begin_layout Plain Layout
-
 cp $FROMFILE /home/you/pdf/$TOFILE
 \end_layout
 
@@ -3438,7 +3443,6 @@ po
 status open
 
 \begin_layout Plain Layout
-
 https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html#PO-Mode
 \end_layout
 
@@ -3858,7 +3862,6 @@ in a temp dir,
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/HowToUseGIT
 \end_layout
 
@@ -4101,7 +4104,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 b o
 \end_layout
@@ -4129,7 +4131,6 @@ underdot (underd)
 status open
 
 \begin_layout Plain Layout
-
 
 \backslash
 d o
@@ -4167,7 +4168,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 t o
 \end_layout
@@ -4187,7 +4187,6 @@ breve (bre)
 status open
 
 \begin_layout Plain Layout
-
 
 \backslash
 u o
@@ -4232,7 +4231,6 @@ dot (dot)
 status open
 
 \begin_layout Plain Layout
-
 
 \backslash
 .s
@@ -16812,6 +16810,360 @@ Enumerate
 \end_inset
 
 .
+\change_inserted -712698321 1745588502
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1745589025
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588508
+TheoremName
+\end_layout
+
+\end_inset
+
+ This determines that the current style represents a theorem defined via the AMS theorems (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588969
+amsthm
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) package.
+ The name given here is used in the definition (first mandatory argument of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745589025
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1745589464
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588706
+TheoremLaTeXName
+\end_layout
+
+\end_inset
+
+ If a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588713
+TheoremName
+\end_layout
+
+\end_inset
+
+ has been given,
+ this specifies the \SpecialChar LaTeX
+ macro that holds the name given in output without preceding backslash (e.g.,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588765
+theoremname
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+ This is used in the second mandatory argument of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745589048
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1745589135
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588892
+TheoremZRefName
+\end_layout
+
+\end_inset
+
+ If a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588888
+TheoremName
+\end_layout
+
+\end_inset
+
+ has been given,
+ you can define here a matching name for the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588952
+zref-clever
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ package if the theorem name differs from that.
+ The value 
+\begin_inset Quotes eld
+\end_inset
+
+none
+\begin_inset Quotes erd
+\end_inset
+
+ indicates that no matching 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745589130
+zref-clever
+\end_layout
+
+\end_inset
+
+ definition exists.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1745589638
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588591
+TheoremCounter
+\end_layout
+
+\end_inset
+
+ If a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588618
+TheoremName
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ has been given,
+ this one determines a shared theorem counter.
+ Note that this must be an existing counter/other theorem name (first optional argument of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745589170
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+).
+ The value 
+\begin_inset Quotes eld
+\end_inset
+
+none
+\begin_inset Quotes erd
+\end_inset
+
+ indicates that the theorem is not numbered (and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745589186
+
+\backslash
+newtheorem*
+\end_layout
+
+\end_inset
+
+ is used).
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1745589757
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588776
+TheoremParentCounter
+\end_layout
+
+\end_inset
+
+ If a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588668
+TheoremName
+\end_layout
+
+\end_inset
+
+ has been given,
+ this one determines a parent counter of the theorem (second optional argument of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745589200
+
+\backslash
+newtheorem
+\end_layout
+
+\end_inset
+
+).
+ Note that this must be an existing counter (e.g.,
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588807
+chapter
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1745589761
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588834
+TheoremStyle
+\end_layout
+
+\end_inset
+
+ If a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588829
+TheoremName
+\end_layout
+
+\end_inset
+
+ has been given,
+ this one determines the theorem style as specified by 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745588880
+
+\backslash
+theoremstyle
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -29067,7 +29419,6 @@ getSizeCSS()
 status collapsed
 
 \begin_layout Plain Layout
-
 src/FontInfo.cpp
 \end_layout
 

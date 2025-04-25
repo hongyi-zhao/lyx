@@ -12,7 +12,7 @@
 
 # Author: Paul Rubin <rubin@msu.edu> (hacked from Richard Kimberly Heck's various modules)
 
-Format 107
+Format 108
 
 Input theorems-counters-bytype.inc
 
@@ -54,144 +54,60 @@ Counter claim
 End
 
 Style Theorem
-	Preamble
-	  \theoremstyle{plain}
-	  \ifx\thechapter\undefined
-	    \newtheorem{thm}{\protect\theoremname}
-	  \else
-	    \newtheorem{thm}{\protect\theoremname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Corollary
-	Preamble
-	  \theoremstyle{plain}
-	  \ifx\thechapter\undefined
-	    \newtheorem{cor}{\protect\corollaryname}
-	  \else
-	    \newtheorem{cor}{\protect\corollaryname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Lemma
-	Preamble
-	  \theoremstyle{plain}
-	  \ifx\thechapter\undefined
-	    \newtheorem{lem}{\protect\lemmaname}
-	  \else
-	    \newtheorem{lem}{\protect\lemmaname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Proposition
-	Preamble
-	  \theoremstyle{plain}
-	  \ifx\thechapter\undefined
-	    \newtheorem{prop}{\protect\propositionname}
-	  \else
-	    \newtheorem{prop}{\protect\propositionname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Conjecture
-	Preamble
-	  \theoremstyle{plain}
-	  \ifx\thechapter\undefined
-	    \newtheorem{conjecture}{\protect\conjecturename}
-	  \else
-	    \newtheorem{conjecture}{\protect\conjecturename}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Fact
-	Preamble
-	  \theoremstyle{plain}
-	  \ifx\thechapter\undefined
-	    \newtheorem{fact}{\protect\factname}
-	  \else
-	    \newtheorem{fact}{\protect\factname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Definition
-	Preamble
-	  \theoremstyle{definition}
-	  \ifx\thechapter\undefined
-	    \newtheorem{defn}{\protect\definitionname}
-	  \else
-	    \newtheorem{defn}{\protect\definitionname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Example
-	Preamble
-	  \theoremstyle{definition}
-	  \ifx\thechapter\undefined
-	    \newtheorem{example}{\protect\examplename}
-	  \else
-	    \newtheorem{example}{\protect\examplename}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Problem
-	Preamble
-	  \theoremstyle{definition}
-	  \ifx\thechapter\undefined
-	    \newtheorem{problem}{\protect\problemname}
-	  \else
-	    \newtheorem{problem}{\protect\problemname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Exercise
-	Preamble
-	  \theoremstyle{definition}
-	  \ifx\thechapter\undefined
-	    \newtheorem{xca}{\protect\exercisename}
-	  \else
-	    \newtheorem{xca}{\protect\exercisename}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Remark
-	Preamble
-	  \theoremstyle{remark}
-	  \ifx\thechapter\undefined
-	    \newtheorem{rem}{\protect\remarkname}
-	  \else
-	    \newtheorem{rem}{\protect\remarkname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End
 
 
 Style Claim
-	Preamble
-	  \theoremstyle{remark}
-	  \ifx\thechapter\undefined
-	    \newtheorem{claim}{\protect\claimname}
-	  \else
-	    \newtheorem{claim}{\protect\claimname}[chapter]
-	  \fi
-	EndPreamble
+	TheoremParentCounter  chapter
 End

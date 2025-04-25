@@ -10,7 +10,7 @@
 # Authors: Stephen <stephen4mailinglists@googlemail.com>
 #          Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 107
+Format 108
 
 OutlinerName todonotes "TODO"
 

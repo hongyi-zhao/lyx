@@ -20,7 +20,7 @@
 # Hacked June '09 by Paul Rubin <rubin@msu.edu> to use separate counters
 # Chapter dependence added Oct '16 by Andrew Parsloe <aparsloe@clear.net.nz>
 
-Format 107
+Format 108
 
 Requires	amsmath
 
@@ -75,14 +75,10 @@ Style Criterion
 	CopyStyle             Theorem
 	LatexName             criterion
 	LabelString           "Criterion \thecriterion."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{criterion}{\protect\criterionname}
-    \else
-      \newtheorem{criterion}{\protect\criterionname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           criterion
+	TheoremLaTeXName      criterionname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\criterionname}{_(Criterion)}
 	EndLangPreamble
@@ -100,10 +96,9 @@ Style Criterion*
 	CopyStyle             Theorem*
 	LatexName             criterion*
 	LabelString           "Criterion."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{criterion*}{\protect\criterionname}
-	EndPreamble
+	TheoremName           criterion*
+	TheoremCounter        none
+	TheoremLaTeXName      criterionname
 	LangPreamble
 	  \providecommand{\criterionname}{_(Criterion)}
 	EndLangPreamble
@@ -120,14 +115,10 @@ Style Algorithm
 	CopyStyle             Theorem
 	LatexName             lyxalgorithm
 	LabelString           "Algorithm \thealgorithm."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{lyxalgorithm}{\protect\algorithmname}
-    \else
-      \newtheorem{lyxalgorithm}{\protect\algorithmname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           lyxalgorithm
+	TheoremLaTeXName      algorithmname
+	TheoremParentCounter  chapter
+	TheoremZRefName       algorithm
 	LangPreamble
 	  \providecommand{\algorithmname}{_(Algorithm)}
 	EndLangPreamble
@@ -145,10 +136,9 @@ Style Algorithm*
 	CopyStyle             Theorem*
 	LatexName             lyxalgorithm*
 	LabelString           "Algorithm."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{lyxalgorithm*}{\protect\algorithmname}
-	EndPreamble
+	TheoremName           lyxalgorithm*
+	TheoremCounter        none
+	TheoremLaTeXName      algorithmname
 	LangPreamble
 	  \providecommand{\algorithmname}{_(Algorithm)}
 	EndLangPreamble
@@ -165,14 +155,10 @@ Style Axiom
 	CopyStyle             Theorem
 	LatexName             ax
 	LabelString           "Axiom \theaxiom."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{ax}{\protect\axiomname}
-    \else
-      \newtheorem{ax}{\protect\axiomname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           ax
+	TheoremLaTeXName      axiomname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\axiomname}{_(Axiom)}
 	EndLangPreamble
@@ -190,10 +176,9 @@ Style Axiom*
 	CopyStyle             Theorem*
 	LatexName             ax*
 	LabelString           "Axiom."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{ax*}{\protect\axiomname}
-	EndPreamble
+	TheoremName           ax*
+	TheoremCounter        none
+	TheoremLaTeXName      axiomname
 	LangPreamble
 	  \providecommand{\axiomname}{_(Axiom)}
 	EndLangPreamble
@@ -210,14 +195,11 @@ Style Condition
 	CopyStyle             Definition
 	LatexName             condition
 	LabelString           "Condition \thecondition."
-	Preamble
-	  \theoremstyle{definition}
-    \ifx\thechapter\undefined
-      \newtheorem{condition}{\protect\conditionname}
-    \else
-      \newtheorem{condition}{\protect\conditionname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           condition
+	TheoremStyle          definition
+	TheoremLaTeXName      conditionname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conditionname}{_(Condition)}
 	EndLangPreamble
@@ -235,10 +217,10 @@ Style Condition*
 	CopyStyle             Definition*
 	LatexName             condition*
 	LabelString           "Condition."
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem*{condition*}{\protect\conditionname}
-	EndPreamble
+	TheoremName           condition*
+	TheoremStyle          definition
+	TheoremCounter        none
+	TheoremLaTeXName      conditionname
 	LangPreamble
 	  \providecommand{\conditionname}{_(Condition)}
 	EndLangPreamble
@@ -255,14 +237,10 @@ Style Note
 	CopyStyle             Remark
 	LatexName             note
 	LabelString           "Note \thenote."
-	Preamble
-	  \theoremstyle{remark}
-    \ifx\thechapter\undefined
-      \newtheorem{note}{\protect\notename}
-    \else
-      \newtheorem{note}{\protect\notename}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           note
+	TheoremStyle          remark
+	TheoremLaTeXName      notename
+	TheoremParentCounter  chapter
 	LangPreamble
 	  \providecommand{\notename}{_(Note)}
 	EndLangPreamble
@@ -279,10 +257,10 @@ Style Note*
 	CopyStyle             Remark*
 	LatexName             note*
 	LabelString           "Note."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{note*}{\protect\notename}
-	EndPreamble
+	TheoremName           note*
+	TheoremStyle          remark
+	TheoremCounter        none
+	TheoremLaTeXName      notename
 	LangPreamble
 	  \providecommand{\notename}{_(Note)}
 	EndLangPreamble
@@ -298,14 +276,11 @@ Style Notation
 	CopyStyle             Remark
 	LatexName             notation
 	LabelString           "Notation \thenotation."
-	Preamble
-	  \theoremstyle{remark}
-    \ifx\thechapter\undefined
-      \newtheorem{notation}{\protect\notationname}
-    \else
-      \newtheorem{notation}{\protect\notationname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           notation
+	TheoremStyle          remark
+	TheoremLaTeXName      notationname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\notationname}{_(Notation)}
 	EndLangPreamble
@@ -323,10 +298,10 @@ Style Notation*
 	CopyStyle             Remark*
 	LatexName             notation*
 	LabelString           "Notation."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{notation*}{\protect\notationname}
-	EndPreamble
+	TheoremName           notation*
+	TheoremStyle          remark
+	TheoremCounter        none
+	TheoremLaTeXName      notationname
 	LangPreamble
 	  \providecommand{\notationname}{_(Notation)}
 	EndLangPreamble
@@ -343,15 +318,11 @@ Style Summary
 	CopyStyle             Remark
 	LatexName             summary
 	LabelString           "Summary \thesummary."
-	Preamble
-	  \theoremstyle{remark}
-    \ifx\thechapter\undefined
-      \newtheorem{summary}{\protect\summaryname}
-    \fi
-    \else
-      \newtheorem{summary}{\protect\summaryname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           summary
+	TheoremStyle          remark
+	TheoremLaTeXName      summaryname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\summaryname}{_(Summary)}
 	EndLangPreamble
@@ -369,10 +340,10 @@ Style Summary*
 	CopyStyle             Remark*
 	LatexName             summary*
 	LabelString           "Summary."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{summary*}{\protect\summaryname}
-	EndPreamble
+	TheoremName           summary*
+	TheoremStyle          remark
+	TheoremCounter        none
+	TheoremLaTeXName      summaryname
 	LangPreamble
 	  \providecommand{\summaryname}{_(Summary)}
 	EndLangPreamble
@@ -389,14 +360,11 @@ Style Conclusion
 	CopyStyle             Remark
 	LatexName             conclusion
 	LabelString           "Conclusion \theconclusion."
-	Preamble
-	  \theoremstyle{remark}
-    \ifx\thechapter\undefined
-      \newtheorem{conclusion}{\protect\conclusionname}
-    \else
-      \newtheorem{conclusion}{\protect\conclusionname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           conclusion
+	TheoremStyle          remark
+	TheoremLaTeXName      conclusionname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conclusionname}{_(Conclusion)}
 	EndLangPreamble
@@ -414,10 +382,10 @@ Style Conclusion*
 	CopyStyle             Remark*
 	LatexName             conclusion*
 	LabelString           "Conclusion."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{conclusion*}{\protect\conclusionname}
-	EndPreamble
+	TheoremName           conclusion*
+	TheoremStyle          remark
+	TheoremCounter        none
+	TheoremLaTeXName      conclusionname
 	LangPreamble
 	  \providecommand{\conclusionname}{_(Conclusion)}
 	EndLangPreamble
@@ -434,14 +402,10 @@ Style Assumption
 	CopyStyle             Theorem
 	LatexName             assumption
 	LabelString           "Assumption \theassumption."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{assumption}{\protect\assumptionname}
-    \else
-      \newtheorem{assumption}{\protect\assumptionname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           assumption
+	TheoremLaTeXName      assumptionname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\assumptionname}{_(Assumption)}
 	EndLangPreamble
@@ -459,10 +423,9 @@ Style Assumption*
 	CopyStyle             Theorem*
 	LatexName             assumption*
 	LabelString           "Assumption."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{assumption*}{\protect\assumptionname}
-	EndPreamble
+	TheoremName           assumption*
+	TheoremCounter        none
+	TheoremLaTeXName      assumptionname
 	LangPreamble
 	  \providecommand{\assumptionname}{_(Assumption)}
 	EndLangPreamble
@@ -479,14 +442,10 @@ Style Question
 	DependsOn             Theorem
 	LatexName             question
 	LabelString           "Question \thequestion."
-	Preamble
-	  \theoremstyle{plain}
-    \ifx\thechapter\undefined
-      \newtheorem{question}{\protect\questionname}
-    \else
-      \newtheorem{question}{\protect\questionname}[chapter]
-    \fi
-	EndPreamble
+	TheoremName           question
+	TheoremLaTeXName      questionname
+	TheoremParentCounter  chapter
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\questionname}{_(Question)}
 	EndLangPreamble
@@ -503,10 +462,9 @@ Style Question*
 	CopyStyle             Theorem*
 	LatexName             question*
 	LabelString           "Question."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{question*}{\protect\questionname}
-	EndPreamble
+	TheoremName           question*
+	TheoremCounter        none
+	TheoremLaTeXName      questionname
 	LangPreamble
 	  \providecommand{\questionname}{_(Question)}
 	EndLangPreamble

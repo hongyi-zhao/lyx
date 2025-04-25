@@ -15,7 +15,7 @@
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Kimberly Heck <rikiheck@lyx.org>
 
-Format 107
+Format 108
 
 Requires	amsmath
 
@@ -34,13 +34,13 @@ Requires	amsmath
 
 Style Criterion
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             criterion
 	LabelString           "Criterion \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{criterion}[thm]{\protect\criterionname}
-	EndPreamble
+	TheoremName           criterion
+	TheoremCounter        thm
+	TheoremLaTeXName      criterionname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\criterionname}{_(Criterion)}
 	EndLangPreamble
@@ -56,10 +56,9 @@ Style Criterion*
 	CopyStyle             Theorem*
 	LatexName             criterion*
 	LabelString           "Criterion."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{criterion*}{\protect\criterionname}
-	EndPreamble
+	TheoremName           criterion*
+	TheoremCounter        none
+	TheoremLaTeXName      criterionname
 	LangPreamble
 	  \providecommand{\criterionname}{_(Criterion)}
 	EndLangPreamble
@@ -77,10 +76,10 @@ Style Algorithm
 	DependsOn	           Theorem
 	LatexName             lyxalgorithm
 	LabelString           "Algorithm \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{lyxalgorithm}[thm]{\protect\algorithmname}
-	EndPreamble
+	TheoremName           lyxalgorithm
+	TheoremCounter        thm
+	TheoremLaTeXName      algorithmname
+	TheoremZRefName       algorithm
 	LangPreamble
 	  \providecommand{\algorithmname}{_(Algorithm)}
 	EndLangPreamble
@@ -97,10 +96,9 @@ Style Algorithm*
 	CopyStyle             Theorem*
 	LatexName             lyxalgorithm*
 	LabelString           "Algorithm."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{lyxalgorithm*}{\protect\algorithmname}
-	EndPreamble
+	TheoremName           lyxalgorithm*
+	TheoremCounter        none
+	TheoremLaTeXName      algorithmname
 	LangPreamble
 	  \providecommand{\algorithmname}{_(Algorithm)}
 	EndLangPreamble
@@ -115,13 +113,13 @@ End
 
 Style Axiom
 	CopyStyle             Theorem
-	DependsOn	            Theorem
+	DependsOn	      Theorem
 	LatexName             ax
 	LabelString           "Axiom \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{ax}[thm]{\protect\axiomname}
-	EndPreamble
+	TheoremName           ax
+	TheoremCounter        thm
+	TheoremLaTeXName      axiomname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\axiomname}{_(Axiom)}
 	EndLangPreamble
@@ -138,10 +136,9 @@ Style Axiom*
 	CopyStyle             Theorem*
 	LatexName             ax*
 	LabelString           "Axiom."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{ax*}{\protect\axiomname}
-	EndPreamble
+	TheoremName           ax*
+	TheoremCounter        none
+	TheoremLaTeXName      axiomname
 	LangPreamble
 	  \providecommand{\axiomname}{_(Axiom)}
 	EndLangPreamble
@@ -158,10 +155,11 @@ Style Condition
 	CopyStyle             Definition
 	LatexName             condition
 	LabelString           "Condition \thetheorem."
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{condition}[thm]{\protect\conditionname}
-	EndPreamble
+	TheoremName           condition
+	TheoremCounter        thm
+	TheoremStyle          definition
+	TheoremLaTeXName      conditionname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conditionname}{_(Condition)}
 	EndLangPreamble
@@ -178,10 +176,10 @@ Style Condition*
 	CopyStyle             Definition*
 	LatexName             condition*
 	LabelString           "Condition."
-	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem*{condition*}{\protect\conditionname}
-	EndPreamble
+	TheoremName           condition*
+	TheoremStyle          definition
+	TheoremCounter        none
+	TheoremLaTeXName      conditionname
 	LangPreamble
 	  \providecommand{\conditionname}{_(Condition)}
 	EndLangPreamble
@@ -198,10 +196,10 @@ Style Note
 	CopyStyle             Remark
 	LatexName             note
 	LabelString           "Note \thetheorem."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{note}[thm]{\protect\notename}
-	EndPreamble
+	TheoremName           note
+	TheoremCounter        thm
+	TheoremStyle          remark
+	TheoremLaTeXName      notename
 	LangPreamble
 	  \providecommand{\notename}{_(Note)}
 	EndLangPreamble
@@ -217,10 +215,10 @@ Style Note*
 	CopyStyle             Remark*
 	LatexName             note*
 	LabelString           "Note."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{note*}{\protect\notename}
-	EndPreamble
+	TheoremName           note*
+	TheoremStyle          remark
+	TheoremCounter        none
+	TheoremLaTeXName      notename
 	LangPreamble
 	  \providecommand{\notename}{_(Note)}
 	EndLangPreamble
@@ -236,10 +234,11 @@ Style Notation
 	CopyStyle             Remark
 	LatexName             notation
 	LabelString           "Notation \thetheorem."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{notation}[thm]{\protect\notationname}
-	EndPreamble
+	TheoremName           notation
+	TheoremCounter        thm
+	TheoremStyle          remark
+	TheoremLaTeXName      notationname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\notationname}{_(Notation)}
 	EndLangPreamble
@@ -256,10 +255,10 @@ Style Notation*
 	CopyStyle             Remark*
 	LatexName             notation*
 	LabelString           "Notation."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{notation*}{\protect\notationname}
-	EndPreamble
+	TheoremName           notation*
+	TheoremStyle          remark
+	TheoremCounter        none
+	TheoremLaTeXName      notationname
 	LangPreamble
 	  \providecommand{\notationname}{_(Notation)}
 	EndLangPreamble
@@ -276,10 +275,11 @@ Style Summary
 	CopyStyle             Remark
 	LatexName             summary
 	LabelString           "Summary \thetheorem."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{summary}[thm]{\protect\summaryname}
-	EndPreamble
+	TheoremName           summary
+	TheoremCounter        thm
+	TheoremStyle          remark
+	TheoremLaTeXName      summaryname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\summaryname}{_(Summary)}
 	EndLangPreamble
@@ -296,10 +296,10 @@ Style Summary*
 	CopyStyle             Remark*
 	LatexName             summary*
 	LabelString           "Summary."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{summary*}{\protect\summaryname}
-	EndPreamble
+	TheoremName           summary*
+	TheoremStyle          remark
+	TheoremCounter        none
+	TheoremLaTeXName      summaryname
 	LangPreamble
 	  \providecommand{\summaryname}{_(Summary)}
 	EndLangPreamble
@@ -316,10 +316,11 @@ Style Conclusion
 	CopyStyle             Remark
 	LatexName             conclusion
 	LabelString           "Conclusion \thetheorem."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{conclusion}[thm]{\protect\conclusionname}
-	EndPreamble
+	TheoremName           conclusion
+	TheoremCounter        thm
+	TheoremStyle          remark
+	TheoremLaTeXName      conclusionname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conclusionname}{_(Conclusion)}
 	EndLangPreamble
@@ -336,10 +337,10 @@ Style Conclusion*
 	CopyStyle             Remark*
 	LatexName             conclusion*
 	LabelString           "Conclusion."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem*{conclusion*}{\protect\conclusionname}
-	EndPreamble
+	TheoremName           conclusion*
+	TheoremStyle          remark
+	TheoremCounter        none
+	TheoremLaTeXName      conclusionname
 	LangPreamble
 	  \providecommand{\conclusionname}{_(Conclusion)}
 	EndLangPreamble
@@ -357,10 +358,10 @@ Style Assumption
 	DependsOn	            Theorem
 	LatexName             assumption
 	LabelString           "Assumption \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{assumption}[thm]{\protect\assumptionname}
-	EndPreamble
+	TheoremName           assumption
+	TheoremCounter        thm
+	TheoremLaTeXName      assumptionname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\assumptionname}{_(Assumption)}
 	EndLangPreamble
@@ -377,10 +378,9 @@ Style Assumption*
 	CopyStyle             Theorem*
 	LatexName             assumption*
 	LabelString           "Assumption."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{assumption*}{\protect\assumptionname}
-	EndPreamble
+	TheoremName           assumption*
+	TheoremCounter        none
+	TheoremLaTeXName      assumptionname
 	LangPreamble
 	  \providecommand{\assumptionname}{_(Assumption)}
 	EndLangPreamble
@@ -397,10 +397,10 @@ Style Question
 	DependsOn             Theorem
 	LatexName             question
 	LabelString           "Question \thetheorem."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem{question}[thm]{\protect\questionname}
-	EndPreamble
+	TheoremName           question
+	TheoremCounter        thm
+	TheoremLaTeXName      questionname
+	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\questionname}{_(Question)}
 	EndLangPreamble
@@ -416,10 +416,9 @@ Style Question*
 	CopyStyle             Theorem*
 	LatexName             question*
 	LabelString           "Question."
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{question*}{\protect\questionname}
-	EndPreamble
+	TheoremName           question*
+	TheoremCounter        none
+	TheoremLaTeXName      questionname
 	LangPreamble
 	  \providecommand{\questionname}{_(Question)}
 	EndLangPreamble

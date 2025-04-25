@@ -7,7 +7,7 @@
 #DescriptionEnd
 #Original Author: John Perry
 
-Format 107
+Format 108
 
 ProvideStyle Theorem*
 	Category              Reasoning
@@ -39,17 +39,15 @@ ProvideStyle Theorem*
 	  Shape               Up
 	  Series              Bold
 	EndFont
-	Preamble
-	  \theoremstyle{plain}
-	  \newtheorem*{thm*}{\protect\theoremname}
-	EndPreamble
+	TheoremName           thm*
+	TheoremCounter        none
+	TheoremLaTeXName      theoremname
 	LangPreamble
 	  \providecommand{\theoremname}{_(Theorem)}
 	EndLangPreamble
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
-	Requires              amsthm
 End
 
 
@@ -58,11 +56,12 @@ Style "Named Theorem"
   Category Reasoning
   LabelString "Named Theorem."
   LatexName namedthm
+  TheoremName           namedtheorem
+  TheoremCounter        none
+  TheoremLaTeXName      thmsname
   Preamble
     \newcommand\thmsname{\protect\theoremname}
     \newcommand\nm@thmtype{theorem}
-    \theoremstyle{plain}
-    \newtheorem*{namedtheorem}{\thmsname}
     \newenvironment{namedthm}[1][Undefined Theorem Name]{
       \ifx{#1}{Undefined Theorem Name}\renewcommand\nm@thmtype{theorem*}
       \else\renewcommand\thmsname{#1}\renewcommand\nm@thmtype{namedtheorem}

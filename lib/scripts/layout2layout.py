@@ -9,7 +9,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 107
+currentFormat = 108
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -359,6 +359,10 @@ currentFormat = 107
 # New InsetLayout, Argument and Layout tags "EscapeChars"
 # New InsetLayout tag "InsertCotext"
 
+# Incremented to format 108, 25 April 2025 by spitz
+# New Layout tags "TheoremName", "TheoremZRefName",
+# "TheoremCounter", "TheoremParentCounter", "TheoremStyle"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -593,7 +597,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 101 <= format <= 106:
+        if 101 <= format <= 107:
             # nothing to do.
             i += 1
             continue

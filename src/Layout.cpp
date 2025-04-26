@@ -1739,6 +1739,18 @@ void Layout::write(ostream & os) const
 		}
 		os << "\n\tEndIsAutoNestedBy\n";
 	}
+	if (!thm_name_.empty())
+		os << "\tTheoremName " << thm_name_ << '\n';
+	if (!thm_latex_name_.empty())
+		os << "\tTheoremLaTeXName " << thm_latex_name_ << '\n';
+	if (!thm_counter_.empty())
+		os << "\tTheoremCounter " << thm_counter_ << '\n';
+	if (!thm_parent_counter_.empty())
+		os << "\tTheoremParentCounter " << thm_parent_counter_ << '\n';
+	if (!thm_style_.empty())
+		os << "\tTheoremStyle " << thm_style_ << '\n';
+	if (!thm_zref_name_.empty())
+		os << "\tTheoremZRefName " << thm_zref_name_ << '\n';
 	if (refprefix.empty())
 		os << "\tRefPrefix OFF\n";
 	else

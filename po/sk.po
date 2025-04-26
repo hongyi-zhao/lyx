@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-26 09:34+0200\n"
-"PO-Revision-Date: 2025-04-17 08:58+0000\n"
+"POT-Creation-Date: 2025-04-26 14:22+0200\n"
+"PO-Revision-Date: 2025-04-26 12:48+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -18601,23 +18601,104 @@ msgstr "Vlastný farebný rámik 4"
 msgid "Custom Color Box 5"
 msgstr "Vlastný farebný rámik 5"
 
-#: lib/layouts/theorems-ams-bytype.inc:153 lib/layouts/theorems-ams.inc:155
-#: lib/layouts/theorems-bytype.inc:147 lib/layouts/theorems.inc:156
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:67
+#: lib/layouts/theorems-ams-chap-bytype.inc:110 lib/layouts/theorems-ams.inc:64
+#: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems.inc:64
+msgid "theorem"
+msgstr "teorém"
+
+#: lib/layouts/theorems-ams-bytype.inc:68
+#: lib/layouts/theorems-ams-chap-bytype.inc:111 lib/layouts/theorems-ams.inc:65
+#: lib/layouts/theorems-bytype.inc:62 lib/layouts/theorems.inc:65
+msgid "Theorems"
+msgstr "Teorémy"
+
+#: lib/layouts/theorems-ams-bytype.inc:68
+#: lib/layouts/theorems-ams-chap-bytype.inc:111 lib/layouts/theorems-ams.inc:65
+#: lib/layouts/theorems-bytype.inc:62 lib/layouts/theorems.inc:65
+msgid "theorems"
+msgstr "teorémy"
+
+#: lib/layouts/theorems-ams-bytype.inc:91
+#: lib/layouts/theorems-ams-chap-bytype.inc:135 lib/layouts/theorems-ams.inc:89
+#: lib/layouts/theorems-bytype.inc:84 lib/layouts/theorems.inc:89
+msgid "corollary"
+msgstr "korolár"
+
+#: lib/layouts/theorems-ams-bytype.inc:92
+#: lib/layouts/theorems-ams-chap-bytype.inc:136 lib/layouts/theorems-ams.inc:90
+#: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems.inc:90
+msgid "Corollaries"
+msgstr "Koroláry"
+
+#: lib/layouts/theorems-ams-bytype.inc:92
+#: lib/layouts/theorems-ams-chap-bytype.inc:136 lib/layouts/theorems-ams.inc:90
+#: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems.inc:90
+msgid "corollaries"
+msgstr "koroláry"
+
+#: lib/layouts/theorems-ams-bytype.inc:114
+#: lib/layouts/theorems-ams-chap-bytype.inc:159
+#: lib/layouts/theorems-ams.inc:114 lib/layouts/theorems-bytype.inc:108
+#: lib/layouts/theorems.inc:114
+msgid "lemma"
+msgstr "lemma"
+
+#: lib/layouts/theorems-ams-bytype.inc:115
+#: lib/layouts/theorems-ams-chap-bytype.inc:160
+#: lib/layouts/theorems-ams.inc:115 lib/layouts/theorems-bytype.inc:109
+#: lib/layouts/theorems.inc:115
+msgid "Lemmas"
+msgstr "Lemmy"
+
+#: lib/layouts/theorems-ams-bytype.inc:115
+#: lib/layouts/theorems-ams-chap-bytype.inc:160
+#: lib/layouts/theorems-ams.inc:115 lib/layouts/theorems-bytype.inc:109
+#: lib/layouts/theorems.inc:115
+msgid "lemmas"
+msgstr "lemmy"
+
+#: lib/layouts/theorems-ams-bytype.inc:138
+#: lib/layouts/theorems-ams-chap-bytype.inc:184
+#: lib/layouts/theorems-ams.inc:139 lib/layouts/theorems-bytype.inc:132
+#: lib/layouts/theorems.inc:140
+msgid "proposition"
+msgstr "tvrdenie"
+
+#: lib/layouts/theorems-ams-bytype.inc:139
+#: lib/layouts/theorems-ams-chap-bytype.inc:185
+#: lib/layouts/theorems-ams.inc:140 lib/layouts/theorems-bytype.inc:133
+#: lib/layouts/theorems.inc:141
+msgid "Propositions"
+msgstr "Tvrdenia"
+
+#: lib/layouts/theorems-ams-bytype.inc:139
+#: lib/layouts/theorems-ams-chap-bytype.inc:185
+#: lib/layouts/theorems-ams.inc:140 lib/layouts/theorems-bytype.inc:133
+#: lib/layouts/theorems.inc:141
+msgid "propositions"
+msgstr "tvrdenia"
+
+#: lib/layouts/theorems-ams-bytype.inc:161
+#: lib/layouts/theorems-ams-chap-bytype.inc:209
+#: lib/layouts/theorems-ams.inc:163 lib/layouts/theorems-bytype.inc:155
+#: lib/layouts/theorems.inc:164
 msgid "conjecture"
-msgstr "Hypotéza"
+msgstr "hypotéza"
 
-#: lib/layouts/theorems-ams-bytype.inc:154 lib/layouts/theorems-ams.inc:156
-#: lib/layouts/theorems-bytype.inc:148 lib/layouts/theorems.inc:157
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:162
+#: lib/layouts/theorems-ams-chap-bytype.inc:210
+#: lib/layouts/theorems-ams.inc:164 lib/layouts/theorems-bytype.inc:156
+#: lib/layouts/theorems.inc:165
 msgid "Conjectures"
-msgstr "Hypotéza"
+msgstr "Hypotézy"
 
-#: lib/layouts/theorems-ams-bytype.inc:154 lib/layouts/theorems-ams.inc:156
-#: lib/layouts/theorems-bytype.inc:148 lib/layouts/theorems.inc:157
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:162
+#: lib/layouts/theorems-ams-chap-bytype.inc:210
+#: lib/layouts/theorems-ams.inc:164 lib/layouts/theorems-bytype.inc:156
+#: lib/layouts/theorems.inc:165
 msgid "conjectures"
-msgstr "Hypotéza"
+msgstr "hypotézy"
 
 #: lib/layouts/theorems-ams-bytype.inc:174
 #: lib/layouts/theorems-ams-chap-bytype.inc:219
@@ -18626,27 +18707,26 @@ msgstr "Hypotéza"
 msgid "Fact \\thefact."
 msgstr "Fakt \\thefact."
 
-#: lib/layouts/theorems-ams-bytype.inc:177
-#: lib/layouts/theorems-ams-chap-bytype.inc:223
-#: lib/layouts/theorems-ams.inc:180 lib/layouts/theorems-bytype.inc:171
-#: lib/layouts/theorems.inc:181
+#: lib/layouts/theorems-ams-bytype.inc:185
+#: lib/layouts/theorems-ams-chap-bytype.inc:233
+#: lib/layouts/theorems-ams.inc:188 lib/layouts/theorems-bytype.inc:179
+#: lib/layouts/theorems.inc:189
 msgid "fact"
-msgstr ""
+msgstr "fakt"
 
-#: lib/layouts/theorems-ams-bytype.inc:178
-#: lib/layouts/theorems-ams-chap-bytype.inc:224
-#: lib/layouts/theorems-ams.inc:181 lib/layouts/theorems-bytype.inc:172
-#: lib/layouts/theorems.inc:182
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:186
+#: lib/layouts/theorems-ams-chap-bytype.inc:234
+#: lib/layouts/theorems-ams.inc:189 lib/layouts/theorems-bytype.inc:180
+#: lib/layouts/theorems.inc:190
 msgid "Facts"
-msgstr "Fakt"
+msgstr "Fakty"
 
-#: lib/layouts/theorems-ams-bytype.inc:178
-#: lib/layouts/theorems-ams-chap-bytype.inc:224
-#: lib/layouts/theorems-ams.inc:181 lib/layouts/theorems-bytype.inc:172
-#: lib/layouts/theorems.inc:182
+#: lib/layouts/theorems-ams-bytype.inc:186
+#: lib/layouts/theorems-ams-chap-bytype.inc:234
+#: lib/layouts/theorems-ams.inc:189 lib/layouts/theorems-bytype.inc:180
+#: lib/layouts/theorems.inc:190
 msgid "facts"
-msgstr ""
+msgstr "fakty"
 
 #: lib/layouts/theorems-ams-bytype.inc:198
 #: lib/layouts/theorems-ams-chap-bytype.inc:244
@@ -18655,12 +18735,40 @@ msgstr ""
 msgid "Definition \\thedefinition."
 msgstr "Definícia \\thedefinition."
 
+#: lib/layouts/theorems-ams-bytype.inc:218
+#: lib/layouts/theorems-ams-chap-bytype.inc:267
+#: lib/layouts/theorems-ams.inc:222 lib/layouts/theorems-bytype.inc:212
+#: lib/layouts/theorems.inc:223
+msgid "definition"
+msgstr "definícia"
+
+#: lib/layouts/theorems-ams-bytype.inc:219
+#: lib/layouts/theorems-ams-chap-bytype.inc:268
+#: lib/layouts/theorems-ams.inc:223 lib/layouts/theorems-bytype.inc:213
+#: lib/layouts/theorems.inc:224
+msgid "definitions"
+msgstr "definície"
+
 #: lib/layouts/theorems-ams-bytype.inc:228
 #: lib/layouts/theorems-ams-chap-bytype.inc:275
 #: lib/layouts/theorems-bytype.inc:222
 #: lib/layouts/theorems-without-preamble.inc:269
 msgid "Example \\theexample."
 msgstr "Príklad \\theexample."
+
+#: lib/layouts/theorems-ams-bytype.inc:242
+#: lib/layouts/theorems-ams-chap-bytype.inc:292
+#: lib/layouts/theorems-ams.inc:246 lib/layouts/theorems-bytype.inc:236
+#: lib/layouts/theorems.inc:247
+msgid "example"
+msgstr "príklad"
+
+#: lib/layouts/theorems-ams-bytype.inc:243
+#: lib/layouts/theorems-ams-chap-bytype.inc:293
+#: lib/layouts/theorems-ams.inc:247 lib/layouts/theorems-bytype.inc:237
+#: lib/layouts/theorems.inc:248
+msgid "examples"
+msgstr "príklady"
 
 #: lib/layouts/theorems-ams-bytype.inc:248
 #: lib/layouts/theorems-ams-chap-bytype.inc:296
@@ -18669,29 +18777,26 @@ msgstr "Príklad \\theexample."
 msgid "Problem \\theproblem."
 msgstr "Problém \\theproblem."
 
-#: lib/layouts/theorems-ams-bytype.inc:252
-#: lib/layouts/theorems-ams-chap-bytype.inc:301
-#: lib/layouts/theorems-ams.inc:256 lib/layouts/theorems-bytype.inc:246
-#: lib/layouts/theorems.inc:257
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:264
+#: lib/layouts/theorems-ams-chap-bytype.inc:315
+#: lib/layouts/theorems-ams.inc:268 lib/layouts/theorems-bytype.inc:258
+#: lib/layouts/theorems.inc:269
 msgid "problem"
-msgstr "Problém"
+msgstr "problém"
 
-#: lib/layouts/theorems-ams-bytype.inc:253
-#: lib/layouts/theorems-ams-chap-bytype.inc:302
-#: lib/layouts/theorems-ams.inc:257 lib/layouts/theorems-bytype.inc:247
-#: lib/layouts/theorems.inc:258
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:265
+#: lib/layouts/theorems-ams-chap-bytype.inc:316
+#: lib/layouts/theorems-ams.inc:269 lib/layouts/theorems-bytype.inc:259
+#: lib/layouts/theorems.inc:270
 msgid "Problems"
-msgstr "Problém"
+msgstr "Problémy"
 
-#: lib/layouts/theorems-ams-bytype.inc:253
-#: lib/layouts/theorems-ams-chap-bytype.inc:302
-#: lib/layouts/theorems-ams.inc:257 lib/layouts/theorems-bytype.inc:247
-#: lib/layouts/theorems.inc:258
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:265
+#: lib/layouts/theorems-ams-chap-bytype.inc:316
+#: lib/layouts/theorems-ams.inc:269 lib/layouts/theorems-bytype.inc:259
+#: lib/layouts/theorems.inc:270
 msgid "problems"
-msgstr "Problém"
+msgstr "problémy"
 
 #: lib/layouts/theorems-ams-bytype.inc:273
 #: lib/layouts/theorems-ams-chap-bytype.inc:322
@@ -18700,29 +18805,82 @@ msgstr "Problém"
 msgid "Exercise \\theexercise."
 msgstr "Úloha \\theexercise."
 
-#: lib/layouts/theorems-ams-bytype.inc:354
-#: lib/layouts/theorems-ams-chap-bytype.inc:407
-#: lib/layouts/theorems-ams.inc:359 lib/layouts/theorems-bytype.inc:348
-#: lib/layouts/theorems.inc:360
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:290
+#: lib/layouts/theorems-ams-chap-bytype.inc:342
+#: lib/layouts/theorems-ams.inc:294 lib/layouts/theorems-bytype.inc:284
+#: lib/layouts/theorems.inc:295
+msgid "exercise"
+msgstr "úloha"
+
+#: lib/layouts/theorems-ams-bytype.inc:291
+#: lib/layouts/theorems-ams-chap-bytype.inc:343
+#: lib/layouts/theorems-ams.inc:295 lib/layouts/theorems-bytype.inc:285
+#: lib/layouts/theorems.inc:296
+msgid "Exercises"
+msgstr "Úlohy"
+
+#: lib/layouts/theorems-ams-bytype.inc:291
+#: lib/layouts/theorems-ams-chap-bytype.inc:343
+#: lib/layouts/theorems-ams.inc:295 lib/layouts/theorems-bytype.inc:285
+#: lib/layouts/theorems.inc:296
+msgid "exercises"
+msgstr "úlohy"
+
+#: lib/layouts/theorems-ams-bytype.inc:315
+#: lib/layouts/theorems-ams-chap-bytype.inc:368
+#: lib/layouts/theorems-ams.inc:319 lib/layouts/theorems-bytype.inc:309
+#: lib/layouts/theorems.inc:320
+msgid "solution"
+msgstr "riešenie"
+
+#: lib/layouts/theorems-ams-bytype.inc:316
+#: lib/layouts/theorems-ams-chap-bytype.inc:369
+#: lib/layouts/theorems-ams.inc:320 lib/layouts/theorems-bytype.inc:310
+#: lib/layouts/theorems.inc:321
+msgid "Solutions"
+msgstr "Riešenia"
+
+#: lib/layouts/theorems-ams-bytype.inc:316
+#: lib/layouts/theorems-ams-chap-bytype.inc:369
+#: lib/layouts/theorems-ams.inc:320 lib/layouts/theorems-bytype.inc:310
+#: lib/layouts/theorems.inc:321
+msgid "solutions"
+msgstr "riešenia"
+
+#: lib/layouts/theorems-ams-bytype.inc:348
+#: lib/layouts/theorems-ams-chap-bytype.inc:402
+#: lib/layouts/theorems-ams.inc:353 lib/layouts/theorems-bytype.inc:342
+#: lib/layouts/theorems.inc:354
+msgid "remark"
+msgstr "pripomienka"
+
+#: lib/layouts/theorems-ams-bytype.inc:349
+#: lib/layouts/theorems-ams-chap-bytype.inc:403
+#: lib/layouts/theorems-ams.inc:354 lib/layouts/theorems-bytype.inc:343
+#: lib/layouts/theorems.inc:355
+msgid "remarks"
+msgstr "pripomienky"
+
+#: lib/layouts/theorems-ams-bytype.inc:372
+#: lib/layouts/theorems-ams-chap-bytype.inc:427
+#: lib/layouts/theorems-ams.inc:377 lib/layouts/theorems-bytype.inc:366
+#: lib/layouts/theorems.inc:378
 msgid "claim"
-msgstr "Nárok"
+msgstr "nárok"
 
-#: lib/layouts/theorems-ams-bytype.inc:355
-#: lib/layouts/theorems-ams-chap-bytype.inc:408
-#: lib/layouts/theorems-ams.inc:360 lib/layouts/theorems-bytype.inc:349
-#: lib/layouts/theorems.inc:361
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:373
+#: lib/layouts/theorems-ams-chap-bytype.inc:428
+#: lib/layouts/theorems-ams.inc:378 lib/layouts/theorems-bytype.inc:367
+#: lib/layouts/theorems.inc:379
 msgid "Claims"
-msgstr "Nárok"
+msgstr "Nároky"
 
-#: lib/layouts/theorems-ams-bytype.inc:355
-#: lib/layouts/theorems-ams-chap-bytype.inc:408
-#: lib/layouts/theorems-ams.inc:360 lib/layouts/theorems-bytype.inc:349
-#: lib/layouts/theorems.inc:361
-#, fuzzy
+#: lib/layouts/theorems-ams-bytype.inc:373
+#: lib/layouts/theorems-ams-chap-bytype.inc:428
+#: lib/layouts/theorems-ams.inc:378 lib/layouts/theorems-bytype.inc:367
+#: lib/layouts/theorems.inc:379
 msgid "claims"
-msgstr "Nárok"
+msgstr "nároky"
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "AMS Theorems (Numbered by Type)"
@@ -18798,23 +18956,20 @@ msgstr "Kritérium \\thecriterion."
 #: lib/layouts/theorems-ams-extended-bytype.module:46
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:81
 #: lib/layouts/theorems-ams-extended.module:43
-#, fuzzy
 msgid "criterion"
-msgstr "Kritérium"
+msgstr "kritérium"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:47
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:44
-#, fuzzy
 msgid "Criteria"
-msgstr "Kritérium"
+msgstr "Kritériá"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:47
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:44
-#, fuzzy
 msgid "criteria"
-msgstr "Pisár"
+msgstr "kritériá"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:61
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:97
@@ -18833,6 +18988,18 @@ msgstr "Kritérium."
 msgid "Algorithm \\thealgorithm."
 msgstr "Algoritmus \\thealgorithm."
 
+#: lib/layouts/theorems-ams-extended-bytype.module:87
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:124
+#: lib/layouts/theorems-ams-extended.module:85
+msgid "algorithm"
+msgstr "algoritmus"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:88
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:125
+#: lib/layouts/theorems-ams-extended.module:86
+msgid "algorithms"
+msgstr "algoritmy"
+
 #: lib/layouts/theorems-ams-extended-bytype.module:103
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:140
 #: lib/layouts/theorems-ams-extended.module:100
@@ -18844,26 +19011,23 @@ msgstr "Algoritmus."
 msgid "Axiom \\theaxiom."
 msgstr "Axióma \\theaxiom."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:125
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:163
-#: lib/layouts/theorems-ams-extended.module:124
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:127
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:165
+#: lib/layouts/theorems-ams-extended.module:126
 msgid "axiom"
-msgstr "Axióma"
+msgstr "axióma"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:126
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:164
-#: lib/layouts/theorems-ams-extended.module:125
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:128
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:166
+#: lib/layouts/theorems-ams-extended.module:127
 msgid "Axioms"
-msgstr "Axióma"
+msgstr "Axiómy"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:126
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:164
-#: lib/layouts/theorems-ams-extended.module:125
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:128
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:166
+#: lib/layouts/theorems-ams-extended.module:127
 msgid "axioms"
-msgstr "Axióma"
+msgstr "axiómy"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:141
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:179
@@ -18882,26 +19046,23 @@ msgstr "Axióma."
 msgid "Condition \\thecondition."
 msgstr "Podmienka \\thecondition."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:167
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:206
-#: lib/layouts/theorems-ams-extended.module:166
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:169
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:208
+#: lib/layouts/theorems-ams-extended.module:168
 msgid "condition"
-msgstr "Podmienka"
+msgstr "podmienka"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:168
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:207
-#: lib/layouts/theorems-ams-extended.module:167
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:170
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:209
+#: lib/layouts/theorems-ams-extended.module:169
 msgid "Conditions"
-msgstr "Podmienka"
+msgstr "Podmienky"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:168
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:207
-#: lib/layouts/theorems-ams-extended.module:167
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:170
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:209
+#: lib/layouts/theorems-ams-extended.module:169
 msgid "conditions"
-msgstr "Podmienka"
+msgstr "podmienky"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:183
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:222
@@ -18921,6 +19082,18 @@ msgstr "Podmienka."
 msgid "Note \\thenote."
 msgstr "Poznámka \\thenote."
 
+#: lib/layouts/theorems-ams-extended-bytype.module:213
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:253
+#: lib/layouts/theorems-ams-extended.module:212
+msgid "Notes[[theorem]]"
+msgstr "Poznámky"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:213
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:253
+#: lib/layouts/theorems-ams-extended.module:212
+msgid "notes[[theorem]]"
+msgstr "poznámky"
+
 #: lib/layouts/theorems-ams-extended-bytype.module:222
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:262
 #: lib/layouts/theorems-ams-extended.module:220
@@ -18938,26 +19111,23 @@ msgstr "Poznámka."
 msgid "Notation \\thenotation."
 msgstr "Notácia \\thenotation."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:248
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:289
-#: lib/layouts/theorems-ams-extended.module:247
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:252
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:293
+#: lib/layouts/theorems-ams-extended.module:251
 msgid "notation"
-msgstr "Notácia"
+msgstr "notácia"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:249
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:290
-#: lib/layouts/theorems-ams-extended.module:248
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:253
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:294
+#: lib/layouts/theorems-ams-extended.module:252
 msgid "Notations"
-msgstr "Notácia"
+msgstr "Notácie"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:249
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:290
-#: lib/layouts/theorems-ams-extended.module:248
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:253
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:294
+#: lib/layouts/theorems-ams-extended.module:252
 msgid "notations"
-msgstr "Notácia"
+msgstr "notácie"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:264
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:305
@@ -18976,26 +19146,23 @@ msgstr "Notácia."
 msgid "Summary \\thesummary."
 msgstr "Súhrn \\thesummary."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:291
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:333
-#: lib/layouts/theorems-ams-extended.module:290
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:295
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:337
+#: lib/layouts/theorems-ams-extended.module:294
 msgid "summary"
-msgstr "Súhrn"
+msgstr "súhrn"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:292
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:334
-#: lib/layouts/theorems-ams-extended.module:291
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:296
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:338
+#: lib/layouts/theorems-ams-extended.module:295
 msgid "Summaries"
-msgstr "Súhrn"
+msgstr "Súhrny"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:292
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:334
-#: lib/layouts/theorems-ams-extended.module:291
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:296
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:338
+#: lib/layouts/theorems-ams-extended.module:295
 msgid "summaries"
-msgstr "baran"
+msgstr "súhrny"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:307
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:349
@@ -19014,26 +19181,23 @@ msgstr "Súhrn."
 msgid "Conclusion \\theconclusion."
 msgstr "Záver \\theconclusion."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:334
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:377
-#: lib/layouts/theorems-ams-extended.module:333
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:338
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:381
+#: lib/layouts/theorems-ams-extended.module:337
 msgid "conclusion"
-msgstr "Záver"
+msgstr "záver"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:335
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:378
-#: lib/layouts/theorems-ams-extended.module:334
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:339
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:382
+#: lib/layouts/theorems-ams-extended.module:338
 msgid "Conclusions[[theorem]]"
-msgstr "Záver \\thetheorem."
+msgstr "Závery"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:335
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:378
-#: lib/layouts/theorems-ams-extended.module:334
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:339
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:382
+#: lib/layouts/theorems-ams-extended.module:338
 msgid "conclusions[[theorem]]"
-msgstr "Záver \\thetheorem."
+msgstr "závery"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:350
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:393
@@ -19074,26 +19238,23 @@ msgstr "Predpoklad"
 msgid "Assumption \\theassumption."
 msgstr "Predpoklad \\theassumption."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:376
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:420
-#: lib/layouts/theorems-ams-extended.module:376
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:380
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:424
+#: lib/layouts/theorems-ams-extended.module:380
 msgid "assumption"
-msgstr "Predpoklad"
+msgstr "predpoklad"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:377
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:421
-#: lib/layouts/theorems-ams-extended.module:377
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:381
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:425
+#: lib/layouts/theorems-ams-extended.module:381
 msgid "Assumptions"
-msgstr "Predpoklad"
+msgstr "Predpoklady"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:377
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:421
-#: lib/layouts/theorems-ams-extended.module:377
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:381
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:425
+#: lib/layouts/theorems-ams-extended.module:381
 msgid "assumptions"
-msgstr "Predpoklad"
+msgstr "predpoklady"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:392
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:436
@@ -19107,26 +19268,23 @@ msgstr "Predpoklad*"
 msgid "Assumption."
 msgstr "Predpoklad."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:417
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:462
-#: lib/layouts/theorems-ams-extended.module:417
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:421
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:466
+#: lib/layouts/theorems-ams-extended.module:421
 msgid "question"
-msgstr "Otázka"
+msgstr "otázka"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:418
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:463
-#: lib/layouts/theorems-ams-extended.module:418
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:422
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:467
+#: lib/layouts/theorems-ams-extended.module:422
 msgid "Questions"
-msgstr "Otázka"
+msgstr "Otázky"
 
-#: lib/layouts/theorems-ams-extended-bytype.module:418
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:463
-#: lib/layouts/theorems-ams-extended.module:418
-#, fuzzy
+#: lib/layouts/theorems-ams-extended-bytype.module:422
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:467
+#: lib/layouts/theorems-ams-extended.module:422
 msgid "questions"
-msgstr "Otázka"
+msgstr "otázky"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:432
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:477
@@ -37887,6 +38045,18 @@ msgstr "Nemôžem pridať skratku do listiny"
 msgid "Identity"
 msgstr "Vaša identita"
 
+#: src/frontends/qt/GuiPrefs.h:356
+msgid "Light"
+msgstr "Svetlá"
+
+#: src/frontends/qt/GuiPrefs.h:356
+msgid "Dark"
+msgstr "Tmavá"
+
+#: src/frontends/qt/GuiPrefs.h:356
+msgid "Object/Element"
+msgstr "Objekt/Prvok"
+
 #: src/frontends/qt/GuiPrintNomencl.cpp:46
 msgid "Longest label width (guessed)"
 msgstr "Najdlhšia šírka štítku (odhadnutá)"
@@ -42079,15 +42249,6 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "Light"
-#~ msgstr "Svetlá"
-
-#~ msgid "Dark"
-#~ msgstr "Tmavá"
-
-#~ msgid "Object/Element"
-#~ msgstr "Objekt/Prvok"
-
 #~ msgid "Enter a color name to search"
 #~ msgstr "Zadajte časť názvu zafarbeného prvku na vyhľadávanie"
 
@@ -42705,9 +42866,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "No Branches Set for Document!"
 #~ msgstr "Dokument neobsahuje vetvenie!"
-
-#~ msgid "Theorems"
-#~ msgstr "Teorémy"
 
 #~ msgid "Soul Text Markup"
 #~ msgstr "Soul sémantické značkovanie"
@@ -45871,9 +46029,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "figure"
 #~ msgstr "Obrázok"
-
-#~ msgid "algorithm"
-#~ msgstr "Algoritmus"
 
 #~ msgid "tableau"
 #~ msgstr "Tabuľka"

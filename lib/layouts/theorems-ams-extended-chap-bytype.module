@@ -78,6 +78,8 @@ Style Criterion
 	TheoremName           criterion
 	TheoremLaTeXName      criterionname
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Criterion
+	TheoremCrossRefPluralName Criteria
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\criterionname}{_(Criterion)}
@@ -119,6 +121,8 @@ Style Algorithm
 	TheoremLaTeXName      algorithmname
 	TheoremParentCounter  chapter
 	TheoremZRefName       algorithm
+	TheoremCrossRefName   Algorithm
+	TheoremCrossRefPluralName Algorithms
 	LangPreamble
 	  \providecommand{\algorithmname}{_(Algorithm)}
 	EndLangPreamble
@@ -158,6 +162,8 @@ Style Axiom
 	TheoremName           ax
 	TheoremLaTeXName      axiomname
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Axiom
+	TheoremCrossRefPluralName Axioms
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\axiomname}{_(Axiom)}
@@ -199,6 +205,8 @@ Style Condition
 	TheoremStyle          definition
 	TheoremLaTeXName      conditionname
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Condition
+	TheoremCrossRefPluralName Conditions
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conditionname}{_(Condition)}
@@ -241,6 +249,8 @@ Style Note
 	TheoremStyle          remark
 	TheoremLaTeXName      notename
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Note
+	TheoremCrossRefPluralName Notes[[theorem]]
 	LangPreamble
 	  \providecommand{\notename}{_(Note)}
 	EndLangPreamble
@@ -280,6 +290,8 @@ Style Notation
 	TheoremStyle          remark
 	TheoremLaTeXName      notationname
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Notation
+	TheoremCrossRefPluralName Notations
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\notationname}{_(Notation)}
@@ -322,6 +334,8 @@ Style Summary
 	TheoremStyle          remark
 	TheoremLaTeXName      summaryname
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Summary
+	TheoremCrossRefPluralName Summaries
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\summaryname}{_(Summary)}
@@ -364,6 +378,8 @@ Style Conclusion
 	TheoremStyle          remark
 	TheoremLaTeXName      conclusionname
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Conclusion
+	TheoremCrossRefPluralName Conclusions[[theorem]]
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conclusionname}{_(Conclusion)}
@@ -405,6 +421,8 @@ Style Assumption
 	TheoremName           assumption
 	TheoremLaTeXName      assumptionname
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Assumption
+	TheoremCrossRefPluralName Assumptions
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\assumptionname}{_(Assumption)}
@@ -445,6 +463,8 @@ Style Question
 	TheoremName           question
 	TheoremLaTeXName      questionname
 	TheoremParentCounter  chapter
+	TheoremCrossRefName   Question
+	TheoremCrossRefPluralName Questions
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\questionname}{_(Question)}

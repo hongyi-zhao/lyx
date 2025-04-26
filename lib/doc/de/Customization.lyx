@@ -15429,6 +15429,64 @@ newtheorem
 status collapsed
 
 \begin_layout Plain Layout
+TheoremCrossRefName
+\end_layout
+
+\end_inset
+
+ Der Name,
+ der in der Marke formatierter Querverweise zu diesem Theorem verwendet wird.
+ Dies wird nur in den Fällen verwendet,
+ in denen das entsprechende Querverweis-Paket keine Definition für dieses spezifische Theorem bietet.
+ Verwenden Sie hier stets Anfangsgroßschreibung (bspw.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Theorem
+\begin_inset Quotes grd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremCrossRefPluralName
+\end_layout
+
+\end_inset
+
+ Die Pluralform von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+TheoremCrossRefName
+\end_layout
+
+\end_inset
+
+ (bspw.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Criteria
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 TheoremZRefName
 \end_layout
 

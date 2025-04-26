@@ -16824,6 +16824,8 @@ status collapsed
 
 \change_inserted -712698321 1745588508
 TheoremName
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16853,6 +16855,8 @@ status collapsed
 
 \backslash
 newtheorem
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16862,7 +16866,7 @@ newtheorem
 
 \begin_layout Description
 
-\change_inserted -712698321 1745589464
+\change_inserted -712698321 1745643919
 \begin_inset Flex Code
 status collapsed
 
@@ -16870,6 +16874,8 @@ status collapsed
 
 \change_inserted -712698321 1745588706
 TheoremLaTeXName
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16882,6 +16888,8 @@ status collapsed
 
 \change_inserted -712698321 1745588713
 TheoremName
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16914,11 +16922,89 @@ status collapsed
 
 \backslash
 newtheorem
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1745644962
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745643926
+TheoremCrossRefName
+\end_layout
+
+\end_inset
+
+ The name used in the label of formatted cross-references to this theorem.
+ This is uses in cases where the cross-references package does not provide a definition for a given theorem type.
+ Please always use the spelling with initial capitalization (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Theorem
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1745645040
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745645504
+TheoremCrossRefPluralName
+\end_layout
+
+\end_inset
+
+ The plural form of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1745644987
+TheoremCrossRefName
+\end_layout
+
+\end_inset
+
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Criteria
+\begin_inset Quotes erd
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -16931,6 +17017,8 @@ status collapsed
 
 \change_inserted -712698321 1745588892
 TheoremZRefName
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16943,6 +17031,8 @@ status collapsed
 
 \change_inserted -712698321 1745588888
 TheoremName
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16979,6 +17069,8 @@ status collapsed
 
 \change_inserted -712698321 1745589130
 zref-clever
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16998,6 +17090,8 @@ status collapsed
 
 \change_inserted -712698321 1745588591
 TheoremCounter
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17028,6 +17122,8 @@ status collapsed
 
 \backslash
 newtheorem
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17051,6 +17147,8 @@ status collapsed
 
 \backslash
 newtheorem*
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17068,6 +17166,8 @@ status collapsed
 
 \change_inserted -712698321 1745588776
 TheoremParentCounter
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17080,6 +17180,8 @@ status collapsed
 
 \change_inserted -712698321 1745588668
 TheoremName
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17095,6 +17197,8 @@ status collapsed
 
 \backslash
 newtheorem
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17128,6 +17232,8 @@ status collapsed
 
 \change_inserted -712698321 1745588834
 TheoremStyle
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -17140,6 +17246,8 @@ status collapsed
 
 \change_inserted -712698321 1745588829
 TheoremName
+\change_unchanged
+
 \end_layout
 
 \end_inset

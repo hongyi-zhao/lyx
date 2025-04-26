@@ -61,6 +61,8 @@ Style Theorem
 	TheoremName           thm
 	TheoremLaTeXName      theoremname
 	TheoremZRefName       theorem
+	TheoremCrossRefName   Theorem
+	TheoremCrossRefPluralName Theorems
 	LangPreamble
 		\providecommand{\theoremname}{_(Theorem)}
 	EndLangPreamble
@@ -84,6 +86,8 @@ Style Corollary
 	TheoremCounter        thm
 	TheoremLaTeXName      corollaryname
 	TheoremZRefName       corollary
+	TheoremCrossRefName   Corollary
+	TheoremCrossRefPluralName Corollaries
 	LangPreamble
 		\providecommand{\corollaryname}{_(Corollary)}
 	EndLangPreamble
@@ -107,6 +111,8 @@ Style Lemma
 	TheoremCounter        thm
 	TheoremLaTeXName      lemmaname
 	TheoremZRefName       lemma
+	TheoremCrossRefName   Lemma
+	TheoremCrossRefPluralName Lemmas
 	LangPreamble
 		\providecommand{\lemmaname}{_(Lemma)}
 	EndLangPreamble
@@ -131,6 +137,8 @@ Style Proposition
 	TheoremCounter        thm
 	TheoremLaTeXName      propositionname
 	TheoremZRefName       proposition
+	TheoremCrossRefName   Proposition
+	TheoremCrossRefPluralName Propositions
 	LangPreamble
 		\providecommand{\propositionname}{_(Proposition)}
 	EndLangPreamble
@@ -153,6 +161,8 @@ Style Conjecture
 	TheoremName           conjecture
 	TheoremCounter        thm
 	TheoremLaTeXName      conjecturename
+	TheoremCrossRefName   Conjecture
+	TheoremCrossRefPluralName  Conjectures
 	TheoremZRefName       none
 	LangPreamble
 		\providecommand{\conjecturename}{_(Conjecture)}
@@ -176,6 +186,8 @@ Style Fact
 	TheoremName           fact
 	TheoremCounter        thm
 	TheoremLaTeXName      factname
+	TheoremCrossRefName   Fact
+	TheoremCrossRefPluralName  Facts
 	TheoremZRefName       none
 	LangPreamble
 		\providecommand{\factname}{_(Fact)}
@@ -208,6 +220,8 @@ Style Definition
 	TheoremCounter        thm
 	TheoremLaTeXName      definitionname
 	TheoremZRefName       definition
+	TheoremCrossRefName   Definition
+	TheoremCrossRefPluralName Definitions
 	LangPreamble
 		\providecommand{\definitionname}{_(Definition)}
 	EndLangPreamble
@@ -230,6 +244,8 @@ Style Example
 	TheoremStyle          definition
 	TheoremCounter        thm
 	TheoremLaTeXName      examplename
+	TheoremCrossRefName   Example
+	TheoremCrossRefPluralName Examples
 	LangPreamble
 		\providecommand{\examplename}{_(Example)}
 	EndLangPreamble
@@ -250,6 +266,8 @@ Style Problem
 	TheoremStyle          definition
 	TheoremCounter        thm
 	TheoremLaTeXName      problemname
+	TheoremCrossRefName   Problem
+	TheoremCrossRefPluralName  Problems
 	TheoremZRefName       none
 	LangPreamble
 		\providecommand{\problemname}{_(Problem)}
@@ -274,6 +292,8 @@ Style Exercise
 	TheoremCounter        thm
 	TheoremLaTeXName      exercisename
 	TheoremZRefName       exercise
+	TheoremCrossRefName   Exercise
+	TheoremCrossRefPluralName Exercises
 	LangPreamble
 		\providecommand{\exercisename}{_(Exercise)}
 	EndLangPreamble
@@ -297,6 +317,8 @@ Style Solution
 	TheoremCounter        thm
 	TheoremLaTeXName      solutionname
 	TheoremZRefName       solution
+	TheoremCrossRefName   Solution
+	TheoremCrossRefPluralName Solutions
 	LangPreamble
 		\providecommand{\solutionname}{_(Solution)}
 	EndLangPreamble
@@ -329,6 +351,8 @@ Style Remark
 	TheoremCounter        thm
 	TheoremLaTeXName      remarkname
 	TheoremZRefName       remark
+	TheoremCrossRefName   Remark
+	TheoremCrossRefPluralName Remarks
 	LangPreamble
 		\providecommand{\remarkname}{_(Remark)}
 	EndLangPreamble
@@ -351,6 +375,8 @@ Style Claim
 	TheoremStyle          remark
 	TheoremCounter        thm
 	TheoremLaTeXName      claimname
+	TheoremCrossRefName   Claim
+	TheoremCrossRefPluralName  Claims
 	TheoremZRefName       none
 	LangPreamble
 		\providecommand{\claimname}{_(Claim)}

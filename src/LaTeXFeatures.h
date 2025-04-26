@@ -27,6 +27,7 @@ class Buffer;
 class BufferParams;
 class InsetLayout;
 class Language;
+class Layout;
 class otexstream;
 class OutputParams;
 struct TexString;
@@ -85,6 +86,8 @@ public:
 	std::string const loadAMSPackages() const;
 	/// The definitions needed by the document's textclass
 	docstring const getTClassPreamble() const;
+	/// Localizations for theorem reference defs
+	docstring const getThmI18nDefs(Layout const &) const;
 	/// The language dependent definitions needed by the document's textclass
 	docstring const getTClassI18nPreamble(bool use_babel,
 				bool use_polyglossia, bool use_minted) const;

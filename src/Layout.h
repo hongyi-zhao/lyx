@@ -194,6 +194,10 @@ public:
 	///
 	std::string const & thmZRefName() const { return thm_zref_name_; }
 	///
+	std::string const & thmXRefName() const { return thm_xref_name_; }
+	///
+	std::string const & thmXRefNamePl() const { return thm_xref_name_pl_; }
+	///
 	std::string const & htmltag() const;
 	///
 	std::string const & htmlattr() const { return htmlattr_; }
@@ -524,6 +528,10 @@ private:
 	std::string thm_style_;
 	/// 6. zref-clever name
 	std::string thm_zref_name_;
+	/// 7. cross references name
+	std::string thm_xref_name_;
+	/// 8. cross references name (plural)
+	std::string thm_xref_name_pl_;
 	/// The interpretation of this tag varies depending upon the latextype.
 	/// In an environment, it is the tag enclosing all content for this set of
 	/// paragraphs. So for quote, e.g,. it would be: blockquote. For itemize,

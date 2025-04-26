@@ -99,6 +99,8 @@ enum LayoutTags {
 	LT_THM_COUNTER,
 	LT_THM_PARENTCOUNTER,
 	LT_THM_STYLE,
+	LT_THM_CROSSREFNAME,
+	LT_THM_CROSSREFNAMEPL,
 	LT_THM_ZREFNAME,
 	LT_HTMLTAG,
 	LT_HTMLATTR,
@@ -348,6 +350,8 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "stepparentcounter",  LT_STEPPARENTCOUNTER },
 		{ "textfont",       LT_TEXTFONT },
 		{ "theoremcounter",    LT_THM_COUNTER },
+		{ "theoremcrossrefname", LT_THM_CROSSREFNAME },
+		{ "theoremcrossrefpluralname", LT_THM_CROSSREFNAMEPL },
 		{ "theoremlatexname",  LT_THM_LATEXNAME },
 		{ "theoremname",       LT_THM_NAME },
 		{ "theoremparentcounter", LT_THM_PARENTCOUNTER },
@@ -592,6 +596,14 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
 		case LT_THM_STYLE:
 			lex >> thm_style_;
+			break;
+
+		case LT_THM_CROSSREFNAME:
+			lex >> thm_xref_name_;
+			break;
+
+		case LT_THM_CROSSREFNAMEPL:
+			lex >> thm_xref_name_pl_;
 			break;
 
 		case LT_THM_ZREFNAME:
@@ -1749,6 +1761,10 @@ void Layout::write(ostream & os) const
 		os << "\tTheoremParentCounter " << thm_parent_counter_ << '\n';
 	if (!thm_style_.empty())
 		os << "\tTheoremStyle " << thm_style_ << '\n';
+	if (!thm_xref_name_.empty())
+		os << "\tTheoremCrossRefName " << thm_xref_name_ << '\n';
+	if (!thm_xref_name_pl_.empty())
+		os << "\tTheoremCrossRefPluralName " << thm_xref_name_pl_ << '\n';
 	if (!thm_zref_name_.empty())
 		os << "\tTheoremZRefName " << thm_zref_name_ << '\n';
 	if (refprefix.empty())

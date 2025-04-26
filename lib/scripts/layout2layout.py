@@ -361,7 +361,8 @@ currentFormat = 108
 
 # Incremented to format 108, 25 April 2025 by spitz
 # New Layout tags "TheoremName", "TheoremZRefName",
-# "TheoremCounter", "TheoremParentCounter", "TheoremStyle"
+# "TheoremCounter", "TheoremParentCounter", "TheoremStyle",
+# "TheoremCrossRefName", "TheoremCrossRefPluralName"
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

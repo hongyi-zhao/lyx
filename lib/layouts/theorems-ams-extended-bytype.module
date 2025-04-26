@@ -43,6 +43,8 @@ Style Criterion
 	LabelString           "Criterion \thecriterion."
 	TheoremName           criterion
 	TheoremLaTeXName      criterionname
+	TheoremCrossRefName   Criterion
+	TheoremCrossRefPluralName  Criteria
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\criterionname}{_(Criterion)}
@@ -82,6 +84,8 @@ Style Algorithm
 	TheoremName           lyxalgorithm
 	TheoremLaTeXName      algorithmname
 	TheoremZRefName       algorithm
+	TheoremCrossRefName   Algorithm
+	TheoremCrossRefPluralName Algorithms
 	LangPreamble
 	  \providecommand{\algorithmname}{_(Algorithm)}
 	EndLangPreamble
@@ -120,6 +124,8 @@ Style Axiom
 	LabelString           "Axiom \theaxiom."
 	TheoremName           ax
 	TheoremLaTeXName      axiomname
+	TheoremCrossRefName   Axiom
+	TheoremCrossRefPluralName  Axioms
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\axiomname}{_(Axiom)}
@@ -160,6 +166,8 @@ Style Condition
 	TheoremName           condition
 	TheoremStyle          definition
 	TheoremLaTeXName      conditionname
+	TheoremCrossRefName   Condition
+	TheoremCrossRefPluralName  Conditions
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conditionname}{_(Condition)}
@@ -201,6 +209,8 @@ Style Note
 	TheoremName           note
 	TheoremStyle          remark
 	TheoremLaTeXName      notename
+	TheoremCrossRefName   Note
+	TheoremCrossRefPluralName Notes[[theorem]]
 	LangPreamble
 	  \providecommand{\notename}{_(Note)}
 	EndLangPreamble
@@ -239,6 +249,8 @@ Style Notation
 	TheoremName           notation
 	TheoremStyle          remark
 	TheoremLaTeXName      notationname
+	TheoremCrossRefName   Notation
+	TheoremCrossRefPluralName  Notations
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\notationname}{_(Notation)}
@@ -280,6 +292,8 @@ Style Summary
 	TheoremName           summary
 	TheoremStyle          remark
 	TheoremLaTeXName      summaryname
+	TheoremCrossRefName   Summary
+	TheoremCrossRefPluralName  Summaries
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\summaryname}{_(Summary)}
@@ -321,6 +335,8 @@ Style Conclusion
 	TheoremName           conclusion
 	TheoremStyle          remark
 	TheoremLaTeXName      conclusionname
+	TheoremCrossRefName   Conclusion
+	TheoremCrossRefPluralName  Conclusions[[theorem]]
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\conclusionname}{_(Conclusion)}
@@ -361,6 +377,8 @@ Style Assumption
 	LabelString           "Assumption \theassumption."
 	TheoremName           assumption
 	TheoremLaTeXName      assumptionname
+	TheoremCrossRefName   Assumption
+	TheoremCrossRefPluralName  Assumptions
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\assumptionname}{_(Assumption)}
@@ -400,6 +418,8 @@ Style Question
 	LabelString           "Question \thequestion."
 	TheoremName           question
 	TheoremLaTeXName      questionname
+	TheoremCrossRefName   Question
+	TheoremCrossRefPluralName  Questions
 	TheoremZRefName       none
 	LangPreamble
 	  \providecommand{\questionname}{_(Question)}

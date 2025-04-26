@@ -44,3 +44,118 @@ Turkish: Notlar
 
 new strings (not yet committed) for:
 ar: Chart, Graph[[mathematical]], List of Charts, List of Graphs[[mathematical]], Nomenclature[[output]]
+
+-----
+LyX 2.5.0 release
+
+Additionally to the top ones, the languages below should be reviewed for the following strings:
+
+These strings are used in formatted cross references to theorems (as in "see assumption 1").
+
+We have references to single theorems within sentences (singular, lowercased in English):
+
+algorithm
+assumption
+axiom
+claim
+conclusion
+condition
+conjecture
+corollary
+criterion
+definition
+example
+exercise
+fact
+lemma
+notation
+note
+problem
+proposition
+question
+remark
+solution
+summary
+theorem
+
+The same strings (singular) for sentence begin (uppercased in English) --
+these are here for some time and have been reviewed previously in most languages:
+
+Algorithm
+Assumption
+Axiom
+Claim
+Conclusion
+Condition
+Conjecture
+Corollary
+Criterion
+Definition
+Example
+Exercise
+Fact
+Lemma
+Notation
+Note
+Problem
+Proposition
+Question
+Remark
+Solution
+Summary
+Theorem
+
+Then we have plural forms for the same strings within sentences (lowercased in English),
+as in "criteria 3 and 4":
+
+algorithms
+assumptions
+axioms
+claims
+conclusions[[theorem]]
+conditions
+conjectures
+corollaries
+criteria
+definitions
+examples
+exercises
+facts
+lemmas
+notations
+notes[[theorem]]
+problems
+propositions
+questions
+remarks
+solutions
+summaries
+theorems
+
+And, finally, the plural forms for sentence begin (uppercases in English):
+
+Algorithms
+Axioms
+Claims
+Conclusions[[theorem]]
+Conditions
+Conjectures
+Corollaries
+Criteria
+Definitions
+Examples
+Exercises
+Facts
+Lemmas
+Notations
+Notes[[theorem]]
+Problems
+Propositions
+Questions
+Remarks
+Solutions
+Summaries
+Theorems
+
+Languages to check: ar bg cs es eu fi fr he hu ia id it ja nb nl nn pl pt_BR pt_PT ru sk sv uk zh_CN zh_TW
+

@@ -92,6 +92,8 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     Tooltip = re.compile(r'^\s*Tooltip\S*\s+(.*\S)\s*$', re.IGNORECASE)
     GuiName = re.compile(r'^\s*GuiName\s+(.*\S)\s*$', re.IGNORECASE)
     ListName = re.compile(r'^\s*ListName\s+(.*\S)\s*$', re.IGNORECASE)
+    TheoremCrossRefName = re.compile(r'^\s*TheoremCrossRefName\s+(.*\S)\s*$', re.IGNORECASE)
+    TheoremCrossRefPluralName = re.compile(r'^\s*TheoremCrossRefPluralName\s+(.*\S)\s*$', re.IGNORECASE)
     CategoryName = re.compile(r'^\s*Category\s+(.*\S)\s*$', re.IGNORECASE)
     NameRE = re.compile(r'^\s*#\s*\\DeclareLyXModule.*{(.*)}$', re.IGNORECASE)
     CiteNameRE = re.compile(r'^\s*#\s*\\DeclareLyXCiteEngine.*\{(.*)\}$', re.IGNORECASE)
@@ -265,6 +267,26 @@ def layouts_l10n(input_files, output, base, layouttranslations):
                 string = res.group(1)
                 if not layouttranslations:
                     writeString(out, src, base, lineno, string)
+                continue
+            res = TheoremCrossRefName.search(line)
+            if res != None:
+                string = res.group(1)
+                if layouttranslations:
+                    keyset.add(string)
+                    keyset.add(string.lower())
+                else:
+                    writeString(out, src, base, lineno, string)
+                    writeString(out, src, base, lineno, string.lower())
+                continue
+            res = TheoremCrossRefPluralName.search(line)
+            if res != None:
+                string = res.group(1)
+                if layouttranslations:
+                    keyset.add(string)
+                    keyset.add(string.lower())
+                else:
+                    writeString(out, src, base, lineno, string)
+                    writeString(out, src, base, lineno, string.lower())
                 continue
             res = OutlinerName.search(line)
             if res != None:

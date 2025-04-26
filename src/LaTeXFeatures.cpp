@@ -2207,6 +2207,27 @@ docstring const i18npreamble(docstring const & templ, Language const * lang,
 } // namespace
 
 
+docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
+{
+	if (lay.thmName().empty())
+		return docstring();
+	if (params_.xref_package == "zref" && lay.thmZRefName() == "none" && !lay.thmXRefName().empty()) {
+		docstring const tn = from_utf8(lay.thmXRefName());
+		docstring const tnp = from_utf8(lay.thmXRefNamePl());
+		odocstringstream ods;
+		ods << "\\zcRefTypeSetup{"
+		    << from_utf8(lay.thmName()) << "}{\n"
+		    << "Name-sg = _(" << tn << "),\n"
+		    << "name-sg = _(" << lowercase(tn) << "),\n"
+		    << "Name-pl = _(" << tnp << "),\n"
+		    << "name-pl = _(" << lowercase(tnp) << ")"
+		    << "}\n";
+		return ods.str();
+	}
+	return docstring();
+}
+
+
 docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel,
 				bool use_polyglossia, bool use_minted) const
 {
@@ -2220,11 +2241,17 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel,
 	list<docstring>::const_iterator cit = usedLayouts_.begin();
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
+		docstring const thmxref = getThmI18nDefs(tclass[*cit]);
 		// language dependent commands (once per document)
 		snippets.insert(i18npreamble(tclass[*cit].langpreamble(),
 						buffer().language(),
 						buffer().params().encoding(),
 						use_polyglossia, false));
+		if (!thmxref.empty())
+			snippets.insert(i18npreamble(thmxref,
+						     buffer().language(),
+						     buffer().params().encoding(),
+						     use_polyglossia, false));
 		// commands for language changing (for multilanguage documents)
 		if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
 			snippets.insert(i18npreamble(
@@ -2232,12 +2259,18 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel,
 						buffer().language(),
 						buffer().params().encoding(),
 						use_polyglossia, false));
-			for (lang_it lit = lbeg; lit != lend; ++lit)
+			for (lang_it lit = lbeg; lit != lend; ++lit) {
+				if (!thmxref.empty())
+					snippets.insert(i18npreamble(thmxref,
+								     *lit,
+								     buffer().params().encoding(),
+								     use_polyglossia, false));
 				snippets.insert(i18npreamble(
 						tclass[*cit].babelpreamble(),
 						*lit,
 						buffer().params().encoding(),
 						use_polyglossia, false));
+			}
 		}
 	}
 	if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {

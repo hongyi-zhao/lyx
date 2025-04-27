@@ -477,17 +477,6 @@ static docstring const smallLetterFrac_def = from_ascii(
 	"  {phantom=c, scale-factor=1.0, slash-left-kern=-.05em}\n"
 	"\\NewCommandCopy\\smallLetterFrac\\sfrac\n");
 
-static docstring const lyxref_def = from_ascii(
-	"\\RS@ifundefined{subsecref}\n"
-	"  {\\newref{subsec}{name = \\RSsectxt}}\n"
-	"  {}\n"
-	"\\RS@ifundefined{thmref}\n"
-	"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n"
-	"  {}\n"
-	"\\RS@ifundefined{lemref}\n"
-	"  {\\def\\RSlemtxt{lemma~}\\newref{lem}{name = \\RSlemtxt}}\n"
-	"  {}\n");
-
 // Make sure the columns are also outputed as rtl
 static docstring const rtloutputdblcol_def = from_ascii(
 	"\\def\\@outputdblcol{%\n"
@@ -712,6 +701,7 @@ void LaTeXFeatures::useLayout(docstring const & layoutname, int level)
 			thm.parent_counter = layout.thmParentCounter();
 			thm.style = layout.thmStyle();
 			thm.zrefname = layout.thmZRefName();
+			thm.refprefix = to_ascii(layout.refprefix);
 			usedTheorems_.push_back(thm);
 			require("amsthm");
 		}
@@ -1809,8 +1799,23 @@ TexString LaTeXFeatures::getMacros() const
 	// floats
 	getFloatDefinitions(macros);
 
-	if (mustProvide("refstyle"))
-		macros << lyxref_def << '\n';
+	if (mustProvide("refstyle:subsecref")) {
+		// this is not provided by the package, but we use the prefix
+		// the definition is a copy of secref
+		macros << "\\RS@ifundefined{subsecref}{\n"
+		       << "  \\newref{subsec}{\n"
+		       << "        name      = \\RSsectxt,\n"
+		       << "        names     = \\RSsecstxt,\n"
+		       << "        Name      = \\RSSectxt,\n"
+		       << "        Names     = \\RSSecstxt,\n"
+		       << "        refcmd    = {\\S\\ref{#1}},\n"
+		       << "        rngtxt    = \\RSrngtxt,\n"
+		       << "        lsttwotxt = \\RSlsttwotxt,\n"
+		       << "        lsttxt    = \\RSlsttxt\n"
+		       << "  }\n"
+		       << "}{}\n"
+		       << '\n';
+	}
 
 	// change tracking
 	if (mustProvide("ct-xcolor-ulem")) {
@@ -1974,7 +1979,7 @@ string const LaTeXFeatures::getThmDefinitions() const
 				}
 			}
 		}
-		// or cleveref
+		// cleveref
 		else if (thm.counter != "none" && !thm.counter.empty() && params_.xref_package == "cleveref") {
 			if (isAvailableAtLeastFrom("LaTeX", 2020, 10))
 				// we have hooks
@@ -1986,6 +1991,19 @@ string const LaTeXFeatures::getThmDefinitions() const
 				    << "{\\crefalias{" << thm.counter << "}{" << thm.name << "}"
 				    << "\\lyxsave" << thm.name << "}\n";
 			}
+		}
+		// and refstyle
+		else if (params_.xref_package == "refstyle") {
+			tmp << "\\newref{" << thm.refprefix << "}{\n"
+			    << "        name      = \\RS" << thm.name << "txt,\n"
+			    << "        names     = \\RS" << thm.name << "stxt,\n"
+			    << "        Name      = \\RS" << capitalize(thm.name) << "txt,\n"
+			    << "        Names     = \\RS" << capitalize(thm.name) << "stxt,\n"
+			    << "        rngtxt    = \\RSrngtxt,\n"
+			    << "        lsttwotxt = \\RSlsttwotxt,\n"
+			    << "        lsttxt    = \\RSlsttxt\n"
+			    << "}\n"
+			    << '\n';
 		}
 	}
 
@@ -2219,6 +2237,16 @@ docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 		    << "Name-pl = _(" << tnp << "),\n"
 		    << "name-pl = _(" << lowercase(tnp) << ")"
 		    << "}\n";
+		return ods.str();
+	} else if (params_.xref_package == "refstyle" && !lay.thmXRefName().empty()) {
+		docstring const tn = from_utf8(lay.thmXRefName());
+		docstring const tnp = from_utf8(lay.thmXRefNamePl());
+		odocstringstream ods;
+		docstring const thmname = from_utf8(lay.thmName());
+		ods << "\\def\\RS" << thmname << "txt{_(" << lowercase(tn) << ")~}\n"
+		    << "\\def\\RS" << thmname << "stxt{_(" << lowercase(tnp) << ")~}\n"
+		    << "\\def\\RS" << capitalize(thmname) << "txt{_(" << tn << ")~}\n"
+		    << "\\def\\RS" << capitalize(thmname) << "stxt{_(" << tnp << ")~}\n";
 		return ods.str();
 	}
 	return docstring();

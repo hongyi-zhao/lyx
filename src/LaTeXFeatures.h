@@ -40,6 +40,7 @@ struct ThmInfo {
 	std::string parent_counter;
 	std::string style;
 	std::string zrefname;
+	std::string refprefix;
 };
 
 

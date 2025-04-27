@@ -550,6 +550,15 @@ docstring const uppercase(docstring const & a)
 }
 
 
+string capitalize(string const & s)
+{
+	string ret = s;
+	char t = uppercase(ret[0]);
+	ret[0] = t;
+	return ret;
+}
+
+
 docstring capitalize(docstring const & s) {
 	docstring ret = s;
 	char_type t = uppercase(ret[0]);

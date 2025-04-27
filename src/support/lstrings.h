@@ -182,6 +182,9 @@ int tokenPos(std::string const & a, char delim, std::string const & tok);
 int tokenPos(docstring const & a, char_type delim, docstring const & tok);
 
 ///
+std::string capitalize(std::string const & s);
+
+///
 docstring capitalize(docstring const & s);
 
 /// Substitute all \a oldchar with \a newchar

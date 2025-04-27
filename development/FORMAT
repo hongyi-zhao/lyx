@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2025-04-27 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 639: Adapt local layout for acknowledgement theorems
+	  to new layout scheme.
+
 2025-04-06 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 638: Support for external cross references (via xr package)
 	- InsetRef has a new param "filenames" that holds a comma-separated list

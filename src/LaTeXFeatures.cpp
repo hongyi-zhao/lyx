@@ -2011,9 +2011,6 @@ string const LaTeXFeatures::loadAMSPackages() const
 	if (mustProvide("amsthm"))
 		tmp << "\\usepackage{amsthm}\n";
 
-	if (!mustProvide("cleveref"))
-		tmp << getThmDefinitions();
-
 	if (mustProvide("amssymb")
 	    && params_.use_package("amssymb") != BufferParams::package_off)
 		tmp << "\\usepackage{amssymb}\n";

@@ -3052,8 +3052,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		if (!lyxrc.language_global_options && !language_options.str().empty())
 			os << "[" << language_options.str() << "]";
 		os << "{cleveref}\n";
-		os << features.getThmDefinitions();
 	}
+
+	// theorem definitions
+	os << features.getThmDefinitions();
 
 	// Since menukeys uses catoptions, which does some heavy changes on key-value options,
 	// it is recommended to load menukeys as the last package (even after hyperref)

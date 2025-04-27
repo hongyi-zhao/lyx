@@ -2883,6 +2883,241 @@ def revert_xr(document):
         i += 1
         continue
 
+ack_theorem_def_old = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended module to be loaded',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \thetheorem."',
+    r'  Preamble',
+    r'    \theoremstyle{remark}',
+    r'    \newtheorem{acknowledgement}[thm]{\protect\acknowledgementname}',
+    r'  EndPreamble',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ack_theorem_def_new = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended module to be loaded',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \thetheorem."',
+    r'  TheoremName           "acknowledgement"',
+    r'  TheoremCounter        "thm"',
+    r'  TheoremStyle          "remark"',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ackStar_theorem_def_old = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires a theorems-ams-extended-* module to be loaded',
+    r'Style Acknowledgement*',
+    r'  CopyStyle             Remark*',
+    r'  LatexName             acknowledgement*',
+    r'  LabelString           "Acknowledgement."',
+    r'  Preamble',
+    r'    \theoremstyle{remark}',
+    r'    \newtheorem*{acknowledgement*}{\protect\acknowledgementname}',
+    r'  EndPreamble',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ackStar_theorem_def_new = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires a theorems-ams-extended-* module to be loaded',
+    r'Style Acknowledgement*',
+    r'  CopyStyle             Remark*',
+    r'  LatexName             acknowledgement*',
+    r'  LabelString           "Acknowledgement."',
+    r'  TheoremName           "acknowledgement*"',
+    r'  TheoremCounter        "none"',
+    r'  TheoremStyle          "remark"',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ack_bytype_theorem_def_old = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended-bytype module to be loaded',
+    r'Counter acknowledgement',
+    r'  GuiName Acknowledgment',
+    r'End',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \theacknowledgement."',
+    r'  Preamble',
+    r'    \theoremstyle{remark}',
+    r'    \newtheorem{acknowledgement}{\protect\acknowledgementname}',
+    r'  EndPreamble',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ack_bytype_theorem_def_new = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended-bytype module to be loaded',
+    r'Counter acknowledgement',
+    r'  GuiName Acknowledgment',
+    r'End',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \theacknowledgement."',
+    r'  TheoremName           "acknowledgement"',
+    r'  TheoremStyle          "remark"',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ack_chap_bytype_theorem_def_old = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended-chap-bytype module to be loaded',
+    r'Counter acknowledgement',
+    r'  GuiName Acknowledgment',
+    r'  Within chapter',
+    r'End',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \theacknowledgement."',
+    r'  Preamble',
+    r'    \theoremstyle{remark}',
+    r'    \ifx\thechapter\undefined',
+    r'      \newtheorem{acknowledgement}{\protect\acknowledgementname}',
+    r'    \else',
+    r'      \newtheorem{acknowledgement}{\protect\acknowledgementname}[chapter]',
+    r'    \fi',
+    r'  EndPreamble',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+ack_chap_bytype_theorem_def_new = [
+    r'### Inserted by lyx2lyx (ams extended theorems) ###',
+    r'### This requires theorems-ams-extended-chap-bytype module to be loaded',
+    r'Counter acknowledgement',
+    r'  GuiName Acknowledgment',
+    r'  Within chapter',
+    r'End',
+    r'Style Acknowledgement',
+    r'  CopyStyle             Remark',
+    r'  LatexName             acknowledgement',
+    r'  LabelString           "Acknowledgement \theacknowledgement."',
+    r'  TheoremName           "acknowledgement"',
+    r'  TheoremParentCounter  "chapter"',
+    r'  TheoremStyle          "remark"',
+    r'  LangPreamble',
+    r'    \providecommand{\acknowledgementname}{_(Acknowledgement)}',
+    r'  EndLangPreamble',
+    r'  BabelPreamble',
+    r'    \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}',
+    r'  EndBabelPreamble',
+    r'  DocBookTag            para',
+    r'  DocBookAttr           role="acknowledgement"',
+    r'  DocBookItemTag        ""',
+    r'End',
+]
+
+
+def convert_theorem_local_def(document):
+    """Adapt acknowledgement theorems from local layout to new scheme"""
+    if "theorems-ams-extended-bytype" in document.get_module_list():
+        if document.del_local_layout(ackStar_theorem_def_old):
+            document.append_local_layout(ackStar_theorem_def_new)
+        if document.del_local_layout(ack_bytype_theorem_def_old):
+            document.append_local_layout(ack_bytype_theorem_def_new)
+    elif "theorems-ams-extended-chap-bytype" in document.get_module_list():
+        if document.del_local_layout(ackStar_theorem_def_old):
+            document.append_local_layout(ackStar_theorem_def_new)
+        if document.del_local_layout(ack_chap_bytype_theorem_def_old):
+            document.append_local_layout(ack_chap_bytype_theorem_def_new)
+    elif "theorems-ams-extended" in document.get_module_list():
+        if document.del_local_layout(ackStar_theorem_def_old):
+            document.append_local_layout(ackStar_theorem_def_new)
+        if document.del_local_layout(ack_theorem_def_old):
+            document.append_local_layout(ack_theorem_def_new)
+
+
+def revert_theorem_local_def(document):
+    """Adapt acknowledgement theorems from local layout to old scheme"""
+    if "theorems-ams-extended-bytype" in document.get_module_list():
+        if document.del_local_layout(ackStar_theorem_def_new):
+            document.append_local_layout(ackStar_theorem_def_old)
+        if document.del_local_layout(ack_bytype_theorem_def_new):
+            document.append_local_layout(ack_bytype_theorem_def_old)
+    elif "theorems-ams-extended-chap-bytype" in document.get_module_list():
+        if document.del_local_layout(ackStar_theorem_def_new):
+            document.append_local_layout(ackStar_theorem_def_old)
+        if document.del_local_layout(ack_chap_bytype_theorem_def_new):
+            document.append_local_layout(ack_chap_bytype_theorem_def_old)
+    elif "theorems-ams-extended" in document.get_module_list():
+        if document.del_local_layout(ackStar_theorem_def_new):
+            document.append_local_layout(ackStar_theorem_def_old)
+        if document.del_local_layout(ack_theorem_def_new):
+            document.append_local_layout(ack_theorem_def_old)
+
 ##
 # Conversion hub
 #
@@ -2906,11 +3141,13 @@ convert = [
     [635, [convert_crossref_package]],
     [636, []],
     [637, []],
-    [638, []]
+    [638, []],
+    [639, [convert_theorem_local_def]]
 ]
 
 
 revert = [
+    [638, [revert_theorem_local_def]],
     [637, [revert_xr]],
     [636, [revert_reflists]],
     [635, [revert_cleveref, revert_zref]],

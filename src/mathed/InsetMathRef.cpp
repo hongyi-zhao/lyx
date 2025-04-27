@@ -216,8 +216,10 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 	else if (commandname() == "formatted") {
 		if (use_refstyle)
 			features.require("refstyle");
-		else if (buffer().masterParams().xref_package == "cleveref")
+		else if (buffer_ && buffer().masterParams().xref_package == "cleveref")
 			features.require("cleveref");
+		else if (buffer_ && buffer().masterParams().xref_package == "zref")
+			features.require("zref-clever");
 		else
 			features.require("prettyref");
 	}
@@ -325,7 +327,7 @@ void InsetMathRef::write(TeXMathStream & os) const
 		os << '(' << from_ascii("\\ref{") << cell(0) << from_ascii("})");
 	}
 	else if (cmd == "formatted") {
-		if (!use_refstyle)
+		if (buffer_ && buffer().params().xref_package == "prettyref")
 			os << "\\prettyref{" << cell(0) << "}";
 		else {
 			odocstringstream ods;
@@ -336,8 +338,8 @@ void InsetMathRef::write(TeXMathStream & os) const
 			docstring const ref = ods.str();
 
 			/*
-			At the moment, the 'plural' and 'caps' options will
-			not work here. The reason is that we handle these as
+			At the moment, the 'plural', 'nolink' and 'caps' options will
+			not work here. Also ranges. The reason is that we handle these as
 			'internal' LyX argumemts, but those are not handled by
 			InsetCommandParams::getCommand, which is what is used
 			in createInsetMath_fromDialogStr to interpret the data

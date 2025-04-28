@@ -211,9 +211,12 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 	bool const use_refstyle =
 		buffer_ && buffer().params().xref_package == "refstyle";
 
-	if (commandname() == "vref" || commandname() == "vpageref")
-		features.require("varioref");
-	else if (commandname() == "formatted") {
+	if (commandname() == "vref" || commandname() == "vpageref") {
+		if (buffer_ && buffer().masterParams().xref_package == "zref")
+			features.require("zref-vario");
+		else
+			features.require("varioref");
+	} else if (commandname() == "formatted") {
 		if (use_refstyle)
 			features.require("refstyle");
 		else if (buffer_ && buffer().masterParams().xref_package == "cleveref")
@@ -308,6 +311,8 @@ void InsetMathRef::write(TeXMathStream & os) const
 	bool const use_refstyle =
 		buffer_ && buffer().params().xref_package == "refstyle";
 	bool special_case =  cmd == "formatted" ||
+			cmd == "vref" ||
+			cmd == "vpageref" ||
 			cmd == "labelonly" ||
 			(cmd == "eqref" && use_refstyle);
 	// we need to translate 'formatted' to prettyref or refstyle-type
@@ -318,6 +323,12 @@ void InsetMathRef::write(TeXMathStream & os) const
 	MathEnsurer ensurer(os, false);
 	if (!special_case) {
 		os << from_ascii("\\") << cmd << "{" << cell(0) << from_ascii("}");
+	}
+	else if (cmd == "vref" || cmd == "vpageref") {
+		os << from_ascii("\\");
+		if (buffer_ && buffer().params().xref_package == "zref")
+			os << "z";
+		os << cmd << "{" << cell(0) << from_ascii("}");
 	}
 	else if (use_refstyle && cmd == "eqref") {
 		// we advertise this as printing "(n)", so we'll do that, at least

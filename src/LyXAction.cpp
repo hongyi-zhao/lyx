@@ -2825,9 +2825,14 @@ void LyXAction::init()
  * \li Syntax: math-extern <LANG> [<COMMAND>]
  * \li Params: <LANG>: octave|maxima|maple|mathematica|script \n
                        where "script" stands for the external script (normalized
-                       expression will be passed)
+                       expression will be passed)\n
+               <COMMAND>: Particular command can be entered here. The way it will
+                          be used is language specific. E.g. for maxima it will
+                          be rewritten to the form:\n
+                          simpsum:true;tex(<COMMAND>(MATHED_EXPRESSION))}}
  * \li Origin: Andre, 24 Apr 2001
- * \li Sample: math-extern maple simplify
+ * \li Sample: math-extern maple simplify \n
+               math-extern maxima factor
  * \endvar
  */
 		{ LFUN_MATH_EXTERN, "math-extern", Noop, Math },

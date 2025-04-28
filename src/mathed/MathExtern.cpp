@@ -1102,13 +1102,23 @@ namespace {
 		return string::npos;
 	}
 
-	MathData pipeThroughMaxima(docstring const &, MathData const & ar)
+	MathData pipeThroughMaxima(docstring const &command, MathData const & ar)
 	{
 		odocstringstream os;
 		MaximaStream ms(os);
 		ms << ar;
 		docstring expr = os.str();
 		docstring const header = from_ascii("simpsum:true;");
+
+		docstring comm_left = from_ascii("tex(");
+		docstring comm_right = from_ascii(");");
+		// "simpsum:true;tex(COMMAND(EXPR));" if command (e.g. "factor") is present
+		if (command != "noextra") {
+			comm_left = comm_left + command + "(";
+			comm_right = ")" + comm_right;
+		}
+		int preplen = comm_left.length();
+		int headlen = header.length();
 
 		string out;
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
@@ -1120,8 +1130,8 @@ namespace {
 			// 2x;
 			//  ^
 			//
-			lyxerr << "checking expr: '" << to_utf8(expr) << "'" << endl;
-			docstring full = header + "tex(" + expr + ");";
+			docstring full = header + comm_left + expr + comm_right;
+			lyxerr << "checking input: '" << to_utf8(full) << "'" << endl;
 			out = captureOutput("maxima", to_utf8(full));
 
 			// leave loop if expression syntax is probably ok
@@ -1141,10 +1151,11 @@ namespace {
 			getline(is, line);
 			getline(is, line);
 			size_t pos = line.find('^');
-			lyxerr << "found caret at pos: '" << pos << "'" << endl;
+			//we print with header at lyxerr, but maxima won't show it in its error
+			lyxerr << "found caret at pos: '" << pos + headlen << "'" << endl;
 			if (pos == string::npos || pos < 4)
 				break; // caret position not found
-			pos -= 4; // skip the "tex(" part
+			pos -= preplen; // skip the "tex(command(" part (header is not printed by maxima)
 			if (expr[pos] == '*')
 				break; // two '*' in a row are definitely bad
 			expr.insert(pos, from_ascii("*"));

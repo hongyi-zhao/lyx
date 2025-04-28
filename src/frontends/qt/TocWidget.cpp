@@ -13,6 +13,7 @@
 
 #include "TocWidget.h"
 
+#include "BufferParams.h"
 #include "GuiApplication.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
@@ -181,10 +182,20 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
-	case LFUN_REFERENCE_TO_PARAGRAPH:
 	case LFUN_SECTION_SELECT:
 		status.setEnabled((bool)item.dit());
 		return true;
+	
+	case LFUN_REFERENCE_TO_PARAGRAPH: {
+		if (cmd.argument() == "cpageref" && cur.buffer()->params().xref_package != "cleveref"
+		     && cur.buffer()->params().xref_package != "zref") {
+			status.setEnabled(false);
+			break;
+			return true;
+		}
+		status.setEnabled((bool)item.dit());
+		return true;
+	}
 
 	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		// For labels in math, we need to supply the label as a string

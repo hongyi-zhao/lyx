@@ -174,6 +174,12 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(false);
 		return true;
 	}
+	if (cmd.argument() == "changetype cpageref"
+	     && buffer().params().xref_package != "cleveref"
+	     && buffer().params().xref_package != "zref") {
+		status.setEnabled(false);
+		return true;
+	}
 
 	if (cmd.getArg(0) != "ref")
 		return InsetCommand::getStatus(cur, cmd, status);
@@ -952,6 +958,7 @@ InsetRef::type_info const InsetRef::types[] = {
 	{ "ref",       N_("Standard"),              N_("Ref")},
 	{ "eqref",     N_("Equation"),              N_("EqRef")},
 	{ "pageref",   N_("Page Number"),           N_("Page")},
+	{ "cpageref",  N_("Prefixed Page Number"),  N_("PrefPage")},
 	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage")},
 	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text")},
 	{ "nameref",   N_("Reference to Name"),     N_("NameRef")},

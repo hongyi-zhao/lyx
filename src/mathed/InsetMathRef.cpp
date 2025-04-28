@@ -166,7 +166,12 @@ bool InsetMathRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "changetype")
 			status.setOnOff(from_ascii(cmd.getArg(1)) == commandname());
-		status.setEnabled(true);
+		if (cmd.getArg(1) == "cpageref")
+			status.setEnabled(buffer_
+				&& (buffer().params().xref_package == "cleveref"
+				    || buffer().params().xref_package == "zref"));
+		else
+			status.setEnabled(true);
 		return true;
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_INSET_SETTINGS:
@@ -225,6 +230,11 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 			features.require("zref-clever");
 		else
 			features.require("prettyref");
+	} else if (commandname() == "cpageref") {
+		if (buffer_ && buffer().masterParams().xref_package == "cleveref")
+			features.require("cleveref");
+		else if (buffer_ && buffer().masterParams().xref_package == "zref")
+			features.require("zref-clever");
 	}
 	// if eqref is used with refstyle, we do our own output
 	else if (commandname() == "eqref" && use_refstyle)
@@ -313,6 +323,7 @@ void InsetMathRef::write(TeXMathStream & os) const
 	bool special_case =  cmd == "formatted" ||
 			cmd == "vref" ||
 			cmd == "vpageref" ||
+			cmd == "cpageref" ||
 			cmd == "labelonly" ||
 			(cmd == "eqref" && use_refstyle);
 	// we need to translate 'formatted' to prettyref or refstyle-type
@@ -329,6 +340,17 @@ void InsetMathRef::write(TeXMathStream & os) const
 		if (buffer_ && buffer().params().xref_package == "zref")
 			os << "z";
 		os << cmd << "{" << cell(0) << from_ascii("}");
+	}
+	else if (cmd == "cpageref") {
+		os << from_ascii("\\");
+		if (buffer_ && buffer().params().xref_package == "zref")
+			os << "z";
+		if (buffer_ && (buffer().params().xref_package == "cleveref"
+		    || buffer().params().xref_package == "zref"))
+			os << cmd;
+		else
+			os << "pageref";
+		os << "{" << cell(0) << from_ascii("}");
 	}
 	else if (use_refstyle && cmd == "eqref") {
 		// we advertise this as printing "(n)", so we'll do that, at least
@@ -404,6 +426,7 @@ InsetMathRef::ref_type_info InsetMathRef::types[] = {
 	{ from_ascii("ref"),       from_ascii(N_("Standard[[mathref]]")),   from_ascii(N_("Ref: "))},
 	{ from_ascii("eqref"),     from_ascii(N_("Equation")),              from_ascii(N_("EqRef: "))},
 	{ from_ascii("pageref"),   from_ascii(N_("Page Number")),           from_ascii(N_("Page: "))},
+	{ from_ascii("cpageref"),  from_ascii(N_("Prefixed Page Number")),  from_ascii(N_("PrefPage: "))},
 	{ from_ascii("vpageref"),  from_ascii(N_("Textual Page Number")),   from_ascii(N_("TextPage: "))},
 	{ from_ascii("vref"),      from_ascii(N_("Standard+Textual Page")), from_ascii(N_("Ref+Text: "))},
 	{ from_ascii("formatted"), from_ascii(N_("PrettyRef")),             from_ascii(N_("FormatRef: "))},

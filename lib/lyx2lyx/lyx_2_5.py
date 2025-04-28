@@ -2835,6 +2835,29 @@ def revert_reflists(document):
         document.body[i : j + 1] = put_cmd_in_ert([cmd])
         i += 1
 
+    # check math refs
+    if package == "zref" or package == "cleveref":
+        regexp = re.compile(r".*(\\cpageref{).*")
+        i = 0
+        while True:
+            i = find_token(document.body, "\\begin_inset Formula", i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Can't find end of inset at line %d of body!" % i)
+                i += 1
+                continue
+            k = find_re(document.body, regexp, i, j)
+            if k != -1:
+                if package == "zref":
+                    need_zref_clever = True
+                    document.body[k] = document.body[k].replace("\\cpageref", "\\zcpageref")
+                else:
+                    need_cleveref = True
+                break
+            i = j
+
     # preamble
     if need_zref_clever:
         add_to_preamble(

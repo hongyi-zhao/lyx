@@ -1343,6 +1343,12 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_REFERENCE_TO_PARAGRAPH: {
+		if (contains(cmd.argument(), from_ascii("cpageref"))
+		     && buffer().params().xref_package != "cleveref"
+		     && buffer().params().xref_package != "zref") {
+			flag.setEnabled(false);
+			break;
+		}
 		vector<string> const pids = getVectorFromString(cmd.getArg(0));
 		for (string const & s : pids) {
 			int const id = convert<int>(s);

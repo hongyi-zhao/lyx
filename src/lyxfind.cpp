@@ -2123,6 +2123,7 @@ void static fillMissingUnicodesymbols()
 	addAccents("\\thaiSaraU", getutf8(0x0e38));
 	addAccents("\\thaiSaraUu", getutf8(0x0e39));
 	addAccents("\\thaiPhinthu", getutf8(0x0e3a));
+	addAccents("\\textbaht", getutf8(0x0e3f));
 	addAccents("\\thaiSaraE", getutf8(0x0e40));
 	addAccents("\\thaiSaraAe", getutf8(0x0e41));
 	addAccents("\\thaiSaraO", getutf8(0x0e42));

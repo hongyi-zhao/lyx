@@ -1070,8 +1070,8 @@ bool isAlphaSymbol(MathAtom const & at)
 		return true;
 
 	if (at->asFontInset()) {
-		MathData const & ar = at->asFontInset()->cell(0);
-		for (const auto & i : ar) {
+		MathData const & md = at->asFontInset()->cell(0);
+		for (const auto & i : md) {
 			if (!(i->asCharInset() ||
 			      (i->asSymbolInset() &&
 			       i->asSymbolInset()->isOrdAlpha())))
@@ -1083,17 +1083,17 @@ bool isAlphaSymbol(MathAtom const & at)
 }
 
 
-docstring asString(MathData const & ar)
+docstring asString(MathData const & md)
 {
 	odocstringstream os;
 	otexrowstream ots(os);
 	TeXMathStream ws(ots);
-	ws << ar;
+	ws << md;
 	return os.str();
 }
 
 
-void asArray(docstring const & str, MathData & ar, Parse::flags pf)
+void asMathData(docstring const & str, MathData & md, Parse::flags pf)
 {
 	// If the QUIET flag is set, we are going to parse for either
 	// a paste operation or a macro definition. We try to do the
@@ -1101,11 +1101,11 @@ void asArray(docstring const & str, MathData & ar, Parse::flags pf)
 
 	bool quiet = pf & Parse::QUIET;
 	bool macro = pf & Parse::MACRODEF;
-	if ((str.size() == 1 && quiet) || (!mathed_parse_cell(ar, str, pf) && quiet && !macro))
-		mathed_parse_cell(ar, str, pf | Parse::VERBATIM);
+	if ((str.size() == 1 && quiet) || (!mathed_parse_cell(md, str, pf) && quiet && !macro))
+		mathed_parse_cell(md, str, pf | Parse::VERBATIM);
 
 	// set the buffer of the MathData contents
-	ar.setContentsBuffer();
+	md.setContentsBuffer();
 }
 
 

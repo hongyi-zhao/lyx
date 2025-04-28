@@ -398,7 +398,7 @@ public:
 	///
 	bool parse(MathAtom & at);
 	///
-	bool parse(MathData & array, unsigned flags, mode_type mode);
+	bool parse(MathData & md, unsigned flags, mode_type mode);
 	///
 	bool parse1(InsetMathGrid & grid, unsigned flags, mode_type mode,
 		bool numbered);
@@ -724,19 +724,19 @@ void Parser::error(string const & msg)
 bool Parser::parse(MathAtom & at)
 {
 	skipSpaces();
-	MathData ar(buffer_);
-	parse(ar, false, InsetMath::UNDECIDED_MODE);
-	if (ar.size() != 1 || ar.front()->getType() == hullNone) {
+	MathData md(buffer_);
+	parse(md, false, InsetMath::UNDECIDED_MODE);
+	if (md.size() != 1 || md.front()->getType() == hullNone) {
 		if (!(mode_ & Parse::QUIET))
-			lyxerr << "unusual contents found: " << ar << endl;
-		at = MathAtom(new InsetMathPar(buffer_, ar));
+			lyxerr << "unusual contents found: " << md << endl;
+		at = MathAtom(new InsetMathPar(buffer_, md));
 		//if (at->nargs() > 0)
-		//	at.nucleus()->cell(0) = ar(buffer_);
+		//	at.nucleus()->cell(0) = md(buffer_);
 		//else
-		//	lyxerr << "unusual contents found: " << ar << endl;
+		//	lyxerr << "unusual contents found: " << md << endl;
 		success_ = false;
 	} else
-		at = ar[0];
+		at = md[0];
 	return success_;
 }
 
@@ -780,11 +780,11 @@ docstring Parser::parse_verbatim_item()
 }
 
 
-bool Parser::parse(MathData & array, unsigned flags, mode_type mode)
+bool Parser::parse(MathData & md, unsigned flags, mode_type mode)
 {
 	InsetMathGrid grid(buffer_, 1, 1);
 	parse1(grid, flags, mode, false);
-	array = grid.cell(0);
+	md = grid.cell(0);
 	return success_;
 }
 
@@ -853,9 +853,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		if (flags & FLAG_OPTION) {
 			if (t.cat() == catOther && t.character() == '[') {
-				MathData ar(buf);
-				parse(ar, FLAG_BRACK_LAST, mode);
-				cell->append(ar);
+				MathData md(buf);
+				parse(md, FLAG_BRACK_LAST, mode);
+				cell->append(md);
 			} else {
 				// no option found, put back token and we are done
 				putback();
@@ -945,14 +945,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new InsetMathSpace(buf, string(1, t.character()), "")));
 
 		else if (t.cat() == catBegin) {
-			MathData ar(buf);
-			parse(ar, FLAG_BRACE_LAST, mode);
+			MathData md(buf);
+			parse(md, FLAG_BRACE_LAST, mode);
 			// do not create a BraceInset if they were written by LyX
 			// this helps to keep the annoyance of  "a choose b"  to a minimum
-			if (ar.size() == 1 && ar[0]->extraBraces())
-				cell->append(ar);
+			if (md.size() == 1 && md[0]->extraBraces())
+				cell->append(md);
 			else
-				cell->push_back(MathAtom(new InsetMathBrace(buf, ar)));
+				cell->push_back(MathAtom(new InsetMathBrace(buf, md)));
 		}
 
 		else if (t.cat() == catEnd) {
@@ -1426,31 +1426,31 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "sqrt") {
-			MathData ar(buf);
-			parse(ar, FLAG_OPTION, mode);
-			if (!ar.empty()) {
+			MathData md(buf);
+			parse(md, FLAG_OPTION, mode);
+			if (!md.empty()) {
 				cell->push_back(MathAtom(new InsetMathRoot(buf)));
-				cell->back().nucleus()->cell(1) = ar;
+				cell->back().nucleus()->cell(1) = md;
 			} else
 				cell->push_back(MathAtom(new InsetMathSqrt(buf)));
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "cancelto") {
-			MathData ar(buf);
-			parse(ar, FLAG_ITEM, mode);
+			MathData md(buf);
+			parse(md, FLAG_ITEM, mode);
 				cell->push_back(MathAtom(new InsetMathCancelto(buf)));
-				cell->back().nucleus()->cell(1) = ar;
+				cell->back().nucleus()->cell(1) = md;
 				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "unit") {
 			// Allowed formats \unit[val]{unit}
-			MathData ar(buf);
-			parse(ar, FLAG_OPTION, mode);
-			if (!ar.empty()) {
+			MathData md(buf);
+			parse(md, FLAG_OPTION, mode);
+			if (!md.empty()) {
 				cell->push_back(MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNIT)));
-				cell->back().nucleus()->cell(0) = ar;
+				cell->back().nucleus()->cell(0) = md;
 				parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
 			} else {
 				cell->push_back(MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNIT, 1)));
@@ -1460,11 +1460,11 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "unitfrac") {
 			// Here allowed formats are \unitfrac[val]{num}{denom}
-			MathData ar(buf);
-			parse(ar, FLAG_OPTION, mode);
-			if (!ar.empty()) {
+			MathData md(buf);
+			parse(md, FLAG_OPTION, mode);
+			if (!md.empty()) {
 				cell->push_back(MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNITFRAC, 3)));
-				cell->back().nucleus()->cell(2) = ar;
+				cell->back().nucleus()->cell(2) = md;
 			} else {
 				cell->push_back(MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNITFRAC)));
 			}
@@ -1492,12 +1492,12 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "sideset") {
 			// Here allowed formats are \sideset{_{bl}^{tl}}{_{br}^{tr}}{operator}
-			MathData ar[2]= { MathData(buf), MathData(buf) };
+			MathData md[2]= { MathData(buf), MathData(buf) };
 			InsetMathScript * script[2] = {0, 0};
 			for (int i = 0; i < 2; ++i) {
-				parse(ar[i], FLAG_ITEM, mode);
-				if (ar[i].size() == 1)
-					script[i] = ar[i][0].nucleus()->asScriptInset();
+				parse(md[i], FLAG_ITEM, mode);
+				if (md[i].size() == 1)
+					script[i] = md[i][0].nucleus()->asScriptInset();
 			}
 			bool const hasscript[2] = {script[0] != nullptr, script[1] != nullptr};
 			cell->push_back(MathAtom(new InsetMathSideset(buf, hasscript[0], hasscript[1])));
@@ -1507,24 +1507,24 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				if (script[0]->hasUp())
 					cell->back().nucleus()->cell(2) = script[0]->up();
 			} else
-				cell->back().nucleus()->cell(1) = ar[0];
+				cell->back().nucleus()->cell(1) = md[0];
 			if (hasscript[1]) {
 				if (script[1]->hasDown())
 					cell->back().nucleus()->cell(2 + hasscript[0]) = script[1]->down();
 				if (script[1]->hasUp())
 					cell->back().nucleus()->cell(3 + hasscript[0]) = script[1]->up();
 			} else
-				cell->back().nucleus()->cell(2 + hasscript[0]) = ar[1];
+				cell->back().nucleus()->cell(2 + hasscript[0]) = md[1];
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "stackrel") {
 			// Here allowed formats are \stackrel[subscript]{superscript}{operator}
-			MathData ar(buf);
-			parse(ar, FLAG_OPTION, mode);
-			cell->push_back(MathAtom(new InsetMathStackrel(buf, !ar.empty())));
-			if (!ar.empty())
-				cell->back().nucleus()->cell(2) = ar;
+			MathData md(buf);
+			parse(md, FLAG_OPTION, mode);
+			cell->push_back(MathAtom(new InsetMathStackrel(buf, !md.empty())));
+			if (!md.empty())
+				cell->back().nucleus()->cell(2) = md;
 			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
@@ -1569,14 +1569,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// can't handle \|
 			// FIXME: fix this in InsetMathDelim itself!
 			docstring const l = tl.cs() == "|" ? from_ascii("Vert") : tl.asString();
-			MathData ar(buf);
-			parse(ar, FLAG_RIGHT, mode);
+			MathData md(buf);
+			parse(md, FLAG_RIGHT, mode);
 			if (!good())
 				break;
 			skipSpaces();
 			Token const & tr = getToken();
 			docstring const r = tr.cs() == "|" ? from_ascii("Vert") : tr.asString();
-			cell->push_back(MathAtom(new InsetMathDelim(buf, l, r, ar)));
+			cell->push_back(MathAtom(new InsetMathDelim(buf, l, r, md)));
 		}
 
 		else if (t.cs() == "right") {
@@ -1793,13 +1793,13 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "label") {
 			// FIXME: This is swallowed in inline formulas
 			docstring label = parse_verbatim_item();
-			MathData ar(buf);
-			asArray(label, ar);
+			MathData md(buf);
+			asMathData(label, md);
 			if (grid.asHullInset()) {
 				grid.asHullInset()->label(cellrow, label);
 			} else {
 				cell->push_back(createInsetMath(t.cs(), buf));
-				cell->push_back(MathAtom(new InsetMathBrace(buf, ar)));
+				cell->push_back(MathAtom(new InsetMathBrace(buf, md)));
 			}
 		}
 
@@ -1895,9 +1895,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				// Since the Length class cannot use length variables
 				// we must not create an InsetMathSpace.
 				cell->push_back(MathAtom(new InsetMathMacro(buf, name)));
-				MathData ar(buf);
-				mathed_parse_cell(ar, '{' + arg + '}', mode_);
-				cell->append(ar);
+				MathData md(buf);
+				mathed_parse_cell(md, '{' + arg + '}', mode_);
+				cell->append(md);
 			}
 		}
 
@@ -1914,12 +1914,12 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				} else {
 					docstring const arg = parse_verbatim_item();
 					cell->push_back(MathAtom(new InsetMathMacro(buf, t.cs())));
-					MathData ar(buf);
-					mathed_parse_cell(ar, '[' + opt + ']', mode_);
-					cell->append(ar);
-					ar = MathData(buf);
-					mathed_parse_cell(ar, '{' + arg + '}', mode_);
-					cell->append(ar);
+					MathData md(buf);
+					mathed_parse_cell(md, '[' + opt + ']', mode_);
+					cell->append(md);
+					md = MathData(buf);
+					mathed_parse_cell(md, '{' + arg + '}', mode_);
+					cell->append(md);
 				}
 			}
 			else {
@@ -1930,8 +1930,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 #if 0
 		else if (t.cs() == "infer") {
-			MathData ar(buf);
-			parse(ar, FLAG_OPTION, mode);
+			MathData md(buf);
+			parse(md, FLAG_OPTION, mode);
 			cell->push_back(createInsetMath(t.cs(), buf));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
 		}
@@ -2152,16 +2152,16 @@ std::string latexkeys::mathml_type() const
 }
 
 
-bool mathed_parse_cell(MathData & ar, docstring const & str, Parse::flags f)
+bool mathed_parse_cell(MathData & md, docstring const & str, Parse::flags f)
 {
-	return Parser(str, f, ar.buffer()).parse(ar, 0, (f & Parse::TEXTMODE) ?
+	return Parser(str, f, md.buffer()).parse(md, 0, (f & Parse::TEXTMODE) ?
 				InsetMath::TEXT_MODE : InsetMath::MATH_MODE);
 }
 
 
-bool mathed_parse_cell(MathData & ar, istream & is, Parse::flags f)
+bool mathed_parse_cell(MathData & md, istream & is, Parse::flags f)
 {
-	return Parser(is, f, ar.buffer()).parse(ar, 0, (f & Parse::TEXTMODE) ?
+	return Parser(is, f, md.buffer()).parse(md, 0, (f & Parse::TEXTMODE) ?
 				InsetMath::TEXT_MODE : InsetMath::MATH_MODE);
 }
 

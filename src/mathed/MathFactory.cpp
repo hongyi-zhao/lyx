@@ -777,7 +777,7 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 }
 
 
-bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
+bool createInsetMath_fromDialogStr(docstring const & str, MathData & md)
 {
 	// An example str:
 	// "ref LatexCommand ref\nreference \"sec:Title\"\n\\end_inset\n\n";
@@ -790,7 +790,7 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 		InsetCommand::string2params(to_utf8(str), icp);
 		Encoding const * const utf8 = encodings.fromLyXName("utf8");
 		OutputParams op(utf8);
-		mathed_parse_cell(ar, icp.getCommand(op, false, true));
+		mathed_parse_cell(md, icp.getCommand(op, false, true));
 	} else if (name == "mathspace") {
 		InsetSpaceParams isp(true);
 		InsetSpace::string2params(to_utf8(str), isp);
@@ -800,19 +800,19 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 		Encoding const * const ascii = encodings.fromLyXName("ascii");
 		OutputParams op(ascii);
 		is.latex(os, op);
-		mathed_parse_cell(ar, ods.str());
-		if (ar.size() == 2) {
+		mathed_parse_cell(md, ods.str());
+		if (md.size() == 2) {
 			// remove "{}"
-			if (ar[1].nucleus()->asBraceInset())
-				ar.pop_back();
+			if (md[1].nucleus()->asBraceInset())
+				md.pop_back();
 		}
 	} else
 		return false;
 
-	if (ar.size() != 1)
+	if (md.size() != 1)
 		return false;
 
-	return ar[0].nucleus();
+	return md[0].nucleus();
 }
 
 

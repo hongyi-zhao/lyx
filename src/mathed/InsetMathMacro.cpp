@@ -66,7 +66,7 @@ public:
 		: InsetMath(&mathMacro->buffer()), mathMacro_(mathMacro), idx_(idx),
 		  def_(&mathMacro->buffer())
 	{
-			asArray(def, def_);
+			asMathData(def, def_);
 	}
 	///
 	void setBuffer(Buffer & buffer) override
@@ -101,7 +101,7 @@ public:
 
 		MathRow::Element e_beg(mi, MathRow::BEGIN);
 		e_beg.inset = this;
-		e_beg.ar = &mathMacro_->cell(idx_);
+		e_beg.md = &mathMacro_->cell(idx_);
 		mrow.push_back(e_beg);
 
 		mathMacro_->macro()->unlock();
@@ -120,7 +120,7 @@ public:
 
 		MathRow::Element e_end(mi, MathRow::END);
 		e_end.inset = this;
-		e_end.ar = &mathMacro_->cell(idx_);
+		e_end.md = &mathMacro_->cell(idx_);
 		mrow.push_back(e_end);
 
 		return has_contents;
@@ -286,17 +286,17 @@ void InsetMathMacro::Private::updateChildren(InsetMathMacro * owner)
 void InsetMathMacro::Private::updateNestedChildren(InsetMathMacro * owner, InsetMathNest * ni)
 {
 	for (size_t i = 0; i < ni->nargs(); ++i) {
-		MathData & ar = ni->cell(i);
-		for (size_t j = 0; j < ar.size(); ++j) {
+		MathData & md = ni->cell(i);
+		for (size_t j = 0; j < md.size(); ++j) {
 			InsetArgumentProxy * ap = dynamic_cast
-				<InsetArgumentProxy *>(ar[j].nucleus());
+				<InsetArgumentProxy *>(md[j].nucleus());
 			if (ap) {
 				InsetMathMacro::Private * md = ap->owner()->d;
 				if (md->macro_)
 					md->macro_ = &md->macroBackup_;
 				ap->setOwner(owner);
 			}
-			InsetMathNest * imn = ar[j].nucleus()->asNestInset();
+			InsetMathNest * imn = md[j].nucleus()->asNestInset();
 			if (imn)
 				updateNestedChildren(owner, imn);
 		}
@@ -364,7 +364,7 @@ bool InsetMathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	bool has_contents = d->expanded_.addToMathRow(mrow, mi);
 	d->macro_->unlock();
 
-	// if there was no contents and the array is editable, then we
+	// if there was no contents and the cell is editable, then we
 	// insert a grey box instead.
 	if (!has_contents && mi.base.macro_nesting == 1) {
 		// mathclass is unknown because it is irrelevant for spacing
@@ -741,7 +741,7 @@ void InsetMathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 			d->expanded_.updateMacros(cur, mc, utype, nesting);
 	}
 	// get definition for list edit mode
-	asArray(display.empty() ? d->macro_->definition() : display,
+	asMathData(display.empty() ? d->macro_->definition() : display,
 		d->definition_, Parse::QUIET | Parse::MACRODEF);
 }
 
@@ -782,7 +782,7 @@ void InsetMathMacro::draw(PainterInfo & pi, int x, int y) const
 
 		// draw definition
 		d->definition_.draw(pi, x, y);
-		Dimension const & defDim = coords.getArrays().dim(&d->definition_);
+		Dimension const & defDim = coords.cells().dim(&d->definition_);
 		y += max(fontDim.des, defDim.des);
 
 		// draw parameters
@@ -792,7 +792,7 @@ void InsetMathMacro::draw(PainterInfo & pi, int x, int y) const
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			// position of label
-			Dimension const & cdim = coords.getArrays().dim(&cell(i));
+			Dimension const & cdim = coords.cells().dim(&cell(i));
 			x = expx + 1;
 			y += max(fontDim.asc, cdim.asc) + 1;
 
@@ -829,7 +829,7 @@ void InsetMathMacro::setDisplayMode(InsetMathMacro::DisplayMode mode, int appeti
 		// transfer name if changing from or to DISPLAY_UNFOLDED
 		if (mode == DISPLAY_UNFOLDED) {
 			cells_.resize(1, MathData(buffer_));
-			asArray(d->name_, cell(0));
+			asMathData(d->name_, cell(0));
 		} else if (d->displayMode_ == DISPLAY_UNFOLDED) {
 			d->name_ = asString(cell(0));
 			cells_.clear();
@@ -865,7 +865,7 @@ bool InsetMathMacro::validName() const
 
 	// converting back and force doesn't swallow anything?
 	/*MathData ma;
-	asArray(n, ma);
+	asMathData(n, ma);
 	if (asString(ma) != n)
 		return false;*/
 
@@ -991,9 +991,9 @@ void InsetMathMacro::validate(LaTeXFeatures & features) const
 				d->definition_.validate(features);
 		} else if (displayMode() == DISPLAY_INIT) {
 			if (MacroData const * data = buffer().getMacro(name())) {
-				MathData ar(const_cast<Buffer *>(&buffer()));
-				asArray(data->definition(), ar);
-				ar.validate(features);
+				MathData md(const_cast<Buffer *>(&buffer()));
+				asMathData(data->definition(), md);
+				md.validate(features);
 			}
 		}
 	}
@@ -1441,7 +1441,7 @@ bool InsetMathMacro::insertCompletion(Cursor & cur, docstring const & s, bool fi
 
 	// append completion
 	docstring newName = name() + s;
-	asArray(newName, cell(0));
+	asMathData(newName, cell(0));
 	cur.bv().cursor().pos() = name().size();
 	cur.screenUpdateFlags(Update::SinglePar);
 

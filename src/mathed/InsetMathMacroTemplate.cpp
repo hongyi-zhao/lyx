@@ -427,7 +427,7 @@ InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf, docstring const & n
 		lyxerr << "InsetMathMacroTemplate::InsetMathMacroTemplate: wrong # of arguments: "
 			<< numargs_ << endl;
 
-	asArray(name, cell(0));
+	asMathData(name, cell(0));
 	optionalValues_.resize(9, MathData(buffer_));
 	for (int i = 0; i < optionals_; ++i)
 		cell(optIdx(i)) = optionalValues_[i];
@@ -440,15 +440,15 @@ InsetMathMacroTemplate::InsetMathMacroTemplate(Buffer * buf, docstring const & n
 
 bool InsetMathMacroTemplate::fromString(docstring const & str)
 {
-	MathData ar(buffer_);
-	mathed_parse_cell(ar, str, Parse::NORMAL);
-	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
-		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
-		asArray(from_ascii("invalidmacro"), cell(0));
+	MathData md(buffer_);
+	mathed_parse_cell(md, str, Parse::NORMAL);
+	if (md.size() != 1 || !md[0]->asMacroTemplate()) {
+		lyxerr << "Cannot read macro from '" << md << "'" << endl;
+		asMathData(from_ascii("invalidmacro"), cell(0));
 		// The macro template does not make sense after this.
 		return false;
 	}
-	operator=( *(ar[0]->asMacroTemplate()) );
+	operator=( *(md[0]->asMacroTemplate()) );
 
 	updateLook();
 	return true;
@@ -1174,14 +1174,14 @@ bool InsetMathMacroTemplate::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetMathMacroTemplate::read(Lexer & lex)
 {
-	MathData ar(buffer_);
-	mathed_parse_cell(ar, lex.getStream(), Parse::TRACKMACRO);
-	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
-		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
-		lyxerr << "Read: " << to_utf8(asString(ar)) << endl;
+	MathData md(buffer_);
+	mathed_parse_cell(md, lex.getStream(), Parse::TRACKMACRO);
+	if (md.size() != 1 || !md[0]->asMacroTemplate()) {
+		lyxerr << "Cannot read macro from '" << md << "'" << endl;
+		lyxerr << "Read: " << to_utf8(asString(md)) << endl;
 		return;
 	}
-	operator=( *(ar[0]->asMacroTemplate()) );
+	operator=( *(md[0]->asMacroTemplate()) );
 
 	updateLook();
 }
@@ -1310,7 +1310,7 @@ bool InsetMathMacroTemplate::validName() const
 
 	// converting back and force doesn't swallow anything?
 	/*MathData ma;
-	asArray(n, ma);
+	asMathData(n, ma);
 	if (asString(ma) != n)
 		return false;*/
 

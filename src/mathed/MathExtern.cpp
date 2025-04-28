@@ -81,13 +81,13 @@ static char const * function_names[] = {
 typedef bool TestItemFunc(MathAtom const &);
 
 // define a function for replacing subexpressions
-typedef MathAtom ReplaceArgumentFunc(const MathData & ar);
+typedef MathAtom ReplaceArgumentFunc(const MathData & md);
 
 
 
 // try to extract a super/subscript
 // modify iterator position to point behind the thing
-bool extractScript(MathData & ar,
+bool extractScript(MathData & md,
 	MathData::iterator & pos, MathData::iterator last, bool superscript)
 {
 	// nothing to get here
@@ -103,7 +103,7 @@ bool extractScript(MathData & ar,
 		return false;
 
 	// it is a scriptinset, use it.
-	ar.push_back(*pos);
+	md.push_back(*pos);
 	++pos;
 	return true;
 }
@@ -111,7 +111,7 @@ bool extractScript(MathData & ar,
 
 // try to extract an "argument" to some function.
 // returns position behind the argument
-MathData::iterator extractArgument(MathData & ar,
+MathData::iterator extractArgument(MathData & md,
 	MathData::iterator pos, MathData::iterator last,
 	ExternalMath kind, bool function = false)
 {
@@ -129,21 +129,21 @@ MathData::iterator extractArgument(MathData & ar,
 			MathData::const_iterator cur = arg.begin();
 			MathData::const_iterator end = arg.end();
 			while (cur != end)
-				ar.push_back(*cur++);
+				md.push_back(*cur++);
 		} else
-			ar.push_back(*pos);
+			md.push_back(*pos);
 		++pos;
 		if (pos == last)
 			return pos;
 		// if there's one, get following superscript only if this
 		// isn't a function argument
 		if (!function)
-			extractScript(ar, pos, last, true);
+			extractScript(md, pos, last, true);
 		return pos;
 	}
 
 	// always take the first thing, no matter what it is
-	ar.push_back(*pos);
+	md.push_back(*pos);
 
 	// go ahead if possible
 	++pos;
@@ -152,7 +152,7 @@ MathData::iterator extractArgument(MathData & ar,
 
 	// if the next item is a super/subscript, it most certainly belongs
 	// to the thing we have
-	extractScript(ar, pos, last, false);
+	extractScript(md, pos, last, false);
 	if (pos == last)
 		return pos;
 
@@ -161,7 +161,7 @@ MathData::iterator extractArgument(MathData & ar,
 	//for (MathData::iterator it = pos + 1; it != last; ++it) {
 	//	// always take the first thing, no matter
 	//	if (it == pos) {
-	//		ar.push_back(*it);
+	//		md.push_back(*it);
 	//		continue;
 	//	}
 	//}
@@ -181,40 +181,40 @@ docstring charSequence
 }
 
 
-void extractStrings(MathData & ar)
+void extractStrings(MathData & md)
 {
-	//lyxerr << "\nStrings from: " << ar << endl;
-	for (size_t i = 0; i < ar.size(); ++i) {
-		if (!ar[i]->asCharInset())
+	//lyxerr << "\nStrings from: " << md << endl;
+	for (size_t i = 0; i < md.size(); ++i) {
+		if (!md[i]->asCharInset())
 			continue;
-		docstring s = charSequence(ar.begin() + i, ar.end());
-		ar[i] = MathAtom(new InsetMathString(ar.buffer(), s));
-		ar.erase(i + 1, i + s.size());
+		docstring s = charSequence(md.begin() + i, md.end());
+		md[i] = MathAtom(new InsetMathString(md.buffer(), s));
+		md.erase(i + 1, i + s.size());
 	}
-	//lyxerr << "\nStrings to: " << ar << endl;
+	//lyxerr << "\nStrings to: " << md << endl;
 }
 
 
-void extractMatrices(MathData & ar)
+void extractMatrices(MathData & md)
 {
-	//lyxerr << "\nMatrices from: " << ar << endl;
+	//lyxerr << "\nMatrices from: " << md << endl;
 	// first pass for explicitly delimited stuff
-	for (size_t i = 0; i < ar.size(); ++i) {
-		InsetMathDelim const * const inset = ar[i]->asDelimInset();
+	for (size_t i = 0; i < md.size(); ++i) {
+		InsetMathDelim const * const inset = md[i]->asDelimInset();
 		if (!inset)
 			continue;
-		MathData const & arr = inset->cell(0);
-		if (arr.size() != 1)
+		MathData const & mdi = inset->cell(0);
+		if (mdi.size() != 1)
 			continue;
-		if (!arr.front()->asGridInset())
+		if (!mdi.front()->asGridInset())
 			continue;
-		ar[i] = MathAtom(new InsetMathMatrix(*(arr.front()->asGridInset()),
+		md[i] = MathAtom(new InsetMathMatrix(*(mdi.front()->asGridInset()),
 		                 inset->left_, inset->right_));
 	}
 
 	// second pass for AMS "pmatrix" etc
-	for (size_t i = 0; i < ar.size(); ++i) {
-		InsetMathAMSArray const * const inset = ar[i]->asAMSArrayInset();
+	for (size_t i = 0; i < md.size(); ++i) {
+		InsetMathAMSArray const * const inset = md[i]->asAMSArrayInset();
 		if (inset) {
 			string left = inset->name_left();
 			if (left == "Vert")
@@ -222,10 +222,10 @@ void extractMatrices(MathData & ar)
 			string right = inset->name_right();
 			if (right == "Vert")
 				right = "]";
-			ar[i] = MathAtom(new InsetMathMatrix(*inset, from_ascii(left), from_ascii(right)));
+			md[i] = MathAtom(new InsetMathMatrix(*inset, from_ascii(left), from_ascii(right)));
 		}
 	}
-	//lyxerr << "\nMatrices to: " << ar << endl;
+	//lyxerr << "\nMatrices to: " << md << endl;
 }
 
 
@@ -269,9 +269,9 @@ bool extractFunctionName(MathAtom const & at, docstring & str)
 	}
 	if (at->asFontInset() && at->name() == "mathrm") {
 		// assume it is well known...
-		MathData const & ar = at->asFontInset()->cell(0);
-		str = charSequence(ar.begin(), ar.end());
-		return ar.size() == str.size();
+		MathData const & md = at->asFontInset()->cell(0);
+		str = charSequence(md.begin(), md.end());
+		return md.size() == str.size();
 	}
 	return false;
 }
@@ -324,28 +324,28 @@ MathData::iterator endNestSearch(
 
 // replace nested sequences by a real Insets
 void replaceNested(
-	MathData & ar,
+	MathData & md,
 	TestItemFunc testOpen,
 	TestItemFunc testClose,
 	ReplaceArgumentFunc replaceArg)
 {
-	Buffer * buf = ar.buffer();
+	Buffer * buf = md.buffer();
 	// use indices rather than iterators for the loop  because we are going
-	// to modify the array.
-	for (size_t i = 0; i < ar.size(); ++i) {
+	// to modify the data.
+	for (size_t i = 0; i < md.size(); ++i) {
 		// check whether this is the begin of the sequence
-		if (!testOpen(ar[i]))
+		if (!testOpen(md[i]))
 			continue;
 
 		// search end of sequence
-		MathData::iterator it = ar.begin() + i;
-		MathData::iterator jt = endNestSearch(it, ar.end(), testOpen, testClose);
-		if (jt == ar.end())
+		MathData::iterator it = md.begin() + i;
+		MathData::iterator jt = endNestSearch(it, md.end(), testOpen, testClose);
+		if (jt == md.end())
 			continue;
 
 		// replace the original stuff by the new inset
-		ar[i] = replaceArg(MathData(buf, it + 1, jt));
-		ar.erase(it + 1, jt + 1);
+		md[i] = replaceArg(MathData(buf, it + 1, jt));
+		md.erase(it + 1, jt + 1);
 	}
 }
 
@@ -356,12 +356,12 @@ void replaceNested(
 // front of super...
 //
 
-void splitScripts(MathData & ar)
+void splitScripts(MathData & md)
 {
-	Buffer * buf = ar.buffer();
-	//lyxerr << "\nScripts from: " << ar << endl;
-	for (size_t i = 0; i < ar.size(); ++i) {
-		InsetMathScript const * script = ar[i]->asScriptInset();
+	Buffer * buf = md.buffer();
+	//lyxerr << "\nScripts from: " << md << endl;
+	for (size_t i = 0; i < md.size(); ++i) {
+		InsetMathScript const * script = md[i]->asScriptInset();
 
 		// is this a script inset and do we also have a superscript?
 		if (!script || !script->hasUp())
@@ -379,7 +379,7 @@ void splitScripts(MathData & ar)
 		}
 
 		// create extra script inset and move superscript over
-		InsetMathScript * p = ar[i].nucleus()->asScriptInset();
+		InsetMathScript * p = md[i].nucleus()->asScriptInset();
 		auto q = make_unique<InsetMathScript>(buf, true);
 		swap(q->up(), p->up());
 		p->removeScript(true);
@@ -389,16 +389,16 @@ void splitScripts(MathData & ar)
 			MathData arg(p->nuc());
 			MathData::const_iterator it = arg.begin();
 			MathData::const_iterator et = arg.end();
-			ar.erase(i);
+			md.erase(i);
 			while (it != et)
-				ar.insert(i++, *it++);
+				md.insert(i++, *it++);
 		} else
 			++i;
 
 		// insert new inset behind
-		ar.insert(i, MathAtom(q.release()));
+		md.insert(i, MathAtom(q.release()));
 	}
-	//lyxerr << "\nScripts to: " << ar << endl;
+	//lyxerr << "\nScripts to: " << md << endl;
 }
 
 
@@ -406,36 +406,36 @@ void splitScripts(MathData & ar)
 // extract exp(...)
 //
 
-void extractExps(MathData & ar)
+void extractExps(MathData & md)
 {
-	Buffer * buf = ar.buffer();
-	//lyxerr << "\nExps from: " << ar << endl;
-	for (size_t i = 0; i + 1 < ar.size(); ++i) {
+	Buffer * buf = md.buffer();
+	//lyxerr << "\nExps from: " << md << endl;
+	for (size_t i = 0; i + 1 < md.size(); ++i) {
 		// is this 'e'?
-		if (ar[i]->getChar() != 'e')
+		if (md[i]->getChar() != 'e')
 			continue;
 
 		// we need an exponent but no subscript
-		InsetMathScript const * sup = ar[i + 1]->asScriptInset();
+		InsetMathScript const * sup = md[i + 1]->asScriptInset();
 		if (!sup || sup->hasDown())
 			continue;
 
 		// create a proper exp-inset as replacement
-		ar[i] = MathAtom(new InsetMathExFunc(buf, from_ascii("exp"), sup->cell(1)));
-		ar.erase(i + 1);
+		md[i] = MathAtom(new InsetMathExFunc(buf, from_ascii("exp"), sup->cell(1)));
+		md.erase(i + 1);
 	}
-	//lyxerr << "\nExps to: " << ar << endl;
+	//lyxerr << "\nExps to: " << md << endl;
 }
 
 
 //
 // extract det(...)  from |matrix|
 //
-void extractDets(MathData & ar)
+void extractDets(MathData & md)
 {
-	Buffer * buf = ar.buffer();
-	//lyxerr << "\ndet from: " << ar << endl;
-	for (MathData::iterator it = ar.begin(); it != ar.end(); ++it) {
+	Buffer * buf = md.buffer();
+	//lyxerr << "\ndet from: " << md << endl;
+	for (MathData::iterator it = md.begin(); it != md.end(); ++it) {
 		InsetMathDelim const * del = (*it)->asDelimInset();
 		if (!del)
 			continue;
@@ -443,7 +443,7 @@ void extractDets(MathData & ar)
 			continue;
 		*it = MathAtom(new InsetMathExFunc(buf, from_ascii("det"), del->cell(0)));
 	}
-	//lyxerr << "\ndet to: " << ar << endl;
+	//lyxerr << "\ndet to: " << md << endl;
 }
 
 
@@ -471,21 +471,21 @@ docstring digitSequence
 }
 
 
-void extractNumbers(MathData & ar)
+void extractNumbers(MathData & md)
 {
-	//lyxerr << "\nNumbers from: " << ar << endl;
-	for (size_t i = 0; i < ar.size(); ++i) {
-		if (!ar[i]->asCharInset())
+	//lyxerr << "\nNumbers from: " << md << endl;
+	for (size_t i = 0; i < md.size(); ++i) {
+		if (!md[i]->asCharInset())
 			continue;
-		if (!isDigitOrSimilar(ar[i]->asCharInset()->getChar()))
+		if (!isDigitOrSimilar(md[i]->asCharInset()->getChar()))
 			continue;
 
-		docstring s = digitSequence(ar.begin() + i, ar.end());
+		docstring s = digitSequence(md.begin() + i, md.end());
 
-		ar[i] = MathAtom(new InsetMathNumber(ar.buffer(), s));
-		ar.erase(i + 1, i + s.size());
+		md[i] = MathAtom(new InsetMathNumber(md.buffer(), s));
+		md.erase(i + 1, i + s.size());
 	}
-	//lyxerr << "\nNumbers to: " << ar << endl;
+	//lyxerr << "\nNumbers to: " << md << endl;
 }
 
 
@@ -506,10 +506,10 @@ bool testCloseParen(MathAtom const & at)
 }
 
 
-MathAtom replaceParenDelims(const MathData & ar)
+MathAtom replaceParenDelims(const MathData & md)
 {
-	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(ar.buffer()),
-		from_ascii("("), from_ascii(")"), ar, true));
+	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(md.buffer()),
+		from_ascii("("), from_ascii(")"), md, true));
 }
 
 
@@ -525,10 +525,10 @@ bool testCloseBracket(MathAtom const & at)
 }
 
 
-MathAtom replaceBracketDelims(const MathData & ar)
+MathAtom replaceBracketDelims(const MathData & md)
 {
-	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(ar.buffer()),
-		from_ascii("["), from_ascii("]"), ar, true));
+	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(md.buffer()),
+		from_ascii("["), from_ascii("]"), md, true));
 }
 
 
@@ -544,10 +544,10 @@ bool testCloseVert(MathAtom const & at)
 }
 
 
-MathAtom replaceVertDelims(const MathData & ar)
+MathAtom replaceVertDelims(const MathData & md)
 {
-	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(ar.buffer()),
-		from_ascii("lvert"), from_ascii("rvert"), ar, true));
+	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(md.buffer()),
+		from_ascii("lvert"), from_ascii("rvert"), md, true));
 }
 
 
@@ -563,22 +563,22 @@ bool testCloseAngled(MathAtom const & at)
 }
 
 
-MathAtom replaceAngledDelims(const MathData & ar)
+MathAtom replaceAngledDelims(const MathData & md)
 {
-	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(ar.buffer()),
-		from_ascii("langle"), from_ascii("rangle"), ar, true));
+	return MathAtom(new InsetMathDelim(const_cast<Buffer *>(md.buffer()),
+		from_ascii("langle"), from_ascii("rangle"), md, true));
 }
 
 
 // replace '('...')', '['...']', '|'...'|', and '<'...'>' sequences by a real InsetMathDelim
-void extractDelims(MathData & ar)
+void extractDelims(MathData & md)
 {
-	//lyxerr << "\nDelims from: " << ar << endl;
-	replaceNested(ar, testOpenParen, testCloseParen, replaceParenDelims);
-	replaceNested(ar, testOpenBracket, testCloseBracket, replaceBracketDelims);
-	replaceNested(ar, testOpenVert, testCloseVert, replaceVertDelims);
-	replaceNested(ar, testOpenAngled, testCloseAngled, replaceAngledDelims);
-	//lyxerr << "\nDelims to: " << ar << endl;
+	//lyxerr << "\nDelims from: " << md << endl;
+	replaceNested(md, testOpenParen, testCloseParen, replaceParenDelims);
+	replaceNested(md, testOpenBracket, testCloseBracket, replaceBracketDelims);
+	replaceNested(md, testOpenVert, testCloseVert, replaceVertDelims);
+	replaceNested(md, testOpenAngled, testCloseAngled, replaceAngledDelims);
+	//lyxerr << "\nDelims to: " << md << endl;
 }
 
 
@@ -590,20 +590,20 @@ void extractDelims(MathData & ar)
 
 // replace 'f' '(...)' and 'f' '^n' '(...)' sequences by a real InsetMathExFunc
 // assume 'extractDelims' ran before
-void extractFunctions(MathData & ar, ExternalMath kind)
+void extractFunctions(MathData & md, ExternalMath kind)
 {
 	// FIXME From what I can see, this is quite broken right now, for reasons
 	// I will note below. (RGH)
 
 	// we need at least two items...
-	if (ar.size() < 2)
+	if (md.size() < 2)
 		return;
 
-	Buffer * buf = ar.buffer();
+	Buffer * buf = md.buffer();
 
-	//lyxerr << "\nFunctions from: " << ar << endl;
-	for (size_t i = 0; i + 1 < ar.size(); ++i) {
-		MathData::iterator it = ar.begin() + i;
+	//lyxerr << "\nFunctions from: " << md << endl;
+	for (size_t i = 0; i + 1 < md.size(); ++i) {
+		MathData::iterator it = md.begin() + i;
 		MathData::iterator jt = it + 1;
 
 		docstring name;
@@ -632,7 +632,7 @@ void extractFunctions(MathData & ar, ExternalMath kind)
 			if (!extractString(*it, name))
 				continue;
 			// it is not if it has no argument
-			if (jt == ar.end())
+			if (jt == md.end())
 				continue;
 			// guess so, if this is followed by
 			// a DelimInset with a single item in the cell
@@ -645,24 +645,24 @@ void extractFunctions(MathData & ar, ExternalMath kind)
 		// do we have an exponent like in
 		// 'sin' '^2' 'x' -> 'sin(x)' '^2'
 		MathData exp(buf);
-		extractScript(exp, jt, ar.end(), true);
+		extractScript(exp, jt, md.end(), true);
 
 		// create a proper inset as replacement
 		auto p = make_unique<InsetMathExFunc>(buf, name);
 
 		// jt points to the "argument". Get hold of this.
 		MathData::iterator st =
-				extractArgument(p->cell(0), jt, ar.end(), kind, true);
+				extractArgument(p->cell(0), jt, md.end(), kind, true);
 
 		// replace the function name by a real function inset
 		*it = MathAtom(p.release());
 
-		// remove the source of the argument from the array
-		ar.erase(it + 1, st);
+		// remove the source of the argument from the data
+		md.erase(it + 1, st);
 
 		// re-insert exponent
-		ar.insert(i + 1, exp);
-		//lyxerr << "\nFunctions to: " << ar << endl;
+		md.insert(i + 1, exp);
+		//lyxerr << "\nFunctions to: " << md << endl;
 	}
 }
 
@@ -696,24 +696,24 @@ bool testIntDiff(MathAtom const & at)
 
 // replace '\int' ['_^'] x 'd''x'(...)' sequences by a real InsetMathExInt
 // assume 'extractDelims' ran before
-void extractIntegrals(MathData & ar, ExternalMath kind)
+void extractIntegrals(MathData & md, ExternalMath kind)
 {
 	// we need at least three items...
-	if (ar.size() < 3)
+	if (md.size() < 3)
 		return;
 
-	Buffer * buf = ar.buffer();
+	Buffer * buf = md.buffer();
 
-	//lyxerr << "\nIntegrals from: " << ar << endl;
-	for (size_t i = 0; i + 1 < ar.size(); ++i) {
-		MathData::iterator it = ar.begin() + i;
+	//lyxerr << "\nIntegrals from: " << md << endl;
+	for (size_t i = 0; i + 1 < md.size(); ++i) {
+		MathData::iterator it = md.begin() + i;
 
 		// search 'd'
 		MathData::iterator jt =
-			endNestSearch(it, ar.end(), testIntegral, testIntDiff);
+			endNestSearch(it, md.end(), testIntegral, testIntDiff);
 
 		// something sensible found?
-		if (jt == ar.end())
+		if (jt == md.end())
 			continue;
 
 		// is this a integral name?
@@ -732,13 +732,13 @@ void extractIntegrals(MathData & ar, ExternalMath kind)
 		p->cell(0) = MathData(buf, it + 1, jt);
 
 		// use the "thing" behind the 'd' as differential
-		MathData::iterator tt = extractArgument(p->cell(1), jt + 1, ar.end(), kind);
+		MathData::iterator tt = extractArgument(p->cell(1), jt + 1, md.end(), kind);
 
 		// remove used parts
-		ar.erase(it + 1, tt);
+		md.erase(it + 1, tt);
 		*it = MathAtom(p.release());
 	}
-	//lyxerr << "\nIntegrals to: " << ar << endl;
+	//lyxerr << "\nIntegrals to: " << md << endl;
 }
 
 
@@ -750,11 +750,11 @@ bool testTermDelimiter(MathAtom const & at)
 
 // try to extract a "term", i.e., something delimited by '+' or '-'.
 // returns position behind the term
-MathData::iterator extractTerm(MathData & ar,
+MathData::iterator extractTerm(MathData & md,
 	MathData::iterator pos, MathData::iterator last)
 {
 	while (pos != last && !testTermDelimiter(*pos)) {
-		ar.push_back(*pos);
+		md.push_back(*pos);
 		++pos;
 	}
 	return pos;
@@ -790,27 +790,27 @@ bool testSum(MathAtom const & at)
 
 // replace '\sum' ['_^'] f(x) sequences by a real InsetMathExInt
 // assume 'extractDelims' ran before
-void extractSums(MathData & ar)
+void extractSums(MathData & md)
 {
 	// we need at least two items...
-	if (ar.size() < 2)
+	if (md.size() < 2)
 		return;
 
-	Buffer * buf = ar.buffer();
+	Buffer * buf = md.buffer();
 
-	//lyxerr << "\nSums from: " << ar << endl;
-	for (size_t i = 0; i + 1 < ar.size(); ++i) {
-		MathData::iterator it = ar.begin() + i;
+	//lyxerr << "\nSums from: " << md << endl;
+	for (size_t i = 0; i + 1 < md.size(); ++i) {
+		MathData::iterator it = md.begin() + i;
 
 		// is this a sum name?
-		if (!testSum(ar[i]))
+		if (!testSum(md[i]))
 			continue;
 
 		// create a proper inset as replacement
 		auto p = make_unique<InsetMathExInt>(buf, from_ascii("sum"));
 
 		// collect lower bound and summation index
-		InsetMathScript const * sub = ar[i]->asScriptInset();
+		InsetMathScript const * sub = md[i]->asScriptInset();
 		if (sub && sub->hasDown()) {
 			// try to figure out the summation index from the subscript
 			MathData const & md = sub->down();
@@ -832,13 +832,13 @@ void extractSums(MathData & ar)
 			p->cell(3) = sub->up();
 
 		// use something  behind the script as core
-		MathData::iterator tt = extractTerm(p->cell(0), it + 1, ar.end());
+		MathData::iterator tt = extractTerm(p->cell(0), it + 1, md.end());
 
 		// cleanup
-		ar.erase(it + 1, tt);
+		md.erase(it + 1, tt);
 		*it = MathAtom(p.release());
 	}
-	//lyxerr << "\nSums to: " << ar << endl;
+	//lyxerr << "\nSums to: " << md << endl;
 }
 
 
@@ -862,9 +862,9 @@ bool testDiffItem(MathAtom const & at)
 }
 
 
-bool testDiffArray(MathData const & ar)
+bool testDiffCell(MathData const & md)
 {
-	return !ar.empty() && testDiffItem(ar.front());
+	return !md.empty() && testDiffItem(md.front());
 }
 
 
@@ -872,17 +872,17 @@ bool testDiffFrac(MathAtom const & at)
 {
 	return
 		at->asFracInset()
-			&& testDiffArray(at->asFracInset()->cell(0))
-			&& testDiffArray(at->asFracInset()->cell(1));
+			&& testDiffCell(at->asFracInset()->cell(0))
+			&& testDiffCell(at->asFracInset()->cell(1));
 }
 
 
-void extractDiff(MathData & ar)
+void extractDiff(MathData & md)
 {
-	Buffer * buf = ar.buffer();
-	//lyxerr << "\nDiffs from: " << ar << endl;
-	for (size_t i = 0; i < ar.size(); ++i) {
-		MathData::iterator it = ar.begin() + i;
+	Buffer * buf = md.buffer();
+	//lyxerr << "\nDiffs from: " << md << endl;
+	for (size_t i = 0; i < md.size(); ++i) {
+		MathData::iterator it = md.begin() + i;
 
 		// is this a "differential fraction"?
 		if (!testDiffFrac(*it))
@@ -909,13 +909,13 @@ void extractDiff(MathData & ar)
 			if (numer.size() > 2)
 				diff->cell(0) = MathData(buf, numer.begin() + 2, numer.end());
 			else
-				jt = extractTerm(diff->cell(0), jt, ar.end());
+				jt = extractTerm(diff->cell(0), jt, md.end());
 		} else {
 			// simply d f(x) / d... or  d/d...
 			if (numer.size() > 1)
 				diff->cell(0) = MathData(buf, numer.begin() + 1, numer.end());
 			else
-				jt = extractTerm(diff->cell(0), jt, ar.end());
+				jt = extractTerm(diff->cell(0), jt, md.end());
 		}
 
 		// collect denominator parts
@@ -949,10 +949,10 @@ void extractDiff(MathData & ar)
 		}
 
 		// cleanup
-		ar.erase(it + 1, jt);
+		md.erase(it + 1, jt);
 		*it = MathAtom(diff.release());
 	}
-	//lyxerr << "\nDiffs to: " << ar << endl;
+	//lyxerr << "\nDiffs to: " << md << endl;
 }
 
 
@@ -970,12 +970,12 @@ bool testRightArrow(MathAtom const & at)
 
 // replace '\lim_{x->x0} f(x)' sequences by a real InsetMathLim
 // assume 'extractDelims' ran before
-void extractLims(MathData & ar)
+void extractLims(MathData & md)
 {
-	Buffer * buf = ar.buffer();
-	//lyxerr << "\nLimits from: " << ar << endl;
-	for (size_t i = 0; i < ar.size(); ++i) {
-		MathData::iterator it = ar.begin() + i;
+	Buffer * buf = md.buffer();
+	//lyxerr << "\nLimits from: " << md << endl;
+	for (size_t i = 0; i < md.size(); ++i) {
+		MathData::iterator it = md.begin() + i;
 
 		// must be a script inset with a subscript (without superscript)
 		InsetMathScript const * sub = (*it)->asScriptInset();
@@ -998,15 +998,15 @@ void extractLims(MathData & ar)
 
 		// use something behind the script as core
 		MathData f(buf);
-		MathData::iterator tt = extractTerm(f, it + 1, ar.end());
+		MathData::iterator tt = extractTerm(f, it + 1, md.end());
 
 		// cleanup
-		ar.erase(it + 1, tt);
+		md.erase(it + 1, tt);
 
 		// create a proper inset as replacement
 		*it = MathAtom(new InsetMathLim(buf, f, x, x0));
 	}
-	//lyxerr << "\nLimits to: " << ar << endl;
+	//lyxerr << "\nLimits to: " << md << endl;
 }
 
 
@@ -1014,26 +1014,26 @@ void extractLims(MathData & ar)
 // combine searches
 //
 
-void extractStructure(MathData & ar, ExternalMath kind)
+void extractStructure(MathData & md, ExternalMath kind)
 {
-	//lyxerr << "\nStructure from: " << ar << endl;
+	//lyxerr << "\nStructure from: " << md << endl;
 	if (kind != MATHML && kind != HTML)
-		splitScripts(ar);
-	extractDelims(ar);
-	extractIntegrals(ar, kind);
+		splitScripts(md);
+	extractDelims(md);
+	extractIntegrals(md, kind);
 	if (kind != MATHML && kind != HTML)
-		extractSums(ar);
-	extractNumbers(ar);
-	extractMatrices(ar);
+		extractSums(md);
+	extractNumbers(md);
+	extractMatrices(md);
 	if (kind != MATHML && kind != HTML) {
-		extractFunctions(ar, kind);
-		extractDets(ar);
-		extractDiff(ar);
-		extractExps(ar);
-		extractLims(ar);
-		extractStrings(ar);
+		extractFunctions(md, kind);
+		extractDets(md);
+		extractDiff(md);
+		extractExps(md);
+		extractLims(md);
+		extractStrings(md);
 	}
-	//lyxerr << "\nStructure to: " << ar << endl;
+	//lyxerr << "\nStructure to: " << md << endl;
 }
 
 
@@ -1102,11 +1102,11 @@ namespace {
 		return string::npos;
 	}
 
-	MathData pipeThroughMaxima(docstring const &command, MathData const & ar)
+	MathData pipeThroughMaxima(docstring const &command, MathData const & md)
 	{
 		odocstringstream os;
 		MaximaStream ms(os);
-		ms << ar;
+		ms << md;
 		docstring expr = os.str();
 		docstring const header = from_ascii("simpsum:true;");
 
@@ -1207,7 +1207,7 @@ namespace {
 	}
 
 
-	MathData pipeThroughMaple(docstring const & extra, MathData const & ar)
+	MathData pipeThroughMaple(docstring const & extra, MathData const & md)
 	{
 		string header = "readlib(latex):\n";
 
@@ -1240,9 +1240,9 @@ namespace {
 		string trailer = "quit;";
 		odocstringstream os;
 		MapleStream ms(os);
-		ms << ar;
+		ms << md;
 		string expr = to_utf8(os.str());
-		lyxerr << "ar: '" << ar << "'\n"
+		lyxerr << "md: '" << md << "'\n"
 		       << "ms: '" << expr << "'" << endl;
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
@@ -1285,16 +1285,16 @@ namespace {
 	}
 
 
-	MathData pipeThroughOctave(docstring const &, MathData const & ar)
+	MathData pipeThroughOctave(docstring const &, MathData const & md)
 	{
 		odocstringstream os;
 		OctaveStream vs(os);
-		vs << ar;
+		vs << md;
 		string expr = to_utf8(os.str());
 		string out;
 		// FIXME const cast
-		Buffer * buf = const_cast<Buffer *>(ar.buffer());
-		lyxerr << "pipe: ar: '" << ar << "'\n"
+		Buffer * buf = const_cast<Buffer *>(md.buffer());
+		lyxerr << "pipe: md: '" << md << "'\n"
 		       << "pipe: expr: '" << expr << "'" << endl;
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
@@ -1405,11 +1405,11 @@ namespace {
 	}
 
 
-	MathData pipeThroughMathematica(docstring const &, MathData const & ar)
+	MathData pipeThroughMathematica(docstring const &, MathData const & md)
 	{
 		odocstringstream os;
 		MathematicaStream ms(os);
-		ms << ar;
+		ms << md;
 		// FIXME UNICODE Is utf8 encoding correct?
 		string const expr = to_utf8(os.str());
 		string out;
@@ -1601,64 +1601,64 @@ void writeString(docstring const & s, TeXMathStream & os)
 }
 
 
-void normalize(MathData const & ar, NormalStream & os)
+void normalize(MathData const & md, NormalStream & os)
 {
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	for (MathData::const_iterator it = md.begin(); it != md.end(); ++it)
 		(*it)->normalize(os);
 }
 
 
 void octave(MathData const & dat, OctaveStream & os)
 {
-	MathData ar = dat;
-	extractStructure(ar, OCTAVE);
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	MathData md = dat;
+	extractStructure(md, OCTAVE);
+	for (MathData::const_iterator it = md.begin(); it != md.end(); ++it)
 		(*it)->octave(os);
 }
 
 
 void maple(MathData const & dat, MapleStream & os)
 {
-	MathData ar = dat;
-	extractStructure(ar, MAPLE);
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	MathData md = dat;
+	extractStructure(md, MAPLE);
+	for (MathData::const_iterator it = md.begin(); it != md.end(); ++it)
 		(*it)->maple(os);
 }
 
 
 void maxima(MathData const & dat, MaximaStream & os)
 {
-	MathData ar = dat;
-	extractStructure(ar, MAXIMA);
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	MathData md = dat;
+	extractStructure(md, MAXIMA);
+	for (MathData::const_iterator it = md.begin(); it != md.end(); ++it)
 		(*it)->maxima(os);
 }
 
 
 void mathematica(MathData const & dat, MathematicaStream & os)
 {
-	MathData ar = dat;
-	extractStructure(ar, MATHEMATICA);
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	MathData md = dat;
+	extractStructure(md, MATHEMATICA);
+	for (MathData::const_iterator it = md.begin(); it != md.end(); ++it)
 		(*it)->mathematica(os);
 }
 
 
 void mathmlize(MathData const & dat, MathMLStream & ms)
 {
-	MathData ar = dat;
-	extractStructure(ar, MATHML);
-	if (ar.empty()) {
+	MathData md = dat;
+	extractStructure(md, MATHML);
+	if (md.empty()) {
 		if (!ms.inText())
 			ms << CTag("mrow");
-	} else if (ar.size() == 1) {
-		ms << ar.front();
+	} else if (md.size() == 1) {
+		ms << md.front();
 	} else {
 		// protect against the value changing in the second test.
 		bool const intext = ms.inText();
 		if (!intext)
 			ms << MTag("mrow");
-		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		for (MathData::const_iterator it = md.begin(); it != md.end(); ++it)
 			(*it)->mathmlize(ms);
 		if (!intext)
 			ms << ETag("mrow");
@@ -1668,32 +1668,32 @@ void mathmlize(MathData const & dat, MathMLStream & ms)
 
 void htmlize(MathData const & dat, HtmlStream & os)
 {
-	MathData ar = dat;
-	extractStructure(ar, HTML);
-	if (ar.empty())
+	MathData md = dat;
+	extractStructure(md, HTML);
+	if (md.empty())
 		return;
-	if (ar.size() == 1) {
-		os << ar.front();
+	if (md.size() == 1) {
+		os << md.front();
 		return;
 	}
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	for (MathData::const_iterator it = md.begin(); it != md.end(); ++it)
 		(*it)->htmlize(os);
 }
 
 
 // convert this inset somehow to a number
-bool extractNumber(MathData const & ar, int & i)
+bool extractNumber(MathData const & md, int & i)
 {
-	idocstringstream is(charSequence(ar.begin(), ar.end()));
+	idocstringstream is(charSequence(md.begin(), md.end()));
 	is >> i;
 	// Do not convert is implicitly to bool, since that is forbidden in C++11.
 	return !is.fail();
 }
 
 
-bool extractNumber(MathData const & ar, double & d)
+bool extractNumber(MathData const & md, double & d)
 {
-	idocstringstream is(charSequence(ar.begin(), ar.end()));
+	idocstringstream is(charSequence(md.begin(), md.end()));
 	is >> d;
 	// Do not convert is implicitly to bool, since that is forbidden in C++11.
 	return !is.fail();
@@ -1701,25 +1701,25 @@ bool extractNumber(MathData const & ar, double & d)
 
 
 MathData pipeThroughExtern(string const & lang, docstring const & extra,
-	MathData const & ar)
+	MathData const & md)
 {
 	if (lang == "octave")
-		return pipeThroughOctave(extra, ar);
+		return pipeThroughOctave(extra, md);
 
 	if (lang == "maxima")
-		return pipeThroughMaxima(extra, ar);
+		return pipeThroughMaxima(extra, md);
 
 	if (lang == "maple")
-		return pipeThroughMaple(extra, ar);
+		return pipeThroughMaple(extra, md);
 
 	if (lang == "mathematica")
-		return pipeThroughMathematica(extra, ar);
+		return pipeThroughMathematica(extra, md);
 
 	// create normalized expression
 	odocstringstream os;
 	NormalStream ns(os);
 	os << '[' << extra << ' ';
-	ns << ar;
+	ns << md;
 	os << ']';
 	// FIXME UNICODE Is utf8 encoding correct?
 	string data = to_utf8(os.str());

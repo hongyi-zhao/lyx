@@ -225,9 +225,9 @@ public:
 	virtual void replace(ReplaceData &) {}
 	/// do we contain a given subsequence?
 	virtual bool contains(MathData const &) const { return false; }
-	/// access to the lock (only nest array have one)
+	/// access to the lock (only inset with cells have one)
 	virtual bool lock() const { return false; }
-	/// access to the lock (only nest array have one)
+	/// access to the lock (only insets with cells have one)
 	virtual void lock(bool) {}
 
 	// Indicate that we do not want to hide the normal version of

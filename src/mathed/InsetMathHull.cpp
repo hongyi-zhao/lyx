@@ -104,14 +104,14 @@ namespace {
 	}
 
 
-	// returns position of first relation operator in the array
+	// returns position of first relation operator in the data
 	// used for "intelligent splitting"
-	size_t firstRelOp(MathData const & ar)
+	size_t firstRelOp(MathData const & md)
 	{
-		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		for (MathData::const_iterator it = md.begin(); it != md.end(); ++it)
 			if ((*it)->mathClass() == MC_REL)
-				return it - ar.begin();
-		return ar.size();
+				return it - md.begin();
+		return md.size();
 	}
 
 
@@ -238,9 +238,6 @@ void InsetMathHull::setBuffer(Buffer & buffer)
 
 void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool const deleted)
 {
-	// Tell Coverity Scan that the inset is never empty
-	LATTEST(nrows() > 0 && ncols() > 0);
-
 	if (!buffer_) {
 		//FIXME: buffer_ should be set at creation for this inset! Problem is
 		// This inset is created at too many places (see Parser::parse1() in
@@ -285,29 +282,13 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype, bool 
 		if (labels_[i])
 			labels_[i]->updateBuffer(it, utype, deleted);
 	}
-        // set up equation numbers
 
-	// compute first and last item
-	row_type first = nrows();
-	for (row_type row = 0; row != nrows(); ++row)
-		if (numbered(row)) {
-			first = row;
-			break;
-		}
-	if (first != nrows()) {
-		row_type last = nrows() - 1;
-		for (; last != 0; --last)
-			if (numbered(last))
-				break;
-
-		for (row_type row = 0; row != nrows(); ++row) {
-			if (!numbered(row))
-				continue;
-			if (labels_[row]) {
-				labels_[row]->setCounterValue(numbers_[row]);
-				labels_[row]->setPrettyCounter("(" + numbers_[row] + ")");
-				labels_[row]->setFormattedCounter("(" + numbers_[row] + ")");
-			}
+	// set up equation numbers
+	for (row_type row = 0; row != nrows(); ++row) {
+		if (numbered(row) && labels_[row]) {
+			labels_[row]->setCounterValue(numbers_[row]);
+			labels_[row]->setPrettyCounter("(" + numbers_[row] + ")");
+			labels_[row]->setFormattedCounter("(" + numbers_[row] + ")");
 		}
 	}
 
@@ -810,7 +791,7 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 				continue;
 			macros.erase(name);
 			// Look for macros in the definition of this macro.
-			MathData ar(pos.buffer());
+			MathData md(pos.buffer());
 			MacroData const * data =
 				pos.buffer()->getMacro(name, pos, true);
 			if (data) {
@@ -826,13 +807,13 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 						       from_ascii("\r\n"),
 						       from_ascii("\n")),
 						 "\n") + "\n");
-				asArray(data->definition(), ar);
+				asMathData(data->definition(), md);
 			}
-			usedMacros(ar, pos, macros, defs);
+			usedMacros(md, pos, macros, defs);
 		} else if (mt) {
-			MathData ar(pos.buffer());
-			asArray(mt->definition(), ar);
-			usedMacros(ar, pos, macros, defs);
+			MathData md(pos.buffer());
+			asMathData(mt->definition(), md);
+			usedMacros(md, pos, macros, defs);
 		} else if (si) {
 			if (!si->nuc().empty())
 				usedMacros(si->nuc(), pos, macros, defs);
@@ -1427,9 +1408,9 @@ docstring InsetMathHull::nicelabel(row_type row) const
 
 void InsetMathHull::glueall(HullType type)
 {
-	MathData ar(buffer_);
+	MathData md(buffer_);
 	for (idx_type i = 0; i < nargs(); ++i)
-		ar.append(cell(i));
+		md.append(cell(i));
 	InsetLabel * label = nullptr;
 	if (type == hullEquation) {
 		// preserve first non-empty label
@@ -1443,7 +1424,7 @@ void InsetMathHull::glueall(HullType type)
 	}
 	*this = InsetMathHull(buffer_, hullSimple);
 	labels_[0] = label;
-	cell(0) = ar;
+	cell(0) = md;
 	setDefaults();
 }
 
@@ -1793,10 +1774,10 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 
 	// replace selection with result of computation
 	if (reduceSelectionToOneCell(cur)) {
-		MathData ar(buffer_);
-		asArray(grabAndEraseSelection(cur), ar);
-		lyxerr << "use selection: " << ar << endl;
-		cur.insert(pipeThroughExtern(lang, extra, ar));
+		MathData md(buffer_);
+		asMathData(grabAndEraseSelection(cur), md);
+		lyxerr << "use selection: " << md << endl;
+		cur.insert(pipeThroughExtern(lang, extra, md));
 		return;
 	}
 
@@ -1823,16 +1804,16 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 
 	if (getType() == hullSimple) {
 		size_type pos = cur.cell().find_last(eq);
-		MathData ar(buffer_);
+		MathData md(buffer_);
 		if (pos == cur.cell().size()) {
-			ar = cur.cell();
-			lyxerr << "use whole cell: " << ar << endl;
+			md = cur.cell();
+			lyxerr << "use whole cell: " << md << endl;
 		} else {
-			ar = MathData(buffer_, cur.cell().begin() + pos + 1, cur.cell().end());
+			md = MathData(buffer_, cur.cell().begin() + pos + 1, cur.cell().end());
 			lyxerr << "use partial cell form pos: " << pos << endl;
 		}
 		cur.cell().append(eq);
-		cur.cell().append(pipeThroughExtern(lang, extra, ar));
+		cur.cell().append(pipeThroughExtern(lang, extra, md));
 		cur.pos() = cur.lastpos();
 		return;
 	}
@@ -1840,12 +1821,12 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 	if (getType() == hullEquation) {
 		lyxerr << "use equation inset" << endl;
 		mutate(hullEqnArray);
-		MathData & ar = cur.cell();
-		lyxerr << "use cell: " << ar << endl;
+		MathData & md = cur.cell();
+		lyxerr << "use cell: " << md << endl;
 		++cur.idx();
 		cur.cell() = eq;
 		++cur.idx();
-		cur.cell() = pipeThroughExtern(lang, extra, ar);
+		cur.cell() = pipeThroughExtern(lang, extra, md);
 		// move to end of line
 		cur.pos() = cur.lastpos();
 		return;
@@ -1855,15 +1836,15 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		lyxerr << "use eqnarray" << endl;
 		cur.idx() += 2 - cur.idx() % ncols();
 		cur.pos() = 0;
-		MathData ar = cur.cell();
-		lyxerr << "use cell: " << ar << endl;
+		MathData md = cur.cell();
+		lyxerr << "use cell: " << md << endl;
 		// FIXME: temporarily disabled
 		addRow(cur.row());
 		++cur.idx();
 		++cur.idx();
 		cur.cell() = eq;
 		++cur.idx();
-		cur.cell() = pipeThroughExtern(lang, extra, ar);
+		cur.cell() = pipeThroughExtern(lang, extra, md);
 		cur.pos() = cur.lastpos();
 	}
 }

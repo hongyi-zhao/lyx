@@ -81,12 +81,12 @@ bool isTextFont(std::string const & name);
 bool isAlphaSymbol(MathAtom const & at);
 
 // converts single cell to string
-docstring asString(MathData const & ar);
+docstring asString(MathData const & md);
 // converts single inset to string
 docstring asString(InsetMath const &);
 docstring asString(MathAtom const &);
 // converts string to single cell
-void asArray(docstring const &, MathData &, Parse::flags f = Parse::NORMAL);
+void asMathData(docstring const &, MathData &, Parse::flags f = Parse::NORMAL);
 
 // simulate axis height (font dimension sigma 22)
 int axis_height(MetricsBase & mb);

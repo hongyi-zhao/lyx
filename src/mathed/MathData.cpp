@@ -94,12 +94,12 @@ void MathData::insert(size_type pos, MathAtom const & t)
 }
 
 
-void MathData::insert(size_type pos, MathData const & ar)
+void MathData::insert(size_type pos, MathData const & md)
 {
 	LBUFERR(pos <= size());
-	base_type::insert(begin() + pos, ar.begin(), ar.end());
+	base_type::insert(begin() + pos, md.begin(), md.end());
 	if (buffer_)
-		for (size_type i = 0 ; i < ar.size() ; ++i)
+		for (size_type i = 0 ; i < md.size() ; ++i)
 			operator[](pos + i)->setBuffer(*buffer_);
 }
 
@@ -112,9 +112,9 @@ void MathData::push_back(MathAtom const & t)
 }
 
 
-void MathData::append(MathData const & ar)
+void MathData::append(MathData const & md)
 {
-	insert(size(), ar);
+	insert(size(), md);
 }
 
 
@@ -170,18 +170,18 @@ void MathData::validate(LaTeXFeatures & features) const
 }
 
 
-bool MathData::match(MathData const & ar) const
+bool MathData::match(MathData const & md) const
 {
-	return size() == ar.size() && matchpart(ar, 0);
+	return size() == md.size() && matchpart(md, 0);
 }
 
 
-bool MathData::matchpart(MathData const & ar, pos_type pos) const
+bool MathData::matchpart(MathData const & md, pos_type pos) const
 {
-	if (size() < ar.size() + pos)
+	if (size() < md.size() + pos)
 		return false;
 	const_iterator it = begin() + pos;
-	for (const_iterator jt = ar.begin(); jt != ar.end(); ++jt, ++it)
+	for (const_iterator jt = md.begin(); jt != md.end(); ++jt, ++it)
 		if (asString(*it) != asString(*jt))
 			return false;
 	return true;
@@ -205,40 +205,40 @@ void MathData::replace(ReplaceData & rep)
 }
 
 
-bool MathData::find1(MathData const & ar, size_type pos) const
+bool MathData::find1(MathData const & md, size_type pos) const
 {
-	lyxerr << "finding '" << ar << "' in '" << *this << "'" << endl;
-	for (size_type i = 0, n = ar.size(); i < n; ++i)
-		if (asString(operator[](pos + i)) != asString(ar[i]))
+	lyxerr << "finding '" << md << "' in '" << *this << "'" << endl;
+	for (size_type i = 0, n = md.size(); i < n; ++i)
+		if (asString(operator[](pos + i)) != asString(md[i]))
 			return false;
 	return true;
 }
 
 
-MathData::size_type MathData::find(MathData const & ar) const
+MathData::size_type MathData::find(MathData const & md) const
 {
-	for (int i = 0, last = size() - ar.size(); i < last; ++i)
-		if (find1(ar, i))
+	for (int i = 0, last = size() - md.size(); i < last; ++i)
+		if (find1(md, i))
 			return i;
 	return size();
 }
 
 
-MathData::size_type MathData::find_last(MathData const & ar) const
+MathData::size_type MathData::find_last(MathData const & md) const
 {
-	for (int i = size() - ar.size(); i >= 0; --i)
-		if (find1(ar, i))
+	for (int i = size() - md.size(); i >= 0; --i)
+		if (find1(md, i))
 			return i;
 	return size();
 }
 
 
-bool MathData::contains(MathData const & ar) const
+bool MathData::contains(MathData const & md) const
 {
-	if (find(ar) != size())
+	if (find(md) != size())
 		return true;
 	for (const_iterator it = begin(); it != end(); ++it)
-		if ((*it)->contains(ar))
+		if ((*it)->contains(md))
 			return true;
 	return false;
 }
@@ -249,8 +249,8 @@ bool MathData::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	bool has_contents = false;
 	BufferView * bv = mi.base.bv;
 	display_style_ = mi.base.font.style() == DISPLAY_STYLE;
-	MathData * ar = const_cast<MathData*>(this);
-	ar->updateMacros(&bv->cursor(), mi.macrocontext,
+	MathData * md = const_cast<MathData*>(this);
+	md->updateMacros(&bv->cursor(), mi.macrocontext,
 	                 InternalUpdate, mi.base.macro_nesting);
 
 	pos_type bspos = -1, espos = -1;
@@ -323,12 +323,12 @@ bool MathData::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 #if 0
 namespace {
 
-bool isInside(DocIterator const & it, MathData const & ar,
+bool isInside(DocIterator const & it, MathData const & md,
 	pos_type p1, pos_type p2)
 {
 	for (size_t i = 0; i != it.depth(); ++i) {
 		CursorSlice const & sl = it[i];
-		if (sl.inset().inMathed() && &sl.cell() == &ar)
+		if (sl.inset().inMathed() && &sl.cell() == &md)
 			return p1 <= sl.pos() && sl.pos() < p2;
 	}
 	return false;
@@ -373,12 +373,12 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 	/// do the same for math cells linearized in the row
 	MathRow caret_row = MathRow(mrow.caret_dim);
 	for (auto const & e : mrow)
-		if (e.type == MathRow::BEGIN && e.ar)
-			bv->setMathRow(e.ar, caret_row);
+		if (e.type == MathRow::BEGIN && e.md)
+			bv->setMathRow(e.md, caret_row);
 
 	// Cache row and dimension.
 	bv->setMathRow(this, mrow);
-	bv->coordCache().arrays().add(this, dim);
+	bv->coordCache().cells().add(this, dim);
 }
 
 
@@ -396,7 +396,7 @@ void MathData::drawSelection(PainterInfo & pi, int const x, int const y) const
 
 	if (s1.idx() == s2.idx() && &c1 == this) {
 		// selection inside cell
-		Dimension const dim = bv->coordCache().getArrays().dim(&c1);
+		Dimension const dim = bv->coordCache().cells().dim(&c1);
 		int const beg = c1.pos2x(bv, s1.pos());
 		int const end = c1.pos2x(bv, s2.pos());
 		pi.pain.fillRectangle(x + beg, y - dim.ascent(),
@@ -406,7 +406,7 @@ void MathData::drawSelection(PainterInfo & pi, int const x, int const y) const
 			MathData const & c = inset->cell(i);
 			if (&c == this && inset->idxBetween(i, s1.idx(), s2.idx())) {
 				// The whole cell is selected
-				Dimension const dim = bv->coordCache().getArrays().dim(&c);
+				Dimension const dim = bv->coordCache().cells().dim(&c);
 				pi.pain.fillRectangle(x, y - dim.ascent(),
 				                      dim.width(), dim.height(),
 				                      Color_selection);
@@ -478,7 +478,7 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 	InsetMathMacro const * inmacro = inmath ? inmath->asMacro() : 0;
 	docstring const edited_name = inmacro ? inmacro->name() : docstring();
 
-	// go over the array and look for macros
+	// go over the data and look for macros
 	for (size_t i = 0; i < size(); ++i) {
 		InsetMathMacro * macroInset = operator[](i).nucleus()->asMacro();
 		if (!macroInset || macroInset->macroName().empty()
@@ -618,7 +618,7 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 
 		// Otherwise we don't drop an empty optional, put it back normally
 		MathData optarg(buffer_);
-		asArray(from_ascii("[]"), optarg);
+		asMathData(from_ascii("[]"), optarg);
 		MathData & arg = detachedArgs[j];
 
 		// look for "]", i.e. put a brace around?
@@ -638,7 +638,7 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 		} else
 			optarg.insert(1, arg);
 
-		// insert it into the array
+		// insert it
 		insert(p, optarg);
 		p += optarg.size();
 
@@ -734,9 +734,9 @@ void MathData::attachMacroParameters(Cursor * cur,
 		// In the math parser we remove empty braces in the base
 		// of a script inset, but we have to restore them here.
 		if (scriptInset->nuc().empty()) {
-			MathData ar(buffer_);
+			MathData md(buffer_);
 			scriptInset->nuc().push_back(
-					MathAtom(new InsetMathBrace(buffer_, ar)));
+					MathAtom(new InsetMathBrace(buffer_, md)));
 		}
 		// put macro into a script inset
 		scriptInset->nuc()[0] = operator[](macroPos);
@@ -915,9 +915,9 @@ void MathData::collectParameters(Cursor * cur,
 			}
 		} else {
 			// the simplest case: plain inset
-			MathData array(buffer_);
-			array.insert(0, cell);
-			params.push_back(array);
+			MathData md(buffer_);
+			md.insert(0, cell);
+			params.push_back(md);
 		}
 
 		// put cursor in argument again
@@ -939,7 +939,7 @@ int MathData::pos2x(BufferView const * bv, size_type pos) const
 {
 	int x = 0;
 	size_type target = min(pos, size());
-	CoordCache::Insets const & coords = bv->coordCache().getInsets();
+	CoordCache::Insets const & coords = bv->coordCache().insets();
 	for (size_type i = 0; i < target; ++i) {
 		const_iterator it = begin() + i;
 		//lyxerr << "char: " << (*it)->getChar()
@@ -955,7 +955,7 @@ MathData::size_type MathData::x2pos(BufferView const * bv, int targetx) const
 	const_iterator it = begin();
 	int lastx = 0;
 	int currx = 0;
-	CoordCache::Insets const & coords = bv->coordCache().getInsets();
+	CoordCache::Insets const & coords = bv->coordCache().insets();
 	// find first position after targetx
 	for (; currx < targetx && it != end(); ++it) {
 		lastx = currx;
@@ -963,7 +963,7 @@ MathData::size_type MathData::x2pos(BufferView const * bv, int targetx) const
 	}
 
 	/**
-	 * If we are not at the beginning of the array, go to the left
+	 * If we are not at the beginning of the data, go to the left
 	 * of the inset if one of the following two condition holds:
 	 * - the current inset is editable (so that the cursor tip is
 	 *   deeper than us): in this case, we want all intermediate
@@ -984,26 +984,26 @@ MathData::size_type MathData::x2pos(BufferView const * bv, int targetx) const
 
 int MathData::dist(BufferView const & bv, int x, int y) const
 {
-	return bv.coordCache().getArrays().squareDistance(this, x, y);
+	return bv.coordCache().cells().squareDistance(this, x, y);
 }
 
 
 void MathData::setXY(BufferView & bv, int x, int y) const
 {
 	//lyxerr << "setting position cache for MathData " << this << endl;
-	bv.coordCache().arrays().add(this, x, y);
+	bv.coordCache().cells().add(this, x, y);
 }
 
 
 Dimension const & MathData::dimension(BufferView const & bv) const
 {
-	return bv.coordCache().getArrays().dim(this);
+	return bv.coordCache().cells().dim(this);
 }
 
 
 int MathData::xm(BufferView const & bv) const
 {
-	Geometry const & g = bv.coordCache().getArrays().geometry(this);
+	Geometry const & g = bv.coordCache().cells().geometry(this);
 
 	return g.pos.x + g.dim.wid / 2;
 }
@@ -1011,7 +1011,7 @@ int MathData::xm(BufferView const & bv) const
 
 int MathData::ym(BufferView const & bv) const
 {
-	Geometry const & g = bv.coordCache().getArrays().geometry(this);
+	Geometry const & g = bv.coordCache().cells().geometry(this);
 
 	return g.pos.y + (g.dim.des - g.dim.asc) / 2;
 }
@@ -1019,13 +1019,13 @@ int MathData::ym(BufferView const & bv) const
 
 int MathData::xo(BufferView const & bv) const
 {
-	return bv.coordCache().getArrays().x(this);
+	return bv.coordCache().cells().x(this);
 }
 
 
 int MathData::yo(BufferView const & bv) const
 {
-	return bv.coordCache().getArrays().y(this);
+	return bv.coordCache().cells().y(this);
 }
 
 
@@ -1066,19 +1066,19 @@ MathClass MathData::lastMathClass() const
 }
 
 
-ostream & operator<<(ostream & os, MathData const & ar)
+ostream & operator<<(ostream & os, MathData const & md)
 {
 	odocstringstream oss;
 	NormalStream ns(oss);
-	ns << ar;
+	ns << md;
 	return os << to_utf8(oss.str());
 }
 
 
-odocstream & operator<<(odocstream & os, MathData const & ar)
+odocstream & operator<<(odocstream & os, MathData const & md)
 {
 	NormalStream ns(os);
-	ns << ar;
+	ns << md;
 	return os;
 }
 

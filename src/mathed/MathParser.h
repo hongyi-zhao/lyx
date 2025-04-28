@@ -117,12 +117,12 @@ bool mathed_parse_normal(InsetMathGrid &, docstring const &,
 		Parse::flags f = Parse::NORMAL);
 
 /// parse a single cell from a string
-bool mathed_parse_cell(MathData & ar, docstring const &,
+bool mathed_parse_cell(MathData & md, docstring const &,
 		Parse::flags f = Parse::NORMAL);
 
 /// parse a single cell from a stream. Only use this for reading from .lyx
 /// file format, for the reason see Parser::tokenize(std::istream &).
-bool mathed_parse_cell(MathData & ar, std::istream &,
+bool mathed_parse_cell(MathData & md, std::istream &,
 		Parse::flags f = Parse::NORMAL);
 
 void initParser();

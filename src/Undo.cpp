@@ -70,10 +70,10 @@ struct UndoElement
 	///
 	UndoElement(UndoKind kin, CursorData const & cb,
 	            StableDocIterator const & cel,
-	            pit_type fro, pit_type en, ParagraphList * pl, MathData * ar,
+	            pit_type fro, pit_type en, ParagraphList * pl, MathData * md,
 	            bool lc, size_t gid) :
 		cur_before(cb), cell(cel), from(fro), end(en),
-		pars(pl), array(ar), bparams(nullptr),
+		pars(pl), array(md), bparams(nullptr),
 		group_id(gid), time(current_time()), kind(kin), lyx_clean(lc)
 		{}
 	///
@@ -360,8 +360,8 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
 		// simply use the whole cell
-		MathData & ar = cell.cell();
-		undo.array = new MathData(ar.buffer(), ar.begin(), ar.end());
+		MathData & md = cell.cell();
+		undo.array = new MathData(md.buffer(), md.begin(), md.end());
 	} else {
 		// some more effort needed here as 'the whole cell' of the
 		// main Text _is_ the whole document.

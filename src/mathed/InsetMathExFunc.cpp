@@ -29,10 +29,10 @@ InsetMathExFunc::InsetMathExFunc(Buffer * buf, docstring const & name)
 {}
 
 
-InsetMathExFunc::InsetMathExFunc(Buffer * buf, docstring const & name, MathData const & ar)
+InsetMathExFunc::InsetMathExFunc(Buffer * buf, docstring const & name, MathData const & md)
 	: InsetMathNest(buf, 1), name_(name)
 {
-	cell(0) = ar;
+	cell(0) = md;
 }
 
 

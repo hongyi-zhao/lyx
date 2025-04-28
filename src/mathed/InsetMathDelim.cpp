@@ -51,18 +51,18 @@ InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l,
 
 
 InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l, docstring const & r,
-	MathData const & ar)
+	MathData const & md)
 	: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0), is_extracted_(false)
 {
-	cell(0) = ar;
+	cell(0) = md;
 }
 
 
 InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l, docstring const & r,
-                               MathData const & ar, bool const is_extracted)
+                               MathData const & md, bool const is_extracted)
 		: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0), is_extracted_(is_extracted)
 {
-	cell(0) = ar;
+	cell(0) = md;
 }
 
 

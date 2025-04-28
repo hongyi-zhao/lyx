@@ -24,7 +24,7 @@ public:
 	///
 	explicit InsetMathBrace(Buffer * buf);
 	///
-	explicit InsetMathBrace(Buffer * buf, MathData const & ar);
+	explicit InsetMathBrace(Buffer * buf, MathData const & md);
 	/// identifies brace insets
 	InsetMathBrace * asBraceInset() override { return this; }
 	/// identifies brace insets

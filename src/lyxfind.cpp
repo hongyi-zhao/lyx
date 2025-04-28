@@ -5012,10 +5012,10 @@ static int findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, Ma
 		(void)regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
 		repl_latex = from_utf8(s);
 		LYXERR(Debug::FINDVERBOSE, "Replacing by insert()ing latex: '" << repl_latex << "' cur=" << showPos(cur) );
-		MathData ar(cur.buffer());
-		asArray(repl_latex, ar, Parse::NORMAL);
-		cur.insert(ar);
-		sel_len = ar.size();
+		MathData md(cur.buffer());
+		asMathData(repl_latex, md, Parse::NORMAL);
+		cur.insert(md);
+		sel_len = md.size();
 		LYXERR(Debug::FINDVERBOSE, "After insert() cur=" << showPos(cur) << " and len: " << sel_len);
 	}
 	if (cur.pos() >= sel_len)

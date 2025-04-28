@@ -41,7 +41,7 @@ namespace lyx {
 
 MathRow::Element::Element(MetricsInfo const & mi, Type t, MathClass mc)
 	: type(t), mclass(mc), before(0), after(0), macro_nesting(mi.base.macro_nesting),
-	  marker(marker_type::NO_MARKER), inset(nullptr), compl_unique_to(0), ar(nullptr),
+	  marker(marker_type::NO_MARKER), inset(nullptr), compl_unique_to(0), md(nullptr),
 	  color(Color_red)
 {}
 
@@ -101,7 +101,7 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 		return;
 
 	CoordCache const & coords = pi.base.bv->coordCache();
-	Dimension const dim = coords.getInsets().dim(e.inset);
+	Dimension const dim = coords.insets().dim(e.inset);
 
 	// the marker is before/after the inset. Necessary space has been reserved already.
 	int const l = x + e.before - (markerMargin(e) > 0 ? 1 : 0);
@@ -149,18 +149,18 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 } // namespace
 
 
-MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
+MathRow::MathRow(MetricsInfo & mi, MathData const * md)
 {
 	// First there is a dummy element of type "open"
 	push_back(Element(mi, DUMMY, MC_OPEN));
 
 	// Then insert the MathData argument
-	bool const has_contents = ar->addToMathRow(*this, mi);
+	bool const has_contents = md->addToMathRow(*this, mi);
 
 	// A MathRow should not be completely empty
 	if (!has_contents) {
 		Element e(mi, BOX, MC_ORD);
-		// empty arrays are visible when they are editable
+		// empty cells are visible when they are editable
 		e.color = mi.base.macro_nesting == 0 ? Color_mathline : Color_none;
 		push_back(e);
 	}
@@ -250,7 +250,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 	// In order to compute the dimension of macros and their
 	// arguments, it is necessary to keep track of them.
 	vector<pair<InsetMath const *, Dimension>> dim_insets;
-	vector<pair<MathData const *, Dimension>> dim_arrays;
+	vector<pair<MathData const *, Dimension>> dim_cells;
 	CoordCache & coords = mi.base.bv->coordCache();
 	for (Element & e : elements_) {
 		mi.base.macro_nesting = e.macro_nesting;
@@ -272,8 +272,8 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 				d.wid = e.before + e.after;
 				e.inset->beforeMetrics();
 			}
-			if (e.ar)
-				dim_arrays.push_back(make_pair(e.ar, Dimension()));
+			if (e.md)
+				dim_cells.push_back(make_pair(e.md, Dimension()));
 			break;
 		case END:
 			if (e.inset) {
@@ -288,10 +288,10 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 				// padding and the vertical dimension are meaningful.
 				d.wid = e.before + e.after;
 			}
-			if (e.ar) {
-				LATTEST(dim_arrays.back().first == e.ar);
-				coords.arrays().add(e.ar, dim_arrays.back().second);
-				dim_arrays.pop_back();
+			if (e.md) {
+				LATTEST(dim_cells.back().first == e.md);
+				coords.cells().add(e.md, dim_cells.back().second);
+				dim_cells.pop_back();
 			}
 			break;
 		case BOX:
@@ -311,8 +311,8 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 			// Now add the dimension to current macros and arguments.
 			for (auto & dim_macro : dim_insets)
 				dim_macro.second += d;
-			for (auto & dim_array : dim_arrays)
-				dim_array.second += d;
+			for (auto & dim_cell : dim_cells)
+				dim_cell.second += d;
 		}
 
 		if (e.compl_text.empty())
@@ -321,7 +321,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 		augmentFont(font, "mathnormal");
 		dim.wid += mathed_string_width(font, e.compl_text);
 	}
-	LATTEST(dim_insets.empty() && dim_arrays.empty());
+	LATTEST(dim_insets.empty() && dim_cells.empty());
 }
 
 
@@ -353,9 +353,9 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			break;
 		}
 		case BEGIN:
-			if (e.ar) {
-				coords.arrays().add(e.ar, x, y);
-				e.ar->drawSelection(pi, x, y);
+			if (e.md) {
+				coords.cells().add(e.md, x, y);
+				e.md->drawSelection(pi, x, y);
 			}
 			if (e.inset) {
 				coords.insets().add(e.inset, x, y);
@@ -443,11 +443,11 @@ ostream & operator<<(ostream & os, MathRow::Element const & e)
 		if (e.inset)
 			os << "\\" << to_utf8(e.inset->name())
 			   << "^" << e.macro_nesting << "[";
-		if (e.ar)
+		if (e.md)
 			os << "(";
 		break;
 	case MathRow::END:
-		if (e.ar)
+		if (e.md)
 			os << ")";
 		if (e.inset)
 			os << "]";

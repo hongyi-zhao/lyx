@@ -735,7 +735,7 @@ string BufferView::contextMenu(int x, int y) const
 	if (covering_inset) {
 		if (covering_inset->asInsetMath()) {
 			CoordCache::Insets const & inset_cache =
-				coordCache().getInsets();
+				coordCache().insets();
 			Inset const * inner_inset = mathContextMenu(
 				covering_inset->asInsetMath()->asNestInset(),
 				inset_cache, x, y);
@@ -753,21 +753,21 @@ Inset const * BufferView::mathContextMenu(InsetMathNest const * inset,
 		CoordCache::Insets const & inset_cache, int x, int y) const
 {
 	for (size_t i = 0; i < inset->nargs(); ++i) {
-		MathData const & ar = inset->cell(i);
-		for (size_t j = 0; j < ar.size(); ++j) {
+		MathData const & md = inset->cell(i);
+		for (size_t j = 0; j < md.size(); ++j) {
 			string const name = lyxerr.debugging(Debug::MATHED)
-				? insetName(ar[j].nucleus()->lyxCode())
+				? insetName(md[j].nucleus()->lyxCode())
 				: string();
 			LYXERR(Debug::MATHED, "Examining inset: " << name);
-			if (!ar[j].nucleus()->contextMenuName().empty()) {
-				if (inset_cache.covers(ar[j].nucleus(), x, y)) {
+			if (!md[j].nucleus()->contextMenuName().empty()) {
+				if (inset_cache.covers(md[j].nucleus(), x, y)) {
 					LYXERR(Debug::MATHED, "Hit inset: "
 					       << name);
-					return ar[j].nucleus();
+					return md[j].nucleus();
 				}
 			}
 			InsetMathNest const * imn =
-				ar[j].nucleus()->asNestInset();
+				md[j].nucleus()->asNestInset();
 			if (imn) {
 				Inset const * inner =
 					mathContextMenu(imn, inset_cache, x, y);
@@ -2738,21 +2738,21 @@ Inset const * BufferView::clickableMathInset(InsetMathNest const * inset,
 		CoordCache::Insets const & inset_cache, int x, int y) const
 {
 	for (size_t i = 0; i < inset->nargs(); ++i) {
-		MathData const & ar = inset->cell(i);
-		for (size_t j = 0; j < ar.size(); ++j) {
+		MathData const & md = inset->cell(i);
+		for (size_t j = 0; j < md.size(); ++j) {
 			string const name = lyxerr.debugging(Debug::MATHED)
-				? insetName(ar[j].nucleus()->lyxCode())
+				? insetName(md[j].nucleus()->lyxCode())
 				: string();
 			LYXERR(Debug::MATHED, "Checking inset: " << name);
-			if (ar[j].nucleus()->clickable(*this, x, y)) {
-				if (inset_cache.covers(ar[j].nucleus(), x, y)) {
+			if (md[j].nucleus()->clickable(*this, x, y)) {
+				if (inset_cache.covers(md[j].nucleus(), x, y)) {
 					LYXERR(Debug::MATHED, "Clickable inset: "
 					       << name);
-					return ar[j].nucleus();
+					return md[j].nucleus();
 				}
 			}
 			InsetMathNest const * imn =
-				ar[j].nucleus()->asNestInset();
+				md[j].nucleus()->asNestInset();
 			if (imn) {
 				Inset const * inner =
 					clickableMathInset(imn, inset_cache, x, y);
@@ -2774,7 +2774,7 @@ void BufferView::updateHoveredInset() const
 	if (covering_inset && covering_inset->asInsetMath()) {
 		Inset const * inner_inset = clickableMathInset(
 				covering_inset->asInsetMath()->asNestInset(),
-				coordCache().getInsets(), x, y);
+				coordCache().insets(), x, y);
 		if (inner_inset)
 			covering_inset = inner_inset;
 	}

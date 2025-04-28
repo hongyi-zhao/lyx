@@ -23,7 +23,7 @@ public:
 	///
 	explicit InsetMathPar(Buffer * buf) : InsetMathHull(buf) {}
 	///
-	InsetMathPar(Buffer * buf, MathData const & ar);
+	InsetMathPar(Buffer * buf, MathData const & md);
 	///
 	mode_type currentMode() const override { return TEXT_MODE; }
 	///

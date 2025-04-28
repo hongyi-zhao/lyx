@@ -378,15 +378,13 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		for (size_t i = 0; it != en; ++it, ++i) {
 			if (!first) {
 				if (buffer().masterParams().xref_package == "prettyref") {
-					if (!first) {
 						os << "}";
-						if (flabels.size() == 2)
-							os << buffer().B_("[[reference 1]] and [[reference2]]");
-						else if (i > 0 && i == flabels.size() - 1)
-							os << buffer().B_("[[reference 1, ...]], and [[reference n]]");
-						else
-							os << buffer().B_("[[reference 1]], [[reference2, ...]]");
-					}
+					if (flabels.size() == 2)
+						os << buffer().B_("[[reference 1]] and [[reference2]]");
+					else if (i > 0 && i == flabels.size() - 1)
+						os << buffer().B_("[[reference 1, ...]], and [[reference n]]");
+					else
+						os << buffer().B_("[[reference 1]], [[reference2, ...]]");
 					os << "\\ref{";
 				} else if (useRange() && !use_zref)
 					os << "}{";

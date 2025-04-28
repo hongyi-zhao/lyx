@@ -26,7 +26,7 @@ public:
 	///
 	InsetMathExFunc(Buffer * buf, docstring const & name);
 	///
-	InsetMathExFunc(Buffer * buf, docstring const & name, MathData const & ar);
+	InsetMathExFunc(Buffer * buf, docstring const & name, MathData const & md);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	///

@@ -87,21 +87,21 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.forceBufferUpdate();
 				break;
 			}
-			MathData ar(buffer_);
-			if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
+			MathData md(buffer_);
+			if (createInsetMath_fromDialogStr(cmd.argument(), md)) {
 				cur.recordUndo();
 				Buffer & buf = buffer();
-				*this = *ar[0].nucleus()->asRefInset();
+				*this = *md[0].nucleus()->asRefInset();
 				setBuffer(buf);
 				break;
 			}
 		} else if (arg0 == "changetype") {
 			docstring const data = from_ascii(createDialogStr(arg1));
-			MathData ar(buffer_);
-			if (createInsetMath_fromDialogStr(data, ar)) {
+			MathData md(buffer_);
+			if (createInsetMath_fromDialogStr(data, md)) {
 				cur.recordUndo();
 				Buffer & buf = buffer();
-				*this = *ar[0].nucleus()->asRefInset();
+				*this = *md[0].nucleus()->asRefInset();
 				setBuffer(buf);
 				break;
 			}
@@ -293,11 +293,11 @@ void InsetMathRef::changeTarget(docstring const & target)
 	icp["reference"] = target;
 	if (!cell(1).empty())
 		icp["name"] = asString(cell(1));
-	MathData ar(buffer_);
+	MathData md(buffer_);
 	Buffer & buf = buffer();
 	if (createInsetMath_fromDialogStr(
-	    from_utf8(InsetCommand::params2string(icp)), ar)) {
-		*this = *ar[0].nucleus()->asRefInset();
+	    from_utf8(InsetCommand::params2string(icp)), md)) {
+		*this = *md[0].nucleus()->asRefInset();
 		// FIXME audit setBuffer calls
 		setBuffer(buf);
 	}

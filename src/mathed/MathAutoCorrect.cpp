@@ -63,12 +63,12 @@ bool Correction::read(idocstream & is)
 		return false;
 	if (s2.size() != 1)
 		return false;
-	MathData ar1(nullptr), ar3(nullptr);
-	mathed_parse_cell(ar1, s1);
-	mathed_parse_cell(ar3, s3);
-	from1_ = ar1;
+	MathData md1(nullptr), md3(nullptr);
+	mathed_parse_cell(md1, s1);
+	mathed_parse_cell(md3, s3);
+	from1_ = md1;
 	from2_ = s2[0];
-	to_    = ar3;
+	to_    = md3;
 	return true;
 }
 
@@ -76,7 +76,7 @@ bool Correction::read(idocstream & is)
 bool Correction::correct(Cursor & cur, char_type c) const
 {
 	//LYXERR(Debug::MATHED,
-	//	"trying to correct ar: " << at << " from: '" << from1_ << '\'');
+	//	"trying to correct md: " << at << " from: '" << from1_ << '\'');
 	if (from2_ != c)
 		return false;
 	pos_type n = from1_.size();

@@ -23,7 +23,7 @@ public:
 	///
 	explicit InsetMathComment(Buffer * buf);
 	///
-	explicit InsetMathComment(MathData const & ar);
+	explicit InsetMathComment(MathData const & md);
 	///
 	InsetMathComment(Buffer * buf, docstring const &);
 	///

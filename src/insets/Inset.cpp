@@ -329,7 +329,7 @@ string Inset::contextMenuName() const
 
 Dimension const Inset::dimension(BufferView const & bv) const
 {
-	return bv.coordCache().getInsets().dim(this);
+	return bv.coordCache().insets().dim(this);
 }
 
 
@@ -619,19 +619,19 @@ bool Inset::editing(BufferView const * bv) const
 
 int Inset::xo(BufferView const & bv) const
 {
-	return bv.coordCache().getInsets().x(this);
+	return bv.coordCache().insets().x(this);
 }
 
 
 int Inset::yo(BufferView const & bv) const
 {
-	return bv.coordCache().getInsets().y(this);
+	return bv.coordCache().insets().y(this);
 }
 
 
 bool Inset::covers(BufferView const & bv, int x, int y) const
 {
-	return bv.coordCache().getInsets().covers(this, x, y);
+	return bv.coordCache().insets().covers(this, x, y);
 }
 
 

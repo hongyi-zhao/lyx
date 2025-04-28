@@ -726,10 +726,10 @@ bool InsetMathScript::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 		// invoke notifyCursorLeaves again and does not touch
 		// cur (since the top slice will be deleted
 		// afterwards)
-		MathData ar = cell(0);
+		MathData md = cell(0);
 		insetCur.pop();
 		insetCur.cell().erase(insetCur.pos());
-		insetCur.cell().insert(insetCur.pos(), ar);
+		insetCur.cell().insert(insetCur.pos(), md);
 
 		// redraw
 		cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);

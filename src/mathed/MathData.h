@@ -75,12 +75,12 @@ public:
 	///
 	Buffer const * buffer() const { return buffer_; }
 	///
-	void append(MathData const & ar);
+	void append(MathData const & md);
 
 	/// inserts single atom at position pos
 	void insert(size_type pos, MathAtom const & at);
 	/// inserts multiple atoms at position pos
-	void insert(size_type pos, MathData const & ar);
+	void insert(size_type pos, MathData const & md);
 	/// inserts single atom at end
 	void push_back(MathAtom const & at);
 
@@ -103,15 +103,15 @@ public:
 	void substitute(MathData const & m);
 
 	/// looks for exact match
-	bool match(MathData const & ar) const;
+	bool match(MathData const & md) const;
 	/// looks for inclusion match starting at pos
-	bool matchpart(MathData const & ar, pos_type pos) const;
+	bool matchpart(MathData const & md, pos_type pos) const;
 	/// looks for containment, return == size mean not found
-	size_type find(MathData const & ar) const;
+	size_type find(MathData const & md) const;
 	/// looks for containment, return == size mean not found
-	size_type find_last(MathData const & ar) const;
+	size_type find_last(MathData const & md) const;
 	///
-	bool contains(MathData const & ar) const;
+	bool contains(MathData const & md) const;
 	///
 	void validate(LaTeXFeatures &) const;
 
@@ -120,7 +120,7 @@ public:
 	/// checked read access
 	MathAtom const & operator[](pos_type) const;
 
-	/// Add this array to a math row. Return true if contents got added
+	/// Add this data to a math row. Return true if contents got added
 	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 
 	/// rebuild cached metrics information
@@ -159,7 +159,7 @@ public:
 	int ym(BufferView const & bv) const;
 	/// write access to coordinate;
 	void setXY(BufferView & bv, int x, int y) const;
-	/// returns x coordinate of given position in the array
+	/// returns x coordinate of given position in the data
 	int pos2x(BufferView const * bv, size_type pos) const;
 	/// returns position of given x coordinate
 	size_type x2pos(BufferView const * bv, int targetx) const;
@@ -178,7 +178,7 @@ public:
 	/// Italic correction as described in InsetMathScript.h
 	int kerning(BufferView const *) const;
 	///
-	void swap(MathData & ar) { base_type::swap(ar); }
+	void swap(MathData & md) { base_type::swap(md); }
 
 	/// attach/detach arguments to macros, updating the cur to
 	/// stay visually at the same position (cur==0 is allowed)
@@ -202,7 +202,7 @@ protected:
 
 private:
 	/// is this an exact match at this position?
-	bool find1(MathData const & ar, size_type pos) const;
+	bool find1(MathData const & md, size_type pos) const;
 
 	///
 	void detachMacroParameters(DocIterator * dit, size_type macroPos);
@@ -225,9 +225,9 @@ private:
 };
 
 ///
-std::ostream & operator<<(std::ostream & os, MathData const & ar);
+std::ostream & operator<<(std::ostream & os, MathData const & md);
 ///
-odocstream & operator<<(odocstream & os, MathData const & ar);
+odocstream & operator<<(odocstream & os, MathData const & md);
 
 
 } // namespace lyx

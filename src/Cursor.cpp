@@ -79,7 +79,7 @@ DocIterator bruteFind(Cursor const & c, int x, int y)
 		int xo;
 		int yo;
 		Inset const * inset = &it.inset();
-		CoordCache::Insets const & insetCache = c.bv().coordCache().getInsets();
+		CoordCache::Insets const & insetCache = c.bv().coordCache().insets();
 
 		// FIXME: in the case where the inset is not in the cache, this
 		// means that no part of it is visible on screen. In this case
@@ -1534,14 +1534,14 @@ void Cursor::insert(MathAtom const & t)
 }
 
 
-void Cursor::insert(MathData const & ar)
+void Cursor::insert(MathData const & md)
 {
 	LATTEST(inMathed());
 	macroModeClose();
 	if (selection())
 		cap::eraseSelection(*this);
-	cell().insert(pos(), ar);
-	pos() += ar.size();
+	cell().insert(pos(), md);
+	pos() += md.size();
 	// FIXME audit setBuffer calls
 	inset().setBuffer(bv_->buffer());
 }
@@ -1550,13 +1550,13 @@ void Cursor::insert(MathData const & ar)
 int Cursor::niceInsert(docstring const & t, Parse::flags f, bool enter)
 {
 	LATTEST(inMathed());
-	MathData ar(buffer());
-	asArray(t, ar, f);
-	if (ar.size() == 1 && (enter || selection()))
-		niceInsert(ar[0]);
+	MathData md(buffer());
+	asMathData(t, md, f);
+	if (md.size() == 1 && (enter || selection()))
+		niceInsert(md[0]);
 	else
-		insert(ar);
-	return ar.size();
+		insert(md);
+	return md.size();
 }
 
 
@@ -1569,17 +1569,17 @@ void Cursor::niceInsert(MathAtom const & t)
 	// If possible, enter the new inset and move the contents of the selection
 	if (t->isActive()) {
 		idx_type const idx = prevMath().asNestInset()->firstIdx();
-		MathData ar(buffer());
-		asArray(safe, ar);
-		prevMath().cell(idx).insert(0, ar);
+		MathData md(buffer());
+		asMathData(safe, md);
+		prevMath().cell(idx).insert(0, md);
 		editInsertedInset();
 	} else if (t->asMacro() && !safe.empty()) {
-		MathData ar(buffer());
-		asArray(safe, ar);
+		MathData md(buffer());
+		asMathData(safe, md);
 		docstring const name = t->asMacro()->name();
 		MacroData const * data = buffer()->getMacro(name);
 		if (data && data->numargs() - data->optionals() > 0) {
-			plainInsert(MathAtom(new InsetMathBrace(buffer(), ar)));
+			plainInsert(MathAtom(new InsetMathBrace(buffer(), md)));
 			posBackward();
 		}
 	}
@@ -1728,7 +1728,7 @@ void Cursor::handleNest(MathAtom const & a)
 	Parse::flags const f = im && im->currentMode() != InsetMath::MATH_MODE
 		? Parse::TEXTMODE : Parse::NORMAL;
 	MathAtom t = a;
-	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(idx), f);
+	asMathData(cap::grabAndEraseSelection(*this), t.nucleus()->cell(idx), f);
 	insert(t);
 	editInsertedInset();
 }
@@ -1767,7 +1767,7 @@ bool Cursor::macroModeClose(bool cancel)
 	InsetMathUnknown * p = activeMacro();
 	p->finalize();
 	MathData selection(buffer());
-	asArray(p->selection(), selection);
+	asMathData(p->selection(), selection);
 	docstring const s = p->name();
 	--pos();
 	cell().erase(pos());
@@ -1880,10 +1880,10 @@ docstring Cursor::macroName()
 void Cursor::pullArg()
 {
 	// FIXME: Look here
-	MathData ar = cell();
+	MathData md = cell();
 	if (popBackward() && inMathed()) {
 		plainErase();
-		cell().insert(pos(), ar);
+		cell().insert(pos(), md);
 		resetAnchor();
 	}
 }
@@ -2558,7 +2558,7 @@ void Cursor::moveToClosestEdge(int const x, bool const edit)
 		// (e.g. InsetMathSpace).
 		if (edit && (inset->hasSettings() || !inset->contextMenuName().empty()))
 			return;
-		CoordCache::Insets const & insetCache = bv().coordCache().getInsets();
+		CoordCache::Insets const & insetCache = bv().coordCache().insets();
 		if (!insetCache.has(inset))
 			return;
 		int const wid = insetCache.dim(inset).wid;

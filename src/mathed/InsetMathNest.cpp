@@ -146,35 +146,35 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 // absolute value, and make them here relative, only to make them
 // absolute again when actually drawing the cursor. What a mess.
 	LASSERT(&sl.inset() == this, return);
-	MathData const & ar = sl.cell();
+	MathData const & md = sl.cell();
 	CoordCache const & coord_cache = bv.coordCache();
-	if (!coord_cache.getArrays().has(&ar)) {
+	if (!coord_cache.cells().has(&md)) {
 		// this can (semi-)legally happen if we just created this cell
 		// and it never has been drawn before. So don't ASSERT.
-		//lyxerr << "no cached data for array " << &ar << endl;
+		//lyxerr << "no cached data for cell " << &md << endl;
 		x = 0;
 		y = 0;
 		return;
 	}
-	Point const pt = coord_cache.getArrays().xy(&ar);
-	if (!coord_cache.getInsets().has(this)) {
+	Point const pt = coord_cache.cells().xy(&md);
+	if (!coord_cache.insets().has(this)) {
 		// same as above
 		//lyxerr << "no cached data for inset " << this << endl;
 		x = 0;
 		y = 0;
 		return;
 	}
-	Point const pt2 = coord_cache.getInsets().xy(this);
+	Point const pt2 = coord_cache.insets().xy(this);
 	//lyxerr << "retrieving position cache for MathData "
 	//	<< pt.x << ' ' << pt.y << endl;
-	x = pt.x - pt2.x + ar.pos2x(&bv, sl.pos());
+	x = pt.x - pt2.x + md.pos2x(&bv, sl.pos());
 	y = pt.y - pt2.y;
 //	lyxerr << "pt.y : " << pt.y << " pt2_.y : " << pt2.y
 //		<< " asc: " << ascent() << "  des: " << descent()
-//		<< " ar.asc: " << ar.ascent() << " ar.des: " << ar.descent() << endl;
+//		<< " md.asc: " << md.ascent() << " md.des: " << md.descent() << endl;
 	// move cursor visually into empty cells ("blue rectangles");
-	if (ar.empty() && bv.inputMethod()->preeditString().empty()) {
-		Dimension const dim = coord_cache.getArrays().dim(&ar);
+	if (md.empty() && bv.inputMethod()->preeditString().empty()) {
+		Dimension const dim = coord_cache.cells().dim(&md);
 		x += dim.wid / 3;
 	}
 }
@@ -293,10 +293,10 @@ void InsetMathNest::replace(ReplaceData & rep)
 }
 
 
-bool InsetMathNest::contains(MathData const & ar) const
+bool InsetMathNest::contains(MathData const & md) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)
-		if (cell(i).contains(ar))
+		if (cell(i).contains(md))
 			return true;
 	return false;
 }
@@ -322,10 +322,10 @@ bool InsetMathNest::isActive() const
 
 MathData InsetMathNest::glue() const
 {
-	MathData ar(buffer_);
+	MathData md(buffer_);
 	for (size_t i = 0; i < nargs(); ++i)
-		ar.append(cell(i));
-	return ar;
+		md.append(cell(i));
+	return md;
 }
 
 
@@ -402,15 +402,15 @@ bool InsetMathNest::notifyCursorLeaves(Cursor const & /*old*/, Cursor & /*cur*/)
 {
 	// FIXME: look here
 #if 0
-	MathData & ar = cur.cell();
+	MathData & md = cur.cell();
 	// remove base-only "scripts"
-	for (pos_type i = 0; i + 1 < ar.size(); ++i) {
+	for (pos_type i = 0; i + 1 < md.size(); ++i) {
 		InsetMathScript * p = operator[](i).nucleus()->asScriptInset();
 		if (p && p->nargs() == 1) {
-			MathData ar = p->nuc();
+			MathData md = p->nuc();
 			erase(i);
-			insert(i, ar);
-			cur.adjust(i, ar.size() - 1);
+			insert(i, md);
+			cur.adjust(i, md.size() - 1);
 		}
 	}
 
@@ -727,20 +727,20 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 		cur.mathForward(false);
 		cur.setSelection();
 		cutSelection(cur, false);
-		MathData ar(buffer_);
+		MathData md(buffer_);
 		if (!sel1.empty()) {
-			mathed_parse_cell(ar, beg + sel1 + end);
-			cur.insert(ar);
+			mathed_parse_cell(md, beg + sel1 + end);
+			cur.insert(md);
 		}
 		cur.resetAnchor();
 		if (!sel2.empty()) {
-			mathed_parse_cell(ar, sel2);
-			cur.insert(ar);
+			mathed_parse_cell(md, sel2);
+			cur.insert(md);
 		}
 		if (!sel3.empty()) {
 			pos_type pos = cur.pos();
-			mathed_parse_cell(ar, beg + sel3 + end);
-			cur.insert(ar);
+			mathed_parse_cell(md, beg + sel3 + end);
+			cur.insert(md);
 			cur.pos() = pos;
 		}
 		cur.setSelection();
@@ -1552,12 +1552,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else if (!cur.selection())
 			cur.niceInsert(cmd.argument());
 		else {
-			MathData ar(cur.buffer());
-			asArray(cmd.argument(), ar);
-			if (ar.size() == 1
-			    && ar[0]->asNestInset()
-			    && ar[0]->asNestInset()->nargs() > 1)
-				handleNest(cur, ar[0]);
+			MathData md(cur.buffer());
+			asMathData(cmd.argument(), md);
+			if (md.size() == 1
+			    && md[0]->asNestInset()
+			    && md[0]->asNestInset()->nargs() > 1)
+				handleNest(cur, md[0]);
 			else
 				cur.niceInsert(cmd.argument());
 		}
@@ -1578,10 +1578,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_INSERT: {
-		MathData ar(buffer_);
-		if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
+		MathData md(buffer_);
+		if (createInsetMath_fromDialogStr(cmd.argument(), md)) {
 			cur.recordUndoSelection();
-			cur.insert(ar);
+			cur.insert(md);
 			cur.forceBufferUpdate();
 		} else
 			cur.undispatched();
@@ -1900,17 +1900,17 @@ Inset * InsetMathNest::editXY(Cursor & cur, int x, int y)
 	if (idx_min == -1)
 		return this;
 
-	MathData & ar = cell(idx_min);
+	MathData & md = cell(idx_min);
 	cur.push(*this);
 	cur.idx() = idx_min;
-	cur.pos() = ar.x2pos(&cur.bv(), x - ar.xo(cur.bv()));
+	cur.pos() = md.x2pos(&cur.bv(), x - md.xo(cur.bv()));
 
 	//lyxerr << "found cell : " << idx_min << " pos: " << cur.pos() << endl;
 	if (dist_min == 0) {
 		// hit inside cell
-		for (pos_type i = 0, n = ar.size(); i < n; ++i)
-			if (ar[i]->covers(cur.bv(), x, y))
-				return ar[i].nucleus()->editXY(cur, x, y);
+		for (pos_type i = 0, n = md.size(); i < n; ++i)
+			if (md[i]->covers(cur.bv(), x, y))
+				return md[i].nucleus()->editXY(cur, x, y);
 	}
 	return this;
 }
@@ -1955,9 +1955,9 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 			cmd = FuncRequest(LFUN_PASTE, "0");
 			doDispatch(bv.cursor(), cmd);
 		} else {
-			MathData ar(buffer_);
-			asArray(theSelection().get(), ar);
-			bv.cursor().insert(ar);
+			MathData md(buffer_);
+			asMathData(theSelection().get(), md);
+			bv.cursor().insert(md);
 		}
 	}
 }
@@ -2067,7 +2067,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 				InsetMathUnknown * p = cur.activeMacro();
 				p->finalize();
 				MathData sel(cur.buffer());
-				asArray(p->selection(), sel);
+				asMathData(p->selection(), sel);
 				cur.backspace();
 				if (c == '{')
 					cur.niceInsert(MathAtom(new InsetMathBrace(buffer_, sel)));
@@ -2355,7 +2355,7 @@ bool InsetMathNest::script(Cursor & cur, bool up,
 		cur.pos() = cur.lastpos();
 	} else {
 		// convert the thing to our left to a scriptinset or create a new
-		// one if in the very first position of the array
+		// one if in the very first position of the data
 		if (cur.pos() == 0) {
 			//lyxerr << "new scriptinset" << endl;
 			cur.insert(new InsetMathScript(buffer_, up));

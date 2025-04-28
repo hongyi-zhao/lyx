@@ -348,9 +348,9 @@ NormalStream & operator<<(NormalStream & ns, MathAtom const & at)
 }
 
 
-NormalStream & operator<<(NormalStream & ns, MathData const & ar)
+NormalStream & operator<<(NormalStream & ns, MathData const & md)
 {
-	normalize(ar, ns);
+	normalize(md, ns);
 	return ns;
 }
 
@@ -519,9 +519,9 @@ TeXMathStream & operator<<(TeXMathStream & ws, MathAtom const & at)
 }
 
 
-TeXMathStream & operator<<(TeXMathStream & ws, MathData const & ar)
+TeXMathStream & operator<<(TeXMathStream & ws, MathData const & md)
 {
-	write(ar, ws);
+	write(md, ws);
 	return ws;
 }
 
@@ -653,9 +653,9 @@ MathMLStream & operator<<(MathMLStream & ms, MathAtom const & at)
 }
 
 
-MathMLStream & operator<<(MathMLStream & ms, MathData const & ar)
+MathMLStream & operator<<(MathMLStream & ms, MathData const & md)
 {
-	mathmlize(ar, ms);
+	mathmlize(md, ms);
 	return ms;
 }
 
@@ -874,9 +874,9 @@ HtmlStream & operator<<(HtmlStream & ms, MathAtom const & at)
 }
 
 
-HtmlStream & operator<<(HtmlStream & ms, MathData const & ar)
+HtmlStream & operator<<(HtmlStream & ms, MathData const & md)
 {
-	htmlize(ar, ms);
+	htmlize(md, ms);
 	return ms;
 }
 
@@ -971,9 +971,9 @@ MapleStream & operator<<(MapleStream & ms, MathAtom const & at)
 }
 
 
-MapleStream & operator<<(MapleStream & ms, MathData const & ar)
+MapleStream & operator<<(MapleStream & ms, MathData const & md)
 {
-	maple(ar, ms);
+	maple(md, ms);
 	return ms;
 }
 
@@ -1023,9 +1023,9 @@ MaximaStream & operator<<(MaximaStream & ms, MathAtom const & at)
 }
 
 
-MaximaStream & operator<<(MaximaStream & ms, MathData const & ar)
+MaximaStream & operator<<(MaximaStream & ms, MathData const & md)
 {
-	maxima(ar, ms);
+	maxima(md, ms);
 	return ms;
 }
 
@@ -1075,9 +1075,9 @@ MathematicaStream & operator<<(MathematicaStream & ms, MathAtom const & at)
 }
 
 
-MathematicaStream & operator<<(MathematicaStream & ms, MathData const & ar)
+MathematicaStream & operator<<(MathematicaStream & ms, MathData const & md)
 {
-	mathematica(ar, ms);
+	mathematica(md, ms);
 	return ms;
 }
 
@@ -1127,9 +1127,9 @@ OctaveStream & operator<<(OctaveStream & ns, MathAtom const & at)
 }
 
 
-OctaveStream & operator<<(OctaveStream & ns, MathData const & ar)
+OctaveStream & operator<<(OctaveStream & ns, MathData const & md)
 {
-	octave(ar, ns);
+	octave(md, ns);
 	return ns;
 }
 

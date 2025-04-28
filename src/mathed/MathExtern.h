@@ -35,14 +35,14 @@ void mathematica(MathData const &, MathematicaStream &);
 void mathmlize(MathData const &, MathMLStream &);
 void octave(MathData const &, OctaveStream &);
 
-bool extractNumber(MathData const & ar, int & i);
-bool extractNumber(MathData const & ar, double & i);
+bool extractNumber(MathData const & md, int & i);
+bool extractNumber(MathData const & md, double & i);
 
 /// Write \p s (which may contain math or text contents in LaTeX syntax) to \p os
 void writeString(docstring const & s, TeXMathStream & os);
 
 MathData pipeThroughExtern(std::string const & language,
-	docstring const & extra, MathData const & ar);
+	docstring const & extra, MathData const & md);
 
 
 } // namespace lyx

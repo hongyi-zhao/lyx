@@ -408,12 +408,6 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 			first = false;
 		}
 		os << "}";
-	} else if (cmd == "nameref" && use_cleveref && (use_nolink || !hyper_on)) {
-		docstring const crefcmd = use_caps ? from_ascii("Cref") : from_ascii("cref");
-		os << "\\name" << crefcmd;
-		if (use_plural)
-			os << "s";
-		os << '{' << data << '}';
 	} else if (cmd == "labelonly") {
 		docstring const & ref = getParam("reference");
 		if (getParam("noprefix") != "true")
@@ -916,17 +910,15 @@ void InsetRef::validate(LaTeXFeatures & features) const
 	} else if (cmd == "eqref" && buffer().params().xref_package != "refstyle")
 		// with refstyle, we simply output "(\ref{label})"
 		features.require("amsmath");
-	else if (cmd == "nameref") {
-		bool const nr_clever = !buffer().masterParams().pdfoptions().use_hyperref
-			|| getParam("nolink") == "true";
-		if (buffer().masterParams().xref_package == "cleveref" && nr_clever)
+	else if (cmd == "nameref")
+		features.require("nameref");
+	else if (cmd == "cpageref") {
+		if (buffer().masterParams().xref_package == "cleveref") {
 			features.require("cleveref");
-		else
-			features.require("nameref");
-	} else if (cmd == "cpageref") {
-		if (buffer().masterParams().xref_package == "cleveref")
-			features.require("cleveref");
-		else if (buffer().masterParams().xref_package == "zref")
+			if (getLabels().size() > 1)
+				// work around bug in cleveref
+				features.require("cleveref:cpagereffix");
+		} else if (buffer().masterParams().xref_package == "zref")
 			features.require("zref-clever");
 	} else if (getLabels().size() > 1 && (cmd == "ref" || cmd == "pageref")) {
 		if (buffer().masterParams().xref_package == "cleveref")
@@ -1021,8 +1013,12 @@ vector<FileName> InsetRef::externalFilenames(bool const warn) const
 		// are excluded from this.
 		return res;
 
-	// check whether the included file exist
 	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params()["filenames"])));
+	if (incFileNames.empty())
+		// nothing to do
+		return res;
+
+	// check whether the included file exist
 	ListOfBuffers const children = buffer().masterBuffer()->getDescendants();
 	for (auto const & ifn : incFileNames) {
 		string label;
@@ -1057,6 +1053,10 @@ vector<FileName> InsetRef::externalFilenames(bool const warn) const
 FileName InsetRef::getExternalFileName(docstring const & inlabel) const
 {
 	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params()["filenames"])));
+	if (incFileNames.empty())
+		// nothing to do
+		return FileName();
+
 	ListOfBuffers const children = buffer().masterBuffer()->getDescendants();
 	for (auto const & ifn : incFileNames) {
 		string label;

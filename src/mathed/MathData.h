@@ -83,6 +83,8 @@ public:
 	void insert(size_type pos, MathData const & md);
 	/// inserts single atom at end
 	void push_back(MathAtom const & at);
+	/// construct single atom at end
+	void emplace_back(InsetMath * ins);
 
 	/// erase range from pos1 to pos2
 	void erase(iterator pos1, iterator pos2);

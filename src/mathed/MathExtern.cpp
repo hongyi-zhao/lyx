@@ -1349,8 +1349,7 @@ namespace {
 		if (mat->ncols() == 1 && mat->nrows() == 1)
 			res.append(mat->cell(0));
 		else {
-			res.push_back(MathAtom(
-				new InsetMathDelim(buf, from_ascii("("), from_ascii(")"))));
+			res.emplace_back(new InsetMathDelim(buf, from_ascii("("), from_ascii(")")));
 			res.back().nucleus()->cell(0).push_back(at);
 		}
 		return res;

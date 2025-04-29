@@ -112,6 +112,14 @@ void MathData::push_back(MathAtom const & t)
 }
 
 
+void MathData::emplace_back(InsetMath * ins)
+{
+	base_type::emplace_back(ins);
+	if (buffer_)
+		back()->setBuffer(*buffer_);
+}
+
+
 void MathData::append(MathData const & md)
 {
 	insert(size(), md);

@@ -489,64 +489,64 @@ void InsetMathMacroTemplate::createLook(int args) const
 	argsInLook_ = args;
 
 	// \foo
-	look_.push_back(MathAtom(
-		new InsetLabelBox(buffer_, _("Name"), *this, false)));
+	look_.emplace_back(
+		new InsetLabelBox(buffer_, _("Name"), *this, false));
 	MathData & nameData = look_[look_.size() - 1].nucleus()->cell(0);
-	nameData.push_back(MathAtom(new InsetNameWrapper(buffer_, &cell(0), *this)));
+	nameData.emplace_back(new InsetNameWrapper(buffer_, &cell(0), *this));
 
 	// [#1][#2]
 	int i = 0;
 	if (optionals_ > 0) {
-		look_.push_back(MathAtom(
-			new InsetLabelBox(buffer_, _("optional"), *this, false)));
+		look_.emplace_back(
+			new InsetLabelBox(buffer_, _("optional"), *this, false));
 
 		MathData * optData = &look_[look_.size() - 1].nucleus()->cell(0);
 		for (; i < optionals_; ++i) {
 			// color it light grey, if it is to be removed when the cursor leaves
 			if (i == argsInLook_) {
-				optData->push_back(MathAtom(
-					new InsetColoredCell(buffer_, Color_mathmacrooldarg)));
+				optData->emplace_back(
+					new InsetColoredCell(buffer_, Color_mathmacrooldarg));
 				optData = &(*optData)[optData->size() - 1].nucleus()->cell(0);
 			}
 
-			optData->push_back(MathAtom(new InsetMathChar(buffer_, '[')));
-			optData->push_back(MathAtom(new InsetMathWrapper(buffer_, &cell(1 + i))));
-			optData->push_back(MathAtom(new InsetMathChar(buffer_, ']')));
+			optData->emplace_back(new InsetMathChar(buffer_, '['));
+			optData->emplace_back(new InsetMathWrapper(buffer_, &cell(1 + i)));
+			optData->emplace_back(new InsetMathChar(buffer_, ']'));
 		}
 	}
 
 	// {#3}{#4}
 	for (; i < numargs_; ++i) {
 		MathData arg(buffer_);
-		arg.push_back(MathAtom(new InsetMathMacroArgument(buffer_, i + 1)));
+		arg.emplace_back(new InsetMathMacroArgument(buffer_, i + 1));
 		if (i >= argsInLook_) {
-			look_.push_back(MathAtom(new InsetColoredCell(buffer_,
+			look_.emplace_back(new InsetColoredCell(buffer_,
 				Color_mathmacrooldarg,
-				MathAtom(new InsetMathBrace(buffer_, arg)))));
+				MathAtom(new InsetMathBrace(buffer_, arg))));
 		} else
-			look_.push_back(MathAtom(new InsetMathBrace(buffer_, arg)));
+			look_.emplace_back(new InsetMathBrace(buffer_, arg));
 	}
 	for (; i < argsInLook_; ++i) {
 		MathData arg(buffer_);
-		arg.push_back(MathAtom(new InsetMathMacroArgument(buffer_, i + 1)));
-		look_.push_back(MathAtom(new InsetColoredCell(buffer_,
+		arg.emplace_back(new InsetMathMacroArgument(buffer_, i + 1));
+		look_.emplace_back(new InsetColoredCell(buffer_,
 			Color_mathmacronewarg,
-			MathAtom(new InsetMathBrace(buffer_, arg)))));
+			MathAtom(new InsetMathBrace(buffer_, arg))));
 	}
 
 	// :=
-	look_.push_back(MathAtom(new InsetMathChar(buffer_, ':')));
-	look_.push_back(MathAtom(new InsetMathChar(buffer_, '=')));
+	look_.emplace_back(new InsetMathChar(buffer_, ':'));
+	look_.emplace_back(new InsetMathChar(buffer_, '='));
 
 	// definition
-	look_.push_back(MathAtom(
+	look_.emplace_back(
 		new InsetLabelBox(buffer_, MathAtom(
-			new InsetMathWrapper(buffer_, &cell(defIdx()))), _("TeX"), *this,	true)));
+			new InsetMathWrapper(buffer_, &cell(defIdx()))), _("TeX"), *this,	true));
 
 	// display
-	look_.push_back(MathAtom(
+	look_.emplace_back(
 		new InsetDisplayLabelBox(buffer_, MathAtom(
-			new InsetMathWrapper(buffer_, &cell(displayIdx()))), _("LyX"), *this)));
+			new InsetMathWrapper(buffer_, &cell(displayIdx()))), _("LyX"), *this));
 
 	look_.setContentsBuffer();
 }
@@ -727,7 +727,7 @@ void InsetMathMacroTemplate::insertMissingArguments(int maxArg)
 		if (found[i])
 			continue;
 
-		cell(idx).push_back(MathAtom(new InsetMathMacroArgument(buffer_, i + 1)));
+		cell(idx).emplace_back(new InsetMathMacroArgument(buffer_, i + 1));
 	}
 }
 
@@ -897,9 +897,9 @@ void InsetMathMacroTemplate::insertParameter(Cursor & cur,
 		if (addarg) {
 			shiftArguments(pos, 1);
 
-			cell(defIdx()).push_back(MathAtom(new InsetMathMacroArgument(buffer_, pos + 1)));
+			cell(defIdx()).emplace_back(new InsetMathMacroArgument(buffer_, pos + 1));
 			if (!cell(displayIdx()).empty())
-				cell(displayIdx()).push_back(MathAtom(new InsetMathMacroArgument(buffer_, pos + 1)));
+				cell(displayIdx()).emplace_back(new InsetMathMacroArgument(buffer_, pos + 1));
 		}
 
 		if (!greedy) {

@@ -176,16 +176,14 @@ void GuiRef::enableBoxes()
 	bool const isFormatted = (reftype == "formatted");
 	bool const isLabelOnly = (reftype == "labelonly");
 	bool const hyper_on = buffer().params().pdfoptions().use_hyperref;
-	bool const cleveref_nameref = use_cleveref && reftype == "nameref"
-			&& (!hyper_on || nolinkCB->isChecked());
 	bool const zref_clever = use_zref && (reftype == "vref" || reftype == "vpageref");
-	bool const allow_plural = use_refstyle || cleveref_nameref;
+	bool const allow_plural = use_refstyle;
 	bool const allow_caps = use_refstyle || use_cleveref || use_zref;
 	bool const allow_nohyper = !isLabelOnly && (!isFormatted || use_cleveref || use_zref)
 			&& (reftype != "cpageref" || use_zref);
 	bool const intext = bufferview()->cursor().inTexted();
-	pluralCB->setEnabled(intext && (isFormatted || cleveref_nameref) && allow_plural);
-	capsCB->setEnabled(intext && (isFormatted || cleveref_nameref || zref_clever || reftype == "cpageref")
+	pluralCB->setEnabled(intext && isFormatted && allow_plural);
+	capsCB->setEnabled(intext && (isFormatted || zref_clever || reftype == "cpageref")
 			   && allow_caps);
 	noprefixCB->setEnabled(intext && isLabelOnly);
 	// disabling of hyperlinks not supported by formatted references

@@ -1817,6 +1817,13 @@ TexString LaTeXFeatures::getMacros() const
 		       << '\n';
 	}
 
+	if (mustProvide("cleveref:cpagereffix")) {
+		macros << "% Fix for pending cleveref bug: https://tex.stackexchange.com/a/620066/105447\n"
+			<< "\\newcommand*{\\@setcpagerefrange}[3]{\\@@setcpagerefrange{#1}{#2}{cref}{#3}}\n"
+			<< "\\newcommand*{\\@setCpagerefrange}[3]{\\@@setcpagerefrange{#1}{#2}{Cref}{#3}}\n"
+			<< "\\newcommand*{\\@setlabelcpagerefrange}[3]{\\@@setcpagerefrange{#1}{#2}{labelcref}{#3}}\n";
+	}
+
 	// change tracking
 	if (mustProvide("ct-xcolor-ulem")) {
 		streamsize const prec = macros.os().precision(2);
@@ -2247,6 +2254,14 @@ docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 		    << "\\def\\RS" << thmname << "stxt{_(" << lowercase(tnp) << ")~}\n"
 		    << "\\def\\RS" << capitalize(thmname) << "txt{_(" << tn << ")~}\n"
 		    << "\\def\\RS" << capitalize(thmname) << "stxt{_(" << tnp << ")~}\n";
+		return ods.str();
+	} else if (params_.xref_package == "cleveref" && !lay.thmXRefName().empty()) {
+		docstring const tn = from_utf8(lay.thmXRefName());
+		docstring const tnp = from_utf8(lay.thmXRefNamePl());
+		odocstringstream ods;
+		docstring const thmname = from_utf8(lay.thmName());
+		ods << "\\crefname{" << thmname << "}{_(" << lowercase(tn) << ")}{" << lowercase(tnp) << "}\n"
+		    << "\\Crefname{" << thmname << "}{_(" << tn << ")}{" << tnp << "}\n";
 		return ods.str();
 	}
 	return docstring();

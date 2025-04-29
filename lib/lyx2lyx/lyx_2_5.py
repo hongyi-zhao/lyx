@@ -2547,26 +2547,11 @@ def revert_cleveref(document):
             i += 1
             continue
 
-        nameref = False
-        k = find_token(document.body, "LatexCommand formatted", i, j)
-        if k == -1:
-            k = find_token(document.body, "LatexCommand nameref", i, j)
-            if k == -1:
-                i += 1
-                continue
-            nolink = get_bool_value(document.body, "nolink", i, j, False)
-            if not nolink:
-                i += 1
-                continue
-            nameref = True
-        
         plural = get_bool_value(document.body, "plural", i, j, False)
         caps = get_bool_value(document.body, "caps", i, j, False)
         label = get_quoted_value(document.body, "reference", i, j)
 
         cmd = "\\"
-        if nameref:
-            cmd += "name"
         if caps:
             cmd += "C"
         else:

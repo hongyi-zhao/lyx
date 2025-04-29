@@ -150,14 +150,14 @@ char const * const known_babel_shorthands[] = { "\"", "|", "-", "~", "=", "/",
  "~", "*", ":", "_", "x", "'", "`", "<", ">", 0 };
 
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
- "vpageref", "prettyref", "nameref", "eqref", "cref", "Cref", "namecref",
- "nameCref", "namecrefs", "nameCrefs", "cpageref", "labelcref",
- "labelcpageref", "vrefrange", "vpagerefrange", "crefrange", "Crefrange", 0 };
+ "vpageref", "prettyref", "nameref", "eqref", "cref", "Cref",
+ "cpageref", "labelcref", "labelcpageref",
+ "vrefrange", "vpagerefrange", "crefrange", "Crefrange", 0 };
 
 char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
- "vpageref", "formatted", "nameref", "eqref", "formatted", "formatted", "nameref",
- "nameref", "nameref", "nameref", "cpageref", "ref", "pageref",
-  "vref", "vpageref", "formatted", "formatted", 0 };
+ "vpageref", "formatted", "nameref", "eqref", "formatted", "formatted",
+ "cpageref", "ref", "pageref",
+ "vref", "vpageref", "formatted", "formatted", 0 };
 
 char const * const known_starref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "nameref", "eqref", "cref", "Cref", "cpageref", 0 };

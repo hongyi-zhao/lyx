@@ -1001,9 +1001,12 @@ void InsetRef::updateStatistics(Statistics & stats) const
 
 bool InsetRef::useRange() const
 {
+	string const & cmd = getCmdName();
+	if (getLabels().size() == 2 && (cmd == "vref" || cmd == "vpageref")
+	    && buffer().masterParams().xref_package != "zref")
+		return true;
 	if (getLabels().size() != 2 || getParam("tuple") == "list")
 		return false;
-	string const & cmd = getCmdName();
 	return cmd == "vref" || cmd == "vpageref"
 		|| (cmd == "formatted" && buffer().masterParams().xref_package != "prettyref")
 		|| (cmd == "cpageref");

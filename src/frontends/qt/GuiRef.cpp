@@ -243,7 +243,7 @@ void GuiRef::typeChanged()
 	QString const reftype =
 		typeCO->itemData(typeCO->currentIndex()).toString();
 	bool const threshold = (reftype == "vref" || reftype == "vpageref")
-		&& selectedLV->topLevelItemCount() > 1;
+		&& selectedLV->topLevelItemCount() > 2;
 	if (threshold)
 		Alert::warning(_("Unsupported setting!"),
 			_("The reference type you selected allows for maximally two target labels."));

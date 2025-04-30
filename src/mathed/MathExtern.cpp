@@ -1285,7 +1285,7 @@ namespace {
 	}
 
 
-	MathData pipeThroughOctave(docstring const &, MathData const & md)
+	MathData pipeThroughOctave(docstring const &command, MathData const & md)
 	{
 		odocstringstream os;
 		OctaveStream vs(os);
@@ -1297,6 +1297,14 @@ namespace {
 		lyxerr << "pipe: md: '" << md << "'\n"
 		       << "pipe: expr: '" << expr << "'" << endl;
 
+		string comm_left;
+		string comm_right;
+		if (command != "noextra") {
+			comm_left = to_utf8(command) + "(";
+			comm_right = ")" + comm_right;
+		}
+		int preplen = comm_left.length();
+
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			//
 			// try to fix missing '*' the hard way
@@ -1304,8 +1312,9 @@ namespace {
 			// >>> ([[1 2 3 ];[2 3 1 ];[3 1 2 ]])([[1 2 3 ];[2 3 1 ];[3 1 2 ]])
 			//                                   ^
 			//
-			lyxerr << "checking expr: '" << expr << "'" << endl;
-			out = captureOutput("octave -q 2>&1", expr);
+			string full = comm_left + expr + comm_right;
+			lyxerr << "checking input: '" << full << "'" << endl;
+			out = captureOutput("octave -q 2>&1", full);
 			lyxerr << "output: '" << out << "'" << endl;
 
 			// leave loop if expression syntax is probably ok
@@ -1325,11 +1334,11 @@ namespace {
 			// found line with error, next line is the one with caret
 			getline(is, line);
 			size_t pos = line.find('^');
-			lyxerr << "caret line: '" << line << "'" << endl;
+			lyxerr << "caret line   : '" << line << "'" << endl;
 			lyxerr << "found caret at pos: '" << pos << "'" << endl;
 			if (pos == string::npos || pos < 4)
 				break; // caret position not found
-			pos -= 4; // skip the ">>> " part
+			pos -= 4 + preplen; // skip the ">>> " part and command prefix
 			if (expr[pos] == '*')
 				break; // two '*' in a row are definitely bad
 			expr.insert(pos, 1, '*');

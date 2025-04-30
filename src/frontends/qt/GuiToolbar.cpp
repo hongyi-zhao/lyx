@@ -250,7 +250,14 @@ MenuButtonBase::MenuButtonBase(GuiToolbar * bar, ToolbarItem const & item)
 		FileName const fname = imageLibFileSearch(imagedir, name, "svgz,png",
 			theGuiApp()->imageSearchMode(), theGuiApp()->isInDarkMode());
 		if (fname.exists()) {
-			setIcon(QIcon(toqstr(fname.absFileName())));
+			QString const fpath = toqstr(fname.absFileName());
+			QPixmap pixmap;
+			if (pixmap.load(fpath)) {
+				if (fpath.contains("math") || fpath.contains("ipa")
+					|| fpath.contains("bullets"))
+				pixmap = guiApp->prepareForDarkMode(pixmap);
+			}
+			setIcon(QIcon(pixmap));
 			break;
 		}
 	}

@@ -1348,6 +1348,8 @@ namespace {
 		// ansi control sequence before, such as '\033[?1034hans = '
 		size_t i = out.find("ans = ");
 		if (i == string::npos)
+			i = out.find("ans =\n");
+		if (i == string::npos)
 			return MathData(nullptr);
 		out = out.substr(i + 6);
 

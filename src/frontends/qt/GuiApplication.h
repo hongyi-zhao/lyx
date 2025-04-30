@@ -96,6 +96,8 @@ public:
 
 	/// Scale Pixmaps properly (also for HiDPI)
 	QPixmap getScaledPixmap(QString imagedir, QString name) const;
+    ///
+    QPixmap prepareForDarkMode(QPixmap pixmap) const;
 
 	///
 	Clipboard & clipboard();

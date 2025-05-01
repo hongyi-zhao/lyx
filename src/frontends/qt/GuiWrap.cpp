@@ -13,12 +13,10 @@
 #include "GuiWrap.h"
 
 #include "LengthCombo.h"
-#include "qt_helpers.h"
 #include "Validator.h"
 #include "FuncRequest.h"
 
 #include "support/gettext.h"
-#include "support/lstrings.h"
 
 #include <QLineEdit>
 #include <QPushButton>

@@ -12,7 +12,6 @@
 
 #include "GuiSymbols.h"
 
-#include "GuiApplication.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
 

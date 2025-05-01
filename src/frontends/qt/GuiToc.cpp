@@ -17,9 +17,6 @@
 #include "TocWidget.h"
 #include "qt_helpers.h"
 
-#include "Buffer.h"
-#include "BufferView.h"
-#include "BufferParams.h"
 #include "FuncRequest.h"
 
 #include "support/debug.h"

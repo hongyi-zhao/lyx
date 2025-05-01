@@ -33,7 +33,6 @@
 #include "KeyMap.h"
 #include "LayoutBox.h"
 #include "LyX.h"
-#include "LyXRC.h"
 #include "Menus.h"
 #include "qt_helpers.h"
 #include "Session.h"

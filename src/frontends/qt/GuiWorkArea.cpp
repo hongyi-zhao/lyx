@@ -32,7 +32,6 @@
 #include "Cursor.h"
 #include "Font.h"
 #include "FuncRequest.h"
-#include "KeyMap.h"
 #include "KeySymbol.h"
 #include "KeySequence.h"
 #include "LyX.h"
@@ -40,7 +39,6 @@
 #include "LyXVC.h"
 #include "Text.h"
 #include "TextMetrics.h"
-#include "version.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -49,7 +47,6 @@
 
 #include "frontends/Application.h"
 #include "frontends/CaretGeometry.h"
-#include "frontends/FontMetrics.h"
 #include "frontends/WorkAreaManager.h"
 
 #include <QContextMenuEvent>

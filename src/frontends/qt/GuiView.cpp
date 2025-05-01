@@ -44,7 +44,6 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Compare.h"
 #include "Converter.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"

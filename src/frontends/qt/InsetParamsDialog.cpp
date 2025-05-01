@@ -12,35 +12,16 @@
 
 #include "InsetParamsDialog.h"
 
-#include "GuiBox.h"
-#include "GuiBranch.h"
-#include "GuiBibitem.h"
-#include "GuiCounter.h"
-#include "GuiERT.h"
-#include "GuiHSpace.h"
-#include "GuiHyperlink.h"
-#include "GuiInfo.h"
-#include "GuiLabel.h"
-#include "GuiLine.h"
-#include "GuiPrintNomencl.h"
-#include "GuiTabular.h"
-#include "GuiVSpace.h"
-#include "FloatPlacement.h"
-
 #include "InsetParamsWidget.h"
 #include "qt_helpers.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferParams.h"
-#include "BufferView.h"
-#include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyX.h"
 
 #include "support/debug.h"
-#include "support/lstrings.h"
 
 #include <QDialogButtonBox>
 

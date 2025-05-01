@@ -19,7 +19,6 @@
 #include "support/convert.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/Package.h"
 

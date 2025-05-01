@@ -20,17 +20,13 @@
 #include "ui_SpellcheckerUi.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "BufferView.h"
-#include "buffer_funcs.h"
 #include "Cursor.h"
 #include "Text.h"
-#include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "GuiView.h"
 #include "Language.h"
 #include "LyX.h"
-#include "LyXRC.h"
 #include "lyxfind.h"
 #include "Paragraph.h"
 #include "WordLangTuple.h"
@@ -40,8 +36,6 @@
 #include "support/docstring_list.h"
 #include "support/ExceptionMessage.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
-#include "support/textutils.h"
 
 #include <QKeyEvent>
 #include <QListWidgetItem>

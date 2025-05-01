@@ -13,7 +13,6 @@
 
 #include "InsertTableWidget.h"
 
-#include "GuiView.h"
 #include "qt_helpers.h"
 
 // DispatchResult.h is needed by the windows compiler because lyx::dispatch

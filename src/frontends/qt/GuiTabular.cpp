@@ -29,7 +29,6 @@
 #include "FuncStatus.h"
 #include "Language.h"
 #include "LyX.h"
-#include "LyXRC.h"
 
 #include "support/convert.h"
 #include "support/debug.h"

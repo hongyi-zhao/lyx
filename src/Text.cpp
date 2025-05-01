@@ -5570,9 +5570,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cur.errorMessage(from_utf8(N_("Table Style ")) + from_utf8(tabstyle) +
 						     from_utf8(N_(" not known")));
 		}
-		if (doInsertInset(cur, this, cmd, false, true))
+		if (doInsertInset(cur, this, cmd, false, true)) {
 			// move inside
 			(void) checkAndActivateInset(cur, true);
+			cur.forceBufferUpdate();
+		}
 		break;
 	}
 

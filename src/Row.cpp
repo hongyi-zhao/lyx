@@ -166,38 +166,29 @@ bool Row::Element::splitAt(int const width, int next_width, SplitType split_type
 	// should next element eventually replace *this?
 	bool first = true;
 	docstring::size_type i = 0;
+	pos_type curpos = pos;
 	for (FontMetrics::Break const & brk : breaks) {
+		Element e(type, curpos, font, change);
+		e.str = str.substr(i, brk.len);
+		e.dim.wid = brk.wid;
+		e.nspc_wid = brk.nspc_wid;
+		e.row_flags = CanBreakInside | BreakAfter;
 		if (type == PREEDIT) {
-			Element e(type, pos, font, change);
-			e.str = str.substr(i, brk.len);
 			e.endpos = e.pos;
-			e.dim.wid = brk.wid;
-			e.nspc_wid = brk.nspc_wid;
-			e.row_flags = CanBreakInside | BreakAfter;
 			e.im = im;
 			e.char_format_index = char_format_index;
-			if (first) {
-				// this element eventually goes to *this
-				e.row_flags |= row_flags & ~AfterFlags;
-				first_e = e;
-				first = false;
-			} else
-				tail.push_back(e);
-		} else {
-			Element e(type, pos + i, font, change);
-			e.str = str.substr(i, brk.len);
+		} else
 			e.endpos = e.pos + brk.len;
-			e.dim.wid = brk.wid;
-			e.nspc_wid = brk.nspc_wid;
-			e.row_flags = CanBreakInside | BreakAfter;
-			if (first) {
-				// this element eventually goes to *this
-				e.row_flags |= row_flags & ~AfterFlags;
-				first_e = e;
-				first = false;
-			} else
-				tail.push_back(e);
-		}
+
+		if (first) {
+			// this element eventually goes to *this
+			e.row_flags |= row_flags & ~AfterFlags;
+			first_e = e;
+			first = false;
+		} else
+			tail.push_back(e);
+
+		curpos = e.endpos;
 		i += brk.len;
 	}
 

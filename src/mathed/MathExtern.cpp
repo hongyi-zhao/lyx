@@ -1120,6 +1120,10 @@ namespace {
 		int preplen = comm_left.length();
 		int headlen = header.length();
 
+		// remove spaces after '%' sign
+		while (expr.find(from_ascii("% ")) != docstring::npos)
+		    expr = subst(expr, from_ascii("% "), from_ascii("%"));
+
 		string out;
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			// try to fix missing '*' the hard way
@@ -1166,6 +1170,21 @@ namespace {
 			return MathData(nullptr);
 
 		out = subst(subst(tmp[1], "\\>", string()), "{\\it ", "\\mathit{");
+
+		// When returning a matrix, maxima produces a latex snippet
+		// for using one of the two constructs "\pmatrix{...}" or
+		// "\begin{pmatrix}...\end{pmatrix}" depending on whether
+		// the macro \endpmatrix is defined (e.g. by amsmath) or not.
+		// However, our math parser cannot cope with this latex
+		// snippet. So, simply retain the \begin{}...\end{} version.
+		if (out.find("\\ifx\\endpmatrix\\undefined") != string::npos) {
+			out = subst(subst(subst(subst(out,
+				"\\ifx\\endpmatrix\\undefined", string()),
+				"\\pmatrix{\\else\\begin{pmatrix}\\fi", "\\begin{pmatrix}"),
+				"}\\else\\end{pmatrix}\\fi", "\\end{pmatrix}"),
+				"\\cr", "\\\\");
+		}
+
 		lyxerr << "output: '" << out << "'" << endl;
 
 		// Ugly code that tries to make the result prettier

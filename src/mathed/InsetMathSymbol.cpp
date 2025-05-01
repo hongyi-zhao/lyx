@@ -128,7 +128,9 @@ void InsetMathSymbol::maple(MapleStream & os) const
 	if (name() == "cdot")
 		os << '*';
 	else if (name() == "infty")
-		os << "infinity";
+		os << (os.maxima() ? "inf" : "infinity");
+	else if (name() == "pi" && os.maxima())
+		os << "%pi";
 	else
 		os << name();
 }

@@ -63,7 +63,7 @@ docstring InsetMathExFunc::name() const
 void InsetMathExFunc::maple(MapleStream & os) const
 {
 	if (name_ == "det")
-		os << "linalg[det](" << cell(0) << ')';
+		os << (os.maxima() ? "determinant(" : "linalg[det](") << cell(0) << ')';
 	else
 		os << name_ << '(' << cell(0) << ')';
 }

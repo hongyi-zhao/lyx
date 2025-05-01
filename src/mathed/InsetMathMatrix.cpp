@@ -46,13 +46,29 @@ void InsetMathMatrix::normalize(NormalStream & os) const
 
 void InsetMathMatrix::maple(MapleStream & os) const
 {
-	os << "matrix(" << int(nrows()) << ',' << int(ncols()) << ",[";
-	for (idx_type idx = 0; idx < nargs(); ++idx) {
-		if (idx)
-			os << ',';
-		os << cell(idx);
+	if (os.maxima()) {
+		os << "matrix(";
+		for (row_type row = 0; row < nrows(); ++row) {
+			if (row)
+				os << ',';
+			os << '[';
+			for (col_type col = 0; col < ncols(); ++col) {
+				if (col)
+					os << ',';
+				os << cell(index(row, col));
+			}
+			os << ']';
+		}
+		os << ')';
+	} else {
+		os << "matrix(" << int(nrows()) << ',' << int(ncols()) << ",[";
+		for (idx_type idx = 0; idx < nargs(); ++idx) {
+			if (idx)
+				os << ',';
+			os << cell(idx);
+		}
+		os << "])";
 	}
-	os << "])";
 }
 
 

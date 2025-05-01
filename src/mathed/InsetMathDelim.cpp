@@ -153,7 +153,7 @@ void InsetMathDelim::maple(MapleStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
-			os << "linalg[det](" << cell(0) << ')';
+			os << (os.maxima() ? "determinant(" : "linalg[det](") << cell(0) << ')';
 		else
 			os << "abs(" << cell(0) << ')';
 	}

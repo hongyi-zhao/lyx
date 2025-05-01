@@ -190,7 +190,7 @@ void InsetMath::maple(MapleStream & os) const
 
 void InsetMath::maxima(MaximaStream & os) const
 {
-	MapleStream ns(os.os());
+	MapleStream ns(os.os(), true);
 	maple(ns);
 }
 

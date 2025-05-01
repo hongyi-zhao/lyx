@@ -710,12 +710,15 @@ NormalStream & operator<<(NormalStream &, int);
 class MapleStream {
 public:
 	///
-	explicit MapleStream(odocstream & os) : os_(os) {}
+	explicit MapleStream(odocstream & os, bool maxima = false) : os_(os), maxima_(maxima) {}
 	///
 	odocstream & os() { return os_; }
+	bool maxima() { return maxima_; }
 private:
 	///
 	odocstream & os_;
+	///
+	bool maxima_;
 };
 
 

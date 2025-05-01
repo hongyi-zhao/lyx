@@ -64,6 +64,8 @@ void InsetMathDiff::maple(MapleStream & os) const
 		if (idx != 0)
 			os << ',';
 		os << cell(idx);
+		if (idx != 0 && os.maxima())
+			os << ",1";
 	}
 	os << ')';
 }

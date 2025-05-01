@@ -75,7 +75,7 @@ void InsetMathExInt::draw(PainterInfo &, int, int) const
 void InsetMathExInt::maple(MapleStream & os) const
 {
 	if (symbol_ == "int" || symbol_ == "intop")
-		os << "int(";
+		os << (os.maxima() ? "integrate(" : "int(");
 	else
 		os << symbol_ << '(';
 
@@ -84,9 +84,16 @@ void InsetMathExInt::maple(MapleStream & os) const
 	else
 		os << '1';
 	os << ',' << cell(1);
-	if (hasScripts())
-		os << '=' << cell(2) << ".." << cell(3);
-	os << ')';
+	if (os.maxima()) {
+		if (hasScripts())
+			os << cell(1) << ',' << cell(2) << ',' << cell(3) << ')';
+		else
+			os << cell(1) << ')';
+	} else {
+		if (hasScripts())
+			os << '=' << cell(2) << ".." << cell(3);
+		os << ')';
+	}
 }
 
 

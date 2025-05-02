@@ -820,7 +820,8 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType, bool const /*del
 	// not be in the label cache yet.)
 	broken_ = false;
 	setBroken(broken_);
-	cleanUpExternalFileNames();
+	if (!buffer().isClosing())
+		cleanUpExternalFileNames();
 }
 
 
@@ -1008,9 +1009,11 @@ bool InsetRef::useRange() const
 vector<FileName> InsetRef::externalFilenames(bool const warn) const
 {
 	vector<FileName> res;
-	if (buffer().isInternal())
-		// internal buffers (with their own filenames)
+	if (buffer().isInternal() || buffer().isClosing())
+		// Internal buffers (with their own filenames)
 		// are excluded from this.
+		// We also do not proceed on closing buffers
+		// since we might stumple upon dangling pointers.
 		return res;
 
 	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params()["filenames"])));
@@ -1052,6 +1055,11 @@ vector<FileName> InsetRef::externalFilenames(bool const warn) const
 
 FileName InsetRef::getExternalFileName(docstring const & inlabel) const
 {
+	if (buffer().isClosing())
+		// We do not proceed on closing buffers
+		// since we might stumple upon dangling pointers.
+		return FileName();
+
 	vector<string> incFileNames = getVectorFromString(ltrim(to_utf8(params()["filenames"])));
 	if (incFileNames.empty())
 		// nothing to do

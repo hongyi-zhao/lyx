@@ -825,6 +825,11 @@ public:
 	void popIncludedBuffer() const;
 	bool isBufferIncluded(Buffer const * buf) const;
 
+	/// Is this buffer about to be closed?
+	bool isClosing()const;
+	/// Is this buffer about to be closed?
+	void setClosing(bool const b);
+
 	///
 	void registerExternalRefs(support::FileName) const;
 	///

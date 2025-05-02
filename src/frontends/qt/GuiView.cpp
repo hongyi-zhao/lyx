@@ -3875,6 +3875,7 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 
 bool GuiView::closeBuffer(Buffer & buf)
 {
+	buf.setClosing(true);
 	bool success = true;
 	for (Buffer * child_buf : buf.getChildren()) {
 		if (theBufferList().isOthersChild(&buf, child_buf)) {
@@ -3934,6 +3935,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 			return true;
 		}
 	}
+	buf.setClosing(false);
 	// open all children again to avoid a crash because of dangling
 	// pointers (bug 6603)
 	buf.updateBuffer();

@@ -367,6 +367,9 @@ public:
 	mutable bool need_update;
 
 	///
+	bool is_closing;
+
+	///
 	Statistics statistics_;
 
 public:
@@ -453,7 +456,8 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  have_bibitems_(false), lyx_clean(true), bak_clean(true), unnamed(false),
 	  internal_buffer(false), read_only(readonly_), file_fully_loaded(false),
 	  need_format_backup(false), ignore_parent(false), macro_lock(false),
-	  externally_modified_(false), bibinfo_cache_valid_(false), need_update(false)
+	  externally_modified_(false), bibinfo_cache_valid_(false), need_update(false),
+	  is_closing(false)
 {
 	refreshFileMonitor();
 	if (!cloned_buffer_) {
@@ -5480,6 +5484,18 @@ void Buffer::forceUpdate() const
 bool Buffer::needUpdate() const
 {
 	return d->need_update;
+}
+
+
+bool Buffer::isClosing() const
+{
+	return d->is_closing;
+}
+
+
+void Buffer::setClosing(bool const b)
+{
+	d->is_closing = b;
 }
 
 

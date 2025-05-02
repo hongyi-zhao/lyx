@@ -12,16 +12,11 @@
 
 #include "LyXFileDialog.h"
 
-#include "qt_helpers.h"
-
-#include "support/lstrings.h"
-
 #include <QApplication>
 #include <QToolButton>
 #include <QHBoxLayout>
 
 using namespace std;
-using namespace lyx::support;
 
 namespace lyx {
 

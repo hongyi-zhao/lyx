@@ -11,8 +11,6 @@
 #include <config.h>
 
 #include "InsetCaption.h"
-#include "InsetFloat.h"
-#include "InsetWrap.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -23,13 +21,10 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "InsetList.h"
 #include "Language.h"
-#include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "xml.h"
 #include "output_latex.h"
-#include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "TexRow.h"

@@ -18,7 +18,6 @@
 #include "BufferParams.h"
 #include "Converter.h"
 #include "Encoding.h"
-#include "Format.h"
 #include "LyXRC.h"
 #include "output.h"
 #include "OutputParams.h"

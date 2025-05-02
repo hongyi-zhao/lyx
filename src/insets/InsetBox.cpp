@@ -17,7 +17,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "BufferView.h"
 #include "ColorSet.h"
 #include "Cursor.h"
 #include "FuncStatus.h"
@@ -26,10 +25,8 @@
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "output_docbook.h"
-#include "output_xhtml.h"
 #include "TexRow.h"
 #include "texstream.h"
-#include "TextClass.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
@@ -37,8 +34,6 @@
 #include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/Translator.h"
-
-#include "frontends/Application.h"
 
 #include <sstream>
 

@@ -16,7 +16,6 @@
 
 #include "Inset.h"
 
-#include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
@@ -29,11 +28,8 @@
 #include "FuncStatus.h"
 #include "InsetLayout.h"
 #include "MetricsInfo.h"
-#include "output_xhtml.h"
 #include "Statistics.h"
-#include "Text.h"
 #include "TextClass.h"
-#include "TocBackend.h"
 #include "xml.h"
 
 #include "frontends/Application.h"

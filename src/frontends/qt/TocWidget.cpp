@@ -23,16 +23,13 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
-#include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyX.h"
 #include "Menus.h"
-#include "Paragraph.h"
 #include "TocBackend.h"
 
 #include "insets/InsetCommand.h"
-#include "insets/InsetRef.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"

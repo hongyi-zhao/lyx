@@ -27,7 +27,6 @@
 #include "output_docbook.h"
 #include "output_xhtml.h"
 #include "TextClass.h"
-#include "TocBackend.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -35,7 +34,6 @@
 #include "support/Lexer.h"
 #include "support/lstrings.h"
 
-#include "frontends/alert.h"
 #include "frontends/Application.h"
 
 #include <sstream>

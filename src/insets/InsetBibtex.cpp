@@ -17,11 +17,9 @@
 #include "BiblioInfo.h"
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "CiteEnginesList.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
-#include "Exporter.h"
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -45,7 +43,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/PathChanger.h"
 #include "support/textutils.h"
 
 #include <limits>

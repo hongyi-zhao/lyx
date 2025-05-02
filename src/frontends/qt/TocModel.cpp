@@ -15,10 +15,8 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
-#include "Cursor.h"
 #include "DocIterator.h"
 #include "FuncRequest.h"
-#include "LyX.h"
 #include "qt_helpers.h"
 #include "TocBackend.h"
 

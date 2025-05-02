@@ -14,7 +14,6 @@
 
 #include "GraphicsCacheItem.h"
 
-#include "Buffer.h"
 #include "GraphicsCache.h"
 #include "GraphicsConverter.h"
 #include "GraphicsImage.h"

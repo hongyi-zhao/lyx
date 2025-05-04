@@ -1971,7 +1971,7 @@ string const LaTeXFeatures::getThmDefinitions() const
 		tmp << "\n";
 
 		// Extra definitions for zref-clever
-		if (thm.counter != "none" && params_.xref_package == "zref") {
+		if (thm.counter != "none" && params_.xref_package == "zref" && isRequired("zref-clever")) {
 			if (thm.counter.empty() && !thm.zrefname.empty() && thm.zrefname != "none")
 				tmp << "\\zcsetup{countertype={" << thm.name << "=" << thm.zrefname << "}}\n";
 			else if (!thm.counter.empty()) {
@@ -1989,7 +1989,7 @@ string const LaTeXFeatures::getThmDefinitions() const
 			}
 		}
 		// cleveref
-		else if (thm.counter != "none" && !thm.counter.empty() && params_.xref_package == "cleveref") {
+		else if (thm.counter != "none" && !thm.counter.empty() && params_.xref_package == "cleveref" && isRequired("cleveref")) {
 			if (isAvailableAtLeastFrom("LaTeX", 2020, 10))
 				// we have hooks
 				tmp << "\\AddToHook{env/" << thm.name << "/begin}"
@@ -2002,7 +2002,7 @@ string const LaTeXFeatures::getThmDefinitions() const
 			}
 		}
 		// and refstyle
-		else if (params_.xref_package == "refstyle") {
+		else if (params_.xref_package == "refstyle" && isRequired("refstyle")) {
 			tmp << "\\newref{" << thm.refprefix << "}{\n"
 			    << "        name      = \\RS" << thm.name << "txt,\n"
 			    << "        names     = \\RS" << thm.name << "stxt,\n"
@@ -2234,7 +2234,7 @@ docstring const i18npreamble(docstring const & templ, Language const * lang,
 docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 {
 	// For prettyref, we also do the other layout defs here
-	if (params_.xref_package == "prettyref-l7n") {
+	if (params_.xref_package == "prettyref-l7n" && isRequired("prettyref")) {
 		odocstringstream ods;
 		if (lay.refprefix == "part")
 			ods << "\\newrefformat{" << lay.refprefix << "}{_(Part)~\\ref{#1}}\n";
@@ -2252,7 +2252,8 @@ docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 	// Otherwise only handle theorems
 	if (lay.thmName().empty())
 		return docstring();
-	if (params_.xref_package == "zref" && lay.thmZRefName() == "none" && !lay.thmXRefName().empty()) {
+	if (params_.xref_package == "zref" && lay.thmZRefName() == "none" && !lay.thmXRefName().empty()
+	    && (isRequired("zref-clever") || isRequired("zref-vario"))) {
 		docstring const tn = from_utf8(lay.thmXRefName());
 		docstring const tnp = from_utf8(lay.thmXRefNamePl());
 		odocstringstream ods;
@@ -2264,7 +2265,7 @@ docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 		    << "name-pl = _(" << lowercase(tnp) << ")"
 		    << "}\n";
 		return ods.str();
-	} else if (params_.xref_package == "refstyle" && !lay.thmXRefName().empty()) {
+	} else if (params_.xref_package == "refstyle" && !lay.thmXRefName().empty() && isRequired("refstyle")) {
 		docstring const tn = from_utf8(lay.thmXRefName());
 		docstring const tnp = from_utf8(lay.thmXRefNamePl());
 		odocstringstream ods;
@@ -2274,7 +2275,7 @@ docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 		    << "\\def\\RS" << capitalize(thmname) << "txt{_(" << tn << ")~}\n"
 		    << "\\def\\RS" << capitalize(thmname) << "stxt{_(" << tnp << ")~}\n";
 		return ods.str();
-	} else if (params_.xref_package == "cleveref" && !lay.thmXRefName().empty()) {
+	} else if (params_.xref_package == "cleveref" && !lay.thmXRefName().empty() && isRequired("cleveref")) {
 		docstring const tn = from_utf8(lay.thmXRefName());
 		docstring const tnp = from_utf8(lay.thmXRefNamePl());
 		odocstringstream ods;
@@ -2282,7 +2283,7 @@ docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 		ods << "\\crefname{" << thmname << "}{_(" << lowercase(tn) << ")}{_(" << lowercase(tnp) << ")}\n"
 		    << "\\Crefname{" << thmname << "}{_(" << tn << ")}{_(" << tnp << ")}\n";
 		return ods.str();
-	} else if (params_.xref_package == "prettyref-l7n" && !lay.thmXRefName().empty()) {
+	} else if (params_.xref_package == "prettyref-l7n" && !lay.thmXRefName().empty() && isRequired("prettyref")) {
 		odocstringstream ods;
 		docstring const thmname = from_utf8(lay.thmName());
 		ods << "\\newrefformat{" << lay.refprefix << "}{_(" << from_utf8(lay.thmXRefName()) << ") \\ref{#1}}\n";
@@ -2345,7 +2346,7 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel,
 			Floating const & fl = floats.getType(fit->first);
 			// construct prettyref definitions if required
 			docstring prettyreffloatdefs;
-			if (params_.xref_package == "prettyref-l7n") {
+			if (params_.xref_package == "prettyref-l7n" && isRequired("prettyref")) {
 				odocstringstream ods;
 				if (fl.refPrefix() == "alg") {
 					ods << "\\newrefformat{" << from_ascii(fl.refPrefix()) << "}{_(Algorithm)~\\ref{#1}}\n";

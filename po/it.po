@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2025-04-26 09:34+0200\n"
-"PO-Revision-Date: 2024-11-17 16:05+0100\n"
+"PO-Revision-Date: 2025-05-04 16:35+0200\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: C:/cygwin/usr/local/src/lyx/lyx-devel\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 
@@ -1201,23 +1201,20 @@ msgid "All aut&hors"
 msgstr "&Tutti gli autori"
 
 #: src/frontends/qt/ui/ColorUi.ui:39
-#, fuzzy
 msgid "Alternati&ng table row colors"
-msgstr "Nome alternativo ad 'Allegato'"
+msgstr "Colori alter&nati delle righe di una tabella"
 
 #: src/frontends/qt/ui/ColorUi.ui:47 src/frontends/qt/ui/TabularUi.ui:1514
-#, fuzzy
 msgid "O&dd rows:"
-msgstr "Aggiungi riga"
+msgstr "Righe &dispari:"
 
 #: src/frontends/qt/ui/ColorUi.ui:67 src/frontends/qt/ui/TabularUi.ui:1534
-#, fuzzy
 msgid "&Even rows:"
-msgstr "Tra le righe:"
+msgstr "Righe &pari:"
 
 #: src/frontends/qt/ui/ColorUi.ui:104 src/frontends/qt/ui/TabularUi.ui:1571
 msgid "&Start with row:"
-msgstr ""
+msgstr "&Riga iniziale:"
 
 #: src/frontends/qt/ui/ColorUi.ui:152
 msgid "Background Colors"
@@ -1233,9 +1230,8 @@ msgstr "Pagina:"
 
 #: src/frontends/qt/ui/ColorUi.ui:228 src/frontends/qt/GuiView.cpp:1284
 #: src/frontends/qt/GuiView.cpp:1316
-#, fuzzy
 msgid "Custom Colors"
-msgstr "Blocco colorato 1"
+msgstr "Colori personalizzati"
 
 #: src/frontends/qt/ui/ColorUi.ui:238 src/frontends/qt/ui/IndicesUi.ui:158
 #: src/frontends/qt/ui/ProgressViewUi.ui:171
@@ -1243,14 +1239,12 @@ msgid "1"
 msgstr "1"
 
 #: src/frontends/qt/ui/ColorUi.ui:248
-#, fuzzy
 msgid "Remove the selected color"
-msgstr "Rimuove il ramo selezionato"
+msgstr "Rimuove il colore selezionato"
 
 #: src/frontends/qt/ui/ColorUi.ui:258
-#, fuzzy
 msgid "Rename the selected color"
-msgstr "Modifica il colore selezionato"
+msgstr "Rinomina il colore selezionato"
 
 #: src/frontends/qt/ui/ColorUi.ui:261 src/frontends/qt/ui/IndicesUi.ui:179
 msgid "R&ename..."
@@ -1261,28 +1255,24 @@ msgid "Define or change button color"
 msgstr "Definisce o cambia il colore del pulsante"
 
 #: src/frontends/qt/ui/ColorUi.ui:298
-#, fuzzy
 msgid "&New:[[color]]"
 msgstr "&Nuovo:"
 
 #: src/frontends/qt/ui/ColorUi.ui:308
-#, fuzzy
 msgid ""
 "Enter the name of the desired color (only ASCII characters and no space "
 "allowed) and hit \"Add\""
 msgstr ""
-"Immettere il nome dell'indice desiderato (ad es. \"Indice dei nomi\") e "
-"premere \"Aggiungi\""
+"Immettere il nome del colore desiderato (solo caratteri ASCII e senza spazi) "
+"e premere \"Aggiungi\""
 
 #: src/frontends/qt/ui/ColorUi.ui:315
-#, fuzzy
 msgid "Add a new color to the list"
-msgstr "Aggiunge un nuovo ramo alla lista"
+msgstr "Aggiunge un nuovo colore alla lista"
 
 #: src/frontends/qt/ui/ColorUi.ui:327
-#, fuzzy
 msgid "A&vailable Custom Colors:"
-msgstr "Citazioni diponi&bili:"
+msgstr "Colori personalizzati &disponibili:"
 
 #: src/frontends/qt/ui/ColorUi.ui:340
 msgid "Font Colors"
@@ -1297,9 +1287,8 @@ msgid "Greyed-out notes:"
 msgstr "Note sbiadite:"
 
 #: src/frontends/qt/ui/ColorUi.ui:418
-#, fuzzy
 msgid "Table &border color:"
-msgstr "Imposta bordi"
+msgstr "Colore del &bordo tabella:"
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:23
 msgid "Compare Revisions"
@@ -2392,8 +2381,8 @@ msgstr "Tipo collegamento"
 
 #: src/frontends/qt/ui/HyperlinkUi.ui:136
 msgid ""
-"Link to the web or any other target with an \"authority\" component (i."
-"e., :// in the URI)"
+"Link to the web or any other target with an \"authority\" component "
+"(i.e., :// in the URI)"
 msgstr ""
 "Collegamento al Web o a qualsiasi altro target con un componente di "
 "\"autorità\" (ad esempio, :// nell'URI)"
@@ -2710,14 +2699,12 @@ msgid "Enter the name of the default master document"
 msgstr "Immettere il nome del documento padre predefinito"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:188
-#, fuzzy
 msgid "Formatted cross-references"
-msgstr "Riferimento formattato"
+msgstr "Riferimenti incrociati formattati"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:196
-#, fuzzy
 msgid "&Format packages:"
-msgstr "Tutti i pacchetti:"
+msgstr "Pacchetti di &formato:"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:224
 msgid ""
@@ -3384,15 +3371,13 @@ msgid "Add &equation references"
 msgstr "Aggiungere riferimenti &equazione"
 
 #: src/frontends/qt/ui/NomenclUi.ui:72
-#, fuzzy
 msgid ""
 "The phrase \", see page x\" is appended to every entry in the nomenclature "
 "where x is the number of the page on which the corresponding nomenclature is "
 "used"
 msgstr ""
-"La frase \", vedi pagina (x)\" è aggiunta a ogni voce della nomenclatura, "
-"dove x è il numero della pagina dove viene usata la nomenclatura "
-"corrispondente"
+"La frase \", vedi pagina x\" è aggiunta a ogni voce della nomenclatura, dove "
+"x è il numero della pagina dove viene usata la nomenclatura corrispondente"
 
 #: src/frontends/qt/ui/NomenclUi.ui:75
 msgid "Add &page references"
@@ -3647,8 +3632,8 @@ msgstr "mml"
 
 #: src/frontends/qt/ui/OutputUi.ui:604 src/frontends/qt/ui/OutputUi.ui:622
 msgid ""
-"Scaling factor for images that are generated for some LaTeX constructs (e."
-"g., math formulae) in non-LaTeX output."
+"Scaling factor for images that are generated for some LaTeX constructs "
+"(e.g., math formulae) in non-LaTeX output."
 msgstr ""
 "Fattore di scala delle immagini generate per alcuni costrutti LaTeX (ad "
 "esempio formule matematiche) in output non LaTeX."
@@ -3948,29 +3933,24 @@ msgid "Use the color scheme of your Operating System/Desktop Environment"
 msgstr "Usa lo schema colori di sistema o ambiente desktop"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:48
-#, fuzzy
 msgid "Use &system colors"
 msgstr "&Usa colori di sistema"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:55
-#, fuzzy
 msgid "Apply changed colors immediately"
-msgstr "Applica i cambiamenti &immediatamente"
+msgstr "Applica immediatamente le modifiche ai colori"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:58
-#, fuzzy
 msgid "Apply &immediately"
-msgstr "Applica i cambiamenti &immediatamente"
+msgstr "Applica &immediatamente"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:67
-#, fuzzy
 msgid "&Themes:"
-msgstr "Schemi"
+msgstr "&Temi:"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:101
-#, fuzzy
 msgid "Remove a selected color theme"
-msgstr "Rimuove il ramo selezionato"
+msgstr "Rimuove il tema colore selezionato"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:104
 #: src/frontends/qt/ui/PrefConvertersUi.ui:300
@@ -3981,46 +3961,41 @@ msgstr "&Rimuovi"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:111
 msgid "Other menus to handle themes"
-msgstr ""
+msgstr "Altri menu di gestione temi"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:114
-#, fuzzy
 msgid "&More..."
-msgstr "Altro...|A"
+msgstr "&Altro..."
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:121
 msgid "Add the current color set as a theme"
-msgstr ""
+msgstr "Aggiunge il set di colori corrente come tema"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:166
-#, fuzzy
 msgid "Change the light-mode color of the selected object/element"
-msgstr "Cambia il nome del ramo selezionato"
+msgstr ""
+"Cambia il colore della modalità chiara dell'oggetto/elemento selezionato"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:169
-#, fuzzy
 msgid "&Light"
-msgstr "&Destra"
+msgstr "&Chiara"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:182
-#, fuzzy
 msgid "Change the dark-mode color of the selected object/element"
-msgstr "Cambia il nome del ramo selezionato"
+msgstr ""
+"Cambia il colore della modalità scura dell'oggetto/elemento selezionato"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:185
-#, fuzzy
 msgid "&Dark"
-msgstr "Grigio scuro"
+msgstr "&Scura"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:217
-#, fuzzy
 msgid "Enter a string to filter colors"
-msgstr "Inserire maschera per filtrare i contenuti"
+msgstr "Inserire maschera per filtrare i colori"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:220
-#, fuzzy
 msgid "Filter colors"
-msgstr "Colore carattere"
+msgstr "Filtro colore"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:259 lib/ui/stdtoolbars.inc:87
 #: src/BufferView.cpp:1592
@@ -4028,9 +4003,8 @@ msgid "Undo"
 msgstr "Annulla"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:262
-#, fuzzy
 msgid "&Undo"
-msgstr "Annulla"
+msgstr "&Annulla"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:269 lib/ui/stdtoolbars.inc:88
 #: src/BufferView.cpp:1613
@@ -4039,7 +4013,7 @@ msgstr "Rifai"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:272
 msgid "R&edo"
-msgstr ""
+msgstr "&Rifai"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:297
 #: src/frontends/qt/GuiApplication.cpp:781
@@ -4047,49 +4021,50 @@ msgid "Reset"
 msgstr "Reimposta"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:307
-#, fuzzy
 msgid "&Color Settings:"
-msgstr "Impostazioni oggetto flottante"
+msgstr "Impostazioni &colore:"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:354
 msgid ""
 "Reset the light-mode color of the selected object/element to the last saved"
 msgstr ""
+"Ripristina il colore della modalità chiara dell'oggetto/elemento selezionato "
+"all'ultimo salvato"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:357
-#, fuzzy
 msgid "Ligh&t"
-msgstr "Evidenzia"
+msgstr "C&hiara"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:364
 msgid ""
 "Reset the dark-mode color of the selected object/element to the last saved"
 msgstr ""
+"Ripristina il colore della modalità scura dell'oggetto/elemento selezionato "
+"all'ultimo salvato"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:367
 msgid "Dar&k"
-msgstr ""
+msgstr "Sc&ura"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:374
 msgid ""
 "Reset the light- and dark-mode colors of the selected object/element to the "
 "last saved"
 msgstr ""
+"Ripristina i colori della modalità chiara e scura dell'oggetto/elemento "
+"selezionato agli ultimi salvati"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:377
-#, fuzzy
 msgid "&Both"
-msgstr "&Inferiore:"
+msgstr "&Entrambi"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:392
-#, fuzzy
 msgid "Reset all colors in the table to the last saved"
-msgstr "Ripristina il valore originale di tutti i colori"
+msgstr "Ripristina l'ultimo valore salvato di tutti i colori"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:395
-#, fuzzy
 msgid "Reset &All Colors"
-msgstr "R&eimposta colore"
+msgstr "Reimposta &tutti i colori"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:402
 msgid "Edit"
@@ -5552,13 +5527,12 @@ msgid "&Clear automatically"
 msgstr "&Pulizia automatica"
 
 #: src/frontends/qt/ui/RefUi.ui:25
-#, fuzzy
 msgid "&Select from:"
-msgstr "Seleziona &tutto"
+msgstr "&Seleziona da:"
 
 #: src/frontends/qt/ui/RefUi.ui:40
 msgid "&In[[buffer]]:"
-msgstr "&In"
+msgstr "&in"
 
 #: src/frontends/qt/ui/RefUi.ui:62
 msgid "The (sub-)document from which the available labels are displayed"
@@ -5569,9 +5543,8 @@ msgid "Available &Labels:"
 msgstr "&Etichette diponibili:"
 
 #: src/frontends/qt/ui/RefUi.ui:118
-#, fuzzy
 msgid "Selected &Labels:"
-msgstr "Eti&chetta:"
+msgstr "Etichette &selezionate:"
 
 #: src/frontends/qt/ui/RefUi.ui:144 src/insets/InsetRef.cpp:957
 msgid "Label"
@@ -5648,7 +5621,7 @@ msgstr "Solo etichetta"
 
 #: src/frontends/qt/ui/RefUi.ui:402
 msgid "Handle t&wo labels as:"
-msgstr ""
+msgstr "Gestisci &due etichette come:"
 
 #: src/frontends/qt/ui/RefUi.ui:438
 msgid ""
@@ -5659,9 +5632,8 @@ msgstr ""
 "riferimenti formattati e solo se si utilizza refstyle)."
 
 #: src/frontends/qt/ui/RefUi.ui:441
-#, fuzzy
 msgid "&Plural"
-msgstr "Plurale"
+msgstr "&Plurale"
 
 #: src/frontends/qt/ui/RefUi.ui:448
 msgid ""
@@ -5672,23 +5644,20 @@ msgstr ""
 "riferimenti formattati e solo se si utilizza refstyle)."
 
 #: src/frontends/qt/ui/RefUi.ui:451
-#, fuzzy
 msgid "&Capitalized"
-msgstr "Iniziale maiuscola"
+msgstr "&Capitalizzazione"
 
 #: src/frontends/qt/ui/RefUi.ui:458
 msgid "Do not output part of label before \":\""
 msgstr "Non produrre la parte di etichetta prima di \":\""
 
 #: src/frontends/qt/ui/RefUi.ui:461
-#, fuzzy
 msgid "No Prefi&x"
-msgstr "Senza prefisso"
+msgstr "Senza prefi&sso"
 
 #: src/frontends/qt/ui/RefUi.ui:468
-#, fuzzy
 msgid "No H&yperlink"
-msgstr "Nessun collegamento ipertestuale"
+msgstr "Senza colle&gamento ipertestuale"
 
 #: src/frontends/qt/ui/SearchUi.ui:52
 msgid "Find previous occurrence (Shift+Enter)"
@@ -6161,66 +6130,56 @@ msgid "Additional Space"
 msgstr "Spazio addizionale"
 
 #: src/frontends/qt/ui/TabularUi.ui:1192
-#, fuzzy
 msgid "To&p of row:"
-msgstr "In cima alla riga:"
+msgstr "So&pra la riga:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1268
 msgid "Botto&m of row:"
-msgstr "In fondo alla riga:"
+msgstr "So&tto la riga:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1285
 msgid "Bet&ween rows:"
-msgstr "Tra le righe:"
+msgstr "Tra le rig&he:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1338
-#, fuzzy
 msgid "C&olors"
-msgstr "Colori"
+msgstr "C&olori"
 
 #: src/frontends/qt/ui/TabularUi.ui:1356
-#, fuzzy
 msgid "Ri&ght Overhang:"
-msgstr "&Sporgenza:"
+msgstr "&Sporgenza destra:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1372
-#, fuzzy
 msgid "Col&umn color:"
-msgstr "Colore carattere"
+msgstr "Co&lore colonna:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1395
-#, fuzzy
 msgid "Right Overhan&g:"
-msgstr "&Sporgenza:"
+msgstr "Spor&genza destra:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1405
-#, fuzzy
 msgid "Left Over&hang:"
-msgstr "&Sporgenza:"
+msgstr "Sporgen&za sinistra:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1415
-#, fuzzy
 msgid "Ro&w color:"
-msgstr "Nessun colore"
+msgstr "Colore r&iga:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1428
-#, fuzzy
 msgid "Left O&verhang:"
-msgstr "&Sporgenza:"
+msgstr "Sporgenza si&nistra:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1448
-#, fuzzy
 msgid "C&ell color:"
-msgstr "&Colore:"
+msgstr "Colore c&ella:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1468
-#, fuzzy
 msgid "&Border color:"
-msgstr "Bordo inferiore"
+msgstr "Colore &bordo:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1506
 msgid "Alternati&ng row colors"
-msgstr ""
+msgstr "&Colori alternati righe"
 
 #: src/frontends/qt/ui/TabularUi.ui:1607
 msgid "&Multi-Page Table"
@@ -17925,66 +17884,54 @@ msgid "<Visible Text Follows>"
 msgstr "<Segue testo visibile>"
 
 #: lib/layouts/sn-jnl.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "Springer Nature Journals"
-msgstr "Springer SV Jour/Jog"
+msgstr "Springer Nature Journals"
 
 #: lib/layouts/sn-jnl.layout:60 lib/layouts/sn-jnl.layout:74
-#, fuzzy
 msgid "Affiliation Nr."
-msgstr "Affiliazione: "
+msgstr "Num. affiliazione"
 
 #: lib/layouts/sn-jnl.layout:64
-#, fuzzy
 msgid "Author (Corresp.)"
-msgstr "Indirizzo autore"
+msgstr "Autore (Corrisp.)"
 
 #: lib/layouts/sn-jnl.layout:67
-#, fuzzy
 msgid "Author (Corr.):"
-msgstr "Nota all'autore:"
+msgstr "Autore (Corr.):"
 
 #: lib/layouts/sn-jnl.layout:78
-#, fuzzy
 msgid "Affiliation (Corresp.)"
-msgstr "Affiliazione (nessuna)"
+msgstr "Affiliazione (Corrisp.)"
 
 #: lib/layouts/sn-jnl.layout:89
-#, fuzzy
 msgid "Equal Contribution"
-msgstr "Contributo autore"
+msgstr "Contributo paritario"
 
 #: lib/layouts/sn-jnl.layout:138
-#, fuzzy
 msgid "Classification"
-msgstr "Codici Classificazione"
+msgstr "Classificazione"
 
 #: lib/layouts/sn-jnl.layout:140
-#, fuzzy
 msgid "Classification:"
-msgstr "Codici Classificazione"
+msgstr "Classificazione:"
 
 #: lib/layouts/sn-jnl.layout:143
-#, fuzzy
 msgid "Classification System"
-msgstr "Codici Classificazione"
+msgstr "Sistema di Classificazione"
 
 #: lib/layouts/sn-jnl.layout:144
 msgid "E.g., MSC, PACS, or JEL"
-msgstr ""
+msgstr "p. es. MSC, PACS, o JEL"
 
 #: lib/layouts/sn-jnl.layout:175 lib/layouts/sn-jnl.layout:178
-#, fuzzy
 msgid "Organization"
-msgstr "Transizione"
+msgstr "Organizzazione"
 
 #: lib/layouts/sn-jnl.layout:181 lib/layouts/sn-jnl.layout:184
-#, fuzzy
 msgid "Org. Address"
-msgstr "Indirizzo"
+msgstr "Indirizzo org."
 
 #: lib/layouts/sn-jnl.layout:199
-#, fuzzy
 msgid "Post Code"
 msgstr "Codice postale"
 
@@ -17994,17 +17941,15 @@ msgstr "Codice postale"
 
 #: lib/layouts/sn-jnl.layout:236
 msgid "----------- Begin Backmatter ----------"
-msgstr ""
+msgstr "----------- Inizio del retro ----------"
 
 #: lib/layouts/sn-jnl.layout:246
-#, fuzzy
 msgid "Backmatter heading"
-msgstr "Testatine"
+msgstr "Testatine del retro"
 
 #: lib/layouts/sn-jnl.layout:277
-#, fuzzy
 msgid "Appendix \\Alph{appendix}"
-msgstr "Appendix \\Alph{appendix}:"
+msgstr "Appendice \\Alph{appendix}"
 
 #: lib/layouts/soul.module:2
 msgid "Hyphenatable Text Markup (Soul)"
@@ -18760,21 +18705,18 @@ msgstr "Blocco colorato 5"
 
 #: lib/layouts/theorems-ams-bytype.inc:153 lib/layouts/theorems-ams.inc:155
 #: lib/layouts/theorems-bytype.inc:147 lib/layouts/theorems.inc:156
-#, fuzzy
 msgid "conjecture"
-msgstr "Congettura"
+msgstr "congettura"
 
 #: lib/layouts/theorems-ams-bytype.inc:154 lib/layouts/theorems-ams.inc:156
 #: lib/layouts/theorems-bytype.inc:148 lib/layouts/theorems.inc:157
-#, fuzzy
 msgid "Conjectures"
-msgstr "Congettura"
+msgstr "Congetture"
 
 #: lib/layouts/theorems-ams-bytype.inc:154 lib/layouts/theorems-ams.inc:156
 #: lib/layouts/theorems-bytype.inc:148 lib/layouts/theorems.inc:157
-#, fuzzy
 msgid "conjectures"
-msgstr "Congettura"
+msgstr "congetture"
 
 #: lib/layouts/theorems-ams-bytype.inc:174
 #: lib/layouts/theorems-ams-chap-bytype.inc:219
@@ -18788,22 +18730,21 @@ msgstr "Fatto \\thefact."
 #: lib/layouts/theorems-ams.inc:180 lib/layouts/theorems-bytype.inc:171
 #: lib/layouts/theorems.inc:181
 msgid "fact"
-msgstr ""
+msgstr "fatto"
 
 #: lib/layouts/theorems-ams-bytype.inc:178
 #: lib/layouts/theorems-ams-chap-bytype.inc:224
 #: lib/layouts/theorems-ams.inc:181 lib/layouts/theorems-bytype.inc:172
 #: lib/layouts/theorems.inc:182
-#, fuzzy
 msgid "Facts"
-msgstr "Fatto"
+msgstr "Fatti"
 
 #: lib/layouts/theorems-ams-bytype.inc:178
 #: lib/layouts/theorems-ams-chap-bytype.inc:224
 #: lib/layouts/theorems-ams.inc:181 lib/layouts/theorems-bytype.inc:172
 #: lib/layouts/theorems.inc:182
 msgid "facts"
-msgstr ""
+msgstr "fatti"
 
 #: lib/layouts/theorems-ams-bytype.inc:198
 #: lib/layouts/theorems-ams-chap-bytype.inc:244
@@ -18830,25 +18771,22 @@ msgstr "Problema \\theproblem."
 #: lib/layouts/theorems-ams-chap-bytype.inc:301
 #: lib/layouts/theorems-ams.inc:256 lib/layouts/theorems-bytype.inc:246
 #: lib/layouts/theorems.inc:257
-#, fuzzy
 msgid "problem"
-msgstr "Problema"
+msgstr "problema"
 
 #: lib/layouts/theorems-ams-bytype.inc:253
 #: lib/layouts/theorems-ams-chap-bytype.inc:302
 #: lib/layouts/theorems-ams.inc:257 lib/layouts/theorems-bytype.inc:247
 #: lib/layouts/theorems.inc:258
-#, fuzzy
 msgid "Problems"
-msgstr "Problema"
+msgstr "Problemi"
 
 #: lib/layouts/theorems-ams-bytype.inc:253
 #: lib/layouts/theorems-ams-chap-bytype.inc:302
 #: lib/layouts/theorems-ams.inc:257 lib/layouts/theorems-bytype.inc:247
 #: lib/layouts/theorems.inc:258
-#, fuzzy
 msgid "problems"
-msgstr "Problema"
+msgstr "problemi"
 
 #: lib/layouts/theorems-ams-bytype.inc:273
 #: lib/layouts/theorems-ams-chap-bytype.inc:322
@@ -18861,25 +18799,22 @@ msgstr "Esercizio \\theexercise."
 #: lib/layouts/theorems-ams-chap-bytype.inc:407
 #: lib/layouts/theorems-ams.inc:359 lib/layouts/theorems-bytype.inc:348
 #: lib/layouts/theorems.inc:360
-#, fuzzy
 msgid "claim"
-msgstr "Asserzione"
+msgstr "asserzione"
 
 #: lib/layouts/theorems-ams-bytype.inc:355
 #: lib/layouts/theorems-ams-chap-bytype.inc:408
 #: lib/layouts/theorems-ams.inc:360 lib/layouts/theorems-bytype.inc:349
 #: lib/layouts/theorems.inc:361
-#, fuzzy
 msgid "Claims"
-msgstr "Asserzione"
+msgstr "Asserzioni"
 
 #: lib/layouts/theorems-ams-bytype.inc:355
 #: lib/layouts/theorems-ams-chap-bytype.inc:408
 #: lib/layouts/theorems-ams.inc:360 lib/layouts/theorems-bytype.inc:349
 #: lib/layouts/theorems.inc:361
-#, fuzzy
 msgid "claims"
-msgstr "Asserzione"
+msgstr "asserzioni"
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "AMS Theorems (Numbered by Type)"
@@ -18957,23 +18892,20 @@ msgstr "Criterio \\thecriterion."
 #: lib/layouts/theorems-ams-extended-bytype.module:46
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:81
 #: lib/layouts/theorems-ams-extended.module:43
-#, fuzzy
 msgid "criterion"
-msgstr "Criterio"
+msgstr "criterio"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:47
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:44
-#, fuzzy
 msgid "Criteria"
-msgstr "Criterio"
+msgstr "Criteri"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:47
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:44
-#, fuzzy
 msgid "criteria"
-msgstr "Scrivente"
+msgstr "criteri"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:61
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:97
@@ -19006,23 +18938,20 @@ msgstr "Assioma \\theaxiom."
 #: lib/layouts/theorems-ams-extended-bytype.module:125
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:163
 #: lib/layouts/theorems-ams-extended.module:124
-#, fuzzy
 msgid "axiom"
-msgstr "Assioma"
+msgstr "assioma"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:126
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:164
 #: lib/layouts/theorems-ams-extended.module:125
-#, fuzzy
 msgid "Axioms"
-msgstr "Assioma"
+msgstr "Assiomi"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:126
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:164
 #: lib/layouts/theorems-ams-extended.module:125
-#, fuzzy
 msgid "axioms"
-msgstr "Assioma"
+msgstr "assiomi"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:141
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:179
@@ -19044,23 +18973,20 @@ msgstr "Condizione \\thecondition."
 #: lib/layouts/theorems-ams-extended-bytype.module:167
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:206
 #: lib/layouts/theorems-ams-extended.module:166
-#, fuzzy
 msgid "condition"
-msgstr "Condizione"
+msgstr "condizione"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:168
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:207
 #: lib/layouts/theorems-ams-extended.module:167
-#, fuzzy
 msgid "Conditions"
-msgstr "Condizione"
+msgstr "Condizioni"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:168
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:207
 #: lib/layouts/theorems-ams-extended.module:167
-#, fuzzy
 msgid "conditions"
-msgstr "Condizione"
+msgstr "condizioni"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:183
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:222
@@ -19100,23 +19026,20 @@ msgstr "Notazione \\thenotation."
 #: lib/layouts/theorems-ams-extended-bytype.module:248
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:289
 #: lib/layouts/theorems-ams-extended.module:247
-#, fuzzy
 msgid "notation"
-msgstr "Notazione"
+msgstr "notazione"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:249
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:290
 #: lib/layouts/theorems-ams-extended.module:248
-#, fuzzy
 msgid "Notations"
-msgstr "Notazione"
+msgstr "Notazioni"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:249
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:290
 #: lib/layouts/theorems-ams-extended.module:248
-#, fuzzy
 msgid "notations"
-msgstr "Notazione"
+msgstr "notazioni"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:264
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:305
@@ -19138,23 +19061,20 @@ msgstr "Sommario \\thesummary."
 #: lib/layouts/theorems-ams-extended-bytype.module:291
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:333
 #: lib/layouts/theorems-ams-extended.module:290
-#, fuzzy
 msgid "summary"
-msgstr "Sommario"
+msgstr "sommario"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:292
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:334
 #: lib/layouts/theorems-ams-extended.module:291
-#, fuzzy
 msgid "Summaries"
-msgstr "Sommario"
+msgstr "Sommari"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:292
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:334
 #: lib/layouts/theorems-ams-extended.module:291
-#, fuzzy
 msgid "summaries"
-msgstr "aries"
+msgstr "sommari"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:307
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:349
@@ -19176,23 +19096,20 @@ msgstr "Conclusione \\theconclusion."
 #: lib/layouts/theorems-ams-extended-bytype.module:334
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:377
 #: lib/layouts/theorems-ams-extended.module:333
-#, fuzzy
 msgid "conclusion"
-msgstr "Conclusione"
+msgstr "conclusione"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:335
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:378
 #: lib/layouts/theorems-ams-extended.module:334
-#, fuzzy
 msgid "Conclusions[[theorem]]"
-msgstr "Conclusione \\thetheorem."
+msgstr "Conclusioni"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:335
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:378
 #: lib/layouts/theorems-ams-extended.module:334
-#, fuzzy
 msgid "conclusions[[theorem]]"
-msgstr "Conclusione \\thetheorem."
+msgstr "conclusioni"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:350
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:393
@@ -19236,23 +19153,20 @@ msgstr "Assunzione \\theassumption."
 #: lib/layouts/theorems-ams-extended-bytype.module:376
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:420
 #: lib/layouts/theorems-ams-extended.module:376
-#, fuzzy
 msgid "assumption"
-msgstr "Assunzione"
+msgstr "assunzione"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:377
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:421
 #: lib/layouts/theorems-ams-extended.module:377
-#, fuzzy
 msgid "Assumptions"
-msgstr "Assunzione"
+msgstr "Assunzioni"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:377
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:421
 #: lib/layouts/theorems-ams-extended.module:377
-#, fuzzy
 msgid "assumptions"
-msgstr "Assunzione"
+msgstr "assunzioni"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:392
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:436
@@ -19269,23 +19183,20 @@ msgstr "Assunzione."
 #: lib/layouts/theorems-ams-extended-bytype.module:417
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:462
 #: lib/layouts/theorems-ams-extended.module:417
-#, fuzzy
 msgid "question"
-msgstr "Quesito"
+msgstr "quesito"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:418
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:463
 #: lib/layouts/theorems-ams-extended.module:418
-#, fuzzy
 msgid "Questions"
-msgstr "Quesito"
+msgstr "Quesiti"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:418
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:463
 #: lib/layouts/theorems-ams-extended.module:418
-#, fuzzy
 msgid "questions"
-msgstr "Quesito"
+msgstr "quesiti"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:432
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:477
@@ -20437,12 +20348,10 @@ msgstr "Nero"
 #: lib/latexcolors:131 lib/latexcolors:139 lib/latexcolors:147
 #: lib/latexcolors:154 lib/latexcolors:161 lib/latexcolors:169
 #: lib/latexcolors:177 lib/latexcolors:184
-#, fuzzy
 msgid "LaTeX Base Colors"
-msgstr "Classi LaTeX"
+msgstr "Colori di base LaTeX"
 
 #: lib/latexcolors:53
-#, fuzzy
 msgid "Dark gray"
 msgstr "Grigio scuro"
 
@@ -20451,7 +20360,6 @@ msgid "Gray"
 msgstr "Grigio"
 
 #: lib/latexcolors:69
-#, fuzzy
 msgid "Light gray"
 msgstr "Grigio chiaro"
 
@@ -20501,7 +20409,7 @@ msgstr "Ciano"
 
 #: lib/latexcolors:159 lib/latexcolors:1858
 msgid "Teal"
-msgstr "Ciano scuro"
+msgstr "Blu tè"
 
 #: lib/latexcolors:167 lib/latexcolors:1922
 msgid "Lime"
@@ -20539,255 +20447,227 @@ msgstr "Verde oliva"
 #: lib/latexcolors:772 lib/latexcolors:780 lib/latexcolors:788
 #: lib/latexcolors:798 lib/latexcolors:808
 msgid "DVIPS Names"
-msgstr ""
+msgstr "Nomi DVIPS"
 
 #: lib/latexcolors:233 lib/latexcolors:1153
 msgid "Goldenrod"
-msgstr ""
+msgstr "Solidago"
 
 #: lib/latexcolors:241
 msgid "Dandelion"
-msgstr ""
+msgstr "Dente di leone"
 
 #: lib/latexcolors:249
 msgid "Apricot"
-msgstr ""
+msgstr "Albicocca"
 
 #: lib/latexcolors:257
 msgid "Peach"
-msgstr ""
+msgstr "Pesca"
 
 #: lib/latexcolors:265
 msgid "Melon"
-msgstr ""
+msgstr "Melone"
 
 #: lib/latexcolors:273
-#, fuzzy
 msgid "YellowOrange"
-msgstr "Arancione"
+msgstr "Arancione giallastro"
 
 #: lib/latexcolors:291
-#, fuzzy
 msgid "BurntOrange"
-msgstr "Arancione"
+msgstr "Arancione bruciato"
 
 #: lib/latexcolors:299
 msgid "Bittersweet"
-msgstr ""
+msgstr "Agrodolce"
 
 #: lib/latexcolors:307
-#, fuzzy
 msgid "RedOrange"
-msgstr "Arancione"
+msgstr "Arancione rossastro"
 
 #: lib/latexcolors:315
 msgid "Mahogany"
-msgstr ""
+msgstr "Mogano"
 
 #: lib/latexcolors:325 lib/latexcolors:1217
 msgid "Maroon"
-msgstr ""
+msgstr "Marrone rossiccio"
 
 #: lib/latexcolors:333
 msgid "BrickRed"
-msgstr ""
+msgstr "Rosso mattone"
 
 #: lib/latexcolors:353 lib/latexcolors:1257
-#, fuzzy
 msgid "OrangeRed"
-msgstr "Arancione"
+msgstr "Rosso arancio"
 
 #: lib/latexcolors:361
 msgid "RubineRed"
-msgstr ""
+msgstr "Rosso rubino"
 
 #: lib/latexcolors:369
 msgid "WildStrawberry"
-msgstr ""
+msgstr "Fragola selvatica"
 
 #: lib/latexcolors:379 lib/latexcolors:1281
 msgid "Salmon"
-msgstr ""
+msgstr "Salmone"
 
 #: lib/latexcolors:387
-#, fuzzy
 msgid "CarnationPink"
-msgstr "Variazione"
+msgstr "Rosa garofano"
 
 #: lib/latexcolors:407 lib/latexcolors:1505
-#, fuzzy
 msgid "VioletRed"
-msgstr "Violetto"
+msgstr "Viola rossiccio"
 
 #: lib/latexcolors:415
 msgid "Rhodamine"
-msgstr ""
+msgstr "Rodamina"
 
 #: lib/latexcolors:423
 msgid "Mulberry"
-msgstr ""
+msgstr "Gelso"
 
 #: lib/latexcolors:431
-#, fuzzy
 msgid "RedViolet"
-msgstr "Violetto"
+msgstr "Rosso violaceo"
 
 #: lib/latexcolors:441 lib/latexcolors:1425
 msgid "Fuchsia"
-msgstr ""
+msgstr "Fucsia"
 
 #: lib/latexcolors:451 lib/latexcolors:1481
-#, fuzzy
 msgid "Lavender"
-msgstr "Sesso"
+msgstr "Lavanda"
 
 #: lib/latexcolors:461 lib/latexcolors:1473
 msgid "Thistle"
-msgstr ""
+msgstr "Cardo"
 
 #: lib/latexcolors:471 lib/latexcolors:1497
 msgid "Orchid"
-msgstr ""
+msgstr "Orchidea"
 
 #: lib/latexcolors:481 lib/latexcolors:1553
 msgid "DarkOrchid"
-msgstr ""
+msgstr "Orchidea scuro"
 
 #: lib/latexcolors:501 lib/latexcolors:1465
 msgid "Plum"
-msgstr ""
+msgstr "Prugna"
 
 #: lib/latexcolors:519
-#, fuzzy
 msgid "RoyalPurple"
-msgstr "Porpora"
+msgstr "Viola reale"
 
 #: lib/latexcolors:527 lib/latexcolors:1537
-#, fuzzy
 msgid "BlueViolet"
-msgstr "Violetto"
+msgstr "Blu violetto"
 
 #: lib/latexcolors:535
 msgid "Periwinkle"
-msgstr ""
+msgstr "Pervinca"
 
 #: lib/latexcolors:545 lib/latexcolors:1866
-#, fuzzy
 msgid "CadetBlue"
-msgstr "Blu"
+msgstr "Blu cadetto"
 
 #: lib/latexcolors:555 lib/latexcolors:1674
 msgid "CornflowerBlue"
-msgstr ""
+msgstr "Blu fiordaliso"
 
 #: lib/latexcolors:565 lib/latexcolors:1609
 msgid "MidnightBlue"
-msgstr ""
+msgstr "Blu notte"
 
 #: lib/latexcolors:575 lib/latexcolors:1626
-#, fuzzy
 msgid "NavyBlue"
-msgstr "Blu"
+msgstr "Blu navy"
 
 #: lib/latexcolors:585 lib/latexcolors:1658
-#, fuzzy
 msgid "RoyalBlue"
-msgstr "Blu"
+msgstr "Blu reale"
 
 #: lib/latexcolors:603
 msgid "Cerulean"
-msgstr ""
+msgstr "Ceruleo"
 
 #: lib/latexcolors:621
-#, fuzzy
 msgid "ProcessBlue"
-msgstr "Processo interrotto"
+msgstr "Blu processo"
 
 #: lib/latexcolors:631 lib/latexcolors:1706
-#, fuzzy
 msgid "SkyBlue"
-msgstr "Blu"
+msgstr "Azzurro cielo"
 
 #: lib/latexcolors:641 lib/latexcolors:1802
 msgid "Turquoise"
-msgstr ""
+msgstr "Turchese"
 
 #: lib/latexcolors:649
-#, fuzzy
 msgid "TealBlue"
-msgstr "Blu"
+msgstr "Blu turchese"
 
 #: lib/latexcolors:659 lib/latexcolors:1794
 msgid "Aquamarine"
-msgstr ""
+msgstr "Acquamarina"
 
 #: lib/latexcolors:667
-#, fuzzy
 msgid "BlueGreen"
-msgstr "Verde"
+msgstr "Blu verdiccio"
 
 #: lib/latexcolors:675
-#, fuzzy
 msgid "Emerald"
-msgstr "Elenco numerato"
+msgstr "Smeraldo"
 
 #: lib/latexcolors:683
-#, fuzzy
 msgid "JungleGreen"
-msgstr "Verde"
+msgstr "Verde giungla"
 
 #: lib/latexcolors:693 lib/latexcolors:1938
-#, fuzzy
 msgid "SeaGreen"
-msgstr "Verde"
+msgstr "Verde mare"
 
 #: lib/latexcolors:713 lib/latexcolors:1946
-#, fuzzy
 msgid "ForestGreen"
-msgstr "Verde"
+msgstr "Verde foresta"
 
 #: lib/latexcolors:721
-#, fuzzy
 msgid "PineGreen"
-msgstr "Verde"
+msgstr "Verde pino"
 
 #: lib/latexcolors:731 lib/latexcolors:1930
-#, fuzzy
 msgid "LimeGreen"
-msgstr "Verde"
+msgstr "Verde lime"
 
 #: lib/latexcolors:741 lib/latexcolors:2002
-#, fuzzy
 msgid "YellowGreen"
-msgstr "Giallo"
+msgstr "Verde giallo"
 
 #: lib/latexcolors:751 lib/latexcolors:1914
-#, fuzzy
 msgid "SpringGreen"
-msgstr "Verde"
+msgstr "Verde primavera"
 
 #: lib/latexcolors:761 lib/latexcolors:2018
-#, fuzzy
 msgid "GreenYellow"
-msgstr "Giallo"
+msgstr "Verde giallino"
 
 #: lib/latexcolors:769
-#, fuzzy
 msgid "OliveGreen"
-msgstr "Verde"
+msgstr "Verde oliva"
 
 #: lib/latexcolors:777
 msgid "RawSienna"
-msgstr ""
+msgstr "Terra di Siena naturale"
 
 #: lib/latexcolors:785
 msgid "Sepia"
-msgstr ""
+msgstr "Seppia"
 
 #: lib/latexcolors:805 lib/latexcolors:1329
-#, fuzzy
 msgid "Tan"
-msgstr "e"
+msgstr "Tanno"
 
 #: lib/latexcolors:821 lib/latexcolors:829 lib/latexcolors:846
 #: lib/latexcolors:863 lib/latexcolors:880 lib/latexcolors:897
@@ -20837,462 +20717,408 @@ msgstr "e"
 #: lib/latexcolors:1973 lib/latexcolors:1981 lib/latexcolors:1989
 #: lib/latexcolors:1997 lib/latexcolors:2005 lib/latexcolors:2013
 #: lib/latexcolors:2021 lib/latexcolors:2029
-#, fuzzy
 msgid "SVG Names"
-msgstr "Nome stile"
+msgstr "Nomi SVG"
 
 #: lib/latexcolors:826
-#, fuzzy
 msgid "DarkSlateGray"
-msgstr "Grigio scuro"
+msgstr "Grigio ardesia scuro"
 
 #: lib/latexcolors:843
-#, fuzzy
 msgid "SlateGray"
-msgstr "Grigio"
+msgstr "Grigio ardesia"
 
 #: lib/latexcolors:860
-#, fuzzy
 msgid "LightSlateGray"
-msgstr "Grigio chiaro"
+msgstr "Grigio ardesia chiaro"
 
 #: lib/latexcolors:877
-#, fuzzy
 msgid "DimGray"
-msgstr "Grigio"
+msgstr "Grigio antracite"
 
 #: lib/latexcolors:911
-#, fuzzy
 msgid "DarkGray"
 msgstr "Grigio scuro"
 
 #: lib/latexcolors:928
 msgid "Silver"
-msgstr ""
+msgstr "Argento"
 
 #: lib/latexcolors:936
-#, fuzzy
 msgid "LightGray"
 msgstr "Grigio chiaro"
 
 #: lib/latexcolors:953
 msgid "Gainsboro"
-msgstr ""
+msgstr "Gainsboro"
 
 #: lib/latexcolors:961
-#, fuzzy
 msgid "WhiteSmoke"
-msgstr "Bianco"
+msgstr "Bianco fumo"
 
 #: lib/latexcolors:969
-#, fuzzy
 msgid "GhostWhite"
-msgstr "Bianco"
+msgstr "Bianco fantasma"
 
 #: lib/latexcolors:985
 msgid "Snow"
-msgstr ""
+msgstr "Neve"
 
 #: lib/latexcolors:993
 msgid "Ivory"
-msgstr ""
+msgstr "Avorio"
 
 #: lib/latexcolors:1001
-#, fuzzy
 msgid "FloralWhite"
-msgstr "Bianco"
+msgstr "Bianco floreale"
 
 #: lib/latexcolors:1009
 msgid "Seashell"
-msgstr ""
+msgstr "Conchiglia"
 
 #: lib/latexcolors:1017
 msgid "OldLace"
-msgstr ""
+msgstr "Pizzo antico"
 
 #: lib/latexcolors:1025
-#, fuzzy
 msgid "Linen"
-msgstr "Opzione riga 1"
+msgstr "Lino"
 
 #: lib/latexcolors:1033
 msgid "AntiqueWhite"
-msgstr ""
+msgstr "Bianco antico"
 
 #: lib/latexcolors:1041
 msgid "BlanchedAlmond"
-msgstr ""
+msgstr "Mandorla sbiancata"
 
 #: lib/latexcolors:1049
 msgid "PapayaWhip"
-msgstr ""
+msgstr "Frusta di papaya"
 
 #: lib/latexcolors:1057
 msgid "Beige"
-msgstr ""
+msgstr "Beige"
 
 #: lib/latexcolors:1065
 msgid "Cornsilk"
-msgstr ""
+msgstr "Crema chiaro"
 
 #: lib/latexcolors:1073
 msgid "LightGoldenrodYellow"
-msgstr ""
+msgstr "Solidago giallo chiaro"
 
 #: lib/latexcolors:1081
-#, fuzzy
 msgid "LightYellow"
-msgstr "Giallo"
+msgstr "Giallo chiaro"
 
 #: lib/latexcolors:1089
 msgid "LemonChiffon"
-msgstr ""
+msgstr "Limone crema"
 
 #: lib/latexcolors:1097
 msgid "PaleGoldenrod"
-msgstr ""
+msgstr "Solidago pallido"
 
 #: lib/latexcolors:1105
 msgid "Khaki"
-msgstr ""
+msgstr "Cachi"
 
 #: lib/latexcolors:1121
-#, fuzzy
 msgid "LightGoldenrod"
-msgstr "Modalità chiara"
+msgstr "Solidago chiaro"
 
 #: lib/latexcolors:1129
 msgid "Gold"
-msgstr ""
+msgstr "Oro"
 
 #: lib/latexcolors:1145
-#, fuzzy
 msgid "DarkOrange"
-msgstr "Arancione"
+msgstr "Arancione scuro"
 
 #: lib/latexcolors:1161
-#, fuzzy
 msgid "DarkGoldenrod"
-msgstr "Modalità scura"
+msgstr "Solidago scuro"
 
 #: lib/latexcolors:1169
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 #: lib/latexcolors:1177
-#, fuzzy
 msgid "Chocolate"
-msgstr "&Ordina"
+msgstr "Cioccolato"
 
 #: lib/latexcolors:1185
-#, fuzzy
 msgid "SaddleBrown"
-msgstr "Marrone"
+msgstr "Marrone sella"
 
 #: lib/latexcolors:1193
 msgid "Sienna"
-msgstr ""
+msgstr "Terra di Siena"
 
 #: lib/latexcolors:1209
-#, fuzzy
 msgid "DarkRed"
-msgstr "Modalità scura"
+msgstr "Rosso scuro"
 
 #: lib/latexcolors:1225
 msgid "FireBrick"
-msgstr ""
+msgstr "Rosso mattone"
 
 #: lib/latexcolors:1233
-#, fuzzy
 msgid "IndianRed"
-msgstr "Indici"
+msgstr "Rosso indiano"
 
 #: lib/latexcolors:1241
-#, fuzzy
 msgid "Crimson[[color]]"
-msgstr "(Senza)"
+msgstr "Cremisi"
 
 #: lib/latexcolors:1265
 msgid "Tomato"
-msgstr ""
+msgstr "Pomodoro"
 
 #: lib/latexcolors:1273
-#, fuzzy
 msgid "Coral"
-msgstr "forall"
+msgstr "Corallo"
 
 #: lib/latexcolors:1289
-#, fuzzy
 msgid "LightCoral"
-msgstr "Grigio chiaro"
+msgstr "Corallo chiaro"
 
 #: lib/latexcolors:1297
 msgid "DarkSalmon"
-msgstr ""
+msgstr "Salmone scuro"
 
 #: lib/latexcolors:1305
-#, fuzzy
 msgid "LightSalmon"
-msgstr "rightmoon"
+msgstr "Salmone chiaro"
 
 #: lib/latexcolors:1313
-#, fuzzy
 msgid "SandyBrown"
-msgstr "Marrone"
+msgstr "Marrone sabbia"
 
 #: lib/latexcolors:1321
-#, fuzzy
 msgid "RosyBrown"
-msgstr "Marrone"
+msgstr "Marrone rosato"
 
 #: lib/latexcolors:1337
 msgid "BurlyWood"
-msgstr ""
+msgstr "Marrone chiaro"
 
 #: lib/latexcolors:1345
 msgid "Wheat"
-msgstr ""
+msgstr "Grano"
 
 #: lib/latexcolors:1353
 msgid "PeachPuff"
-msgstr ""
+msgstr "Pesca scuro"
 
 #: lib/latexcolors:1361
 msgid "Moccasin"
-msgstr ""
+msgstr "Mocassino"
 
 #: lib/latexcolors:1369
-#, fuzzy
 msgid "NavajoWhite"
-msgstr "Bianco"
+msgstr "Bianco navajo"
 
 #: lib/latexcolors:1377
-#, fuzzy
 msgid "Bisque"
-msgstr "Basco"
+msgstr "Bisque"
 
 #: lib/latexcolors:1385
 msgid "LavenderBlush"
-msgstr ""
+msgstr "Lavanda rosata"
 
 #: lib/latexcolors:1393
 msgid "MistyRose"
-msgstr ""
+msgstr "Rosa brumoso"
 
 #: lib/latexcolors:1409
-#, fuzzy
 msgid "LightPink"
-msgstr "lightning"
+msgstr "Rosa chiaro"
 
 #: lib/latexcolors:1417
-#, fuzzy
 msgid "HotPink"
-msgstr "Rosa"
+msgstr "Rosa caldo"
 
 #: lib/latexcolors:1441
-#, fuzzy
 msgid "DeepPink"
-msgstr "Rosa"
+msgstr "Rosa intenso"
 
 #: lib/latexcolors:1449
 msgid "MediumVioletRed"
-msgstr ""
+msgstr "Rosso viola medio"
 
 #: lib/latexcolors:1457
-#, fuzzy
 msgid "PaleVioletRed"
-msgstr "Violetto"
+msgstr "Rosso viola pallido"
 
 #: lib/latexcolors:1513
-#, fuzzy
 msgid "DarkMagenta"
-msgstr "Magenta"
+msgstr "Magenta scuro"
 
 #: lib/latexcolors:1529
-#, fuzzy
 msgid "Indigo"
-msgstr "Indici"
+msgstr "Indaco"
 
 #: lib/latexcolors:1545
-#, fuzzy
 msgid "DarkViolet"
-msgstr "Violetto"
+msgstr "Viola scuro"
 
 #: lib/latexcolors:1561
-#, fuzzy
 msgid "LightSlateBlue"
-msgstr "Valore dell'altezza"
+msgstr "Blu ardesia chiaro"
 
 #: lib/latexcolors:1569
-#, fuzzy
 msgid "MediumPurple"
-msgstr "Medio"
+msgstr "Porpora medio"
 
 #: lib/latexcolors:1577
-#, fuzzy
 msgid "MediumOrchid"
-msgstr "Medio"
+msgstr "Orchidea medio"
 
 #: lib/latexcolors:1585
-#, fuzzy
 msgid "MediumSlateBlue"
-msgstr "Spazio medio|m"
+msgstr "Blu ardesia medio"
 
 #: lib/latexcolors:1593
-#, fuzzy
 msgid "SlateBlue"
-msgstr "Blu"
+msgstr "Blu ardesia"
 
 #: lib/latexcolors:1601
 msgid "DarkSlateBlue"
-msgstr ""
+msgstr "Blu ardesia scuro"
 
 #: lib/latexcolors:1634
-#, fuzzy
 msgid "DarkBlue"
-msgstr "Blu"
+msgstr "Blu scuro"
 
 #: lib/latexcolors:1642
-#, fuzzy
 msgid "MediumBlue"
-msgstr "Medio"
+msgstr "Blu medio"
 
 #: lib/latexcolors:1666
-#, fuzzy
 msgid "SteelBlue"
-msgstr "Blu"
+msgstr "Blu acciaio"
 
 #: lib/latexcolors:1682
 msgid "DodgerBlue"
-msgstr ""
+msgstr "Blu dodger"
 
 #: lib/latexcolors:1690
 msgid "DeepSkyBlue"
-msgstr ""
+msgstr "Azzurro cielo intenso"
 
 #: lib/latexcolors:1698
 msgid "LightSkyBlue"
-msgstr ""
+msgstr "Azzurro cielo chiaro"
 
 #: lib/latexcolors:1714
 msgid "LightSteelBlue"
-msgstr ""
+msgstr "Blu acciaio chiaro"
 
 #: lib/latexcolors:1722
-#, fuzzy
 msgid "LightBlue"
-msgstr "Valore dell'altezza"
+msgstr "Blu chiaro"
 
 #: lib/latexcolors:1738
 msgid "Aqua"
-msgstr ""
+msgstr "Acquamarina"
 
 #: lib/latexcolors:1746
 msgid "PowderBlue"
-msgstr ""
+msgstr "Azzurro polvere"
 
 #: lib/latexcolors:1754
-#, fuzzy
 msgid "LightCyan"
-msgstr "Grigio chiaro"
+msgstr "Ciano chiaro"
 
 #: lib/latexcolors:1762
-#, fuzzy
 msgid "AliceBlue"
-msgstr "Blu"
+msgstr "Blu Alice"
 
 #: lib/latexcolors:1770
 msgid "Azure"
-msgstr ""
+msgstr "Azzurro"
 
 #: lib/latexcolors:1778
 msgid "MintCream"
-msgstr ""
+msgstr "Verde menta"
 
 #: lib/latexcolors:1786
 msgid "Honeydew"
-msgstr ""
+msgstr "Verde grigiastro"
 
 #: lib/latexcolors:1810
 msgid "PaleTurquoise"
-msgstr ""
+msgstr "Turchese pallido"
 
 #: lib/latexcolors:1818
 msgid "MediumTurquoise"
-msgstr ""
+msgstr "Turchese medio"
 
 #: lib/latexcolors:1826
 msgid "DarkTurquoise"
-msgstr ""
+msgstr "Turchese scuro"
 
 #: lib/latexcolors:1834
 msgid "MediumAquamarine"
-msgstr ""
+msgstr "Acquamarina medio"
 
 #: lib/latexcolors:1842
 msgid "LightSeaGreen"
-msgstr ""
+msgstr "Verde mare chiaro"
 
 #: lib/latexcolors:1850
-#, fuzzy
 msgid "DarkCyan"
-msgstr "Ciano"
+msgstr "Ciano scuro"
 
 #: lib/latexcolors:1874
-#, fuzzy
 msgid "MediumSeaGreen"
-msgstr "Spazio medio|m"
+msgstr "Verde mare medio"
 
 #: lib/latexcolors:1882
 msgid "DarkSeaGreen"
-msgstr ""
+msgstr "Verde mare scuro"
 
 #: lib/latexcolors:1890
-#, fuzzy
 msgid "LightGreen"
-msgstr "Verde"
+msgstr "Verde chiaro"
 
 #: lib/latexcolors:1898
-#, fuzzy
 msgid "PaleGreen"
-msgstr "Verde"
+msgstr "Verde pallido"
 
 #: lib/latexcolors:1906
 msgid "MediumSpringGreen"
-msgstr ""
+msgstr "Verde primavera medio"
 
 #: lib/latexcolors:1962
-#, fuzzy
 msgid "DarkGreen"
-msgstr "Verde"
+msgstr "Verde scuro"
 
 #: lib/latexcolors:1970
-#, fuzzy
 msgid "OliveDrab"
-msgstr "Verde oliva"
+msgstr "Verde olivastro"
 
 #: lib/latexcolors:1978
 msgid "DarkOliveGreen"
-msgstr ""
+msgstr "Verde oliva scuro"
 
 #: lib/latexcolors:1994
 msgid "DarkKhaki"
-msgstr ""
+msgstr "Cachi scuro"
 
 #: lib/latexcolors:2010
-#, fuzzy
 msgid "Chartreuse"
-msgstr "Diagrammi"
+msgstr "Verde giallognolo"
 
 #: lib/latexcolors:2026
-#, fuzzy
 msgid "LawnGreen"
-msgstr "Verde"
+msgstr "Verde prato"
 
 #: lib/latexcolors:2048
-#, fuzzy
 msgid "Gray0"
-msgstr "Grigio"
+msgstr "Grigio 0"
 
 #: lib/latexcolors:2051 lib/latexcolors:2059 lib/latexcolors:2067
 #: lib/latexcolors:2075 lib/latexcolors:2083 lib/latexcolors:2091
@@ -21398,1391 +21224,1252 @@ msgstr "Grigio"
 #: lib/latexcolors:4476 lib/latexcolors:4484 lib/latexcolors:4492
 #: lib/latexcolors:4500 lib/latexcolors:4508 lib/latexcolors:4516
 #: lib/latexcolors:4524 lib/latexcolors:4532 lib/latexcolors:4540
-#, fuzzy
 msgid "X11 Names"
-msgstr "Nome"
+msgstr "Nomi X11"
 
 #: lib/latexcolors:2056
 msgid "Snow1"
-msgstr ""
+msgstr "Neve 1"
 
 #: lib/latexcolors:2064
 msgid "Snow2"
-msgstr ""
+msgstr "Neve 2"
 
 #: lib/latexcolors:2072
 msgid "Snow3"
-msgstr ""
+msgstr "Neve 3"
 
 #: lib/latexcolors:2080
 msgid "Snow4"
-msgstr ""
+msgstr "Neve 4"
 
 #: lib/latexcolors:2088
 msgid "Seashell1"
-msgstr ""
+msgstr "Conchiglia 1"
 
 #: lib/latexcolors:2096
 msgid "Seashell2"
-msgstr ""
+msgstr "Conchiglia 2"
 
 #: lib/latexcolors:2104
 msgid "Seashell3"
-msgstr ""
+msgstr "Conchiglia 3"
 
 #: lib/latexcolors:2112
 msgid "Seashell4"
-msgstr ""
+msgstr "Conchiglia 4"
 
 #: lib/latexcolors:2120
 msgid "AntiqueWhite1"
-msgstr ""
+msgstr "Bianco antico 1"
 
 #: lib/latexcolors:2128
 msgid "AntiqueWhite2"
-msgstr ""
+msgstr "Bianco antico 2"
 
 #: lib/latexcolors:2136
 msgid "AntiqueWhite3"
-msgstr ""
+msgstr "Bianco antico 3"
 
 #: lib/latexcolors:2144
 msgid "AntiqueWhite4"
-msgstr ""
+msgstr "Bianco antico 4"
 
 #: lib/latexcolors:2152
-#, fuzzy
 msgid "Bisque1"
-msgstr "Basco"
+msgstr "Bisque 1"
 
 #: lib/latexcolors:2160
-#, fuzzy
 msgid "Bisque2"
-msgstr "Basco"
+msgstr "Bisque 2"
 
 #: lib/latexcolors:2168
-#, fuzzy
 msgid "Bisque3"
-msgstr "Basco"
+msgstr "Bisque 3"
 
 #: lib/latexcolors:2176
-#, fuzzy
 msgid "Bisque4"
-msgstr "Basco"
+msgstr "Bisque 4"
 
 #: lib/latexcolors:2184
 msgid "PeachPuff1"
-msgstr ""
+msgstr "Pesca scuro 1"
 
 #: lib/latexcolors:2192
 msgid "PeachPuff2"
-msgstr ""
+msgstr "Pesca scuro 2"
 
 #: lib/latexcolors:2200
 msgid "PeachPuff3"
-msgstr ""
+msgstr "Pesca scuro 3"
 
 #: lib/latexcolors:2208
 msgid "PeachPuff4"
-msgstr ""
+msgstr "Pesca scuro 4"
 
 #: lib/latexcolors:2216
 msgid "NavajoWhite1"
-msgstr ""
+msgstr "Bianco navajo 1"
 
 #: lib/latexcolors:2224
 msgid "NavajoWhite2"
-msgstr ""
+msgstr "Bianco navajo 2"
 
 #: lib/latexcolors:2232
 msgid "NavajoWhite3"
-msgstr ""
+msgstr "Bianco navajo 3"
 
 #: lib/latexcolors:2240
 msgid "NavajoWhite4"
-msgstr ""
+msgstr "Bianco navajo 4"
 
 #: lib/latexcolors:2248
 msgid "LemonChiffon1"
-msgstr ""
+msgstr "Limone crema 1"
 
 #: lib/latexcolors:2256
 msgid "LemonChiffon2"
-msgstr ""
+msgstr "Limone crema 2"
 
 #: lib/latexcolors:2264
 msgid "LemonChiffon3"
-msgstr ""
+msgstr "Limone crema 3"
 
 #: lib/latexcolors:2272
 msgid "LemonChiffon4"
-msgstr ""
+msgstr "Limone crema 4"
 
 #: lib/latexcolors:2280
 msgid "Cornsilk1"
-msgstr ""
+msgstr "Crema chiaro 1"
 
 #: lib/latexcolors:2288
 msgid "Cornsilk2"
-msgstr ""
+msgstr "Crema chiaro 2"
 
 #: lib/latexcolors:2296
 msgid "Cornsilk3"
-msgstr ""
+msgstr "Crema chiaro 3"
 
 #: lib/latexcolors:2304
 msgid "Cornsilk4"
-msgstr ""
+msgstr "Crema chiaro 4"
 
 #: lib/latexcolors:2312
 msgid "Ivory1"
-msgstr ""
+msgstr "Avorio 1"
 
 #: lib/latexcolors:2320
 msgid "Ivory2"
-msgstr ""
+msgstr "Avorio 2"
 
 #: lib/latexcolors:2328
 msgid "Ivory3"
-msgstr ""
+msgstr "Avorio 3"
 
 #: lib/latexcolors:2336
 msgid "Ivory4"
-msgstr ""
+msgstr "Avorio 4"
 
 #: lib/latexcolors:2344
 msgid "Honeydew1"
-msgstr ""
+msgstr "Verde grigiastro 1"
 
 #: lib/latexcolors:2352
 msgid "Honeydew2"
-msgstr ""
+msgstr "Verde grigiastro 2"
 
 #: lib/latexcolors:2360
 msgid "Honeydew3"
-msgstr ""
+msgstr "Verde grigiastro 3"
 
 #: lib/latexcolors:2368
 msgid "Honeydew4"
-msgstr ""
+msgstr "Verde grigiastro 4"
 
 #: lib/latexcolors:2376
 msgid "LavenderBlush1"
-msgstr ""
+msgstr "Lavanda rosata 1"
 
 #: lib/latexcolors:2384
 msgid "LavenderBlush2"
-msgstr ""
+msgstr "Lavanda rosata 2"
 
 #: lib/latexcolors:2392
 msgid "LavenderBlush3"
-msgstr ""
+msgstr "Lavanda rosata 3"
 
 #: lib/latexcolors:2400
 msgid "LavenderBlush4"
-msgstr ""
+msgstr "Lavanda rosata 4"
 
 #: lib/latexcolors:2408
 msgid "MistyRose1"
-msgstr ""
+msgstr "Rosa brumoso 1"
 
 #: lib/latexcolors:2416
 msgid "MistyRose2"
-msgstr ""
+msgstr "Rosa brumoso 2"
 
 #: lib/latexcolors:2424
 msgid "MistyRose3"
-msgstr ""
+msgstr "Rosa brumoso 3"
 
 #: lib/latexcolors:2432
 msgid "MistyRose4"
-msgstr ""
+msgstr "Rosa brumoso 4"
 
 #: lib/latexcolors:2440
 msgid "Azure1"
-msgstr ""
+msgstr "Azzurro 1"
 
 #: lib/latexcolors:2448
 msgid "Azure2"
-msgstr ""
+msgstr "Azzurro 2"
 
 #: lib/latexcolors:2456
 msgid "Azure3"
-msgstr ""
+msgstr "Azzurro 3"
 
 #: lib/latexcolors:2464
 msgid "Azure4"
-msgstr ""
+msgstr "Azzurro 4"
 
 #: lib/latexcolors:2472
 msgid "SlateBlue1"
-msgstr ""
+msgstr "Blu ardesia 1"
 
 #: lib/latexcolors:2480
 msgid "SlateBlue2"
-msgstr ""
+msgstr "Blu ardesia 2"
 
 #: lib/latexcolors:2488
 msgid "SlateBlue3"
-msgstr ""
+msgstr "Blu ardesia 3"
 
 #: lib/latexcolors:2496
 msgid "SlateBlue4"
-msgstr ""
+msgstr "Blu ardesia 4"
 
 #: lib/latexcolors:2504
 msgid "RoyalBlue1"
-msgstr ""
+msgstr "Blu reale 1"
 
 #: lib/latexcolors:2512
 msgid "RoyalBlue2"
-msgstr ""
+msgstr "Blu reale 2"
 
 #: lib/latexcolors:2520
 msgid "RoyalBlue3"
-msgstr ""
+msgstr "Blu reale 3"
 
 #: lib/latexcolors:2528
 msgid "RoyalBlue4"
-msgstr ""
+msgstr "Blu reale 4"
 
 #: lib/latexcolors:2536
-#, fuzzy
 msgid "Blue1"
-msgstr "Blu"
+msgstr "Blu 1"
 
 #: lib/latexcolors:2544
-#, fuzzy
 msgid "Blue2"
-msgstr "Blu"
+msgstr "Blu 2"
 
 #: lib/latexcolors:2552
-#, fuzzy
 msgid "Blue3"
-msgstr "Blu"
+msgstr "Blu 3"
 
 #: lib/latexcolors:2560
-#, fuzzy
 msgid "Blue4"
-msgstr "Blu"
+msgstr "Blu 4"
 
 #: lib/latexcolors:2568
 msgid "DodgerBlue1"
-msgstr ""
+msgstr "Blu dodger 1"
 
 #: lib/latexcolors:2576
 msgid "DodgerBlue2"
-msgstr ""
+msgstr "Blu dodger 2"
 
 #: lib/latexcolors:2584
 msgid "DodgerBlue3"
-msgstr ""
+msgstr "Blu dodger 3"
 
 #: lib/latexcolors:2592
 msgid "DodgerBlue4"
-msgstr ""
+msgstr "Blu dodger 4"
 
 #: lib/latexcolors:2600
 msgid "SteelBlue1"
-msgstr ""
+msgstr "Blu acciaio 1"
 
 #: lib/latexcolors:2608
 msgid "SteelBlue2"
-msgstr ""
+msgstr "Blu acciaio 2"
 
 #: lib/latexcolors:2616
 msgid "SteelBlue3"
-msgstr ""
+msgstr "Blu acciaio 3"
 
 #: lib/latexcolors:2624
 msgid "SteelBlue4"
-msgstr ""
+msgstr "Blu acciaio 4"
 
 #: lib/latexcolors:2632
 msgid "DeepSkyBlue1"
-msgstr ""
+msgstr "Azzurro cielo intenso 1"
 
 #: lib/latexcolors:2640
 msgid "DeepSkyBlue2"
-msgstr ""
+msgstr "Azzurro cielo intenso 2"
 
 #: lib/latexcolors:2648
 msgid "DeepSkyBlue3"
-msgstr ""
+msgstr "Azzurro cielo intenso 3"
 
 #: lib/latexcolors:2656
 msgid "DeepSkyBlue4"
-msgstr ""
+msgstr "Azzurro cielo intenso 4"
 
 #: lib/latexcolors:2664
-#, fuzzy
 msgid "SkyBlue1"
-msgstr "Blu"
+msgstr "Azzurro cielo 1"
 
 #: lib/latexcolors:2672
-#, fuzzy
 msgid "SkyBlue2"
-msgstr "Blu"
+msgstr "Azzurro cielo 2"
 
 #: lib/latexcolors:2680
-#, fuzzy
 msgid "SkyBlue3"
-msgstr "Blu"
+msgstr "Azzurro cielo 3"
 
 #: lib/latexcolors:2688
-#, fuzzy
 msgid "SkyBlue4"
-msgstr "Blu"
+msgstr "Azzurro cielo 4"
 
 #: lib/latexcolors:2696
 msgid "LightSkyBlue1"
-msgstr ""
+msgstr "Azzurro cielo chiaro 1"
 
 #: lib/latexcolors:2704
 msgid "LightSkyBlue2"
-msgstr ""
+msgstr "Azzurro cielo chiaro 2"
 
 #: lib/latexcolors:2712
 msgid "LightSkyBlue3"
-msgstr ""
+msgstr "Azzurro cielo chiaro 3"
 
 #: lib/latexcolors:2720
 msgid "LightSkyBlue4"
-msgstr ""
+msgstr "Azzurro cielo chiaro 4"
 
 #: lib/latexcolors:2728
 msgid "SlateGray1"
-msgstr ""
+msgstr "Grigio ardesia 1"
 
 #: lib/latexcolors:2736
 msgid "SlateGray2"
-msgstr ""
+msgstr "Grigio ardesia 2"
 
 #: lib/latexcolors:2744
 msgid "SlateGray3"
-msgstr ""
+msgstr "Grigio ardesia 3"
 
 #: lib/latexcolors:2752
 msgid "SlateGray4"
-msgstr ""
+msgstr "Grigio ardesia 4"
 
 #: lib/latexcolors:2760
 msgid "LightSteelBlue1"
-msgstr ""
+msgstr "Blu acciaio chiaro 1"
 
 #: lib/latexcolors:2768
 msgid "LightSteelBlue2"
-msgstr ""
+msgstr "Blu acciaio chiaro 2"
 
 #: lib/latexcolors:2776
 msgid "LightSteelBlue3"
-msgstr ""
+msgstr "Blu acciaio chiaro 3"
 
 #: lib/latexcolors:2784
 msgid "LightSteelBlue4"
-msgstr ""
+msgstr "Blu acciaio chiaro 4"
 
 #: lib/latexcolors:2792
-#, fuzzy
 msgid "LightBlue1"
-msgstr "Valore dell'altezza"
+msgstr "Blu chiaro 1"
 
 #: lib/latexcolors:2800
-#, fuzzy
 msgid "LightBlue2"
-msgstr "Valore dell'altezza"
+msgstr "Blu chiaro 2"
 
 #: lib/latexcolors:2808
-#, fuzzy
 msgid "LightBlue3"
-msgstr "Valore dell'altezza"
+msgstr "Blu chiaro 3"
 
 #: lib/latexcolors:2816
-#, fuzzy
 msgid "LightBlue4"
-msgstr "Valore dell'altezza"
+msgstr "Blu chiaro 4"
 
 #: lib/latexcolors:2824
-#, fuzzy
 msgid "LightCyan1"
-msgstr "Grigio chiaro"
+msgstr "Ciano chiaro 1"
 
 #: lib/latexcolors:2832
-#, fuzzy
 msgid "LightCyan2"
-msgstr "Grigio chiaro"
+msgstr "Ciano chiaro 2"
 
 #: lib/latexcolors:2840
-#, fuzzy
 msgid "LightCyan3"
-msgstr "Grigio chiaro"
+msgstr "Ciano chiaro 3"
 
 #: lib/latexcolors:2848
-#, fuzzy
 msgid "LightCyan4"
-msgstr "Grigio chiaro"
+msgstr "Ciano chiaro 4"
 
 #: lib/latexcolors:2856
 msgid "PaleTurquoise1"
-msgstr ""
+msgstr "Turchese pallido 1"
 
 #: lib/latexcolors:2864
 msgid "PaleTurquoise2"
-msgstr ""
+msgstr "Turchese pallido 2"
 
 #: lib/latexcolors:2872
 msgid "PaleTurquoise3"
-msgstr ""
+msgstr "Turchese pallido 3"
 
 #: lib/latexcolors:2880
 msgid "PaleTurquoise4"
-msgstr ""
+msgstr "Turchese pallido 4"
 
 #: lib/latexcolors:2888
 msgid "CadetBlue1"
-msgstr ""
+msgstr "Blu cadetto 1"
 
 #: lib/latexcolors:2896
 msgid "CadetBlue2"
-msgstr ""
+msgstr "Blu cadetto 2"
 
 #: lib/latexcolors:2904
 msgid "CadetBlue3"
-msgstr ""
+msgstr "Blu cadetto 3"
 
 #: lib/latexcolors:2912
 msgid "CadetBlue4"
-msgstr ""
+msgstr "Blu cadetto 4"
 
 #: lib/latexcolors:2920
 msgid "Turquoise1"
-msgstr ""
+msgstr "Turchese 1"
 
 #: lib/latexcolors:2928
 msgid "Turquoise2"
-msgstr ""
+msgstr "Turchese 2"
 
 #: lib/latexcolors:2936
 msgid "Turquoise3"
-msgstr ""
+msgstr "Turchese 3"
 
 #: lib/latexcolors:2944
 msgid "Turquoise4"
-msgstr ""
+msgstr "Turchese 4"
 
 #: lib/latexcolors:2952
-#, fuzzy
 msgid "Cyan1"
-msgstr "Ciano"
+msgstr "Ciano 1"
 
 #: lib/latexcolors:2960
-#, fuzzy
 msgid "Cyan2"
-msgstr "Ciano"
+msgstr "Ciano 2"
 
 #: lib/latexcolors:2968
-#, fuzzy
 msgid "Cyan3"
-msgstr "Ciano"
+msgstr "Ciano 3"
 
 #: lib/latexcolors:2976
-#, fuzzy
 msgid "Cyan4"
-msgstr "Ciano"
+msgstr "Ciano 4"
 
 #: lib/latexcolors:2984
-#, fuzzy
 msgid "DarkSlateGray1"
-msgstr "Grigio scuro"
+msgstr "Grigio ardesia scuro 1"
 
 #: lib/latexcolors:2992
-#, fuzzy
 msgid "DarkSlateGray2"
-msgstr "Grigio scuro"
+msgstr "Grigio ardesia scuro 2"
 
 #: lib/latexcolors:3000
-#, fuzzy
 msgid "DarkSlateGray3"
-msgstr "Grigio scuro"
+msgstr "Grigio ardesia scuro 3"
 
 #: lib/latexcolors:3008
-#, fuzzy
 msgid "DarkSlateGray4"
-msgstr "Grigio scuro"
+msgstr "Grigio ardesia scuro 4"
 
 #: lib/latexcolors:3016
 msgid "Aquamarine1"
-msgstr ""
+msgstr "Acquamarina 1"
 
 #: lib/latexcolors:3024
 msgid "Aquamarine2"
-msgstr ""
+msgstr "Acquamarina 2"
 
 #: lib/latexcolors:3032
 msgid "Aquamarine3"
-msgstr ""
+msgstr "Acquamarina 3"
 
 #: lib/latexcolors:3040
 msgid "Aquamarine4"
-msgstr ""
+msgstr "Acquamarina 4"
 
 #: lib/latexcolors:3048
 msgid "DarkSeaGreen1"
-msgstr ""
+msgstr "Verde mare scuro 1"
 
 #: lib/latexcolors:3056
 msgid "DarkSeaGreen2"
-msgstr ""
+msgstr "Verde mare scuro 2"
 
 #: lib/latexcolors:3064
 msgid "DarkSeaGreen3"
-msgstr ""
+msgstr "Verde mare scuro 3"
 
 #: lib/latexcolors:3072
 msgid "DarkSeaGreen4"
-msgstr ""
+msgstr "Verde mare scuro 4"
 
 #: lib/latexcolors:3080
-#, fuzzy
 msgid "SeaGreen1"
-msgstr "Verde"
+msgstr "Verde mare 1"
 
 #: lib/latexcolors:3088
-#, fuzzy
 msgid "SeaGreen2"
-msgstr "Verde"
+msgstr "Verde mare 1"
 
 #: lib/latexcolors:3096
-#, fuzzy
 msgid "SeaGreen3"
-msgstr "Verde"
+msgstr "Verde mare 2"
 
 #: lib/latexcolors:3104
-#, fuzzy
 msgid "SeaGreen4"
-msgstr "Verde"
+msgstr "Verde mare 4"
 
 #: lib/latexcolors:3112
-#, fuzzy
 msgid "PaleGreen1"
-msgstr "Verde"
+msgstr "Verde pallido 1"
 
 #: lib/latexcolors:3120
-#, fuzzy
 msgid "PaleGreen2"
-msgstr "Verde"
+msgstr "Verde pallido 2"
 
 #: lib/latexcolors:3128
-#, fuzzy
 msgid "PaleGreen3"
-msgstr "Verde"
+msgstr "Verde pallido 3"
 
 #: lib/latexcolors:3136
-#, fuzzy
 msgid "PaleGreen4"
-msgstr "Verde"
+msgstr "Verde pallido 4"
 
 #: lib/latexcolors:3144
 msgid "SpringGreen1"
-msgstr ""
+msgstr "Verde primavera 1"
 
 #: lib/latexcolors:3152
 msgid "SpringGreen2"
-msgstr ""
+msgstr "Verde primavera 2"
 
 #: lib/latexcolors:3160
 msgid "SpringGreen3"
-msgstr ""
+msgstr "Verde primavera 3"
 
 #: lib/latexcolors:3168
 msgid "SpringGreen4"
-msgstr ""
+msgstr "Verde primavera 4"
 
 #: lib/latexcolors:3176
-#, fuzzy
 msgid "Green0"
-msgstr "Verde"
+msgstr "Verde 0"
 
 #: lib/latexcolors:3184
-#, fuzzy
 msgid "Green1"
-msgstr "Verde"
+msgstr "Verde 1"
 
 #: lib/latexcolors:3192
-#, fuzzy
 msgid "Green2"
-msgstr "Verde"
+msgstr "Verde 2"
 
 #: lib/latexcolors:3200
-#, fuzzy
 msgid "Green3"
-msgstr "Verde"
+msgstr "Verde 3"
 
 #: lib/latexcolors:3208
-#, fuzzy
 msgid "Green4"
-msgstr "Verde"
+msgstr "Verde 4"
 
 #: lib/latexcolors:3216
-#, fuzzy
 msgid "Chartreuse1"
-msgstr "Diagrammi"
+msgstr "Verde giallognolo 1"
 
 #: lib/latexcolors:3224
-#, fuzzy
 msgid "Chartreuse2"
-msgstr "Diagrammi"
+msgstr "Verde giallognolo 2"
 
 #: lib/latexcolors:3232
-#, fuzzy
 msgid "Chartreuse3"
-msgstr "Diagrammi"
+msgstr "Verde giallognolo 3"
 
 #: lib/latexcolors:3240
-#, fuzzy
 msgid "Chartreuse4"
-msgstr "Diagrammi"
+msgstr "Verde giallognolo 4"
 
 #: lib/latexcolors:3248
-#, fuzzy
 msgid "OliveDrab1"
-msgstr "Verde oliva"
+msgstr "Verde olivastro 1"
 
 #: lib/latexcolors:3256
-#, fuzzy
 msgid "OliveDrab2"
-msgstr "Verde oliva"
+msgstr "Verde olivastro 2"
 
 #: lib/latexcolors:3264
-#, fuzzy
 msgid "OliveDrab3"
-msgstr "Verde oliva"
+msgstr "Verde olivastro 3"
 
 #: lib/latexcolors:3272
-#, fuzzy
 msgid "OliveDrab4"
-msgstr "Verde oliva"
+msgstr "Verde olivastro 4"
 
 #: lib/latexcolors:3280
 msgid "DarkOliveGreen1"
-msgstr ""
+msgstr "Verde oliva scuro 1"
 
 #: lib/latexcolors:3288
 msgid "DarkOliveGreen2"
-msgstr ""
+msgstr "Verde oliva scuro 2"
 
 #: lib/latexcolors:3296
 msgid "DarkOliveGreen3"
-msgstr ""
+msgstr "Verde oliva scuro 3"
 
 #: lib/latexcolors:3304
 msgid "DarkOliveGreen4"
-msgstr ""
+msgstr "Verde oliva scuro 4"
 
 #: lib/latexcolors:3312
 msgid "Khaki1"
-msgstr ""
+msgstr "Cachi 1"
 
 #: lib/latexcolors:3320
 msgid "Khaki2"
-msgstr ""
+msgstr "Cachi 2"
 
 #: lib/latexcolors:3328
 msgid "Khaki3"
-msgstr ""
+msgstr "Cachi 3"
 
 #: lib/latexcolors:3336
 msgid "Khaki4"
-msgstr ""
+msgstr "Cachi 4"
 
 #: lib/latexcolors:3344
-#, fuzzy
 msgid "LightGoldenrod1"
-msgstr "Modalità chiara"
+msgstr "Solidago chiaro 1"
 
 #: lib/latexcolors:3352
-#, fuzzy
 msgid "LightGoldenrod2"
-msgstr "Modalità chiara"
+msgstr "Solidago chiaro 2"
 
 #: lib/latexcolors:3360
-#, fuzzy
 msgid "LightGoldenrod3"
-msgstr "Modalità chiara"
+msgstr "Solidago chiaro 3"
 
 #: lib/latexcolors:3368
-#, fuzzy
 msgid "LightGoldenrod4"
-msgstr "Modalità chiara"
+msgstr "Solidago chiaro 4"
 
 #: lib/latexcolors:3376
-#, fuzzy
 msgid "LightYellow1"
-msgstr "Giallo"
+msgstr "Giallo chiaro 1"
 
 #: lib/latexcolors:3384
-#, fuzzy
 msgid "LightYellow2"
-msgstr "Giallo"
+msgstr "Giallo chiaro 2"
 
 #: lib/latexcolors:3392
-#, fuzzy
 msgid "LightYellow3"
-msgstr "Giallo"
+msgstr "Giallo chiaro 3"
 
 #: lib/latexcolors:3400
-#, fuzzy
 msgid "LightYellow4"
-msgstr "Giallo"
+msgstr "Giallo chiaro 4"
 
 #: lib/latexcolors:3408
-#, fuzzy
 msgid "Yellow1"
-msgstr "Giallo"
+msgstr "Giallo 1"
 
 #: lib/latexcolors:3416
-#, fuzzy
 msgid "Yellow2"
-msgstr "Giallo"
+msgstr "Giallo 2"
 
 #: lib/latexcolors:3424
-#, fuzzy
 msgid "Yellow3"
-msgstr "Giallo"
+msgstr "Giallo 3"
 
 #: lib/latexcolors:3432
-#, fuzzy
 msgid "Yellow4"
-msgstr "Giallo"
+msgstr "Giallo 4"
 
 #: lib/latexcolors:3440
 msgid "Gold1"
-msgstr ""
+msgstr "Oro 1"
 
 #: lib/latexcolors:3448
 msgid "Gold2"
-msgstr ""
+msgstr "Oro 2"
 
 #: lib/latexcolors:3456
 msgid "Gold3"
-msgstr ""
+msgstr "Oro 3"
 
 #: lib/latexcolors:3464
 msgid "Gold4"
-msgstr ""
+msgstr "Oro 4"
 
 #: lib/latexcolors:3472
 msgid "Goldenrod1"
-msgstr ""
+msgstr "Solidago 1"
 
 #: lib/latexcolors:3480
 msgid "Goldenrod2"
-msgstr ""
+msgstr "Solidago 2"
 
 #: lib/latexcolors:3488
 msgid "Goldenrod3"
-msgstr ""
+msgstr "Solidago 3"
 
 #: lib/latexcolors:3496
 msgid "Goldenrod4"
-msgstr ""
+msgstr "Solidago 4"
 
 #: lib/latexcolors:3504
-#, fuzzy
 msgid "DarkGoldenrod1"
-msgstr "Modalità scura"
+msgstr "Solidago scuro 1"
 
 #: lib/latexcolors:3512
-#, fuzzy
 msgid "DarkGoldenrod2"
-msgstr "Modalità scura"
+msgstr "Solidago scuro 2"
 
 #: lib/latexcolors:3520
-#, fuzzy
 msgid "DarkGoldenrod3"
-msgstr "Modalità scura"
+msgstr "Solidago scuro 3"
 
 #: lib/latexcolors:3528
-#, fuzzy
 msgid "DarkGoldenrod4"
-msgstr "Modalità scura"
+msgstr "Solidago scuro 4"
 
 #: lib/latexcolors:3536
-#, fuzzy
 msgid "RosyBrown1"
-msgstr "Marrone"
+msgstr "Marrone rosato 1"
 
 #: lib/latexcolors:3544
-#, fuzzy
 msgid "RosyBrown2"
-msgstr "Marrone"
+msgstr "Marrone rosato 2"
 
 #: lib/latexcolors:3552
-#, fuzzy
 msgid "RosyBrown3"
-msgstr "Marrone"
+msgstr "Marrone rosato 3"
 
 #: lib/latexcolors:3560
-#, fuzzy
 msgid "RosyBrown4"
-msgstr "Marrone"
+msgstr "Marrone rosato 4"
 
 #: lib/latexcolors:3568
 msgid "IndianRed1"
-msgstr ""
+msgstr "Rosso indiano 1"
 
 #: lib/latexcolors:3576
 msgid "IndianRed2"
-msgstr ""
+msgstr "Rosso indiano 2"
 
 #: lib/latexcolors:3584
 msgid "IndianRed3"
-msgstr ""
+msgstr "Rosso indiano 3"
 
 #: lib/latexcolors:3592
 msgid "IndianRed4"
-msgstr ""
+msgstr "Rosso indiano 4"
 
 #: lib/latexcolors:3600
 msgid "Sienna1"
-msgstr ""
+msgstr "Terra di Siena 1"
 
 #: lib/latexcolors:3608
 msgid "Sienna2"
-msgstr ""
+msgstr "Terra di Siena 2"
 
 #: lib/latexcolors:3616
 msgid "Sienna3"
-msgstr ""
+msgstr "Terra di Siena 3"
 
 #: lib/latexcolors:3624
 msgid "Sienna4"
-msgstr ""
+msgstr "Terra di Siena 4"
 
 #: lib/latexcolors:3632
-#, fuzzy
 msgid "Burlywood1"
-msgstr "Hollywood"
+msgstr "Marrone chiaro 1"
 
 #: lib/latexcolors:3640
-#, fuzzy
 msgid "Burlywood2"
-msgstr "Hollywood"
+msgstr "Marrone chiaro 2"
 
 #: lib/latexcolors:3648
-#, fuzzy
 msgid "Burlywood3"
-msgstr "Hollywood"
+msgstr "Marrone chiaro 3"
 
 #: lib/latexcolors:3656
-#, fuzzy
 msgid "Burlywood4"
-msgstr "Hollywood"
+msgstr "Marrone chiaro 4"
 
 #: lib/latexcolors:3664
 msgid "Wheat1"
-msgstr ""
+msgstr "Grano 1"
 
 #: lib/latexcolors:3672
 msgid "Wheat2"
-msgstr ""
+msgstr "Grano 2"
 
 #: lib/latexcolors:3680
 msgid "Wheat3"
-msgstr ""
+msgstr "Grano 3"
 
 #: lib/latexcolors:3688
 msgid "Wheat4"
-msgstr ""
+msgstr "Grano 4"
 
 #: lib/latexcolors:3696
 msgid "Tan1"
-msgstr ""
+msgstr "Tanno 1"
 
 #: lib/latexcolors:3704
 msgid "Tan2"
-msgstr ""
+msgstr "Tanno 2"
 
 #: lib/latexcolors:3712
 msgid "Tan3"
-msgstr ""
+msgstr "Tanno 3"
 
 #: lib/latexcolors:3720
 msgid "Tan4"
-msgstr ""
+msgstr "Tanno 4"
 
 #: lib/latexcolors:3728
-#, fuzzy
 msgid "Chocolate1"
-msgstr "&Ordina"
+msgstr "Cioccolato 1"
 
 #: lib/latexcolors:3736
-#, fuzzy
 msgid "Chocolate2"
-msgstr "&Ordina"
+msgstr "Cioccolato 2"
 
 #: lib/latexcolors:3744
-#, fuzzy
 msgid "Chocolate3"
-msgstr "&Ordina"
+msgstr "Cioccolato 3"
 
 #: lib/latexcolors:3752
-#, fuzzy
 msgid "Chocolate4"
-msgstr "&Ordina"
+msgstr "Cioccolato 4"
 
 #: lib/latexcolors:3760
 msgid "Firebrick1"
-msgstr ""
+msgstr "Rosso mattone 1"
 
 #: lib/latexcolors:3768
 msgid "Firebrick2"
-msgstr ""
+msgstr "Rosso mattone 2"
 
 #: lib/latexcolors:3776
 msgid "Firebrick3"
-msgstr ""
+msgstr "Rosso mattone 3"
 
 #: lib/latexcolors:3784
 msgid "Firebrick4"
-msgstr ""
+msgstr "Rosso mattone 4"
 
 #: lib/latexcolors:3792
-#, fuzzy
 msgid "Brown1"
-msgstr "Marrone"
+msgstr "Marrone 1"
 
 #: lib/latexcolors:3800
-#, fuzzy
 msgid "Brown2"
-msgstr "Marrone"
+msgstr "Marrone 2"
 
 #: lib/latexcolors:3808
-#, fuzzy
 msgid "Brown3"
-msgstr "Marrone"
+msgstr "Marrone 3"
 
 #: lib/latexcolors:3816
-#, fuzzy
 msgid "Brown4"
-msgstr "Marrone"
+msgstr "Marrone 4"
 
 #: lib/latexcolors:3824
 msgid "Salmon1"
-msgstr ""
+msgstr "Salmone 1"
 
 #: lib/latexcolors:3832
 msgid "Salmon2"
-msgstr ""
+msgstr "Salmone 2"
 
 #: lib/latexcolors:3840
 msgid "Salmon3"
-msgstr ""
+msgstr "Salmone 3"
 
 #: lib/latexcolors:3848
 msgid "Salmon4"
-msgstr ""
+msgstr "Salmone 4"
 
 #: lib/latexcolors:3856
-#, fuzzy
 msgid "LightSalmon1"
-msgstr "rightmoon"
+msgstr "Salmone chiaro 1"
 
 #: lib/latexcolors:3864
-#, fuzzy
 msgid "LightSalmon2"
-msgstr "rightmoon"
+msgstr "Salmone chiaro 2"
 
 #: lib/latexcolors:3872
-#, fuzzy
 msgid "LightSalmon3"
-msgstr "rightmoon"
+msgstr "Salmone chiaro 3"
 
 #: lib/latexcolors:3880
-#, fuzzy
 msgid "LightSalmon4"
-msgstr "rightmoon"
+msgstr "Salmone chiaro 4"
 
 #: lib/latexcolors:3888
-#, fuzzy
 msgid "Orange1"
-msgstr "Arancione"
+msgstr "Arancione 1"
 
 #: lib/latexcolors:3896
-#, fuzzy
 msgid "Orange2"
-msgstr "Arancione"
+msgstr "Arancione 2"
 
 #: lib/latexcolors:3904
-#, fuzzy
 msgid "Orange3"
-msgstr "Arancione"
+msgstr "Arancione 3"
 
 #: lib/latexcolors:3912
-#, fuzzy
 msgid "Orange4"
-msgstr "Arancione"
+msgstr "Arancione 4"
 
 #: lib/latexcolors:3920
-#, fuzzy
 msgid "Coral1"
-msgstr "forall"
+msgstr "Corallo 1"
 
 #: lib/latexcolors:3928
-#, fuzzy
 msgid "Coral2"
-msgstr "forall"
+msgstr "Corallo 2"
 
 #: lib/latexcolors:3936
-#, fuzzy
 msgid "Coral3"
-msgstr "forall"
+msgstr "Corallo 3"
 
 #: lib/latexcolors:3944
-#, fuzzy
 msgid "Coral4"
-msgstr "forall"
+msgstr "Corallo 4"
 
 #: lib/latexcolors:3952
 msgid "Tomato1"
-msgstr ""
+msgstr "Pomodoro 1"
 
 #: lib/latexcolors:3960
 msgid "Tomato2"
-msgstr ""
+msgstr "Pomodoro 2"
 
 #: lib/latexcolors:3968
 msgid "Tomato3"
-msgstr ""
+msgstr "Pomodoro 3"
 
 #: lib/latexcolors:3976
 msgid "Tomato4"
-msgstr ""
+msgstr "Pomodoro 4"
 
 #: lib/latexcolors:3984
-#, fuzzy
 msgid "OrangeRed1"
-msgstr "Arancione"
+msgstr "Rosso arancio 1"
 
 #: lib/latexcolors:3992
-#, fuzzy
 msgid "OrangeRed2"
-msgstr "Arancione"
+msgstr "Rosso arancio 2"
 
 #: lib/latexcolors:4000
-#, fuzzy
 msgid "OrangeRed3"
-msgstr "Arancione"
+msgstr "Rosso arancio 3"
 
 #: lib/latexcolors:4008
-#, fuzzy
 msgid "OrangeRed4"
-msgstr "Arancione"
+msgstr "Rosso arancio 4"
 
 #: lib/latexcolors:4016
 msgid "Red1"
-msgstr ""
+msgstr "Rosso 1"
 
 #: lib/latexcolors:4024
 msgid "Red2"
-msgstr ""
+msgstr "Rosso 2"
 
 #: lib/latexcolors:4032
 msgid "Red3"
-msgstr ""
+msgstr "Rosso 3"
 
 #: lib/latexcolors:4040
 msgid "Red4"
-msgstr ""
+msgstr "Rosso 4"
 
 #: lib/latexcolors:4048
-#, fuzzy
 msgid "DeepPink1"
-msgstr "Rosa"
+msgstr "Rosa intenso 1"
 
 #: lib/latexcolors:4056
-#, fuzzy
 msgid "DeepPink2"
-msgstr "Rosa"
+msgstr "Rosa intenso 2"
 
 #: lib/latexcolors:4064
-#, fuzzy
 msgid "DeepPink3"
-msgstr "Rosa"
+msgstr "Rosa intenso 3"
 
 #: lib/latexcolors:4072
-#, fuzzy
 msgid "DeepPink4"
-msgstr "Rosa"
+msgstr "Rosa intenso 4"
 
 #: lib/latexcolors:4080
-#, fuzzy
 msgid "HotPink1"
-msgstr "Rosa"
+msgstr "Rosa caldo 1"
 
 #: lib/latexcolors:4088
-#, fuzzy
 msgid "HotPink2"
-msgstr "Rosa"
+msgstr "Rosa caldo 2"
 
 #: lib/latexcolors:4096
-#, fuzzy
 msgid "HotPink3"
-msgstr "Rosa"
+msgstr "Rosa caldo 3"
 
 #: lib/latexcolors:4104
-#, fuzzy
 msgid "HotPink4"
-msgstr "Rosa"
+msgstr "Rosa caldo 4"
 
 #: lib/latexcolors:4112
-#, fuzzy
 msgid "Pink1"
-msgstr "Rosa"
+msgstr "Rosa 1"
 
 #: lib/latexcolors:4120
-#, fuzzy
 msgid "Pink2"
-msgstr "Rosa"
+msgstr "Rosa 2"
 
 #: lib/latexcolors:4128
-#, fuzzy
 msgid "Pink3"
-msgstr "Rosa"
+msgstr "Rosa 3"
 
 #: lib/latexcolors:4136
-#, fuzzy
 msgid "Pink4"
-msgstr "Rosa"
+msgstr "Rosa 4"
 
 #: lib/latexcolors:4144
-#, fuzzy
 msgid "LightPink1"
-msgstr "lightning"
+msgstr "Rosa chiaro 1"
 
 #: lib/latexcolors:4152
-#, fuzzy
 msgid "LightPink2"
-msgstr "lightning"
+msgstr "Rosa chiaro 2"
 
 #: lib/latexcolors:4160
-#, fuzzy
 msgid "LightPink3"
-msgstr "lightning"
+msgstr "Rosa chiaro 3"
 
 #: lib/latexcolors:4168
-#, fuzzy
 msgid "LightPink4"
-msgstr "lightning"
+msgstr "Rosa chiaro 4"
 
 #: lib/latexcolors:4176
-#, fuzzy
 msgid "PaleVioletRed1"
-msgstr "Violetto"
+msgstr "Rosso viola pallido 1"
 
 #: lib/latexcolors:4184
-#, fuzzy
 msgid "PaleVioletRed2"
-msgstr "Violetto"
+msgstr "Rosso viola pallido 2"
 
 #: lib/latexcolors:4192
-#, fuzzy
 msgid "PaleVioletRed3"
-msgstr "Violetto"
+msgstr "Rosso viola pallido 3"
 
 #: lib/latexcolors:4200
-#, fuzzy
 msgid "PaleVioletRed4"
-msgstr "Violetto"
+msgstr "Rosso viola pallido 4"
 
 #: lib/latexcolors:4208
 msgid "Maroon1"
-msgstr ""
+msgstr "Marrone rossiccio 1"
 
 #: lib/latexcolors:4216
 msgid "Maroon2"
-msgstr ""
+msgstr "Marrone rossiccio 2"
 
 #: lib/latexcolors:4224
 msgid "Maroon3"
-msgstr ""
+msgstr "Marrone rossiccio 3"
 
 #: lib/latexcolors:4232
 msgid "Maroon4"
-msgstr ""
+msgstr "Marrone rossiccio 4"
 
 #: lib/latexcolors:4240
 msgid "Maroon0"
-msgstr ""
+msgstr "Marrone rossiccio 0"
 
 #: lib/latexcolors:4248
-#, fuzzy
 msgid "VioletRed1"
-msgstr "Violetto"
+msgstr "Viola rossiccio 1"
 
 #: lib/latexcolors:4256
-#, fuzzy
 msgid "VioletRed2"
-msgstr "Violetto"
+msgstr "Viola rossiccio 2"
 
 #: lib/latexcolors:4264
-#, fuzzy
 msgid "VioletRed3"
-msgstr "Violetto"
+msgstr "Viola rossiccio 3"
 
 #: lib/latexcolors:4272
-#, fuzzy
 msgid "VioletRed4"
-msgstr "Violetto"
+msgstr "Viola rossiccio 4"
 
 #: lib/latexcolors:4280
-#, fuzzy
 msgid "Magenta1"
-msgstr "Magenta"
+msgstr "Magenta 1"
 
 #: lib/latexcolors:4288
-#, fuzzy
 msgid "Magenta2"
-msgstr "Magenta"
+msgstr "Magenta 2"
 
 #: lib/latexcolors:4296
-#, fuzzy
 msgid "Magenta3"
-msgstr "Magenta"
+msgstr "Magenta 3"
 
 #: lib/latexcolors:4304
-#, fuzzy
 msgid "Magenta4"
-msgstr "Magenta"
+msgstr "Magenta 4"
 
 #: lib/latexcolors:4312
 msgid "Orchid1"
-msgstr ""
+msgstr "Orchidea 1"
 
 #: lib/latexcolors:4320
 msgid "Orchid2"
-msgstr ""
+msgstr "Orchidea 2"
 
 #: lib/latexcolors:4328
 msgid "Orchid3"
-msgstr ""
+msgstr "Orchidea 3"
 
 #: lib/latexcolors:4336
 msgid "Orchid4"
-msgstr ""
+msgstr "Orchidea 4"
 
 #: lib/latexcolors:4344
 msgid "Plum1"
-msgstr ""
+msgstr "Prugna 1"
 
 #: lib/latexcolors:4352
 msgid "Plum2"
-msgstr ""
+msgstr "Prugna 2"
 
 #: lib/latexcolors:4360
 msgid "Plum3"
-msgstr ""
+msgstr "Prugna 3"
 
 #: lib/latexcolors:4368
 msgid "Plum4"
-msgstr ""
+msgstr "Prugna 4"
 
 #: lib/latexcolors:4376
-#, fuzzy
 msgid "MediumOrchid1"
-msgstr "Medio"
+msgstr "Orchidea medio 1"
 
 #: lib/latexcolors:4384
-#, fuzzy
 msgid "MediumOrchid2"
-msgstr "Medio"
+msgstr "Orchidea medio 2"
 
 #: lib/latexcolors:4392
-#, fuzzy
 msgid "MediumOrchid3"
-msgstr "Medio"
+msgstr "Orchidea medio 3"
 
 #: lib/latexcolors:4400
-#, fuzzy
 msgid "MediumOrchid4"
-msgstr "Medio"
+msgstr "Orchidea medio 4"
 
 #: lib/latexcolors:4408
 msgid "DarkOrchid1"
-msgstr ""
+msgstr "Orchidea scuro 1"
 
 #: lib/latexcolors:4416
 msgid "DarkOrchid2"
-msgstr ""
+msgstr "Orchidea scuro 2"
 
 #: lib/latexcolors:4424
 msgid "DarkOrchid3"
-msgstr ""
+msgstr "Orchidea scuro 3"
 
 #: lib/latexcolors:4432
 msgid "DarkOrchid4"
-msgstr ""
+msgstr "Orchidea scuro 4"
 
 #: lib/latexcolors:4440
-#, fuzzy
 msgid "Purple0"
-msgstr "Porpora"
+msgstr "Porpora 0"
 
 #: lib/latexcolors:4449
-#, fuzzy
 msgid "Purple1"
-msgstr "Porpora"
+msgstr "Porpora 1"
 
 #: lib/latexcolors:4457
-#, fuzzy
 msgid "Purple2"
-msgstr "Porpora"
+msgstr "Porpora 2"
 
 #: lib/latexcolors:4465
-#, fuzzy
 msgid "Purple3"
-msgstr "Porpora"
+msgstr "Porpora 3"
 
 #: lib/latexcolors:4473
-#, fuzzy
 msgid "Purple4"
-msgstr "Porpora"
+msgstr "Porpora 4"
 
 #: lib/latexcolors:4481
-#, fuzzy
 msgid "MediumPurple1"
-msgstr "Spazio medio"
+msgstr "Porpora medio 1"
 
 #: lib/latexcolors:4489
-#, fuzzy
 msgid "MediumPurple2"
-msgstr "Spazio medio"
+msgstr "Porpora medio 2"
 
 #: lib/latexcolors:4497
-#, fuzzy
 msgid "MediumPurple3"
-msgstr "Spazio medio"
+msgstr "Porpora medio 3"
 
 #: lib/latexcolors:4505
-#, fuzzy
 msgid "MediumPurple4"
-msgstr "Spazio medio"
+msgstr "Porpora medio 4"
 
 #: lib/latexcolors:4513
 msgid "Thistle1"
-msgstr ""
+msgstr "Cardo 1"
 
 #: lib/latexcolors:4521
 msgid "Thistle2"
-msgstr ""
+msgstr "Cardo 2"
 
 #: lib/latexcolors:4529
 msgid "Thistle3"
-msgstr ""
+msgstr "Cardo 3"
 
 #: lib/latexcolors:4537
 msgid "Thistle4"
-msgstr ""
+msgstr "Cardo 4"
 
 #: lib/latexfonts:94
 msgid "AE (Almost European)"
@@ -23616,12 +23303,10 @@ msgid "Use Computer Algebra System|m"
 msgstr "Usa sistema di algebra computazionale|s"
 
 #: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:113
-#, fuzzy
 msgid "Next Cross-Reference or Label with the Same Target|N"
-msgstr "Inserisci riferimento a questo elemento|c"
+msgstr "Riferimento successivo alla stessa etichetta o etichetta puntata|R"
 
 #: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:114
-#, fuzzy
 msgid "Next Cross-Reference|C"
 msgstr "Riferimento successivo|s"
 
@@ -23653,12 +23338,12 @@ msgstr "<riferimento> a pagina <pagina>|n"
 #: lib/ui/stdcontext.inc:101 lib/ui/stdcontext.inc:122
 #: lib/ui/stdcontext.inc:731
 msgid "Formatted Reference|t"
-msgstr "Riferimento formattato|t"
+msgstr "Riferimento formattato|m"
 
 #: lib/ui/stdcontext.inc:102 lib/ui/stdcontext.inc:123
 #: lib/ui/stdcontext.inc:732
 msgid "Textual Reference|x"
-msgstr "Riferimento testuale|R"
+msgstr "Riferimento testuale|t"
 
 #: lib/ui/stdcontext.inc:103 lib/ui/stdcontext.inc:124
 #: lib/ui/stdcontext.inc:733
@@ -23699,9 +23384,8 @@ msgid "No Hyperlink"
 msgstr "Nessun collegamento ipertestuale"
 
 #: lib/ui/stdcontext.inc:138
-#, fuzzy
 msgid "Next Cross-Reference that Points to This Label|N"
-msgstr "Inserisci riferimento a questo elemento|c"
+msgstr "Riferimento successivo che punta a questa etichetta|R"
 
 #: lib/ui/stdcontext.inc:139
 msgid "Go Back|G"
@@ -25403,9 +25087,8 @@ msgid "LaTeX Log|L"
 msgstr "Registro di LaTeX|R"
 
 #: lib/ui/stdmenus.inc:578
-#, fuzzy
 msgid "Processing Errors|r"
-msgstr "Errore del processore di indice"
+msgstr "Errori di compilazione|E"
 
 #: lib/ui/stdmenus.inc:579
 msgid "Start Appendix Here|x"
@@ -25464,9 +25147,8 @@ msgid "Bookmarks|B"
 msgstr "Segnalibri|S"
 
 #: lib/ui/stdmenus.inc:608
-#, fuzzy
 msgid "Next Error|E"
-msgstr "&Errore successivo."
+msgstr "Errore successivo|E"
 
 #: lib/ui/stdmenus.inc:609
 msgid "Next Note|N"
@@ -31383,6 +31065,10 @@ msgid ""
 "which means that it is probably corrupted.\n"
 "You can find the converted file at %2$s while LyX is running."
 msgstr ""
+"La conversione di %1$s al formato attuale di LyX si è interrotta, quindi la "
+"versione convertita è probabilmente corrotta.\n"
+"Mentre LyX è ancora attivo, si può trovare la versione convertita col nome "
+"%2$s."
 
 #: src/Buffer.cpp:1277 src/Buffer.cpp:1348
 msgid "Document format failure"
@@ -31982,7 +31668,7 @@ msgid "File deleted from disk"
 msgstr "File eliminato dal disco"
 
 #: src/Buffer.cpp:5749
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file\n"
 "  %1$s\n"
@@ -31991,7 +31677,8 @@ msgid ""
 msgstr ""
 "Il file\n"
 "  %1$s\n"
-"è stato eliminato dal disco!"
+"è stato eliminato dal disco!\n"
+"Ora verrà contrassegnato come modificato."
 
 #: src/BufferParams.cpp:543
 msgid ""
@@ -32572,7 +32259,7 @@ msgstr "rosso"
 
 #: src/Color.cpp:260
 msgid "teal"
-msgstr "ciano scuro"
+msgstr "blu tè"
 
 #: src/Color.cpp:261
 msgid "violet"
@@ -33802,8 +33489,8 @@ msgid ""
 "Failed to create directory. Perhaps wrong -userdir command-line option?\n"
 "Exiting."
 msgstr ""
-"Non è stato possibile creare la cartella. Possibilmente un errata opzione -"
-"userdir?\n"
+"Non è stato possibile creare la cartella. Possibilmente un errata opzione "
+"-userdir?\n"
 "Abbandono."
 
 #: src/LyX.cpp:1180
@@ -34039,11 +33726,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3204
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
-"n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
+"-n38\" Refer to the ChkTeX documentation."
 msgstr ""
-"Definisce come avviare chktex. Cioè: \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -"
-"n30 -n38\". Fare riferimento alla documentazione di ChkTeX."
+"Definisce come avviare chktex. Cioè: \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 "
+"-n30 -n38\". Fare riferimento alla documentazione di ChkTeX."
 
 #: src/LyXRC.cpp:3211
 msgid ""
@@ -34113,7 +33800,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3250
 msgid "Current UI theme if it has a name, otherwise empty"
-msgstr ""
+msgstr "Tema corrente dell'interfaccia utente se ha un nome, altrimenti vuoto"
 
 #: src/LyXRC.cpp:3254
 msgid ""
@@ -34446,8 +34133,8 @@ msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
-"Questo avvia il lyxserver. Le pipe richiedono un estensione addizionale \"."
-"in\" e \".out\". Solo per utenti esperti."
+"Questo avvia il lyxserver. Le pipe richiedono un estensione addizionale "
+"\".in\" e \".out\". Solo per utenti esperti."
 
 #: src/LyXRC.cpp:3492
 msgid "De-select if you don't want the startup banner."
@@ -35320,12 +35007,11 @@ msgstr "Non catalogati"
 #: src/frontends/qt/ColorsCombo.cpp:187
 #, c-format
 msgid "%1$s (= Default[[color]])"
-msgstr ""
+msgstr "%1$s (default)"
 
 #: src/frontends/qt/ColorsCombo.cpp:385
-#, fuzzy
 msgid "Type on the list to filter on color names."
-msgstr "Inserire maschera per filtrare i contenuti"
+msgstr "Digitare nell'elenco per filtrare i nomi dei colori."
 
 #: src/frontends/qt/FileDialog.cpp:207
 msgid "Directories"
@@ -35571,9 +35257,8 @@ msgid "Open"
 msgstr "Apri"
 
 #: src/frontends/qt/GuiApplication.cpp:783
-#, fuzzy
 msgid "Select Color"
-msgstr "R&eimposta colore"
+msgstr "Selezione colore"
 
 #: src/frontends/qt/GuiApplication.cpp:1288
 msgid "Nothing to do"
@@ -35783,7 +35468,6 @@ msgid "Author &Names:"
 msgstr "&Nomi autori:"
 
 #: src/frontends/qt/GuiBibitem.cpp:64
-#, fuzzy
 msgid ""
 "Insert the author name(s) for the author-number reference here. If you use "
 "an abbreviated list (with `et al.'), the full list can go below."
@@ -35999,9 +35683,9 @@ msgid "No"
 msgstr "No"
 
 #: src/frontends/qt/GuiBranches.cpp:190
-#, fuzzy, c-format
+#, c-format
 msgid "A branch with the name \"%1$s\" already exists."
-msgstr "Un gruppo di immagini di nome '%1$s' esiste già."
+msgstr "Un ramo di nome \"%1$s\" esiste già."
 
 #: src/frontends/qt/GuiBranches.cpp:247
 msgid "Enter new branch name"
@@ -36648,9 +36332,8 @@ msgid "Page Margins"
 msgstr "Margini"
 
 #: src/frontends/qt/GuiDocument.cpp:1392
-#, fuzzy
 msgid "Double-click on an item to change its color"
-msgstr "Cliccare per cambiare il colore"
+msgstr "Doppio clic su un elemento per cambiarne il colore"
 
 #: src/frontends/qt/GuiDocument.cpp:1421
 msgid "Numbered"
@@ -36704,19 +36387,19 @@ msgstr "Opzioni matematiche"
 
 #: src/frontends/qt/GuiDocument.cpp:1677
 msgid "Cleveref and varioref"
-msgstr ""
+msgstr "Cleveref e varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1678
 msgid "Prettyref and varioref"
-msgstr ""
+msgstr "Prettyref e varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1679
 msgid "Refstyle and varioref"
-msgstr ""
+msgstr "Refstyle e varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1680
 msgid "Zref-clever and zref-vario"
-msgstr ""
+msgstr "Zref-clever e zref-vario"
 
 #: src/frontends/qt/GuiDocument.cpp:1697 src/frontends/qt/GuiDocument.cpp:3057
 #, c-format
@@ -36821,17 +36504,14 @@ msgid "&Switch Back"
 msgstr "&Torna indietro"
 
 #: src/frontends/qt/GuiDocument.cpp:2008
-#, fuzzy
 msgid "&Left:"
-msgstr "&Sinistra"
+msgstr "Si&nistra:"
 
 #: src/frontends/qt/GuiDocument.cpp:2009
-#, fuzzy
 msgid "&Right:"
-msgstr "&Destra"
+msgstr "&Destra:"
 
 #: src/frontends/qt/GuiDocument.cpp:2012
-#, fuzzy
 msgid "&Outer:"
 msgstr "&Esterno:"
 
@@ -37141,25 +36821,25 @@ msgid "<b>Note:</b> Some requirements for this module are missing!"
 msgstr "<b>Nota:</b> Mancano alcuni prerequisiti per questo modulo!"
 
 #: src/frontends/qt/GuiDocument.cpp:5626
-#, fuzzy
 msgid "Color naming failed"
-msgstr "Rinomina non riuscita"
+msgstr "Denominazione del colore non riuscita"
 
 #: src/frontends/qt/GuiDocument.cpp:5627
-#, fuzzy, c-format
+#, c-format
 msgid "The color name `%1$s' is already taken."
-msgstr "La lingua %1$s è supportata solo da Babel."
+msgstr "Il nome del colore `%1$s' è già utilizzato."
 
 #: src/frontends/qt/GuiDocument.cpp:5688
-#, fuzzy
 msgid "Enter new color name"
-msgstr "Inserire il nome del nuovo ramo"
+msgstr "Inserire il nome del nuovo colore"
 
 #: src/frontends/qt/GuiDocument.cpp:5696
 msgid ""
 "The color could not be renamed since the new name consists of non-ASCII "
 "characters or blanks."
 msgstr ""
+"Non è stato possibile rinominare il colore perché il nuovo nome contiene "
+"caratteri non ASCII o spazi bianchi."
 
 #: src/frontends/qt/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
@@ -38019,86 +37699,77 @@ msgid "Screen Fonts"
 msgstr "Caratteri schermo"
 
 #: src/frontends/qt/GuiPrefs.cpp:1402
-#, fuzzy
 msgid "Export a color theme"
-msgstr "Esportazione cancellata"
+msgstr "Esportazione di un tema colore"
 
 #: src/frontends/qt/GuiPrefs.cpp:1441
 msgid "What is the name of the color theme?"
-msgstr ""
+msgstr "Come si chiama il tema colore?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1442
 msgid "What is the name of the new color theme to save?"
-msgstr ""
+msgstr "Qual è il nome del nuovo tema colore da salvare?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1445
-#, fuzzy
 msgid "Name the color theme"
-msgstr "Nome della conferenza"
+msgstr "Assegnazione di un nome al tema colore"
 
 #: src/frontends/qt/GuiPrefs.cpp:1447
 msgid "New theme name"
-msgstr ""
+msgstr "Nuovo nome del tema"
 
 #: src/frontends/qt/GuiPrefs.cpp:1469
 msgid "A user color theme with the same name exists."
-msgstr ""
+msgstr "Esiste un tema colore utente con lo stesso nome."
 
 #: src/frontends/qt/GuiPrefs.cpp:1470
-#, fuzzy
 msgid "Do you want to overwrite?"
-msgstr "Il file %1$s esiste già, si vuole sovrascriverlo?"
+msgstr "Si vuole sovrascriverlo?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1510
 msgid "Import a color theme"
-msgstr ""
+msgstr "Importazione di un tema colore"
 
 #: src/frontends/qt/GuiPrefs.cpp:1614
-#, fuzzy
 msgid "Select a user theme"
-msgstr "Selezionare documento padre"
+msgstr "Selezionare un tema utente"
 
 #: src/frontends/qt/GuiPrefs.cpp:1615
 msgid "Please select a user theme to remove from the \"Themes\" list menu."
-msgstr ""
+msgstr "Seleziona un tema utente da rimuovere dal menu elenco \"Temi\"."
 
 #: src/frontends/qt/GuiPrefs.cpp:1627
 msgid "Not a user theme"
-msgstr ""
+msgstr "Non è un tema utente"
 
 #: src/frontends/qt/GuiPrefs.cpp:1628
-#, fuzzy
 msgid "The selected theme is a system theme. It cannot be removed."
-msgstr "L'indice predefinito non può essere rimosso."
+msgstr "Il tema selezionato è un tema di sistema. Non può essere rimosso."
 
 #: src/frontends/qt/GuiPrefs.cpp:1638
 msgid "Are you sure?"
-msgstr ""
+msgstr "Sei sicuro?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1639
 #, c-format
 msgid "Do you really want to remove the theme \"%1$s\"?"
-msgstr ""
+msgstr "Vuoi davvero rimuovere il tema \"%1$s\"?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1728
-#, fuzzy
 msgid "&Export..."
-msgstr "Esportazione ..."
+msgstr "&Exporta..."
 
 #: src/frontends/qt/GuiPrefs.cpp:1729
-#, fuzzy
 msgid "&Import..."
-msgstr "Importa|I"
+msgstr "&Importa..."
 
 #: src/frontends/qt/GuiPrefs.cpp:1758
-#, fuzzy
 msgid "Click here to change the color in the light mode"
-msgstr "Cliccare per cambiare il colore"
+msgstr "Cliccare qui per cambiare il colore in modalità chiara"
 
 #: src/frontends/qt/GuiPrefs.cpp:1760
-#, fuzzy
 msgid "Click here to change the color in the dark mode"
-msgstr "Cliccare per cambiare il colore"
+msgstr "Cliccare qui per cambiare il colore in modalità scura"
 
 #: src/frontends/qt/GuiPrefs.cpp:1998
 msgid "Paths"
@@ -38221,7 +37892,7 @@ msgstr "Interfaccia utente"
 
 #: src/frontends/qt/GuiPrefs.cpp:3246
 msgid "Adwaita"
-msgstr ""
+msgstr "Adwaita"
 
 #: src/frontends/qt/GuiPrefs.cpp:3247
 msgid "Classic"
@@ -38438,45 +38109,45 @@ msgstr "Alfabeticamente (prima maiuscolo)"
 
 #: src/frontends/qt/GuiRef.cpp:85
 msgid "list (1 and 2)"
-msgstr ""
+msgstr "elenco (1 e 2)"
 
 #: src/frontends/qt/GuiRef.cpp:86
 msgid "range (1 to 2)"
-msgstr ""
+msgstr "intervallo (da 1 a 2)"
 
 #: src/frontends/qt/GuiRef.cpp:89
 msgid "Update the label list"
 msgstr "Aggiorna la lista delle etichette"
 
 #: src/frontends/qt/GuiRef.cpp:248
-#, fuzzy
 msgid "Unsupported setting!"
-msgstr "Inclusione non supportata"
+msgstr "Impostazione non supportata!"
 
 #: src/frontends/qt/GuiRef.cpp:249
 msgid "The reference type you selected allows for maximally two target labels."
 msgstr ""
+"Il tipo di riferimento selezionato consente al massimo due etichette di "
+"destinazione."
 
 #: src/frontends/qt/GuiRef.cpp:458
 msgid "Label creation error!"
-msgstr ""
+msgstr "Errore nella creazione dell'etichetta!"
 
 #: src/frontends/qt/GuiRef.cpp:459
-#, fuzzy
 msgid ""
 "Could not auto-generate label for this target.\n"
 "Please insert a label manually."
-msgstr "Selezionare un'etichetta dalla lista o inserirne una manualmente"
+msgstr ""
+"Impossibile generare automaticamente l'etichetta per questa destinazione.\n"
+"Inserire un'etichetta manualmente."
 
 #: src/frontends/qt/GuiRef.cpp:553
-#, fuzzy
 msgid "Existing Labels"
-msgstr "Etichetta equazione|h"
+msgstr "Etichette esistenti"
 
 #: src/frontends/qt/GuiRef.cpp:590
-#, fuzzy
 msgid "page <page>"
-msgstr "a pagina <pagina>"
+msgstr "pagina <pagina>"
 
 #: src/frontends/qt/GuiRef.cpp:702
 msgid "&Go Back"
@@ -38491,24 +38162,21 @@ msgid "<No prefix>"
 msgstr "<Senza prefisso>"
 
 #: src/frontends/qt/GuiRef.cpp:994
-#, fuzzy
 msgid "Available &Targets:"
-msgstr "&Etichette diponibili:"
+msgstr "&Destinazioni disponibili:"
 
 #: src/frontends/qt/GuiRef.cpp:995
-#, fuzzy
 msgid "All available targets"
-msgstr "Tutte le etichette disponibili"
+msgstr "Tutte le destinazioni disponibili"
 
 #: src/frontends/qt/GuiRef.cpp:996
-#, fuzzy
 msgid "Enter string to filter the list of available targets"
-msgstr "Inserire la maschera per filtrare la lista delle etichette disponibili"
+msgstr ""
+"Inserire la maschera per filtrare la lista delle destinazioni disponibili"
 
 #: src/frontends/qt/GuiRef.cpp:1083
-#, fuzzy
 msgid "Unknown[[ref target]]"
-msgstr "Argomento sconosciuto"
+msgstr "Sconosciuta"
 
 #: src/frontends/qt/GuiSearch.cpp:202
 msgid "Ex&pand"
@@ -38908,6 +38576,7 @@ msgstr "Simboli"
 #: src/frontends/qt/GuiTabular.cpp:70
 msgid "Adjust the horizontal overhang of the coloring here if needed."
 msgstr ""
+"Se necessario, regolare qui la sporgenza orizzontale della colorazione."
 
 #: src/frontends/qt/GuiTabular.h:48
 msgid "Tabular Settings"
@@ -39066,9 +38735,8 @@ msgid "Conversion cancelled while previewing format: %1$s"
 msgstr "Conversione interrotta durante l'anteprima del formato: %1$s"
 
 #: src/frontends/qt/GuiView.cpp:1277
-#, fuzzy
 msgid "None[[color]]"
-msgstr "Nessun colore"
+msgstr "Nessuno"
 
 #: src/frontends/qt/GuiView.cpp:1278
 msgid "(Without)[[color]]"
@@ -39595,7 +39263,7 @@ msgstr "Esportazione ..."
 
 #: src/frontends/qt/GuiView.cpp:4710
 msgid "Preparing externally referenced file ..."
-msgstr ""
+msgstr "Preparazione del file referenziato esternamente..."
 
 #: src/frontends/qt/GuiView.cpp:4732
 msgid "Previewing ..."
@@ -41595,20 +41263,19 @@ msgstr "testo%1$s"
 
 #: src/insets/InsetRef.cpp:378 src/insets/InsetRef.cpp:560
 msgid "[[reference 1]] and [[reference2]]"
-msgstr ""
+msgstr " e "
 
 #: src/insets/InsetRef.cpp:380 src/insets/InsetRef.cpp:562
 msgid "[[reference 1, ...]], and [[reference n]]"
-msgstr ""
+msgstr ", e "
 
 #: src/insets/InsetRef.cpp:382 src/insets/InsetRef.cpp:564
 msgid "[[reference 1]], [[reference2, ...]]"
-msgstr ""
+msgstr ", "
 
 #: src/insets/InsetRef.cpp:397
-#, fuzzy
 msgid "Invalid label!"
-msgstr "Nome file non valido"
+msgstr "Etichetta non valida!"
 
 #: src/insets/InsetRef.cpp:398
 #, c-format
@@ -41617,6 +41284,9 @@ msgid ""
 "formatted references with prettyref.\n"
 "You will most likely run into a LaTeX error."
 msgstr ""
+"L'etichetta `%1$s' non ha un prefisso (ad es., `sec:'), che è necessario per "
+"i riferimenti formattati con prettyref.\n"
+"Molto probabilmente ci si imbatterà in un errore LaTeX."
 
 #: src/insets/InsetRef.cpp:664
 msgid "elsewhere"
@@ -41671,9 +41341,8 @@ msgid "Label Only"
 msgstr "Solo etichetta"
 
 #: src/insets/InsetRef.cpp:1037
-#, fuzzy
 msgid "Unknown external file!"
-msgstr "Selezione file esterno"
+msgstr "File esterno sconosciuto!"
 
 #: src/insets/InsetRef.cpp:1038
 #, c-format
@@ -41682,6 +41351,9 @@ msgid ""
 "(`%2$s')\n"
 "which could not be found. Output will be broken!"
 msgstr ""
+"L'etichetta `%1$s' si riferisce a un file esterno\n"
+"(`%2$s')\n"
+"che non è stato trovato. L'output sarà interrotto!"
 
 #: src/insets/InsetScript.cpp:334
 msgid "subscript"
@@ -45377,13 +45049,13 @@ msgstr "Utente sconosciuto"
 #~ msgid ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}"
-#~ "{%pages%[[, %pages%]]}."
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%"
+#~ "[[, %pages%]]}."
 #~ msgstr ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}"
-#~ "{%pages%[[, %pages%]]}."
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%"
+#~ "[[, %pages%]]}."
 
 #~ msgid "Use the XeTeX processing engine"
 #~ msgstr "Usa XeTeX per la compilazione"
@@ -46261,8 +45933,8 @@ msgstr "Utente sconosciuto"
 #~ msgid ""
 #~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
 #~ msgstr ""
-#~ "Specifica un dizionario personale alternativo. Per esempio: \"."
-#~ "aspell_english\"."
+#~ "Specifica un dizionario personale alternativo. Per esempio: "
+#~ "\".aspell_english\"."
 
 #~ msgid ""
 #~ "Specify whether to pass the -T input encoding option to aspell. Enable "

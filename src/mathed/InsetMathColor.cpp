@@ -67,7 +67,9 @@ void InsetMathColor::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy = pi.base.changeEnsureMath(current_mode_);
 
 	ColorCode origcol = pi.base.font.color();
-	pi.base.font.setColor(lcolor.getFromLaTeXName(to_utf8(color_), false));
+	ColorCode col = lcolor.getFromLaTeXName(to_utf8(color_), false);
+	pi.base.font.setColor(col != Color_none ? col : lcolor.getFromLyXName(
+		  theLaTeXColors().getFromLaTeXColor(to_utf8(color_)), false));
 	cell(0).draw(pi, x, y);
 	pi.base.font.setColor(origcol);
 }

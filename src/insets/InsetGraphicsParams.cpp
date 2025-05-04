@@ -15,17 +15,14 @@
 
 #include "Buffer.h"
 #include "LyX.h" // for use_gui
-#include "LyXRC.h"
 
 #include "graphics/epstools.h"
-#include "graphics/GraphicsTypes.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lyxlib.h"
 #include "support/Lexer.h"
 #include "support/lstrings.h"
-#include "support/Translator.h"
 
 #include <ostream>
 

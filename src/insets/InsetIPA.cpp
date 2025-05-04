@@ -23,11 +23,7 @@
 #include "RenderPreview.h"
 #include "texstream.h"
 
-#include "frontends/Painter.h"
-
 #include "graphics/PreviewImage.h"
-
-#include "support/Lexer.h"
 
 #include <sstream>
 

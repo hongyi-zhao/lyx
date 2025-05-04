@@ -18,8 +18,6 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
-#include "output_docbook.h"
-#include "output_xhtml.h"
 #include "Statistics.h"
 #include "texstream.h"
 #include "xml.h"
@@ -31,8 +29,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
-
-#include "frontends/alert.h"
 
 #include <QtGui/QDesktopServices>
 #include <QUrl>

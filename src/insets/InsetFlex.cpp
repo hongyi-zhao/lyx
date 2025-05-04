@@ -25,7 +25,6 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/Lexer.h"
 #include "support/lstrings.h"
 
 #include <ostream>

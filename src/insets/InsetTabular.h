@@ -643,13 +643,13 @@ public:
 	void moveRow(row_type row_start, row_type row_end,
 		     RowDirection direction);
 	///
-	void appendColumn(col_type column);
+	void appendColumn(col_type column, row_type row = 0);
 	///
 	void deleteColumn(col_type column, bool const force = false);
 	///
 	void copyColumn(col_type column);
 	///
-	void insertColumn(col_type column, bool copy);
+	void insertColumn(col_type column, bool copy, row_type row = 0);
 	///
 	idx_type getFirstCellInRow(row_type row, bool const ct = false) const;
 	///

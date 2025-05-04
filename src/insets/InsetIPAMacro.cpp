@@ -13,9 +13,7 @@
 #include "InsetIPAMacro.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "Dimension.h"
-#include "Encoding.h"
 #include "FontInfo.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"

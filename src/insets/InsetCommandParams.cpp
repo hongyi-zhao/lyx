@@ -34,7 +34,6 @@
 #include "frontends/alert.h"
 
 #include "support/debug.h"
-#include "support/docstream.h"
 #include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 #include "support/lassert.h"

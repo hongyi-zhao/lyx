@@ -20,15 +20,12 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Layout.h"
-#include "output_docbook.h"
 #include "ParIterator.h"
 #include "TextClass.h"
-#include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
 
 using namespace std;
 

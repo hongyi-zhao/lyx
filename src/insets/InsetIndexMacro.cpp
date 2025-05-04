@@ -13,9 +13,7 @@
 #include "InsetIndexMacro.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "Cursor.h"
-#include "Dimension.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "FontInfo.h"
@@ -24,12 +22,7 @@
 #include "InsetLayout.h"
 #include "InsetList.h"
 #include "LaTeX.h"
-#include "LaTeXFeatures.h"
-#include "MetricsInfo.h"
-#include "xml.h"
 #include "texstream.h"
-
-#include "frontends/alert.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"

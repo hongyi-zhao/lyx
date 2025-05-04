@@ -1032,25 +1032,42 @@ void Tabular::copyColumn(col_type const col)
 }
 
 
-void Tabular::appendColumn(col_type col)
+void Tabular::appendColumn(col_type col, row_type row)
 {
-	insertColumn(col, false);
+	insertColumn(col, false, row);
 }
 
 
-void Tabular::insertColumn(col_type const col, bool copy)
+void Tabular::insertColumn(col_type col, bool copy, row_type row)
 {
 	bool const ct = buffer().params().track_changes;
-	column_info.insert(column_info.begin() + col + 1, column_info[col]);
+
+	// insert column after last cell of multicolumn
+	idx_type cspan = columnSpan(cellIndex(row, col));
+	col += cspan - 1;
+	column_info.insert(column_info.begin() + col + 1,
+					   ColumnData(column_info[col]));
 
 	for (row_type r = 0; r < nrows(); ++r) {
 		cell_info[r].insert(cell_info[r].begin() + col + 1,
 			copy ? cell_info[r][col] : CellData(buffer_));
-		if (cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
+		// make new cell part of multicolumn if old cell was at the beginning
+		// or middle of a multicolumn
+		if (cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN
+			|| (col + 1 < ncols()
+				&& cell_info[r][col].multicolumn == CELL_PART_OF_MULTICOLUMN
+				&& cell_info[r][col + 2].multicolumn == CELL_PART_OF_MULTICOLUMN
+			))
 			cell_info[r][col + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
 	}
 	updateIndexes();
 	for (row_type r = 0; r < nrows(); ++r) {
+		// arguably, if the new cell is (hidden) part multicol, no lines need to
+		// be set. note: if that is to be changed, which might be a good idea,
+		// this needs to be done directly on cell_info because cellIndex is
+		// ignorant about parts of multicolumn
+		if (isPartOfMultiColumn(r, col + 1))
+			continue;
 		// inherit line settings
 		idx_type const i = cellIndex(r, col + 1);
 		idx_type const j = cellIndex(r, col);
@@ -1058,9 +1075,10 @@ void Tabular::insertColumn(col_type const col, bool copy)
 		setTopLine(i, topLine(j));
 		setLeftLine(i, leftLine(j));
 		setRightLine(i, rightLine(j));
-		if (rightLine(i) && rightLine(j)) {
+		// avoid creating double lines in between old and new cell, leaving
+		// only the left line in between (the default when creating a table)
+		if (leftLine(i) && cell_info[r][col + 1].multicolumn == CELL_NORMAL)
 			setRightLine(j, false);
-		}
 	}
 	if (ct) {
 		column_info[col + 1].change.setInserted();
@@ -7321,7 +7339,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::APPEND_COLUMN:
 		// append the column into the tabular
-		tabular.appendColumn(column);
+		tabular.appendColumn(column, row);
 		cur.idx() = tabular.cellIndex(row, column);
 		break;
 

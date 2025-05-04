@@ -20,7 +20,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "BufferView.h"
 #include "FloatList.h"
 #include "InsetList.h"
 #include "output_xhtml.h"

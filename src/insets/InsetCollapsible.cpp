@@ -37,7 +37,6 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/Lexer.h"
-#include "support/lstrings.h"
 #include "support/Changer.h"
 #include "support/TempFile.h"
 

@@ -66,7 +66,6 @@ TODO
 #include "MetricsInfo.h"
 #include "Mover.h"
 #include "output_docbook.h"
-#include "output_xhtml.h"
 #include "xml.h"
 #include "texstream.h"
 #include "TocBackend.h"
@@ -81,7 +80,6 @@ TODO
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
-#include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/Length.h"
@@ -90,7 +88,6 @@ TODO
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/qstring_helpers.h"
-#include "support/Systemcall.h"
 
 #include <QProcess>
 #include <QtGui/QImage>

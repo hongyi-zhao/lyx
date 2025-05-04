@@ -15,31 +15,17 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "LaTeXFeatures.h"
-#include "output_xhtml.h"
 #include "xml.h"
 #include "texstream.h"
 #include "TextClass.h"
 
 #include "support/convert.h"
-#include "support/counter_reps.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include <map>
-
-/*
-#include "Cursor.h"
-#include "DispatchResult.h"
-#include "Language.h"
-#include "LyX.h"
-#include "ParIterator.h"
-#include "TocBackend.h"
-
-#include "support/debug.h"
-#include "support/textutils.h"
-*/
 
 using namespace lyx::support;
 using namespace std;

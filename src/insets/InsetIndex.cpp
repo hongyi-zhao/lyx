@@ -31,8 +31,6 @@
 #include "LaTeX.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
-#include "output_latex.h"
-#include "output_xhtml.h"
 #include "xml.h"
 #include "texstream.h"
 #include "TextClass.h"
@@ -45,8 +43,6 @@
 #include "support/Lexer.h"
 #include "support/lstrings.h"
 #include "support/Translator.h"
-
-#include "frontends/alert.h"
 
 #include <algorithm>
 #include <set>

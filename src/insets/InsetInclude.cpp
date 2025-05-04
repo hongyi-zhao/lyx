@@ -14,7 +14,6 @@
 #include "InsetInclude.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -37,7 +36,6 @@
 #include "TocBackend.h"
 
 #include "frontends/alert.h"
-#include "frontends/Painter.h"
 
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"

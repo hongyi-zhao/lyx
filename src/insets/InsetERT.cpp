@@ -17,17 +17,12 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetLayout.h"
-#include "Language.h"
 #include "xml.h"
-#include "ParagraphParameters.h"
 #include "Paragraph.h"
-#include "output_docbook.h"
 
-#include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/Lexer.h"
 #include "support/lstrings.h"
-#include "support/TempFile.h"
 #include "Encoding.h"
 
 #include <algorithm>

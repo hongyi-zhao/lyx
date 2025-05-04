@@ -16,7 +16,6 @@
 
 #include "InsetBox.h"
 #include "InsetCaption.h"
-#include "InsetGraphics.h"
 #include "InsetLabel.h"
 
 #include "Buffer.h"
@@ -31,21 +30,16 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "xml.h"
-#include "output_docbook.h"
-#include "output_xhtml.h"
 #include "ParIterator.h"
 #include "TexRow.h"
 #include "texstream.h"
 #include "TextClass.h"
-#include "InsetList.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/Lexer.h"
 #include "support/lstrings.h"
-
-#include "frontends/Application.h"
 
 using namespace std;
 using namespace lyx::support;

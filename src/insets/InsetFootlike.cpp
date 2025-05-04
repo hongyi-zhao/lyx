@@ -13,10 +13,6 @@
 #include "InsetFootlike.h"
 
 #include "Buffer.h"
-#include "BufferView.h"
-#include "BufferParams.h"
-#include "Font.h"
-#include "MetricsInfo.h"
 
 #include "support/lstrings.h"
 

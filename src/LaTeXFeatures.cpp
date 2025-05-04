@@ -2262,6 +2262,8 @@ docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 		docstring const thmname = from_utf8(lay.thmName());
 		ods << "\\crefname{" << thmname << "}{_(" << lowercase(tn) << ")}{" << lowercase(tnp) << "}\n"
 		    << "\\Crefname{" << thmname << "}{_(" << tn << ")}{" << tnp << "}\n";
+		ods << "\\crefname{" << thmname << "}{_(" << lowercase(tn) << ")}{_(" << lowercase(tnp) << ")}\n"
+		    << "\\Crefname{" << thmname << "}{_(" << tn << ")}{_(" << tnp << ")}\n";
 		return ods.str();
 	}
 	return docstring();

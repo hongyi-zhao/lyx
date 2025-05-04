@@ -1949,6 +1949,8 @@ string const LaTeXFeatures::getThmDefinitions() const
 
 	string laststyle;
 	for (auto const & thm : usedTheorems_) {
+		if (isProvided("newtheorem:" + thm.name))
+			continue;
 		if (thm.style != laststyle) {
 			tmp << "\\theoremstyle{" << thm.style << "}\n";
 			laststyle = thm.style;
@@ -2231,6 +2233,23 @@ docstring const i18npreamble(docstring const & templ, Language const * lang,
 
 docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 {
+	// For prettyref, we also do the other layout defs here
+	if (params_.xref_package == "prettyref-l7n") {
+		odocstringstream ods;
+		if (lay.refprefix == "part")
+			ods << "\\newrefformat{" << lay.refprefix << "}{_(Part)~\\ref{#1}}\n";
+		if (lay.refprefix == "cha")
+			ods << "\\newrefformat{" << lay.refprefix << "}{_(Chapter)~\\ref{#1}}\n";
+		if (lay.refprefix == "sec" || lay.refprefix == "subsec" || lay.refprefix == "sub")
+			ods << "\\newrefformat{" << lay.refprefix << "}{_(Section)~\\ref{#1}}\n";
+		if (lay.refprefix == "par")
+			ods << "\\newrefformat{alg}{_(Paragraph[[Sectioning]])~\\ref{#1}}\n";
+		if (lay.refprefix == "fn")
+			ods << "\\newrefformat{alg}{_(Footnote)~\\ref{#1}}\n";
+		if (!ods.str().empty())
+			return ods.str();
+	}
+	// Otherwise only handle theorems
 	if (lay.thmName().empty())
 		return docstring();
 	if (params_.xref_package == "zref" && lay.thmZRefName() == "none" && !lay.thmXRefName().empty()) {
@@ -2260,10 +2279,13 @@ docstring const LaTeXFeatures::getThmI18nDefs(Layout const & lay) const
 		docstring const tnp = from_utf8(lay.thmXRefNamePl());
 		odocstringstream ods;
 		docstring const thmname = from_utf8(lay.thmName());
-		ods << "\\crefname{" << thmname << "}{_(" << lowercase(tn) << ")}{" << lowercase(tnp) << "}\n"
-		    << "\\Crefname{" << thmname << "}{_(" << tn << ")}{" << tnp << "}\n";
 		ods << "\\crefname{" << thmname << "}{_(" << lowercase(tn) << ")}{_(" << lowercase(tnp) << ")}\n"
 		    << "\\Crefname{" << thmname << "}{_(" << tn << ")}{_(" << tnp << ")}\n";
+		return ods.str();
+	} else if (params_.xref_package == "prettyref-l7n" && !lay.thmXRefName().empty()) {
+		odocstringstream ods;
+		docstring const thmname = from_utf8(lay.thmName());
+		ods << "\\newrefformat{" << lay.refprefix << "}{_(" << from_utf8(lay.thmXRefName()) << ") \\ref{#1}}\n";
 		return ods.str();
 	}
 	return docstring();
@@ -2315,40 +2337,65 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel,
 			}
 		}
 	}
-	if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
+	if ((use_babel || use_polyglossia)) {
 		FloatList const & floats = params_.documentClass().floats();
 		UsedFloats::const_iterator fit = usedFloats_.begin();
 		UsedFloats::const_iterator fend = usedFloats_.end();
 		for (; fit != fend; ++fit) {
 			Floating const & fl = floats.getType(fit->first);
-			// we assume builtin floats are translated
-			if (fl.isPredefined())
-				continue;
-			docstring const type = from_ascii(fl.floattype());
-			docstring const flname = from_utf8(fl.name());
-			docstring name = buffer().language()->translateLayout(fl.name());
-			// only request translation if we have a real translation
-			// (that differs from the source)
-			if (flname != name)
-				snippets.insert(getFloatI18nPreamble(
-						type, name, buffer().language(),
-						buffer().params().encoding(),
-						use_polyglossia));
-			for (lang_it lit = lbeg; lit != lend; ++lit) {
-				string const code = (*lit)->code();
-				name = (*lit)->translateLayout(fl.name());
-				// we assume we have a suitable translation if
-				// either the language is English (we need to
-				// translate into English if English is a secondary
-				// language) or if translateIfPossible returns
-				// something different to the English source.
-				bool const have_translation =
-					(flname != name || contains(code, "en"));
-				if (have_translation)
+			// construct prettyref definitions if required
+			docstring prettyreffloatdefs;
+			if (params_.xref_package == "prettyref-l7n") {
+				odocstringstream ods;
+				if (fl.refPrefix() == "alg") {
+					ods << "\\newrefformat{" << from_ascii(fl.refPrefix()) << "}{_(Algorithm)~\\ref{#1}}\n";
+					prettyreffloatdefs = ods.str();
+				}
+				if (fl.refPrefix() == "fig")
+					ods << "\\newrefformat{" << from_ascii(fl.refPrefix()) << "}{\\figurename~\\ref{#1}}\n";
+				if (fl.refPrefix() == "tab")
+					ods << "\\newrefformat{" << from_ascii(fl.refPrefix()) << "}{\\tablename~\\ref{#1}}\n";
+				if (!ods.str().empty())
+					snippets.insert(i18npreamble(ods.str(),
+								     buffer().language(),
+								     buffer().params().encoding(),
+								     use_polyglossia, false));
+			}
+			if (!UsedLanguages_.empty()) {
+				// we assume builtin floats are translated
+				if (fl.isPredefined())
+					continue;
+				docstring const type = from_ascii(fl.floattype());
+				docstring const flname = from_utf8(fl.name());
+				docstring name = buffer().language()->translateLayout(fl.name());
+				// only request translation if we have a real translation
+				// (that differs from the source)
+				if (flname != name)
 					snippets.insert(getFloatI18nPreamble(
-						type, name, *lit,
-						buffer().params().encoding(),
-						use_polyglossia));
+							type, name, buffer().language(),
+							buffer().params().encoding(),
+							use_polyglossia));
+				for (lang_it lit = lbeg; lit != lend; ++lit) {
+					string const code = (*lit)->code();
+					name = (*lit)->translateLayout(fl.name());
+					// we assume we have a suitable translation if
+					// either the language is English (we need to
+					// translate into English if English is a secondary
+					// language) or if translateIfPossible returns
+					// something different to the English source.
+					bool const have_translation =
+						(flname != name || contains(code, "en"));
+					if (have_translation)
+						snippets.insert(getFloatI18nPreamble(
+							type, name, *lit,
+							buffer().params().encoding(),
+							use_polyglossia));
+					if (!prettyreffloatdefs.empty())
+						snippets.insert(i18npreamble(prettyreffloatdefs,
+									     *lit,
+									     buffer().params().encoding(),
+									     use_polyglossia, false));
+				}
 			}
 		}
 	}

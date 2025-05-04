@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 638
+\lyxformat 640
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -30901,8 +30901,31 @@ refstyle
 \series bold
 prettyref
 \series default
- von Haus aus nur englische Dokumente unterstützt (Sie können aber Definitionen in Ihrer Sprache in die Präambel eingeben).
- Das Format wird festgelegt,
+ von Haus aus (die 
+\begin_inset Quotes gld
+\end_inset
+
+nicht-lokalisierte
+\begin_inset Quotes grd
+\end_inset
+
+ Variante in \SpecialChar LyX
+) nur englische Dokumente unterstützt (Sie können aber Definitionen in Ihrer Sprache in die Präambel eingeben).
+ \SpecialChar LyX
+ konstruiert aber automatisch Definitionen für viele Sprachen,
+ wenn Sie 
+\begin_inset Quotes gld
+\end_inset
+
+Prettyref und Varioref
+\begin_inset Quotes grd
+\end_inset
+
+ auswählen.
+ Beachten Sie aber,
+ dass dies vorhandene Definitionenn im Vorspann oder in Stildateien überschreiben kann.
+ Falls Sie eigene Definitionen wollen oder brauchen,
+ können Sie das Format festlegen,
  indem der Befehl 
 \series bold
 
@@ -30972,8 +30995,10 @@ prettyref
 \series bold
 refstyle
 \series default
- Formate für alle verfügbarren Typen von Verweisen vordefiniert.
- Dies trifft insbesondere auf viele der verfügbaren mathematischer 
+ Formate für alle möglichen Typen von Verweisen vordefiniert,
+ auch wenn \SpecialChar LyX
+ eine ganze Bandbreite von Typen automatisch definieren kann (bspw.
+ alle verfügbaren mathematischen 
 \begin_inset Quotes gls
 \end_inset
 
@@ -30981,8 +31006,8 @@ Theorem
 \begin_inset Quotes grs
 \end_inset
 
--Umgebungen zu (cleveref ist hier cleverer).
- Sollten Sie also formatierte Querverweise beispielsweise auf (mathematische) Sätze machen wollen,
+-Umgebungen).
+ Sollten Sie formatierte Querverweise beispielsweise auf nicht unterstützte Umgebungen machen wollen,
  müssen Sie das relevante Format selbst definieren.
  Für 
 \series bold
@@ -31000,7 +31025,7 @@ so aussehen:
 \series bold
 
 \backslash
-newrefformat{prop}{Satz 
+newrefformat{mytype}{My Type 
 \backslash
 ref{#1}}
 \series default

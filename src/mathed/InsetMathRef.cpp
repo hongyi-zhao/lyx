@@ -360,7 +360,7 @@ void InsetMathRef::write(TeXMathStream & os) const
 		os << '(' << from_ascii("\\ref{") << cell(0) << from_ascii("})");
 	}
 	else if (cmd == "formatted") {
-		if (buffer_ && buffer().params().xref_package == "prettyref")
+		if (buffer_ && support::prefixIs(buffer().params().xref_package, "prettyref"))
 			os << "\\prettyref{" << cell(0) << "}";
 		else {
 			odocstringstream ods;

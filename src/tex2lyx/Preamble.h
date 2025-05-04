@@ -84,6 +84,8 @@ public:
 	///
 	void addModule(std::string const & module);
 	///
+	void addLocalLayout(std::string const & s);
+	///
 	void suppressDate(bool suppress);
 	///
 	std::string citeEngine() const { return h_cite_engine; }
@@ -141,6 +143,8 @@ private:
 	std::set<std::string> auto_packages;
 	///
 	std::vector<std::string> used_modules;
+	///
+	std::vector<std::string> local_layout;
 
 	/// needed to handle encodings with babel
 	bool one_language;

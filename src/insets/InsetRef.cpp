@@ -241,7 +241,7 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 			defcmd += "range";
 	} else if (xref_package == "zref")
 		defcmd = from_ascii("\\zcref");
-	else if (xref_package == "prettyref")
+	else if (prefixIs(xref_package, "prettyref"))
 		defcmd = from_ascii("\\prettyref");
 
 	bool have_cmd = false;
@@ -377,7 +377,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		vector<docstring>::const_iterator en = flabels.end();
 		for (size_t i = 0; it != en; ++it, ++i) {
 			if (!first) {
-				if (buffer().masterParams().xref_package == "prettyref") {
+				if (prefixIs(buffer().masterParams().xref_package, "prettyref")) {
 						os << "}";
 					if (flabels.size() == 2)
 						os << buffer().B_("[[reference 1]] and [[reference2]]");
@@ -391,12 +391,12 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 				else
 					os << ",";
 			}
-			if (contains(*it, ' ') && buffer().masterParams().xref_package != "prettyref")
+			if (contains(*it, ' ') && !prefixIs(buffer().masterParams().xref_package, "prettyref"))
 				// refstyle bug: labels with blanks need to be grouped
 				// otherwise the blanks will be gobbled
 				os << "{" << *it << "}";
 			else {
-				if (buffer().masterParams().xref_package == "prettyref" && !contains(*it, ':'))
+				if (prefixIs(buffer().masterParams().xref_package, "prettyref") && !contains(*it, ':'))
 					// warn on invalid label
 					frontend::Alert::warning(_("Invalid label!"),
 								 bformat(_("The label `%1$s' does not have a prefix (e.g., `sec:'), "
@@ -684,7 +684,8 @@ docstring InsetRef::displayString(docstring const & ref, string const & cmd,
 	docstring res = (useRange()) ? getStringFromVector(display_string, from_utf8("–"))
 				     : getStringFromVector(display_string, from_ascii(", "));
 
-	if (cmd == "formatted" && buffer().params().xref_package != "prettyref" && getParam("caps") == "true")
+	if (cmd == "formatted" && !prefixIs(buffer().params().xref_package, "prettyref")
+	    && getParam("caps") == "true")
 		return capitalize(res);
 		// it is hard to see what to do about plurals...
 
@@ -1001,7 +1002,7 @@ bool InsetRef::useRange() const
 	if (getLabels().size() != 2 || getParam("tuple") == "list")
 		return false;
 	return cmd == "vref" || cmd == "vpageref"
-		|| (cmd == "formatted" && buffer().masterParams().xref_package != "prettyref")
+		|| (cmd == "formatted" && !prefixIs(buffer().masterParams().xref_package, "prettyref"))
 		|| (cmd == "cpageref");
 }
 

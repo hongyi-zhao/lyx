@@ -3130,6 +3130,13 @@ def revert_theorem_local_def(document):
         if document.del_local_layout(ack_theorem_def_new):
             document.append_local_layout(ack_theorem_def_old)
 
+
+def revert_prettyref_l7n(document):
+    """Revert prettyref-l7n crossref format to prettyref"""
+    i = find_token(document.header, "\\crossref_package prettyref-l7n", 0)
+    if i != -1:
+        document.header[i] = "\\crossref_package prettyref"
+
 ##
 # Conversion hub
 #
@@ -3154,11 +3161,13 @@ convert = [
     [636, []],
     [637, []],
     [638, []],
-    [639, [convert_theorem_local_def]]
+    [639, [convert_theorem_local_def]],
+    [640, []]
 ]
 
 
 revert = [
+    [639, [revert_prettyref_l7n]],
     [638, [revert_theorem_local_def]],
     [637, [revert_xr]],
     [636, [revert_reflists]],

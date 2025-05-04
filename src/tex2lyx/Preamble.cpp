@@ -757,6 +757,16 @@ void Preamble::addModule(string const & module)
 }
 
 
+void Preamble::addLocalLayout(string const & s)
+{
+	for (auto const & l : local_layout) {
+		if (l == s)
+			return;
+	}
+	local_layout.push_back(s);
+}
+
+
 void Preamble::suppressDate(bool suppress)
 {
 	if (suppress)
@@ -2429,6 +2439,14 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	if (!h_options.empty())
 		os << "\\options " << h_options << "\n";
 	os << "\\use_default_options " << h_use_default_options << "\n";
+	if (!local_layout.empty()) {
+		os << "\\begin_local_layout\n";
+		vector<string>::const_iterator const end = local_layout.end();
+		vector<string>::const_iterator it = local_layout.begin();
+		for (; it != end; ++it)
+			os << *it << '\n';
+		os << "\\end_local_layout\n";
+	}
 	if (!used_modules.empty()) {
 		os << "\\begin_modules\n";
 		vector<string>::const_iterator const end = used_modules.end();
@@ -3313,8 +3331,11 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 			add_known_theorem(name, opt1, !opt2.empty(), from_utf8(complete));
 
-			if (!in_lyx_preamble)
+			if (!in_lyx_preamble) {
 				h_preamble << complete;
+				// Prevent LyX from adding its own definitions
+				addLocalLayout("Provides newtheorem:" + name + " 1");
+			}
 			continue;
 		}
 

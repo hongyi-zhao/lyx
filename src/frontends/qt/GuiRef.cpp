@@ -169,7 +169,7 @@ void GuiRef::enableBoxes()
 {
 	QString const reftype =
 		typeCO->itemData(typeCO->currentIndex()).toString();
-	bool const use_prettyref = buffer().params().xref_package == "prettyref";
+	bool const use_prettyref = prefixIs(buffer().params().xref_package, "prettyref");
 	bool const use_refstyle = buffer().params().xref_package == "refstyle";
 	bool const use_cleveref = buffer().params().xref_package == "cleveref";
 	bool const use_zref = buffer().params().xref_package == "zref";

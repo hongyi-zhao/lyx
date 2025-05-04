@@ -48,9 +48,18 @@ ar: Chart, Graph[[mathematical]], List of Charts, List of Graphs[[mathematical]]
 -----
 LyX 2.5.0 release
 
-Additionally to the top ones, the languages below should be reviewed for the following strings:
+Additionally to the top ones, the languages below should be reviewed for the following strings
+(which should already be translated for the most part):
 
-These strings are used in formatted cross references to theorems (as in "see assumption 1").
+Chapter
+Part
+Section
+Paragraph[[Sectioning]]
+Footnote
+
+These strings are used in formatted cross references with prettyref.
+
+Furthermore, the following strings are used in formatted cross references to theorems (as in "see assumption 1").
 
 We have references to single theorems within sentences (singular, lowercased in English):
 

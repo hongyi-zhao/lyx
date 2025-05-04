@@ -123,6 +123,12 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     keyset = set()
     oldtrans = dict()
     if layouttranslations:
+        # predefined prettyref strings
+        keyset.add("Part")
+        keyset.add("Chapter")
+        keyset.add("Section")
+        keyset.add("Paragraph[[Sectioning]]")
+        keyset.add("Footnote")
         linguas_file = os.path.join(base, 'po/LINGUAS')
         for line in open(linguas_file).readlines():
             res = Comment.search(line)

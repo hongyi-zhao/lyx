@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 638
+\lyxformat 640
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -32167,12 +32167,47 @@ Note that
 \series bold
 prettyref
 \series default
- supports only English documents
-\change_inserted -712698321 1742721720
- (unless you add your own settings)
+ 
+\change_inserted -712698321 1746342171
+by default (the 
+\begin_inset Quotes eld
+\end_inset
+
+unlocalized
+\begin_inset Quotes erd
+\end_inset
+
+ version in \SpecialChar LyX
+) 
+\change_unchanged
+supports only English documents
+\change_inserted -712698321 1746341955
+ (unless you add your own settings),
+ but \SpecialChar LyX
+ can generate localized definitions for many languages if you select 
+\begin_inset Quotes eld
+\end_inset
+
+prettyref and varioref
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Note that this might override your own definitions in the preamble or a style file
 \change_unchanged
 .
- The format is specified by using the command 
+ 
+\change_inserted -712698321 1746341975
+If you want,
+ or need,
+ to generate your own string,
+ 
+\change_deleted -712698321 1746341975
+T
+\change_inserted -712698321 1746341976
+t
+\change_unchanged
+he format is specified by using the command 
 \series bold
 
 \backslash
@@ -32247,8 +32282,33 @@ prettyref
 \series bold
 refstyle 
 \series default
-predefines reference formats for all available types.
- This is especially true for the wide variety of mathematical 
+predefine
+\change_deleted -712698321 1746342318
+s
+\change_unchanged
+ reference formats for all 
+\change_deleted -712698321 1746342336
+available
+\change_inserted -712698321 1746342337
+possible
+\change_unchanged
+ types
+\change_inserted -712698321 1746342362
+,
+ although a wide range is defined automatically by \SpecialChar LyX
+ (
+\change_deleted -712698321 1746342365
+.
+ This is especially true
+\change_inserted -712698321 1746342368
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+
+\change_unchanged
+ for the wide variety of mathematical 
 \change_inserted -712698321 1742722007
 
 \begin_inset Quotes els
@@ -32270,20 +32330,24 @@ theorem
 \change_unchanged
  environments
 \change_inserted -712698321 1742722033
- (cleveref is more 
-\begin_inset Quotes els
-\end_inset
-
-clever
-\begin_inset Quotes ers
-\end_inset
-
- here)
+)
 \change_unchanged
 .
- So if you want to make formatted references to,
+ 
+\change_deleted -712698321 1746342379
+So i
+\change_inserted -712698321 1746342379
+I
+\change_unchanged
+f you want to make formatted references to,
  say,
- Propositions,
+ 
+\change_deleted -712698321 1746342403
+Propositions
+\change_inserted -712698321 1746342408
+MyType
+\change_unchanged
+,
  then you will need to define the relevant format yourself.
  For 
 \series bold
@@ -32299,7 +32363,19 @@ prettyref
 
 \backslash
 newref\SpecialChar ligaturebreak
-format{prop}{Proposition 
+format{
+\change_deleted -712698321 1746342414
+prop
+\change_inserted -712698321 1746342415
+mythype
+\change_unchanged
+}{
+\change_deleted -712698321 1746342418
+Proposition
+\change_inserted -712698321 1746342420
+My Type
+\change_unchanged
+ 
 \backslash
 ref{#1}}
 \series default

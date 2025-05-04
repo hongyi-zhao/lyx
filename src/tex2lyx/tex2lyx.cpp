@@ -374,6 +374,21 @@ bool checkModule(string const & name, bool command)
 		if (layout) {
 			found_style = true;
 			dpre = layout->preamble();
+			if (dpre.empty() && !layout->thmName().empty()) {
+				odocstringstream thmdef;
+				if (layout->thmCounter() == "none")
+					thmdef << "\\newtheorem*{" << from_ascii(layout->thmName())
+					       << "}{\\protect\\" << from_ascii(layout->thmLaTeXName()) << "}";
+				else {
+					thmdef << "\\newtheorem{" << from_ascii(layout->thmName()) << "}";
+					if (!layout->thmCounter().empty())
+						thmdef << "[" << from_ascii(layout->thmCounter()) << "]";
+					thmdef << "{\\protect\\" << from_ascii(layout->thmLaTeXName()) << "}";
+					if (!layout->thmParentCounter().empty())
+						thmdef << "[" << from_ascii(layout->thmParentCounter()) << "]";
+				}
+				dpre = thmdef.str();
+			}
 			std::set<std::string> const & lreqs = layout->required();
 			if (!lreqs.empty())
 				cmd_reqs.insert(lreqs.begin(), lreqs.end());

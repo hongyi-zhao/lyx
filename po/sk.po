@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-04-26 14:22+0200\n"
-"PO-Revision-Date: 2025-04-26 12:48+0000\n"
+"POT-Creation-Date: 2025-05-04 11:26+0200\n"
+"PO-Revision-Date: 2025-05-04 09:42+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -23415,6 +23415,10 @@ msgstr "(<Referencia>)|e"
 msgid "<Page>|P"
 msgstr "<Strana>|S"
 
+#: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:731
+msgid "p. <Page>|."
+msgstr "s. <Strana>|."
+
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:729
 msgid "On Page <Page>|O"
 msgstr "Na strane <strana>|a"
@@ -36408,6 +36412,10 @@ msgid "Cleveref and varioref"
 msgstr "Cleveref a varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1678
+msgid "Prettyref (unlocalized) and varioref"
+msgstr "Prettyref (nelokalizované) a varioref"
+
+#: src/frontends/qt/GuiDocument.cpp:1678
 msgid "Prettyref and varioref"
 msgstr "Prettyref a varioref"
 
@@ -41288,17 +41296,25 @@ msgstr ""
 msgid "elsewhere"
 msgstr "inde"
 
-#: src/insets/InsetRef.cpp:950
+#: src/insets/InsetRef.cpp:952
 msgid "Ref"
-msgstr "Ref"
+msgstr "Krížový odkaz"
 
-#: src/insets/InsetRef.cpp:951
+#: src/insets/InsetRef.cpp:953
 msgid "EqRef"
-msgstr "EqRef"
+msgstr "(Krížový odkaz)"
 
 #: src/insets/InsetRef.cpp:952 src/mathed/InsetMathRef.cpp:393
 msgid "Page Number"
 msgstr "Číslo strany"
+
+#: src/insets/InsetRef.cpp:955 src/mathed/InsetMathRef.cpp:424
+msgid "Prefixed Page Number"
+msgstr "Strana s predponou"
+
+#: src/insets/InsetRef.cpp:955
+msgid "PrefPage"
+msgstr "Strana odkazu"
 
 #: src/insets/InsetRef.cpp:953 src/mathed/InsetMathRef.cpp:394
 msgid "Textual Page Number"
@@ -41312,17 +41328,17 @@ msgstr "Strana textu"
 msgid "Standard+Textual Page"
 msgstr "Štandard+strana v textovej forme"
 
-#: src/insets/InsetRef.cpp:954
+#: src/insets/InsetRef.cpp:957
 msgid "Ref+Text"
-msgstr "Ref+Text"
+msgstr "Krížový odkaz+Text"
 
 #: src/insets/InsetRef.cpp:955 src/mathed/InsetMathRef.cpp:397
 msgid "Reference to Name"
 msgstr "Referencia na meno"
 
-#: src/insets/InsetRef.cpp:955
+#: src/insets/InsetRef.cpp:958
 msgid "NameRef"
-msgstr "Meno ref"
+msgstr "Odkaz na meno"
 
 #: src/insets/InsetRef.cpp:956
 msgid "Formatted"
@@ -41803,6 +41819,10 @@ msgstr "EqRef: "
 #: src/mathed/InsetMathRef.cpp:393
 msgid "Page: "
 msgstr "Strana: "
+
+#: src/mathed/InsetMathRef.cpp:424
+msgid "PrefPage: "
+msgstr "PrefPage: "
 
 #: src/mathed/InsetMathRef.cpp:394
 msgid "TextPage: "

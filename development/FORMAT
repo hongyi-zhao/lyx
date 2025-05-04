@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2025-05-04 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 640: Add \crossref_package prettyref-l7n which adds
+	  missing definitions and localization to prettyref.
+
 2025-04-27 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 639: Adapt local layout for acknowledgement theorems
 	  to new layout scheme.

@@ -12,8 +12,6 @@
 
 #include "InsetText.h"
 
-#include "mathed/MacroTable.h"
-
 #include "insets/InsetArgument.h"
 #include "insets/InsetLayout.h"
 #include "insets/InsetPreview.h"
@@ -21,26 +19,22 @@
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
-#include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CompletionList.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetList.h"
-#include "Intl.h"
 #include "Language.h"
 #include "Layout.h"
 #include "LaTeXFeatures.h"
 #include "support/Lexer.h"
-#include "lyxfind.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "output_docbook.h"
@@ -59,10 +53,8 @@
 #include "TocBackend.h"
 #include "TocBuilder.h"
 
-#include "frontends/alert.h"
 #include "frontends/Painter.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"

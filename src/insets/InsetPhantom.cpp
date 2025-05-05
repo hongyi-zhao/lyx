@@ -13,26 +13,20 @@
 #include "InsetPhantom.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
-#include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "texstream.h"
-#include "TextClass.h"
 
 #include "support/docstream.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
 #include "support/Translator.h"
 
 #include "frontends/Application.h"
-#include "frontends/FontMetrics.h"
 #include "support/Lexer.h"
 #include "frontends/Painter.h"
 

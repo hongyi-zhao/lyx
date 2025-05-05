@@ -20,7 +20,6 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
-#include "output_xhtml.h"
 #include "xml.h"
 #include "texstream.h"
 

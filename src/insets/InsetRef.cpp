@@ -20,7 +20,6 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
-#include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "PDFOptions.h"

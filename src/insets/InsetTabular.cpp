@@ -24,7 +24,6 @@
 
 #include "Author.h"
 #include "ColorSet.h"
-#include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -44,7 +43,6 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "xml.h"
-#include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "Statistics.h"

@@ -20,10 +20,8 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "LaTeXFeatures.h"
 #include "LyXAction.h"
 #include "MetricsInfo.h"
-#include "output_docbook.h"
 #include "output_xhtml.h"
 
 #include "support/docstream.h"

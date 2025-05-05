@@ -33,7 +33,6 @@
 #include "output_docbook.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
-#include "ParagraphParameters.h"
 #include "version.h"
 
 #include "frontends/Application.h"

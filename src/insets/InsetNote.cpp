@@ -34,7 +34,6 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/Lexer.h"
-#include "support/lstrings.h"
 #include "support/Translator.h"
 
 #include "frontends/Application.h"

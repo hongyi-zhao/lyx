@@ -14,7 +14,6 @@
 #include "InsetVSpace.h"
 
 #include "Buffer.h"
-#include "BufferView.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
@@ -23,7 +22,6 @@
 #include "MetricsInfo.h"
 #include "xml.h"
 #include "texstream.h"
-#include "Text.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -31,7 +29,6 @@
 #include "support/Lexer.h"
 #include "support/lassert.h"
 
-#include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 

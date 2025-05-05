@@ -19,7 +19,6 @@
 #include "MetricsInfo.h"
 #include "xml.h"
 #include "texstream.h"
-#include "Text.h"
 #include "TextMetrics.h"
 
 #include "frontends/FontMetrics.h"

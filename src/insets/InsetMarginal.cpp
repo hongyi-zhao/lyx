@@ -14,13 +14,10 @@
 #include "InsetMarginal.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "output_docbook.h"
-#include "TocBackend.h"
 
 #include "support/docstream.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
 
 namespace lyx {
 

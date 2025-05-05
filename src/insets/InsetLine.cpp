@@ -20,12 +20,9 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
-#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "texstream.h"
-#include "Text.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -34,7 +31,6 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/Length.h"
-#include "support/lstrings.h"
 
 #include <cstdlib>
 

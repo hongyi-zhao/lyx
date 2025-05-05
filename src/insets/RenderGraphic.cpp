@@ -25,7 +25,6 @@
 #include "graphics/GraphicsImage.h"
 
 #include "support/FileName.h"
-#include "support/filetools.h"
 #include "support/gettext.h"
 
 using namespace std;

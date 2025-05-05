@@ -110,7 +110,7 @@ protected:
 			extern_type * to, extern_type * to_end,
 			extern_type *& to_next) const override
 	{
-#define WORKAROUND_ICONV_BUG 1
+#define WORKAROUND_ICONV_BUG 0
 #if WORKAROUND_ICONV_BUG
 		// Due to a bug in some iconv versions, when the last char
 		// in the buffer is a wide char and the output encoding is

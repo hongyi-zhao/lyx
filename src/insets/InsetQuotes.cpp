@@ -15,7 +15,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "BufferView.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "Encoding.h"
@@ -24,7 +23,6 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "ParIterator.h"

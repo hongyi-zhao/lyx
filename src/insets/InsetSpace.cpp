@@ -34,7 +34,6 @@
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 
-#include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
 #include "support/Lexer.h"
 #include "frontends/Painter.h"

@@ -17,11 +17,9 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "MetricsInfo.h"
-#include "output_docbook.h"
 #include "output_xhtml.h"
 #include "texstream.h"
 
-#include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 

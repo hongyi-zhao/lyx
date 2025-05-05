@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "InsetWrap.h"
-#include "InsetCaption.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -27,7 +26,6 @@
 #include "LaTeXFeatures.h"
 #include "xml.h"
 #include "texstream.h"
-#include "TextClass.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"

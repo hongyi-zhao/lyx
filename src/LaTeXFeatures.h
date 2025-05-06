@@ -83,6 +83,8 @@ public:
 	docstring const getBabelPostsettings() const;
 	/// get theorem definitions
 	std::string const getThmDefinitions() const;
+	/// get theorem extra (package specific) definitions
+	std::string const getThmExtraDefinitions() const;
 	/// Load AMS packages when appropriate
 	std::string const loadAMSPackages() const;
 	/// The definitions needed by the document's textclass

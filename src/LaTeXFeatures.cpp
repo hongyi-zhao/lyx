@@ -1969,7 +1969,17 @@ string const LaTeXFeatures::getThmDefinitions() const
 				tmp << "[" << thm.parent_counter << "]";
 		}
 		tmp << "\n";
+	}
 
+	return tmp.str();
+}
+
+
+string const LaTeXFeatures::getThmExtraDefinitions() const
+{
+	ostringstream tmp;
+
+	for (auto const & thm : usedTheorems_) {
 		// Extra definitions for zref-clever
 		if (thm.counter != "none" && params_.xref_package == "zref" && isRequired("zref-clever")) {
 			if (thm.counter.empty() && !thm.zrefname.empty() && thm.zrefname != "none")
@@ -2037,6 +2047,9 @@ string const LaTeXFeatures::loadAMSPackages() const
 
 	if (mustProvide("amsthm"))
 		tmp << "\\usepackage{amsthm}\n";
+
+	// theorem definitions
+	tmp << getThmDefinitions();
 
 	if (mustProvide("amssymb")
 	    && params_.use_package("amssymb") != BufferParams::package_off)

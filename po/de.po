@@ -95,15 +95,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-05-04 09:33+0200\n"
-"PO-Revision-Date: 2025-05-04 09:34+0200\n"
+"POT-Creation-Date: 2025-05-07 08:54+0200\n"
+"PO-Revision-Date: 2025-05-07 08:55+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 18.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt/ui/AboutUi.ui:27
@@ -1767,8 +1767,9 @@ msgid "Sear&ch"
 msgstr "Su&che"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
-msgid "Search fo&r:"
-msgstr "S&uchen nach:"
+#: src/frontends/qt/ui/SearchUi.ui:120
+msgid "&Find what:"
+msgstr "&Suche:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:92
 msgid "Replace &with:"
@@ -2949,7 +2950,7 @@ msgstr "&Paket zur Code-Hervorhebung:"
 #: lib/layouts/stdcounters.inc:81 lib/layouts/stdinsets.inc:342
 #: lib/layouts/stdinsets.inc:348 lib/layouts/stdinsets.inc:385
 #: lib/layouts/stdinsets.inc:391 src/insets/InsetCaption.cpp:418
-#: src/insets/InsetListings.cpp:607 src/insets/InsetListings.cpp:608
+#: src/insets/InsetListings.cpp:606 src/insets/InsetListings.cpp:607
 msgid "Listing"
 msgstr "Listing"
 
@@ -3981,9 +3982,9 @@ msgstr "Doppelt"
 #: src/frontends/qt/GuiPrefs.cpp:709 src/frontends/qt/GuiPrefs.cpp:737
 #: src/frontends/qt/GuiPrefs.cpp:764 src/frontends/qt/GuiPrefs.cpp:2930
 #: src/frontends/qt/GuiPrefs.cpp:2955 src/frontends/qt/GuiPrintNomencl.cpp:50
-#: src/insets/InsetInfo.cpp:241 src/insets/InsetInfo.cpp:251
-#: src/insets/InsetInfo.cpp:255 src/insets/InsetInfo.cpp:264
-#: src/insets/InsetInfo.cpp:323 src/insets/InsetInfo.cpp:342
+#: src/insets/InsetInfo.cpp:240 src/insets/InsetInfo.cpp:250
+#: src/insets/InsetInfo.cpp:254 src/insets/InsetInfo.cpp:263
+#: src/insets/InsetInfo.cpp:322 src/insets/InsetInfo.cpp:341
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
@@ -4864,7 +4865,7 @@ msgstr "&Aktiv"
 msgid "Ctrl"
 msgstr "Strg-Taste"
 
-#: src/frontends/qt/ui/PrefInputUi.ui:252 src/insets/InsetInfo.cpp:910
+#: src/frontends/qt/ui/PrefInputUi.ui:252 src/insets/InsetInfo.cpp:909
 msgid "Shift"
 msgstr "Umschalttaste"
 
@@ -5680,7 +5681,7 @@ msgstr "&Verfügbare Marken:"
 msgid "Selected &Labels:"
 msgstr "Ausgewählte &Marken:"
 
-#: src/frontends/qt/ui/RefUi.ui:144 src/insets/InsetRef.cpp:958
+#: src/frontends/qt/ui/RefUi.ui:144 src/insets/InsetRef.cpp:957
 msgid "Label"
 msgstr "Marke"
 
@@ -5815,10 +5816,6 @@ msgstr "&Minimieren"
 #: src/frontends/qt/ui/SearchUi.ui:110
 msgid "Rep&lace with:"
 msgstr "E&rsetzen durch:"
-
-#: src/frontends/qt/ui/SearchUi.ui:120
-msgid "&Search:"
-msgstr "&Suchen:"
 
 #: src/frontends/qt/ui/SearchUi.ui:155
 msgid "Replace and find next occurrence"
@@ -6961,7 +6958,7 @@ msgstr "Hochgestellt"
 #: lib/citeengines/biblatex-chicago.citeengine:323
 #: lib/citeengines/biblatex-natbib.citeengine:333
 #: lib/citeengines/biblatex.citeengine:319 lib/ui/stdtoolbars.inc:195
-#: src/insets/InsetScript.cpp:61
+#: src/insets/InsetScript.cpp:59
 msgid "Superscript"
 msgstr "Hochgestellt"
 
@@ -8181,7 +8178,7 @@ msgstr "IEEE Transactions"
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdinsets.inc:767 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:35
-#: src/insets/InsetRef.cpp:950
+#: src/insets/InsetRef.cpp:949
 msgid "Standard"
 msgstr "Standard"
 
@@ -8254,7 +8251,7 @@ msgstr "Kleinschreibung"
 #: lib/layouts/sigplanconf.layout:150 lib/layouts/sn-jnl.layout:58
 #: lib/layouts/stdtitle.inc:37 lib/layouts/svcommon.inc:371
 #: lib/layouts/svmult.layout:89 lib/layouts/svprobth.layout:93
-#: lib/layouts/tufte-book.layout:55 src/insets/InsetInfo.cpp:288
+#: lib/layouts/tufte-book.layout:55 src/insets/InsetInfo.cpp:287
 msgid "Author"
 msgstr "Autor"
 
@@ -8821,7 +8818,7 @@ msgstr "Unterunterabschnitt"
 #: lib/layouts/scrclass.inc:247 lib/layouts/scrlettr.layout:203
 #: lib/layouts/scrlttr2.layout:322 lib/layouts/siamltex.layout:246
 #: lib/layouts/stdtitle.inc:62 lib/layouts/svcommon.inc:407
-#: lib/layouts/tufte-book.layout:60 src/insets/InsetInfo.cpp:289
+#: lib/layouts/tufte-book.layout:60 src/insets/InsetInfo.cpp:288
 msgid "Date"
 msgstr "Datum"
 
@@ -13044,7 +13041,7 @@ msgstr ""
 "Gleichungsnummer die Abschnittsnummer voran, bspw. '(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17 lib/layouts/scrbook.layout:30
-#: lib/layouts/stdcounters.inc:86 src/insets/InsetRef.cpp:951
+#: lib/layouts/stdcounters.inc:86 src/insets/InsetRef.cpp:950
 #: src/mathed/InsetMathRef.cpp:427
 msgid "Equation"
 msgstr "Gleichung"
@@ -13169,7 +13166,7 @@ msgstr "Abstand nach Bild:"
 #: lib/layouts/europasscv.layout:272 lib/layouts/europasscv.layout:298
 #: lib/layouts/europasscv.layout:339 lib/layouts/europecv.layout:229
 #: lib/layouts/europecv.layout:295 src/insets/Inset.cpp:116
-#: src/insets/InsetVSpace.cpp:124
+#: src/insets/InsetVSpace.cpp:121
 msgid "Vertical Space"
 msgstr "Vertikaler Abstand"
 
@@ -13356,7 +13353,7 @@ msgid "Size the photo is resized to"
 msgstr "Ausgabegröße des Bildes"
 
 #: lib/layouts/europecv.layout:185 src/frontends/qt/GuiDocument.cpp:126
-#: src/insets/InsetRef.cpp:952
+#: src/insets/InsetRef.cpp:951
 msgid "Page"
 msgstr "Seite"
 
@@ -18508,6 +18505,34 @@ msgstr "Kapitel \\thechapter"
 msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
 
+#: lib/layouts/stdspecialchars.inc:8 lib/ui/stdmenus.inc:467
+msgid "Ligature Break|k"
+msgstr "Ligaturtrenner|r"
+
+#: lib/layouts/stdspecialchars.inc:17 lib/ui/stdmenus.inc:418
+msgid "End of Sentence|E"
+msgstr "Satzendepunkt|S"
+
+#: lib/layouts/stdspecialchars.inc:26 lib/ui/stdmenus.inc:417
+msgid "Ellipsis|i"
+msgstr "Fortsetzungspunkte|F"
+
+#: lib/layouts/stdspecialchars.inc:36 lib/ui/stdmenus.inc:425
+msgid "Menu Separator|M"
+msgstr "Menütrenner|M"
+
+#: lib/layouts/stdspecialchars.inc:49 lib/ui/stdmenus.inc:466
+msgid "Hyphenation Point|H"
+msgstr "Trennmöglichkeit|ö"
+
+#: lib/layouts/stdspecialchars.inc:56 lib/ui/stdmenus.inc:423
+msgid "Breakable Slash|a"
+msgstr "Umbruchfähiger Schrägstrich|ä"
+
+#: lib/layouts/stdspecialchars.inc:65
+msgid "Protected Hyphen|y"
+msgstr "Geschützter Trennstrich|T"
+
 #: lib/layouts/stdstarsections.inc:109
 msgid "Subparagraph*"
 msgstr "Unterparagraph*"
@@ -19410,7 +19435,7 @@ msgstr "Notiz \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:212
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:252
-#: lib/layouts/theorems-ams-extended.module:211 src/insets/InsetNote.cpp:284
+#: lib/layouts/theorems-ams-extended.module:211 src/insets/InsetNote.cpp:283
 msgid "note"
 msgstr "Notiz"
 
@@ -25272,14 +25297,6 @@ msgstr "Eingebettete Vorschau|i"
 msgid "Symbols...|b"
 msgstr "Symbole...|b"
 
-#: lib/ui/stdmenus.inc:417
-msgid "Ellipsis|i"
-msgstr "Fortsetzungspunkte|F"
-
-#: lib/ui/stdmenus.inc:418
-msgid "End of Sentence|E"
-msgstr "Satzendepunkt|S"
-
 #: lib/ui/stdmenus.inc:419
 msgid "Plain Double Quotation Mark|Q"
 msgstr "Nicht-typographisches doppeltes Anführungszeichen|N"
@@ -25296,17 +25313,9 @@ msgstr "Inneres Anführungszeichen|I"
 msgid "Non-Breaking Hyphen|y"
 msgstr "Geschützter Trennstrich|T"
 
-#: lib/ui/stdmenus.inc:423
-msgid "Breakable Slash|a"
-msgstr "Umbruchfähiger Schrägstrich|ä"
-
 #: lib/ui/stdmenus.inc:424
 msgid "Visible Space|V"
 msgstr "Sichtbares Leerzeichen|L"
-
-#: lib/ui/stdmenus.inc:425
-msgid "Menu Separator|M"
-msgstr "Menütrenner|M"
 
 #: lib/ui/stdmenus.inc:426
 msgid "Phonetic Symbols|P"
@@ -25407,14 +25416,6 @@ msgstr "Vertikaler Abstand...|V"
 #: lib/ui/stdmenus.inc:464
 msgid "Phantom|m"
 msgstr "Phantom|m"
-
-#: lib/ui/stdmenus.inc:466
-msgid "Hyphenation Point|H"
-msgstr "Trennmöglichkeit|ö"
-
-#: lib/ui/stdmenus.inc:467
-msgid "Ligature Break|k"
-msgstr "Ligaturtrenner|r"
 
 #: lib/ui/stdmenus.inc:468
 msgid "Optional Line Break|B"
@@ -26082,7 +26083,7 @@ msgstr "Mathe"
 msgid "Set display mode"
 msgstr "Darstellungsmodus festlegen"
 
-#: lib/ui/stdtoolbars.inc:194 src/insets/InsetScript.cpp:60
+#: lib/ui/stdtoolbars.inc:194 src/insets/InsetScript.cpp:58
 msgid "Subscript"
 msgstr "Tiefgestellt"
 
@@ -31110,12 +31111,12 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
 #: lib/examples/Articles:0
-msgid "Game 1"
-msgstr "Spiel 1"
-
-#: lib/examples/Articles:0
 msgid "Game 2"
 msgstr "Spiel 2"
+
+#: lib/examples/Articles:0
+msgid "Game 1"
+msgstr "Spiel 1"
 
 #: lib/examples/Articles:0
 msgid "Example (LyXified)"
@@ -31131,52 +31132,52 @@ msgid "External Material"
 msgstr "Externes Material"
 
 #: lib/examples/Articles:0
-msgid "Itemize Bullets"
-msgstr "Auflistungszeichen"
-
-#: lib/examples/Articles:0
-msgid "Minted File Listing"
-msgstr "Minted-Programmlistings (Dateien)"
-
-#: lib/examples/Articles:0
-msgid "Minted Listings"
-msgstr "Minted-Programmlistings"
+msgid "Instant Preview"
+msgstr "Eingebettete Vorschau"
 
 #: lib/examples/Articles:0
 msgid "XY-Figure"
 msgstr "XY-Figure"
 
 #: lib/examples/Articles:0
-msgid "Instant Preview"
-msgstr "Eingebettete Vorschau"
+msgid "Minted File Listing"
+msgstr "Minted-Programmlistings (Dateien)"
 
 #: lib/examples/Articles:0
 msgid "Feynman Diagrams"
 msgstr "Feynman-Diagramme"
 
 #: lib/examples/Articles:0
+msgid "Itemize Bullets"
+msgstr "Auflistungszeichen"
+
+#: lib/examples/Articles:0
 msgid "XY-Pic"
 msgstr "XY-Pic"
+
+#: lib/examples/Articles:0
+msgid "Minted Listings"
+msgstr "Minted-Programmlistings"
 
 #: lib/examples/Articles:0
 msgid "Graphics and Insets"
 msgstr "Grafiken und Einfügungen"
 
 #: lib/examples/Articles:0
-msgid "Localization Test (for Developers)"
-msgstr "Übersetzungstest (für Entwickler)"
-
-#: lib/examples/Articles:0
-msgid "Mixing Japanese with other Languages (with CJKutf8)"
-msgstr "Japanisch mit anderen Sprachen kombinieren (mit CJKutf8)"
+msgid "Writing Armenian"
+msgstr "Armenisch schreiben"
 
 #: lib/examples/Articles:0
 msgid "Mixing Japanese with other Languages (with platex)"
 msgstr "Japanisch mit anderen Sprachen kombinieren (mit platex)"
 
 #: lib/examples/Articles:0
-msgid "Writing Armenian"
-msgstr "Armenisch schreiben"
+msgid "Mixing Japanese with other Languages (with CJKutf8)"
+msgstr "Japanisch mit anderen Sprachen kombinieren (mit CJKutf8)"
+
+#: lib/examples/Articles:0
+msgid "Localization Test (for Developers)"
+msgstr "Übersetzungstest (für Entwickler)"
 
 #: lib/examples/Articles:0
 msgid "Language Support"
@@ -31187,12 +31188,12 @@ msgid "Serial Letter 1"
 msgstr "Serienbrief 1"
 
 #: lib/examples/Articles:0
-msgid "Serial Letter 2"
-msgstr "Serienbrief 2"
-
-#: lib/examples/Articles:0
 msgid "Serial Letter 3"
 msgstr "Serienbrief 3"
+
+#: lib/examples/Articles:0
+msgid "Serial Letter 2"
+msgstr "Serienbrief 2"
 
 #: lib/examples/Articles:0
 msgid "Multilingual Captions"
@@ -31207,20 +31208,16 @@ msgid "Noweb Listerrors"
 msgstr "Noweb-Fehlerbericht"
 
 #: lib/examples/Articles:0
-msgid "Hazard and Precautionary Statements"
-msgstr "H- und P-Sätze"
-
-#: lib/examples/Articles:0
 msgid "Noweb2LyX"
 msgstr "Noweb2LyX"
+
+#: lib/examples/Articles:0
+msgid "Hazard and Precautionary Statements"
+msgstr "H- und P-Sätze"
 
 #: lib/examples/Articles:0 src/frontends/qt/GuiDocument.cpp:1866
 msgid "Modules"
 msgstr "Module"
-
-#: lib/examples/Articles:0
-msgid "Beamer (Complex)"
-msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
 msgid "Foils"
@@ -31229,6 +31226,10 @@ msgstr "Foils"
 #: lib/examples/Articles:0
 msgid "Foils Landslide"
 msgstr "Foils (Querformat)"
+
+#: lib/examples/Articles:0
+msgid "Beamer (Complex)"
+msgstr "Beamer (komplex)"
 
 #: lib/examples/Articles:0
 msgid "Welcome"
@@ -31243,44 +31244,76 @@ msgid "IEEE Transactions Journal"
 msgstr "IEEE Transactions Journal"
 
 #: lib/examples/Articles:0
-msgid "Hebrew Article (KOMA-Script)"
-msgstr "Hebräischer Aufsatz (KOMA-Script)"
+msgid "Mathematical Monthly"
+msgstr "Mathematical Monthly"
 
 #: lib/examples/Articles:0
-msgid "IEEE Transactions Conference"
-msgstr "IEEE Transactions Conference"
+msgid "Hebrew Article (KOMA-Script)"
+msgstr "Hebräischer Aufsatz (KOMA-Script)"
 
 #: lib/examples/Articles:0
 msgid "Springers Global Journal Template (V. 3)"
 msgstr "Springers globale Vorlage für Zeitschriften (V. 3)"
 
 #: lib/examples/Articles:0
-msgid "Mathematical Monthly"
-msgstr "Mathematical Monthly"
-
-#: lib/examples/Articles:0
-msgid "00 Main File"
-msgstr "00 Hauptdatei"
+msgid "IEEE Transactions Conference"
+msgstr "IEEE Transactions Conference"
 
 #: lib/examples/Articles:0
 msgid "01 Dedication"
 msgstr "01 Widmung"
 
 #: lib/examples/Articles:0
+msgid "00 Main File"
+msgstr "00 Hauptdatei"
+
+#: lib/examples/Articles:0
+msgid "08 Appendix"
+msgstr "08 Anhang"
+
+#: lib/examples/Articles:0
 msgid "02 Foreword"
 msgstr "02 Vorwort"
+
+#: lib/examples/Articles:0
+msgid "07 Chapter"
+msgstr "07 Kapitel"
+
+#: lib/examples/Articles:0
+msgid "11 References"
+msgstr "11 Literaturverzeichnis"
 
 #: lib/examples/Articles:0
 msgid "03 Preface"
 msgstr "03 Vorwort"
 
 #: lib/examples/Articles:0
+msgid "05 Acronym"
+msgstr "05 Akronyme"
+
+#: lib/examples/Articles:0
+msgid "09 Glossary"
+msgstr "09 Glossar"
+
+#: lib/examples/Articles:0
+msgid "06 Part"
+msgstr "06 Teil"
+
+#: lib/examples/Articles:0
+msgid "10 Solutions"
+msgstr "10 Lösungen"
+
+#: lib/examples/Articles:0
 msgid "04 Acknowledgements"
 msgstr "04 Danksagungen"
 
 #: lib/examples/Articles:0
-msgid "05 Contributor List"
-msgstr "05 Liste der Mitwirkenden"
+msgid "10 Glossary"
+msgstr "10 Glossar"
+
+#: lib/examples/Articles:0
+msgid "08 Author"
+msgstr "08 Autor"
 
 #: lib/examples/Articles:0
 msgid "06 Acronym"
@@ -31291,44 +31324,12 @@ msgid "07 Part"
 msgstr "07 Teil"
 
 #: lib/examples/Articles:0
-msgid "08 Author"
-msgstr "08 Autor"
-
-#: lib/examples/Articles:0
 msgid "09 Appendix"
 msgstr "09 Anhang"
 
 #: lib/examples/Articles:0
-msgid "10 Glossary"
-msgstr "10 Glossar"
-
-#: lib/examples/Articles:0
-msgid "11 References"
-msgstr "11 Literaturverzeichnis"
-
-#: lib/examples/Articles:0
-msgid "05 Acronym"
-msgstr "05 Akronyme"
-
-#: lib/examples/Articles:0
-msgid "06 Part"
-msgstr "06 Teil"
-
-#: lib/examples/Articles:0
-msgid "07 Chapter"
-msgstr "07 Kapitel"
-
-#: lib/examples/Articles:0
-msgid "08 Appendix"
-msgstr "08 Anhang"
-
-#: lib/examples/Articles:0
-msgid "09 Glossary"
-msgstr "09 Glossar"
-
-#: lib/examples/Articles:0
-msgid "10 Solutions"
-msgstr "10 Lösungen"
+msgid "05 Contributor List"
+msgstr "05 Liste der Mitwirkenden"
 
 #: lib/examples/Articles:0
 msgid "Simple"
@@ -31339,16 +31340,16 @@ msgid "Colored"
 msgstr "Farbig"
 
 #: lib/examples/Articles:0
+msgid "Main File"
+msgstr "Hauptdatei"
+
+#: lib/examples/Articles:0
 msgid "Chapter 1"
 msgstr "Kapitel 1"
 
 #: lib/examples/Articles:0
 msgid "Chapter 2"
 msgstr "Kapitel 2"
-
-#: lib/examples/Articles:0
-msgid "Main File"
-msgstr "Hauptdatei"
 
 #: lib/examples/Articles:0
 msgid "PhD Thesis"
@@ -31364,12 +31365,12 @@ msgstr ""
 "Japanischer Aufsatz (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
 
 #: lib/examples/Articles:0
-msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
+msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
 msgstr ""
 "Japanisches Buch (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
 
 #: lib/examples/Articles:0
-msgid "Japanese Report (Standard Class for LuaTeX%2C vertical Writing)"
+msgid "Japanese Book (Standard Class for LuaTeX%2C vertical Writing)"
 msgstr ""
 "Japanisches Buch (Standardklasse für LuaTeX%2C vertikale Schreibrichtung)"
 
@@ -32232,8 +32233,8 @@ msgstr "Die Dokumentklasse ist nicht verfügbar"
 #: src/frontends/qt/LaTeXHighlighter.cpp:178
 #: src/insets/InsetCommandParams.cpp:515 src/insets/InsetCommandParams.cpp:523
 #: src/insets/InsetGraphics.cpp:901 src/insets/InsetGraphics.cpp:909
-#: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
-#: src/insets/InsetListings.cpp:333 src/mathed/InsetMathMacro.cpp:1172
+#: src/insets/InsetListings.cpp:299 src/insets/InsetListings.cpp:307
+#: src/insets/InsetListings.cpp:332 src/mathed/InsetMathMacro.cpp:1172
 #: src/mathed/MathExtern.cpp:1527 src/mathed/MathExtern.cpp:1601
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
@@ -32242,7 +32243,7 @@ msgstr "LyX-Warnung: "
 #: src/BufferParams.cpp:2782 src/Encoding.cpp:265 src/Paragraph.cpp:3204
 #: src/insets/InsetCommandParams.cpp:516 src/insets/InsetCommandParams.cpp:524
 #: src/insets/InsetGraphics.cpp:902 src/insets/InsetGraphics.cpp:910
-#: src/insets/InsetListings.cpp:301 src/insets/InsetListings.cpp:309
+#: src/insets/InsetListings.cpp:300 src/insets/InsetListings.cpp:308
 #: src/mathed/InsetMathMacro.cpp:1173 src/mathed/MathExtern.cpp:1528
 #: src/mathed/MathExtern.cpp:1602
 msgid "uncodable character"
@@ -32314,7 +32315,7 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:3132
+#: src/BufferParams.cpp:3136
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -32329,11 +32330,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:3138
+#: src/BufferParams.cpp:3142
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:3145
+#: src/BufferParams.cpp:3149
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -32348,23 +32349,23 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:3151 src/BufferView.cpp:1550 src/BufferView.cpp:1582
+#: src/BufferParams.cpp:3155 src/BufferView.cpp:1550 src/BufferView.cpp:1582
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:3196
+#: src/BufferParams.cpp:3200
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:3197 src/TextClass.cpp:2007 src/TextClass.cpp:2040
+#: src/BufferParams.cpp:3201 src/TextClass.cpp:2007 src/TextClass.cpp:2040
 msgid "Read Error"
 msgstr "Lesefehler"
 
-#: src/BufferParams.cpp:4372
+#: src/BufferParams.cpp:4376
 msgid "No bibliography processor found!"
 msgstr "Kein Literaturverzeichnis-Prozessor gefunden!"
 
-#: src/BufferParams.cpp:4374
+#: src/BufferParams.cpp:4378
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -32378,11 +32379,11 @@ msgstr ""
 "Literaturverweise erzeugt werden.\n"
 "Bitte reparieren Sie Ihr System!"
 
-#: src/BufferParams.cpp:4382
+#: src/BufferParams.cpp:4386
 msgid "Requested bibliography processor not found!"
 msgstr "Verlangter Literaturverzeichnis-Prozessor nicht gefunden!"
 
-#: src/BufferParams.cpp:4384
+#: src/BufferParams.cpp:4388
 #, c-format
 msgid ""
 "The bibliography processor requested by this document (%1$s) is not "
@@ -32414,7 +32415,7 @@ msgstr "Dokument ist schreibgeschützt"
 msgid "Document has been modified externally"
 msgstr "Das Dokument wurde extern bearbeitet"
 
-#: src/BufferView.cpp:1234 src/insets/InsetTabular.cpp:4856
+#: src/BufferView.cpp:1234 src/insets/InsetTabular.cpp:4854
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
@@ -34769,11 +34770,11 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Unbekannte Einfügung"
 
-#: src/Text.cpp:598 src/insets/InsetTabular.cpp:488
+#: src/Text.cpp:598 src/insets/InsetTabular.cpp:486
 msgid "Change tracking author index missing"
 msgstr "Autorindex für die Änderungsverfolgung fehlt"
 
-#: src/Text.cpp:599 src/insets/InsetTabular.cpp:489
+#: src/Text.cpp:599 src/insets/InsetTabular.cpp:487
 #, c-format
 msgid ""
 "A change tracking author information for index %1$d is missing. This can "
@@ -37538,7 +37539,7 @@ msgstr "Wählen Sie eine Grafikdatei"
 msgid "&Clipart"
 msgstr "&Clipart"
 
-#: src/frontends/qt/GuiHSpace.cpp:43 src/insets/InsetSpace.cpp:70
+#: src/frontends/qt/GuiHSpace.cpp:43 src/insets/InsetSpace.cpp:69
 msgid "Normal Space"
 msgstr "Normales Leerzeichen"
 
@@ -37578,7 +37579,7 @@ msgstr "Geviert (1 em)"
 msgid "Double Quad (2 em)"
 msgstr "Doppelgeviert (2 em)"
 
-#: src/frontends/qt/GuiHSpace.cpp:53 src/insets/InsetSpace.cpp:109
+#: src/frontends/qt/GuiHSpace.cpp:53 src/insets/InsetSpace.cpp:108
 msgid "Horizontal Fill"
 msgstr "Variabler horiz. Abstand"
 
@@ -38752,8 +38753,8 @@ msgid "Click here to change search options"
 msgstr "Klicken, um die Suchoptionen anzupassen"
 
 #: src/frontends/qt/GuiSearch.cpp:599
-msgid "Search and Replace"
-msgstr "Suchen und Ersetzen"
+msgid "Find and Replace"
+msgstr "Suchen und ersetzen"
 
 #: src/frontends/qt/GuiSendto.cpp:40
 msgid "Export or Send Document"
@@ -40613,8 +40614,8 @@ msgstr "Kein Literaturverzeichnis definiert!"
 msgid "+ %1$d more entries."
 msgstr "+ %1$d weitere Einträge."
 
-#: src/insets/InsetCitation.cpp:584 src/insets/InsetRef.cpp:831
-#: src/insets/InsetRef.cpp:969
+#: src/insets/InsetCitation.cpp:584 src/insets/InsetRef.cpp:830
+#: src/insets/InsetRef.cpp:968
 msgid "BROKEN: "
 msgstr "UNGÜLTIG: "
 
@@ -41133,284 +41134,284 @@ msgstr ""
 "Bitte legen Sie die Sortierung manuell fest. Hinweise\n"
 "zum Vorgehen finden Sie im Benutzerhandbuch."
 
-#: src/insets/InsetInfo.cpp:198
+#: src/insets/InsetInfo.cpp:197
 msgid "No long date format (language unknown)!"
 msgstr "Kein langes Datumsformat (Sprache unbekannt)!"
 
-#: src/insets/InsetInfo.cpp:201
+#: src/insets/InsetInfo.cpp:200
 msgid "No medium date format (language unknown)!"
 msgstr "Kein mittleres Datumsformat (Sprache unbekannt)!"
 
-#: src/insets/InsetInfo.cpp:204
+#: src/insets/InsetInfo.cpp:203
 msgid "No short date format (language unknown)!"
 msgstr "Kein kurzes Datumsformat (Sprache unbekannt)!"
 
-#: src/insets/InsetInfo.cpp:234
+#: src/insets/InsetInfo.cpp:233
 msgid "Please select a valid type!"
 msgstr "Bitte wählen Sie einen gültigen Typ!"
 
-#: src/insets/InsetInfo.cpp:274
+#: src/insets/InsetInfo.cpp:273
 msgid "File name (with extension)"
 msgstr "Dateiname (mit Endung)"
 
-#: src/insets/InsetInfo.cpp:275
+#: src/insets/InsetInfo.cpp:274
 msgid "File name (without extension)"
 msgstr "Dateiname (ohne Endung)"
 
-#: src/insets/InsetInfo.cpp:276
+#: src/insets/InsetInfo.cpp:275
 msgid "File path"
 msgstr "Dateipfad"
 
-#: src/insets/InsetInfo.cpp:277
+#: src/insets/InsetInfo.cpp:276
 msgid "Used text class"
 msgstr "Verwendete Textklasse"
 
-#: src/insets/InsetInfo.cpp:282 src/insets/InsetInfo.cpp:1180
-#: src/insets/InsetInfo.cpp:1341
+#: src/insets/InsetInfo.cpp:281 src/insets/InsetInfo.cpp:1179
+#: src/insets/InsetInfo.cpp:1340
 msgid "No version control!"
 msgstr "Keine Versionskontrolle!"
 
-#: src/insets/InsetInfo.cpp:285
+#: src/insets/InsetInfo.cpp:284
 msgid "Revision[[Version Control]]"
 msgstr "Revision"
 
-#: src/insets/InsetInfo.cpp:286
+#: src/insets/InsetInfo.cpp:285
 msgid "Abbreviated revision[[Version Control]]"
 msgstr "Abgekürzte Revision"
 
-#: src/insets/InsetInfo.cpp:287
+#: src/insets/InsetInfo.cpp:286
 msgid "Tree revision"
 msgstr "Baumrevision"
 
-#: src/insets/InsetInfo.cpp:290
+#: src/insets/InsetInfo.cpp:289
 msgid "Time[[of day]]"
 msgstr "Uhrzeit"
 
-#: src/insets/InsetInfo.cpp:295
+#: src/insets/InsetInfo.cpp:294
 msgid "LyX version"
 msgstr "LyX-Version"
 
-#: src/insets/InsetInfo.cpp:296
+#: src/insets/InsetInfo.cpp:295
 msgid "LyX layout format"
 msgstr "LyX-Layoutformat"
 
-#: src/insets/InsetInfo.cpp:509
+#: src/insets/InsetInfo.cpp:508
 msgid "Invalid information inset"
 msgstr "Ungültige Informationseinfügung"
 
-#: src/insets/InsetInfo.cpp:512
+#: src/insets/InsetInfo.cpp:511
 #, c-format
 msgid "The keybard shortcut for the function '%1$s'"
 msgstr "Das Tastenkürzel für die LyX-Funktion '%1$s'"
 
-#: src/insets/InsetInfo.cpp:516
+#: src/insets/InsetInfo.cpp:515
 #, c-format
 msgid "The keybard shortcuts for the function '%1$s'"
 msgstr "Die Tastenkürzel für die LyX-Funktion '%1$s'"
 
-#: src/insets/InsetInfo.cpp:520
+#: src/insets/InsetInfo.cpp:519
 #, c-format
 msgid "The menu location for the function '%1$s'"
 msgstr "Der Menüeintrag für die LyX-Funktion '%1$s'"
 
-#: src/insets/InsetInfo.cpp:524
+#: src/insets/InsetInfo.cpp:523
 #, c-format
 msgid "The localization for the string '%1$s'"
 msgstr "Die Lokalisierung für '%1$s'"
 
-#: src/insets/InsetInfo.cpp:528
+#: src/insets/InsetInfo.cpp:527
 #, c-format
 msgid "The toolbar icon for the function '%1$s'"
 msgstr "Das Werkzeugleistensymbol für die LyX-Funktion '%1$s'"
 
-#: src/insets/InsetInfo.cpp:532
+#: src/insets/InsetInfo.cpp:531
 #, c-format
 msgid "The preference setting for the preference key '%1$s'"
 msgstr "Die LyX-Einstellung für den Einstellungsschlüssel '%1$s'"
 
-#: src/insets/InsetInfo.cpp:536
+#: src/insets/InsetInfo.cpp:535
 #, c-format
 msgid "Availability of the LaTeX package '%1$s'"
 msgstr "Verfügbarkeit des LaTeX-Pakets '%1$s'"
 
-#: src/insets/InsetInfo.cpp:540
+#: src/insets/InsetInfo.cpp:539
 #, c-format
 msgid "Availability of the LaTeX class '%1$s'"
 msgstr "Verfügbarkeit der LaTeX-Klasse '%1$s'"
 
-#: src/insets/InsetInfo.cpp:545
+#: src/insets/InsetInfo.cpp:544
 msgid "The name of this file (incl. extension)"
 msgstr "Der Name dieser Datei (inkl. Endung)"
 
-#: src/insets/InsetInfo.cpp:547
+#: src/insets/InsetInfo.cpp:546
 msgid "The name of this file (without extension)"
 msgstr "Der Name dieser Datei (ohne Endung)"
 
-#: src/insets/InsetInfo.cpp:549
+#: src/insets/InsetInfo.cpp:548
 msgid "The path where this file is saved"
 msgstr "Der Pfad, an dem diese Datei gespeichert ist"
 
-#: src/insets/InsetInfo.cpp:551
+#: src/insets/InsetInfo.cpp:550
 msgid "The class this document uses"
 msgstr "Die Klasse, die dieses Dokument verwendet"
 
-#: src/insets/InsetInfo.cpp:555
+#: src/insets/InsetInfo.cpp:554
 msgid "Version control revision"
 msgstr "Versionskontrolle: Revision"
 
-#: src/insets/InsetInfo.cpp:557
+#: src/insets/InsetInfo.cpp:556
 msgid "Version control abbreviated revision"
 msgstr "Versionskontrolle: Abgekürzte Revision"
 
-#: src/insets/InsetInfo.cpp:559
+#: src/insets/InsetInfo.cpp:558
 msgid "Version control tree revision"
 msgstr "Versionskontrolle: Tree-Revision"
 
-#: src/insets/InsetInfo.cpp:561
+#: src/insets/InsetInfo.cpp:560
 msgid "Version control author"
 msgstr "Versionskontrolle: Autor"
 
-#: src/insets/InsetInfo.cpp:563
+#: src/insets/InsetInfo.cpp:562
 msgid "Version control date"
 msgstr "Versionskontrolle: Datum"
 
-#: src/insets/InsetInfo.cpp:565
+#: src/insets/InsetInfo.cpp:564
 msgid "Version control time"
 msgstr "Versionskontrolle: Uhrzeit"
 
-#: src/insets/InsetInfo.cpp:569
+#: src/insets/InsetInfo.cpp:568
 msgid "The current LyX version"
 msgstr "Die aktuelle LyX-Version"
 
-#: src/insets/InsetInfo.cpp:571
+#: src/insets/InsetInfo.cpp:570
 msgid "The current LyX layout format"
 msgstr "Das aktuelle Format der LyX-Layoutdateien"
 
-#: src/insets/InsetInfo.cpp:574
+#: src/insets/InsetInfo.cpp:573
 msgid "The current date"
 msgstr "Das aktuelle Datum"
 
-#: src/insets/InsetInfo.cpp:577
+#: src/insets/InsetInfo.cpp:576
 msgid "The date of last save"
 msgstr "Das Datum der letzten gespeicherten Änderung"
 
-#: src/insets/InsetInfo.cpp:580
+#: src/insets/InsetInfo.cpp:579
 msgid "A static date"
 msgstr "Ein festes Datum"
 
-#: src/insets/InsetInfo.cpp:583
+#: src/insets/InsetInfo.cpp:582
 msgid "The current time"
 msgstr "Die aktuelle Uhrzeit"
 
-#: src/insets/InsetInfo.cpp:586
+#: src/insets/InsetInfo.cpp:585
 msgid "The time of last save"
 msgstr "Die Uhrzeit der letzten gespeicherten Änderung"
 
-#: src/insets/InsetInfo.cpp:589
+#: src/insets/InsetInfo.cpp:588
 msgid "A static time"
 msgstr "Eine feste Zeitangabe"
 
-#: src/insets/InsetInfo.cpp:616
+#: src/insets/InsetInfo.cpp:615
 msgid "Missing \\end_inset at this point."
 msgstr "Fehlendes \\end_inset an dieser Stelle."
 
-#: src/insets/InsetInfo.cpp:842
+#: src/insets/InsetInfo.cpp:841
 msgid "Unknown Info!"
 msgstr "Unbekannte Info-Einfügung!"
 
-#: src/insets/InsetInfo.cpp:851 src/insets/InsetInfo.cpp:1052
-#: src/insets/InsetInfo.cpp:1442 src/insets/InsetInfo.cpp:1520
-#: src/insets/InsetInfo.cpp:1613 src/insets/InsetInfo.cpp:1685
+#: src/insets/InsetInfo.cpp:850 src/insets/InsetInfo.cpp:1051
+#: src/insets/InsetInfo.cpp:1441 src/insets/InsetInfo.cpp:1519
+#: src/insets/InsetInfo.cpp:1612 src/insets/InsetInfo.cpp:1684
 #, c-format
 msgid "Unknown action %1$s"
 msgstr "Aktion '%1$s' unbekannt"
 
-#: src/insets/InsetInfo.cpp:857 src/insets/InsetInfo.cpp:967
-#: src/insets/InsetInfo.cpp:976 src/insets/InsetInfo.cpp:984
-#: src/insets/InsetInfo.cpp:1450 src/insets/InsetInfo.cpp:1528
-#: src/insets/InsetInfo.cpp:1575 src/insets/InsetInfo.cpp:1585
-#: src/insets/InsetInfo.cpp:1592
+#: src/insets/InsetInfo.cpp:856 src/insets/InsetInfo.cpp:966
+#: src/insets/InsetInfo.cpp:975 src/insets/InsetInfo.cpp:983
+#: src/insets/InsetInfo.cpp:1449 src/insets/InsetInfo.cpp:1527
+#: src/insets/InsetInfo.cpp:1574 src/insets/InsetInfo.cpp:1584
+#: src/insets/InsetInfo.cpp:1591
 msgid "undefined"
 msgstr "undefiniert"
 
-#: src/insets/InsetInfo.cpp:880 src/insets/InsetInfo.cpp:930
+#: src/insets/InsetInfo.cpp:879 src/insets/InsetInfo.cpp:929
 msgid "Return[[Key]]"
 msgstr "Return"
 
-#: src/insets/InsetInfo.cpp:885
+#: src/insets/InsetInfo.cpp:884
 msgid "Tab[[Key]]"
 msgstr "Tab"
 
-#: src/insets/InsetInfo.cpp:890
+#: src/insets/InsetInfo.cpp:889
 msgid "PgUp"
 msgstr "Bild hoch"
 
-#: src/insets/InsetInfo.cpp:895
+#: src/insets/InsetInfo.cpp:894
 msgid "PgDown"
 msgstr "Bild runter"
 
-#: src/insets/InsetInfo.cpp:900
+#: src/insets/InsetInfo.cpp:899
 msgid "Backtab"
 msgstr "Rücktab"
 
-#: src/insets/InsetInfo.cpp:905
+#: src/insets/InsetInfo.cpp:904
 msgid "Tab"
 msgstr "Tab"
 
-#: src/insets/InsetInfo.cpp:915
+#: src/insets/InsetInfo.cpp:914
 msgid "CapsLock"
 msgstr "Feststelltaste"
 
-#: src/insets/InsetInfo.cpp:920
+#: src/insets/InsetInfo.cpp:919
 msgid "Control[[Key]]"
 msgstr "Control"
 
-#: src/insets/InsetInfo.cpp:925
+#: src/insets/InsetInfo.cpp:924
 msgid "Command[[Key]]"
 msgstr "Command"
 
-#: src/insets/InsetInfo.cpp:935
+#: src/insets/InsetInfo.cpp:934
 msgid "Option[[Key]]"
 msgstr "Option"
 
-#: src/insets/InsetInfo.cpp:940
+#: src/insets/InsetInfo.cpp:939
 msgid "Delete[[Key]]"
 msgstr "Rücktaste"
 
-#: src/insets/InsetInfo.cpp:945
+#: src/insets/InsetInfo.cpp:944
 msgid "Fn+Del"
 msgstr "Fn+Rücktaste"
 
-#: src/insets/InsetInfo.cpp:950
+#: src/insets/InsetInfo.cpp:949
 msgid "Esc"
 msgstr "Esc"
 
-#: src/insets/InsetInfo.cpp:994
+#: src/insets/InsetInfo.cpp:993
 msgid "not set"
 msgstr "nicht eingestellt"
 
-#: src/insets/InsetInfo.cpp:1019 src/insets/InsetInfo.cpp:1037
+#: src/insets/InsetInfo.cpp:1018 src/insets/InsetInfo.cpp:1036
 msgid "yes"
 msgstr "ja"
 
-#: src/insets/InsetInfo.cpp:1022 src/insets/InsetInfo.cpp:1040
+#: src/insets/InsetInfo.cpp:1021 src/insets/InsetInfo.cpp:1039
 msgid "no"
 msgstr "nein"
 
-#: src/insets/InsetInfo.cpp:1063 src/insets/InsetInfo.cpp:1628
-#: src/insets/InsetInfo.cpp:1700
+#: src/insets/InsetInfo.cpp:1062 src/insets/InsetInfo.cpp:1627
+#: src/insets/InsetInfo.cpp:1699
 #, c-format
 msgid "Can't determine menu entry for action %1$s in batch mode"
 msgstr ""
 "Der Menüeintrag für den Befehl %1$s kann im Batch-Mode nicht bestimmt werden"
 
-#: src/insets/InsetInfo.cpp:1071 src/insets/InsetInfo.cpp:1636
-#: src/insets/InsetInfo.cpp:1708
+#: src/insets/InsetInfo.cpp:1070 src/insets/InsetInfo.cpp:1635
+#: src/insets/InsetInfo.cpp:1707
 #, c-format
 msgid "No menu entry for action %1$s"
 msgstr "Kein Menüeintrag für die Aktion %1$s"
 
-#: src/insets/InsetInfo.cpp:1199
+#: src/insets/InsetInfo.cpp:1198
 #, c-format
 msgid "%1$s[[vcs data]] unknown"
 msgstr "%1$s unbekannt"
@@ -41432,19 +41433,19 @@ msgstr ""
 msgid "DUPLICATE: "
 msgstr "DUPLIKAT: "
 
-#: src/insets/InsetLine.cpp:67
+#: src/insets/InsetLine.cpp:63
 msgid "Horizontal line"
 msgstr "Horizontale Linie"
 
-#: src/insets/InsetListings.cpp:334
+#: src/insets/InsetListings.cpp:333
 msgid "no more lstline delimiters available"
 msgstr "keine lst-line-Begrenzungszeichen verfügbar"
 
-#: src/insets/InsetListings.cpp:339
+#: src/insets/InsetListings.cpp:338
 msgid "Running out of delimiters"
 msgstr "Die Begrenzungszeichen sind ausgegangen"
 
-#: src/insets/InsetListings.cpp:340
+#: src/insets/InsetListings.cpp:339
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -41458,11 +41459,11 @@ msgstr ""
 "verfügbar ist. Einstweilen wurde an der entsprechenden Stelle eine Warnung\n"
 "in das Dokument eingefügt, Sie müssen das Problem allerdings lösen!"
 
-#: src/insets/InsetListings.cpp:425 src/insets/InsetListings.cpp:434
+#: src/insets/InsetListings.cpp:424 src/insets/InsetListings.cpp:433
 msgid "Uncodable characters in listings inset"
 msgstr "Unkodierbare Zeichen in Programmlisting"
 
-#: src/insets/InsetListings.cpp:426
+#: src/insets/InsetListings.cpp:425
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -41483,7 +41484,7 @@ msgstr ""
 "verwenden'\n"
 "auszuwählen."
 
-#: src/insets/InsetListings.cpp:435
+#: src/insets/InsetListings.cpp:434
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -41733,27 +41734,27 @@ msgstr "Unbekannter Listing-Parametername: %1$s"
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr "Parameter, die mit '%1$s' beginnen: %2$s"
 
-#: src/insets/InsetMarginal.cpp:36
+#: src/insets/InsetMarginal.cpp:33
 msgid "margin"
 msgstr "Rand"
 
-#: src/insets/InsetNewpage.cpp:240 src/insets/InsetNewpage.cpp:250
+#: src/insets/InsetNewpage.cpp:239 src/insets/InsetNewpage.cpp:249
 msgid "New Page"
 msgstr "Neue Seite"
 
-#: src/insets/InsetNewpage.cpp:242
+#: src/insets/InsetNewpage.cpp:241
 msgid "Page Break"
 msgstr "Seitenumbruch"
 
-#: src/insets/InsetNewpage.cpp:244
+#: src/insets/InsetNewpage.cpp:243
 msgid "Clear Page"
 msgstr "Seite leeren"
 
-#: src/insets/InsetNewpage.cpp:246
+#: src/insets/InsetNewpage.cpp:245
 msgid "Clear Double Page"
 msgstr "Doppelseite leeren"
 
-#: src/insets/InsetNewpage.cpp:248
+#: src/insets/InsetNewpage.cpp:247
 msgid "No Page Break"
 msgstr "Seitenumbruch verhindern"
 
@@ -41769,67 +41770,67 @@ msgstr "Beschreibung: "
 msgid "Sorting: "
 msgstr "Sortierung: "
 
-#: src/insets/InsetPhantom.cpp:64
+#: src/insets/InsetPhantom.cpp:58
 msgid "Phantom"
 msgstr "Phantom"
 
-#: src/insets/InsetPhantom.cpp:65
+#: src/insets/InsetPhantom.cpp:59
 msgid "HPhantom"
 msgstr "HPhantom"
 
-#: src/insets/InsetPhantom.cpp:66
+#: src/insets/InsetPhantom.cpp:60
 msgid "VPhantom"
 msgstr "VPhantom"
 
-#: src/insets/InsetPhantom.cpp:331 src/insets/InsetPhantom.cpp:340
+#: src/insets/InsetPhantom.cpp:325 src/insets/InsetPhantom.cpp:334
 msgid "phantom"
 msgstr "phantom"
 
-#: src/insets/InsetPhantom.cpp:334
+#: src/insets/InsetPhantom.cpp:328
 msgid "hphantom"
 msgstr "hphantom"
 
-#: src/insets/InsetPhantom.cpp:337
+#: src/insets/InsetPhantom.cpp:331
 msgid "vphantom"
 msgstr "vphantom"
 
-#: src/insets/InsetQuotes.cpp:523
+#: src/insets/InsetQuotes.cpp:521
 #, c-format
 msgid "%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"
 msgstr "%1$sÄußere%2$s und %3$sinnere%4$s"
 
-#: src/insets/InsetQuotes.cpp:533
+#: src/insets/InsetQuotes.cpp:531
 #, c-format
 msgid "%1$s[[quot. mark description]] (language default)"
 msgstr "%1$s (Sprachvoreinstellung)"
 
-#: src/insets/InsetQuotes.cpp:546
+#: src/insets/InsetQuotes.cpp:544
 #, c-format
 msgid "%1$stext"
 msgstr "%1$sText"
 
-#: src/insets/InsetQuotes.cpp:548
+#: src/insets/InsetQuotes.cpp:546
 #, c-format
 msgid "text%1$s"
 msgstr "Text%1$s"
 
-#: src/insets/InsetRef.cpp:383 src/insets/InsetRef.cpp:558
+#: src/insets/InsetRef.cpp:382 src/insets/InsetRef.cpp:557
 msgid "[[reference 1]] and [[reference2]]"
 msgstr " und "
 
-#: src/insets/InsetRef.cpp:385 src/insets/InsetRef.cpp:560
+#: src/insets/InsetRef.cpp:384 src/insets/InsetRef.cpp:559
 msgid "[[reference 1, ...]], and [[reference n]]"
 msgstr " und "
 
-#: src/insets/InsetRef.cpp:387 src/insets/InsetRef.cpp:562
+#: src/insets/InsetRef.cpp:386 src/insets/InsetRef.cpp:561
 msgid "[[reference 1]], [[reference2, ...]]"
 msgstr ", "
 
-#: src/insets/InsetRef.cpp:401
+#: src/insets/InsetRef.cpp:400
 msgid "Invalid label!"
 msgstr "Ungültige Marke!"
 
-#: src/insets/InsetRef.cpp:402
+#: src/insets/InsetRef.cpp:401
 #, c-format
 msgid ""
 "The label `%1$s' does not have a prefix (e.g., `sec:'), which is needed for "
@@ -41840,71 +41841,71 @@ msgstr ""
 "formatierte Querverweise mit Prettyref nötig ist.\n"
 "Sie werden wahrscheinlich einen LaTeX-Fehler gemeldet bekommen."
 
-#: src/insets/InsetRef.cpp:662
+#: src/insets/InsetRef.cpp:661
 msgid "elsewhere"
 msgstr "woanders"
 
-#: src/insets/InsetRef.cpp:950
+#: src/insets/InsetRef.cpp:949
 msgid "Ref"
 msgstr "Querverweis"
 
-#: src/insets/InsetRef.cpp:951
+#: src/insets/InsetRef.cpp:950
 msgid "EqRef"
 msgstr "(Querverweis)"
 
-#: src/insets/InsetRef.cpp:952 src/mathed/InsetMathRef.cpp:428
+#: src/insets/InsetRef.cpp:951 src/mathed/InsetMathRef.cpp:428
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/InsetRef.cpp:953 src/mathed/InsetMathRef.cpp:429
+#: src/insets/InsetRef.cpp:952 src/mathed/InsetMathRef.cpp:429
 msgid "Prefixed Page Number"
 msgstr "Seitennummer mit Präfix"
 
-#: src/insets/InsetRef.cpp:953
+#: src/insets/InsetRef.cpp:952
 msgid "PrefPage"
 msgstr "PräfSeite"
 
-#: src/insets/InsetRef.cpp:954 src/mathed/InsetMathRef.cpp:430
+#: src/insets/InsetRef.cpp:953 src/mathed/InsetMathRef.cpp:430
 msgid "Textual Page Number"
 msgstr "Seitennummer in Textform"
 
-#: src/insets/InsetRef.cpp:954
+#: src/insets/InsetRef.cpp:953
 msgid "TextPage"
 msgstr "TextSeite"
 
-#: src/insets/InsetRef.cpp:955 src/mathed/InsetMathRef.cpp:431
+#: src/insets/InsetRef.cpp:954 src/mathed/InsetMathRef.cpp:431
 msgid "Standard+Textual Page"
 msgstr "Standard+Seite in Textform"
 
-#: src/insets/InsetRef.cpp:955
+#: src/insets/InsetRef.cpp:954
 msgid "Ref+Text"
 msgstr "Querverweis+Text"
 
-#: src/insets/InsetRef.cpp:956 src/mathed/InsetMathRef.cpp:433
+#: src/insets/InsetRef.cpp:955 src/mathed/InsetMathRef.cpp:433
 msgid "Reference to Name"
 msgstr "Referenz auf Namen"
 
-#: src/insets/InsetRef.cpp:956
+#: src/insets/InsetRef.cpp:955
 msgid "NameRef"
 msgstr "Namen-Querverweis"
 
-#: src/insets/InsetRef.cpp:957
+#: src/insets/InsetRef.cpp:956
 msgid "Formatted"
 msgstr "Formatiert"
 
-#: src/insets/InsetRef.cpp:957
+#: src/insets/InsetRef.cpp:956
 msgid "Format"
 msgstr "Format"
 
-#: src/insets/InsetRef.cpp:958 src/mathed/InsetMathRef.cpp:434
+#: src/insets/InsetRef.cpp:957 src/mathed/InsetMathRef.cpp:434
 msgid "Label Only"
 msgstr "Nur Marke"
 
-#: src/insets/InsetRef.cpp:1047
+#: src/insets/InsetRef.cpp:1046
 msgid "Unknown external file!"
 msgstr "Unbekannte externe Datei!"
 
-#: src/insets/InsetRef.cpp:1048
+#: src/insets/InsetRef.cpp:1047
 #, c-format
 msgid ""
 "The label `%1$s' refers to an external file\n"
@@ -41915,96 +41916,96 @@ msgstr ""
 "(`%2$s'),\n"
 "die nicht gefunden werden konnte. Die Ausgabe wird fehlerhaft sein!"
 
-#: src/insets/InsetScript.cpp:334
+#: src/insets/InsetScript.cpp:332
 msgid "subscript"
 msgstr "Tiefgestellt"
 
-#: src/insets/InsetScript.cpp:344
+#: src/insets/InsetScript.cpp:342
 msgid "superscript"
 msgstr "Hochgestellt"
 
-#: src/insets/InsetSpace.cpp:73
+#: src/insets/InsetSpace.cpp:72
 msgid "Non-Breaking Normal Space"
 msgstr "Geschütztes Normales Leerzeichen"
 
-#: src/insets/InsetSpace.cpp:76
+#: src/insets/InsetSpace.cpp:75
 msgid "Non-Breaking Visible Normal Space"
 msgstr "Geschütztes sichtbares normales Leerzeichen"
 
-#: src/insets/InsetSpace.cpp:79
+#: src/insets/InsetSpace.cpp:78
 msgid "Non-Breaking Thin Space (1/6 em)"
 msgstr "Geschütztes halbes Leerzeichen (1/6 em)"
 
-#: src/insets/InsetSpace.cpp:82
+#: src/insets/InsetSpace.cpp:81
 msgid "Non-Breaking Medium Space (2/9 em)"
 msgstr "Geschützter mittlerer Abstand (2/9 em)"
 
-#: src/insets/InsetSpace.cpp:85
+#: src/insets/InsetSpace.cpp:84
 msgid "Non-Breaking Thick Space (5/18 em)"
 msgstr "Geschützter mittlerer Abstand (5/18 em)"
 
-#: src/insets/InsetSpace.cpp:88
+#: src/insets/InsetSpace.cpp:87
 msgid "Quad Space (1 em)"
 msgstr "Geviert (1 em)"
 
-#: src/insets/InsetSpace.cpp:91
+#: src/insets/InsetSpace.cpp:90
 msgid "Double Quad Space (2 em)"
 msgstr "Doppelgeviert (2 em)"
 
-#: src/insets/InsetSpace.cpp:94
+#: src/insets/InsetSpace.cpp:93
 msgid "Non-Breaking Half Quad Space (1/2 em)"
 msgstr "Geschützter Halbgeviert-Abstand (Enskip, 1/2 em)"
 
-#: src/insets/InsetSpace.cpp:97
+#: src/insets/InsetSpace.cpp:96
 msgid "Half Quad Space (1/2 em)"
 msgstr "Halbgeviert-Abstand (Enskip, 1/2 em)"
 
-#: src/insets/InsetSpace.cpp:100
+#: src/insets/InsetSpace.cpp:99
 msgid "Non-Breaking Negative Thin Space (-1/6 em)"
 msgstr "Geschütztes negatives halbes Leerzeichen (-1/6 em)"
 
-#: src/insets/InsetSpace.cpp:103
+#: src/insets/InsetSpace.cpp:102
 msgid "Non-Breaking Negative Medium Space (-2/9 em)"
 msgstr "Geschützter negativer mittlerer Abstand (-2/9 em)"
 
-#: src/insets/InsetSpace.cpp:106
+#: src/insets/InsetSpace.cpp:105
 msgid "Non-Breaking Negative Thick Space (-5/18 em)"
 msgstr "Geschützter negativer großer Abstand (-5/18 em)"
 
-#: src/insets/InsetSpace.cpp:112
+#: src/insets/InsetSpace.cpp:111
 msgid "Non-Breaking Horizontal Fill"
 msgstr "Geschützter variabler horiz. Abstand"
 
-#: src/insets/InsetSpace.cpp:115
+#: src/insets/InsetSpace.cpp:114
 msgid "Non-Breaking Horizontal Fill (Dots)"
 msgstr "Geschützter variabler horiz. Abstand (Punkte)"
 
-#: src/insets/InsetSpace.cpp:118
+#: src/insets/InsetSpace.cpp:117
 msgid "Non-Breaking Horizontal Fill (Rule)"
 msgstr "Geschützter variabler horiz. Abstand (Linie)"
 
-#: src/insets/InsetSpace.cpp:121
+#: src/insets/InsetSpace.cpp:120
 msgid "Non-Breaking Horizontal Fill (Left Arrow)"
 msgstr "Geschützter variabler horiz. Abstand (Linkspfeil)"
 
-#: src/insets/InsetSpace.cpp:124
+#: src/insets/InsetSpace.cpp:123
 msgid "Non-Breaking Horizontal Fill (Right Arrow)"
 msgstr "Geschützter variabler horiz. Abstand (Rechtspfeil)"
 
-#: src/insets/InsetSpace.cpp:127
+#: src/insets/InsetSpace.cpp:126
 msgid "Non-Breaking Horizontal Fill (Up Brace)"
 msgstr "Geschützter variabler horiz. Abstand (Klammer oben)"
 
-#: src/insets/InsetSpace.cpp:130
+#: src/insets/InsetSpace.cpp:129
 msgid "Non-Breaking Horizontal Fill (Down Brace)"
 msgstr "Geschützter variabler horiz. Abstand (Klammer unten)"
 
-#: src/insets/InsetSpace.cpp:134
+#: src/insets/InsetSpace.cpp:133
 #, c-format
 msgid "Horizontal Space (%1$s)"
 msgstr "Horizontaler Abstand (%1$s)"
 
-#: src/insets/InsetSpace.cpp:139
+#: src/insets/InsetSpace.cpp:138
 #, c-format
 msgid "Non-Breaking Horizontal Space (%1$s)"
 msgstr "Geschützter horizontaler Abstand (%1$s)"
@@ -42013,11 +42014,11 @@ msgstr "Geschützter horizontaler Abstand (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 
-#: src/insets/InsetTabular.cpp:479
+#: src/insets/InsetTabular.cpp:477
 msgid "Change tracking data incomplete"
 msgstr "Unvollständige Daten für Änderungsmarkierung"
 
-#: src/insets/InsetTabular.cpp:480
+#: src/insets/InsetTabular.cpp:478
 msgid ""
 "Change tracking information for tabular row/column is incomplete. I will "
 "ignore this."
@@ -42025,15 +42026,15 @@ msgstr ""
 "Die Informationen für die Änderungen von Tabellenzeilen- oder -spalten sind "
 "unvollständig. Sie werden ignoriert."
 
-#: src/insets/InsetTabular.cpp:6310
+#: src/insets/InsetTabular.cpp:6308
 msgid "Column movement not supported with multi-columns."
 msgstr "Verschieben von Spalten mit Mehrfachspalten leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:6328
+#: src/insets/InsetTabular.cpp:6326
 msgid "Row movement not supported with multi-rows."
 msgstr "Verschieben von Zeilen mit Mehrfachzeilen leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:6851
+#: src/insets/InsetTabular.cpp:6849
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -42041,59 +42042,59 @@ msgstr ""
 
 # , c-format
 # , c-format
-#: src/insets/InsetText.cpp:1411
+#: src/insets/InsetText.cpp:1403
 msgid "[contains tracked changes]"
 msgstr "[enthält verfolgte Änderungen]"
 
-#: src/insets/InsetWrap.cpp:66
+#: src/insets/InsetWrap.cpp:64
 msgid "Wrap: "
 msgstr "Umflossenes Gleitobjekt: "
 
-#: src/insets/InsetWrap.cpp:199
+#: src/insets/InsetWrap.cpp:197
 msgid "wrap"
 msgstr "Umflossenes Gleitobjekt"
 
-#: src/insets/RenderGraphic.cpp:83 src/insets/RenderGraphic.cpp:87
+#: src/insets/RenderGraphic.cpp:82 src/insets/RenderGraphic.cpp:86
 msgid "Not shown."
 msgstr "Nicht angezeigt."
 
-#: src/insets/RenderGraphic.cpp:90
+#: src/insets/RenderGraphic.cpp:89
 msgid "Loading..."
 msgstr "Lade..."
 
-#: src/insets/RenderGraphic.cpp:93
+#: src/insets/RenderGraphic.cpp:92
 msgid "Converting to loadable format..."
 msgstr "Konvertiere in ein darstellbares Format..."
 
-#: src/insets/RenderGraphic.cpp:96
+#: src/insets/RenderGraphic.cpp:95
 msgid "Loaded into memory. Generating pixmap..."
 msgstr "In den Speicher geladen. Erzeugung der Pixmap..."
 
-#: src/insets/RenderGraphic.cpp:99
+#: src/insets/RenderGraphic.cpp:98
 msgid "Scaling etc..."
 msgstr "Skaliere etc..."
 
-#: src/insets/RenderGraphic.cpp:102
+#: src/insets/RenderGraphic.cpp:101
 msgid "Ready to display"
 msgstr "Bereit zur Anzeige"
 
-#: src/insets/RenderGraphic.cpp:105
+#: src/insets/RenderGraphic.cpp:104
 msgid "No file found!"
 msgstr "Keine Datei gefunden!"
 
-#: src/insets/RenderGraphic.cpp:108
+#: src/insets/RenderGraphic.cpp:107
 msgid "Error converting to loadable format"
 msgstr "Fehler bei der Konvertierung in ein darstellbares Format"
 
-#: src/insets/RenderGraphic.cpp:111
+#: src/insets/RenderGraphic.cpp:110
 msgid "Error loading file into memory"
 msgstr "Fehler beim Laden der Datei in den Speicher"
 
-#: src/insets/RenderGraphic.cpp:114
+#: src/insets/RenderGraphic.cpp:113
 msgid "Error generating the pixmap"
 msgstr "Fehler beim Generieren der Pixmap"
 
-#: src/insets/RenderGraphic.cpp:117
+#: src/insets/RenderGraphic.cpp:116
 msgid "No image"
 msgstr "Kein Bild"
 
@@ -42231,7 +42232,7 @@ msgstr "Box: %1$s"
 msgid "Changing number of columns not allowed in '%1$s'"
 msgstr "In '%1$s' ist eine Änderung der Spaltenanzahl nicht möglich."
 
-#: src/mathed/InsetMathColor.cpp:157
+#: src/mathed/InsetMathColor.cpp:159
 #, c-format
 msgid "Color: %1$s"
 msgstr "Farbe: %1$s"
@@ -42825,8 +42826,14 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
-#~ msgid "Protected Hyphen|y"
-#~ msgstr "Geschützter Trennstrich|T"
+#~ msgid "Search fo&r:"
+#~ msgstr "S&uchen nach:"
+
+#~ msgid "&Search:"
+#~ msgstr "&Suchen:"
+
+#~ msgid "Search and Replace"
+#~ msgstr "Suchen und Ersetzen"
 
 #~ msgid "conclusions"
 #~ msgstr "Schlussfolgerungen"

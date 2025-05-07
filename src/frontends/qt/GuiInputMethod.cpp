@@ -190,7 +190,9 @@ void GuiInputMethod::processPreedit(QInputMethodEvent* ev)
 	// if preedit is cancelled
 	if (ev->preeditString().isEmpty() && ev->commitString().isEmpty() &&
 	        d->has_selection_ && d->im_state_.preediting_ == true) {
+		d->cur_->beginUndoGroup();
 		d->cur_->undoAction();
+		d->cur_->endUndoGroup();
 		d->has_selection_ = false;
 		d->im_state_.preediting_ = false;
 	}

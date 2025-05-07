@@ -596,7 +596,7 @@ void GuiSearchWidget::onDockWidgetVisibilityChanged()
 
 
 GuiSearch::GuiSearch(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "findreplace", qt_("Search and Replace"), area, flags),
+	: DockView(parent, "findreplace", qt_("Find and Replace"), area, flags),
 	  widget_(new GuiSearchWidget(this, parent))
 {
 	setWidget(widget_);

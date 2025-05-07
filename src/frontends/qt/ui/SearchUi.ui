@@ -117,7 +117,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="findLA">
        <property name="text">
-        <string>&amp;Search:</string>
+        <string>&amp;Find what:</string>
        </property>
        <property name="buddy">
         <cstring>findCO</cstring>

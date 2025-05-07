@@ -52,7 +52,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="findLabel">
           <property name="text">
-           <string>Search fo&amp;r:</string>
+           <string>&amp;Find what:</string>
           </property>
           <property name="buddy">
            <cstring>find_work_area_</cstring>

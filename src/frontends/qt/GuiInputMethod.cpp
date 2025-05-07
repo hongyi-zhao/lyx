@@ -479,7 +479,7 @@ std::array<int,2> GuiInputMethod::setCaretOffset(pos_type caret_pos){
 	// This is also true for next_row_pos.
 	// On the other hand d->caret_pos_ counts preedit elements.
 
-	if (d->preedit_str_.empty()) {
+	if (d->preedit_str_.empty() || d->cur_->reverseDirectionNeeded()) {
 		// reset shift of the virtual caret as the preedit string is cancelled
 		// this part is also visited right before starting preedit input
 		return {0, 0};
@@ -876,20 +876,22 @@ pos_type GuiInputMethod::initializePositions(Cursor * cur) {
 	            max_width - d->rows_[cur_row_idx].width() + orphan_width
 	            > horizontalAdvance(d->preedit_str_.substr(0,1));
 
-	if (cur_row_idx > 0) {
-		// the second conditions below are to guarantee they are not the
-		// continued lines of the virtual_boundary case
-		real_boundary = d->buffer_view_->cursor().boundary()
-		        && !d->rows_[cur_row_idx - 1].back().isPreedit()
-		        && !has_room_to_insert;
-		virtual_boundary = d->buffer_view_->cursor().boundary()
-		        && !d->rows_[cur_row_idx - 1].back().isPreedit()
-		        && has_room_to_insert;
-	} else {
-		real_boundary = d->buffer_view_->cursor().boundary()
-		        && !has_room_to_insert;
-		virtual_boundary = d->buffer_view_->cursor().boundary()
-		        && has_room_to_insert;
+	if (!d->cur_->reverseDirectionNeeded()) {
+		if (cur_row_idx > 0) {
+			// the second conditions below are to guarantee they are not the
+			// continued lines of the virtual_boundary case
+			real_boundary = d->buffer_view_->cursor().boundary()
+					&& !d->rows_[cur_row_idx - 1].back().isPreedit()
+					&& !has_room_to_insert;
+			virtual_boundary = d->buffer_view_->cursor().boundary()
+					&& !d->rows_[cur_row_idx - 1].back().isPreedit()
+					&& has_room_to_insert;
+		} else {
+			real_boundary = d->buffer_view_->cursor().boundary()
+					&& !has_room_to_insert;
+			virtual_boundary = d->buffer_view_->cursor().boundary()
+					&& has_room_to_insert;
+		}
 	}
 	// cursor is at the head of the next row after boundary
 	post_real_boundary =

@@ -1392,11 +1392,11 @@ string const LaTeXFeatures::getPackages() const
 	    params_.use_package("cancel") != BufferParams::package_off)
 		packages << "\\usepackage{cancel}\n";
 
-   	// marvosym and bbding both define the \Cross macro
-   	if (mustProvide("marvosym")) {
-	    if (mustProvide("bbding"))
-		packages << "\\let\\Cross\\relax\n";
-   	    packages << "\\usepackage{marvosym}\n";
+	// marvosym and bbding both define the \Cross macro
+	if (mustProvide("marvosym")) {
+		if (mustProvide("bbding"))
+			packages << "\\let\\Cross\\relax\n";
+		packages << "\\usepackage{marvosym}\n";
 	}
 
 	// accents must be loaded after amsmath
@@ -2047,9 +2047,6 @@ string const LaTeXFeatures::loadAMSPackages() const
 
 	if (mustProvide("amsthm"))
 		tmp << "\\usepackage{amsthm}\n";
-
-	// theorem definitions
-	tmp << getThmDefinitions();
 
 	if (mustProvide("amssymb")
 	    && params_.use_package("amssymb") != BufferParams::package_off)

@@ -2872,6 +2872,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		   << atlyxpreamble.release()
 		   << "\\makeatother\n\n";
 
+	// theorem definitions: Must be loaded after user preamble
+	// but before babel
+	os << features.getThmDefinitions();
+
 	// We try to load babel late, in case it interferes with other packages.
 	// Jurabib, hyperref, varioref, bicaption, menukeys and listings (bug 8995)
 	// have to be called after babel, though.

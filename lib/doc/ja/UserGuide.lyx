@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 640
 \begin_document
 \begin_header
 \save_transient_properties false
@@ -163,11 +163,19 @@ End
 \paperorientation portrait
 \suppress_date false
 \justification false
-\use_refstyle 1
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\notefontcolor #0000ff
+\customcolor lyxnotefontcolor 0000ff
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lyxnotefontcolor
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \branch 質問
 \selected 1
 \filename_suffix 0
@@ -203,6 +211,7 @@ End
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -3373,11 +3382,22 @@ Down
 
 \family sans
 Tab
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Tab"
-description "タブキー"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Tab
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+タブキー
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3439,11 +3459,22 @@ nolink "false"
 
 \family sans
 Esc
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Esc"
-description "エスケープキー"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Esc
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+エスケープキー
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3486,11 +3517,22 @@ Control
 Ctrl
 \family default
 」
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Ctrl"
-description "コントロールキー"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Ctrl
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+コントロールキー
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3551,11 +3593,22 @@ Shift
 Shift
 \family default
 」
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Shift"
-description "シフトキー"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Shift
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+シフトキー
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3574,11 +3627,22 @@ Alt
 Alt
 \family default
 」
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "Alt"
-description "メタキーまたはAltキー"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+Alt
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+メタキーまたはAltキー
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -6397,7 +6461,7 @@ Return
 
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \end_layout
 
 \begin_layout Itemize
@@ -7683,7 +7747,7 @@ name "sec:箇条書き"
 は各々の項目の前に小さい印か番号をつけます．
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 と
@@ -8285,7 +8349,7 @@ nolink "false"
 \begin_layout Subsubsection
 
 \series bold
-箇条書き(記述)
+記述
 \series default
 
 \begin_inset Index idx
@@ -8337,7 +8401,7 @@ status open
 
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 環境では項目に付けるラベルは決まっていません．そのかわりに\SpecialChar LyX
@@ -8349,7 +8413,7 @@ status open
  これは
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 環境の例です．
@@ -8425,14 +8489,14 @@ Example:
  
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 環境は定義，
 定理のようなものに使ったらいいでしょう．ある言葉を残りのテキストより目立つようにしたい場合に使えばいいのです．あることを説明する文章全体を
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 環境にいれるのはやめた方がいいでしょう．その場合には
@@ -8460,13 +8524,13 @@ Example:
  
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 環境を他の
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 環境の中に入れたり，
@@ -8542,7 +8606,7 @@ status open
 
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 と同様，
@@ -8678,7 +8742,7 @@ Mと同じ幅)．
 
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 と同じように，
@@ -9117,7 +9181,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 #
@@ -9147,7 +9210,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 Alph{enumi}.
@@ -9179,7 +9241,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 bfseries{
@@ -9207,7 +9268,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 emph{
@@ -9392,7 +9452,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 label=
 \backslash
 arabic{enumi}.
@@ -9505,7 +9564,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 start=4
 \end_layout
 
@@ -9603,7 +9661,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 nolistsep
 \end_layout
 
@@ -9700,7 +9757,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 labelindent=
 \backslash
 parindent,
@@ -9825,7 +9881,6 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-
 labelindent=0pt,
  labelsep=1cm,
  font=
@@ -10964,14 +11019,12 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です．
 \end_layout
 
@@ -10984,7 +11037,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め，
 ほぼすべての文字が使えます．例：
 "%&$§#~'`
@@ -11018,7 +11070,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -11338,7 +11389,7 @@ arg   "depth-decrement"
 
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \end_layout
 
 \begin_layout Itemize
@@ -12337,7 +12388,7 @@ Return
 
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \series default
 ・
 \series bold
@@ -13835,7 +13886,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 medspace{}
 \end_layout
@@ -13860,7 +13910,6 @@ medspace{}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 thickspace{}
@@ -18784,99 +18833,11 @@ status open
 \family default
 \series default
  このスイッチで文字色を調整することができます．ただし，
-すべてのDVIビューアがカラーを表示できるわけではないことに注意してください．
-\family sans
-\series bold
-黒
-\family default
-\series default
-・
-\family sans
-\series bold
-白
-\family default
-\series default
-・
-\family sans
-\series bold
-赤
-\family default
-\series default
-・
-\family sans
-\series bold
-緑
-\family default
-\series default
-・
-\family sans
-\series bold
-青
-\family default
-\series default
-・
-\family sans
-\series bold
-シアン
-\family default
-\series default
-・
-\family sans
-\series bold
-マゼンタ
-\family default
-\series default
-・
-\family sans
-\series bold
-黄
-\series default
-・
-\series bold
-茶
-\series default
-・
-\series bold
-濃灰色
-\series default
-・
-\series bold
-灰色
-\series default
-・
-\series bold
-薄灰色
-\series default
-・
-\series bold
-ライム
-\series default
-・
-\series bold
-橙
-\series default
-・
-\series bold
-オリーブ
-\series default
-・
-\series bold
-桃
-\series default
-・
-\series bold
-紫
-\series default
-・
-\series bold
-ティール
-\series default
-・
-\series bold
-青紫
-\family default
-\series default
-が指定できるほか，
+すべてのDVIビューアがカラーを表示できるわけではないことに注意してください．\SpecialChar LaTeX
+基本色，
+DVIPS色，
+SVG色，
+X11色の各々の色彩スキームから750色以上の定義色を指定できるほか，
 
 \family sans
 \series bold
@@ -18898,7 +18859,27 @@ status open
 本文
 \family default
 \series default
-に指定した既定色が使用されることを意味します．
+に指定した既定色が使用されることを意味します．この長い色彩リストから目当ての色を探すためには，
+ドロップダウンメニューが開いているときに文字をタイプすることによって，
+ドロップダウン中の色を検索することができます．
+\begin_inset Newline newline
+\end_inset
+
+定義色では満足できない場合，
+文書設定ダイアログでカスタム色を追加で定義することによって，
+ドロップダウン中にその色を表示させることができます（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:色彩"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+tuple "list"
+
+\end_inset
+
+節参照）．
 \begin_inset Index idx
 range none
 pageformat default
@@ -19834,8 +19815,27 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-latexはつけし@\SpecialChar LaTeX
-パッケージ !
+latexはつけし
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+\SpecialChar LaTeX
+パッケージ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+
  pstricks
 \end_layout
 
@@ -20319,6 +20319,110 @@ HTML
 \end_inset
 
 メニューを使用します．
+\end_layout
+
+\begin_layout Subsubsection
+DocBook
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+ファイル形式
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+ふあいるけいしき
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+DocBook
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+DocBook
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+このファイル形式は拡張子「.xml」を持ちます．多くの場合，
+DocBook文書は直接使用するのではなく，
+DocBook StyleSheetsやDocBook xslTNGのような適切なツールチェーンを用いて処理するためのものです．DocBook文書自身には画像の類いは含まれておらず，
+それらへのリンクが張ってあるだけです．\SpecialChar LyX
+がDocBookを生成する際には，
+リンクから目的に合った形式の画像も生成します．数式の出力に関しては，
+
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+出力
+\family default
+\series default
+メニューから出力形式を選択することができます．
+\end_layout
+
+\begin_layout Standard
+DocBook出力は「開発途中」であり，
+まだすべての\SpecialChar LyX
+機能がサポートされているわけではありません．
+\end_layout
+
+\begin_layout Standard
+文書は，
+メニュー項目
+\family sans
+\series bold
+ファイル\SpecialChar menuseparator
+書き出し\SpecialChar menuseparator
+
+\series default
+DocBook
+\begin_inset space ~
+\end_inset
+
+5
+\family default
+からXMLファイルとして書き出すことができます．また，
+DocBook文書には\SpecialChar TeX
+コードを使って生のXMLを書き込むことができます（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:DocBookコード"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+tuple "list"
+
+\end_inset
+
+節参照）．
 \end_layout
 
 \begin_layout Subsection
@@ -21113,7 +21217,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ^{e}
 \end_layout
@@ -21135,7 +21238,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 `{e}
 \end_layout
@@ -21152,7 +21254,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 nobreakdash
 \end_layout
@@ -21166,7 +21267,6 @@ un inciso con rayas—
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 '{i}
@@ -21246,7 +21346,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ^{e}
 \end_layout
@@ -21262,7 +21361,6 @@ me si tout le monde ne les aime pas
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 `{e}
@@ -24914,7 +25012,31 @@ name "subsec:画像形式"
 \end_layout
 
 \begin_layout Standard
-画像は，
+画像
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+静的な画像以外にも画像生成スクリプトを使用することができます．たとえば，
+画像ファイル名の代わりにGnuplotスクリプト（「.gp」や「.gnuplot」拡張子が付いているファイル）を使うことができます．また，
+Gnuplotスクリプトは外部素材に含めることができます．この場合，
+ラベルと数字は文書フォントで組版され，
+Gnuplotスクリプト中で使用されているLaTeX数式コマンドも数式化されます．Gnuplotスクリプトを外部素材として挿入する方法について，
+詳しくは
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX wikiページのGnuplotの項"
+target "https://wiki.lyx.org/Tools/GnuplotInLyX"
+literal "false"
+
+\end_inset
+
+を参照してください．
+\end_layout
+
+\end_inset
+
+は，
 既知のファイル形式であれば，
 どのような形式でも挿入することができます．しかし，
 第
@@ -24973,7 +25095,6 @@ GIF
 status collapsed
 
 \begin_layout Plain Layout
-
 |see{画像形式}
 \end_layout
 
@@ -28340,6 +28461,18 @@ status open
 ．マウスや，
 シフトを押しながらの矢印キーによる選択も通常どおり機能します．表全体の切り貼りも，
 表の外側から選択を始めることで行うことができます．
+\end_layout
+
+\begin_layout Subsection
+色彩
+\end_layout
+
+\begin_layout Standard
+各セルや，
+行全体または列全体，
+あるいは表罫線の色は，
+表設定ダイアログの中で設定することができます．詳細と用例については，
+取扱説明書『埋込オブジェクト篇』（「色付きの表」の節）を参照してください．
 \end_layout
 
 \begin_layout Section
@@ -33358,8 +33491,9 @@ name "sec:相互参照"
 \begin_layout Standard
 \SpecialChar LyX
 の強みの一つは，
-強力な相互参照機能です．文書中のすべての節・フロート・脚註・数式・箇条書きを参照することが可能です．文書の一部を参照するには，
-文書にラベルを挿入しなくてはなりません．ラベルは，
+強力な相互参照機能です．カウンタを持つ文書中のすべてのもの（たとえば，
+節・フロート・脚註・数式・箇条書きなど）を参照することが可能です．文書の一部を参照するには，
+その部分にラベルが付いていることが必要です．ラベルは，
 参照位置を固定するとともに，
 参照用の名前をつけるのに使われます．例として，
 以下の箇条書きの第2項目を参照したいものとしましょう．
@@ -33384,15 +33518,30 @@ name "enu:第2項目"
 \end_layout
 
 \begin_layout Standard
+ラベルは，
+以下に述べるように手動で挿入することもできますが，
+\SpecialChar LyX
+は，
+相互参照ダイアログや文書構造面から直接自動的に操作を行う方法を備えています．これは後述します．
+\end_layout
+
+\begin_layout Standard
+手動でラベルを挿入するには，
 まず，
-挿入ラベルメニューを使うかツールバーボタン
+
+\family sans
+\series bold
+挿入\SpecialChar menuseparator
+ラベル
+\family default
+\series default
+メニューを使うかツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-を押して，
-第2項目にラベルを挿入します．
+を押します．
 \begin_inset Graphics
 	filename clipart/label.png
 
@@ -33449,15 +33598,7 @@ arg   "dialog-show-new-inset ref"
 \end_inset
 
 を使用して，
-そのラベル名を参照してください．
-\begin_inset Graphics
-	filename clipart/reference.png
-
-\end_inset
-
-のような灰色の枠が挿入され，
-相互参照ウィンドウが現れて文書内のすべてのラベルが表示されます．見やすくラベルをアルファベット順に整列するなどして，
-「
+そのラベル名を参照してください．相互参照ウィンドウが現れて文書内のすべてのラベルが表示されます（一覧をソートしたりグループ化したりフィルターをかけたりすることができます）．「
 \family sans
 enu:
 \series bold
@@ -33468,8 +33609,35 @@ enu:
 項目
 \family default
 \series default
-」という項目を見つけ選択してください．出力では，
-相互参照枠の位置に項目番号が印字されます．
+」という項目を見つけ選択してください．
+\begin_inset Graphics
+	filename clipart/reference.png
+
+\end_inset
+
+のような灰色の相互参照ボックスが挿入され，
+これが出力における参照（既定では項目番号）になります．
+\end_layout
+
+\begin_layout Standard
+相互参照様式の中には，
+相互参照中に複数のラベルを許容し，
+これを適切な書式（例「Sections 1,
+ 2,
+ and 3」）に出力してくれるものがあります．２つのラベルを範囲の開始位置と終了位置に使用するものもあります（例「Sections 1 to 5」）．このことから，
+ダイアログ中で複数のラベルを追加し，
+その順序を整えることができるようになっています．
+\end_layout
+
+\begin_layout Standard
+既存ラベル一覧の他にも，
+すべての節見出し（「目次」）や図表キャプション，
+文書中のその他の参照可能要素をダイアログ中に表示させることができます．これらのうち一を選んで「追加」を押すと，
+それが参照するラベル一覧に加えられ，
+\SpecialChar LyX
+は項目にラベルが既にあるかどうかをチェックし，
+なければ挿入前にラベルを生成します．ラベルを自分自身で挿入することに悩まされることはありません！
+
 \end_layout
 
 \begin_layout Standard
@@ -33484,8 +33652,13 @@ enu:
 \begin_inset space \thinspace{}
 \end_inset
 
-の代わりに，
-ラベルをクリックすると現れる文脈依存メニューにある
+の代わりとしてすべての項目型について動作する方法（ただし既存のラベルが必須）としては，
+下記のものがあります．
+\end_layout
+
+\begin_layout Itemize
+ラベルを右クリックし，
+ポップアップメニューから
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -33499,26 +33672,33 @@ enu:
 \begin_inset space \thinspace{}
 \end_inset
 
-を使うこともできます．すると，
+を選択することもできます．すると，
 このラベルに対する相互参照がクリップボードにコピーされるので，
 
 \family sans
 編集\SpecialChar menuseparator
 貼り付け
 \family default
-(ショートカット：
+（ショートカット：
 
 \begin_inset Info
 type  "shortcut"
 arg   "paste"
 \end_inset
 
-)メニューを使って，
+）メニューを使って，
 現在のカーソル位置に貼り付けることができます．
 \end_layout
 
+\begin_layout Itemize
+文書構造面の「ラベルと相互参照」セクションにおいて，
+参照したいラベルを右クリックし，
+文脈依存メニューから「カーソル位置に参照を挿入」を選択します．
+\end_layout
+
 \begin_layout Standard
-右が相互参照の例です：
+どのような方法をとっても，
+最終的に出てくる相互参照の例がこれです：
 第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -33611,6 +33791,24 @@ nolink "false"
 \end_layout
 
 \begin_layout Description
+page
+\begin_inset space ~
+\end_inset
+
+<参照ページ> 
+\series bold
+cleveref
+\series default
+と
+\series bold
+zref-clever
+\series default
+でのみ利用可能なこのオプションは，
+テキスト「page」とページ番号を出力します．これは複数のラベルを，
+整序されたページリストや範囲として結合することができます．
+\end_layout
+
+\begin_layout Description
 on
 \begin_inset space ~
 \end_inset
@@ -33639,6 +33837,11 @@ nolink "false"
 見開きにない次のページにラベルがあるときは，
 「on the next page」と出力します．出力される文の言葉遣いは，
 使用する文書クラスに依存します．
+\begin_inset Newline newline
+\end_inset
+
+２つのラベルが挿入されると，
+範囲の開始位置と終了位置として取り扱われます．
 \end_layout
 
 \begin_layout Description
@@ -33684,6 +33887,11 @@ on page <ページ>
 \family default
 \series default
 のように出力します．
+\begin_inset Newline newline
+\end_inset
+
+２つのラベルが挿入されると，
+範囲の開始位置と終了位置として取り扱われます．
 \end_layout
 
 \begin_layout Description
@@ -33704,12 +33912,50 @@ status open
 \SpecialChar LaTeX
 パッケージの
 \series bold
+cleveref
+\series default
+，
+
+\series bold
 prettyref
 \series default
 または
 \series bold
 refstyle
 \series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+パッケージ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+latexはつけし
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+cleveref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \begin_inset Index idx
 range none
@@ -33801,15 +34047,7 @@ refstyle
 
 \family sans
 \series bold
-相互参照に
-\series default
-(prettyref
-\series bold
-ではなく
-\series default
-)refstyle
-\series bold
-を使用
+整形パッケージ
 \family default
 \series default
 
@@ -33822,26 +34060,39 @@ refstyle
 \series bold
 refstyle
 \series default
-パッケージが使われており，
-
+パッケージが使われます．
 \series bold
 prettyref
 \series default
-は英語しかサポートしないので，
-こちらの方が望ましい設定になっています．書式は，
+は（自分自身で設定を変えない限り）英語しかサポートしないので注意してください．書式は，
 文書の\SpecialChar LaTeX
 プリアンブルで，
 
 \series bold
 
 \backslash
-newrefformat
+newref|format
 \series default
  (
 \series bold
 prettyref
 \series default
-の場合)か
+の場合)や
+\series bold
+
+\backslash
+crefname|
+\backslash
+crefname
+\series default
+（cleverefの場合），
+
+\series bold
+
+\backslash
+zcRefTypeSetup
+\series default
+（zref-cleverの場合）か
 \series bold
 
 \backslash
@@ -33890,7 +34141,8 @@ prettyref
 refstyle
 \series default
 も全型に対する参照形式を事前に定義しているわけではないことに注意してください．特に，
-数学「定理」環境の多くに対してはそうです．したがって，
+数学「定理」環境の多くに対してはそうです（cleverefはこの点において，
+もっと「クレバー」です）．したがって，
 例えば命題に対して整形された参照を行いたい場合には，
 関連した形式を自身で定義する必要があります．
 \series bold
@@ -33926,26 +34178,83 @@ literal "true"
 \begin_inset Newline newline
 \end_inset
 
-整形された参照の
+
 \family sans
 \series bold
 複数形
 \family default
 \series default
-と
+オプションは，
+整形された参照の場合，
+
+\series bold
+refstyle
+\series default
+パッケージを利用しているときのみ使用でき，
+名称参照の場合，
+
+\series bold
+cleveref
+\series default
+パッケージを使用しているときのみ使用できます．
 \family sans
 \series bold
 大文字化
 \family default
 \series default
-のオプションは，
+オプションは，
+整形された参照の場合，
 
 \series bold
 refstyle
 \series default
-パッケージを利用している時のみ使用できます．
+パッケージを利用しているときのみ使用でき，
+整形された参照と名称参照の場合，
+
+\series bold
+cleveref
+\series default
+パッケージを使用しているときのみ使用できます．また，
+整形された参照と「on page」参照の場合，
+
+\series bold
+zref-clever
+\series default
+パッケージと
+\series bold
+zref-vario
+\series default
+パッケージを使用しているときのみ使用できます．
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+zref-clever
+\series default
+パッケージと
+\series bold
+zref-vario
+\series default
+パッケージについては，
+詳細設定を入力することができます．他のパッケージに対しては，
+このフィールドは無効化されています．
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+作業領域で相互参照を整形する
+\series default
+オプションを有効にすると，
+\SpecialChar LyX
+は整形された参照の表示を，
+ラベルだけを表示するのではなく，
+出力に表示されるような形で表示しようと試みます．
+\end_layout
+
+\end_deeper
 \begin_layout Description
 名称参照 
 \begin_inset CommandInset ref
@@ -33996,11 +34305,7 @@ refstyle
 \series bold
 refstyle
 \series default
-の範囲コマンドで必要とされます．
-\end_layout
-
-\begin_layout Standard
-文書中参照されている部分の出力における参照番号と参照ページ番号は，
+の範囲コマンドで必要とされます．文書中参照されている部分の出力における参照番号と参照ページ番号は，
 \SpecialChar LaTeX
 が自動的に計算します．参照の種類は，
 相互参照枠をクリックすると出てくる相互参照ウィンドウの
@@ -34011,7 +34316,6 @@ refstyle
 \end_layout
 
 \begin_layout Standard
-また，
 
 \family sans
 <
@@ -34108,6 +34412,63 @@ arg   "bookmark-goto 0"
 \begin_layout Standard
 相互参照に関しては，
 取扱説明書『埋込オブジェクト篇』の「フロートの参照」の章に詳述されています．
+\end_layout
+
+\begin_layout Subsection
+外部文書への相互参照
+\end_layout
+
+\begin_layout Standard
+一つのファイルもしくは一連の関連ファイル（親，
+子，
+親戚；
+『埋込オブジェクト』の「子文書」節を参照）のうちに関する限りは，
+相互参照の生成の仕方について語る必要のあるものは以上です．しかしながら，
+完全に別の文書（複数巻書籍の他の巻など）の一部を参照したいこともあるでしょう．これは，
+この別の文書が\SpecialChar LyX
+ファイルとして利用可能な限りは（\SpecialChar LaTeX
+パッケージ
+\family sans
+xr
+\family default
+の助けを借りて）可能です．
+\end_layout
+
+\begin_layout Standard
+そのような参照を挿入するためには，
+この文書も開いておきます．参照を挿入する文書から，
+前節に説明した方法で相互参照ダイアログを開きます．「既存のラベル」が表示されていることを確認します．「対象：
+」と書いてあるファイル選択ボックスから参照したい文書を選択します．ダイアログにその文書内の既存のラベルがすべて表示されますので，
+目的のものを選択して追加します．
+\end_layout
+
+\begin_layout Standard
+あるいは，
+前節で述べられているように，
+文脈依存メニューの
+\family sans
+\series bold
+参照としてコピー
+\family default
+\series default
+を外部文書からのラベルをコピーするのに使用することができます．
+\end_layout
+
+\begin_layout Standard
+ただし一つ忠告があります．\SpecialChar LaTeX
+は参照ターゲットの情報を必要とするので，
+参照される文書のラベルにアクセスするためには，
+参照する文書がコンパイルされる前に，
+参照される文書がコンパイルされる必要があります．\SpecialChar LyX
+は，
+そのような外部参照を含む文書では，
+これを自動的に行ってくれます．そのような文書をプレビューする際には，
+\SpecialChar LyX
+は各ターゲット文書を開き，
+実際の（参照する）文書を取り扱う前に，
+それらをコンパイルしたり更新したりしてくれます．もちろん，
+参照される文書が（参照を挿入した際にあったパスで）利用可能であり，
+アクセス可能であることを確実にする必要があります．
 \end_layout
 
 \begin_layout Section
@@ -34447,7 +34808,6 @@ URL
 status open
 
 \begin_layout Plain Layout
-
 https://www.lyx.org
 \end_layout
 
@@ -35111,10 +35471,7 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
-https://ja.wikipedia.org/wiki/ASCII
-\backslash
-#ASCII.E5.8D.B0.E5.AD.97.E5.8F.AF.E8.83.BD.E6.96.87.E5.AD.97
+https://ja.wikipedia.org/wiki/ASCII#ASCII.E5.8D.B0.E5.AD.97.E5.8F.AF.E8.83.BD.E6.96.87.E5.AD.97
 \end_layout
 
 \end_inset
@@ -35494,7 +35851,17 @@ status open
 status open
 
 \begin_layout Plain Layout
-てたへす@データベース
+てたへす
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+データベース
 \end_layout
 
 \end_inset
@@ -35594,7 +35961,6 @@ literal "true"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/BibTeX/Programs
 \end_layout
 
@@ -36146,6 +36512,13 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
+Chicago様式のbiblatexモードは，
+組み込みの引用・書誌情報様式を持っており，
+書誌情報オプションを用いて少しだけ調整することができます（詳細については，
+パッケージ説明書を参照してください）．
+\end_layout
+
+\begin_layout Standard
 文献参照の挿入については，
 第
 \begin_inset CommandInset ref
@@ -36451,19 +36824,33 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-書誌情報レイアウト
+引用書式
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
 書誌情報
 \begin_inset IndexMacro sortkey
 status open
 
 \begin_layout Plain Layout
-しよししようほう
+いんようしよしき
 \end_layout
 
 \end_inset
@@ -36473,17 +36860,21 @@ status open
 status open
 
 \begin_layout Plain Layout
-レイアウト
-\begin_inset IndexMacro sortkey
-status open
 
-\begin_layout Plain Layout
-れいあうと
-\end_layout
-
-\end_inset
-
-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+引用書式
 \end_layout
 
 \end_inset
@@ -36496,7 +36887,7 @@ status open
 
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:書誌情報レイアウト"
+name "subsec:引用書式"
 
 \end_inset
 
@@ -36710,6 +37101,75 @@ biblatex
 \family default
 \series default
 フィールドに入力できます．
+\end_layout
+
+\begin_layout Description
+Biblatex
+\begin_inset space \thinspace{}
+\end_inset
+
+(Chicago様式) これは
+\series bold
+biblatex-chicago
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+パッケージ
+\begin_inset IndexMacro sortkey
+status open
+
+\begin_layout Plain Layout
+latexはつけし
+\end_layout
+
+\end_inset
+
+
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+biblatex-chicago
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+パッケージを読み込みます．これは特に
+\emph on
+Chicago Manual of Style
+\emph default
+に従いたいユーザーのためのものです．
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+authordate
+\end_layout
+
+\end_inset
+
+と
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+notes-bibliography
+\end_layout
+
+\end_inset
+
+モードの両方がサポートされています．
 \end_layout
 
 \begin_layout Description
@@ -37595,11 +38055,10 @@ Enter
 \SpecialChar LaTeX
 においては，
 副項目はその前に感嘆符「!」を前に付けることで表されます．この表記は，
-この文字が装飾されないように注意しなくてはなりませんが，
+この文字を\SpecialChar TeX
+モードで挿入しなくてはなりませんが，
 \SpecialChar LyX
-においても機能します．このため，
-本当の感嘆符は，
-索引項目に入れる際には特定の方法で為さなくてはなりません．詳細は第
+においても機能します．詳細は第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:索引項目における特殊文字"
@@ -38020,11 +38479,10 @@ makeindex
 \begin_layout Standard
 \SpecialChar LaTeX
 においては，
-整序キーと実際の項目は「@」文字で区切られます．この文字に書式が設定されていないことに注意しなくてはなりませんが，
+整序キーと実際の項目は「@」文字で区切られます．この文字を\SpecialChar TeX
+コードで挿入しなくてはなりませんが，
 \SpecialChar LyX
-でもこう書くことで整序できます．このため，
-本来の「@」文字は，
-索引項目に特定の方法を用いて入力しなくてはなりません．詳細については，
+でもこう書くことで整序できます．詳細については，
 第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -38328,7 +38786,6 @@ status open
 \end_layout
 
 \begin_layout Verbatim
-
 (markup-locref :open "
 \backslash
 IndexDef{" :close "}" :attr "IndexDef")
@@ -38412,7 +38869,6 @@ literal "true"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ctan.org/topic/index
 \end_layout
 
@@ -38478,103 +38934,29 @@ status collapsed
 
 \end_inset
 
-」です．これらをそのまま使ってしまうと，
-驚くべき結果を得るか，
-出力の出ない索引を得てしまいます．どちらにしても，
-その字そのものが得られることはありません．
+」です．これらの機能は，
+\SpecialChar LyX
+中では副差込枠を使って実現されるので，
+これらの文字を索引に入れると
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+でエスケープされ，
+出力中では文字通りに出力されます．
 \end_layout
 
 \begin_layout Standard
-これらの文字を項目差込枠中で使うためには，
-これらの字を「エスケープ」する必要があります．すなわち，
-索引処理プログラムに，
-この文字を特別な意味がないものとして取り扱わせるための何らかの文字を対象の文字の前に置きます．既定では，
-エスケープ文字は
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-となっています(ただし変更することは可能です)．したがって，
-望む特殊文字がほしい場合には，
-「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-!
-\end_layout
-
-\end_inset
-
-」「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-@
-\end_layout
-
-\end_inset
-
-」「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-
-\begin_inset Quotes qld
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-」「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-|
-\end_layout
-
-\end_inset
-
-」のように入力してください．ただし，
-エスケープ文字
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes qld
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-は，
+代わりに特殊用途で使いたい場合には，
+これらの特殊文字は，
 
 \begin_inset Flex 圏点
 status open
@@ -39285,7 +39667,7 @@ nomencl
 
 が導入されている必要があります．これは，
 \SpecialChar TeX
- Catalogue 
+ Catalog 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
@@ -39327,98 +39709,69 @@ arg   "nomencl-insert"
 用語
 \family default
 \series default
-」というラベルのついた灰色の枠が挿入されて，
-ウィンドウが現れ，
-用語項目の入力を促します．
+」というラベルのついた折畳み可能な枠が挿入されます．カーソルが単語のあとにあれば，
+単語が差込枠にコピーされます．
 \end_layout
 
 \begin_layout Standard
-用語項目には，
-主要な項目が2つあります．ひとつは参照したい
+既定では，
+用語項目には主要な項目が2つあります．ひとつは参照したい
 \family sans
 記号
 \family default
 ・用語であり，
 二つめは記号・用語の
 \family sans
+\series bold
 説明
 \family default
-です．用語集の設定
-\begin_inset space \thinspace{}
-\end_inset
-
-ダイアログ中の
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\family sans
-\series bold
-原文通り
-\family default
 \series default
-
-\begin_inset space \thinspace{}
-\end_inset
-
-オプションを用いると、
+です．前者は，
+折畳み可能差込枠に直接挿入され，
+後者は，
+自動で挿入される
 \family sans
 \series bold
 説明
 \family default
 \series default
-フィールドと
+副差込枠に挿入されます．副差込枠は
 \family sans
 \series bold
-整序用文字列
+挿入
 \family default
 \series default
-フィールドで\SpecialChar TeX
-コードが使えるようになります。
-
+メニューから入れることもできます．
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-［註］
-\series default
-用語集項目に\SpecialChar TeX
-コードを使うには、
-\family sans
-\series bold
-用語集の設定
-\family default
-\series default
-
-\begin_inset space \thinspace{}
-\end_inset
-
-ダイアログ中の
-\begin_inset space \thinspace{}
-\end_inset
-
+これに加えて，
 
 \family sans
 \series bold
-原文通り
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+用語集
 \family default
 \series default
+において「表」用語集様式を選択することができます．これを用いると，
+用語集は一覧ではなく（４列の）長尺表として設定され，
 
-\begin_inset space \thinspace{}
-\end_inset
+\series bold
+単位
+\series default
+（あらゆる種類の単位用）と
+\series bold
+註釈
+\series default
+（追記用）の２つの項目が追加されます．これらの２つの項目は，
 
-オプションを有効にしなくてはなりません。
-
-\end_layout
-
-\end_inset
-
-
+\family sans
+\series bold
+挿入
+\family default
+\series default
+メニューからも選択できます．
 \end_layout
 
 \begin_layout Subsection
@@ -39470,120 +39823,9 @@ status open
 \end_layout
 
 \begin_layout Standard
-数式に記号が使われているとき，
-
-\family sans
-記号
-\family default
-フィールド中には，
-\SpecialChar LaTeX
-数式と同じようにして定義をしなくてはなりません．例えば，
-「
-\begin_inset Formula $\sigma$
-\end_inset
-
-」を得るには，
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-$
-\backslash
-sigma$
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-と挿入します．記号「$」は数式の始まりと終わりを示します．ギリシャ文字用の\SpecialChar LaTeX
-コマンドは，
-バックスラッシュ「
-\backslash
-」で始まるその文字の名前です．大文字のギリシャ文字は，
-コマンドを
-\series bold
-
-\backslash
-Sigma
-\series default
-のように大文字で始めます．
-\end_layout
-
-\begin_layout Standard
-(\SpecialChar LaTeX
-の文法に関する短い入門が第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:LaTeX文法"
-nolink "false"
-
-\end_inset
-
-節にあります．)
-\end_layout
-
-\begin_layout Standard
-説明文を整形するのに
-\family sans
-\series bold
-文辞様式
-\family default
-\series default
-ダイアログは使えないので，
-\SpecialChar LaTeX
-コマンドを使用しなくてはなりません．例えば，
-本文書での「
-\begin_inset Formula $\sigma$
-\end_inset
-
-」の記号項目の説明は
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-文字
-\backslash
-textsf{sigma}のためのダミー項目
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-となっています．コマンド
-\series bold
-
-\backslash
-textsf
-\series default
-はフォントをサンセリフ体にします．もしボールド体が得たければ，
-
-\series bold
-
-\backslash
-textbf
-\series default
-コマンド，
-タイプライタ体を得るには
-\series bold
-
-\backslash
-texttt
-\series default
-コマンド，
-
-\emph on
-強調体
-\emph default
-は
-\series bold
-
-\backslash
-emph
-\series default
-コマンドを使用します．
+用語集差込枠の中では，
+通常通り，
+数式や整形を行うことができます．
 \end_layout
 
 \begin_layout Standard
@@ -39611,54 +39853,15 @@ textbf{#1}}}
 というコマンドを，
 文書設定中の\SpecialChar LaTeX
 プリアンブルに追記します．この命令は，
-全記号のフォントをボールド体とサンセリフ体にするものです．
-\end_layout
-
-\begin_layout Standard
-\SpecialChar TeX
-コードを含む用語集項目に
-\begin_inset space \space{}
-\end_inset
-
-|
-\begin_inset space \space{}
-\end_inset
-
-,
-\begin_inset space \space{}
-\end_inset
-
-!
-\begin_inset space \space{}
-\end_inset
-
-,
-\begin_inset space \space{}
-\end_inset
-
-@
-\begin_inset space \space{}
-\end_inset
-
-,
-\begin_inset space \space{}
-\end_inset
-
-"
-\begin_inset space \space{}
-\end_inset
-
-といった文字が現れる場合には，
-これらの文字の前にパーセント文字をつけてエスケープしなくてはなりません．
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "\"@, \"|, \"!, \"\""
-description "引用符は、「 \"\"\"\" 」と書くことで出力されます"
-literal "true"
-
-\end_inset
-
-
+全記号のフォントを
+\series bold
+ボールド体
+\series default
+と
+\family sans
+サンセリフ体
+\family default
+にするものです．
 \end_layout
 
 \begin_layout Subsection
@@ -39717,11 +39920,22 @@ status open
 a
 \emph default
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "a"
-description "文字「a」のダミー項目"
-literal "false"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+a
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+文字「a」のダミー項目
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -39730,12 +39944,54 @@ literal "false"
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-prefix "sigma"
-symbol "$\\sigma$"
-description "文字\\textsf{sigma}のダミー項目"
-literal "true"
+\begin_inset Nomenclature
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sigma
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+$
+\backslash
+sigma$
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+文字
+\backslash
+textsf{sigma}のダミー項目
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -39769,13 +40025,19 @@ a
 
 \begin_layout Standard
 整序順を制御するには，
-用語集ダイアログの
+
 \family sans
 \series bold
-整列用文字列
+挿入
 \family default
 \series default
-フィールドを編集します．用語項目は，
+メニューにある
+\family sans
+\series bold
+整序キー
+\family default
+\series default
+を使用します．用語項目は，
 記号定義ではなく，
 この項目によって整序されます．ここの例では，
 
@@ -39796,23 +40058,6 @@ a
 \end_inset
 
 の前に来るようになります．
-\end_layout
-
-\begin_layout Standard
-グループ化や整序項目の便利な利用法については，
-
-\series bold
-nomencl
-\series default
-の取扱説明書
-\begin_inset CommandInset citation
-LatexCommand cite
-key "nomencl"
-literal "true"
-
-\end_inset
-
-を参照してください．
 \end_layout
 
 \begin_layout Subsection
@@ -39874,12 +40119,36 @@ name "subsec:用語集オプション"
 nomencl
 \series default
 パッケージは，
-記号一覧や用語集の外観を調整するオプションを提供しています．以下は，
-それらのオプションの一部です．他のオプションに関してはパッケージの取扱説明書をご覧ください．
+記号一覧や用語集の外観を調整する多くのオプションを提供しています．これらは
+\family sans
+\series bold
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+用語集
+\family default
+\series default
+で設定することができます．
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+用語集様式
+\family default
+\series default
+では，
+用語集を一覧表示する既定様式か，
+区分けされた表として表示する表様式かを選択することができます．後者の様式では，
+各用語項目に単位と註釈の２つの項目が追加されます．
 \end_layout
 
 \begin_layout Description
-refeq すべての用語項目に「
+目次に追加 用語集を目次に追加します．
+\end_layout
+
+\begin_layout Description
+数式参照を追加 すべての用語項目に「
 \family sans
 ,
  see equation (eq)
@@ -39892,7 +40161,7 @@ eq
 \end_layout
 
 \begin_layout Description
-refpage すべての用語項目に「
+ページ参照を追加 すべての用語項目に「
 \family sans
 ,
  page (page)
@@ -39905,99 +40174,145 @@ page
 \end_layout
 
 \begin_layout Description
-intoc 用語集を目次に加えます．
+標準分類を使用 用語集一覧を構築するのに，
+事前に設定された分類グループ（ラテン文字，
+ギリシャ文字，
+上付き文字，
+下付き文字）を使用します．
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
-オプションをひとつないしそれ以上使用するには，
+項目は，
 
 \family sans
 \series bold
-文書\SpecialChar menuseparator
-設定
+整序キー
 \family default
 \series default
-
-\begin_inset space \thinspace{}
-\end_inset
-
-ダイアログの文書クラスオプションにコンマ区切りの列挙の形で加えてください．本文書では，
-
-\series bold
-intoc
-\series default
-と
-\series bold
-refpage
-\series default
-オプションが使われています．
-\begin_inset VSpace bigskip
-\end_inset
-
-
+副差込枠を用いて分類されます．分類を使うと，
+整序文字の一文字目が分類グループを表します（a：
+ラテン文字，
+g：
+ギリシャ文字，
+x：
+上付き文字，
+z：
+下付き文字）．二文字目からがグループ内の整序に用いられます．整序が手動で指定されなければ，
+aが用いられます．
 \end_layout
 
 \begin_layout Standard
-また，
-以下のコマンドを用語集ダイアログの説明フィールドの最後に使用することで，
-上記の最初の二つのオプションと同じ動作を，
-特定の用語項目に対してのみ行うことができます．
-\end_layout
+これ以外の分類が必要な場合には，
 
-\begin_layout Description
-
-\backslash
-nomrefeq 
 \series bold
-refeq
+nomencl
 \series default
-オプションと同様
-\end_layout
+の説明書
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+literal "false"
 
-\begin_layout Description
-
-\backslash
-nomrefpage 
-\series bold
-refpage
-\series default
-オプションと同様
-\end_layout
-
-\begin_layout Description
-
-\backslash
-nomrefeqpage 
-\series bold
-
-\backslash
-nomrefeq
-\backslash
-nomrefpage
-\series default
-の短縮形
-\end_layout
-
-\begin_layout Description
-
-\backslash
-nomnorefeq,
-\begin_inset space ~
 \end_inset
 
+を参照してください．
+\end_layout
 
-\backslash
-nomnorefpage,
-\begin_inset space ~
+\end_deeper
+\begin_layout Description
+他のオプション パッケージが提供するその他のオプションを何であれ挿入することができます．詳細については，
+
+\series bold
+nomencl
+\series default
+の説明書
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+literal "false"
+
 \end_inset
 
-
-\backslash
-nomnorefeqpage 対応するオプションを解除する
+を参照してください．
 \end_layout
 
 \begin_layout Standard
-「page」のような単語は，
+既定様式では，
+選択した用語項目にのみページ参照や数式参照を入れたい場合，
+用語項目の
+\family sans
+\series bold
+記述
+\family default
+\series default
+フィールドの最後に，
+下記のコマンドのうち一つを\SpecialChar TeX
+モードで挿入します．
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomrefeq 数式参照
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomrefpage ページ参照
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomrefeqpage 数式参照とページ参照の両方
+\end_layout
+
+\begin_layout Standard
+文書設定で参照オプションを選択した場合，
+代わりに下記のいずれかを入れることで，
+選択した用語項目に対してそれを無効化することができます．
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomnorefeq
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomnorefpage
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomnorefeqpage
+\end_layout
+
+\begin_layout Standard
+用語項目が節見出しやキャプションにある場合には，
+これらのコマンドの前に
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+を追記する必要があります．また，
+これらのコマンドは表様式では動作しないことに注意してください．
+\end_layout
+
+\begin_layout Standard
+「page」のような表現は，
 自動的に他の文書言語に翻訳されます．うまくいかない場合には、用語集の前に\SpecialChar TeX
 コードで以下の行を書き加えてください。
 
@@ -40212,7 +40527,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-記号一覧や用語集を出力するには，
+記号一覧や用語集をしかるべき位置に入力するには，
 
 \family sans
 \series bold
@@ -40232,8 +40547,13 @@ status open
 \family default
 \series default
 」というラベルのついたボックスが，
-出力中に用語集が印字される位置を指し示します．これを右クリックすると，
-記号の余白を変更することができます．以下の設定をすることができます．
+出力中に用語集が印字される位置を指し示します．
+\end_layout
+
+\begin_layout Standard
+既定の用語集様式では，
+このボックスを右クリックすることで，
+一覧の表示のされ方（シンボルと記述との間隔や一覧の行頭下げ幅）を調整することができます．以下の設定から選ぶことができます．
 \end_layout
 
 \begin_layout Description
@@ -40245,12 +40565,25 @@ cmの空白が使用されます
 \end_layout
 
 \begin_layout Description
-最長のラベル幅 用語集の全項目中，
-最大の幅が使用されます
+最長のラベル幅(推測) 全用語項目中，
+\SpecialChar LyX
+が最大幅の記号を推測し，
+これが使用されます．PDF中に整形された出力がどのようになるかを\SpecialChar LyX
+が知ることはできないので，
+この推測は誤っている可能性があることに注意してください．
 \end_layout
 
 \begin_layout Description
-ユーザ設定 任意に設定できる空白
+最長のラベル幅(確定) ここでは，
+ユーザー自身が最大幅の記号を入力して，
+その幅を使用させることができます．これは２番目の選択肢よりは正確ですが，
+短所は，
+用語集に新規の（長い）項目が追加される度に，
+ユーザーがこれを更新する必要があることです．
+\end_layout
+
+\begin_layout Description
+ユーザ設定 ウィジェットに指定した任意の空白
 \end_layout
 
 \begin_layout Standard
@@ -40307,9 +40640,9 @@ nomname{記号一覧}}}
 \series bold
 
 \backslash
-captionsjapaneseを
+captionsenglishを
 \backslash
-extras***
+captions***
 \series default
 に置き換えてください（***は使用中の言語名）．
 \end_layout
@@ -40594,7 +40927,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 "
 \end_layout
@@ -40783,7 +41115,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 newcommand{
 \backslash
@@ -40791,7 +41122,6 @@ question}[1]{#1}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 newcommand{
@@ -40820,7 +41150,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 newcommand{
 \backslash
@@ -40828,7 +41157,6 @@ question}[1]{}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 newcommand{
@@ -41151,7 +41479,48 @@ PDFを全画面モードで開きますので，
 オプションは，
 共に，
 リンクすべてに囲み枠を付ける既定の挙動を変更して，
-枠を付けなくします．
+枠を付けなくします
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+hyperrefパッケージの「colorlinks」オプションは，
+文書始めのリンクの周りには枠を付けません．どちらも欲しい場合には，
+色付きリンクを有効にした後にプリアンブルに，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+AtBeginDocument{
+\backslash
+hypersetup{pdfborder=0 0 1}}
+\end_layout
+
+\end_inset
+
+と書き加えてください．同じように，
+枠の代わりに下線を引くには，
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+pdfborderstyle={/S/U/W 1}
+\end_layout
+
+\end_inset
+
+とします．詳細については，
+hyperref説明書を参照してください。
+
+\end_layout
+
+\end_inset
+
+．
 \family sans
 \series bold
 色付きリンク
@@ -41550,7 +41919,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fbox{
 \end_layout
@@ -41562,7 +41930,6 @@ fbox{
 status collapsed
 
 \begin_layout Plain Layout
-
  }
 \end_layout
 
@@ -41885,7 +42252,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 pagestyle{fancy}
 \end_layout
@@ -41920,7 +42286,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 rightmark
@@ -41964,7 +42329,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 leftmark
 \end_layout
@@ -41988,7 +42352,6 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 thepage
@@ -42046,7 +42409,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 Roman{page}
 \end_layout
@@ -42054,6 +42416,96 @@ Roman{page}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+DocBook出力におけるXMLコード
+\begin_inset Index idx
+range none
+pageformat default
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+DocBook
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+XMLコード
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:DocBookコード"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+DocBook出力においても\SpecialChar TeX
+コードボックスを使用することができます．特殊文字のエンコーディングのように（たとえばüを表す
+\family typewriter
+
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+u
+\family default
+など），
+よく使われるパターンの一部はネイティブに認識され，
+有効なDocBookに変換されます．\SpecialChar TeX
+コードボックスにXMLコードを入力すると，
+（DocBook，
+HTML，
+LaTeXなど）すべてのモードでそのまま出力されます．XMLコードは（同数の
+\family typewriter
+<
+\family default
+と
+\family typewriter
+>
+\family default
+が付いた）XMLタグの列として認識されます．
 \end_layout
 
 \begin_layout Section
@@ -42849,7 +43301,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 pagestyle{headings}
 \end_layout
@@ -43254,7 +43705,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 rotatebox[origin=r]{-60}{
 \end_layout
@@ -43291,7 +43741,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -43302,7 +43751,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 rotatebox[origin=lb]{60}{
@@ -43319,7 +43767,6 @@ rotatebox[origin=lb]{60}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -43381,7 +43828,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fboxrule 1mm 
 \backslash
@@ -43396,7 +43842,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fcolorbox{cyan}{magenta}{
 \end_layout
@@ -43409,7 +43854,6 @@ fcolorbox{cyan}{magenta}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -44423,7 +44867,6 @@ aspell (library)
 status open
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/trac/export/HEAD/dictionaries/dicts/
 \end_layout
 
@@ -44798,7 +45241,6 @@ Windowsの場合には，
 status open
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/trac/browser/dictionaries/thes/
 \end_layout
 
@@ -45580,7 +46022,7 @@ arg   "note-next"
 段落から
 \family sans
 \series bold
-箇条書き(記述)
+記述
 \family default
 \series default
 段落への変更といった，
@@ -46319,22 +46761,10 @@ CJKサポートは完全に\SpecialChar LyX
 
 \family sans
 DocBook
-\family default
- マークアップ言語
-\family typewriter
-DocBook
-\family default
-で使用されるSGML言語で書かれたテキストファイル
-\end_layout
-
-\begin_layout Description
-
-\family sans
-DocBook
 \begin_inset space ~
 \end_inset
 
-(XML)
+5
 \family default
  マークアップ言語
 \family typewriter
@@ -47942,7 +48372,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Description
-通常の引用符 
+通常の二重引用符 
 \family sans
 \series bold
 文書\SpecialChar menuseparator
@@ -47963,6 +48393,11 @@ nolink "false"
 \end_inset
 
 」を挿入する．
+\end_layout
+
+\begin_layout Description
+通常の一重引用符 どのような引用形式が選択されているかに関わらず，
+引用符「'」を挿入する．
 \end_layout
 
 \begin_layout Description
@@ -47987,11 +48422,7 @@ nolink "false"
 \end_inset
 
 ダイアログで選択した様式で，
-引用符「
-\begin_inset Quotes ers
-\end_inset
-
-」を挿入する．
+内側引用符（通常は一重引用符）を挿入する．
 \end_layout
 
 \begin_layout Description
@@ -50382,7 +50813,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -51386,7 +51816,7 @@ arg   "layout-toggle Description"
 \begin_inset Text
 
 \begin_layout Plain Layout
-箇条書き(記述)
+記述
 \end_layout
 
 \end_inset
@@ -52734,27 +53164,44 @@ Driver support
 \end_layout
 
 \begin_layout Standard
-また，
-日付を抑制したり，
-相互参照用の\SpecialChar LaTeX
-パッケージに
-\series bold
-prettyref
-\series default
 
+\family sans
+\series bold
+整形された相互参照
+\family default
+\series default
+のセクションでは，
+整形された相互参照を生成するのにどの\SpecialChar LaTeX
+パッケージを使うのか指定することができます（例：
+refstyle，
+prettyref
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
 \SpecialChar LaTeX
 パッケージ
 \begin_inset IndexMacro sortkey
 status open
 
 \begin_layout Plain Layout
-latexはつけし
+LaTeXはつけし
 \end_layout
 
 \end_inset
@@ -52764,6 +53211,20 @@ latexはつけし
 status open
 
 \begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
 prettyref
 \end_layout
 
@@ -52774,30 +53235,45 @@ prettyref
 
 \end_inset
 
-
+，
+varioref
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
 \SpecialChar LaTeX
 パッケージ
 \begin_inset IndexMacro sortkey
 status open
 
 \begin_layout Plain Layout
-latexはつけし
+LaTeXはつけし
 \end_layout
 
 \end_inset
 
 
 \begin_inset IndexMacro subentry
-status open
+status collapsed
 
 \begin_layout Plain Layout
-refstyle
+varioref
 \end_layout
 
 \end_inset
@@ -52807,19 +53283,27 @@ refstyle
 
 \end_inset
 
-ではなく
-\series bold
-refstyle
-\series default
-を用いるオプションもあります．第
+）．詳しくは第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:相互参照"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
-節をご覧ください．
+節を参照してください．また，
+\SpecialChar LyX
+作業領域において，
+相互参照を整形された形で表すかどうかも選択することができます．
+\end_layout
+
+\begin_layout Standard
+最後に，
+（通常自動的に挿入される）表題の日付を抑制するオプションもあります．
 \end_layout
 
 \begin_layout Section
@@ -53320,6 +53804,20 @@ usepackage{ngerman}
 \begin_layout Description
 なし 言語パッケージを使用しません．科学論文用文書クラスの一部には，
 このように指定する必要のあるものがあります．
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\series bold
+言語オプション
+\family default
+\series default
+には，
+現在設定されている（babelかpolyglossiaかという）オプションとともに，
+文書中で使用されている言語の一覧が表示されます．このオプションは，
+オプション一覧をクリックすることで変更することができます．有効なオプションについては，
+言語パッケージもしくはモジュールの説明書を参照してください．
 \end_layout
 
 \begin_layout Standard
@@ -53992,26 +54490,32 @@ japanese
 \end_layout
 
 \begin_layout Section
-色
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:色彩"
+
+\end_inset
+
+色彩
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-色
+色彩
 \begin_inset IndexMacro sortkey
 status open
 
 \begin_layout Plain Layout
-いろ
+しきさい
 \end_layout
 
 \end_inset
 
 
 \begin_inset IndexMacro subentry
-status open
+status collapsed
 
 \begin_layout Plain Layout
 本文
@@ -54041,12 +54545,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-色
+色彩
 \begin_inset IndexMacro sortkey
-status open
+status collapsed
 
 \begin_layout Plain Layout
-いろ
+しきさい
 \end_layout
 
 \end_inset
@@ -54083,12 +54587,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-色
+色彩
 \begin_inset IndexMacro sortkey
 status open
 
 \begin_layout Plain Layout
-いろ
+しきさい
 \end_layout
 
 \end_inset
@@ -54125,12 +54629,12 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-色
+色彩
 \begin_inset IndexMacro sortkey
 status open
 
 \begin_layout Plain Layout
-いろ
+しきさい
 \end_layout
 
 \end_inset
@@ -54165,44 +54669,74 @@ status open
 
 \begin_layout Standard
 ここでは，
+文書におけるいくつかの要素の色を変更して（個別の設定ダイアログで別に設定しなければ）グローバルに適用することができます．
+\end_layout
+
+\begin_layout Itemize
 
 \family sans
 \series bold
 本文
 \family default
 \series default
-および
+（既定値：
+黒）および
 \family sans
 \series bold
 淡色表示註釈
 \family default
 \series default
-のフォント色(既定値:それぞれ黒と灰色)と，
+のフォント色（既定値：
+灰色）のフォント色
+\end_layout
+
+\begin_layout Itemize
 
 \family sans
 \series bold
 頁
 \family default
 \series default
-および
+（既定値：
+なし）および
 \family sans
 \series bold
 影付きボックス
 \family default
 \series default
-の背景色(既定値:それぞれ白と赤)を変更することができます．
-\family sans
-\series bold
-リセット
-\family default
-\series default
-ボタンは，
-色を既定値に戻します．既定値若しくは変更と表示されているボタンを押すと，
-ダイアログが開いて，
-色一覧や色選択盤から選択したり，
-HSL値やRGB値を与えて色を指定することができます．ダイアログ中では，
-後ですぐに選択することができるように，
-任意の色をカスタム色として登録しておくことができます．
+（既定値：
+赤）の背景色
+\end_layout
+
+\begin_layout Itemize
+表罫線の色
+\end_layout
+
+\begin_layout Itemize
+表の奇数行と偶数行の背景に使用される２色
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+における文書関連のすべての色選択（たとえば文字設定ダイアログやまさにこのダイアログ）で利用可能なカスタム色を定義することもできます．これらの選択肢について順番に述べていきましょう．
+\end_layout
+
+\begin_layout Subsection
+本文，
+頁，
+註釈およびボックスの色
+\end_layout
+
+\begin_layout Standard
+それぞれの要素に対して定義済み色の膨大なリストの中から色を選ぶことができます．本文色と頁色では，
+さらに「既定値」設定があります（これは実質上「無色」です）．註釈色とボックス色ではどの色が既定値であるかを表示します．このかなり長い色のリストから特定の色を見つけたいならば，
+リストが展開されている間に文字を打ち込んでみてください．
+\end_layout
+
+\begin_layout Standard
+定義済み色のいずれも好みでないならば，
+次に続く節で述べられているように，
+カスタム色を定義してこのリストに表示させることもできます．
 \end_layout
 
 \begin_layout Standard
@@ -54248,14 +54782,13 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-強制改頁の直後に，
 \SpecialChar TeX
 コードで以下のコマンドを用いると，
 文書中のページ毎に本文フォント色と頁背景色を変えることができます．
 \end_layout
 
 \begin_layout Itemize
-頁色を変えるには
+（強制改頁の直後の）頁色を変えるには
 \begin_inset Newline newline
 \end_inset
 
@@ -54279,46 +54812,17 @@ color{色名}
 \end_layout
 
 \begin_layout Standard
-自製の色を定義していない限りは，
-
-\family sans
-\series bold
-色名
+これらのコマンドにおいては，
+ダイアログ中に列挙されている色は（カスタム色を含め）どれを使っても良いです．しかしながら，
+一部の色は，
+欲しい指定の色が含まれているスキーム（dvipsnames，
+svgnames，
+x11namesのいずれか；
+詳細はxcolorの説明書をご覧ください）を定義するオプションとともに
+\family typewriter
+xcolor
 \family default
-\series default
-は
-\series bold
-black
-\series default
-・
-\series bold
-blue
-\series default
-・
-\series bold
-cyan
-\series default
-・
-\series bold
-green
-\series default
-・
-\series bold
-magenta
-\series default
-・
-\series bold
-red
-\series default
-・
-\series bold
-white
-\series default
-・
-\series bold
-yellow
-\series default
-のいずれかに限定されます(取扱説明書『埋込オブジェクト篇』の「色付きの表」の節をご覧ください)．
+パッケージを読み込む必要があります．
 \begin_inset Newline newline
 \end_inset
 
@@ -54366,8 +54870,81 @@ shadecolor
 note_fontcolor
 \end_layout
 
+\begin_layout Subsection
+表の色
+\end_layout
+
 \begin_layout Standard
-自製の色を定義し使用する方法については，
+表の色（セル，
+行，
+列，
+罫線）は，
+表設定ダイアログから各表について指定することができます．ここでは，
+表設定ダイアログで異なる指定をしていなければ，
+文書中すべての表に適用される設定を行うことができます．これらの中には
+\end_layout
+
+\begin_layout Enumerate
+
+\family sans
+\series bold
+表の罫線色
+\family default
+\series default
+：
+名前の表すとおり
+\end_layout
+
+\begin_layout Enumerate
+
+\family sans
+\series bold
+表の行のストライプ色
+\family default
+\series default
+：
+ここで色を指定すると，
+
+\family sans
+\series bold
+開始行
+\family default
+\series default
+で指定された行から，
+表の奇数行と偶数行にこれらの色が自動的に使われます．これによって，
+よく使われる「しましま」スタイルの表を簡単に作ることができます．
+\end_layout
+
+\begin_layout Standard
+他の色設定と同様に，
+事前定義された色一覧から選択できると同時に，
+カスタム色も定義して選択肢に表示させることもできます（下記参照）．
+\end_layout
+
+\begin_layout Subsection
+カスタム色
+\end_layout
+
+\begin_layout Standard
+カスタム色を定義するには，
+（
+\emph on
+mycolor
+\emph default
+のように）ASCII文字のみからなる空白を含まない名前を付けてください．それから然るべき色を設定してください．他のコンテクストで色が既に使用されている場合には，
+警告が発せられます．
+\end_layout
+
+\begin_layout Standard
+色を改名したり削除したりしたときに，
+\SpecialChar LyX
+はその色が文書のどこかで使われていないかチェックしたり，
+そこで改名してくれたりはしないので，
+後で色が定義されていないというエラーを受けるかもしれません．
+\end_layout
+
+\begin_layout Standard
+他のコンテクストでカスタム色を定義し使用する方法については，
 取扱説明書『埋込オブジェクト篇』の「色付きのセル」の節をご覧ください．
 \end_layout
 
@@ -54677,6 +55254,28 @@ nolink "false"
 \end_layout
 
 \begin_layout Section
+用語集
+\end_layout
+
+\begin_layout Standard
+ここでは，
+用語集様式や，
+用語集一覧の出力を決めるオプションの一部を選択することができます（詳細は第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:用語集"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+tuple "list"
+
+\end_inset
+
+章を参照）．
+\end_layout
+
+\begin_layout Section
 PDF特性
 \end_layout
 
@@ -54859,7 +55458,17 @@ pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-latexはつけし@\SpecialChar LaTeX
+latexはつけし
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+\SpecialChar LaTeX
 パッケージ
 \begin_inset IndexMacro subentry
 status open
@@ -56648,19 +57257,19 @@ nolink "false"
 \end_layout
 
 \begin_layout Subsection
-色
+色彩
 \begin_inset Index idx
 range none
 pageformat default
 status collapsed
 
 \begin_layout Plain Layout
-色
+色彩
 \begin_inset IndexMacro sortkey
 status open
 
 \begin_layout Plain Layout
-いろ
+しきさい
 \end_layout
 
 \end_inset
@@ -56713,12 +57322,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-色
+色彩
 \begin_inset IndexMacro sortkey
 status open
 
 \begin_layout Plain Layout
-いろ
+しきさい
 \end_layout
 
 \end_inset
@@ -56738,13 +57347,63 @@ status open
 
 \begin_layout Standard
 ここでは，
-\SpecialChar LyX
-が使うすべての色を変更することができます．一覧の中の項目を選んで，
-
+画面上の色彩テーマを選択したり編集したりすることができます．事前に定義されたシステムテーマとユーザー定義のテーマが
+\family sans
 \series bold
-変更
+テーマ
+\family default
 \series default
-ボタンを押してください．
+一覧に表示されており，
+ここからテーマを選択することができます．
+\end_layout
+
+\begin_layout Standard
+テーマは編集してユーザー定義のテーマとして保存することができます．テーマを変更するためには，
+ベースとなるテーマを
+\family sans
+\series bold
+テーマ
+\family default
+\series default
+一覧から選び，
+
+\family sans
+\series bold
+色の設定
+\family default
+\series default
+一覧から各要素の色を変更します．膨大な色の一覧から目的の色を見つけ出すためには，
+「色をフィルター」インプットボックスを使用して，
+色をフィルターに掛けることができます．色を変更するには，
+
+\family sans
+\series bold
+色の設定
+\family default
+\series default
+一覧から
+\family sans
+\series bold
+要素名
+\family default
+\series default
+項目を選択し，
+編集したい色彩モードにしたがって，
+編集欄の
+\family sans
+\series bold
+ライト
+\family default
+\series default
+ボタンもしくは
+\family sans
+\series bold
+ダーク
+\family default
+\series default
+ボタンを押してください．すると，
+ポップアップするダイアログで色を選択することができます．一覧の各項目の色見本をクリックすることで，
+このダイアログを呼び出すこともできます．
 \end_layout
 
 \begin_layout Standard
@@ -56759,7 +57418,7 @@ status open
 \end_inset
 
 オプションを有効にすると，
-お使いのOSないしはウィンドウマネジャの色スキームが使用されます．その場合，
+お使いのOSないしはウィンドウマネジャの色彩スキームが使用されます．その場合，
 
 \family sans
 \series bold
@@ -56791,6 +57450,90 @@ URL
 \series default
 の色は設定できなくなり，
 一覧に表示されなくなります．
+\end_layout
+
+\begin_layout Standard
+欲しい色を求めてトライアンドエラーを続けている間，
+過去の操作を取り消したり再度行ったりするのに，
+
+\family sans
+\series bold
+元に戻す
+\family default
+\series default
+／
+\family sans
+\series bold
+やり直す
+\family default
+\series default
+ボタンを利用することができます．
+\family sans
+\series bold
+すぐに適用
+\family default
+\series default
+チェックボックスを有効にすると，
+変更はすぐに開かれている文書に対して適用されますので，
+編集しているテーマの仕上がりを確認する上で便利です．各種リセットボタンは，
+色をベースになっているテーマに戻すことができます．
+\end_layout
+
+\begin_layout Standard
+テーマが満足のいくものになったならば，
+
+\family sans
+\series bold
+テーマ
+\family default
+\series default
+一覧の下にある
+\family sans
+\series bold
+追加
+\family default
+\series default
+ボタンを使って保存，
+すなわち
+\family sans
+\series bold
+テーマ
+\family default
+\series default
+一覧に追加することができます．既存のユーザー定義テーマを削除したいときには，
+
+\family sans
+\series bold
+削除
+\family default
+\series default
+ボタンを押します．削除できるのはユーザー定義テーマだけで，
+システムテーマは削除できないことに注意してください．ユーザー定義テーマはチェックマークのアイコンで表示されます．
+\end_layout
+
+\begin_layout Standard
+テーマは，
+
+\family sans
+\series bold
+その他…
+\family default
+\series default
+ボタンを押すと開く，
+
+\family sans
+\series bold
+書き出し
+\family default
+\series default
+メニューや
+\family sans
+\series bold
+読み込み
+\family default
+\series default
+メニューを使って，
+書き出したり読み込んだりすることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -58745,10 +59488,7 @@ dvips
 status collapsed
 
 \begin_layout Plain Layout
-
-https://www.tug.org/texinfohtml/dvips.html
-\backslash
-#Option-details
+https://www.tug.org/texinfohtml/dvips.html#Option-details
 \end_layout
 
 \end_inset
@@ -60089,7 +60829,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/Credits
 \end_layout
 
@@ -60205,7 +60944,6 @@ The \SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ctan.org/topic
 \end_layout
 
@@ -60232,7 +60970,6 @@ The \SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-
 https://texfaq.org/
 \end_layout
 
@@ -60272,7 +61009,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
@@ -60312,7 +61048,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
@@ -60384,7 +61119,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \end_layout
 
@@ -60456,7 +61190,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf
 \end_layout
 
@@ -60495,7 +61228,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
 \end_layout
 
@@ -60534,7 +61266,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
@@ -60573,7 +61304,6 @@ literal "false"
 status open
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/indexing/xindex/doc/xindex-doc.pdf
 \end_layout
 
@@ -60612,7 +61342,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 http://www.xindy.org/documentation.html
 \end_layout
 
@@ -60648,7 +61377,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://www.ams.org/publications/authors/tex/amslatex
 \end_layout
 
@@ -60720,7 +61448,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf
 \end_layout
 
@@ -60792,7 +61519,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
@@ -60864,7 +61590,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
@@ -60936,7 +61661,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/hyperref-doc.pdf
 \end_layout
 
@@ -61008,7 +61732,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf
 \end_layout
 
@@ -61080,7 +61803,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
@@ -61152,7 +61874,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/prettyref/prettyref.pdf
 \end_layout
 
@@ -61224,7 +61945,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
@@ -61260,7 +61980,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Arabic
 \end_layout
 
@@ -61296,7 +62015,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Armenian
 \end_layout
 
@@ -61332,7 +62050,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Cyrillic
 \end_layout
 
@@ -61368,7 +62085,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Farsi
 \end_layout
 
@@ -61404,7 +62120,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Hebrew
 \end_layout
 
@@ -61440,7 +62155,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 https://wiki.lyx.org/Windows/Japanese
 \end_layout
 
@@ -61459,7 +62173,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 let
 \backslash
@@ -61469,7 +62182,6 @@ bibname
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -61528,7 +62240,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand*{
 \backslash
@@ -61536,7 +62247,6 @@ pagedeclaration}[1]{
 \end_layout
 
 \begin_layout Plain Layout
-
  
 \backslash
 unskip,

@@ -166,6 +166,7 @@ logicalmkup
 \docbook_table_output 0
 \docbook_mathml_prefix 1
 \docbook_mathml_version 0
+\author -1900975149 "Koji Yokota" yokota@lyx.org
 \author -1162675398 "Tobias Hilbricht" hilbricht@linopus.de
 \author -712698321 "Jürgen Spitzmüller"
 \author -584632292 "Richard Kimberly Heck"
@@ -56161,12 +56162,73 @@ Color
 \end_layout
 
 \begin_layout Standard
-Here you can change the screen colors used by \SpecialChar LyX
+Here you can 
+\change_inserted -1900975149 1746731296
+select or edit a color theme for screen.
+ Predefined system themes and user-defined themes are listed in the 
+\family sans
+Themes
+\family default
+ list,
+ from which you can select one.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1900975149 1746724938
+Themes can be edited and saved as a user-defined theme.
+ To modify a theme,
+ you choose a base theme from the 
+\family sans
+Themes
+\family default
+ list and modify the color of each object or element in the 
+\family sans
+Color Settings
+\family default
+ list.
+ Colors can be filtered using the 
+\begin_inset Quotes eld
+\end_inset
+
+Filter Colors
+\begin_inset Quotes erd
+\end_inset
+
+ input box to find a target color from the extensive color list.
+ To modify the color,
+ select a 
+\family sans
+Object/Element
+\family default
+ item from the 
+\family sans
+Color Settings
+\family default
+ list and push either 
+\family sans
+Light
+\family default
+ or 
+\family sans
+Dark
+\family default
+ 
+\family sans
+Edit
+\family default
+ button depending on which color mode you want to modify,
+ and you can choose a color in the pop-up dialog.
+ You can call the same dialog by clicking the color swatch in each list item.
+\change_deleted -1900975149 1746724576
+change the screen colors used by \SpecialChar LyX
  by choosing an item in the list and selecting the 
 \family sans
 Alter
 \family default
  button.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -56192,6 +56254,68 @@ label and URL
 text
 \family default
  are then not customizable and thus not listed.
+\change_inserted -1900975149 1746727675
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1900975149 1746727941
+While you attempt try-and-errors to find a desirable color,
+ you can use Undo/Redo buttons to cancel or resume past operations.
+ If you activate 
+\family sans
+Apply immediately
+\family default
+ checkbox,
+ the change is immediately reflected in the opened document,
+ which would be useful to check the taste of the editing theme.
+ You can use reset buttons to revert the color to the one of the base theme.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1900975149 1746733571
+Once the theme becomes satisactory,
+ it can be saved,
+ i.e.
+ add to the 
+\family sans
+Themes
+\family default
+ list,
+ using the 
+\family sans
+Add
+\family default
+ button below the 
+\family sans
+Themes
+\family default
+ list.
+ If you want to delete an existing user-defined theme,
+ push 
+\family sans
+Remove
+\family default
+ button.
+ Note that you can delete only user-defined themes and system themes cannot be deleted.
+ user-defined themes are denoted by a checkmark icon.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1900975149 1746728497
+Themes can be exported or imported using Export or Import menu,
+ respectively,
+ which opens by pushing 
+\family sans
+More...
+
+\family default
+ button.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection

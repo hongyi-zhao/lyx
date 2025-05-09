@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: lyx-japanese\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2025-05-07 16:34+0900\n"
-"PO-Revision-Date: 2025-05-07 17:22+0900\n"
+"PO-Revision-Date: 2025-05-09 12:38+0900\n"
 "Last-Translator: Koji Yokota <yokota@lyx.org>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -6020,7 +6020,7 @@ msgstr "行間(&W)："
 
 #: src/frontends/qt/ui/TabularUi.ui:1338
 msgid "C&olors"
-msgstr "色(&O)"
+msgstr "色彩(&O)"
 
 #: src/frontends/qt/ui/TabularUi.ui:1356
 msgid "Ri&ght Overhang:"
@@ -6052,7 +6052,7 @@ msgstr "セル色(&E)："
 
 #: src/frontends/qt/ui/TabularUi.ui:1468
 msgid "&Border color:"
-msgstr "境界色(&B)："
+msgstr "罫線色(&B)："
 
 #: src/frontends/qt/ui/TabularUi.ui:1506
 msgid "Alternati&ng row colors"
@@ -6080,11 +6080,11 @@ msgstr "状態"
 
 #: src/frontends/qt/ui/TabularUi.ui:1639
 msgid "Border above"
-msgstr "上の境界線"
+msgstr "上の罫線"
 
 #: src/frontends/qt/ui/TabularUi.ui:1646
 msgid "Border below"
-msgstr "下の境界線"
+msgstr "下の罫線"
 
 #: src/frontends/qt/ui/TabularUi.ui:1653
 msgid "Contents"

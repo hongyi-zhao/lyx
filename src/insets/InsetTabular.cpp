@@ -7335,12 +7335,14 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::APPEND_ROW:
 		// append the row into the tabular
 		tabular.appendRow(row);
+		cur.forceBufferUpdate();
 		break;
 
 	case Tabular::APPEND_COLUMN:
 		// append the column into the tabular
 		tabular.appendColumn(column, row);
 		cur.idx() = tabular.cellIndex(row, column);
+		cur.forceBufferUpdate();
 		break;
 
 	case Tabular::DELETE_ROW:

@@ -86,16 +86,17 @@ public:
 	/// Return true when the position of the paragraph is known
 	bool hasPosition() const;
 	/// The vertical position of the top of the paragraph
-	int top() const { return position_ - dim_.ascent(); }
+	int top() const { return position() - dim_.ascent(); }
 	/// The vertical position of the bottom of the paragraph
-	int bottom() const { return position_ + dim_.descent(); }
+	int bottom() const { return position() + dim_.descent(); }
 	///
 	int id() const { return id_; }
 
 private:
 	///
 	int position_ = 0;
-	///
+	/// This is stored separately from the paragraph to work around
+	/// InsetInfo messiness in ticket #12639.
 	int id_ = -1;
 	///
 	mutable Rows rows_;

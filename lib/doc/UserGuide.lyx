@@ -56276,7 +56276,11 @@ Apply immediately
 \begin_layout Standard
 
 \change_inserted -1900975149 1746733571
-Once the theme becomes satisactory,
+Once the theme becomes satis
+\change_inserted -712698321 1746885508
+f
+\change_inserted -1900975149 1746733571
+actory,
  it can be saved,
  i.e.
  add to the 
@@ -56300,7 +56304,13 @@ Remove
 \family default
  button.
  Note that you can delete only user-defined themes and system themes cannot be deleted.
- user-defined themes are denoted by a checkmark icon.
+ 
+\change_deleted -712698321 1746886398
+u
+\change_inserted -712698321 1746886398
+U
+\change_inserted -1900975149 1746733571
+ser-defined themes are denoted by a checkmark icon.
 \end_layout
 
 \begin_layout Standard
@@ -56310,7 +56320,14 @@ Themes can be exported or imported using Export or Import menu,
  respectively,
  which opens by pushing 
 \family sans
-More...
+More
+\change_inserted -712698321 1746886401
+\SpecialChar ldots
+
+\change_deleted -712698321 1746886403
+...
+
+\change_inserted -1900975149 1746728497
 
 \family default
  button.

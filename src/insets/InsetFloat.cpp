@@ -372,6 +372,7 @@ docstring InsetFloat::xhtml(XMLStream & xs, OutputParams const & rp) const
 		// Things will already have been escaped, so we do not
 		// want to escape them again.
 		xs << XMLStream::ESCAPE_NONE << ods.str();
+		return docstring();
 	}
 }
 

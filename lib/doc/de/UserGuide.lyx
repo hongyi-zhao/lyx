@@ -53010,15 +53010,50 @@ Farbe
 \end_layout
 
 \begin_layout Standard
-Hier können alle Farben,
- die \SpecialChar LyX
+Hier kann das Farbthema,
+ das \SpecialChar LyX
  verwendet,
  geändert werden.
- Wählen Sie einen Eintrag in der Liste aus und drücken den Knopf 
+ Wählen Sie einen Eintrag in der Liste vordefinierter oder benutzerdefinierter Systemthemen aus.
+\end_layout
+
+\begin_layout Standard
+Sie können Themen ändern und sie dann als benutzerdefiniertes Thema speichern.
+ Um dies zu tun,
+ wählen Sie ein Thema aus der Liste 
 \family sans
-Ändern
+Themen
 \family default
-.
+ und ändern dann in der Liste 
+\family sans
+Farbeinstellungen
+\family default
+ die gewünschten Objekte.
+ Um Objekte leichter zu finden,
+ können Sie den Filter verwenden.
+ Um die Farbe eines Elements zu ändern,
+ Wählen Sie ein 
+\family sans
+Objekt/Element
+\family default
+ aus der Liste und drücken den 
+\family sans
+Bearbeiten
+\family default
+-Knopf entweder für 
+\family sans
+Hell
+\family default
+ oder 
+\family sans
+Dunkel
+\family default
+,
+ entsprechend dem Modus,
+ für den Sie die Farben verändern wollen.
+ Den Farbauswahl-Dialog können Sie auch aufrufen,
+ wenn Sie auf die Farbe im Listeneintrag doppelklicken.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -53052,6 +53087,40 @@ URL
 (Text)
 \family default
  sind dann nicht veränderbar und daher nicht aufgelistet.
+\end_layout
+
+\begin_layout Standard
+Es gibt die Möglichkeit,
+ Änderungen schrittweise zurückzunehmen und widerherzustellen oder aber die Farben für einzelne Modi oder insgesamt auf die des Basisthemas zurückzusetzen.
+ Wenn Sie 
+\family sans
+Änderungen sofort anwenden
+\family default
+ aktivieren,
+ passiert genau dies.
+\end_layout
+
+\begin_layout Standard
+Um das neue Thema zur Liste der verfügbaren Themen hinzuzufügen,
+ drücken Sie 
+\family sans
+Hinzufügen
+\family default
+.
+ 
+\family sans
+Entfernen
+\family default
+ entfernt Themen aus diese Liste,
+ allerdings geht dies nur für benutzerdefinierte Themen (die mit einem Häkchen markiert sind).
+\end_layout
+
+\begin_layout Standard
+Themen können auch ex- und importiert werden.
+ Die entsprechenden Funktionen finden Sie nach Drücken des Knopes 
+\family sans
+Mehr \SpecialChar ldots
+
 \end_layout
 
 \begin_layout Subsection

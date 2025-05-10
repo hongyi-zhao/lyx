@@ -316,9 +316,9 @@ docstring InsetCaption::xhtml(XMLStream & xs, OutputParams const & rp) const
 			attr = attr + " class='" + our_class + "'";
 	}
 	xs << xml::StartTag(tag, attr);
-	docstring def = getCaptionAsHTML(xs, rp);
+	writeCaptionAsHTML(xs, rp);
 	xs << xml::EndTag(tag);
-	return def;
+	return docstring();
 }
 
 
@@ -371,7 +371,7 @@ int InsetCaption::getCaptionAsPlaintext(odocstream & os,
 }
 
 
-void InsetCaption::getCaptionAsDocBook(XMLStream & xs,
+void InsetCaption::writeCaptionAsDocBook(XMLStream & xs,
 				       OutputParams const & runparams) const
 {
 	if (runparams.docbook_in_float)
@@ -383,13 +383,13 @@ void InsetCaption::getCaptionAsDocBook(XMLStream & xs,
 }
 
 
-docstring InsetCaption::getCaptionAsHTML(XMLStream & xs,
+void InsetCaption::writeCaptionAsHTML(XMLStream & xs,
 			OutputParams const & runparams) const
 {
 	xs << full_label_ << ' ';
 	InsetText::XHTMLOptions const opts =
 		InsetText::WriteLabel | InsetText::WriteInnerTag;
-	return InsetText::insetAsXHTML(xs, runparams, opts);
+	InsetText::insetAsXHTML(xs, runparams, opts);
 }
 
 

@@ -785,9 +785,8 @@ docstring InsetBox::xhtml(XMLStream & xs, OutputParams const & runparams) const
 
 	xs << xml::StartTag("div", attrs);
 	XHTMLOptions const opts = InsetText::WriteLabel | InsetText::WriteInnerTag;
-	docstring defer = InsetText::insetAsXHTML(xs, runparams, opts);
+	InsetText::insetAsXHTML(xs, runparams, opts);
 	xs << xml::EndTag("div");
-	xs << defer;
 	return docstring();
 }
 

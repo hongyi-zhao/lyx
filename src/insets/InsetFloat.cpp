@@ -361,21 +361,18 @@ docstring InsetFloat::xhtml(XMLStream & xs, OutputParams const & rp) const
 	newxs << xml::StartTag(htmltype, attr);
 	InsetText::XHTMLOptions const opts =
 		InsetText::WriteLabel | InsetText::WriteInnerTag;
-	docstring deferred = InsetText::insetAsXHTML(newxs, rp, opts);
+	InsetText::insetAsXHTML(newxs, rp, opts);
 	newxs << xml::EndTag(htmltype);
 
 	if (rp.inFloat == OutputParams::NONFLOAT) {
 		// In this case, this float needs to be deferred, but we'll put it
 		// before anything the text itself deferred.
-		deferred = ods.str() + '\n' + deferred;
+		return ods.str();
 	} else {
-		// In this case, the whole thing is already being deferred, so
-		// we can write to the stream.
-		// Note that things will already have been escaped, so we do not
+		// Things will already have been escaped, so we do not
 		// want to escape them again.
 		xs << XMLStream::ESCAPE_NONE << ods.str();
 	}
-	return deferred;
 }
 
 
@@ -593,7 +590,7 @@ void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const Ins
 
 	xs << xml::StartTag("title"); // Don't take attr here, the ID should only go in one place, not two.
 	if (caption) {
-		caption->getCaptionAsDocBook(xs, rpNoLabel);
+		caption->writeCaptionAsDocBook(xs, rpNoLabel);
 	} else {
 		xs << "No caption";
 		// No caption has been detected, but this tag is required for the document to be valid DocBook.
@@ -683,7 +680,7 @@ void docbookSubfigures(XMLStream & xs, OutputParams const & runparams, const Ins
 				xs << xml::CR();
 				xs << xml::StartTag(docbook_caption);
 				if (scaption)
-					scaption->getCaptionAsDocBook(xs, rpNoLabel);
+					scaption->writeCaptionAsDocBook(xs, rpNoLabel);
 				else // Mandatory in formalgroup.
 					xs << "No caption detected";
 				xs << xml::EndTag(docbook_caption);
@@ -782,7 +779,7 @@ void docbookNoSubfigures(XMLStream & xs, OutputParams const & runparams, const I
 
 	if (caption != nullptr) {
 		XMLStream xsCaptionContent(osCaptionContent);
-		caption->getCaptionAsDocBook(xsCaptionContent, rpNoLabel);
+		caption->writeCaptionAsDocBook(xsCaptionContent, rpNoLabel);
 		hasCaption = !osCaptionContent.str().empty();
 	}
 

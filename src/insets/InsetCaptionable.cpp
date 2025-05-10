@@ -133,7 +133,7 @@ docstring InsetCaptionable::getCaptionDocBook(OutputParams const & runparams) co
 
 	odocstringstream ods;
 	XMLStream xs(ods);
-	ins->getCaptionAsDocBook(xs, runparams);
+	ins->writeCaptionAsDocBook(xs, runparams);
 	return ods.str();
 }
 
@@ -146,10 +146,7 @@ docstring InsetCaptionable::getCaptionHTML(OutputParams const & runparams) const
 
 	odocstringstream ods;
 	XMLStream xs(ods);
-	docstring def = ins->getCaptionAsHTML(xs, runparams);
-	if (!def.empty())
-		// should already have been escaped
-		xs << XMLStream::ESCAPE_NONE << def << '\n';
+	ins->writeCaptionAsHTML(xs, runparams);
 	return ods.str();
 }
 

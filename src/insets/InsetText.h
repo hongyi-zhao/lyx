@@ -91,8 +91,7 @@ public:
 		WriteEverything = 7
 	};
 	///
-	docstring insetAsXHTML(XMLStream &, OutputParams const &,
-	                       XHTMLOptions) const;
+	void insetAsXHTML(XMLStream &, OutputParams const &, XHTMLOptions) const;
 	/// Outputs the inset as DocBook, with the given options regarding outer tags.
 	void docbook(XMLStream &, OutputParams const &, XHTMLOptions opts) const;
 	/// Outputs the whole inset as DocBook.

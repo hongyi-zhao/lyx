@@ -462,13 +462,10 @@ docstring InsetListings::xhtml(XMLStream & os, OutputParams const & rp) const
 	// We don't want to convert dashes here. That's the only conversion we
 	// do for XHTML, so this is safe.
 	newrp.pass_thru = true;
-	docstring def = InsetText::insetAsXHTML(os, newrp, InsetText::JustText);
+	InsetText::insetAsXHTML(os, newrp, InsetText::JustText);
 	os << xml::EndTag(tag);
 
 	if (!isInline) {
-		if (!def.empty()) {
-			os << '\n' << def;
-		}
 		os << xml::EndTag("div");
 	}
 	return {};

@@ -4901,8 +4901,10 @@ void InsetTableCell::addToToc(DocIterator const & di, bool output_active,
 
 docstring InsetTableCell::xhtml(XMLStream & xs, OutputParams const & rp) const
 {
-	if (!isFixedWidth)
-		return InsetText::insetAsXHTML(xs, rp, InsetText::JustText);
+	if (!isFixedWidth) {
+		InsetText::insetAsXHTML(xs, rp, InsetText::JustText);
+		return docstring();
+	}
 	return InsetText::xhtml(xs, rp);
 }
 

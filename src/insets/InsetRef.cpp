@@ -693,7 +693,7 @@ docstring InsetRef::displayString(docstring const & ref, string const & cmd,
 
 
 docstring InsetRef::xhtml(XMLStream & xs, OutputParams const & op) const
-	{
+{
 	docstring const & ref = getParam("reference");
 	string const & cmd = params().getCmdName();
 	// FIXME What we'd really like to do is to be able to output some

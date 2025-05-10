@@ -838,7 +838,8 @@ void InsetText::docbookText(XMLStream & xs, OutputParams const & rp, XHTMLOption
 
 docstring InsetText::xhtml(XMLStream & xs, OutputParams const & runparams) const
 {
-	return insetAsXHTML(xs, runparams, WriteEverything);
+	insetAsXHTML(xs, runparams, WriteEverything);
+	return docstring();
 }
 
 
@@ -855,7 +856,7 @@ docstring InsetText::xhtml(XMLStream & xs, OutputParams const & runparams) const
 // if so, try to close fonts, etc.
 // There are probably limits to how well we can do here, though, and we will
 // have to rely upon users not putting footnotes inside noun-type insets.
-docstring InsetText::insetAsXHTML(XMLStream & xs, OutputParams const & rp,
+void InsetText::insetAsXHTML(XMLStream & xs, OutputParams const & rp,
                                   XHTMLOptions opts) const
 {
 	// we will always want to output all our paragraphs when we are
@@ -868,7 +869,7 @@ docstring InsetText::insetAsXHTML(XMLStream & xs, OutputParams const & rp,
 		xs.startDivision(false);
 		xhtmlParagraphs(text_, buffer(), xs, runparams);
 		xs.endDivision();
-		return docstring();
+		return;
 	}
 
 	InsetLayout const & il = getLayout();
@@ -910,8 +911,6 @@ docstring InsetText::insetAsXHTML(XMLStream & xs, OutputParams const & rp,
 
 	if (opts & WriteOuterTag)
 		xs << xml::EndTag(il.htmltag());
-
-	return docstring();
 }
 
 

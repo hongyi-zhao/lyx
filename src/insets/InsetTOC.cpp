@@ -131,7 +131,6 @@ int InsetTOC::plaintext(odocstringstream & os,
 void InsetTOC::docbook(XMLStream &, OutputParams const &) const
 {
 	// TOC are generated automatically by the DocBook processor.
-	return;
 }
 
 

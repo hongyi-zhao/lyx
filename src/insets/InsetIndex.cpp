@@ -1901,7 +1901,7 @@ docstring InsetPrintIndex::xhtml(XMLStream &, OutputParams const & op) const
 	for (const TocItem& item : *toc) {
 		const auto* inset = static_cast<const InsetIndex*>(&(item.dit().inset()));
 		if (item.isOutput() && inset && inset->params().index == indexType)
-			entries.emplace_back(IndexEntry{inset, &op});
+			entries.emplace_back(inset, &op);
 	}
 
 	// If all the index entries are in notes or not displayed, get out sooner.

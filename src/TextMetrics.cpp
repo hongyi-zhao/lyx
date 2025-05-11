@@ -1415,10 +1415,11 @@ void TextMetrics::setRowHeight(Row & row) const
 	if (row.pos() == 0 && layout.labelIsInline()) {
 		FontInfo const labelfont = text_->labelFont(par);
 		FontMetrics const & lfm = theFontMetrics(labelfont);
-		maxasc = max(maxasc, int(lfm.maxAscent()
+		Dimension const ldim = lfm.dimension(par.labelString());
+		maxasc = max(maxasc, int(ldim.ascent()
 			// add leading space
 			+ lfm.maxHeight() * (spacing_val - 1)));
-		maxdes = max(maxdes, int(lfm.maxDescent()));
+		maxdes = max(maxdes, int(ldim.descent()));
 	}
 
 	// Find the ascent/descent of the row contents
@@ -1428,10 +1429,11 @@ void TextMetrics::setRowHeight(Row & row) const
 			maxdes = max(maxdes, e.dim.descent());
 		} else {
 			FontMetrics const & fm2 = theFontMetrics(e.font);
-			maxasc = max(maxasc, int(fm2.maxAscent()
+			maxasc = max(maxasc, e.dim.ascent()
+				// FIXME: is this right (or shall we use a real height) ??
 				// add leading space
-				+ fm2.maxHeight() * (spacing_val - 1)));
-			maxdes = max(maxdes, int(fm2.maxDescent()));
+				+ int(fm2.maxHeight() * (spacing_val - 1)));
+			maxdes = max(maxdes, e.dim.descent());
 		}
 	}
 

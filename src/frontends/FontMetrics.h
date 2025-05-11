@@ -14,6 +14,7 @@
 #ifndef FONT_METRICS_H
 #define FONT_METRICS_H
 
+#include "Dimension.h"
 
 #include "support/mute_warning.h"
 #include "support/docstring.h"
@@ -128,11 +129,11 @@ public:
 
 	// The places where to break a string and the width of the resulting lines.
 	struct Break {
-		Break(int l, int w, int nsw) : len(l), wid(w), nspc_wid(nsw) {}
+		Break(int l, Dimension const & d, int nsw) : len(l), dim(d), nspc_wid(nsw) {}
 		// Number of characters
 		int len = 0;
-		// text width
-		int wid = 0;
+		// text dimension
+		Dimension dim;
 		// text width when trailing spaces are removed; only makes a
 		// difference for the last break.
 		int nspc_wid = 0;
@@ -150,6 +151,9 @@ public:
 	 */
 	virtual Breaks
 	breakString(docstring const & s, int first_wid, int wid, bool rtl, bool force) const = 0;
+
+	// return string dimension for the font.
+	virtual Dimension const dimension(docstring const & str) const = 0;
 
 	/// return char dimension for the font.
 	virtual Dimension const dimension(char_type c) const = 0;

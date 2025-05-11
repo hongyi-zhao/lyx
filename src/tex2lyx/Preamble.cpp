@@ -838,8 +838,26 @@ void Preamble::setTextClass(string const & tclass, TeX2LyXDocClass & tc)
 	h_textclass = tclass;
 	tc.setName(h_textclass);
 	if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
-		error_message("Could not read layout file for textclass \"" + h_textclass + "\".");
-		exit(EXIT_FAILURE);
+		// No layout file could be found. Check whether we can find it via
+		// the latex name
+		vector<string> const tryclass = LayoutFileList::get().getClasses(h_textclass);
+		if (!tryclass.empty()) {
+			if (tryclass.size() > 1) {
+				warning_message("Several LyX layout files available for the latex class \"" + h_textclass + "\":");
+				warning_message(getStringFromVector(tryclass));
+				warning_message("Will use \"" + tryclass.front() + "\".");
+				warning_message("Please use the -c option if you want a different layout.");
+			}
+			h_textclass = tryclass.front();
+			tc.setName(h_textclass);
+			if (!tc.load()) {
+				error_message("Could not read layout file for textclass \"" + h_textclass + "\".");
+				exit(EXIT_FAILURE);
+			}
+		} else {
+			error_message("Could not read layout file for textclass \"" + h_textclass + "\".");
+			exit(EXIT_FAILURE);
+		}
 	}
 }
 
@@ -3636,7 +3654,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	}
 
 	// set textclass if not yet done (snippets without \documentclass and forced class)
-	if (!class_set)
+	if (!class_set) 
 		setTextClass(h_textclass, tc);
 
 	// remove the whitespace

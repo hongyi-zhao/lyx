@@ -75,6 +75,8 @@ namespace {
 
 // Limit strwidth_cache_ total cost to 1MB of string data.
 int const strwidth_cache_max_cost = 1024 * 1024;
+// Limit strdim_cache_ total cost to 1MB of string data.
+int const strdim_cache_max_cost = 1024 * 1024;
 // Limit breakstr_cache_ total cost to 10MB of string data.
 // This is useful for documents with very large insets.
 int const breakstr_cache_max_cost = 10 * 1024 * 1024;
@@ -114,6 +116,7 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 	: font_(font), metrics_(font, 0), xheight_(-metrics_.boundingRect('x').top()),
 	  strwidth_cache_(strwidth_cache_max_cost),
+	  strdim_cache_(strdim_cache_max_cost),
 	  breakstr_cache_(breakstr_cache_max_cost),
 	  qtextlayout_cache_(qtextlayout_cache_max_size)
 {
@@ -566,15 +569,18 @@ GuiFontMetrics::breakString_helper(docstring const & s, int first_wid, int wid,
 		QTextLine const & line = tl.lineAt(i);
 		int const line_epos = line.textStart() + line.textLength();
 		int const epos = tlh.qpos2pos(line_epos);
+		Dimension dim;
 		// This does not take trailing spaces into account, except for the last line.
-		int const wid = iround(line.naturalTextWidth());
+		dim.wid = iround(line.naturalTextWidth());
+		dim.asc = iround(line.ascent());
+		dim.des = iround(line.descent());
 		// If the line is not the last one, trailing space is always omitted.
-		int nspc_wid = wid;
+		int nspc_wid = dim.wid;
 		// For the last line, compute the width without trailing space
 		if (i + 1 == tl.lineCount() && !s.empty() && isSpace(s.back())
 		    && line.textStart() <= tlh.pos2qpos(s.size() - 1))
 			nspc_wid = iround(line.cursorToX(tlh.pos2qpos(s.size() - 1)));
-		breaks.emplace_back(epos - pos, wid, nspc_wid);
+		breaks.emplace_back(epos - pos, dim, nspc_wid);
 		pos = epos;
 	}
 
@@ -615,10 +621,10 @@ void GuiFontMetrics::rectText(docstring const & str,
 {
 	// FIXME: let offset depend on font (this is Inset::TEXT_TO_OFFSET)
 	int const offset = 4;
-
-	w = width(str) + offset;
-	ascent = metrics_.ascent() + offset / 2;
-	descent = metrics_.descent() + offset / 2;
+	Dimension const dim = dimension(str);
+	w = dim.wid + offset;
+	ascent = dim.asc + offset / 2;
+	descent = dim.des + offset / 2;
 }
 
 
@@ -639,6 +645,27 @@ Dimension const GuiFontMetrics::defaultDimension() const
 Dimension const GuiFontMetrics::dimension(char_type c) const
 {
 	return Dimension(width(c), ascent(c), descent(c));
+}
+
+
+Dimension const GuiFontMetrics::dimension(docstring const & s) const
+{
+	PROFILE_THIS_BLOCK(dimension);
+	if (Dimension * dim_p = strdim_cache_.object_ptr(s))
+		return *dim_p;
+	PROFILE_CACHE_MISS(dimension);
+	QTextLayout tl;
+	tl.setText(toqstr(s));
+	tl.setFont(font_);
+	tl.beginLayout();
+	QTextLine line = tl.createLine();
+	tl.endLayout();
+	Dimension dim;
+	dim.wid = iround(line.naturalTextWidth());
+	dim.asc = iround(line.ascent());
+	dim.des = iround(line.descent());
+	strdim_cache_.insert(s, dim, s.size() * sizeof(char_type));
+	return dim;
 }
 
 

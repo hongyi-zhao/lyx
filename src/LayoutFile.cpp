@@ -74,6 +74,20 @@ bool LayoutFileList::haveClass(string const & classname) const
 }
 
 
+vector<string> LayoutFileList::getClasses(string const & latexname) const
+{
+	vector<string> res;
+	ClassMap::const_iterator it = classmap_.begin();
+	ClassMap::const_iterator en = classmap_.end();
+	for (; it != en; ++it) {
+		if (it->second->latexname_ == latexname)
+			res.push_back(it->first);
+	}
+	return res;
+}
+
+
+
 LayoutFile const & LayoutFileList::operator[](string const & classname) const
 {
 	LATTEST(haveClass(classname));

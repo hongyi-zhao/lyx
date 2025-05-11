@@ -142,7 +142,7 @@ bool Row::Element::splitAt(int const width, int next_width, SplitType split_type
 	if (!(row_flags & CanBreakInside)) {
 		// has width been computed yet?
 		if (dim.wid == 0)
-			dim.wid = fm.width(str);
+			dim = fm.dimension(str);
 		return false;
 	}
 
@@ -156,7 +156,7 @@ bool Row::Element::splitAt(int const width, int next_width, SplitType split_type
 	if ((split_type == FIT && breaks.front().nspc_wid > width)
 	    || (breaks.size() > 1 && breaks.front().len == 0)) {
 		if (dim.wid == 0)
-			dim.wid = fm.width(str);
+			dim = fm.dimension(str);
 		return false;
 	}
 
@@ -170,7 +170,7 @@ bool Row::Element::splitAt(int const width, int next_width, SplitType split_type
 	for (FontMetrics::Break const & brk : breaks) {
 		Element e(type, curpos, font, change);
 		e.str = str.substr(i, brk.len);
-		e.dim.wid = brk.wid;
+		e.dim = brk.dim;
 		e.nspc_wid = brk.nspc_wid;
 		e.row_flags = CanBreakInside | BreakAfter;
 		if (type == PREEDIT) {
@@ -554,7 +554,7 @@ void Row::addVirtual(pos_type const pos, docstring const & s,
 	finalizeLast();
 	Element e(VIRTUAL, pos, f, ch);
 	e.str = s;
-	e.dim.wid = theFontMetrics(f).width(s);
+	e.dim = theFontMetrics(f).dimension(s);
 	e.endpos = pos;
 	// Copy after* flags from previous elements, forbid break before element
 	int const prev_row_flags = elements_.empty() ? Inline : elements_.back().row_flags;

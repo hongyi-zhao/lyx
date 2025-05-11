@@ -83,6 +83,7 @@ public:
 	int x2pos(docstring const & s, int & x, bool rtl, double ws) const override;
 	Breaks breakString(docstring const & s, int first_wid, int wid, bool rtl, bool force) const override;
 	Dimension const dimension(char_type c) const override;
+	Dimension const dimension(docstring const & s) const override;
 
 	void rectText(docstring const & str,
 		int & width,
@@ -126,6 +127,8 @@ private:
 	mutable QHash<char_type, int> width_cache_;
 	/// Cache of string widths
 	mutable Cache<docstring, int> strwidth_cache_;
+	/// Cache of string dimension
+	mutable Cache<docstring, Dimension> strdim_cache_;
 	/// Cache for breakString
 	mutable Cache<BreakStringKey, Breaks> breakstr_cache_;
 	/// Cache for QTextLayout

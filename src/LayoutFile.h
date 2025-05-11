@@ -96,6 +96,8 @@ public:
 	bool empty() const { return classmap_.empty(); }
 	///
 	bool haveClass(std::string const & classname) const;
+	///
+	std::vector<std::string> getClasses(std::string const & latexname) const;
 	/// Note that this will assert if we don't have classname, so
 	/// check via haveClass() first.
 	LayoutFile const & operator[](std::string const & classname) const;

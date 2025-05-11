@@ -7417,6 +7417,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			cur.setSelection();
 		} else
 			cur.idx() = tabular.cellIndex(row, column + 1);
+		cur.forceBufferUpdate();
 		break;
 
 	case Tabular::MOVE_COLUMN_LEFT:
@@ -7429,6 +7430,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			cur.setSelection();
 		} else
 			cur.idx() = tabular.cellIndex(row, column - 1);
+		cur.forceBufferUpdate();
 		break;
 
 	case Tabular::MOVE_ROW_DOWN:
@@ -7441,6 +7443,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			cur.setSelection();
 		} else
 			cur.idx() = tabular.cellIndex(row + 1, column);
+		cur.forceBufferUpdate();
 		break;
 
 	case Tabular::MOVE_ROW_UP:
@@ -7453,6 +7456,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			cur.setSelection();
 		} else
 			cur.idx() = tabular.cellIndex(row - 1, column);
+		cur.forceBufferUpdate();
 		break;
 
 	case Tabular::SET_LINE_TOP:

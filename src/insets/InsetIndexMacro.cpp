@@ -193,12 +193,6 @@ void InsetIndexMacro::getDocbook(XMLStream & xs, OutputParams const & runparams)
 }
 
 
-docstring InsetIndexMacro::getXhtml(XMLStream & xs, OutputParams const & runparams) const
-{
-	return InsetText::xhtml(xs, runparams);
-}
-
-
 bool InsetIndexMacro::hasNoContent() const
 {
 	return paragraphs().front().empty();

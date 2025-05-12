@@ -88,8 +88,6 @@ private:
 	/// We do not output anything directly to the stream
 	docstring xhtml(XMLStream &, OutputParams const &) const override { return docstring(); };
 	///
-	docstring getXhtml(XMLStream &, OutputParams const &) const;
-	///
 	bool allowSpellCheck() const override { return false; }
 	///
 	bool insetAllowed(InsetCode code) const override;

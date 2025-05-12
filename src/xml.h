@@ -219,6 +219,9 @@ struct EndTag
 	///
 	explicit EndTag(docstring const & tag, std::string const & tagtype = "none")
 	        : tag_(tag), tagtype_(tagtype) {}
+	/// Create an EndTag corresponding to the given StartTag.
+	explicit EndTag(StartTag const & start_tag)
+	        : tag_(start_tag.tag_), tagtype_(start_tag.tagtype_) {}
 	///
 	virtual ~EndTag() = default;
 	/// </tag_>

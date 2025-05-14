@@ -1014,7 +1014,7 @@ bool tex2lyx(FileName const & infilename, ostream & os, string encoding,
 	// This is used until an encoding command is found.
 	// For child documents use the encoding of the master, else try to
 	// detect it from the preamble, since setting an encoding of an open
-	// fstream does currently not work on OS X.
+	// fstream does currently not work on macOS.
 	// Always start with ISO-8859-1, (formerly known by its latex name
 	// latin1), since ISO-8859-1 does not cause an iconv error if the
 	// actual encoding is different (bug 7509).

@@ -190,7 +190,7 @@ if(LYX_BUNDLE)
 		foreach(_i RANGE ${OSX_BUNDLE_LAST_INDEX})
 		    list(GET OSX_BUNDLE_FILES ${_i} _file)
 		    list(GET OSX_BUNDLE_DIRS ${_i} _directory)
-		    # Sets the location of the file into the OS X bundle
+		    # Sets the location of the file into the macOS bundle
 			set_source_files_properties("${_file}" PROPERTIES MACOSX_PACKAGE_LOCATION "${_directory}")
 		endforeach()
 

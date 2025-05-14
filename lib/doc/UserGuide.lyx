@@ -170,6 +170,7 @@ logicalmkup
 \author -1162675398 "Tobias Hilbricht" hilbricht@linopus.de
 \author -712698321 "Jürgen Spitzmüller"
 \author -584632292 "Richard Kimberly Heck"
+\author -495245474 "Jean-Marc Lasgouttes"
 \author 5863208 "ab"
 \author 1075283030 "Thibaut"
 \author 1549938239 "Kornel Benko"
@@ -1607,10 +1608,16 @@ Special
 
 PDF
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-OS X only
+
+\change_inserted -495245474 1747237609
+macOS
+\change_deleted -495245474 1747237605
+OS X
+\change_unchanged
+ only
 \end_layout
 
 \end_inset
@@ -39547,9 +39554,22 @@ Answer
 \end_layout
 
 \begin_layout Standard
-To use conditional output inside places where you cannot insert branch insets,
- like inside equations,
- you can code special \SpecialChar LaTeX
+To use conditional output inside 
+\change_inserted -495245474 1747223737
+equations,
+ 
+\change_deleted -495245474 1747223748
+places 
+\change_unchanged
+where you cannot insert branch insets,
+ 
+\change_deleted -495245474 1747223754
+like inside equations,
+ 
+\change_inserted -495245474 1747223724
+it is useful to define 
+\change_deleted -495245474 1747223516
+you can code special \SpecialChar LaTeX
  definitions for each branch.
  For example you can define for the question branch
 \begin_inset Foot
@@ -39580,6 +39600,8 @@ nolink "false"
 
 \begin_layout Standard
 
+\change_deleted -495245474 1747223516
+
 \series bold
 
 \backslash
@@ -39590,6 +39612,8 @@ question}[1]{#1}
 
 \begin_layout Standard
 
+\change_deleted -495245474 1747223516
+
 \series bold
 
 \backslash
@@ -39599,10 +39623,14 @@ answer}[1]{}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -495245474 1747223516
 and for the answer branch
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -495245474 1747223516
 
 \series bold
 
@@ -39614,6 +39642,8 @@ question}[1]{}
 
 \begin_layout Standard
 
+\change_deleted -495245474 1747223516
+
 \series bold
 
 \backslash
@@ -39623,6 +39653,8 @@ answer}[1]{#1}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -495245474 1747223516
 \begin_inset Branch Question
 inverted 0
 status open
@@ -39658,6 +39690,8 @@ answer}[1]{}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -495245474 1747223516
 \begin_inset Branch Answer
 inverted 0
 status collapsed
@@ -39693,6 +39727,8 @@ answer}[1]{#1}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -495245474 1747223516
 Now it is possible to use the 
 \series bold
 
@@ -39726,8 +39762,16 @@ x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -495245474 1747223516
 Inside math,
- the same effect can be achieved using math macros,
+ the same effect can be achieved using
+\change_unchanged
+ math macros
+\change_inserted -495245474 1747223549
+ in branches
+\change_unchanged
+,
  see the 
 \emph on
 Math

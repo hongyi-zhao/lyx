@@ -57,7 +57,7 @@ public:
 	/**
 	 * Return a string describing the KeySym with modifier mod.
 	 * Use the native UI format when \c forgui is true.
-	 * i.e. (translated and with special characters for Mac OS X)
+	 * i.e. (translated and with special characters for macOS)
 	 */
 	docstring const print(KeyModifier mod, bool forgui, bool untranslated = false) const;
 

@@ -268,7 +268,7 @@ AspellSpeller * AspellChecker::Private::addSpeller(Language const * lang)
 	// conversion in theory, but if this is used it expects all
 	// char const * arguments to be a cast from  uint const *, and it
 	// seems that this uint is not compatible with our char_type on some
-	// platforms (cygwin, OS X). Therefore we use utf-8, that does
+	// platforms (cygwin, macOS). Therefore we use utf-8, that does
 	// always work.
 	aspell_config_replace(m.config, "encoding", "utf-8");
 	if (lyxrc.spellchecker_accept_compound)

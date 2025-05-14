@@ -164,7 +164,7 @@
    Polish translation
 @bRonald Florence
 @iE-mail: ron () 18james ! com
-   Maintainer of the OS X port(s)
+   Initial maintainer of the OS X port(s)
 @bJosé Ramom Flores d'as Seixas
 @iE-mail: fa2ramon () usc ! es
    Galician documentation and localization
@@ -708,7 +708,7 @@
    updates to the Scientific Word bindings
 @bStephan Witt
 @iE-mail: stephan.witt () beusen ! de
-   support for CVS revision control, native spell checker interface for Mac OS
+   support for CVS revision control, native spell checker interface for macOS
 @bJürgen Womser-Schütz
 @iE-mail: jws1954 () gmx ! de
    Improvements to the Include File dialog

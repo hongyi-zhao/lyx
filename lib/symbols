@@ -1231,7 +1231,7 @@ lyxsurd               cmsy        112 0 mathord  &#x221A;
 \def\surd{^\lyxsurd}                                            mathord  &#x221A;
 \def\textdegree{\text{°}} textmode ° textcomp,amstext,lyxmathsym
 else
-# FIXME: These don't work on OS X, since the Symbol font uses a different
+# FIXME: These don't work on macOS, since the Symbol font uses a different
 #        encoding and is therefore disabled in FontLoader::available().
 cong               lyxsymbol             64  0 mathrel  &#x2245;
 surd               lyxsymbol             214 0 mathord  &#x221A;

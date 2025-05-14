@@ -396,7 +396,7 @@ odocstream & operator<<(odocstream & os, SetEnc const & e)
 		// "iostreams: Does imbue() need to be called before open()?"
 		// in comp.std.c++.
 		// Currently it seems to work with gcc and MSVC, but not with
-		// clang on OS X.
+		// clang on macOS.
 		// Avoid imbueing with the same encoding again if possible.
 		if (facet.encoding() == e.encoding)
 			return os;
@@ -426,7 +426,7 @@ idocstream & operator<<(idocstream & is, SetEnc const & e)
 		// "iostreams: Does imbue() need to be called before open()?"
 		// in comp.std.c++.
 		// Currently it seems to work with gcc and MSVC, but not with
-		// clang on OS X.
+		// clang on macOS.
 		// Avoid imbueing with the same encoding again if possible.
 		if (facet.encoding() == e.encoding)
 			return is;

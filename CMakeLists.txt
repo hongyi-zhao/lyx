@@ -458,7 +458,7 @@ if (LYX_PACKAGE_RELEASE MATCHES "UNDEFINED")
 endif()
 
 # Set the programs (lyx, tex2lyx, etc.) suffix
-# When building an OS X bundle, we will append
+# When building a macOS bundle, we will append
 # the suffix only to the bundle, not to the programs
 set(PROGRAM_SUFFIX "")
 if(LYX_PROGRAM_SUFFIX AND NOT (APPLE AND LYX_BUNDLE))
@@ -1294,7 +1294,7 @@ if(ENABLE_DIST)
   add_custom_target(git-archive DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${DIST_NAME})
 endif()
 
-# Last directory to be included so that the fixup code (OS X)
+# Last directory to be included so that the fixup code (macOS)
 # can be run last
 add_subdirectory(development/cmake/post_install)
 

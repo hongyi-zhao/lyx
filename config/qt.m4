@@ -290,7 +290,7 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 	fi
 	PKG_CONFIG_PATH=$save_PKG_CONFIG_PATH
 	dnl Actually, the values of QT_LIB and QT_CORE_LIB can be completely
-	dnl wrong on OS X, where everything goes to --libs-only-other.
+	dnl wrong on macOS, where everything goes to --libs-only-other.
 	dnl As a quick workaround, let us assign better values. A better patch
 	dnl exists for next cycle.
 	QT_CORE_LIB=$QT_CORE_LIBS

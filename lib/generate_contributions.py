@@ -774,7 +774,7 @@ contributors = [
                  "Re: The LyX licence --- a gentle nudge",
                  "m=111262821108510",
                  "31 March 2005",
-                 "Maintainer of the OS X port(s)"),
+                 "Initial maintainer of the Mac OS X port(s)"),
 
      contributor("José Ramom Flores d'as Seixas",
                  "fa2ramon () usc ! es",
@@ -2262,7 +2262,7 @@ contributors = [
                  "Re: The LyX licence",
                  "m=110909031824764",
                  "22 February 2005",
-                 "support for CVS revision control, native spell checker interface for Mac OS"),
+                 "support for CVS revision control, native spell checker interface for macOS"),
 
      contributor("Jürgen Womser-Schütz",
                  "jws1954 () gmx ! de",

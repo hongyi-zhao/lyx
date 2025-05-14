@@ -527,11 +527,11 @@ bool GuiClipboard::isInternal() const
 
 	// ownsClipboard() is also true for stuff coming from dialogs, e.g.
 	// the preamble dialog. This does only work on X11 and Windows, since
-	// ownsClipboard() is hardwired to return false on OS X.
+	// ownsClipboard() is hardwired to return false on macOS.
 	if (hasInternal())
 		return qApp->clipboard()->ownsClipboard();
 
-	// We are running on OS X: Check whether clipboard data is from
+	// We are running on macOS: Check whether clipboard data is from
 	// ourself by comparing its checksum with the stored one.
 	QByteArray const ar = cache_.data(lyxMimeType());
 	string const data(ar.data(), ar.size());

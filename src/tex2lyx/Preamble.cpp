@@ -2342,6 +2342,18 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
+	else if (name == "enumitem") {
+		// Load "enumitem" module
+		addModule("enumitem");
+		// Add the package options to the global document options
+		if (!options.empty()) {
+			if (h_options.empty())
+				h_options = join(options, ",");
+			else
+				h_options += ',' + join(options, ",");
+		}
+	}
+
 	else if (name == "changebar")
 		h_output_changes = "true";
 

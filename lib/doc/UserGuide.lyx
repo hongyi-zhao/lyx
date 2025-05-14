@@ -172,6 +172,7 @@ logicalmkup
 \author -584632292 "Richard Kimberly Heck"
 \author 5863208 "ab"
 \author 1075283030 "Thibaut"
+\author 1549938239 "Kornel Benko"
 \end_header
 
 \begin_body
@@ -59656,7 +59657,7 @@ The \SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-https://texfaq.org/
+https://texfaq.org
 \end_layout
 
 \end_inset
@@ -60641,7 +60642,7 @@ literal "false"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "https://mirrors.ctan.org/macros/latex/contrib/zref-clever//zref-clever.pdf"
+target "https://mirrors.ctan.org/macros/latex/contrib/zref-clever/zref-clever-doc.pdf"
 literal "false"
 
 \end_inset
@@ -60651,7 +60652,7 @@ literal "false"
 \begin_inset Index idx
 range none
 pageformat default
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -60684,12 +60685,18 @@ zref-clever
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 \change_inserted -712698321 1742730723
-https://mirrors.ctan.org/macros/latex/contrib/refstyle//zref-clever.pdf
+https://mirrors.ctan.org/macros/latex/contrib/
+\change_inserted 1549938239 1747209463
+zref-clever
+\change_deleted 1549938239 1747209445
+refstyle
+\change_inserted -712698321 1742730723
+/zref-clever-doc.pdf
 \change_unchanged
 
 \end_layout

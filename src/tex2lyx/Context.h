@@ -132,6 +132,8 @@ public:
 	std::string list_extra_stuff;
 	/// Stuff between list begin and first item
 	std::string list_preamble;
+	/// Optional argument of list environments
+	std::string list_options;
 	/// A LaTeXParam to be ignored in parsing.
 	std::string latexparam;
 	/// If there has been an \\begin_deeper, we'll need a matching

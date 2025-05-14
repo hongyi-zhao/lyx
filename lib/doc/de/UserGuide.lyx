@@ -56292,7 +56292,7 @@ The \SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-https://texfaq.org/
+https://texfaq.org
 \end_layout
 
 \end_inset
@@ -57189,68 +57189,6 @@ https://mirrors.ctan.org/macros/latex/contrib/prettyref/prettyref.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Dokumentation"
-target "https://mirrors.ctan.org/macros/latex/contrib/zref-clever/zref-clever.pdf"
-literal "false"
-
-\end_inset
-
- des \SpecialChar LaTeX
--Pakets 
-\series bold
-zref-clever
-\series default
-
-\begin_inset Index idx
-range none
-pageformat default
-status open
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--Paket
-\begin_inset IndexMacro subentry
-status open
-
-\begin_layout Plain Layout
-zref-clever
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-https://mirrors.ctan.org/macros/latex/contrib/zref-clever/zref-clever.pdf
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "zref-clever"
 literal "false"
 
 \end_inset
@@ -57298,10 +57236,72 @@ refstyle
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 https://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "zref-clever"
+literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "https://mirrors.ctan.org/macros/latex/contrib/zref-clever/zref-clever-doc.pdf"
+literal "false"
+
+\end_inset
+
+ des \SpecialChar LaTeX
+-Pakets 
+\series bold
+zref-clever
+\series default
+
+\begin_inset Index idx
+range none
+pageformat default
+status open
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket
+\begin_inset IndexMacro subentry
+status open
+
+\begin_layout Plain Layout
+zref-clever
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+https://mirrors.ctan.org/macros/latex/contrib/zref-clever/zref-clever-doc.pdf
 \end_layout
 
 \end_inset

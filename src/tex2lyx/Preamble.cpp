@@ -1178,7 +1178,7 @@ void Preamble::handle_geometry(vector<string> & options)
 
 void Preamble::handle_package(Parser &p, string const & name,
                               string const & opts, bool in_lyx_preamble,
-                              bool detectEncoding)
+                              bool detectEncoding, TeX2LyXDocClass & tc)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
@@ -2343,8 +2343,18 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (name == "enumitem") {
-		// Load "enumitem" module
+		// We need to load "enumitem" module explicitly.
+		// LyX will not load it automatically since the layout
+		// it provides are also provided by the class.
+		// But of course we want enumitem's versions here.
 		addModule("enumitem");
+		// Also we need to re-read the layout file since enumitem adds options
+		// to already existing layouts.
+		FileName layout_file = libFileSearch("layouts", "enumitem", "module");
+		if (layout_file.empty())
+			warning_message("Module enumitem not found!");
+		else
+			tc.read(layout_file, TextClass::MODULE);
 		// Add the package options to the global document options
 		if (!options.empty()) {
 			if (h_options.empty())
@@ -3308,7 +3318,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			vector<string>::const_iterator end = vecnames.end();
 			for (; it != end; ++it)
 				handle_package(p, trimSpaceAndEol(*it), options,
-					       in_lyx_preamble, detectEncoding);
+					       in_lyx_preamble, detectEncoding, tc);
 			continue;
 		}
 

@@ -9,7 +9,7 @@
 # Reviewed following tickets #10722 & #10723
 #          by Jean-Pierre Chrétien <jpc@lyx.org>
 
-Format 108
+Format 109
 
 Provides amscls 1
 Provides amsmath 1
@@ -100,6 +100,7 @@ Style Thanks
   LabelString "Thanks: "
   LatexType command
   LatexName thanks
+  MultiPar 1
   Margin Dynamic
 End
 

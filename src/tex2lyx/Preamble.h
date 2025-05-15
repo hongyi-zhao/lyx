@@ -287,7 +287,7 @@ private:
 	///
 	void handle_package(Parser &p, std::string const & name,
 	                    std::string const & opts, bool in_lyx_preamble,
-	                    bool detectEncoding);
+	                    bool detectEncoding, TeX2LyXDocClass & tc);
 	///
 	void handle_if(Parser & p, bool in_lyx_preamble);
 

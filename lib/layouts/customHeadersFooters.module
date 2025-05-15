@@ -9,7 +9,7 @@
 #DescriptionEnd
 #Author: Uwe Stöhr
 
-Format 108
+Format 109
 
 Style "Left Header"
   Category		Header/Footer

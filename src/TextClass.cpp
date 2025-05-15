@@ -59,7 +59,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 108; // spitz: Theorem-related tags
+int const LAYOUT_FORMAT = 109; // spitz: MultiPar (styles)
 
 
 // Layout format for the current lyx file format. Controls which format is

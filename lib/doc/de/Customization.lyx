@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 638
+\lyxformat 640
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -13839,6 +13839,63 @@ Right_Address_Box
 \end_layout
 
 \end_deeper
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Legt fest,
+ ob innerhalb dieses Layouts mehrere Absätze erlaubt sind.
+ Dies betrifft nur Layouts des Typs 
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+command
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Falls dies aktiviert ist,
+ werden mehrere Absätze als Argument ein und desselben Befehls ausgegeben (statt dass für jeden Absatz ein neuer Befehl ausgegeben wird).
+ Voreinstellung:
+ deaktiviert.
+\end_layout
+
 \begin_layout Description
 \begin_inset Flex Code
 status collapsed

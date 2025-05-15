@@ -4,7 +4,7 @@
 # Extented report textclass definition file.
 # Herbert Voss <voss@lyx.org>
 
-Format 108
+Format 109
 Input report.layout
 
 # change available fontsizes

@@ -9,7 +9,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 108
+currentFormat = 109
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -364,6 +364,9 @@ currentFormat = 108
 # "TheoremCounter", "TheoremParentCounter", "TheoremStyle",
 # "TheoremCrossRefName", "TheoremCrossRefPluralName"
 
+# Incremented to format 109, 15 May 2025 by spitz
+# New Layout tag "MultiPar"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -598,7 +601,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 101 <= format <= 107:
+        if 101 <= format <= 108:
             # nothing to do.
             i += 1
             continue

@@ -9,7 +9,7 @@
 #DescriptionEnd
 #Excludes: enotez | foottoenotez
 
-Format 108
+Format 109
 
 Counter endnotes
 	GuiName Endnotes

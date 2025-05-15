@@ -1,5 +1,5 @@
 #LyX 2.5 created this file. For more info see https://www.lyx.org/
-\lyxformat 638
+\lyxformat 640
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -15348,6 +15348,57 @@ Right_Address_Box
 
 \end_deeper
 \begin_layout Description
+
+\change_inserted -712698321 1747303660
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1747303589
+MultiPar
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1747303589
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1747303589
+1
+\end_layout
+
+\end_inset
+
+] Whether multiple paragraphs are permitted in this layout.
+ This only applies to command layouts.
+ If true,
+ multiple paragraphs are put within the same command (rather than starting new commands for each paragraph).
+ Default is false.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -16941,6 +16992,8 @@ status collapsed
 
 \change_inserted -712698321 1745643926
 TheoremCrossRefName
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16973,6 +17026,8 @@ status collapsed
 
 \change_inserted -712698321 1745645504
 TheoremCrossRefPluralName
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16985,6 +17040,8 @@ status collapsed
 
 \change_inserted -712698321 1745644987
 TheoremCrossRefName
+\change_unchanged
+
 \end_layout
 
 \end_inset

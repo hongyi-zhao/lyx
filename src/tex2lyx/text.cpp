@@ -2607,14 +2607,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			eat_whitespace(p, os, parent_context, false);
 			Context context(true, parent_context.textclass, newlayout,
 					parent_context.layout, parent_context.font);
-			if ((context.layout->latextype == LATEX_LIST_ENVIRONMENT
-			     || context.layout->latextype == LATEX_ITEM_ENVIRONMENT)
-			     && p.hasOpt()) {
-				// if a list environment has an optional argument
-				// (e.g., with enumitem), store it to output it later
-				// in the first list paragraph.
-				context.list_options = p.getArg('[', ']');
-				p.skip_spaces(true);
+			// If we have options we don't know of in the layout,
+			// output ERT
+			if (p.hasOpt() && context.layout->optArgs() == 0) {
+				parse_unknown_environment(p, name, os, FLAG_END, outer, parent_context);
+				break;
 			}
 			if (parent_context.deeper_paragraph) {
 				// We are beginning a nested environment after a
@@ -3704,16 +3701,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (context.layout->labeltype != LABEL_MANUAL)
 				output_arguments(os, p, outer, false, "item", context,
 					         context.layout->itemargs());
-			if (!context.list_options.empty()) {
-				// We have an optional list argument. Output it here.
-				begin_inset(os, "Argument 1");
-				os << "\nstatus collapsed\n\n"
-				   << "\\begin_layout Plain Layout\n\n";
-				output_ert_inset(os, rtrim(context.list_options), context);
-				os << "\n\\end_layout";
-				end_inset(os);
-				context.list_options.clear();
-			}
 			if (!context.list_preamble.empty()) {
 				// We have a list preamble. Output it here.
 				begin_inset(os, "Argument listpreamble:1");

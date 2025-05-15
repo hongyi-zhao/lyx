@@ -22,7 +22,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 108
+Format 109
 
 Style Theorem
 	Category              Reasoning

@@ -12,7 +12,7 @@
 #DescriptionEnd
 #Author: Richard Kimberly Heck <rikiheck@lyx.org>
 
-Format 108
+Format 109
 
 Style "In Preamble"
 	CopyStyle Standard

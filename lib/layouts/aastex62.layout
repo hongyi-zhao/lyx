@@ -57,7 +57,7 @@
 #       - in DocBook, the table notes are not supported at all (move the remarks
 #         into the table cells instead of outputting tablenotemark in the cells?)
 
-Format 108
+Format 109
 
 Provides hyperref 1
 

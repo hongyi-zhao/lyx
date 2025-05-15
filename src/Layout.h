@@ -298,6 +298,8 @@ public:
 	/// are handled as one group?
 	bool isParagraphGroup() const {	return par_group_; }
 	///
+	bool isMultiparCommand() const { return isCommand() && multi_par_; }
+	///
 	bool labelIsInline() const {
 		return labeltype == LABEL_STATIC
 			|| labeltype == LABEL_SENSITIVE
@@ -685,6 +687,8 @@ private:
 	LaTeXArgMap itemargs_;
 	///
 	bool add_to_toc_;
+	///
+	bool multi_par_;
 	///
 	std::string toc_type_;
 	///

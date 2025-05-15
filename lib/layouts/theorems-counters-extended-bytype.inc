@@ -1,6 +1,6 @@
 # Theorem-like counters, extended, separately for each type of theorem
 
-Format 108
+Format 109
 Counter criterion
 	GuiName Criterion
 	PrettyFormat "Criterion \arabic{theorem}"

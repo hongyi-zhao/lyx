@@ -74,6 +74,7 @@ enum LayoutTags {
 	LT_LATEXTYPE,
 	LT_LEFTDELIM,
 	LT_LEFTMARGIN,
+	LT_MULTIPAR,
 	LT_NEED_CPROTECT,
 	LT_NEED_MBOXPROTECT,
 	LT_NEED_PROTECT,
@@ -161,7 +162,7 @@ enum LayoutTags {
 /////////////////////
 
 Layout::Layout()
-	: add_to_toc_(false), is_toc_caption_(true)
+	: add_to_toc_(false), multi_par_(false), is_toc_caption_(true)
 {
 	unknown_ = false;
 	margintype = MARGIN_STATIC;
@@ -324,6 +325,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 		{ "leftdelim",      LT_LEFTDELIM },
 		{ "leftmargin",     LT_LEFTMARGIN },
 		{ "margin",         LT_MARGIN },
+		{ "multipar",       LT_MULTIPAR },
 		{ "needcprotect",    LT_NEED_CPROTECT },
 		{ "needmboxprotect", LT_NEED_MBOXPROTECT },
 		{ "needprotect",    LT_NEED_PROTECT },
@@ -677,6 +679,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass,
 
 		case LT_NEWLINE:
 			lex >> newline_allowed;
+			break;
+
+		case LT_MULTIPAR:
+			lex >> multi_par_;
 			break;
 
 		case LT_ALIGN:

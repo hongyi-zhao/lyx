@@ -4,7 +4,7 @@
 # AGUplus JGR textclass definition file.
 # Author: Martin Vermeer <martin.vermeer@hut.fi>
 
-Format 108
+Format 109
 Input aguplus.inc
 
 ClassOptions

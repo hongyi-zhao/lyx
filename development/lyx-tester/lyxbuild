@@ -603,6 +603,7 @@ else
     -DLYX_ENCHANT=${ENCHANT_FLAG}
     -DLYX_EXTERNAL_Z=ON
     -DLYX_EXTERNAL_DTL=ON
+    # if set to OFF, then need to turn Werror off to compile successfully.
     -DLYX_EXTERNAL_ICONV=ON
     -DLYX_NLS=ON
     -DLYX_ENABLE_URLTESTS=OFF

@@ -101,6 +101,7 @@ Style Thanks
   LatexType command
   LatexName thanks
   MultiPar 1
+  ParagraphGroup 1
   Margin Dynamic
 End
 

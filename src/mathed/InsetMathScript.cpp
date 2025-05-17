@@ -23,7 +23,6 @@
 #include "MetricsInfo.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 
 

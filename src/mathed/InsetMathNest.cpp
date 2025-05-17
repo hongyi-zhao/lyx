@@ -15,7 +15,6 @@
 #include "InsetMathArray.h"
 #include "InsetMathAMSArray.h"
 #include "InsetMathBig.h"
-#include "InsetMathBox.h"
 #include "InsetMathBrace.h"
 #include "InsetMathChar.h"
 #include "InsetMathColor.h"
@@ -28,7 +27,6 @@
 #include "InsetMathRef.h"
 #include "InsetMathScript.h"
 #include "InsetMathSpace.h"
-#include "InsetMathSymbol.h"
 #include "InsetMathUnknown.h"
 #include "MathAutoCorrect.h"
 #include "MathCompletionList.h"
@@ -59,7 +57,6 @@
 #include "frontends/Application.h"
 #include "frontends/Clipboard.h"
 #include "frontends/InputMethod.h"
-#include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
 #include "support/debug.h"

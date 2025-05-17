@@ -16,7 +16,6 @@
 #include "InsetMathBrace.h"
 #include "InsetMathChar.h"
 #include "InsetMathHull.h"
-#include "InsetMathSqrt.h"
 #include "InsetMathMacro.h"
 #include "InsetMathMacroArgument.h"
 #include "MathStream.h"

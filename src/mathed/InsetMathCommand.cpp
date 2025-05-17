@@ -13,7 +13,6 @@
 #include "InsetMathCommand.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "DispatchResult.h"
 
 #include <sstream>
 

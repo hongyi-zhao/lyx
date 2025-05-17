@@ -12,7 +12,6 @@
 
 #include "InsetMathExInt.h"
 
-#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "InsetMathSymbol.h"

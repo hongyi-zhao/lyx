@@ -28,8 +28,6 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "Encoding.h"
-#include "FuncStatus.h"
-#include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 #include "LyX.h"
 #include "LyXRC.h"

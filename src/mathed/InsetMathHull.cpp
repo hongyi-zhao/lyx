@@ -33,7 +33,6 @@
 #include "FuncStatus.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "LyXRC.h"
 #include "MacroTable.h"
 #include "InsetMathMacro.h"
 #include "InsetMathMacroTemplate.h"
@@ -56,10 +55,8 @@
 #include "graphics/PreviewLoader.h"
 
 #include "frontends/alert.h"
-#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/filetools.h"

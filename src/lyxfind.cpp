@@ -26,7 +26,6 @@
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
-#include "LyX.h"
 #include "output_latex.h"
 #include "OutputParams.h"
 #include "Paragraph.h"

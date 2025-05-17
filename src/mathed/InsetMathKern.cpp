@@ -13,7 +13,6 @@
 #include "InsetMathKern.h"
 
 #include "MathStream.h"
-#include "MathSupport.h"
 
 #include "Dimension.h"
 #include "MetricsInfo.h"

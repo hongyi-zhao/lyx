@@ -118,6 +118,8 @@ public:
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 	/// dispatch command.
 	/// \return true if the \c FuncRequest has been dispatched.
+	/// Do not use this version of dispatch() that uses a DispatchResult
+	/// if not using it after the call, see cd3d327366.
 	void dispatch(FuncRequest const & cmd, DispatchResult & dr);
 
 	void restartCaret();

@@ -437,6 +437,8 @@ public:
 	///////////////////////////////////////////////////////////////////
 	/// \return true if there is a Layout with latexname lay
 	bool hasLaTeXLayout(std::string const & lay) const;
+	/// \return true if there is a Layout with refprefix pr
+	bool hasRefPrefix(docstring const & pr) const;
 	/// A DocumentClass nevers count as loaded, since it is dynamic
 	bool loaded() const override { return false; }
 	/// \return the layout object of an inset given by name. If the name

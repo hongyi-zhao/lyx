@@ -24,6 +24,7 @@
 #include "ParIterator.h"
 #include "PDFOptions.h"
 #include "Statistics.h"
+#include "TextClass.h"
 #include "xml.h"
 #include "texstream.h"
 #include "TocBackend.h"
@@ -390,8 +391,10 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 				else
 					os << ",";
 			}
-			if (contains(*it, ' ') && !prefixIs(buffer().masterParams().xref_package, "prettyref"))
-				// refstyle bug: labels with blanks need to be grouped
+			if (contains(*it, ' ') && buffer().masterParams().xref_package == "refstyle"
+			    && buffer().masterParams().documentClass().hasRefPrefix(prefix))
+				// refstyle bug: labels with blanks need to be grouped for known commands
+				// (basically those with known refprefixes)
 				// otherwise the blanks will be gobbled
 				os << "{" << *it << "}";
 			else {
@@ -892,7 +895,8 @@ void InsetRef::validate(LaTeXFeatures & features) const
 				features.addPreambleSnippet(from_ascii("\\let\\charef=\\chapref"));
 			else if (prefix == "subsec")
 				features.require("refstyle:subsecref");
-			else if (!prefix.empty()) {
+			else if (!prefix.empty() && !buffer().masterParams().documentClass().hasRefPrefix(prefix)) {
+				// fallback command for unknown prefixes
 				docstring lcmd = "\\AtBeginDocument{\\providecommand" +
 						fcmd + "[1]{\\ref{" + prefix + ":#1}}}";
 				features.addPreambleSnippet(lcmd);

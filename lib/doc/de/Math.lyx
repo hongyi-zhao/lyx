@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 640
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -217,11 +217,19 @@ logicalmkup
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\crossref_package prettyref
 \use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\notefontcolor #0000ff
+\customcolor lyxnotefontcolor 0000ff
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lyxnotefontcolor
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
@@ -250,6 +258,7 @@ logicalmkup
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -455,7 +464,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 AmS 
 \end_layout
@@ -479,7 +487,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 AmS 
 \end_layout
@@ -496,7 +503,6 @@ Eine Liste mit allen
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 AmS
@@ -8784,7 +8790,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -8807,7 +8812,6 @@ A & = & \underbrace{gggg+bbqq}_{r}+\:dddd
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -10876,7 +10880,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 texorpdfstring{
 \end_layout
@@ -10906,7 +10909,6 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 }{}
 \end_layout
 
@@ -11664,7 +11666,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifundertilde 
 \end_layout
@@ -11759,7 +11760,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else 
 \end_layout
@@ -11799,7 +11799,6 @@ muss installiert sein,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi 
@@ -13291,7 +13290,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 texorpdfstring{
 \end_layout
@@ -13321,7 +13319,6 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 }{}
 \end_layout
 
@@ -13964,7 +13961,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -13990,7 +13986,6 @@ mm umgebendem Leerraum befindet.
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -14603,7 +14598,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fboxrule 2mm 
 \backslash
@@ -14683,7 +14677,6 @@ fboxsep
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fboxrule 0.4pt 
@@ -15709,7 +15702,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fboxrule 1mm 
 \backslash
@@ -15731,7 +15723,6 @@ fboxsep 1mm
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fboxrule 0.4pt 
@@ -16005,7 +15996,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 textcolor{dunkelgruen}{
 \end_layout
@@ -16025,7 +16015,6 @@ dunkelgruen
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -16485,7 +16474,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 fboxsep 5mm 
 \backslash
@@ -16502,7 +16490,6 @@ fboxrule 5mm
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fbox{
@@ -16531,7 +16518,6 @@ fboxrule}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }}
 \end_layout
 
@@ -16542,7 +16528,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fboxrule 0.4pt 
@@ -16633,7 +16618,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 [5x-7b=3b
 \backslash
@@ -16650,7 +16634,6 @@ Dies ist eine Beschreibung.
 status collapsed
 
 \begin_layout Plain Layout
-
 }}
 \backslash
 ]
@@ -19251,7 +19234,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raisebox{-1.2mm}{
 \end_layout
@@ -19263,7 +19245,6 @@ raisebox{-1.2mm}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21335,7 +21316,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 boldmath 
 \end_layout
@@ -21355,7 +21335,6 @@ boldmath
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 unboldmath 
@@ -21484,7 +21463,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 textcolor{dunkelgruen}{
 \end_layout
@@ -21504,7 +21482,6 @@ textcolor{dunkelgruen}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -21908,7 +21885,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 huge 
 \end_layout
@@ -21936,7 +21912,6 @@ A=\frac{B}{c}\cdot\maltese
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 normalsize 
@@ -23656,7 +23631,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 texorpdfstring{
 \end_layout
@@ -23687,7 +23661,6 @@ literal "true"
 status collapsed
 
 \begin_layout Plain Layout
-
 }{}
 \end_layout
 
@@ -24290,7 +24263,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raisebox{-0.8mm}{
 \end_layout
@@ -24306,7 +24278,6 @@ raisebox{-0.8mm}{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -25468,12 +25439,21 @@ status open
 \begin_layout Plain Layout
 
 \backslash
-@
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+@
+\end_layout
 
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 officialeuro
@@ -25646,7 +25626,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifeurosym 
 \end_layout
@@ -25692,7 +25671,6 @@ Eine Übersicht der verschiedenen Euro-Symbole:
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 cmidrule[0.08em]{2-3}
@@ -25821,7 +25799,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 officialeuro
 \end_layout
@@ -25873,7 +25850,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else 
 \end_layout
@@ -25913,7 +25889,6 @@ muss installiert sein,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi 
@@ -29453,7 +29428,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 "e
 \end_layout
@@ -29486,7 +29460,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 `e
@@ -29525,7 +29498,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ^e
 \end_layout
@@ -29558,7 +29530,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 =e
@@ -29597,7 +29568,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 u e
 \end_layout
@@ -29635,7 +29605,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 b e
 \end_layout
@@ -29672,7 +29641,6 @@ ee
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 t ee
@@ -29745,7 +29713,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 H e
 \end_layout
@@ -29778,7 +29745,6 @@ H e
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 'e
@@ -29825,7 +29791,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ~e
 \end_layout
@@ -29858,7 +29823,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 .e
@@ -29897,7 +29861,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 v e
 \end_layout
@@ -29935,7 +29898,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 d e
 \end_layout
@@ -29972,7 +29934,6 @@ e
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 c e
@@ -30024,7 +29985,6 @@ sz
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 t sz
@@ -30242,7 +30202,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 textcircled{w}
 \end_layout
@@ -30283,7 +30242,6 @@ raisebox{-1.5pt}{W}}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 Large 
@@ -30788,13 +30746,11 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 begin{eqnarray*}
 \end_layout
 
 \begin_layout Plain Layout
-
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & 
 \backslash
 textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}
@@ -30805,7 +30761,6 @@ textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}
 \end_layout
 
 \begin_layout Plain Layout
-
 4x^{2}
 \backslash
 left(B^{2}+x_{0}^{2}
@@ -30822,7 +30777,6 @@ right) & = & 0
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{eqnarray*}
@@ -30983,7 +30937,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -31009,7 +30962,6 @@ B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \te
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -31193,7 +31145,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -31220,7 +31171,6 @@ pt:
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -32684,7 +32634,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -32708,7 +32657,6 @@ multlinegap}{2cm}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 setlength{
@@ -33900,7 +33848,6 @@ status open
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -34368,7 +34315,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -34396,7 +34342,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -34421,7 +34366,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -34445,7 +34389,6 @@ C=\textrm{lateinisch}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -34524,7 +34467,6 @@ arabic
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -34860,7 +34802,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 mbox{
 \end_layout
@@ -34872,7 +34813,6 @@ mbox{
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -34923,13 +34863,22 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 "
 \end_layout
 
 \end_inset
 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 @
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -34946,13 +34895,22 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 "
 \end_layout
 
 \end_inset
 
-@addtoreset
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+addtoreset
 \end_layout
 
 \end_inset
@@ -35167,13 +35125,22 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 "
 \end_layout
 
 \end_inset
 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 @
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35190,13 +35157,22 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-
 "
 \end_layout
 
 \end_inset
 
-@removefromreset
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+removefromreset
 \end_layout
 
 \end_inset
@@ -35313,7 +35289,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 numberwithin{equation}{section}
 \end_layout
@@ -35406,7 +35381,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -35460,20 +35434,17 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 makeatletter
 \end_layout
 
 \begin_layout Plain Layout
 
-
 \backslash
 @removefromreset{equation}{section}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 makeatother
@@ -36406,7 +36377,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 mbox{
 \end_layout
@@ -36424,7 +36394,6 @@ Strg+Enter
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -38466,7 +38435,7 @@ Octave
 \family default
 .
  Beachten Sie aber,
- dass die unterstützten mathematischen Ausdrücke auf sehr einfache Fälle beschränkt sind.
+ dass die unterstützten mathematischen Ausdrücke beschränkt sind.
 \end_layout
 
 \begin_layout Subsection
@@ -38483,7 +38452,7 @@ Computer-Algebra-System verwenden
 \family default
  und wählen Sie die Anwendung,
  die Sie auf ihrem Computer installiert haben.
- Danach sollte das Ergebnis der Berechnung auf der rechten Seite zusammen mit dem 
+ Danach sollte das Ergebnis der Berechnung auf der rechten Seite zusammen mit dem Operator 
 \begin_inset Quotes gld
 \end_inset
 
@@ -38491,7 +38460,7 @@ Computer-Algebra-System verwenden
 \begin_inset Quotes grd
 \end_inset
 
- Operator erscheinen.
+ erscheinen.
 \end_layout
 
 \begin_layout Standard
@@ -38499,8 +38468,8 @@ Hier sind ein paar einfache Beispiele (mit Resultaten von
 \family typewriter
 Maxima
 \family default
-) um zu zeigen,
- welche Berechnungen durchgeführt werden können:
+) um zu demonstrieren,
+ welche Art Berechnungen durchgeführt werden können:
 \end_layout
 
 \begin_layout Itemize
@@ -38542,11 +38511,12 @@ status open
 Achtung:
 
 \series default
- Es muss die Einfügung für automatische Klammern 
+ Sie müssen die Einfügung für automatische Klammern 
 \begin_inset Formula $\left(\right)$
 \end_inset
 
- verwendet werden statt einfacher zeichen für Klammern '(' ')'.
+ verwenden,
+ nicht einfache Klammerzeichen ( ).
 \end_layout
 
 \end_inset
@@ -38584,6 +38554,332 @@ Achtung:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Die Feinheiten der Verwendung
+\end_layout
+
+\begin_layout Standard
+Die CAS-Schnittstelle von \SpecialChar LyX
+ versucht schlicht,
+ einen mathematischen Ausdruck in eine adäquate Eingabeform für das jeweilige Programm umzuwandeln.
+ Es wird dabei keinerlei semantische Interpretation vorgenommen.
+ Wenn Sie also beispielweise 
+\begin_inset Formula $ab$
+\end_inset
+
+ schreiben,
+ gibt \SpecialChar LyX
+ das genau so (als Zeichenkette) weiter,
+ ohne dass es als Produkt von 
+\begin_inset Formula $a$
+\end_inset
+
+ und 
+\begin_inset Formula $b$
+\end_inset
+
+ interpretiert würde.
+ Das ist auch gut so,
+ denn dadurch können wir auf spezifische Funktionen der betreffenden Sprache mit ihren Ideosynkratismen zurückgreifen.
+ Die CAS-Programme haben nämlich jeweils eigene Regeln.
+\end_layout
+
+\begin_layout Standard
+Von 
+\family typewriter
+Mathematica
+\family default
+ etwa bekommt man auf die folgende Eingabe diese Ausgabe:
+\end_layout
+
+\begin_layout LyX-Code
+In[1]:= (ab + 2ab)/b + 1/a + ab
+\end_layout
+
+\begin_layout LyX-Code
+        1        3 ab
+\end_layout
+
+\begin_layout LyX-Code
+Out[1]= - + ab + ----
+\end_layout
+
+\begin_layout LyX-Code
+        a         b
+\end_layout
+
+\begin_layout Standard
+Wie Sie sehen,
+ wird 
+\family typewriter
+ab
+\family default
+ dabei als einzelne Variable behandelt,
+ nicht als Produkt von 
+\family typewriter
+a
+\family default
+ und 
+\family typewriter
+b
+\family default
+.
+ Falls Sie dies gemeint haben sollten,
+ müssen Sie die Variablen entweder mit 
+\family typewriter
+*
+\family default
+ oder Leerzeichen trennen:
+\end_layout
+
+\begin_layout LyX-Code
+In[2]:= (a b + 2a b)/b + 1/a + a b
+\end_layout
+
+\begin_layout LyX-Code
+        1
+\end_layout
+
+\begin_layout LyX-Code
+Out[2]= - + 3 a + a b
+\end_layout
+
+\begin_layout LyX-Code
+        a
+\end_layout
+
+\begin_layout Standard
+Wenn wir in \SpecialChar LyX
+ 
+\family typewriter
+Mathematica
+\family default
+ verwenden,
+ bekommen wir somit etwa:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{ab+2ab}{b}+\frac{1}{a}+ab=\frac{1}{a}+ab+\frac{3\,ab}{b}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{a\,b+2a\,b}{b}+\frac{1}{a}+a\,b=\frac{1}{a}+3\,a+a\,b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{a*b+2a*b}{b}+\frac{1}{a}+a*b=\frac{1}{a}+3\,a+a\,b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Wir können 
+\family typewriter
+Mathematica-
+\family default
+Funktionen aber auch wir folgt verwenden:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Simplify[\frac{a\,b+2a\,b}{b}+\frac{1}{a}+a\,b]=\frac{1}{a}+a\,\left(3+b\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Sin[Pi/4]=\frac{1}{{\sqrt{2}}}$
+\end_inset
+
+,
+ aber 
+\begin_inset Formula $Sin[P\,i/4]=\sin(\frac{i\,P}{4})$
+\end_inset
+
+,
+ auch wenn wir verwenden könnten:
+ 
+\begin_inset Formula $\sin(\pi/4)=\frac{1}{{\sqrt{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $TrigExpand[Cos[\alpha+\beta]]=\cos(\alpha)\,\cos(\beta)-\sin(\alpha)\,\sin(\beta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $TrigExpand[\cos\left(\alpha+\beta\right)]=\cos(\alpha)\,\cos(\beta)-\sin(\alpha)\,\sin(\beta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\family typewriter
+Maxima
+\family default
+ hingegen ist pingeliger,
+ was die Syntax betrifft.
+ Es akzeptiert nur 
+\family typewriter
+*
+\family default
+ (und keine Leerzeichen) zur Markierung eines Produkts,
+ wie die folgenden Ergebnisse zeigen:
+\end_layout
+
+\begin_layout LyX-Code
+(%i1) (ab + 2ab)/b + 1/a + ab;
+\end_layout
+
+\begin_layout LyX-Code
+incorrect syntax:
+ ab is not an infix operator
+\end_layout
+
+\begin_layout LyX-Code
+(ab + 2ab)
+\end_layout
+
+\begin_layout LyX-Code
+        ^
+\end_layout
+
+\begin_layout LyX-Code
+(%i1) (a b + 2 a b)/b + 1/a + a b;
+\end_layout
+
+\begin_layout LyX-Code
+incorrect syntax:
+ b is not an infix operator
+\end_layout
+
+\begin_layout LyX-Code
+(a b
+\end_layout
+
+\begin_layout LyX-Code
+   ^
+\end_layout
+
+\begin_layout LyX-Code
+(%i1) (a*b + 2a*b)/b + 1/a + a*b;
+\end_layout
+
+\begin_layout LyX-Code
+incorrect syntax:
+ a is not an infix operator
+\end_layout
+
+\begin_layout LyX-Code
+(a*b + 2a*
+\end_layout
+
+\begin_layout LyX-Code
+        ^
+\end_layout
+
+\begin_layout LyX-Code
+(%i1) (a*b + 2*a*b)/b + 1/a + a*b;
+\end_layout
+
+\begin_layout LyX-Code
+                                             1
+\end_layout
+
+\begin_layout LyX-Code
+(%o1)                            a b + 3 a + -
+\end_layout
+
+\begin_layout LyX-Code
+                                             a
+\end_layout
+
+\begin_layout Standard
+Wir müssen hier also immer 
+\family typewriter
+*
+\family default
+ verwenden,
+ selbst dann,
+ wenn es aus dem Zusammenhang klar wäre,
+ dass 
+\begin_inset Formula $2a$
+\end_inset
+
+ ein Produkt sein muss.
+ Mit 
+\family typewriter
+Maxima
+\family default
+ produzieren folglich die ersten drei unserer Beispiele keine Ausgabe:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{ab+2ab}{b}+\frac{1}{a}+ab=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{a\,b+2\,a\,b}{b}+\frac{1}{a}+a\,b=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{a*b+2a*b}{b}+\frac{1}{a}+a*b=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{a*b+2*a*b}{b}+\frac{1}{a}+a*b=a\,b+3\,a+\frac{1}{a}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Zusammengefasst:
+ 
+\family typewriter
+Maxima
+\family default
+ kann mit komplizierteren symbolischen Ausdrücken umgehen,
+ man muss aber die Spezifika seiner Syntax kennen.
+ Unter 
+\family sans
+Datei\SpecialChar menuseparator
+Beispiel öffnen\SpecialChar ldots
+\SpecialChar menuseparator
+Graphiken und Einfügungen\SpecialChar menuseparator
+Computer algebra systems
+\family default
+ finden Sie ausführlichere Beispiele für den Gebrauch von 
+\family typewriter
+Maxima.
 \end_layout
 
 \begin_layout Subsection
@@ -38964,7 +39260,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifbraket 
 \end_layout
@@ -39132,7 +39427,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else 
 \end_layout
@@ -39172,7 +39466,6 @@ muss installiert sein,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi 
@@ -39593,7 +39886,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifcancel 
 \end_layout
@@ -39896,7 +40188,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewcommand{
 \backslash
@@ -39926,7 +40217,6 @@ color{red}}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 renewcommand{
@@ -39996,7 +40286,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else 
 \end_layout
@@ -40036,7 +40325,6 @@ muss installiert sein,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi 
@@ -40219,7 +40507,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 boldmath 
 \end_layout
@@ -40254,7 +40541,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 texorpdfstring{
 \end_layout
@@ -40270,7 +40556,6 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-
 }{}
 \end_layout
 
@@ -40284,7 +40569,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 unboldmath 
@@ -40538,7 +40822,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 begin{multicols}{2}
 \end_layout
@@ -40568,7 +40851,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 end{multicols}
 \end_layout
@@ -40592,7 +40874,6 @@ S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathr
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 begin{multicols}{2}
@@ -40632,7 +40913,6 @@ wobei
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{multicols}
@@ -40978,7 +41258,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 ifupgreek 
 \end_layout
@@ -41056,7 +41335,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 else 
 \end_layout
@@ -41096,7 +41374,6 @@ muss installiert sein,
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 fi 
@@ -42356,7 +42633,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 AmS

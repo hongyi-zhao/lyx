@@ -416,6 +416,14 @@ contributors = [
                  "28 January 2011",
                  "fix-cm module"),
 
+     contributor("Fatihcan Atay",
+                 "fcanatay () gmail ! com",
+                 "GPL",
+                 "License",
+                 "m=174757439207494",
+                 "18 May 2025",
+                 "CAS documentation and testing"),
+
      contributor("Gioele Barabucci",
                  "gioele () svario ! it",
                  "GPL",

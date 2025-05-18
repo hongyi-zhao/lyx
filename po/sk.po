@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-05-04 11:26+0200\n"
-"PO-Revision-Date: 2025-05-04 09:42+0000\n"
+"POT-Creation-Date: 2025-05-18 11:27+0200\n"
+"PO-Revision-Date: 2025-05-18 09:44+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1654,8 +1654,9 @@ msgid "Sear&ch"
 msgstr "&Hľadať"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
-msgid "Search fo&r:"
-msgstr "Č&o hľadať:"
+#: src/frontends/qt/ui/SearchUi.ui:120
+msgid "&Find what:"
+msgstr "Ná&jsť čo:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:92
 msgid "Replace &with:"
@@ -5610,10 +5611,6 @@ msgstr "&Minimalizovať"
 #: src/frontends/qt/ui/SearchUi.ui:110
 msgid "Rep&lace with:"
 msgstr "Nahrad&iť čím:"
-
-#: src/frontends/qt/ui/SearchUi.ui:120
-msgid "&Search:"
-msgstr "Hľada&j:"
 
 #: src/frontends/qt/ui/SearchUi.ui:155
 msgid "Replace and find next occurrence"
@@ -24973,6 +24970,10 @@ msgstr "Nerozbitný spojovník|b"
 msgid "Breakable Slash|a"
 msgstr "Nechránené lomítko|l"
 
+#: lib/layouts/stdspecialchars.inc:65
+msgid "Protected Hyphen|y"
+msgstr "Chránený spojovník|n"
+
 #: lib/ui/stdmenus.inc:424
 msgid "Visible Space|V"
 msgstr "Viditeľná medzera|m"
@@ -25451,11 +25452,11 @@ msgstr "Kontrolovať pravopis nepretržite"
 
 #: lib/ui/stdtoolbars.inc:92
 msgid "Find and replace"
-msgstr "Hľadať a nahradiť"
+msgstr "Nájsť a nahradiť"
 
 #: lib/ui/stdtoolbars.inc:93
 msgid "Find and replace (advanced)"
-msgstr "Hľadať a nahradiť (rozšírené)"
+msgstr "Nájsť a nahradiť (rozšírené)"
 
 #: lib/ui/stdtoolbars.inc:94
 msgid "Navigate back"
@@ -38234,8 +38235,8 @@ msgid "Click here to change search options"
 msgstr "Kliknite sem na zmenu volieb pre hľadanie"
 
 #: src/frontends/qt/GuiSearch.cpp:599
-msgid "Search and Replace"
-msgstr "Hľadať a nahradiť"
+msgid "Find and Replace"
+msgstr "Nájsť a nahradiť"
 
 #: src/frontends/qt/GuiSendto.cpp:40
 msgid "Export or Send Document"
@@ -42113,11 +42114,11 @@ msgstr "Výber kopírovania/vlepenia z/do schránky"
 
 #: src/support/debug.cpp:74
 msgid "Find and replace mechanism, terse version"
-msgstr "Mechanizmus hľadať a nahradiť, lapidárna verzia"
+msgstr "Mechanizmus nájsť a nahradiť, lapidárna verzia"
 
 #: src/support/debug.cpp:75
 msgid "Find and replace mechanism, verbose version"
-msgstr "Mechanizmus hľadať a nahradiť, táravá verzia"
+msgstr "Mechanizmus nájsť a nahradiť, táravá verzia"
 
 #: src/support/debug.cpp:76
 msgid "Developers' general debug messages"
@@ -47812,9 +47813,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Messages Pane|g"
 #~ msgstr "Ladiace výpisy|L"
-
-#~ msgid "Find and Replace"
-#~ msgstr "Hľadať a nahradiť"
 
 #~ msgid "Replace and find next occurrence [Enter]"
 #~ msgstr "Nahradiť a nájsť ďalší výskyt [Enter]"

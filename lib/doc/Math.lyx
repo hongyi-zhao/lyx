@@ -226,7 +226,7 @@ logicalmkup
 \bullet 1 0 6 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \change_bars false
 \postpone_fragile_content false
@@ -235,6 +235,7 @@ logicalmkup
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author 5863208 "ab"
 \end_header
 
 \begin_body
@@ -38539,6 +38540,18 @@ Computer Algebra Systems
  offers the exchange between mathematical expressions written in \SpecialChar LyX
 's math editor and external applications or user defined scripts.
  Currently supported applications are 
+\change_inserted 5863208 1747563133
+
+\family typewriter
+Maple,
+ Mathematica,
+ Maxima
+\family default
+ and 
+\family typewriter
+Octave
+\change_deleted 5863208 1747563144
+
 \family sans
 Maple
 \family default
@@ -38555,9 +38568,15 @@ Maxima
  and 
 \family sans
 Octave
+\change_unchanged
+
 \family default
 .
- Note that the set of supported mathematical constructs is limited only to very simple cases.
+ Note that the set of supported mathematical constructs is limited
+\change_deleted 5863208 1747561997
+ only to very simple cases
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Subsection
@@ -38673,6 +38692,441 @@ Note:
 \end_inset
 
 
+\change_inserted 5863208 1747561211
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 5863208 1747561759
+Notes for more sophisticated usage
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747563385
+The CAS interface in \SpecialChar LyX
+ simply tries to translate a math expression to a form suitable as input to the various programs without trying any semantic interpretation.
+ Thus,
+ if you write 
+\begin_inset Formula $ab$
+\end_inset
+
+,
+ \SpecialChar LyX
+ passes it unmodified,
+ without trying to interpret it as the product of 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ This is actually useful,
+ because in this way we can use specific functions of the particular language.
+ For example,
+ this is what one gets directly from 
+\family typewriter
+Mathematica
+\family default
+:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+In[1]:= (ab + 2ab)/b + 1/a + ab
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+        1        3 ab
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+Out[1]= - + ab + ----
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+        a         b
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+As you can see,
+ 
+\family typewriter
+ab
+\family default
+ is taken as a single variable,
+ not as the product of 
+\family typewriter
+a
+\family default
+ and 
+\family typewriter
+b
+\family default
+.
+ Instead,
+ if you mean that,
+ you have to separate them either by 
+\family typewriter
+*
+\family default
+ or a space:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+In[2]:= (a b + 2a b)/b + 1/a + a b
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+        1
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+Out[2]= - + 3 a + a b
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+        a
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747563400
+Using 
+\family typewriter
+Mathematica
+\family default
+ within \SpecialChar LyX
+,
+ we have:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $\frac{ab+2ab}{b}+\frac{1}{a}+ab=\frac{1}{a}+ab+\frac{3\,ab}{b}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula $\frac{a\,b+2a\,b}{b}+\frac{1}{a}+a\,b=\frac{1}{a}+3\,a+a\,b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $\frac{a*b+2a*b}{b}+\frac{1}{a}+a*b=\frac{1}{a}+3\,a+a\,b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\change_inserted 5863208 1747563407
+But we can also use 
+\family typewriter
+Mathematica
+\family default
+ functions as follows:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $Simplify[\frac{a\,b+2a\,b}{b}+\frac{1}{a}+a\,b]=\frac{1}{a}+a\,\left(3+b\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $Sin[Pi/4]=\frac{1}{{\sqrt{2}}}$
+\end_inset
+
+ but 
+\begin_inset Formula $Sin[P\,i/4]=\sin(\frac{i\,P}{4})$
+\end_inset
+
+,
+ even if we could use 
+\begin_inset Formula $\sin(\pi/4)=\frac{1}{{\sqrt{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $TrigExpand[Cos[\alpha+\beta]]=\cos(\alpha)\,\cos(\beta)-\sin(\alpha)\,\sin(\beta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $TrigExpand[\cos\left(\alpha+\beta\right)]=\cos(\alpha)\,\cos(\beta)-\sin(\alpha)\,\sin(\beta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\change_inserted 5863208 1747561760
+Each CAS program follows its own rules.
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\change_inserted 5863208 1747563168
+
+\family typewriter
+Maxima
+\family default
+ is very picky about the syntax and only accepts 
+\family typewriter
+*
+\family default
+ to denote a product:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+(%i1) (ab + 2ab)/b + 1/a + ab;
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+incorrect syntax:
+ ab is not an infix operator
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+(ab + 2ab)
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+        ^
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+(%i1) (a b + 2 a b)/b + 1/a + a b;
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+incorrect syntax:
+ b is not an infix operator
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+(a b
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+   ^
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+(%i1) (a*b + 2a*b)/b + 1/a + a*b;
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+incorrect syntax:
+ a is not an infix operator
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+(a*b + 2a*
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+        ^
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+(%i1) (a*b + 2*a*b)/b + 1/a + a*b;
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+                                             1
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+(%o1)                            a b + 3 a + -
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863208 1747561760
+                                             a
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747563174
+As you can see,
+ we have to use 
+\family typewriter
+*
+\family default
+ even when it would be clear that 
+\begin_inset Formula $2a$
+\end_inset
+
+ is a product.
+ So,
+ using 
+\family typewriter
+Maxima
+\family default
+,
+ in \SpecialChar LyX
+ the first three examples produce no output:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $\frac{ab+2ab}{b}+\frac{1}{a}+ab=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $\frac{a\,b+2\,a\,b}{b}+\frac{1}{a}+a\,b=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $\frac{a*b+2a*b}{b}+\frac{1}{a}+a*b=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863208 1747561760
+\begin_inset Formula $\frac{a*b+2*a*b}{b}+\frac{1}{a}+a*b=a\,b+3\,a+\frac{1}{a}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\change_inserted 5863208 1747566263
+To sum up 
+\family typewriter
+Maxima
+\family default
+ can deal with more complicated symbolic expressions,
+ but you have to know its rules.
+ 
+\family sans
+File\SpecialChar menuseparator
+Open Example\SpecialChar menuseparator
+Graphics and Insets\SpecialChar menuseparator
+Computer Algebra Systems
+\family default
+ contain longer sheet of examples which can be used in 
+\family typewriter
+Maxima
+\family default
+,
 \end_layout
 
 \begin_layout Subsection

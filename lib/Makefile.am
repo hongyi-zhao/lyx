@@ -446,6 +446,7 @@ dist_handoutexamples_DATA = \
 
 insetexamplesdir = $(pkgdatadir)/examples/Graphics_and_Insets
 dist_insetexamples_DATA = \
+	examples/Graphics_and_Insets/Computer_algebra_systems.lyx \
 	examples/Graphics_and_Insets/Feynman_Diagrams.lyx \
 	examples/Graphics_and_Insets/iecc05.fen \
 	examples/Graphics_and_Insets/iecc07.fen \

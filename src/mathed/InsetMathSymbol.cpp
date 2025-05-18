@@ -12,7 +12,6 @@
 
 #include "InsetMathSymbol.h"
 
-#include "MathAtom.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"

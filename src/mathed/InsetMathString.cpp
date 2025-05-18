@@ -12,19 +12,15 @@
 
 #include "InsetMathString.h"
 
-#include "MathFactory.h"
 #include "MathExtern.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
-#include "Encoding.h"
 #include "MetricsInfo.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/textutils.h"
 
 using lyx::support::escape;
 

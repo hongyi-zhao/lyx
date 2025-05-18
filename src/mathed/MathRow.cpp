@@ -19,7 +19,6 @@
 #include "ColorSet.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "LyXRC.h"
 #include "MetricsInfo.h"
 
 #include "mathed/InsetMath.h"

@@ -27,7 +27,6 @@
 #include "InsetMathFont.h"
 #include "InsetMathFontOld.h"
 #include "InsetMathFrac.h"
-#include "InsetMathKern.h"
 #include "InsetMathLefteqn.h"
 #include "InsetMathOverset.h"
 #include "InsetMathPhantom.h"
@@ -65,7 +64,6 @@
 #include "support/FileName.h"
 #include "support/filetools.h" // LibFileSearch
 #include "support/lstrings.h"
-#include "support/textutils.h"
 
 #include "frontends/FontLoader.h"
 

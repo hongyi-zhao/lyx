@@ -21,7 +21,6 @@
 #include "TextPainter.h"
 
 #include "frontends/FontMetrics.h"
-#include "frontends/Painter.h"
 
 #include "support/lassert.h"
 

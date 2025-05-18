@@ -15,14 +15,11 @@
 #include "InsetMathRoot.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "MathSupport.h"
 
 #include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "TextPainter.h"
-
-#include "frontends/Painter.h"
 
 
 namespace lyx {

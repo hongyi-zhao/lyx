@@ -14,7 +14,6 @@
 #include "MathData.h"
 
 #include "InsetMathBrace.h"
-#include "InsetMathFont.h"
 #include "InsetMathMacro.h"
 #include "InsetMathScript.h"
 #include "MacroTable.h"
@@ -31,7 +30,6 @@
 #include "Dimension.h"
 
 #include "mathed/InsetMathChar.h"
-#include "mathed/InsetMathUnknown.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/InputMethod.h"
@@ -39,7 +37,6 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 
 #include <cstdlib>

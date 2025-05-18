@@ -14,7 +14,6 @@
 #include "MathData.h"
 #include "MathFactory.h"
 #include "MathStream.h"
-#include "MathSupport.h"
 
 #include "BufferView.h"
 #include "Cursor.h"
@@ -25,7 +24,6 @@
 
 #include "insets/InsetSpace.h"
 
-#include "frontends/Application.h"
 #include "frontends/Painter.h"
 
 #include "support/lassert.h"

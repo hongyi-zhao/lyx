@@ -21,11 +21,8 @@
 #include "InsetMathNest.h"
 
 #include "Buffer.h"
-#include "InsetList.h"
-#include "Text.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 
 #include <sstream>

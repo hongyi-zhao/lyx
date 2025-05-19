@@ -120,6 +120,17 @@ InsetCollapsible::Geometry InsetCollapsible::geometry(BufferView const & bv) con
 }
 
 
+bool InsetCollapsible::notifyCursorLeaves(Cursor const & old, Cursor & cur)
+{
+	if (view_[&old.bv()].auto_open_ && old.find(this) != lyx::npos
+		&& cur.find(this) == lyx::npos)
+		// FIXME: when Update::SinglePar can specify a paragraph, use that.
+		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
+
+	return InsetText::notifyCursorLeaves(old, cur);
+}
+
+
 docstring InsetCollapsible::toolTip(BufferView const & bv, int x, int y) const
 {
 	Dimension const dim = dimensionCollapsed(bv);

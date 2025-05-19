@@ -5556,6 +5556,8 @@ void InsetTabular::addToToc(DocIterator const & cpit, bool output_active,
 
 bool InsetTabular::hitSelectRow(BufferView const & bv, int x) const
 {
+	if (!hasGeometry(bv))
+		return false;
 	int const x0 = xo(bv) + ADD_TO_TABULAR_WIDTH;
 	return x < x0 || x > x0 + tabular.width();
 }
@@ -5563,6 +5565,8 @@ bool InsetTabular::hitSelectRow(BufferView const & bv, int x) const
 
 bool InsetTabular::hitSelectColumn(BufferView const & bv, int y) const
 {
+	if (!hasGeometry(bv))
+		return false;
 	int const y0 = yo(bv) - tabular.rowAscent(0) + tabular.offsetVAlignment();
 	// FIXME: using ADD_TO_TABULAR_WIDTH is not really correct since
 	// there is no margin added vertically to tabular insets.

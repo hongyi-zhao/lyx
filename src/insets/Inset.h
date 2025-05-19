@@ -236,6 +236,10 @@ public:
 	/// This can use \c drawMarkers() for example.
 	virtual void drawDecoration(PainterInfo &, int, int) const {}
 
+	/// do we have dimension information for this inset ?
+	bool hasDim(BufferView const & bv) const;
+	/// do we have full geometry information for this inset ?
+	bool hasGeometry(BufferView const & bv) const;
 	/// last metrics computed for the inset
 	Dimension const dimension(BufferView const &) const;
 	/// last drawn position for 'important' insets

@@ -323,12 +323,6 @@ string Inset::contextMenuName() const
 }
 
 
-Dimension const Inset::dimension(BufferView const & bv) const
-{
-	return bv.coordCache().insets().dim(this);
-}
-
-
 InsetCode insetCode(string const & name)
 {
 	build_translator();
@@ -610,6 +604,24 @@ bool Inset::editing(BufferView const * bv) const
 		return bv->cursor().realAnchor().isInside(this);
 	else
 		return bv->cursor().isInside(this);
+}
+
+
+bool Inset::hasDim(BufferView const & bv) const
+{
+	return bv.coordCache().insets().hasDim(this);
+}
+
+
+bool Inset::hasGeometry(BufferView const & bv) const
+{
+	return bv.coordCache().insets().has(this);
+}
+
+
+Dimension const Inset::dimension(BufferView const & bv) const
+{
+	return bv.coordCache().insets().dim(this);
 }
 
 

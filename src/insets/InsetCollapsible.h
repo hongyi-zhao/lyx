@@ -137,6 +137,9 @@ public:
 	/// (status_), auto_open_[BufferView] and openinlined_,
 	/// and of course decoration().
 	Geometry geometry(BufferView const & bv) const;
+	/// This closes insets that are auto_open_
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
+
 	///
 	bool canPaintChange(BufferView const & bv) const override;
 	///

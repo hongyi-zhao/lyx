@@ -372,9 +372,10 @@ void splitScripts(MathData & md)
 			continue;
 
 		if (script->nuc().size() == 1) {
-			// leave alone sums and integrals
+			// leave alone sums, prods and integrals
 			MathAtom const & atom = script->nuc().front();
-			if (testSymbol(atom, "sum") || testSymbol(atom, "int"))
+			if (testSymbol(atom, "sum") || testSymbol(atom, "int")
+			    || testSymbol(atom, "prod"))
 				continue;
 		}
 
@@ -843,6 +844,81 @@ void extractSums(MathData & md)
 
 
 //
+// search prods
+//
+
+
+bool testProdSymbol(MathAtom const & p)
+{
+	return testSymbol(p, from_ascii("prod"));
+}
+
+
+bool testProd(MathAtom const & at)
+{
+	return
+	 testProdSymbol(at) ||
+		( at->asScriptInset()
+		  && !at->asScriptInset()->nuc().empty()
+			&& testProdSymbol(at->asScriptInset()->nuc().back()) );
+}
+
+
+// replace '\prod' ['_^'] f(x) sequences by a real InsetMathExInt
+// assume 'extractDelims' ran before
+void extractProds(MathData & md)
+{
+	// we need at least two items...
+	if (md.size() < 2)
+		return;
+
+	Buffer * buf = md.buffer();
+
+	//lyxerr << "\nProds from: " << md << endl;
+	for (size_t i = 0; i + 1 < md.size(); ++i) {
+		MathData::iterator it = md.begin() + i;
+
+		// is this a prod name?
+		if (!testProd(md[i]))
+			continue;
+
+		// create a proper inset as replacement
+		auto p = make_unique<InsetMathExInt>(buf, from_ascii("prod"));
+
+		// collect lower bound and summation index
+		InsetMathScript const * sub = md[i]->asScriptInset();
+		if (sub && sub->hasDown()) {
+			// try to figure out the product index from the subscript
+			MathData const & ar = sub->down();
+			MathData::const_iterator xt =
+				find_if(ar.begin(), ar.end(), &testEqualSign);
+			if (xt != ar.end()) {
+				// we found a '=', use everything in front of that as index,
+				// and everything behind as lower index
+				p->cell(1) = MathData(buf, ar.begin(), xt);
+				p->cell(2) = MathData(buf, xt + 1, ar.end());
+			} else {
+				// use everything as product index, don't use scripts.
+				p->cell(1) = ar;
+			}
+		}
+
+		// collect upper bound
+		if (sub && sub->hasUp())
+			p->cell(3) = sub->up();
+
+		// use something  behind the script as core
+		MathData::iterator tt = extractTerm(p->cell(0), it + 1, md.end());
+
+		// cleanup
+		md.erase(it + 1, tt);
+		*it = MathAtom(p.release());
+	}
+	//lyxerr << "\nProds to: " << md << endl;
+}
+
+
+//
 // search differential stuff
 //
 
@@ -1021,8 +1097,10 @@ void extractStructure(MathData & md, ExternalMath kind)
 		splitScripts(md);
 	extractDelims(md);
 	extractIntegrals(md, kind);
-	if (kind != MATHML && kind != HTML)
+	if (kind != MATHML && kind != HTML) {
 		extractSums(md);
+		extractProds(md);
+	}
 	extractNumbers(md);
 	extractMatrices(md);
 	if (kind != MATHML && kind != HTML) {

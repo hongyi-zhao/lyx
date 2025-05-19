@@ -75,6 +75,8 @@ void InsetMathExInt::maple(MapleStream & os) const
 {
 	if (symbol_ == "int" || symbol_ == "intop")
 		os << (os.maxima() ? "integrate(" : "int(");
+	else if (symbol_ == "prod")
+		os << "product(";
 	else
 		os << symbol_ << '(';
 
@@ -100,6 +102,8 @@ void InsetMathExInt::maxima(MaximaStream & os) const
 {
 	if (symbol_ == "int" || symbol_ == "intop")
 		os << "integrate(";
+	else if (symbol_ == "prod")
+		os << "product(";
 	else
 		os << symbol_ << '(';
 
@@ -119,6 +123,8 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 		os << "Integrate[";
 	else if (symbol_ == "sum")
 		os << "Sum[";
+	else if (symbol_ == "prod")
+		os << "Product[";
 	else
 		os << symbol_ << '[';
 

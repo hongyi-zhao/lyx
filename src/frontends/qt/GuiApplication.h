@@ -96,8 +96,8 @@ public:
 
 	/// Scale Pixmaps properly (also for HiDPI)
 	QPixmap getScaledPixmap(QString imagedir, QString name) const;
-    ///
-    QPixmap prepareForDarkMode(QPixmap pixmap) const;
+	///
+	QPixmap prepareForDarkMode(QPixmap pixmap) const;
 
 	///
 	Clipboard & clipboard();
@@ -174,6 +174,9 @@ public:
 
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const;
+
+	///
+	void syncZoomSliders(int const v);
 
 	/// How to load image files
 	support::search_mode imageSearchMode() const {

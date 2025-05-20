@@ -1024,6 +1024,9 @@ void GuiView::saveUISettings() const
 
 void GuiView::setCurrentZoom(const int v)
 {
+    // Note that this is essentially recursive call: setCurrentZoom->currentZoomChanged->
+    // setValue->zoomValueChanged->zoomSliderMoved->dispatch LFUN_ZOOM->setCurrentZoom
+    // which exits only due to the courtesy of Qt not allowing recursive EMIT.
 	Q_EMIT currentZoomChanged(v);
 	lyxrc.currentZoom = v;
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), v)));
@@ -5263,7 +5266,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			int zoom = (int)(lyxrc.defaultZoom * zoom_ratio_);
 			zoom = min(max(zoom, zoom_min_), zoom_max_);
 
-			setCurrentZoom(zoom);
+			// Sync zoom sliders in all active views
+			guiApp->syncZoomSliders(zoom);
 
 			dr.setMessage(bformat(_("Zoom level is now %1$d% (default value: %2$d%)"),
 					      lyxrc.currentZoom, lyxrc.defaultZoom));

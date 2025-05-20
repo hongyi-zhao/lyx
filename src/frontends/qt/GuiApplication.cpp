@@ -1243,6 +1243,15 @@ double GuiApplication::pixelRatio() const
 }
 
 
+void GuiApplication::syncZoomSliders(const int v)
+{
+	// Sync zoom in all active views
+	QList<int> const ids = viewIds();
+	for (int i = 0; i != ids.size(); ++i)
+		view(ids[i]).setCurrentZoom(v);
+}
+
+
 void GuiApplication::clearSession()
 {
 	QSettings settings;

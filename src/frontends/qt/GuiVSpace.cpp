@@ -28,8 +28,6 @@
 
 #include <QCheckBox>
 #include <QLineEdit>
-#include <QPushButton>
-#include <QValidator>
 
 using namespace std;
 

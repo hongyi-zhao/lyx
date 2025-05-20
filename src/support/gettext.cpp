@@ -15,7 +15,6 @@
 
 #include "support/lstrings.h"
 #include "support/Messages.h"
-#include "support/Package.h"
 
 using namespace std;
 

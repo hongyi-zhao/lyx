@@ -36,10 +36,6 @@
 #include "support/lstrings.h"
 
 #include <QDialogButtonBox>
-#include <QPushButton>
-#include <QListWidget>
-#include <QCheckBox>
-#include <QLineEdit>
 
 using namespace std;
 using namespace lyx::support;

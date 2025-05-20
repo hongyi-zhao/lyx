@@ -20,7 +20,6 @@
 #include "support/debug.h"
 
 #include <QAbstractItemModel>
-#include <QAbstractListModel>
 #include <QItemSelection>
 #include <QListView>
 #include <QKeyEvent>

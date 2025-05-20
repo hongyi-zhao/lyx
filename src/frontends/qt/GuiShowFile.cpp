@@ -16,9 +16,6 @@
 #include "qt_helpers.h"
 #include "support/filetools.h"
 
-#include <QTextBrowser>
-#include <QPushButton>
-
 using namespace std;
 using namespace lyx::support;
 

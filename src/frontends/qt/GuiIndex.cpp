@@ -22,8 +22,6 @@
 #include "IndicesList.h"
 #include "insets/InsetIndex.h"
 
-#include <QPushButton>
-
 using namespace std;
 
 namespace lyx {

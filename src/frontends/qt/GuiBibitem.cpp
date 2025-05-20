@@ -20,9 +20,6 @@
 
 #include "insets/InsetCommand.h"
 
-#include <QLineEdit>
-#include <QPushButton>
-
 
 namespace lyx {
 namespace frontend {

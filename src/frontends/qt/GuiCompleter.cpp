@@ -33,7 +33,6 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <QPixmapCache>
-#include <QScrollBar>
 #include <QItemDelegate>
 #include <QTreeView>
 #include <QTimer>

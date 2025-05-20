@@ -26,14 +26,12 @@
 #include <QComboBox>
 #include <QGroupBox>
 #include <QHideEvent>
-#include <QHash>
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
 #include <QPalette>
-#include <QPushButton>
 #include <QStackedWidget>
 #include <QTimer>
 #include <QTreeWidget>

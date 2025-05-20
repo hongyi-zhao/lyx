@@ -25,8 +25,6 @@
 
 #include "insets/InsetCommand.h"
 
-#include <QPushButton>
-
 using namespace std;
 using namespace lyx::support;
 

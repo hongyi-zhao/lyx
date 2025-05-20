@@ -18,7 +18,6 @@
 #include "Counters.h"
 #include "Layout.h"
 #include "Paragraph.h"
-#include "Text.h"
 #include "TextClass.h"
 
 #include "support/convert.h"

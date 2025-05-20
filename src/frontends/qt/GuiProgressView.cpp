@@ -26,10 +26,7 @@
 
 #include <algorithm>
 
-#include <QCheckBox>
-#include <QDebug>
 #include <QSettings>
-#include <QTime>
 
 using namespace std;
 using namespace lyx::support;

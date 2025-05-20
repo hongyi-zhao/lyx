@@ -23,8 +23,6 @@
 #include "support/Package.h"
 
 #include <QDirIterator>
-#include <QSpinBox>
-#include <QPushButton>
 
 using namespace std;
 using namespace lyx::support;

@@ -38,7 +38,6 @@
 
 #include "support/checksum.h"
 
-#include <QApplication>
 #include <QBuffer>
 #include <QClipboard>
 #include <QDataStream>

@@ -25,10 +25,7 @@
 #include "CustomizedWidgets.h"
 #include "GuiKeySymbol.h"
 
-#include <QApplication>
 #include <QKeyEvent>
-#include <QMouseEvent>
-#include <QShowEvent>
 
 #include "support/qstring_helpers.h"
 

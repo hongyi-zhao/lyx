@@ -293,7 +293,8 @@ def run_latex(latex, latex_file, bibtex = None):
         latex_status, latex_stdout = run_tex(latex, latex_file)
     # Rerun latex if necessary
     progress("Checking if a latex rerun is necessary")
-    if string_in_file("Warning: (Citation|Reference)", log_file):
+    if string_in_file("Warning: (Citation|Reference)", log_file) or \
+       string_in_file("Warning: Temporary extra page", log_file):
         latex_status, latex_stdout = run_tex(latex, latex_file)
 
     return latex_status, latex_stdout

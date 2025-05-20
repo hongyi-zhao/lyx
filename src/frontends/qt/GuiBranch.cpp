@@ -25,8 +25,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <QPushButton>
-
 using namespace std;
 using namespace lyx::support;
 

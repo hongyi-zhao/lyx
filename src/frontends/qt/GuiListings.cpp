@@ -27,9 +27,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <QLineEdit>
-#include <QPushButton>
-#include <QValidator>
 #include <QRegularExpressionValidator>
 
 using namespace std;

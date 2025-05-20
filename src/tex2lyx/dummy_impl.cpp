@@ -22,7 +22,6 @@
 #include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
-#include "output_xhtml.h"
 #include "xml.h"
 
 #include "support/Messages.h"

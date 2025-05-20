@@ -25,9 +25,7 @@
 
 #include <algorithm>
 
-#include <QLineEdit>
 #include <QListWidget>
-#include <QPushButton>
 
 using namespace std;
 using namespace lyx::support;

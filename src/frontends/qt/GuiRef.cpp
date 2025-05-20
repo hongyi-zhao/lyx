@@ -42,16 +42,11 @@
 
 #include "frontends/alert.h"
 
-#include <QLineEdit>
-#include <QCheckBox>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
-#include <QPushButton>
-#include <QToolTip>
 #include <QCloseEvent>
 #include <QHeaderView>
 #include <QAbstractItemModel>
-#include <QTableWidget>
 
 using namespace std;
 using namespace lyx::support;

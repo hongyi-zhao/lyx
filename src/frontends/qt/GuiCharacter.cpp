@@ -32,7 +32,6 @@
 #include <QMenu>
 #include <QModelIndex>
 #include <QSettings>
-#include <QVariant>
 
 using namespace std;
 

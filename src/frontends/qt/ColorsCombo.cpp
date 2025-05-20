@@ -23,7 +23,6 @@
 
 #include <QAbstractTextDocumentLayout>
 #include <QComboBox>
-#include <QHeaderView>
 #include <QItemDelegate>
 #include <QPainter>
 #include <QSortFilterProxyModel>

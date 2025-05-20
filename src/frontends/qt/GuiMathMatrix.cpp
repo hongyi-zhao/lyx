@@ -20,10 +20,6 @@
 
 #include "support/gettext.h"
 
-#include <QLineEdit>
-#include <QPushButton>
-#include <QSpinBox>
-
 using namespace std;
 
 namespace lyx {

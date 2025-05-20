@@ -29,9 +29,7 @@
 #include "support/lstrings.h"
 
 #include <QListWidget>
-#include <QPushButton>
 #include <QShowEvent>
-#include <QTextBrowser>
 
 using namespace std;
 using namespace lyx::support;

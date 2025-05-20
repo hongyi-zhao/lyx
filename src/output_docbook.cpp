@@ -14,7 +14,6 @@
 #include "output_docbook.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "Font.h"
 #include "InsetList.h"
@@ -25,7 +24,6 @@
 #include "Text.h"
 #include "TextClass.h"
 
-#include "insets/InsetBibtex.h"
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
 #include "mathed/InsetMath.h"

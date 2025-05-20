@@ -13,7 +13,6 @@
 #include "output_plaintext.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "Layout.h"
 #include "output.h"
 #include "OutputParams.h"

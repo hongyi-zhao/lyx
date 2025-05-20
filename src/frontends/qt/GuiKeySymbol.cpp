@@ -21,7 +21,6 @@
 
 #include <QKeyEvent>
 #include <QKeySequence>
-#include <QEvent>
 
 #include <map>
 #include <string>

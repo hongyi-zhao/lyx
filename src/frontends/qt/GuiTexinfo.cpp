@@ -20,9 +20,7 @@
 
 #include "qt_helpers.h"
 
-#include <QCheckBox>
 #include <QListWidget>
-#include <QPushButton>
 #include <QStringList>
 
 using namespace std;

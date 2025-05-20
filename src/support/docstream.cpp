@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "support/docstream.h"
-#include "support/lstrings.h"
 #include "support/unicode.h"
 
 #include <algorithm>

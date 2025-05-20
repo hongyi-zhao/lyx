@@ -16,9 +16,6 @@
 
 #include "insets/InsetLabel.h"
 
-#include <QLabel>
-#include <QPushButton>
-#include <QLineEdit>
 #include <QRegularExpressionValidator>
 
 using namespace std;

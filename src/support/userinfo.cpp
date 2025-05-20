@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "support/userinfo.h"
-#include "support/environment.h"
 #include "support/docstring.h"
 
 #include "support/lassert.h"

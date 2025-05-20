@@ -24,7 +24,6 @@
 #include "FuncRequest.h"
 
 #include <QDateTime>
-#include <QTextBrowser>
 
 
 namespace lyx {

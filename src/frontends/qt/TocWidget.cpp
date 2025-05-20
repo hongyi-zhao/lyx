@@ -34,7 +34,6 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 
-#include <QHeaderView>
 #include <QMenu>
 #include <QTimer>
 

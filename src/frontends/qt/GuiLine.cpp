@@ -21,9 +21,6 @@
 
 #include "support/debug.h"
 
-#include <QLineEdit>
-#include <QPushButton>
-#include <QValidator>
 
 using namespace std;
 

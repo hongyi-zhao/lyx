@@ -31,9 +31,6 @@
 #include <QAbstractItemModel>
 #include <QCompleter>
 #include <QDialogButtonBox>
-#include <QHeaderView>
-#include <QLineEdit>
-#include <QPushButton>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 

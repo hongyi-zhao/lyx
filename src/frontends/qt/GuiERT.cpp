@@ -19,9 +19,6 @@
 
 #include "insets/InsetERT.h"
 
-#include <QRadioButton>
-#include <QPushButton>
-
 using namespace std;
 
 namespace lyx {

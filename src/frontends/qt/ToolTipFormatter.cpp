@@ -14,9 +14,7 @@
 #include "qt_helpers.h"
 
 #include <QAbstractItemView>
-#include <QTextDocument>
 #include <QTextLayout>
-#include <QToolTip>
 
 
 //#include "support/debug.h"

@@ -30,12 +30,9 @@
 
 #include "support/debug.h"
 
-#include <QCheckBox>
 #include <QDialogButtonBox>
-#include <QLineEdit>
 #include <QPushButton>
 #include <QSettings>
-#include <QVariant>
 
 #include <sstream>
 

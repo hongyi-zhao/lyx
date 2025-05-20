@@ -28,12 +28,10 @@
 #include "support/ProgressInterface.h"
 
 #include <QApplication>
-#include <QCheckBox>
 #include <QMessageBox>
 #include <QLineEdit>
 #include <QInputDialog>
 #include <QPushButton>
-#include <QSettings>
 
 #include <iomanip>
 #include <iostream>

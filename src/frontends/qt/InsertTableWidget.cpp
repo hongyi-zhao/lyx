@@ -25,7 +25,6 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QString>
-#include <QToolTip>
 
 
 namespace lyx {

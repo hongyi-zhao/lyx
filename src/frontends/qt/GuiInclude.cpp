@@ -31,9 +31,7 @@
 #include "insets/InsetListingsParams.h"
 #include "insets/InsetInclude.h"
 
-#include <QCheckBox>
 #include <QFile>
-#include <QLineEdit>
 #include <QPushButton>
 
 #include <utility>

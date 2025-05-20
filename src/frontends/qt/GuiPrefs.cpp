@@ -55,7 +55,6 @@
 #include <QCheckBox>
 #include <QFile>
 #include <QFontDatabase>
-#include <QGraphicsColorizeEffect>
 #include <QHeaderView>
 #include <QInputDialog>
 #include <QLineEdit>
@@ -63,7 +62,6 @@
 #include <QPainter>
 #include <QPushButton>
 #include <QShortcut>
-#include <QSpinBox>
 #include <QString>
 #include <QStyleFactory>
 #if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN) || defined(Q_OS_MAC)) && QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)

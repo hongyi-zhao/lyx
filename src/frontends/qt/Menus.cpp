@@ -72,7 +72,6 @@
 #include "support/Lexer.h"
 #include "support/lstrings.h"
 
-#include <QCursor>
 #include <QHash>
 #include <QList>
 #include <QMenuBar>

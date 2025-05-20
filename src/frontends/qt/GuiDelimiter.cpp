@@ -27,7 +27,6 @@
 #include <QBitmap>
 #include <QPainter>
 #include <QPixmap>
-#include <QCheckBox>
 #include <QListWidgetItem>
 #include <QScrollBar>
 

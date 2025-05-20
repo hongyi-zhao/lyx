@@ -41,10 +41,7 @@
 #include "support/types.h"
 
 #include <QCheckBox>
-#include <QLabel>
 #include <QLineEdit>
-#include <QPushButton>
-#include <QValidator>
 
 #include <cmath>
 #include <utility>

@@ -18,13 +18,9 @@
 #include "GuiApplication.h"
 
 #include <QEvent>
-#include <QDebug>
 #include <QString>
 #include <QPropertyAnimation>
-#include <QApplication>
 #include <QMenu>
-#include <QMouseEvent>
-#include <QLabel>
 #include <QAbstractButton>
 #include <QPainter>
 #include <QStyle>

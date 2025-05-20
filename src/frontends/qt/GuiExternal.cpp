@@ -37,11 +37,7 @@
 #include "Validator.h"
 
 #include <QCheckBox>
-#include <QGroupBox>
 #include <QLineEdit>
-#include <QPushButton>
-#include <QTabWidget>
-#include <QTextBrowser>
 
 using namespace std;
 using namespace lyx::support;

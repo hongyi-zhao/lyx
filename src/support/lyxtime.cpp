@@ -13,7 +13,6 @@
 #include "support/lyxtime.h"
 
 #include "support/debug.h"
-#include "support/environment.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 

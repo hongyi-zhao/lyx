@@ -44,7 +44,6 @@
 #include <QPushButton>
 #include <QSet>
 #include <QSettings>
-#include <QTextLayout>
 #include <QTextDocument>
 #include <QToolTip>
 #include <QUrl>

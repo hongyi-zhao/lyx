@@ -50,14 +50,11 @@
 #include "frontends/WorkAreaManager.h"
 
 #include <QContextMenuEvent>
-#include <QDrag>
 #include <QHelpEvent>
 #include <QInputMethod>
 #ifdef Q_OS_MAC
 #include <QProxyStyle>
 #endif
-#include <QMainWindow>
-#include <QMimeData>
 #include <QMenu>
 #include <QPainter>
 #include <QPainterPath>

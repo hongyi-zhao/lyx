@@ -31,7 +31,6 @@
 #include <algorithm>
 
 #include <QPainterPath>
-#include <QTextLayout>
 
 using namespace std;
 using namespace lyx::support;

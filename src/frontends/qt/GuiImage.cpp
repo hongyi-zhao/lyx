@@ -21,9 +21,6 @@
 #include "support/FileName.h"
 #include "support/lstrings.h"       // ascii_lowercase
 
-#include <QPainter>
-#include <QImageReader>
-
 using namespace std;
 using namespace lyx::support;
 

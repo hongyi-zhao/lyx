@@ -40,8 +40,6 @@
 #include "support/lstrings.h"
 
 #include <QCloseEvent>
-#include <QLineEdit>
-#include <QMenu>
 
 using namespace std;
 using namespace lyx::support;

@@ -33,7 +33,6 @@
 #include <QMouseEvent>
 #include <QPixmap>
 #include <QPushButton>
-#include <QToolTip>
 #include <QVBoxLayout>
 
 using namespace std;

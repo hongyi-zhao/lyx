@@ -35,7 +35,6 @@
 
 #include <QClipboard>
 #include <QPainter>
-#include <QLineEdit>
 #include <QSettings>
 #include <QHideEvent>
 #include <QShowEvent>

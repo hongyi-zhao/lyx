@@ -13,12 +13,9 @@
 #include "IconPalette.h"
 #include "qt_helpers.h"
 
-#include <QPixmap>
 #include <QGridLayout>
 #include <QToolButton>
-#include <QToolTip>
 #include <QToolBar>
-#include <QApplication>
 #include <QPainter>
 #include <QScreen>
 #include <QStyle>

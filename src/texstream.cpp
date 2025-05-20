@@ -15,7 +15,6 @@
 #include "TexRow.h"
 
 #include "support/lstrings.h"
-#include "support/unicode.h"
 
 #include <algorithm>
 #include <cerrno>

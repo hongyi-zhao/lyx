@@ -39,8 +39,6 @@
 #include <QMenu>
 #include <QSettings>
 #include <QShowEvent>
-#include <QStandardItemModel>
-#include <QVariant>
 
 #undef KeyPress
 

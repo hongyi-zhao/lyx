@@ -19,7 +19,6 @@
 #include "Buffer.h"
 #include "DockView.h"
 
-#include <QDockWidget>
 #include <QString>
 
 

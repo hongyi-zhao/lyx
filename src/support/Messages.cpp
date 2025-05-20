@@ -79,7 +79,6 @@
 #include "support/docstring.h"
 #include "support/lstrings.h"
 #include "support/Package.h"
-#include "support/unicode.h"
 
 #include "support/lassert.h"
 

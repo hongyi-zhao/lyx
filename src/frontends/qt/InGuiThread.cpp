@@ -15,7 +15,6 @@
 #include "frontends/Application.h"
 
 #include <QThread>
-#include <QEventLoop>
 #include <QApplication>
 #include <QMutexLocker>
 

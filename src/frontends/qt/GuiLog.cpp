@@ -26,7 +26,6 @@
 #include "BufferParams.h"
 #include "IndicesList.h"
 
-#include <QTextBrowser>
 #include <QSyntaxHighlighter>
 
 #include <fstream>

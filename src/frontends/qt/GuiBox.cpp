@@ -23,9 +23,6 @@
 
 #include "support/Length.h"
 
-#include <QComboBox>
-#include <QLineEdit>
-#include <QPushButton>
 
 using namespace std;
 

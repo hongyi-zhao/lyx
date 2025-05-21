@@ -5,6 +5,10 @@
 
 !!Documents compilation process and images conversion
 
+- the default length of latex log lines is now by default extended so that the 
+  detection of latex erros is more robust (esp. for missing citations/references).
+  Works with TeX Live only.
+
 !!!The following pref variables were added in 2.5:
 
 - \color_scheme {system,light,dark} allows to override the system-wide

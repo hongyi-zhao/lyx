@@ -981,6 +981,9 @@ bool LyX::init()
 	// The language may have been set to someting useful through prefs
 	setLocale();
 
+	//LaTeX log parsing is better with long lines (bug #13132)
+	setEnv("max_print_line","999");
+
 	if (!readEncodingsFile("encodings", "unicodesymbols"))
 		return false;
 	if (!readLanguagesFile("languages"))

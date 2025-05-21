@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: lyx-japanese\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2025-05-20 22:16-0400\n"
-"PO-Revision-Date: 2025-05-09 12:38+0900\n"
+"PO-Revision-Date: 2025-05-22 01:45+0900\n"
 "Last-Translator: Koji Yokota <yokota@lyx.org>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -1649,7 +1649,6 @@ msgstr "検索(&C)"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
 #: src/frontends/qt/ui/SearchUi.ui:120
-#, fuzzy
 msgid "&Find what:"
 msgstr "検索対象(&F)："
 
@@ -17768,7 +17767,7 @@ msgstr "<以下可視文>"
 
 #: lib/layouts/sn-jnl.layout:3 lib/examples/Articles:0
 msgid "Springer Nature Journals"
-msgstr "Springer Nature誌"
+msgstr "Springer Nature発行誌"
 
 #: lib/layouts/sn-jnl.layout:60 lib/layouts/sn-jnl.layout:74
 msgid "Affiliation Nr."
@@ -17832,7 +17831,7 @@ msgstr "後付けヘッダ"
 
 #: lib/layouts/sn-jnl.layout:277
 msgid "Appendix \\Alph{appendix}"
-msgstr "附録\\Alph{appendix}："
+msgstr "附録\\Alph{appendix}"
 
 #: lib/layouts/soul.module:2
 msgid "Hyphenatable Text Markup (Soul)"
@@ -23392,9 +23391,8 @@ msgid "<Page>|P"
 msgstr "<ページ(P)>|P"
 
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:731
-#, fuzzy
 msgid "p. <Page>|."
-msgstr "<ページ(P)>|P"
+msgstr "p. <ページ>|."
 
 #: lib/ui/stdcontext.inc:100 lib/ui/stdcontext.inc:122
 #: lib/ui/stdcontext.inc:732
@@ -30792,9 +30790,8 @@ msgid "Minted Listings"
 msgstr "Mintedプログラムリスト"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Computer Algebra Systems"
-msgstr "コンピュータ代数システムを使用(M)|M"
+msgstr "コンピュータ代数システム"
 
 #: lib/examples/Articles:0
 msgid "Instant Preview"
@@ -36401,9 +36398,8 @@ msgid "Cleveref and varioref"
 msgstr "Cleverefおよびvarioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1678
-#, fuzzy
 msgid "Prettyref (unlocalized) and varioref"
-msgstr "Prettyrefおよびvarioref"
+msgstr "(ローカライズされていない) Prettyrefおよびvarioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1679
 msgid "Prettyref and varioref"
@@ -37898,7 +37894,7 @@ msgstr "Adwaita"
 
 #: src/frontends/qt/GuiPrefs.cpp:3245
 msgid "Classic"
-msgstr "古典的"
+msgstr "Classic"
 
 #: src/frontends/qt/GuiPrefs.cpp:3246
 msgid "Oxygen"
@@ -38224,9 +38220,8 @@ msgid "Click here to change search options"
 msgstr "検索オプションを変更するときは ここをクリックしてください"
 
 #: src/frontends/qt/GuiSearch.cpp:598
-#, fuzzy
 msgid "Find and Replace"
-msgstr "検索・置換"
+msgstr "検索および置換"
 
 #: src/frontends/qt/GuiSendto.cpp:38
 msgid "Export or Send Document"
@@ -41292,33 +41287,31 @@ msgstr "数式参照"
 
 #: src/insets/InsetRef.cpp:955 src/mathed/InsetMathRef.cpp:427
 msgid "Page Number"
-msgstr "頁数"
+msgstr "頁参照"
 
 #: src/insets/InsetRef.cpp:956 src/mathed/InsetMathRef.cpp:428
-#, fuzzy
 msgid "Prefixed Page Number"
-msgstr "本文形頁数"
+msgstr "個別頁参照"
 
 #: src/insets/InsetRef.cpp:956
-#, fuzzy
 msgid "PrefPage"
-msgstr "序文(Preface)"
+msgstr "個別頁"
 
 #: src/insets/InsetRef.cpp:957 src/mathed/InsetMathRef.cpp:429
 msgid "Textual Page Number"
-msgstr "本文形頁数"
+msgstr "叙述的頁参照"
 
 #: src/insets/InsetRef.cpp:957
 msgid "TextPage"
-msgstr "本文頁"
+msgstr "叙述頁"
 
 #: src/insets/InsetRef.cpp:958 src/mathed/InsetMathRef.cpp:430
 msgid "Standard+Textual Page"
-msgstr "標準＋本文形頁"
+msgstr "標準＋叙述的頁参照"
 
 #: src/insets/InsetRef.cpp:958
 msgid "Ref+Text"
-msgstr "参照＋テキスト"
+msgstr "参照＋叙述"
 
 #: src/insets/InsetRef.cpp:959 src/mathed/InsetMathRef.cpp:432
 msgid "Reference to Name"
@@ -41330,11 +41323,11 @@ msgstr "名称参照"
 
 #: src/insets/InsetRef.cpp:960
 msgid "Formatted"
-msgstr "整形しました"
+msgstr "整形済み"
 
 #: src/insets/InsetRef.cpp:960
 msgid "Format"
-msgstr "形式"
+msgstr "整形"
 
 #: src/insets/InsetRef.cpp:961 src/mathed/InsetMathRef.cpp:433
 msgid "Label Only"
@@ -41807,17 +41800,16 @@ msgid "Page: "
 msgstr "頁："
 
 #: src/mathed/InsetMathRef.cpp:428
-#, fuzzy
 msgid "PrefPage: "
-msgstr "頁："
+msgstr "個別頁："
 
 #: src/mathed/InsetMathRef.cpp:429
 msgid "TextPage: "
-msgstr "テキスト頁："
+msgstr "叙述頁："
 
 #: src/mathed/InsetMathRef.cpp:430
 msgid "Ref+Text: "
-msgstr "参照＋テキスト："
+msgstr "参照＋叙述："
 
 #: src/mathed/InsetMathRef.cpp:431
 msgid "PrettyRef"

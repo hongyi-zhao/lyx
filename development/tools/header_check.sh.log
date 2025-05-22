@@ -111,6 +111,7 @@ suspicious: ./DocIterator.h::#include <algorithm> // std::min in MSVC 2017
 ./frontends/qt/GuiParagraph.h::#include <map>
 ./frontends/qt/GuiPrefs.h::#include <string>
 ./frontends/qt/GuiPrefs.h::#include <vector>
+./frontends/qt/GuiPrefs.h::#include <QTableView>
 ./frontends/qt/GuiProgressView.h::#include <string>
 ./frontends/qt/GuiRef.h::#include <vector>
 ./frontends/qt/GuiSearch.h::#include <QDockWidget>
@@ -119,12 +120,11 @@ suspicious: ./DocIterator.h::#include <algorithm> // std::min in MSVC 2017
 ./frontends/qt/GuiSymbols.h::#include <vector>
 ./frontends/qt/GuiTabularCreate.h::#include <utility>
 ./frontends/qt/GuiToolbar.h::#include <QList>
-./frontends/qt/GuiViewSource.h::#include <QDockWidget>
 ./frontends/qt/GuiViewSource.h::#include <QString>
 ./frontends/qt/GuiWorkArea_Private.h::#include <QMouseEvent>
 ./frontends/qt/IconPalette.h::#include <QWidget>
 ./frontends/qt/InGuiThread.h::#include <functional>
-./frontends/qt/InsetParamsDialog.h::#include <QPushButton>
+suspicious: ./frontends/qt/InsetParamsDialog.h::#include <QPushButton>
 ./frontends/qt/LaTeXHighlighter.h::#include <QTextCharFormat>
 ./frontends/qt/PanelStack.h::#include <QHash>
 ./frontends/qt/TocModel.h::#include <QHash>
@@ -202,7 +202,7 @@ suspicious: ./frontends/qt/qt_helpers.h::#include "qt_i18n.h"
 ./support/FileMonitor.h::#include <memory>
 ./support/FileMonitor.h::#include <map>
 ./support/FileMonitor.h::#include <QObject>
-./support/FileNameList.h::#include "support/FileName.h"
+suspicious: ./support/FileNameList.h::#include "support/FileName.h"
 ./support/ForkedCalls.h::#include <memory>
 ./support/Package.h::#include <string>
 ./support/RandomAccessList.h::#include <vector>
@@ -221,6 +221,9 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/os_win32.h::#include <windows.h>
 ./support/os_win32.h::#include <tchar.h>
 ./support/os_win32.h::#include <psapi.h>
+./support/pmprof.h::#include <chrono>
+./support/pmprof.h::#include <iomanip>
+./support/pmprof.h::#include <iostream>
 ./support/unicode.h::#include <cstddef>
 ./support/weighted_btree.h::#include <algorithm>
 ./support/weighted_btree.h::#include <cstddef>
@@ -282,10 +285,8 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./Buffer.cpp::#include "xml.h"
 ./Buffer.cpp::#include "insets/InsetText.h"
 ./Buffer.cpp::#include "mathed/MacroTable.h"
-./Buffer.cpp::#include "mathed/MathSupport.h"
 ./Buffer.cpp::#include "support/FileName.h"
 ./Buffer.cpp::#include "support/os.h"
-./Buffer.cpp::#include "support/textutils.h"
 ./Buffer.cpp::#include "support/types.h"
 ./Buffer.cpp::#include <algorithm>
 ./Buffer.cpp::#include <fstream>
@@ -328,7 +329,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./BufferView.cpp::#include "support/docstring.h"
 ./BufferView.cpp::#include "support/Length.h"
 ./BufferView.cpp::#include "support/lstrings.h"
-./BufferView.cpp::#include "support/pmprof.h"
 ./BufferView.cpp::#include "support/types.h"
 ./BufferView.cpp::#include <algorithm>
 ./BufferView.cpp::#include <cerrno>
@@ -350,10 +350,8 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./Color.cpp::#include <sstream>
 ./Compare.cpp::#include "Author.h"
 ./Compare.cpp::#include "Changes.h"
-./Compare.cpp::#include "ErrorList.h"
 ./Compare.cpp::#include "support/docstream.h"
 ./Converter.cpp::#include "Language.h"
-./Converter.cpp::#include "LaTeXFeatures.h"
 ./Converter.cpp::#include "OutputParams.h"
 ./Converter.cpp::#include "support/os.h"
 ./ConverterCache.cpp::#include <algorithm>
@@ -407,11 +405,7 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./DocIterator.cpp::#include "Text.h"
 ./DocIterator.cpp::#include "mathed/MathData.h"
 ./DocIterator.cpp::#include "mathed/InsetMath.h"
-./DocIterator.cpp::#include "support/ExceptionMessage.h"
-./DocIterator.cpp::#include "support/gettext.h"
-./DocIterator.cpp::#include "support/lstrings.h"
 ./DocIterator.cpp::#include <ostream>
-./EnchantChecker.cpp::#include "LyXRC.h"
 ./EnchantChecker.cpp::#include "support/lassert.h"
 ./EnchantChecker.cpp::#include <map>
 ./EnchantChecker.cpp::#include <string>
@@ -453,9 +447,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./IndicesList.cpp::#include <algorithm>
 ./InsetIterator.cpp::#include "support/lassert.h"
 ./KeyMap.cpp::#include "KeySequence.h"
-./KeyMap.cpp::#include "support/docstream.h"
-./KeyMap.cpp::#include <fstream>
-./KeyMap.cpp::#include <sstream>
 ./KeyMap.cpp::#include <utility>
 ./KeySequence.cpp::#include "KeySequence.h"
 ./LaTeX.cpp::#include "LyX.h"
@@ -475,7 +466,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./LaTeXFeatures.cpp::#include "insets/InsetLayout.h"
 ./LaTeXFeatures.cpp::#include "support/docstream.h"
 ./LaTeXFeatures.cpp::#include "support/docstring.h"
-./LaTeXFeatures.cpp::#include "support/filetools.h"
 ./LaTeXFeatures.cpp::#include <algorithm>
 ./LaTeXPackages.cpp::#include "support/FileName.h"
 ./Language.cpp::#include "Language.h"
@@ -578,11 +568,9 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./Text.cpp::#include "insets/InsetCollapsible.h"
 ./Text.cpp::#include "insets/InsetCommand.h"
 ./Text.cpp::#include "insets/InsetGraphicsParams.h"
-./Text.cpp::#include "insets/InsetIndexMacro.h"
 ./Text.cpp::#include "insets/InsetText.h"
 ./Text.cpp::#include "support/docstream.h"
 ./Text.cpp::#include "support/docstring.h"
-./Text.cpp::#include "support/docstring_list.h"
 ./Text.cpp::#include "support/lstrings.h"
 ./Text.cpp::#include "support/lyxtime.h"
 ./Text.cpp::#include <clocale>
@@ -607,18 +595,15 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./TocBuilder.cpp::#include "TocBuilder.h"
 ./TocBuilder.cpp::#include "DocIterator.h"
 ./Undo.cpp::#include "Undo.h"
-./Undo.cpp::#include "ErrorList.h"
 ./Undo.cpp::#include "Paragraph.h"
 ./Undo.cpp::#include "ParagraphList.h"
 ./Undo.cpp::#include "Text.h"
 ./Undo.cpp::#include "mathed/InsetMath.h"
-./Undo.cpp::#include "mathed/MathRow.h"
 ./Undo.cpp::#include "support/lyxtime.h"
 ./Undo.cpp::#include <algorithm>
 ./Undo.cpp::#include <set>
 ./VCBackend.cpp::#include <sstream>
 ./VSpace.cpp::#include "support/Length.h"
-./WordList.cpp::#include "support/convert.h"
 ./WordList.cpp::#include "support/docstring.h"
 ./boost.cpp::#include <exception>
 ./boost.cpp::#include <iomanip>
@@ -643,16 +628,11 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./convert/lyxconvert.cpp::#include <QPdfWriter>
 ./factory.cpp::#include "factory.h"
 ./factory.cpp::#include "FuncRequest.h"
-./factory.cpp::#include "frontends/alert.h"
 ./factory.cpp::#include "support/Lexer.h"
 ./factory.cpp::#include "support/lstrings.h"
 ./factory.cpp::#include <sstream>
-./frontends/qt/Action.cpp::#include "DispatchResult.h"
-./frontends/qt/Action.cpp::#include "qt_helpers.h"
-./frontends/qt/Action.cpp::#include "support/lstrings.h"
 ./frontends/qt/BulletsModule.cpp::#include "Bullet.h"
 ./frontends/qt/BulletsModule.cpp::#include <QPixmap>
-./frontends/qt/ButtonController.cpp::#include <QLabel>
 ./frontends/qt/ButtonController.cpp::#include <QList>
 ./frontends/qt/CategorizedCombo.cpp::#include "support/qstring_helpers.h"
 ./frontends/qt/CategorizedCombo.cpp::#include <QComboBox>
@@ -661,26 +641,15 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/ColorListWidget.cpp::#include "moc_ColorListWidget.cpp"
 ./frontends/qt/ColorsCombo.cpp::#include "support/qstring_helpers.h"
 ./frontends/qt/ColorsCombo.cpp::#include <QComboBox>
-./frontends/qt/ColorsCombo.cpp::#include <QHeaderView>
 ./frontends/qt/ColorsCombo.cpp::#include <QStandardItemModel>
-./frontends/qt/CustomizedWidgets.cpp::#include "FuncRequest.h"
-./frontends/qt/CustomizedWidgets.cpp::#include <QApplication>
 ./frontends/qt/CustomizedWidgets.cpp::#include <QKeyEvent>
-./frontends/qt/CustomizedWidgets.cpp::#include <QMouseEvent>
-./frontends/qt/CustomizedWidgets.cpp::#include <QShowEvent>
-./frontends/qt/Dialog.cpp::#include "support/gettext.h"
 ./frontends/qt/Dialog.cpp::#include <string>
 ./frontends/qt/DialogFactory.cpp::#include "DialogFactory.h"
 ./frontends/qt/DialogFactory.cpp::#include "insets/Inset.h"
 ./frontends/qt/DialogFactory.cpp::#include "InsetParamsWidget.h"
 ./frontends/qt/FancyLineEdit.cpp::#include <QEvent>
-./frontends/qt/FancyLineEdit.cpp::#include <QDebug>
 ./frontends/qt/FancyLineEdit.cpp::#include <QString>
-./frontends/qt/FancyLineEdit.cpp::#include <QApplication>
-./frontends/qt/FancyLineEdit.cpp::#include <QMouseEvent>
-./frontends/qt/FancyLineEdit.cpp::#include <QLabel>
 ./frontends/qt/FancyLineEdit.cpp::#include <QAbstractButton>
-./frontends/qt/FancyLineEdit.cpp::#include <QPaintEvent>
 ./frontends/qt/FileDialog.cpp::#include "FileDialog.h"
 ./frontends/qt/FileDialog.cpp::#include "support/filetools.h"
 ./frontends/qt/FileDialog.cpp::#include "support/gettext.h"
@@ -691,21 +660,16 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/FindAndReplace.cpp::#include "Language.h"
 ./frontends/qt/FindAndReplace.cpp::#include "support/docstream.h"
 ./frontends/qt/FindAndReplace.cpp::#include "support/filetools.h"
-./frontends/qt/FindAndReplace.cpp::#include <QLineEdit>
-./frontends/qt/FindAndReplace.cpp::#include <QMenu>
 ./frontends/qt/FloatPlacement.cpp::#include "FloatList.h"
 ./frontends/qt/FloatPlacement.cpp::#include <map>
 ./frontends/qt/GuiAbout.cpp::#include "support/filetools.h"
 ./frontends/qt/GuiAlert.cpp::#include "support/gettext.h"
 ./frontends/qt/GuiAlert.cpp::#include "support/docstring.h"
-./frontends/qt/GuiAlert.cpp::#include <QCheckBox>
 ./frontends/qt/GuiAlert.cpp::#include <QLineEdit>
-./frontends/qt/GuiAlert.cpp::#include <QSettings>
 ./frontends/qt/GuiAlert.cpp::#include <iomanip>
 ./frontends/qt/GuiAlert.cpp::#include <iostream>
 ./frontends/qt/GuiApplication.cpp::#include "frontends/Application.h"
 ./frontends/qt/GuiApplication.cpp::#include "Color.h"
-./frontends/qt/GuiApplication.cpp::#include "ErrorList.h"
 ./frontends/qt/GuiApplication.cpp::#include "Font.h"
 ./frontends/qt/GuiApplication.cpp::#include "FuncRequest.h"
 ./frontends/qt/GuiApplication.cpp::#include "Language.h"
@@ -733,7 +697,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiApplication.cpp::#include <QMimeData>
 ./frontends/qt/GuiApplication.cpp::#include <QObject>
 ./frontends/qt/GuiApplication.cpp::#include <QPixmap>
-./frontends/qt/GuiApplication.cpp::#include <QScreen>
 ./frontends/qt/GuiApplication.cpp::#include <QStyle>
 ./frontends/qt/GuiApplication.cpp::#include <QStyleHints>
 ./frontends/qt/GuiApplication.cpp::#include <QWidget>
@@ -742,32 +705,13 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiApplication.cpp::#include <exception>
 ./frontends/qt/GuiApplication.cpp::#include <sstream>
 ./frontends/qt/GuiApplication.cpp::#include <vector>
-./frontends/qt/GuiBibitem.cpp::#include <QLineEdit>
-./frontends/qt/GuiBibitem.cpp::#include <QPushButton>
-./frontends/qt/GuiBibtex.cpp::#include "CiteEnginesList.h"
-./frontends/qt/GuiBibtex.cpp::#include "GuiApplication.h"
-./frontends/qt/GuiBibtex.cpp::#include "Validator.h"
 ./frontends/qt/GuiBibtex.cpp::#include "ButtonPolicy.h"
-./frontends/qt/GuiBibtex.cpp::#include "frontends/alert.h"
-./frontends/qt/GuiBibtex.cpp::#include "support/ExceptionMessage.h"
 ./frontends/qt/GuiBibtex.cpp::#include "support/filetools.h" // changeExtension
 ./frontends/qt/GuiBibtex.cpp::#include "support/gettext.h"
 ./frontends/qt/GuiBibtex.cpp::#include <QDialogButtonBox>
-./frontends/qt/GuiBibtex.cpp::#include <QPushButton>
-./frontends/qt/GuiBibtex.cpp::#include <QListWidget>
-./frontends/qt/GuiBibtex.cpp::#include <QCheckBox>
-./frontends/qt/GuiBibtex.cpp::#include <QLineEdit>
-./frontends/qt/GuiBox.cpp::#include "Buffer.h"
-./frontends/qt/GuiBox.cpp::#include "BufferParams.h"
-./frontends/qt/GuiBox.cpp::#include "ColorsCombo.h"
 ./frontends/qt/GuiBox.cpp::#include "LengthCombo.h"
 ./frontends/qt/GuiBox.cpp::#include "support/Length.h"
-./frontends/qt/GuiBox.cpp::#include <QComboBox>
-./frontends/qt/GuiBox.cpp::#include <QLineEdit>
-./frontends/qt/GuiBox.cpp::#include <QPushButton>
-./frontends/qt/GuiBranch.cpp::#include <QPushButton>
 ./frontends/qt/GuiBranches.cpp::#include "ui_BranchesUnknownUi.h"
-./frontends/qt/GuiBranches.cpp::#include "Buffer.h"
 ./frontends/qt/GuiBranches.cpp::#include <QListWidget>
 ./frontends/qt/GuiBranches.cpp::#include <QTreeWidget>
 ./frontends/qt/GuiBranches.cpp::#include <QTreeWidgetItem>
@@ -775,34 +719,22 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiBranches.cpp::#include <QIcon>
 ./frontends/qt/GuiBranches.cpp::#include <QColor>
 ./frontends/qt/GuiChanges.cpp::#include "Changes.h"
-./frontends/qt/GuiChanges.cpp::#include "LyXRC.h"
-./frontends/qt/GuiChanges.cpp::#include <QTextBrowser>
-./frontends/qt/GuiCharacter.cpp::#include "ColorsCombo.h"
-./frontends/qt/GuiCharacter.cpp::#include "qt_helpers.h"
-./frontends/qt/GuiCharacter.cpp::#include "ColorSet.h"
 ./frontends/qt/GuiCharacter.cpp::#include "Language.h"
 ./frontends/qt/GuiCharacter.cpp::#include <QAbstractItemModel>
 ./frontends/qt/GuiCharacter.cpp::#include <QComboBox>
 ./frontends/qt/GuiCharacter.cpp::#include <QModelIndex>
-./frontends/qt/GuiCharacter.cpp::#include <QVariant>
-./frontends/qt/GuiCitation.cpp::#include "GuiApplication.h"
 ./frontends/qt/GuiCitation.cpp::#include "GuiView.h"
-./frontends/qt/GuiCitation.cpp::#include "BufferView.h"
 ./frontends/qt/GuiCitation.cpp::#include "Citation.h"
-./frontends/qt/GuiCitation.cpp::#include "Cursor.h"
 ./frontends/qt/GuiCitation.cpp::#include "insets/InsetCommand.h"
 ./frontends/qt/GuiCitation.cpp::#include "support/docstring.h"
 ./frontends/qt/GuiCitation.cpp::#include <QCloseEvent>
 ./frontends/qt/GuiCitation.cpp::#include <QMenu>
 ./frontends/qt/GuiCitation.cpp::#include <QShowEvent>
-./frontends/qt/GuiCitation.cpp::#include <QStandardItemModel>
-./frontends/qt/GuiCitation.cpp::#include <QVariant>
 ./frontends/qt/GuiCitation.cpp::#include <algorithm>
 ./frontends/qt/GuiCitation.cpp::#include <vector>
 ./frontends/qt/GuiClipboard.cpp::#include "support/filetools.h"
 ./frontends/qt/GuiClipboard.cpp::#include "support/lyxtime.h"
 ./frontends/qt/GuiClipboard.cpp::#include "support/linkback/LinkBackProxy.h"
-./frontends/qt/GuiClipboard.cpp::#include <QApplication>
 ./frontends/qt/GuiClipboard.cpp::#include <QDataStream>
 ./frontends/qt/GuiClipboard.cpp::#include <QMimeData>
 ./frontends/qt/GuiClipboard.cpp::#include <QString>
@@ -811,44 +743,32 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiClipboard.cpp::#include <memory>
 ./frontends/qt/GuiClipboard.cpp::#include <map>
 ./frontends/qt/GuiClipboard.cpp::#include <iostream>
-./frontends/qt/GuiCommandBuffer.cpp::#include "BufferView.h"
 ./frontends/qt/GuiCommandBuffer.cpp::#include <QHBoxLayout>
 ./frontends/qt/GuiCommandBuffer.cpp::#include <QKeyEvent>
 ./frontends/qt/GuiCommandBuffer.cpp::#include <QMouseEvent>
 ./frontends/qt/GuiCommandBuffer.cpp::#include <QPixmap>
 ./frontends/qt/GuiCommandBuffer.cpp::#include <QPushButton>
-./frontends/qt/GuiCommandBuffer.cpp::#include <QToolTip>
 ./frontends/qt/GuiCommandBuffer.cpp::#include <QVBoxLayout>
 ./frontends/qt/GuiCommandEdit.cpp::#include <QKeyEvent>
 ./frontends/qt/GuiCommandEdit.cpp::#include <QEvent>
-./frontends/qt/GuiCompare.cpp::#include "BufferView.h"
 ./frontends/qt/GuiCompare.cpp::#include "support/filetools.h"
 ./frontends/qt/GuiCompare.cpp::#include <QDialogButtonBox>
 ./frontends/qt/GuiCompare.cpp::#include <QThread>
 ./frontends/qt/GuiCompareHistory.cpp::#include <QDialogButtonBox>
 ./frontends/qt/GuiCompareHistory.cpp::#include <limits>
-./frontends/qt/GuiCompleter.cpp::#include "GuiView.h"
-./frontends/qt/GuiCompleter.cpp::#include "qt_helpers.h"
 ./frontends/qt/GuiCompleter.cpp::#include "Dimension.h"
 ./frontends/qt/GuiCompleter.cpp::#include "LyX.h"
-./frontends/qt/GuiCompleter.cpp::#include "version.h"
-./frontends/qt/GuiCompleter.cpp::#include "support/qstring_helpers.h"
-./frontends/qt/GuiCompleter.cpp::#include <QScrollBar>
 ./frontends/qt/GuiCompleter.cpp::#include <QTimer>
 ./frontends/qt/GuiCounter.cpp::#include "insets/InsetCommandParams.h"
 ./frontends/qt/GuiCounter.cpp::#include <map>
-./frontends/qt/GuiDelimiter.cpp::#include "GuiFontLoader.h"
 ./frontends/qt/GuiDelimiter.cpp::#include "GuiView.h"
 ./frontends/qt/GuiDelimiter.cpp::#include "FontEnums.h"
-./frontends/qt/GuiDelimiter.cpp::#include "FontInfo.h"
 ./frontends/qt/GuiDelimiter.cpp::#include "support/docstring.h"
 ./frontends/qt/GuiDelimiter.cpp::#include <QPixmap>
-./frontends/qt/GuiDelimiter.cpp::#include <QCheckBox>
 ./frontends/qt/GuiDelimiter.cpp::#include <QListWidgetItem>
 ./frontends/qt/GuiDelimiter.cpp::#include <map>
 ./frontends/qt/GuiDialog.cpp::#include "support/filetools.h"
 ./frontends/qt/GuiDocument.cpp::#include "CategorizedCombo.h"
-./frontends/qt/GuiDocument.cpp::#include "ColorsCombo.h"
 ./frontends/qt/GuiDocument.cpp::#include "BranchList.h"
 ./frontends/qt/GuiDocument.cpp::#include "Color.h"
 ./frontends/qt/GuiDocument.cpp::#include "IndicesList.h"
@@ -874,148 +794,82 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiDocument.cpp::#include <QTextCursor>
 ./frontends/qt/GuiDocument.cpp::#include <sstream>
 ./frontends/qt/GuiDocument.cpp::#include <vector>
-./frontends/qt/GuiERT.cpp::#include "support/gettext.h"
-./frontends/qt/GuiERT.cpp::#include <QRadioButton>
-./frontends/qt/GuiERT.cpp::#include <QPushButton>
 ./frontends/qt/GuiErrorList.cpp::#include "GuiView.h"
-./frontends/qt/GuiErrorList.cpp::#include "Text.h"
 ./frontends/qt/GuiErrorList.cpp::#include "TexRow.h"
 ./frontends/qt/GuiErrorList.cpp::#include <QListWidget>
-./frontends/qt/GuiErrorList.cpp::#include <QPushButton>
-./frontends/qt/GuiErrorList.cpp::#include <QTextBrowser>
-./frontends/qt/GuiExternal.cpp::#include "Buffer.h"
-./frontends/qt/GuiExternal.cpp::#include "insets/ExternalSupport.h"
 ./frontends/qt/GuiExternal.cpp::#include "insets/ExternalTemplate.h"
 ./frontends/qt/GuiExternal.cpp::#include "support/filetools.h"
 ./frontends/qt/GuiExternal.cpp::#include "support/Length.h"
 ./frontends/qt/GuiExternal.cpp::#include "support/os.h"
 ./frontends/qt/GuiExternal.cpp::#include "LengthCombo.h"
 ./frontends/qt/GuiExternal.cpp::#include <QCheckBox>
-./frontends/qt/GuiExternal.cpp::#include <QGroupBox>
 ./frontends/qt/GuiExternal.cpp::#include <QLineEdit>
-./frontends/qt/GuiExternal.cpp::#include <QPushButton>
-./frontends/qt/GuiExternal.cpp::#include <QTabWidget>
-./frontends/qt/GuiExternal.cpp::#include <QTextBrowser>
 ./frontends/qt/GuiFontExample.cpp::#include <QPaintEvent>
 ./frontends/qt/GuiFontLoader.cpp::#include "GuiFontLoader.h"
 ./frontends/qt/GuiFontLoader.cpp::#include "support/filetools.h"
-./frontends/qt/GuiFontLoader.cpp::#include "support/gettext.h"
-./frontends/qt/GuiFontLoader.cpp::#include "support/lstrings.h"
-./frontends/qt/GuiFontLoader.cpp::#include "support/Systemcall.h"
 ./frontends/qt/GuiFontLoader.cpp::#include "support/os.h"
 ./frontends/qt/GuiFontLoader.cpp::#include <QFontDatabase>
-./frontends/qt/GuiFontMetrics.cpp::#include "support/convert.h"
+./frontends/qt/GuiFontMetrics.cpp::#include "Dimension.h"
 ./frontends/qt/GuiFontMetrics.cpp::#include <QByteArray>
 ./frontends/qt/GuiFontMetrics.cpp::#include <QRawFont>
-./frontends/qt/GuiGraphics.cpp::#include "Buffer.h"
 ./frontends/qt/GuiGraphics.cpp::#include "LengthCombo.h"
 ./frontends/qt/GuiGraphics.cpp::#include "support/filetools.h"
 ./frontends/qt/GuiGraphics.cpp::#include "support/Length.h"
 ./frontends/qt/GuiGraphics.cpp::#include "support/os.h"
 ./frontends/qt/GuiGraphics.cpp::#include "support/types.h"
 ./frontends/qt/GuiGraphics.cpp::#include <QCheckBox>
-./frontends/qt/GuiGraphics.cpp::#include <QLabel>
 ./frontends/qt/GuiGraphics.cpp::#include <QLineEdit>
-./frontends/qt/GuiGraphics.cpp::#include <QPushButton>
-./frontends/qt/GuiGraphics.cpp::#include <QValidator>
 ./frontends/qt/GuiGraphics.cpp::#include <utility>
 ./frontends/qt/GuiHSpace.cpp::#include "LengthCombo.h"
 ./frontends/qt/GuiHSpace.cpp::#include "Spacing.h"
 ./frontends/qt/GuiHSpace.cpp::#include "support/gettext.h"
-./frontends/qt/GuiHSpace.cpp::#include "support/lstrings.h"
-./frontends/qt/GuiHSpace.cpp::#include <QCheckBox>
-./frontends/qt/GuiHSpace.cpp::#include <QLineEdit>
-./frontends/qt/GuiHSpace.cpp::#include <QPushButton>
-./frontends/qt/GuiHSpace.cpp::#include <QValidator>
 ./frontends/qt/GuiImage.cpp::#include <math.h> /* ceil */
-./frontends/qt/GuiImage.cpp::#include "Format.h"
 ./frontends/qt/GuiImage.cpp::#include "support/FileName.h"
 ./frontends/qt/GuiImage.cpp::#include "support/lstrings.h"       // ascii_lowercase
-./frontends/qt/GuiImage.cpp::#include <QPainter>
-./frontends/qt/GuiImage.cpp::#include <QImageReader>
 ./frontends/qt/GuiInclude.cpp::#include "support/gettext.h"
 ./frontends/qt/GuiInclude.cpp::#include "support/os.h"
 ./frontends/qt/GuiInclude.cpp::#include "support/filetools.h"
-./frontends/qt/GuiInclude.cpp::#include "frontends/alert.h"
-./frontends/qt/GuiInclude.cpp::#include <QCheckBox>
-./frontends/qt/GuiInclude.cpp::#include <QLineEdit>
 ./frontends/qt/GuiInclude.cpp::#include <QPushButton>
 ./frontends/qt/GuiInclude.cpp::#include <utility>
 ./frontends/qt/GuiIndex.cpp::#include "insets/InsetIndex.h"
-./frontends/qt/GuiIndex.cpp::#include <QPushButton>
-./frontends/qt/GuiIndices.cpp::#include "GuiApplication.h"
 ./frontends/qt/GuiIndices.cpp::#include <QTreeWidget>
 ./frontends/qt/GuiIndices.cpp::#include <QTreeWidgetItem>
 ./frontends/qt/GuiIndices.cpp::#include <QPixmap>
 ./frontends/qt/GuiIndices.cpp::#include <QIcon>
 ./frontends/qt/GuiIndices.cpp::#include <QColor>
 ./frontends/qt/GuiInfo.cpp::#include "Buffer.h"
-./frontends/qt/GuiInfo.cpp::#include "buffer_funcs.h"
-./frontends/qt/GuiInfo.cpp::#include "BufferParams.h"
-./frontends/qt/GuiInfo.cpp::#include "Cursor.h"
-./frontends/qt/GuiInfo.cpp::#include "Language.h"
 ./frontends/qt/GuiInfo.cpp::#include "insets/InsetInfo.h"
-./frontends/qt/GuiInfo.cpp::#include "support/lstrings.h"
 ./frontends/qt/GuiInputMethod.cpp::#include <array>
 ./frontends/qt/GuiInputMethod.cpp::#include <ios>
-./frontends/qt/GuiInputMethod.cpp::#include "ErrorList.h"
+./frontends/qt/GuiInputMethod.cpp::#include "ColorSet.h"
 ./frontends/qt/GuiInputMethod.cpp::#include "GuiWorkArea.h"
 ./frontends/qt/GuiInputMethod.cpp::#include "Row.h"
 ./frontends/qt/GuiKeySymbol.cpp::#include "GuiApplication.h"
-./frontends/qt/GuiKeySymbol.cpp::#include "Encoding.h"
-./frontends/qt/GuiKeySymbol.cpp::#include "Language.h"
 ./frontends/qt/GuiKeySymbol.cpp::#include <QKeyEvent>
 ./frontends/qt/GuiKeySymbol.cpp::#include <QKeySequence>
-./frontends/qt/GuiKeySymbol.cpp::#include <QEvent>
 ./frontends/qt/GuiKeySymbol.cpp::#include <map>
 ./frontends/qt/GuiKeySymbol.cpp::#include <string>
-./frontends/qt/GuiLabel.cpp::#include <QLabel>
-./frontends/qt/GuiLabel.cpp::#include <QPushButton>
-./frontends/qt/GuiLabel.cpp::#include <QLineEdit>
 ./frontends/qt/GuiLine.cpp::#include "LengthCombo.h"
-./frontends/qt/GuiLine.cpp::#include "FuncRequest.h"
-./frontends/qt/GuiLine.cpp::#include "support/gettext.h"
-./frontends/qt/GuiLine.cpp::#include "support/lstrings.h"
-./frontends/qt/GuiLine.cpp::#include <QLineEdit>
-./frontends/qt/GuiLine.cpp::#include <QPushButton>
-./frontends/qt/GuiLine.cpp::#include <QValidator>
 ./frontends/qt/GuiListings.cpp::#include "insets/InsetListingsParams.h"
-./frontends/qt/GuiListings.cpp::#include <QLineEdit>
-./frontends/qt/GuiListings.cpp::#include <QPushButton>
-./frontends/qt/GuiListings.cpp::#include <QValidator>
 ./frontends/qt/GuiListings.cpp::#include <QRegularExpressionValidator>
-./frontends/qt/GuiLog.cpp::#include "frontends/Clipboard.h"
 ./frontends/qt/GuiLog.cpp::#include "support/docstring.h"
-./frontends/qt/GuiLog.cpp::#include <QTextBrowser>
-./frontends/qt/GuiLog.cpp::#include <QClipboard>
 ./frontends/qt/GuiLog.cpp::#include <fstream>
 ./frontends/qt/GuiLog.cpp::#include <sstream>
 ./frontends/qt/GuiLyXFiles.cpp::#include "support/qstring_helpers.h"
 ./frontends/qt/GuiLyXFiles.cpp::#include <QVector>
 ./frontends/qt/GuiLyXFiles.cpp::#include <QTreeWidget>
 ./frontends/qt/GuiMathMatrix.cpp::#include "EmptyTable.h"
-./frontends/qt/GuiMathMatrix.cpp::#include <QLineEdit>
-./frontends/qt/GuiMathMatrix.cpp::#include <QPushButton>
-./frontends/qt/GuiMathMatrix.cpp::#include <QSpinBox>
 ./frontends/qt/GuiNote.cpp::#include "support/gettext.h"
 ./frontends/qt/GuiPainter.cpp::#include "Font.h"
-./frontends/qt/GuiPainter.cpp::#include "LyXRC.h"
 ./frontends/qt/GuiPainter.cpp::#include <algorithm>
-./frontends/qt/GuiPainter.cpp::#include <QTextLayout>
 ./frontends/qt/GuiParagraph.cpp::#include "GuiView.h"
 ./frontends/qt/GuiParagraph.cpp::#include "Layout.h"
 ./frontends/qt/GuiParagraph.cpp::#include "ParagraphParameters.h"
 ./frontends/qt/GuiParagraph.cpp::#include "Spacing.h"
-./frontends/qt/GuiParagraph.cpp::#include "support/Lexer.h"
-./frontends/qt/GuiParagraph.cpp::#include <QCheckBox>
 ./frontends/qt/GuiParagraph.cpp::#include <QDialogButtonBox>
-./frontends/qt/GuiParagraph.cpp::#include <QLineEdit>
-./frontends/qt/GuiParagraph.cpp::#include <QVariant>
 ./frontends/qt/GuiParagraph.cpp::#include <sstream>
 ./frontends/qt/GuiPhantom.cpp::#include "support/gettext.h"
 ./frontends/qt/GuiPrefs.cpp::#include "GuiFontExample.h"
-./frontends/qt/GuiPrefs.cpp::#include "GuiFontLoader.h"
-./frontends/qt/GuiPrefs.cpp::#include "GuiKeySymbol.h"
 ./frontends/qt/GuiPrefs.cpp::#include "GuiView.h"
 ./frontends/qt/GuiPrefs.cpp::#include "Color.h"
 ./frontends/qt/GuiPrefs.cpp::#include "ColorSet.h"
@@ -1024,22 +878,16 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiPrefs.cpp::#include "LengthCombo.h"
 ./frontends/qt/GuiPrefs.cpp::#include "LyX.h"
 ./frontends/qt/GuiPrefs.cpp::#include "PanelStack.h"
-./frontends/qt/GuiPrefs.cpp::#include "Session.h"
-./frontends/qt/GuiPrefs.cpp::#include "SpellChecker.h"
 ./frontends/qt/GuiPrefs.cpp::#include "support/FileName.h"
 ./frontends/qt/GuiPrefs.cpp::#include "support/filetools.h"
 ./frontends/qt/GuiPrefs.cpp::#include "support/os.h"
 ./frontends/qt/GuiPrefs.cpp::#include "frontends/Application.h"
-./frontends/qt/GuiPrefs.cpp::#include "frontends/FontLoader.h"
 ./frontends/qt/GuiPrefs.cpp::#include <QAbstractItemModel>
 ./frontends/qt/GuiPrefs.cpp::#include <QCheckBox>
-./frontends/qt/GuiPrefs.cpp::#include <QFile>
-./frontends/qt/GuiPrefs.cpp::#include <QGraphicsColorizeEffect>
 ./frontends/qt/GuiPrefs.cpp::#include <QHeaderView>
 ./frontends/qt/GuiPrefs.cpp::#include <QLineEdit>
 ./frontends/qt/GuiPrefs.cpp::#include <QPainter>
 ./frontends/qt/GuiPrefs.cpp::#include <QPushButton>
-./frontends/qt/GuiPrefs.cpp::#include <QSpinBox>
 ./frontends/qt/GuiPrefs.cpp::#include <QString>
 ./frontends/qt/GuiPrefs.cpp::#include <QStyleHints>
 ./frontends/qt/GuiPrefs.cpp::#include <QTreeWidget>
@@ -1049,70 +897,38 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiPrefs.cpp::#include <sstream>
 ./frontends/qt/GuiPrefs.cpp::#include <algorithm>
 ./frontends/qt/GuiPrintNomencl.cpp::#include "LengthCombo.h"
-./frontends/qt/GuiPrintNomencl.cpp::#include "FuncRequest.h"
 ./frontends/qt/GuiPrintNomencl.cpp::#include "support/gettext.h"
-./frontends/qt/GuiPrintNomencl.cpp::#include "support/lstrings.h"
-./frontends/qt/GuiPrintindex.cpp::#include <QPushButton>
-./frontends/qt/GuiProgress.cpp::#include "support/Systemcall.h"
 ./frontends/qt/GuiProgressView.cpp::#include <algorithm>
-./frontends/qt/GuiProgressView.cpp::#include <QCheckBox>
-./frontends/qt/GuiProgressView.cpp::#include <QDebug>
-./frontends/qt/GuiProgressView.cpp::#include <QTime>
-./frontends/qt/GuiRef.cpp::#include "GuiApplication.h"
+./frontends/qt/GuiRef.cpp::#include "FuncRequest.h"
 ./frontends/qt/GuiRef.cpp::#include "support/FileName.h"
 ./frontends/qt/GuiRef.cpp::#include "support/filetools.h" // makeAbsPath, makeDisplayPath
 ./frontends/qt/GuiRef.cpp::#include "support/lstrings.h"
-./frontends/qt/GuiRef.cpp::#include <QLineEdit>
-./frontends/qt/GuiRef.cpp::#include <QCheckBox>
 ./frontends/qt/GuiRef.cpp::#include <QTreeWidget>
 ./frontends/qt/GuiRef.cpp::#include <QTreeWidgetItem>
-./frontends/qt/GuiRef.cpp::#include <QPushButton>
-./frontends/qt/GuiRef.cpp::#include <QToolTip>
 ./frontends/qt/GuiRef.cpp::#include <QHeaderView>
 ./frontends/qt/GuiRef.cpp::#include <QAbstractItemModel>
-./frontends/qt/GuiRef.cpp::#include <QTableWidget>
 ./frontends/qt/GuiSearch.cpp::#include "FuncRequest.h"
-./frontends/qt/GuiSearch.cpp::#include "Cursor.h"
 ./frontends/qt/GuiSearch.cpp::#include "FuncRequest.h"
 ./frontends/qt/GuiSearch.cpp::#include "support/filetools.h"
 ./frontends/qt/GuiSearch.cpp::#include "support/gettext.h"
-./frontends/qt/GuiSearch.cpp::#include "frontends/alert.h"
-./frontends/qt/GuiSearch.cpp::#include <QLineEdit>
 ./frontends/qt/GuiSearch.cpp::#include <QHideEvent>
 ./frontends/qt/GuiSearch.cpp::#include <QShowEvent>
 ./frontends/qt/GuiSearch.cpp::#include "QSizePolicy"
-./frontends/qt/GuiSelection.cpp::#include "support/lstrings.h"
 ./frontends/qt/GuiSelection.cpp::#include <QString>
 ./frontends/qt/GuiSelectionManager.cpp::#include <QAbstractItemModel>
-./frontends/qt/GuiSelectionManager.cpp::#include <QAbstractListModel>
 ./frontends/qt/GuiSelectionManager.cpp::#include <QItemSelection>
-./frontends/qt/GuiSendto.cpp::#include "qt_helpers.h"
 ./frontends/qt/GuiSendto.cpp::#include "support/filetools.h"
-./frontends/qt/GuiSendto.cpp::#include "support/qstring_helpers.h"
 ./frontends/qt/GuiSendto.cpp::#include <algorithm>
-./frontends/qt/GuiSendto.cpp::#include <QLineEdit>
 ./frontends/qt/GuiSendto.cpp::#include <QListWidget>
-./frontends/qt/GuiSendto.cpp::#include <QPushButton>
 ./frontends/qt/GuiSetBorder.cpp::#include <QMouseEvent>
 ./frontends/qt/GuiSetBorder.cpp::#include <QPaintEvent>
 ./frontends/qt/GuiShowFile.cpp::#include "support/filetools.h"
-./frontends/qt/GuiShowFile.cpp::#include <QTextBrowser>
-./frontends/qt/GuiShowFile.cpp::#include <QPushButton>
-./frontends/qt/GuiSpellchecker.cpp::#include "BufferParams.h"
-./frontends/qt/GuiSpellchecker.cpp::#include "buffer_funcs.h"
-./frontends/qt/GuiSpellchecker.cpp::#include "CutAndPaste.h"
 ./frontends/qt/GuiSpellchecker.cpp::#include "Language.h"
-./frontends/qt/GuiSpellchecker.cpp::#include "LyX.h"
-./frontends/qt/GuiSpellchecker.cpp::#include "LyXRC.h"
 ./frontends/qt/GuiSpellchecker.cpp::#include "Paragraph.h"
-./frontends/qt/GuiSpellchecker.cpp::#include "WordLangTuple.h"
 ./frontends/qt/GuiSpellchecker.cpp::#include "support/docstring.h"
 ./frontends/qt/GuiSpellchecker.cpp::#include "support/gettext.h"
-./frontends/qt/GuiSpellchecker.cpp::#include "support/lstrings.h"
-./frontends/qt/GuiSpellchecker.cpp::#include "support/textutils.h"
 ./frontends/qt/GuiSpellchecker.cpp::#include <QListWidgetItem>
 ./frontends/qt/GuiSpellchecker.cpp::#include "SpellChecker.h"
-./frontends/qt/GuiSymbols.cpp::#include "GuiApplication.h"
 ./frontends/qt/GuiSymbols.cpp::#include "GuiView.h"
 ./frontends/qt/GuiSymbols.cpp::#include <QChar>
 ./frontends/qt/GuiSymbols.cpp::#include <QDialogButtonBox>
@@ -1121,40 +937,21 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiTabular.cpp::#include "GuiSetBorder.h"
 ./frontends/qt/GuiTabular.cpp::#include "LengthCombo.h"
 ./frontends/qt/GuiTabular.cpp::#include "Language.h"
-./frontends/qt/GuiTabular.cpp::#include "LyX.h"
-./frontends/qt/GuiTabular.cpp::#include "LyXRC.h"
-./frontends/qt/GuiTabular.cpp::#include <QCheckBox>
-./frontends/qt/GuiTabular.cpp::#include <QPushButton>
-./frontends/qt/GuiTabular.cpp::#include <QRadioButton>
-./frontends/qt/GuiTabular.cpp::#include <QLineEdit>
 ./frontends/qt/GuiTabularCreate.cpp::#include "EmptyTable.h"
-./frontends/qt/GuiTabularCreate.cpp::#include "support/lstrings.h"
-./frontends/qt/GuiTabularCreate.cpp::#include <QSpinBox>
-./frontends/qt/GuiTabularCreate.cpp::#include <QPushButton>
 ./frontends/qt/GuiTexinfo.cpp::#include "support/filetools.h"
-./frontends/qt/GuiTexinfo.cpp::#include <QCheckBox>
 ./frontends/qt/GuiTexinfo.cpp::#include <QListWidget>
-./frontends/qt/GuiTexinfo.cpp::#include <QPushButton>
 ./frontends/qt/GuiTexinfo.cpp::#include <QStringList>
 ./frontends/qt/GuiThesaurus.cpp::#include "Language.h"
 ./frontends/qt/GuiThesaurus.cpp::#include "WordLangTuple.h"
 ./frontends/qt/GuiThesaurus.cpp::#include "support/gettext.h"
 ./frontends/qt/GuiThesaurus.cpp::#include <QAbstractItemModel>
 ./frontends/qt/GuiThesaurus.cpp::#include <QDialogButtonBox>
-./frontends/qt/GuiThesaurus.cpp::#include <QHeaderView>
-./frontends/qt/GuiThesaurus.cpp::#include <QLineEdit>
-./frontends/qt/GuiThesaurus.cpp::#include <QPushButton>
 ./frontends/qt/GuiThesaurus.cpp::#include <QTreeWidget>
 ./frontends/qt/GuiThesaurus.cpp::#include <QTreeWidgetItem>
-./frontends/qt/GuiToc.cpp::#include "Buffer.h"
-./frontends/qt/GuiToc.cpp::#include "BufferView.h"
-./frontends/qt/GuiToc.cpp::#include "BufferParams.h"
 ./frontends/qt/GuiToc.cpp::#include "FuncRequest.h"
 ./frontends/qt/GuiToc.cpp::#include "support/gettext.h"
 ./frontends/qt/GuiToc.cpp::#include "support/lassert.h"
 ./frontends/qt/GuiToolbar.cpp::#include "FuncRequest.h"
-./frontends/qt/GuiToolbar.cpp::#include "LyX.h"
-./frontends/qt/GuiToolbar.cpp::#include "LyXRC.h"
 ./frontends/qt/GuiToolbar.cpp::#include "Text.h"
 ./frontends/qt/GuiToolbar.cpp::#include <QString>
 ./frontends/qt/GuiToolbar.cpp::#include <QToolBar>
@@ -1162,18 +959,13 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiVSpace.cpp::#include "LengthCombo.h"
 ./frontends/qt/GuiVSpace.cpp::#include "Spacing.h"
 ./frontends/qt/GuiVSpace.cpp::#include "VSpace.h"
-./frontends/qt/GuiVSpace.cpp::#include "support/gettext.h"
-./frontends/qt/GuiVSpace.cpp::#include "support/lstrings.h"
 ./frontends/qt/GuiVSpace.cpp::#include <QCheckBox>
 ./frontends/qt/GuiVSpace.cpp::#include <QLineEdit>
-./frontends/qt/GuiVSpace.cpp::#include <QPushButton>
-./frontends/qt/GuiVSpace.cpp::#include <QValidator>
 ./frontends/qt/GuiView.cpp::#include "DispatchResult.h"
 ./frontends/qt/GuiView.cpp::#include "GuiWorkArea.h"
 ./frontends/qt/GuiView.cpp::#include "qt_helpers.h"
 ./frontends/qt/GuiView.cpp::#include "frontends/KeySymbol.h"
 ./frontends/qt/GuiView.cpp::#include "BufferView.h"
-./frontends/qt/GuiView.cpp::#include "Compare.h"
 ./frontends/qt/GuiView.cpp::#include "KeySymbol.h"
 ./frontends/qt/GuiView.cpp::#include "Language.h"
 ./frontends/qt/GuiView.cpp::#include "LyX.h"
@@ -1216,20 +1008,14 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiWorkArea.cpp::#include "CoordCache.h"
 ./frontends/qt/GuiWorkArea.cpp::#include "Font.h"
 ./frontends/qt/GuiWorkArea.cpp::#include "FuncRequest.h"
-./frontends/qt/GuiWorkArea.cpp::#include "KeyMap.h"
 ./frontends/qt/GuiWorkArea.cpp::#include "KeySymbol.h"
 ./frontends/qt/GuiWorkArea.cpp::#include "KeySequence.h"
 ./frontends/qt/GuiWorkArea.cpp::#include "LyX.h"
-./frontends/qt/GuiWorkArea.cpp::#include "version.h"
 ./frontends/qt/GuiWorkArea.cpp::#include "frontends/Application.h"
-./frontends/qt/GuiWorkArea.cpp::#include "frontends/FontMetrics.h"
 ./frontends/qt/GuiWorkArea.cpp::#include <QContextMenuEvent>
-./frontends/qt/GuiWorkArea.cpp::#include <QDrag>
 ./frontends/qt/GuiWorkArea.cpp::#include <QHelpEvent>
 ./frontends/qt/GuiWorkArea.cpp::#include <QInputMethod>
 ./frontends/qt/GuiWorkArea.cpp::#include <QProxyStyle>
-./frontends/qt/GuiWorkArea.cpp::#include <QMainWindow>
-./frontends/qt/GuiWorkArea.cpp::#include <QMimeData>
 ./frontends/qt/GuiWorkArea.cpp::#include <QMenu>
 ./frontends/qt/GuiWorkArea.cpp::#include <QPainter>
 ./frontends/qt/GuiWorkArea.cpp::#include <QPalette>
@@ -1238,45 +1024,14 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiWorkArea.cpp::#include <cmath>
 ./frontends/qt/GuiWorkArea.cpp::#include <iostream>
 ./frontends/qt/GuiWrap.cpp::#include "LengthCombo.h"
-./frontends/qt/GuiWrap.cpp::#include "qt_helpers.h"
 ./frontends/qt/GuiWrap.cpp::#include "support/gettext.h"
-./frontends/qt/GuiWrap.cpp::#include "support/lstrings.h"
-./frontends/qt/GuiWrap.cpp::#include <QLineEdit>
-./frontends/qt/GuiWrap.cpp::#include <QPushButton>
-./frontends/qt/IconPalette.cpp::#include <QPixmap>
 ./frontends/qt/IconPalette.cpp::#include <QGridLayout>
-./frontends/qt/IconPalette.cpp::#include <QToolTip>
-./frontends/qt/IconPalette.cpp::#include <QApplication>
 ./frontends/qt/IconPalette.cpp::#include <QStyle>
 ./frontends/qt/IconPalette.cpp::#include <QMouseEvent>
 ./frontends/qt/IconPalette.cpp::#include <QVBoxLayout>
-./frontends/qt/InGuiThread.cpp::#include <QEventLoop>
 ./frontends/qt/InGuiThread.cpp::#include <QMutexLocker>
-./frontends/qt/InsertTableWidget.cpp::#include "GuiView.h"
 ./frontends/qt/InsertTableWidget.cpp::#include "DispatchResult.h"
 ./frontends/qt/InsertTableWidget.cpp::#include <QString>
-./frontends/qt/InsertTableWidget.cpp::#include <QToolTip>
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiBox.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiBranch.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiBibitem.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiCounter.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiERT.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiHSpace.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiHyperlink.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiInfo.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiLabel.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiLine.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiPrintNomencl.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiTabular.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "GuiVSpace.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "FloatPlacement.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "InsetParamsWidget.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "qt_helpers.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "buffer_funcs.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "BufferParams.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "BufferView.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "Cursor.h"
-./frontends/qt/InsetParamsDialog.cpp::#include "support/lstrings.h"
 ./frontends/qt/InsetParamsDialog.cpp::#include <QDialogButtonBox>
 ./frontends/qt/LaTeXHighlighter.cpp::#include <QString>
 ./frontends/qt/LaTeXHighlighter.cpp::#include <QTextDocument>
@@ -1286,8 +1041,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/LayoutBox.cpp::#include "support/lassert.h"
 ./frontends/qt/LengthCombo.cpp::#include "support/qstring_helpers.h"
 ./frontends/qt/LengthCombo.cpp::#include <string>
-./frontends/qt/LyXFileDialog.cpp::#include "qt_helpers.h"
-./frontends/qt/LyXFileDialog.cpp::#include "support/lstrings.h"
 ./frontends/qt/Menus.cpp::#include "Floating.h"
 ./frontends/qt/Menus.cpp::#include "FloatList.h"
 ./frontends/qt/Menus.cpp::#include "FuncRequest.h"
@@ -1300,7 +1053,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/Menus.cpp::#include "WordLangTuple.h"
 ./frontends/qt/Menus.cpp::#include "insets/Inset.h"
 ./frontends/qt/Menus.cpp::#include "support/filetools.h"
-./frontends/qt/Menus.cpp::#include <QCursor>
 ./frontends/qt/Menus.cpp::#include <QHash>
 ./frontends/qt/Menus.cpp::#include <QList>
 ./frontends/qt/Menus.cpp::#include <QProxyStyle>
@@ -1311,30 +1063,20 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/PanelStack.cpp::#include <QAbstractButton>
 ./frontends/qt/PanelStack.cpp::#include <QApplication>
 ./frontends/qt/PanelStack.cpp::#include <QHideEvent>
-./frontends/qt/PanelStack.cpp::#include <QHash>
 ./frontends/qt/PanelStack.cpp::#include <QHBoxLayout>
 ./frontends/qt/PanelStack.cpp::#include <QLineEdit>
 ./frontends/qt/PanelStack.cpp::#include <QPalette>
-./frontends/qt/PanelStack.cpp::#include <QPushButton>
 ./frontends/qt/PanelStack.cpp::#include <QVBoxLayout>
-./frontends/qt/TocModel.cpp::#include "Cursor.h"
 ./frontends/qt/TocModel.cpp::#include "DocIterator.h"
 ./frontends/qt/TocModel.cpp::#include "FuncRequest.h"
-./frontends/qt/TocModel.cpp::#include "LyX.h"
 ./frontends/qt/TocModel.cpp::#include <QSortFilterProxyModel>
 ./frontends/qt/TocModel.cpp::#include <climits>
-./frontends/qt/TocWidget.cpp::#include "CutAndPaste.h"
 ./frontends/qt/TocWidget.cpp::#include "FuncRequest.h"
-./frontends/qt/TocWidget.cpp::#include "Paragraph.h"
 ./frontends/qt/TocWidget.cpp::#include "insets/InsetCommand.h"
-./frontends/qt/TocWidget.cpp::#include "insets/InsetRef.h"
 ./frontends/qt/TocWidget.cpp::#include "support/lassert.h"
-./frontends/qt/TocWidget.cpp::#include <QHeaderView>
 ./frontends/qt/TocWidget.cpp::#include <QMenu>
 ./frontends/qt/TocWidget.cpp::#include <vector>
-./frontends/qt/ToolTipFormatter.cpp::#include <QTextDocument>
-./frontends/qt/ToolTipFormatter.cpp::#include <QToolTip>
-./frontends/qt/Toolbars.cpp::#include "qt_helpers.h"
+./frontends/qt/Toolbars.cpp::#include <QString>
 ./frontends/qt/Toolbars.cpp::#include <algorithm>
 ./frontends/qt/Validator.cpp::#include "support/docstring.h"
 ./frontends/qt/Validator.cpp::#include <QLocale>
@@ -1344,7 +1086,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/qt_helpers.cpp::#include <QLocale>
 ./frontends/qt/qt_helpers.cpp::#include <QPalette>
 ./frontends/qt/qt_helpers.cpp::#include <QSet>
-./frontends/qt/qt_helpers.cpp::#include <QTextLayout>
 ./frontends/qt/qt_helpers.cpp::#include <QUrl>
 ./frontends/qt/qt_helpers.cpp::#include <algorithm>
 ./frontends/qt/qt_helpers.cpp::#include <fstream>
@@ -1355,13 +1096,10 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/tests/boost.cpp::#include <boost/assert.hpp>
 ./frontends/tests/boost.cpp::#include <cstdlib>
 ./frontends/tests/boost.cpp::#include <exception>
-./graphics/GraphicsCacheItem.cpp::#include "Buffer.h"
 ./graphics/GraphicsCacheItem.cpp::#include "support/FileName.h"
-./graphics/GraphicsConverter.cpp::#include "support/convert.h"
 ./graphics/GraphicsLoader.cpp::#include <memory>
 ./graphics/GraphicsLoader.cpp::#include <set>
 ./graphics/GraphicsParams.cpp::#include <cstdlib>
-./graphics/PreviewLoader.cpp::#include "Format.h"
 ./graphics/PreviewLoader.cpp::#include "OutputParams.h"
 ./graphics/PreviewLoader.cpp::#include "TexRow.h"
 ./graphics/PreviewLoader.cpp::#include "texstream.h"
@@ -1381,16 +1119,10 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/ExternalTransforms.cpp::#include <cmath> // abs
 ./insets/ExternalTransforms.cpp::#include <sstream>
 ./insets/Inset.cpp::#include "Inset.h"
-./insets/Inset.cpp::#include "buffer_funcs.h"
 ./insets/Inset.cpp::#include "CoordCache.h"
 ./insets/Inset.cpp::#include "Dimension.h"
 ./insets/Inset.cpp::#include "DispatchResult.h"
-./insets/Inset.cpp::#include "FuncRequest.h"
 ./insets/Inset.cpp::#include "InsetLayout.h"
-./insets/Inset.cpp::#include "output_xhtml.h"
-./insets/Inset.cpp::#include "Text.h"
-./insets/Inset.cpp::#include "TocBackend.h"
-./insets/Inset.cpp::#include "xml.h"
 ./insets/Inset.cpp::#include "support/docstream.h"
 ./insets/Inset.cpp::#include <map>
 ./insets/InsetArgument.cpp::#include "FuncRequest.h"
@@ -1401,71 +1133,45 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetArgument.cpp::#include "texstream.h"
 ./insets/InsetArgument.cpp::#include "support/docstream.h"
 ./insets/InsetBibitem.cpp::#include <algorithm>
-./insets/InsetBibitem.cpp::#include "buffer_funcs.h"
 ./insets/InsetBibitem.cpp::#include "Counters.h"
 ./insets/InsetBibitem.cpp::#include "DispatchResult.h"
-./insets/InsetBibitem.cpp::#include "Encoding.h"
 ./insets/InsetBibitem.cpp::#include "Language.h"
 ./insets/InsetBibitem.cpp::#include "Paragraph.h"
 ./insets/InsetBibitem.cpp::#include "support/lassert.h"
 ./insets/InsetBibitem.cpp::#include "support/docstream.h"
-./insets/InsetBibitem.cpp::#include "support/Lexer.h"
-./insets/InsetBibtex.cpp::#include "CiteEnginesList.h"
 ./insets/InsetBibtex.cpp::#include "DispatchResult.h"
-./insets/InsetBibtex.cpp::#include "Exporter.h"
 ./insets/InsetBibtex.cpp::#include "FuncRequest.h"
 ./insets/InsetBibtex.cpp::#include "texstream.h"
 ./insets/InsetBibtex.cpp::#include "support/docstream.h"
 ./insets/InsetBibtex.cpp::#include "support/os.h"
-./insets/InsetBibtex.cpp::#include "support/PathChanger.h"
 ./insets/InsetBibtex.cpp::#include <map>
 ./insets/InsetBibtex.cpp::#include <utility>
 ./insets/InsetBibtex.cpp::#include <iostream>
-./insets/InsetBox.cpp::#include "BufferView.h"
-./insets/InsetBox.cpp::#include "output_xhtml.h"
 ./insets/InsetBox.cpp::#include "TexRow.h"
 ./insets/InsetBox.cpp::#include "texstream.h"
-./insets/InsetBox.cpp::#include "TextClass.h"
-./insets/InsetBox.cpp::#include "frontends/Application.h"
 ./insets/InsetBox.cpp::#include <sstream>
 ./insets/InsetBranch.cpp::#include "BufferView.h"
 ./insets/InsetBranch.cpp::#include "DispatchResult.h"
-./insets/InsetBranch.cpp::#include "FuncRequest.h"
 ./insets/InsetBranch.cpp::#include "Inset.h"
-./insets/InsetBranch.cpp::#include "TocBackend.h"
-./insets/InsetBranch.cpp::#include "frontends/alert.h"
 ./insets/InsetBranch.cpp::#include <sstream>
-./insets/InsetCaption.cpp::#include "InsetFloat.h"
-./insets/InsetCaption.cpp::#include "InsetWrap.h"
 ./insets/InsetCaption.cpp::#include "Dimension.h"
 ./insets/InsetCaption.cpp::#include "Floating.h"
 ./insets/InsetCaption.cpp::#include "FloatList.h"
 ./insets/InsetCaption.cpp::#include "FuncRequest.h"
-./insets/InsetCaption.cpp::#include "InsetList.h"
 ./insets/InsetCaption.cpp::#include "Language.h"
-./insets/InsetCaption.cpp::#include "LyXRC.h"
-./insets/InsetCaption.cpp::#include "xml.h"
-./insets/InsetCaption.cpp::#include "output_xhtml.h"
 ./insets/InsetCaption.cpp::#include "Paragraph.h"
 ./insets/InsetCaption.cpp::#include "TexRow.h"
 ./insets/InsetCaption.cpp::#include "texstream.h"
 ./insets/InsetCaption.cpp::#include <sstream>
-./insets/InsetCaptionable.cpp::#include "BufferView.h"
 ./insets/InsetCaptionable.cpp::#include "FloatList.h"
 ./insets/InsetCaptionable.cpp::#include "support/docstream.h"
-./insets/InsetCitation.cpp::#include "buffer_funcs.h"
 ./insets/InsetCitation.cpp::#include "Citation.h"
-./insets/InsetCitation.cpp::#include "DispatchResult.h"
 ./insets/InsetCitation.cpp::#include "FuncCode.h"
 ./insets/InsetCitation.cpp::#include "FuncRequest.h"
-./insets/InsetCitation.cpp::#include "LaTeXFeatures.h"
 ./insets/InsetCitation.cpp::#include "LyX.h"
-./insets/InsetCitation.cpp::#include "output_xhtml.h"
-./insets/InsetCitation.cpp::#include "output_docbook.h"
 ./insets/InsetCitation.cpp::#include "ParIterator.h"
 ./insets/InsetCitation.cpp::#include "texstream.h"
 ./insets/InsetCitation.cpp::#include "support/docstream.h"
-./insets/InsetCitation.cpp::#include "support/FileNameList.h"
 ./insets/InsetCitation.cpp::#include <algorithm>
 ./insets/InsetCitation.cpp::#include <climits>
 ./insets/InsetCollapsible.cpp::#include "Dimension.h"
@@ -1473,69 +1179,39 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetCollapsible.cpp::#include "InsetLayout.h"
 ./insets/InsetCollapsible.cpp::#include "support/docstream.h"
 ./insets/InsetCollapsible.cpp::#include "support/lassert.h"
-./insets/InsetCollapsible.cpp::#include "support/lstrings.h"
 ./insets/InsetCollapsible.cpp::#include "support/Changer.h"
 ./insets/InsetCommand.cpp::#include "InsetCommand.h"
 ./insets/InsetCommand.cpp::#include "texstream.h"
 ./insets/InsetCommand.cpp::#include <sstream>
 ./insets/InsetCommandParams.cpp::#include "InsetCommandParams.h"
-./insets/InsetCommandParams.cpp::#include "support/docstream.h"
 ./insets/InsetCommandParams.cpp::#include "support/lstrings.h"
 ./insets/InsetCommandParams.cpp::#include <algorithm>
 ./insets/InsetCommandParams.cpp::#include <functional>
 ./insets/InsetCounter.cpp::#include "Counters.h"
-./insets/InsetCounter.cpp::#include "output_xhtml.h"
 ./insets/InsetCounter.cpp::#include "xml.h"
 ./insets/InsetCounter.cpp::#include "texstream.h"
-./insets/InsetCounter.cpp::#include "support/counter_reps.h"
 ./insets/InsetCounter.cpp::#include "support/docstream.h"
 ./insets/InsetCounter.cpp::#include <map>
-./insets/InsetCounter.cpp::#include "Cursor.h"
-./insets/InsetCounter.cpp::#include "DispatchResult.h"
-./insets/InsetCounter.cpp::#include "Language.h"
-./insets/InsetCounter.cpp::#include "LyX.h"
-./insets/InsetCounter.cpp::#include "ParIterator.h"
-./insets/InsetCounter.cpp::#include "TocBackend.h"
-./insets/InsetCounter.cpp::#include "support/textutils.h"
 ./insets/InsetERT.cpp::#include "InsetLayout.h"
-./insets/InsetERT.cpp::#include "Language.h"
-./insets/InsetERT.cpp::#include "xml.h"
-./insets/InsetERT.cpp::#include "ParagraphParameters.h"
 ./insets/InsetERT.cpp::#include "Paragraph.h"
-./insets/InsetERT.cpp::#include "output_docbook.h"
-./insets/InsetERT.cpp::#include "support/docstream.h"
-./insets/InsetERT.cpp::#include "support/TempFile.h"
 ./insets/InsetERT.cpp::#include <algorithm>
 ./insets/InsetERT.cpp::#include <sstream>
 ./insets/InsetERT.cpp::#include <iostream>
 ./insets/InsetExternal.cpp::#include "DispatchResult.h"
-./insets/InsetExternal.cpp::#include "Exporter.h"
 ./insets/InsetExternal.cpp::#include "FuncRequest.h"
-./insets/InsetExternal.cpp::#include "output_latex.h"
-./insets/InsetExternal.cpp::#include "output_xhtml.h"
-./insets/InsetExternal.cpp::#include "xml.h"
 ./insets/InsetExternal.cpp::#include "graphics/PreviewLoader.h"
-./insets/InsetExternal.cpp::#include "support/ExceptionMessage.h"
-./insets/InsetExternal.cpp::#include "support/filetools.h"
 ./insets/InsetExternal.cpp::#include <sstream>
 ./insets/InsetExternal.cpp::#include <vector>
 ./insets/InsetFlex.cpp::#include "FuncStatus.h"
 ./insets/InsetFlex.cpp::#include "Language.h"
-./insets/InsetFlex.cpp::#include "support/Lexer.h"
 ./insets/InsetFlex.cpp::#include <ostream>
-./insets/InsetFloat.cpp::#include "InsetGraphics.h"
 ./insets/InsetFloat.cpp::#include "Counters.h"
 ./insets/InsetFloat.cpp::#include "DispatchResult.h"
 ./insets/InsetFloat.cpp::#include "Floating.h"
 ./insets/InsetFloat.cpp::#include "FloatList.h"
-./insets/InsetFloat.cpp::#include "xml.h"
-./insets/InsetFloat.cpp::#include "output_docbook.h"
-./insets/InsetFloat.cpp::#include "output_xhtml.h"
 ./insets/InsetFloat.cpp::#include "TexRow.h"
 ./insets/InsetFloat.cpp::#include "texstream.h"
-./insets/InsetFloat.cpp::#include "InsetList.h"
 ./insets/InsetFloat.cpp::#include "support/docstream.h"
-./insets/InsetFloat.cpp::#include "frontends/Application.h"
 ./insets/InsetFloatList.cpp::#include "DispatchResult.h"
 ./insets/InsetFloatList.cpp::#include "Floating.h"
 ./insets/InsetFloatList.cpp::#include "FloatList.h"
@@ -1547,54 +1223,30 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetFoot.cpp::#include "Counters.h"
 ./insets/InsetFoot.cpp::#include "Language.h"
 ./insets/InsetFoot.cpp::#include "Layout.h"
-./insets/InsetFoot.cpp::#include "output_docbook.h"
-./insets/InsetFoot.cpp::#include "TocBackend.h"
 ./insets/InsetFoot.cpp::#include "support/docstream.h"
-./insets/InsetFoot.cpp::#include "support/lstrings.h"
 ./insets/InsetFootlike.cpp::#include "Buffer.h"
-./insets/InsetFootlike.cpp::#include "BufferView.h"
-./insets/InsetFootlike.cpp::#include "BufferParams.h"
-./insets/InsetFootlike.cpp::#include "Font.h"
-./insets/InsetFootlike.cpp::#include "MetricsInfo.h"
 ./insets/InsetFootlike.cpp::#include <iostream>
 ./insets/InsetGraphics.cpp::#include "DispatchResult.h"
 ./insets/InsetGraphics.cpp::#include "FuncRequest.h"
 ./insets/InsetGraphics.cpp::#include "MetricsInfo.h"
-./insets/InsetGraphics.cpp::#include "output_xhtml.h"
 ./insets/InsetGraphics.cpp::#include "xml.h"
 ./insets/InsetGraphics.cpp::#include "support/docstream.h"
-./insets/InsetGraphics.cpp::#include "support/ExceptionMessage.h"
 ./insets/InsetGraphics.cpp::#include "support/Length.h"
 ./insets/InsetGraphics.cpp::#include "support/os.h"
-./insets/InsetGraphics.cpp::#include "support/Systemcall.h"
 ./insets/InsetGraphics.cpp::#include <algorithm>
 ./insets/InsetGraphics.cpp::#include <sstream>
-./insets/InsetGraphicsParams.cpp::#include "LyX.h" // for use_gui
-./insets/InsetGraphicsParams.cpp::#include "LyXRC.h"
-./insets/InsetGraphicsParams.cpp::#include "graphics/GraphicsTypes.h"
-./insets/InsetGraphicsParams.cpp::#include "support/Translator.h"
-./insets/InsetHyperlink.cpp::#include "output_docbook.h"
-./insets/InsetHyperlink.cpp::#include "output_xhtml.h"
-./insets/InsetHyperlink.cpp::#include "xml.h"
 ./insets/InsetHyperlink.cpp::#include "support/docstream.h"
-./insets/InsetHyperlink.cpp::#include "frontends/alert.h"
 ./insets/InsetIPA.cpp::#include "Dimension.h"
 ./insets/InsetIPA.cpp::#include "texstream.h"
-./insets/InsetIPA.cpp::#include "frontends/Painter.h"
-./insets/InsetIPA.cpp::#include "support/Lexer.h"
 ./insets/InsetIPA.cpp::#include <sstream>
 ./insets/InsetIPAMacro.cpp::#include "Buffer.h"
-./insets/InsetIPAMacro.cpp::#include "BufferParams.h"
-./insets/InsetIPAMacro.cpp::#include "Encoding.h"
+./insets/InsetIPAMacro.cpp::#include "Dimension.h"
 ./insets/InsetIPAMacro.cpp::#include "FontInfo.h"
 ./insets/InsetIPAMacro.cpp::#include "InsetLayout.h"
-./insets/InsetIPAMacro.cpp::#include "texstream.h"
 ./insets/InsetIPAMacro.cpp::#include "support/docstream.h"
-./insets/InsetInclude.cpp::#include "buffer_funcs.h"
 ./insets/InsetInclude.cpp::#include "FuncRequest.h"
 ./insets/InsetInclude.cpp::#include "LayoutModuleList.h"
 ./insets/InsetInclude.cpp::#include "texstream.h"
-./insets/InsetInclude.cpp::#include "frontends/Painter.h"
 ./insets/InsetInclude.cpp::#include "support/docstream.h"
 ./insets/InsetInclude.cpp::#include "support/FileName.h"
 ./insets/InsetInclude.cpp::#include "support/FileNameList.h"
@@ -1602,25 +1254,14 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetIndex.cpp::#include "FuncRequest.h"
 ./insets/InsetIndex.cpp::#include "Language.h"
 ./insets/InsetIndex.cpp::#include "Paragraph.h"
-./insets/InsetIndex.cpp::#include "output_latex.h"
-./insets/InsetIndex.cpp::#include "output_xhtml.h"
-./insets/InsetIndex.cpp::#include "xml.h"
 ./insets/InsetIndex.cpp::#include "texstream.h"
 ./insets/InsetIndex.cpp::#include "support/docstream.h"
 ./insets/InsetIndex.cpp::#include "support/FileName.h"
-./insets/InsetIndex.cpp::#include "frontends/alert.h"
 ./insets/InsetIndex.cpp::#include <algorithm>
 ./insets/InsetIndex.cpp::#include <set>
 ./insets/InsetIndex.cpp::#include <iostream>
-./insets/InsetIndexMacro.cpp::#include "BufferParams.h"
-./insets/InsetIndexMacro.cpp::#include "Dimension.h"
 ./insets/InsetIndexMacro.cpp::#include "FontInfo.h"
 ./insets/InsetIndexMacro.cpp::#include "InsetLayout.h"
-./insets/InsetIndexMacro.cpp::#include "LaTeXFeatures.h"
-./insets/InsetIndexMacro.cpp::#include "MetricsInfo.h"
-./insets/InsetIndexMacro.cpp::#include "xml.h"
-./insets/InsetIndexMacro.cpp::#include "texstream.h"
-./insets/InsetIndexMacro.cpp::#include "frontends/alert.h"
 ./insets/InsetIndexMacro.cpp::#include "support/docstream.h"
 ./insets/InsetInfo.cpp::#include "LyX.h"
 ./insets/InsetInfo.cpp::#include "Changes.h"
@@ -1628,7 +1269,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetInfo.cpp::#include "FuncRequest.h"
 ./insets/InsetInfo.cpp::#include "Language.h"
 ./insets/InsetInfo.cpp::#include "Paragraph.h"
-./insets/InsetInfo.cpp::#include "ParagraphParameters.h"
 ./insets/InsetInfo.cpp::#include "support/Changer.h"
 ./insets/InsetInfo.cpp::#include "support/docstream.h"
 ./insets/InsetInfo.cpp::#include "support/FileName.h"
@@ -1644,16 +1284,10 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetLine.cpp::#include "Buffer.h"
 ./insets/InsetLine.cpp::#include "Dimension.h"
 ./insets/InsetLine.cpp::#include "DispatchResult.h"
-./insets/InsetLine.cpp::#include "LaTeXFeatures.h"
-./insets/InsetLine.cpp::#include "output_docbook.h"
-./insets/InsetLine.cpp::#include "output_xhtml.h"
-./insets/InsetLine.cpp::#include "Text.h"
 ./insets/InsetLine.cpp::#include "support/docstream.h"
-./insets/InsetLine.cpp::#include "support/lstrings.h"
 ./insets/InsetLine.cpp::#include <cstdlib>
 ./insets/InsetListings.cpp::#include "InsetLayout.h"
 ./insets/InsetListings.cpp::#include "Language.h"
-./insets/InsetListings.cpp::#include "output_xhtml.h"
 ./insets/InsetListings.cpp::#include "TexRow.h"
 ./insets/InsetListings.cpp::#include "texstream.h"
 ./insets/InsetListings.cpp::#include "support/docstream.h"
@@ -1661,17 +1295,10 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetListings.cpp::#include <sstream>
 ./insets/InsetListingsParams.cpp::#include <algorithm>
 ./insets/InsetListingsParams.cpp::#include <sstream>
-./insets/InsetMarginal.cpp::#include "BufferParams.h"
-./insets/InsetMarginal.cpp::#include "TocBackend.h"
-./insets/InsetMarginal.cpp::#include "support/docstream.h"
 ./insets/InsetMarginal.cpp::#include "support/gettext.h"
-./insets/InsetMarginal.cpp::#include "support/lstrings.h"
-./insets/InsetNewline.cpp::#include "output_docbook.h"
-./insets/InsetNewline.cpp::#include "output_xhtml.h"
-./insets/InsetNewline.cpp::#include "frontends/Application.h"
+./insets/InsetNewline.cpp::#include "Dimension.h"
 ./insets/InsetNewline.cpp::#include "support/docstream.h"
 ./insets/InsetNewline.cpp::#include "support/docstring.h"
-./insets/InsetNewpage.cpp::#include "Text.h"
 ./insets/InsetNewpage.cpp::#include "support/docstring.h"
 ./insets/InsetNewpage.cpp::#include "support/docstream.h"
 ./insets/InsetNomencl.cpp::#include "DispatchResult.h"
@@ -1685,59 +1312,39 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetNote.cpp::#include "InsetLayout.h"
 ./insets/InsetNote.cpp::#include "support/docstream.h"
 ./insets/InsetNote.cpp::#include "support/gettext.h"
-./insets/InsetNote.cpp::#include "support/lstrings.h"
 ./insets/InsetNote.cpp::#include <algorithm>
 ./insets/InsetNote.cpp::#include <sstream>
-./insets/InsetPhantom.cpp::#include "BufferParams.h"
 ./insets/InsetPhantom.cpp::#include "Dimension.h"
 ./insets/InsetPhantom.cpp::#include "DispatchResult.h"
-./insets/InsetPhantom.cpp::#include "Exporter.h"
-./insets/InsetPhantom.cpp::#include "LaTeXFeatures.h"
-./insets/InsetPhantom.cpp::#include "texstream.h"
-./insets/InsetPhantom.cpp::#include "TextClass.h"
 ./insets/InsetPhantom.cpp::#include "support/docstream.h"
-./insets/InsetPhantom.cpp::#include "support/lstrings.h"
-./insets/InsetPhantom.cpp::#include "frontends/FontMetrics.h"
 ./insets/InsetPhantom.cpp::#include <algorithm>
 ./insets/InsetPhantom.cpp::#include <sstream>
 ./insets/InsetPreview.cpp::#include "Dimension.h"
 ./insets/InsetPreview.cpp::#include "texstream.h"
-./insets/InsetPreview.cpp::#include "frontends/Painter.h"
 ./insets/InsetPreview.cpp::#include <sstream>
-./insets/InsetQuotes.cpp::#include "BufferView.h"
 ./insets/InsetQuotes.cpp::#include "Dimension.h"
 ./insets/InsetQuotes.cpp::#include "Font.h"
 ./insets/InsetQuotes.cpp::#include "Language.h"
-./insets/InsetQuotes.cpp::#include "LyXRC.h"
 ./insets/InsetQuotes.cpp::#include "texstream.h"
 ./insets/InsetQuotes.cpp::#include "support/docstring.h"
 ./insets/InsetQuotes.cpp::#include "support/docstream.h"
-./insets/InsetRef.cpp::#include "DispatchResult.h"
 ./insets/InsetRef.cpp::#include "Language.h"
-./insets/InsetRef.cpp::#include "output_xhtml.h"
-./insets/InsetRef.cpp::#include "xml.h"
 ./insets/InsetRef.cpp::#include "texstream.h"
 ./insets/InsetRef.cpp::#include "support/docstream.h"
+./insets/InsetRef.cpp::#include "support/FileName.h"
 ./insets/InsetRef.cpp::#include "support/lstrings.h"
 ./insets/InsetScript.cpp::#include "BufferView.h"
 ./insets/InsetScript.cpp::#include "Dimension.h"
 ./insets/InsetScript.cpp::#include "DispatchResult.h"
-./insets/InsetScript.cpp::#include "LaTeXFeatures.h"
-./insets/InsetScript.cpp::#include "output_docbook.h"
-./insets/InsetScript.cpp::#include "output_xhtml.h"
 ./insets/InsetScript.cpp::#include "support/docstream.h"
 ./insets/InsetScript.cpp::#include <algorithm>
-./insets/InsetSeparator.cpp::#include "output_docbook.h"
-./insets/InsetSeparator.cpp::#include "output_xhtml.h"
-./insets/InsetSeparator.cpp::#include "frontends/Application.h"
+./insets/InsetSeparator.cpp::#include "Dimension.h"
 ./insets/InsetSeparator.cpp::#include "support/docstream.h"
 ./insets/InsetSeparator.cpp::#include "support/docstring.h"
 ./insets/InsetSpace.cpp::#include "Dimension.h"
 ./insets/InsetSpace.cpp::#include "support/docstream.h"
 ./insets/InsetSpace.cpp::#include "support/Length.h"
-./insets/InsetSpace.cpp::#include "frontends/Application.h"
-./insets/InsetSpecialChar.cpp::#include "output_xhtml.h"
-./insets/InsetSpecialChar.cpp::#include "xml.h"
+./insets/InsetSpecialChar.cpp::#include "Dimension.h"
 ./insets/InsetSpecialChar.cpp::#include "frontends/Painter.h"
 ./insets/InsetSpecialChar.cpp::#include "support/docstream.h"
 ./insets/InsetTOC.cpp::#include "DispatchResult.h"
@@ -1747,15 +1354,12 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetTOC.cpp::#include "support/docstream.h"
 ./insets/InsetTOC.cpp::#include <ostream>
 ./insets/InsetTabular.cpp::#include "Author.h"
-./insets/InsetTabular.cpp::#include "buffer_funcs.h"
 ./insets/InsetTabular.cpp::#include "BufferParams.h"
 ./insets/InsetTabular.cpp::#include "CoordCache.h"
 ./insets/InsetTabular.cpp::#include "Counters.h"
 ./insets/InsetTabular.cpp::#include "DispatchResult.h"
 ./insets/InsetTabular.cpp::#include "Language.h"
 ./insets/InsetTabular.cpp::#include "LyX.h"
-./insets/InsetTabular.cpp::#include "xml.h"
-./insets/InsetTabular.cpp::#include "output_xhtml.h"
 ./insets/InsetTabular.cpp::#include "Paragraph.h"
 ./insets/InsetTabular.cpp::#include "TexRow.h"
 ./insets/InsetTabular.cpp::#include "texstream.h"
@@ -1764,56 +1368,42 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetTabular.cpp::#include <iostream>
 ./insets/InsetTabular.cpp::#include <sstream>
 ./insets/InsetText.cpp::#include "InsetText.h"
-./insets/InsetText.cpp::#include "mathed/MacroTable.h"
 ./insets/InsetText.cpp::#include "insets/InsetLayout.h"
-./insets/InsetText.cpp::#include "buffer_funcs.h"
 ./insets/InsetText.cpp::#include "CompletionList.h"
 ./insets/InsetText.cpp::#include "CoordCache.h"
-./insets/InsetText.cpp::#include "CutAndPaste.h"
 ./insets/InsetText.cpp::#include "DispatchResult.h"
 ./insets/InsetText.cpp::#include "FuncRequest.h"
-./insets/InsetText.cpp::#include "Intl.h"
 ./insets/InsetText.cpp::#include "Language.h"
 ./insets/InsetText.cpp::#include "Layout.h"
-./insets/InsetText.cpp::#include "lyxfind.h"
 ./insets/InsetText.cpp::#include "Paragraph.h"
 ./insets/InsetText.cpp::#include "TexRow.h"
 ./insets/InsetText.cpp::#include "texstream.h"
 ./insets/InsetText.cpp::#include "Text.h"
 ./insets/InsetText.cpp::#include "TocBuilder.h"
-./insets/InsetText.cpp::#include "frontends/alert.h"
-./insets/InsetText.cpp::#include "support/convert.h"
 ./insets/InsetText.cpp::#include "support/Changer.h"
 ./insets/InsetText.cpp::#include "support/FileName.h"
 ./insets/InsetText.cpp::#include <algorithm>
 ./insets/InsetText.cpp::#include <stack>
-./insets/InsetVSpace.cpp::#include "BufferView.h"
 ./insets/InsetVSpace.cpp::#include "Dimension.h"
 ./insets/InsetVSpace.cpp::#include "DispatchResult.h"
-./insets/InsetVSpace.cpp::#include "Text.h"
 ./insets/InsetVSpace.cpp::#include "support/docstream.h"
-./insets/InsetVSpace.cpp::#include "frontends/Application.h"
 ./insets/InsetVSpace.cpp::#include <sstream>
-./insets/InsetWrap.cpp::#include "InsetCaption.h"
 ./insets/InsetWrap.cpp::#include "Counters.h"
 ./insets/InsetWrap.cpp::#include "DispatchResult.h"
 ./insets/InsetWrap.cpp::#include "Floating.h"
 ./insets/InsetWrap.cpp::#include "FloatList.h"
 ./insets/InsetWrap.cpp::#include "texstream.h"
-./insets/InsetWrap.cpp::#include "TextClass.h"
 ./insets/InsetWrap.cpp::#include "support/docstream.h"
 ./insets/InsetWrap.cpp::#include <climits>
 ./insets/RenderGraphic.cpp::#include "insets/Inset.h"
 ./insets/RenderGraphic.cpp::#include "LyX.h"
 ./insets/RenderGraphic.cpp::#include "support/FileName.h"
-./insets/RenderGraphic.cpp::#include "support/filetools.h"
 ./insets/RenderPreview.cpp::#include "insets/Inset.h"
 ./insets/RenderPreview.cpp::#include "Dimension.h"
 ./insets/RenderPreview.cpp::#include "LyX.h"
 ./insets/RenderPreview.cpp::#include "support/FileName.h"
 ./lyxfind.cpp::#include <iterator>
 ./lyxfind.cpp::#include "Changes.h"
-./lyxfind.cpp::#include "LyX.h"
 ./lyxfind.cpp::#include "OutputParams.h"
 ./lyxfind.cpp::#include "Paragraph.h"
 ./lyxfind.cpp::#include "Language.h"
@@ -1827,12 +1417,12 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMath.cpp::#include "InsetMath.h"
 ./mathed/InsetMath.cpp::#include "support/docstream.h"
 ./mathed/InsetMath.cpp::#include "support/gettext.h"
-./mathed/InsetMath.cpp::#include "support/lstrings.h"
 ./mathed/InsetMathAMSArray.cpp::#include "MathData.h"
 ./mathed/InsetMathAMSArray.cpp::#include <sstream>
 ./mathed/InsetMathAMSArray.cpp::#include <ostream>
 ./mathed/InsetMathArray.cpp::#include "MathData.h"
 ./mathed/InsetMathArray.cpp::#include <sstream>
+./mathed/InsetMathBig.cpp::#include "Dimension.h"
 ./mathed/InsetMathBig.cpp::#include "support/docstream.h"
 ./mathed/InsetMathBoldSymbol.cpp::#include "MathData.h"
 ./mathed/InsetMathBoldSymbol.cpp::#include <ostream>
@@ -1840,6 +1430,7 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathBox.cpp::#include <algorithm>
 ./mathed/InsetMathBox.cpp::#include <iostream>
 ./mathed/InsetMathBox.cpp::#include <ostream>
+./mathed/InsetMathBrace.cpp::#include "Dimension.h"
 ./mathed/InsetMathBrace.cpp::#include "MathData.h"
 ./mathed/InsetMathBrace.cpp::#include <ostream>
 ./mathed/InsetMathBrace.cpp::#include <algorithm>
@@ -1848,13 +1439,13 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathCancelto.cpp::#include <ostream>
 ./mathed/InsetMathCases.cpp::#include "MathData.h"
 ./mathed/InsetMathCases.cpp::#include <ostream>
+./mathed/InsetMathChar.cpp::#include "Dimension.h"
 ./mathed/InsetMathChar.cpp::#include "LaTeXFeatures.h"
 ./mathed/InsetMathChar.cpp::#include <algorithm>
 ./mathed/InsetMathClass.cpp::#include "support/docstream.h"
 ./mathed/InsetMathColor.cpp::#include "MathData.h"
 ./mathed/InsetMathColor.cpp::#include <ostream>
 ./mathed/InsetMathCommand.cpp::#include "MathData.h"
-./mathed/InsetMathCommand.cpp::#include "DispatchResult.h"
 ./mathed/InsetMathCommand.cpp::#include <sstream>
 ./mathed/InsetMathComment.cpp::#include "MathData.h"
 ./mathed/InsetMathComment.cpp::#include <ostream>
@@ -1862,21 +1453,20 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathDecoration.cpp::#include "support/docstring.h"
 ./mathed/InsetMathDecoration.cpp::#include <algorithm>
 ./mathed/InsetMathDelim.cpp::#include "MathData.h"
-./mathed/InsetMathDelim.cpp::#include "MathFactory.h"
+./mathed/InsetMathDelim.cpp::#include "Dimension.h"
 ./mathed/InsetMathDelim.cpp::#include "LaTeXFeatures.h"
 ./mathed/InsetMathDelim.cpp::#include "support/docstring.h"
 ./mathed/InsetMathDelim.cpp::#include <algorithm>
 ./mathed/InsetMathDiagram.cpp::#include <ostream>
 ./mathed/InsetMathDiff.cpp::#include "MathData.h"
+./mathed/InsetMathDots.cpp::#include "Dimension.h"
 ./mathed/InsetMathEnsureMath.cpp::#include "MathData.h"
-./mathed/InsetMathEnsureMath.cpp::#include "MathSupport.h"
 ./mathed/InsetMathEnsureMath.cpp::#include <ostream>
 ./mathed/InsetMathEnv.cpp::#include "MathData.h"
 ./mathed/InsetMathEnv.cpp::#include <ostream>
 ./mathed/InsetMathExFunc.cpp::#include "MathData.h"
 ./mathed/InsetMathExFunc.cpp::#include "MetricsInfo.h"
 ./mathed/InsetMathExFunc.cpp::#include "support/docstream.h"
-./mathed/InsetMathExInt.cpp::#include "LaTeXFeatures.h"
 ./mathed/InsetMathExInt.cpp::#include "MathData.h"
 ./mathed/InsetMathExInt.cpp::#include "support/docstring.h"
 ./mathed/InsetMathFont.cpp::#include "MathData.h"
@@ -1884,6 +1474,7 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathFontOld.cpp::#include "MathData.h"
 ./mathed/InsetMathFontOld.cpp::#include <ostream>
 ./mathed/InsetMathFrac.cpp::#include "MathData.h"
+./mathed/InsetMathFrac.cpp::#include "Dimension.h"
 ./mathed/InsetMathFrac.cpp::#include "TextPainter.h"
 ./mathed/InsetMathGrid.cpp::#include <algorithm>
 ./mathed/InsetMathGrid.cpp::#include "MathData.h"
@@ -1897,25 +1488,18 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathHull.cpp::#include "MathStream.h"
 ./mathed/InsetMathHull.cpp::#include "FuncRequest.h"
 ./mathed/InsetMathHull.cpp::#include "Language.h"
-./mathed/InsetMathHull.cpp::#include "LyXRC.h"
 ./mathed/InsetMathHull.cpp::#include "MacroTable.h"
 ./mathed/InsetMathHull.cpp::#include "TexRow.h"
-./mathed/InsetMathHull.cpp::#include "frontends/FontMetrics.h"
-./mathed/InsetMathHull.cpp::#include "support/convert.h"
 ./mathed/InsetMathHull.cpp::#include "support/lstrings.h"
 ./mathed/InsetMathHull.cpp::#include "support/Changer.h"
 ./mathed/InsetMathHull.cpp::#include <sstream>
-./mathed/InsetMathKern.cpp::#include "MathSupport.h"
 ./mathed/InsetMathKern.cpp::#include "support/docstring.h"
 ./mathed/InsetMathLim.cpp::#include "MathData.h"
 ./mathed/InsetMathMacro.cpp::#include "CoordCache.h"
-./mathed/InsetMathMacro.cpp::#include "FuncStatus.h"
-./mathed/InsetMathMacro.cpp::#include "FuncRequest.h"
 ./mathed/InsetMathMacro.cpp::#include "LyX.h"
 ./mathed/InsetMathMacro.cpp::#include "support/Changer.h"
 ./mathed/InsetMathMacro.cpp::#include <ostream>
 ./mathed/InsetMathMacro.cpp::#include <vector>
-./mathed/InsetMathMacroTemplate.cpp::#include "InsetMathSqrt.h"
 ./mathed/InsetMathMacroTemplate.cpp::#include "BufferView.h"
 ./mathed/InsetMathMacroTemplate.cpp::#include "Color.h"
 ./mathed/InsetMathMacroTemplate.cpp::#include "DispatchResult.h"
@@ -1926,8 +1510,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathMacroTemplate.cpp::#include <sstream>
 ./mathed/InsetMathMatrix.cpp::#include "MathData.h"
 ./mathed/InsetMathNest.cpp::#include "InsetMathNest.h"
-./mathed/InsetMathNest.cpp::#include "InsetMathBox.h"
-./mathed/InsetMathNest.cpp::#include "InsetMathSymbol.h"
 ./mathed/InsetMathNest.cpp::#include "MathParser.h"
 ./mathed/InsetMathNest.cpp::#include "MathStream.h"
 ./mathed/InsetMathNest.cpp::#include "CoordCache.h"
@@ -1936,7 +1518,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathNest.cpp::#include "LyX.h"
 ./mathed/InsetMathNest.cpp::#include "TexRow.h"
 ./mathed/InsetMathNest.cpp::#include "frontends/Clipboard.h"
-./mathed/InsetMathNest.cpp::#include "frontends/Painter.h"
 ./mathed/InsetMathNest.cpp::#include "support/docstream.h"
 ./mathed/InsetMathNest.cpp::#include <algorithm>
 ./mathed/InsetMathNest.cpp::#include <sstream>
@@ -1949,38 +1530,23 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathRef.cpp::#include "MathStream.h"
 ./mathed/InsetMathRef.cpp::#include "insets/InsetCommand.h"
 ./mathed/InsetMathRef.cpp::#include "support/lstrings.h"
-./mathed/InsetMathRef.cpp::#include "support/textutils.h"
 ./mathed/InsetMathRef.cpp::#include <ostream>
 ./mathed/InsetMathScript.cpp::#include "MathData.h"
-./mathed/InsetMathScript.cpp::#include "support/gettext.h"
-./mathed/InsetMathSideset.cpp::#include "InsetMathSymbol.h"
 ./mathed/InsetMathSideset.cpp::#include "MathData.h"
 ./mathed/InsetMathSideset.cpp::#include "DispatchResult.h"
-./mathed/InsetMathSideset.cpp::#include "FuncRequest.h"
-./mathed/InsetMathSideset.cpp::#include "FuncStatus.h"
 ./mathed/InsetMathSideset.cpp::#include "support/lassert.h"
 ./mathed/InsetMathSize.cpp::#include "MathData.h"
-./mathed/InsetMathSize.cpp::#include "output_xhtml.h"
 ./mathed/InsetMathSize.cpp::#include <string>
 ./mathed/InsetMathSize.cpp::#include <ostream>
-./mathed/InsetMathSpace.cpp::#include "MathSupport.h"
-./mathed/InsetMathSpace.cpp::#include "frontends/Application.h"
-./mathed/InsetMathSpecialChar.cpp::#include "frontends/Painter.h"
+./mathed/InsetMathSpecialChar.cpp::#include "Dimension.h"
 ./mathed/InsetMathSplit.cpp::#include "MathData.h"
 ./mathed/InsetMathSplit.cpp::#include "Buffer.h"
 ./mathed/InsetMathSplit.cpp::#include <ostream>
 ./mathed/InsetMathSqrt.cpp::#include "MathData.h"
-./mathed/InsetMathSqrt.cpp::#include "MathSupport.h"
 ./mathed/InsetMathSqrt.cpp::#include "TextPainter.h"
-./mathed/InsetMathSqrt.cpp::#include "frontends/Painter.h"
 ./mathed/InsetMathStackrel.cpp::#include "MathData.h"
-./mathed/InsetMathString.cpp::#include "MathFactory.h"
-./mathed/InsetMathString.cpp::#include "Encoding.h"
-./mathed/InsetMathString.cpp::#include "support/gettext.h"
-./mathed/InsetMathString.cpp::#include "support/textutils.h"
 ./mathed/InsetMathSubstack.cpp::#include "MathData.h"
 ./mathed/InsetMathSubstack.cpp::#include <ostream>
-./mathed/InsetMathSymbol.cpp::#include "MathAtom.h"
 ./mathed/InsetMathSymbol.cpp::#include "support/docstream.h"
 ./mathed/InsetMathTabular.cpp::#include "MathData.h"
 ./mathed/InsetMathTabular.cpp::#include <ostream>
@@ -1988,16 +1554,11 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathTextsize.cpp::#include "support/lassert.h"
 ./mathed/InsetMathTextsize.cpp::#include <ostream>
 ./mathed/InsetMathUnderset.cpp::#include "MathData.h"
-./mathed/InsetMathUnknown.cpp::#include "MathAtom.h"
-./mathed/InsetMathUnknown.cpp::#include "frontends/Painter.h"
 ./mathed/InsetMathXArrow.cpp::#include "MathData.h"
 ./mathed/InsetMathXArrow.cpp::#include <algorithm>
 ./mathed/InsetMathXYMatrix.cpp::#include <ostream>
 ./mathed/MacroTable.cpp::#include "MacroTable.h"
 ./mathed/MacroTable.cpp::#include "InsetMathNest.h"
-./mathed/MacroTable.cpp::#include "InsetList.h"
-./mathed/MacroTable.cpp::#include "Text.h"
-./mathed/MacroTable.cpp::#include "support/gettext.h"
 ./mathed/MacroTable.cpp::#include <sstream>
 ./mathed/MathAutoCorrect.cpp::#include "MathAutoCorrect.h"
 ./mathed/MathAutoCorrect.cpp::#include <fstream>
@@ -2005,14 +1566,11 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/MathClass.cpp::#include "FontInfo.h"
 ./mathed/MathClass.cpp::#include "support/docstring.h"
 ./mathed/MathData.cpp::#include "MathData.h"
-./mathed/MathData.cpp::#include "InsetMathFont.h"
 ./mathed/MathData.cpp::#include "MacroTable.h"
 ./mathed/MathData.cpp::#include "Buffer.h"
 ./mathed/MathData.cpp::#include "CoordCache.h"
 ./mathed/MathData.cpp::#include "Dimension.h"
-./mathed/MathData.cpp::#include "mathed/InsetMathUnknown.h"
 ./mathed/MathData.cpp::#include "support/docstream.h"
-./mathed/MathData.cpp::#include "support/gettext.h"
 ./mathed/MathData.cpp::#include <cstdlib>
 ./mathed/MathExtern.cpp::#include "MathData.h"
 ./mathed/MathExtern.cpp::#include "support/docstream.h"
@@ -2020,12 +1578,10 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/MathExtern.cpp::#include <fstream>
 ./mathed/MathExtern.cpp::#include <memory>
 ./mathed/MathFactory.cpp::#include "InsetMathFrac.h"
-./mathed/MathFactory.cpp::#include "InsetMathKern.h"
 ./mathed/MathFactory.cpp::#include "MacroTable.h"
 ./mathed/MathFactory.cpp::#include "MathParser.h"
 ./mathed/MathFactory.cpp::#include "MathStream.h"
 ./mathed/MathFactory.cpp::#include "support/docstream.h"
-./mathed/MathFactory.cpp::#include "support/textutils.h"
 ./mathed/MathFactory.cpp::#include "FontInfo.h"
 ./mathed/MathParser.cpp::#include "MathParser.h"
 ./mathed/MathParser.cpp::#include "InsetMathFrac.h"
@@ -2033,7 +1589,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/MathParser.cpp::#include <cstdint>
 ./mathed/MathParser.cpp::#include <sstream>
 ./mathed/MathRow.cpp::#include "CoordCache.h"
-./mathed/MathRow.cpp::#include "LyXRC.h"
 ./mathed/MathRow.cpp::#include "support/docstring.h"
 ./mathed/MathRow.cpp::#include <algorithm>
 ./mathed/MathStream.cpp::#include "TexRow.h"
@@ -2043,25 +1598,15 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/MathStream.cpp::#include <FontInfo.h>
 ./mathed/MathSupport.cpp::#include "MathData.h"
 ./mathed/MathSupport.cpp::#include "MathParser.h"
+./mathed/MathSupport.cpp::#include "Dimension.h"
 ./mathed/MathSupport.cpp::#include "support/Changer.h"
 ./mathed/MathSupport.cpp::#include "support/docstream.h"
 ./mathed/MathSupport.cpp::#include <map>
 ./mathed/MathSupport.cpp::#include <algorithm>
-./moc_Compare.cpp::#include <memory>
-./moc_Compare.cpp::#include "Compare.h"
-./moc_Compare.cpp::#include <QtCore/qbytearray.h>
-./moc_Compare.cpp::#include <QtCore/qmetatype.h>
-./moc_PreviewLoader.cpp::#include <memory>
-./moc_PreviewLoader.cpp::#include "graphics/PreviewLoader.h"
-./moc_PreviewLoader.cpp::#include <QtCore/qbytearray.h>
-./moc_PreviewLoader.cpp::#include <QtCore/qmetatype.h>
-./output.cpp::#include "support/filetools.h"
-./output_docbook.cpp::#include "buffer_funcs.h"
 ./output_docbook.cpp::#include "Paragraph.h"
 ./output_docbook.cpp::#include "ParagraphList.h"
 ./output_docbook.cpp::#include "xml.h"
 ./output_docbook.cpp::#include "Text.h"
-./output_docbook.cpp::#include "insets/InsetBibtex.h"
 ./output_docbook.cpp::#include "mathed/InsetMath.h"
 ./output_docbook.cpp::#include <iostream>
 ./output_docbook.cpp::#include <algorithm>
@@ -2071,11 +1616,9 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./output_latex.cpp::#include "Paragraph.h"
 ./output_latex.cpp::#include "texstream.h"
 ./output_latex.cpp::#include <list>
-./output_plaintext.cpp::#include "BufferParams.h"
 ./output_plaintext.cpp::#include "Layout.h"
 ./output_plaintext.cpp::#include "OutputParams.h"
 ./output_plaintext.cpp::#include "Paragraph.h"
-./output_plaintext.cpp::#include "insets/Inset.h"
 ./output_plaintext.cpp::#include "support/gettext.h"
 ./output_xhtml.cpp::#include "Counters.h"
 ./output_xhtml.cpp::#include "Layout.h"
@@ -2110,12 +1653,10 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/FileName.cpp::#include <cerrno>
 ./support/FileName.cpp::#include <fcntl.h>
 ./support/FileName.cpp::#include <sys/mman.h>
-./support/ForkedCalls.cpp::#include "support/os.h"
 ./support/ForkedCalls.cpp::#include <cerrno>
 ./support/ForkedCalls.cpp::#include <utility>
 ./support/ForkedCalls.cpp::#include <vector>
 ./support/Length.cpp::#include "support/Length.h"
-./support/Length.cpp::#include "support/docstream.h"
 ./support/Length.cpp::#include <sstream>
 ./support/Length.cpp::#include <iomanip>
 ./support/Lexer.cpp::#include <algorithm> // sort, lower_bound
@@ -2124,7 +1665,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/Lexer.cpp::#include <istream>
 ./support/Lexer.cpp::#include <vector>
 ./support/Messages.cpp::#include "support/docstring.h"
-./support/Messages.cpp::#include "support/unicode.h"
 ./support/Messages.cpp::#include "support/lassert.h"
 ./support/Messages.cpp::#include <cerrno>
 ./support/Messages.cpp::#include <cstdint>
@@ -2133,6 +1673,7 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/Systemcall.cpp::#include <cstdlib>
 ./support/Systemcall.cpp::#include <QProcess>
 ./support/Systemcall.cpp::#include <QElapsedTimer>
+./support/Systemcall.cpp::#include <QDebug>
 ./support/TempFile.cpp::#include "support/FileName.h"
 ./support/TempFile.cpp::#include <QFileInfo>
 ./support/Timeout.cpp::#include <QTimerEvent>
@@ -2143,7 +1684,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/counter_reps.cpp::#include "support/counter_reps.h"
 ./support/counter_reps.cpp::#include "support/docstring.h"
 ./support/debug.cpp::#include <iostream>
-./support/docstream.cpp::#include "support/lstrings.h"
 ./support/docstream.cpp::#include <algorithm>
 ./support/docstream.cpp::#include <cerrno>
 ./support/docstream.cpp::#include <cstdio>
@@ -2156,9 +1696,7 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/environment.cpp::#include "support/docstring.h"
 ./support/environment.cpp::#include <cstdlib>
 ./support/environment.cpp::#include <map>
-./support/filetools.cpp::#include "support/gettext.h"
 ./support/filetools.cpp::#include "support/os.h"
-./support/filetools.cpp::#include "support/PathChanger.h"
 ./support/filetools.cpp::#include "support/lassert.h"
 ./support/filetools.cpp::#include <cerrno>
 ./support/filetools.cpp::#include <climits>
@@ -2170,7 +1708,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/filetools.cpp::#include <io.h>
 ./support/filetools.cpp::#include <windows.h>
 ./support/gettext.cpp::#include "support/gettext.h"
-./support/gettext.cpp::#include "support/Package.h"
 ./support/gzstream.cpp::#include <iostream>
 ./support/kill.cpp::#include "support/os.h"
 ./support/kill.cpp::#include <windows.h>
@@ -2185,20 +1722,7 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/lstrings.cpp::#include <sstream>
 ./support/lstrings.cpp::#include <typeinfo>
 ./support/lyxtime.cpp::#include "support/lyxtime.h"
-./support/lyxtime.cpp::#include "support/environment.h"
 ./support/lyxtime.cpp::#include <QTimeZone>
-./support/moc_ConsoleApplicationPrivate.cpp::#include <memory>
-./support/moc_ConsoleApplicationPrivate.cpp::#include "ConsoleApplicationPrivate.h"
-./support/moc_ConsoleApplicationPrivate.cpp::#include <QtCore/qbytearray.h>
-./support/moc_ConsoleApplicationPrivate.cpp::#include <QtCore/qmetatype.h>
-./support/moc_FileMonitor.cpp::#include <memory>
-./support/moc_FileMonitor.cpp::#include "FileMonitor.h"
-./support/moc_FileMonitor.cpp::#include <QtCore/qbytearray.h>
-./support/moc_FileMonitor.cpp::#include <QtCore/qmetatype.h>
-./support/moc_SystemcallPrivate.cpp::#include <memory>
-./support/moc_SystemcallPrivate.cpp::#include "SystemcallPrivate.h"
-./support/moc_SystemcallPrivate.cpp::#include <QtCore/qbytearray.h>
-./support/moc_SystemcallPrivate.cpp::#include <QtCore/qmetatype.h>
 ./support/os.cpp::#include "support/filetools.h"
 ./support/os.cpp::#include "support/os_cygwin.cpp"
 ./support/os.cpp::#include "support/os_win32.cpp"
@@ -2278,7 +1802,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/unicode.cpp::#include <cstdint>
 ./support/unicode.cpp::#include <string>
 ./support/userinfo.cpp::#include "support/userinfo.h"
-./support/userinfo.cpp::#include "support/environment.h"
 ./support/userinfo.cpp::#include "support/docstring.h"
 ./tests/boost.cpp::#include <boost/assert.hpp>
 ./tests/boost.cpp::#include <cstdlib>
@@ -2324,8 +1847,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./tex2lyx/Preamble.cpp::#include <iostream>
 ./tex2lyx/boost.cpp::#include <cstdlib>
 ./tex2lyx/boost.cpp::#include <exception>
-./tex2lyx/dummy_impl.cpp::#include "output_xhtml.h"
-./tex2lyx/dummy_impl.cpp::#include "xml.h"
 ./tex2lyx/dummy_impl.cpp::#include <iostream>
 ./tex2lyx/math.cpp::#include <iostream>
 ./tex2lyx/table.cpp::#include "tex2lyx.h"
@@ -2355,7 +1876,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./tex2lyx/text.cpp::#include <map>
 ./tex2lyx/text.cpp::#include <sstream>
 ./tex2lyx/text.cpp::#include <vector>
-./texstream.cpp::#include "support/unicode.h"
 ./texstream.cpp::#include <cerrno>
 ./texstream.cpp::#include <cstdio>
 ./texstream.cpp::#include <cstring>
@@ -2364,430 +1884,107 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./version.cpp::#include "lyx_date.h"
 ./xml.cpp::#include "Counters.h"
 ./xml.cpp::#include "Layout.h"
-./xml.cpp::#include "Paragraph.h"
-./xml.cpp::#include "Text.h"
 ./xml.cpp::#include "support/docstream.h"
 ./xml.cpp::#include <atomic>
 ./xml.cpp::#include <map>
 ./xml.cpp::#include <functional>
-filtered: ./Buffer.cpp : MathSupport_h
-filtered: ./Buffer.cpp : textutils_h
-filtered: ./BufferView.cpp : pmprof_h
 filtered: ./Changes.cpp : lassert_h
-filtered: ./Compare.cpp : ErrorList_h
-filtered: ./Converter.cpp : LaTeXFeatures_h
-filtered: ./DocIterator.cpp : ExceptionMessage_h
-filtered: ./DocIterator.cpp : gettext_h
-filtered: ./DocIterator.cpp : lstrings_h
-filtered: ./EnchantChecker.cpp : LyXRC_h
 filtered: ./EnchantChecker.cpp : lassert_h
 filtered: ./Graph.cpp : lassert_h
 filtered: ./InsetIterator.cpp : lassert_h
-filtered: ./KeyMap.cpp : docstream_h
-filtered: ./LaTeXFeatures.cpp : filetools_h
 filtered: ./Layout.cpp : lassert_h
 filtered: ./LyX.cpp : AppleSpellChecker_h
 filtered: ./LyX.cpp : AspellChecker_h
 filtered: ./LyX.cpp : HunspellChecker_h
 filtered: ./Server.cpp : lassert_h
 filtered: ./ServerSocket.cpp : lassert_h
-filtered: ./Text.cpp : InsetIndexMacro_h
-filtered: ./Text.cpp : docstring_list_h
-filtered: ./Undo.cpp : ErrorList_h
-filtered: ./Undo.cpp : MathRow_h
-filtered: ./WordList.cpp : convert_h
 filtered: ./buffer_funcs.cpp : lassert_h
 filtered: ./factory.cpp : factory_h
-filtered: ./frontends/qt/Action.cpp : DispatchResult_h
-filtered: ./frontends/qt/Action.cpp : lstrings_h
-filtered: ./frontends/qt/Action.cpp : qt_helpers_h
-filtered: ./frontends/qt/CustomizedWidgets.cpp : FuncRequest_h
-filtered: ./frontends/qt/Dialog.cpp : gettext_h
 filtered: ./frontends/qt/DialogFactory.cpp : DialogFactory_h
 filtered: ./frontends/qt/FileDialog.cpp : gettext_h
 filtered: ./frontends/qt/GuiAlert.cpp : gettext_h
-filtered: ./frontends/qt/GuiApplication.cpp : ErrorList_h
-filtered: ./frontends/qt/GuiBibtex.cpp : CiteEnginesList_h
-filtered: ./frontends/qt/GuiBibtex.cpp : ExceptionMessage_h
-filtered: ./frontends/qt/GuiBibtex.cpp : GuiApplication_h
-filtered: ./frontends/qt/GuiBibtex.cpp : Validator_h
-filtered: ./frontends/qt/GuiBibtex.cpp : alert_h
 filtered: ./frontends/qt/GuiBibtex.cpp : gettext_h
-filtered: ./frontends/qt/GuiBox.cpp : BufferParams_h
-filtered: ./frontends/qt/GuiBox.cpp : Buffer_h
-filtered: ./frontends/qt/GuiBox.cpp : ColorsCombo_h
-filtered: ./frontends/qt/GuiBranches.cpp : Buffer_h
-filtered: ./frontends/qt/GuiChanges.cpp : LyXRC_h
-filtered: ./frontends/qt/GuiCharacter.cpp : ColorsCombo_h
-filtered: ./frontends/qt/GuiCharacter.cpp : qt_helpers_h
-filtered: ./frontends/qt/GuiCitation.cpp : BufferView_h
-filtered: ./frontends/qt/GuiCitation.cpp : Cursor_h
-filtered: ./frontends/qt/GuiCitation.cpp : GuiApplication_h
 filtered: ./frontends/qt/GuiCitation.cpp : GuiView_h
-filtered: ./frontends/qt/GuiCommandBuffer.cpp : BufferView_h
-filtered: ./frontends/qt/GuiCompare.cpp : BufferView_h
-filtered: ./frontends/qt/GuiCompleter.cpp : GuiView_h
-filtered: ./frontends/qt/GuiCompleter.cpp : qt_helpers_h
-filtered: ./frontends/qt/GuiCompleter.cpp : version_h
-filtered: ./frontends/qt/GuiDelimiter.cpp : FontInfo_h
-filtered: ./frontends/qt/GuiDelimiter.cpp : GuiFontLoader_h
+filtered: ./frontends/qt/GuiDelimiter.cpp : FontEnums_h
 filtered: ./frontends/qt/GuiDelimiter.cpp : GuiView_h
-filtered: ./frontends/qt/GuiDocument.cpp : ColorsCombo_h
 filtered: ./frontends/qt/GuiDocument.cpp : lassert_h
-filtered: ./frontends/qt/GuiERT.cpp : gettext_h
 filtered: ./frontends/qt/GuiErrorList.cpp : GuiView_h
-filtered: ./frontends/qt/GuiErrorList.cpp : Text_h
-filtered: ./frontends/qt/GuiExternal.cpp : Buffer_h
-filtered: ./frontends/qt/GuiExternal.cpp : ExternalSupport_h
 filtered: ./frontends/qt/GuiFontLoader.cpp : GuiFontLoader_h
-filtered: ./frontends/qt/GuiFontLoader.cpp : Systemcall_h
-filtered: ./frontends/qt/GuiFontLoader.cpp : gettext_h
-filtered: ./frontends/qt/GuiFontLoader.cpp : lstrings_h
-filtered: ./frontends/qt/GuiFontMetrics.cpp : convert_h
-filtered: ./frontends/qt/GuiGraphics.cpp : Buffer_h
 filtered: ./frontends/qt/GuiHSpace.cpp : gettext_h
-filtered: ./frontends/qt/GuiHSpace.cpp : lstrings_h
-filtered: ./frontends/qt/GuiImage.cpp : Format_h
-filtered: ./frontends/qt/GuiInclude.cpp : alert_h
 filtered: ./frontends/qt/GuiInclude.cpp : gettext_h
-filtered: ./frontends/qt/GuiIndices.cpp : GuiApplication_h
-filtered: ./frontends/qt/GuiInfo.cpp : BufferParams_h
 filtered: ./frontends/qt/GuiInfo.cpp : Buffer_h
-filtered: ./frontends/qt/GuiInfo.cpp : Cursor_h
-filtered: ./frontends/qt/GuiInfo.cpp : buffer_funcs_h
-filtered: ./frontends/qt/GuiInfo.cpp : lstrings_h
-filtered: ./frontends/qt/GuiInputMethod.cpp : ErrorList_h
-filtered: ./frontends/qt/GuiKeySymbol.cpp : Encoding_h
-filtered: ./frontends/qt/GuiKeySymbol.cpp : Language_h
-filtered: ./frontends/qt/GuiLine.cpp : FuncRequest_h
-filtered: ./frontends/qt/GuiLine.cpp : gettext_h
-filtered: ./frontends/qt/GuiLine.cpp : lstrings_h
-filtered: ./frontends/qt/GuiLog.cpp : Clipboard_h
+filtered: ./frontends/qt/GuiInputMethod.cpp : ColorSet_h
 filtered: ./frontends/qt/GuiNote.cpp : gettext_h
-filtered: ./frontends/qt/GuiPainter.cpp : LyXRC_h
 filtered: ./frontends/qt/GuiParagraph.cpp : GuiView_h
-filtered: ./frontends/qt/GuiParagraph.cpp : Lexer_h
 filtered: ./frontends/qt/GuiPhantom.cpp : gettext_h
-filtered: ./frontends/qt/GuiPrefs.cpp : FontLoader_h
-filtered: ./frontends/qt/GuiPrefs.cpp : GuiFontLoader_h
-filtered: ./frontends/qt/GuiPrefs.cpp : GuiKeySymbol_h
 filtered: ./frontends/qt/GuiPrefs.cpp : GuiView_h
-filtered: ./frontends/qt/GuiPrefs.cpp : Session_h
-filtered: ./frontends/qt/GuiPrefs.cpp : SpellChecker_h
-filtered: ./frontends/qt/GuiPrintNomencl.cpp : FuncRequest_h
 filtered: ./frontends/qt/GuiPrintNomencl.cpp : gettext_h
-filtered: ./frontends/qt/GuiPrintNomencl.cpp : lstrings_h
-filtered: ./frontends/qt/GuiProgress.cpp : Systemcall_h
-filtered: ./frontends/qt/GuiRef.cpp : GuiApplication_h
-filtered: ./frontends/qt/GuiSearch.cpp : Cursor_h
-filtered: ./frontends/qt/GuiSearch.cpp : alert_h
 filtered: ./frontends/qt/GuiSearch.cpp : gettext_h
-filtered: ./frontends/qt/GuiSelection.cpp : lstrings_h
-filtered: ./frontends/qt/GuiSendto.cpp : qt_helpers_h
-filtered: ./frontends/qt/GuiSpellchecker.cpp : BufferParams_h
-filtered: ./frontends/qt/GuiSpellchecker.cpp : CutAndPaste_h
-filtered: ./frontends/qt/GuiSpellchecker.cpp : LyXRC_h
-filtered: ./frontends/qt/GuiSpellchecker.cpp : buffer_funcs_h
+filtered: ./frontends/qt/GuiSendto.cpp : filetools_h
 filtered: ./frontends/qt/GuiSpellchecker.cpp : gettext_h
-filtered: ./frontends/qt/GuiSpellchecker.cpp : lstrings_h
-filtered: ./frontends/qt/GuiSpellchecker.cpp : textutils_h
-filtered: ./frontends/qt/GuiSymbols.cpp : GuiApplication_h
 filtered: ./frontends/qt/GuiSymbols.cpp : GuiView_h
-filtered: ./frontends/qt/GuiTabular.cpp : LyXRC_h
-filtered: ./frontends/qt/GuiTabularCreate.cpp : lstrings_h
 filtered: ./frontends/qt/GuiThesaurus.cpp : gettext_h
-filtered: ./frontends/qt/GuiToc.cpp : BufferParams_h
-filtered: ./frontends/qt/GuiToc.cpp : BufferView_h
-filtered: ./frontends/qt/GuiToc.cpp : Buffer_h
 filtered: ./frontends/qt/GuiToc.cpp : FuncRequest_h
 filtered: ./frontends/qt/GuiToc.cpp : gettext_h
 filtered: ./frontends/qt/GuiToc.cpp : lassert_h
-filtered: ./frontends/qt/GuiToolbar.cpp : LyXRC_h
-filtered: ./frontends/qt/GuiVSpace.cpp : gettext_h
-filtered: ./frontends/qt/GuiVSpace.cpp : lstrings_h
-filtered: ./frontends/qt/GuiView.cpp : Compare_h
 filtered: ./frontends/qt/GuiViewSource.cpp : lassert_h
-filtered: ./frontends/qt/GuiWorkArea.cpp : FontMetrics_h
-filtered: ./frontends/qt/GuiWorkArea.cpp : KeyMap_h
-filtered: ./frontends/qt/GuiWorkArea.cpp : version_h
+filtered: ./frontends/qt/GuiWorkArea.cpp : KeySequence_h
 filtered: ./frontends/qt/GuiWrap.cpp : gettext_h
-filtered: ./frontends/qt/GuiWrap.cpp : lstrings_h
-filtered: ./frontends/qt/GuiWrap.cpp : qt_helpers_h
 filtered: ./frontends/qt/InsertTableWidget.cpp : DispatchResult_h
-filtered: ./frontends/qt/InsertTableWidget.cpp : GuiView_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : BufferView_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : Cursor_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : FloatPlacement_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiBibitem_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiBox_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiBranch_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiCounter_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiERT_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiHSpace_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiHyperlink_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiInfo_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiLabel_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiLine_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiPrintNomencl_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiTabular_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : GuiVSpace_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : buffer_funcs_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : lstrings_h
-filtered: ./frontends/qt/InsetParamsDialog.cpp : qt_helpers_h
 filtered: ./frontends/qt/LayoutBox.cpp : lassert_h
-filtered: ./frontends/qt/LyXFileDialog.cpp : lstrings_h
-filtered: ./frontends/qt/LyXFileDialog.cpp : qt_helpers_h
-filtered: ./frontends/qt/TocModel.cpp : Cursor_h
-filtered: ./frontends/qt/TocModel.cpp : LyX_h
-filtered: ./frontends/qt/TocWidget.cpp : CutAndPaste_h
-filtered: ./frontends/qt/TocWidget.cpp : InsetRef_h
-filtered: ./frontends/qt/TocWidget.cpp : Paragraph_h
+filtered: ./frontends/qt/TocWidget.cpp : InsetCommand_h
 filtered: ./frontends/qt/TocWidget.cpp : lassert_h
-filtered: ./frontends/qt/Toolbars.cpp : qt_helpers_h
-filtered: ./graphics/GraphicsCacheItem.cpp : Buffer_h
-filtered: ./graphics/GraphicsConverter.cpp : convert_h
-filtered: ./graphics/PreviewLoader.cpp : Format_h
 filtered: ./graphics/epstools.cpp : epstools_h
-filtered: ./insets/Inset.cpp : Text_h
-filtered: ./insets/Inset.cpp : TocBackend_h
-filtered: ./insets/Inset.cpp : buffer_funcs_h
-filtered: ./insets/Inset.cpp : output_xhtml_h
-filtered: ./insets/InsetBibitem.cpp : Encoding_h
-filtered: ./insets/InsetBibitem.cpp : Lexer_h
-filtered: ./insets/InsetBibitem.cpp : buffer_funcs_h
 filtered: ./insets/InsetBibitem.cpp : lassert_h
-filtered: ./insets/InsetBibtex.cpp : CiteEnginesList_h
-filtered: ./insets/InsetBibtex.cpp : Exporter_h
-filtered: ./insets/InsetBibtex.cpp : PathChanger_h
-filtered: ./insets/InsetBox.cpp : Application_h
-filtered: ./insets/InsetBox.cpp : BufferView_h
-filtered: ./insets/InsetBox.cpp : TextClass_h
-filtered: ./insets/InsetBox.cpp : output_xhtml_h
 filtered: ./insets/InsetBranch.cpp : BufferView_h
-filtered: ./insets/InsetBranch.cpp : TocBackend_h
-filtered: ./insets/InsetBranch.cpp : alert_h
-filtered: ./insets/InsetCaption.cpp : InsetFloat_h
-filtered: ./insets/InsetCaption.cpp : InsetList_h
-filtered: ./insets/InsetCaption.cpp : InsetWrap_h
-filtered: ./insets/InsetCaption.cpp : LyXRC_h
-filtered: ./insets/InsetCaption.cpp : output_xhtml_h
-filtered: ./insets/InsetCaptionable.cpp : BufferView_h
-filtered: ./insets/InsetCitation.cpp : DispatchResult_h
-filtered: ./insets/InsetCitation.cpp : FileNameList_h
-filtered: ./insets/InsetCitation.cpp : LaTeXFeatures_h
 filtered: ./insets/InsetCitation.cpp : ParIterator_h
-filtered: ./insets/InsetCitation.cpp : buffer_funcs_h
-filtered: ./insets/InsetCitation.cpp : output_docbook_h
-filtered: ./insets/InsetCitation.cpp : output_xhtml_h
 filtered: ./insets/InsetCollapsible.cpp : lassert_h
-filtered: ./insets/InsetCollapsible.cpp : lstrings_h
-filtered: ./insets/InsetCommandParams.cpp : docstream_h
-filtered: ./insets/InsetCounter.cpp : Language_h
-filtered: ./insets/InsetCounter.cpp : counter_reps_h
-filtered: ./insets/InsetCounter.cpp : output_xhtml_h
-filtered: ./insets/InsetERT.cpp : Language_h
-filtered: ./insets/InsetERT.cpp : ParagraphParameters_h
-filtered: ./insets/InsetERT.cpp : TempFile_h
-filtered: ./insets/InsetERT.cpp : docstream_h
-filtered: ./insets/InsetERT.cpp : output_docbook_h
-filtered: ./insets/InsetExternal.cpp : ExceptionMessage_h
-filtered: ./insets/InsetExternal.cpp : Exporter_h
+filtered: ./insets/InsetCounter.cpp : xml_h
 filtered: ./insets/InsetExternal.cpp : PreviewLoader_h
-filtered: ./insets/InsetExternal.cpp : filetools_h
-filtered: ./insets/InsetExternal.cpp : output_latex_h
-filtered: ./insets/InsetExternal.cpp : output_xhtml_h
 filtered: ./insets/InsetFlex.cpp : FuncStatus_h
-filtered: ./insets/InsetFlex.cpp : Lexer_h
-filtered: ./insets/InsetFloat.cpp : Application_h
-filtered: ./insets/InsetFloat.cpp : InsetGraphics_h
-filtered: ./insets/InsetFloat.cpp : InsetList_h
-filtered: ./insets/InsetFloat.cpp : output_docbook_h
-filtered: ./insets/InsetFloat.cpp : output_xhtml_h
-filtered: ./insets/InsetFoot.cpp : TocBackend_h
-filtered: ./insets/InsetFoot.cpp : lstrings_h
-filtered: ./insets/InsetFoot.cpp : output_docbook_h
-filtered: ./insets/InsetFootlike.cpp : BufferParams_h
-filtered: ./insets/InsetFootlike.cpp : BufferView_h
 filtered: ./insets/InsetFootlike.cpp : Buffer_h
-filtered: ./insets/InsetFootlike.cpp : Font_h
-filtered: ./insets/InsetFootlike.cpp : MetricsInfo_h
-filtered: ./insets/InsetGraphics.cpp : ExceptionMessage_h
 filtered: ./insets/InsetGraphics.cpp : MetricsInfo_h
-filtered: ./insets/InsetGraphics.cpp : Systemcall_h
-filtered: ./insets/InsetGraphics.cpp : output_xhtml_h
-filtered: ./insets/InsetGraphicsParams.cpp : GraphicsTypes_h
-filtered: ./insets/InsetGraphicsParams.cpp : LyXRC_h
-filtered: ./insets/InsetGraphicsParams.cpp : Translator_h
-filtered: ./insets/InsetHyperlink.cpp : alert_h
-filtered: ./insets/InsetHyperlink.cpp : output_docbook_h
-filtered: ./insets/InsetHyperlink.cpp : output_xhtml_h
-filtered: ./insets/InsetIPA.cpp : Lexer_h
-filtered: ./insets/InsetIPA.cpp : Painter_h
-filtered: ./insets/InsetIPAMacro.cpp : BufferParams_h
 filtered: ./insets/InsetIPAMacro.cpp : Buffer_h
-filtered: ./insets/InsetIPAMacro.cpp : Encoding_h
 filtered: ./insets/InsetInclude.cpp : FileNameList_h
-filtered: ./insets/InsetInclude.cpp : Painter_h
-filtered: ./insets/InsetInclude.cpp : buffer_funcs_h
-filtered: ./insets/InsetIndex.cpp : alert_h
-filtered: ./insets/InsetIndex.cpp : output_latex_h
-filtered: ./insets/InsetIndex.cpp : output_xhtml_h
-filtered: ./insets/InsetIndexMacro.cpp : BufferParams_h
-filtered: ./insets/InsetIndexMacro.cpp : Dimension_h
-filtered: ./insets/InsetIndexMacro.cpp : LaTeXFeatures_h
-filtered: ./insets/InsetIndexMacro.cpp : MetricsInfo_h
-filtered: ./insets/InsetIndexMacro.cpp : alert_h
-filtered: ./insets/InsetIndexMacro.cpp : xml_h
-filtered: ./insets/InsetInfo.cpp : ParagraphParameters_h
 filtered: ./insets/InsetLine.cpp : Buffer_h
-filtered: ./insets/InsetLine.cpp : LaTeXFeatures_h
-filtered: ./insets/InsetLine.cpp : Text_h
-filtered: ./insets/InsetLine.cpp : lstrings_h
-filtered: ./insets/InsetLine.cpp : output_docbook_h
-filtered: ./insets/InsetLine.cpp : output_xhtml_h
 filtered: ./insets/InsetListings.cpp : lassert_h
-filtered: ./insets/InsetListings.cpp : output_xhtml_h
-filtered: ./insets/InsetMarginal.cpp : BufferParams_h
-filtered: ./insets/InsetMarginal.cpp : TocBackend_h
 filtered: ./insets/InsetMarginal.cpp : gettext_h
-filtered: ./insets/InsetMarginal.cpp : lstrings_h
-filtered: ./insets/InsetNewline.cpp : Application_h
-filtered: ./insets/InsetNewline.cpp : output_docbook_h
-filtered: ./insets/InsetNewline.cpp : output_xhtml_h
-filtered: ./insets/InsetNewpage.cpp : Text_h
 filtered: ./insets/InsetNote.cpp : gettext_h
-filtered: ./insets/InsetNote.cpp : lstrings_h
-filtered: ./insets/InsetPhantom.cpp : BufferParams_h
-filtered: ./insets/InsetPhantom.cpp : Exporter_h
-filtered: ./insets/InsetPhantom.cpp : FontMetrics_h
-filtered: ./insets/InsetPhantom.cpp : LaTeXFeatures_h
-filtered: ./insets/InsetPhantom.cpp : TextClass_h
-filtered: ./insets/InsetPhantom.cpp : lstrings_h
-filtered: ./insets/InsetPreview.cpp : Painter_h
-filtered: ./insets/InsetQuotes.cpp : BufferView_h
-filtered: ./insets/InsetQuotes.cpp : LyXRC_h
-filtered: ./insets/InsetRef.cpp : DispatchResult_h
-filtered: ./insets/InsetRef.cpp : output_xhtml_h
 filtered: ./insets/InsetScript.cpp : BufferView_h
-filtered: ./insets/InsetScript.cpp : LaTeXFeatures_h
-filtered: ./insets/InsetScript.cpp : output_docbook_h
-filtered: ./insets/InsetScript.cpp : output_xhtml_h
-filtered: ./insets/InsetSeparator.cpp : Application_h
-filtered: ./insets/InsetSeparator.cpp : output_docbook_h
-filtered: ./insets/InsetSeparator.cpp : output_xhtml_h
-filtered: ./insets/InsetSpace.cpp : Application_h
-filtered: ./insets/InsetSpecialChar.cpp : output_xhtml_h
-filtered: ./insets/InsetTabular.cpp : buffer_funcs_h
-filtered: ./insets/InsetTabular.cpp : output_xhtml_h
 filtered: ./insets/InsetText.cpp : CompletionList_h
-filtered: ./insets/InsetText.cpp : CutAndPaste_h
-filtered: ./insets/InsetText.cpp : Intl_h
-filtered: ./insets/InsetText.cpp : MacroTable_h
-filtered: ./insets/InsetText.cpp : alert_h
-filtered: ./insets/InsetText.cpp : buffer_funcs_h
-filtered: ./insets/InsetText.cpp : convert_h
-filtered: ./insets/InsetText.cpp : lyxfind_h
-filtered: ./insets/InsetVSpace.cpp : Application_h
-filtered: ./insets/InsetVSpace.cpp : BufferView_h
-filtered: ./insets/InsetVSpace.cpp : Text_h
-filtered: ./insets/InsetWrap.cpp : InsetCaption_h
-filtered: ./insets/InsetWrap.cpp : TextClass_h
-filtered: ./insets/RenderGraphic.cpp : filetools_h
-filtered: ./lyxfind.cpp : LyX_h
+filtered: ./insets/InsetWrap.cpp : Counters_h
+filtered: ./insets/InsetWrap.cpp : FloatList_h
 filtered: ./mathed/InsetMath.cpp : gettext_h
-filtered: ./mathed/InsetMath.cpp : lstrings_h
 filtered: ./mathed/InsetMathChar.cpp : LaTeXFeatures_h
-filtered: ./mathed/InsetMathCommand.cpp : DispatchResult_h
 filtered: ./mathed/InsetMathDelim.cpp : LaTeXFeatures_h
-filtered: ./mathed/InsetMathDelim.cpp : MathFactory_h
-filtered: ./mathed/InsetMathEnsureMath.cpp : MathSupport_h
 filtered: ./mathed/InsetMathExFunc.cpp : MetricsInfo_h
-filtered: ./mathed/InsetMathExInt.cpp : LaTeXFeatures_h
 filtered: ./mathed/InsetMathFrac.cpp : TextPainter_h
-filtered: ./mathed/InsetMathHull.cpp : FontMetrics_h
-filtered: ./mathed/InsetMathHull.cpp : LyXRC_h
-filtered: ./mathed/InsetMathHull.cpp : convert_h
-filtered: ./mathed/InsetMathKern.cpp : MathSupport_h
-filtered: ./mathed/InsetMathMacro.cpp : FuncRequest_h
-filtered: ./mathed/InsetMathMacro.cpp : FuncStatus_h
 filtered: ./mathed/InsetMathMacroTemplate.cpp : BufferView_h
-filtered: ./mathed/InsetMathMacroTemplate.cpp : InsetMathSqrt_h
-filtered: ./mathed/InsetMathNest.cpp : InsetMathBox_h
-filtered: ./mathed/InsetMathNest.cpp : InsetMathSymbol_h
 filtered: ./mathed/InsetMathNest.cpp : LaTeXFeatures_h
-filtered: ./mathed/InsetMathNest.cpp : Painter_h
-filtered: ./mathed/InsetMathRef.cpp : textutils_h
-filtered: ./mathed/InsetMathScript.cpp : gettext_h
-filtered: ./mathed/InsetMathSideset.cpp : FuncRequest_h
-filtered: ./mathed/InsetMathSideset.cpp : FuncStatus_h
-filtered: ./mathed/InsetMathSideset.cpp : InsetMathSymbol_h
 filtered: ./mathed/InsetMathSideset.cpp : lassert_h
-filtered: ./mathed/InsetMathSize.cpp : output_xhtml_h
-filtered: ./mathed/InsetMathSpace.cpp : Application_h
-filtered: ./mathed/InsetMathSpace.cpp : MathSupport_h
-filtered: ./mathed/InsetMathSpecialChar.cpp : Painter_h
 filtered: ./mathed/InsetMathSplit.cpp : Buffer_h
-filtered: ./mathed/InsetMathSqrt.cpp : MathSupport_h
-filtered: ./mathed/InsetMathSqrt.cpp : Painter_h
 filtered: ./mathed/InsetMathSqrt.cpp : TextPainter_h
-filtered: ./mathed/InsetMathString.cpp : Encoding_h
-filtered: ./mathed/InsetMathString.cpp : MathFactory_h
-filtered: ./mathed/InsetMathString.cpp : gettext_h
-filtered: ./mathed/InsetMathString.cpp : textutils_h
-filtered: ./mathed/InsetMathSymbol.cpp : MathAtom_h
 filtered: ./mathed/InsetMathTextsize.cpp : lassert_h
-filtered: ./mathed/InsetMathUnknown.cpp : MathAtom_h
-filtered: ./mathed/InsetMathUnknown.cpp : Painter_h
-filtered: ./mathed/MacroTable.cpp : InsetList_h
-filtered: ./mathed/MacroTable.cpp : Text_h
-filtered: ./mathed/MacroTable.cpp : gettext_h
 filtered: ./mathed/MathAutoCorrect.cpp : MathAutoCorrect_h
 filtered: ./mathed/MathData.cpp : Buffer_h
-filtered: ./mathed/MathData.cpp : InsetMathFont_h
-filtered: ./mathed/MathData.cpp : InsetMathUnknown_h
-filtered: ./mathed/MathData.cpp : gettext_h
-filtered: ./mathed/MathFactory.cpp : InsetMathKern_h
-filtered: ./mathed/MathFactory.cpp : textutils_h
-filtered: ./mathed/MathRow.cpp : LyXRC_h
-filtered: ./output.cpp : filetools_h
-filtered: ./output_docbook.cpp : InsetBibtex_h
-filtered: ./output_docbook.cpp : buffer_funcs_h
-filtered: ./output_plaintext.cpp : BufferParams_h
 filtered: ./output_plaintext.cpp : gettext_h
-filtered: ./support/ForkedCalls.cpp : os_h
-filtered: ./support/Length.cpp : docstream_h
 filtered: ./support/Messages.cpp : lassert_h
-filtered: ./support/Messages.cpp : unicode_h
 filtered: ./support/counter_reps.cpp : counter_reps_h
-filtered: ./support/docstream.cpp : lstrings_h
 filtered: ./support/environment.cpp : environment_h
-filtered: ./support/filetools.cpp : PathChanger_h
-filtered: ./support/filetools.cpp : gettext_h
 filtered: ./support/filetools.cpp : lassert_h
-filtered: ./support/gettext.cpp : Package_h
 filtered: ./support/gettext.cpp : gettext_h
 filtered: ./support/lengthcommon.cpp : lassert_h
-filtered: ./support/lyxtime.cpp : environment_h
 filtered: ./support/lyxtime.cpp : lyxtime_h
 filtered: ./support/socktools.cpp : socktools_h
-filtered: ./support/userinfo.cpp : environment_h
 filtered: ./support/userinfo.cpp : userinfo_h
-filtered: ./tex2lyx/dummy_impl.cpp : output_xhtml_h
 filtered: ./tex2lyx/tex2lyx.cpp : lassert_h
-filtered: ./texstream.cpp : unicode_h
-filtered: ./xml.cpp : Text_h
 filtered: miss: ./AppleSpellChecker.o
 filtered: miss: ./AspellChecker.o
 filtered: miss: ./HunspellChecker.o
 filtered: miss: ./convert/lyxconvert.o
 filtered: miss: ./frontends/tests/biblio.o
 filtered: miss: ./frontends/tests/boost.o
-filtered: miss: ./moc_Compare.o
-filtered: miss: ./moc_PreviewLoader.o
 filtered: miss: ./support/AppleScriptProxy.o
-filtered: miss: ./support/moc_ConsoleApplicationPrivate.o
-filtered: miss: ./support/moc_FileMonitor.o
-filtered: miss: ./support/moc_SystemcallPrivate.o
 filtered: miss: ./support/os_cygwin.o
 filtered: miss: ./support/os_unix.o
 filtered: miss: ./support/os_win32.o

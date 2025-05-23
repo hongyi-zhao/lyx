@@ -17198,6 +17198,24 @@ string
 formatierte Querverweise
 \emph default
  auf einen Zähler verwendet wird.
+ Singular- und Pluralformen werden mit 
+\begin_inset Quotes gls
+\end_inset
+
+|
+\begin_inset Quotes grs
+\end_inset
+
+ abgetrennt (bspw.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Abschnitt|Abschnitte
+\begin_inset Quotes grd
+\end_inset
+
+).
  Möchte man zum Beispiel Verweise auf Tabellen als 
 \begin_inset Quotes gld
 \end_inset
@@ -17287,6 +17305,11 @@ arabic{section}
 \end_inset
 
 2.7 ausgegeben).
+ Bitte verwenden Sie auch bei Titeln in Sprachen,
+ die normalerweise Kleinschreibung verwenden,
+ für die Titel Großschreibung (wie am Satzbeginn) und geben Sie wo immer möglich Pluralformen an.
+ \SpecialChar LyX
+ generiert automatisch daraus die entsprechenden Formen auch in Kleinschreibung.
 \end_layout
 
 \begin_layout Description
@@ -23185,6 +23208,24 @@ string
 formatierte Querverweise
 \emph default
  auf einen Zähler verwendet wird.
+ Singular- und Pluralformen werden mit 
+\begin_inset Quotes gls
+\end_inset
+
+|
+\begin_inset Quotes grs
+\end_inset
+
+ abgetrennt (bspw.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Abschnitt|Abschnitte
+\begin_inset Quotes grd
+\end_inset
+
+).
  Möchte man z.
 \begin_inset space \thinspace{}
 \end_inset
@@ -23268,6 +23309,11 @@ arabic{section}
 \end_inset
 
 2.7 ausgegeben).
+ Bitte verwenden Sie auch bei Titeln in Sprachen,
+ die normalerweise Kleinschreibung verwenden,
+ für die Titel Großschreibung (wie am Satzbeginn) und geben Sie wo immer möglich Pluralformen an.
+ \SpecialChar LyX
+ generiert automatisch daraus die entsprechenden Formen auch in Kleinschreibung.
 \end_layout
 
 \begin_layout Description
@@ -23346,16 +23392,6 @@ lem
 ),
  das zweite eine Formatierungsangabe,
  wie Sie auch für 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelString
-\end_layout
-
-\end_inset
-
- oder 
 \begin_inset Flex Code
 status collapsed
 
@@ -33046,7 +33082,7 @@ mathdots
 \begin_inset Text
 
 \begin_layout Plain Layout
-prettyref
+ref
 \end_layout
 
 \end_inset

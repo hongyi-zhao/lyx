@@ -480,12 +480,12 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 	// If we are editing a macro, we cannot update it immediately,
 	// otherwise wrong undo steps will be recorded (bug 6208).
 	InsetMath const * inmath = cur ? cur->inset().asInsetMath() : 0;
-	InsetMathMacro const * inmacro = inmath ? inmath->asMacro() : 0;
+	InsetMathMacro const * inmacro = inmath ? inmath->asMacroInset() : 0;
 	docstring const edited_name = inmacro ? inmacro->name() : docstring();
 
 	// go over the data and look for macros
 	for (size_t i = 0; i < size(); ++i) {
-		InsetMathMacro * macroInset = operator[](i).nucleus()->asMacro();
+		InsetMathMacro * macroInset = operator[](i).nucleus()->asMacroInset();
 		if (!macroInset || macroInset->macroName().empty()
 				|| macroInset->macroName()[0] == '^'
 				|| macroInset->macroName()[0] == '_'
@@ -517,7 +517,7 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 			detachMacroParameters(cur, i);
 
 		// the macro could have been copied while resizing this
-		macroInset = operator[](i).nucleus()->asMacro();
+		macroInset = operator[](i).nucleus()->asMacroInset();
 
 		// Cursor in \label?
 		if (newDisplayMode != InsetMathMacro::DISPLAY_UNFOLDED
@@ -563,15 +563,15 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 		InsetMath * inset = operator[](i).nucleus();
 		if (inset->asScriptInset())
 			inset = inset->asScriptInset()->nuc()[0].nucleus();
-		LASSERT(inset->asMacro(), continue);
-		inset->asMacro()->updateRepresentation(cur, mc, utype, nesting + 1);
+		LASSERT(inset->asMacroInset(), continue);
+		inset->asMacroInset()->updateRepresentation(cur, mc, utype, nesting + 1);
 	}
 }
 
 
 void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos)
 {
-	InsetMathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
+	InsetMathMacro * macroInset = operator[](macroPos).nucleus()->asMacroInset();
 	// We store this now, because the inset pointer will be invalidated in the scond loop below
 	size_t const optionals = macroInset->optionals();
 
@@ -669,7 +669,7 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 		MathData const & arg = detachedArgs[j];
 		if (arg.size() == 1
 		    && !arg[0]->asScriptInset()
-		    && !(arg[0]->asMacro() && arg[0]->asMacro()->arity() > 0))
+		    && !(arg[0]->asMacroInset() && arg[0]->asMacroInset()->arity() > 0))
 			insert(p, arg[0]);
 		else
 			insert(p, MathAtom(new InsetMathBrace(buffer_, arg)));
@@ -705,7 +705,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	// Coverity Scan believes that this can happen
 	LATTEST(macroPos != lyx::npos);
 
-	InsetMathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
+	InsetMathMacro * macroInset = operator[](macroPos).nucleus()->asMacroInset();
 
 	// start at atom behind the macro again, maybe with some new arguments
 	// from the detach phase above, to add them back into the macro inset
@@ -753,7 +753,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 
 		// get pointer to "deep" copied macro inset
 		scriptInset = operator[](macroPos).nucleus()->asScriptInset();
-		macroInset = scriptInset->nuc()[0].nucleus()->asMacro();
+		macroInset = scriptInset->nuc()[0].nucleus()->asMacroInset();
 	}
 
 	// remove them from the MathData

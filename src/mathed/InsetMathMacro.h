@@ -31,9 +31,9 @@ public:
 	///
 	~InsetMathMacro();
 	///
-	InsetMathMacro * asMacro() override { return this; }
+	InsetMathMacro * asMacroInset() override { return this; }
 	///
-	InsetMathMacro const * asMacro() const override { return this; }
+	InsetMathMacro const * asMacroInset() const override { return this; }
 	///
 	marker_type marker(BufferView const *) const override;
 	/// If the macro is in normal edit mode, dissolve its contents in

@@ -648,6 +648,13 @@ docstring InsetRef::displayString(docstring const & ref, string const & cmd,
 	vector<docstring> display_string;
 	vector<docstring> labels = getVectorFromString(ref);
 
+	bool const caps = cmd == "formatted"
+			&& !prefixIs(buffer().params().xref_package, "prettyref")
+			&& getParam("caps") == "true";
+	bool plural = !prefixIs(buffer().params().xref_package, "prettyref") && labels.size() > 1;
+	if (buffer().params().xref_package == "refstyle")
+		plural = getParam("plural") == "true";
+
 	bool first = true;
 	for (auto const & label : labels) {
 		InsetLabel const * il = buffer().insetLabel(label, true);
@@ -667,7 +674,7 @@ docstring InsetRef::displayString(docstring const & ref, string const & cmd,
 				display_string.push_back('(' + value + ')');
 			else if (cmd == "formatted") {
 				if (first)
-					display_string.push_back(il->formattedCounter());
+					display_string.push_back(il->formattedCounter(!caps, plural));
 				else
 					display_string.push_back(value);
 			}
@@ -683,15 +690,29 @@ docstring InsetRef::displayString(docstring const & ref, string const & cmd,
 			display_string.push_back(ref);
 		first = false;
 	}
-	docstring res = (useRange()) ? getStringFromVector(display_string, from_utf8("–"))
-				     : getStringFromVector(display_string, from_ascii(", "));
+	if (useRange())
+		return getStringFromVector(display_string, from_utf8("–"));
 
-	if (cmd == "formatted" && !prefixIs(buffer().params().xref_package, "prettyref")
-	    && getParam("caps") == "true")
-		return capitalize(res);
-		// it is hard to see what to do about plurals...
+	odocstringstream os;
+	first = true;
+	vector<docstring>::const_iterator it = display_string.begin();
+	vector<docstring>::const_iterator en = display_string.end();
+	for (size_t i = 0; it != en; ++it, ++i) {
+		if (first) {
+			os << *it;
+			first = false;
+			continue;
+		}
+		if (display_string.size() == 2)
+			os << buffer().B_("[[reference 1]] and [[reference2]]");
+		else if (i > 0 && i == display_string.size() - 1)
+			os << buffer().B_("[[reference 1, ...]], and [[reference n]]");
+		else
+			os << buffer().B_("[[reference 1]], [[reference2, ...]]");
+		os << *it;
+	}
 
-	return res;
+	return os.str();
 }
 
 

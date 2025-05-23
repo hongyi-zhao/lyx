@@ -156,8 +156,8 @@ public:
 	virtual InsetMathBrace const    * asBraceInset() const    { return nullptr; }
 	virtual InsetMathChar const     * asCharInset() const     { return nullptr; }
 	virtual InsetMathClass const    * asClassInset() const    { return nullptr; }
-	virtual InsetMathDecoration       * asDecorationInset()         { return nullptr; }
-	virtual InsetMathDecoration const * asDecorationInset() const   { return nullptr; }
+	virtual InsetMathDecoration       * asDecorationInset()       { return nullptr; }
+	virtual InsetMathDecoration const * asDecorationInset() const { return nullptr; }
 	virtual InsetMathDelim          * asDelimInset()          { return nullptr; }
 	virtual InsetMathDelim const    * asDelimInset() const    { return nullptr; }
 	virtual InsetMathFracBase       * asFracBaseInset()       { return nullptr; }
@@ -170,10 +170,10 @@ public:
 	virtual InsetMathGrid const     * asGridInset() const     { return nullptr; }
 	virtual InsetMathHull           * asHullInset()           { return nullptr; }
 	virtual InsetMathHull const     * asHullInset() const     { return nullptr; }
-	virtual InsetMathMacro               * asMacro()               { return nullptr; }
-	virtual InsetMathMacro const         * asMacro() const         { return nullptr; }
-	virtual InsetMathMacroTemplate       * asMacroTemplate()       { return nullptr; }
-	virtual InsetMathMacroTemplate const * asMacroTemplate() const { return nullptr; }
+	virtual InsetMathMacro          * asMacroInset()          { return nullptr; }
+	virtual InsetMathMacro const    * asMacroInset() const    { return nullptr; }
+	virtual InsetMathMacroTemplate       * asMacroTemplateInset()       { return nullptr; }
+	virtual InsetMathMacroTemplate const * asMacroTemplateInset() const { return nullptr; }
 	virtual InsetMathMatrix const   * asMatrixInset() const   { return nullptr; }
 	virtual InsetMathNest           * asNestInset()           { return nullptr; }
 	virtual InsetMathNest const     * asNestInset() const     { return nullptr; }

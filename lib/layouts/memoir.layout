@@ -307,7 +307,7 @@ End
 
 Counter endnotes
 	GuiName Endnotes
-    PrettyFormat "Endnote ##"
+	PrettyFormat "Endnote|Endnotes ##"
 End
 
 InsetLayout Flex:Endnote

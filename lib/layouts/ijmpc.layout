@@ -465,8 +465,8 @@ End
 
 Counter claim
 	GuiName Claim
-  Within	section
-  PrettyFormat "Claim ##"
+	Within	section
+	PrettyFormat "Claim|Claims ##"
 End
 Style Claim
   LabelCounter	claim

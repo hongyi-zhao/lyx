@@ -187,12 +187,16 @@ public:
 	/// returns a formatted version of the counter, using the
 	/// format given by Counter::prettyFormat().
 	docstring prettyCounter(docstring const & cntr,
-			       std::string const & lang) const;
+				std::string const & lang,
+				bool lowercase = false,
+				bool plural = false) const;
 	/// returns a formatted version of the counter, using the
 	/// format given by Counter::prettyFormat().
 	docstring formattedCounter(docstring const & cntr,
-					docstring const & prefix,
-					std::string const & lang) const;
+				   docstring const & prefix,
+				   std::string const & lang,
+				   bool lowercase = false,
+				   bool plural = false) const;
 	///
 	docstring const & guiName(docstring const & cntr) const;
 	///

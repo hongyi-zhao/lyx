@@ -847,7 +847,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 							      buffer().params().authors()));
 		}
 		InsetMath const * im = cur.inset().asInsetMath();
-		InsetMathMacro const * macro = im ? im->asMacro() : nullptr;
+		InsetMathMacro const * macro = im ? im->asMacroInset() : nullptr;
 		// do not allow pasting a backslash in the name of a macro
 		if (macro
 		    && macro->displayMode() == InsetMathMacro::DISPLAY_UNFOLDED
@@ -1523,7 +1523,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool fold = act == LFUN_MATH_MACRO_FOLD;
 		bool found = findMacroToFoldUnfold(it, fold);
 		if (found) {
-			InsetMathMacro * macro = it.nextInset()->asInsetMath()->asMacro();
+			InsetMathMacro * macro = it.nextInset()->asInsetMath()->asMacroInset();
 			cur.recordUndoInset();
 			if (fold)
 				macro->fold(cur);
@@ -1585,7 +1585,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 	case LFUN_INSET_DISSOLVE:
-		if (cmd.argument().empty() && !asHullInset() && !asMacroTemplate()) {
+		if (cmd.argument().empty() && !asHullInset() && !asMacroTemplateInset()) {
 			// we have been triggered via the AtPoint mechanism
 			if (cur.nextInset() == this)
 				cur.push(*this);
@@ -1654,7 +1654,7 @@ bool InsetMathNest::findMacroToFoldUnfold(Cursor & it, bool fold) const {
 		// go backward through the current cell
 		Inset * inset = it.nextInset();
 		while (inset && inset->asInsetMath()) {
-			InsetMathMacro * macro = inset->asInsetMath()->asMacro();
+			InsetMathMacro * macro = inset->asInsetMath()->asMacroInset();
 			if (macro) {
 				// found the an macro to open/close?
 				if (macro->folded() != fold)
@@ -1831,7 +1831,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_INSET_DISSOLVE:
-		flag.setEnabled(cmd.argument().empty() && !asHullInset() && !asMacroTemplate());
+		flag.setEnabled(cmd.argument().empty() && !asHullInset() && !asMacroTemplateInset());
 		break;
 
 	case LFUN_PASTE: {
@@ -2144,7 +2144,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		bool reduced = cap::reduceSelectionToOneCell(cur);
 		if (reduced || !cur.selection()) {
 			InsetMath const * im = cur.inset().asInsetMath();
-			InsetMathMacro const * macro = im ? im->asMacro()
+			InsetMathMacro const * macro = im ? im->asMacroInset()
 			                                  : nullptr;
 			bool in_macro_name = macro
 				&& macro->displayMode() ==

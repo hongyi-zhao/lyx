@@ -770,8 +770,8 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 	MacroNameSet::iterator const end = macros.end();
 
 	for (size_t i = 0; i < md.size(); ++i) {
-		InsetMathMacro const * mi = md[i].nucleus()->asMacro();
-		InsetMathMacroTemplate const * mt = md[i].nucleus()->asMacroTemplate();
+		InsetMathMacro const * mi = md[i].nucleus()->asMacroInset();
+		InsetMathMacroTemplate const * mt = md[i].nucleus()->asMacroTemplateInset();
 		InsetMathScript const * si = md[i].nucleus()->asScriptInset();
 		InsetMathFracBase const * fi = md[i].nucleus()->asFracBaseInset();
 		InsetMathGrid const * gi = md[i].nucleus()->asGridInset();

@@ -16,21 +16,21 @@ Counter theorem
 	GuiName Theorem
 	Within chapter
 	LaTeXName thm
-	RefFormat thm "Theorem \thechapter.\arabic{theorem}"
-	RefFormat cor "Corollary \thechapter.\arabic{theorem}"
-	RefFormat lem "Lemma \thechapter.\arabic{theorem}"
-	RefFormat prop "Proposition \thechapter.\arabic{theorem}"
-	RefFormat conj "Conjecture \thechapter.\arabic{theorem}"
-	RefFormat def "Definition \thechapter.\arabic{theorem}"
-	RefFormat exa "Example \thechapter.\arabic{theorem}"
-	RefFormat prob "Problem \thechapter.\arabic{theorem}"
-	RefFormat exer "Exercise \thechapter.\arabic{theorem}"
-	RefFormat solu "Solution \thechapter.\arabic{theorem}"
-	RefFormat rem "Remark \thechapter.\arabic{theorem}"
-	RefFormat claim "Claim \thechapter.\arabic{theorem}"
-	RefFormat fact "Fact \thechapter.\arabic{theorem}"
-	RefFormat cri "Criterion \thechapter.\arabic{theorem}"
-	RefFormat alg "Algorithm \thechapter.\arabic{theorem}"
+	RefFormat thm "Theorem|Theorems \thechapter.\arabic{theorem}"
+	RefFormat cor "Corollary|Corollaries \thechapter.\arabic{theorem}"
+	RefFormat lem "Lemma|Lemmas \thechapter.\arabic{theorem}"
+	RefFormat prop "Proposition|Propositions \thechapter.\arabic{theorem}"
+	RefFormat conj "Conjecture|Conjectures \thechapter.\arabic{theorem}"
+	RefFormat def "Definition|Definitions \thechapter.\arabic{theorem}"
+	RefFormat exa "Example|Examples \thechapter.\arabic{theorem}"
+	RefFormat prob "Problem|Problems \thechapter.\arabic{theorem}"
+	RefFormat exer "Exercise|Exercises \thechapter.\arabic{theorem}"
+	RefFormat solu "Solution|Solutions \thechapter.\arabic{theorem}"
+	RefFormat rem "Remark|Remarks \thechapter.\arabic{theorem}"
+	RefFormat claim "Claim|Claims \thechapter.\arabic{theorem}"
+	RefFormat fact "Fact|Facts \thechapter.\arabic{theorem}"
+	RefFormat cri "Criterion|Criteria \thechapter.\arabic{theorem}"
+	RefFormat alg "Algorithm|Algorithms \thechapter.\arabic{theorem}"
 End
 
 Style Theorem

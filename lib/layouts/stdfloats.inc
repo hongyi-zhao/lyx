@@ -20,7 +20,7 @@ Float
 	UsesFloatPkg          false
 	ListCommand           listoftables
 	RefPrefix             tab
-	PrettyFormat          "Table ##"
+	PrettyFormat          "Table|Tables ##"
 End
 
 
@@ -36,7 +36,7 @@ Float
 	UsesFloatPkg          false
 	ListCommand           listoffigures
 	RefPrefix             fig
-	PrettyFormat          "Figure ##"
+	PrettyFormat          "Figure|Figures ##"
 End
 
 
@@ -51,7 +51,7 @@ Float
 	IsPredefined          false
 	UsesFloatPkg          true
 	RefPrefix             alg
-	PrettyFormat          "Algorithm ##"
+	PrettyFormat          "Algorithm|Algorithms ##"
 End
 
 

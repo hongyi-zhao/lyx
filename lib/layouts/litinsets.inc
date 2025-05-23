@@ -10,7 +10,7 @@ Format 109
 
 Counter chunk
 	GuiName "Knitr Chunk"
-    PrettyFormat "Chunk ##"
+	PrettyFormat "Chunk|Chunks ##"
 End
 
 OutlinerName literate "Literate programming"

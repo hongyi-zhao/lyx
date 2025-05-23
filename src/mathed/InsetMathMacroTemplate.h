@@ -97,9 +97,9 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const override;
 	/// identifies macro templates
-	InsetMathMacroTemplate * asMacroTemplate() override { return this; }
+	InsetMathMacroTemplate * asMacroTemplateInset() override { return this; }
 	/// identifies macro templates
-	InsetMathMacroTemplate const * asMacroTemplate() const override { return this; }
+	InsetMathMacroTemplate const * asMacroTemplateInset() const override { return this; }
 	///
 	InsetCode lyxCode() const override { return MATH_MACROTEMPLATE_CODE; }
 	///

@@ -10,25 +10,25 @@ Format 109
 
 Counter casei
 	GuiName "Case (Level 1)" 
-	PrettyFormat "Case \arabic{casei}"
+	PrettyFormat "Case|Cases \arabic{casei}"
 	LabelString "Case \arabic{casei}."
 End
 Counter caseii
 	GuiName "Case (Level 2)"
 	Within casei
 	LabelString "Case \roman{caseii}."
-	PrettyFormat "Case \roman{caseii}"
+	PrettyFormat "Case|Cases \roman{caseii}"
 End
 Counter caseiii
 	GuiName "Case (Level 3)"
 	Within caseii
 	LabelString "Case \alph{caseiii}."
-	PrettyFormat "Case \alph{caseiii}"
+	PrettyFormat "Case|Cases \alph{caseiii}"
 End
 Counter caseiv
 	GuiName "Case (Level 4)"
 	Within caseiii
-	PrettyFormat "Case \arabic{caseiv}"
+	PrettyFormat "Case|Cases \arabic{caseiv}"
 	LabelString "Case \arabic{caseiv}."
 End
 

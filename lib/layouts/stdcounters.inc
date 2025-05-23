@@ -8,42 +8,42 @@ Format 109
 Counter part
 	GuiName Part
 	LabelString          "\Roman{part}"
-	PrettyFormat         "Part ##"
+	PrettyFormat         "Part|Parts ##"
 End
 
 Counter chapter
 	GuiName Chapter
-	PrettyFormat         "Chapter ##"
+	PrettyFormat         "Chapter|Chapters ##"
 End
 
 Counter section
 	GuiName Section
 	Within               chapter
-	PrettyFormat         "Section ##"
+	PrettyFormat         "Section|Sections ##"
 End
 
 Counter subsection
 	GuiName Subsection
 	Within               section
-	PrettyFormat         "Section ##"
+	PrettyFormat         "Section|Sections ##"
 End
 
 Counter subsubsection
 	GuiName Subsubsection
 	Within               subsection
-	PrettyFormat         "Section ##"
+	PrettyFormat         "Section|Sections ##"
 End
 
 Counter paragraph
 	GuiName Paragraph
 	Within               subsubsection
-	PrettyFormat         "Paragraph ##"
+	PrettyFormat         "Paragraph|Paragraphs ##"
 End
 
 Counter subparagraph
 	GuiName Subparagraph
 	Within               paragraph
-	PrettyFormat         "Paragraph ##"
+	PrettyFormat         "Paragraph|Paragraphs ##"
 End
 
 Counter enumi
@@ -79,12 +79,12 @@ End
 
 Counter listing
 	GuiName Listing
-	PrettyFormat "Listing ##"
+	PrettyFormat "Listing|Listings ##"
 End
 
 Counter equation
 	GuiName Equation
-	PrettyFormat         "Equation ##"
+	PrettyFormat         "Equation|Equations ##"
 End
 
 Counter footnote

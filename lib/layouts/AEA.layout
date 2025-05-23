@@ -209,7 +209,7 @@ End
 
 Counter case
 	GuiName Case
-	PrettyFormat "Case ##"
+	PrettyFormat "Case|Cases ##"
 End
 
 Style Case
@@ -348,7 +348,7 @@ End
 
 Counter remark
 	GuiName Remark
-	PrettyFormat "Remark ##"
+	PrettyFormat "Remark|Remarks ##"
 End
 
 Style Remark
@@ -363,7 +363,7 @@ End
 
 Counter solution
 	GuiName Solution
-	PrettyFormat "Solution ##"
+	PrettyFormat "Solution|Solutions ##"
 End
 
 Style Solution
@@ -380,7 +380,7 @@ End
 
 Counter summary
 	GuiName Summary
-	PrettyFormat "Summary ##"
+	PrettyFormat "Summary|Summaries ##"
 End
 
 Style Summary

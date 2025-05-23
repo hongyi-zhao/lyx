@@ -25,13 +25,13 @@ DefaultStyle Dialogue
 
 Counter act
 	GuiName "Act Number"
-	PrettyFormat "Act ##"
+	PrettyFormat "Act|Acts ##"
 End
 
 
 Counter scene
 	GuiName "Scene Number"
-	PrettyFormat "Scene ##"
+	PrettyFormat "Scene|Scenes ##"
 End
 
 

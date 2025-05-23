@@ -14,19 +14,19 @@ Format 109
 Counter theorem
 	GuiName Theorem
 	LaTeXName thm
-	RefFormat thm "Theorem \arabic{theorem}"
-	RefFormat cor "Corollary \arabic{theorem}"
-	RefFormat lem "Lemma \arabic{theorem}"
-	RefFormat prop "Proposition \arabic{theorem}"
-	RefFormat conj "Conjecture \arabic{theorem}"
-	RefFormat fact "Fact \arabic{theorem}"
-	RefFormat def "Definition \arabic{theorem}"
-	RefFormat exa "Example \arabic{theorem}"
-	RefFormat prob "Problem \arabic{theorem}"
-	RefFormat exer "Exercise \arabic{theorem}"
-	RefFormat solu "Solution \arabic{theorem}"
-	RefFormat rem "Remark \arabic{theorem}"
-	RefFormat claim "Claim \arabic{theorem}"
+	RefFormat thm "Theorem|Theorems \arabic{theorem}"
+	RefFormat cor "Corollary|Corollaries \arabic{theorem}"
+	RefFormat lem "Lemma|Lemmas \arabic{theorem}"
+	RefFormat prop "Proposition|Propositions \arabic{theorem}"
+	RefFormat conj "Conjecture|Conjectures \arabic{theorem}"
+	RefFormat fact "Fact|Facts \arabic{theorem}"
+	RefFormat def "Definition|Definitions \arabic{theorem}"
+	RefFormat exa "Example|Examples \arabic{theorem}"
+	RefFormat prob "Problem|Problems \arabic{theorem}"
+	RefFormat exer "Exercise|Exercises \arabic{theorem}"
+	RefFormat solu "Solution|Solutions \arabic{theorem}"
+	RefFormat rem "Remark|Remarks \arabic{theorem}"
+	RefFormat claim "Claim|Claims \arabic{theorem}"
 End
 
 Input theorems.inc

@@ -524,7 +524,7 @@ bool InsetMathMacro::editMode(BufferView const * bv) const {
 			for (; i != cur.depth(); ++i) {
 				InsetMath * im = cur[i].asInsetMath();
 				if (im) {
-					InsetMathMacro const * macro = im->asMacro();
+					InsetMathMacro const * macro = im->asMacroInset();
 					if (macro && macro->displayMode() == DISPLAY_NORMAL)
 						return false;
 				}
@@ -1244,7 +1244,7 @@ void InsetMathMacro::write(TeXMathStream & os) const
 			braced = cell(i)[0]->asScriptInset()->nuc().empty();
 		} else {
 			for (size_type j = 0; j < cell(i).size(); ++j) {
-				InsetMathMacro const * ma = cell(i)[j]->asMacro();
+				InsetMathMacro const * ma = cell(i)[j]->asMacroInset();
 				if (ma && ma->optionals()) {
 					braced = true;
 					break;

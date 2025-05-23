@@ -158,6 +158,15 @@ docstring InsetLabel::screenLabel() const
 }
 
 
+docstring InsetLabel::formattedCounter(bool const lc, bool const pl) const
+{
+	if (pl)
+		return lc ? formatted_counter_lc_pl_ : formatted_counter_pl_;
+
+	return lc ? formatted_counter_lc_ : formatted_counter_;
+}
+
+
 void InsetLabel::updateBuffer(ParIterator const & it, UpdateType, bool const /*deleted*/)
 {
 	docstring const & label = getParam("name");
@@ -195,13 +204,23 @@ void InsetLabel::updateBuffer(ParIterator const & it, UpdateType, bool const /*d
 		if (active_counter_ != from_ascii("equation")) {
 			counter_value_ = cnts.theCounter(active_counter_, lang->code());
 			pretty_counter_ = cnts.prettyCounter(active_counter_, lang->code());
+			docstring pretty_counter_pl = cnts.prettyCounter(active_counter_, lang->code(), false, true);
+			pretty_counter_lc_ = cnts.prettyCounter(active_counter_, lang->code(), true);
+			docstring pretty_counter_lc_pl = cnts.prettyCounter(active_counter_, lang->code(), true, true);
 			docstring prex;
 			split(label, prex, ':');
 			if (prex == label) {
 				// No prefix found
 				formatted_counter_ = pretty_counter_;
-			} else
+				formatted_counter_pl_ = pretty_counter_pl;
+				formatted_counter_lc_ = pretty_counter_lc_;
+				formatted_counter_lc_pl_ = pretty_counter_lc_pl;
+			} else {
 				formatted_counter_ = cnts.formattedCounter(active_counter_, prex, lang->code());
+				formatted_counter_pl_ = cnts.formattedCounter(active_counter_, prex, lang->code(), false, true);
+				formatted_counter_lc_ = cnts.formattedCounter(active_counter_, prex, lang->code(), true);
+				formatted_counter_lc_pl_ = cnts.formattedCounter(active_counter_, prex, lang->code(), true, true);
+			}
 		} else {
 			// For equations, the counter value and pretty counter
 			// value will be set by the parent InsetMathHull.

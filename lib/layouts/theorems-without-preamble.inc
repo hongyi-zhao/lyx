@@ -84,7 +84,7 @@ End
 
 Counter		corollary
 	GuiName Corollary
-	PrettyFormat "Corollary ##"
+	PrettyFormat "Corollary|Corollaries ##"
 End
 Style Corollary
 	CopyStyle	Theorem
@@ -107,7 +107,7 @@ End
 
 Counter		lemma
 	GuiName Lemma
-	PrettyFormat "Lemma ##"
+	PrettyFormat "Lemma|Lemmas ##"
 End
 Style Lemma
 	CopyStyle	Theorem
@@ -130,7 +130,7 @@ End
 
 Counter		proposition
 	GuiName Proposition
-	PrettyFormat "Proposition ##"
+	PrettyFormat "Proposition|Propositions ##"
 End
 Style Proposition
 	CopyStyle	Theorem
@@ -153,7 +153,7 @@ End
 
 Counter		prop
 	GuiName Prop(osition)
-	PrettyFormat "Proposition ##"
+	PrettyFormat "Proposition|Propositions ##"
 End
 Style Prop
 	CopyStyle	Theorem
@@ -176,7 +176,7 @@ End
 
 Counter		conjecture
 	GuiName Conjecture
-	PrettyFormat "Conjecture ##"
+	PrettyFormat "Conjecture|Conjectures ##"
 End
 Style Conjecture
 	CopyStyle	Theorem
@@ -206,7 +206,7 @@ End
 
 Counter		fact
 	GuiName Fact
-	PrettyFormat "Fact ##"
+	PrettyFormat "Fact|Facts ##"
 End
 Style Fact
 	CopyStyle	Theorem
@@ -229,7 +229,7 @@ End
 
 Counter		definition
 	GuiName Definition
-	PrettyFormat "Definition ##"
+	PrettyFormat "Definition|Definitions ##"
 End
 Style Definition
 	CopyStyle	Theorem
@@ -260,7 +260,7 @@ End
 
 Counter		example
 	GuiName Example
-	PrettyFormat "Example ##"
+	PrettyFormat "Example|Examples ##"
 End
 Style Example
 	CopyStyle	Conjecture
@@ -282,7 +282,7 @@ End
 
 Counter		problem
 	GuiName Problem
-	PrettyFormat "Problem ##"
+	PrettyFormat "Problem|Problems ##"
 End
 Style Problem
 	CopyStyle	Definition
@@ -308,7 +308,7 @@ End
 Counter		prob
 	GuiName Prob(lem)
 	Within	chapter
-	PrettyFormat "Problem ##"
+	PrettyFormat "Problem|Problems ##"
 End
 # Prob does not copy a style to avoid preamble code
 Style Prob
@@ -346,7 +346,7 @@ End
 
 Counter		solution
 	GuiName Solution
-	PrettyFormat "Solution ##"
+	PrettyFormat "Solution|Solutions ##"
 End
 Style Solution
 	CopyStyle	Problem
@@ -389,7 +389,7 @@ End
 
 Counter		exercise
 	GuiName Exercise
-	PrettyFormat "Exercise ##"
+	PrettyFormat "Exercise|Exercises ##"
 End
 Style Exercise
 	CopyStyle	Definition
@@ -413,7 +413,7 @@ End
 
 Counter		remark
 	GuiName Remark
-	PrettyFormat "Remark ##"
+	PrettyFormat "Remark|Remarks ##"
 End
 Style Remark
 	CopyStyle	Conjecture
@@ -455,7 +455,7 @@ End
 
 Counter		case
 	GuiName Case
-	PrettyFormat "Case ##"
+	PrettyFormat "Case|Cases ##"
 End
 Style Case
 	CopyStyle	Remark
@@ -479,7 +479,7 @@ End
 
 Counter		property
 	GuiName Property
-	PrettyFormat "Property ##"
+	PrettyFormat "Property|Properties ##"
 End
 Style Property
 	CopyStyle	Claim
@@ -503,7 +503,7 @@ End
 
 Counter		question
 	GuiName Question
-	PrettyFormat "Question ##"
+	PrettyFormat "Question|Questions ##"
 End
 Style Question
 	CopyStyle	Claim
@@ -527,7 +527,7 @@ End
 
 Counter		note
 	GuiName Note
-	PrettyFormat "Note ##"
+	PrettyFormat "Note|Notes ##"
 End
 Style Note
 	CopyStyle	Claim

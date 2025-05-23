@@ -15357,6 +15357,8 @@ status collapsed
 
 \change_inserted -712698321 1747303589
 MultiPar
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15371,6 +15373,8 @@ status collapsed
 
 \emph on
 0
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -15387,6 +15391,8 @@ status collapsed
 
 \change_inserted -712698321 1747303589
 1
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -18727,7 +18733,29 @@ string
 \end_inset
 
 ] A format for use with formatted references to this counter.
- For example,
+ 
+\change_inserted -712698321 1747995106
+Singular and plural forms can be given if separated by 
+\begin_inset Quotes els
+\end_inset
+
+|
+\begin_inset Quotes ers
+\end_inset
+
+ (e.g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Section|Sections
+\begin_inset Quotes erd
+\end_inset
+
+).
+ 
+\change_unchanged
+For example,
  one might want to have references to tables appear as 
 \begin_inset Quotes eld
 \end_inset
@@ -18748,7 +18776,7 @@ Table 2
  or a counter specification.
  (See the documentation for 
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LabelString
@@ -18771,12 +18799,46 @@ nolink "false"
  So,
  for sections,
  it would be:
- Section ##,
+ Section
+\change_inserted -712698321 1747995138
+|Sections
+\change_unchanged
+ ##,
  or perhaps:
- section 
+ 
+\change_deleted -712698321 1747995141
+s
+\change_inserted -712698321 1747995141
+S
+\change_unchanged
+ection
+\change_inserted -712698321 1747995147
+|Sections
+\change_unchanged
+ 
 \backslash
 arabic{section} (which might render as:
  section 2.7).
+
+\change_inserted -712698321 1747995301
+ Please always use the spelling with initial capitalization and indicate plural forms (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Criterion|Criteria
+\begin_inset Quotes erd
+\end_inset
+
+),
+ lowercase versions will be produced by \SpecialChar LyX
+ automatically.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -24567,7 +24629,29 @@ string
 \end_inset
 
 ] A format for use with formatted references to this counter.
- For example,
+ 
+\change_inserted -712698321 1747995324
+Singular and plural forms can be given if separated by 
+\begin_inset Quotes els
+\end_inset
+
+|
+\begin_inset Quotes ers
+\end_inset
+
+ (e.g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Section|Sections
+\begin_inset Quotes erd
+\end_inset
+
+).
+ 
+\change_unchanged
+For example,
  one might want to have references to section numbers appear as 
 \begin_inset Quotes eld
 \end_inset
@@ -24617,6 +24701,26 @@ arabic{section}
 \end_inset
 
  (which might render as §2.7).
+
+\change_inserted -712698321 1747995373
+ Please always use the spelling with initial capitalization and indicate plural forms wherever applicable (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Criterion|Criteria
+\begin_inset Quotes erd
+\end_inset
+
+),
+ lowercase versions will be produced by \SpecialChar LyX
+ automatically.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -24687,6 +24791,8 @@ lem
 ),
  and the second a formatting string,
  as for 
+\change_deleted -712698321 1747995412
+
 \begin_inset Flex Code
 status open
 
@@ -24696,7 +24802,9 @@ LabelString
 
 \end_inset
 
- or 
+ or
+\change_unchanged
+ 
 \begin_inset Flex Code
 status open
 

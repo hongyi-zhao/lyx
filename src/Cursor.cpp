@@ -1573,10 +1573,10 @@ void Cursor::niceInsert(MathAtom const & t)
 		asMathData(safe, md);
 		prevMath().cell(idx).insert(0, md);
 		editInsertedInset();
-	} else if (t->asMacro() && !safe.empty()) {
+	} else if (t->asMacroInset() && !safe.empty()) {
 		MathData md(buffer());
 		asMathData(safe, md);
-		docstring const name = t->asMacro()->name();
+		docstring const name = t->asMacroInset()->name();
 		MacroData const * data = buffer()->getMacro(name);
 		if (data && data->numargs() - data->optionals() > 0) {
 			plainInsert(MathAtom(new InsetMathBrace(buffer(), md)));
@@ -1791,7 +1791,7 @@ bool Cursor::macroModeClose(bool cancel)
 
 	// try to put argument into macro, if we just inserted a macro
 	bool macroArg = false;
-	InsetMathMacro * atomAsMacro = atom.nucleus()->asMacro();
+	InsetMathMacro * atomAsMacro = atom.nucleus()->asMacroInset();
 	InsetMathNest * atomAsNest = atom.nucleus()->asNestInset();
 	if (atomAsMacro) {
 		// macros here are still unfolded (in init mode in fact). So

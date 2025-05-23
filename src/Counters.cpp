@@ -621,8 +621,31 @@ docstring Counters::counterLabel(docstring const & format,
 }
 
 
+namespace {
+
+docstring getFormattedLabel(docstring in, bool const lc, bool const pl)
+{
+	if (contains(in, from_ascii("|"))) {
+		docstring res;
+		docstring l;
+		docstring v = rsplit(in, l, ' ');
+		vector<docstring> labels = getVectorFromString(l, from_ascii("|"));
+		res = pl ? labels.back() : labels.front();
+		if (lc)
+			res = lowercase(res);
+		return res + " " + v;
+	}
+	return in;
+}
+
+} // namespace anon
+
+
 docstring Counters::formattedCounter(docstring const & name,
-			docstring const & prex, string const & lang) const
+				     docstring const & prex,
+				     string const & lang,
+				     bool const lc,
+				     bool const pl) const
 {
 	CounterList::const_iterator it = counterList_.find(name);
 	if (it == counterList_.end())
@@ -630,8 +653,9 @@ docstring Counters::formattedCounter(docstring const & name,
 	Counter const & ctr = it->second;
 
 	docstring const value = theCounter(name, lang);
-	docstring const format =
-		translateIfPossible(counterLabel(ctr.refFormat(prex), lang), lang);
+	docstring const format = translateIfPossible(
+				counterLabel(getFormattedLabel(ctr.refFormat(prex), lc, pl), lang),
+				lang);
 	if (format.empty())
 		return value;
 	return subst(format, from_ascii("##"), value);
@@ -639,7 +663,9 @@ docstring Counters::formattedCounter(docstring const & name,
 
 
 docstring Counters::prettyCounter(docstring const & name,
-			       string const & lang) const
+				  string const & lang,
+				  bool const lc,
+				  bool const pl) const
 {
 	CounterList::const_iterator it = counterList_.find(name);
 	if (it == counterList_.end())
@@ -647,8 +673,10 @@ docstring Counters::prettyCounter(docstring const & name,
 	Counter const & ctr = it->second;
 
 	docstring const value = theCounter(name, lang);
-	docstring const & format =
-		translateIfPossible(counterLabel(ctr.prettyFormat(), lang), lang);
+
+	docstring const & format = translateIfPossible(
+				counterLabel(getFormattedLabel(ctr.prettyFormat(), lc, pl), lang),
+				lang);
 	if (format.empty())
 		return value;
 	return subst(format, from_ascii("##"), value);

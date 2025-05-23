@@ -28,9 +28,9 @@ public:
 	///
 	docstring const & counterValue() const { return counter_value_; }
 	///
-	docstring const & prettyCounter() const { return pretty_counter_; }
+	docstring const & prettyCounter(bool lc = false) const { return lc ? pretty_counter_lc_ : pretty_counter_; }
 	///
-	docstring const & formattedCounter() const { return formatted_counter_; }
+	docstring formattedCounter(bool lc = false, bool pl = false) const;
 	///
 	void setCounterValue(docstring const & cv) { counter_value_ = cv; }
 	///
@@ -119,6 +119,14 @@ private:
 	docstring pretty_counter_;
 	///
 	docstring formatted_counter_;
+	///
+	docstring pretty_counter_lc_;
+	///
+	docstring formatted_counter_lc_;
+	///
+	docstring formatted_counter_pl_;
+	///
+	docstring formatted_counter_lc_pl_;
 };
 
 

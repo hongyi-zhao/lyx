@@ -28,7 +28,7 @@ Float
 	UsesFloatPkg          false
 	ListCommand           listofalgorithms
 	RefPrefix             alg
-	PrettyFormat          "Algorithm ##"
+	PrettyFormat          "Algorithm|Algorithms ##"
 End
 
 Style Algorithm

@@ -292,7 +292,7 @@ bool testString(MathAtom const & at, char const * const str)
 
 bool testSymbol(MathAtom const & at, docstring const & name)
 {
-	return (at->asSymbolInset() || at->asMacro()) && at->name() == name;
+	return (at->asSymbolInset() || at->asMacroInset()) && at->name() == name;
 }
 
 

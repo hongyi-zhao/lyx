@@ -107,6 +107,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     EndI18nPreamble = re.compile(r'^\s*End((Lang)|(Babel))Preamble\s*$', re.IGNORECASE)
     I18nString = re.compile(r'_\(([^\)]+)\)')
     CounterFormat = re.compile(r'^\s*PrettyFormat\s+"?(.*)"?\s*$', re.IGNORECASE)
+    RefFormat = re.compile(r'^\s*RefFormat\s+[^\s]+\s+"?(.*)"?\s*$', re.IGNORECASE)
     CiteFormat = re.compile(r'^\s*CiteFormat', re.IGNORECASE)
     # Note: preceding and trailing space in the val below matters
     KeyVal = re.compile(r'^\s*B?_\w+\s(.*\S)*$')
@@ -356,7 +357,31 @@ def layouts_l10n(input_files, output, base, layouttranslations):
             if res != None:
                 string = res.group(1)
                 if not layouttranslations:
-                    writeString(out, src, base, lineno, string)
+                    CounterFormats = re.compile(r'^(.*)\|(.*) ([^\s]+)$', re.IGNORECASE)
+                    lres = CounterFormats.search(string)
+                    if lres != None:
+                        writeString(out, src, base, lineno, lres.group(1) + " " + lres.group(3))
+                        writeString(out, src, base, lineno, lres.group(1).lower() + " " + lres.group(3))
+                        writeString(out, src, base, lineno, lres.group(2) + " " + lres.group(3))
+                        writeString(out, src, base, lineno, lres.group(2).lower() + " " + lres.group(3))
+                    else:
+                        writeString(out, src, base, lineno, string)
+                        writeString(out, src, base, lineno, string.lower())
+                continue
+            res = RefFormat.search(line)
+            if res != None:
+                string = res.group(1)
+                if not layouttranslations:
+                    CounterFormats = re.compile(r'^(.*)\|(.*) ([^\s]+)$', re.IGNORECASE)
+                    lres = CounterFormats.search(string)
+                    if lres != None:
+                        writeString(out, src, base, lineno, lres.group(1) + " " + lres.group(3))
+                        writeString(out, src, base, lineno, lres.group(1).lower() + " " + lres.group(3))
+                        writeString(out, src, base, lineno, lres.group(2) + " " + lres.group(3))
+                        writeString(out, src, base, lineno, lres.group(2).lower() + " " + lres.group(3))
+                    else:
+                        writeString(out, src, base, lineno, string)
+                        writeString(out, src, base, lineno, string.lower())
                 continue
             res = Float.search(line)
             if res != None:

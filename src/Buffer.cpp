@@ -3945,7 +3945,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 
 			// get macro data
 			InsetMathMacroTemplate & macroTemplate =
-				*insit.inset->asInsetMath()->asMacroTemplate();
+				*insit.inset->asInsetMath()->asMacroTemplateInset();
 			MacroContext mc(owner_, it);
 			macroTemplate.updateToContext(mc);
 

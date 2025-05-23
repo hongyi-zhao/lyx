@@ -255,12 +255,12 @@ End
 # this steps the counters
 Counter		marginfigure
 	GuiName "Margin Figure"
-	PrettyFormat "Margin Figure ##"
+	PrettyFormat "Margin Figure|Margin Figures ##"
 End
 
 Counter		margintable
 	GuiName "Margin Table"
-	PrettyFormat "Margin Table ##"
+	PrettyFormat "Margin Table|Margin Tables ##"
 End
 
 # define the floats

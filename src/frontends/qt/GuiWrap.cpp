@@ -16,8 +16,6 @@
 #include "Validator.h"
 #include "FuncRequest.h"
 
-#include "support/gettext.h"
-
 using namespace std;
 
 namespace lyx {

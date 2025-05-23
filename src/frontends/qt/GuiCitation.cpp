@@ -18,7 +18,6 @@
 
 #include "FancyLineEdit.h"
 #include "GuiSelectionManager.h"
-#include "GuiView.h"
 #include "qt_helpers.h"
 
 #include "Buffer.h"
@@ -51,6 +50,8 @@ using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
+
+class GuiView;
 
 // FIXME THREAD
 // I am guessing that it would not hurt to make these private members.

@@ -12,7 +12,6 @@
 
 #include "GuiSymbols.h"
 
-#include "GuiView.h"
 #include "qt_helpers.h"
 
 #include "Buffer.h"
@@ -37,6 +36,7 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
+class GuiView;
 
 namespace {
 

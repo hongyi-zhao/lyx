@@ -13,7 +13,6 @@
 
 #include "GuiNote.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 
 using namespace std;
 

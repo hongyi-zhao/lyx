@@ -22,7 +22,6 @@
 
 #include "qt_helpers.h"
 
-#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/FileName.h"

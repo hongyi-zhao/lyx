@@ -135,6 +135,7 @@ done
 
 if [ -e ../development/tools/header_check-filter_candidates.sh ]; then
   echo Filtering suitable candidates from .cpp list...
+  echo "Following are strong candidates from above for removal:" >> "${LOG_FILE}"
   ../development/tools/header_check-filter_candidates.sh >> "${LOG_FILE}"
 fi
 

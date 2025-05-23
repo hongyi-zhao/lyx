@@ -23,7 +23,6 @@
 #include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
-#include "TextPainter.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -34,6 +33,8 @@ using namespace std;
 
 
 namespace lyx {
+
+class TextPainter;
 
 /////////////////////////////////////////////////////////////////////
 //

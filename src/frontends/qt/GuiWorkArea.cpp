@@ -33,7 +33,6 @@
 #include "Font.h"
 #include "FuncRequest.h"
 #include "KeySymbol.h"
-#include "KeySequence.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"

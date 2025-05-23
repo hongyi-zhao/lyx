@@ -13,10 +13,8 @@
 #include "GuiDelimiter.h"
 
 #include "GuiApplication.h"
-#include "GuiView.h"
 #include "qt_helpers.h"
 
-#include "FontEnums.h"
 #include "FuncRequest.h"
 
 #include "support/debug.h"
@@ -36,6 +34,8 @@ using namespace std;
 
 namespace lyx {
 namespace frontend {
+
+class GuiView;
 
 namespace {
 

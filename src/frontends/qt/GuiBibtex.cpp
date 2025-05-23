@@ -32,7 +32,6 @@
 #include "support/docstring_list.h"
 #include "support/FileName.h"
 #include "support/filetools.h" // changeExtension
-#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <QDialogButtonBox>

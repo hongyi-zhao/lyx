@@ -20,7 +20,6 @@
 #include "qt_helpers.h"
 #include "LyX.h" // for lyx::use_gui
 
-#include "support/gettext.h"
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lstrings.h"

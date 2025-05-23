@@ -15,7 +15,6 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "LaTeXFeatures.h"
-#include "xml.h"
 #include "texstream.h"
 #include "TextClass.h"
 

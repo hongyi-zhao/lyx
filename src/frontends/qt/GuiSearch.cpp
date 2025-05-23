@@ -29,7 +29,6 @@
 #include "qt_helpers.h"
 #include "support/filetools.h"
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/FileName.h"
 #include "frontends/Clipboard.h"
 

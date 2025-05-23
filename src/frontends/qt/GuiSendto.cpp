@@ -19,7 +19,6 @@
 #include "Format.h"
 #include "FuncRequest.h"
 
-#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/qstring_helpers.h"
 

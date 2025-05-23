@@ -24,7 +24,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "output_xhtml.h"
-#include "ParIterator.h"
 #include "Statistics.h"
 #include "texstream.h"
 #include "TocBackend.h"
@@ -42,6 +41,8 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+
+class ParIterator;
 
 InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)

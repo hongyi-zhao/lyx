@@ -14,7 +14,6 @@
 
 #include "InsetLine.h"
 
-#include "Buffer.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
@@ -37,6 +36,8 @@
 using namespace std;
 
 namespace lyx {
+
+class Buffer;
 
 using frontend::Painter;
 

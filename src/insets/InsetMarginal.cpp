@@ -17,7 +17,6 @@
 #include "output_docbook.h"
 
 #include "support/docstream.h"
-#include "support/gettext.h"
 
 namespace lyx {
 

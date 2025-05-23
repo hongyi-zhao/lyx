@@ -12,7 +12,6 @@
 
 #include "InsetIPAMacro.h"
 
-#include "Buffer.h"
 #include "Dimension.h"
 #include "FontInfo.h"
 #include "FuncRequest.h"
@@ -35,6 +34,8 @@
 using namespace std;
 
 namespace lyx {
+
+class Buffer;
 
 using support::Lexer;
 

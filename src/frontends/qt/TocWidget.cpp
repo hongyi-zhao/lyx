@@ -29,8 +29,6 @@
 #include "Menus.h"
 #include "TocBackend.h"
 
-#include "insets/InsetCommand.h"
-
 #include "support/debug.h"
 #include "support/lassert.h"
 

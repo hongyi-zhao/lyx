@@ -15,7 +15,6 @@
 
 #include "qt_helpers.h"
 
-#include "Buffer.h"
 #include "BufferView.h"
 #include "Language.h"
 
@@ -33,6 +32,9 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+
+class Buffer;
+
 namespace frontend {
 
 /////////////////////////////////////////////////////////////////

@@ -12,7 +12,6 @@
 
 #include "GuiErrorList.h"
 
-#include "GuiView.h"
 #include "qt_helpers.h"
 
 #include "Buffer.h"
@@ -53,6 +52,8 @@ string const guiErrorType(string const & s)
 
 namespace lyx {
 namespace frontend {
+
+class GuiView;
 
 GuiErrorList::GuiErrorList(GuiView & lv)
 	: GuiDialog(lv, "errorlist", qt_("Error List")), buf_(nullptr), from_master_(false)

@@ -35,7 +35,6 @@
 #include "support/docstring.h"
 #include "support/docstring_list.h"
 #include "support/ExceptionMessage.h"
-#include "support/gettext.h"
 
 #include <QKeyEvent>
 #include <QListWidgetItem>

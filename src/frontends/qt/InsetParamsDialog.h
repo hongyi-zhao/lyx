@@ -17,7 +17,7 @@
 #include "DialogView.h"
 #include "ui_InsetParamsUi.h"
 
-#include <QPushButton>
+class QPushButton;
 
 namespace lyx {
 

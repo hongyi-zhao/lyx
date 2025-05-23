@@ -20,7 +20,6 @@
 #include "insets/InsetNomencl.h"
 
 #include "support/debug.h"
-#include "support/gettext.h"
 
 using namespace std;
 

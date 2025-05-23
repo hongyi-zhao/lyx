@@ -18,7 +18,6 @@
 #include "GuiApplication.h"
 #include "GuiFontExample.h"
 #include "GuiLyXFiles.h"
-#include "GuiView.h"
 #include "qt_helpers.h"
 #include "version.h"
 #include "Validator.h"
@@ -92,6 +91,8 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////
 
 namespace frontend {
+
+class GuiView;
 
 QString const catLookAndFeel = N_("Look & Feel");
 QString const catEditing = N_("Editing");

@@ -17,8 +17,6 @@
 #include "FuncRequest.h"
 #include "LyXAction.h"
 
-#include <QString>
-
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/Lexer.h"

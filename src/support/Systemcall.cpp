@@ -32,7 +32,6 @@
 #include <QElapsedTimer>
 #include <QThread>
 #include <QCoreApplication>
-#include <QDebug>
 
 #define USE_QPROCESS
 

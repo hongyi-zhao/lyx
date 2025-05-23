@@ -22,8 +22,6 @@
 
 #include "mathed/InsetMathSpace.h"
 
-#include "support/gettext.h"
-
 
 using namespace std;
 

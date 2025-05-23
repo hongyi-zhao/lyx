@@ -21,7 +21,6 @@
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
-#include "support/gettext.h"
 #include "support/os.h"
 
 #include <string>

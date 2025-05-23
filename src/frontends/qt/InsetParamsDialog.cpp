@@ -24,6 +24,7 @@
 #include "support/debug.h"
 
 #include <QDialogButtonBox>
+#include <QPushButton>
 
 using namespace std;
 using namespace lyx::support;

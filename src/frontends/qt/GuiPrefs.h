@@ -50,7 +50,6 @@
 #include <QtWidgets/qmenu.h>
 #include <QStandardItemModel>
 #include <QStyledItemDelegate>
-#include <QTableView>
 #include <QUndoCommand>
 
 

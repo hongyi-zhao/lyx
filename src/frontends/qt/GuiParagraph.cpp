@@ -22,7 +22,6 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
-#include "GuiView.h"
 #include "Layout.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
@@ -40,6 +39,8 @@ using namespace std;
 
 namespace lyx {
 namespace frontend {
+
+class GuiView;
 
 GuiParagraph::GuiParagraph(GuiView & lv)
 	: DialogView(lv, "paragraph", qt_("Paragraph Settings"))

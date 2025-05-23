@@ -12,8 +12,6 @@
 
 #include "InsetFootlike.h"
 
-#include "Buffer.h"
-
 #include "support/lstrings.h"
 
 #include <iostream>
@@ -21,6 +19,8 @@
 using namespace std;
 
 namespace lyx {
+
+class Buffer;
 
 using support::token;
 

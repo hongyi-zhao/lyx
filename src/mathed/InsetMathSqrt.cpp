@@ -19,10 +19,11 @@
 #include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
-#include "TextPainter.h"
 
 
 namespace lyx {
+
+class TextPainter;
 
 InsetMathSqrt::InsetMathSqrt(Buffer * buf)
 	: InsetMathNest(buf, 1)

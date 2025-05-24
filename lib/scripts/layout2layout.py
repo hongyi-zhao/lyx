@@ -363,6 +363,7 @@ currentFormat = 109
 # New Layout tags "TheoremName", "TheoremZRefName",
 # "TheoremCounter", "TheoremParentCounter", "TheoremStyle",
 # "TheoremCrossRefName", "TheoremCrossRefPluralName"
+# New InsetArgument tag "InheritFont"
 
 # Incremented to format 109, 15 May 2025 by spitz
 # New Layout tag "MultiPar"

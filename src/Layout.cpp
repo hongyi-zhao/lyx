@@ -1375,6 +1375,9 @@ void Layout::readArgument(Lexer & lex, bool validating)
 		} else if (tok == "freespacing") {
 			lex.next();
 			arg.free_spacing = lex.getBool();
+		} else if (tok == "inheritfont") {
+			lex.next();
+			arg.inh_font = lex.getBool();
 		} else if (tok == "docbooktag") {
 			lex.next();
 			arg.docbooktag = lex.getDocString();
@@ -1440,6 +1443,8 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 		lyxWrite(os, arg.font, "Font", 2);
 	if (arg.labelfont != inherit_font)
 		lyxWrite(os, arg.labelfont, "LabelFont", 2);
+	if (!arg.inh_font)
+		os << "\t\tInheritFont " << arg.inh_font << "\n";
 	switch (arg.passthru) {
 		case PT_TRUE:
 			os << "\t\tPassThru true\n";

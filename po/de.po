@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2025-05-23 14:39+0200\n"
-"PO-Revision-Date: 2025-05-23 16:05+0200\n"
+"PO-Revision-Date: 2025-05-24 10:47+0200\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -25312,7 +25312,7 @@ msgstr "Einfügung schließen|s"
 #: lib/ui/stdcontext.inc:183 lib/ui/stdcontext.inc:189
 #: lib/ui/stdcontext.inc:205 lib/ui/stdcontext.inc:710
 msgid "Dissolve Inset|D"
-msgstr "Einfügung auflösen|ü"
+msgstr "Einfügung auflösen|ö"
 
 #: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:204
 msgid "Show Label|L"

@@ -19476,6 +19476,69 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
+InheritFont
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Die Schrifteinstellungen innerhalb der Einfügung werden von der unmittelbaren Umgebung übernommen,
+ wenn dieser Parameter auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt ist.
+ Das gilt sowohl für die \SpecialChar LaTeX
+-Ausgabe als auch für die Darstellung auf dem Bildschirm.
+ Im Fall des Werts 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ werden sie auf die Standard-Schrifteinstellungen des Dokuments zurückgesetzt.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 InsertCotext
 \end_layout
 
@@ -22469,6 +22532,67 @@ PassThruChars
 \end_inset
 
  des zugehörigen Absatzstils oder der zugehörigen Einfügung.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InheritFont
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Die Bildschirm-Schrifteinstellungen innerhalb des Arguments werden von der unmittelbaren Umgebung übernommen,
+ wenn dieser Parameter auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt ist (was die Voreinstellung ist).
+ Im Fall des Werts 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ werden sie auf die Standard-Schrifteinstellungen des Dokuments zurückgesetzt.
 \end_layout
 
 \begin_layout Itemize

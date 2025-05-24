@@ -112,6 +112,7 @@ public:
 		docstring pass_thru_chars;
 		bool is_toc_caption = false;
 		bool free_spacing = false;
+		bool inh_font = true;
 		std::string newlinecmd;
 		/// The DocBook tag corresponding to this argument.
 		docstring docbooktag;

@@ -76,6 +76,8 @@ public:
 	///
 	bool isPassThru() const override { return pass_thru_; }
 	///
+	bool inheritFont() const override { return inherit_font_; }
+	///
 	bool isFreeSpacing() const override { return free_spacing_; }
 	///
 	bool isTocCaption() const { return is_toc_caption_; }
@@ -122,6 +124,8 @@ private:
 	bool pass_thru_local_;
 	/// Effective pass-thru setting (inherited or local)
 	bool pass_thru_;
+	///
+	bool inherit_font_;
 	///
 	bool free_spacing_;
 	///

@@ -871,6 +871,7 @@ void InsetLayout::readArgument(Lexer & lex)
 	arg.labelfont = inherit_font;
 	arg.is_toc_caption = false;
 	arg.free_spacing = false;
+	arg.inh_font = true;
 	arg.passthru = PT_INHERITED;
 	arg.nodelims = false;
 	string nr;
@@ -955,6 +956,9 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "freespacing") {
 			lex.next();
 			arg.free_spacing = lex.getBool();
+		} else if (tok == "inheritfont") {
+			lex.next();
+			arg.inh_font = lex.getBool();
 		} else if (tok == "docbooktag") {
 			lex.next();
 			arg.docbooktag = lex.getDocString();

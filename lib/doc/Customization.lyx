@@ -23828,6 +23828,58 @@ that should be output in raw form,
  this needs to be explicitly defined for arguments.
  That is,
  arguments do not inherit PassThruChars from their parent inset or layout.
+\change_inserted -712698321 1748075210
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1748075463
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1748075210
+InheritFont
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1748075210
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1748075210
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] The font inside the argument is inherited from the surrounding text on screen if this parameter is 1 (which is the default).
+ Otherwise the document default font is used.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2025-05-20 22:16-0400\n"
-"PO-Revision-Date: 2025-05-04 16:35+0200\n"
+"PO-Revision-Date: 2025-05-24 15:54+0200\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -1663,9 +1663,8 @@ msgstr "C&erca"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
 #: src/frontends/qt/ui/SearchUi.ui:120
-#, fuzzy
 msgid "&Find what:"
-msgstr "T&rova:"
+msgstr "&Cerca:"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:92
 msgid "Replace &with:"
@@ -9135,7 +9134,7 @@ msgstr "Articolo ACS (American Chemical Society)"
 #: lib/layouts/stdsections.inc:117 lib/layouts/tufte-book.layout:98
 #: lib/layouts/tufte-book.layout:131 lib/layouts/tufte-handout.layout:40
 msgid "Short Title|S"
-msgstr "Titolo breve|l"
+msgstr "Titolo breve"
 
 #: lib/layouts/achemso.layout:76
 msgid "Short title which will appear in the running header"
@@ -11007,7 +11006,7 @@ msgstr "Nota istituto"
 
 #: lib/layouts/beamer.layout:1151
 msgid "Short Date|S"
-msgstr "Data breve|D"
+msgstr "Data breve|b"
 
 #: lib/layouts/beamer.layout:1152
 msgid "Short date which appears in the sidebar/header"
@@ -18758,16 +18757,14 @@ msgstr "Blocco colorato 5"
 #: lib/layouts/theorems-ams-bytype.inc:67
 #: lib/layouts/theorems-ams-chap-bytype.inc:110 lib/layouts/theorems-ams.inc:64
 #: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems.inc:64
-#, fuzzy
 msgid "theorem"
-msgstr "teoremi"
+msgstr "teorema"
 
 #: lib/layouts/theorems-ams-bytype.inc:68
 #: lib/layouts/theorems-ams-chap-bytype.inc:111 lib/layouts/theorems-ams.inc:65
 #: lib/layouts/theorems-bytype.inc:62 lib/layouts/theorems.inc:65
-#, fuzzy
 msgid "Theorems"
-msgstr "Teorema"
+msgstr "Teoremi"
 
 #: lib/layouts/theorems-ams-bytype.inc:68
 #: lib/layouts/theorems-ams-chap-bytype.inc:111 lib/layouts/theorems-ams.inc:65
@@ -18778,71 +18775,62 @@ msgstr "teoremi"
 #: lib/layouts/theorems-ams-bytype.inc:91
 #: lib/layouts/theorems-ams-chap-bytype.inc:135 lib/layouts/theorems-ams.inc:89
 #: lib/layouts/theorems-bytype.inc:84 lib/layouts/theorems.inc:89
-#, fuzzy
 msgid "corollary"
-msgstr "Corollario"
+msgstr "corollario"
 
 #: lib/layouts/theorems-ams-bytype.inc:92
 #: lib/layouts/theorems-ams-chap-bytype.inc:136 lib/layouts/theorems-ams.inc:90
 #: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems.inc:90
-#, fuzzy
 msgid "Corollaries"
-msgstr "Corollario"
+msgstr "Corollari"
 
 #: lib/layouts/theorems-ams-bytype.inc:92
 #: lib/layouts/theorems-ams-chap-bytype.inc:136 lib/layouts/theorems-ams.inc:90
 #: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems.inc:90
-#, fuzzy
 msgid "corollaries"
-msgstr "Corollario"
+msgstr "corollari"
 
 #: lib/layouts/theorems-ams-bytype.inc:114
 #: lib/layouts/theorems-ams-chap-bytype.inc:159
 #: lib/layouts/theorems-ams.inc:114 lib/layouts/theorems-bytype.inc:108
 #: lib/layouts/theorems.inc:114
-#, fuzzy
 msgid "lemma"
-msgstr "Lemma"
+msgstr "lemma"
 
 #: lib/layouts/theorems-ams-bytype.inc:115
 #: lib/layouts/theorems-ams-chap-bytype.inc:160
 #: lib/layouts/theorems-ams.inc:115 lib/layouts/theorems-bytype.inc:109
 #: lib/layouts/theorems.inc:115
-#, fuzzy
 msgid "Lemmas"
-msgstr "Lemma"
+msgstr "Lemmi"
 
 #: lib/layouts/theorems-ams-bytype.inc:115
 #: lib/layouts/theorems-ams-chap-bytype.inc:160
 #: lib/layouts/theorems-ams.inc:115 lib/layouts/theorems-bytype.inc:109
 #: lib/layouts/theorems.inc:115
-#, fuzzy
 msgid "lemmas"
-msgstr "Lemma"
+msgstr "lemmi"
 
 #: lib/layouts/theorems-ams-bytype.inc:138
 #: lib/layouts/theorems-ams-chap-bytype.inc:184
 #: lib/layouts/theorems-ams.inc:139 lib/layouts/theorems-bytype.inc:132
 #: lib/layouts/theorems.inc:140
-#, fuzzy
 msgid "proposition"
-msgstr "Proposizione"
+msgstr "proposizione"
 
 #: lib/layouts/theorems-ams-bytype.inc:139
 #: lib/layouts/theorems-ams-chap-bytype.inc:185
 #: lib/layouts/theorems-ams.inc:140 lib/layouts/theorems-bytype.inc:133
 #: lib/layouts/theorems.inc:141
-#, fuzzy
 msgid "Propositions"
-msgstr "Proposizione"
+msgstr "Proposizioni"
 
 #: lib/layouts/theorems-ams-bytype.inc:139
 #: lib/layouts/theorems-ams-chap-bytype.inc:185
 #: lib/layouts/theorems-ams.inc:140 lib/layouts/theorems-bytype.inc:133
 #: lib/layouts/theorems.inc:141
-#, fuzzy
 msgid "propositions"
-msgstr "Proposizione"
+msgstr "proposizioni"
 
 #: lib/layouts/theorems-ams-bytype.inc:161
 #: lib/layouts/theorems-ams-chap-bytype.inc:209
@@ -18904,17 +18892,15 @@ msgstr "Definizione \\thedefinition."
 #: lib/layouts/theorems-ams-chap-bytype.inc:267
 #: lib/layouts/theorems-ams.inc:222 lib/layouts/theorems-bytype.inc:212
 #: lib/layouts/theorems.inc:223
-#, fuzzy
 msgid "definition"
-msgstr "Definizione"
+msgstr "definizione"
 
 #: lib/layouts/theorems-ams-bytype.inc:219
 #: lib/layouts/theorems-ams-chap-bytype.inc:268
 #: lib/layouts/theorems-ams.inc:223 lib/layouts/theorems-bytype.inc:213
 #: lib/layouts/theorems.inc:224
-#, fuzzy
 msgid "definitions"
-msgstr "Definizioni"
+msgstr "definizioni"
 
 #: lib/layouts/theorems-ams-bytype.inc:238
 #: lib/layouts/theorems-ams-chap-bytype.inc:287
@@ -18927,17 +18913,15 @@ msgstr "Esempio \\theexample."
 #: lib/layouts/theorems-ams-chap-bytype.inc:292
 #: lib/layouts/theorems-ams.inc:246 lib/layouts/theorems-bytype.inc:236
 #: lib/layouts/theorems.inc:247
-#, fuzzy
 msgid "example"
-msgstr "Esempio"
+msgstr "esempio"
 
 #: lib/layouts/theorems-ams-bytype.inc:243
 #: lib/layouts/theorems-ams-chap-bytype.inc:293
 #: lib/layouts/theorems-ams.inc:247 lib/layouts/theorems-bytype.inc:237
 #: lib/layouts/theorems.inc:248
-#, fuzzy
 msgid "examples"
-msgstr "Esempi"
+msgstr "esempi"
 
 #: lib/layouts/theorems-ams-bytype.inc:260
 #: lib/layouts/theorems-ams-chap-bytype.inc:310
@@ -18978,65 +18962,57 @@ msgstr "Esercizio \\theexercise."
 #: lib/layouts/theorems-ams-chap-bytype.inc:342
 #: lib/layouts/theorems-ams.inc:294 lib/layouts/theorems-bytype.inc:284
 #: lib/layouts/theorems.inc:295
-#, fuzzy
 msgid "exercise"
-msgstr "Esercizio"
+msgstr "esercizio"
 
 #: lib/layouts/theorems-ams-bytype.inc:291
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
 #: lib/layouts/theorems-ams.inc:295 lib/layouts/theorems-bytype.inc:285
 #: lib/layouts/theorems.inc:296
-#, fuzzy
 msgid "Exercises"
-msgstr "Esercizio"
+msgstr "Esercizi"
 
 #: lib/layouts/theorems-ams-bytype.inc:291
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
 #: lib/layouts/theorems-ams.inc:295 lib/layouts/theorems-bytype.inc:285
 #: lib/layouts/theorems.inc:296
-#, fuzzy
 msgid "exercises"
-msgstr "Esercizio"
+msgstr "esercizi"
 
 #: lib/layouts/theorems-ams-bytype.inc:315
 #: lib/layouts/theorems-ams-chap-bytype.inc:368
 #: lib/layouts/theorems-ams.inc:319 lib/layouts/theorems-bytype.inc:309
 #: lib/layouts/theorems.inc:320
-#, fuzzy
 msgid "solution"
-msgstr "Soluzione"
+msgstr "soluzione"
 
 #: lib/layouts/theorems-ams-bytype.inc:316
 #: lib/layouts/theorems-ams-chap-bytype.inc:369
 #: lib/layouts/theorems-ams.inc:320 lib/layouts/theorems-bytype.inc:310
 #: lib/layouts/theorems.inc:321
-#, fuzzy
 msgid "Solutions"
-msgstr "Soluzione"
+msgstr "Soluzioni"
 
 #: lib/layouts/theorems-ams-bytype.inc:316
 #: lib/layouts/theorems-ams-chap-bytype.inc:369
 #: lib/layouts/theorems-ams.inc:320 lib/layouts/theorems-bytype.inc:310
 #: lib/layouts/theorems.inc:321
-#, fuzzy
 msgid "solutions"
-msgstr "Soluzione"
+msgstr "soluzioni"
 
 #: lib/layouts/theorems-ams-bytype.inc:348
 #: lib/layouts/theorems-ams-chap-bytype.inc:402
 #: lib/layouts/theorems-ams.inc:353 lib/layouts/theorems-bytype.inc:342
 #: lib/layouts/theorems.inc:354
-#, fuzzy
 msgid "remark"
-msgstr "Osservazione"
+msgstr "osservazione"
 
 #: lib/layouts/theorems-ams-bytype.inc:349
 #: lib/layouts/theorems-ams-chap-bytype.inc:403
 #: lib/layouts/theorems-ams.inc:354 lib/layouts/theorems-bytype.inc:343
 #: lib/layouts/theorems.inc:355
-#, fuzzy
 msgid "remarks"
-msgstr "Osservazioni"
+msgstr "osservazioni"
 
 #: lib/layouts/theorems-ams-bytype.inc:372
 #: lib/layouts/theorems-ams-chap-bytype.inc:427
@@ -19176,9 +19152,8 @@ msgstr "Algoritmo"
 #: lib/layouts/theorems-ams-extended-bytype.module:88
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:125
 #: lib/layouts/theorems-ams-extended.module:86
-#, fuzzy
 msgid "algorithms"
-msgstr "Algoritmo"
+msgstr "algoritmi"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:105
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:142
@@ -19271,16 +19246,14 @@ msgstr "Nota di LyX"
 #: lib/layouts/theorems-ams-extended-bytype.module:213
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:253
 #: lib/layouts/theorems-ams-extended.module:212
-#, fuzzy
 msgid "Notes[[theorem]]"
-msgstr "Conclusioni"
+msgstr "Note"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:213
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:253
 #: lib/layouts/theorems-ams-extended.module:212
-#, fuzzy
 msgid "notes[[theorem]]"
-msgstr "Conclusioni"
+msgstr "note"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:226
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:266
@@ -23603,9 +23576,8 @@ msgid "<Page>|P"
 msgstr "<pagina>|p"
 
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:731
-#, fuzzy
 msgid "p. <Page>|."
-msgstr "<pagina>|p"
+msgstr "p. <pagina>|."
 
 #: lib/ui/stdcontext.inc:100 lib/ui/stdcontext.inc:122
 #: lib/ui/stdcontext.inc:732
@@ -23784,11 +23756,11 @@ msgstr "Spazio sottile protetto (1/6 em)|t"
 
 #: lib/ui/stdcontext.inc:273
 msgid "Non-Breaking Medium Space (3/9 em)|M"
-msgstr "Spazio medio negativo protetto (3/9 em)|d"
+msgstr "Spazio medio negativo protetto (3/9 em)|m"
 
 #: lib/ui/stdcontext.inc:274
 msgid "Non-Breaking Thick Space (5/18 em)|i"
-msgstr "Spazio spesso protetto (5/18 em)|i"
+msgstr "Spazio spesso protetto (5/18 em)|5"
 
 #: lib/ui/stdcontext.inc:275
 msgid "Non-Breaking Negative Thin Space (-1/6 em)|N"
@@ -23796,19 +23768,19 @@ msgstr "Spazio sottile negativo protetto (-1/6 em)|n"
 
 #: lib/ui/stdcontext.inc:276
 msgid "Non-Breaking Negative Medium Space (-2/9 em)|v"
-msgstr "Spazio medio negativo protetto (-2/9 em)|d"
+msgstr "Spazio medio negativo protetto (-2/9 em)|v"
 
 #: lib/ui/stdcontext.inc:277
 msgid "Non-Breaking Negative Thick Space (-5/18 em)|h"
-msgstr "Spazio spesso negativo protetto (-5/18 em)|p"
+msgstr "Spazio spesso negativo protetto (-5/18 em)|s"
 
 #: lib/ui/stdcontext.inc:278
 msgid "Half Quad Space (1/2 em)|l"
-msgstr "Mezzo quadratone (1/2 em)|q"
+msgstr "Mezzo quadratone (1/2 em)|e"
 
 #: lib/ui/stdcontext.inc:279
 msgid "Non-Breaking Half Quad Space (1/2 em)|k"
-msgstr "Mezzo quadratone protetto (1/2 em)|z"
+msgstr "Mezzo quadratone protetto (1/2 em)|a"
 
 #: lib/ui/stdcontext.inc:280
 msgid "Quad Space (1 em)|Q"
@@ -23820,7 +23792,7 @@ msgstr "Due quadratoni (2 em)|u"
 
 #: lib/ui/stdcontext.inc:282
 msgid "Horizontal Fill|F"
-msgstr "Riempimento orizzontale|o"
+msgstr "Riempimento orizzontale|l"
 
 #: lib/ui/stdcontext.inc:283
 msgid "Non-Breaking Horizontal Fill|z"
@@ -23908,7 +23880,7 @@ msgstr "Salto grande|g"
 
 #: lib/ui/stdcontext.inc:321
 msgid "Half line height|H"
-msgstr "Mezza altezza linea|M"
+msgstr "Mezza altezza linea|z"
 
 #: lib/ui/stdcontext.inc:322
 msgid "Line height|L"
@@ -24000,7 +23972,7 @@ msgstr "Dividi inserto|t"
 
 #: lib/ui/stdcontext.inc:387
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Vai al segnalibro memorizzato|l"
+msgstr "Vai al segnalibro memorizzato|m"
 
 #: lib/ui/stdcontext.inc:388 lib/ui/stdmenus.inc:613
 msgid "Forward Search|F"
@@ -24016,7 +23988,7 @@ msgstr "Sposta paragrafo giù|g"
 
 #: lib/ui/stdcontext.inc:395
 msgid "Promote Section|r"
-msgstr "Promuovi sezione|m"
+msgstr "Promuovi sezione|v"
 
 #: lib/ui/stdcontext.inc:396
 msgid "Demote Section|m"
@@ -24028,7 +24000,7 @@ msgstr "Sposta sezione giù|ù"
 
 #: lib/ui/stdcontext.inc:398 lib/ui/stdcontext.inc:743
 msgid "Move Section Up|U"
-msgstr "Sposta sezione su|s"
+msgstr "Sposta sezione su|z"
 
 #: lib/ui/stdcontext.inc:400
 msgid "Insert Regular Expression"
@@ -24133,7 +24105,7 @@ msgstr "Modifica esternamente...|e"
 
 #: lib/ui/stdcontext.inc:474 lib/ui/stdmenus.inc:224
 msgid "Top|T"
-msgstr "Alto|a"
+msgstr "Alto|A"
 
 #: lib/ui/stdcontext.inc:475 lib/ui/stdmenus.inc:226
 msgid "Bottom|B"
@@ -24354,7 +24326,7 @@ msgstr "Rifiuta modifica|R"
 
 #: lib/ui/stdcontext.inc:741
 msgid "Promote Section|P"
-msgstr "Promuovi sezione|m"
+msgstr "Promuovi sezione|u"
 
 #: lib/ui/stdcontext.inc:742
 msgid "Demote Section|D"
@@ -24638,11 +24610,11 @@ msgstr "Righe e colonne|c"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Increase List Depth|I"
-msgstr "Aumenta il rientro dell'elenco|u"
+msgstr "Aumenta il rientro dell'elenco|m"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Decrease List Depth|D"
-msgstr "Diminuisci il rientro dell'elenco|m"
+msgstr "Diminuisci il rientro dell'elenco|D"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Dissolve Inset"
@@ -31006,9 +30978,8 @@ msgid "Minted Listings"
 msgstr "Listati vari con minted"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Computer Algebra Systems"
-msgstr "Usa sistema di algebra computazionale|s"
+msgstr "Sistemi di algebra computazionale"
 
 #: lib/examples/Articles:0
 msgid "Instant Preview"
@@ -36677,9 +36648,8 @@ msgid "Cleveref and varioref"
 msgstr "Cleveref e varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1678
-#, fuzzy
 msgid "Prettyref (unlocalized) and varioref"
-msgstr "Prettyref e varioref"
+msgstr "Prettyref (non localizzato) e varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1679
 msgid "Prettyref and varioref"
@@ -36797,11 +36767,11 @@ msgstr "&Torna indietro"
 
 #: src/frontends/qt/GuiDocument.cpp:2009
 msgid "&Left:"
-msgstr "Si&nistra:"
+msgstr "Si&nistro:"
 
 #: src/frontends/qt/GuiDocument.cpp:2010
 msgid "&Right:"
-msgstr "&Destra:"
+msgstr "&Destro:"
 
 #: src/frontends/qt/GuiDocument.cpp:2013
 msgid "&Outer:"
@@ -38336,19 +38306,16 @@ msgid "Identity"
 msgstr "Identità"
 
 #: src/frontends/qt/GuiPrefs.h:356
-#, fuzzy
 msgid "Light"
-msgstr "&Chiara"
+msgstr "Chiaro"
 
 #: src/frontends/qt/GuiPrefs.h:356
-#, fuzzy
 msgid "Dark"
-msgstr "&Scura"
+msgstr "Scuro"
 
 #: src/frontends/qt/GuiPrefs.h:356
-#, fuzzy
 msgid "Object/Element"
-msgstr "Nome oggetto"
+msgstr "Oggetto/Elemento"
 
 #: src/frontends/qt/GuiPrintNomencl.cpp:46
 msgid "Longest label width (guessed)"
@@ -38522,7 +38489,6 @@ msgid "Click here to change search options"
 msgstr "Cliccare per cambiare opzioni di ricerca"
 
 #: src/frontends/qt/GuiSearch.cpp:598
-#, fuzzy
 msgid "Find and Replace"
 msgstr "Trova e sostituisci"
 
@@ -39782,7 +39748,7 @@ msgstr "Rimuovi dal vocabolario di documento|r"
 
 #: src/frontends/qt/Menus.cpp:1008
 msgid "Switch Language...|w"
-msgstr "Cambia lingua ...|b"
+msgstr "Cambia lingua ...|u"
 
 #: src/frontends/qt/Menus.cpp:1022
 msgid "Language|L"
@@ -41609,14 +41575,12 @@ msgid "Page Number"
 msgstr "Numero pagina"
 
 #: src/insets/InsetRef.cpp:956 src/mathed/InsetMathRef.cpp:428
-#, fuzzy
 msgid "Prefixed Page Number"
-msgstr "Numero pagina testuale"
+msgstr "Numero di pagina prefissato"
 
 #: src/insets/InsetRef.cpp:956
-#, fuzzy
 msgid "PrefPage"
-msgstr "Prefazione"
+msgstr "PrefPage"
 
 #: src/insets/InsetRef.cpp:957 src/mathed/InsetMathRef.cpp:429
 msgid "Textual Page Number"
@@ -42115,28 +42079,27 @@ msgstr "Standard"
 
 #: src/mathed/InsetMathRef.cpp:425
 msgid "Ref: "
-msgstr "Rif: "
+msgstr "Ref: "
 
 #: src/mathed/InsetMathRef.cpp:426
 msgid "EqRef: "
-msgstr "RifEq: "
+msgstr "EqRef: "
 
 #: src/mathed/InsetMathRef.cpp:427
 msgid "Page: "
-msgstr "Pagina: "
+msgstr "Page: "
 
 #: src/mathed/InsetMathRef.cpp:428
-#, fuzzy
 msgid "PrefPage: "
-msgstr "Prefazione:"
+msgstr "PrefPage: "
 
 #: src/mathed/InsetMathRef.cpp:429
 msgid "TextPage: "
-msgstr "TestoPagina: "
+msgstr "TextPage: "
 
 #: src/mathed/InsetMathRef.cpp:430
 msgid "Ref+Text: "
-msgstr "Rif+Testo: "
+msgstr "Ref+Text: "
 
 #: src/mathed/InsetMathRef.cpp:431
 msgid "PrettyRef"

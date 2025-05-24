@@ -18,7 +18,6 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
-#include "Floating.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2025-05-24 09:22+0200\n"
-"PO-Revision-Date: 2025-05-24 08:24+0000\n"
+"POT-Creation-Date: 2025-05-26 11:15+0200\n"
+"PO-Revision-Date: 2025-05-26 09:34+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -7286,21 +7286,24 @@ msgid "Text of a note in a table"
 msgstr "Text poznámky v tabuľke"
 
 #: lib/layouts/AEA.layout:183 lib/layouts/IEEEtran.layout:50
-#: lib/layouts/acmart.layout:572 lib/layouts/acmart.layout:583
+#: lib/layouts/acmart.layout:574 lib/layouts/acmart.layout:585
 #: lib/layouts/beamer.layout:1394 lib/layouts/elsart.layout:297
 #: lib/layouts/elsart.layout:313 lib/layouts/foils.layout:249
 #: lib/layouts/heb-article.layout:22 lib/layouts/ijmpc.layout:425
 #: lib/layouts/ijmpd.layout:432 lib/layouts/ijmpd.layout:436
 #: lib/layouts/llncs.layout:449 lib/layouts/siamltex.layout:69
 #: lib/layouts/svmono.layout:29 lib/layouts/theorems-ams-bytype.inc:30
-#: lib/layouts/theorems-ams-bytype.inc:68
-#: lib/layouts/theorems-ams-bytype.inc:71
+#: lib/layouts/theorems-ams-bytype.inc:67
+#: lib/layouts/theorems-ams-bytype.inc:70
+#: lib/layouts/theorems-ams-bytype.inc:73
 #: lib/layouts/theorems-ams-chap-bytype.inc:72
-#: lib/layouts/theorems-ams-chap-bytype.inc:111
-#: lib/layouts/theorems-ams-chap-bytype.inc:114 lib/layouts/theorems-ams.inc:27
-#: lib/layouts/theorems-ams.inc:65 lib/layouts/theorems-ams.inc:68
-#: lib/layouts/theorems-ams.module:22 lib/layouts/theorems-bytype.inc:27
-#: lib/layouts/theorems-bytype.inc:62 lib/layouts/theorems-bytype.inc:65
+#: lib/layouts/theorems-ams-chap-bytype.inc:110
+#: lib/layouts/theorems-ams-chap-bytype.inc:113
+#: lib/layouts/theorems-ams-chap-bytype.inc:116 lib/layouts/theorems-ams.inc:27
+#: lib/layouts/theorems-ams.inc:64 lib/layouts/theorems-ams.inc:67
+#: lib/layouts/theorems-ams.inc:70 lib/layouts/theorems-ams.module:22
+#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-bytype.inc:61
+#: lib/layouts/theorems-bytype.inc:64 lib/layouts/theorems-bytype.inc:67
 #: lib/layouts/theorems-chap-bytype.module:56
 #: lib/layouts/theorems-chap.module:16 lib/layouts/theorems-chap.module:36
 #: lib/layouts/theorems-counters-bytype.inc:5
@@ -7314,9 +7317,10 @@ msgstr "Text poznámky v tabuľke"
 #: lib/layouts/theorems-without-preamble.inc:38
 #: lib/layouts/theorems-without-preamble.inc:72
 #: lib/layouts/theorems-without-preamble.inc:75 lib/layouts/theorems.inc:27
-#: lib/layouts/theorems.inc:65 lib/layouts/theorems.inc:68
+#: lib/layouts/theorems.inc:64 lib/layouts/theorems.inc:67
+#: lib/layouts/theorems.inc:70
 msgid "Theorem"
-msgstr "Teoréma"
+msgstr "Teorém"
 
 #: lib/layouts/AEA.layout:192 lib/layouts/algorithm2e.module:19
 #: lib/layouts/algorithm2e.module:34 lib/layouts/elsart.layout:429
@@ -7478,21 +7482,22 @@ msgstr "Záver"
 msgid "Condition"
 msgstr "Podmienka"
 
-#: lib/layouts/AEA.layout:256 lib/layouts/acmart.layout:639
+#: lib/layouts/AEA.layout:256 lib/layouts/acmart.layout:641
 #: lib/layouts/elsart.layout:460 lib/layouts/ijmpc.layout:483
 #: lib/layouts/ijmpd.layout:514 lib/layouts/ijmpd.layout:518
 #: lib/layouts/llncs.layout:346 lib/layouts/siamltex.layout:109
-#: lib/layouts/svmono.layout:64 lib/layouts/theorems-ams-bytype.inc:147
-#: lib/layouts/theorems-ams-bytype.inc:153
-#: lib/layouts/theorems-ams-bytype.inc:157
-#: lib/layouts/theorems-ams-bytype.inc:160
-#: lib/layouts/theorems-ams-chap-bytype.inc:193
-#: lib/layouts/theorems-ams-chap-bytype.inc:202
-#: lib/layouts/theorems-ams-chap-bytype.inc:205
-#: lib/layouts/theorems-ams.inc:147 lib/layouts/theorems-ams.inc:155
-#: lib/layouts/theorems-ams.inc:159 lib/layouts/theorems-ams.inc:162
-#: lib/layouts/theorems-bytype.inc:141 lib/layouts/theorems-bytype.inc:147
-#: lib/layouts/theorems-bytype.inc:151 lib/layouts/theorems-bytype.inc:154
+#: lib/layouts/svmono.layout:64 lib/layouts/theorems-ams-bytype.inc:155
+#: lib/layouts/theorems-ams-bytype.inc:161
+#: lib/layouts/theorems-ams-bytype.inc:165
+#: lib/layouts/theorems-ams-bytype.inc:168
+#: lib/layouts/theorems-ams-chap-bytype.inc:201
+#: lib/layouts/theorems-ams-chap-bytype.inc:209
+#: lib/layouts/theorems-ams-chap-bytype.inc:212
+#: lib/layouts/theorems-ams-chap-bytype.inc:215
+#: lib/layouts/theorems-ams.inc:155 lib/layouts/theorems-ams.inc:163
+#: lib/layouts/theorems-ams.inc:167 lib/layouts/theorems-ams.inc:170
+#: lib/layouts/theorems-bytype.inc:149 lib/layouts/theorems-bytype.inc:155
+#: lib/layouts/theorems-bytype.inc:159 lib/layouts/theorems-bytype.inc:162
 #: lib/layouts/theorems-chap-bytype.module:76
 #: lib/layouts/theorems-counters-bytype.inc:25
 #: lib/layouts/theorems-order.inc:31 lib/layouts/theorems-sec-bytype.module:76
@@ -7501,27 +7506,30 @@ msgstr "Podmienka"
 #: lib/layouts/theorems-without-preamble.inc:178
 #: lib/layouts/theorems-without-preamble.inc:181
 #: lib/layouts/theorems-without-preamble.inc:194
-#: lib/layouts/theorems-without-preamble.inc:197 lib/layouts/theorems.inc:148
-#: lib/layouts/theorems.inc:156 lib/layouts/theorems.inc:160
-#: lib/layouts/theorems.inc:163
+#: lib/layouts/theorems-without-preamble.inc:197 lib/layouts/theorems.inc:156
+#: lib/layouts/theorems.inc:164 lib/layouts/theorems.inc:168
+#: lib/layouts/theorems.inc:171
 msgid "Conjecture"
-msgstr "Hypotéza"
+msgstr "Domnienka"
 
-#: lib/layouts/AEA.layout:265 lib/layouts/acmart.layout:618
+#: lib/layouts/AEA.layout:265 lib/layouts/acmart.layout:620
 #: lib/layouts/beamer.layout:1310 lib/layouts/elsart.layout:393
 #: lib/layouts/foils.layout:282 lib/layouts/heb-article.layout:71
 #: lib/layouts/ijmpc.layout:446 lib/layouts/ijmpd.layout:463
 #: lib/layouts/ijmpd.layout:467 lib/layouts/llncs.layout:353
 #: lib/layouts/siamltex.layout:79 lib/layouts/svmono.layout:44
-#: lib/layouts/theorems-ams-bytype.inc:81
-#: lib/layouts/theorems-ams-bytype.inc:90
-#: lib/layouts/theorems-ams-bytype.inc:93
-#: lib/layouts/theorems-ams-chap-bytype.inc:124
-#: lib/layouts/theorems-ams-chap-bytype.inc:134
-#: lib/layouts/theorems-ams-chap-bytype.inc:137 lib/layouts/theorems-ams.inc:78
-#: lib/layouts/theorems-ams.inc:88 lib/layouts/theorems-ams.inc:91
-#: lib/layouts/theorems-bytype.inc:75 lib/layouts/theorems-bytype.inc:83
-#: lib/layouts/theorems-bytype.inc:86
+#: lib/layouts/theorems-ams-bytype.inc:83
+#: lib/layouts/theorems-ams-bytype.inc:91
+#: lib/layouts/theorems-ams-bytype.inc:94
+#: lib/layouts/theorems-ams-bytype.inc:97
+#: lib/layouts/theorems-ams-chap-bytype.inc:126
+#: lib/layouts/theorems-ams-chap-bytype.inc:135
+#: lib/layouts/theorems-ams-chap-bytype.inc:138
+#: lib/layouts/theorems-ams-chap-bytype.inc:141 lib/layouts/theorems-ams.inc:80
+#: lib/layouts/theorems-ams.inc:89 lib/layouts/theorems-ams.inc:92
+#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-bytype.inc:77
+#: lib/layouts/theorems-bytype.inc:84 lib/layouts/theorems-bytype.inc:87
+#: lib/layouts/theorems-bytype.inc:90
 #: lib/layouts/theorems-chap-bytype.module:61
 #: lib/layouts/theorems-counters-bytype.inc:10
 #: lib/layouts/theorems-order.inc:13 lib/layouts/theorems-sec-bytype.module:61
@@ -7530,10 +7538,11 @@ msgstr "Hypotéza"
 #: lib/layouts/theorems-without-preamble.inc:86
 #: lib/layouts/theorems-without-preamble.inc:89
 #: lib/layouts/theorems-without-preamble.inc:95
-#: lib/layouts/theorems-without-preamble.inc:98 lib/layouts/theorems.inc:78
-#: lib/layouts/theorems.inc:88 lib/layouts/theorems.inc:91
+#: lib/layouts/theorems-without-preamble.inc:98 lib/layouts/theorems.inc:80
+#: lib/layouts/theorems.inc:89 lib/layouts/theorems.inc:92
+#: lib/layouts/theorems.inc:95
 msgid "Corollary"
-msgstr "Korolár"
+msgstr "Dôsledok"
 
 #: lib/layouts/AEA.layout:274 lib/layouts/elsart.layout:417
 #: lib/layouts/theorems-ams-extended-bytype.module:40
@@ -7611,15 +7620,18 @@ msgid "Example"
 msgstr "Príklad"
 
 #: lib/layouts/AEA.layout:302 lib/layouts/llncs.layout:381
-#: lib/layouts/svmono.layout:79 lib/layouts/theorems-ams-bytype.inc:270
-#: lib/layouts/theorems-ams-bytype.inc:279
-#: lib/layouts/theorems-ams-bytype.inc:282
-#: lib/layouts/theorems-ams-chap-bytype.inc:319
-#: lib/layouts/theorems-ams-chap-bytype.inc:329
-#: lib/layouts/theorems-ams-chap-bytype.inc:332
-#: lib/layouts/theorems-ams.inc:273 lib/layouts/theorems-ams.inc:283
-#: lib/layouts/theorems-ams.inc:286 lib/layouts/theorems-bytype.inc:264
-#: lib/layouts/theorems-bytype.inc:273 lib/layouts/theorems-bytype.inc:276
+#: lib/layouts/svmono.layout:79 lib/layouts/theorems-ams-bytype.inc:282
+#: lib/layouts/theorems-ams-bytype.inc:290
+#: lib/layouts/theorems-ams-bytype.inc:293
+#: lib/layouts/theorems-ams-bytype.inc:296
+#: lib/layouts/theorems-ams-chap-bytype.inc:333
+#: lib/layouts/theorems-ams-chap-bytype.inc:342
+#: lib/layouts/theorems-ams-chap-bytype.inc:345
+#: lib/layouts/theorems-ams-chap-bytype.inc:348
+#: lib/layouts/theorems-ams.inc:285 lib/layouts/theorems-ams.inc:294
+#: lib/layouts/theorems-ams.inc:297 lib/layouts/theorems-ams.inc:300
+#: lib/layouts/theorems-bytype.inc:276 lib/layouts/theorems-bytype.inc:284
+#: lib/layouts/theorems-bytype.inc:287 lib/layouts/theorems-bytype.inc:290
 #: lib/layouts/theorems-chap-bytype.module:101
 #: lib/layouts/theorems-counters-bytype.inc:46
 #: lib/layouts/theorems-order.inc:55 lib/layouts/theorems-sec-bytype.module:101
@@ -7630,10 +7642,11 @@ msgstr "Príklad"
 #: lib/layouts/theorems-without-preamble.inc:391
 #: lib/layouts/theorems-without-preamble.inc:394
 #: lib/layouts/theorems-without-preamble.inc:401
-#: lib/layouts/theorems-without-preamble.inc:404 lib/layouts/theorems.inc:274
-#: lib/layouts/theorems.inc:284 lib/layouts/theorems.inc:287
+#: lib/layouts/theorems-without-preamble.inc:404 lib/layouts/theorems.inc:286
+#: lib/layouts/theorems.inc:295 lib/layouts/theorems.inc:298
+#: lib/layouts/theorems.inc:301
 msgid "Exercise"
-msgstr "Úloha"
+msgstr "Cvičenie"
 
 #: lib/layouts/AEA.layout:311 lib/layouts/acmart.layout:625
 #: lib/layouts/beamer.layout:1382 lib/layouts/elsart.layout:381
@@ -9568,19 +9581,19 @@ msgstr "Dodatočný text teorémy"
 msgid "Additional text appended to the theorem header"
 msgstr "Dodatočný text pripojený ku hlavičke teorémy"
 
-#: lib/layouts/acmart.layout:608 lib/layouts/heb-article.layout:38
+#: lib/layouts/acmart.layout:610 lib/layouts/heb-article.layout:38
 #: lib/layouts/ijmpc.layout:427 lib/layouts/ijmpd.layout:438
 #: lib/layouts/theorems-ams-bytype.inc:55
 #: lib/layouts/theorems-ams-chap-bytype.inc:97 lib/layouts/theorems-ams.inc:52
 #: lib/layouts/theorems-bytype.inc:49
 #: lib/layouts/theorems-without-preamble.inc:62 lib/layouts/theorems.inc:52
 msgid "Theorem \\thetheorem."
-msgstr "Teoréma \\thetheorem."
+msgstr "Teorém \\thetheorem."
 
-#: lib/layouts/acmart.layout:622 lib/layouts/heb-article.layout:74
-#: lib/layouts/theorems-ams.inc:82 lib/layouts/theorems.inc:82
+#: lib/layouts/acmart.layout:624 lib/layouts/heb-article.layout:74
+#: lib/layouts/theorems-ams.inc:84 lib/layouts/theorems.inc:84
 msgid "Corollary \\thetheorem."
-msgstr "Korolár \\thetheorem."
+msgstr "Dôsledok \\thetheorem."
 
 #: lib/layouts/acmart.layout:629 lib/layouts/heb-article.layout:63
 #: lib/layouts/theorems-ams.inc:105 lib/layouts/theorems.inc:105
@@ -9590,12 +9603,12 @@ msgstr "Lemma \\thetheorem."
 #: lib/layouts/acmart.layout:638 lib/layouts/theorems-ams.inc:134
 #: lib/layouts/theorems.inc:134 lib/layouts/theorems.inc:135
 msgid "Proposition \\thetheorem."
-msgstr "Návrh \\thetheorem."
+msgstr "Tvrdenie \\thetheorem."
 
-#: lib/layouts/acmart.layout:643 lib/layouts/theorems-ams.inc:151
-#: lib/layouts/theorems.inc:152
+#: lib/layouts/acmart.layout:645 lib/layouts/theorems-ams.inc:159
+#: lib/layouts/theorems.inc:160
 msgid "Conjecture \\thetheorem."
-msgstr "Hypotéza \\thetheorem."
+msgstr "Domnienka \\thetheorem."
 
 #: lib/layouts/acmart.layout:650 lib/layouts/heb-article.layout:96
 #: lib/layouts/theorems-ams.inc:201 lib/layouts/theorems.inc:202
@@ -10100,7 +10113,7 @@ msgstr "Knihy"
 
 #: lib/layouts/amsbook.layout:142
 msgid "Chapter Exercises"
-msgstr "Úlohy z kapitoly"
+msgstr "Cvičenia z kapitoly"
 
 #: lib/layouts/amsbook.layout:166 lib/layouts/apa.layout:407
 #: lib/layouts/apa.layout:445 lib/layouts/apa.layout:487
@@ -10979,7 +10992,7 @@ msgstr "Verš"
 #: lib/layouts/beamer.layout:1320 lib/layouts/foils.layout:341
 #: lib/layouts/theorems-starred.inc:83
 msgid "Corollary."
-msgstr "Korolár."
+msgstr "Dôsledok."
 
 #: lib/layouts/beamer.layout:1333 lib/layouts/beamer.layout:1490
 #: lib/layouts/beamer.layout:1510 lib/layouts/beamer.layout:1530
@@ -11052,7 +11065,7 @@ msgstr "Lemma."
 #: lib/layouts/beamer.layout:1397 lib/layouts/foils.layout:327
 #: lib/layouts/theorems-named.module:18 lib/layouts/theorems-starred.inc:35
 msgid "Theorem."
-msgstr "Teoréma."
+msgstr "Teorém."
 
 #: lib/layouts/beamer.layout:1405 lib/layouts/egs.layout:738
 #: lib/layouts/lyxmacros.inc:12
@@ -12569,16 +12582,20 @@ msgstr "Voľba vďaky"
 msgid "Optional argument for the thanks statement"
 msgstr "Voliteľný argument príkazu vďaka"
 
-#: lib/layouts/elsart.layout:330 lib/layouts/theorems-counters-bytype.inc:7
+#: lib/layouts/IEEEtran.layout:51 lib/layouts/acmart.layout:576
+#: lib/layouts/elsart.layout:298 lib/layouts/elsart.layout:330
+#: lib/layouts/theorems-ams.module:24
+#: lib/layouts/theorems-counters-bytype.inc:7
+#: lib/layouts/theorems-std.module:17
 msgid "Theorem \\arabic{theorem}"
-msgstr "Teoréma \\arabic{theorem}"
+msgstr "Teorém \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:51 lib/layouts/acmart.layout:576
 #: lib/layouts/elsart.layout:298 lib/layouts/theorems-ams.module:24
 #: lib/layouts/theorems-counters-bytype.inc:7
 #: lib/layouts/theorems-std.module:17
 msgid "theorem \\arabic{theorem}"
-msgstr "teoréma \\arabic{theorem}"
+msgstr "teorém \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:51 lib/layouts/acmart.layout:576
 #: lib/layouts/elsart.layout:298 lib/layouts/theorems-ams.module:24
@@ -12623,30 +12640,34 @@ msgstr "Lemmy \\arabic{theorem}"
 msgid "lemmas \\arabic{theorem}"
 msgstr "lemmy \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:396 lib/layouts/theorems-counters-bytype.inc:12
+#: lib/layouts/IEEEtran.layout:52 lib/layouts/acmart.layout:577
+#: lib/layouts/elsart.layout:299 lib/layouts/elsart.layout:396
+#: lib/layouts/theorems-ams.module:25
+#: lib/layouts/theorems-counters-bytype.inc:12
+#: lib/layouts/theorems-std.module:18
 msgid "Corollary \\arabic{theorem}"
-msgstr "Korolár \\arabic{theorem}"
+msgstr "Dôsledok \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:52 lib/layouts/acmart.layout:577
 #: lib/layouts/elsart.layout:299 lib/layouts/theorems-ams.module:25
 #: lib/layouts/theorems-counters-bytype.inc:12
 #: lib/layouts/theorems-std.module:18
 msgid "corollary \\arabic{theorem}"
-msgstr "korolár \\arabic{theorem}"
+msgstr "dôsledok \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:52 lib/layouts/acmart.layout:577
 #: lib/layouts/elsart.layout:299 lib/layouts/theorems-ams.module:25
 #: lib/layouts/theorems-counters-bytype.inc:12
 #: lib/layouts/theorems-std.module:18
 msgid "Corollaries \\arabic{theorem}"
-msgstr "Koroláre \\arabic{theorem}"
+msgstr "Dôsledky \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:52 lib/layouts/acmart.layout:577
 #: lib/layouts/elsart.layout:299 lib/layouts/theorems-ams.module:25
 #: lib/layouts/theorems-counters-bytype.inc:12
 #: lib/layouts/theorems-std.module:18
 msgid "corollaries \\arabic{theorem}"
-msgstr "koroláre \\arabic{theorem}"
+msgstr "dôsledky \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:54 lib/layouts/acmart.layout:579
 #: lib/layouts/elsart.layout:301 lib/layouts/elsart.layout:408
@@ -12654,28 +12675,28 @@ msgstr "koroláre \\arabic{theorem}"
 #: lib/layouts/theorems-counters-bytype.inc:22
 #: lib/layouts/theorems-std.module:20
 msgid "Proposition \\arabic{theorem}"
-msgstr "Návrh \\arabic{theorem}"
+msgstr "Tvrdenie \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:54 lib/layouts/acmart.layout:579
 #: lib/layouts/elsart.layout:301 lib/layouts/theorems-ams.module:27
 #: lib/layouts/theorems-counters-bytype.inc:22
 #: lib/layouts/theorems-std.module:20
 msgid "proposition \\arabic{theorem}"
-msgstr "návrh \\arabic{theorem}"
+msgstr "tvrdenie \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:54 lib/layouts/acmart.layout:579
 #: lib/layouts/elsart.layout:301 lib/layouts/theorems-ams.module:27
 #: lib/layouts/theorems-counters-bytype.inc:22
 #: lib/layouts/theorems-std.module:20
 msgid "Propositions \\arabic{theorem}"
-msgstr "Návrhy \\arabic{theorem}"
+msgstr "Tvrdenia \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:54 lib/layouts/acmart.layout:579
 #: lib/layouts/elsart.layout:301 lib/layouts/theorems-ams.module:27
 #: lib/layouts/theorems-counters-bytype.inc:22
 #: lib/layouts/theorems-std.module:20
 msgid "propositions \\arabic{theorem}"
-msgstr "návrhy \\arabic{theorem}"
+msgstr "tvrdenia \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:420
 #: lib/layouts/theorems-counters-extended-bytype.inc:6
@@ -12742,30 +12763,34 @@ msgstr "Definície \\arabic{theorem}"
 msgid "definitions \\arabic{theorem}"
 msgstr "definície \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:463 lib/layouts/theorems-counters-bytype.inc:26
+#: lib/layouts/IEEEtran.layout:55 lib/layouts/acmart.layout:580
+#: lib/layouts/elsart.layout:302 lib/layouts/elsart.layout:463
+#: lib/layouts/theorems-ams.module:28
+#: lib/layouts/theorems-counters-bytype.inc:26
+#: lib/layouts/theorems-std.module:21
 msgid "Conjecture \\arabic{theorem}"
-msgstr "Hypotéza \\arabic{theorem}"
+msgstr "Domnienka \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:55 lib/layouts/acmart.layout:580
 #: lib/layouts/elsart.layout:302 lib/layouts/theorems-ams.module:28
 #: lib/layouts/theorems-counters-bytype.inc:26
 #: lib/layouts/theorems-std.module:21
 msgid "conjecture \\arabic{theorem}"
-msgstr "hypotéza \\arabic{theorem}"
+msgstr "domnienka \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:55 lib/layouts/acmart.layout:580
 #: lib/layouts/elsart.layout:302 lib/layouts/theorems-ams.module:28
 #: lib/layouts/theorems-counters-bytype.inc:26
 #: lib/layouts/theorems-std.module:21
 msgid "Conjectures \\arabic{theorem}"
-msgstr "Hypotézy \\arabic{theorem}"
+msgstr "Domnienky \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:55 lib/layouts/acmart.layout:580
 #: lib/layouts/elsart.layout:302 lib/layouts/theorems-ams.module:28
 #: lib/layouts/theorems-counters-bytype.inc:26
 #: lib/layouts/theorems-std.module:21
 msgid "conjectures \\arabic{theorem}"
-msgstr "hypotézy \\arabic{theorem}"
+msgstr "domnienky \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:475 lib/layouts/theorems-counters-bytype.inc:39
 msgid "Example \\arabic{theorem}"
@@ -13845,7 +13870,7 @@ msgstr "Obmedzenie:"
 
 #: lib/layouts/foils.layout:264 lib/layouts/llncs.layout:452
 msgid "Theorem #."
-msgstr "Teoréma #."
+msgstr "Teorém #."
 
 #: lib/layouts/foils.layout:278 lib/layouts/llncs.layout:391
 msgid "Lemma #."
@@ -13853,11 +13878,11 @@ msgstr "Lemma #."
 
 #: lib/layouts/foils.layout:285 lib/layouts/llncs.layout:356
 msgid "Corollary #."
-msgstr "Korolár #."
+msgstr "Dôsledok #."
 
 #: lib/layouts/foils.layout:292 lib/layouts/llncs.layout:425
 msgid "Proposition #."
-msgstr "Návrh #."
+msgstr "Tvrdenie #."
 
 #: lib/layouts/foils.layout:299 lib/layouts/llncs.layout:370
 msgid "Definition #."
@@ -13866,7 +13891,7 @@ msgstr "Definícia #."
 #: lib/layouts/foils.layout:324 lib/layouts/siamltex.layout:75
 #: lib/layouts/theorems-order.inc:10 lib/layouts/theorems-starred.inc:29
 msgid "Theorem*"
-msgstr "Teoréma*"
+msgstr "Teorém*"
 
 #: lib/layouts/foils.layout:331 lib/layouts/siamltex.layout:95
 #: lib/layouts/theorems-order.inc:22 lib/layouts/theorems-starred.inc:101
@@ -13876,16 +13901,16 @@ msgstr "Lemma*"
 #: lib/layouts/foils.layout:338 lib/layouts/siamltex.layout:85
 #: lib/layouts/theorems-order.inc:16 lib/layouts/theorems-starred.inc:80
 msgid "Corollary*"
-msgstr "Korolár*"
+msgstr "Dôsledok*"
 
 #: lib/layouts/foils.layout:345 lib/layouts/siamltex.layout:105
 #: lib/layouts/theorems-order.inc:28 lib/layouts/theorems-starred.inc:122
 msgid "Proposition*"
-msgstr "Návrh*"
+msgstr "Tvrdenie*"
 
 #: lib/layouts/foils.layout:348 lib/layouts/theorems-starred.inc:125
 msgid "Proposition."
-msgstr "Návrh."
+msgstr "Tvrdenie."
 
 #: lib/layouts/foils.layout:352 lib/layouts/siamltex.layout:134
 #: lib/layouts/theorems-order.inc:40 lib/layouts/theorems-starred.inc:185
@@ -14407,11 +14432,11 @@ msgstr "Hebrejský článok"
 
 #: lib/layouts/heb-article.layout:14 lib/layouts/theorems-sec.module:18
 msgid "Theorem \\thesection.\\arabic{theorem}"
-msgstr "Teoréma \\thesection.\\arabic{theorem}"
+msgstr "Teorém \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/heb-article.layout:14 lib/layouts/theorems-sec.module:18
 msgid "theorem \\thesection.\\arabic{theorem}"
-msgstr "teoréma \\thesection.\\arabic{theorem}"
+msgstr "teorém \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/heb-article.layout:14 lib/layouts/theorems-sec.module:18
 msgid "Theorems \\thesection.\\arabic{theorem}"
@@ -14423,19 +14448,19 @@ msgstr "teorémy \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/heb-article.layout:15 lib/layouts/theorems-sec.module:19
 msgid "Corollary \\thesection.\\arabic{theorem}"
-msgstr "Korolár \\thesection.\\arabic{theorem}"
+msgstr "Dôsledok \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/heb-article.layout:15 lib/layouts/theorems-sec.module:19
 msgid "corollary \\thesection.\\arabic{theorem}"
-msgstr "korolár \\thesection.\\arabic{theorem}"
+msgstr "dôsledok \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/heb-article.layout:15 lib/layouts/theorems-sec.module:19
 msgid "Corollaries \\thesection.\\arabic{theorem}"
-msgstr "Koroláre \\thesection.\\arabic{theorem}"
+msgstr "Dôsledky \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/heb-article.layout:15 lib/layouts/theorems-sec.module:19
 msgid "corollaries \\thesection.\\arabic{theorem}"
-msgstr "koroláre \\thesection.\\arabic{theorem}"
+msgstr "dôsledky \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/heb-article.layout:16 lib/layouts/theorems-sec.module:20
 msgid "Lemma \\thesection.\\arabic{theorem}"
@@ -14678,12 +14703,12 @@ msgstr ""
 "číslované členy"
 
 #: lib/layouts/ijmpc.layout:447 lib/layouts/ijmpd.layout:468
-#: lib/layouts/theorems-ams-bytype.inc:84
-#: lib/layouts/theorems-ams-chap-bytype.inc:127
-#: lib/layouts/theorems-bytype.inc:78
+#: lib/layouts/theorems-ams-bytype.inc:86
+#: lib/layouts/theorems-ams-chap-bytype.inc:129
+#: lib/layouts/theorems-bytype.inc:80
 #: lib/layouts/theorems-without-preamble.inc:93
 msgid "Corollary \\thecorollary."
-msgstr "Korolár \\thecorollary."
+msgstr "Dôsledok \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:451 lib/layouts/ijmpd.layout:477
 #: lib/layouts/theorems-ams-bytype.inc:106
@@ -14699,7 +14724,7 @@ msgstr "Lemma \\thelemma."
 #: lib/layouts/theorems-bytype.inc:128
 #: lib/layouts/theorems-without-preamble.inc:139
 msgid "Proposition \\theproposition."
-msgstr "Návrh \\theproposition."
+msgstr "Tvrdenie \\theproposition."
 
 #: lib/layouts/ijmpc.layout:458 lib/layouts/ijmpd.layout:489
 #: lib/layouts/ijmpd.layout:493 lib/layouts/llncs.layout:428
@@ -14761,12 +14786,12 @@ msgid "Claim \\theclaim."
 msgstr "Nárok \\theclaim."
 
 #: lib/layouts/ijmpc.layout:484 lib/layouts/ijmpd.layout:519
-#: lib/layouts/theorems-ams-bytype.inc:150
-#: lib/layouts/theorems-ams-chap-bytype.inc:196
-#: lib/layouts/theorems-bytype.inc:144
+#: lib/layouts/theorems-ams-bytype.inc:158
+#: lib/layouts/theorems-ams-chap-bytype.inc:204
+#: lib/layouts/theorems-bytype.inc:152
 #: lib/layouts/theorems-without-preamble.inc:185
 msgid "Conjecture \\theconjecture."
-msgstr "Hypotéza \\theconjecture."
+msgstr "Domnienka \\theconjecture."
 
 #: lib/layouts/ijmpc.layout:494 lib/layouts/theorems-without-preamble.inc:158
 msgid "Prop"
@@ -14802,19 +14827,19 @@ msgstr "teorémy ##"
 
 #: lib/layouts/ijmpd.layout:465 lib/layouts/theorems-without-preamble.inc:87
 msgid "Corollary ##"
-msgstr "Korolár ##"
+msgstr "Dôsledok ##"
 
 #: lib/layouts/ijmpd.layout:465 lib/layouts/theorems-without-preamble.inc:87
 msgid "corollary ##"
-msgstr "korolár ##"
+msgstr "dôsledok ##"
 
 #: lib/layouts/ijmpd.layout:465 lib/layouts/theorems-without-preamble.inc:87
 msgid "Corollaries ##"
-msgstr "Koroláre ##"
+msgstr "Dôsledky ##"
 
 #: lib/layouts/ijmpd.layout:465 lib/layouts/theorems-without-preamble.inc:87
 msgid "corollaries ##"
-msgstr "koroláre ##"
+msgstr "dôsledky ##"
 
 #: lib/layouts/ijmpd.layout:474 lib/layouts/theorems-without-preamble.inc:110
 msgid "Lemma ##"
@@ -14871,22 +14896,22 @@ msgstr "Tvrdenie(prop)"
 #: lib/layouts/ijmpd.layout:528 lib/layouts/theorems-without-preamble.inc:133
 #: lib/layouts/theorems-without-preamble.inc:156
 msgid "Proposition ##"
-msgstr "Návrh ##"
+msgstr "Tvrdenie ##"
 
 #: lib/layouts/ijmpd.layout:528 lib/layouts/theorems-without-preamble.inc:133
 #: lib/layouts/theorems-without-preamble.inc:156
 msgid "proposition ##"
-msgstr "návrh ##"
+msgstr "tvrdenie ##"
 
 #: lib/layouts/ijmpd.layout:528 lib/layouts/theorems-without-preamble.inc:133
 #: lib/layouts/theorems-without-preamble.inc:156
 msgid "Propositions ##"
-msgstr "Návrhy ##"
+msgstr "Tvrdenia ##"
 
 #: lib/layouts/ijmpd.layout:528 lib/layouts/theorems-without-preamble.inc:133
 #: lib/layouts/theorems-without-preamble.inc:156
 msgid "propositions ##"
-msgstr "návrhy ##"
+msgstr "tvrdenia ##"
 
 #: lib/layouts/initials.module:2
 msgid "Initials (Drop Caps)"
@@ -16152,7 +16177,7 @@ msgstr "Nárok."
 
 #: lib/layouts/llncs.layout:349
 msgid "Conjecture #."
-msgstr "Hypotéza #."
+msgstr "Domnienka #."
 
 #: lib/layouts/llncs.layout:377
 msgid "Example #."
@@ -16160,7 +16185,7 @@ msgstr "Príklad #."
 
 #: lib/layouts/llncs.layout:384
 msgid "Exercise #."
-msgstr "Úloha #."
+msgstr "Cvičenie #."
 
 #: lib/layouts/llncs.layout:397
 msgid "Note #."
@@ -18305,7 +18330,7 @@ msgstr "Society for Industrial and Applied Mathematics (SIAM)"
 #: lib/layouts/siamltex.layout:114 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:143
 msgid "Conjecture*"
-msgstr "Hypotéza*"
+msgstr "Domnienka*"
 
 #: lib/layouts/siamltex.layout:124
 #: lib/layouts/theorems-ams-extended-bytype.module:100
@@ -19323,19 +19348,19 @@ msgstr "teorémy"
 #: lib/layouts/theorems-ams-chap-bytype.inc:135 lib/layouts/theorems-ams.inc:89
 #: lib/layouts/theorems-bytype.inc:84 lib/layouts/theorems.inc:89
 msgid "corollary"
-msgstr "korolár"
+msgstr "dôsledok"
 
 #: lib/layouts/theorems-ams-bytype.inc:92
 #: lib/layouts/theorems-ams-chap-bytype.inc:136 lib/layouts/theorems-ams.inc:90
 #: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems.inc:90
 msgid "Corollaries"
-msgstr "Koroláre"
+msgstr "Dôsledky"
 
 #: lib/layouts/theorems-ams-bytype.inc:92
 #: lib/layouts/theorems-ams-chap-bytype.inc:136 lib/layouts/theorems-ams.inc:90
 #: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems.inc:90
 msgid "corollaries"
-msgstr "koroláre"
+msgstr "dôsledky"
 
 #: lib/layouts/theorems-ams-bytype.inc:114
 #: lib/layouts/theorems-ams-chap-bytype.inc:159
@@ -19363,42 +19388,42 @@ msgstr "lemmy"
 #: lib/layouts/theorems-ams.inc:139 lib/layouts/theorems-bytype.inc:132
 #: lib/layouts/theorems.inc:140
 msgid "proposition"
-msgstr "návrh"
+msgstr "tvrdenie"
 
 #: lib/layouts/theorems-ams-bytype.inc:139
 #: lib/layouts/theorems-ams-chap-bytype.inc:185
 #: lib/layouts/theorems-ams.inc:140 lib/layouts/theorems-bytype.inc:133
 #: lib/layouts/theorems.inc:141
 msgid "Propositions"
-msgstr "Návrhy"
+msgstr "Tvrdenia"
 
 #: lib/layouts/theorems-ams-bytype.inc:139
 #: lib/layouts/theorems-ams-chap-bytype.inc:185
 #: lib/layouts/theorems-ams.inc:140 lib/layouts/theorems-bytype.inc:133
 #: lib/layouts/theorems.inc:141
 msgid "propositions"
-msgstr "návrhy"
+msgstr "tvrdenia"
 
 #: lib/layouts/theorems-ams-bytype.inc:161
 #: lib/layouts/theorems-ams-chap-bytype.inc:209
 #: lib/layouts/theorems-ams.inc:163 lib/layouts/theorems-bytype.inc:155
 #: lib/layouts/theorems.inc:164
 msgid "conjecture"
-msgstr "hypotéza"
+msgstr "domnienka"
 
 #: lib/layouts/theorems-ams-bytype.inc:162
 #: lib/layouts/theorems-ams-chap-bytype.inc:210
 #: lib/layouts/theorems-ams.inc:164 lib/layouts/theorems-bytype.inc:156
 #: lib/layouts/theorems.inc:165
 msgid "Conjectures"
-msgstr "Hypotézy"
+msgstr "Domnienky"
 
 #: lib/layouts/theorems-ams-bytype.inc:162
 #: lib/layouts/theorems-ams-chap-bytype.inc:210
 #: lib/layouts/theorems-ams.inc:164 lib/layouts/theorems-bytype.inc:156
 #: lib/layouts/theorems.inc:165
 msgid "conjectures"
-msgstr "hypotézy"
+msgstr "domnienky"
 
 #: lib/layouts/theorems-ams-bytype.inc:174
 #: lib/layouts/theorems-ams-chap-bytype.inc:219
@@ -19498,33 +19523,33 @@ msgstr "Problémy"
 msgid "problems"
 msgstr "problémy"
 
-#: lib/layouts/theorems-ams-bytype.inc:273
-#: lib/layouts/theorems-ams-chap-bytype.inc:322
-#: lib/layouts/theorems-bytype.inc:267
+#: lib/layouts/theorems-ams-bytype.inc:285
+#: lib/layouts/theorems-ams-chap-bytype.inc:336
+#: lib/layouts/theorems-bytype.inc:279
 #: lib/layouts/theorems-without-preamble.inc:398
 msgid "Exercise \\theexercise."
-msgstr "Úloha \\theexercise."
+msgstr "Cvičenie \\theexercise."
 
 #: lib/layouts/theorems-ams-bytype.inc:290
 #: lib/layouts/theorems-ams-chap-bytype.inc:342
 #: lib/layouts/theorems-ams.inc:294 lib/layouts/theorems-bytype.inc:284
 #: lib/layouts/theorems.inc:295
 msgid "exercise"
-msgstr "úloha"
+msgstr "cvičenie"
 
 #: lib/layouts/theorems-ams-bytype.inc:291
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
 #: lib/layouts/theorems-ams.inc:295 lib/layouts/theorems-bytype.inc:285
 #: lib/layouts/theorems.inc:296
 msgid "Exercises"
-msgstr "Úlohy"
+msgstr "Cvičenia"
 
 #: lib/layouts/theorems-ams-bytype.inc:291
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
 #: lib/layouts/theorems-ams.inc:295 lib/layouts/theorems-bytype.inc:285
 #: lib/layouts/theorems.inc:296
 msgid "exercises"
-msgstr "úlohy"
+msgstr "cvičenia"
 
 #: lib/layouts/theorems-ams-bytype.inc:315
 #: lib/layouts/theorems-ams-chap-bytype.inc:368
@@ -19600,10 +19625,10 @@ msgstr ""
 "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
 "dispozícii sú číslované a neočíslované typy. Opačne k jednoduchému modulu "
 "rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
-"(čiže veta 1, veta 2, lemma 1, návrh 1, veta 3, lemma 2, …, oproti veta 1, "
-"veta 2, lemma 3, návrh 4…). Číslovanie je postupne bez ohľadu na štruktúru "
-"dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa …)' "
-"modulu."
+"(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, oproti veta "
+"1, veta 2, lemma 3, tvrdenie 4…). Číslovanie je postupne bez ohľadu na "
+"štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
+"podľa …)' modulu."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
 msgid "AMS Theorems (Numbered by Type within Chapters)"
@@ -19622,9 +19647,9 @@ msgstr ""
 "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
 "dispozícii sú číslované a neočíslované typy. Opačne k jednoduchému modulu "
 "rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
-"(čiže veta 1, veta 2, lemma 1, návrh 1, veta 3, lemma 2, …, oproti veta 1, "
-"veta 2, lemma 3, návrh 4…). Číslovanie sa reštartuje na začiatku každej "
-"kapitoli: teoréma 1.1, teoréma 2.1, …"
+"(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, oproti veta "
+"1, veta 2, lemma 3, tvrdenie 4…). Číslovanie sa reštartuje na začiatku "
+"každej kapitoli: teoréma 1.1, teoréma 2.1, …"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "AMS Theorems (Extended, Numbered by Type)"
@@ -19641,7 +19666,7 @@ msgid ""
 "criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
 "Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi AMS. "
-"Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka,Poznámka, Notácia, Súhrn, "
+"Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka, Poznámka, Notácia, Súhrn, "
 "Záver, Predpoklad, a Prípad v oboch formách (číslované/neočíslované). Opačne "
 "k jednoduchému modulu rozšírenia AMS, má tu každý poskytnutý typ teorémou "
 "svoje vlastné číslovanie (čiže kritérium 1, kritérium 2, axióma 1, "
@@ -20086,9 +20111,9 @@ msgstr "Fakt \\thetheorem."
 msgid "Problem \\thetheorem."
 msgstr "Problém \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:276 lib/layouts/theorems.inc:277
+#: lib/layouts/theorems-ams.inc:288 lib/layouts/theorems.inc:289
 msgid "Exercise \\thetheorem."
-msgstr "Úloha \\thetheorem."
+msgstr "Cvičenie \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:299 lib/layouts/theorems.inc:300
 msgid "Solution \\thetheorem."
@@ -20130,10 +20155,10 @@ msgid ""
 msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
 "jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
-"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, návrh 1, veta 3, lemma 2, "
-"…, oproti veta 1, veta 2, lemma 3, návrh 4, …). Číslovanie je usporiadané "
-"bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy "
-"(Číslované podľa …)' modulu."
+"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
+"2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie je "
+"usporiadané bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou "
+"jedného z 'Teorémy (Číslované podľa …)' modulu."
 
 #: lib/layouts/theorems-case.inc:12
 msgid "Case (Level 1)"
@@ -20245,9 +20270,9 @@ msgid ""
 msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
 "jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
-"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, návrh 1, veta 3, lemma 2, "
-"…, oproti veta 1, veta 2, lemma 3, návrh 4, …). Číslovanie sa nuluje na "
-"začiatku každej kapitoly."
+"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
+"2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie sa nuluje "
+"na začiatku každej kapitoly."
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Standard Theorems (Numbered by Chapter)"
@@ -20281,19 +20306,19 @@ msgstr "teorémy \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:20
 msgid "Corollary \\thechapter.\\arabic{theorem}"
-msgstr "Korolár \\thechapter.\\arabic{theorem}"
+msgstr "Dôsledok \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:20
 msgid "corollary \\thechapter.\\arabic{theorem}"
-msgstr "korolár \\thechapter.\\arabic{theorem}"
+msgstr "dôsledok \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:20
 msgid "Corollaries \\thechapter.\\arabic{theorem}"
-msgstr "Koroláre \\thechapter.\\arabic{theorem}"
+msgstr "Dôsledky \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:20
 msgid "corollaries \\thechapter.\\arabic{theorem}"
-msgstr "koroláre \\thechapter.\\arabic{theorem}"
+msgstr "dôsledky \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:21
 msgid "Lemma \\thechapter.\\arabic{theorem}"
@@ -20313,35 +20338,35 @@ msgstr "lemmy \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:22
 msgid "Proposition \\thechapter.\\arabic{theorem}"
-msgstr "Návrh \\thechapter.\\arabic{theorem}"
+msgstr "Tvrdenie \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:22
 msgid "proposition \\thechapter.\\arabic{theorem}"
-msgstr "návrh \\thechapter.\\arabic{theorem}"
+msgstr "tvrdenie \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:22
 msgid "Propositions \\thechapter.\\arabic{theorem}"
-msgstr "Návrhy \\thechapter.\\arabic{theorem}"
+msgstr "Tvrdenia \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:22
 msgid "propositions \\thechapter.\\arabic{theorem}"
-msgstr "návrhy \\thechapter.\\arabic{theorem}"
+msgstr "tvrdenia \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:23
 msgid "Conjecture \\thechapter.\\arabic{theorem}"
-msgstr "Hypotéza \\thechapter.\\arabic{theorem}"
+msgstr "Domnienka \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:23
 msgid "conjecture \\thechapter.\\arabic{theorem}"
-msgstr "hypotéza \\thechapter.\\arabic{theorem}"
+msgstr "domnienka \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:23
 msgid "Conjectures \\thechapter.\\arabic{theorem}"
-msgstr "Hypotézy \\thechapter.\\arabic{theorem}"
+msgstr "Domnienky \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:23
 msgid "conjectures \\thechapter.\\arabic{theorem}"
-msgstr "hypotézy \\thechapter.\\arabic{theorem}"
+msgstr "domnienky \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:24
 msgid "Definition \\thechapter.\\arabic{theorem}"
@@ -20393,19 +20418,19 @@ msgstr "problémy \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:27
 msgid "Exercise \\thechapter.\\arabic{theorem}"
-msgstr "Úloha \\thechapter.\\arabic{theorem}"
+msgstr "Cvičenie \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:27
 msgid "exercise \\thechapter.\\arabic{theorem}"
-msgstr "úloha \\thechapter.\\arabic{theorem}"
+msgstr "cvičenie \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:27
 msgid "Exercises \\thechapter.\\arabic{theorem}"
-msgstr "Úlohy \\thechapter.\\arabic{theorem}"
+msgstr "Cvičenia \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:27
 msgid "exercises \\thechapter.\\arabic{theorem}"
-msgstr "úlohy \\thechapter.\\arabic{theorem}"
+msgstr "cvičenia \\thechapter.\\arabic{theorem}"
 
 #: lib/layouts/theorems-chap.module:28
 msgid "Solution \\thechapter.\\arabic{theorem}"
@@ -20530,28 +20555,28 @@ msgstr "fakty \\arabic{theorem}"
 #: lib/layouts/theorems-counters-bytype.inc:48
 #: lib/layouts/theorems-std.module:26
 msgid "Exercise \\arabic{theorem}"
-msgstr "Úloha \\arabic{theorem}"
+msgstr "Cvičenie \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:59 lib/layouts/elsart.layout:306
 #: lib/layouts/theorems-ams.module:32
 #: lib/layouts/theorems-counters-bytype.inc:48
 #: lib/layouts/theorems-std.module:26
 msgid "exercise \\arabic{theorem}"
-msgstr "úloha \\arabic{theorem}"
+msgstr "cvičenie \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:59 lib/layouts/elsart.layout:306
 #: lib/layouts/theorems-ams.module:32
 #: lib/layouts/theorems-counters-bytype.inc:48
 #: lib/layouts/theorems-std.module:26
 msgid "Exercises \\arabic{theorem}"
-msgstr "Úlohy \\arabic{theorem}"
+msgstr "Cvičenia \\arabic{theorem}"
 
 #: lib/layouts/IEEEtran.layout:59 lib/layouts/elsart.layout:306
 #: lib/layouts/theorems-ams.module:32
 #: lib/layouts/theorems-counters-bytype.inc:48
 #: lib/layouts/theorems-std.module:26
 msgid "exercises \\arabic{theorem}"
-msgstr "úlohy \\arabic{theorem}"
+msgstr "cvičenia \\arabic{theorem}"
 
 #: lib/layouts/theorems-counters-bytype.inc:53
 msgid "Solution \\arabic{theorem}"
@@ -20672,19 +20697,19 @@ msgstr "závery \\arabic{theorem}"
 
 #: lib/layouts/theorems-counters-extended-bytype.inc:40
 msgid "Assumption \\arabic{theorem}"
-msgstr "Domnienka \\arabic{theorem}"
+msgstr "Predpoklad \\arabic{theorem}"
 
 #: lib/layouts/theorems-counters-extended-bytype.inc:40
 msgid "assumption \\arabic{theorem}"
-msgstr "domnienka \\arabic{theorem}"
+msgstr "predpoklad \\arabic{theorem}"
 
 #: lib/layouts/theorems-counters-extended-bytype.inc:40
 msgid "Assumptions \\arabic{theorem}"
-msgstr "Domnienky \\arabic{theorem}"
+msgstr "Predpoklady \\arabic{theorem}"
 
 #: lib/layouts/theorems-counters-extended-bytype.inc:40
 msgid "assumptions \\arabic{theorem}"
-msgstr "domnienky \\arabic{theorem}"
+msgstr "predpoklady \\arabic{theorem}"
 
 #: lib/layouts/theorems-counters-extended-bytype.inc:44
 msgid "Question \\arabic{theorem}"
@@ -20732,7 +20757,7 @@ msgstr "Problém*"
 
 #: lib/layouts/theorems-order.inc:58 lib/layouts/theorems-starred.inc:257
 msgid "Exercise*"
-msgstr "Úloha*"
+msgstr "Cvičenie*"
 
 #: lib/layouts/theorems-order.inc:64 lib/layouts/theorems-starred.inc:279
 msgid "Solution*"
@@ -20760,9 +20785,9 @@ msgid ""
 msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
 "jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
-"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, návrh 1, veta 3, lemma 2, "
-"…, oproti veta 1, veta 2, lemma 3, návrh 4, …). Číslovanie sa nuluje na "
-"začiatku každej sekcie."
+"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
+"2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie sa nuluje "
+"na začiatku každej sekcie."
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Standard Theorems (Numbered by Section)"
@@ -20778,35 +20803,35 @@ msgstr ""
 
 #: lib/layouts/theorems-sec.module:21
 msgid "Proposition \\thesection.\\arabic{theorem}"
-msgstr "Návrh \\thesection.\\arabic{theorem}"
+msgstr "Tvrdenie \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:21
 msgid "proposition \\thesection.\\arabic{theorem}"
-msgstr "návrh \\thesection.\\arabic{theorem}"
+msgstr "tvrdenie \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:21
 msgid "Propositions \\thesection.\\arabic{theorem}"
-msgstr "Návrhy \\thesection.\\arabic{theorem}"
+msgstr "Tvrdenia \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:21
 msgid "propositions \\thesection.\\arabic{theorem}"
-msgstr "návrhy \\thesection.\\arabic{theorem}"
+msgstr "tvrdenia \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:22
 msgid "Conjecture \\thesection.\\arabic{theorem}"
-msgstr "Hypotéza \\thesection.\\arabic{theorem}"
+msgstr "Domnienka \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:22
 msgid "conjecture \\thesection.\\arabic{theorem}"
-msgstr "hypotéza \\thesection.\\arabic{theorem}"
+msgstr "domnienka \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:22
 msgid "Conjectures \\thesection.\\arabic{theorem}"
-msgstr "Hypotézy \\thesection.\\arabic{theorem}"
+msgstr "Domnienky \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:22
 msgid "conjectures \\thesection.\\arabic{theorem}"
-msgstr "hypotézy \\thesection.\\arabic{theorem}"
+msgstr "domnienky \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:24
 msgid "Example \\thesection.\\arabic{theorem}"
@@ -20842,19 +20867,19 @@ msgstr "problémy \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:26
 msgid "Exercise \\thesection.\\arabic{theorem}"
-msgstr "Úloha \\thesection.\\arabic{theorem}"
+msgstr "Cvičenie \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:26
 msgid "exercise \\thesection.\\arabic{theorem}"
-msgstr "úloha \\thesection.\\arabic{theorem}"
+msgstr "cvičenie \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:26
 msgid "Exercises \\thesection.\\arabic{theorem}"
-msgstr "Úlohy \\thesection.\\arabic{theorem}"
+msgstr "Cvičenia \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:26
 msgid "exercises \\thesection.\\arabic{theorem}"
-msgstr "Úlohy \\thesection.\\arabic{theorem}"
+msgstr "cvičenia \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-sec.module:27
 msgid "Solution \\thesection.\\arabic{theorem}"
@@ -20922,7 +20947,7 @@ msgstr "algoritmy \\thesection.\\arabic{theorem}"
 
 #: lib/layouts/theorems-starred.inc:146
 msgid "Conjecture."
-msgstr "Hypotéza."
+msgstr "Domnienka."
 
 #: lib/layouts/theorems-starred.inc:164
 msgid "Fact*"
@@ -20934,7 +20959,7 @@ msgstr "Problém."
 
 #: lib/layouts/theorems-starred.inc:260
 msgid "Exercise."
-msgstr "Úloha."
+msgstr "Cvičenie."
 
 #: lib/layouts/theorems-starred.inc:282
 msgid "Solution."
@@ -21081,19 +21106,19 @@ msgstr "Štítok korešpondujúci problému"
 
 #: lib/layouts/theorems-without-preamble.inc:392
 msgid "Exercise ##"
-msgstr "Úloha ##"
+msgstr "Cvičenie ##"
 
 #: lib/layouts/theorems-without-preamble.inc:392
 msgid "exercise ##"
-msgstr "úloha ##"
+msgstr "cvičenie ##"
 
 #: lib/layouts/theorems-without-preamble.inc:392
 msgid "Exercises ##"
-msgstr "Úlohy ##"
+msgstr "Cvičenia ##"
 
 #: lib/layouts/theorems-without-preamble.inc:392
 msgid "exercises ##"
-msgstr "úlohy ##"
+msgstr "cvičenia ##"
 
 #: lib/layouts/theorems-without-preamble.inc:482
 msgid "Property ##"
@@ -27173,7 +27198,7 @@ msgstr "Vložiť zlomok"
 
 #: lib/ui/stdtoolbars.inc:199
 msgid "Insert sum"
-msgstr "Vložiť sumu"
+msgstr "Vložiť súčet"
 
 #: lib/ui/stdtoolbars.inc:200
 msgid "Insert integral"
@@ -38226,9 +38251,9 @@ msgstr ""
 "Hlavný dokument '%1$s'\n"
 "nie je možné nahrať."
 
-#: src/frontends/qt/GuiDocument.cpp:5460
+#: src/frontends/qt/GuiDocument.cpp:5461
 msgid "%1 (missing req.)"
-msgstr "%1 (chýbajúci predpoklad)"
+msgstr "%1 (chýbajúca podmienka)"
 
 #: src/frontends/qt/GuiDocument.cpp:5472
 msgid "personal module"
@@ -38242,9 +38267,9 @@ msgstr "distribuovaný modul"
 msgid "<b>Module name:</b> <i>%1</i> (%2)"
 msgstr "<b>Meno modulu:</b> <i>%1</i> (%2)"
 
-#: src/frontends/qt/GuiDocument.cpp:5479
+#: src/frontends/qt/GuiDocument.cpp:5480
 msgid "<b>Note:</b> Some requirements for this module are missing!"
-msgstr "<b>Poznámka:</b> Niektoré predpoklady pre tento modul chýbajú!"
+msgstr "<b>Poznámka:</b> Niektoré závislosti pre tento modul chýbajú!"
 
 #: src/frontends/qt/GuiDocument.cpp:5626
 msgid "Color naming failed"

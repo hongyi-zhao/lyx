@@ -2,22 +2,22 @@
 # Copyright (C) 2008 - 2017 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2007 - 2017, 2018, 2022, 2023, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2007-2017, 2018, 2022-2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2025-05-20 22:16-0400\n"
-"PO-Revision-Date: 2024-02-11 20:36+0200\n"
+"PO-Revision-Date: 2025-05-27 18:29+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <translation@linux.org.ua>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.04.1\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.04.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt/ui/AboutUi.ui:27
 msgid "Version"
@@ -48,14 +48,12 @@ msgid "[[do]]O&pen"
 msgstr "[[do]]В&ідкрити"
 
 #: src/frontends/qt/ui/AboutUi.ui:222
-#, fuzzy
 msgid "Temporary directory"
-msgstr "Тим&часова тека:"
+msgstr "Тимчасовий каталог"
 
 #: src/frontends/qt/ui/AboutUi.ui:253
-#, fuzzy
 msgid "Open temporary directory in file browser"
-msgstr "Відкрити загальносистемний каталог у програмі для керування файлами"
+msgstr "Відкрити тимчасовий каталог у програмі для керування файлами"
 
 #: src/frontends/qt/ui/AboutUi.ui:301
 msgid "Credits"
@@ -314,11 +312,11 @@ msgstr "Додати &локальну…"
 
 #: src/frontends/qt/ui/BibtexUi.ui:91
 msgid "Transfer an absolute local path to a relative one or vice versa"
-msgstr ""
+msgstr "Перетворити абсолютний локальний шлях на відносний або навпаки"
 
 #: src/frontends/qt/ui/BibtexUi.ui:94 src/frontends/qt/GuiBibtex.cpp:418
 msgid "&Make Relative"
-msgstr ""
+msgstr "З&робити відносним"
 
 #: src/frontends/qt/ui/BibtexUi.ui:101
 msgid "Inherit bibliography databases from the master document"
@@ -1203,23 +1201,20 @@ msgid "All aut&hors"
 msgstr "&Усі автори"
 
 #: src/frontends/qt/ui/ColorUi.ui:39
-#, fuzzy
 msgid "Alternati&ng table row colors"
-msgstr "Альтернатива до «Enclosure»"
+msgstr "&Чергування кольорів рядків таблиці"
 
 #: src/frontends/qt/ui/ColorUi.ui:47 src/frontends/qt/ui/TabularUi.ui:1514
-#, fuzzy
 msgid "O&dd rows:"
-msgstr "Додати рядок"
+msgstr "&Непарні рядки:"
 
 #: src/frontends/qt/ui/ColorUi.ui:67 src/frontends/qt/ui/TabularUi.ui:1534
-#, fuzzy
 msgid "&Even rows:"
-msgstr "&Між рядками:"
+msgstr "П&арні рядки:"
 
 #: src/frontends/qt/ui/ColorUi.ui:104 src/frontends/qt/ui/TabularUi.ui:1571
 msgid "&Start with row:"
-msgstr ""
+msgstr "По&чати з рядка:"
 
 #: src/frontends/qt/ui/ColorUi.ui:152
 msgid "Background Colors"
@@ -1235,9 +1230,8 @@ msgstr "Сторінка:"
 
 #: src/frontends/qt/ui/ColorUi.ui:228 src/frontends/qt/GuiView.cpp:1279
 #: src/frontends/qt/GuiView.cpp:1311
-#, fuzzy
 msgid "Custom Colors"
-msgstr "Нетипова кольорова панель 1"
+msgstr "Нетипові кольори"
 
 #: src/frontends/qt/ui/ColorUi.ui:238 src/frontends/qt/ui/IndicesUi.ui:158
 #: src/frontends/qt/ui/ProgressViewUi.ui:171
@@ -1245,14 +1239,12 @@ msgid "1"
 msgstr "1"
 
 #: src/frontends/qt/ui/ColorUi.ui:248
-#, fuzzy
 msgid "Remove the selected color"
-msgstr "Вилучити вибрану базу даних"
+msgstr "Вилучити вибраний колір"
 
 #: src/frontends/qt/ui/ColorUi.ui:258
-#, fuzzy
 msgid "Rename the selected color"
-msgstr "Змінити вибраний колір"
+msgstr "Перейменувати вибраний колір"
 
 #: src/frontends/qt/ui/ColorUi.ui:261 src/frontends/qt/ui/IndicesUi.ui:179
 msgid "R&ename..."
@@ -1263,28 +1255,25 @@ msgid "Define or change button color"
 msgstr "Визначте або змініть колір кнопок"
 
 #: src/frontends/qt/ui/ColorUi.ui:298
-#, fuzzy
 msgid "&New:[[color]]"
-msgstr "&Нова:[[branch]]"
+msgstr "&Новий:[[color]]"
 
 #: src/frontends/qt/ui/ColorUi.ui:308
-#, fuzzy
 msgid ""
 "Enter the name of the desired color (only ASCII characters and no space "
 "allowed) and hit \"Add\""
 msgstr ""
-"Введіть назву бажаного покажчика (наприклад, «Покажчик назв») і натисніть "
+"Введіть назву бажаного кольору (можна використовувати лише символи ASCII без"
+" пробілів) і натисніть "
 "кнопку «Додати»"
 
 #: src/frontends/qt/ui/ColorUi.ui:315
-#, fuzzy
 msgid "Add a new color to the list"
-msgstr "Додати нову версію до списку"
+msgstr "Додати новий колір до списку"
 
 #: src/frontends/qt/ui/ColorUi.ui:327
-#, fuzzy
 msgid "A&vailable Custom Colors:"
-msgstr "До&ступні посилання:"
+msgstr "Д&оступні нетипові кольори:"
 
 #: src/frontends/qt/ui/ColorUi.ui:340
 msgid "Font Colors"
@@ -1299,9 +1288,8 @@ msgid "Greyed-out notes:"
 msgstr "Висірені примітки:"
 
 #: src/frontends/qt/ui/ColorUi.ui:418
-#, fuzzy
 msgid "Table &border color:"
-msgstr "Увімкнути/Вимкнути лінії рамок"
+msgstr "Колір &рамки таблиці:"
 
 #: src/frontends/qt/ui/CompareHistoryUi.ui:23
 msgid "Compare Revisions"
@@ -1677,7 +1665,6 @@ msgstr "&Шукати"
 
 #: src/frontends/qt/ui/FindAndReplaceUi.ui:55
 #: src/frontends/qt/ui/SearchUi.ui:120
-#, fuzzy
 msgid "&Find what:"
 msgstr "&Знайти:"
 
@@ -2717,14 +2704,12 @@ msgid "Enter the name of the default master document"
 msgstr "Введіть назву типового головного документа"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:188
-#, fuzzy
 msgid "Formatted cross-references"
-msgstr "форматоване посилання"
+msgstr "Форматовані перехресні посилання"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:196
-#, fuzzy
 msgid "&Format packages:"
-msgstr "Всі пакунки:"
+msgstr "Пакунки &форматування:"
 
 #: src/frontends/qt/ui/LaTeXUi.ui:224
 msgid ""
@@ -2804,9 +2789,8 @@ msgstr ""
 "Введіть команду, яка завантажує мовний пакунок (типово, \\usepackage{babel})"
 
 #: src/frontends/qt/ui/LanguageUi.ui:204
-#, fuzzy
 msgid "Language &Options"
-msgstr "Параметри мови"
+msgstr "П&араметри мови"
 
 #: src/frontends/qt/ui/LineUi.ui:23
 msgid "Of&fset:"
@@ -3357,19 +3341,16 @@ msgid "S&elected:"
 msgstr "Ви&бране:"
 
 #: src/frontends/qt/ui/NomenclUi.ui:24
-#, fuzzy
 msgid "Nomenclature St&yle:"
-msgstr "Символ номенклатуру: "
+msgstr "Сти&ль номенклатури:"
 
 #: src/frontends/qt/ui/NomenclUi.ui:52
-#, fuzzy
 msgid "Add the nomenclature list to the table of contents"
-msgstr "Додати бібліографію в зміст"
+msgstr "Додати список номенклатури до таблиці змісту"
 
 #: src/frontends/qt/ui/NomenclUi.ui:55
-#, fuzzy
 msgid "Add to &table of contents"
-msgstr "Додати бібліографію в зміст"
+msgstr "Додати до &таблиці змісту"
 
 #: src/frontends/qt/ui/NomenclUi.ui:62
 msgid ""
@@ -3377,11 +3358,13 @@ msgid ""
 "nomenclature where x is the number of the last equation in front of the "
 "corresponding nomenclature"
 msgstr ""
+"Фразу «, див. рівняння (x)» буде додано до усіх записів у номенклатурі, де x"
+" номер останнього рівняння перед появою відповідного пункту номенклатури у"
+" тексті"
 
 #: src/frontends/qt/ui/NomenclUi.ui:65
-#, fuzzy
 msgid "Add &equation references"
-msgstr "Невизначене посилання"
+msgstr "Додати посилання на &рівняння"
 
 #: src/frontends/qt/ui/NomenclUi.ui:72
 msgid ""
@@ -3389,31 +3372,32 @@ msgid ""
 "where x is the number of the page on which the corresponding nomenclature is "
 "used"
 msgstr ""
+"Фразу «, див. сторінку x» буде додано до усіх записів у номенклатурі, де x"
+" номер сторінки, на якій використано відповідний пункт номенклатури у тексті"
 
 #: src/frontends/qt/ui/NomenclUi.ui:75
-#, fuzzy
 msgid "Add &page references"
-msgstr "всі посилання"
+msgstr "Додати посилання на с&торінки"
 
 #: src/frontends/qt/ui/NomenclUi.ui:82
 msgid ""
 "Use standard subgroups (Latin Letters, Greek Letters, ...) to structure the "
 "nomenclature list"
 msgstr ""
+"Використовувати стандартні підгрупи (літери латиниці, грецькі літери...) для"
+" структурування списку номенклатури"
 
 #: src/frontends/qt/ui/NomenclUi.ui:85
 msgid "Use standard &subgroups"
-msgstr ""
+msgstr "Використовувати стандартні п&ідгрупи"
 
 #: src/frontends/qt/ui/NomenclUi.ui:94
-#, fuzzy
 msgid "&Other options:"
-msgstr "Інші параметри"
+msgstr "Ін&ші параметри:"
 
 #: src/frontends/qt/ui/NomenclUi.ui:104
-#, fuzzy
 msgid "Insert additional options of the nomencl package here"
-msgstr "Тут ви можете вставити додаткові параметри (які надає пакунок шрифту)"
+msgstr "Тут можна вказати додаткові параметри пакунка nomencl"
 
 #: src/frontends/qt/ui/NoteUi.ui:23 src/frontends/qt/ui/PhantomUi.ui:23
 msgid "Type"
@@ -3505,9 +3489,8 @@ msgid "De&fault output format:"
 msgstr "Типовий &формат виводу:"
 
 #: src/frontends/qt/ui/OutputUi.ui:145
-#, fuzzy
 msgid "Output Options"
-msgstr "Параметри виведення даних до LaTeX"
+msgstr "Параметри виведення"
 
 #: src/frontends/qt/ui/OutputUi.ui:161
 msgid "&LaTeX"
@@ -3560,9 +3543,8 @@ msgid "Format to use for math output."
 msgstr "Формат для виведення формул."
 
 #: src/frontends/qt/ui/OutputUi.ui:302
-#, fuzzy
 msgid "MathML Core (default)"
-msgstr "Зовнішнє (типово)"
+msgstr "Ядро MathML (типове)"
 
 #: src/frontends/qt/ui/OutputUi.ui:307 src/frontends/qt/ui/OutputUi.ui:436
 #: lib/configure.py:834
@@ -3581,9 +3563,8 @@ msgid "LaTeX"
 msgstr "LaTeX"
 
 #: src/frontends/qt/ui/OutputUi.ui:322
-#, fuzzy
 msgid "MathML 3"
-msgstr "MathML"
+msgstr "MathML 3"
 
 #: src/frontends/qt/ui/OutputUi.ui:347
 msgid "Whether to comply strictly with XHTML 1.1."
@@ -3610,19 +3591,16 @@ msgid "CALS"
 msgstr "CALS"
 
 #: src/frontends/qt/ui/OutputUi.ui:469
-#, fuzzy
 msgid "MathML &version:"
-msgstr "Версія LyX"
+msgstr "В&ерсія MathML:"
 
 #: src/frontends/qt/ui/OutputUi.ui:499
-#, fuzzy
 msgid "MathML 3 (default)"
-msgstr "m (типовий)"
+msgstr "MathML 3 (типовий)"
 
 #: src/frontends/qt/ui/OutputUi.ui:504
-#, fuzzy
 msgid "MathML Core"
-msgstr "MathML"
+msgstr "Ядро MathML"
 
 #: src/frontends/qt/ui/OutputUi.ui:532
 msgid "&MathML namespace prefix:"
@@ -3654,10 +3632,13 @@ msgid ""
 "Scaling factor for images that are generated for some LaTeX constructs "
 "(e.g., math formulae) in non-LaTeX output."
 msgstr ""
+"Коефіцієнт масштабування для зображень, які створено для певних побудов"
+" LaTeX (наприклад, математичних формул) у не природному для LaTeX"
+" файлі-результаті."
 
 #: src/frontends/qt/ui/OutputUi.ui:607
 msgid "Scaling of generated &images:"
-msgstr ""
+msgstr "Масштаб створених зо&бражень:"
 
 #: src/frontends/qt/ui/OutputUi.ui:659
 msgid ""
@@ -3737,6 +3718,7 @@ msgstr "Без &рамок навколо посилань"
 #: src/frontends/qt/ui/PDFSupportUi.ui:285
 msgid "Mutually exclusive with frames around links, see manual."
 msgstr ""
+"Не можна використовувати разом із рамками навколо посилань, див. підручник."
 
 #: src/frontends/qt/ui/PDFSupportUi.ui:288
 msgid "C&olor links"
@@ -3948,29 +3930,24 @@ msgid "Use the color scheme of your Operating System/Desktop Environment"
 msgstr "Схема кольорів вашої операційної системи або стільничного середовища"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:48
-#, fuzzy
 msgid "Use &system colors"
 msgstr "В&икористовувати системні кольори"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:55
-#, fuzzy
 msgid "Apply changed colors immediately"
-msgstr "Застосовувати кожну зміну &негайно"
+msgstr "Застосовувати змінені кольори негайно"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:58
-#, fuzzy
 msgid "Apply &immediately"
-msgstr "Застосовувати кожну зміну &негайно"
+msgstr "Застосовувати не&гайно"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:67
-#, fuzzy
 msgid "&Themes:"
-msgstr "Схеми"
+msgstr "&Теми:"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:101
-#, fuzzy
 msgid "Remove a selected color theme"
-msgstr "Вилучити вибрану базу даних"
+msgstr "Вилучити вибрану тему кольорів"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:104
 #: src/frontends/qt/ui/PrefConvertersUi.ui:300
@@ -3981,45 +3958,39 @@ msgstr "Ви&лучити"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:111
 msgid "Other menus to handle themes"
-msgstr ""
+msgstr "Інші меню для роботи з темами"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:114
-#, fuzzy
 msgid "&More..."
-msgstr "Більше…|ь"
+msgstr "&Більше…"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:121
 msgid "Add the current color set as a theme"
-msgstr ""
+msgstr "Додати поточний набір кольорів як тему"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:166
-#, fuzzy
 msgid "Change the light-mode color of the selected object/element"
-msgstr "Змінити назву вибраної гілки"
+msgstr "Змінити колір світлого режиму для позначеного об'єкта або елемента"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:169
-#, fuzzy
 msgid "&Light"
-msgstr "&Праворуч"
+msgstr "С&вітла"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:182
-#, fuzzy
 msgid "Change the dark-mode color of the selected object/element"
-msgstr "Змінити назву вибраної гілки"
+msgstr "Змінити колір темного режиму для позначеного об'єкта або елемента"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:185
 msgid "&Dark"
-msgstr ""
+msgstr "&Темна"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:217
-#, fuzzy
 msgid "Enter a string to filter colors"
-msgstr "Введіть рядок для фільтрування списку доступних файлів"
+msgstr "Введіть рядок для фільтрування списку кольорів"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:220
-#, fuzzy
 msgid "Filter colors"
-msgstr "Колір шрифту"
+msgstr "Фільтрувати кольори"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:259 lib/ui/stdtoolbars.inc:87
 #: src/BufferView.cpp:1598
@@ -4027,9 +3998,8 @@ msgid "Undo"
 msgstr "Вернути"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:262
-#, fuzzy
 msgid "&Undo"
-msgstr "Вернути"
+msgstr "В&ернути"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:269 lib/ui/stdtoolbars.inc:88
 #: src/BufferView.cpp:1619
@@ -4038,7 +4008,7 @@ msgstr "Повторити"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:272
 msgid "R&edo"
-msgstr ""
+msgstr "Пов&торити"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:297
 #: src/frontends/qt/GuiApplication.cpp:780 src/frontends/qt/GuiPrefs.h:357
@@ -4046,54 +4016,57 @@ msgid "Reset"
 msgstr "Скинути"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:307
-#, fuzzy
 msgid "&Color Settings:"
-msgstr "Налаштування рухомих об’єктів"
+msgstr "&Параметри кольорів:"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:354
 msgid ""
 "Reset the light-mode color of the selected object/element to the last saved"
 msgstr ""
+"Скинути колір світлого режиму для позначеного об'єкта або елемента до"
+" останнього збереженого"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:357
-#, fuzzy
 msgid "Ligh&t"
-msgstr "HighLight"
+msgstr "Світ&ла"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:364
 msgid ""
 "Reset the dark-mode color of the selected object/element to the last saved"
 msgstr ""
+"Скинути колір темного режиму для позначеного об'єкта або елемента до"
+" останнього збереженого"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:367
 msgid "Dar&k"
-msgstr ""
+msgstr "&Темна"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:374
 msgid ""
 "Reset the light- and dark-mode colors of the selected object/element to the "
 "last saved"
 msgstr ""
+"Скинути кольори світлого і темного режиму для позначеного об'єкта або"
+" елемента до"
+" останнього збереженого"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:377
-#, fuzzy
 msgid "&Both"
-msgstr "&Нижнє:"
+msgstr "&Обидві"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:392
-#, fuzzy
 msgid "Reset all colors in the table to the last saved"
-msgstr "Відновити початкові значення для усіх кольорів"
+msgstr ""
+"Відновити початкові значення для усіх кольорів у таблиці за останніми"
+" збереженими"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:395
-#, fuzzy
 msgid "Reset &All Colors"
-msgstr "С&кинути колір"
+msgstr "Скинути &усі кольори"
 
 #: src/frontends/qt/ui/PrefColorsUi.ui:402
-#, fuzzy
 msgid "Edit"
-msgstr "З&міни"
+msgstr "Змінити"
 
 #: src/frontends/qt/ui/PrefCompletionUi.ui:26
 msgid "In Math"
@@ -4708,12 +4681,11 @@ msgid "&Primary:"
 msgstr "&Основна:"
 
 #: src/frontends/qt/ui/PrefInputUi.ui:101
-#, fuzzy
 msgid ""
 "macOS specific setting for use with emacs bindings. Takes effect next time "
 "LyX is launched."
 msgstr ""
-"Специфічний для Mac OS X параметр для використання разом з прив’язками до "
+"Специфічний для macOS параметр для використання разом з прив’язками до "
 "emacs. Набуває чинності після перезапуску LyX."
 
 #: src/frontends/qt/ui/PrefInputUi.ui:104
@@ -5379,11 +5351,12 @@ msgid ""
 "You can override the system's color scheme here if the selected style "
 "supports multiple schemes."
 msgstr ""
+"Тут ви можете перевизначити схему кольорів системи, якщо у вибраному стилі"
+" передбачено підтримку декількох схем."
 
 #: src/frontends/qt/ui/PrefUi.ui:128
-#, fuzzy
 msgid "C&olor scheme:"
-msgstr "Схема кольорів біографії:"
+msgstr "С&хема кольорів:"
 
 #: src/frontends/qt/ui/PrefUi.ui:156
 msgid "Context Help"
@@ -5552,9 +5525,8 @@ msgid "&Clear automatically"
 msgstr "Автоматично споро&жняти"
 
 #: src/frontends/qt/ui/RefUi.ui:25
-#, fuzzy
 msgid "&Select from:"
-msgstr "П&означити усі"
+msgstr "П&означити від:"
 
 #: src/frontends/qt/ui/RefUi.ui:40
 msgid "&In[[buffer]]:"
@@ -5569,9 +5541,8 @@ msgid "Available &Labels:"
 msgstr "&Доступні мітки:"
 
 #: src/frontends/qt/ui/RefUi.ui:118
-#, fuzzy
 msgid "Selected &Labels:"
-msgstr "&Позначена мітка:"
+msgstr "&Позначені мітки:"
 
 #: src/frontends/qt/ui/RefUi.ui:144 src/insets/InsetRef.cpp:961
 msgid "Label"
@@ -5647,7 +5618,7 @@ msgstr "Лише мітка"
 
 #: src/frontends/qt/ui/RefUi.ui:402
 msgid "Handle t&wo labels as:"
-msgstr ""
+msgstr "Обробляти д&ві мітки так:"
 
 #: src/frontends/qt/ui/RefUi.ui:438
 msgid ""
@@ -5658,9 +5629,8 @@ msgstr ""
 "форматованих посилань, і лише якщо використовується refstyle.)"
 
 #: src/frontends/qt/ui/RefUi.ui:441
-#, fuzzy
 msgid "&Plural"
-msgstr "Множина"
+msgstr "&Множина"
 
 #: src/frontends/qt/ui/RefUi.ui:448
 msgid ""
@@ -5671,23 +5641,20 @@ msgstr ""
 "лише для форматованих посилань, і лише якщо використовується refstyle.)"
 
 #: src/frontends/qt/ui/RefUi.ui:451
-#, fuzzy
 msgid "&Capitalized"
-msgstr "Прописними"
+msgstr "П&рописними"
 
 #: src/frontends/qt/ui/RefUi.ui:458
 msgid "Do not output part of label before \":\""
 msgstr "Не виводити частину мітки до «:»"
 
 #: src/frontends/qt/ui/RefUi.ui:461
-#, fuzzy
 msgid "No Prefi&x"
-msgstr "Немає префікса"
+msgstr "&Без префікса"
 
 #: src/frontends/qt/ui/RefUi.ui:468
-#, fuzzy
 msgid "No H&yperlink"
-msgstr "Без гіперпосилання"
+msgstr "Без &гіперпосилання"
 
 #: src/frontends/qt/ui/SearchUi.ui:52
 msgid "Find previous occurrence (Shift+Enter)"
@@ -6157,7 +6124,6 @@ msgid "Additional Space"
 msgstr "Додатковий пробіл"
 
 #: src/frontends/qt/ui/TabularUi.ui:1192
-#, fuzzy
 msgid "To&p of row:"
 msgstr "В&ерх рядка:"
 
@@ -6170,53 +6136,44 @@ msgid "Bet&ween rows:"
 msgstr "&Між рядками:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1338
-#, fuzzy
 msgid "C&olors"
-msgstr "Кольори"
+msgstr "&Кольори"
 
 #: src/frontends/qt/ui/TabularUi.ui:1356
-#, fuzzy
 msgid "Ri&ght Overhang:"
-msgstr "Ви&ступ:"
+msgstr "Ви&ступ праворуч:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1372
-#, fuzzy
 msgid "Col&umn color:"
-msgstr "Колір шрифту"
+msgstr "Колір ст&овпчиків:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1395
-#, fuzzy
 msgid "Right Overhan&g:"
-msgstr "Ви&ступ:"
+msgstr "Виступ п&раворуч:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1405
-#, fuzzy
 msgid "Left Over&hang:"
-msgstr "Ви&ступ:"
+msgstr "Виступ &ліворуч:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1415
-#, fuzzy
 msgid "Ro&w color:"
-msgstr "Колір шрифту"
+msgstr "Колір &рядка:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1428
-#, fuzzy
 msgid "Left O&verhang:"
-msgstr "Ви&ступ:"
+msgstr "Виступ л&іворуч:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1448
-#, fuzzy
 msgid "C&ell color:"
-msgstr "&Колір:"
+msgstr "&Колір комірок:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1468
-#, fuzzy
 msgid "&Border color:"
-msgstr "Лінія знизу"
+msgstr "Колір &рамки:"
 
 #: src/frontends/qt/ui/TabularUi.ui:1506
 msgid "Alternati&ng row colors"
-msgstr ""
+msgstr "&Чергування кольорів рядків"
 
 #: src/frontends/qt/ui/TabularUi.ui:1607
 msgid "&Multi-Page Table"
@@ -6749,22 +6706,19 @@ msgid "Key"
 msgstr "Ключ"
 
 #: lib/citeengines/biblatex-chicago.citeengine:2
-#, fuzzy
 msgid "Biblatex (Chicago style)"
-msgstr "Стилі посилань Biblatex"
+msgstr "Biblatex (стиль Chicago)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:8
-#, fuzzy
 msgid ""
 "This Biblatex variety uses the biblatex-chicago package on top of biblatex "
 "to produce citations according to the Chicago Manual of Style. As with "
 "normal Biblatex, the use of 'biber' as Bibliography processor is advised."
 msgstr ""
-"Цей набір параметрів Biblatex імітує команди посилань Natbib, тому є "
-"найкращим замінником Natbib (або обхідним маневром для  Biblatex у LyX до "
-"версії 2.3) у світі Biblatex. У режимі natbib передбачено трохи інші стилі, "
-"яких трохи менше за звичайний набір стилів Biblatex. Якщо і зі звичайним "
-"Biblatex, радимо користуватися обробником бібліографій biber."
+"Цей різновид Biblatex використовує пакунок biblatex-chicago на основі"
+" biblatex для створення посилань відповідно до Chicago Manual of Style. Як і"
+" зі звичайним Biblatex, рекомендуємо скористатися для обробки бібліографій"
+" «biber»."
 
 #: lib/citeengines/biblatex-chicago.citeengine:151
 #: lib/citeengines/biblatex-natbib.citeengine:149
@@ -6850,7 +6804,7 @@ msgstr " та "
 
 #: lib/citeengines/biblatex-chicago.citeengine:167
 msgid "'s[[genitive suffix for author names]]"
-msgstr ""
+msgstr "'s[[genitive suffix for author names]]"
 
 #: lib/citeengines/biblatex-chicago.citeengine:322
 #: lib/citeengines/biblatex-natbib.citeengine:332
@@ -6867,106 +6821,99 @@ msgstr "Верхній індекс"
 
 #: lib/citeengines/biblatex-chicago.citeengine:324
 msgid "+ footnote: full or abbr. bib. entry"
-msgstr ""
+msgstr "+ підрядкова примітка: повний або скорочений запис бібліографії"
 
 #: lib/citeengines/biblatex-chicago.citeengine:325
 msgid "full or abbr. bib. entry"
-msgstr ""
+msgstr "повний або скорочений запис бібліографії"
 
 #: lib/citeengines/biblatex-chicago.citeengine:326
-#, fuzzy
 msgid "Full or abbreviated bibliography entry."
-msgstr "Повний запис бібліографії."
+msgstr "Повний або скорочений запис бібліографії."
 
 #: lib/citeengines/biblatex-chicago.citeengine:327
 msgid "full or abbr. bib. entry w/o author"
-msgstr ""
+msgstr "повний або скорочений запис бібліографії без автора"
 
 #: lib/citeengines/biblatex-chicago.citeengine:328
-#, fuzzy
 msgid "Full or abbreviated bibliography entry without author."
-msgstr "Повний запис бібліографії."
+msgstr "Повний або скорочений запис бібліографії без автора."
 
 #: lib/citeengines/biblatex-chicago.citeengine:329
-#, fuzzy
 msgid "abbr. bib. entry"
-msgstr "запис бібліографії"
+msgstr "скорочений запис бібліографії"
 
 #: lib/citeengines/biblatex-chicago.citeengine:330
-#, fuzzy
 msgid "Abbreviated bibliography entry."
-msgstr "запис бібліографії"
+msgstr "Скорочений запис бібліографії."
 
 #: lib/citeengines/biblatex-chicago.citeengine:331
 msgid "full bib. entry w/o author"
-msgstr ""
+msgstr "повний запис бібліографії без автора"
 
 #: lib/citeengines/biblatex-chicago.citeengine:332
-#, fuzzy
 msgid "Full bibliography entry without author."
-msgstr "Повний запис бібліографії."
+msgstr "Повний запис бібліографії без автора."
 
 #: lib/citeengines/biblatex-chicago.citeengine:333
 msgid "full or abbr. bib. entry w/o prenames"
-msgstr ""
+msgstr "повний або скорочений запис бібліографії без імен"
 
 #: lib/citeengines/biblatex-chicago.citeengine:334
 msgid "Full or abbreviated bibliography, omit prenames."
-msgstr ""
+msgstr "Повний або скорочений запис бібліографії без імені."
 
 #: lib/citeengines/biblatex-chicago.citeengine:335
-#, fuzzy
 msgid "No ibidem tracking"
-msgstr "Змінити слідкування"
+msgstr "Без стеження за «там же»"
 
 #: lib/citeengines/biblatex-chicago.citeengine:336
 msgid "No ibid."
-msgstr ""
+msgstr "Без ibid."
 
 #: lib/citeengines/biblatex-chicago.citeengine:337
-#, fuzzy
 msgid "No &ibidem tracking[[Possible substitute to All aut&hors]]"
-msgstr "При&мусово повний заголовок"
+msgstr "Без стеження за &ibid[[Possible substitute to All aut&hors]]"
 
 #: lib/citeengines/biblatex-chicago.citeengine:338
 msgid "Disable ibidem tracking for this entry"
-msgstr ""
+msgstr "Вимкнути стеження ibid для цього запису"
 
 #: lib/citeengines/biblatex-chicago.citeengine:339
-#, fuzzy
 msgid "No &back reference[[Possible substitute to All aut&hors]]"
-msgstr "При&мусово повний заголовок"
+msgstr "Без &зворотних посилань[[Possible substitute to All aut&hors]]"
 
 #: lib/citeengines/biblatex-chicago.citeengine:340
 msgid ""
 "Disable page tracking for this entry to prevent back references (with option "
 "noteref)"
 msgstr ""
+"Вимкнути стеження за сторінками для цього запису для запобігання зворотним"
+" посиланням (із параметром noteref)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:341
 msgid "abbr. bib. entry w/ back ref."
-msgstr ""
+msgstr "скор. зап. бібл. зі зв. пос."
 
 #: lib/citeengines/biblatex-chicago.citeengine:342
 msgid "Abbreviated bib. entry (enforce back reference)"
-msgstr ""
+msgstr "Скорочений запис бібліографії (примусове зворотне посилання)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:343
 msgid "(w/ back ref.)"
-msgstr ""
+msgstr "(зі зв. пос.)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:344
-#, fuzzy
 msgid "(enforce back reference)"
-msgstr "рамка кнопки (пошкоджене посилання)"
+msgstr "(примусове зворотне посилання)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:345
 msgid "??? (no shorthand!)"
-msgstr ""
+msgstr "??? (немає скорочення!)"
 
 #: lib/citeengines/biblatex-chicago.citeengine:346
 msgid "??? (no journal title!)"
-msgstr ""
+msgstr "??? (немає назви журналу!)"
 
 #: lib/citeengines/biblatex-natbib.citeengine:2
 msgid "Biblatex (natbib mode)"
@@ -6988,14 +6935,13 @@ msgstr ""
 
 #: lib/citeengines/biblatex-natbib.citeengine:158
 #: lib/citeengines/biblatex.citeengine:150
-#, fuzzy
 msgid "Omit aut&hors[[Possible substitute to All aut&hors]]"
-msgstr "С&корочений список авторів"
+msgstr "Пропустити &авторів[[Possible substitute to All aut&hors]]"
 
 #: lib/citeengines/biblatex-natbib.citeengine:159
 #: lib/citeengines/biblatex.citeengine:151
 msgid "Omit authors or editors in the citation"
-msgstr ""
+msgstr "Пропускати авторів або редакторів у посиланні"
 
 #: lib/citeengines/biblatex.citeengine:2 src/insets/InsetBibtex.cpp:145
 msgid "Biblatex"
@@ -9166,9 +9112,8 @@ msgid "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 msgstr "\\Alph{appendix}\\arabic{subappendix}.\\arabic{subsubappendix}."
 
 #: lib/layouts/aastex63.layout:3 lib/examples/Articles:0
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6.3.1)"
-msgstr "Американське астрономічне товариство (AASTeX v. 6.2)"
+msgstr "Американське астрономічне товариство (AASTeX v. 6.3.1)"
 
 #: lib/layouts/achemso.layout:3 lib/examples/Articles:0
 msgid "American Chemical Society (ACS)"
@@ -16863,7 +16808,7 @@ msgstr "Меню вибору"
 
 #: lib/layouts/pdfform.module:90
 msgid "Label[[Form]]"
-msgstr ""
+msgstr "Мітка[[Form]]"
 
 #: lib/layouts/pdfform.module:93
 msgid "Insert the label here"
@@ -17996,85 +17941,71 @@ msgstr "<Видимий текст>"
 
 #: lib/layouts/sn-jnl.layout:3 lib/examples/Articles:0
 msgid "Springer Nature Journals"
-msgstr ""
+msgstr "Журнали Springer Nature"
 
 #: lib/layouts/sn-jnl.layout:60 lib/layouts/sn-jnl.layout:74
-#, fuzzy
 msgid "Affiliation Nr."
-msgstr "Місце роботи: "
+msgstr "№ місця роботи"
 
 #: lib/layouts/sn-jnl.layout:64
-#, fuzzy
 msgid "Author (Corresp.)"
-msgstr "Адреса автора"
+msgstr "Автор (листування)"
 
 #: lib/layouts/sn-jnl.layout:67
-#, fuzzy
 msgid "Author (Corr.):"
-msgstr "Примітка щодо автора:"
+msgstr "Автор (листування):"
 
 #: lib/layouts/sn-jnl.layout:78
-#, fuzzy
 msgid "Affiliation (Corresp.)"
-msgstr "Місце роботи (немає)"
+msgstr "Місце роботи (листування)"
 
 #: lib/layouts/sn-jnl.layout:89
-#, fuzzy
 msgid "Equal Contribution"
-msgstr "ВнесокАвторів"
+msgstr "Рівний внесок"
 
 #: lib/layouts/sn-jnl.layout:138
-#, fuzzy
 msgid "Classification"
-msgstr "Коди класифікації"
+msgstr "Класифікація"
 
 #: lib/layouts/sn-jnl.layout:140
-#, fuzzy
 msgid "Classification:"
-msgstr "Коди класифікації"
+msgstr "Класифікація:"
 
 #: lib/layouts/sn-jnl.layout:143
-#, fuzzy
 msgid "Classification System"
-msgstr "Коди класифікації"
+msgstr "Система класифікації"
 
 #: lib/layouts/sn-jnl.layout:144
 msgid "E.g., MSC, PACS, or JEL"
-msgstr ""
+msgstr "Напр., MSC, PACS або JEL"
 
 #: lib/layouts/sn-jnl.layout:175 lib/layouts/sn-jnl.layout:178
-#, fuzzy
 msgid "Organization"
-msgstr "Перехід"
+msgstr "Організація"
 
 #: lib/layouts/sn-jnl.layout:181 lib/layouts/sn-jnl.layout:184
-#, fuzzy
 msgid "Org. Address"
-msgstr "Адреса"
+msgstr "Адреса організації"
 
 #: lib/layouts/sn-jnl.layout:199
-#, fuzzy
 msgid "Post Code"
 msgstr "Поштовий код"
 
 #: lib/layouts/sn-jnl.layout:202
-#, fuzzy
 msgid "Postcode"
 msgstr "Поштовий код"
 
 #: lib/layouts/sn-jnl.layout:236
 msgid "----------- Begin Backmatter ----------"
-msgstr ""
+msgstr "----------- Початок звороту ----------"
 
 #: lib/layouts/sn-jnl.layout:246
-#, fuzzy
 msgid "Backmatter heading"
-msgstr "Заголовки сторінки"
+msgstr "Заголовок звороту"
 
 #: lib/layouts/sn-jnl.layout:277
-#, fuzzy
 msgid "Appendix \\Alph{appendix}"
-msgstr "Додаток \\Alph{appendix}:"
+msgstr "Додаток \\Alph{appendix}"
 
 #: lib/layouts/soul.module:2
 msgid "Hyphenatable Text Markup (Soul)"
@@ -18198,14 +18129,12 @@ msgid "in"
 msgstr "в"
 
 #: lib/layouts/stdciteformats.inc:32
-#, fuzzy
 msgid ", & [[separate name of last author in citation w/ ampersand]]"
-msgstr " та "
+msgstr " і [[separate name of last author in citation w/ ampersand]]"
 
 #: lib/layouts/stdciteformats.inc:33
-#, fuzzy
 msgid " & [[separate two authors in citation w/ ampersand]]"
-msgstr " та "
+msgstr " і [[separate two authors in citation w/ ampersand]]"
 
 #: lib/layouts/stdcounters.inc:10
 msgid "\\Roman{part}"
@@ -18240,9 +18169,8 @@ msgid "(\\Alph{enumiv})"
 msgstr "(\\Alph{enumiv})"
 
 #: lib/layouts/stdcounters.inc:82
-#, fuzzy
 msgid "Listing ##"
-msgstr "Текст програми"
+msgstr "Текст програми ##"
 
 #: lib/layouts/stdcounters.inc:87
 msgid "Equation ##"
@@ -18352,37 +18280,32 @@ msgid "Subentry"
 msgstr "Підзапис"
 
 #: lib/layouts/stdinsets.inc:458
-#, fuzzy
 msgid "Nom"
-msgstr "Ні"
+msgstr "Прізвище"
 
 #: lib/layouts/stdinsets.inc:476
 msgid "Sort this entry as specified in the inset"
-msgstr ""
+msgstr "Упорядкувати цей запис так, як вказано у вставці"
 
 #: lib/layouts/stdinsets.inc:480
-#, fuzzy
 msgid "Description of the entry"
-msgstr "Параметри description"
+msgstr "Опис запису"
 
 #: lib/layouts/stdinsets.inc:492
 msgid "Unit"
-msgstr ""
+msgstr "Модуль"
 
 #: lib/layouts/stdinsets.inc:493
-#, fuzzy
 msgid "Nomenclature unit"
-msgstr "Номенклатура"
+msgstr "Модуль номенклатури"
 
 #: lib/layouts/stdinsets.inc:498
-#, fuzzy
 msgid "Note[[nomencl]]"
-msgstr "стор."
+msgstr "Нотатка[[nomencl]]"
 
 #: lib/layouts/stdinsets.inc:499
-#, fuzzy
 msgid "Nomenclature note"
-msgstr "Записи номенклатури"
+msgstr "Запис номенклатури"
 
 #: lib/layouts/stdinsets.inc:687
 msgid "Argument"
@@ -18844,82 +18767,71 @@ msgstr "Нетипова кольорова панель 5"
 #: lib/layouts/theorems-ams-bytype.inc:67
 #: lib/layouts/theorems-ams-chap-bytype.inc:110 lib/layouts/theorems-ams.inc:64
 #: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems.inc:64
-#, fuzzy
 msgid "theorem"
-msgstr "Теорема"
+msgstr "теорема"
 
 #: lib/layouts/theorems-ams-bytype.inc:68
 #: lib/layouts/theorems-ams-chap-bytype.inc:111 lib/layouts/theorems-ams.inc:65
 #: lib/layouts/theorems-bytype.inc:62 lib/layouts/theorems.inc:65
-#, fuzzy
 msgid "Theorems"
-msgstr "Теорема"
+msgstr "Теореми"
 
 #: lib/layouts/theorems-ams-bytype.inc:68
 #: lib/layouts/theorems-ams-chap-bytype.inc:111 lib/layouts/theorems-ams.inc:65
 #: lib/layouts/theorems-bytype.inc:62 lib/layouts/theorems.inc:65
-#, fuzzy
 msgid "theorems"
-msgstr "Теорема"
+msgstr "теореми"
 
 #: lib/layouts/theorems-ams-bytype.inc:91
 #: lib/layouts/theorems-ams-chap-bytype.inc:135 lib/layouts/theorems-ams.inc:89
 #: lib/layouts/theorems-bytype.inc:84 lib/layouts/theorems.inc:89
-#, fuzzy
 msgid "corollary"
-msgstr "Наслідок"
+msgstr "наслідок"
 
 #: lib/layouts/theorems-ams-bytype.inc:92
 #: lib/layouts/theorems-ams-chap-bytype.inc:136 lib/layouts/theorems-ams.inc:90
 #: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems.inc:90
-#, fuzzy
 msgid "Corollaries"
-msgstr "Наслідок"
+msgstr "Наслідки"
 
 #: lib/layouts/theorems-ams-bytype.inc:92
 #: lib/layouts/theorems-ams-chap-bytype.inc:136 lib/layouts/theorems-ams.inc:90
 #: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems.inc:90
-#, fuzzy
 msgid "corollaries"
-msgstr "Наслідок"
+msgstr "наслідки"
 
 #: lib/layouts/theorems-ams-bytype.inc:114
 #: lib/layouts/theorems-ams-chap-bytype.inc:159
 #: lib/layouts/theorems-ams.inc:114 lib/layouts/theorems-bytype.inc:108
 #: lib/layouts/theorems.inc:114
-#, fuzzy
 msgid "lemma"
-msgstr "Лема"
+msgstr "лема"
 
 #: lib/layouts/theorems-ams-bytype.inc:115
 #: lib/layouts/theorems-ams-chap-bytype.inc:160
 #: lib/layouts/theorems-ams.inc:115 lib/layouts/theorems-bytype.inc:109
 #: lib/layouts/theorems.inc:115
-#, fuzzy
 msgid "Lemmas"
-msgstr "Лема"
+msgstr "Леми"
 
 #: lib/layouts/theorems-ams-bytype.inc:115
 #: lib/layouts/theorems-ams-chap-bytype.inc:160
 #: lib/layouts/theorems-ams.inc:115 lib/layouts/theorems-bytype.inc:109
 #: lib/layouts/theorems.inc:115
-#, fuzzy
 msgid "lemmas"
-msgstr "Лема"
+msgstr "леми"
 
 #: lib/layouts/theorems-ams-bytype.inc:138
 #: lib/layouts/theorems-ams-chap-bytype.inc:184
 #: lib/layouts/theorems-ams.inc:139 lib/layouts/theorems-bytype.inc:132
 #: lib/layouts/theorems.inc:140
-#, fuzzy
 msgid "proposition"
-msgstr "Твердження"
+msgstr "твердження"
 
 #: lib/layouts/theorems-ams-bytype.inc:139
 #: lib/layouts/theorems-ams-chap-bytype.inc:185
 #: lib/layouts/theorems-ams.inc:140 lib/layouts/theorems-bytype.inc:133
 #: lib/layouts/theorems.inc:141
-#, fuzzy
 msgid "Propositions"
 msgstr "Твердження"
 
@@ -18927,23 +18839,20 @@ msgstr "Твердження"
 #: lib/layouts/theorems-ams-chap-bytype.inc:185
 #: lib/layouts/theorems-ams.inc:140 lib/layouts/theorems-bytype.inc:133
 #: lib/layouts/theorems.inc:141
-#, fuzzy
 msgid "propositions"
-msgstr "Твердження"
+msgstr "твердження"
 
 #: lib/layouts/theorems-ams-bytype.inc:161
 #: lib/layouts/theorems-ams-chap-bytype.inc:209
 #: lib/layouts/theorems-ams.inc:163 lib/layouts/theorems-bytype.inc:155
 #: lib/layouts/theorems.inc:164
-#, fuzzy
 msgid "conjecture"
-msgstr "Припущення"
+msgstr "припущення"
 
 #: lib/layouts/theorems-ams-bytype.inc:162
 #: lib/layouts/theorems-ams-chap-bytype.inc:210
 #: lib/layouts/theorems-ams.inc:164 lib/layouts/theorems-bytype.inc:156
 #: lib/layouts/theorems.inc:165
-#, fuzzy
 msgid "Conjectures"
 msgstr "Припущення"
 
@@ -18951,9 +18860,8 @@ msgstr "Припущення"
 #: lib/layouts/theorems-ams-chap-bytype.inc:210
 #: lib/layouts/theorems-ams.inc:164 lib/layouts/theorems-bytype.inc:156
 #: lib/layouts/theorems.inc:165
-#, fuzzy
 msgid "conjectures"
-msgstr "Припущення"
+msgstr "припущення"
 
 #: lib/layouts/theorems-ams-bytype.inc:182
 #: lib/layouts/theorems-ams-chap-bytype.inc:229
@@ -18967,22 +18875,21 @@ msgstr "Факт \\thefact."
 #: lib/layouts/theorems-ams.inc:188 lib/layouts/theorems-bytype.inc:179
 #: lib/layouts/theorems.inc:189
 msgid "fact"
-msgstr ""
+msgstr "факт"
 
 #: lib/layouts/theorems-ams-bytype.inc:186
 #: lib/layouts/theorems-ams-chap-bytype.inc:234
 #: lib/layouts/theorems-ams.inc:189 lib/layouts/theorems-bytype.inc:180
 #: lib/layouts/theorems.inc:190
-#, fuzzy
 msgid "Facts"
-msgstr "Факт"
+msgstr "Факти"
 
 #: lib/layouts/theorems-ams-bytype.inc:186
 #: lib/layouts/theorems-ams-chap-bytype.inc:234
 #: lib/layouts/theorems-ams.inc:189 lib/layouts/theorems-bytype.inc:180
 #: lib/layouts/theorems.inc:190
 msgid "facts"
-msgstr ""
+msgstr "факти"
 
 #: lib/layouts/theorems-ams-bytype.inc:206
 #: lib/layouts/theorems-ams-chap-bytype.inc:254
@@ -18995,17 +18902,15 @@ msgstr "Означення \\thedefinition."
 #: lib/layouts/theorems-ams-chap-bytype.inc:267
 #: lib/layouts/theorems-ams.inc:222 lib/layouts/theorems-bytype.inc:212
 #: lib/layouts/theorems.inc:223
-#, fuzzy
 msgid "definition"
-msgstr "Визначення"
+msgstr "визначення"
 
 #: lib/layouts/theorems-ams-bytype.inc:219
 #: lib/layouts/theorems-ams-chap-bytype.inc:268
 #: lib/layouts/theorems-ams.inc:223 lib/layouts/theorems-bytype.inc:213
 #: lib/layouts/theorems.inc:224
-#, fuzzy
 msgid "definitions"
-msgstr "Визначення"
+msgstr "визначення"
 
 #: lib/layouts/theorems-ams-bytype.inc:238
 #: lib/layouts/theorems-ams-chap-bytype.inc:287
@@ -19018,17 +18923,15 @@ msgstr "Приклад \\theexample."
 #: lib/layouts/theorems-ams-chap-bytype.inc:292
 #: lib/layouts/theorems-ams.inc:246 lib/layouts/theorems-bytype.inc:236
 #: lib/layouts/theorems.inc:247
-#, fuzzy
 msgid "example"
-msgstr "Приклад"
+msgstr "приклад"
 
 #: lib/layouts/theorems-ams-bytype.inc:243
 #: lib/layouts/theorems-ams-chap-bytype.inc:293
 #: lib/layouts/theorems-ams.inc:247 lib/layouts/theorems-bytype.inc:237
 #: lib/layouts/theorems.inc:248
-#, fuzzy
 msgid "examples"
-msgstr "Приклади"
+msgstr "приклади"
 
 #: lib/layouts/theorems-ams-bytype.inc:260
 #: lib/layouts/theorems-ams-chap-bytype.inc:310
@@ -19041,25 +18944,22 @@ msgstr "Задача \\theproblem."
 #: lib/layouts/theorems-ams-chap-bytype.inc:315
 #: lib/layouts/theorems-ams.inc:268 lib/layouts/theorems-bytype.inc:258
 #: lib/layouts/theorems.inc:269
-#, fuzzy
 msgid "problem"
-msgstr "Задача"
+msgstr "задача"
 
 #: lib/layouts/theorems-ams-bytype.inc:265
 #: lib/layouts/theorems-ams-chap-bytype.inc:316
 #: lib/layouts/theorems-ams.inc:269 lib/layouts/theorems-bytype.inc:259
 #: lib/layouts/theorems.inc:270
-#, fuzzy
 msgid "Problems"
-msgstr "Задача"
+msgstr "Задачі"
 
 #: lib/layouts/theorems-ams-bytype.inc:265
 #: lib/layouts/theorems-ams-chap-bytype.inc:316
 #: lib/layouts/theorems-ams.inc:269 lib/layouts/theorems-bytype.inc:259
 #: lib/layouts/theorems.inc:270
-#, fuzzy
 msgid "problems"
-msgstr "Задача"
+msgstr "задачі"
 
 #: lib/layouts/theorems-ams-bytype.inc:285
 #: lib/layouts/theorems-ams-chap-bytype.inc:336
@@ -19072,89 +18972,78 @@ msgstr "Вправа \\theexercise."
 #: lib/layouts/theorems-ams-chap-bytype.inc:342
 #: lib/layouts/theorems-ams.inc:294 lib/layouts/theorems-bytype.inc:284
 #: lib/layouts/theorems.inc:295
-#, fuzzy
 msgid "exercise"
-msgstr "Вправа"
+msgstr "вправа"
 
 #: lib/layouts/theorems-ams-bytype.inc:291
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
 #: lib/layouts/theorems-ams.inc:295 lib/layouts/theorems-bytype.inc:285
 #: lib/layouts/theorems.inc:296
-#, fuzzy
 msgid "Exercises"
-msgstr "Вправа"
+msgstr "Вправи"
 
 #: lib/layouts/theorems-ams-bytype.inc:291
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
 #: lib/layouts/theorems-ams.inc:295 lib/layouts/theorems-bytype.inc:285
 #: lib/layouts/theorems.inc:296
-#, fuzzy
 msgid "exercises"
-msgstr "Вправа"
+msgstr "вправи"
 
 #: lib/layouts/theorems-ams-bytype.inc:315
 #: lib/layouts/theorems-ams-chap-bytype.inc:368
 #: lib/layouts/theorems-ams.inc:319 lib/layouts/theorems-bytype.inc:309
 #: lib/layouts/theorems.inc:320
-#, fuzzy
 msgid "solution"
-msgstr "Розв'язування"
+msgstr "розв'язок"
 
 #: lib/layouts/theorems-ams-bytype.inc:316
 #: lib/layouts/theorems-ams-chap-bytype.inc:369
 #: lib/layouts/theorems-ams.inc:320 lib/layouts/theorems-bytype.inc:310
 #: lib/layouts/theorems.inc:321
-#, fuzzy
 msgid "Solutions"
-msgstr "Розв'язування"
+msgstr "Розв'язки"
 
 #: lib/layouts/theorems-ams-bytype.inc:316
 #: lib/layouts/theorems-ams-chap-bytype.inc:369
 #: lib/layouts/theorems-ams.inc:320 lib/layouts/theorems-bytype.inc:310
 #: lib/layouts/theorems.inc:321
-#, fuzzy
 msgid "solutions"
-msgstr "Розв'язування"
+msgstr "розв'язки"
 
 #: lib/layouts/theorems-ams-bytype.inc:348
 #: lib/layouts/theorems-ams-chap-bytype.inc:402
 #: lib/layouts/theorems-ams.inc:353 lib/layouts/theorems-bytype.inc:342
 #: lib/layouts/theorems.inc:354
-#, fuzzy
 msgid "remark"
-msgstr "Примітка"
+msgstr "примітка"
 
 #: lib/layouts/theorems-ams-bytype.inc:349
 #: lib/layouts/theorems-ams-chap-bytype.inc:403
 #: lib/layouts/theorems-ams.inc:354 lib/layouts/theorems-bytype.inc:343
 #: lib/layouts/theorems.inc:355
-#, fuzzy
 msgid "remarks"
-msgstr "Помітки"
+msgstr "примітки"
 
 #: lib/layouts/theorems-ams-bytype.inc:372
 #: lib/layouts/theorems-ams-chap-bytype.inc:427
 #: lib/layouts/theorems-ams.inc:377 lib/layouts/theorems-bytype.inc:366
 #: lib/layouts/theorems.inc:378
-#, fuzzy
 msgid "claim"
-msgstr "Твердження"
+msgstr "вимога"
 
 #: lib/layouts/theorems-ams-bytype.inc:373
 #: lib/layouts/theorems-ams-chap-bytype.inc:428
 #: lib/layouts/theorems-ams.inc:378 lib/layouts/theorems-bytype.inc:367
 #: lib/layouts/theorems.inc:379
-#, fuzzy
 msgid "Claims"
-msgstr "Твердження"
+msgstr "Вимоги"
 
 #: lib/layouts/theorems-ams-bytype.inc:373
 #: lib/layouts/theorems-ams-chap-bytype.inc:428
 #: lib/layouts/theorems-ams.inc:378 lib/layouts/theorems-bytype.inc:367
 #: lib/layouts/theorems.inc:379
-#, fuzzy
 msgid "claims"
-msgstr "Твердження"
+msgstr "вимоги"
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "AMS Theorems (Numbered by Type)"
@@ -19232,23 +19121,20 @@ msgstr "Критерій \\thecriterion."
 #: lib/layouts/theorems-ams-extended-bytype.module:46
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:81
 #: lib/layouts/theorems-ams-extended.module:43
-#, fuzzy
 msgid "criterion"
-msgstr "Критерій"
+msgstr "критерій"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:47
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:44
-#, fuzzy
 msgid "Criteria"
-msgstr "Критерій"
+msgstr "Критерії"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:47
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:44
-#, fuzzy
 msgid "criteria"
-msgstr "Дописувач"
+msgstr "критерії"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:61
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:97
@@ -19270,16 +19156,14 @@ msgstr "Алгоритм \\thealgorithm."
 #: lib/layouts/theorems-ams-extended-bytype.module:87
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:124
 #: lib/layouts/theorems-ams-extended.module:85
-#, fuzzy
 msgid "algorithm"
-msgstr "Алгоритм"
+msgstr "алгоритм"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:88
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:125
 #: lib/layouts/theorems-ams-extended.module:86
-#, fuzzy
 msgid "algorithms"
-msgstr "Алгоритми"
+msgstr "алгоритми"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:105
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:142
@@ -19295,23 +19179,20 @@ msgstr "Аксіома \\theaxiom.rem."
 #: lib/layouts/theorems-ams-extended-bytype.module:127
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:165
 #: lib/layouts/theorems-ams-extended.module:126
-#, fuzzy
 msgid "axiom"
-msgstr "Аксіома"
+msgstr "аксіома"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:128
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:166
 #: lib/layouts/theorems-ams-extended.module:127
-#, fuzzy
 msgid "Axioms"
-msgstr "Аксіома"
+msgstr "Аксіоми"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:128
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:166
 #: lib/layouts/theorems-ams-extended.module:127
-#, fuzzy
 msgid "axioms"
-msgstr "Аксіома"
+msgstr "аксіоми"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:143
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:181
@@ -19333,23 +19214,20 @@ msgstr "Умова \\thecondition."
 #: lib/layouts/theorems-ams-extended-bytype.module:169
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:208
 #: lib/layouts/theorems-ams-extended.module:168
-#, fuzzy
 msgid "condition"
-msgstr "Умова"
+msgstr "умова"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:170
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:209
 #: lib/layouts/theorems-ams-extended.module:169
-#, fuzzy
 msgid "Conditions"
-msgstr "Умова"
+msgstr "Умови"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:170
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:209
 #: lib/layouts/theorems-ams-extended.module:169
-#, fuzzy
 msgid "conditions"
-msgstr "Умова"
+msgstr "умови"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:185
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:224
@@ -19378,16 +19256,14 @@ msgstr "note"
 #: lib/layouts/theorems-ams-extended-bytype.module:213
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:253
 #: lib/layouts/theorems-ams-extended.module:212
-#, fuzzy
 msgid "Notes[[theorem]]"
-msgstr "Висновок \\thetheorem."
+msgstr "Примітки[[theorem]]"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:213
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:253
 #: lib/layouts/theorems-ams-extended.module:212
-#, fuzzy
 msgid "notes[[theorem]]"
-msgstr "Висновок \\thetheorem."
+msgstr "примітки[[theorem]]"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:226
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:266
@@ -19409,23 +19285,20 @@ msgstr "Позначення \\thenotation."
 #: lib/layouts/theorems-ams-extended-bytype.module:252
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:293
 #: lib/layouts/theorems-ams-extended.module:251
-#, fuzzy
 msgid "notation"
-msgstr "Позначення"
+msgstr "позначення"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:253
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:294
 #: lib/layouts/theorems-ams-extended.module:252
-#, fuzzy
 msgid "Notations"
 msgstr "Позначення"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:253
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:294
 #: lib/layouts/theorems-ams-extended.module:252
-#, fuzzy
 msgid "notations"
-msgstr "Позначення"
+msgstr "позначення"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:268
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:309
@@ -19447,23 +19320,20 @@ msgstr "Резюме \\thesummary."
 #: lib/layouts/theorems-ams-extended-bytype.module:295
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:337
 #: lib/layouts/theorems-ams-extended.module:294
-#, fuzzy
 msgid "summary"
-msgstr "Резюме"
+msgstr "резюме"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:296
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:338
 #: lib/layouts/theorems-ams-extended.module:295
-#, fuzzy
 msgid "Summaries"
 msgstr "Резюме"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:296
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:338
 #: lib/layouts/theorems-ams-extended.module:295
-#, fuzzy
 msgid "summaries"
-msgstr "овен"
+msgstr "резюме"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:311
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:353
@@ -19485,23 +19355,20 @@ msgstr "Висновок \\theconclusion."
 #: lib/layouts/theorems-ams-extended-bytype.module:338
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:381
 #: lib/layouts/theorems-ams-extended.module:337
-#, fuzzy
 msgid "conclusion"
-msgstr "Висновки"
+msgstr "висновок"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:339
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:382
 #: lib/layouts/theorems-ams-extended.module:338
-#, fuzzy
 msgid "Conclusions[[theorem]]"
-msgstr "Висновок \\thetheorem."
+msgstr "Висновки[[theorem]]"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:339
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:382
 #: lib/layouts/theorems-ams-extended.module:338
-#, fuzzy
 msgid "conclusions[[theorem]]"
-msgstr "Висновок \\thetheorem."
+msgstr "висновки[[theorem]]"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:354
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:397
@@ -19545,23 +19412,20 @@ msgstr "Припущення \\theassumption."
 #: lib/layouts/theorems-ams-extended-bytype.module:380
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:424
 #: lib/layouts/theorems-ams-extended.module:380
-#, fuzzy
 msgid "assumption"
-msgstr "Припущення"
+msgstr "припущення"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:381
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:425
 #: lib/layouts/theorems-ams-extended.module:381
-#, fuzzy
 msgid "Assumptions"
 msgstr "Припущення"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:381
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:425
 #: lib/layouts/theorems-ams-extended.module:381
-#, fuzzy
 msgid "assumptions"
-msgstr "Припущення"
+msgstr "припущення"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:396
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:440
@@ -19578,23 +19442,20 @@ msgstr "Припущення."
 #: lib/layouts/theorems-ams-extended-bytype.module:421
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:466
 #: lib/layouts/theorems-ams-extended.module:421
-#, fuzzy
 msgid "question"
-msgstr "Питання"
+msgstr "питання"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:422
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:467
 #: lib/layouts/theorems-ams-extended.module:422
-#, fuzzy
 msgid "Questions"
 msgstr "Питання"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:422
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:467
 #: lib/layouts/theorems-ams-extended.module:422
-#, fuzzy
 msgid "questions"
-msgstr "Питання"
+msgstr "питання"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:436
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:481
@@ -20300,14 +20161,12 @@ msgid "Greek (ancient)"
 msgstr "Грецька (давня)"
 
 #: lib/languages:246
-#, fuzzy
 msgid "Arabic (ArabTeX, only with TeX fonts)"
-msgstr "Арабська (ArabTeX)"
+msgstr "Арабська (ArabTeX, лише зі шрифтами TeX)"
 
 #: lib/languages:258
-#, fuzzy
 msgid "Arabic (Arabi or non-TeX fonts)"
-msgstr "Арабська (ArabTeX)"
+msgstr "Арабська (Arabi або шрифти поза TeX)"
 
 #: lib/languages:293 src/frontends/qt/GuiSymbols.cpp:63
 msgid "Armenian"
@@ -20513,7 +20372,7 @@ msgstr "Японська"
 
 #: lib/languages:992
 msgid "Japanese (CJK, only with TeX fonts)"
-msgstr ""
+msgstr "Японська (CJK, лише зі шрифтами TeX)"
 
 #: lib/languages:1002 src/frontends/qt/GuiSymbols.cpp:73
 msgid "Kannada"
@@ -20536,32 +20395,28 @@ msgid "Kurdish (Kurmanji)"
 msgstr "Курдська (Курманджі)"
 
 #: lib/languages:1068
-#, fuzzy
 msgid "Kurdish (Sorani)"
-msgstr "Курдська (Курманджі)"
+msgstr "Курдська (сорані)"
 
 #: lib/languages:1082 src/frontends/qt/GuiSymbols.cpp:76
 msgid "Lao"
 msgstr "Лаоська"
 
 #: lib/languages:1095
-#, fuzzy
 msgid "Latin (Modern)"
-msgstr "Latin Modern Sans"
+msgstr "Латина (сучасна)"
 
 #: lib/languages:1108
-#, fuzzy
 msgid "Latin (Classic)"
-msgstr "Класичний"
+msgstr "Латина (класична)"
 
 #: lib/languages:1121
 msgid "Latin (Ecclesiastic)"
-msgstr ""
+msgstr "Латина (церковна)"
 
 #: lib/languages:1134
-#, fuzzy
 msgid "Latin (Medieval)"
-msgstr "Latin Modern Sans"
+msgstr "Латина (середньовічна)"
 
 #: lib/languages:1151
 msgid "Latvian"
@@ -20601,7 +20456,7 @@ msgstr "Англійська (Нова Зеландія)"
 
 #: lib/languages:1286
 msgid "N'Ko"
-msgstr ""
+msgstr "Н'ко"
 
 #: lib/languages:1299
 msgid "Norwegian (Bokmaal)"
@@ -20617,7 +20472,7 @@ msgstr "Оксітанська"
 
 #: lib/languages:1337
 msgid "Odia"
-msgstr ""
+msgstr "Одіа"
 
 #: lib/languages:1349
 msgid "Russian (Petrine orthography)"
@@ -20637,7 +20492,7 @@ msgstr "Португальська"
 
 #: lib/languages:1403
 msgid "Punjabi"
-msgstr ""
+msgstr "Пенджабі"
 
 #: lib/languages:1413
 msgid "Romanian"
@@ -20660,9 +20515,8 @@ msgid "Sanskrit"
 msgstr "Санскрит"
 
 #: lib/languages:1477
-#, fuzzy
 msgid "Scottish Gaelic"
-msgstr "Шотландська"
+msgstr "Шотландська гельська"
 
 #: lib/languages:1494
 msgid "Serbian"
@@ -20734,7 +20588,7 @@ msgstr "Урду"
 
 #: lib/languages:1747
 msgid "Uyghur"
-msgstr ""
+msgstr "Уйгурська"
 
 #: lib/languages:1760
 msgid "Vietnamese"
@@ -20745,9 +20599,8 @@ msgid "Welsh"
 msgstr "Уельська"
 
 #: lib/latexcolors:46 lib/latexcolors:195 lib/latexcolors:818
-#, fuzzy
 msgid "Black"
-msgstr "чорний"
+msgstr "Чорний"
 
 #: lib/latexcolors:48 lib/latexcolors:55 lib/latexcolors:63 lib/latexcolors:71
 #: lib/latexcolors:79 lib/latexcolors:86 lib/latexcolors:93 lib/latexcolors:101
@@ -20755,94 +20608,80 @@ msgstr "чорний"
 #: lib/latexcolors:131 lib/latexcolors:139 lib/latexcolors:147
 #: lib/latexcolors:154 lib/latexcolors:161 lib/latexcolors:169
 #: lib/latexcolors:177 lib/latexcolors:184
-#, fuzzy
 msgid "LaTeX Base Colors"
-msgstr "Класи LaTeX"
+msgstr "Базові кольори LaTeX"
 
 #: lib/latexcolors:53
-#, fuzzy
 msgid "Dark gray"
-msgstr "темно-сірий"
+msgstr "Темно-сірий"
 
 #: lib/latexcolors:61 lib/latexcolors:205 lib/latexcolors:894
 msgid "Gray"
-msgstr ""
+msgstr "Сірий"
 
 #: lib/latexcolors:69
-#, fuzzy
 msgid "Light gray"
-msgstr "світло-сірий"
+msgstr "Світло-сірий"
 
 #: lib/latexcolors:77 lib/latexcolors:213 lib/latexcolors:977
-#, fuzzy
 msgid "White"
-msgstr "білий"
+msgstr "Білий"
 
 #: lib/latexcolors:84 lib/latexcolors:223 lib/latexcolors:1113
-#, fuzzy
 msgid "Yellow"
-msgstr "жовтий"
+msgstr "Жовтий"
 
 #: lib/latexcolors:91 lib/latexcolors:795 lib/latexcolors:1201
-#, fuzzy
 msgid "Brown"
-msgstr "frown"
+msgstr "Коричневий"
 
 #: lib/latexcolors:99 lib/latexcolors:283 lib/latexcolors:1137
-#, fuzzy
 msgid "Orange"
-msgstr "жовтогарячий"
+msgstr "Помаранчевий"
 
 #: lib/latexcolors:107 lib/latexcolors:343 lib/latexcolors:1249
-#, fuzzy
 msgid "Red"
-msgstr "Повторити"
+msgstr "Червоний"
 
 #: lib/latexcolors:114 lib/latexcolors:1401
 msgid "Pink"
-msgstr ""
+msgstr "Рожевий"
 
 #: lib/latexcolors:122 lib/latexcolors:397 lib/latexcolors:1433
-#, fuzzy
 msgid "Magenta"
-msgstr "бузковий"
+msgstr "Бузковий"
 
 #: lib/latexcolors:129 lib/latexcolors:511 lib/latexcolors:1489
-#, fuzzy
 msgid "Violet"
-msgstr "фіалковий"
+msgstr "Фіолетовий"
 
 #: lib/latexcolors:137 lib/latexcolors:491 lib/latexcolors:1521
-#, fuzzy
 msgid "Purple"
-msgstr "пурпуровий"
+msgstr "Пурпуровий"
 
 #: lib/latexcolors:145 lib/latexcolors:595 lib/latexcolors:1650
-#, fuzzy
 msgid "Blue"
-msgstr "Синій пункт"
+msgstr "Синій"
 
 #: lib/latexcolors:152 lib/latexcolors:613 lib/latexcolors:1730
 msgid "Cyan"
-msgstr ""
+msgstr "Блакитний"
 
 #: lib/latexcolors:159 lib/latexcolors:1858
 msgid "Teal"
-msgstr ""
+msgstr "Зеленувато-блакитний"
 
 #: lib/latexcolors:167 lib/latexcolors:1922
 msgid "Lime"
-msgstr ""
+msgstr "Лайм"
 
 #: lib/latexcolors:175 lib/latexcolors:703 lib/latexcolors:1954
-#, fuzzy
 msgid "Green"
-msgstr "Грецька"
+msgstr "Зелений"
 
 #: lib/latexcolors:182 lib/latexcolors:1986
-#, fuzzy
 msgid "Olive"
-msgstr "оливковий"
+msgstr "Оливковий"
 
 #: lib/latexcolors:198 lib/latexcolors:208 lib/latexcolors:216
 #: lib/latexcolors:226 lib/latexcolors:236 lib/latexcolors:244
@@ -20868,241 +20707,227 @@ msgstr "оливковий"
 #: lib/latexcolors:772 lib/latexcolors:780 lib/latexcolors:788
 #: lib/latexcolors:798 lib/latexcolors:808
 msgid "DVIPS Names"
-msgstr ""
+msgstr "Назви DVIPS"
 
 #: lib/latexcolors:233 lib/latexcolors:1153
 msgid "Goldenrod"
-msgstr ""
+msgstr "Золотистий"
 
 #: lib/latexcolors:241
 msgid "Dandelion"
-msgstr ""
+msgstr "Кульбаба"
 
 #: lib/latexcolors:249
 msgid "Apricot"
-msgstr ""
+msgstr "Абрикос"
 
 #: lib/latexcolors:257
 msgid "Peach"
-msgstr ""
+msgstr "Персик"
 
 #: lib/latexcolors:265
 msgid "Melon"
-msgstr ""
+msgstr "Диня"
 
 #: lib/latexcolors:273
-#, fuzzy
 msgid "YellowOrange"
-msgstr "жовтогарячий"
+msgstr "Жовтогарячий"
 
 #: lib/latexcolors:291
 msgid "BurntOrange"
-msgstr ""
+msgstr "Вигорілий помаранчевий"
 
 #: lib/latexcolors:299
 msgid "Bittersweet"
-msgstr ""
+msgstr "Гірко-солодкий"
 
 #: lib/latexcolors:307
-#, fuzzy
 msgid "RedOrange"
-msgstr "Діапазон"
+msgstr "Червоно-помаранчевий"
 
 #: lib/latexcolors:315
 msgid "Mahogany"
-msgstr ""
+msgstr "Червоне дерево"
 
 #: lib/latexcolors:325 lib/latexcolors:1217
 msgid "Maroon"
-msgstr ""
+msgstr "Брунато-малиновий"
 
 #: lib/latexcolors:333
 msgid "BrickRed"
-msgstr ""
+msgstr "Цегляний"
 
 #: lib/latexcolors:353 lib/latexcolors:1257
-#, fuzzy
 msgid "OrangeRed"
-msgstr "жовтогарячий"
+msgstr "Оранжево-червоний"
 
 #: lib/latexcolors:361
 msgid "RubineRed"
-msgstr ""
+msgstr "Рубіново-червоний"
 
 #: lib/latexcolors:369
 msgid "WildStrawberry"
-msgstr ""
+msgstr "Дика суниця"
 
 #: lib/latexcolors:379 lib/latexcolors:1281
 msgid "Salmon"
-msgstr ""
+msgstr "Оранжево-рожевий"
 
 #: lib/latexcolors:387
-#, fuzzy
 msgid "CarnationPink"
-msgstr "Варіація"
+msgstr "Гвоздиковий"
 
 #: lib/latexcolors:407 lib/latexcolors:1505
-#, fuzzy
 msgid "VioletRed"
-msgstr "фіалковий"
+msgstr "Фіалково-червоний"
 
 #: lib/latexcolors:415
 msgid "Rhodamine"
-msgstr ""
+msgstr "Родаміновий"
 
 #: lib/latexcolors:423
 msgid "Mulberry"
-msgstr ""
+msgstr "Шовковичний"
 
 #: lib/latexcolors:431
-#, fuzzy
 msgid "RedViolet"
-msgstr "фіалковий"
+msgstr "Червоно-фіалковий"
 
 #: lib/latexcolors:441 lib/latexcolors:1425
 msgid "Fuchsia"
-msgstr ""
+msgstr "Фуксія"
 
 #: lib/latexcolors:451 lib/latexcolors:1481
-#, fuzzy
 msgid "Lavender"
-msgstr "Стать"
+msgstr "Лаванда"
 
 #: lib/latexcolors:461 lib/latexcolors:1473
 msgid "Thistle"
-msgstr ""
+msgstr "Чортополох"
 
 #: lib/latexcolors:471 lib/latexcolors:1497
 msgid "Orchid"
-msgstr ""
+msgstr "Орхідея"
 
 #: lib/latexcolors:481 lib/latexcolors:1553
 msgid "DarkOrchid"
-msgstr ""
+msgstr "Темна орхідея"
 
 #: lib/latexcolors:501 lib/latexcolors:1465
 msgid "Plum"
-msgstr ""
+msgstr "Сливовий"
 
 #: lib/latexcolors:519
 msgid "RoyalPurple"
-msgstr ""
+msgstr "Королівський пурпуровий"
 
 #: lib/latexcolors:527 lib/latexcolors:1537
-#, fuzzy
 msgid "BlueViolet"
-msgstr "фіалковий"
+msgstr "Синьо-фіалковий"
 
 #: lib/latexcolors:535
 msgid "Periwinkle"
-msgstr ""
+msgstr "Барвінковий"
 
 #: lib/latexcolors:545 lib/latexcolors:1866
 msgid "CadetBlue"
-msgstr ""
+msgstr "Темно-синій"
 
 #: lib/latexcolors:555 lib/latexcolors:1674
 msgid "CornflowerBlue"
-msgstr ""
+msgstr "Волошково-синій"
 
 #: lib/latexcolors:565 lib/latexcolors:1609
 msgid "MidnightBlue"
-msgstr ""
+msgstr "Північно-синій"
 
 #: lib/latexcolors:575 lib/latexcolors:1626
 msgid "NavyBlue"
-msgstr ""
+msgstr "Гранатовий"
 
 #: lib/latexcolors:585 lib/latexcolors:1658
 msgid "RoyalBlue"
-msgstr ""
+msgstr "Густий синій"
 
 #: lib/latexcolors:603
 msgid "Cerulean"
-msgstr ""
+msgstr "Небесно-блакитний"
 
 #: lib/latexcolors:621
-#, fuzzy
 msgid "ProcessBlue"
-msgstr "Процес вбито"
+msgstr "Друкарський блакитний"
 
 #: lib/latexcolors:631 lib/latexcolors:1706
 msgid "SkyBlue"
-msgstr ""
+msgstr "Небесно-синій"
 
 #: lib/latexcolors:641 lib/latexcolors:1802
 msgid "Turquoise"
-msgstr ""
+msgstr "Бірюзовий"
 
 #: lib/latexcolors:649
 msgid "TealBlue"
-msgstr ""
+msgstr "Синяво-зелений"
 
 #: lib/latexcolors:659 lib/latexcolors:1794
 msgid "Aquamarine"
-msgstr ""
+msgstr "Аквамариновий"
 
 #: lib/latexcolors:667
 msgid "BlueGreen"
-msgstr ""
+msgstr "Синьо-зелений"
 
 #: lib/latexcolors:675
-#, fuzzy
 msgid "Emerald"
-msgstr "Нумерація"
+msgstr "Смарагдовий"
 
 #: lib/latexcolors:683
-#, fuzzy
 msgid "JungleGreen"
-msgstr "зелений"
+msgstr "Джунглевий зелений"
 
 #: lib/latexcolors:693 lib/latexcolors:1938
-#, fuzzy
 msgid "SeaGreen"
-msgstr "Грецька"
+msgstr "Морський зелений"
 
 #: lib/latexcolors:713 lib/latexcolors:1946
 msgid "ForestGreen"
-msgstr ""
+msgstr "Лісовий зелений"
 
 #: lib/latexcolors:721
 msgid "PineGreen"
-msgstr ""
+msgstr "Сосново-зелений"
 
 #: lib/latexcolors:731 lib/latexcolors:1930
 msgid "LimeGreen"
-msgstr ""
+msgstr "Зелений лайм"
 
 #: lib/latexcolors:741 lib/latexcolors:2002
 msgid "YellowGreen"
-msgstr ""
+msgstr "Жовто-зелений"
 
 #: lib/latexcolors:751 lib/latexcolors:1914
-#, fuzzy
 msgid "SpringGreen"
-msgstr "зелений"
+msgstr "Зелена весна"
 
 #: lib/latexcolors:761 lib/latexcolors:2018
 msgid "GreenYellow"
-msgstr ""
+msgstr "Зелено-жовтий"
 
 #: lib/latexcolors:769
 msgid "OliveGreen"
-msgstr ""
+msgstr "Оливково-зелений"
 
 #: lib/latexcolors:777
 msgid "RawSienna"
-msgstr ""
+msgstr "Брунатнувато-жовтий"
 
 #: lib/latexcolors:785
 msgid "Sepia"
-msgstr ""
+msgstr "Сепія"
 
 #: lib/latexcolors:805 lib/latexcolors:1329
-#, fuzzy
 msgid "Tan"
-msgstr "і"
+msgstr "Корковий"
 
 #: lib/latexcolors:821 lib/latexcolors:829 lib/latexcolors:846
 #: lib/latexcolors:863 lib/latexcolors:880 lib/latexcolors:897
@@ -21152,430 +20977,408 @@ msgstr "і"
 #: lib/latexcolors:1973 lib/latexcolors:1981 lib/latexcolors:1989
 #: lib/latexcolors:1997 lib/latexcolors:2005 lib/latexcolors:2013
 #: lib/latexcolors:2021 lib/latexcolors:2029
-#, fuzzy
 msgid "SVG Names"
-msgstr "Назва стилю"
+msgstr "Назви SVG"
 
 #: lib/latexcolors:826
 msgid "DarkSlateGray"
-msgstr ""
+msgstr "Темний шиферно-сірий"
 
 #: lib/latexcolors:843
 msgid "SlateGray"
-msgstr ""
+msgstr "Шиферно-сірий"
 
 #: lib/latexcolors:860
-#, fuzzy
 msgid "LightSlateGray"
-msgstr "світло-сірий"
+msgstr "Світлий сланцево-сірий"
 
 #: lib/latexcolors:877
 msgid "DimGray"
-msgstr ""
+msgstr "Тьмяно-сірий"
 
 #: lib/latexcolors:911
 msgid "DarkGray"
-msgstr ""
+msgstr "Темно-сірий"
 
 #: lib/latexcolors:928
 msgid "Silver"
-msgstr ""
+msgstr "Срібний"
 
 #: lib/latexcolors:936
-#, fuzzy
 msgid "LightGray"
-msgstr "світло-сірий"
+msgstr "Світло-сірий"
 
 #: lib/latexcolors:953
 msgid "Gainsboro"
-msgstr ""
+msgstr "Світлий сіро-фіолетовий"
 
 #: lib/latexcolors:961
 msgid "WhiteSmoke"
-msgstr ""
+msgstr "Білий дим"
 
 #: lib/latexcolors:969
 msgid "GhostWhite"
-msgstr ""
+msgstr "Туманно-білий"
 
 #: lib/latexcolors:985
 msgid "Snow"
-msgstr ""
+msgstr "Сніговий"
 
 #: lib/latexcolors:993
 msgid "Ivory"
-msgstr ""
+msgstr "Жовтуватий"
 
 #: lib/latexcolors:1001
 msgid "FloralWhite"
-msgstr ""
+msgstr "Квітково-білий"
 
 #: lib/latexcolors:1009
 msgid "Seashell"
-msgstr ""
+msgstr "Морська черепашка"
 
 #: lib/latexcolors:1017
 msgid "OldLace"
-msgstr ""
+msgstr "Старе мереживо"
 
 #: lib/latexcolors:1025
-#, fuzzy
 msgid "Linen"
-msgstr "Рядок 1"
+msgstr "льняний"
 
 #: lib/latexcolors:1033
 msgid "AntiqueWhite"
-msgstr ""
+msgstr "Античний білий"
 
 #: lib/latexcolors:1041
 msgid "BlanchedAlmond"
-msgstr ""
+msgstr "Світло-кремовий"
 
 #: lib/latexcolors:1049
 msgid "PapayaWhip"
-msgstr ""
+msgstr "Папая"
 
 #: lib/latexcolors:1057
 msgid "Beige"
-msgstr ""
+msgstr "Беж"
 
 #: lib/latexcolors:1065
 msgid "Cornsilk"
-msgstr ""
+msgstr "Блідо-жовтий"
 
 #: lib/latexcolors:1073
 msgid "LightGoldenrodYellow"
-msgstr ""
+msgstr "Світлий золотистий"
 
 #: lib/latexcolors:1081
 msgid "LightYellow"
-msgstr ""
+msgstr "Світло-жовтий"
 
 #: lib/latexcolors:1089
 msgid "LemonChiffon"
-msgstr ""
+msgstr "Лимонний"
 
 #: lib/latexcolors:1097
 msgid "PaleGoldenrod"
-msgstr ""
+msgstr "Тьмяний золотушниковий"
 
 #: lib/latexcolors:1105
 msgid "Khaki"
-msgstr ""
+msgstr "Брунатно-зеленуватий"
 
 #: lib/latexcolors:1121
 msgid "LightGoldenrod"
-msgstr ""
+msgstr "Світлий червоно-золотий"
 
 #: lib/latexcolors:1129
 msgid "Gold"
-msgstr ""
+msgstr "Золотий"
 
 #: lib/latexcolors:1145
-#, fuzzy
 msgid "DarkOrange"
-msgstr "varangle"
+msgstr "Темно-оранжевий"
 
 #: lib/latexcolors:1161
 msgid "DarkGoldenrod"
-msgstr ""
+msgstr "Темно-золотушниковий"
 
 #: lib/latexcolors:1169
 msgid "Peru"
-msgstr ""
+msgstr "Перу"
 
 #: lib/latexcolors:1177
 msgid "Chocolate"
-msgstr ""
+msgstr "Шоколадний"
 
 #: lib/latexcolors:1185
 msgid "SaddleBrown"
-msgstr ""
+msgstr "Брунатне сідло"
 
 #: lib/latexcolors:1193
 msgid "Sienna"
-msgstr ""
+msgstr "вохра"
 
 #: lib/latexcolors:1209
 msgid "DarkRed"
-msgstr ""
+msgstr "Темно-червоний"
 
 #: lib/latexcolors:1225
 msgid "FireBrick"
-msgstr ""
+msgstr "Цегляний"
 
 #: lib/latexcolors:1233
 msgid "IndianRed"
-msgstr ""
+msgstr "Індіансько-червоний"
 
 #: lib/latexcolors:1241
-#, fuzzy
 msgid "Crimson[[color]]"
-msgstr "(Без)"
+msgstr "Малиновий[[color]]"
 
 #: lib/latexcolors:1265
 msgid "Tomato"
-msgstr ""
+msgstr "Томатний"
 
 #: lib/latexcolors:1273
-#, fuzzy
 msgid "Coral"
-msgstr "для всіх"
+msgstr "Корал"
 
 #: lib/latexcolors:1289
-#, fuzzy
 msgid "LightCoral"
-msgstr "світло-сірий"
+msgstr "Світлий корал"
 
 #: lib/latexcolors:1297
 msgid "DarkSalmon"
-msgstr ""
+msgstr "Темний оранжево-рожевий"
 
 #: lib/latexcolors:1305
-#, fuzzy
 msgid "LightSalmon"
-msgstr "місяць праворуч"
+msgstr "Світлий оранжево-рожевий"
 
 #: lib/latexcolors:1313
 msgid "SandyBrown"
-msgstr ""
+msgstr "Пісочно-брунатний"
 
 #: lib/latexcolors:1321
 msgid "RosyBrown"
-msgstr ""
+msgstr "Рожево-брунатний"
 
 #: lib/latexcolors:1337
 msgid "BurlyWood"
-msgstr ""
+msgstr "Жовтувато-коричневий"
 
 #: lib/latexcolors:1345
 msgid "Wheat"
-msgstr ""
+msgstr "Пшеничний"
 
 #: lib/latexcolors:1353
 msgid "PeachPuff"
-msgstr ""
+msgstr "Персиковий"
 
 #: lib/latexcolors:1361
 msgid "Moccasin"
-msgstr ""
+msgstr "Мокасиновий"
 
 #: lib/latexcolors:1369
 msgid "NavajoWhite"
-msgstr ""
+msgstr "Білий Навахо"
 
 #: lib/latexcolors:1377
-#, fuzzy
 msgid "Bisque"
-msgstr "Баскська"
+msgstr "Бісквітний"
 
 #: lib/latexcolors:1385
 msgid "LavenderBlush"
-msgstr ""
+msgstr "Червона лаванда"
 
 #: lib/latexcolors:1393
 msgid "MistyRose"
-msgstr ""
+msgstr "Тьмяно-рожевий"
 
 #: lib/latexcolors:1409
-#, fuzzy
 msgid "LightPink"
-msgstr "lightning"
+msgstr "Світло-рожевий"
 
 #: lib/latexcolors:1417
 msgid "HotPink"
-msgstr ""
+msgstr "Яскраво-рожевий"
 
 #: lib/latexcolors:1441
 msgid "DeepPink"
-msgstr ""
+msgstr "Глибокий рожевий"
 
 #: lib/latexcolors:1449
 msgid "MediumVioletRed"
-msgstr ""
+msgstr "Насичений фіалково-червоний"
 
 #: lib/latexcolors:1457
 msgid "PaleVioletRed"
-msgstr ""
+msgstr "Тьмяний фіалково-червоний"
 
 #: lib/latexcolors:1513
-#, fuzzy
 msgid "DarkMagenta"
-msgstr "бузковий"
+msgstr "Темно-пурпуровий"
 
 #: lib/latexcolors:1529
 msgid "Indigo"
-msgstr ""
+msgstr "Індиго"
 
 #: lib/latexcolors:1545
-#, fuzzy
 msgid "DarkViolet"
-msgstr "фіалковий"
+msgstr "Темно-фіалковий"
 
 #: lib/latexcolors:1561
-#, fuzzy
 msgid "LightSlateBlue"
-msgstr "Висота"
+msgstr "Світлий сланцево-синій"
 
 #: lib/latexcolors:1569
-#, fuzzy
 msgid "MediumPurple"
-msgstr "Середній"
+msgstr "Насичений пурпуровий"
 
 #: lib/latexcolors:1577
-#, fuzzy
 msgid "MediumOrchid"
-msgstr "Середній"
+msgstr "Насичений орхідейний"
 
 #: lib/latexcolors:1585
-#, fuzzy
 msgid "MediumSlateBlue"
-msgstr "Середній пробіл|д"
+msgstr "Насичений сланцево-синій"
 
 #: lib/latexcolors:1593
 msgid "SlateBlue"
-msgstr ""
+msgstr "Шиферно-синій"
 
 #: lib/latexcolors:1601
 msgid "DarkSlateBlue"
-msgstr ""
+msgstr "Темний шиферно-синій"
 
 #: lib/latexcolors:1634
 msgid "DarkBlue"
-msgstr ""
+msgstr "Темно-синій"
 
 #: lib/latexcolors:1642
-#, fuzzy
 msgid "MediumBlue"
-msgstr "Середній"
+msgstr "Насичений синій"
 
 #: lib/latexcolors:1666
 msgid "SteelBlue"
-msgstr ""
+msgstr "Сталево-синій"
 
 #: lib/latexcolors:1682
 msgid "DodgerBlue"
-msgstr ""
+msgstr "Блакитна Пудра"
 
 #: lib/latexcolors:1690
 msgid "DeepSkyBlue"
-msgstr ""
+msgstr "Глибокий небесно-синій"
 
 #: lib/latexcolors:1698
 msgid "LightSkyBlue"
-msgstr ""
+msgstr "Світлий небесно-блакитний"
 
 #: lib/latexcolors:1714
 msgid "LightSteelBlue"
-msgstr ""
+msgstr "Світлий сталево-блакитний"
 
 #: lib/latexcolors:1722
-#, fuzzy
 msgid "LightBlue"
-msgstr "Висота"
+msgstr "Світло-синій"
 
 #: lib/latexcolors:1738
 msgid "Aqua"
-msgstr ""
+msgstr "Аква"
 
 #: lib/latexcolors:1746
 msgid "PowderBlue"
-msgstr ""
+msgstr "Блакитна Пудра"
 
 #: lib/latexcolors:1754
 msgid "LightCyan"
-msgstr ""
+msgstr "Світло-бірюзовий"
 
 #: lib/latexcolors:1762
 msgid "AliceBlue"
-msgstr ""
+msgstr "Блідо-блакитний"
 
 #: lib/latexcolors:1770
 msgid "Azure"
-msgstr ""
+msgstr "Лазуровий"
 
 #: lib/latexcolors:1778
 msgid "MintCream"
-msgstr ""
+msgstr "М'ятно-кремовий"
 
 #: lib/latexcolors:1786
 msgid "Honeydew"
-msgstr ""
+msgstr "Нектарний"
 
 #: lib/latexcolors:1810
 msgid "PaleTurquoise"
-msgstr ""
+msgstr "Тьмяно-бірюзовий"
 
 #: lib/latexcolors:1818
 msgid "MediumTurquoise"
-msgstr ""
+msgstr "Насичений бірюзовий"
 
 #: lib/latexcolors:1826
 msgid "DarkTurquoise"
-msgstr ""
+msgstr "Тьмяно-бірюзовий"
 
 #: lib/latexcolors:1834
 msgid "MediumAquamarine"
-msgstr ""
+msgstr "Насичений аквамариновий"
 
 #: lib/latexcolors:1842
 msgid "LightSeaGreen"
-msgstr ""
+msgstr "Морський світло-зелений"
 
 #: lib/latexcolors:1850
 msgid "DarkCyan"
-msgstr ""
+msgstr "Темно-голубий"
 
 #: lib/latexcolors:1874
-#, fuzzy
 msgid "MediumSeaGreen"
-msgstr "Середній пробіл|д"
+msgstr "Насичений морський синій"
 
 #: lib/latexcolors:1882
 msgid "DarkSeaGreen"
-msgstr ""
+msgstr "Темний морський зелений"
 
 #: lib/latexcolors:1890
-#, fuzzy
 msgid "LightGreen"
-msgstr "зелений"
+msgstr "Світло-зелений"
 
 #: lib/latexcolors:1898
 msgid "PaleGreen"
-msgstr ""
+msgstr "Тьмяно-зелений"
 
 #: lib/latexcolors:1906
 msgid "MediumSpringGreen"
-msgstr ""
+msgstr "Насичений весняний зелений"
 
 #: lib/latexcolors:1962
 msgid "DarkGreen"
-msgstr ""
+msgstr "Темно-зелений"
 
 #: lib/latexcolors:1970
 msgid "OliveDrab"
-msgstr ""
+msgstr "Брудно-оливковий"
 
 #: lib/latexcolors:1978
 msgid "DarkOliveGreen"
-msgstr ""
+msgstr "Темний оливково-зелений"
 
 #: lib/latexcolors:1994
 msgid "DarkKhaki"
-msgstr ""
+msgstr "Темний хакі"
 
 #: lib/latexcolors:2010
-#, fuzzy
 msgid "Chartreuse"
-msgstr "Діаграми"
+msgstr "Зеленувато-жовтий"
 
 #: lib/latexcolors:2026
 msgid "LawnGreen"
-msgstr ""
+msgstr "Зелена галявина"
 
 #: lib/latexcolors:2048
 msgid "Gray0"
-msgstr ""
+msgstr "Сірий0"
 
 #: lib/latexcolors:2051 lib/latexcolors:2059 lib/latexcolors:2067
 #: lib/latexcolors:2075 lib/latexcolors:2083 lib/latexcolors:2091
@@ -21681,1327 +21484,1252 @@ msgstr ""
 #: lib/latexcolors:4476 lib/latexcolors:4484 lib/latexcolors:4492
 #: lib/latexcolors:4500 lib/latexcolors:4508 lib/latexcolors:4516
 #: lib/latexcolors:4524 lib/latexcolors:4532 lib/latexcolors:4540
-#, fuzzy
 msgid "X11 Names"
-msgstr "Назва"
+msgstr "Назви X11"
 
 #: lib/latexcolors:2056
 msgid "Snow1"
-msgstr ""
+msgstr "Сніговий1"
 
 #: lib/latexcolors:2064
 msgid "Snow2"
-msgstr ""
+msgstr "Сніговий2"
 
 #: lib/latexcolors:2072
 msgid "Snow3"
-msgstr ""
+msgstr "Сніговий3"
 
 #: lib/latexcolors:2080
 msgid "Snow4"
-msgstr ""
+msgstr "Сніговий4"
 
 #: lib/latexcolors:2088
 msgid "Seashell1"
-msgstr ""
+msgstr "Морська мушля1"
 
 #: lib/latexcolors:2096
 msgid "Seashell2"
-msgstr ""
+msgstr "Морська мушля2"
 
 #: lib/latexcolors:2104
 msgid "Seashell3"
-msgstr ""
+msgstr "Морська мушля3"
 
 #: lib/latexcolors:2112
 msgid "Seashell4"
-msgstr ""
+msgstr "Морська мушля4"
 
 #: lib/latexcolors:2120
 msgid "AntiqueWhite1"
-msgstr ""
+msgstr "Античний білий 1"
 
 #: lib/latexcolors:2128
 msgid "AntiqueWhite2"
-msgstr ""
+msgstr "Античний білий 2"
 
 #: lib/latexcolors:2136
 msgid "AntiqueWhite3"
-msgstr ""
+msgstr "Античний білий 3"
 
 #: lib/latexcolors:2144
 msgid "AntiqueWhite4"
-msgstr ""
+msgstr "Античний білий 4"
 
 #: lib/latexcolors:2152
-#, fuzzy
 msgid "Bisque1"
-msgstr "Баскська"
+msgstr "Бісквітний1"
 
 #: lib/latexcolors:2160
-#, fuzzy
 msgid "Bisque2"
-msgstr "Баскська"
+msgstr "Бісквітний2"
 
 #: lib/latexcolors:2168
-#, fuzzy
 msgid "Bisque3"
-msgstr "Баскська"
+msgstr "Бісквітний3"
 
 #: lib/latexcolors:2176
-#, fuzzy
 msgid "Bisque4"
-msgstr "Баскська"
+msgstr "Бісквітний4"
 
 #: lib/latexcolors:2184
 msgid "PeachPuff1"
-msgstr ""
+msgstr "Персиковий 1"
 
 #: lib/latexcolors:2192
 msgid "PeachPuff2"
-msgstr ""
+msgstr "Персиковий 2"
 
 #: lib/latexcolors:2200
 msgid "PeachPuff3"
-msgstr ""
+msgstr "Персиковий 3"
 
 #: lib/latexcolors:2208
 msgid "PeachPuff4"
-msgstr ""
+msgstr "Персиковий 4"
 
 #: lib/latexcolors:2216
 msgid "NavajoWhite1"
-msgstr ""
+msgstr "Білий Навахо 1"
 
 #: lib/latexcolors:2224
 msgid "NavajoWhite2"
-msgstr ""
+msgstr "Білий Навахо 2"
 
 #: lib/latexcolors:2232
 msgid "NavajoWhite3"
-msgstr ""
+msgstr "Білий Навахо 3"
 
 #: lib/latexcolors:2240
 msgid "NavajoWhite4"
-msgstr ""
+msgstr "Білий Навахо 4"
 
 #: lib/latexcolors:2248
 msgid "LemonChiffon1"
-msgstr ""
+msgstr "Лимонний 1"
 
 #: lib/latexcolors:2256
 msgid "LemonChiffon2"
-msgstr ""
+msgstr "Лимонний 2"
 
 #: lib/latexcolors:2264
 msgid "LemonChiffon3"
-msgstr ""
+msgstr "Лимонний 3"
 
 #: lib/latexcolors:2272
 msgid "LemonChiffon4"
-msgstr ""
+msgstr "Лимонний 4"
 
 #: lib/latexcolors:2280
 msgid "Cornsilk1"
-msgstr ""
+msgstr "Блідо-жовтий1"
 
 #: lib/latexcolors:2288
 msgid "Cornsilk2"
-msgstr ""
+msgstr "Блідо-жовтий2"
 
 #: lib/latexcolors:2296
 msgid "Cornsilk3"
-msgstr ""
+msgstr "Блідо-жовтий3"
 
 #: lib/latexcolors:2304
 msgid "Cornsilk4"
-msgstr ""
+msgstr "Блідо-жовтий4"
 
 #: lib/latexcolors:2312
 msgid "Ivory1"
-msgstr ""
+msgstr "Жовтуватий1"
 
 #: lib/latexcolors:2320
 msgid "Ivory2"
-msgstr ""
+msgstr "Жовтуватий2"
 
 #: lib/latexcolors:2328
 msgid "Ivory3"
-msgstr ""
+msgstr "Жовтуватий3"
 
 #: lib/latexcolors:2336
 msgid "Ivory4"
-msgstr ""
+msgstr "Жовтуватий4"
 
 #: lib/latexcolors:2344
 msgid "Honeydew1"
-msgstr ""
+msgstr "Нектарний1"
 
 #: lib/latexcolors:2352
 msgid "Honeydew2"
-msgstr ""
+msgstr "Нектарний2"
 
 #: lib/latexcolors:2360
 msgid "Honeydew3"
-msgstr ""
+msgstr "Нектарний3"
 
 #: lib/latexcolors:2368
 msgid "Honeydew4"
-msgstr ""
+msgstr "Нектарний4"
 
 #: lib/latexcolors:2376
 msgid "LavenderBlush1"
-msgstr ""
+msgstr "Червона лаванда 1"
 
 #: lib/latexcolors:2384
 msgid "LavenderBlush2"
-msgstr ""
+msgstr "Червона лаванда 2"
 
 #: lib/latexcolors:2392
 msgid "LavenderBlush3"
-msgstr ""
+msgstr "Червона лаванда 3"
 
 #: lib/latexcolors:2400
 msgid "LavenderBlush4"
-msgstr ""
+msgstr "Червона лаванда 4"
 
 #: lib/latexcolors:2408
 msgid "MistyRose1"
-msgstr ""
+msgstr "Тьмяно-рожевий 1"
 
 #: lib/latexcolors:2416
 msgid "MistyRose2"
-msgstr ""
+msgstr "Тьмяно-рожевий 2"
 
 #: lib/latexcolors:2424
 msgid "MistyRose3"
-msgstr ""
+msgstr "Тьмяно-рожевий 3"
 
 #: lib/latexcolors:2432
 msgid "MistyRose4"
-msgstr ""
+msgstr "Тьмяно-рожевий 4"
 
 #: lib/latexcolors:2440
 msgid "Azure1"
-msgstr ""
+msgstr "Лазуровий1"
 
 #: lib/latexcolors:2448
 msgid "Azure2"
-msgstr ""
+msgstr "Лазуровий2"
 
 #: lib/latexcolors:2456
 msgid "Azure3"
-msgstr ""
+msgstr "Лазуровий3"
 
 #: lib/latexcolors:2464
 msgid "Azure4"
-msgstr ""
+msgstr "Лазуровий4"
 
 #: lib/latexcolors:2472
 msgid "SlateBlue1"
-msgstr ""
+msgstr "Шиферно-синій 1"
 
 #: lib/latexcolors:2480
 msgid "SlateBlue2"
-msgstr ""
+msgstr "Шиферно-синій 2"
 
 #: lib/latexcolors:2488
 msgid "SlateBlue3"
-msgstr ""
+msgstr "Шиферно-синій 1"
 
 #: lib/latexcolors:2496
 msgid "SlateBlue4"
-msgstr ""
+msgstr "Шиферно-синій 1"
 
 #: lib/latexcolors:2504
 msgid "RoyalBlue1"
-msgstr ""
+msgstr "Густий синій 1"
 
 #: lib/latexcolors:2512
 msgid "RoyalBlue2"
-msgstr ""
+msgstr "Густий синій 2"
 
 #: lib/latexcolors:2520
 msgid "RoyalBlue3"
-msgstr ""
+msgstr "Густий синій 3"
 
 #: lib/latexcolors:2528
 msgid "RoyalBlue4"
-msgstr ""
+msgstr "Густий синій 4"
 
 #: lib/latexcolors:2536
-#, fuzzy
 msgid "Blue1"
-msgstr "Синій пункт"
+msgstr "Синій1"
 
 #: lib/latexcolors:2544
-#, fuzzy
 msgid "Blue2"
-msgstr "Синій пункт"
+msgstr "Синій2"
 
 #: lib/latexcolors:2552
-#, fuzzy
 msgid "Blue3"
-msgstr "Синій пункт"
+msgstr "синій3"
 
 #: lib/latexcolors:2560
-#, fuzzy
 msgid "Blue4"
-msgstr "Синій пункт"
+msgstr "Синій4"
 
 #: lib/latexcolors:2568
 msgid "DodgerBlue1"
-msgstr ""
+msgstr "Блакитна Пудра 1"
 
 #: lib/latexcolors:2576
 msgid "DodgerBlue2"
-msgstr ""
+msgstr "Блакитна Пудра 2"
 
 #: lib/latexcolors:2584
 msgid "DodgerBlue3"
-msgstr ""
+msgstr "Блакитна Пудра 3"
 
 #: lib/latexcolors:2592
 msgid "DodgerBlue4"
-msgstr ""
+msgstr "Блакитна Пудра 4"
 
 #: lib/latexcolors:2600
 msgid "SteelBlue1"
-msgstr ""
+msgstr "Сталево-синій 1"
 
 #: lib/latexcolors:2608
 msgid "SteelBlue2"
-msgstr ""
+msgstr "Сталево-синій 2"
 
 #: lib/latexcolors:2616
 msgid "SteelBlue3"
-msgstr ""
+msgstr "Сталево-синій 3"
 
 #: lib/latexcolors:2624
 msgid "SteelBlue4"
-msgstr ""
+msgstr "Сталево-синій 4"
 
 #: lib/latexcolors:2632
 msgid "DeepSkyBlue1"
-msgstr ""
+msgstr "Глибокий небесно-синій 1"
 
 #: lib/latexcolors:2640
 msgid "DeepSkyBlue2"
-msgstr ""
+msgstr "Глибокий небесно-синій 2"
 
 #: lib/latexcolors:2648
 msgid "DeepSkyBlue3"
-msgstr ""
+msgstr "Глибокий небесно-синій 3"
 
 #: lib/latexcolors:2656
 msgid "DeepSkyBlue4"
-msgstr ""
+msgstr "Глибокий небесно-синій 4"
 
 #: lib/latexcolors:2664
 msgid "SkyBlue1"
-msgstr ""
+msgstr "Небесно-синій 1"
 
 #: lib/latexcolors:2672
 msgid "SkyBlue2"
-msgstr ""
+msgstr "Небесно-синій 2"
 
 #: lib/latexcolors:2680
 msgid "SkyBlue3"
-msgstr ""
+msgstr "Небесно-синій 3"
 
 #: lib/latexcolors:2688
 msgid "SkyBlue4"
-msgstr ""
+msgstr "Небесно-синій 4"
 
 #: lib/latexcolors:2696
 msgid "LightSkyBlue1"
-msgstr ""
+msgstr "Світлий небесно-блакитний 1"
 
 #: lib/latexcolors:2704
 msgid "LightSkyBlue2"
-msgstr ""
+msgstr "Світлий небесно-блакитний 2"
 
 #: lib/latexcolors:2712
 msgid "LightSkyBlue3"
-msgstr ""
+msgstr "Світлий небесно-блакитний 3"
 
 #: lib/latexcolors:2720
 msgid "LightSkyBlue4"
-msgstr ""
+msgstr "Світлий небесно-блакитний 4"
 
 #: lib/latexcolors:2728
 msgid "SlateGray1"
-msgstr ""
+msgstr "Шиферно-сірий 1"
 
 #: lib/latexcolors:2736
 msgid "SlateGray2"
-msgstr ""
+msgstr "Шиферно-сірий 2"
 
 #: lib/latexcolors:2744
 msgid "SlateGray3"
-msgstr ""
+msgstr "Шиферно-сірий 3"
 
 #: lib/latexcolors:2752
 msgid "SlateGray4"
-msgstr ""
+msgstr "Шиферно-сірий 4"
 
 #: lib/latexcolors:2760
 msgid "LightSteelBlue1"
-msgstr ""
+msgstr "Світлий сталево-блакитний 1"
 
 #: lib/latexcolors:2768
 msgid "LightSteelBlue2"
-msgstr ""
+msgstr "Світлий сталево-блакитний 2"
 
 #: lib/latexcolors:2776
 msgid "LightSteelBlue3"
-msgstr ""
+msgstr "Світлий сталево-блакитний 3"
 
 #: lib/latexcolors:2784
 msgid "LightSteelBlue4"
-msgstr ""
+msgstr "Світлий сталево-блакитний 4"
 
 #: lib/latexcolors:2792
-#, fuzzy
 msgid "LightBlue1"
-msgstr "Висота"
+msgstr "Світло-синій 1"
 
 #: lib/latexcolors:2800
-#, fuzzy
 msgid "LightBlue2"
-msgstr "Висота"
+msgstr "Світло-синій 2"
 
 #: lib/latexcolors:2808
-#, fuzzy
 msgid "LightBlue3"
-msgstr "Висота"
+msgstr "Світло-синій 3"
 
 #: lib/latexcolors:2816
-#, fuzzy
 msgid "LightBlue4"
-msgstr "Висота"
+msgstr "Світло-синій 4"
 
 #: lib/latexcolors:2824
 msgid "LightCyan1"
-msgstr ""
+msgstr "Світло-бірюзовий 1"
 
 #: lib/latexcolors:2832
 msgid "LightCyan2"
-msgstr ""
+msgstr "Світло-бірюзовий 2"
 
 #: lib/latexcolors:2840
 msgid "LightCyan3"
-msgstr ""
+msgstr "Світло-бірюзовий 3"
 
 #: lib/latexcolors:2848
 msgid "LightCyan4"
-msgstr ""
+msgstr "Світло-бірюзовий 4"
 
 #: lib/latexcolors:2856
 msgid "PaleTurquoise1"
-msgstr ""
+msgstr "Тьмяно-бірюзовий 1"
 
 #: lib/latexcolors:2864
 msgid "PaleTurquoise2"
-msgstr ""
+msgstr "Тьмяно-бірюзовий 2"
 
 #: lib/latexcolors:2872
 msgid "PaleTurquoise3"
-msgstr ""
+msgstr "Тьмяно-бірюзовий 3"
 
 #: lib/latexcolors:2880
 msgid "PaleTurquoise4"
-msgstr ""
+msgstr "Тьмяно-бірюзовий 4"
 
 #: lib/latexcolors:2888
 msgid "CadetBlue1"
-msgstr ""
+msgstr "Темно-синій 1"
 
 #: lib/latexcolors:2896
 msgid "CadetBlue2"
-msgstr ""
+msgstr "Темно-синій 2"
 
 #: lib/latexcolors:2904
 msgid "CadetBlue3"
-msgstr ""
+msgstr "Темно-синій 3"
 
 #: lib/latexcolors:2912
 msgid "CadetBlue4"
-msgstr ""
+msgstr "Темно-синій 4"
 
 #: lib/latexcolors:2920
 msgid "Turquoise1"
-msgstr ""
+msgstr "Бірюзовий1"
 
 #: lib/latexcolors:2928
 msgid "Turquoise2"
-msgstr ""
+msgstr "Бірюзовий2"
 
 #: lib/latexcolors:2936
 msgid "Turquoise3"
-msgstr ""
+msgstr "Бірюзовий3"
 
 #: lib/latexcolors:2944
 msgid "Turquoise4"
-msgstr ""
+msgstr "Бірюзовий4"
 
 #: lib/latexcolors:2952
 msgid "Cyan1"
-msgstr ""
+msgstr "Блакитний1"
 
 #: lib/latexcolors:2960
 msgid "Cyan2"
-msgstr ""
+msgstr "Блакитний2"
 
 #: lib/latexcolors:2968
 msgid "Cyan3"
-msgstr ""
+msgstr "Блакитний3"
 
 #: lib/latexcolors:2976
 msgid "Cyan4"
-msgstr ""
+msgstr "Блакитний4"
 
 #: lib/latexcolors:2984
 msgid "DarkSlateGray1"
-msgstr ""
+msgstr "Темний шиферно-сірий 1"
 
 #: lib/latexcolors:2992
 msgid "DarkSlateGray2"
-msgstr ""
+msgstr "Темний шиферно-сірий 2"
 
 #: lib/latexcolors:3000
 msgid "DarkSlateGray3"
-msgstr ""
+msgstr "Темний шиферно-сірий 3"
 
 #: lib/latexcolors:3008
 msgid "DarkSlateGray4"
-msgstr ""
+msgstr "Темний шиферно-сірий 4"
 
 #: lib/latexcolors:3016
 msgid "Aquamarine1"
-msgstr ""
+msgstr "Аквамариновий1"
 
 #: lib/latexcolors:3024
 msgid "Aquamarine2"
-msgstr ""
+msgstr "Аквамариновий2"
 
 #: lib/latexcolors:3032
 msgid "Aquamarine3"
-msgstr ""
+msgstr "Аквамариновий3"
 
 #: lib/latexcolors:3040
 msgid "Aquamarine4"
-msgstr ""
+msgstr "Аквамариновий4"
 
 #: lib/latexcolors:3048
 msgid "DarkSeaGreen1"
-msgstr ""
+msgstr "Темний морський зелений1"
 
 #: lib/latexcolors:3056
 msgid "DarkSeaGreen2"
-msgstr ""
+msgstr "Темний морський зелений2"
 
 #: lib/latexcolors:3064
 msgid "DarkSeaGreen3"
-msgstr ""
+msgstr "Темний морський зелений3"
 
 #: lib/latexcolors:3072
 msgid "DarkSeaGreen4"
-msgstr ""
+msgstr "Темний морський зелений4"
 
 #: lib/latexcolors:3080
 msgid "SeaGreen1"
-msgstr ""
+msgstr "Морський зелений 1"
 
 #: lib/latexcolors:3088
 msgid "SeaGreen2"
-msgstr ""
+msgstr "Морський зелений 2"
 
 #: lib/latexcolors:3096
 msgid "SeaGreen3"
-msgstr ""
+msgstr "Морський зелений 3"
 
 #: lib/latexcolors:3104
 msgid "SeaGreen4"
-msgstr ""
+msgstr "Морський зелений 4"
 
 #: lib/latexcolors:3112
 msgid "PaleGreen1"
-msgstr ""
+msgstr "Тьмяно-зелений 1"
 
 #: lib/latexcolors:3120
 msgid "PaleGreen2"
-msgstr ""
+msgstr "Тьмяно-зелений 2"
 
 #: lib/latexcolors:3128
 msgid "PaleGreen3"
-msgstr ""
+msgstr "Тьмяно-зелений 3"
 
 #: lib/latexcolors:3136
 msgid "PaleGreen4"
-msgstr ""
+msgstr "Тьмяно-зелений 4"
 
 #: lib/latexcolors:3144
 msgid "SpringGreen1"
-msgstr ""
+msgstr "Зелена весна 1"
 
 #: lib/latexcolors:3152
 msgid "SpringGreen2"
-msgstr ""
+msgstr "Зелена весна 2"
 
 #: lib/latexcolors:3160
 msgid "SpringGreen3"
-msgstr ""
+msgstr "Зелена весна 3"
 
 #: lib/latexcolors:3168
 msgid "SpringGreen4"
-msgstr ""
+msgstr "Зелена весна 4"
 
 #: lib/latexcolors:3176
-#, fuzzy
 msgid "Green0"
-msgstr "Грецька"
+msgstr "Зелений0"
 
 #: lib/latexcolors:3184
-#, fuzzy
 msgid "Green1"
-msgstr "Грецька"
+msgstr "Зелений1"
 
 #: lib/latexcolors:3192
-#, fuzzy
 msgid "Green2"
-msgstr "Грецька"
+msgstr "Зелений2"
 
 #: lib/latexcolors:3200
-#, fuzzy
 msgid "Green3"
-msgstr "Грецька"
+msgstr "Зелений3"
 
 #: lib/latexcolors:3208
-#, fuzzy
 msgid "Green4"
-msgstr "Грецька"
+msgstr "Зелений4"
 
 #: lib/latexcolors:3216
-#, fuzzy
 msgid "Chartreuse1"
-msgstr "Діаграми"
+msgstr "Зеленувато-жовтий1"
 
 #: lib/latexcolors:3224
-#, fuzzy
 msgid "Chartreuse2"
-msgstr "Діаграми"
+msgstr "Зеленувато-жовтий2"
 
 #: lib/latexcolors:3232
-#, fuzzy
 msgid "Chartreuse3"
-msgstr "Діаграми"
+msgstr "Зеленувато-жовтий3"
 
 #: lib/latexcolors:3240
-#, fuzzy
 msgid "Chartreuse4"
-msgstr "Діаграми"
+msgstr "Зеленувато-жовтий4"
 
 #: lib/latexcolors:3248
 msgid "OliveDrab1"
-msgstr ""
+msgstr "Брудно-оливковий 1"
 
 #: lib/latexcolors:3256
 msgid "OliveDrab2"
-msgstr ""
+msgstr "Брудно-оливковий 2"
 
 #: lib/latexcolors:3264
 msgid "OliveDrab3"
-msgstr ""
+msgstr "Брудно-оливковий 3"
 
 #: lib/latexcolors:3272
 msgid "OliveDrab4"
-msgstr ""
+msgstr "Брудно-оливковий 4"
 
 #: lib/latexcolors:3280
 msgid "DarkOliveGreen1"
-msgstr ""
+msgstr "Темний оливково-зелений1"
 
 #: lib/latexcolors:3288
 msgid "DarkOliveGreen2"
-msgstr ""
+msgstr "Темний оливково-зелений2"
 
 #: lib/latexcolors:3296
 msgid "DarkOliveGreen3"
-msgstr ""
+msgstr "Темний оливково-зелений3"
 
 #: lib/latexcolors:3304
 msgid "DarkOliveGreen4"
-msgstr ""
+msgstr "Темний оливково-зелений4"
 
 #: lib/latexcolors:3312
 msgid "Khaki1"
-msgstr ""
+msgstr "Брунатно-зеленуватий1"
 
 #: lib/latexcolors:3320
 msgid "Khaki2"
-msgstr ""
+msgstr "Брунатно-зеленуватий2"
 
 #: lib/latexcolors:3328
 msgid "Khaki3"
-msgstr ""
+msgstr "Брунатно-зеленуватий3"
 
 #: lib/latexcolors:3336
 msgid "Khaki4"
-msgstr ""
+msgstr "Брунатно-зеленуватий4"
 
 #: lib/latexcolors:3344
 msgid "LightGoldenrod1"
-msgstr ""
+msgstr "Світлий червоно-золотий 1"
 
 #: lib/latexcolors:3352
 msgid "LightGoldenrod2"
-msgstr ""
+msgstr "Світлий червоно-золотий 2"
 
 #: lib/latexcolors:3360
 msgid "LightGoldenrod3"
-msgstr ""
+msgstr "Світлий червоно-золотий 3"
 
 #: lib/latexcolors:3368
 msgid "LightGoldenrod4"
-msgstr ""
+msgstr "Світлий червоно-золотий 4"
 
 #: lib/latexcolors:3376
 msgid "LightYellow1"
-msgstr ""
+msgstr "Світло-жовтий 1"
 
 #: lib/latexcolors:3384
 msgid "LightYellow2"
-msgstr ""
+msgstr "Світло-жовтий 2"
 
 #: lib/latexcolors:3392
 msgid "LightYellow3"
-msgstr ""
+msgstr "Світло-жовтий 3"
 
 #: lib/latexcolors:3400
 msgid "LightYellow4"
-msgstr ""
+msgstr "Світло-жовтий 4"
 
 #: lib/latexcolors:3408
-#, fuzzy
 msgid "Yellow1"
-msgstr "жовтий"
+msgstr "жовтий1"
 
 #: lib/latexcolors:3416
-#, fuzzy
 msgid "Yellow2"
-msgstr "жовтий"
+msgstr "жовтий2"
 
 #: lib/latexcolors:3424
-#, fuzzy
 msgid "Yellow3"
-msgstr "жовтий"
+msgstr "жовтий3"
 
 #: lib/latexcolors:3432
-#, fuzzy
 msgid "Yellow4"
-msgstr "жовтий"
+msgstr "жовтий4"
 
 #: lib/latexcolors:3440
 msgid "Gold1"
-msgstr ""
+msgstr "Золотий1"
 
 #: lib/latexcolors:3448
 msgid "Gold2"
-msgstr ""
+msgstr "Золотий2"
 
 #: lib/latexcolors:3456
 msgid "Gold3"
-msgstr ""
+msgstr "Золотий3"
 
 #: lib/latexcolors:3464
 msgid "Gold4"
-msgstr ""
+msgstr "Золотий4"
 
 #: lib/latexcolors:3472
 msgid "Goldenrod1"
-msgstr ""
+msgstr "Золотистий1"
 
 #: lib/latexcolors:3480
 msgid "Goldenrod2"
-msgstr ""
+msgstr "Золотистий2"
 
 #: lib/latexcolors:3488
 msgid "Goldenrod3"
-msgstr ""
+msgstr "Золотистий3"
 
 #: lib/latexcolors:3496
 msgid "Goldenrod4"
-msgstr ""
+msgstr "Золотистий4"
 
 #: lib/latexcolors:3504
 msgid "DarkGoldenrod1"
-msgstr ""
+msgstr "Темно-золотушниковий1"
 
 #: lib/latexcolors:3512
 msgid "DarkGoldenrod2"
-msgstr ""
+msgstr "Темно-золотушниковий2"
 
 #: lib/latexcolors:3520
 msgid "DarkGoldenrod3"
-msgstr ""
+msgstr "Темно-золотушниковий3"
 
 #: lib/latexcolors:3528
 msgid "DarkGoldenrod4"
-msgstr ""
+msgstr "Темно-золотушниковий3"
 
 #: lib/latexcolors:3536
 msgid "RosyBrown1"
-msgstr ""
+msgstr "Рожево-брунатний 1"
 
 #: lib/latexcolors:3544
 msgid "RosyBrown2"
-msgstr ""
+msgstr "Рожево-брунатний 2"
 
 #: lib/latexcolors:3552
 msgid "RosyBrown3"
-msgstr ""
+msgstr "Рожево-брунатний 3"
 
 #: lib/latexcolors:3560
 msgid "RosyBrown4"
-msgstr ""
+msgstr "Рожево-брунатний 4"
 
 #: lib/latexcolors:3568
 msgid "IndianRed1"
-msgstr ""
+msgstr "Індіансько-червоний 1"
 
 #: lib/latexcolors:3576
 msgid "IndianRed2"
-msgstr ""
+msgstr "Індіансько-червоний 2"
 
 #: lib/latexcolors:3584
 msgid "IndianRed3"
-msgstr ""
+msgstr "Індіансько-червоний 3"
 
 #: lib/latexcolors:3592
 msgid "IndianRed4"
-msgstr ""
+msgstr "Індіансько-червоний 4"
 
 #: lib/latexcolors:3600
 msgid "Sienna1"
-msgstr ""
+msgstr "Вохра1"
 
 #: lib/latexcolors:3608
 msgid "Sienna2"
-msgstr ""
+msgstr "Вохра2"
 
 #: lib/latexcolors:3616
 msgid "Sienna3"
-msgstr ""
+msgstr "Вохра3"
 
 #: lib/latexcolors:3624
 msgid "Sienna4"
-msgstr ""
+msgstr "Вохра4"
 
 #: lib/latexcolors:3632
-#, fuzzy
 msgid "Burlywood1"
-msgstr "Hollywood"
+msgstr "Жовтувато-коричневий1"
 
 #: lib/latexcolors:3640
-#, fuzzy
 msgid "Burlywood2"
-msgstr "Hollywood"
+msgstr "Жовтувато-коричневий2"
 
 #: lib/latexcolors:3648
-#, fuzzy
 msgid "Burlywood3"
-msgstr "Hollywood"
+msgstr "Жовтувато-коричневий3"
 
 #: lib/latexcolors:3656
-#, fuzzy
 msgid "Burlywood4"
-msgstr "Hollywood"
+msgstr "Жовтувато-коричневий4"
 
 #: lib/latexcolors:3664
 msgid "Wheat1"
-msgstr ""
+msgstr "Пшеничний1"
 
 #: lib/latexcolors:3672
 msgid "Wheat2"
-msgstr ""
+msgstr "Пшеничний2"
 
 #: lib/latexcolors:3680
 msgid "Wheat3"
-msgstr ""
+msgstr "Пшеничний3"
 
 #: lib/latexcolors:3688
 msgid "Wheat4"
-msgstr ""
+msgstr "Пшеничний4"
 
 #: lib/latexcolors:3696
 msgid "Tan1"
-msgstr ""
+msgstr "Засмага1"
 
 #: lib/latexcolors:3704
 msgid "Tan2"
-msgstr ""
+msgstr "Засмага2"
 
 #: lib/latexcolors:3712
 msgid "Tan3"
-msgstr ""
+msgstr "Засмага3"
 
 #: lib/latexcolors:3720
 msgid "Tan4"
-msgstr ""
+msgstr "Засмага4"
 
 #: lib/latexcolors:3728
 msgid "Chocolate1"
-msgstr ""
+msgstr "Шоколадний1"
 
 #: lib/latexcolors:3736
 msgid "Chocolate2"
-msgstr ""
+msgstr "Шоколадний2"
 
 #: lib/latexcolors:3744
 msgid "Chocolate3"
-msgstr ""
+msgstr "Шоколадний3"
 
 #: lib/latexcolors:3752
 msgid "Chocolate4"
-msgstr ""
+msgstr "Шоколадний4"
 
 #: lib/latexcolors:3760
 msgid "Firebrick1"
-msgstr ""
+msgstr "Цегляний1"
 
 #: lib/latexcolors:3768
 msgid "Firebrick2"
-msgstr ""
+msgstr "Цегляний2"
 
 #: lib/latexcolors:3776
 msgid "Firebrick3"
-msgstr ""
+msgstr "Цегляний3"
 
 #: lib/latexcolors:3784
 msgid "Firebrick4"
-msgstr ""
+msgstr "Цегляний4"
 
 #: lib/latexcolors:3792
-#, fuzzy
 msgid "Brown1"
-msgstr "frown"
+msgstr "Коричневий1"
 
 #: lib/latexcolors:3800
-#, fuzzy
 msgid "Brown2"
-msgstr "frown"
+msgstr "Коричневий2"
 
 #: lib/latexcolors:3808
-#, fuzzy
 msgid "Brown3"
-msgstr "frown"
+msgstr "Коричневий3"
 
 #: lib/latexcolors:3816
-#, fuzzy
 msgid "Brown4"
-msgstr "frown"
+msgstr "Коричневий4"
 
 #: lib/latexcolors:3824
 msgid "Salmon1"
-msgstr ""
+msgstr "Оранжево-рожевий1"
 
 #: lib/latexcolors:3832
 msgid "Salmon2"
-msgstr ""
+msgstr "Оранжево-рожевий2"
 
 #: lib/latexcolors:3840
 msgid "Salmon3"
-msgstr ""
+msgstr "Оранжево-рожевий3"
 
 #: lib/latexcolors:3848
 msgid "Salmon4"
-msgstr ""
+msgstr "Оранжево-рожевий4"
 
 #: lib/latexcolors:3856
-#, fuzzy
 msgid "LightSalmon1"
-msgstr "місяць праворуч"
+msgstr "Світлий оранжево-рожевий 1"
 
 #: lib/latexcolors:3864
-#, fuzzy
 msgid "LightSalmon2"
-msgstr "місяць праворуч"
+msgstr "Світлий оранжево-рожевий 2"
 
 #: lib/latexcolors:3872
-#, fuzzy
 msgid "LightSalmon3"
-msgstr "місяць праворуч"
+msgstr "Світлий оранжево-рожевий 3"
 
 #: lib/latexcolors:3880
-#, fuzzy
 msgid "LightSalmon4"
-msgstr "місяць праворуч"
+msgstr "Світлий оранжево-рожевий 4"
 
 #: lib/latexcolors:3888
-#, fuzzy
 msgid "Orange1"
-msgstr "жовтогарячий"
+msgstr "Помаранчевий1"
 
 #: lib/latexcolors:3896
-#, fuzzy
 msgid "Orange2"
-msgstr "жовтогарячий"
+msgstr "Помаранчевий2"
 
 #: lib/latexcolors:3904
-#, fuzzy
 msgid "Orange3"
-msgstr "жовтогарячий"
+msgstr "Помаранчевий3"
 
 #: lib/latexcolors:3912
-#, fuzzy
 msgid "Orange4"
-msgstr "жовтогарячий"
+msgstr "Помаранчевий4"
 
 #: lib/latexcolors:3920
-#, fuzzy
 msgid "Coral1"
-msgstr "для всіх"
+msgstr "Корал1"
 
 #: lib/latexcolors:3928
-#, fuzzy
 msgid "Coral2"
-msgstr "для всіх"
+msgstr "Корал2"
 
 #: lib/latexcolors:3936
-#, fuzzy
 msgid "Coral3"
-msgstr "для всіх"
+msgstr "Корал3"
 
 #: lib/latexcolors:3944
-#, fuzzy
 msgid "Coral4"
-msgstr "для всіх"
+msgstr "Корал4"
 
 #: lib/latexcolors:3952
 msgid "Tomato1"
-msgstr ""
+msgstr "Томатний1"
 
 #: lib/latexcolors:3960
 msgid "Tomato2"
-msgstr ""
+msgstr "Томатний2"
 
 #: lib/latexcolors:3968
 msgid "Tomato3"
-msgstr ""
+msgstr "Томатний3"
 
 #: lib/latexcolors:3976
 msgid "Tomato4"
-msgstr ""
+msgstr "Томатний4"
 
 #: lib/latexcolors:3984
-#, fuzzy
 msgid "OrangeRed1"
-msgstr "жовтогарячий"
+msgstr "Оранжево-червоний 1"
 
 #: lib/latexcolors:3992
-#, fuzzy
 msgid "OrangeRed2"
-msgstr "жовтогарячий"
+msgstr "Оранжево-червоний 2"
 
 #: lib/latexcolors:4000
-#, fuzzy
 msgid "OrangeRed3"
-msgstr "жовтогарячий"
+msgstr "Оранжево-червоний 3"
 
 #: lib/latexcolors:4008
-#, fuzzy
 msgid "OrangeRed4"
-msgstr "жовтогарячий"
+msgstr "Оранжево-червоний 4"
 
 #: lib/latexcolors:4016
 msgid "Red1"
-msgstr ""
+msgstr "Червоний1"
 
 #: lib/latexcolors:4024
 msgid "Red2"
-msgstr ""
+msgstr "Червоний2"
 
 #: lib/latexcolors:4032
 msgid "Red3"
-msgstr ""
+msgstr "Червоний3"
 
 #: lib/latexcolors:4040
 msgid "Red4"
-msgstr ""
+msgstr "Червоний4"
 
 #: lib/latexcolors:4048
 msgid "DeepPink1"
-msgstr ""
+msgstr "Глибокий рожевий 1"
 
 #: lib/latexcolors:4056
 msgid "DeepPink2"
-msgstr ""
+msgstr "Глибокий рожевий 2"
 
 #: lib/latexcolors:4064
 msgid "DeepPink3"
-msgstr ""
+msgstr "Глибокий рожевий 3"
 
 #: lib/latexcolors:4072
 msgid "DeepPink4"
-msgstr ""
+msgstr "Глибокий рожевий 4"
 
 #: lib/latexcolors:4080
 msgid "HotPink1"
-msgstr ""
+msgstr "Яскраво-рожевий 1"
 
 #: lib/latexcolors:4088
 msgid "HotPink2"
-msgstr ""
+msgstr "Яскраво-рожевий 2"
 
 #: lib/latexcolors:4096
 msgid "HotPink3"
-msgstr ""
+msgstr "Яскраво-рожевий 3"
 
 #: lib/latexcolors:4104
 msgid "HotPink4"
-msgstr ""
+msgstr "Яскраво-рожевий 4"
 
 #: lib/latexcolors:4112
 msgid "Pink1"
-msgstr ""
+msgstr "Рожевий1"
 
 #: lib/latexcolors:4120
 msgid "Pink2"
-msgstr ""
+msgstr "Рожевий2"
 
 #: lib/latexcolors:4128
 msgid "Pink3"
-msgstr ""
+msgstr "Рожевий3"
 
 #: lib/latexcolors:4136
 msgid "Pink4"
-msgstr ""
+msgstr "Рожевий4"
 
 #: lib/latexcolors:4144
-#, fuzzy
 msgid "LightPink1"
-msgstr "lightning"
+msgstr "Світло-рожевий 1"
 
 #: lib/latexcolors:4152
-#, fuzzy
 msgid "LightPink2"
-msgstr "lightning"
+msgstr "Світло-рожевий 2"
 
 #: lib/latexcolors:4160
-#, fuzzy
 msgid "LightPink3"
-msgstr "lightning"
+msgstr "Світло-рожевий 3"
 
 #: lib/latexcolors:4168
-#, fuzzy
 msgid "LightPink4"
-msgstr "lightning"
+msgstr "Світло-рожевий 4"
 
 #: lib/latexcolors:4176
 msgid "PaleVioletRed1"
-msgstr ""
+msgstr "Тьмяний фіалково-червоний 1"
 
 #: lib/latexcolors:4184
 msgid "PaleVioletRed2"
-msgstr ""
+msgstr "Тьмяний фіалково-червоний 2"
 
 #: lib/latexcolors:4192
 msgid "PaleVioletRed3"
-msgstr ""
+msgstr "Тьмяний фіалково-червоний 3"
 
 #: lib/latexcolors:4200
 msgid "PaleVioletRed4"
-msgstr ""
+msgstr "Тьмяний фіалково-червоний 4"
 
 #: lib/latexcolors:4208
 msgid "Maroon1"
-msgstr ""
+msgstr "Каштановий1"
 
 #: lib/latexcolors:4216
 msgid "Maroon2"
-msgstr ""
+msgstr "Каштановий2"
 
 #: lib/latexcolors:4224
 msgid "Maroon3"
-msgstr ""
+msgstr "Каштановий3"
 
 #: lib/latexcolors:4232
 msgid "Maroon4"
-msgstr ""
+msgstr "Каштановий4"
 
 #: lib/latexcolors:4240
 msgid "Maroon0"
-msgstr ""
+msgstr "Каштановий0"
 
 #: lib/latexcolors:4248
-#, fuzzy
 msgid "VioletRed1"
-msgstr "фіалковий"
+msgstr "Фіалково-червоний 1"
 
 #: lib/latexcolors:4256
-#, fuzzy
 msgid "VioletRed2"
-msgstr "фіалковий"
+msgstr "Фіалково-червоний 2"
 
 #: lib/latexcolors:4264
-#, fuzzy
 msgid "VioletRed3"
-msgstr "фіалковий"
+msgstr "Фіалково-червоний 3"
 
 #: lib/latexcolors:4272
-#, fuzzy
 msgid "VioletRed4"
-msgstr "фіалковий"
+msgstr "Фіалково-червоний 4"
 
 #: lib/latexcolors:4280
-#, fuzzy
 msgid "Magenta1"
-msgstr "бузковий"
+msgstr "Бузковий1"
 
 #: lib/latexcolors:4288
-#, fuzzy
 msgid "Magenta2"
-msgstr "бузковий"
+msgstr "Бузковий2"
 
 #: lib/latexcolors:4296
-#, fuzzy
 msgid "Magenta3"
-msgstr "бузковий"
+msgstr "Бузковий3"
 
 #: lib/latexcolors:4304
-#, fuzzy
 msgid "Magenta4"
-msgstr "бузковий"
+msgstr "Бузковий4"
 
 #: lib/latexcolors:4312
 msgid "Orchid1"
-msgstr ""
+msgstr "Орхідея1"
 
 #: lib/latexcolors:4320
 msgid "Orchid2"
-msgstr ""
+msgstr "Орхідея2"
 
 #: lib/latexcolors:4328
 msgid "Orchid3"
-msgstr ""
+msgstr "Орхідея3"
 
 #: lib/latexcolors:4336
 msgid "Orchid4"
-msgstr ""
+msgstr "Орхідея4"
 
 #: lib/latexcolors:4344
 msgid "Plum1"
-msgstr ""
+msgstr "Сливовий1"
 
 #: lib/latexcolors:4352
 msgid "Plum2"
-msgstr ""
+msgstr "Сливовий2"
 
 #: lib/latexcolors:4360
 msgid "Plum3"
-msgstr ""
+msgstr "Сливовий3"
 
 #: lib/latexcolors:4368
 msgid "Plum4"
-msgstr ""
+msgstr "Сливовий4"
 
 #: lib/latexcolors:4376
-#, fuzzy
 msgid "MediumOrchid1"
-msgstr "Середній"
+msgstr "Насичений орхідейний 1"
 
 #: lib/latexcolors:4384
-#, fuzzy
 msgid "MediumOrchid2"
-msgstr "Середній"
+msgstr "Насичений орхідейний 2"
 
 #: lib/latexcolors:4392
-#, fuzzy
 msgid "MediumOrchid3"
-msgstr "Середній"
+msgstr "Насичений орхідейний 3"
 
 #: lib/latexcolors:4400
-#, fuzzy
 msgid "MediumOrchid4"
-msgstr "Середній"
+msgstr "Насичений орхідейний 4"
 
 #: lib/latexcolors:4408
 msgid "DarkOrchid1"
-msgstr ""
+msgstr "Темна орхідея1"
 
 #: lib/latexcolors:4416
 msgid "DarkOrchid2"
-msgstr ""
+msgstr "Темна орхідея2"
 
 #: lib/latexcolors:4424
 msgid "DarkOrchid3"
-msgstr ""
+msgstr "Темна орхідея3"
 
 #: lib/latexcolors:4432
 msgid "DarkOrchid4"
-msgstr ""
+msgstr "Темна орхідея4"
 
 #: lib/latexcolors:4440
-#, fuzzy
 msgid "Purple0"
-msgstr "пурпуровий"
+msgstr "Пурпуровий0"
 
 #: lib/latexcolors:4449
-#, fuzzy
 msgid "Purple1"
-msgstr "пурпуровий"
+msgstr "Пурпуровий1"
 
 #: lib/latexcolors:4457
-#, fuzzy
 msgid "Purple2"
-msgstr "пурпуровий"
+msgstr "Пурпуровий2"
 
 #: lib/latexcolors:4465
-#, fuzzy
 msgid "Purple3"
-msgstr "пурпуровий"
+msgstr "Пурпуровий3"
 
 #: lib/latexcolors:4473
-#, fuzzy
 msgid "Purple4"
-msgstr "пурпуровий"
+msgstr "Пурпуровий4"
 
 #: lib/latexcolors:4481
-#, fuzzy
 msgid "MediumPurple1"
-msgstr "Середній"
+msgstr "Насичений пурпуровий 1"
 
 #: lib/latexcolors:4489
-#, fuzzy
 msgid "MediumPurple2"
-msgstr "Середній"
+msgstr "Насичений пурпуровий 2"
 
 #: lib/latexcolors:4497
-#, fuzzy
 msgid "MediumPurple3"
-msgstr "Середній"
+msgstr "Насичений пурпуровий 3"
 
 #: lib/latexcolors:4505
-#, fuzzy
 msgid "MediumPurple4"
-msgstr "Середній"
+msgstr "Насичений пурпуровий 4"
 
 #: lib/latexcolors:4513
 msgid "Thistle1"
-msgstr ""
+msgstr "Чортополох1"
 
 #: lib/latexcolors:4521
 msgid "Thistle2"
-msgstr ""
+msgstr "Чортополох2"
 
 #: lib/latexcolors:4529
 msgid "Thistle3"
-msgstr ""
+msgstr "Чортополох3"
 
 #: lib/latexcolors:4537
 msgid "Thistle4"
-msgstr ""
+msgstr "Чортополох4"
 
 #: lib/latexfonts:94
 msgid "AE (Almost European)"
@@ -23836,12 +23564,11 @@ msgstr "Використовувати систему комп'ютерної а
 
 #: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:114
 msgid "Next Cross-Reference or Label with the Same Target|N"
-msgstr ""
+msgstr "Наступне перехресне посилання або мітка з тим самим призначенням|Н"
 
 #: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:115
-#, fuzzy
 msgid "Next Cross-Reference|C"
-msgstr "Наступне перехресне посилання|е"
+msgstr "Наступне перехресне посилання|п"
 
 #: lib/ui/stdcontext.inc:94 lib/ui/stdcontext.inc:116
 msgid "Go to Label|G"
@@ -23860,9 +23587,8 @@ msgid "<Page>|P"
 msgstr "<Сторінка>|т"
 
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:731
-#, fuzzy
 msgid "p. <Page>|."
-msgstr "<Сторінка>|т"
+msgstr "с. <Page>|."
 
 #: lib/ui/stdcontext.inc:100 lib/ui/stdcontext.inc:122
 #: lib/ui/stdcontext.inc:732
@@ -23923,9 +23649,8 @@ msgid "No Hyperlink"
 msgstr "Без гіперпосилання"
 
 #: lib/ui/stdcontext.inc:140
-#, fuzzy
 msgid "Next Cross-Reference that Points to This Label|N"
-msgstr "Наступне перехресне посилання|е"
+msgstr "Наступне перехресне посилання, яке вказує на цю мітку|Н"
 
 #: lib/ui/stdcontext.inc:141
 msgid "Go Back|G"
@@ -24001,9 +23726,8 @@ msgid "Comment|m"
 msgstr "Коментар|К"
 
 #: lib/ui/stdcontext.inc:241
-#, fuzzy
 msgid "Greyed Out|y"
-msgstr "Висірене|В"
+msgstr "Висірене|і"
 
 #: lib/ui/stdcontext.inc:243
 msgid "Open All Notes|A"
@@ -24254,7 +23978,6 @@ msgid "End Editing Externally"
 msgstr "Завершити редагування зовні"
 
 #: lib/ui/stdcontext.inc:385
-#, fuzzy
 msgid "Split Inset|i"
 msgstr "Розділити вставку|Р"
 
@@ -24267,7 +23990,6 @@ msgid "Forward Search|F"
 msgstr "Пошук вперед|п"
 
 #: lib/ui/stdcontext.inc:390 lib/ui/stdmenus.inc:120
-#, fuzzy
 msgid "Move Paragraph Up|h"
 msgstr "Пересунути абзац догори|р"
 
@@ -24308,7 +24030,6 @@ msgid "Text Properties|x"
 msgstr "Властивості тексту|к"
 
 #: lib/ui/stdcontext.inc:406
-#, fuzzy
 msgid "Custom Text Styles|y"
 msgstr "Нетипові стилі тексту|т"
 
@@ -24535,9 +24256,8 @@ msgstr "Вставити посилання у позицію курсора|В"
 
 #: lib/ui/stdcontext.inc:592 lib/ui/stdcontext.inc:601
 #: lib/ui/stdcontext.inc:619 lib/ui/stdcontext.inc:748
-#, fuzzy
 msgid "Insert Cross-Reference to this Item|C"
-msgstr "Вставити перехресне посилання"
+msgstr "Вставити перехресне посилання на цей запис|е"
 
 #: lib/ui/stdcontext.inc:642
 msgid "Insert Copy at Cursor Position|I"
@@ -24580,7 +24300,6 @@ msgid "Custom Page Formatting...|u"
 msgstr "Нетипове форматування сторінки...|е"
 
 #: lib/ui/stdcontext.inc:668
-#, fuzzy
 msgid "Insert Subentry|n"
 msgstr "Вставити підзапис|і"
 
@@ -24589,9 +24308,8 @@ msgid "Insert Sortkey|k"
 msgstr "Вставити ключ упорядкування|ю"
 
 #: lib/ui/stdcontext.inc:670
-#, fuzzy
 msgid "Insert See Reference|cf"
-msgstr "Вставити посилання «Див.»|и"
+msgstr "Вставити посилання «Див.»|л"
 
 #: lib/ui/stdcontext.inc:671
 msgid "Insert See also Reference|a"
@@ -24687,11 +24405,11 @@ msgstr "Кількість символів (без пробілів)|б"
 
 #: lib/ui/stdcontext.inc:809
 msgid "Start Statistics Relative to Current Count|R"
-msgstr ""
+msgstr "Почати статистику відносно до поточних даних|в"
 
 #: lib/ui/stdcontext.inc:810
 msgid "Reset to Absolute Statistics Count|A"
-msgstr ""
+msgstr "Скинути до абсолютних статистичних даних|а"
 
 #: lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -25026,9 +24744,8 @@ msgid "Lowercase|L"
 msgstr "Нижній регістр|Н"
 
 #: lib/ui/stdmenus.inc:193
-#, fuzzy
 msgid "Invert Case|I"
-msgstr "Інвертувати вставку|І"
+msgstr "Інвертувати регістр|І"
 
 #: lib/ui/stdmenus.inc:197
 msgid "Dissolve Text Style"
@@ -25351,9 +25068,8 @@ msgid "Index Properties"
 msgstr "Властивості покажчика"
 
 #: lib/ui/stdmenus.inc:397
-#, fuzzy
 msgid "Nomenclature Entry|y"
-msgstr "Елемент номенклатури…|Е"
+msgstr "Запис номенклатури|и"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Table...|T"
@@ -25404,14 +25120,12 @@ msgid "End of Sentence|E"
 msgstr "Крапка у кінці речення|к"
 
 #: lib/ui/stdmenus.inc:419
-#, fuzzy
 msgid "Plain Double Quotation Mark|Q"
-msgstr "Проста лапка|л"
+msgstr "Прості подвійні лапки|д"
 
 #: lib/ui/stdmenus.inc:420
-#, fuzzy
 msgid "Plain Single Quotation Mark|S"
-msgstr "Проста лапка|л"
+msgstr "Прості одинарні лапки|о"
 
 #: lib/ui/stdmenus.inc:421
 msgid "Inner Quotation Mark|n"
@@ -25638,9 +25352,8 @@ msgid "LaTeX Log|L"
 msgstr "Повідомлення LaTeX|L"
 
 #: lib/ui/stdmenus.inc:578
-#, fuzzy
 msgid "Processing Errors|r"
-msgstr "Помилка обробника покажчика"
+msgstr "Помилки обробки|о"
 
 #: lib/ui/stdmenus.inc:579
 msgid "Start Appendix Here|x"
@@ -25699,9 +25412,8 @@ msgid "Bookmarks|B"
 msgstr "Закладки|З"
 
 #: lib/ui/stdmenus.inc:608
-#, fuzzy
 msgid "Next Error|E"
-msgstr "Наступна &помилка"
+msgstr "Наступна помилка|п"
 
 #: lib/ui/stdmenus.inc:609
 msgid "Next Note|N"
@@ -30778,9 +30490,8 @@ msgid "An Xfig figure.\n"
 msgstr "Рисунок Xfig.\n"
 
 #: lib/configure.py:707
-#, fuzzy
 msgid "Tgif"
-msgstr "tgo|Tgif"
+msgstr "Tgif"
 
 #: lib/configure.py:710
 msgid "FIG"
@@ -30791,9 +30502,8 @@ msgid "DIA"
 msgstr "DIA"
 
 #: lib/configure.py:716
-#, fuzzy
 msgid "OpenDocument drawing"
-msgstr "OpenDocument (Pandoc)"
+msgstr "Рисунок OpenDocument"
 
 #: lib/configure.py:719
 msgid "Grace"
@@ -31097,9 +30807,8 @@ msgid "DraftDVI"
 msgstr "DraftDVI"
 
 #: lib/configure.py:834
-#, fuzzy
 msgid "HTML|H"
-msgstr "HTML"
+msgstr "HTML|H"
 
 #: lib/configure.py:837
 msgid "Noteedit"
@@ -31179,9 +30888,8 @@ msgid "LyX 2.3.x"
 msgstr "LyX 2.3.x"
 
 #: lib/configure.py:861
-#, fuzzy
 msgid "LyX 2.4.x"
-msgstr "LyX 2.0.x"
+msgstr "LyX 2.4.x"
 
 #: lib/configure.py:862
 msgid "CJK LyX 1.4.x (big5)"
@@ -31200,9 +30908,8 @@ msgid "LyX Preview"
 msgstr "Попередній перегляд LyX"
 
 #: lib/configure.py:866
-#, fuzzy
 msgid "PDFTEX"
-msgstr "pdf_tex|PDFTEX"
+msgstr "PDFTEX"
 
 #: lib/configure.py:867
 msgid "Program"
@@ -31210,7 +30917,7 @@ msgstr "Програма"
 
 #: lib/configure.py:868
 msgid "PSTEX"
-msgstr ""
+msgstr "PSTEX"
 
 #: lib/configure.py:869 src/frontends/qt/GuiClipboard.cpp:177
 msgid "Windows Metafile"
@@ -31221,9 +30928,8 @@ msgid "Enhanced Metafile"
 msgstr "Вдосконалений метафайл"
 
 #: lib/configure.py:871
-#, fuzzy
 msgid "HTML (MS Word)"
-msgstr "MS Word"
+msgstr "HTML (MS Word)"
 
 #: lib/configure.py:973
 msgid "LyXBlogger"
@@ -31287,9 +30993,8 @@ msgid "Minted Listings"
 msgstr "Списки Minted"
 
 #: lib/examples/Articles:0
-#, fuzzy
 msgid "Computer Algebra Systems"
-msgstr "Використовувати систему комп'ютерної алгебри|а"
+msgstr "Системи комп'ютерної алгебри|а"
 
 #: lib/examples/Articles:0
 msgid "Instant Preview"
@@ -31633,6 +31338,9 @@ msgid ""
 "which means that it is probably corrupted.\n"
 "You can find the converted file at %2$s while LyX is running."
 msgstr ""
+"Дані перетвореної версії %1$s до поточного формату LyX неочікувано"
+" завершуються, що означає, що дані файла, ймовірно, пошкоджено.\n"
+"Перетворений файл буде зберігатися у %2$s, доки працює основна програма LyX."
 
 #: src/Buffer.cpp:1281 src/Buffer.cpp:1352
 msgid "Document format failure"
@@ -32235,7 +31943,7 @@ msgid "File deleted from disk"
 msgstr "Файл вилучено з диска"
 
 #: src/Buffer.cpp:5765
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The file\n"
 "  %1$s\n"
@@ -32244,7 +31952,8 @@ msgid ""
 msgstr ""
 "Файл\n"
 "  %1$s\n"
-"було вилучено з диска!"
+"було вилучено з диска!\n"
+"Файл буде позначено як змінений."
 
 #: src/BufferParams.cpp:543
 msgid ""
@@ -32944,9 +32653,8 @@ msgid "margin note label"
 msgstr "мітка нотатки на полях"
 
 #: src/Color.cpp:292
-#, fuzzy
 msgid "nomenclature label"
-msgstr "Номенклатура"
+msgstr "мітка номенклатури"
 
 #: src/Color.cpp:293
 msgid "URL label"
@@ -33721,9 +33429,8 @@ msgid "Cannot edit file"
 msgstr "Редагування файла неможливе"
 
 #: src/Format.cpp:736
-#, fuzzy
 msgid "LinkBack files can only be edited on macOS."
-msgstr "Файли LinkBack можна редагувати лише у Apple Mac OSX."
+msgstr "Файли LinkBack можна редагувати лише у macOS."
 
 #: src/Format.cpp:749
 #, c-format
@@ -33846,17 +33553,18 @@ msgstr ""
 
 #: src/LaTeXPackages.cpp:88
 msgid "Invalid package list format!"
-msgstr ""
+msgstr "Некоректний формат списку пакунків!"
 
 #: src/LaTeXPackages.cpp:89
 msgid ""
 "The format of your LaTeX packages list is wrong. Please file a bug report."
 msgstr ""
+"Формат вашого списку пакунків LaTeX є помилковим. Будь ласка, створіть "
+"повідомлення про ваду."
 
 #: src/LaTeXPackages.cpp:97 src/LaTeXPackages.cpp:103
-#, fuzzy
 msgid "Outdated configuration script detected!"
-msgstr "Помилка запуску конфігураційного файла"
+msgstr "Виявлено застарілий скрипт налаштовування!"
 
 #: src/LaTeXPackages.cpp:98
 msgid ""
@@ -33864,6 +33572,10 @@ msgid ""
 "The script has been renamed to 'chkconfig.ltx.bak'.\n"
 "If you did not copy the script there by purpose, you can safely delete it."
 msgstr ""
+"У вашому каталозі користувача виявлено застарілий скрипт «chkconfig.ltx».\n"
+"Скрипт перейменовано на «chkconfig.ltx.bak».\n"
+"Якщо ви не копіювали туди цей скрипт власноруч, ви можете безпечно вилучити "
+"його."
 
 #: src/LaTeXPackages.cpp:104
 #, c-format
@@ -33872,6 +33584,9 @@ msgid ""
 "(%1$s).\n"
 "Please delete or update this file!"
 msgstr ""
+"Виявлено застарілий скрипт «chkconfig.ltx» у вашому каталозі користувача\n"
+"(%1$s).\n"
+"Будь ласка, приберіть або оновіть цей файл!"
 
 #: src/LyX.cpp:132
 msgid "Could not read configuration file"
@@ -34340,9 +34055,8 @@ msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr "Перепризначити клавішу Apple на Meta, а Control — на Ctrl."
 
 #: src/LyXRC.cpp:3238
-#, fuzzy
 msgid "Use the macOS conventions for cursor movement"
-msgstr "Використовувати правила Mac OS X щодо пересування курсора"
+msgstr "Використовувати правила macOS щодо пересування курсора"
 
 #: src/LyXRC.cpp:3242
 msgid ""
@@ -34355,10 +34069,12 @@ msgstr ""
 #: src/LyXRC.cpp:3246
 msgid "Possibility to enforce a particular color scheme (system|dark|light)"
 msgstr ""
+"Можливість примусово визначити певну схему кольорів (system|dark|light)"
 
 #: src/LyXRC.cpp:3250
 msgid "Current UI theme if it has a name, otherwise empty"
 msgstr ""
+"Поточна тема інтерфейсу, якщо вона має назву; якщо назви немає, порожня"
 
 #: src/LyXRC.cpp:3254
 msgid ""
@@ -34989,9 +34705,8 @@ msgid "Text properties applied: %1$s"
 msgstr "Застосовано властивості тексту: %1$s"
 
 #: src/Text.cpp:5961
-#, fuzzy
 msgid "Invalid argument of textstyle-update"
-msgstr "Некоректний аргумент master-buffer-forall"
+msgstr "Некоректний аргумент textstyle-update"
 
 #: src/Text.cpp:6118
 msgid "Path to thesaurus directory not set!"
@@ -35552,11 +35267,11 @@ msgstr "Поза категоріями"
 #: src/frontends/qt/ColorsCombo.cpp:186
 #, c-format
 msgid "%1$s (= Default[[color]])"
-msgstr ""
+msgstr "%1$s (= типовий[[color]])"
 
 #: src/frontends/qt/ColorsCombo.cpp:384
 msgid "Type on the list to filter on color names."
-msgstr ""
+msgstr "Введіть щось у поле списку для фільтрування назв кольорів."
 
 #: src/frontends/qt/FileDialog.cpp:207
 msgid "Directories"
@@ -35579,22 +35294,22 @@ msgid "Manuals"
 msgstr "Підручники"
 
 #: src/frontends/qt/FindAndReplace.cpp:299
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The end was reached while searching forward.\n"
 "Continue searching from the beginning? (Scope:%1$s)"
 msgstr ""
-"%1$s: під час пошуку далі досягнуто кінця документа.\n"
-"Продовжити пошук з початку?"
+"Під час пошуку далі досягнуто кінця документа.\n"
+"Продовжити пошук з початку? (Область:%1$s)"
 
 #: src/frontends/qt/FindAndReplace.cpp:302
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The beginning was reached while searching backward.\n"
 "Continue searching from the end? (Scope:%1$s)"
 msgstr ""
-"%1$s: під час пошуку назад досягнуто початку документа.\n"
-"Продовжити пошук з кінця?"
+"Під час пошуку назад досягнуто початку документа.\n"
+"Продовжити пошук з кінця? (Область:%1$s)"
 
 #: src/frontends/qt/FindAndReplace.cpp:325
 msgid "Advanced search in progress (press ESC to cancel) . . ."
@@ -35759,7 +35474,7 @@ msgstr "Виявлена версія Python: %1$s"
 #: src/frontends/qt/GuiAbout.cpp:310
 #, c-format
 msgid "Draw strategy: %1$s"
-msgstr ""
+msgstr "Стратегія креслення: %1$s"
 
 #: src/frontends/qt/GuiAbout.cpp:347
 msgid "About LyX"
@@ -35799,9 +35514,8 @@ msgid "Open"
 msgstr "Відкрити"
 
 #: src/frontends/qt/GuiApplication.cpp:782
-#, fuzzy
 msgid "Select Color"
-msgstr "С&кинути колір"
+msgstr "Вибір кольору"
 
 #: src/frontends/qt/GuiApplication.cpp:1296
 msgid "Nothing to do"
@@ -35923,17 +35637,16 @@ msgid "Unknown function."
 msgstr "Невідома функція."
 
 #: src/frontends/qt/GuiApplication.cpp:2777
-#, fuzzy
 msgid "partial draw"
-msgstr "часткова похідна"
+msgstr "часткове креслення"
 
 #: src/frontends/qt/GuiApplication.cpp:2780
 msgid "partial draw on backing store"
-msgstr ""
+msgstr "часткове креслення на основі"
 
 #: src/frontends/qt/GuiApplication.cpp:2783
 msgid "full draw"
-msgstr ""
+msgstr "креслення повністю"
 
 #: src/frontends/qt/GuiApplication.cpp:3069
 msgid "The current document was closed."
@@ -36013,12 +35726,12 @@ msgid "Author &Names:"
 msgstr "І&мена авторів:"
 
 #: src/frontends/qt/GuiBibitem.cpp:61
-#, fuzzy
 msgid ""
 "Insert the author name(s) for the author-number reference here. If you use "
 "an abbreviated list (with `et al.'), the full list can go below."
 msgstr ""
-"Тут можна вказати імена авторів для посилання у форматі «автор-рік». Якщо ви "
+"Тут можна вказати імена авторів для посилання у форматі «автор-номер». Якщо"
+" ви "
 "користуєтеся списком із скороченням (з записом «та ін.»), можна вказати "
 "повний список нижче."
 
@@ -36069,7 +35782,7 @@ msgstr "Кодування документа"
 
 #: src/frontends/qt/GuiBibtex.cpp:422
 msgid "&Make Absolute"
-msgstr ""
+msgstr "З&робити абсолютним"
 
 #: src/frontends/qt/GuiBibtex.cpp:442
 msgid "General Encoding"
@@ -36228,9 +35941,9 @@ msgid "No"
 msgstr "Ні"
 
 #: src/frontends/qt/GuiBranches.cpp:190
-#, fuzzy, c-format
+#, c-format
 msgid "A branch with the name \"%1$s\" already exists."
-msgstr "Група зображень з назвою '%1$s' вже існує."
+msgstr "Гілка з назвою «%1$s» вже існує."
 
 #: src/frontends/qt/GuiBranches.cpp:247
 msgid "Enter new branch name"
@@ -36880,9 +36593,8 @@ msgid "Page Margins"
 msgstr "Поля"
 
 #: src/frontends/qt/GuiDocument.cpp:1392
-#, fuzzy
 msgid "Double-click on an item to change its color"
-msgstr "Натисніть, щоб змінити колір"
+msgstr "Двічі клацніть на пункті, щоб змінити його колір"
 
 #: src/frontends/qt/GuiDocument.cpp:1421
 msgid "Numbered"
@@ -36893,9 +36605,8 @@ msgid "Appears in TOC"
 msgstr "З'явиться у Змісті"
 
 #: src/frontends/qt/GuiDocument.cpp:1522
-#, fuzzy
 msgid "Tabular"
-msgstr "Параметри таблиці"
+msgstr "Таблиця"
 
 #: src/frontends/qt/GuiDocument.cpp:1528
 msgid "Package"
@@ -36937,23 +36648,23 @@ msgstr "Параметри математики"
 
 #: src/frontends/qt/GuiDocument.cpp:1677
 msgid "Cleveref and varioref"
-msgstr ""
+msgstr "Cleveref і varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1678
 msgid "Prettyref (unlocalized) and varioref"
-msgstr ""
+msgstr "Prettyref (без локалізації) і varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1679
 msgid "Prettyref and varioref"
-msgstr ""
+msgstr "Prettyref і varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1680
 msgid "Refstyle and varioref"
-msgstr ""
+msgstr "Refstyle і varioref"
 
 #: src/frontends/qt/GuiDocument.cpp:1681
 msgid "Zref-clever and zref-vario"
-msgstr ""
+msgstr "Zref-clever та zref-vario"
 
 #: src/frontends/qt/GuiDocument.cpp:1698 src/frontends/qt/GuiDocument.cpp:3058
 #, c-format
@@ -37057,19 +36768,16 @@ msgid "&Switch Back"
 msgstr "П&овернутися"
 
 #: src/frontends/qt/GuiDocument.cpp:2009
-#, fuzzy
 msgid "&Left:"
-msgstr "&Ліворуч"
+msgstr "&Ліворуч:"
 
 #: src/frontends/qt/GuiDocument.cpp:2010
-#, fuzzy
 msgid "&Right:"
-msgstr "&Праворуч"
+msgstr "&Правий:"
 
 #: src/frontends/qt/GuiDocument.cpp:2013
-#, fuzzy
 msgid "&Outer:"
-msgstr "&Ззовні:"
+msgstr "Зз&овні:"
 
 #: src/frontends/qt/GuiDocument.cpp:2402
 msgid "Default margins"
@@ -37203,9 +36911,8 @@ msgid "Author-number"
 msgstr "Автор-номер"
 
 #: src/frontends/qt/GuiDocument.cpp:3300
-#, fuzzy
 msgid "Notes and Bibliography"
-msgstr "Список літератури"
+msgstr "Нотатки і список літератури"
 
 #: src/frontends/qt/GuiDocument.cpp:3334
 #, c-format
@@ -37379,25 +37086,25 @@ msgstr ""
 "<b>Зауваження:</b> не вистачає деяких обов'язкових частин для цього модуля!"
 
 #: src/frontends/qt/GuiDocument.cpp:5627
-#, fuzzy
 msgid "Color naming failed"
-msgstr "Спроба перейменування завершилася невдало"
+msgstr "Помилка іменування кольору"
 
 #: src/frontends/qt/GuiDocument.cpp:5628
-#, fuzzy, c-format
+#, c-format
 msgid "The color name `%1$s' is already taken."
-msgstr "Підтримку мови %1$s передбачено лише у Babel."
+msgstr "Назву кольору «%1$s» вже використано."
 
 #: src/frontends/qt/GuiDocument.cpp:5689
-#, fuzzy
 msgid "Enter new color name"
-msgstr "Введіть назву нової гілки"
+msgstr "Введіть нову назву кольору"
 
 #: src/frontends/qt/GuiDocument.cpp:5697
 msgid ""
 "The color could not be renamed since the new name consists of non-ASCII "
 "characters or blanks."
 msgstr ""
+"Не вдалося перейменувати колір, оскільки у новій назві міститься символи"
+" поза ASCII або пробіли."
 
 #: src/frontends/qt/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
@@ -38257,86 +37964,78 @@ msgid "Screen Fonts"
 msgstr "Екранні шрифти"
 
 #: src/frontends/qt/GuiPrefs.cpp:1400
-#, fuzzy
 msgid "Export a color theme"
-msgstr "Експортування скасовано"
+msgstr "Експортувати тему кольорів"
 
 #: src/frontends/qt/GuiPrefs.cpp:1439
 msgid "What is the name of the color theme?"
-msgstr ""
+msgstr "Якою є назва теми кольорів?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1440
 msgid "What is the name of the new color theme to save?"
-msgstr ""
+msgstr "Якою є назва нової теми кольорів для збереження?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1443
-#, fuzzy
 msgid "Name the color theme"
-msgstr "Назва конференції"
+msgstr "Назва теми кольорів"
 
 #: src/frontends/qt/GuiPrefs.cpp:1445
 msgid "New theme name"
-msgstr ""
+msgstr "Назва нової теми"
 
 #: src/frontends/qt/GuiPrefs.cpp:1467
 msgid "A user color theme with the same name exists."
-msgstr ""
+msgstr "Тема кольорів користувача з такою назвою вже існує."
 
 #: src/frontends/qt/GuiPrefs.cpp:1468
-#, fuzzy
 msgid "Do you want to overwrite?"
-msgstr "Файл %1$s вже існує. ви бажаєте перезаписати цей файл?"
+msgstr "Хочете перезаписати?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1508
 msgid "Import a color theme"
-msgstr ""
+msgstr "Імпортувати тему кольорів"
 
 #: src/frontends/qt/GuiPrefs.cpp:1612
-#, fuzzy
 msgid "Select a user theme"
-msgstr "Оберіть головний документ"
+msgstr "Виберіть тему користувача"
 
 #: src/frontends/qt/GuiPrefs.cpp:1613
 msgid "Please select a user theme to remove from the \"Themes\" list menu."
 msgstr ""
+"Будь ласка, виберіть тему користувача для вилучення зі списку меню «Теми»."
 
 #: src/frontends/qt/GuiPrefs.cpp:1625
 msgid "Not a user theme"
-msgstr ""
+msgstr "Не є темою користувача"
 
 #: src/frontends/qt/GuiPrefs.cpp:1626
-#, fuzzy
 msgid "The selected theme is a system theme. It cannot be removed."
-msgstr "Типовий покажчик не можна вилучати."
+msgstr "Вибрана тема є загальносистемною. Такі теми не можна вилучати."
 
 #: src/frontends/qt/GuiPrefs.cpp:1636
 msgid "Are you sure?"
-msgstr ""
+msgstr "Ви впевнені?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1637
 #, c-format
 msgid "Do you really want to remove the theme \"%1$s\"?"
-msgstr ""
+msgstr "Ви справді хочете вилучити тему «%1$s»?"
 
 #: src/frontends/qt/GuiPrefs.cpp:1726
-#, fuzzy
 msgid "&Export..."
-msgstr "Експортування…"
+msgstr "&Експортувати…"
 
 #: src/frontends/qt/GuiPrefs.cpp:1727
-#, fuzzy
 msgid "&Import..."
-msgstr "Імпортувати|І"
+msgstr "&Імпортувати…"
 
 #: src/frontends/qt/GuiPrefs.cpp:1756
-#, fuzzy
 msgid "Click here to change the color in the light mode"
-msgstr "Натисніть, щоб змінити колір"
+msgstr "Натисніть, щоб змінити колір у світлому режимі"
 
 #: src/frontends/qt/GuiPrefs.cpp:1758
-#, fuzzy
 msgid "Click here to change the color in the dark mode"
-msgstr "Натисніть, щоб змінити колір"
+msgstr "Натисніть, щоб змінити колір у темному режимі"
 
 #: src/frontends/qt/GuiPrefs.cpp:1996
 msgid "Paths"
@@ -38459,7 +38158,7 @@ msgstr "Інтерфейс користувача"
 
 #: src/frontends/qt/GuiPrefs.cpp:3244
 msgid "Adwaita"
-msgstr ""
+msgstr "Адвайта"
 
 #: src/frontends/qt/GuiPrefs.cpp:3245
 msgid "Classic"
@@ -38470,14 +38169,12 @@ msgid "Oxygen"
 msgstr "Oxygen"
 
 #: src/frontends/qt/GuiPrefs.cpp:3250
-#, fuzzy
 msgid "Light Mode"
-msgstr "KnightMove"
+msgstr "Світлий режим"
 
 #: src/frontends/qt/GuiPrefs.cpp:3251
-#, fuzzy
 msgid "Dark Mode"
-msgstr "Режим сторінки PDF"
+msgstr "Темний режим"
 
 #: src/frontends/qt/GuiPrefs.cpp:3279
 msgid "Restart needed"
@@ -38612,29 +38309,24 @@ msgid "Identity"
 msgstr "Профіль"
 
 #: src/frontends/qt/GuiPrefs.h:356
-#, fuzzy
 msgid "Light"
-msgstr "&Праворуч"
+msgstr "Світлий"
 
 #: src/frontends/qt/GuiPrefs.h:356
-#, fuzzy
 msgid "Dark"
-msgstr "темно-сірий"
+msgstr "Темна"
 
 #: src/frontends/qt/GuiPrefs.h:356
-#, fuzzy
 msgid "Object/Element"
-msgstr "Назваоб'єкта"
+msgstr "Об'єкт/Елемент"
 
 #: src/frontends/qt/GuiPrintNomencl.cpp:46
-#, fuzzy
 msgid "Longest label width (guessed)"
-msgstr "Ширина найдовшої мітки"
+msgstr "Ширина найдовшої мітки (визначена)"
 
 #: src/frontends/qt/GuiPrintNomencl.cpp:48
-#, fuzzy
 msgid "Longest label width (set)"
-msgstr "Ширина найдовшої мітки"
+msgstr "Ширина найдовшої мітки (встановлена)"
 
 #: src/frontends/qt/GuiPrintNomencl.h:40
 msgid "Nomenclature List Settings"
@@ -38695,45 +38387,45 @@ msgstr "За абеткою (із урахуванням регістру)"
 
 #: src/frontends/qt/GuiRef.cpp:80
 msgid "list (1 and 2)"
-msgstr ""
+msgstr "список (1 і 2)"
 
 #: src/frontends/qt/GuiRef.cpp:81
 msgid "range (1 to 2)"
-msgstr ""
+msgstr "діапазон (від 1 до 2)"
 
 #: src/frontends/qt/GuiRef.cpp:84
 msgid "Update the label list"
 msgstr "Оновити список міток"
 
 #: src/frontends/qt/GuiRef.cpp:241
-#, fuzzy
 msgid "Unsupported setting!"
-msgstr "Непідтримуване включення"
+msgstr "Непідтримувані налаштування!"
 
 #: src/frontends/qt/GuiRef.cpp:242
 msgid "The reference type you selected allows for maximally two target labels."
 msgstr ""
+"Вибраний вами тип посилань надає змогу використовувати не більше двох міток"
+" призначення."
 
 #: src/frontends/qt/GuiRef.cpp:451
 msgid "Label creation error!"
-msgstr ""
+msgstr "Помилка при створенні мітки!"
 
 #: src/frontends/qt/GuiRef.cpp:452
-#, fuzzy
 msgid ""
 "Could not auto-generate label for this target.\n"
 "Please insert a label manually."
-msgstr "Виберіть мітку із наведеного вище списку або введіть мітку вручну"
+msgstr ""
+"Не вдалося автоматично створити мітку для цього призначення.\n"
+"Будь ласка, вставте мітку вручну."
 
 #: src/frontends/qt/GuiRef.cpp:546
-#, fuzzy
 msgid "Existing Labels"
-msgstr "Мітка рівняння|р"
+msgstr "Наявні мітки"
 
 #: src/frontends/qt/GuiRef.cpp:583
-#, fuzzy
 msgid "page <page>"
-msgstr "на сторінці <номер>"
+msgstr "сторінка <page>"
 
 #: src/frontends/qt/GuiRef.cpp:695
 msgid "&Go Back"
@@ -38748,24 +38440,20 @@ msgid "<No prefix>"
 msgstr "<Немає префіксу>"
 
 #: src/frontends/qt/GuiRef.cpp:987
-#, fuzzy
 msgid "Available &Targets:"
-msgstr "&Доступні мітки:"
+msgstr "Д&оступні призначення:"
 
 #: src/frontends/qt/GuiRef.cpp:988
-#, fuzzy
 msgid "All available targets"
-msgstr "Усі доступні мітки"
+msgstr "Усі доступні призначення"
 
 #: src/frontends/qt/GuiRef.cpp:989
-#, fuzzy
 msgid "Enter string to filter the list of available targets"
-msgstr "Введіть рядок для фільтрування списку доступних міток"
+msgstr "Введіть рядок для фільтрування списку доступних призначень"
 
 #: src/frontends/qt/GuiRef.cpp:1076
-#, fuzzy
 msgid "Unknown[[ref target]]"
-msgstr "Невідомий аргумент"
+msgstr "Невідома[[ref target]]"
 
 #: src/frontends/qt/GuiSearch.cpp:201
 msgid "Ex&pand"
@@ -38804,7 +38492,6 @@ msgid "Click here to change search options"
 msgstr "Натисніть тут, щоб змінити параметри пошуку"
 
 #: src/frontends/qt/GuiSearch.cpp:598
-#, fuzzy
 msgid "Find and Replace"
 msgstr "Знайти і замінити"
 
@@ -39165,6 +38852,8 @@ msgstr "Символи"
 #: src/frontends/qt/GuiTabular.cpp:64
 msgid "Adjust the horizontal overhang of the coloring here if needed."
 msgstr ""
+"Якщо потрібно, тут ви можете скоригувати горизонтальний виступ"
+" розфарбованого."
 
 #: src/frontends/qt/GuiTabular.h:48
 msgid "Tabular Settings"
@@ -39319,9 +39008,8 @@ msgid "Conversion cancelled while previewing format: %1$s"
 msgstr "Перетворення скасовано під час попереднього перегляду формату: %1$s"
 
 #: src/frontends/qt/GuiView.cpp:1272
-#, fuzzy
 msgid "None[[color]]"
-msgstr "(Без)"
+msgstr "Немає[[color]]"
 
 #: src/frontends/qt/GuiView.cpp:1273
 msgid "(Without)[[color]]"
@@ -39849,7 +39537,7 @@ msgstr "Експортування…"
 
 #: src/frontends/qt/GuiView.cpp:4705
 msgid "Preparing externally referenced file ..."
-msgstr ""
+msgstr "Готуємо файл зовнішнього посилання…"
 
 #: src/frontends/qt/GuiView.cpp:4727
 msgid "Previewing ..."
@@ -39969,30 +39657,28 @@ msgid "&Close Tab"
 msgstr "З&акрити вкладку"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2214
-#, fuzzy
 msgid "Close &Other Tabs"
-msgstr "З&акрити вкладку"
+msgstr "Закрити ін&ші вкладки"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2216
 msgid "Close Tabs to the &Right"
-msgstr ""
+msgstr "Закрити вкладки п&раворуч"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2218
 msgid "Close Tabs to the &Left"
-msgstr ""
+msgstr "Закрити вкладки &ліворуч"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2223
 msgid "Move Tab to &Start"
-msgstr ""
+msgstr "Пересунути вкладку на &початок"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2225
 msgid "Move Tab to &End"
-msgstr ""
+msgstr "Пересунути вкладку у &кінець"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2230
-#, fuzzy
 msgid "Open Enclosing &Directory"
-msgstr "&Відкрити каталог"
+msgstr "Відкрити &каталог об'єкта"
 
 #: src/frontends/qt/GuiWorkArea.cpp:2275
 msgid "<b>The file %1 changed on disk.</b>"
@@ -40037,22 +39723,18 @@ msgid "More Spelling Suggestions"
 msgstr "Інші пропозиції правопису"
 
 #: src/frontends/qt/Menus.cpp:957
-#, fuzzy
 msgid "Add to personal dictionary|r"
 msgstr "Додати до особистого словника|о"
 
 #: src/frontends/qt/Menus.cpp:959
-#, fuzzy
 msgid "Ignore this occurrence|o"
 msgstr "Ігнорувати цей відповідник|г"
 
 #: src/frontends/qt/Menus.cpp:961
-#, fuzzy
 msgid "Ignore all for this session|t"
 msgstr "Ігнорувати усе для цього сеансу|е"
 
 #: src/frontends/qt/Menus.cpp:963
-#, fuzzy
 msgid "Ignore all in this document|u"
 msgstr "Ігнорувати усе у цьому документі|д"
 
@@ -40065,7 +39747,6 @@ msgid "Remove from document dictionary|r"
 msgstr "Вилучити зі словника документа|л"
 
 #: src/frontends/qt/Menus.cpp:1008
-#, fuzzy
 msgid "Switch Language...|w"
 msgstr "Перемкнути мову…|м"
 
@@ -41858,20 +41539,19 @@ msgstr "текст%1$s"
 
 #: src/insets/InsetRef.cpp:383 src/insets/InsetRef.cpp:560
 msgid "[[reference 1]] and [[reference2]]"
-msgstr ""
+msgstr "[[reference 1]] і [[reference2]]"
 
 #: src/insets/InsetRef.cpp:385 src/insets/InsetRef.cpp:562
 msgid "[[reference 1, ...]], and [[reference n]]"
-msgstr ""
+msgstr "[[reference 1, ...]] і [[reference n]]"
 
 #: src/insets/InsetRef.cpp:387 src/insets/InsetRef.cpp:564
 msgid "[[reference 1]], [[reference2, ...]]"
-msgstr ""
+msgstr "[[reference 1]], [[reference2, ...]]"
 
 #: src/insets/InsetRef.cpp:403
-#, fuzzy
 msgid "Invalid label!"
-msgstr "Некоректна назва файла"
+msgstr "Некоректна мітка!"
 
 #: src/insets/InsetRef.cpp:404
 #, c-format
@@ -41880,10 +41560,13 @@ msgid ""
 "formatted references with prettyref.\n"
 "You will most likely run into a LaTeX error."
 msgstr ""
+"У мітки «%1$s» немає префікса (напр., «sec:»), яка потрібна для форматованих"
+" посилань з використанням prettyref.\n"
+"Найімовірніше, матимемо помилку LaTeX."
 
 #: src/insets/InsetRef.cpp:664
 msgid "elsewhere"
-msgstr ""
+msgstr "в інших місцях"
 
 #: src/insets/InsetRef.cpp:953
 msgid "Ref"
@@ -41898,14 +41581,12 @@ msgid "Page Number"
 msgstr "Кількість сторінок"
 
 #: src/insets/InsetRef.cpp:956 src/mathed/InsetMathRef.cpp:428
-#, fuzzy
 msgid "Prefixed Page Number"
-msgstr "Текстовий номер сторінки"
+msgstr "Номер сторінки із префіксом"
 
 #: src/insets/InsetRef.cpp:956
-#, fuzzy
 msgid "PrefPage"
-msgstr "Передмова"
+msgstr "Стор. вст."
 
 #: src/insets/InsetRef.cpp:957 src/mathed/InsetMathRef.cpp:429
 msgid "Textual Page Number"
@@ -41944,9 +41625,8 @@ msgid "Label Only"
 msgstr "Лише мітка"
 
 #: src/insets/InsetRef.cpp:1050
-#, fuzzy
 msgid "Unknown external file!"
-msgstr "Виокремити зовнішній файл"
+msgstr "Невідомий зовнішній файл!"
 
 #: src/insets/InsetRef.cpp:1051
 #, c-format
@@ -41955,6 +41635,9 @@ msgid ""
 "(`%2$s')\n"
 "which could not be found. Output will be broken!"
 msgstr ""
+"Мітка «%1$s» посилається на зовнішній файл\n"
+"(«%2$s»),\n"
+"який не знайдено. Результат буде не тим, на який ви сподівалися!"
 
 #: src/insets/InsetScript.cpp:332
 msgid "subscript"
@@ -42415,9 +42098,8 @@ msgid "Page: "
 msgstr "Стор.: "
 
 #: src/mathed/InsetMathRef.cpp:428
-#, fuzzy
 msgid "PrefPage: "
-msgstr "Стор.: "
+msgstr "Стор. вст.: "
 
 #: src/mathed/InsetMathRef.cpp:429
 msgid "TextPage: "

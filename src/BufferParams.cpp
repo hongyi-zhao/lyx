@@ -3898,9 +3898,12 @@ string BufferParams::babelCall(LaTeXFeatures const & features, string lang_opts,
 			bool have_one = false;
 			for (string const & s : opts) {
 				have_mods = true;
-				if (langoptions || have_one)
+				if (!features.isAvailableAtLeastFrom("babel", 2023, 05, 11)
+				    || langoptions || have_one)
 					blang += "." + s;
 				else {
+					// modifiers.<lang>=opts is provided as of
+					// babel 3.89 (2023-05-11)
 					blang = "modifiers." + blang + "=" + s;
 					have_one = true;
 				}

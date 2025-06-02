@@ -68,8 +68,6 @@ function switch-polyglossia-to-dev ()
     sudo ln -s "${_polyglossia_dev_d}/tex" "${_polyglossia_tl_d}"
     # we need to check for possibly new/removed files
     sudo /opt/texbin/mktexlsr
-
-    \sudo -k
   fi
 }
 
@@ -83,8 +81,6 @@ function switch-polyglossia-to-stable ()
     sudo rm "${_polyglossia_tl_d}"
     sudo mv "${_polyglossia_tl_bu_d}" "${_polyglossia_tl_d}"
     sudo /opt/texbin/mktexlsr
-
-    \sudo -k
   else
     echo "Link does not exist, so you are already using polyglossia-stable."
     return 0
@@ -135,8 +131,6 @@ function switch-latex-to-tl-dev ()
       echo "/opt/texbin/${devname} \"\$@\"" | sudo tee -a "${_tl_texbin_d}/${stablename}" > /dev/null
       sudo chmod +x "${_tl_texbin_d}/${stablename}"
       echo "  ${stablename} now pointing to dev."
-
-      \sudo -k
     fi
   done
 }
@@ -155,8 +149,6 @@ function switch-latex-to-tl-stable ()
         echo "  restoring stable."
         sudo rm "${_tl_texbin_d}/${stablename}"
         sudo cp -d "${_tl_stable_bu_d}/${stablename}" "${_tl_texbin_d}/${stablename}"
-
-        \sudo -k
       else
         echo "ERROR: the stable backup file does not exist: ${_tl_stable_bu_d}/${stablename}"
       fi
@@ -172,8 +164,6 @@ function switch-gcc-to ()
   sudo update-alternatives --set gcc "/usr/bin/gcc-$1"
   sudo update-alternatives --set g++ "/usr/bin/g++-$1"
   sudo update-alternatives --set gfortran "/usr/bin/gfortran-$1"
-
-  \sudo -k
 }
 _switch_gcc_to()
 {
@@ -194,8 +184,6 @@ function switch-clang-to ()
   sudo update-alternatives --set clang "/usr/bin/clang-$1"
   sudo update-alternatives --set clang++ "/usr/bin/clang++-$1"
   # I don't think Clang has a (built-in) fortran
-
-  \sudo -k
 }
 _switch_clang_to()
 {
@@ -224,8 +212,6 @@ function gcc-apt-get-install ()
   "gcc-$1" \
   "g++-$1" \
   "gfortran-$1"
-
-  \sudo -k
 }
 
 
@@ -234,6 +220,4 @@ function clang-apt-get-install ()
   # don't need to separately install "clang++-$1".
   # approximate size taken up by installing: # 722 MB
   sudo apt-get install "clang-$1"
-
-  \sudo -k
 }

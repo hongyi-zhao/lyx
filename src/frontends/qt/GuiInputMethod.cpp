@@ -135,6 +135,10 @@ void GuiInputMethod::setHint(Hint hint){
 
 void GuiInputMethod::processPreedit(QInputMethodEvent* ev)
 {
+	if (ev->preeditString().isEmpty() && ev->commitString().isEmpty() &&
+	        !d->has_selection_ && d->im_state_.preediting_ == false)
+		return;
+
 	if (!d->buffer_view_->inlineCompletion().empty())
 		d->work_area_->completer().hideInline();
 

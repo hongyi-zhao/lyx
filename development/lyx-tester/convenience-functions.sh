@@ -10,3 +10,18 @@ function git-grep-accel-robust ()
   search_str="$( echo "$1" | sed 's/.\{1\}/&\&\\\?/g')"
   git grep -i "${search_str}"
 }
+
+
+# Change converters in the LyX preferences of the ctest build directory to use,
+# e.g., "pdflatex-dev" (and friends) instead of "pdflatex". This helps us catch
+# and report issues in LaTeX releases before the actual release.
+# TODO: make inverse function also?
+function ctest-lyx-prefs-inject-dev () {
+  prefs_f='Testing/.lyx/preferences'
+  # TODO: check if in the correct directory
+  # TODO: check if file exists
+
+  for i in "dvilualatex" "latex" "lualatex" "pdflatex" "uplatex" "xelatex"; do
+    sed -i "s/${i} -shell-escape/${i}-dev -shell-escape/" "${prefs_f}"
+  done
+}

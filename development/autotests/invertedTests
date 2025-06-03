@@ -355,6 +355,11 @@ export/export/latex/unicodesymbols/008-greek-and-coptic_utf8x_pdf2
 #                     {churchslavonic}[churchslavonic@]{babelshorthands}[false]{}
 export/export/latex/languages/supported-languages_polyglossia-XeTeX_pdf4_systemF
 
+# Starting with the 2025-06-01 release, these exports give the following:
+# "Missing character:" messages with picinpar example
+# (https://github.com/latex3/latex2e/issues/1725)
+export/doc/(|de/|es/|fr/|ja/)EmbeddedObjects_(dvi3|pdf5)_systemF
+
 
 # ================================================
 Sublabel: externalissues

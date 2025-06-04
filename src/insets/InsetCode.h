@@ -165,11 +165,13 @@ enum InsetCode {
 	///
 	MATH_HULL_CODE,
 	///
+	MATH_INTERTEXT_CODE,
+	///
 	MATH_KERN_CODE,
 	///
-	MATH_LEFTEQN_CODE,
+	MATH_LEFTEQN_CODE, // 75
 	///
-	MATH_LIM_CODE, // 75
+	MATH_LIM_CODE,
 	///
 	MATH_MATRIX_CODE,
 	///
@@ -177,9 +179,9 @@ enum InsetCode {
 	///
 	MATH_NEST_CODE,
 	///
-	MATH_NUMBER_CODE,
+	MATH_NUMBER_CODE, // 80
 	///
-	MATH_OVERSET_CODE, // 80
+	MATH_OVERSET_CODE,
 	///
 	MATH_PAR_CODE,
 	///
@@ -187,9 +189,9 @@ enum InsetCode {
 	///
 	MATH_REF_CODE,
 	///
-	MATH_ROOT_CODE,
+	MATH_ROOT_CODE, // 85
 	///
-	MATH_SCRIPT_CODE, // 85
+	MATH_SCRIPT_CODE,
 	///
 	MATH_SIZE_CODE,
 	///
@@ -197,9 +199,9 @@ enum InsetCode {
 	///
 	MATH_SPECIALCHAR_CODE,
 	///
-	MATH_SPLIT_CODE,
+	MATH_SPLIT_CODE, // 90
 	///
-	MATH_SQRT_CODE, // 90
+	MATH_SQRT_CODE,
 	///
 	MATH_STACKREL_CODE,
 	///
@@ -207,9 +209,9 @@ enum InsetCode {
 	///
 	MATH_SUBSTACK_CODE,
 	///
-	MATH_SYMBOL_CODE,
+	MATH_SYMBOL_CODE, // 95
 	///
-	MATH_TABULAR_CODE, // 95
+	MATH_TABULAR_CODE,
 	///
 	MATH_TEXTSIZE_CODE,
 	///
@@ -217,9 +219,9 @@ enum InsetCode {
 	///
 	MATH_UNKNOWN_CODE,
 	///
-	MATH_XARROW_CODE,
+	MATH_XARROW_CODE, // 100
 	///
-	MATH_XYMATRIX_CODE, // 100
+	MATH_XYMATRIX_CODE,
 	///
 	MATH_MACRO_CODE,
 	///
@@ -227,9 +229,9 @@ enum InsetCode {
 	///
 	PREVIEW_CODE,
 	///
-	MATH_DIAGRAM_CODE,
+	MATH_DIAGRAM_CODE, // 105
 	///
-	SCRIPT_CODE, // 105
+	SCRIPT_CODE,
 	///
 	IPA_CODE,
 	///
@@ -237,9 +239,9 @@ enum InsetCode {
 	///
 	IPADECO_CODE,
 	///
-	MATH_CLASS_CODE,
+	MATH_CLASS_CODE, // 110
 	///
-	COUNTER_CODE, // 110
+	COUNTER_CODE,
 	///
 	INDEXMACRO_CODE,
 	///

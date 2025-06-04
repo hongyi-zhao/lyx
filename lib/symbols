@@ -248,6 +248,8 @@ overset           overset     none
 mbox              mbox        forcetext
 tag               mbox        forcetext
 tag*              mbox        forcetext
+intertext         intertext   forcetext
+shortintertext    intertext   forcetext
 #newcommand        newcommand  none
 #label             label       none
 #left              left        none

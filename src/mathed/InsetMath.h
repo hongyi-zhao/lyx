@@ -88,6 +88,7 @@ class InsetMathFrac;
 class InsetMathFont;
 class InsetMathGrid;
 class InsetMathHull;
+class InsetMathIntertext;
 class InsetMathMatrix;
 class InsetMathNest;
 class InsetMathScript;
@@ -170,6 +171,8 @@ public:
 	virtual InsetMathGrid const     * asGridInset() const     { return nullptr; }
 	virtual InsetMathHull           * asHullInset()           { return nullptr; }
 	virtual InsetMathHull const     * asHullInset() const     { return nullptr; }
+	virtual InsetMathIntertext       * asIntertextInset()          { return nullptr; }
+	virtual InsetMathIntertext const * asIntertextInset() const    { return nullptr; }
 	virtual InsetMathMacro          * asMacroInset()          { return nullptr; }
 	virtual InsetMathMacro const    * asMacroInset() const    { return nullptr; }
 	virtual InsetMathMacroTemplate       * asMacroTemplateInset()       { return nullptr; }

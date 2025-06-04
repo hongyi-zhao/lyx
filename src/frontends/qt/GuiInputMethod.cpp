@@ -135,6 +135,7 @@ void GuiInputMethod::setHint(Hint hint){
 
 void GuiInputMethod::processPreedit(QInputMethodEvent* ev)
 {
+	// Linux can call this function even when IM is not used
 	if (ev->preeditString().isEmpty() && ev->commitString().isEmpty() &&
 	        !d->has_selection_ && d->im_state_.preediting_ == false)
 		return;

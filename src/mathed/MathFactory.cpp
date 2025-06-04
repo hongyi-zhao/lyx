@@ -27,6 +27,7 @@
 #include "InsetMathFont.h"
 #include "InsetMathFontOld.h"
 #include "InsetMathFrac.h"
+#include "InsetMathIntertext.h"
 #include "InsetMathLefteqn.h"
 #include "InsetMathOverset.h"
 #include "InsetMathPhantom.h"
@@ -568,6 +569,8 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 			return MathAtom(new InsetMathBox(buf, l->name));
 //		if (inset == "fbox")
 //			return MathAtom(new InsetMathFBox(l));
+		if (inset == "intertext")
+			return MathAtom(new InsetMathIntertext(buf, l->name));
 		if (inset == "style")
 			return MathAtom(new InsetMathSize(buf, l));
 		if (inset == "font")

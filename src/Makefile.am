@@ -430,6 +430,8 @@ liblyxmathed_a_SOURCES = \
 	mathed/InsetMathGrid.h \
 	mathed/InsetMathHull.cpp \
 	mathed/InsetMathHull.h \
+	mathed/InsetMathIntertext.cpp \
+	mathed/InsetMathIntertext.h \
 	mathed/InsetMathKern.cpp \
 	mathed/InsetMathKern.h \
 	mathed/InsetMathLefteqn.cpp \

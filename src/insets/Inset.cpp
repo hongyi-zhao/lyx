@@ -147,6 +147,7 @@ static void build_translator()
 	insetnames[MATH_GRID_CODE] = InsetName("mathgrid");
 	insetnames[MATH_CODE] = InsetName("math");
 	insetnames[MATH_HULL_CODE] = InsetName("mathhull");
+	insetnames[MATH_INTERTEXT_CODE] = InsetName("mathintertext");
 	insetnames[MATH_KERN_CODE] = InsetName("mathkern");
 	insetnames[MATH_LEFTEQN_CODE] = InsetName("mathlefteqn");
 	insetnames[MATH_LIM_CODE] = InsetName("mathlim");

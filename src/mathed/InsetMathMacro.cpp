@@ -552,7 +552,7 @@ bool InsetMathMacro::editMetrics(BufferView const * bv) const
 
 marker_type InsetMathMacro::marker(BufferView const * bv) const
 {
-	if (nargs() == 0)
+	if (!isActive())
 		return marker_type::NO_MARKER;
 
 	switch (d->displayMode_) {
@@ -571,7 +571,6 @@ marker_type InsetMathMacro::marker(BufferView const * bv) const
 			return marker_type::MARKER2;
 		}
 	}
-	// please gcc 4.6
 	return marker_type::NO_MARKER;
 }
 
@@ -1010,7 +1009,8 @@ void InsetMathMacro::edit(Cursor & cur, bool front, EntryDirection entry_from)
 Inset * InsetMathMacro::editXY(Cursor & cur, int x, int y)
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
-	if (nargs() > 0) {
+	if (isActive()) {
+		// FIXME: do we need this? Otherwise the method could go
 		cur.screenUpdateFlags(Update::SinglePar);
 		return InsetMathNest::editXY(cur, x, y);
 	} else

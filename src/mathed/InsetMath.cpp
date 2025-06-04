@@ -94,7 +94,7 @@ MathData const & InsetMath::cell(idx_type) const
 
 marker_type InsetMath::marker(BufferView const *) const
 {
-	return nargs() > 0 ? marker_type::MARKER : marker_type::NO_MARKER;
+	return isActive() ? marker_type::MARKER : marker_type::NO_MARKER;
 }
 
 

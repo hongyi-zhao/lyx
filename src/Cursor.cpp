@@ -1807,7 +1807,7 @@ bool Cursor::macroModeClose(bool cancel)
 	}
 
 	// insert remembered selection into first argument of a non-macro
-	else if (atomAsNest && atomAsNest->nargs() > 0)
+	else if (atomAsNest && atomAsNest->isActive())
 		atomAsNest->cell(atomAsNest->firstIdx()).append(selection);
 
 	MathWordList const & words = mathedWordList();

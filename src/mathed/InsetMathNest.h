@@ -135,7 +135,7 @@ public:
 	InsetCode lyxCode() const override { return MATH_NEST_CODE; }
 
 	///
-	bool confirmDeletion() const override { return nargs() > 0; }
+	bool confirmDeletion() const override { return isActive(); }
 	/// interpret \p c and insert the result at the current position of
 	/// of \p cur. Return whether the cursor should stay in the formula.
 	bool interpretChar(Cursor & cur, char_type c);

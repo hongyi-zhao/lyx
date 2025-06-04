@@ -392,7 +392,7 @@ void MathData::drawSelection(PainterInfo & pi, int const x, int const y) const
 	BufferView const * bv = pi.base.bv;
 	Cursor const & cur = bv->cursor();
 	InsetMath const * inset = cur.inset().asInsetMath();
-	if (!cur.selection() || !inset || inset->nargs() == 0)
+	if (!cur.selection() || !inset || !inset->isActive())
 		return;
 
 	CursorSlice const s1 = cur.selBegin();

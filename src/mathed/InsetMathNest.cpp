@@ -232,7 +232,7 @@ bool InsetMathNest::idxBackward(Cursor & cur) const
 bool InsetMathNest::idxFirst(Cursor & cur) const
 {
 	LASSERT(&cur.inset() == this, return false);
-	if (nargs() == 0)
+	if (!isActive())
 		return false;
 	cur.idx() = firstIdx();
 	cur.pos() = 0;
@@ -243,7 +243,7 @@ bool InsetMathNest::idxFirst(Cursor & cur) const
 bool InsetMathNest::idxLast(Cursor & cur) const
 {
 	LASSERT(&cur.inset() == this, return false);
-	if (nargs() == 0)
+	if (!isActive())
 		return false;
 	cur.idx() = lastIdx();
 	cur.pos() = cur.lastpos();
@@ -337,6 +337,7 @@ void InsetMathNest::write(TeXMathStream & os) const
 		Changer dummy = os.changeRowEntry(TexRow::mathEntry(id(),i));
 		os << '{' << cell(i) << '}';
 	}
+	// FIXME: can this ever happen?
 	if (nargs() == 0)
 		os.pendingSpace(true);
 	if (lock_ && !os.latex()) {

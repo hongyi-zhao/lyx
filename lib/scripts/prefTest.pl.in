@@ -46,8 +46,13 @@ my @ctestpars = ();
 
 my $shell_escapes = 1;
 my $handle_argv = "";
-if (defined($ARGV[0]) && ($ARGV[0] =~ /^(test|default)$/)) {
+my $dev = 0;
+if (defined($ARGV[0]) && ($ARGV[0] =~ /^(test|test\-dev|default)$/)) {
   $handle_argv = $1;
+  if ($handle_argv eq "test-dev") {
+    $handle_argv = "test";
+    $dev = 1;
+  }
   shift(@ARGV);
 }
 
@@ -75,7 +80,7 @@ else {
 			       "allow_geometry_session=false", @ARGV);
 }
 
-&getConverters($userdir, \%Converter, $shell_escapes);
+&getConverters($userdir, \%Converter, $shell_escapes, $dev);
 
 &applyChanges($userdir, \%Subst, \%Converter, $shell_escapes);
 

@@ -9,8 +9,8 @@ BEGIN {
 }
 
 sub getSubstitutes($$@);
-sub getConverters($$$);
-sub getConverter($$);
+sub getConverters($$$$);
+sub getConverter($$$);
 sub getNext($);
 sub writeConverters($$);
 sub createConvLine($$);
@@ -64,14 +64,14 @@ sub getSubstitutes($$@)
   return(@ctestpars);
 }
 
-sub getConverters($$$)
+sub getConverters($$$$)
 {
-  my ($userdir, $rConverter, $add) = @_;
+  my ($userdir, $rConverter, $add, $dev) = @_;
 
   if (open(FI, "$userdir/lyxrc.defaults")) {
     while (my $l = <FI>) {
       if ($l =~ s/^\s*\\converter\s+//) {
-	my $entry = &getConverter($l, $add);
+	my $entry = &getConverter($l, $add, $dev);
 	if (defined($entry)) {
 	  $rConverter->{$entry->[0]} = $entry->[1];
 	}
@@ -81,9 +81,9 @@ sub getConverters($$$)
   }
 }
 
-sub getConverter($$)
+sub getConverter($$$)
 {
-  my ($l, $add) = @_;
+  my ($l, $add, $dev) = @_;
   chomp($l);
   my ($from, $to, $cmd, $par);
   ($l, $from) = getNext($l);
@@ -122,6 +122,12 @@ sub getConverter($$)
   return undef if ($par !~ $extrapar);
   my $key = "\"$from\" \"$to\"";
   if ($add) {
+    if ($dev && ($cmd !~ /^dvipdfmx/)) {
+      $cmd =~ s/^([a-z]+)\s/$1-dev /;
+    }
+    else {
+      $cmd =~ s/^([a-z]+)-dev\s/$1 /;
+    }
     return([$key, [$cmd, $par]]);
   }
   else {

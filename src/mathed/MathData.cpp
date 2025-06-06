@@ -1006,22 +1006,6 @@ Dimension const & MathData::dimension(BufferView const & bv) const
 }
 
 
-int MathData::xm(BufferView const & bv) const
-{
-	Geometry const & g = bv.coordCache().cells().geometry(this);
-
-	return g.pos.x + g.dim.wid / 2;
-}
-
-
-int MathData::ym(BufferView const & bv) const
-{
-	Geometry const & g = bv.coordCache().cells().geometry(this);
-
-	return g.pos.y + (g.dim.des - g.dim.asc) / 2;
-}
-
-
 int MathData::xo(BufferView const & bv) const
 {
 	return bv.coordCache().cells().x(this);

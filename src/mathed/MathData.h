@@ -155,10 +155,6 @@ public:
 	int xo(BufferView const & bv) const;
 	/// access to cached y coordinate of last drawing
 	int yo(BufferView const & bv) const;
-	/// access to cached x coordinate of mid point of last drawing
-	int xm(BufferView const & bv) const;
-	/// access to cached y coordinate of mid point of last drawing
-	int ym(BufferView const & bv) const;
 	/// write access to coordinate;
 	void setXY(BufferView & bv, int x, int y) const;
 	/// returns x coordinate of given position in the data

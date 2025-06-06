@@ -120,7 +120,7 @@
 #   Remove use_qimage preference
 
 # Incremented to format 26, by spitz
-#   Rename font_encoding preference
+#   Remove font_encoding preference
 
 # Incremented to format 27, by spitz
 #   Add optional flavor value to needaux flag

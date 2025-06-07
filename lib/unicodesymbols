@@ -1898,7 +1898,7 @@
 0x2008 "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" "force" "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" # PUNCTUATION SPACE
 0x2009 "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" "force=utf8;utf8-cjk" "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" # THIN SPACE
 0x200a "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" "force" "\\LyXHairSpace" "\\newcommand*\\LyXHairSpace{\\hspace{1pt}}" # HAIR SPACE
-0x200b "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" "force=utf8;utf8-cjk" "\\LyXZeroWidthSpace" "\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}" # ZERO WIDTH SPACE
+0x200b "\\LyXZeroWidthSpace" "lyxzerowidthspace" "force=utf8;utf8-cjk" "\\LyXZeroWidthSpace" "lyxzerowidthspace" # ZERO WIDTH SPACE
 0x200c "\\textcompwordmark"       "" "" "" "" # ZERO WIDTH NON-JOINER
 #0x200d ""                         "" "" "" "" # ZERO WIDTH JOINER
 #0x200e ""                         "" "" "" "" # LEFT-TO-RIGHT MARK

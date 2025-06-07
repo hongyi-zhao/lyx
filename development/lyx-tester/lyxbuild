@@ -523,6 +523,8 @@ else
 
   if [ "${WERROR}" = "1" ]; then
     # should be a semi-colon separated list (if more than one option).
+    # Useful for finding more warnings:
+    # CPPFLAGS="-Werror;-Wextra;-pedantic"
     CPPFLAGS="-Werror"
     if [ "${clang}" = "0" ]; then
       # (https://stackoverflow.com/questions/5188267/checking-the-gcc-version-in-a-makefile)

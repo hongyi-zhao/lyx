@@ -730,9 +730,9 @@ GuiView::GuiView(int id)
 	zoom_value_->setForegroundRole(statusBar()->foregroundRole());
 	zoom_value_->setFixedHeight(fm.height());
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-	zoom_value_->setMinimumWidth(fm.horizontalAdvance("444\%"));
+	zoom_value_->setMinimumWidth(fm.horizontalAdvance("444%"));
 #else
-	zoom_value_->setMinimumWidth(fm.width("444\%"));
+	zoom_value_->setMinimumWidth(fm.width("444%"));
 #endif
 	zoom_value_->setAlignment(Qt::AlignCenter);
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));

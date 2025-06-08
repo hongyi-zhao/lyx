@@ -81,12 +81,18 @@ docstring InsetMathIntertext::name() const
 
 void InsetMathIntertext::mathmlize(MathMLStream & ms) const
 {
-	ms << MTagInline("mtext", "style=\"position:absolute;left:0px\"");
+	ms << MTag("mrow");
+
+	SetMode textmode(ms, true);
+	ms << MTagInline("mtext", "style=\"position:absolute;left:10px\"");
+
 	for (size_type i=0; i<cell(0).size(); ++i)
-		ms << cell(0)[i]->asCharInset()->getChar();
+		ms << cell(0)[i];
+
 	ms << ETagInline("mtext");
+
 	// make a new line
-	ms << ETag("mtd") << ETag("mtr")
+	ms << ETag("mrow") << ETag("mtd") << ETag("mtr")
 	   << MTag("mtr", "style=\"height:3ex\"") << ETag("mtr")
 	   << MTag("mtr") << MTag("mtd");
 }

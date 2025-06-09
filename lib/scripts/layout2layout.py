@@ -482,6 +482,15 @@ def convert(lines, end_format):
     re_OptArgs = re.compile(b'^(\\s*)OptionalArgs(\\s+)(\\d+)\\D*$', re.IGNORECASE)
     re_ReqArgs = re.compile(b'^(\\s*)RequiredArgs(\\s+)(\\d+)\\D*$', re.IGNORECASE)
 
+    # Theorem styles (format 108)
+    re_ThmStyle = re.compile(b'^\\s*\\\\theoremstyle{(\\S+)}\\s*$', re.IGNORECASE)
+    re_newStarThm = re.compile(b'^\\s*\\\\newtheorem\\*{(\\S+)}{(\\S+)}\\s*$', re.IGNORECASE)
+    re_newThm = re.compile(b'^\\s*\\\\newtheorem{(\\S+)}{(\\S+)}\\s*$', re.IGNORECASE)
+    re_newThmMC = re.compile(b'^\\s*\\\\newtheorem{(\\S+)}{(\\S+)}\\[(\\S+)\\]\\s*$', re.IGNORECASE)
+    re_newThmC = re.compile(b'^\\s*\\\\newtheorem{(\\S+)}\\[(\\S+)\\]{(\\S+)}\\s*$', re.IGNORECASE)
+    re_newThmCMC = re.compile(b'^\\s*\\\\newtheorem{(\\S+)}\\[(\\S+)\\]{(\\S+)}\\[(\\S+)\\]\\s*$', re.IGNORECASE)
+    re_newThmChapArtifact = re.compile(b'^\\s*(\\\\ifx\\\\thechapter\\\\undefined|\\\\else|\\\\fi)\\s*$', re.IGNORECASE)
+
     # various changes associated with changing how chapters are handled
     re_LabelTypeIsCounter = re.compile(b'^(\\s*)LabelType(\\s*)Counter\\s*$', re.IGNORECASE)
     re_TopEnvironment = re.compile(b'^(\\s*)LabelType(\\s+)Top_Environment\\s*$', re.IGNORECASE)
@@ -546,6 +555,11 @@ def convert(lines, end_format):
     # Whether a style is inherited (works only for CopyStyle currently,
     # not for true inherited styles, see bug 8920
     inherited = False        # only used for 48 -> 49
+    thmstyle = b""
+    thmname = b""
+    thmlatexname = b""
+    thmcounter = b""
+    thmparentcounter = b""
 
     while i < len(lines):
         # Skip comments and empty lines
@@ -587,9 +601,82 @@ def convert(lines, end_format):
 
         # Don't get confused by LaTeX code
         if re_Preamble.match(lines[i]):
+            prestart = i
             i += 1
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
+                if format != 108:
+                    i += 1
+                    continue
+                # format 108: convert Preamble theorem definitions
+                #             to new layout tags
+                match = re_ThmStyle.match(lines[i])
+                if match:
+                    thmstyle = match.group(1)
+                    del lines[i]
+                    continue
+                match = re_newStarThm.match(lines[i])
+                if match:
+                    thmname = match.group(1)
+                    thmlatexname = match.group(2)
+                    thmcounter = b"none"
+                    del lines[i]
+                    continue
+                match = re_newThm.match(lines[i])
+                if match:
+                    thmname = match.group(1)
+                    thmlatexname = match.group(2)
+                    del lines[i]
+                    continue
+                match = re_newThmMC.match(lines[i])
+                if match:
+                    thmname = match.group(1)
+                    thmlatexname = match.group(2)
+                    thmparentcounter = match.group(3)
+                    del lines[i]
+                    continue
+                match = re_newThmC.match(lines[i])
+                if match:
+                    thmname = match.group(1)
+                    thmlatexname = match.group(3)
+                    thmcounter = match.group(2)
+                    del lines[i]
+                    continue
+                match = re_newThmCMC.match(lines[i])
+                if match:
+                    thmname = match.group(1)
+                    thmlatexname = match.group(3)
+                    thmcounter = match.group(2)
+                    thmparentcounter = match.group(4)
+                    del lines[i]
+                    continue
                 i += 1
+            have_thm = False
+            if thmname != b"":
+                lines.insert(i+1, b"\tTheoremName %s" % thmname)
+                have_thm = True
+            if thmlatexname != b"":
+                if thmlatexname.startswith(b"\\protect"):
+                    thmlatexname = thmlatexname[8:]
+                if thmlatexname.startswith(b"\\"):
+                    thmlatexname = thmlatexname[1:]
+                lines.insert(i+1, b"\tTheoremLaTeXName %s" % thmlatexname)
+                have_thm = True
+            if thmcounter != b"":
+                lines.insert(i+1, b"\tTheoremCounter %s" % thmcounter)
+                have_thm = True
+            if thmparentcounter != b"":
+                lines.insert(i+1, b"\tTheoremParentCounter %s" % thmparentcounter)
+                have_thm = True
+            if have_thm:
+                if re_Preamble.match(lines[prestart]):
+                    j = prestart + 1
+                    while j < len(lines) and re_newThmChapArtifact.match(lines[j]):
+                        # these are artifact lines that can be safely removed
+                        j += 1
+                    if re_EndPreamble.match(lines[j]):
+                        # the preamble consisted of the theorem def only
+                        # remove!
+                        del lines[prestart:j+1]
             continue
         if re_LangPreamble.match(lines[i]):
             i += 1
@@ -602,7 +689,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if 101 <= format <= 108:
+        if 101 <= format <= 109:
             # nothing to do.
             i += 1
             continue

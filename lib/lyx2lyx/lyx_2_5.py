@@ -2387,7 +2387,7 @@ def revert_colortbl(document):
         document.body[lay+1 : lay+1] = cmd
         colortbl = True
 
-    # and finally, columncolor
+    # columncolor
     i = 0
     re1 = re.compile(r"^<column .*color=\"([^\"]+)\".*$", re.IGNORECASE)
     re2 = re.compile(r"^<column .*special=\"([^\"]+)\".*$", re.IGNORECASE)
@@ -2473,6 +2473,24 @@ def revert_colortbl(document):
             cmd = " special=\">{\\columncolor{%s}%s%s}\">" % (ccval_tex, clo, cro)
         document.body[i] = document.body[i][:-1] + cmd
         colortbl = True
+
+    # and finally, href colors
+    i = find_token(document.header, "\\pdf_quoted_options", 0)
+    if i != -1:
+        pdfopts = get_quoted_value(document.header, "\\pdf_quoted_options", i).split()
+        rex = re.compile(r"^.*color=([^,]+).*$", re.IGNORECASE)
+        for pdfopt in pdfopts:
+            m = rex.match(pdfopt)
+            if not m:
+                continue
+            ccval = m.group(1)
+            if ccval not in handledcolors:
+                # check whether it is a known latexcolor only used here
+                for color in list(xcolor_names):
+                    x11 |= "X11:" + ccval == color
+                    svg |= "SVG:" + ccval == color
+                    dvips |= "DVIPS:" + ccval == color
+                    xcolor |= "X11:" + ccval == color or "SVG:" + ccval == color or "DVIPS:" + ccval == color
 
     # To conclude, the preamble stuff
     if xcolor == True:

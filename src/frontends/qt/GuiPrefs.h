@@ -308,8 +308,8 @@ private:
 	void setResetButtonStatus(int const &row, bool is_undoing = false);
 	/// Set availability of reset buttons of the selected row
 	void setResetButtonStatus(bool is_undoing = false);
-	/// Enable edit buttons
-	void enableEditButtons();
+	/// Set availability of edit buttons
+	void setEditButtonStatus();
 	/// Get default color of current theme at (row, column) in the colorsTV.
 	/// If theme_colors_ is empty, this returns an invalid QColor.
 	QColor getCurrentThemeColor(int const &row, bool const &is_dark_color);

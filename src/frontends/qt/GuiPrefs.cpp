@@ -1129,6 +1129,7 @@ void PrefColors::clickedColorsTV(const QModelIndex index)
 	if (column < 2)
 		changeColor(row, column);
 
+	enableEditButtons();
 	setResetButtonStatus(row);
 }
 
@@ -1391,6 +1392,15 @@ void PrefColors::setResetButtonStatus(bool is_undoing)
 	int const row = index.row();
 
 	setResetButtonStatus(row, is_undoing);
+}
+
+
+void PrefColors::enableEditButtons()
+{
+	if (!lightColorEditPB->isEnabled())
+		lightColorEditPB->setEnabled(true);
+	if (!darkColorEditPB->isEnabled())
+		darkColorEditPB->setEnabled(true);
 }
 
 
@@ -1827,6 +1837,8 @@ void PrefColors::initializeColorsTV()
 	darkColorResetPB->setDisabled(true);
 	bothColorResetPB->setDisabled(true);
 	colorResetAllPB->setDisabled(true);
+	lightColorEditPB->setDisabled(true);
+	darkColorEditPB->setDisabled(true);
 
 	colorsTV->show();
 }

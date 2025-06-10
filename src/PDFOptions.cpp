@@ -14,6 +14,7 @@
 #include "PDFOptions.h"
 
 #include "Encoding.h"
+#include "LaTeXColors.h"
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
 #include "texstream.h"
@@ -301,6 +302,30 @@ void PDFOptions::clear()
 	pagemode.clear();
 	quoted_options.clear();
 	pdfusetitle             = true;  //in contrast with hyperref
+}
+
+
+void PDFOptions::validate(LaTeXFeatures & features) const
+{
+	if (quoted_options.empty())
+		return;
+
+	vector<string> const opts = getVectorFromString(quoted_options);
+	for (auto const & opt : opts) {
+		if (!contains(opt, "color="))
+			continue;
+		string const color = split(opt, '=');
+		if (theLaTeXColors().isRealLaTeXColor(color)) {
+			string const lyxcolor = theLaTeXColors().getFromLaTeXColor(color);
+			LaTeXColor const lc = theLaTeXColors().getLaTeXColor(lyxcolor);
+			for (auto const & r : lc.req())
+				features.require(r);
+			features.require("xcolor");
+			if (!lc.model().empty())
+				features.require("xcolor:" + lc.model());
+		}
+	}
+	
 }
 
 } // namespace lyx

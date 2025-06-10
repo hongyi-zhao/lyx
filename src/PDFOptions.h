@@ -16,6 +16,7 @@
 
 namespace lyx {
 
+class LaTeXFeatures;
 class OutputParams;
 class otexstream;
 
@@ -37,6 +38,8 @@ public:
 	/// output to tex header
 	void writeLaTeX(OutputParams &, otexstream &,
 			bool hyperref_already_provided) const;
+	/// validate colors
+	void validate(LaTeXFeatures &) const;
 	/// read tokens from lyx header
 	std::string readToken(support::Lexer &lex, std::string const & token);
 	/// set implicit settings for hyperref

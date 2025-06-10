@@ -2024,6 +2024,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		// option, see http://www.lyx.org/trac/ticket/5291
 		if (pdfoptions().colorlinks)
 			features.require("color");
+		pdfoptions().validate(features);
 	}
 	if (!listings_params.empty()) {
 		// do not test validity because listings_params is

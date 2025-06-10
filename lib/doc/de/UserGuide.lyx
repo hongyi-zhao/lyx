@@ -32057,29 +32057,6 @@ blue
 \end_layout
 
 \begin_layout Standard
-Beachten Sie,
- dass von Haus aus nur \SpecialChar LaTeX
--Grundfarben unterstützt werden.
- Falls Sie eine Farbe einer anderen Kategorie aus der Liste verwenden wollen,
- die in den \SpecialChar LyX
--Farbauswahlfeldern (z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- in den 
-\family sans
-Texteigenschaften
-\family default
-) angeboten wird,
- beispielweise eine SVG- or X11-Farbe),
- müssen Sie selbst dafür Sorge tragen,
- dass das entsprechende Farbmodell geladen wurde.
- Andernfalls bekommen Sie einen \SpecialChar LaTeX
--Fehler.
-\end_layout
-
-\begin_layout Standard
 Direkt aus \SpecialChar LyX
  können Sie einen Link über das Kontextmenü oder direkt mit 
 \family sans

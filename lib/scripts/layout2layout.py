@@ -603,6 +603,7 @@ def convert(lines, end_format):
         if re_Preamble.match(lines[i]):
             prestart = i
             i += 1
+            oldlines = []
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 if format != 108:
                     i += 1
@@ -612,6 +613,7 @@ def convert(lines, end_format):
                 match = re_ThmStyle.match(lines[i])
                 if match:
                     thmstyle = match.group(1)
+                    oldlines.append(lines[i])
                     del lines[i]
                     continue
                 match = re_newStarThm.match(lines[i])
@@ -619,12 +621,14 @@ def convert(lines, end_format):
                     thmname = match.group(1)
                     thmlatexname = match.group(2)
                     thmcounter = b"none"
+                    oldlines.append(lines[i])
                     del lines[i]
                     continue
                 match = re_newThm.match(lines[i])
                 if match:
                     thmname = match.group(1)
                     thmlatexname = match.group(2)
+                    oldlines.append(lines[i])
                     del lines[i]
                     continue
                 match = re_newThmMC.match(lines[i])
@@ -632,6 +636,7 @@ def convert(lines, end_format):
                     thmname = match.group(1)
                     thmlatexname = match.group(2)
                     thmparentcounter = match.group(3)
+                    oldlines.append(lines[i])
                     del lines[i]
                     continue
                 match = re_newThmC.match(lines[i])
@@ -639,6 +644,7 @@ def convert(lines, end_format):
                     thmname = match.group(1)
                     thmlatexname = match.group(3)
                     thmcounter = match.group(2)
+                    oldlines.append(lines[i])
                     del lines[i]
                     continue
                 match = re_newThmCMC.match(lines[i])
@@ -647,9 +653,16 @@ def convert(lines, end_format):
                     thmlatexname = match.group(3)
                     thmcounter = match.group(2)
                     thmparentcounter = match.group(4)
+                    oldlines.append(lines[i])
                     del lines[i]
                     continue
                 i += 1
+            if thmname != b"" and thmlatexname != b"" and not thmlatexname.startswith(b"\\"):
+                # Specific definition which we cannot integrate
+                lines.insert(i+1, b"\tTheoremName \"\"")
+                lines.insert(i+1, b"\t# Bypass new theorem construction")
+                lines[i:i] = oldlines
+                continue
             have_thm = False
             if thmname != b"":
                 lines.insert(i+1, b"\tTheoremName %s" % thmname)

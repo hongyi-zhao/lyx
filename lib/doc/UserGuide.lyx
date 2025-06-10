@@ -33340,37 +33340,6 @@ to the field
 Additional options
 \family default
  in the PDF Properties dialog.
-\change_inserted -712698321 1749490548
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted -712698321 1749490902
-Note that by default only the \SpecialChar LaTeX
- base colors are supported.
- If you want to use a color of a different color category from those listed in \SpecialChar LyX
-'s color combos (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.,
- in 
-\family sans
-Text Properties
-\family default
-),
- e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- an SVG or X11 color,
- you need to ensure that the corresponding color model has been loaded.
- Otherwise you may get a \SpecialChar LaTeX
- error.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard

@@ -75,6 +75,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\bibtex_alternatives", LyXRC::RC_BIBTEX_ALTERNATIVES },
 	{ "\\bibtex_command", LyXRC::RC_BIBTEX_COMMAND },
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
+	{ "\\bookmarks_visibility", LyXRC::RC_BOOKMARKS_VISIBILITY },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
 	{ "\\citation_search", LyXRC::RC_CITATION_SEARCH },
@@ -112,7 +113,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\editor_alternatives", LyXRC::RC_EDITOR_ALTERNATIVES },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
-	{ "\\experimental:bookmarks_visibility", LyXRC::RC_BOOKMARKS_VISIBILITY },
 	{ "\\export_overwrite", LyXRC::RC_EXPORT_OVERWRITE },
 	{ "\\format", LyXRC::RC_FILEFORMAT },
 	{ "\\forward_search_dvi", LyXRC::RC_FORWARD_SEARCH_DVI },
@@ -1800,7 +1800,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				status = "margin";
 				break;
 			}
-			os << "\\experimental:bookmarks_visibility " << status << '\n';
+			os << "\\bookmarks_visibility " << status << '\n';
 		}
 		if (tag != RC_LAST)
 			break;

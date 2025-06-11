@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>507</width>
-    <height>206</height>
+    <height>294</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,23 +19,67 @@
   <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout">
-   <property name="leftMargin">
-    <number>9</number>
-   </property>
-   <property name="topMargin">
-    <number>9</number>
-   </property>
-   <property name="rightMargin">
-    <number>9</number>
-   </property>
-   <property name="bottomMargin">
-    <number>9</number>
-   </property>
-   <property name="spacing">
-    <number>6</number>
-   </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="displayGraphicsCB">
+     <property name="text">
+      <string>Display &amp;graphics</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>57</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="instantPreviewLA">
+     <property name="text">
+      <string>Instant &amp;preview:</string>
+     </property>
+     <property name="buddy">
+      <cstring>instantPreviewCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QComboBox" name="instantPreviewCO">
+     <item>
+      <property name="text">
+       <string>Off</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>No math</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>On</string>
+      </property>
+     </item>
+    </widget>
+   </item>
    <item row="1" column="3">
+    <widget class="QLabel" name="previewSizeLA">
+     <property name="text">
+      <string>Preview si&amp;ze:</string>
+     </property>
+     <property name="buddy">
+      <cstring>instantPreviewCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
     <widget class="QDoubleSpinBox" name="previewSizeSB">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -63,71 +107,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QCheckBox" name="displayGraphicsCB">
-     <property name="text">
-      <string>Display &amp;graphics</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="4" rowspan="5">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>57</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="0">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="instantPreviewLA">
-     <property name="text">
-      <string>Instant &amp;preview:</string>
-     </property>
-     <property name="buddy">
-      <cstring>instantPreviewCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="instantPreviewCO">
-     <item>
-      <property name="text">
-       <string>Off</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>No math</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>On</string>
-      </property>
-     </item>
-    </widget>
-   </item>
    <item row="2" column="0" colspan="2">
     <widget class="QCheckBox" name="paragraphMarkerCB">
      <property name="toolTip">
@@ -138,17 +117,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QLabel" name="previewSizeLA">
-     <property name="text">
-      <string>Preview si&amp;ze:</string>
-     </property>
-     <property name="buddy">
-      <cstring>instantPreviewCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="2">
+   <item row="3" column="0" colspan="3">
     <widget class="QCheckBox" name="ctAdditionsUnderlinedCB">
      <property name="toolTip">
       <string>If this is checked, additions in change tracking are underlined in the workarea</string>
@@ -157,6 +126,53 @@
       <string>&amp;Underline change tracking additions</string>
      </property>
     </widget>
+   </item>
+   <item row="4" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="bookmarksLA">
+       <property name="text">
+        <string>Display &amp;bookmarks:</string>
+       </property>
+       <property name="buddy">
+        <cstring>bookmarksCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="bookmarksCO">
+       <property name="toolTip">
+        <string>Select whether and how bookmarks should be visualized in the workarea</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>121</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

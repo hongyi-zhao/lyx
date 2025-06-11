@@ -1129,7 +1129,6 @@ void PrefColors::clickedColorsTV(const QModelIndex index)
 	if (column < 2)
 		changeColor(row, column);
 
-	setEditButtonStatus();
 	setResetButtonStatus(row);
 }
 
@@ -1159,6 +1158,7 @@ void PrefColors::selectionChanged(const QItemSelection &selected,
 	                        QItemSelectionModel::Current |
 	                        QItemSelectionModel::Select);
 	selected_indexes_ = selection_model_.selectedIndexes();
+	setEditButtonStatus();
 }
 
 
@@ -1941,6 +1941,10 @@ PrefDisplay::PrefDisplay(GuiPreferences * form)
 	connect(previewSizeSB, SIGNAL(valueChanged(double)), this, SIGNAL(changed()));
 	connect(paragraphMarkerCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 	connect(ctAdditionsUnderlinedCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
+	connect(bookmarksCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
+	bookmarksCO->addItem(qt_("No[[bookmarks]]"), "none");
+	bookmarksCO->addItem(qt_("Inline"), "inline");
+	bookmarksCO->addItem(qt_("In Margin"), "margin");
 }
 
 
@@ -1968,6 +1972,13 @@ void PrefDisplay::applyRC(LyXRC & rc) const
 	rc.preview_scale_factor = previewSizeSB->value();
 	rc.paragraph_markers = paragraphMarkerCB->isChecked();
 	rc.ct_additions_underlined = ctAdditionsUnderlinedCB->isChecked();
+	QString const bm = bookmarksCO->itemData(bookmarksCO->currentIndex()).toString();
+	if (bm == "inline")
+		rc.bookmarks_visibility = LyXRC::BMK_INLINE;
+	else if (bm == "margin")
+		rc.bookmarks_visibility = LyXRC::BMK_MARGIN;
+	else
+		rc.bookmarks_visibility = LyXRC::BMK_NONE;
 
 	// FIXME!! The graphics cache no longer has a changeDisplay method.
 #if 0
@@ -1997,6 +2008,18 @@ void PrefDisplay::updateRC(LyXRC const & rc)
 	previewSizeSB->setValue(rc.preview_scale_factor);
 	paragraphMarkerCB->setChecked(rc.paragraph_markers);
 	ctAdditionsUnderlinedCB->setChecked(rc.ct_additions_underlined);
+	bookmarksCO->setCurrentIndex(rc.bookmarks_visibility);
+	switch (rc.bookmarks_visibility) {
+		case LyXRC::BMK_INLINE:
+			bookmarksCO->setCurrentIndex(bookmarksCO->findData("inline"));
+			break;
+		case LyXRC::BMK_MARGIN:
+			bookmarksCO->setCurrentIndex(bookmarksCO->findData("margin"));
+			break;
+		case LyXRC::BMK_NONE:
+			bookmarksCO->setCurrentIndex(bookmarksCO->findData("none"));
+			break;
+	}
 	previewSizeSB->setEnabled(
 		rc.display_graphics
 		&& rc.preview != LyXRC::PREVIEW_OFF);

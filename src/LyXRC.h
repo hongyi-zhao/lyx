@@ -583,7 +583,7 @@ public:
 	};
 
 	///
-	BookmarksVisibility bookmarks_visibility = BMK_NONE;
+	BookmarksVisibility bookmarks_visibility = BMK_MARGIN;
 
 	///
 	DrawStrategy draw_strategy = DrawStrategy::Partial;

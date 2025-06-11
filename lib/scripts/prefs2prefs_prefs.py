@@ -175,6 +175,9 @@
 #   Add \ui_theme, by koji
 #   No conversion necessary.
 
+# Incremented to format 40
+#   Rename \experimental:bookmarks_visibility to \bookmarks_visibility
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py (search for lyxrc_fileformat).
 
@@ -515,6 +518,16 @@ def remove_fullscreen_widthlimit(line):
 ####################################
 
 
+#################################
+# Conversions from LyX 2.4 to 2.5
+
+def bookmarks_visibility(line):
+	return simple_renaming(line, "\\experimental:bookmarks_visibility", "\\bookmarks_visibility")
+
+
+# End conversions for LyX 2.4 to 2.5
+####################################
+
 
 ############################################################
 # Format-conversion map. Also add empty format changes here.
@@ -564,5 +577,6 @@ conversions = [
 	[ 36, [add_spellcheck_default]],
 	[ 37, [remove_fullscreen_widthlimit]],
 	[ 38, []],
-	[ 39, []]
+	[ 39, []],
+        [ 40, [bookmarks_visibility]],
 ]

@@ -60,7 +60,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 39; // spitz: \color_scheme {system|light|dark}
+static unsigned int const LYXRC_FILEFORMAT = 40; // graduate \\experimental:bookmark_visibility and change default
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },

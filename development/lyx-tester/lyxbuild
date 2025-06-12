@@ -523,22 +523,13 @@ else
 
   if [ "${WERROR}" = "1" ]; then
     # should be a semi-colon separated list (if more than one option).
-    # Useful for finding more warnings:
+    #
+    # Using '-pedantic' reports some more warnings (e.g., -Wnested-anon-types)
+    # but it is not clear if '-pedantic' is useful
+    # (Message-ID:<9f195bc7-4d37-4b2f-b459-a92a2528c358@lyx.org>)
+    #
     # CPPFLAGS="-Werror;-Wextra;-pedantic"
-    CPPFLAGS="-Werror"
-    if [ "${clang}" = "0" ]; then
-      # (https://stackoverflow.com/questions/5188267/checking-the-gcc-version-in-a-makefile)
-      # (https://stackoverflow.com/a/17947005)
-      gcc_version="$( gcc -dumpfullversion -dumpversion | sed -e 's/\.\([0-9][0-9]\)/\1/g' -e 's/\.\([0-9]\)/0\1/g' -e 's/^[0-9]\{3,4\}$/&00/')"
-      if [ "${gcc_version}" -ge "130000" ]; then
-        # turn all warnings into errors except for one:
-        #
-        # 'dangling-reference' is starting with GCC 13.
-        # In LyX, we get it in a few places and are not sure if they are
-        # false-positives, or if it's worth it to fix them.
-        CPPFLAGS+=";-Wno-error=dangling-reference"
-      fi
-    fi
+    CPPFLAGS="-Werror;-Wextra"
   else
     CPPFLAGS=""
   fi

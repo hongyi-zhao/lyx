@@ -730,12 +730,9 @@ GuiView::GuiView(int id)
 	zoom_value_->setForegroundRole(statusBar()->foregroundRole());
 	zoom_value_->setFixedHeight(fm.height());
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-	// The escape is intended (see commit 59b8c209 and #12301),
-	// although it leads to the following Clang warning:
-	//   warning: use of non-standard escape character '\%' [-Wpedantic]
-	zoom_value_->setMinimumWidth(fm.horizontalAdvance("444\%"));
+	zoom_value_->setMinimumWidth(fm.horizontalAdvance("444M"));
 #else
-	zoom_value_->setMinimumWidth(fm.width("444\%"));
+	zoom_value_->setMinimumWidth(fm.width("444M"));
 #endif
 	zoom_value_->setAlignment(Qt::AlignCenter);
 	zoom_value_->setText(toqstr(bformat(_("[[ZOOM]]%1$d%"), zoom)));

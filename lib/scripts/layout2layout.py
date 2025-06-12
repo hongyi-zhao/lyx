@@ -661,6 +661,11 @@ def convert(lines, end_format):
                 # Specific definition which we cannot integrate
                 lines.insert(i+1, b"\tTheoremName \"\"")
                 lines.insert(i+1, b"\t# Bypass new theorem construction")
+                # since the new theorem definitions come after the
+                # user preamble, and those in preamble may rely
+                # on the former, shift to AtBeginDocument
+                oldlines.insert(0, b"\t\\AtBeginDocument{")
+                oldlines.append(b"\t}")
                 lines[i:i] = oldlines
                 continue
             have_thm = False

@@ -210,6 +210,15 @@ AC_DEFUN([QT_DO_IT_ALL],
 	[AC_MSG_ERROR([LyX requires at least version $1 of Qt. Only version $QTLIB_VERSION has been found.])
 	])
 
+	AS_VERSION_COMPARE($QTLIB_VERSION, [5.13],[
+	  dnl Shut off warning -Wdeprecated-copy, which triggers too much
+	  dnl note that g++ always accepts -Wno-xxx, even when -Wxxx is an error.
+	  AC_LANG_PUSH(C++)
+	  AX_CHECK_COMPILE_FLAG([-Wdeprecated-copy],
+	    [AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy"], [], [-Werror])
+	  AC_LANG_POP(C++)])
+
+
 	case $QTLIB_VERSION in
 	6.*) if test $enable_stdlib_debug = "yes" ; then
 		    LYX_WARNING([Compiling LyX with stdlib-debug and Qt6 library may lead to

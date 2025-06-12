@@ -103,6 +103,8 @@ make -j${NCORES} 2>&1 >/dev/null || exit
 echo "BUILD_FN exited without error after removing the following include statements invididually:" > "${LOG_FILE}" \
 || { echo "ERROR: could not create log file, ${LOG_FILE}"; exit 1; }
 
+export LC_COLLATE=C #make sort stable across systems
+
 ( find -regex ".*\(h\)$" | sort ;  find -regex ".*\(cpp\)$" | sort ) | grep -vE "frontends/qt/ui_|moc_" |
 while read FILE_
 do

@@ -31,7 +31,6 @@
 
 #include <QKeyEvent>
 #include <QListWidget>
-#include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QPixmap>
 #include <QIcon>

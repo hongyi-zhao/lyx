@@ -47,18 +47,6 @@ ParagraphMetrics::ParagraphMetrics(Paragraph const & par) :
 {}
 
 
-ParagraphMetrics & ParagraphMetrics::operator=(
-	ParagraphMetrics const & pm)
-{
-	rows_ = pm.rows_;
-	dim_ = pm.dim_;
-	id_ = pm.id_;
-	par_ = pm.par_;
-	position_ = pm.position_;
-	return *this;
-}
-
-
 void ParagraphMetrics::reset(Paragraph const & par)
 {
 	par_ = &par;

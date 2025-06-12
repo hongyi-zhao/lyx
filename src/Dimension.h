@@ -21,8 +21,6 @@ public:
 	Dimension() = default;
 	/// initialize data
 	Dimension(int w, int a, int d) : wid(w), asc(a), des(d) {}
-	///
-	Dimension & operator=(Dimension const & dim) = default;
 
 	/// glue horizontally
 	void operator+=(Dimension const & dim);

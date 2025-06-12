@@ -26,7 +26,6 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
-#include <QList>
 #include <QTemporaryFile>
 #include <QElapsedTimer>
 

@@ -334,13 +334,7 @@ if test x$GXX = xyes; then
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
       AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
-      dnl Shut off warning -Wdeprecated-copy, which triggers too much
-      dnl note that g++ always accepts -Wno-xxx, even when -Wxxx is an error.
-      AC_LANG_PUSH(C++)
-      AX_CHECK_COMPILE_FLAG([-Wdeprecated-copy],
-	[AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-copy"], [], [-Werror])
-      AC_LANG_POP(C++)
-    fi
+  fi
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
     dnl See http://clang-developers.42468.n3.nabble.com/libc-debug-mode-td3336742.html

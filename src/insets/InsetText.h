@@ -43,6 +43,8 @@ public:
 	///
 	InsetText(InsetText const &);
 	///
+	InsetText & operator=(InsetText const & in);
+	///
 	void setBuffer(Buffer &) override;
 
 	///

@@ -91,6 +91,18 @@ InsetText::InsetText(InsetText const & in)
 }
 
 
+InsetText & InsetText::operator=(InsetText const & in)
+{
+	Inset::operator=(in);
+	drawFrame_ = in.drawFrame_;
+	is_changed_ = in.is_changed_;
+	intitle_context_ = false;
+	frame_color_ = in.frame_color_;
+	text_ = Text(this, in.text_);
+	return *this;
+}
+
+
 void InsetText::setBuffer(Buffer & buf)
 {
 	ParagraphList::iterator end = paragraphs().end();

@@ -31,14 +31,8 @@ public:
 	///
 	ParIterator(Buffer * buf) : DocIterator(buf) {}
 	///
-	ParIterator(ParIterator const & pi) :
-		DocIterator(DocIterator(pi)) {}
-	///
 	explicit ParIterator(DocIterator const & dit) :
 		DocIterator(dit) {}
-
-	/// This really should be implemented...
-	//ParIterator & operator=(ParIterator const &);
 	///
 	ParIterator & operator++();
 	///

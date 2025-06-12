@@ -42,9 +42,6 @@ public:
 	/// The only useful constructor.
 	explicit ParagraphMetrics(Paragraph const & par);
 
-	/// Copy operator.
-	ParagraphMetrics & operator=(ParagraphMetrics const &);
-
 	void reset(Paragraph const & par);
 
 	///

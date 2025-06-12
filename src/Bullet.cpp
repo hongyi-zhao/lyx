@@ -38,6 +38,15 @@ Bullet const ITEMIZE_DEFAULTS[4] = { Bullet(0, 8),//"\\(\\bullet\\)"
 // and wasysym when that panel is created
 
 
+Bullet::Bullet(Bullet const & b)
+	: font(b.font), character(b.character), size(b.size), user_text(b.user_text),
+	  text(b.text), label(b.label)
+{
+	b.testInvariant();
+	this->testInvariant();
+}
+
+
 Bullet::Bullet(int f, int c, int s)
 	: font(f), character(c), size(s), user_text(0)
 {
@@ -57,6 +66,20 @@ Bullet::Bullet(docstring const & t)
 	: font(MIN), character(MIN), size(MIN), user_text(1), text(t), label(t)
 {
 	testInvariant();
+}
+
+
+Bullet & Bullet::operator=(Bullet const & b)
+{
+	b.testInvariant();
+	font = b.font;
+	character = b.character;
+	size = b.size;
+	user_text = b.user_text;
+	text = b.text;
+	label = b.label;
+	this->testInvariant();
+	return *this;
 }
 
 
@@ -127,20 +150,6 @@ FontSize Bullet::getFontSize() const
 		return bulletFontSize(size);
 	else
 		return INHERIT_SIZE;
-}
-
-
-Bullet & Bullet::operator=(Bullet const & b)
-{
-	b.testInvariant();
-	font = b.font;
-	character = b.character;
-	size = b.size;
-	user_text = b.user_text;
-	text = b.text;
-	label = b.label;
-	this->testInvariant();
-	return *this;
 }
 
 

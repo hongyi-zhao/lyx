@@ -24,6 +24,8 @@ namespace lyx {
 class Bullet {
 public:
 	///
+	Bullet(Bullet const & b);
+	///
 	Bullet(int f = -1, int c = -1, int s = -1);
 
 	///

@@ -170,6 +170,7 @@ suspicious: ./frontends/qt/qt_helpers.h::#include "qt_i18n.h"
 ./mathed/InsetMathClass.h::#include "MathClass.h"
 ./mathed/InsetMathGrid.h::#include <map>
 ./mathed/InsetMathHull.h::#include "OutputEnums.h"
+./mathed/InsetMathIntertext.h::#include "support/docstring.h"
 ./mathed/InsetMathMacro.h::#include "MathData.h"
 ./mathed/InsetMathMacroArgument.h::#include "support/docstring.h"
 ./mathed/InsetMathMacroTemplate.h::#include "MathData.h"
@@ -708,7 +709,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./frontends/qt/GuiBox.cpp::#include "support/Length.h"
 ./frontends/qt/GuiBranches.cpp::#include "ui_BranchesUnknownUi.h"
 ./frontends/qt/GuiBranches.cpp::#include <QListWidget>
-./frontends/qt/GuiBranches.cpp::#include <QTreeWidget>
 ./frontends/qt/GuiBranches.cpp::#include <QTreeWidgetItem>
 ./frontends/qt/GuiBranches.cpp::#include <QPixmap>
 ./frontends/qt/GuiBranches.cpp::#include <QIcon>
@@ -1352,7 +1352,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./insets/InsetVSpace.cpp::#include "support/docstream.h"
 ./insets/InsetVSpace.cpp::#include <sstream>
 ./insets/InsetWrap.cpp::#include "DispatchResult.h"
-./insets/InsetWrap.cpp::#include "Floating.h"
 ./insets/InsetWrap.cpp::#include "texstream.h"
 ./insets/InsetWrap.cpp::#include "support/docstream.h"
 ./insets/InsetWrap.cpp::#include <climits>
@@ -1452,6 +1451,8 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./mathed/InsetMathHull.cpp::#include "support/lstrings.h"
 ./mathed/InsetMathHull.cpp::#include "support/Changer.h"
 ./mathed/InsetMathHull.cpp::#include <sstream>
+./mathed/InsetMathIntertext.cpp::#include "MathData.h"
+./mathed/InsetMathIntertext.cpp::#include "support/docstream.h"
 ./mathed/InsetMathKern.cpp::#include "support/docstring.h"
 ./mathed/InsetMathLim.cpp::#include "MathData.h"
 ./mathed/InsetMathMacro.cpp::#include "CoordCache.h"
@@ -1599,7 +1600,6 @@ suspicious: ./support/checksum.h::#include <fstream>
 ./support/FileName.cpp::#include "support/os.h"
 ./support/FileName.cpp::#include <QFile>
 ./support/FileName.cpp::#include <QFileInfo>
-./support/FileName.cpp::#include <QList>
 ./support/FileName.cpp::#include <QThread>
 ./support/FileName.cpp::#include <algorithm>
 ./support/FileName.cpp::#include <iterator>
@@ -1878,7 +1878,6 @@ filtered: ./insets/InsetInclude.cpp : FileNameList_h
 filtered: ./insets/InsetListings.cpp : lassert_h
 filtered: ./insets/InsetScript.cpp : BufferView_h
 filtered: ./insets/InsetText.cpp : CompletionList_h
-filtered: ./insets/InsetWrap.cpp : Floating_h
 filtered: ./mathed/InsetMathChar.cpp : LaTeXFeatures_h
 filtered: ./mathed/InsetMathDelim.cpp : LaTeXFeatures_h
 filtered: ./mathed/InsetMathExFunc.cpp : MetricsInfo_h

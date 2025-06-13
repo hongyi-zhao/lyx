@@ -12,15 +12,10 @@
 
 #include "InsetMathIntertext.h"
 
-#include "Buffer.h"
-#include "BufferView.h"
 #include "Dimension.h"
-#include "InsetMathChar.h"
 #include "LaTeXFeatures.h"
 #include "MathData.h"
-#include "MathFactory.h"
 #include "MathStream.h"
-#include "MathSupport.h"
 #include "MetricsInfo.h"
 #include "support/docstream.h"
 #include "support/lstrings.h"
@@ -29,6 +24,8 @@ using lyx::support::escape;
 
 
 namespace lyx {
+
+class Buffer;
 
 InsetMathIntertext::InsetMathIntertext(Buffer * buf, docstring const & name)
 	: InsetMathNest(buf, 1), name_(name)

@@ -524,12 +524,14 @@ else
   if [ "${WERROR}" = "1" ]; then
     # should be a semi-colon separated list (if more than one option).
     #
-    # Using '-pedantic' reports some more warnings (e.g., -Wnested-anon-types)
-    # but it is not clear if '-pedantic' is useful
-    # (Message-ID:<9f195bc7-4d37-4b2f-b459-a92a2528c358@lyx.org>)
+    # '-pedantic' warnings aren't too useful, but solving them
+    # may make compilation smoother for compilers that LyX
+    # developers are not testing.
     #
-    # CPPFLAGS="-Werror;-Wextra;-pedantic"
-    CPPFLAGS="-Werror;-Wextra"
+    CPPFLAGS="-Werror;-Wextra;-pedantic"
+    if [ "${clang}" = "1" ]; then
+      CPPFLAGS+=";-Wno-error=nested-anon-types"
+    fi
   else
     CPPFLAGS=""
   fi

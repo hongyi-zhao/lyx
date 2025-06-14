@@ -2680,6 +2680,32 @@ def revert_zref(document):
         )
 
 
+def convert_reflists(document):
+    "Remove commas from labels and references to work with lists"
+
+    i = 0
+    regexp = re.compile(r"(name|reference) \".*\,.*\"")
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset", i)
+        if i == -1:
+            break
+        if document.body[i] != "\\begin_inset CommandInset label" \
+        and document.body[i] != "\\begin_inset CommandInset ref":
+            i += 1
+            continue
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of reference inset at line %d!!" % (i))
+            i += 1
+            continue
+
+        k = find_re(document.body, regexp, i, j)
+        if k != -1:
+            # replace comma by dot
+            document.body[k] = document.body[k].replace(",", ".")
+        i += 1
+
+
 def revert_reflists(document):
     "Reverts crossref lists and ranges to ERT"
 
@@ -3177,7 +3203,7 @@ convert = [
     [634, []],
     [635, [convert_crossref_package]],
     [636, []],
-    [637, []],
+    [637, [convert_reflists]],
     [638, []],
     [639, [convert_theorem_local_def]],
     [640, []]

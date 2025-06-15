@@ -18,6 +18,8 @@ project(zlib C)
 set(VERSION "1.2.11")
 set(SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/1.2.11)
 
+add_compile_options(-Wno-deprecated-non-prototype -Wno-strict-prototypes)
+
 option(ASM686 "Enable building i686 assembly implementation")
 option(AMD64 "Enable building amd64 assembly implementation")
 

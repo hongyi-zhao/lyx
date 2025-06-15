@@ -8,6 +8,8 @@ project(${_lyx})
 
 include_directories(${TOP_SRC_DIR}/src)
 
+add_compile_options(-Wno-nested-anon-types)
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMakeTargets")
 

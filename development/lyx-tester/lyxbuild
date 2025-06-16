@@ -522,16 +522,24 @@ else
 
 
   if [ "${WERROR}" = "1" ]; then
-    # should be a semi-colon separated list (if more than one option).
-    #
+    # CPPFLAGS should be a semi-colon separated list (if more than one option).
+
     # '-pedantic' warnings aren't too useful, but solving them
     # may make compilation smoother for compilers that LyX
     # developers are not testing.
     #
+    # If a warning from '-pedantic' comes up, we can ignore certain classes of
+    # warnings. e.g., see dd4f9670 for how we now append
+    # '-Wno-nested-anon-types' (which I think is the same as
+    # '-Wno-error=nested-anon-types')
+    #
+    # An alternative to dd4f9670 is handling it in 'lyxbuild' by adding the
+    # following *after* the initial CPPFLAGS definition below:
+    #if [ "${clang}" = "1" ]; then
+    #  CPPFLAGS+=";-Wno-error=nested-anon-types"
+    #fi
+
     CPPFLAGS="-Werror;-Wextra;-pedantic"
-    if [ "${clang}" = "1" ]; then
-      CPPFLAGS+=";-Wno-error=nested-anon-types"
-    fi
   else
     CPPFLAGS=""
   fi

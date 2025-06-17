@@ -840,7 +840,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	bool fle_style = false;
 	static regex const file_line_error(".+\\.\\D+:[0-9]+: (.+)");
 	static regex const child_file("[^0-9]*([0-9]+[A-Za-z]*_.+\\.tex).*");
-	static regex const undef_ref(".*Reference `(\\w+)\\' on page.*");
+	static regex const undef_ref(".*Reference `(.+)\\' on page.*");
 	// Flag for 'File ended while scanning' message.
 	// We need to wait for subsequent processing.
 	string wait_for_error;

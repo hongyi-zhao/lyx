@@ -37,7 +37,11 @@
 % cz/sk babel activates hyphen for split feature. They get pulled in via insetinfo
 % when UI is localized. That breaks with hyphen at \cmidrule[0.08em]{2-3} within
 % euro-symbol table in 13.3 if not handled as below.
-\AtBeginDocument{\shorthandoff{-}}
+\AtBeginDocument{%
+   \@ifpackageloaded{babel}{%
+      \ifbabelshorthand{-}{\shorthandoff{-}}{}%
+   }{}
+}
 
 % don't load packages twice
 % see first footnote in sec. 9.3

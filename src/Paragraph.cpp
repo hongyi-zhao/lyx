@@ -526,8 +526,8 @@ int Paragraph::Private::make_id()
 	// LFUN_PARAGRAPH_GOTO to switch to a different buffer, for instance in the
 	// outliner.
 	// (thread-safe)
-	static int next_id(0);
-	return next_id++;
+	static int last_id(0);
+	return ++last_id;
 }
 
 

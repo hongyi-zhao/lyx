@@ -425,74 +425,6 @@ void LastCommandsSection::clear()
 }
 
 
-Session::Session(unsigned int num_last_files, unsigned int num_last_commands) :
-	last_files(num_last_files), last_commands(num_last_commands)
-{
-	// locate the session file
-	// note that the session file name 'session' is hard-coded
-	session_file = FileName(addName(package().user_support().absFileName(), "session"));
-	//
-	readFile();
-}
-
-
-void Session::readFile()
-{
-	// we will not complain if we can't find session_file nor will
-	// we issue a warning. (Lgb)
-	ifstream is(session_file.toFilesystemEncoding().c_str());
-	string tmp;
-
-	while (getline(is, tmp)) {
-		// Ignore comments, empty line or line stats with ' '
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
-			continue;
-
-		// Determine section id
-		if (tmp == sec_lastfiles)
-			lastFiles().read(is);
-		else if (tmp == sec_lastopened)
-			lastOpened().read(is);
-		else if (tmp == sec_lastfilepos)
-			lastFilePos().read(is);
-		else if (tmp == sec_bookmarks)
-			bookmarks().read(is);
-		else if (tmp == sec_lastcommands)
-			lastCommands().read(is);
-		else if (tmp == sec_authfiles)
-			authFiles().read(is);
-		else if (tmp == sec_shellescape)
-			shellescapeFiles().read(is);
-		else if (tmp == sec_ui)
-			uiSettings().read(is);
-
-		else
-			LYXERR(Debug::INIT, "LyX: Warning: unknown Session section: " << tmp);
-	}
-}
-
-
-void Session::writeFile() const
-{
-	ofstream os(session_file.toFilesystemEncoding().c_str());
-	if (os) {
-		os << "## Automatically generated lyx session file \n"
-		    << "## Editing this file manually may cause lyx to crash.\n";
-
-		lastFiles().write(os);
-		lastOpened().write(os);
-		lastFilePos().write(os);
-		lastCommands().write(os);
-		bookmarks().write(os);
-		authFiles().write(os);
-		shellescapeFiles().write(os);
-		uiSettings().write(os);
-	} else
-		LYXERR(Debug::INIT, "LyX: Warning: unable to save Session: "
-		       << session_file);
-}
-
-
 AuthFilesSection::AuthFilesSection() {  }
 
 
@@ -650,6 +582,74 @@ string UISection::value(string const & key)
 void UISection::insert(string const & key, string const & value)
 {
 	ui_settings_[key] = value;
+}
+
+
+Session::Session(unsigned int num_last_files, unsigned int num_last_commands) :
+	last_files(num_last_files), last_commands(num_last_commands)
+{
+	// locate the session file
+	// note that the session file name 'session' is hard-coded
+	session_file = FileName(addName(package().user_support().absFileName(), "session"));
+	//
+	readFile();
+}
+
+
+void Session::readFile()
+{
+	// we will not complain if we can't find session_file nor will
+	// we issue a warning. (Lgb)
+	ifstream is(session_file.toFilesystemEncoding().c_str());
+	string tmp;
+
+	while (getline(is, tmp)) {
+		// Ignore comments, empty line or line stats with ' '
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+			continue;
+
+		// Determine section id
+		if (tmp == sec_lastfiles)
+			lastFiles().read(is);
+		else if (tmp == sec_lastopened)
+			lastOpened().read(is);
+		else if (tmp == sec_lastfilepos)
+			lastFilePos().read(is);
+		else if (tmp == sec_bookmarks)
+			bookmarks().read(is);
+		else if (tmp == sec_lastcommands)
+			lastCommands().read(is);
+		else if (tmp == sec_authfiles)
+			authFiles().read(is);
+		else if (tmp == sec_shellescape)
+			shellescapeFiles().read(is);
+		else if (tmp == sec_ui)
+			uiSettings().read(is);
+
+		else
+			LYXERR(Debug::INIT, "LyX: Warning: unknown Session section: " << tmp);
+	}
+}
+
+
+void Session::writeFile() const
+{
+	ofstream os(session_file.toFilesystemEncoding().c_str());
+	if (os) {
+		os << "## Automatically generated lyx session file \n"
+		    << "## Editing this file manually may cause lyx to crash.\n";
+
+		lastFiles().write(os);
+		lastOpened().write(os);
+		lastFilePos().write(os);
+		lastCommands().write(os);
+		bookmarks().write(os);
+		authFiles().write(os);
+		shellescapeFiles().write(os);
+		uiSettings().write(os);
+	} else
+		LYXERR(Debug::INIT, "LyX: Warning: unable to save Session: "
+		       << session_file);
 }
 
 

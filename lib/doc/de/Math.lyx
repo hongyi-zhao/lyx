@@ -25663,27 +25663,16 @@ Eine Übersicht der verschiedenen Euro-Symbole:
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-cmidrule[0.08em]{2-3}
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" bottomlineltrim="true" bottomlinertrim="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -25692,7 +25681,7 @@ Befehl
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" bottomlineltrim="true" bottomlinertrim="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -25812,32 +25801,6 @@ officialeuro
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-cmidrule
-\series default
- wird hier nur für Tabellenlinien verwendet.
- Siehe Kap.
- 
-\family sans
-Formale Tabellen
-\family default
- des 
-\emph on
-EmbeddedObjects
-\emph default
--Handbuchs für Details.
-\end_layout
 
 \end_inset
 

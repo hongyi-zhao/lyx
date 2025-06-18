@@ -35703,8 +35703,12 @@ status open
 で（
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:書誌情報レイアウト"
+reference "subsec:微調整"
+plural "false"
+caps "false"
+noprefix "false"
 nolink "false"
+tuple "list"
 
 \end_inset
 
@@ -36812,6 +36816,12 @@ literal "true"
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:微調整"
+
+\end_inset
+
 微調整
 \end_layout
 

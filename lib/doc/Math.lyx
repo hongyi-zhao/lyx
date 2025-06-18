@@ -34,15 +34,6 @@
  }
 }{}
 
-% cz/sk babel activates hyphen for split feature. They get pulled in via insetinfo
-% when UI is localized. That breaks with hyphen at \cmidrule[0.08em]{2-3} within
-% euro-symbol table in 13.3 if not handled as below.
-\AtBeginDocument{%
-   \@ifpackageloaded{babel}{%
-      \ifbabelshorthand{-}{\shorthandoff{-}}{}%
-   }{}
-}
-
 % don't load packages twice
 % see first footnote in sec. 9.3
 \@ifundefined{textcolor}{\usepackage{color}}{}
@@ -244,6 +235,7 @@ logicalmkup
 \html_be_strict false
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\author -712698321 "Jürgen Spitzmüller"
 \author 5863208 "ab"
 \end_header
 
@@ -25741,10 +25733,12 @@ An overview about the different Euro symbols:
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1750238229
 \begin_inset ERT
 status collapsed
 
@@ -25758,11 +25752,13 @@ cmidrule[0.08em]{2-3}
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" bottomlineltrim="true" bottomlinertrim="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -25771,7 +25767,7 @@ Command
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" bottomlineltrim="true" bottomlinertrim="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -25896,6 +25892,8 @@ officialeuro
 \end_inset
 
 
+\change_deleted -712698321 1750238266
+
 \begin_inset Note Note
 status collapsed
 
@@ -25921,6 +25919,8 @@ EmbeddedObjects
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 

@@ -594,3 +594,10 @@ Sublabel: expected
 # the ctests, but I think it might be useful in other cases.
 #
 export/templates/ja/(Articles|Books|Reports)/.*_lyx(16|20|21|22)
+
+# ======================================================================
+Sublabel: should fail
+# These documents have errors that should be detected (e.g., missing reference)
+# ======================================================================
+!export/export/latex/lyxbugs-resolved/c0b73f6f-missing-reference-should-fail_docbook5
+export/export/latex/lyxbugs-resolved/c0b73f6f-missing-reference-should-fail_.*

@@ -4992,12 +4992,25 @@ Paper size
 \end_inset
 
 
+\change_inserted -712698321 1750234820
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Paper-Size-Orientation"
+
+\end_inset
+
+
+\change_deleted -712698321 1750234820
+
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Paper-Size,-Orientation"
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -52103,6 +52116,17 @@ This dialog is described in sections
 \end_inset
 
 
+\change_inserted -712698321 1750234820
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Paper-Size-Orientation"
+
+\end_inset
+
+
+\change_deleted -712698321 1750234820
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paper-Size,-Orientation"
@@ -52110,6 +52134,8 @@ nolink "false"
 
 \end_inset
 
+
+\change_unchanged
  and 
 \begin_inset CommandInset ref
 LatexCommand ref

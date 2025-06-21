@@ -539,7 +539,15 @@ else
     #  CPPFLAGS+=";-Wno-error=nested-anon-types"
     #fi
 
-    CPPFLAGS="-Werror;-Wextra;-pedantic"
+    # TODO: starting with 2.5.0, also turn on with 2.5.x branch?
+    # Only use these flags on master. The only issue with this is that when we
+    # bisect a warning (e.g., from -pedantic), we need to remember to turn it
+    # on unconditionally.
+    if [ "${current_branch}" = "master" ]; then
+      CPPFLAGS="-Werror;-Wextra;-pedantic"
+    else
+      CPPFLAGS=""
+    fi
   else
     CPPFLAGS=""
   fi

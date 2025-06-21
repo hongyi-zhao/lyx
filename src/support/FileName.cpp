@@ -185,7 +185,7 @@ bool FileName::isAbsolute(string const & name)
 }
 
 
-string FileName::absFileName() const
+string const & FileName::absFileName() const
 {
 	return d->name;
 }

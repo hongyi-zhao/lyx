@@ -50,7 +50,7 @@ public:
 	///
 	Pimpl(LexerKeyword * tab, int num);
 	///
-	string const getString() const;
+	string const & getString() const;
 	///
 	docstring const getDocString() const;
 	///
@@ -153,7 +153,7 @@ Lexer::Pimpl::Pimpl(LexerKeyword * tab, int num)
 }
 
 
-string const Lexer::Pimpl::getString() const
+string const & Lexer::Pimpl::getString() const
 {
 	return buff;
 }

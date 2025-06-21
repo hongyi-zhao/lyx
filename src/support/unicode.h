@@ -60,7 +60,7 @@ public:
 	int convert(char const * in_buffer, size_t in_size,
 		char * out_buffer, size_t max_out_size);
 	/// target encoding
-	std::string to() const { return tocode_; }
+	std::string const & to() const { return tocode_; }
 };
 
 /// Get the global IconvProcessor instance of the current thread for

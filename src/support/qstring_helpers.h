@@ -96,7 +96,7 @@ QString charFilterRegExpC(QString const & filter);
 QString locLengthString(QString const & str);
 
 /// Same for doscstring
-docstring locLengthDocString(docstring const str);
+docstring locLengthDocString(docstring const & str);
 
 /// Method to replace localized decimal separator by dot
 QString unlocLengthString(QString const & str);

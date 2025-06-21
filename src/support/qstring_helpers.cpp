@@ -112,7 +112,7 @@ QString locLengthString(QString const & str)
 }
 
 
-docstring locLengthDocString(docstring const str)
+docstring locLengthDocString(docstring const & str)
 {
 	return qstring_to_ucs4(locLengthString(toqstr(str)));
 }

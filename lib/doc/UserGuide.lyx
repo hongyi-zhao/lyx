@@ -34777,7 +34777,13 @@ with Bib\SpecialChar TeX
 \emph on
 Additional Features
 \emph default
- manual.Citation Format
+ manual.
+\change_inserted -1900975149 1750580800
+
+\end_layout
+
+\begin_layout Subsection
+Citation Format
 \begin_inset Index idx
 range none
 pageformat default

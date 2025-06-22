@@ -7,8 +7,9 @@ CHMOD = chmod
 EXTRA_DIST = examples/CMakeLists.txt scripts/CMakeLists.txt examples/README.new_examples
 
 dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx \
-	encodings layouttranslations languages latexcolors latexfonts RELEASE-NOTES \
-	symbols syntax.default unicode_alphanum_variants unicodesymbols
+	encodings layouttranslations languages latexcolors latexfonts \
+	math_conflicts RELEASE-NOTES symbols syntax.default \
+	unicode_alphanum_variants unicodesymbols
 
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually this file in install-data-hook.
@@ -976,6 +977,7 @@ dist_imagesmath_DATA = \
 	images/math/downdownarrows.svgz \
 	images/math/downharpoonleft.svgz \
 	images/math/downharpoonright.svgz \
+	images/math/dynamic-math-texts.svgz \
 	images/math/earth.svgz \
 	images/math/eighthnote.svgz \
 	images/math/ell.svgz \
@@ -1000,6 +1002,7 @@ dist_imagesmath_DATA = \
 	images/math/fatbslash.svgz \
 	images/math/fatsemi.svgz \
 	images/math/fatslash.svgz \
+	images/math/fbox.svgz \
 	images/math/female.svgz \
 	images/math/fint.svgz \
 	images/math/fintop.svgz \
@@ -1009,6 +1012,7 @@ dist_imagesmath_DATA = \
 	images/math/forall.svgz \
 	images/math/frac.svgz \
 	images/math/frac-square.svgz \
+	images/math/framebox.svgz \
 	images/math/frown.svgz \
 	images/math/frownie.svgz \
 	images/math/fullmoon.svgz \
@@ -1070,6 +1074,7 @@ dist_imagesmath_DATA = \
 	images/math/int.svgz \
 	images/math/intercal.svgz \
 	images/math/interleave.svgz \
+	images/math/intertext.svgz \
 	images/math/intop.svgz \
 	images/math/iota.svgz \
 	images/math/invdiameter.svgz \
@@ -1220,6 +1225,7 @@ dist_imagesmath_DATA = \
 	images/math/mathsf.svgz \
 	images/math/mathtt.svgz \
 	images/math/matrix.svgz \
+	images/math/mbox.svgz \
 	images/math/measuredangle.svgz \
 	images/math/mercury.svgz \
 	images/math/merge.svgz \
@@ -1400,6 +1406,7 @@ dist_imagesmath_DATA = \
 	images/math/setminus.svgz \
 	images/math/sharp.svgz \
 	images/math/shortdownarrow.svgz \
+	images/math/shortintertext.svgz \
 	images/math/shortleftarrow.svgz \
 	images/math/shortmid.svgz \
 	images/math/shortparallel.svgz \
@@ -1480,11 +1487,14 @@ dist_imagesmath_DATA = \
 	images/math/talloblong.svgz \
 	images/math/tau.svgz \
 	images/math/taurus.svgz \
+	images/math/text.svgz \
+	images/math/textnormal.svgz \
 	images/math/textrm_AA.svgz \
 	images/math/textrm_O.svgz \
 	images/math/therefore.svgz \
 	images/math/theta.svgz \
 	images/math/theta2.svgz \
+	images/math/text.svgz \
 	images/math/textdegree.svgz \
 	images/math/textrm.svgz \
 	images/math/thickapprox.svgz \

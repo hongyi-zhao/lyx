@@ -205,7 +205,7 @@ public:
 	/// Can be LaTeX, DocBook, etc.
 	OutputType outputType() const { return outputType_; }
 	/// Can be latex, docbook ... (the name of a format)
-	std::string outputFormat() const { return outputFormat_; }
+	std::string const & outputFormat() const { return outputFormat_; }
 	/// Does this class redefine the output format?
 	bool hasOutputFormat() const { return has_output_format_; }
 	/// Return the non-localised names for the toc types.

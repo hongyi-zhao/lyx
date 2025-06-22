@@ -153,12 +153,10 @@ void InsetBibtex::editDatabases(docstring const & db) const
 				return;
 	}
 
-	vector<docstring>::const_iterator it = bibfilelist.begin();
-	vector<docstring>::const_iterator en = bibfilelist.end();
-	for (; it != en; ++it) {
-		if (!db.empty() && db != *it)
+	for (auto const & bf : bibfilelist) {
+		if (!db.empty() && db != bf)
 			continue;
-		FileName const bibfile = buffer().getBibfilePath(*it);
+		FileName const bibfile = buffer().getBibfilePath(bf);
 		theFormats().edit(buffer(), bibfile,
 		     theFormats().getFormatFromFile(bibfile));
 	}
@@ -926,11 +924,10 @@ void InsetBibtex::updateBuffer(ParIterator const &, UpdateType, bool const /*del
 		buffer().params().setBibEncoding(enc);
 		invalidate = true;
 	}
-	map<string, string> encs = getFileEncodings();
-	map<string, string>::const_iterator it = encs.begin();
-	for (; it != encs.end(); ++it) {
-		if (buffer().params().bibFileEncoding(it->first) != it->second) {
-			buffer().params().setBibFileEncoding(it->first, it->second);
+
+	for (auto const & [file, encoding] : getFileEncodings()) {
+		if (buffer().params().bibFileEncoding(file) != encoding) {
+			buffer().params().setBibFileEncoding(file, encoding);
 			invalidate = true;
 		}
 	}
@@ -993,10 +990,6 @@ int InsetBibtex::plaintext(odocstringstream & os,
 		return PLAINTEXT_NEWLINE;
 	}
 
-	BiblioInfo bibinfo = buffer().masterBibInfo();
-	bibinfo.makeCitationLabels(buffer());
-	vector<docstring> const & cites = bibinfo.citedEntries();
-
 	size_t start_size = os.str().size();
 	docstring refoutput;
 	refoutput += reflabel + "\n\n";
@@ -1006,12 +999,12 @@ int InsetBibtex::plaintext(odocstringstream & os,
 	ci.context = CiteItem::Export;
 
 	// Now we loop over the entries
-	vector<docstring>::const_iterator vit = cites.begin();
-	vector<docstring>::const_iterator const ven = cites.end();
-	for (; vit != ven; ++vit) {
+	BiblioInfo bibinfo = buffer().masterBibInfo();
+	bibinfo.makeCitationLabels(buffer());
+	for (auto const & cite : bibinfo.citedEntries()) {
 		if (start_size + refoutput.size() >= max_length)
 			break;
-		BiblioInfo::const_iterator const biit = bibinfo.find(*vit);
+		BiblioInfo::const_iterator const biit = bibinfo.find(cite);
 		if (biit == bibinfo.end())
 			continue;
 		BibTeXInfo const & entry = biit->second;
@@ -1031,13 +1024,6 @@ int InsetBibtex::plaintext(odocstringstream & os,
 // And then here just: entriesAsXHTML(buffer().masterBibInfo().citedEntries())
 docstring InsetBibtex::xhtml(XMLStream & xs, OutputParams const &) const
 {
-	BiblioInfo const & bibinfo = buffer().masterBibInfo();
-	bool const all_entries = getParam("btprint") == "btPrintAll";
-	vector<docstring> const & cites =
-	    all_entries ? bibinfo.getKeys() : bibinfo.citedEntries();
-
-	docstring const reflabel = buffer().B_("References");
-
 	// tell BiblioInfo our purpose
 	CiteItem ci;
 	ci.context = CiteItem::Export;
@@ -1045,15 +1031,15 @@ docstring InsetBibtex::xhtml(XMLStream & xs, OutputParams const &) const
 	ci.max_key_size = UINT_MAX;
 
 	xs << xml::StartTag("h2", "class='bibtex'")
-		<< reflabel
-		<< xml::EndTag("h2")
-		<< xml::StartTag("div", "class='bibtex'");
+	   << buffer().B_("References")
+	   << xml::EndTag("h2")
+	   << xml::StartTag("div", "class='bibtex'");
 
 	// Now we loop over the entries
-	vector<docstring>::const_iterator vit = cites.begin();
-	vector<docstring>::const_iterator const ven = cites.end();
-	for (; vit != ven; ++vit) {
-		BiblioInfo::const_iterator const biit = bibinfo.find(*vit);
+	bool const all_entries = getParam("btprint") == "btPrintAll";
+	BiblioInfo const & bibinfo = buffer().masterBibInfo();
+	for (auto const & cite : all_entries ? bibinfo.getKeys() : bibinfo.citedEntries()) {
+		BiblioInfo::const_iterator const biit = bibinfo.find(cite);
 		if (biit == bibinfo.end())
 			continue;
 
@@ -1088,13 +1074,16 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 {
 	BiblioInfo const & bibinfo = buffer().masterBibInfo();
 	bool const all_entries = getParam("btprint") == "btPrintAll";
-	vector<docstring> const & cites =
-			all_entries ? bibinfo.getKeys() : bibinfo.citedEntries();
-
-	docstring const reflabel = buffer().B_("References");
+	vector<docstring> keys;
+	vector<docstring> const * cites;
+	if (all_entries) {
+		keys = bibinfo.getKeys();
+		cites = &keys;
+	} else
+		cites = &bibinfo.citedEntries();
 
 	// Check that the bibliography is not empty, to ensure that the document is valid.
-	if (cites.empty()) {
+	if (cites->empty()) {
 		xs << XMLStream::ESCAPE_NONE << "<!-- The bibliography is empty! -->";
 		xs << xml::CR();
 		return;
@@ -1110,7 +1099,7 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 	xs << xml::StartTag("bibliography");
 	xs << xml::CR();
 	xs << xml::StartTag("title");
-	xs << reflabel;
+	xs << buffer().B_("References");
 	xs << xml::EndTag("title");
 	xs << xml::CR();
 
@@ -1175,11 +1164,8 @@ void InsetBibtex::docbook(XMLStream & xs, OutputParams const &) const
 	    toDocBookTag[id] = "SPECIFIC"; // No direct translation to DocBook: <bibliomisc>.
 
 	// Loop over the entries. If there are no entries, add a comment to say so.
-	auto vit = cites.begin();
-	auto ven = cites.end();
-
-	for (; vit != ven; ++vit) {
-		auto const biit = bibinfo.find(*vit);
+	for (auto const & cite : *cites) {
+		auto const biit = bibinfo.find(cite);
 		if (biit == bibinfo.end())
 			continue;
 

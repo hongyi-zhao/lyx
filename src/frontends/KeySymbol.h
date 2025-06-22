@@ -66,7 +66,7 @@ public:
 	///
 	void setKey(int key) { key_ = key; }
 	///
-	docstring text() const { return text_; }
+	docstring const & text() const { return text_; }
 	///
 	void setText(docstring const & text) { text_ = text; }
 private:

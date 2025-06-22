@@ -88,6 +88,8 @@ namespace {
 
 MathWordList theMathWordList;
 MathVariantList theMathVariantList;
+MathConflictList theMathConflictList;
+std::vector<HullType> theMathConflictEnvs;
 
 
 bool isMathFontAvailable(string & name)
@@ -425,6 +427,35 @@ void initVariantSymbols()
 }
 
 
+void initConflictList() {
+	FileName const filename = libFileSearch(string(), "math_conflicts");
+	LYXERR(Debug::MATHED, "read conflict list from " << filename);
+	if (filename.empty()) {
+		lyxerr << "Could not find conflict list file" << endl;
+		return;
+	}
+
+	ifstream fs(filename.toFilesystemEncoding().c_str());
+	// limit the size of strings we read to avoid memory problems
+	fs >> setw(65636);
+	string line;
+
+	HullType currentMathHull;
+	while (getline(fs, line)) {
+
+		if (line.empty() || line[0] == '#')
+			continue;
+
+		if (line[0] == '[') {
+			currentMathHull = hullType(from_utf8(trim(line, "[]")));
+			theMathConflictEnvs.push_back(currentMathHull);
+		} else {
+			theMathConflictList[currentMathHull].push_back(from_utf8(line));
+		}
+	}
+}
+
+
 bool isSpecialChar(docstring const & name)
 {
 	if (name.size() != 1)
@@ -451,6 +482,24 @@ MathVariantList const & mathedVariantList()
 }
 
 
+MathConflictList const & mathedConflictList()
+{
+	return theMathConflictList;
+}
+
+
+std::vector<docstring> const & mathedConflictList(HullType hull)
+{
+	return theMathConflictList[hull];
+}
+
+
+std::vector<HullType> const & mathedConflictEnvs()
+{
+	return theMathConflictEnvs;
+}
+
+
 void initMath()
 {
 	static bool initialized = false;
@@ -459,6 +508,7 @@ void initMath()
 		initParser();
 		initSymbols();
 		initVariantSymbols();
+		initConflictList();
 	}
 }
 

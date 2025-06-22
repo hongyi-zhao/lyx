@@ -49,18 +49,6 @@ InsetSpace::InsetSpace(InsetSpaceParams const & params)
 {}
 
 
-InsetSpaceParams::Kind InsetSpace::kind() const
-{
-	return params_.kind;
-}
-
-
-GlueLength InsetSpace::length() const
-{
-	return params_.length;
-}
-
-
 docstring InsetSpace::toolTip(BufferView const &, int, int) const
 {
 	docstring message;

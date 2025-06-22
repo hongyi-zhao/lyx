@@ -80,7 +80,7 @@ public:
 	void setAction(FuncRequest const & a) { action_ = a; }
 	/// return comma-separated list of all par IDs (including nested insets)
 	/// this is used by captioned elements
-	docstring const parIDs() const { return par_ids_; }
+	docstring const & parIDs() const { return par_ids_; }
 	///
 	void setParIDs(docstring const & ids) { par_ids_ = ids; }
 

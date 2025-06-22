@@ -497,7 +497,7 @@ public:
 	///
 	bool inText() const { return text_level_ != nlevel; }
 	///
-	std::string xmlns() const { return xmlns_; }
+	std::string const & xmlns() const { return xmlns_; }
 	///
 	MathMLVersion version() const { return version_; }
 	/// Returns the tag name prefixed by the name space if needed.

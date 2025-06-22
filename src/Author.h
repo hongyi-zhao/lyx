@@ -29,11 +29,11 @@ public:
 	/// For when the \author line is missing (#9854)
 	Author(int buffer_id);
 	///
-	docstring name() const { return name_; }
+	docstring const & name() const { return name_; }
 	///
-	docstring email() const { return email_; }
+	docstring const & email() const { return email_; }
 	///
-	docstring initials() const { return initials_; }
+	docstring const & initials() const { return initials_; }
 	///
 	docstring nameAndEmail() const;
 	///

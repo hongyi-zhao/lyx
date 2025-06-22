@@ -191,7 +191,7 @@ public:
 	/// change the encoding of the input stream to \p encoding (iconv name)
 	bool setEncoding(std::string const & encoding);
 	/// get the current iconv encoding of the input stream
-	std::string getEncoding() const { return encoding_iconv_; }
+	std::string const & getEncoding() const { return encoding_iconv_; }
 
 	///
 	CatCode catcode(char_type c) const;

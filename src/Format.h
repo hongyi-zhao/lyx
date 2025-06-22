@@ -56,7 +56,7 @@ public:
 	/// Name fo the parent format
 	std::string const parentFormat() const;
 	///
-	std::string const name() const { return name_; }
+	std::string const & name() const { return name_; }
 	///
 	void setName(std::string const & v) { name_ = v; }
 	///
@@ -69,23 +69,23 @@ public:
 	///
 	void setExtensions(std::string const & v);
 	///
-	docstring const prettyname() const { return prettyname_; }
+	docstring const & prettyname() const { return prettyname_; }
 	///
 	void setPrettyname(docstring const & v) { prettyname_ = v; }
 	///
-	std::string const shortcut() const { return shortcut_; }
+	std::string const & shortcut() const { return shortcut_; }
 	///
 	void setShortcut(std::string const & v) { shortcut_ = v; }
 	///
-	std::string const viewer() const { return viewer_; }
+	std::string const & viewer() const { return viewer_; }
 	///
 	void setViewer(std::string const & v) { viewer_ = v; }
 	///
-	std::string const editor() const { return editor_; }
+	std::string const & editor() const { return editor_; }
 	///
 	void setEditor(std::string const & v) { editor_ = v; }
 	///
-	std::string const mime() const { return mime_; }
+	std::string const & mime() const { return mime_; }
 	///
 	void setMime(std::string const & m) { mime_ = m; }
 	///

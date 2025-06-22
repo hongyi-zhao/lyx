@@ -193,13 +193,15 @@ enum InsetCode {
 	///
 	MATH_SCRIPT_CODE,
 	///
+	MATH_SHORTINTERTEXT_CODE,
+	///
 	MATH_SIZE_CODE,
 	///
 	MATH_SPACE_CODE,
 	///
-	MATH_SPECIALCHAR_CODE,
+	MATH_SPECIALCHAR_CODE, // 90
 	///
-	MATH_SPLIT_CODE, // 90
+	MATH_SPLIT_CODE,
 	///
 	MATH_SQRT_CODE,
 	///
@@ -207,9 +209,9 @@ enum InsetCode {
 	///
 	MATH_STRING_CODE,
 	///
-	MATH_SUBSTACK_CODE,
+	MATH_SUBSTACK_CODE, // 95
 	///
-	MATH_SYMBOL_CODE, // 95
+	MATH_SYMBOL_CODE,
 	///
 	MATH_TABULAR_CODE,
 	///
@@ -217,9 +219,9 @@ enum InsetCode {
 	///
 	MATH_UNDERSET_CODE,
 	///
-	MATH_UNKNOWN_CODE,
+	MATH_UNKNOWN_CODE, // 100
 	///
-	MATH_XARROW_CODE, // 100
+	MATH_XARROW_CODE,
 	///
 	MATH_XYMATRIX_CODE,
 	///
@@ -227,9 +229,9 @@ enum InsetCode {
 	///
 	ARGUMENT_PROXY_CODE,
 	///
-	PREVIEW_CODE,
+	PREVIEW_CODE, // 105
 	///
-	MATH_DIAGRAM_CODE, // 105
+	MATH_DIAGRAM_CODE,
 	///
 	SCRIPT_CODE,
 	///
@@ -237,9 +239,9 @@ enum InsetCode {
 	///
 	IPACHAR_CODE,
 	///
-	IPADECO_CODE,
+	IPADECO_CODE, // 110
 	///
-	MATH_CLASS_CODE, // 110
+	MATH_CLASS_CODE,
 	///
 	COUNTER_CODE,
 	///
@@ -247,7 +249,7 @@ enum InsetCode {
 	///
 	INDEXMACRO_SORTKEY_CODE,
 	///
-	INSET_CODE_SIZE
+	INSET_CODE_SIZE // 115
 };
 
 } // namespace lyx

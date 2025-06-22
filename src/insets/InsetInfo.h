@@ -214,7 +214,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const override;
 	///
-	InsetInfoParams params() const { return params_; }
+	InsetInfoParams const & params() const { return params_; }
 	/// Outputs the inset as DocBook, taking advantage of the metadata available in InsetInfoParams.
 	void docbook(XMLStream &, OutputParams const &) const override;
 	/// Outputs the inset as XHTML, taking advantage of the metadata available in InsetInfoParams.

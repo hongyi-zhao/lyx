@@ -818,7 +818,7 @@ std::string const & InsetLayout::docbookininfo() const
 }
 
 
-std::string InsetLayout::docbooktagtype() const
+std::string const & InsetLayout::docbooktagtype() const
 {
 	if (docbooktagtype_ != "block" && docbooktagtype_ != "paragraph" && docbooktagtype_ != "inline")
 		docbooktagtype_ = "block";
@@ -826,7 +826,7 @@ std::string InsetLayout::docbooktagtype() const
 }
 
 
-std::string InsetLayout::docbookinnertagtype() const
+std::string const & InsetLayout::docbookinnertagtype() const
 {
 	if (docbookinnertagtype_ != "block" && docbookinnertagtype_ != "paragraph" && docbookinnertagtype_ != "inline")
 		docbookinnertagtype_ = "block";
@@ -834,7 +834,7 @@ std::string InsetLayout::docbookinnertagtype() const
 }
 
 
-std::string InsetLayout::docbookwrappertagtype() const
+std::string const & InsetLayout::docbookwrappertagtype() const
 {
 	if (docbookwrappertagtype_ != "block" && docbookwrappertagtype_ != "paragraph" && docbookwrappertagtype_ != "inline")
 		docbookwrappertagtype_ = "block";
@@ -842,7 +842,7 @@ std::string InsetLayout::docbookwrappertagtype() const
 }
 
 
-std::string InsetLayout::docbookitemtagtype() const
+std::string const & InsetLayout::docbookitemtagtype() const
 {
 	if (docbookitemtagtype_ != "block" && docbookitemtagtype_ != "paragraph" && docbookitemtagtype_ != "inline")
 		docbookitemtagtype_ = "block";
@@ -850,7 +850,7 @@ std::string InsetLayout::docbookitemtagtype() const
 }
 
 
-std::string InsetLayout::docbookitemwrappertagtype() const
+std::string const & InsetLayout::docbookitemwrappertagtype() const
 {
 	if (docbookitemwrappertagtype_ != "block" && docbookitemwrappertagtype_ != "paragraph" && docbookitemwrappertagtype_ != "inline")
 		docbookitemwrappertagtype_ = "block";

@@ -47,6 +47,7 @@
 
 #include "Session.h"
 
+#include "insets/Inset.h"
 #include "insets/InsetLabel.h"
 #include "insets/InsetRef.h"
 #include "insets/RenderPreview.h"
@@ -905,6 +906,22 @@ bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 			cur.screenUpdateFlags(Update::Force);
 	}
 	return false;
+}
+
+
+bool InsetMathHull::insetAllowed(InsetCode code) const
+{
+	switch (code) {
+	case MATH_INTERTEXT_CODE:
+	case MATH_SHORTINTERTEXT_CODE:
+		for (HullType const & env : mathedConflictEnvs()) {
+			if (getType() == env)
+				return false;
+		}
+		return true;
+	default:
+		return !isPassThru();
+	}
 }
 
 
@@ -2226,6 +2243,16 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		return InsetMathGrid::getStatus(cur, cmd, status);
 	}
+
+	case LFUN_MATH_INSERT:
+		if (!cmd.argument().empty()) {
+			status.setEnabled(
+			            insetAllowed(
+			                insetCode(
+			                    to_utf8("math" + ltrim(cmd.argument(), "\\")))));
+			return true;
+		} else
+			return InsetMathGrid::getStatus(cur, cmd, status);
 
 	default:
 		return InsetMathGrid::getStatus(cur, cmd, status);

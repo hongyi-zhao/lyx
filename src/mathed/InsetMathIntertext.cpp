@@ -12,10 +12,15 @@
 
 #include "InsetMathIntertext.h"
 
+#include "Buffer.h"
+#include "BufferView.h"
+#include "Cursor.h"
 #include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "MathData.h"
+#include "MathFactory.h"
 #include "MathStream.h"
+#include "MathSupport.h"
 #include "MetricsInfo.h"
 #include "support/docstream.h"
 #include "support/lstrings.h"

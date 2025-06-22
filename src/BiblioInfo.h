@@ -118,7 +118,7 @@ public:
 	docstring const & key() const { return bib_key_; }
 	/// numerical key for citing this entry. currently used only
 	/// by XHTML output routines.
-	docstring citeNumber() const { return cite_number_; }
+	docstring const & citeNumber() const { return cite_number_; }
 	///
 	void setCiteNumber(docstring const & num) { cite_number_ = num; }
 	/// a,b,c, etc, for author-year. currently used only by XHTML
@@ -127,7 +127,7 @@ public:
 	///
 	void setModifier(char c) { modifier_ = c; }
 	///
-	docstring entryType() const { return entry_type_; }
+	docstring const & entryType() const { return entry_type_; }
 	///
 	bool isBibTeX() const { return is_bibtex_; }
 private:

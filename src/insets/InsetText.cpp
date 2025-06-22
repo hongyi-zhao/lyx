@@ -417,6 +417,16 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 	}
 
+	// The below can be called when the math panel is on in the text mode
+	case LFUN_MATH_INSERT:
+		if (!cmd.argument().empty()) {
+			status.setEnabled(
+			            insetAllowed(
+			                insetCode(
+			                    to_utf8("math" + ltrim(cmd.argument(), "\\")))));
+			return true;
+		}
+	// fall through
 	default:
 		// Dispatch only to text_ if the cursor is inside
 		// the text_. It is not for context menus (bug 5797).
@@ -1059,6 +1069,9 @@ bool InsetText::insetAllowed(InsetCode code) const
 	// These are only allowed in index insets
 	case INDEXMACRO_CODE:
 	case INDEXMACRO_SORTKEY_CODE:
+	// The below cannot be called from the text mode directly
+	case MATH_INTERTEXT_CODE:
+	case MATH_SHORTINTERTEXT_CODE:
 		return false;
 	default:
 		return !isPassThru();

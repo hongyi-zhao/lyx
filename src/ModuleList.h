@@ -77,7 +77,7 @@ public:
 	std::vector<std::string> const & getExcludedModules() const
 		{ return excluded_modules_; }
 	///
-	std::string category() const { return category_; }
+	std::string const & category() const { return category_; }
 	/// Is this a local module (from the user directory)?
 	bool isLocal() const { return local_; }
 	/// \return true if the module is compatible with this one, i.e.,

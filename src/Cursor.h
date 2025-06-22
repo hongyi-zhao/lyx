@@ -205,7 +205,7 @@ public:
 	/// As the user is entering a word without leaving it
 	/// the result is not empty. When not in text mode
 	/// and after leaving the word the result is empty.
-	DocIterator newWord() const { return new_word_; }
+	DocIterator const & newWord() const { return new_word_; }
 
 	/// are we in math mode (2), text mode (1) or unsure (0)?
 	int currentMode() const;

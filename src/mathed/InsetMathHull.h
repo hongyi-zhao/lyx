@@ -160,7 +160,7 @@ public:
 	/// get notification when the cursor leaves this inset
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur) override;
 	///
-	//bool insetAllowed(InsetCode code) const override;
+	bool insetAllowed(InsetCode code) const override;
 	///
 	void addPreview(DocIterator const & inset_pos,
 		graphics::PreviewLoader &) const override;

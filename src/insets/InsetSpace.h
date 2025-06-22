@@ -103,15 +103,13 @@ public:
 	///
 	InsetSpaceParams const & params() const { return params_; }
 	///
-	InsetSpaceParams::Kind kind() const;
-
+	InsetSpaceParams::Kind kind() const { return params_.kind; }
 	///
 	static void string2params(std::string const &, InsetSpaceParams &);
 	///
 	static std::string params2string(InsetSpaceParams const &);
 	///
-	GlueLength length() const;
-
+	GlueLength length() const { return params_.length; }
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	/// unprotected spaces allow line breaking after them

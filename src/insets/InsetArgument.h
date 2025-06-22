@@ -37,7 +37,7 @@ public:
 	                   docstring const & ldelim, docstring const & rdelim,
 	                   docstring const & presetarg) const;
 
-	std::string name() const { return name_; }
+	std::string const & name() const { return name_; }
 
 	bool docbookargumentbeforemaintag() const { return docbookargumentbeforemaintag_; }
 

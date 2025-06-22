@@ -32,6 +32,7 @@
 #include "Text.h"
 #include "TextMetrics.h"
 #include "TocBackend.h"
+#include "FuncStatus.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -1786,8 +1787,17 @@ bool Cursor::macroModeClose(bool cancel)
 	if (in && in->interpretString(*this, s))
 		return true;
 	bool const user_macro = buffer()->getMacro(name, *this, false);
-	MathAtom atom = user_macro ? MathAtom(new InsetMathMacro(buffer(), name))
-				   : createInsetMath(name, buffer());
+
+	MathAtom atom;
+	FuncRequest fr(LFUN_MATH_INSERT, "\\" + name);
+	FuncStatus status;
+	getStatus(fr, status);
+	// exit if the inset cannot be used e.g. in the current math hull
+	if (!status.enabled())
+		return false;
+	else
+		atom = user_macro ? MathAtom(new InsetMathMacro(buffer(), name))
+					   : createInsetMath(name, buffer());
 
 	// try to put argument into macro, if we just inserted a macro
 	bool macroArg = false;

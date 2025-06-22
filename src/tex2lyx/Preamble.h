@@ -35,17 +35,17 @@ public:
 	Preamble();
 
 	///
-	std::string inputencoding() const { return h_inputencoding; }
+	std::string const & inputencoding() const { return h_inputencoding; }
 	///
 	void setInputencoding(std::string const & e) { h_inputencoding = e; }
 	///
-	std::string notefontcolor() const { return h_notefontcolor; }
+	std::string const & notefontcolor() const { return h_notefontcolor; }
 	///
-	std::string crossrefPackage() const { return h_crossref_package; }
+	std::string const & crossrefPackage() const { return h_crossref_package; }
 	///
 	bool fontCJKSet() const { return h_font_cjk_set; }
 	///
-	std::string fontCJK() const { return h_font_cjk; }
+	std::string const & fontCJK() const { return h_font_cjk; }
 	///
 	void fontCJK(std::string const & f) { h_font_cjk_set = true; h_font_cjk = f; }
 	///
@@ -55,17 +55,17 @@ public:
 	///
 	std::string getLyXColor(std::string const & col, bool reg = false);
 	///
-	std::string nomenclOpts() const { return h_nomencl_options; }
+	std::string const & nomenclOpts() const { return h_nomencl_options; }
 	/// The document language
-	std::string docLanguage() const { return h_language; }
+	std::string const & docLanguage() const { return h_language; }
 	/// The language of text which is not explicitly marked
-	std::string defaultLanguage() const  { return default_language; }
+	std::string const & defaultLanguage() const  { return default_language; }
 	/// The quotation marks style
-	std::string quotesStyle() const { return h_quotes_style; }
+	std::string const & quotesStyle() const { return h_quotes_style; }
 	///
 	bool usePolyglossia() const;
 	///
-	std::string use_indices() const { return h_use_indices; }
+	std::string const & use_indices() const { return h_use_indices; }
 	///
 	std::string polyglossia2lyx(std::string const & language);
 	///
@@ -88,13 +88,13 @@ public:
 	///
 	void suppressDate(bool suppress);
 	///
-	std::string citeEngine() const { return h_cite_engine; }
+	std::string const & citeEngine() const { return h_cite_engine; }
 	///
 	void citeEngine(std::string const & e) { h_cite_engine = e; }
 	///
-	std::string biblatexCiteStyle() const { return h_biblatex_citestyle; }
+	std::string const & biblatexCiteStyle() const { return h_biblatex_citestyle; }
 	///
-	std::string multibib() const { return h_multibib; }
+	std::string const & multibib() const { return h_multibib; }
 	///
 	void multibib(std::string const & s) { h_multibib = s; }
 	///

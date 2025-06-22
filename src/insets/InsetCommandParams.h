@@ -56,7 +56,7 @@ public:
 		          bool ignore = false,
 		          docstring const & default_value = docstring());
 		///
-		std::string name() const { return name_; }
+		std::string const & name() const { return name_; }
 		///
 		ParamType type() const { return type_; }
 		///

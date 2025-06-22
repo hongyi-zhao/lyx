@@ -30,7 +30,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const override;
 	///
-	docstring str() const { return str_; }
+	docstring const & str() const { return str_; }
 	///
 	InsetMathNumber * asNumberInset() { return this; }
 

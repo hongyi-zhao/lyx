@@ -42,7 +42,7 @@ public:
 	///
 	std::string const & floattype() const { return floattype_; }
 	///
-	std::string docbookFloatType() const;
+	std::string docbookFloatType() const { return docbook_float_type_; }
 	///
 	std::string const & placement() const { return placement_; }
 	///
@@ -83,7 +83,8 @@ public:
 	///
 	std::string docbookTag(bool hasTitle = false) const;
 	///
-	std::string docbookAttr() const;
+	std::string docbookAttr() const { return docbook_attr_; }
+
 	///
 	std::string const & docbookTagType() const;
 	///

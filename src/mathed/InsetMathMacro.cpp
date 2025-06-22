@@ -490,7 +490,7 @@ docstring InsetMathMacro::name() const
 }
 
 
-docstring InsetMathMacro::macroName() const
+docstring const & InsetMathMacro::macroName() const
 {
 	return d->name_;
 }

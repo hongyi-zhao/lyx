@@ -71,7 +71,7 @@ public:
 	void write(std::ostream & os) const override;
 
 	/// Return lastfiles container (vector)
-	LastFiles const lastFiles() const { return lastfiles; }
+	LastFiles const & lastFiles() const { return lastfiles; }
 
 	/** Insert #file# into the lastfile vector.
 	    This funtion inserts #file# into the last files list. If the file
@@ -126,7 +126,7 @@ public:
 	void write(std::ostream & os) const override;
 
 	/// Return lastopened container (vector)
-	LastOpened const getfiles() const { return lastopened; }
+	LastOpened const & getfiles() const { return lastopened; }
 
 	/** add file to lastopened file list
 	    @param file filename to add

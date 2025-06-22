@@ -413,7 +413,7 @@ public:
 	bool stats_update_trigger();
 
 	/// Inserted label from ref dialog
-	std::string insertedLabel() const { return inserted_label_; }
+	std::string const & insertedLabel() const { return inserted_label_; }
 
 private:
 	/// noncopyable

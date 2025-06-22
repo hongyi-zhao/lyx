@@ -138,7 +138,7 @@ public:
 	/// FIXME: Often dangling.
 	MacroData const * macro() const;
 	///
-	docstring macroName() const;
+	docstring const & macroName() const;
 	/// Level of nesting in macros (including this one)
 	int nesting() const;
 	///

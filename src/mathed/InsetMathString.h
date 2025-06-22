@@ -32,7 +32,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const override;
 	///
-	docstring str() const { return str_; }
+	docstring const & str() const { return str_; }
 	///
 	InsetMathString * asStringInset() override { return this; }
 	///

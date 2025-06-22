@@ -94,11 +94,11 @@ public:
 	/// Qualified lists's pre texts
 	QualifiedList pretexts;
 	///
-	QualifiedList getPretexts() const { return pretexts; }
+	QualifiedList const & getPretexts() const { return pretexts; }
 	/// Qualified lists's post texts
 	QualifiedList posttexts;
 	///
-	QualifiedList getPosttexts() const { return posttexts; }
+	QualifiedList const & getPosttexts() const { return posttexts; }
 	/// the maximum display size as a label
 	size_t max_size;
 	/// the maximum size of the processed keys

@@ -2424,12 +2424,6 @@ void Text::charsTranspose(Cursor & cur)
 }
 
 
-DocIterator Text::macrocontextPosition() const
-{
-	return macrocontext_position_;
-}
-
-
 void Text::setMacrocontextPosition(DocIterator const & pos)
 {
 	macrocontext_position_ = pos;

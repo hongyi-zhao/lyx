@@ -267,7 +267,7 @@ TexRow::getEntriesFromRow(int const row) const
 				return rowlist_[j].getTextEntry();
 			// Check the absence of begin_document at row j. The begin_document row
 			// entry is used to prevent mixing of body and preamble.
-			for (RowEntry entry : rowlist_[j])
+			for (RowEntry const & entry : rowlist_[j])
 				if (entry.type == begin_document)
 					return text_none;
 		}
@@ -283,7 +283,7 @@ TexRow::getEntriesFromRow(int const row) const
 		TextEntry last_pos = {start.id, -1};
 		// find the next occurence of paragraph start.id
 		for (size_t j = i + 1; j < rowlist_.size(); ++j) {
-			for (RowEntry entry : rowlist_[j]) {
+			for (RowEntry const & entry : rowlist_[j]) {
 				if (entry.type == begin_document)
 					// what happens in the preamble remains in the preamble
 					return last_pos;

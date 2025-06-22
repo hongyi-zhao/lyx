@@ -3561,7 +3561,7 @@ vector<pair<docstring, string>> const Buffer::prepareBibFilePaths(OutputParams c
 
 
 
-string Buffer::layoutPos() const
+string const & Buffer::layoutPos() const
 {
 	return d->layout_position;
 }

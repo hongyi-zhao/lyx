@@ -161,6 +161,7 @@ static void build_translator()
 	insetnames[MATH_REF_CODE] = InsetName("mathref");
 	insetnames[MATH_ROOT_CODE] = InsetName("mathroot");
 	insetnames[MATH_SCRIPT_CODE] = InsetName("mathscript");
+	insetnames[MATH_SHORTINTERTEXT_CODE] = InsetName("mathshortintertext");
 	insetnames[MATH_SIZE_CODE] = InsetName("mathsize");
 	insetnames[MATH_SPACE_CODE] = InsetName("mathspace", _("Horizontal Math Space"));
 	insetnames[MATH_SPECIALCHAR_CODE] = InsetName("mathspecialchar");

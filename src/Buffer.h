@@ -434,7 +434,7 @@ public:
 	 *  An empty string is returned for standard system and user layouts.
 	 *  If possible, it is always relative to the buffer path.
 	 */
-	std::string layoutPos() const;
+	std::string const & layoutPos() const;
 
 	/** Set the path to a local layout file.
 	 *  This must be an absolute path but, if possible, it is always

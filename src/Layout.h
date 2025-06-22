@@ -160,10 +160,10 @@ public:
 	docstring const & preamble() const { return preamble_; }
 	/// Get language dependent macro definitions needed for this layout
 	/// for language \p lang
-	docstring const langpreamble() const { return langpreamble_; }
+	docstring const & langpreamble() const { return langpreamble_; }
 	/// Get language and babel dependent macro definitions needed for
 	/// this layout for language \p lang
-	docstring const babelpreamble() const { return babelpreamble_; }
+	docstring const & babelpreamble() const { return babelpreamble_; }
 	///
 	std::set<std::string> const & required() const { return required_; }
 	///
@@ -173,9 +173,9 @@ public:
 	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
-	docstring leftdelim() const { return leftdelim_; }
+	docstring leftdelim() const & { return leftdelim_; }
 	///
-	docstring rightdelim() const { return rightdelim_; }
+	docstring rightdelim() const & { return rightdelim_; }
 	///
 	std::string const & innertag() const { return innertag_; }
 	///
@@ -320,7 +320,7 @@ public:
 	///
 	bool addToToc() const { return add_to_toc_; }
 	///
-	std::string tocType() const { return toc_type_; }
+	std::string const & tocType() const { return toc_type_; }
 	///
 	bool isTocCaption() const { return is_toc_caption_; }
 

@@ -42,7 +42,7 @@ public:
 	/// CMYK value
 	std::string const & cmyk() const { return cmyk_; }
 	/// Required packages
-	std::vector<std::string> req() const { return requires_; }
+	std::vector<std::string> const & req() const { return requires_; }
 	/// Is this a dvipsfont name that clashes with SVG name?
 	bool svgclash() const { return svgclash_; }
 	///

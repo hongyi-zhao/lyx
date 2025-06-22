@@ -62,15 +62,15 @@ public:
 	bool read(support::Lexer & lexrc, TextClass const & tclass,
 			bool validating = false);
 	///
-	docstring name() const { return name_; }
+	docstring const & name() const { return name_; }
 	///
 	void setName(docstring const & n) { name_ = n; }
 	///
 	InsetLyXType lyxtype() const { return lyxtype_; }
 	///
-	docstring labelstring() const { return labelstring_; }
+	docstring const & labelstring() const { return labelstring_; }
 	///
-	docstring menustring() const { return menustring_; }
+	docstring const & menustring() const { return menustring_; }
 	///
 	bool contentaslabel() const { return contentaslabel_; }
 	///
@@ -78,19 +78,19 @@ public:
 	///
 	InsetLaTeXType latextype() const { return latextype_; }
 	///
-	std::string latexname() const { return latexname_; }
+	std::string const & latexname() const { return latexname_; }
 	///
-	std::string latexparam() const { return latexparam_; }
+	std::string const & latexparam() const { return latexparam_; }
 	///
-	docstring leftdelim() const { return leftdelim_; }
+	docstring const & leftdelim() const { return leftdelim_; }
 	///
-	docstring rightdelim() const { return rightdelim_; }
+	docstring const & rightdelim() const { return rightdelim_; }
 	///
 	bool inheritFont() const { return inheritfont_; }
 	///
-	FontInfo font() const { return font_; }
+	FontInfo const & font() const { return font_; }
 	///
-	FontInfo labelfont() const { return labelfont_; }
+	FontInfo const & labelfont() const { return labelfont_; }
 	///
 	ColorCode bgcolor() const { return bgcolor_; }
 	///
@@ -109,18 +109,18 @@ public:
 	///
 	int requiredArgs() const;
 	///
-	docstring preamble() const { return preamble_; }
+	docstring const & preamble() const { return preamble_; }
 	/// Get language dependent macro definitions needed for this inset
-	docstring const langpreamble() const { return langpreamble_; }
+	docstring const & langpreamble() const { return langpreamble_; }
 	/// Get language and babel dependent macro definitions needed for
 	/// this inset
-	docstring const babelpreamble() const { return babelpreamble_; }
+	docstring const & babelpreamble() const { return babelpreamble_; }
 	///
 	bool fixedwidthpreambleencoding() const { return fixedwidthpreambleencoding_; }
 	///
-	docstring counter() const { return counter_; }
+	docstring const & counter() const { return counter_; }
 	///
-	docstring refprefix() const { return refprefix_; }
+	docstring const & refprefix() const { return refprefix_; }
 	/// The tag enclosing all the material in this inset. Default is "span".
 	std::string const & htmltag() const;
 	/// Additional attributes for inclusion with the start tag. Default (if
@@ -149,7 +149,7 @@ public:
 	/// CSS associated with this inset.
 	docstring htmlstyle() const;
 	/// Additional material for the header.
-	docstring htmlpreamble() const { return htmlpreamble_; }
+	docstring const & htmlpreamble() const { return htmlpreamble_; }
 	/// Whether this inset represents a "block" of material, i.e., a set
 	/// of paragraphs of its own (true), or should be run into the previous
 	/// paragraph (false). Examples:
@@ -158,17 +158,17 @@ public:
 	/// Defaults to true.
 	bool htmlisblock() const { return htmlisblock_; }
 	///
-	std::string docbooktag() const { return docbooktag_; }
+	std::string const & docbooktag() const { return docbooktag_; }
 	///
-	std::string docbooktagtype() const;
+	std::string const & docbooktagtype() const;
 	///
-	std::string docbookattr() const { return docbookattr_; }
+	std::string const & docbookattr() const { return docbookattr_; }
 	///
-	std::string docbookinnertag() const { return docbookinnertag_; }
+	std::string const & docbookinnertag() const { return docbookinnertag_; }
 	///
-	std::string docbookinnertagtype() const;
+	std::string const & docbookinnertagtype() const;
 	///
-	std::string docbookinnerattr() const { return docbookinnerattr_; }
+	std::string const & docbookinnerattr() const { return docbookinnerattr_; }
 	///
 	std::string const & docbookininfo() const;
 	///
@@ -180,27 +180,27 @@ public:
 	///
 	bool docbookargumentaftermaintag() const { return docbookargumentaftermaintag_; }
 	///
-	std::string docbookwrappertag() const { return docbookwrappertag_; }
+	std::string const & docbookwrappertag() const { return docbookwrappertag_; }
 	///
-	std::string docbookwrappertagtype() const;
+	std::string const & docbookwrappertagtype() const;
 	///
-	std::string docbookwrapperattr() const { return docbookwrapperattr_; }
+	std::string const & docbookwrapperattr() const { return docbookwrapperattr_; }
 	///
-	std::string docbookitemwrappertag() const { return docbookitemwrappertag_; }
+	std::string const & docbookitemwrappertag() const { return docbookitemwrappertag_; }
 	///
-	std::string docbookitemwrappertagtype() const;
+	std::string const & docbookitemwrappertagtype() const;
 	///
-	std::string docbookitemwrapperattr() const { return docbookitemwrapperattr_; }
+	std::string const & docbookitemwrapperattr() const { return docbookitemwrapperattr_; }
 	///
-	std::string docbookitemtag() const { return docbookitemtag_; }
+	std::string const & docbookitemtag() const { return docbookitemtag_; }
 	///
-	std::string docbookitemtagtype() const;
+	std::string const & docbookitemtagtype() const;
 	///
-	std::string docbookitemattr() const { return docbookitemattr_; }
+	std::string const & docbookitemattr() const { return docbookitemattr_; }
 	///
-	bool docbooknofontinside() const { return docbooknofontinside_; }
+	bool const & docbooknofontinside() const { return docbooknofontinside_; }
 	///
-	bool docbookrenderasimage() const { return docbookrenderasimage_; }
+	bool const & docbookrenderasimage() const { return docbookrenderasimage_; }
 	///
 	std::set<std::string> const & required() const { return required_; }
 	///
@@ -212,15 +212,15 @@ public:
 	///
 	bool allowParagraphCustomization() const { return custompars_; }
 	///
-	docstring escapeChars() const { return escape_chars_; }
+	docstring const & escapeChars() const { return escape_chars_; }
 	///
 	bool isPassThru() const { return passthru_; }
 	///
-	docstring passThruChars() const { return passthru_chars_; }
+	docstring const & passThruChars() const { return passthru_chars_; }
 	///
-	docstring noPassThruChars() const { return no_passthru_chars_; }
+	docstring const & noPassThruChars() const { return no_passthru_chars_; }
 	///
-	std::string newlineCmd() const { return newline_cmd_; }
+	std::string const & newlineCmd() const { return newline_cmd_; }
 	///
 	bool parbreakIsNewline() const { return parbreakisnewline_; }
 	///

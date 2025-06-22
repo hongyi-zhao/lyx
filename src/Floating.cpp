@@ -131,19 +131,6 @@ string Floating::defaultCSSClass() const
 }
 
 
-std::string Floating::docbookFloatType() const
-{
-	// All the work is done in the constructor.
-	return docbook_float_type_;
-}
-
-
-string Floating::docbookAttr() const
-{
-	return docbook_attr_;
-}
-
-
 string Floating::docbookTag(bool hasTitle) const
 {
 	// If there is a preconfigured tag, use it.

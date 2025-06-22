@@ -287,6 +287,8 @@ private:
 	char v_align_; // FIXME: add approp. type
 	///
 	Inset * clone() const override;
+	///
+	void checkMathCommandConflict(idx_type idx) const;
 };
 
 

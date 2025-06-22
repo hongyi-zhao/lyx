@@ -1,0 +1,27 @@
+#
+# List of incompatible commands and math environments
+#
+# The incompatible command names should be listed one by one delimited by a
+# carriage return under the headings of the math environment name surrounded by
+# brackets
+#
+# Rules are also applied to those environments that have a trailing star
+# to their names
+
+# Inline equation $...$
+[simple]
+intertext
+shortintertext
+
+# Display equation \[...\]
+[equation]
+intertext
+shortintertext
+
+[eqnarray]
+intertext
+shortintertext
+
+[multline]
+intertext
+shortintertext

@@ -57,18 +57,6 @@ void ShortcutWidget::reset()
 }
 
 
-KeySequence const ShortcutWidget::getKeySequence() const
-{
-	return keysequence_;
-}
-
-
-void ShortcutWidget::setKeySequence(lyx::KeySequence const & s)
-{
-	keysequence_ = s;
-}
-
-
 void ShortcutWidget::keyPressEvent(QKeyEvent * e)
 {
 	int const keyQt = e->key();

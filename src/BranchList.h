@@ -106,7 +106,7 @@ public:
 	BranchList();
 
 	///
-	docstring separator() const { return separator_; }
+	docstring const & separator() const { return separator_; }
 
 	///
 	int id() const { return id_; }

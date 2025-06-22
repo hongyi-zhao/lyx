@@ -51,7 +51,7 @@ public:
 	*/
 	bool setParams(InsetGraphicsParams const & params);
 
-	InsetGraphicsParams getParams() const { return params_;}
+	InsetGraphicsParams const & getParams() const { return params_;}
 	///
 	bool clickable(BufferView const &, int, int) const override { return true; }
 	///

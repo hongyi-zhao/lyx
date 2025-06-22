@@ -325,7 +325,7 @@ public:
 	/// Every macro definition is stored with its DocIterator
 	/// as well. Only those macros with a smaller iterator become
 	/// visible in a paragraph.
-	DocIterator macrocontextPosition() const;
+	DocIterator const & macrocontextPosition() const { return macrocontext_position_; }
 	///
 	void setMacrocontextPosition(DocIterator const & pos);
 

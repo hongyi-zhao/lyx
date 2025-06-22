@@ -211,7 +211,7 @@ public:
 	Encoding const * encoding() const { return encoding_; }
 
 	/// Temporarily change the TexRow information about the outer row entry.
-	Changer changeRowEntry(TexRow::RowEntry entry);
+	Changer changeRowEntry(TexRow::RowEntry const & entry);
 	/// TexRow::starts the innermost outer math inset
 	/// returns true if the outer row entry will appear at this line
 	bool startOuterRow();

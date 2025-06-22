@@ -498,7 +498,7 @@ void TeXMathStream::asciiOnly(bool ascii)
 }
 
 
-Changer TeXMathStream::changeRowEntry(TexRow::RowEntry entry)
+Changer TeXMathStream::changeRowEntry(TexRow::RowEntry const & entry)
 {
 	return changeVar(row_entry_, entry);
 }

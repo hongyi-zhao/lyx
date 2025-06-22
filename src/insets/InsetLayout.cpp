@@ -1023,7 +1023,7 @@ int InsetLayout::requiredArgs() const
 }
 
 
-bool InsetLayout::requiresFeature(string const f) const
+bool InsetLayout::requiresFeature(string const & f) const
 {
 	return required_.find(f) != required_.end();
 }

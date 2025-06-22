@@ -268,7 +268,7 @@ void focusAndHighlight(QAbstractItemView * w)
 }
 
 
-void setMessageColour(list<QWidget *> highlighted, list<QWidget *> plain)
+void setMessageColour(list<QWidget *> const & highlighted, list<QWidget *> const & plain)
 {
 	QPalette pal = QApplication::palette();
 	QPalette newpal(pal.color(QPalette::Active, QPalette::HighlightedText),

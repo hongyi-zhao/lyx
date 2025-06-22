@@ -244,7 +244,7 @@ private:
 	void saveCheckSum() const;
 	/// read a new file
 	ReadStatus readFile(support::FileName const & fn,
-			    std::string ofn = std::string());
+	                    std::string const & ofn = std::string());
 	/// Reads a file without header.
 	/// \param par if != 0 insert the file.
 	/// \return \c true if file is not completely read.

@@ -101,7 +101,7 @@ public:
 	/// \param prefix of the label (before :)
 	/// Also used by InsetMathRef
 	static docstring getFormattedCmd(docstring const & ref, std::vector<docstring> & label,
-			docstring & prefix, std::string const xref_package,
+			docstring & prefix, std::string const & xref_package,
 			bool use_caps = false, bool use_range = false);
 
 protected:

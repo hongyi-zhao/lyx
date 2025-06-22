@@ -128,7 +128,7 @@ private:
 	///
 	bool hasSortKey() const;
 	///
-	bool macrosPossible(std::string const type) const;
+	bool macrosPossible(std::string const & type) const;
 	///
 	std::string contextMenuName() const override;
 	///

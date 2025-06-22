@@ -71,7 +71,7 @@ private:
 
 	void setFormatIgnores(bool const b);
 
-	docstring const checkState(std::string const s, bool const b);
+	docstring const checkState(std::string const & s, bool const b);
 
 protected Q_SLOTS:
 	void on_findNextPB_clicked();

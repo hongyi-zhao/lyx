@@ -661,7 +661,7 @@ bool GuiToolbar::isVisibilityOn() const
 }
 
 
-void GuiToolbar::setState(string const state)
+void GuiToolbar::setState(string const & state)
 {
 	docstring newstate;
 	if (state == "auto") {

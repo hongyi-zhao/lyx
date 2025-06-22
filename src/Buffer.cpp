@@ -1231,8 +1231,7 @@ bool Buffer::readString(string const & s)
 }
 
 
-Buffer::ReadStatus Buffer::readFile(FileName const & fn,
-				    string const ofn)
+Buffer::ReadStatus Buffer::readFile(FileName const & fn, string const & ofn)
 {
 	Lexer lex;
 	if (!lex.setFile(fn)) {

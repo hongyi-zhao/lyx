@@ -154,7 +154,7 @@ public:
 	void update(int context = 0);
 
 	///
-	void setState(std::string const state);
+	void setState(std::string const & state);
 	///
 	void toggle();
 

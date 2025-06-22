@@ -116,14 +116,14 @@ TexRow::RowEntry const TexRow::row_none = TexRow::textEntry(-1, 0);
 
 
 //static
-bool TexRow::isNone(TextEntry t)
+bool TexRow::isNone(TextEntry const & t)
 {
 	return t.id < 0;
 }
 
 
 //static
-bool TexRow::isNone(RowEntry r)
+bool TexRow::isNone(RowEntry const & r)
 {
 	return r.type == text_entry && isNone(r.text);
 }
@@ -174,7 +174,7 @@ TexRow::RowEntry TexRow::beginDocument()
 }
 
 
-bool operator==(TexRow::RowEntry entry1, TexRow::RowEntry entry2)
+bool operator==(TexRow::RowEntry const & entry1, TexRow::RowEntry const & entry2)
 {
 	if (entry1.type != entry2.type)
 		return false;
@@ -193,7 +193,7 @@ bool operator==(TexRow::RowEntry entry1, TexRow::RowEntry entry2)
 }
 
 
-bool TexRow::start(RowEntry entry)
+bool TexRow::start(RowEntry const & entry)
 {
 	return currentRow().addEntry(entry);
 }
@@ -406,7 +406,7 @@ bool TexRow::sameParOrInsetMath(RowEntry entry1, RowEntry entry2)
 
 
 //static
-int TexRow::comparePos(RowEntry entry1, RowEntry entry2)
+int TexRow::comparePos(RowEntry const & entry1, RowEntry const & entry2)
 {
 	// assume it is sameParOrInsetMath
 	switch (entry1.type /* equal to entry2.type */) {
@@ -637,7 +637,7 @@ void TexRow::setRows(size_t r)
 // debugging functions
 
 ///
-docstring TexRow::asString(RowEntry entry)
+docstring TexRow::asString(RowEntry const & entry)
 {
 	odocstringstream os;
 	switch (entry.type) {

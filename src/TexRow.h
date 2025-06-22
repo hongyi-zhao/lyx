@@ -87,9 +87,9 @@ public:
 	static const TextEntry text_none;
 	static const RowEntry row_none;
 	/// Returns true if RowEntry is devoid of information
-	static bool isNone(RowEntry entry);
+	static bool isNone(RowEntry const & entry);
 	/// Returns true if TextEntry is devoid of information
-	static bool isNone(TextEntry entry);
+	static bool isNone(TextEntry const & entry);
 
 private:
 	/// id/pos correspondence for a single row
@@ -126,11 +126,11 @@ public:
 	void reset();
 
 	/// for debugging purposes
-	static docstring asString(RowEntry entry);
+	static docstring asString(RowEntry const & entry);
 
 	/// Defines the row information for the current line
 	/// returns true if this entry will appear on the current row
-	bool start(RowEntry entry);
+	bool start(RowEntry const & entry);
 	/// Defines the paragraph and position for the current line
 	/// returns true if this entry will appear on the current row
 	bool start(int id, pos_type pos);
@@ -215,7 +215,7 @@ private:
 	static bool sameParOrInsetMath(RowEntry entry1, RowEntry entry2);
 	/// computes the distance in pos or cell index
 	/// assumes it is the sameParOrInsetMath
-	static int comparePos(RowEntry entry1, RowEntry entry2);
+	static int comparePos(RowEntry const & entry1, RowEntry const & entry2);
 
 };
 
@@ -289,7 +289,7 @@ public:
 };
 
 
-bool operator==(TexRow::RowEntry entry1, TexRow::RowEntry entry2);
+bool operator==(TexRow::RowEntry const & entry1, TexRow::RowEntry const & entry2);
 
 
 } // namespace lyx

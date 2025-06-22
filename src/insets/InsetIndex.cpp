@@ -972,7 +972,7 @@ bool InsetIndex::hasSortKey() const
 }
 
 
-bool InsetIndex::macrosPossible(string const type) const
+bool InsetIndex::macrosPossible(string const & type) const
 {
 	if (type != "see" && type != "seealso"
 	    && type != "sortkey" && type != "subentry")

@@ -623,7 +623,7 @@ docstring Counters::counterLabel(docstring const & format,
 
 namespace {
 
-docstring getFormattedLabel(docstring in, bool const lc, bool const pl)
+docstring getFormattedLabel(docstring const & in, bool const lc, bool const pl)
 {
 	if (contains(in, from_ascii("|"))) {
 		docstring res;

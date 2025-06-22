@@ -204,7 +204,7 @@ public:
 	///
 	std::set<std::string> const & required() const { return required_; }
 	///
-	bool requiresFeature(std::string const f) const;
+	bool requiresFeature(std::string const & f) const;
 	///
 	bool isMultiPar() const { return multipar_; }
 	///

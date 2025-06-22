@@ -104,7 +104,7 @@ static std::map<string, string> latex_to_xml_entities = {
 };
 
 
-docstring map_latex_to(docstring latex)
+static docstring map_latex_to(docstring const & latex)
 {
 	auto mapping = latex_to_xml_entities.find(to_ascii(latex));
 	if (mapping != latex_to_xml_entities.end()) {

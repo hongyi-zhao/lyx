@@ -1574,10 +1574,10 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 			// time through the loop. If so, then we do not have anything
 			// with which to compare.
 			if (last != bimap_.end()
-			    && entry.getAuthorOrEditorList() == last->second.getAuthorOrEditorList()
-			    // we access the year via getYear() so as to get it from the xref,
-			    // if we need to do so
-			    && getYear(entry.key()) == getYear(last->second.key())) {
+			     && entry.getAuthorOrEditorList() == last->second.getAuthorOrEditorList()
+			     // we access the year via getYear() so as to get it from the xref,
+			     // if we need to do so
+			     && getYear(entry.key()) == getYear(last->second.key())) {
 				if (modifier == 0) {
 					// so the last one should have been 'a'
 					last->second.setModifier('a');
@@ -1626,7 +1626,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 
 
 CitationStyle citationStyleFromString(string const & command,
-				      BufferParams const & params)
+                                      BufferParams const & params)
 {
 	CitationStyle cs;
 	if (command.empty())
@@ -1662,8 +1662,8 @@ string citationStyleToString(const CitationStyle & cs, bool const latex)
 }
 
 
-void authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream & xs, Buffer const & buf,
-                                 const std::string type)
+void authorsToDocBookAuthorGroup(docstring const & authorsString, XMLStream & xs,
+                                 Buffer const & buf, const std::string & type)
 {
 	// This function closely mimics getAuthorList, but produces DocBook instead of text.
 	// It has been greatly simplified, as the complete list of authors is always produced. No separators are required,

@@ -201,9 +201,9 @@ public:
 	/// returns \c true if the buffer contains a Wed document
 	bool isLiterate() const;
 	/// Is this package option requested?
-	bool hasPackageOption(std::string const package, std::string const opt) const;
+	bool hasPackageOption(std::string const & package, std::string const & opt) const;
 	/// Get the options requested for a given package
-	std::string getPackageOptions(std::string const package) const;
+	std::string getPackageOptions(std::string const & package) const;
 	/// Do we use the bidi package (which does some reordering and stuff)?
 	bool useBidiPackage(OutputParams const & rp) const;
 
@@ -702,7 +702,7 @@ private:
 	/// Split bibliography?
 	bool use_bibtopic;
 	/// Return the actual or an appropriate fallback bibtex command
-	std::string const getBibtexCommand(std::string const cmd,
+	std::string const getBibtexCommand(std::string const & cmd,
 					   bool const warn) const;
 	///
 	DocumentClassPtr doc_class_;

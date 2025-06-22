@@ -87,16 +87,15 @@ void focusAndHighlight(QAbstractItemView * w);
 
 // Sets all widget in highlighted in highlighted colour, and their children in
 // plain in standard colours.
-void setMessageColour(std::list<QWidget *> highlighted,
-                      std::list<QWidget *> plain);
+void setMessageColour(std::list<QWidget *> const & highlighted,
+                      std::list<QWidget *> const & plain);
 
 /// Shows a directory in OSs file browser
 void showDirectory(support::FileName const & directory);
 /// handle request for showing citation content - shows pdf/ps or
 /// web page in target; external script can be used for pdf/ps view
 /// \p docpath holds the document path
-void showTarget(std::string const & target,
-		Buffer const & buf);
+void showTarget(std::string const & target, Buffer const & buf);
 
 } // namespace frontend
 

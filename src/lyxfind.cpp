@@ -234,7 +234,7 @@ private:
 };
 
 
-int findForward(DocIterator & cur, DocIterator const endcur,
+int findForward(DocIterator & cur, DocIterator const & endcur,
 		MatchString const & match,
 		bool find_del = true, bool onlysel = false)
 {
@@ -252,7 +252,7 @@ int findForward(DocIterator & cur, DocIterator const endcur,
 }
 
 
-int findBackwards(DocIterator & cur, DocIterator const endcur,
+int findBackwards(DocIterator & cur, DocIterator const & endcur,
 		  MatchString const & match,
 		  bool find_del = true, bool onlysel = false)
 {
@@ -624,7 +624,7 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 	bool wrap;
 	bool instant;
 	bool onlysel;
-	
+
 	docstring search = string2find(ev.argument(), casesensitive,
 				       matchword, forward, wrap, instant, onlysel);
 
@@ -1026,7 +1026,7 @@ string correctRegex(string t, bool withformat)
 /// Within \regexp{} apply get_lyx_unescapes() only (i.e., preserve regexp semantics of the string),
 /// while outside apply get_lyx_unescapes()+get_regexp_escapes().
 /// If match_latex is true, then apply regexp_latex_escapes() to \regexp{} contents as well.
-string escape_for_regex(string s, bool withformat)
+string escape_for_regex(string const & s, bool withformat)
 {
 	size_t lastpos = 0;
 	string result = "";
@@ -1225,7 +1225,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 	return ods.str();
 }
 
-static string latexNamesToUtf8(docstring strIn, bool withformat)
+static string latexNamesToUtf8(docstring const & strIn, bool withformat)
 {
 	string addtmp = to_utf8(strIn);
 	static regex const rmAcc("(\\\\)*("
@@ -1654,7 +1654,7 @@ void Intervall::addIntervall(int low, int upper)
 	}
 }
 
-static void buildaccent(string n, string param, string values)
+static void buildaccent(string n, string param, string const & values)
 {
 	stringstream s(n);
 	string name;
@@ -1725,7 +1725,7 @@ static string getutf8(unsigned uchar)
 	return(ret);
 }
 
-static void addAccents(string latex_in, string unicode_out)
+static void addAccents(string latex_in, string const & unicode_out)
 {
 	latex_in = latex_in.substr(1);
 	AccentsIterator it_ac = accents.find(latex_in);
@@ -2412,7 +2412,7 @@ private:
 	Intervall interval_;
 	void buildKeys(bool);
 	void buildEntries(bool);
-	void makeKey(const string &, KeyInfo, bool isPatternString);
+	void makeKey(const string &, KeyInfo const & , bool isPatternString);
 	void processRegion(int start, int region_end); /*  remove {} parts */
 	void removeHead(KeyInfo const &, int count=0);
 
@@ -3004,7 +3004,7 @@ void LatexInfo::buildEntries(bool isPatternString)
 	}
 }
 
-void LatexInfo::makeKey(const string &keysstring, KeyInfo keyI, bool isPatternString)
+void LatexInfo::makeKey(const string & keysstring, KeyInfo const & keyI, bool isPatternString)
 {
 	stringstream s(keysstring);
 	string key;
@@ -3631,7 +3631,7 @@ int LatexInfo::process(ostringstream & os, KeyInfo const & actual )
 	return nextKeyIdx;
 }
 
-string splitOnKnownMacros(string par, bool isPatternString)
+string splitOnKnownMacros(string const & par, bool isPatternString)
 {
 	ostringstream os;
 	LatexInfo li(par, isPatternString);
@@ -4443,7 +4443,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 
 #if defined(ResultsDebug)
 // Debugging output
-static void displayMResult(MatchResult &mres, string from, DocIterator & cur)
+static void displayMResult(MatchResult &mres, string const & from, DocIterator & cur)
 {
 	LYXERR0( "from:\t\t\t" << from);
 	string status;

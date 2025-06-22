@@ -3423,7 +3423,7 @@ bool BufferParams::isLiterate() const
 }
 
 
-bool BufferParams::hasPackageOption(string const package, string const opt) const
+bool BufferParams::hasPackageOption(string const & package, string const & opt) const
 {
 	for (auto const & p : documentClass().packageOptions())
 		if (package == p.first && opt == p.second)
@@ -3432,7 +3432,7 @@ bool BufferParams::hasPackageOption(string const package, string const opt) cons
 }
 
 
-string BufferParams::getPackageOptions(string const package) const
+string BufferParams::getPackageOptions(string const & package) const
 {
 	for (auto const & p : documentClass().packageOptions())
 		if (package == p.first)
@@ -4341,7 +4341,7 @@ bool BufferParams::isActiveCiteStyle(CitationStyle const & cs) const
 	return false;
 }
 
-string const BufferParams::getBibtexCommand(string const cmd, bool const warn) const
+string const BufferParams::getBibtexCommand(string const & cmd, bool const warn) const
 {
 	// split from options
 	string command_in;

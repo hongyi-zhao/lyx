@@ -231,7 +231,7 @@ bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 // label, thus: \prettyref{pfx:suffix}.
 //
 docstring InsetRef::getFormattedCmd(docstring const & ref,
-	vector<docstring> & label, docstring & prefix, string const xref_package,
+	vector<docstring> & label, docstring & prefix, string const & xref_package,
 	bool use_caps, bool use_range)
 {
 	docstring defcmd = from_ascii("\\ref");

@@ -511,7 +511,7 @@ bool FindAndReplaceWidget::findAndReplace(
 }
 
 
-docstring const FindAndReplaceWidget::checkState(string const s, bool const b)
+docstring const FindAndReplaceWidget::checkState(string const & s, bool const b)
 {
 	docstring res = from_ascii(s) + from_ascii(" ");
 	if (b)

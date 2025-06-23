@@ -857,7 +857,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				if (name.empty()) {
 					string s = "Could not read name for counter: `$$Token' "
 							+ lexrc.getString() + " is probably not valid UTF-8!";
-					lexrc.printError(s.c_str());
+					lexrc.printError(s);
 					Counter c;
 					// Since we couldn't read the name, we just scan the rest
 					// and discard it.

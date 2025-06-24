@@ -117,9 +117,9 @@ private:
 	int nwid(BufferView const &) const;
 	/// returns y offset for either superscript or subscript
 	int dy01(BufferView const &, int asc, int des, int what) const;
-	/// returns y offset for superscript
-	int dy0(BufferView const &) const;
 	/// returns y offset for subscript
+	int dy0(BufferView const &) const;
+	/// returns y offset for superscript
 	int dy1(BufferView const &) const;
 	/// returns x offset for superscript
 	int dx0(BufferView const & bv) const;

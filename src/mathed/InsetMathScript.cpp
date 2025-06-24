@@ -508,18 +508,12 @@ void InsetMathScript::write(TeXMathStream & os) const
 {
 	MathEnsurer ensurer(os);
 
-	if (!nuc().empty()) {
+	if (!nuc().empty())
 		os << nuc();
-		// Avoid double superscript errors (bug 1633)
-		if (os.latex() && hasUp() && nuc().back()->getChar() == '\'')
-			os << "{}";
-	} else if (os.firstitem())
+	else if (os.firstitem())
 		LYXERR(Debug::MATHED, "suppressing {} when writing");
 	else
 		os << "{}";
-
-	if (hasDown() /*&& !down().empty()*/)
-		os << "_{" << down() << '}';
 
 	if (hasUp() /*&& !up().empty()*/) {
 		// insert space if up() is empty or an empty brace inset
@@ -535,6 +529,12 @@ void InsetMathScript::write(TeXMathStream & os) const
 			if (os.latex())
 				os.useBraces(true);
 		}
+	}
+
+	if (hasDown() /*&& !down().empty()*/) {
+		os << "_{" << down() << '}';
+		if (os.latex())
+			os.useBraces(true);
 	}
 
 	if (lock_ && !os.latex())

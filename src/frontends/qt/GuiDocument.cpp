@@ -1893,7 +1893,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 void GuiDocument::checkOnClosing()
 {
-	if (!bc().policy().buttonStatus(ButtonPolicy::RESTORE))
+	if (buffer().isReadonly() || !bc().policy().buttonStatus(ButtonPolicy::RESTORE))
 		// nothing to do
 		return;
 

@@ -109,7 +109,7 @@ public:
 	///
 	static std::string params2string(InsetSpaceParams const &);
 	///
-	GlueLength length() const { return params_.length; }
+	GlueLength const & length() const { return params_.length; }
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const override;
 	/// unprotected spaces allow line breaking after them

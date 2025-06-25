@@ -267,7 +267,7 @@ shortintertext    intertext   forcetext
 #
 
 # When two codes n1|n2 are specified for charid, the the second one will
-# be used in display mode. This is only useful for mathop symbold (e.g.\sum).
+# be used in display mode. This is only useful for mathop symbols (e.g.\sum).
 
 #symbol            font   charid   charid-in-fallback-Xsymbol-font  math-class  XML-entity
 alpha              cmm         174  97 mathord    &#x3B1;

@@ -12,7 +12,6 @@
 
 HEADERS="\
   boost/assert.hpp \
-  boost/crc.hpp \
   "
 
 if [ -z $1 ]

@@ -126,11 +126,10 @@ FileName VCS::checkParentDirs(FileName const & start, std::string const & file)
 //
 /////////////////////////////////////////////////////////////////////
 
-RCS::RCS(FileName const & m, Buffer * b) : VCS(b)
+RCS::RCS(FileName const & m, Buffer * b) : VCS(b), master_(m)
 {
 	// Here we know that the buffer file is either already in RCS or
 	// about to be registered
-	master_ = m;
 	scanMaster();
 }
 
@@ -524,12 +523,10 @@ bool RCS::prepareFileRevisionEnabled()
 //
 /////////////////////////////////////////////////////////////////////
 
-CVS::CVS(FileName const & m, Buffer * b) : VCS(b)
+CVS::CVS(FileName const & m, Buffer * b) : VCS(b), master_(m), have_rev_info_(false)
 {
 	// Here we know that the buffer file is either already in CVS or
 	// about to be registered
-	master_ = m;
-	have_rev_info_ = false;
 	scanMaster();
 }
 

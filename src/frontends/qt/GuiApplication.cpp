@@ -2365,7 +2365,7 @@ string GuiApplication::inputLanguageCode() const
 
 void GuiApplication::onLocaleChanged()
 {
-	//LYXERR0("Change language to " << inputLanguage()->lang());
+	//LYXERR0("Change language to " << inputLanguageCode());
 	if (currentView() && currentView()->currentBufferView())
 		currentView()->currentBufferView()->cursor().setLanguageFromInput();
 }

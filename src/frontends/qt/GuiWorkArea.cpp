@@ -1340,7 +1340,9 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 void GuiWorkArea::inputMethodEvent(QInputMethodEvent * ev)
 {
-    Q_EMIT preeditChanged(ev);
+	// LYXERR0("preeditString: " << ev->preeditString()
+	// 	   << " commitString: " << ev->commitString());
+	Q_EMIT preeditChanged(ev);
 }
 
 

@@ -54,6 +54,9 @@ struct GuiInputMethod::Private
 
 	QInputMethod * sys_im_ = guiApp->inputMethod();
 	QLocale locale_;
+	/// if language should not use preedit in the math mode
+	bool preedit_not_in_math_ = false;
+
 	ColorCache & color_cache_ = guiApp->colorCache();
 	QColor font_color_;
 	QBrush font_brush_;
@@ -99,6 +102,8 @@ GuiInputMethod::GuiInputMethod(GuiWorkArea *parent)
 	        this, &GuiInputMethod::toggleInputMethodAcceptance);
 	connect(this, &GuiInputMethod::inputMethodStateChanged,
 	        d->sys_im_, &QInputMethod::update);
+	connect(d->sys_im_, &QInputMethod::localeChanged,
+	        this, &GuiInputMethod::onLocaleChanged);
 }
 
 GuiInputMethod::~GuiInputMethod()
@@ -109,13 +114,25 @@ GuiInputMethod::~GuiInputMethod()
 
 void GuiInputMethod::toggleInputMethodAcceptance(){
 	// note that d->cur_->inset() is a cache so it lags from actual key moves
-	if (d->cur_->inset().currentMode() == Inset::MATH_MODE ||
-	        guiApp->isInCommandMode())
+	if (d->preedit_not_in_math_ &&
+	        (d->cur_->inset().currentMode() == Inset::MATH_MODE ||
+	         guiApp->isInCommandMode()))
 		d->im_state_.enabled_ = false;
 	else
 		d->im_state_.enabled_ = true;
 
 	Q_EMIT inputMethodStateChanged(Qt::ImEnabled);
+}
+
+
+void GuiInputMethod::onLocaleChanged()
+{
+	QLocale lang = d->sys_im_->locale().language();
+	if (lang == QLocale::Chinese || lang == QLocale::Japanese ||
+	        lang == QLocale::Korean)
+		d->preedit_not_in_math_ = true;
+	else
+		d->preedit_not_in_math_ = false;
 }
 
 
@@ -490,7 +507,11 @@ std::array<int,2> GuiInputMethod::setCaretOffset(pos_type caret_pos){
 	}
 	// when preedit cursor is available, string fonts are all common
 	// so pick up the last one
-	QTextCharFormat & qtcf = d->style_.segments_.back().char_format_;
+	QTextCharFormat qtcf;
+	if (!d->style_.segments_.empty())
+		qtcf = d->style_.segments_.back().char_format_;
+	else
+		conformToSurroundingFont(qtcf);
 	QFontMetrics qfm(qtcf.font());
 	QString str_before_caret = "";
 

@@ -284,27 +284,11 @@ char * strerror(int n);
 
 #define BOOST_USER_CONFIG <config.h>
 
-#if !defined(ENABLE_ASSERTIONS)
-#  define BOOST_DISABLE_ASSERTS 1
-#endif
-#define BOOST_ENABLE_ASSERT_HANDLER 1
-
 #define BOOST_DISABLE_THREADS 1
-#define BOOST_NO_WREGEX 1
-#define BOOST_NO_WSTRING 1
 
 #ifdef __CYGWIN__
 #  define _DEFAULT_SOURCE
 #  define NOMINMAX
-#  define BOOST_POSIX 1
-#  define BOOST_POSIX_API 1
-#  define BOOST_POSIX_PATH 1
-#endif
-
-#ifdef __sparc__
-#  ifndef __BIG_ENDIAN__
-#    define __BIG_ENDIAN__ 1
-#  endif
 #endif
 
 #if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4

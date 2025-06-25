@@ -40,7 +40,7 @@ file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/regfiles")
 
 set(_depends)
 foreach(_src ${check_PROGRAMS})
-	sources(${_src} ${_src}.cpp dummy_functions.cpp boost.cpp)
+	sources(${_src} ${_src}.cpp dummy_functions.cpp)
 	string(REPLACE "check_" "" _srcx ${_src})
 	set(src_data_file "${TOP_SRC_DIR}/src/support/tests/regfiles/${_srcx}")
 	if (MSVC AND EXISTS "${src_data_file}.MSVC")

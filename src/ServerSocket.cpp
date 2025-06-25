@@ -25,10 +25,7 @@
 #include "support/debug.h"
 #include "support/environment.h"
 #include "support/FileName.h"
-#include "support/lassert.h"
 #include "support/socktools.h"
-
-#include <boost/assert.hpp>
 
 #include <cerrno>
 #include <cstring>
@@ -80,8 +77,8 @@ ServerSocket::ServerSocket(FileName const & addr)
 ServerSocket::~ServerSocket()
 {
 	if (fd_ != -1) {
-		BOOST_ASSERT (theApp());
-		theApp()->unregisterSocketCallback(fd_);
+		if (theApp())
+			theApp()->unregisterSocketCallback(fd_);
 		if (::close(fd_) != 0)
 			lyxerr << "lyx: Server socket " << fd_
 			       << " IO error on closing: " << strerror(errno)

@@ -45,8 +45,7 @@ check_PROGRAMS = \
 
 biblio_LDADD = $(ICONV_LIBS) $(ZLIB_LIBS)
 biblio_SOURCES = \
-	tests/biblio.cpp \
-	tests/boost.cpp
+	tests/biblio.cpp
 
 makeregfiles: ${check_PROGRAMS}
 	for all in ${check_PROGRAMS} ; do \

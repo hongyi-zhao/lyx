@@ -20,8 +20,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include <boost/assert.hpp>
-
 #include <iostream>
 
 #ifdef LYX_CALLSTACK_PRINTING
@@ -38,12 +36,18 @@ namespace lyx {
 using namespace std;
 using namespace support;
 
+// This is implemented in LyX.cpp
+void lyx_exit(int);
 
 void doAssertWithCallstack(bool value)
 {
 	if (!value) {
 		printCallStack();
-		BOOST_ASSERT(false);
+		// FIXME: by default we exit here but we could also inform the
+		// user about the assertion and do the emergency cleanup
+		// without exiting.
+		// FIXME: do we have a list of exit codes defined somewhere?
+		lyx::lyx_exit(1);
 	}
 }
 
@@ -59,7 +63,10 @@ void doAssert(char const * expr, char const * file, long line)
 void doAssertStatic(char const * expr, char const * file, long line)
 {
 	cerr << "ASSERTION " << expr << " VIOLATED IN " << file << ":" << line << endl;
-	BOOST_ASSERT(false);
+	// FIXME: by default we exit here but we could also inform the user
+	// about the assertion and do the emergency cleanup without exiting.
+	// FIXME: do we have a list of exit codes defined somewhere?
+	lyx::lyx_exit(1);
 }
 
 

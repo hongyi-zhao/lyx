@@ -1,5 +1,5 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 640
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -73,14 +73,24 @@ logicalmkup
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\crossref_package prettyref
+\use_formatted_ref 0
 \use_minted 0
 \use_lineno 0
-\notefontcolor #0000ff
+\customcolor lyxnotefontcolor 0000ff
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lyxnotefontcolor
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
 \index Index
 \shortcut idx
 \color #008000
 \end_index
+\spellchecker_ignore english namespaces
 \secnumdepth 4
 \tocdepth 2
 \paragraph_separation indent
@@ -102,6 +112,7 @@ logicalmkup
 \html_be_strict true
 \docbook_table_output 0
 \docbook_mathml_prefix 1
+\docbook_mathml_version 0
 \end_header
 
 \begin_body
@@ -112,7 +123,7 @@ Developing \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.4.x
+Version 2.5.x
 \end_layout
 
 \begin_layout Author
@@ -968,7 +979,6 @@ status open
 status open
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/trac/ticket/9794
 \end_layout
 
@@ -3582,7 +3592,6 @@ WILL_FAIL
 status collapsed
 
 \begin_layout Plain Layout
-
 https://cmake.org/cmake/help/v3.0/command/set_tests_properties.html
 \end_layout
 
@@ -5431,9 +5440,9 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-As of LyX 2.4.0,
- you can use features of C++11.
- Accordingly you have to use C++11 standard conforming compiler,
+As of LyX 2.5.0,
+ you can use features of C++17.
+ Accordingly you have to use C++17 standard conforming compiler,
  e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -5489,7 +5498,6 @@ Document all variables,
 status open
 
 \begin_layout Plain Layout
-
 https://www.stack.nl/~dimitri/doxygen/
 \end_layout
 
@@ -5658,12 +5666,10 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 ++T;
 \end_layout
 
 \begin_layout Plain Layout
-
 --U;
 \end_layout
 
@@ -5683,13 +5689,11 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 T++;
  // not used in LyX
 \end_layout
 
 \begin_layout Plain Layout
-
 U--;
  // not used in LyX
 \end_layout
@@ -5722,24 +5726,20 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 Container::iterator end = large.end();
 \end_layout
 
 \begin_layout Plain Layout
-
 for (Container::iterator it = large.begin();
  it != end;
  ++it) {
 \end_layout
 
 \begin_layout Plain Layout
-
 	...;
 \end_layout
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -5759,18 +5759,15 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 for (auto const & it :
  large) {
 \end_layout
 
 \begin_layout Plain Layout
-
 	...;
 \end_layout
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -5790,19 +5787,16 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 for (Container::iterator it = large.begin();
  it != large.end();
  ++it) {
 \end_layout
 
 \begin_layout Plain Layout
-
 	...;
 \end_layout
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -5865,7 +5859,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 T const add(...);
 \end_layout
 
@@ -5885,7 +5878,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 T add(...);
 \end_layout
 
@@ -5907,22 +5899,18 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 enum Foo {
 \end_layout
 
 \begin_layout Plain Layout
-
 	FOO_BAR1,
 \end_layout
 
 \begin_layout Plain Layout
-
 	FOO_BAR2
 \end_layout
 
 \begin_layout Plain Layout
-
 };
 \end_layout
 
@@ -5931,7 +5919,6 @@ enum Foo {
 \end_layout
 
 \begin_layout Plain Layout
-
 Foo f = ...;
 \end_layout
 
@@ -5940,59 +5927,48 @@ Foo f = ...;
 \end_layout
 
 \begin_layout Plain Layout
-
 switch (f) {
 \end_layout
 
 \begin_layout Plain Layout
-
 case FOO_BAR1:
 \end_layout
 
 \begin_layout Plain Layout
-
 	...;
 \end_layout
 
 \begin_layout Plain Layout
-
 	break;
 \end_layout
 
 \begin_layout Plain Layout
-
 case FOO_BAR2:
 \end_layout
 
 \begin_layout Plain Layout
-
 	...;
 \end_layout
 
 \begin_layout Plain Layout
-
 	break;
 \end_layout
 
 \begin_layout Plain Layout
-
 default:
  // not needed and would shadow a wrong use of Foo
 \end_layout
 
 \begin_layout Plain Layout
-
 	...;
 \end_layout
 
 \begin_layout Plain Layout
-
 	break;
  
 \end_layout
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -6008,12 +5984,10 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 int i = 0;
 \end_layout
 
 \begin_layout Plain Layout
-
 Class * ptr = nullptr;
 \end_layout
 
@@ -6025,12 +5999,10 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 int i {};
 \end_layout
 
 \begin_layout Plain Layout
-
 Class * ptr {};
 \end_layout
 
@@ -6097,7 +6069,6 @@ Strong guarantee:
 status open
 
 \begin_layout Plain Layout
-
 http://www.stlport.org/doc/exception_safety.html
 \end_layout
 
@@ -6167,12 +6138,10 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 int a;
 \end_layout
 
 \begin_layout Plain Layout
-
 int b;
 \end_layout
 
@@ -6192,7 +6161,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 int a,
  b;
  // not used in LyX
@@ -6218,12 +6186,10 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 string a = "Lars";
 \end_layout
 
 \begin_layout Plain Layout
-
 string b = "Gullik";
 \end_layout
 
@@ -6243,7 +6209,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 string a = "Lars",
  b = "Gullik";
  // not used in LyX
@@ -6314,12 +6279,10 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 char * p = "flop";
 \end_layout
 
 \begin_layout Plain Layout
-
 char & c = *p;
 \end_layout
 
@@ -6339,13 +6302,11 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 char *p = "flop";
  // not used in LyX
 \end_layout
 
 \begin_layout Plain Layout
-
 char &c = *p;
  // not used in LyX
 \end_layout
@@ -6367,7 +6328,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 char const * p;
 \end_layout
 
@@ -6387,7 +6347,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 const char * p;
  // not used in LyX
 \end_layout
@@ -6414,7 +6373,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 operator==(type)
 \end_layout
 
@@ -6434,7 +6392,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 operator == (type) // not used in LyX
 \end_layout
 
@@ -6465,7 +6422,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 void mangle()
 \end_layout
 
@@ -6485,7 +6441,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 void mangle () // not used in LyX
 \end_layout
 
@@ -6511,27 +6466,22 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 enum Foo {
 \end_layout
 
 \begin_layout Plain Layout
-
 	FOO_ONE = 1,
 \end_layout
 
 \begin_layout Plain Layout
-
 	FOO_TWO = 2,
 \end_layout
 
 \begin_layout Plain Layout
-
 	FOO_THREE = 3
 \end_layout
 
 \begin_layout Plain Layout
-
 };
 \end_layout
 
@@ -6551,27 +6501,22 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 enum class Foo {
 \end_layout
 
 \begin_layout Plain Layout
-
 	One = 1,
 \end_layout
 
 \begin_layout Plain Layout
-
 	Two = 2,
 \end_layout
 
 \begin_layout Plain Layout
-
 	Three = 3
 \end_layout
 
 \begin_layout Plain Layout
-
 };
 \end_layout
 
@@ -6587,7 +6532,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 enum { one = 1,
  two = 2,
  three 3 };
@@ -6610,27 +6554,22 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 enum {
 \end_layout
 
 \begin_layout Plain Layout
-
 One = 1,
 \end_layout
 
 \begin_layout Plain Layout
-
 Two = 2,
 \end_layout
 
 \begin_layout Plain Layout
-
 Three = 3
 \end_layout
 
 \begin_layout Plain Layout
-
 };
 \end_layout
 
@@ -6660,7 +6599,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 void * p = nullptr;
 \end_layout
 
@@ -6680,7 +6618,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 void * p = NULL;
  // not used in LyX
 \end_layout
@@ -6701,7 +6638,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 void * p = '
 \backslash
 0';
@@ -6724,7 +6660,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 void * p = 42 - 7 * 6;
  // not used in LyX
 \end_layout
@@ -6986,57 +6921,47 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 /**
 \end_layout
 
 \begin_layout Plain Layout
-
 * 
 \backslash
 file NewFile.cpp
 \end_layout
 
 \begin_layout Plain Layout
-
 * This file is part of LyX,
  the document processor.
 \end_layout
 
 \begin_layout Plain Layout
-
 * Licence details can be found in the file COPYING.
 \end_layout
 
 \begin_layout Plain Layout
-
 *
 \end_layout
 
 \begin_layout Plain Layout
-
 * 
 \backslash
 author Kaiser Sose
 \end_layout
 
 \begin_layout Plain Layout
-
 *
 \end_layout
 
 \begin_layout Plain Layout
-
 * Full author contact details are available
 \end_layout
 
 \begin_layout Plain Layout
-
 * in file CREDITS.
 \end_layout
 
 \begin_layout Plain Layout
-
 */
 \end_layout
 
@@ -7182,72 +7107,58 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 if (f needs to be virtual)
 \end_layout
 
 \begin_layout Plain Layout
-
 	make f a member function of C;
 \end_layout
 
 \begin_layout Plain Layout
-
 else if (f is operator>> or operator<<) {
 \end_layout
 
 \begin_layout Plain Layout
-
 	make f a non-member function;
 \end_layout
 
 \begin_layout Plain Layout
-
 	if (f needs access to non-public members of C)
 \end_layout
 
 \begin_layout Plain Layout
-
 		make f a friend of C;
 \end_layout
 
 \begin_layout Plain Layout
-
 } else if (f needs type conversions on its left-most argument) {
 \end_layout
 
 \begin_layout Plain Layout
-
 	make f a non-member function;
 \end_layout
 
 \begin_layout Plain Layout
-
 	if (f needs access to non-public members of C)
 \end_layout
 
 \begin_layout Plain Layout
-
 		make f a friend of C;
 \end_layout
 
 \begin_layout Plain Layout
-
 } else if (f can be implemented via C's public interface)
 \end_layout
 
 \begin_layout Plain Layout
-
 	make f a non-member function;
 \end_layout
 
 \begin_layout Plain Layout
-
 else
 \end_layout
 
 \begin_layout Plain Layout
-
 	make f a member function of C;
 \end_layout
 
@@ -7518,13 +7429,16 @@ Given that there seems to be an unconditional "typedef unsigned int quint32;" in
 \end_layout
 
 \begin_layout Standard
-The idea is to create something that's not compilable as soon as the condition is violated.
- There are lots of possibilities to achieve this,
- some examples follow:
-\end_layout
+The idea is to create something that does not compile as soon as the condition is violated.
+ In C++11 there's a 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Standard
-In C++11 there's a "built-in":
+built-in
+\begin_inset Quotes erd
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Standard
@@ -7534,7 +7448,6 @@ inline false
 status open
 
 \begin_layout Plain Layout
-
 static_assert(sizeof(int) == 4,
  "Funny platform")
 \end_layout
@@ -7545,133 +7458,7 @@ static_assert(sizeof(int) == 4,
 \end_layout
 
 \begin_layout Standard
-until then on namespace scope:
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-#include <boost/static_assert.hpp>
-\end_layout
-
-\begin_layout Plain Layout
-
-BOOST_STATIC_ASSERT(sizeof(int) == 4)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-or without boost:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-template<bool Condition>
-\end_layout
-
-\begin_layout Plain Layout
-
-struct static_assert_helper;
-\end_layout
-
-\begin_layout Plain Layout
-
-template <>
-\end_layout
-
-\begin_layout Plain Layout
-
-struct static_assert_helper<true> {};
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-enum {
-\end_layout
-
-\begin_layout Plain Layout
-
-	dummy = sizeof(static_assert_helper<sizeof(int) == 4>)
-\end_layout
-
-\begin_layout Plain Layout
-
-};
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-or somewhat brutish without templates,
- in any function:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=4"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-const int d = sizeof(int) - 4;
-\end_layout
-
-\begin_layout Plain Layout
-
-switch (0) { 
-\end_layout
-
-\begin_layout Plain Layout
-
-case 0:
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-case !(d*d):
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-	break;
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Any of them in a .cpp file will break compilation as soon as 
+This will break compilation as soon as 
 \begin_inset Flex Code
 status collapsed
 
@@ -7682,8 +7469,7 @@ sizeof(int)
 \end_inset
 
  is not equal 4.
- Personally I prefer something like the third version (or the first,
- if using C++11 is allowed).
+ 
 \end_layout
 
 \end_deeper
@@ -7704,7 +7490,6 @@ On dynamics_casts
 status open
 
 \begin_layout Plain Layout
-
 https://www.lyx.org/trac/changeset/573500dd04f154f27318ac5ec469a337f97fe9f0/lyxgit
 \end_layout
 

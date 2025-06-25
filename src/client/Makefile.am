@@ -24,7 +24,6 @@ lyxclient_LDFLAGS = -framework AppKit \
 endif
 
 SOURCEFILES = \
-  boost.cpp \
   client.cpp
 
 HEADERFILES =

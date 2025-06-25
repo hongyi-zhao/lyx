@@ -110,7 +110,6 @@ LYX_OBJS = \
 	../version.o
 
 tex2lyx_SOURCES = \
-	boost.cpp \
 	Context.cpp \
 	Context.h \
 	dummy_impl.cpp \

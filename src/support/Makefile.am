@@ -173,29 +173,25 @@ check_convert_LDADD = liblyxsupport.a $(LIBICONV) $(ZLIB_LIBS) $(QT_LIB) $(LIBSH
 check_convert_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_convert_SOURCES = \
 	tests/check_convert.cpp \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/dummy_functions.cpp
 
 check_filetools_LDADD = liblyxsupport.a $(LIBICONV) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI) @LIBS@
 check_filetools_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_filetools_SOURCES = \
 	tests/check_filetools.cpp \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/dummy_functions.cpp
 
 check_lstrings_LDADD = liblyxsupport.a $(LIBICONV) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI) @LIBS@
 check_lstrings_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_lstrings_SOURCES = \
 	tests/check_lstrings.cpp \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/dummy_functions.cpp
 
 check_trivstring_LDADD = liblyxsupport.a $(LIBICONV) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI) @LIBS@
 check_trivstring_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_trivstring_SOURCES = \
 	tests/check_trivstring.cpp \
-	tests/dummy_functions.cpp \
-	tests/boost.cpp
+	tests/dummy_functions.cpp
 
 makeregfiles: ${check_PROGRAMS}
 	for all in ${check_PROGRAMS} ; do \

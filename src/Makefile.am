@@ -116,7 +116,6 @@ liblyxcore_a_SOURCES = \
 	Author.h \
 	BiblioInfo.cpp \
 	BiblioInfo.h \
-	boost.cpp \
 	Box.h \
 	BranchList.cpp \
 	BranchList.h \
@@ -651,7 +650,6 @@ liblyxinsets_a_SOURCES = \
 ############################## Tests ##################################
 
 EXTRA_DIST += \
-	tests/boost.cpp \
 	tests/dummy_functions.cpp \
 	tests/regfiles/ExternalTransforms \
 	tests/regfiles/Length \
@@ -696,7 +694,6 @@ check_layout_CPPFLAGS = $(AM_CPPFLAGS)
 check_layout_LDADD = $(check_layout_LYX_OBJS) $(TESTS_LIBS)
 check_layout_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
-	tests/boost.cpp \
 	tests/check_layout.cpp \
 	tests/dummy_functions.cpp \
 	tests/dummy4checklayout.cpp
@@ -719,7 +716,6 @@ check_ExternalTransforms_CPPFLAGS = $(AM_CPPFLAGS)
 check_ExternalTransforms_LDADD = $(check_ExternalTransforms_LYX_OBJS) $(TESTS_LIBS)
 check_ExternalTransforms_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ExternalTransforms_SOURCES = \
-	tests/boost.cpp \
 	tests/check_ExternalTransforms.cpp \
 	tests/dummy_functions.cpp
 check_ExternalTransforms_LYX_OBJS = \
@@ -730,7 +726,6 @@ check_Length_CPPFLAGS = $(AM_CPPFLAGS)
 check_Length_LDADD = $(TESTS_LIBS)
 check_Length_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_Length_SOURCES = \
-	tests/boost.cpp \
 	tests/check_Length.cpp \
 	tests/dummy_functions.cpp
 
@@ -738,7 +733,6 @@ check_ListingsCaption_CPPFLAGS = $(AM_CPPFLAGS)
 check_ListingsCaption_LDADD = $(check_ListingsCaption_LYX_OBJS) $(TESTS_LIBS)
 check_ListingsCaption_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ListingsCaption_SOURCES = \
-	tests/boost.cpp \
 	tests/check_ListingsCaption.cpp \
 	tests/dummy_functions.cpp
 check_ListingsCaption_LYX_OBJS =

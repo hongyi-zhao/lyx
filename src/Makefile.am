@@ -3,7 +3,7 @@ include $(top_srcdir)/config/common.am
 ############################### LyX ###############################
 
 AM_CPPFLAGS += -I$(top_srcdir)/src
-AM_CPPFLAGS += $(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES)
+AM_CPPFLAGS += $(ICONV_INCLUDES) $(ZLIB_INCLUDES)
 AM_CPPFLAGS += $(ENCHANT_CFLAGS) $(HUNSPELL_CFLAGS) $(MYTHES_INCLUDES)
 AM_CPPFLAGS += $(NOD_INCLUDES) $(QT_CPPFLAGS) $(QT_CORE_INCLUDES)
 

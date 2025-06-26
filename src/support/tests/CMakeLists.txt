@@ -14,7 +14,6 @@ macro(sources _program)
 	set(${_program}_SOURCES ${_tmplist})
 	add_executable(${_program} ${_tmplist})
 	target_link_libraries(${_program} support
-		${Lyx_Boost_Libraries}
 		${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
 		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
 	lyx_target_link_libraries(${_program} Magic)

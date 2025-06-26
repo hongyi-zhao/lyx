@@ -80,13 +80,9 @@
 #undef HAVE_MKDIR // use _mkdir instead
 #endif
 
-#define BOOST_ALL_NO_LIB 1
-
 #ifdef _DEBUG
 #  define ENABLE_ASSERTIONS 1
 #endif
-
-//#define BOOST_DISABLE_THREADS 1
 
 #ifdef __CYGWIN__
 #  define _DEFAULT_SOURCE

@@ -27,8 +27,7 @@ liblyxsupport_a_DEPENDENCIES = $(MOCEDFILES)
 #
 ##################################################################
 
-AM_CPPFLAGS += -I$(srcdir)/.. \
-	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES) \
+AM_CPPFLAGS += -I$(srcdir)/.. $(ICONV_INCLUDES) $(ZLIB_INCLUDES) \
 	$(NOD_INCLUDES) $(QT_CPPFLAGS) $(QT_INCLUDES)
 
 liblyxsupport_a_SOURCES = \

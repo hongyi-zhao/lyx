@@ -242,7 +242,7 @@ Cross-Compiling on unix with MXE using autotools
 	./autogen.sh
 	mkdir builddir-mingw
 	cd builddir-mingw
-	PATH="/usr/lib/mxe/usr/bin:$PATH" ../configure --host=x86-64-w64-mingw32.shared --with-qt-dir=/usr/lib/mxe/usr/x86_64-w64-mingw32.shared/qt5 --enable-qt5 --with-included-boost --with-included-hunspell --with-included-mythes --disable-debug --enable-optimization --prefix=/mingw64
+	PATH="/usr/lib/mxe/usr/bin:$PATH" ../configure --host=x86-64-w64-mingw32.shared --with-qt-dir=/usr/lib/mxe/usr/x86_64-w64-mingw32.shared/qt5 --enable-qt5 --with-included-hunspell --with-included-mythes --disable-debug --enable-optimization --prefix=/mingw64
 	PATH="/usr/lib/mxe/usr/bin:$PATH" make
 	PATH="/usr/lib/mxe/usr/bin:$PATH" DESTDIR=/tmp/lyxinstall make install
 	This uses the paths from the 64bit shared MXE version installed from .deb packages.

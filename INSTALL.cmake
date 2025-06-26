@@ -173,7 +173,6 @@ Build options
 
     # GCC specific 
     -- LYX_PROFILE              = OFF    : Build with options for gprof
-    -- LYX_EXTERNAL_BOOST       = OFF    : Use external boost
     -- LYX_PROGRAM_SUFFIX       = ON     : Append version suffix to binaries
     -- LYX_DEBUG_GLIBC          = OFF    : Enable libstdc++ debug mode
     -- LYX_DEBUG_GLIBC_PEDANTIC = OFF    : Enable libstdc++ pedantic debug mode
@@ -246,7 +245,7 @@ Visual Studio C++
     * for the 'Debug' and 'Release' build all precompiled headers are enabled
       to compile without pch (non file merge mode) This could be used to check
       if all necessary headers are included.
-        * use 'MinSizeRel' which only precompiles the STL and Boost headers
+        * use 'MinSizeRel' which only precompiles the STL
         * use 'RelWithDebInfo' which does not use any precompiled headers
 
 

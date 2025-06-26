@@ -151,7 +151,7 @@ protected Q_SLOTS:
 	void connectToFileMonitorGuard();
 
 private:
-	/// boost signal
+	/// nod signal
 	sig fileChanged_;
 	/// the unique watch for our file
 	std::shared_ptr<FileMonitorGuard> const monitor_;

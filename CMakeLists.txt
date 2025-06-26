@@ -236,7 +236,6 @@ LYX_COMBO(EXTERNAL_MYTHES   "OFF := Build 3rdparty lib mytheslib" AUTO OFF ON)
 
 # GCC specific
 LYX_OPTION(PROFILE              "Build with options for gprof" ${DefaultLyxProfile} GCC)
-LYX_OPTION(EXTERNAL_BOOST       "Use external boost" ${DefaultExternalLibs} GCC)
 LYX_OPTION(PROGRAM_SUFFIX       "Append version suffix to binaries" ON GCC)
 LYX_OPTION(DEBUG_GLIBC          "Enable libstdc++ debug mode" OFF GCC)
 LYX_OPTION(DEBUG_GLIBC_PEDANTIC "Enable libstdc++ pedantic debug mode" OFF GCC)
@@ -322,11 +321,6 @@ if (LYX_ENABLE_VALGRIND_TESTS)
 	if (NOT VALGRIND_EXECUTABLE)
 		message(FATAL_ERROR "Cannot use valgrind tests, executable valgrind is missing. Please disable LYX_ENABLE_VALGRIND_TESTS")
 	endif()
-endif()
-if (LYX_DEBUG_GLIBC OR LYX_DEBUG_GLIBC_PEDANTIC OR LYX_STDLIB_DEBUG)
-  if (LYX_EXTERNAL_BOOST)
-    message(FATAL_ERROR "Using external boost not compatible with debug mode for stdlib")
-  endif()
 endif()
 
 if(LYX_DMG)
@@ -985,11 +979,6 @@ if(NOT LYX_EXTERNAL_DTL)
 endif()
 
 # Set only include path.
-# Use internal boost, which is known to exist
-# we don't need any libraries
-set(Lyx_Boost_Libraries)
-add_definitions(-DBOOST_USER_CONFIG=<config.h>)
-include_directories(${TOP_SRC_DIR}/3rdparty/boost)
 
 include_directories(${TOP_SRC_DIR}/3rdparty/nod)
 

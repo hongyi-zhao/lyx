@@ -380,7 +380,8 @@ void GuiInputMethod::setPreeditStyle(
 			char_format.setFontUnderline(true);
 			start = focus_style->start;
 			length = (size_type)focus_style->length;
-		} else if (!d->is_cjk_locale && !d->preedit_str_.empty()) {
+		} else if (!d->is_cjk_locale && !d->preedit_str_.empty() &&
+		           d->style_.segments_.empty()) {
 			// dead keys on MacOS give no char format having preedit strings
 			length = d->preedit_str_.length();
 		} else
@@ -400,13 +401,6 @@ void GuiInputMethod::setTextFormat(const QInputMethodEvent::Attribute & it,
 {
 	// get LyX's color setting
 	QTextCharFormat char_format = it.value.value<QTextCharFormat>();
-	QTextCharFormat lyx_cf;
-	QBrush fg_brush(guiApp->colorCache().get(Color_foreground));
-	QBrush bg_brush(guiApp->colorCache().get(Color_background));
-	lyx_cf.setForeground(fg_brush);
-	lyx_cf.setBackground(bg_brush);
-	// merge into IM's specification (lyx_cf has priority)
-	char_format.merge(lyx_cf);
 
 	LYXERR(Debug::GUI,
 	       "QInputMethodEvent::TextFormat start: " << it.start <<

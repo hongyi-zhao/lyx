@@ -55,7 +55,7 @@ struct GuiInputMethod::Private
 	QInputMethod * sys_im_ = guiApp->inputMethod();
 	QLocale locale_;
 	/// if language should not use preedit in the math mode
-	bool preedit_not_in_math_ = false;
+	bool is_cjk_locale = false;
 
 	ColorCache & color_cache_ = guiApp->colorCache();
 	QColor font_color_;
@@ -114,7 +114,7 @@ GuiInputMethod::~GuiInputMethod()
 
 void GuiInputMethod::toggleInputMethodAcceptance(){
 	// note that d->cur_->inset() is a cache so it lags from actual key moves
-	if (d->preedit_not_in_math_ &&
+	if (d->is_cjk_locale &&
 	        (d->cur_->inset().currentMode() == Inset::MATH_MODE ||
 	         guiApp->isInCommandMode()))
 		d->im_state_.enabled_ = false;
@@ -130,9 +130,9 @@ void GuiInputMethod::onLocaleChanged()
 	QLocale lang = d->sys_im_->locale().language();
 	if (lang == QLocale::Chinese || lang == QLocale::Japanese ||
 	        lang == QLocale::Korean)
-		d->preedit_not_in_math_ = true;
+		d->is_cjk_locale = true;
 	else
-		d->preedit_not_in_math_ = false;
+		d->is_cjk_locale = false;
 }
 
 
@@ -368,20 +368,26 @@ void GuiInputMethod::setPreeditStyle(
 	d->im_state_.edit_mode_ =
 	        (d->style_.segments_.size() == 0 && focus_style != nullptr)
 	        || (focus_style != nullptr && focus_style->length == 0)
-	        || (focus_style == nullptr && d->style_.segments_.size() == 1);
+	        || (focus_style == nullptr && d->style_.segments_.size() <= 1);
 
 	if (d->im_state_.edit_mode_) {
 		LYXERR(Debug::DEBUG, "preedit is in the edit mode");
+		QTextCharFormat char_format;
+		int start = 0;
+		size_type length = 0;
 		if (focus_style != nullptr && focus_style->length != 0) {
-			QTextCharFormat char_format =
-			        focus_style->value.value<QTextCharFormat>();
-			conformToSurroundingFont(char_format);
+			char_format = focus_style->value.value<QTextCharFormat>();
 			char_format.setFontUnderline(true);
-
-			PreeditSegment seg = {focus_style->start,
-			                      (size_type)focus_style->length, char_format};
-			d->style_.segments_.push_back(seg);
-		}
+			start = focus_style->start;
+			length = (size_type)focus_style->length;
+		} else if (!d->is_cjk_locale && !d->preedit_str_.empty()) {
+			// dead keys on MacOS give no char format having preedit strings
+			length = d->preedit_str_.length();
+		} else
+			return;
+		conformToSurroundingFont(char_format);
+		PreeditSegment seg = {start, length, char_format};
+		d->style_.segments_.push_back(seg);
 	} else {
 		LYXERR(Debug::DEBUG, "preedit is in the completing mode");
 		d->style_.caret_visible_ = false;
@@ -476,10 +482,17 @@ void GuiInputMethod::conformToSurroundingFont(QTextCharFormat & char_format) {
 	char_format.setFontWeight(surrounding_font.weight());
 
 	// set font italic to fit surrounding text
-	if(!char_format.fontItalic())
+	if (!char_format.fontItalic())
 		char_format.setFontItalic(surrounding_font.italic());
 	else
 		char_format.setFontItalic(!surrounding_font.italic());
+
+	// set font color
+	if (char_format.foreground().style() == Qt::NoBrush) {
+		ColorCache cc;
+		char_format.setForeground(
+		    cc.get(d->cur_->real_current_font.fontInfo().realColor(), false));
+	}
 
 }
 
@@ -1090,12 +1103,18 @@ void GuiInputMethod::setSurroundingText(const Cursor & cur) {
 			++insets_before_cur;
 	}
 
-	d->im_state_.text_before_ =
-	        partext.substr(0, *d->cur_pos_ptr_ - insets_before_cur);
-	d->im_state_.text_after_  =
-	        partext.substr(*d->cur_pos_ptr_ - insets_before_cur);
-	d->im_state_.surrounding_text_ =
-	        d->im_state_.text_before_ + d->im_state_.text_after_;
+	if (*d->cur_pos_ptr_ >= insets_before_cur) {
+		d->im_state_.text_before_ =
+				partext.substr(0, *d->cur_pos_ptr_ - insets_before_cur);
+		d->im_state_.text_after_  =
+				partext.substr(*d->cur_pos_ptr_ - insets_before_cur);
+		d->im_state_.surrounding_text_ =
+		        d->im_state_.text_before_ + d->im_state_.text_after_;
+	} else {
+		d->im_state_.text_before_.clear();
+		d->im_state_.text_after_  = partext;
+		d->im_state_.surrounding_text_ = partext;
+	}
 
 	LYXERR(Debug::DEBUG, "surrounding text before cursor = " <<
 	       d->im_state_.text_before_);

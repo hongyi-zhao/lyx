@@ -2211,7 +2211,7 @@ docstring const i18npreamble(docstring const & templ, Language const * lang,
 	string const s2 = "\xf3\xb0\x80\x81"; // U+F0001
 	// FIXME UNICODE
 	// lyx::regex is not unicode-safe.
-	// Should use QRegExp or (boost::u32regex, but that requires ICU)
+	// Could use QRegularExpression instead.
 	static regex const reg("_\\(([^\\)]+)\\)");
 	smatch sub;
 	while (regex_search(preamble, sub, reg)) {

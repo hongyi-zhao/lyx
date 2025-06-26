@@ -107,6 +107,8 @@ Maxima
 \family default
 ) which might give you an idea what is working.
  It also help us to keep track of things which work (or worked).
+ Feel free to send us more examples,
+ especially for octave or mathematica.
 \end_layout
 
 \begin_layout Section
@@ -142,6 +144,13 @@ Commands that work fine:
 
 \begin_layout Enumerate
 \begin_inset Formula $\sum_{i=1}^{\infty}\left(\frac{1}{2}\right)^{i}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\prod_{k=1}^{5}k=120$
 \end_inset
 
 
@@ -301,13 +310,6 @@ Note:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $trigrat\left(\frac{\sin(3\cdot a)}{\sin(a+\pi/3)}\right)=\frac{\sin\left(3\,a\right)}{\sin\left(\frac{\pi+3\,a}{3}\right)}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
 \begin_inset Formula $trigrat(\sin(3\cdot a)/\sin(a+\pi/3))=\sqrt{3}\,\sin\left(2\,a\right)+\cos\left(2\,a\right)-1$
 \end_inset
 
@@ -321,41 +323,8 @@ Note:
 
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Some things that don't work:
-\end_layout
-
-\begin_layout Standard
-There seems to be a general problem with LyX's sending special mathematical constants to maxima (%pi,
- %e,
- %i,
- %phi,
- %gamma etc.
- in maxima notation).
- Consequently,
- basic operations as well as functions like 
-\begin_inset Formula $polarform$
-\end_inset
-
- and 
-\begin_inset Formula $rectform$
-\end_inset
-
- for representing complex numbers do not work well.
- 
-\end_layout
-
 \begin_layout Enumerate
-\begin_inset Formula $(1+\%i)*(1-\%i)$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $polarform(1+i)=e^{i\,{\rm atan2}\left(0,i+1\right)}\,\left|i+1\right|$
+\begin_inset Formula $polarform(1+\%i)=\sqrt{2}\,e^{\frac{i\,\pi}{4}}$
 \end_inset
 
 
@@ -368,34 +337,15 @@ There seems to be a general problem with LyX's sending special mathematical cons
 
 \end_layout
 
-\begin_layout Enumerate
-\begin_inset Formula $trigrat\left(\frac{\sin(3\cdot a)}{\sin(a+\%\pi/3)}\right)=\sqrt{3}\,\sin\left(2\,a\right)+\cos\left(2\,a\right)-1$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $trigrat\left(\frac{\sin(3\cdot a)}{\sin(a+\pi/3)}\right)=\frac{\sin\left(3\,a\right)}{\sin\left(\frac{\pi+3\,a}{3}\right)}$
-\end_inset
-
- (
-\begin_inset Formula $\pi$
-\end_inset
-
- does not seem to work here but 
-\begin_inset Formula $\%\pi$
-\end_inset
-
- does.)
-\end_layout
-
 \begin_layout Section
 Octave
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $rand(2,2)$
+\begin_inset Formula $rand(2,2)=\left(\begin{array}{cc}
+0.7397 & 0.5357\\
+0.4950 & 0.2038
+\end{array}\right)$
 \end_inset
 
 

@@ -42,7 +42,7 @@ typedef std::unique_ptr<ActiveFileMonitor> ActiveFileMonitorPtr;
 ///
 /// Watch a file:
 ///   FileMonitorPtr monitor = FileSystemWatcher::monitor(file_with_path);
-///   monitor.connect(...); //(using boost::signals2), or:
+///   monitor.connect(...); //(using nod), or:
 ///   connect(monitor, SIGNAL(fileChanged()),...); // (using Qt)
 ///
 /// Remember that a unique_ptr is automatically deleted at the end of a scope if

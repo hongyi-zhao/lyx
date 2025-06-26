@@ -26,6 +26,7 @@
 
 set -o nounset
 
+LOGS_D=../"build-logs"
 function checkTerm() {
   # check if the column is 0 and if not start a new line (useful bc of the progress bar).
   # based on code from: http://stackoverflow.com/questions/2575037/how-to-get-the-cursor-position-in-bash
@@ -428,8 +429,8 @@ fi
 
 
 echo "$(ECHOPREFIX)removing previous build logs..."
-[ -d ../build-logs ] && rm -rf ../build-logs
-mkdir ../build-logs
+[ -d "${LOGS_D}" ] && rm -rf "${LOGS_D}"
+mkdir "${LOGS_D}"
 
 # Start timing here for profiling.
 begin_chain="$(date +%s)"
@@ -464,12 +465,12 @@ if [ "${automake}" = "1" ]; then
   fi
 
   echo "$(ECHOPREFIX)running autogen..."
-  ./autogen.sh > ../build-logs/autogen 2>&1 \
+  ./autogen.sh > "${LOGS_D}/autogen" 2>&1 \
     || { echo "$(ERRORPREFIX)running autogen.sh" >&2; exit 1; }
 
   echo "$(ECHOPREFIX)running configure..."
   # echo "configure options are: ${configure_options}"
-  ./configure ${configure_options} > ../build-logs/configure 2>&1 \
+  ./configure ${configure_options} > "${LOGS_D}/configure" 2>&1 \
     || { echo "$(ERRORPREFIX)running configure" >&2; exit 1; }
 else
   # this check needs to be done before cd'ing to build dir (or need to cd back)
@@ -667,8 +668,8 @@ else
 fi
 
 echo "$(ECHOPREFIX)running make..."
-echo "$(ECHOPREFIX)building with ${njobs} core(s)" > ../build-logs/make
-make -j${njobs} >> ../build-logs/make 2>&1
+echo "$(ECHOPREFIX)building with ${njobs} core(s)" > "${LOGS_D}/make"
+make -j${njobs} >> "${LOGS_D}/make" 2>&1
 make_ret=$?
 if [ "${make_ret}" != 0 ]; then
   echo "$(ERRORPREFIX)running make" >&2
@@ -695,7 +696,7 @@ if [ "${patch_old}" != "1" ]; then
   # (--strict does not do it). We could instead propose to write a wrapper script
   # for msgmerge that checks for this output (i.e., upstream this check to theLyX
   # build scripts).
-  if grep "warning: internationalized messages should not contain" ../build-logs/make; then
+  if grep "warning: internationalized messages should not contain" "${LOGS_D}/make"; then
     echo "$(ERRORPREFIX)invalid string(s) in po file(s). See grepped lines just above." >&2
     exit 1
   fi
@@ -783,7 +784,7 @@ fi
 PYTHON_EXEC="python3"
 
 cd "${LYX_USER_DIR}"
-${PYTHON_EXEC} -tt "${gitRepoDIR}/lib/configure.py" > ../build-logs/reconfigure 2>&1 \
+${PYTHON_EXEC} -tt "${gitRepoDIR}/lib/configure.py" > "${LOGS_D}/reconfigure" 2>&1 \
   || { echo "$(WARNINGPREFIX)reconfigure failed." >&2; exit 1; }
 
 LYX_USER_DIR_NOAUTH="${LYX_USER_DIR}-noauth"

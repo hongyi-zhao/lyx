@@ -1827,7 +1827,8 @@ bool Cursor::macroModeClose(bool cancel)
 		                          || it->second.inset == "oldfont"
 		                          || it->second.inset == "textsize"
 		                          || it->second.inset == "mbox"
-		                          || it->second.inset == "intertext"));
+		                          || it->second.inset == "intertext"
+		                          || it->second.name == "underbar"));
 	bool ert_macro = !user_macro && it == words.end() && atomAsMacro;
 
 	if (in && in->currentMode() == Inset::TEXT_MODE

@@ -16,9 +16,8 @@
 #ifdef USE_WCHAR_T
 
 // Prefer this if possible because GNU libstdc++ has usable
-// std::ctype<wchar_t> locale facets but not
-// std::ctype<boost::uint32_t>. gcc older than 3.4 is also missing
-// usable std::char_traits<boost::uint32_t>.
+// std::ctype<wchar_t> locale facets but maybe not
+// std::ctype<std::uint32_t>.
 namespace lyx { typedef wchar_t char_type; }
 
 #else

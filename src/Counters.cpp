@@ -584,8 +584,7 @@ docstring Counters::counterLabel(docstring const & format,
 {
 	docstring label = format;
 
-	// FIXME: Using regexps would be better, but we compile boost without
-	// wide regexps currently.
+	// FIXME: Using regexps would be better, but wide regexps are utf16 on windows.
 	docstring const the = from_ascii("\\the");
 	while (true) {
 		//lyxerr << "label=" << label << endl;

@@ -1394,10 +1394,6 @@ template<typename String> vector<String> const
 getVectorFromStringT(String const & str, String const & delim,
                      bool keepempty, bool trimit)
 {
-// Lars would like this code to go, but for now his replacement (below)
-// doesn't fullfil the same function. I have, therefore, reactivated the
-// old code for now. Angus 11 Nov 2002.
-#if 1
 	vector<String> vec;
 	if (str.empty())
 		return vec;
@@ -1416,13 +1412,6 @@ getVectorFromStringT(String const & str, String const & delim,
 		keys = keys.substr(start);
 	}
 	return vec;
-#else
-	typedef boost::char_separator<typename String::value_type> Separator;
-	typedef boost::tokenizer<Separator, typename String::const_iterator, String> Tokenizer;
-	Separator sep(delim.c_str());
-	Tokenizer tokens(str, sep);
-	return vector<String>(tokens.begin(), tokens.end());
-#endif
 }
 
 

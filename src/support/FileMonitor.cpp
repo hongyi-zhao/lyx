@@ -173,7 +173,7 @@ void FileMonitor::connectToFileMonitorGuard()
 	QObject::connect(monitor_.get(), SIGNAL(fileChanged(bool)),
 	                 this, SIGNAL(fileChanged(bool)),
 	                 Qt::QueuedConnection);
-	// Boost signal:
+	// nod signal:
 	QObject::connect(this, SIGNAL(fileChanged(bool)),
 	                 this, SLOT(changed(bool)));
 }
@@ -187,7 +187,7 @@ connection FileMonitor::connect(slot const & slot)
 
 void FileMonitor::changed(bool const exists)
 {
-	// emit boost signal
+	// emit nod signal
 	fileChanged_(exists);
 }
 

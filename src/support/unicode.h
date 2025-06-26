@@ -39,7 +39,7 @@ namespace lyx {
  * From a performance point of view it is best to use one static instance
  * per thread for each in/out encoding pair. This can e.g. be achieved by
  * using helpers for thread-local storage such as QThreadStorage or
- * boost::thread_specific_ptr. A single static instance protected by a mutex
+ * thread_local. A single static instance protected by a mutex
  * would work as well, and might be preferable for exotic encoding pairs.
  * Creating local IconvProcessor instances should be avoided because of the
  * overhead in iconv_open().

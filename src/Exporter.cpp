@@ -68,10 +68,7 @@ CopyStatus copyFile(string const & format,
 {
 	CopyStatus ret = force ? FORCE : SUCCESS;
 
-	// This check could be changed to
-	// boost::filesystem::equivalent(sourceFile, destFile) if export to
-	// other directories than the document directory is desired.
-	// Also don't overwrite files that already exist and are identical
+	// Don't overwrite files that already exist and are identical
 	// to the source files.
 	if ((only_tmp && !prefixIs(onlyPath(sourceFile.absFileName()), package().temp_dir().absFileName()))
 	    || sourceFile.checksum() == destFile.checksum())

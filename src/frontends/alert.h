@@ -28,7 +28,7 @@ typedef unsigned short buttonid;
  * a short summary. Strings should be gettextised.
  * Please think about the poor user.
  *
- * Remember to use boost::format. If you make any of these buttons
+ * Remember to use bformat(). If you make any of these buttons
  * "Yes" or "No", I will personally come around to your house and
  * slap you with fish, and not in an enjoyable way either.
  */

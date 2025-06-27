@@ -483,16 +483,16 @@ python3 development/tools/updatelayouts.py
 
 
 if [ "${clang}" = "1" ]; then
-  export CC="clang"
+  runthis misc.log export CC="clang"
   # TODO: add option to build with libc++ :
   # export CXX="clang++ -stdlib=libc++"
-  export CXX="clang++"
+  runthis misc.log export CXX="clang++"
 else
   # didn't use to specify this "else" because GCC
   # was default, but the system default might not
   # be GCC so it's best to be explicit.
-  export CC="gcc"
-  export CXX="g++"
+  runthis misc.log export CC="gcc"
+  runthis misc.log export CXX="g++"
 fi
 
 
@@ -584,7 +584,7 @@ else
     # bisect a warning (e.g., from -pedantic), we need to remember to turn it
     # on unconditionally.
     if [ "${current_branch}" = "master" ]; then
-      CPPFLAGS="-Werror;-Wextra;-pedantic"
+      CPPFLAGS="-Werror;-Wextra;-pedantic;-Wextra-semi"
     else
       CPPFLAGS=""
     fi

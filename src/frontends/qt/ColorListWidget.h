@@ -24,7 +24,7 @@ class ColorListWidget : public QListWidget
 	Q_OBJECT
 public:
 	explicit ColorListWidget(QWidget *parent = nullptr);
-	~ColorListWidget(){};
+	~ColorListWidget(){}
 
 	void focusInEvent(QFocusEvent* ev) override;
 	void focusOutEvent(QFocusEvent* ev) override;

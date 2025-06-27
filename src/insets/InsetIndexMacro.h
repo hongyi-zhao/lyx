@@ -80,13 +80,13 @@ private:
 	///
 	bool neverIndent() const override { return true; }
 	/// We do not output anything directly to the stream
-	void latex(otexstream &, OutputParams const &) const override {};
+	void latex(otexstream &, OutputParams const &) const override {}
 	/// We do not output anything directly to the stream
-	int plaintext(odocstringstream &, OutputParams const &, size_t) const override { return 0; };
+	int plaintext(odocstringstream &, OutputParams const &, size_t) const override { return 0; }
 	/// We do not output anything directly to the stream
-	void docbook(XMLStream &, OutputParams const &) const override {};
+	void docbook(XMLStream &, OutputParams const &) const override {}
 	/// We do not output anything directly to the stream
-	docstring xhtml(XMLStream &, OutputParams const &) const override { return docstring(); };
+	docstring xhtml(XMLStream &, OutputParams const &) const override { return docstring(); }
 	///
 	bool allowSpellCheck() const override { return false; }
 	///

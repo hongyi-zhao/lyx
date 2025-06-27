@@ -1411,7 +1411,7 @@ namespace {
 			//
 			string full = comm_left + expr + comm_right;
 			lyxerr << "checking input: '" << full << "'" << endl;
-			out = captureOutput("octave -q 2>&1", full);
+			out = captureOutput("octave-cli -q 2>&1", full);
 			lyxerr << "output: '" << out << "'" << endl;
 
 			// leave loop if expression syntax is probably ok

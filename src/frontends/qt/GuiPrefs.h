@@ -685,7 +685,7 @@ public:
 	         ColorNamePairs &new_color_list,
 	         bool const autoapply, PrefColors* color_module,
 	         QUndoCommand* uc_parent = nullptr);
-	~SetColor(){};
+	~SetColor(){}
 
 	void redo() override;
 	void undo() override;

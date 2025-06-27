@@ -58,6 +58,11 @@
 
 - When compiling with GCC, LyX know needs at least version >= 5.
 
+- Dependence on boost libraries was dropped and they are not needed
+  for building the binaries anymore.
+
+- CAS interface for octave changed from calling 'octave' to 'octave-cli'.
+
 
 !!Known issues in version 2.5.0
 

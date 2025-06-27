@@ -215,7 +215,7 @@ public:
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo &, int, int, frontend::InputMethod const *,
-	                  pos_type const) const {};
+	                  pos_type const) const {}
 	/// draw inset selection if necessary
 	virtual void drawSelection(PainterInfo &, int, int) const {}
 	/// draw inset background if the inset has an own background and a

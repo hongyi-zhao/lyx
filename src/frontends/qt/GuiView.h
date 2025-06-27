@@ -612,7 +612,7 @@ class PressableSvgWidget : public QSvgWidget
 	Q_OBJECT
 public:
     explicit PressableSvgWidget(const QString &file, QWidget * parent = nullptr)
-	: QSvgWidget(file, parent) {};
+	: QSvgWidget(file, parent) {}
 protected:
     void mousePressEvent(QMouseEvent *event) override;
 Q_SIGNALS:

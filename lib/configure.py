@@ -16,7 +16,7 @@ logging.basicConfig(level = logging.DEBUG,
     filemode = 'w')
 #
 # Add a handler to log to console
-console = logging.StreamHandler()
+console = logging.StreamHandler(sys.stdout)
 console.setLevel(logging.INFO) # the console only print out general information
 formatter = logging.Formatter('%(message)s') # only print out the message itself
 console.setFormatter(formatter)

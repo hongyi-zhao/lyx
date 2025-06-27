@@ -123,9 +123,9 @@ public:
 		bool isPreedit() const { return type == PREEDIT; }
 
 		// Returns the position on left side of the element.
-		pos_type left_pos() const { return isRTL() ? endpos : pos; };
+		pos_type left_pos() const { return isRTL() ? endpos : pos; }
 		// Returns the position on right side of the element.
-		pos_type right_pos() const { return isRTL() ? pos : endpos; };
+		pos_type right_pos() const { return isRTL() ? pos : endpos; }
 
 		// The kind of row element
 		Type type;

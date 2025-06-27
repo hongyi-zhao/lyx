@@ -152,7 +152,7 @@ public:
 	                  Direction const dir = Auto) = 0;
 	/// draw a char at position x, y (y is the baseline) using input method
 	virtual void text(int, int, char_type, InputMethod const *,
-	                  pos_type const, Direction const = Auto) {};
+	                  pos_type const, Direction const = Auto) {}
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is enforced by the \c Font.
 	 */

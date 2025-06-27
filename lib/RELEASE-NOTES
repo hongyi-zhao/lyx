@@ -56,7 +56,8 @@
 
 - The support for (long unmaintained) eLyXer was removed.
 
-- When compiling with GCC, LyX know needs at least version >= 5.
+- When compiling , LyX know requires a compiler supporting C++17, like
+  for example gcc >= 8.
 
 - Dependence on boost libraries was dropped and they are not needed
   for building the binaries anymore.

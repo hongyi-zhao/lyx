@@ -682,7 +682,7 @@ apt-get --yes install --no-install-recommends lilypond >&3 2>&1 \
 # probably happened before the TeX Live installation finished).
 (
   cd "${LYX_DIR}/../user-dir"
-  sudo -u ${USERNAME} LYX_DIR="${LYX_DIR}" bash -c 'source /etc/environment && python3 -tt "${LYX_DIR}/lib/configure.py" > ../"build-logs/reconfigure_lt" 2>&1' \
+  sudo -u ${USERNAME} LYX_DIR="${LYX_DIR}" bash -c 'source /etc/environment && python3 "${LYX_DIR}/lib/configure.py" > ../"build-logs/reconfigure_lt" 2>&1' \
     || { echo "$(ERRORPREFIX)reconfigure failed." >&2; mainRet=1; }
 )
 # todo: The following is copied from above. Instead, do a loop?
@@ -690,7 +690,7 @@ apt-get --yes install --no-install-recommends lilypond >&3 2>&1 \
 # a simple document to PDF.
 (
   cd "${LYX_DIR_GCC}/../user-dir"
-  sudo -u ${USERNAME} LYX_DIR_GCC="${LYX_DIR_GCC}" bash -c 'source /etc/environment && python3 -tt "${LYX_DIR_GCC}/lib/configure.py" > ../"build-logs/reconfigure_lt" 2>&1' \
+  sudo -u ${USERNAME} LYX_DIR_GCC="${LYX_DIR_GCC}" bash -c 'source /etc/environment && python3 "${LYX_DIR_GCC}/lib/configure.py" > ../"build-logs/reconfigure_lt" 2>&1' \
     || { echo "$(ERRORPREFIX)reconfigure failed for GCC." >&2; mainRet=1; }
 )
 
@@ -741,7 +741,7 @@ if [[ "$mainRet" = "0" && "${RUN_TESTS}" = "1" ]]; then
   # We could reconfigure manually, since lyxbuild was run before some
   # dependencies (e.g., lilypond) were installed, and since lyxbuild runs a
   # ctest (it is now a feature of lyxbuild).
-  # ( cd Testing/.lyx/ && sudo -u ${USERNAME} LYX_DIR="${LYX_DIR}" LOGDIR="${LOGDIR}" bash -c 'source /etc/environment && python3 -tt "${LYX_DIR}/lib/configure.py" > "${LOGDIR}/reconfigure_b4_ctest.log" 2>&1' \
+  # ( cd Testing/.lyx/ && sudo -u ${USERNAME} LYX_DIR="${LYX_DIR}" LOGDIR="${LOGDIR}" bash -c 'source /etc/environment && python3 "${LYX_DIR}/lib/configure.py" > "${LOGDIR}/reconfigure_b4_ctest.log" 2>&1' \
   #  || { echo "$(ERRORPREFIX)reconfigure failed." >&2; mainRet=1; } )
   #
   # mv instead of rm incase we want to see differences in configure logs

@@ -48,7 +48,7 @@ function runthis() {
     LOG="${LOGS_D}/$1"
     shift
 
-    echo "$@" >> "${build_script_f}"
+    echo "$@ &&" >> "${build_script_f}"
 
     # TODO: first need to clean up STDERR from other outputs
     # The following tee's STDERR:
@@ -661,7 +661,7 @@ else
     -DLYX_ENABLE_EXPORT_TESTS=${ctest_flags}
     -DLYX_ENABLE_KEYTESTS=OFF
     -DLYX_PROFILE=ON
-    -DLYX_USE_QT=${qt_version} -DLYX_CXX_FLAGS_EXTRA="${CPPFLAGS}"
+    -DLYX_USE_QT=${qt_version} -DLYX_CXX_FLAGS_EXTRA="'${CPPFLAGS}'"
     # Compile with STL debug code.
     # For one particular use case, see:
     #   https://www.lyx.org/trac/ticket/11204
@@ -696,7 +696,7 @@ else
     -DLYX_ENABLE_EXPORT_TESTS=${ctest_flags}
     -DLYX_ENABLE_KEYTESTS=OFF
     -DLYX_PROFILE=OFF
-    -DLYX_USE_QT=${qt_version} -DLYX_CXX_FLAGS_EXTRA="${CPPFLAGS_FAST}"
+    -DLYX_USE_QT=${qt_version} -DLYX_CXX_FLAGS_EXTRA="'${CPPFLAGS_FAST}'"
     -DLYX_STDLIB_DEBUG=OFF
     -DLYX_DEBUG_GLIBC=OFF
     -DLYX_DEBUG_GLIBC_PEDANTIC=OFF
@@ -823,7 +823,7 @@ fi
 PYTHON_EXEC="python3"
 
 cd "${LYX_USER_DIR}"
-runthis configure-lyx.log ${PYTHON_EXEC} -tt "${git_repo_d}/lib/configure.py" \
+runthis configure-lyx.log ${PYTHON_EXEC} "${git_repo_d}/lib/configure.py" \
   || { echo "$(WARNINGPREFIX)reconfigure failed." >&2; exit 1; }
 
 LYX_USER_DIR_NOAUTH="${LYX_USER_DIR}-noauth"
@@ -838,4 +838,9 @@ if [ "${bisect}" = "1" ] && [ "${patch_old}" = "1" ]; then
   git reset --hard
   git checkout "${hash_orig}"
 fi
+
+# this is mostly to close the chain, because runthis appends "&&" to every
+# command line stored in build-commands.
+echo "echo 'all done.'" >> "${LOGS_D}/build-commands"
+
 echo "$(ECHOPREFIX)done."

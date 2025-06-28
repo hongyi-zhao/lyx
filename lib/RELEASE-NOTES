@@ -56,7 +56,7 @@
 
 - The support for (long unmaintained) eLyXer was removed.
 
-- When compiling , LyX know requires a compiler supporting C++17, like
+- When compiling , LyX now requires a compiler supporting C++17, like
   for example gcc >= 8.
 
 - Dependence on boost libraries was dropped and they are not needed

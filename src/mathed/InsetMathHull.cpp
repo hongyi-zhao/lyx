@@ -893,18 +893,19 @@ void InsetMathHull::loadPreview(DocIterator const & pos) const
 
 bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
-	if (RenderPreview::previewMath()) {
+	if (RenderPreview::previewMath())
 		reloadPreview(old);
-		/** FIXME: currently, SinglePar operates on the current
-		 * paragraph at processUpdateFlags time (here cur) and not the
-		 * paragraph where the change happened (old). When this is
-		 * fixed, the following test will become useless.
-		 */
-		if (&old.innerParagraph() == &cur.innerParagraph())
-			cur.screenUpdateFlags(Update::SinglePar);
-		else
-			cur.screenUpdateFlags(Update::Force);
-	}
+
+	/** FIXME: currently, SinglePar operates on the current
+	 * paragraph at processUpdateFlags time (here cur) and not the
+	 * paragraph where the change happened (old). When this is
+	 * fixed, the following test will become useless.
+	 */
+	if (&old.innerParagraph() == &cur.innerParagraph())
+		cur.screenUpdateFlags(Update::SinglePar);
+	else
+		cur.screenUpdateFlags(Update::Force);
+
 	return false;
 }
 

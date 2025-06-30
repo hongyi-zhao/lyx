@@ -23,8 +23,8 @@ file(GLOB tex2lyx_sources ${TOP_SRC_DIR}/src/tex2lyx/${LYX_CPP_FILES})
 
 file(GLOB tex2lyx_headers ${TOP_SRC_DIR}/src/tex2lyx/${LYX_HPP_FILES})
 
-include_directories((BEFORE
-	${TOP_SRC_DIR}/src/tex2lyx)
+include_directories(BEFORE
+	"${TOP_SRC_DIR}/src/tex2lyx"
 	${ZLIB_INCLUDE_DIR})
 
 if(WIN32 AND NOT MINGW)

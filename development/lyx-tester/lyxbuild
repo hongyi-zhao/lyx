@@ -26,7 +26,11 @@
 
 set -o nounset
 
+# these will be modified by "shift" later, so copy now.
+args_orig="$@"
+
 LOGS_D=../"build-logs"
+
 
 # this is for easy reproducing
 build_script_f="${LOGS_D}/build-commands"
@@ -466,6 +470,8 @@ fi
 echo "$(ECHOPREFIX)removing previous build logs..."
 [ -d "${LOGS_D}" ] && rm -rf "${LOGS_D}"
 mkdir "${LOGS_D}"
+
+echo "Arguments to lyxbuild: ${args_orig}" >> "${LOGS_D}/misc.log"
 
 # Start timing here for profiling.
 begin_chain="$(date +%s)"
